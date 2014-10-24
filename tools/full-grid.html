@@ -1,0 +1,65 @@
+---
+title: COPTR POWRR Grid
+layout: toolgrid
+permalink: /tools/ubergrid/
+---
+
+<style>
+/*
+.toolgrid-row, .toolgrid-col {
+	display: none;
+}
+tr.category3aaudio {
+	display: table-row;
+}
+td.category3aaccess2c_use_and_reuse, th.category3aaccess2c_use_and_reuse {
+	display: table-cell;
+}
+*/
+</style>
+
+{% assign sorted_tools = (site.data.tools.tools | sort: 'title') %}
+
+<table>
+<thead>
+<tr>
+<th></th>
+{% for cat in site.data.tools.function_tree %}
+{% for subcat in cat.subcats %}
+<th class="rotate toolgrid-col {{ cat['title_url'] | downcase | replace: '%','' }}"><div><span><a href="http://coptr.digipres.org/{{ subcat.title_url }}">
+{{ subcat.title }}
+</a></span></div></th>
+{% endfor %}
+{% endfor %}
+</tr>
+<tr>
+<th></th>
+{% for cat in site.data.tools.function_tree %}
+<th colspan="{{ cat.subcats | size }}" class="group toolgrid-col {{ cat['title_url'] | downcase | replace: '%','' }}"><a href="http://coptr.digipres.org/{{ cat.title_url }}">{{ cat.title }}</a></th>
+{% endfor %}
+</thead>
+<tbody>
+
+{% for ct in site.data.tools.content_types %}
+<tr style="background-color: #ddd;" class="toolgrid-ct-separator">
+<th colspan="0">{{ ct[1]['title'] }}</th>
+</tr>
+{% for tool in sorted_tools %}
+{% if tool.content_types contains ct[1]['title'] %}
+<tr class="toolgrid-row {{ ct[1]['title_url'] | downcase | replace: '%','' }}">
+<th><a href="http://coptr.digipres.org/{{ tool.title_url }}">{{ tool.title }}</a></th>
+{% for cat in site.data.tools.function_tree %}
+{% for subcat in cat.subcats %}
+<td style="vertical-align: middle; text-align: center;" class="toolgrid-col {{ cat['title_url'] | downcase | replace: '%','' }}">
+{% if tool.subcats contains subcat.title %}
+<span class="glyphicon glyphicon-ok"></span>
+{% endif %}
+</td>
+{% endfor %}
+{% endfor %}
+</tr>
+{% endif %}
+{% endfor %}
+{% endfor %}
+</tbody>
+</table>

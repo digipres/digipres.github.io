@@ -1,0 +1,97 @@
+---
+title: COPTR POWRR Grid
+layout: default
+hide-title: true
+permalink: /tools/type-and-func/
+---
+
+<style type="text/css">
+body {
+  font-family: sans-serif;
+}
+th {
+    font-weight: normal;
+}
+th.rotate {
+  height: 220px;
+  white-space: nowrap;
+}
+th.rotate > div {
+  transform: 
+    translate(20px, 87px)
+    rotate(-45deg);
+  width: 35px;
+}
+th.rotate > div > span {
+  border-bottom: 1px solid #ccc;
+  padding: 5px 10px;
+}
+table {
+ border-collapse: collapse;
+ margin: -5em auto 1em auto;
+}
+tbody th {
+  white-space: nowrap;    
+}
+tbody td, thead th.group {
+  border: 1px solid #ccc;
+}
+th.group {
+  text-align: center;
+}
+    /*
+.toolgrid-row, .toolgrid-col {
+	display: none;
+}
+tr.category3aaudio {
+	display: table-row;
+}
+td.category3aaccess2c_use_and_reuse, th.category3aaccess2c_use_and_reuse {
+	display: table-cell;
+}
+*/
+</style>
+
+{% assign sorted_tools = (site.data.tools.tools | sort: 'title') %}
+
+{% for ct in site.data.tools.content_types %}
+
+{% for cat in site.data.tools.function_tree %}
+{% capture sectitle %}{{ ct[1]['title'] }}: {{ cat.title }}{% endcapture %}
+<h3 id="{% include anchor.html anchor=sectitle %}"><a href="#{% include anchor.html anchor=sectitle %}" style="color: black">{{ sectitle }}</a></h3>
+
+<table>
+<thead>
+<tr>
+<th></th>
+{% for subcat in cat.subcats %}
+<th class="rotate toolgrid-col {{ cat['title_url'] | downcase | replace: '%','' }}"><div><span><a href="http://coptr.digipres.org/{{ subcat.title_url }}">
+{{ subcat.title }}
+</a></span></div></th>
+{% endfor %}
+</tr>
+<tr>
+<th></th>
+<th colspan="{{ cat.subcats | size }}" class="group"><a href="http://coptr.digipres.org/{{ cat.title_url }}">{{ cat.title }}</a></th>
+</thead>
+<tbody>
+
+{% for tool in sorted_tools %}
+{% if tool.content_types contains ct[1]['title'] %}
+<tr class="toolgrid-row {{ ct[1]['title_url'] | downcase | replace: '%','' }}">
+<th><a href="http://coptr.digipres.org/{{ tool.title_url }}">{{ tool.title }}</a></th>
+{% for subcat in cat.subcats %}
+<td style="vertical-align: middle; text-align: center;" class="toolgrid-col {{ cat['title_url'] | downcase | replace: '%','' }}">
+{% if tool.subcats contains subcat.title %}
+<span class="glyphicon glyphicon-ok"></span>
+{% endif %}
+</td>
+{% endfor %}
+</tr>
+{% endif %}
+{% endfor %}
+</tbody>
+</table>
+
+{% endfor %}
+{% endfor %}
