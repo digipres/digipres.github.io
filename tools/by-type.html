@@ -51,7 +51,8 @@ th.group {
 <tr>
 <th></th>
 {% for cat in site.data.tools.function_tree %}
-<th class="rotate"><div><span><a href="http://coptr.digipres.org/{{ cat.title_url }}">
+{% capture sectitle %}{{ cat.title }}{% endcapture %}
+<th class="rotate"><div><span><a href="{{ site.baseurl }}/tools/by-func/#{% include anchor.html anchor=sectitle %}">
 {{ cat.title }}
 </a></span></div></th>
 {% endfor %}
