@@ -8,33 +8,24 @@ layout: toolgrid
 <tr>
 <th></th>
 {% for cat in site.data.tools.function_tree %}
-{% for subcat in cat.subcats %}
-<th class="rotate"><div><span><a href="http://coptr.digipres.org/{{ subcat.title_url }}">
-{{ subcat.title }}
+<th class="rotate"><div><span><a href="http://coptr.digipres.org/{{ cat.title_url }}">
+{{ cat.title }}
 </a></span></div></th>
-{% endfor %}
-{% endfor %}
-</tr>
-<tr>
-<th></th>
-{% for cat in site.data.tools.function_tree %}
-<th class="group" colspan="{{ cat.subcats | size }}"><a href="http://coptr.digipres.org/{{ cat.title_url }}">{{ cat.title }}</a></th>
 {% endfor %}
 </thead>
 <tbody>
 
-{% assign sorted_tools = (site.data.tools.tool_grid | sort: 'title') %}
-{% for tool in sorted_tools %}
+{% for mat in site.data.tools.tool_matrix %}
 <tr>
-<th>{{ tool.title }}</th>
+<th><a href="http://coptr.digipres.org/Category:{{ mat[0] }}">{{ mat[0] }}</a></th>
 {% for cat in site.data.tools.function_tree %}
-{% for subcat in cat.subcats %}
-<td>
-{% if tool.subcat_url == subcat.title_url %}
-X
+<td style="vertical-align: middle; text-align: center;">
+{% if mat[1].topcats contains cat.title %}
+<a href="" title="{{ mat[1].topcats[cat.title] }} '{{ cat.title }}' tool(s) for {{ mat[0] }}">
+{{ mat[1].topcats[cat.title] }}
+</a>
 {% endif %}
 </td>
-{% endfor %}
 {% endfor %}
 </tr>
 {% endfor %}
