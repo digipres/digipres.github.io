@@ -1,8 +1,9 @@
 ---
-title: COPTR POWRR Grid
+title: DigiPres Tools
+subtitle: By content type and lifecycle stage
 layout: default
 hide-title: true
-permalink: /tools/type-and-stage/
+permalink: /tools/by-type-and-stage/
 ---
 
 {% assign sorted_tools = (site.data.tools.tools | sort: 'title') %}
@@ -18,25 +19,26 @@ permalink: /tools/type-and-stage/
 <tr>
 <th></th>
 {% for subcat in cat.subcats %}
-<th class="rotate toolgrid-col {{ cat['title_url'] | downcase | replace: '%','' }}"><div><span><a href="http://coptr.digipres.org/{{ subcat.title_url }}">
+{% capture sectitle %}{{ ct[1].title }}: {{ subcat.title }}{% endcapture %}
+<th class="rotate toolgrid-col {{ cat['title_url'] | downcase | replace: '%','' }}"><div><span><a href="{{ site.baseurl }}/tools/by-type-and-function/#{% include anchor.html anchor=sectitle %}">
 {{ subcat.title }}
 </a></span></div></th>
 {% endfor %}
 </tr>
-<tr>
-<th></th>
-<th colspan="{{ cat.subcats | size }}" class="group"><a href="http://coptr.digipres.org/{{ cat.title_url }}">{{ cat.title }}</a></th>
 </thead>
 <tbody>
 
 {% for tool in sorted_tools %}
 {% if tool.content_types contains ct[1]['title'] %}
 <tr class="toolgrid-row {{ ct[1]['title_url'] | downcase | replace: '%','' }}">
-<th><a href="http://coptr.digipres.org/{{ tool.title_url }}">{{ tool.title }}</a></th>
+{% capture sectitle %}Tool: {{ tool.title_full }}{% endcapture %}
+<th><a href="{{ site.baseurl }}/tools/by-type-and-function/#{% include anchor.html anchor=sectitle %}">{{ tool.title }}</a></th>
 {% for subcat in cat.subcats %}
 <td style="vertical-align: middle; text-align: center;" class="toolgrid-col {{ cat['title_url'] | downcase | replace: '%','' }}">
 {% if tool.subcats contains subcat.title %}
+<a href="{{ site.baseurl }}/tools/by-type-and-function/#{% include anchor.html anchor=sectitle %}">
 <span class="glyphicon glyphicon-ok"></span>
+</a>
 {% endif %}
 </td>
 {% endfor %}
