@@ -7,16 +7,16 @@ hide-title: true
 <table class="powrr">
 <thead>
 <tr>
+<th class="">&nbsp;</th>
+<th colspan="{{ site.data.tools.function_tree | size }}"  class="group">DCC Lifecycle Stages<a href="#dcc-ref">*</a></th>
+<tr>
 <th class="rotate"></th>
 {% for cat in site.data.tools.function_tree %}
 {% capture sectitle %}{{ cat.title }}{% endcapture %}
-<th class="rotate {% include anchor.html anchor=sectitle %}"><div><span><a href="{{ site.baseurl }}/tools/by-func/#{% include anchor.html anchor=sectitle %}">
+<th class="rotate {% include anchor.html anchor=sectitle %}"><div><span><a href="{{ site.baseurl }}/tools/by-stage/#{% include anchor.html anchor=sectitle %}">
 {{ cat.title }}
 </a></span></div></th>
 {% endfor %}
-<tr>
-<th class="group">&nbsp;</th>
-<th colspan="{{ site.data.tools.function_tree | size }}"  class="group"><a href="http://www.dcc.ac.uk/resources/curation-lifecycle-model">DCC Lifecycle Stages</a></th>
 </thead>
 <tbody>
 
@@ -28,7 +28,7 @@ hide-title: true
 <td style="vertical-align: middle; text-align: center;">
 {% if mat[1].topcats contains cat.title %}
 {% capture sectitle %}{{ mat[0] }}: {{ cat.title }}{% endcapture %}
-<a href="{{ site.baseurl }}/tools/type-and-func/#{% include anchor.html anchor=sectitle %}" title="{{ mat[1].topcats[cat.title] }} '{{ cat.title }}' tool(s) for {{ mat[0] }}">
+<a href="{{ site.baseurl }}/tools/type-and-stage/#{% include anchor.html anchor=sectitle %}" title="{{ mat[1].topcats[cat.title] }} '{{ cat.title }}' tool(s) for {{ mat[0] }}">
 {{ mat[1].topcats[cat.title] }}
 </a>
 {% endif %}
@@ -38,3 +38,7 @@ hide-title: true
 {% endfor %}
 </tbody>
 </table>
+
+<p id="dcc-ref" style="text-align: center">
+* Lifecycle stages taken from the <a href="http://www.dcc.ac.uk/resources/curation-lifecycle-model">DCC Lifecycle Model</a>.
+</p>
