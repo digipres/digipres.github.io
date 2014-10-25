@@ -4,57 +4,24 @@ layout: default
 hide-title: true
 ---
 
-    <style type="text/css">
-body {
-  font-family: sans-serif;
-}
-th {
-    font-weight: normal;
-}
-th.rotate {
-  height: 220px;
-  white-space: nowrap;
-}
-th.rotate > div {
-  transform: 
-    translate(20px, 87px)
-    rotate(-45deg);
-  width: 35px;
-}
-th.rotate > div > span {
-  border-bottom: 1px solid #ccc;
-  padding: 5px 10px;
-}
-table {
- border-collapse: collapse;
- margin: -5em auto 1em auto;
-}
-tbody th {
-  white-space: nowrap;    
-}
-tbody td, thead th.group {
-  border: 1px solid #ccc;
-}
-th.group {
-  text-align: center;
-}
-    </style>
-
-<table>
+<table class="powrr">
 <thead>
 <tr>
-<th></th>
+<th class="rotate"></th>
 {% for cat in site.data.tools.function_tree %}
 {% capture sectitle %}{{ cat.title }}{% endcapture %}
-<th class="rotate"><div><span><a href="{{ site.baseurl }}/tools/by-func/#{% include anchor.html anchor=sectitle %}">
+<th class="rotate {% include anchor.html anchor=sectitle %}"><div><span><a href="{{ site.baseurl }}/tools/by-func/#{% include anchor.html anchor=sectitle %}">
 {{ cat.title }}
 </a></span></div></th>
 {% endfor %}
+<tr>
+<th class="group">&nbsp;</th>
+<th colspan="0" class="group"><a href="http://www.dcc.ac.uk/resources/curation-lifecycle-model">DCC Lifecycle Stages</a></th>
 </thead>
 <tbody>
 
 {% for mat in site.data.tools.tool_matrix %}
-<tr>
+<tr class="{% cycle 'odd', 'even' %}">
 {% capture sectitle %}{{ mat[0] }}{% endcapture %}
 <th><a href="{{ site.baseurl }}/tools/by-type/#{% include anchor.html anchor=sectitle %}">{{ mat[0] }}</a></th>
 {% for cat in site.data.tools.function_tree %}
