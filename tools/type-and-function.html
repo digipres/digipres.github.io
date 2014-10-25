@@ -20,48 +20,18 @@ permalink: /tools/by-type-and-function/
 {% capture sectitle %}{{ ct[0] }}: {{ subcat[0] }}{% endcapture %}
 <h2 id="{% include anchor.html anchor=sectitle %}"><a href="#{% include anchor.html anchor=sectitle %}" style="color: black">{{ sectitle }}</a></h3>
 
+<ul>
 {% for tool in sorted_tools %}
 {% if tool.content_types contains ct[0] %}
 {% if tool.subcats contains subcat[0] %}
 
-<div class="panel panel-default">
-<div class="panel-heading">
 {% capture sectitle %}Tool: {{ tool.title_full }}{% endcapture %}
-    <h3 class="panel-title" id="{% include anchor.html anchor=sectitle %}"><a href="#{% include anchor.html anchor=sectitle %}" style="color: black">{{ tool.title_full }}</a><span class="pull-right"><a href="http://coptr.digipres.org/{{ tool.title_url }}" title="View &amp; edit on COPTR"><button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-link"></span></button></a></span></h3>
-</div>
-<div class="panel-body">
-
-<dl>
-  <dt>Purpose</dt>
-  <dd>{{ tool.purpose }}</dd>
-  <dt>Homepage</dt>
-  <dd><a href="{{ tool.homepage }}">{{ tool.homepage }}</a></dd>
-  <dt>License</dt>
-  <dd>{{ tool.license }}</dd>
-  <dt>Platforms</dt>
-  <dd>{{ tool.platforms }}</dd>
-  <dt>Content Types</dt>
-{% for cat in tool.content_types %}
-  <dd><a href="http://coptr.digipres.org/Category:{{ cat }}">{{ cat }}</a></dd>
-{% endfor %}
-  <dt>Stages</dt>
-{% for cat in tool.topcats %}
-  <dd><a href="http://coptr.digipres.org/Category:{{ cat }}">{{ cat }}</a></dd>
-{% endfor %}
-  <dt>Functions</dt>
-{% for cat in tool.subcats %}
-  <dd><a href="http://coptr.digipres.org/Category:{{ cat }}">{{ cat }}</a></dd>
-{% endfor %}
-  <dt>More Information Needed?</dt>
-  <dd><a href="http://coptr.digipres.org/{{ tool.title_url }}">View &amp; edit this entry on COPTR</a></dd>
-</dl>
-
-</div>
-</div>
+<li><b><a href="{{ site.baseurl }}/tools/all-tools/#{% include anchor.html anchor=sectitle %}" style="color: black">{{ tool.title_full }}</a></b> - {{ tool.purpose }}<a href="http://coptr.digipres.org/{{ tool.title_url }}" title="View &amp; edit on COPTR" class="pull-right" style="color: grey;"><span class="glyphicon glyphicon-link"></span></a></li>
 
 {% endif %}
 {% endif %}
 {% endfor %}
+</ul>
 
 {% endif %}
 {% endfor %}
