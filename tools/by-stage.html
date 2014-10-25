@@ -2,51 +2,15 @@
 title: COPTR POWRR Grid
 layout: default
 hide-title: true
-permalink: /tools/by-func/
+permalink: /tools/by-stage/
 ---
-
-    <style type="text/css">
-body {
-  font-family: sans-serif;
-}
-th {
-    font-weight: normal;
-}
-th.rotate {
-  height: 220px;
-  white-space: nowrap;
-}
-th.rotate > div {
-  transform: 
-    translate(20px, 87px)
-    rotate(-45deg);
-  width: 35px;
-}
-th.rotate > div > span {
-  border-bottom: 1px solid #ccc;
-  padding: 5px 10px;
-}
-table {
- border-collapse: collapse;
- margin: -5em auto 1em auto;
-}
-tbody th {
-  white-space: nowrap;    
-}
-tbody td, thead th.group {
-  border: 1px solid #ccc;
-}
-th.group {
-  text-align: center;
-}
-    </style>
 
 {% for cat in site.data.tools.function_tree %}
 
 {% capture sectitle %}{{ cat.title }}{% endcapture %}
 <h3 id="{% include anchor.html anchor=sectitle %}"><a href="#{% include anchor.html anchor=sectitle %}" style="color: black">{{ sectitle }}</a></h3>
 
-<table>
+<table class="powrr">
 <thead>
 <tr>
 <th></th>
@@ -66,7 +30,7 @@ th.group {
 <td style="vertical-align: middle; text-align: center;">
 {% if mat[1].topcats contains cat.title %}
 {% capture sectitle %}{{ mat[0] }}: {{ cat.title }}{% endcapture %}
-<a href="{{ site.baseurl }}/tools/type-and-func/#{% include anchor.html anchor=sectitle %}" title="{{ mat[1].subcats[subcat.title] }} '{{ subcat.title }}' tool(s) for {{ mat[0] }}">
+<a href="{{ site.baseurl }}/tools/type-and-stage/#{% include anchor.html anchor=sectitle %}" title="{{ mat[1].subcats[subcat.title] }} '{{ subcat.title }}' tool(s) for {{ mat[0] }}">
 {{ mat[1].subcats[subcat.title] }}
 </a>
 {% endif %}
