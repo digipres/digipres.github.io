@@ -1,5 +1,6 @@
 ---
-title: COPTR POWRR Grid
+title: DigiPres Tools
+subtitle: By lifecycle stage
 layout: default
 hide-title: true
 permalink: /tools/by-stage/
@@ -15,9 +16,9 @@ permalink: /tools/by-stage/
 <tr>
 <th></th>
 {% for subcat in cat.subcats %}
-<th class="rotate toolgrid-col {{ cat['title_url'] | downcase | replace: '%','' }}"><div><span><a href="http://coptr.digipres.org/{{ subcat.title_url }}">
+<th class="rotate toolgrid-col {{ cat['title_url'] | downcase | replace: '%','' }}"><div><span>
 {{ subcat.title }}
-</a></span></div></th>
+</span></div></th>
 {% endfor %}
 </thead>
 <tbody>
@@ -29,8 +30,8 @@ permalink: /tools/by-stage/
 {% for subcat in cat.subcats %}
 <td style="vertical-align: middle; text-align: center;">
 {% if mat[1].topcats contains cat.title %}
-{% capture sectitle %}{{ mat[0] }}: {{ cat.title }}{% endcapture %}
-<a href="{{ site.baseurl }}/tools/type-and-stage/#{% include anchor.html anchor=sectitle %}" title="{{ mat[1].subcats[subcat.title] }} '{{ subcat.title }}' tool(s) for {{ mat[0] }}">
+{% capture sectitle %}{{ mat[0] }}: {{ subcat.title }}{% endcapture %}
+<a href="{{ site.baseurl }}/tools/by-type-and-function/#{% include anchor.html anchor=sectitle %}" title="{{ mat[1].subcats[subcat.title] }} '{{ subcat.title }}' tool(s) for {{ mat[0] }}">
 {{ mat[1].subcats[subcat.title] }}
 </a>
 {% endif %}
