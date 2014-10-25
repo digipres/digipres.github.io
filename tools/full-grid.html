@@ -12,16 +12,17 @@ permalink: /tools/ubergrid/
 <th></th>
 {% for cat in site.data.tools.function_tree %}
 {% for subcat in cat.subcats %}
-<th class="rotate"><div><span><a href="http://coptr.digipres.org/{{ subcat.title_url }}">
+<th class="rotate"><div><span>
 {{ subcat.title }}
-</a></span></div></th>
+</span></div></th>
 {% endfor %}
 {% endfor %}
 </tr>
 <tr>
 <th></th>
 {% for cat in site.data.tools.function_tree %}
-<th colspan="{{ cat.subcats | size }}" class="group group-{% cycle 'odd', 'even' %}"><a href="http://coptr.digipres.org/{{ cat.title_url }}">{{ cat.title }}</a></th>
+{% capture sectitle %}{{ cat.title }}{% endcapture %}
+<th colspan="{{ cat.subcats | size }}" class="group group-{% cycle 'odd', 'even' %}"><a href="{{ site.baseurl }}/tools/by-stage/#{% include anchor.html anchor=sectitle %}">{{ cat.title }}</a></th>
 {% endfor %}
 </thead>
 <tbody>
@@ -33,12 +34,15 @@ permalink: /tools/ubergrid/
 {% for tool in sorted_tools %}
 {% if tool.content_types contains ct[1]['title'] %}
 <tr class="{% cycle 'odd', 'even' %}">
-<th><a href="http://coptr.digipres.org/{{ tool.title_url }}">{{ tool.title }}</a></th>
+{% capture sectitle %}Tool: {{ tool.title_full }}{% endcapture %}
+<th><a href="{{ site.baseurl }}/tools/all-tools/#{% include anchor.html anchor=sectitle %}">{{ tool.title }}</a></th>
 {% for cat in site.data.tools.function_tree %}
 {% for subcat in cat.subcats %}
 <td style="vertical-align: middle; text-align: center;">
 {% if tool.subcats contains subcat.title %}
+<a href="{{ site.baseurl }}/tools/all-tools/#{% include anchor.html anchor=sectitle %}">
 <span class="glyphicon glyphicon-ok"></span>
+</a>
 {% endif %}
 </td>
 {% endfor %}
