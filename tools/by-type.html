@@ -6,13 +6,33 @@ hide-title: true
 permalink: /tools/by-type/
 ---
 
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>
+    Listing all tools supporting each lifecycle stage for each content type.
+    </p>
+    <ul>
 {% for ct in site.data.tools.content_types %}
+{% capture sectitle %}{{ ct[1]['title'] }}{% endcapture %}
+<li><a href="#{% include anchor.html anchor=sectitle %}">{{ sectitle }}</a></li>
+{% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% for ct in site.data.tools.content_types %}
+
+<a href="#top-navbar" class="pull-right" title="To the top of the page."><span class="glyphicon glyphicon-arrow-up"></span></a>
 
 {% capture sectitle %}{{ ct[1]['title'] }}{% endcapture %}
 <h3 id="{% include anchor.html anchor=sectitle %}"><a href="#{% include anchor.html anchor=sectitle %}" style="color: black">{{ sectitle }}</a></h3>
 
 <table class="powrr">
 <thead>
+<tr>
+<th class="">&nbsp;</th>
+<th colspan="{{ site.data.tools.function_tree | size }}"  class="group">DCC Lifecycle Stages</th>
+</tr>
 <tr>
 <th></th>
 {% for cat in site.data.tools.function_tree %}

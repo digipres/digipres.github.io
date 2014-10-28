@@ -6,13 +6,33 @@ hide-title: true
 permalink: /tools/by-stage/
 ---
 
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>
+    Listing all functions but content type, for each lifecycle stage.
+    </p>
+    <ul>
+    {% for cat in site.data.tools.function_tree %}
+    {% capture sectitle %}{{ cat.title }}{% endcapture %}
+		<li><a href="#{% include anchor.html anchor=sectitle %}">{{ sectitle }}</a></li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>
+
 {% for cat in site.data.tools.function_tree %}
+
+<a href="#top-navbar" class="pull-right" title="To the top of the page."><span class="glyphicon glyphicon-arrow-up"></span></a>
 
 {% capture sectitle %}{{ cat.title }}{% endcapture %}
 <h3 id="{% include anchor.html anchor=sectitle %}"><a href="#{% include anchor.html anchor=sectitle %}" style="color: black">{{ sectitle }}</a></h3>
 
 <table class="powrr">
 <thead>
+<tr>
+<th class="">&nbsp;</th>
+<th colspan="{{ cat.subcats | size }}"  class="group">Functions Within<br/>{{ cat.title }}</a></th>
+</tr>
 <tr>
 <th></th>
 {% for subcat in cat.subcats %}
@@ -25,8 +45,8 @@ permalink: /tools/by-stage/
 
 {% for mat in site.data.tools.tool_matrix %}
 <tr>
-{% capture sectitle %}{{ mat[0] }}{% endcapture %}
-<th><a href="{{ site.baseurl }}/tools/by-type/#{% include anchor.html anchor=sectitle %}">{{ mat[0] }}</a></th>
+{% capture sectitle %}{{ mat[0] }}: {{ cat.title }}{% endcapture %}
+<th><a href="{{ site.baseurl }}/tools/by-type-and-stage/#{% include anchor.html anchor=sectitle %}">{{ mat[0] }}</a></th>
 {% for subcat in cat.subcats %}
 <td style="vertical-align: middle; text-align: center;">
 {% if mat[1].topcats contains cat.title %}

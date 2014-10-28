@@ -8,6 +8,21 @@ permalink: /tools/all-tools/
 
 {% assign sorted_tools = (site.data.tools.tools | sort: 'title') %}
 
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>
+    Full details for all known tools.
+    </p>
+    <ul>
+    {% for tool in sorted_tools %}
+    {% capture sectitle %}Tool: {{ tool.title_full }}{% endcapture %}
+      <li><a href="#{% include anchor.html anchor=sectitle %}">{{ tool.title_full }}</a></li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>
+
+
 {% for tool in sorted_tools %}
 
 <div class="panel panel-default">
@@ -39,7 +54,7 @@ permalink: /tools/all-tools/
   <dd><a href="http://coptr.digipres.org/Category:{{ cat }}">{{ cat }}</a></dd>
 {% endfor %}
   <dt>More Information Needed?</dt>
-  <dd><a href="http://coptr.digipres.org/{{ tool.title_url }}">View &amp; edit this entry on COPTR</a></dd>
+  <dd><a href="#top-navbar" class="pull-right" title="To the top of the page."><span class="glyphicon glyphicon-arrow-up"></span></a><a href="http://coptr.digipres.org/{{ tool.title_url }}">View &amp; edit this entry on COPTR</a></dd>
 </dl>
 
 </div>
