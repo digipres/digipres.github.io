@@ -6,6 +6,33 @@ hide-title: true
 permalink: /tools/by-type-and-function/
 ---
 
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>
+    Fine-grained list of all tools, by content type and function.
+    </p>
+    <ul>
+{% for ct in site.data.tools.tool_matrix %}
+{% if ct[1].count > 0 %}
+{% capture sectitle %}{{ ct[0] }}{% endcapture %}
+<li><a href="#{% include anchor.html anchor=sectitle %}">{{ sectitle }}</a>
+<ul>
+{% for subcat in ct[1].subcats %}
+{% if subcat[1] > 0 %}
+
+{% capture sectitle %}{{ ct[0] }}: {{ subcat[0] }}{% endcapture %}
+<li><a href="#{% include anchor.html anchor=sectitle %}">{{ sectitle }}</a></li>
+{% endif %}
+{% endfor %}
+</ul>
+</li>
+{% endif %}
+{% endfor %}
+    </ul>
+  </div>
+</div>
+
+
 {% assign sorted_tools = (site.data.tools.tools | sort: 'title') %}
 
 {% for ct in site.data.tools.tool_matrix %}
@@ -13,6 +40,8 @@ permalink: /tools/by-type-and-function/
 
 {% capture sectitle %}{{ ct[0] }}{% endcapture %}
 <h1 id="{% include anchor.html anchor=sectitle %}"><a href="#{% include anchor.html anchor=sectitle %}" style="color: black">{{ sectitle }}</a></h2>
+
+<a href="#top-navbar" class="pull-right" title="To the top of the page."><span class="glyphicon glyphicon-arrow-up"></span></a>
 
 {% for subcat in ct[1].subcats %}
 {% if subcat[1] > 0 %}
