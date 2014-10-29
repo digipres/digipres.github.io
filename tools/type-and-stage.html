@@ -18,7 +18,7 @@ permalink: /tools/by-type-and-stage/
 <ul>
 {% for cat in site.data.tools.function_tree %}
 {% capture sectitle %}{{ ct[1]['title'] }}: {{ cat.title }}{% endcapture %}
-<li><a href="#{% include anchor.html anchor=sectitle %}">{{ sectitle }}</a></li>
+<li><a href="#{% include anchor.html anchor=sectitle %}">{{ cat.title }}</a></li>
 {% endfor %}
 </ul>
 </li>
@@ -56,6 +56,11 @@ permalink: /tools/by-type-and-stage/
 
 {% for tool in sorted_tools %}
 {% if tool.content_types contains ct[1]['title'] %}
+{% assign has_match = false %}
+{% for subcat in cat.subcats %}
+{% if tool.subcats contains subcat.title %}{% assign has_match = true %}{% endif %}
+{% endfor %}
+{% if has_match %}
 <tr class="toolgrid-row {{ ct[1]['title_url'] | downcase | replace: '%','' }}">
 {% capture sectitle %}Tool: {{ tool.title_full }}{% endcapture %}
 <th><a href="{{ site.baseurl }}/tools/all-tools/#{% include anchor.html anchor=sectitle %}">{{ tool.title }}</a></th>
@@ -69,6 +74,7 @@ permalink: /tools/by-type-and-stage/
 </td>
 {% endfor %}
 </tr>
+{% endif %}
 {% endif %}
 {% endfor %}
 </tbody>
