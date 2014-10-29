@@ -49,6 +49,18 @@ permalink: /tools/by-type-and-function/
 {% capture sectitle %}{{ ct[0] }}: {{ subcat[0] }}{% endcapture %}
 <h2 id="{% include anchor.html anchor=sectitle %}"><a href="#{% include anchor.html anchor=sectitle %}" style="color: black">{{ sectitle }}</a></h3>
 
+{% assign definition = "" %}
+{% for ft_cat in site.data.tools.function_tree %}
+{% for ft_subcat in ft_cat.subcats %}
+{% if ft_subcat.title == subcat[0] %}
+{% assign definition = ft_subcat.definition %}
+{% endif %}
+{% endfor %}
+{% endfor %}
+<p>
+{{ definition }}
+</p>
+
 <ul>
 {% for tool in sorted_tools %}
 {% if tool.content_types contains ct[0] %}

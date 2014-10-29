@@ -40,13 +40,17 @@ permalink: /tools/by-type-and-stage/
 {% capture sectitle %}{{ ct[1]['title'] }}: {{ cat.title }}{% endcapture %}
 <h2 id="{% include anchor.html anchor=sectitle %}"><a href="#{% include anchor.html anchor=sectitle %}" style="color: black">{{ sectitle }}</a></h2>
 
+<p>
+{{ cat.definition }}
+</p>
+
 <table class="powrr">
 <thead>
 <tr>
 <th></th>
 {% for subcat in cat.subcats %}
 {% capture sectitle %}{{ ct[1].title }}: {{ subcat.title }}{% endcapture %}
-<th class="rotate toolgrid-col {{ cat['title_url'] | downcase | replace: '%','' }}"><div><span><a href="{{ site.baseurl }}/tools/by-type-and-function/#{% include anchor.html anchor=sectitle %}">
+<th class="rotate toolgrid-col {{ cat['title_url'] | downcase | replace: '%','' }}"><div><span><a href="{{ site.baseurl }}/tools/by-type-and-function/#{% include anchor.html anchor=sectitle %}" title="{{ subcat.definition | replace: '"',"'" }}">
 {{ subcat.title }}
 </a></span></div></th>
 {% endfor %}
