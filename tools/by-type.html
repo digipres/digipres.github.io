@@ -37,7 +37,7 @@ permalink: /tools/by-type/
 <th></th>
 {% for cat in site.data.tools.function_tree %}
 {% capture sectitle %}{{ ct[1]['title'] }}: {{ cat.title }}{% endcapture %}
-<th class="rotate"><div><span><a href="{{ site.baseurl }}/tools/by-type-and-stage/#{% include anchor.html anchor=sectitle %}">
+<th class="rotate"><div><span><a href="{{ site.baseurl }}/tools/by-type-and-stage/#{% include anchor.html anchor=sectitle %}" title="{{ cat.definition | replace: '"',"'" }}">
 {{ cat.title }}
 </a></span></div></th>
 {% endfor %}
@@ -49,7 +49,7 @@ permalink: /tools/by-type/
 {% if tool.content_types contains ct[1]['title'] %}
 <tr class="toolgrid-row {{ ct[1]['title_url'] | downcase | replace: '%','' }}">
 {% capture sectitle %}Tool: {{ tool.title_full }}{% endcapture %}
-<th><a href="{{ site.baseurl }}/tools/all-tools/#{% include anchor.html anchor=sectitle %}">{{ tool.title }}</a></th>
+<th><a href="{{ site.baseurl }}/tools/all-tools/#{% include anchor.html anchor=sectitle %}" title="{{ tool.purpose | replace: '"',"'" }}">{{ tool.title }}</a></th>
 {% for cat in site.data.tools.function_tree %}
 <td style="vertical-align: middle; text-align: center;" class="toolgrid-col {{ cat['title_url'] | downcase | replace: '%','' }}">
 {% if tool.topcats contains cat.title %}

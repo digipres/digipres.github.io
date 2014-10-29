@@ -67,7 +67,7 @@ permalink: /tools/by-type-and-stage/
 {% if has_match %}
 <tr class="toolgrid-row {{ ct[1]['title_url'] | downcase | replace: '%','' }}">
 {% capture sectitle %}Tool: {{ tool.title_full }}{% endcapture %}
-<th><a href="{{ site.baseurl }}/tools/all-tools/#{% include anchor.html anchor=sectitle %}">{{ tool.title }}</a></th>
+<th><a href="{{ site.baseurl }}/tools/all-tools/#{% include anchor.html anchor=sectitle %}" title="{{ tool.purpose | replace: '"',"'" }}">{{ tool.title }}</a></th>
 {% for subcat in cat.subcats %}
 <td style="vertical-align: middle; text-align: center;" class="toolgrid-col {{ cat['title_url'] | downcase | replace: '%','' }}">
 {% if tool.subcats contains subcat.title %}
