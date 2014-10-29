@@ -13,7 +13,7 @@ permalink: /tools/ubergrid/
 {% for cat in site.data.tools.function_tree %}
 {% for subcat in cat.subcats %}
 <th class="rotate"><div><span>
-{{ subcat.title }}
+<a href="#" title="{{ subcat.definition | replace: '"',"'" }}" style="color:black;">{{ subcat.title }}</a>
 </span></div></th>
 {% endfor %}
 {% endfor %}
@@ -22,7 +22,7 @@ permalink: /tools/ubergrid/
 <th></th>
 {% for cat in site.data.tools.function_tree %}
 {% capture sectitle %}{{ cat.title }}{% endcapture %}
-<th colspan="{{ cat.subcats | size }}" class="group group-{% cycle 'odd', 'even' %}"><a href="{{ site.baseurl }}/tools/by-stage/#{% include anchor.html anchor=sectitle %}">{{ cat.title }}</a></th>
+<th colspan="{{ cat.subcats | size }}" class="group group-{% cycle 'odd', 'even' %}"><a href="{{ site.baseurl }}/tools/by-stage/#{% include anchor.html anchor=sectitle %}" title="{{ cat.definition | replace: '"',"'" }}">{{ cat.title }}</a></th>
 {% endfor %}
 </thead>
 <tbody>
