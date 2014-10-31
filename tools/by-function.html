@@ -18,7 +18,7 @@ permalink: /tools/by-function/
     <ul>
     {% for subcat in cat.subcats %}
     {% capture sectitle %}{{ cat.title }}: {{ subcat.title }}{% endcapture %}
-		<li><a href="#{% include anchor.html anchor=sectitle %}">{{ sectitle }}</a></li>
+		<li><a href="#{% include anchor.html anchor=sectitle %}">{{ subcat.title }}</a></li>
     {% endfor %}
     </ul>
     </li>
@@ -41,7 +41,7 @@ permalink: /tools/by-function/
 
 {% for subcat in cat.subcats %}
 {% capture sectitle %}{{ cat.title }}: {{ subcat.title }}{% endcapture %}
-<h2 id="{% include anchor.html anchor=sectitle %}"><a href="#{% include anchor.html anchor=sectitle %}" style="color: black">{{ sectitle }}</a></h2>
+<h2 id="{% include anchor.html anchor=sectitle %}"><a href="#{% include anchor.html anchor=sectitle %}" style="color: black">{{ subcat.title }}</a></h2>
 
 <a href="#top-navbar" class="pull-right" title="To the top of the page."><span class="glyphicon glyphicon-arrow-up"></span></a>
 
