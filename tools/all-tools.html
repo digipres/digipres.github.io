@@ -35,24 +35,34 @@ permalink: /tools/all-tools/
 <dl>
   <dt>Purpose</dt>
   <dd>{{ tool.purpose }}</dd>
+  
   <dt>Homepage</dt>
   <dd><a href="{{ tool.homepage }}">{{ tool.homepage }}</a></dd>
+
   <dt>License</dt>
   <dd>{{ tool.license }}</dd>
+
   <dt>Platforms</dt>
   <dd>{{ tool.platforms }}</dd>
+
   <dt>Content Types</dt>
 {% for cat in tool.content_types %}
-  <dd><a href="http://coptr.digipres.org/Category:{{ cat }}">{{ cat }}</a></dd>
+  <dd><a href="{{ site.baseurl }}/tools/by-type/#{% include anchor.html anchor=cat %}">{{ cat }}</a></dd>
 {% endfor %}
-  <dt>Stages</dt>
-{% for cat in tool.topcats %}
-  <dd><a href="http://coptr.digipres.org/Category:{{ cat }}">{{ cat }}</a></dd>
+
+  <dt>Stages &amp; Functions</dt>
+{% for cat in site.data.tools.function_tree %}
+{% if tool.topcats contains cat.title %}
+{% capture sectitle %}{{ cat.title }}{% endcapture %}
+{% for subcat in cat.subcats %}
+{% if tool.subcats contains subcat.title %}
+{% capture subsectitle %}{{ cat.title }}: {{ subcat.title}}{% endcapture %}
+  <dd><a href="{{ site.baseurl }}/tools/by-stage/#{% include anchor.html anchor=sectitle %}">{{ sectitle }}</a>: <a href="{{ site.baseurl }}/tools/by-function/#{% include anchor.html anchor=subsectitle %}">{{ subcat.title }}</a></dd>
+{% endif %}
 {% endfor %}
-  <dt>Functions</dt>
-{% for cat in tool.subcats %}
-  <dd><a href="http://coptr.digipres.org/Category:{{ cat }}">{{ cat }}</a></dd>
+{% endif %}
 {% endfor %}
+
   <dt>More Information Needed?</dt>
   <dd><a href="#top-navbar" class="pull-right" title="To the top of the page."><span class="glyphicon glyphicon-arrow-up"></span></a><a href="http://coptr.digipres.org/{{ tool.title_url }}">View &amp; edit this entry on COPTR</a></dd>
 </dl>
