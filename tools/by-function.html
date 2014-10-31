@@ -1,0 +1,64 @@
+---
+title: DigiPres Tools
+subtitle: By function
+layout: default
+hide-title: true
+permalink: /tools/by-function/
+---
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>
+    Listing all tools by function.
+    </p>
+    <ul>
+    {% for cat in site.data.tools.function_tree %}
+    {% capture sectitle %}{{ cat.title }}{% endcapture %}
+	<li><a href="#{% include anchor.html anchor=sectitle %}">{{ sectitle }}</a>
+    <ul>
+    {% for subcat in cat.subcats %}
+    {% capture sectitle %}{{ cat.title }}: {{ subcat.title }}{% endcapture %}
+		<li><a href="#{% include anchor.html anchor=sectitle %}">{{ sectitle }}</a></li>
+    {% endfor %}
+    </ul>
+    </li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% assign sorted_tools = (site.data.tools.tools | sort: 'title') %}
+
+{% for cat in site.data.tools.function_tree %}
+{% capture sectitle %}{{ cat.title }}{% endcapture %}
+<h1 id="{% include anchor.html anchor=sectitle %}"><a href="#{% include anchor.html anchor=sectitle %}" style="color: black">{{ sectitle }}</a></h1>
+
+<a href="#top-navbar" class="pull-right" title="To the top of the page."><span class="glyphicon glyphicon-arrow-up"></span></a>
+
+<p>
+{{ cat.definition }}
+</p>
+
+{% for subcat in cat.subcats %}
+{% capture sectitle %}{{ cat.title }}: {{ subcat.title }}{% endcapture %}
+<h2 id="{% include anchor.html anchor=sectitle %}"><a href="#{% include anchor.html anchor=sectitle %}" style="color: black">{{ sectitle }}</a></h2>
+
+<a href="#top-navbar" class="pull-right" title="To the top of the page."><span class="glyphicon glyphicon-arrow-up"></span></a>
+
+<p>
+{{ subcat.definition }}
+</p>
+
+<ul>
+{% for tool in sorted_tools %}
+{% if tool.subcats contains subcat.title %}
+
+{% capture sectitle %}Tool: {{ tool.title_full }}{% endcapture %}
+<li><b><a href="{{ site.baseurl }}/tools/all-tools/#{% include anchor.html anchor=sectitle %}" style="color: black">{{ tool.title_full }}</a></b> - {{ tool.purpose }}<a href="http://coptr.digipres.org/{{ tool.title_url }}" title="View &amp; edit on COPTR" class="pull-right" style="color: grey;"><span class="glyphicon glyphicon-link"></span></a></li>
+
+{% endif %}
+{% endfor %}
+</ul>
+
+{% endfor %}
+{% endfor %}
