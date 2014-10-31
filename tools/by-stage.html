@@ -9,7 +9,7 @@ permalink: /tools/by-stage/
 <div class="panel panel-default">
   <div class="panel-body">
     <p>
-    Listing all functions but content type, for each lifecycle stage.
+    Listing all functions by content type, for each lifecycle stage.
     </p>
     <ul>
     {% for cat in site.data.tools.function_tree %}
@@ -37,7 +37,8 @@ permalink: /tools/by-stage/
 <th></th>
 {% for subcat in cat.subcats %}
 <th class="rotate toolgrid-col {{ cat['title_url'] | downcase | replace: '%','' }}"><div><span>
-<a href="#" title="{{ subcat.definition | replace: '"',"'" }}" style="color:black;">{{ subcat.title }}</a>
+{% capture sectitle %}{{ cat.title }}: {{ subcat.title }}{% endcapture %}
+<a href="{{ site.baseurl }}/tools/by-function/#{% include anchor.html anchor=sectitle %}" title="{{ subcat.definition | replace: '"',"'" }}">{{ subcat.title }}</a>
 </span></div></th>
 {% endfor %}
 </thead>
