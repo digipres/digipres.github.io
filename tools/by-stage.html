@@ -1,0 +1,67 @@
+---
+title: DigiPres Tools
+subtitle: By lifecycle stage
+layout: default
+hide-title: true
+permalink: /tools/by-stage/
+---
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>
+    Listing all functions by content type, for each lifecycle stage.
+    </p>
+    <ul>
+    {% for cat in site.data.tools.function_tree %}
+    {% capture sectitle %}{{ cat.title }}{% endcapture %}
+		<li><a href="#{% include anchor.html anchor=sectitle %}">{{ sectitle }}</a></li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% for cat in site.data.tools.function_tree %}
+
+<a href="#top-navbar" class="pull-right" title="To the top of the page."><span class="glyphicon glyphicon-arrow-up"></span></a>
+
+{% capture sectitle %}{{ cat.title }}{% endcapture %}
+<h3 id="{% include anchor.html anchor=sectitle %}"><a href="#{% include anchor.html anchor=sectitle %}" style="color: black">{{ sectitle }}</a></h3>
+
+<p>
+{{ cat.definition }}
+</p>
+
+<table class="powrr">
+<thead>
+<tr>
+<th></th>
+{% for subcat in cat.subcats %}
+<th class="rotate toolgrid-col {{ cat['title_url'] | downcase | replace: '%','' }}"><div><span>
+{% capture sectitle %}{{ cat.title }}: {{ subcat.title }}{% endcapture %}
+<a href="{{ site.baseurl }}/tools/by-function/#{% include anchor.html anchor=sectitle %}" title="{{ subcat.definition | replace: '"',"'" }}">{{ subcat.title }}</a>
+</span></div></th>
+{% endfor %}
+</thead>
+<tbody>
+
+{% for mat in site.data.tools.tool_matrix %}
+<tr>
+{% capture sectitle %}{{ mat[0] }}{% endcapture %}
+<th><a href="{{ site.baseurl }}/tools/by-type/#{% include anchor.html anchor=sectitle %}">{{ mat[0] }}</a></th>
+{% for subcat in cat.subcats %}
+<td style="vertical-align: middle; text-align: center;">
+{% if mat[1].topcats contains cat.title %}
+{% capture sectitle %}{{ mat[0] }}: {{ subcat.title }}{% endcapture %}
+<a href="{{ site.baseurl }}/tools/by-type-and-function/#{% include anchor.html anchor=sectitle %}" title="{{ mat[1].subcats[subcat.title] }} '{{ subcat.title }}' tool(s) for {{ mat[0] }}">
+{{ mat[1].subcats[subcat.title] }}
+</a>
+{% endif %}
+</td>
+{% endfor %}
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% endfor %}
+

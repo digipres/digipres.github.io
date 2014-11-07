@@ -1,0 +1,88 @@
+---
+title: DigiPres Tools
+subtitle: By content type and lifecycle stage
+layout: default
+hide-title: true
+permalink: /tools/by-type-and-stage/
+---
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>
+    Fine-grained list of all tools, by content type and life-cycle stage.
+    </p>
+    <ul>
+    {% for ct in site.data.tools.content_types %}
+    {% capture sectitle %}{{ ct[1].title }}{% endcapture %}
+<li><a href="#{% include anchor.html anchor=sectitle %}">{{ sectitle }}</a>
+<ul>
+{% for cat in site.data.tools.function_tree %}
+{% capture sectitle %}{{ ct[1]['title'] }}: {{ cat.title }}{% endcapture %}
+<li><a href="#{% include anchor.html anchor=sectitle %}">{{ cat.title }}</a></li>
+{% endfor %}
+</ul>
+</li>
+{% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% assign sorted_tools = (site.data.tools.tools | sort: 'title') %}
+
+{% for ct in site.data.tools.content_types %}
+
+{% capture sectitle %}{{ ct[1].title }}{% endcapture %}
+<h1 id="{% include anchor.html anchor=sectitle %}"><a href="#{% include anchor.html anchor=sectitle %}" style="color: black">{{ sectitle }}</a></h2>
+
+<a href="#top-navbar" class="pull-right" title="To the top of the page."><span class="glyphicon glyphicon-arrow-up"></span></a>
+
+{% for cat in site.data.tools.function_tree %}
+{% capture sectitle %}{{ ct[1]['title'] }}: {{ cat.title }}{% endcapture %}
+<h2 id="{% include anchor.html anchor=sectitle %}"><a href="#{% include anchor.html anchor=sectitle %}" style="color: black">{{ sectitle }}</a></h2>
+
+<p>
+{{ cat.definition }}
+</p>
+
+<table class="powrr">
+<thead>
+<tr>
+<th></th>
+{% for subcat in cat.subcats %}
+{% capture sectitle %}{{ ct[1].title }}: {{ subcat.title }}{% endcapture %}
+<th class="rotate toolgrid-col {{ cat['title_url'] | downcase | replace: '%','' }}"><div><span><a href="{{ site.baseurl }}/tools/by-type-and-function/#{% include anchor.html anchor=sectitle %}" title="{{ subcat.definition | replace: '"',"'" }}">
+{{ subcat.title }}
+</a></span></div></th>
+{% endfor %}
+</tr>
+</thead>
+<tbody>
+
+{% for tool in sorted_tools %}
+{% if tool.content_types contains ct[1]['title'] %}
+{% assign has_match = false %}
+{% for subcat in cat.subcats %}
+{% if tool.subcats contains subcat.title %}{% assign has_match = true %}{% endif %}
+{% endfor %}
+{% if has_match %}
+<tr class="toolgrid-row {{ ct[1]['title_url'] | downcase | replace: '%','' }}">
+{% capture sectitle %}Tool: {{ tool.title_full }}{% endcapture %}
+<th><a href="{{ site.baseurl }}/tools/all-tools/#{% include anchor.html anchor=sectitle %}" title="{{ tool.purpose | replace: '"',"'" }}">{{ tool.title }}</a></th>
+{% for subcat in cat.subcats %}
+<td style="vertical-align: middle; text-align: center;" class="toolgrid-col {{ cat['title_url'] | downcase | replace: '%','' }}">
+{% if tool.subcats contains subcat.title %}
+<a href="{{ site.baseurl }}/tools/all-tools/#{% include anchor.html anchor=sectitle %}">
+<span class="glyphicon glyphicon-ok"></span>
+</a>
+{% endif %}
+</td>
+{% endfor %}
+</tr>
+{% endif %}
+{% endif %}
+{% endfor %}
+</tbody>
+</table>
+
+{% endfor %}
+{% endfor %}

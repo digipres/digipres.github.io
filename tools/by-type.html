@@ -1,0 +1,69 @@
+---
+title: DigiPres Tools
+subtitle: By content type
+layout: default
+hide-title: true
+permalink: /tools/by-type/
+---
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>
+    Listing all tools supporting each lifecycle stage for each content type.
+    </p>
+    <ul>
+{% for ct in site.data.tools.content_types %}
+{% capture sectitle %}{{ ct[1]['title'] }}{% endcapture %}
+<li><a href="#{% include anchor.html anchor=sectitle %}">{{ sectitle }}</a></li>
+{% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% for ct in site.data.tools.content_types %}
+
+<a href="#top-navbar" class="pull-right" title="To the top of the page."><span class="glyphicon glyphicon-arrow-up"></span></a>
+
+{% capture sectitle %}{{ ct[1]['title'] }}{% endcapture %}
+<h3 id="{% include anchor.html anchor=sectitle %}"><a href="#{% include anchor.html anchor=sectitle %}" style="color: black">{{ sectitle }}</a></h3>
+
+<table class="powrr">
+<thead>
+<tr>
+<th class="">&nbsp;</th>
+<th colspan="{{ site.data.tools.function_tree | size }}"  class="group">DCC Lifecycle Stages</th>
+</tr>
+<tr>
+<th></th>
+{% for cat in site.data.tools.function_tree %}
+{% capture sectitle %}{{ cat.title }}{% endcapture %}
+<th class="rotate"><div><span><a href="{{ site.baseurl }}/tools/by-stage/#{% include anchor.html anchor=sectitle %}" title="{{ cat.definition | replace: '"',"'" }}">
+{{ cat.title }}
+</a></span></div></th>
+{% endfor %}
+</thead>
+<tbody>
+
+{% assign sorted_tools = (site.data.tools.tools | sort: 'title') %}
+{% for tool in sorted_tools %}
+{% if tool.content_types contains ct[1]['title'] %}
+<tr class="toolgrid-row {{ ct[1]['title_url'] | downcase | replace: '%','' }}">
+{% capture sectitle %}Tool: {{ tool.title_full }}{% endcapture %}
+<th><a href="{{ site.baseurl }}/tools/all-tools/#{% include anchor.html anchor=sectitle %}" title="{{ tool.purpose | replace: '"',"'" }}">{{ tool.title }}</a></th>
+{% for cat in site.data.tools.function_tree %}
+<td style="vertical-align: middle; text-align: center;" class="toolgrid-col {{ cat['title_url'] | downcase | replace: '%','' }}">
+{% if tool.topcats contains cat.title %}
+<a href="{{ site.baseurl }}/tools/all-tools/#{% include anchor.html anchor=sectitle %}">
+<span class="glyphicon glyphicon-ok"></span>
+</a>
+{% endif %}
+</td>
+{% endfor %}
+</tr>
+{% endif %}
+{% endfor %}
+</tbody>
+</table>
+
+{% endfor %}
+

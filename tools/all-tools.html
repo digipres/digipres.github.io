@@ -1,0 +1,73 @@
+---
+title: DigiPres Tools
+subtitle: All tools
+layout: default
+hide-title: true
+permalink: /tools/all-tools/
+---
+
+{% assign sorted_tools = (site.data.tools.tools | sort: 'title') %}
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>
+    Full details for all known tools.
+    </p>
+    <ul>
+    {% for tool in sorted_tools %}
+    {% capture sectitle %}Tool: {{ tool.title_full }}{% endcapture %}
+      <li><a href="#{% include anchor.html anchor=sectitle %}">{{ tool.title_full }}</a></li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>
+
+
+{% for tool in sorted_tools %}
+
+<div class="panel panel-default">
+<div class="panel-heading">
+{% capture sectitle %}Tool: {{ tool.title_full }}{% endcapture %}
+    <h3 class="panel-title" id="{% include anchor.html anchor=sectitle %}"><a href="#{% include anchor.html anchor=sectitle %}" style="color: black">{{ tool.title_full }}</a><span class="pull-right"><a href="http://coptr.digipres.org/{{ tool.title_url }}" title="View &amp; edit on COPTR"><button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-link"></span></button></a></span></h3>
+</div>
+<div class="panel-body">
+
+<dl>
+  <dt>Purpose</dt>
+  <dd>{{ tool.purpose }}</dd>
+
+  <dt>Homepage</dt>
+  <dd><a href="{{ tool.homepage }}">{{ tool.homepage }}</a></dd>
+
+  <dt>License</dt>
+  <dd>{{ tool.license }}</dd>
+
+  <dt>Platforms</dt>
+  <dd>{{ tool.platforms }}</dd>
+
+  <dt>Content Types</dt>
+{% for cat in tool.content_types %}
+  <dd><a href="{{ site.baseurl }}/tools/by-type/#{% include anchor.html anchor=cat %}">{{ cat }}</a></dd>
+{% endfor %}
+
+  <dt>Stages &amp; Functions</dt>
+{% for cat in site.data.tools.function_tree %}
+{% if tool.topcats contains cat.title %}
+{% capture sectitle %}{{ cat.title }}{% endcapture %}
+{% for subcat in cat.subcats %}
+{% if tool.subcats contains subcat.title %}
+{% capture subsectitle %}{{ cat.title }}: {{ subcat.title}}{% endcapture %}
+  <dd><a href="{{ site.baseurl }}/tools/by-stage/#{% include anchor.html anchor=sectitle %}" title="{{ cat.definition | replace: '"',"'" }}">{{ sectitle }}</a> &mdash; <a href="{{ site.baseurl }}/tools/by-function/#{% include anchor.html anchor=subsectitle %}" title="{{ subcat.definition | replace: '"',"'" }}">{{ subcat.title }}</a></dd>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+
+  <dt>More Information Needed?</dt>
+  <dd><a href="#top-navbar" class="pull-right" title="To the top of the page."><span class="glyphicon glyphicon-arrow-up"></span></a><a href="http://coptr.digipres.org/{{ tool.title_url }}">View &amp; edit this entry on COPTR</a></dd>
+</dl>
+
+</div>
+</div>
+
+{% endfor %}

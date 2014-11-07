@@ -1,42 +1,58 @@
 ---
-title: COPTR POWRR Grid
-layout: toolgrid
+title: DigiPres Tool Grid
+layout: default
+hide-title: true
 ---
 
-<table>
+<div class="container">
+
+{% capture intro %}{% include_relative index_intro.md %}{% endcapture %}
+ <div class="panel panel-default">
+  <div class="panel-body">
+  <img src="http://coptr.digipres.org/images/3/3f/POWRRlogo.jpg" class="pull-right img-rounded" height="75px"/>
+{{ intro | markdownify }}
+  </div>
+</div>
+
+<table class="powrr">
 <thead>
 <tr>
-<th></th>
-{% for cat in site.data.tools.function_tree %}
-{% for subcat in cat.subcats %}
-<th class="rotate"><div><span><a href="http://coptr.digipres.org/{{ subcat.title_url }}">
-{{ subcat.title }}
-</a></span></div></th>
-{% endfor %}
-{% endfor %}
+<th class="">&nbsp;</th>
+<th colspan="{{ site.data.tools.function_tree | size }}"  class="group">DCC Lifecycle Stages<a href="#dcc-ref">*</a></th>
 </tr>
 <tr>
-<th></th>
+<th class="rotate"></th>
 {% for cat in site.data.tools.function_tree %}
-<th class="group" colspan="{{ cat.subcats | size }}"><a href="http://coptr.digipres.org/{{ cat.title_url }}">{{ cat.title }}</a></th>
+{% capture sectitle %}{{ cat.title }}{% endcapture %}
+<th class="rotate {% include anchor.html anchor=sectitle %}"><div><span><a href="{{ site.baseurl }}/tools/by-stage/#{% include anchor.html anchor=sectitle %}" title="{{ cat.definition | replace: '"',"'" }}">
+{{ cat.title }}
+</a></span></div></th>
 {% endfor %}
 </thead>
 <tbody>
 
-{% assign sorted_tools = (site.data.tools.tool_grid | sort: 'title') %}
-{% for tool in sorted_tools %}
-<tr>
-<th>{{ tool.title }}</th>
+{% for mat in site.data.tools.tool_matrix %}
+<tr class="{% cycle 'odd', 'even' %}">
+{% capture sectitle %}{{ mat[0] }}{% endcapture %}
+<th><a href="{{ site.baseurl }}/tools/by-type/#{% include anchor.html anchor=sectitle %}">{{ mat[0] }}</a></th>
 {% for cat in site.data.tools.function_tree %}
-{% for subcat in cat.subcats %}
-<td>
-{% if tool.subcat_url == subcat.title_url %}
-X
+<td style="vertical-align: middle; text-align: center;">
+{% if mat[1].topcats contains cat.title %}
+{% capture sectitle %}{{ mat[0] }}: {{ cat.title }}{% endcapture %}
+<a href="{{ site.baseurl }}/tools/by-type-and-stage/#{% include anchor.html anchor=sectitle %}" title="{{ mat[1].topcats[cat.title] }} '{{ cat.title }}' tool(s) for {{ mat[0] }}">
+{{ mat[1].topcats[cat.title] }}
+</a>
 {% endif %}
 </td>
-{% endfor %}
 {% endfor %}
 </tr>
 {% endfor %}
 </tbody>
 </table>
+
+<p id="dcc-ref" style="text-align: center">
+* Lifecycle stages taken from the <a href="http://www.dcc.ac.uk/resources/curation-lifecycle-model">DCC Lifecycle Model</a>.
+</p>
+
+</div>
+

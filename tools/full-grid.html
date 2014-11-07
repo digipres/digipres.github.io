@@ -1,0 +1,55 @@
+---
+title: DigiPres Full POWRR Tool Grid
+layout: toolgrid
+permalink: /tools/ubergrid/
+---
+
+{% assign sorted_tools = (site.data.tools.tools | sort: 'title') %}
+
+<table class="powrr" style="margin-top: 100px">
+<thead>
+<tr>
+<th></th>
+{% for cat in site.data.tools.function_tree %}
+{% for subcat in cat.subcats %}
+<th class="rotate"><div><span>
+<a href="#" title="{{ subcat.definition | replace: '"',"'" }}" style="color:black;">{{ subcat.title }}</a>
+</span></div></th>
+{% endfor %}
+{% endfor %}
+</tr>
+<tr>
+<th></th>
+{% for cat in site.data.tools.function_tree %}
+{% capture sectitle %}{{ cat.title }}{% endcapture %}
+<th colspan="{{ cat.subcats | size }}" class="group group-{% cycle 'odd', 'even' %}"><a href="{{ site.baseurl }}/tools/by-stage/#{% include anchor.html anchor=sectitle %}" title="{{ cat.definition | replace: '"',"'" }}">{{ cat.title }}</a></th>
+{% endfor %}
+</thead>
+<tbody>
+
+{% for ct in site.data.tools.content_types %}
+<tr class="toolgrid-ct-separator">
+<th colspan="0">{{ ct[1]['title'] }}</th>
+</tr>
+{% for tool in sorted_tools %}
+{% if tool.content_types contains ct[1]['title'] %}
+<tr class="{% cycle 'odd', 'even' %}">
+{% capture sectitle %}Tool: {{ tool.title_full }}{% endcapture %}
+<th><a href="{{ site.baseurl }}/tools/all-tools/#{% include anchor.html anchor=sectitle %}">{{ tool.title }}</a></th>
+{% for cat in site.data.tools.function_tree %}
+{% for subcat in cat.subcats %}
+<td style="vertical-align: middle; text-align: center;">
+{% if tool.subcats contains subcat.title %}
+<a href="{{ site.baseurl }}/tools/all-tools/#{% include anchor.html anchor=sectitle %}">
+<span class="glyphicon glyphicon-ok"></span>
+</a>
+{% endif %}
+</td>
+{% endfor %}
+{% endfor %}
+</tr>
+{% endif %}
+{% endfor %}
+{% endfor %}
+</tbody>
+</table>
