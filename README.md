@@ -10,7 +10,7 @@ The site is generated using [GitHub Pages](https://pages.github.com/), which use
 
 However, note that some of these source files, particularly the _data files, are not intended to be edited manually. They are generated from various other sources of information via a periodic automated process. Specifically, information in the POWRR Tool Grid is generated from the [COPTR](http://coptr.digipres.org), and the information on formats is drawn from many different sources (e.g. PRONOM and the Archive Team File Formats Wiki).
 
-The code that performs these updates is currently held in two separate repositories ([coptr](https://github.com/digipres/coptr) for COPTR and [sentinel](https://github.com/anjackson/sentinel) for the formats), but these will be merged together into a single repository as soon as possible.
+The code that performs these updates is called [Sentinel](https://github.com/anjackson/sentinel).
 
 Contributing to this site
 -------------------------
