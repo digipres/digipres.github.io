@@ -12,6 +12,9 @@ The POWRR Tool Grid is re-generated nightly from the contents of the [COPTR wiki
 #### Feedback
 We very much welcome feedback on the POWRR Tool Grid. Please contact ..... Or discuss any Grid issues at the [International collaboration about digital preservation](https://groups.google.com/forum/#!forum/digipres) Google Group.
 
+#### How do I contribute new information to the tool grid?
+Easy. Sign up for the [COPTR wiki](http://coptr.digipres.org/) and make your contributions there. They will propagate to the Tool Grid overnight.
+
 #### Attribution
 All data presented in the Grid is sourced from the [COPTR wiki](http://coptr.digipres.org/) under a [CC-BY-SA license](https://creativecommons.org/licenses/by-sa/3.0/).
 
