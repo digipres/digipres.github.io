@@ -15,4 +15,7 @@ The code that performs these updates is currently held in two separate repositor
 Contributing to this site
 -------------------------
 
+* Fork it.
+* Install jekyll, and use it for testing (jekyll serve --watch)
+* Submit a pull request.
 
