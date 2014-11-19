@@ -19,6 +19,6 @@ Easy. Sign up for the [COPTR wiki](http://coptr.digipres.org/) and make your con
 All data presented in the Grid is sourced from the [COPTR wiki](http://coptr.digipres.org/) under a [CC-BY-SA license](https://creativecommons.org/licenses/by-sa/3.0/).
 
 #### Funding and development
-Development of the POWRR Tool Grid was made possible by the [Digital POWRR Project](http://digitalpowrr.niu.edu/) and the [North Illinois University](http://niu.edu/). Development work was completed as part of a collaboration between the Digital POWRR Project and the [COPTR consortium](http://coptr.digipres.org/Why%3F_What%3F_Who%3F_The_COPTR_FAQ).
+Development of the POWRR Tool Grid was made possible by the [Digital POWRR Project](http://digitalpowrr.niu.edu/) and the [Northern Illinois University](http://niu.edu/). Development work was completed as part of a collaboration between the Digital POWRR Project and the [COPTR consortium](http://coptr.digipres.org/Why%3F_What%3F_Who%3F_The_COPTR_FAQ).
 
 ![Digital POWRR Project Logo](http://coptr.digipres.org/images/3/3f/POWRRlogo.jpg "Digital POWRR Project Logo")
