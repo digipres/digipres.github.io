@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000326" titleName="dBASE Table for ESRI Shapefile (DBF)" shortName="Shape_DBF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenres>
+				<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+				<fdd:gdfrGenre>database</fdd:gdfrGenre>
+			</fdd:gdfrGenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2011-05-17</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>dBASE Table for ESRI Shapefile (DBF)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>geospatial data formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>The dBASE table (.dbf) file is one of the three files required for a valid ESRI Shapefile.  In addition to a file containing the dBASE table, instances of the ESRI Shapefile format must include a main file and an index file, and may include several others.  The dBASE table file contains feature attributes with one record per feature.  The one-to-one relationship between geometry and attributes is based on record number.  Attribute records in the dBASE file must be in the same order as records in the main (.shp) file.   The dBASE table (.dbf) file cannot exceed 2 GB, thus allowing approximately 70 million point features at most.  </fdd:description>
+		<fdd:shortDescription>dBase table file for the ESRI Shapefile format, used to store feature attributes.    </fdd:shortDescription>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Component of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000280</fdd:id>
+					<fdd:shortName>ESRI_shape</fdd:shortName>
+					<fdd:titleName>ESRI Shapefile</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment/>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000325</fdd:id>
+					<fdd:shortName>DBF</fdd:shortName>
+					<fdd:titleName>dBASE Table File (DBF)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>ESRI Shapefile (DBF) .dbf files are in dBase format</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>The Shapefile dataset format was developed by ESRI as an open GIS format, and uses as its table format for structured data a dBASE Table File (DBF) that is based on versions of dBASE format in use when the Shapefile was introduced.  dBASE is a well-documented format.</fdd:disclosure>
+		<fdd:documentation>See <fddLink id="fdd000325">DBF</fddLink> for general documentation for the dBase Table format.  The Shapefile format, including the constraints on the dBASE Table File for use in a Shapefile, is defined in <a href="http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf">ESRI Shapefile Technical Description, July 1998</a>.  The description of the .dbf file is on page 25.</fdd:documentation>
+		<fdd:adoption>See <fddLink id="fdd000280">ESRI_shape</fddLink>.</fdd:adoption>
+		<fdd:licensingAndPatents>See <fddLink id="fdd000325">DBF</fddLink>.</fdd:licensingAndPatents>
+		<fdd:transparency>See <fddLink id="fdd000325">DBF</fddLink>.</fdd:transparency>
+		<fdd:selfDocumentation>See <fddLink id="fdd000325">DBF</fddLink>.</fdd:selfDocumentation>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:gisQF>
+			<fdd:normalGIS>The functionality of the dBASE file format versions used for the ESRI Shapefile format is limited in terms of describing or performing calculations upon attributes.  These limits include the format&apos;s inability to store null values, the maximum length of field names set at 10 characters, the maximum number of fields set to 255 (thus limiting support for Unicode), and the storage of floating point numbers as text (thus introducing possible rounding errors).  There are other limits in play regarding the types and character widths of the data-field types that are supported.  ESRI provides a complete and candid overview in its online help document titled <a href="http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=Geoprocessing_considerations_for_shapefile_output">&quot;Geoprocessing Considerations for Shapefile Output.&quot;</a>
+			</fdd:normalGIS>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>.dbf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Database formatting for feature attributes based on earlier versions of dBASE (IV, V)</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/dbf</fdd:sigValue>
+					<fdd:sigValue>application/dbase</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:internetMediaType>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=Geoprocessing_considerations_for_shapefile_output</link>
+					<tag>Geoprocessing Considerations for Shapefile Output</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

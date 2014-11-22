@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000280" titleName="ESRI Shapefile" shortName="ESRI_shape" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-group</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2011-05-24</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ESRI Shapefile </fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>geospatial data formats</fdd:keyword>
+			<fdd:keyword>georeferenced image formats</fdd:keyword>
+			<fdd:keyword>vector graphic formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The ESRI Shapefile (known here as the ESRI <i>Shapefile format</i>), stores nontopological geometry and attribute information for the spatial features in a data set.  A shapefile consists minimally of a main file, an index file, and a dBASE  table.</p>
+			<p>In the main file, the geometry for a feature is stored as a shape comprising a set of vector coordinates.  This main file is a direct access, variable-record-length file in which each record describes a shape with a list of its vertices.  In the index file, each record contains the offset of the corresponding main file record from the beginning of the main file.  Attributes are held in a dBASE format file.     The dBASE table contains feature attributes with one record per feature.  Attribute records in the dBASE file must be in the same order as records in the main file.    Each attribute record has a one-to-one relationship with the associated shape record. </p>
+			<p>The shapefile format can support point, line, and area features.  Area features are represented as closed loop, double-digitized polygons.  </p>
+			<p>Instances of the Shapefile format have often been used as a data exchange format from ESRI formats to non-ESRI applications.  The format is most useful for writing simple features and attributes quickly as there are limitations inherent in the Shapefile format related to both geometry and attributes.  As outlined elsewhere in this description, these limitations may cause loss of data when using shapefiles to contain or exchange complex geometry or attributes.  The Shapefile format may be used as an intermediary between data creation applications and more functionally capable GIS formats and applications, albeit with the limitations noted in the Dataset/Normal Dataset section.</p>
+			<p>The cluster of files is typically stored in the same file directory or project workspace, with all component files having the same filename (prefix) and identified by individual file extension (suffixes).  Three components are mandatory: a main file that contains the feature geometry (.shp), an index file that stores the index of the feature geometry (.shx), and a dBASE table (.dbf) that stores the attribute information of features.  A comprehensive list of component files follows: </p>
+			<ul>
+				<li>
+					<i>shp</i> -- Main file (mandatory); a direct access, variable-record-length file in which each record describes a shape
+with a list of its vertices. </li>
+				<li>
+					<i>shx</i> -- Index file (mandatory).  In the index file, each record contains the offset of the
+corresponding main file record from the beginning of the main file. The index file (.shx) contains a 100-byte header followed by 8-byte, fixed-length records.   </li>
+				<li>
+					<i>dbf</i> -- dBASE Table file (mandatory); a constrained form of <fddLink id="fdd000325">DBF</fddLink> that contains feature attributes with one record per feature. The one-to-one relationship
+between geometry and attributes is based on record number. Attribute records in the
+dBASE file must be in the same order as records in the main file.</li>
+				<li>
+					<i>sbn</i> -- Part 1 of spatial index for read-write instances of the Shapefile format.  If present, essential for correct processing.  </li>
+				<li>
+					<i>sbx</i> -- Part 2 of spatial index for read-write instances of the Shapefile format.  If present, essential for correct processing.</li>
+				<li>
+					<i>atx</i> -- Created by ArcView 3.x for each instance of the Shapefile format or dBASE attribute index created in ArcCatalog.  ArcView GIS 3.x attribute indexes for shapefiles and dBASE files are not used by later versions of ArcGIS as a new attribute indexing model has been developed for shapefiles and dBASE files.  </li>
+				<li>
+					<i>fbn</i> -- One of the files that store the spatial index of the features for instances of the Shapefile format that are read-only.</li>
+				<li>
+					<i>fbx</i> -- The other file (besides .fbn) that stores the spatial index of the features for instances of the Shapefile format that are read-only. </li>
+				<li>
+					<i>ain</i> -- One of the files that stores the attribute index of the active fields in a table or a theme&apos;s attribute table.</li>
+				<li>
+					<i>aih</i> -- The other file (besides .ain) that stores the attribute index of the active fields in a table or a theme&apos;s attribute table</li>
+				<li>
+					<i>ixs</i> -- Geocoding index for read/write shapefiles.   If present, essential for correct processing. </li>
+				<li>
+					<i>mxs</i> --Geocoding index for read-write shapefiles (ODB format). </li>
+				<li>
+					<i>prj</i> -- Projections Definition file; stores coordinate system information.</li>
+				<li>
+					<i>xml</i> -- contains metadata, as used by ArcGIS.</li>
+				<li>
+					<i>cpg</i> -- An optional file that can be used to specify the codepage for identifying the character set to be used.  </li>
+			</ul>
+			<p>See <a href="#notes">Notes</a> for more information about filenames and contents.</p>
+		</fdd:description>
+		<fdd:shortDescription>The Shapefile format stores non-topological geometry and attribute information for the spatial features in a data set. The geometry for a feature is stored as a shape comprising a set of vector coordinates. Shapefiles can support point, line, and area features.</fdd:shortDescription>
+		<fdd:productionPhase>The Shapefile format is open and popular for data transfer.  An initial state format during map and shape digitization output, employed as a middle state format by many programs and publishers, and used for data transfer between GIS applications.  
+Shapefiles can be created by exporting any data source to a shapefile,  digitizing shapes directly, using programming software, or writing directly to the shapefile specifications by creating a program.  See Adoption under <a href="#sustainability">Sustainability Factors</a> and <a href="#notes">Notes</a>.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Must have component</fdd:typeOfRelationship>
+				<fdd:comment>Main file (.shp) and index file (.shx), not described separately on this website.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Must have component</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000326</fdd:id>
+					<fdd:shortName>Shape_DBF</fdd:shortName>
+					<fdd:titleName>dBASE Table for ESRI Shapefile (DBF)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May have component</fdd:typeOfRelationship>
+				<fdd:comment>Optional component files include files with the following extensions: .sbn; .sbx; .atx; .fbn; .fbx; .ain; .aih; .ixs; .mxs; prj; xml; cpg.  None of the formats for these files are described separately on this website.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully documented. Developed and regulated by the Environmental Systems Research Institute, Inc. (ESRI), as an open specification for data interoperability among ESRI and other software products.</fdd:disclosure>
+		<fdd:documentation>
+			<a href="http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf">ESRI Shapefile Technical Description:
+An ESRI White Paper—July 1998</a>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>During the 1990s, ESRI introduced the Shapefile format and it soon became a de facto standard. The format is still widely deployed today, although the limitations outlined in the <a href="#factors">Quality and functionality factors</a> and <a href="#notes">Notes</a> within this description have led many contemporary users to move to geodatabase formats.</p>
+			<p>There are many applications, software libraries, and programming languages that can view, use or manipulate data in the Shapefile format including nearly all GIS applications, as well as web-based applications such as Google Earth.   Data streams, such as those from global positioning system (GPS) receivers, can also be stored in the Shapefile format or X,Y event tables.</p>
+			<p>A number of U.S. government agencies have distributed data in Shapefile format, including the U.S. Geological Survey (USGS), the U.S. Census Bureau, the National Oceanic and Atmospheric Administration, the Environmental Protection Agency, and the interagency National Atlas of the United States project led by USGS.  See <a href="#notes">Notes</a> for more detail on the Shapefile format data available from these agencies. In addition, the Open Source Geospatial Foundation <a href="http://www.osgeo.org/gdal_ogr">Geospatial Data Abstraction Library</a> (OSGEO/OGR) supports the Shapefile format, and the Safe Software <a href="http://www.safe.com/fme/format-search/esri-shape/index.php">FME Spatial Data Transformation Platform</a> supports read and write of the Shapefile format on Windows, Linux 32 and 64 bit, and Solaris operating systems.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<a href="http://www.esri.com/legal/software-license">ESRI Licensing agreements</a> detail the terms of use and compliance for ESRI GIS software.</fdd:licensingAndPatents>
+		<fdd:transparency>Computer programs can be created to read or write the Shapefile format using the technical
+specification in <a href="http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf">ESRI Shapefile Technical Description:
+An ESRI White Paper—July 1998.</a>
+		</fdd:transparency>
+		<fdd:selfDocumentation>GIS metadata documenting important characteristics of the resource found in the Shapefile format such as bounding coordinates, datum, etc. may be included as a .xml file within the file group.</fdd:selfDocumentation>
+		<fdd:externalDependencies>TBD</fdd:externalDependencies>
+		<fdd:techProtection>TBD</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF/>
+		<fdd:datasetQF>
+			<fdd:normalDataset>
+				<p>The ESRI Shapefile format is a special-purpose dataset for storing nontopological geometry and attribute information for the spatial
+features in a data set. Its component <fddLink id="fdd000326">Shape_DBF</fddLink> file uses a constrained form of the dBASE File Format (<fddLink id="fdd000325">DBF</fddLink>) to store feature attributes using a limited set of data types.</p>
+				<p>Some relevant considerations are outlined in the ESRI Help explanation <a href="http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=Geoprocessing_considerations_for_shapefile_output">&quot;Geoprocessing Considerations for Shapefile Output,&quot;</a> including the idea that the relative simplicity of the Shapefile format's structure means that data may be lost if the format is used to transfer complex geometry and attributes.  The document also notes that the format's attributes cannot contain null values, and stores numeric values as characters rather than binary, thus leading to rounding errors for numbers containing decimal places, i.e., real numbers.  The format also lacks good support for Unicode character strings, thus limiting the use of non-English languages, and does not allow field names longer than ten characters. The format cannot store both a date and a time in the same date field, and cannot support spatial domains or subtypes.  In terms of geometry limitations, instances of the Shapefile format have a 2 GB size limitation for any of the component file, but any given instance may take up to three to five times as much space as file GIS databases. The Shapefile format does not contain an XY tolerance (the minimum distance between coordinates before they are considered equal), thus impacting the precision with which comparison between features can be calculated.  Since circular arc curves are not supported in the format, existing circular arc curves will be transformed to simple line features with closely spaced vertices rather than as true arcs.</p>
+			</fdd:normalDataset>
+			<fdd:accessSoftware>There are many non-ESRI applications that can view, use and output instances of the Shapefile format, although the instances that are output can easily be corrupted, and may not be properly formatted.  Information about how to create data in the Shapefile format can be found within the <a href="http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf">ESRI Shapefile Technical Description:
+An ESRI White Paper—July 1998.</a>  Links to a free C library for reading and/or writing the Shapefile format, and an Open Source (MIT License) Python library for reading/writing in the format can be found in the <a href="#useful">Useful References</a> section.</fdd:accessSoftware>
+			<fdd:dataDocumentation>The minimal requirements for an instance of the Shapefile format do not specify a place for the documentation of data quality or provenance.</fdd:dataDocumentation>
+		</fdd:datasetQF>
+		<fdd:gisQF>
+			<fdd:normalGIS>
+				<p>The minimal structure for the Shapefile format (i.e., the required .shp, .shx, .dbf files in the cluster)  facilitates georeferencing to the extent that &quot;auxiliary&quot; files are also clustered in the same directory structure, including a .prj file for projection information, and a .txt or .xml file for metadata.  If the metadata record for a given Shapefile format instance includes coordinates, datum, and scale, the location for the features represented by the instance of the format can be accurately and precisely determined.</p>
+				<p>The Shapefile format handles single features that overlap or that are noncontiguous. The format can support point, line, and area features. Area features are represented as closed loop, double-digitized polygons.</p>
+				<p>Because the format does not have the processing overhead of a topological data structure, it typically requires less disk space and is easier to read and write.   It has advantages over some more complex geospatial data formats such as faster drawing speed and editability. However, Shapefiles do not have a spatial domain, which defines the geographic extent that all coordinates must fall within. This spatial extent is useful when editing geometry since it prevents you from entering coordinates outside the extent.  See Normal Dataset and Notes for further limitations.</p>
+			</fdd:normalGIS>
+			<fdd:metadataGIS>When .txt or .xml files are included within the Shapefile cluster's directory, they are usually intended as metadata for the data contained within the other files that comprise the shapefile.  No assumptions are made about the completeness or accuracy of the metadata, nor is any particular content standard presumed.</fdd:metadataGIS>
+			<fdd:grids>Instances of the Shapefile format are ready for grid analysis by virtue of the component <fddLink id="fdd000326">Shape_DBF</fddLink> file, essentially a relational database table.  This table contains the characteristics describing geographic features that are available for viewing and/or for simple grid analysis.  The extent to which mathematical and statistical calculations can be performed against the data in the table is dependent upon the data structure built into the dataset layers comprising the shapefile.   Often, the tabular data found in an instance of a Shapefile format are joined or related to other tabular data to support more complex analysis. </fdd:grids>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>shp</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Known as the main file. One of three mandatory files in a Shapefile format cluster, stored in the same project workspace, typically a file folder.  The .shp file stores the feature geometry and shares a base filename (prefix)with the index and the
+<fddLink id="fdd000326">Shape_DBF</fddLink> file. See <a href="#notes">Notes</a> for more information on filenaming.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue> Hex: 00 00 27 0A 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00</fdd:sigValue>
+					<fdd:sigValue>ASCII: &amp;apos; </fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From the <a href="http://filext.com/">FileExtension Source</a>
+				</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>shx</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The index file stores the index of the feature geometry.   One of the three mandatory files included in a Shapefile format cluster.  In the index file, each record contains the offset of the corresponding main file record from the beginning of the main file (with extension .shp).  The index file (.shx) contains a 100-byte header followed by 8-byte, fixed-length records.  The shx file must have the same base filename as all other files included in the Shapefile format cluster.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>dbf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For dBASE Table file.  One of the three mandatory files included in a Shapefile format cluster.  The dBASE table contains feature attributes with one record per feature. The one-to-one relationship between geometry and attributes is based on record number. Attribute records in the dBASE file must be in the same order as records in the main file.  The dBASE file must have the same base filename (prefix) as all other files included in the Shapefile format cluster.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>sbn</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>One of two files that stores the spatial index of the features, i.e., Part 1 of the spatial index for read-write instances of the Shapefile format.<ul>
+						<li>If present, essential for correct processing.</li>
+						<li>Must have the same base filename as all other files included in the Shapefile format cluster.</li>
+					</ul>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>sbx</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>One of two files that stores the spatial index of the features, i.e., Part 2 of the spatial index for read-write instances of the Shapefile format.  <ul>
+						<li>If present, essential for correct processing.</li>
+						<li>Must have the same base filename as all other files included in the Shapefile format cluster.</li>
+					</ul>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>atx</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Created by ArcView 3.x for each shapefile or dBASE attribute index created in ArcCatalog.  Not used by later versions of ArcGIS.<ul>
+						<li>Associated file; if present, essential for correct processing.</li>
+						<li>Must have the same base filename as all other files included in the Shapefile format cluster.</li>
+					</ul>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>fbn</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>One of two files that stores the spatial index of the features for shapefiles that are read-only along with .fbx files.  <ul>
+						<li>Must have the same base filename as all other files included in the Shapefile format cluster.</li>
+					</ul>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>fbx</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>One of two files that stores the spatial index of the features for instances of the Shapefile format that are read-only along with .fbn files.  <ul>
+						<li>Must have the same base filename as all other files included in the Shapefile format cluster.</li>
+					</ul>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>ain</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>One of two files that stores the attribute index of the active fields in a table or a theme's attribute table along with .aih files.  <ul>
+						<li>Must have the same base filename as all other files included in the Shapefile format cluster.</li>
+					</ul>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>aih</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>One of two files that stores the attribute index of the active fields in a table or a theme's attribute table along with .ain files.  <ul>
+						<li>Must have the same base filename as all other files included in the Shapefile format cluster.</li>
+					</ul>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>ixs</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Geocoding index for read-write shapefiles.  <ul>
+						<li>Associated file; if present, essential for correct processing.</li>
+						<li>Must have the same base filename (prefix) as all other files included in the Shapefile format cluster.</li>
+					</ul>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>mxs</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Geocoding index for read-write shapefiles (ODB format).  <ul>
+						<li>Must have the same base filename (prefix) as all other files included in the Shapefile format cluster.</li>
+					</ul>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>prj</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For Projections Definitions file.  <ul>
+						<li>Must have the same base filename (prefix) as all other files included in the Shapefile format cluster.</li>
+					</ul>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>xml</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Stores information (metadata) about the shapefile.   In ArcGIS, the metadata file is often called metadata.xml and must be stored in the same file directory or project workspace as the rest of the component files in the Shapefile format cluster in order to be used by ArcGIS applications.  </fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>cpg</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Specifies the codepage for identifying the character set to be used.  <ul>
+						<li>Must have the same base filename (prefix) as all other files included in the Shapefile format cluster.</li>
+					</ul>
+				</fdd:note>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>All file names in a Shapefile format cluster adhere to the 8.3 naming convention. The main file, the index file, and the
+dBASE file have the same base filename (prefix), which must start with an alphanumeric character
+(a–Z, 0–9), followed by zero or up to seven characters (a–Z, 0–9, _, -).  All letters in a file name are in lower case on operating systems with case
+sensitive file names.  </p>
+			<p>The Shapefile format stores integer and double-precision numbers.  The <a href="http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf">ESRI Shapefile Technical Description</a> refers to the following types:</p>
+			<ul>
+				<li>Integer: Signed 32-bit integer (4 bytes)</li>
+				<li>Double: Signed 64-bit IEEE double-precision floating point number (8 bytes)</li>
+				<li>Floating point numbers must be numeric values.</li>
+			</ul>
+			<p>Positive infinity, negative infinity, and Not-a-Number (NaN) values are not allowed in the format. Nevertheless, the format supports the concept of &quot;no data&quot; values, but they are currently used only for measures.
+Any floating point number smaller than –1038 is considered by a Shapefile reader to
+represent a &quot;no data&quot; value.</p>
+			<p>The functionality associated with the Shapefile format is constrained by the rules associated with the building and display of points, polylines, and polygons.  Limitations are also imposed by the use of the dBASE component file with its field types and character width restrictions, its restriction to support only for ANSI characters in field names and values. The number of fields within an attribute table are limited to 255, and there is little support for SQL functions other than that provided by use of WHERE clauses.  Feature class subtyping, assignment of attribute domains, geometric networks, topologies and annotations are not supported by shapefiles, thus more or less limiting functionality to that of normal GIS functionality. </p>
+			<p>The Shapefile format can be useful as a middle state when exporting data for use in a non-ESRI software application, or for exporting data to use in ArcView 3 or ArcInfo Workstation. The Shapefile format can be used to write simple features and attributes quickly, such as for ArcGIS Server geoprocessing services. But as is outlined in the ESRI Help explanation <a href="http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=Geoprocessing_considerations_for_shapefile_output">&quot;Geoprocessing Considerations for Shapefile Output,&quot;</a>, the format does not handle the full life cycle of data creation, editing, versioning, and archiving, thus inhibiting its use in modern life-cycle, active database management.</p>
+			<p>Here is some detail on the adoption of the Shapefile format by U.S. government agencies:</p>
+			<ul>
+				<li>The <a href="http://www.nationalatlas.gov/pros.html">National Atlas of the United States of America</a> vector file map layers are available in Shapefile format.  They were formerly available in Shapefile and SDTS-TVP formats, but SDTS-TVP support is to be dropped in January 2012, because of lack of demand.</li>
+				<li>United States Census Bureau <a href="http://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html">Cartographic Boundary Files</a> are available in ARC/INFO EXPORT (.e00) format, ArcView Shapefile (.shp) format, and ARC/INFO Ungenerate (ASCII) format. The Census Bureau also provides a utility <a href="http://www.census.gov/geo/landview/lv6help/shp2mie.html">SHP2MIE</a>, that translates a shapefile into a MARPLOT Import Export (MIE) file for use in the Census’ LandView software, LandView 6 (A Viewer for the Environmental Protection Agency, U.S. Census Bureau, and U.S. Geological Survey Data and Maps ).</li>
+				<li>NOAA's Office of Coast Survey (OCS) <a href="http://www.nauticalcharts.noaa.gov/csdl/mbound.htm">maritime limit data</a> are distributed as shp.</li>
+				<li>United States Environmental Protection Agency distributes <a href="http://www.epa.gov/envirofw/geo_data.html">Regulated Facility Data</a> as Shapefiles.</li>
+				<li>
+					<a href="http://shoreline.noaa.gov/data/datasheets/usgs.html">Vector Shoreline data</a> originating from the U.S. Geological Survey (USGS) are available from NOAA as Shapefiles.</li>
+			</ul>
+			<p>Shapefiles are often distributed, e.g. through the National Atlas, as compressed packages that combine the related files and reduce download time.  The USGS Digital Data Viewer: dlgv32 Pro and the related commercial software from Blue Marble Geographics, Global Mapper, can load directly Shapefiles distributed as compressed .tar.gz files.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>ESRI introduced the Shapefile format as a part of ArcView GIS version 2 during the 1990s. The format was welcome because interest in simple geometric structures had grown during the 1990s as disk storage and hardware costs decreased and computational speed increased. At the same time, existing geographic information system (GIS) datasets were more readily available, and the work of GIS users was evolving from primarily data compilation activities to include data use, analysis, and data sharing. Shapefiles could be easily created from many GIS systems and, over time, shapefiles were widely adopted as a de facto standard.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.esri.com/library/whitepapers/pdfs/shapefile.pdf</link>
+					<tag>ESRI Shapefile Technical Description: An ESRI White Paper—July 1998</tag>
+					<comment>This paper defines the Shapefile data format. It claims to provide all the technical information necessary for writing a computer program to create shapefiles without the use of ArcView GIS or other ESRI software for organizations that want to write their own data translators.
+
+</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=Geoprocessing_considerations_for_shapefile_output</link>
+					<tag>Geoprocessing considerations for shapefile output</tag>
+					<comment>From ArcGIS Desktop Help 9.3.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://help.arcgis.com/en/arcgisdesktop/10.0/help/</link>
+					<tag>ArcGIS Help Library, Desktop 10</tag>
+					<comment>Application help resource that includes numerous general, illustrative explanatory notes and historical information.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/x-fmt/235</link>
+					<tag>ESRI Arc/View Shapefile at Pronom</tag>
+					<comment>Pronom Identifier (PUID)  is  x-fmt/235.  The original specification of the UK National Archives PUID states that an &apos;x-fmt&apos; PUID should not be considered persistent. However, as of October 2011, the PRONOM website indicates that existing x-fmt PUIDs will be supported as permanent and that no more x-fmt PUIDs will be created.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://webhelp.esri.com/arcgiSDEsktop/9.2/index.cfm?TopicName=Shapefile_file_extensions</link>
+					<tag>Shapefile file extensions</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://shapelib.maptools.org</link>
+					<tag>Free C Library for reading and/or writing data in the Shapefile format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.esri.com/legal/software-license</link>
+					<tag>Licensing information for ESRI software</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://code.google.com/p/pyshp/</link>
+					<tag>Python Shapefile Library</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://geospatialpython.com/2011/10/your-chance-to-make-gis-history.html</link>
+					<tag>Blog post: Your Chance to Make GIS History</tag>
+					<comment>Programmer is asking for help reverse-engineering a small detail of the .sbn file structure.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalatlas.gov/pros.html</link>
+					<tag>National Atlas of the Unites States of America vector file map layers</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html</link>
+					<tag>United States Census Bureau cartographic boundary files</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nauticalcharts.noaa.gov/csdl/mbound.htm</link>
+					<tag>NOAA's Office of Coast Survey (OCS) maritime zones and boundaries data</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.epa.gov/envirofw/geo_data.html</link>
+					<tag>U.S. Environmental Protection Agency's regulated facility data</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://shoreline.noaa.gov/data/datasheets/usgs.html</link>
+					<tag>Vector shoreline data from NOAA Shoreline Website</tag>
+					<comment>Data compiled by U.S. Geological Survey (USGS)</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?altova_sps fddCreation.sps?>
+<fdd:FDD id="fdd000282" titleName="Arc Digitized Raster Graphic (ADRG)" shortName="ADRG" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd=".\fdd.xsd" xsi:schemaLocation=".\fdd.xsd fdd.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenreAndSubgenres>
+				<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+				<fdd:gdfrSubgenres>
+					<fdd:gdfrSubgenre>dataset</fdd:gdfrSubgenre>
+				</fdd:gdfrSubgenres>
+			</fdd:gdfrGenreAndSubgenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-group</fdd:category>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2011-09-25</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Arc Digitized Raster Graphic (ADRG)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>raster image formats</fdd:keyword>
+			<fdd:keyword>georeferenced image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>ADRG is a standard National Imagery and Mapping Agency (NIMA) digital product designed
+in 1989-90 to support applications that require a raster map background display. ARC Digitized Raster Graphics (ADRG) are digitized maps and charts transformed into a specific georegistration framework and accompanied by ASCII encoded support files. Maps/charts are converted into digital data by raster scanning and transforming and georeferencing the map image using the equal arc-second raster chart/map (ARC) system in which the globe is divided into 18 latitudinal bands or zones. 
+
+The source graphic is normally a map sheet.  Data collected from a single chart/map series and scale can be maintained as a worldwide seamless data base of raster graphic data with each pixel having a distinct geographic location.</p>
+			<p>ADRG is a military format that conforms to the ISO 8211 standard for an ASCII data description followed by binary image data.  The intended exchange medium for ADRG is a compact disk (CD-ROM).  For distribution, ADRG data is divided into geographic data sets referred to as Distribution Rectangles (DRs).  One or more DRs fit onto a single CD-ROM.  One or more source graphics are placed into each DR.</p>
+			<p>ADRG data files are arranged hierarchically.  The top level contains information relevant to the entire CD-ROM volume, the second level contains DR related files, and the bottom level contains source graphic related files. Each ADRG volume contains a header file, TRANSH01.THF, and a color test patch image file, TESTPA01.CPH.  There willl also be one or more DR subdirectories.  Each subdirectory contains a general information file, (*.GEN), a quality file (*.QAL), and a reduced resolution overview image file (*.OVR), There will be one or more ADRG image files (*.IMG) and one or more source graphic subdirectories.  Each source graphic subdirectory contains a source graphic information file (*.SOU) and zero or more legend image files (*.LGG). </p>
+		</fdd:description>
+		<fdd:shortDescription>ADRG is a standard National Imagery and Mapping Agency (NIMA) digital image product designed to support applications that require a raster map background display. </fdd:shortDescription>
+		<fdd:productionPhase>ADRG is a middle-state or final-state format, a general-purpose raster dataset for map displays on mission planning systems, Command and Control systems, and aircraft cockpits. 
+</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000307</fdd:id>
+					<fdd:shortName>ISO_8211</fdd:shortName>
+					<fdd:titleName>ISO/IEC 8211 Data Descriptive File (DDF)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000306</fdd:id>
+					<fdd:shortName>BSQ_enc</fdd:shortName>
+					<fdd:titleName>Band Sequential (BSQ) Image Encoding</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>See page 34 of <a href="http://earth-info.nga.mil/publications/specs/printed/89007/89007_ADRG.pdf">ADRG specification</a>.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Military standard, openly documented. Unclassified.</fdd:disclosure>
+		<fdd:documentation>Military Specification:  <a href="http://earth-info.nga.mil/publications/specs/printed/89007/89007_ADRG.pdf">Arc Digitized Raster Graphics (ADRG) , MIL-A-89007 22 Feb, 1990</a>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>Within U.S. Department of  Defense, ADRG supported  the Navy&apos;s AV8B program and the  Army&apos;s Maneuver  Control System.</p> Products produced in ADRG include:<ul>
+				<li> Operational Navigation Charts (ONCs) at  1:1,000,000</li>
+				<li>Tactical Pilotage Charts  at  1:500,000</li>
+				<li>Joint Operations  Graphics (JOGs) at 1:250,000</li>
+				<li>Topographic Line Maps (TLMs) at 1:50,000</li>
+				<li>Jet Navigation Charts (JNCs) at 1:2,000,000.</li>
+			</ul>
+			<p>MIL-A-89007 states ADRG is inactive for new design, and is no longer used, except to support existing systems. The corresponding
+performance specification to be used in new system design is
+MIL-PRF-89038, Compressed Arc Digitized Raster Graphics (CADRG),
+dated 6 October 1994.  However, in their 2004 paper, Managing Large Collections of NGA Raster Data, Traphan &amp; Bauch argue that CADRG turns out to be a poor substitute for ADRG for many purposes.  They describe how, of the 10,750 ADRG products currently available, 5,052 of them have been issued since the notice of inactivation. </p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>None</fdd:licensingAndPatents>
+		<fdd:transparency>This format ranks highly for transparency. The underlying images in Band Sequential Encoding can be rendered by other tools. Support files are in ASCII.</fdd:transparency>
+		<fdd:selfDocumentation>The format includes structural and descriptive metadata in ASCII support files. </fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>There is a Security and Release field used to define the security classification of the source graphic (T=Top Secret, S=Secret, C=Confidential, R= Restricted, and U=Unclassifiied) and an accompanying date (if any) of classification downgrading.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>The format is designed to support on-demand mosaicing of images at a particular scale through retrieval of small tiles.  Support for zooming was not part of the design and is limited.</fdd:normalImage>
+			<fdd:clarity>Bit-depth limited to 24 bits, for red, green, and blue color bands.  Spatial resolution capabilities intended to be adequate to support screen display.  In original production process, scanning was at 250 lines per inch.  Images are organized as &quot;distribution rectangles&quot; in 128x128 pixel tiles; the size of distribution rectangles is constrained by the physical media (typically CD-ROM).  </fdd:clarity>
+			<fdd:colorMaint>ADRG images are in band sequential form with red, green, and blue bands.  The test patch image portrays a set of standard colors, which may be used to adjust a video monitor for more accurate color viewing of the ADRG map images. </fdd:colorMaint>
+			<fdd:graphics>No support for vector graphics.</fdd:graphics>
+			<fdd:multispectral>ADRG images have a Band_ID_Field that documents the band color and lower and upperband edge wavelengths in nanometers. </fdd:multispectral>
+			<fdd:beyondImage>The ADRG format and process is designed to permit a worldwide seamless dataset for map data of a given scale.</fdd:beyondImage>
+		</fdd:stillImageQF>
+		<fdd:gisQF>
+			<fdd:normalGIS>Each source graphic is described by a source file (.SOU), which provides various ancillary data values describing the source graphic.  This includes such items as source graphic classification, geographic boundary, and datum.  The ARC system provides a rectangular coordinate and projection system at any scale for the entire ellipsoid based on the <a href="http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf">World Geodetic System 1984 (WGS 84)</a>. </fdd:normalGIS>
+			<fdd:metadataGIS>Polynomial coefficents and parameters are computed for each source graphic to support projection space computations from source datum and source coordinates to WGS84.  These coefficients and parameters are called Metric Support Data (MSD) and are recorded in the .SOU file.  The process and parameters are documented in Appendix section 30 (page 38) of <a href="http://earth-info.nga.mil/publications/specs/printed/89007/89007_ADRG.pdf">Military Specification:  Arc Digitized Raster Graphics (ADRG) (MIL-A-89007)</a>. </fdd:metadataGIS>
+			<fdd:grids>Not applicable to digitized paper maps or charts.</fdd:grids>
+			<fdd:beyondGIS>Quality data consists of the horizontal and vertical accuracies (absolute and relative) for a DR. Accuracies are given for one or more subregions, each of which is defined by a set of geographic coordinates.  The quality data is contained in the file *.QAL. Legend images are rectangular patches scanned from the margin of the source graphic.  A legend image is designed to capture data not easily captured as text.  Legend data is unique to the source graphic. <a href="http://earth-info.nga.mil/publications/specs/printed/89007/89007_ADRG.pdf">See MIL-A-89007</a> (Appendix section 40) for more detail regarding predefined legends, which include diagrams, glossaries, and landmark features symbols. </fdd:beyondGIS>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>.thf</fdd:sigValue>
+					<fdd:sigValue>.cph</fdd:sigValue>
+					<fdd:sigValue>.gen</fdd:sigValue>
+					<fdd:sigValue>.qal</fdd:sigValue>
+					<fdd:sigValue>.ovr</fdd:sigValue>
+					<fdd:sigValue>.img</fdd:sigValue>
+					<fdd:sigValue>.sou</fdd:sigValue>
+					<fdd:sigValue>.lgg</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>An ADRG dataset is made of several files, including the Transmittal Header File (.THF), Test Patch Image file (.CPH), General Information File (.GEN), Quality File (.QAL), the overview image file (.OVR), the image files (.IMG),
+the Source file (.SOU), and the Legend Image file (.LGG). </fdd:note>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://earth-info.nga.mil/publications/specs/printed/89007/89007_ADRG.pdf</link>
+					<tag>Arc Digitized Raster Graphics (ADRG)</tag>
+					<comment>Military Specification MIL-A-89007. 22 Feb, 1990</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://earth-info.nga.mil/publications/specs/printed/89007/89007note1.pdf</link>
+					<tag>Notice of ADRG inactivation</tag>
+					<comment>December 1, 1997</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://handle.dtic.mil/100.2/ADA231370</link>
+					<tag>ARC Digitized Raster Graphics and Their Application</tag>
+					<comment>Defense Mapping Agency Systems Center Technical Paper</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The USAF Intelligence Targeting Guide, published on February 1, 1998, indicated use of ADRG, in particular in section A8.4 in Attachment 8, Geospatial Information and Products. This document is now rescinded by USAF.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.fas.org/irp/doddir/usaf/afpam14-210/</link>
+							<tag>HTML version of USAF Intelligence Targeting Guide, February 1998</tag>
+							<comment>Made available by the Federation of American Scientists. In particular, see section A8.4 in Attachment 8, Geospatial Information and Products. </comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://proceedings.esri.com/library/userconf/proc04/docs/pap1747.pdf</link>
+					<tag>Managing Large Collections of NGA Raster Data</tag>
+					<comment>DJ Bauch, Bernard Traphan, 2004 Esri International User Conference, 2004</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://py-iso8211.sourceforge.net/tibbs/faq.html</link>
+					<tag>ISO/IEC 8211 - Frequently asked questions</tag>
+					<comment/>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://earth-info.nga.mil/GandG/publications/tr8350.2/wgs84fin.pdf</link>
+					<tag>Department of Defense World Geodetic System 1984:
+Its Definition and Relationships with Local Geodetic Systems</tag>
+					<comment>This technical report defines the Department of  Defense (DoD) World Geodetic
+System 1984 (WGS 84).  This third edition reflects improvements which have been made to the
+WGS 84 since the second edition.  The present WGS represents the National Imagery and
+Mapping Agency’s (NIMA) latest geodetic and geophysical modeling of the Earth based on
+data, techniques and technology available through 1996.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Specifications for CADRG (Compressed Arc Digitized Raster Graphics), intended as a successor format:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://earth-info.nga.mil/publications/specs/printed/89038/89038_CADRG.pdf</link>
+							<tag>Compressed ARC Digitized Raster Graphics (CADRG ) </tag>
+							<comment>Military Specification MIL-C-89038, dated 6 October 1994</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://earth-info.nga.mil/publications/specs/printed/89038/89038A2.pdf</link>
+							<tag>Performance Specification Compressed Arc Digitized Raster Graphics (CADRG)</tag>
+							<comment>MIL-PRF-89038
+Amendment 2, dated 28 March 2000 superseding Amendment 1, dated 27 April 1999. This amendment forms part of MIL-PRF-89038.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

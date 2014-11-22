@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000141" titleName="JPEG 2000 Part 2, Coding Extensions" shortName="J2K_EXT" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2005-06-21</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ISO/IEC 15444-2:2004. Information technology -- JPEG 2000 image coding system: Extensions (formal name), JPEG 2000 coding extensions (common name)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>JPEG 2000 Extended</fdd:keyword>
+			<fdd:keyword>jpf</fdd:keyword>
+			<fdd:keyword>jpx</fdd:keyword>
+			<fdd:keyword>raster image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>Compression encoding that employs discrete wavelet transforms and is generally used for full color and grayscale continuous-tone pictorial images, an extension of <fddLink id="fdd000138">JP2_C</fddLink>, JPEG 2000 Part 1, Core Coding. J2K_EXT extensions include more flexible wavelet decomposition and quantization, new methods to encode regions of interest (ROIs), and other features.  See also <a href="#notes">Notes</a> below.</fdd:description>
+		<fdd:shortDescription>Compression encoding that employs discrete wavelet transforms and is generally used for full color and grayscale continuous-tone pictorial images, an extension of JP2_C, JPEG 2000 Part 1, Core Coding. J2K_EXT extensions include more flexible wavelet decomposition and quantization, new methods to encode regions of interest (ROIs), and other features.</fdd:shortDescription>
+		<fdd:productionPhase>May be applied in initial-state picture creation; often used for middle- and final-state archiving or end-user delivery.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000154</fdd:id>
+					<fdd:shortName>JPX_FF</fdd:shortName>
+					<fdd:titleName>JPEG 2000 Part 2 (Extensions) jpf File Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>JPEG 2000 Part 2, Extensions, Lossless Compression, not documented at this time</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>JPEG 2000 Part 2, Extensions, Lossy Compression, not documented at this time</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>See <fddLink id="fdd000143">JP2_FF</fddLink>
+		</fdd:experience>
+		<fdd:preference>See <fddLink id="fdd000143">JP2_FF</fddLink>
+		</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Open standard.  Developed by Joint Technical Committee ISOAEC JTC 1, Information technology, Subcommittee SC 29, Coding of audio, picture, multimedia and hypermedia information incollaboration with ITU-T.</fdd:disclosure>
+		<fdd:documentation>ISO/IEC 15444-2:2004. Information technology -- JPEG 2000 image coding system: Extensions<br/>See complete list of ISO/IEC JPEG 2000 documents in <a href="fdd000143.shtml#specs">JP2_FF format specifications</a>.</fdd:documentation>
+		<fdd:adoption>See <fddLink id="fdd000143">JPX_FF</fddLink>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>License and royalties may be required for use of some technologies described in JP2_EXT.  The specification lists Mitsubishi Electric and Ricoh as known patent holders (p. 321).</fdd:licensingAndPatents>
+		<fdd:transparency>Depends upon algorithms and tools to read; will require sophistication to build tools.</fdd:transparency>
+		<fdd:selfDocumentation>See <fddLink id="fdd000154">JPX_FF</fddLink>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None.
+		</fdd:externalDependencies>
+		<fdd:techProtection>See <fddLink id="fdd000154">JPX_FF</fddLink>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>Good support.</fdd:normalImage>
+			<fdd:clarity>Excellent support, accommodating images with large picture sizes, high spatial resolution, and high bit depth.  Color rendering (see below for color maintenance) is enhanced by the existence of both lossy and lossless options for component transforms, as well as the possibility of using a wide array of color spaces, and by support for multispectral imagery via multiple component transforms.  Even with lossy compression, discrete wavelet transforms (DWTs) produce better results with most bitmaps than discrete cosine transforms (DCTs); thus JPEG 2000 codestreams provide greater clarity than <fddLink id="fdd000017">JPEG_DCT</fddLink> ("old" JPEG) at the same file size, or equal clarity in smaller files.</fdd:clarity>
+			<fdd:colorMaint>The management of color is supported by options for color space and by support for multiple classes of ICC color profiles.  An <a href="http://www.color.org/profile.xalter">ICC profile</a> is data that may be encapsulated within a JPEG 2000 file that contains a mapping between color component values and a generic color space called the <i>Profile Connection Space</i> (PCS), employing the "fictitious primaries" called X, Y, and Z.</fdd:colorMaint>
+			<fdd:graphics>See <fddLink id="fdd000154">JPX_FF</fddLink>
+			</fdd:graphics>
+			<fdd:multispectral>Extended decorrelating transforms for multiple component (multispectral) imagery are provided.  See also <fddLink id="fdd000154">JPX_FF</fddLink>
+			</fdd:multispectral>
+			<fdd:beyondImage>Multiple, not documented at this time.</fdd:beyondImage>
+		</fdd:stillImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>n/a</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <fddLink id="fdd000154">JPX_FF</fddLink>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000154">JPX_FF</fddLink>
+				</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000154">JPX_FF</fddLink>
+				</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>Chapter 15 (pp. 597-621) of <i>JPEG2000: Image Compression Fundamentals, Standards and Practices</i> by David S. Taubman and Michael W. Marcellin describes some of Part 2's key extensions, paraphrased as follows:</p>
+			<ul>
+				<li>Allows variable level offsets and point non-linearities, both as pre/post processing steps.  The latter feature facilitates the inclusion of images with, say, linear color space data or linear representation of light intensities.</li>
+				<li>Flexible deadzone sizes in scalar quantization, as well as the ability to apply trellis coded quantization.  Visual masking may be applied both of these to improve visual quality.</li>
+				<li>Several extensions are supported with respect to wavelet transform as applied to tile components and significant flexibility is available to choose the wavelet kernels employed in compression/decompression.  The latter permits the use of tranforms other than the irreversible 9/7 and reversible 5/3 transforms specified in Part 1 of the standard.  The tree structure of wavelet decomposition can also be chosen with a great deal of flexibility, and the wavelet transform may be applied to overlapping cells and/or tiles.</li>
+				<li>Extended decorrelating transforms for multiple component (multispectral) imagery are provided.</li>
+				<li>Enhanced region of interest support is provided.</li>
+			</ul></fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 15444-2:2004.  Information technology -- JPEG 2000 image coding system: Extensions. Defines a set of lossless (bit-preserving) and lossy compression methods for coding continuous-tone, bi-level, grey-scale, colour digital still images, or multi-component images; specifies extended decoding processes for converting compressed image data to reconstructed image data; specifies an extended codestream syntax containing information for interpreting the compressed image data; specifies an extended file format; specifies a container to store image metadata; defines a standard set of image metadata; provides guidance on extended encoding processes for converting source image data to compressed image data; provides guidance on how to implement these processes in practice.</fdd:specReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.jpeg.org/jpeg2000/</link>
+					<tag>http://www.jpeg.org/jpeg2000/</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ece.msstate.edu/~du/GRSL-COMP3.pdf</link>
+					<tag>Segmented Principal Component Analysis for
+Parallel Compression of Hyperspectral Imagery</tag>
+					<comment>Article in IEEE Geoscience and Remote Sensing Letters, v. 6, no. 4, October 2009.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.color.org/profile.xalter</link>
+					<tag>About ICC color profiles.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:bookReference>Colyer, Greg and Richard Clark. <i>Guide to the Practical Implementation of JPEG 2000.</i> London: British Standards Institute, 2003.  ISBN: 0580412423 BSI: PD 6777:2003.  Available as PDF file; link to point-of-sale at <a href="http://www.jpeg.org/jpeg2000/index.html">http://www.jpeg.org/jpeg2000/index.html</a>.</fdd:bookReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:bookReference>Taubman, David S. and Michael W. Marcellin.  <i>JPEG2000: Image Compression Fundamentals, Standards and Practices.</i> Boston: Kluwer Academic Publishers, 2002.  ISBN 0-7923-7519-X.</fdd:bookReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:usefulReferences>
+</fdd:FDD>

@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?altova_sps U:\edit_2013\fddCreation_20130906.sps?>
+<fdd:FDD id="fdd000383" titleName="MBOX Email Format" shortName="MBOX" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd=".\fdd.xsd" xsi:schemaLocation=".\fdd.xsd fdd.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>text</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>other</fdd:value>
+				<fdd:comment>email</fdd:comment>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2014-04-01</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>MBOX Email Format</fdd:fullName>
+		<fdd:description>
+			<p>MBOX (sometimes known as Berkeley format) is a generic term for a family of related file formats used for storing collections of electronic mail messages. MBOX formats store all of the messages of an entire folder (not an entire mailbox) in a single database file and new messages are appended to the end of the file. Each message is immediately prefaced by a separation line and terminated by an empty line. Only the the first message in an MBOX database file will only be prefaced by a separator line, while every other message will begin with two end-of-line sequences (one at the end of the message itself, and another to mark the end of the message within the MBOX database file stream) and a separator line (marking the new message).  The end of the database file is implicitly reached when no more message data or separator lines are found.</p>
+			<p>A message encoded in MBOX format begins with a &quot;From &quot; line, continues with a series of non-&quot;From &quot; lines, and ends with a blank line.  A &quot;From &quot; line means any line in the message or header that  begins with the five characters the five characters 'F', 'r', 'o', 'm', and ' ' (space). The "From " line structure is <i>From sender date moreinfo:</i>
+			</p>
+			<ul>
+				<li>
+					<i>sender</i>, usually the envelope sender of the message (e.g., sender@sender.com) is one word without spaces or tabs </li>
+				<li>
+					<i>date</i> is the delivery date of the message which always contains exactly 24 characters in Standard C asctime format (i.e. in English, with the redundant weekday, and without timezone information)</li>
+				<li>
+					<i>moreinfo</i> is optional and it  may contain arbitrary information.</li>
+			</ul>
+			<p>After the &quot;From &quot; line is the message itself in <a href="https://www.ietf.org/rfc/rfc5322.txt ">RFC 5322</a> format. The final line is a completely blank  line with no spaces or tabs. </p>
+			<p>There are four variants of MBOX: <fddLink id="fdd000384">MBOXO</fddLink>, <fddLink id="fdd000385">MBOXRD</fddLink>, <fddLink id="fdd000386">MBOXCL</fddLink> and <fddLink id="fdd000387">MBOXCL2</fddLink>. The four versions all build on the common MBOX structure and are differentiated primarily by changes to the "From " line and and the use of the "Content Length:" field in the message header in determining the start of a new message within the aggregated file.  Moreover, the versions and tool sets for one version are not necessary compatible with one another. See <a href="#notes">General</a> section for incompatibility details.</p>
+			<p>MBOX files also include the message attachments, if any,  in their original MIME format.</p>
+		</fdd:description>
+		<fdd:shortDescription>MBOX is a generic term for a family of related file formats used for storing collections of email messages in a single database file.</fdd:shortDescription>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000393</fdd:id>
+					<fdd:shortName>IMF</fdd:shortName>
+					<fdd:titleName>Internet Mail Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000384</fdd:id>
+					<fdd:shortName>MBOXO</fdd:shortName>
+					<fdd:titleName>MBOXO Email Format</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment/>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000385</fdd:id>
+					<fdd:shortName>MBOXRD</fdd:shortName>
+					<fdd:titleName>MBOXRD Email Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000386</fdd:id>
+					<fdd:shortName>MBOXCL</fdd:shortName>
+					<fdd:titleName>MBOXCL Email Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000387</fdd:id>
+					<fdd:shortName>MBOXCL2</fdd:shortName>
+					<fdd:titleName>MBOXCL2 Email Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse/>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>There is no authoritative specification aside from RFC 4155. Its subtypes are partially documented and there is variation within the subtypes. </fdd:disclosure>
+		<fdd:documentation>Information available from a number of sources including RFC 4155, and Qmail.org. </fdd:documentation>
+		<fdd:adoption>
+			<p>
+				<a href="http://dx.doi.org/10.7207/twr11-01">Prom reports</a> that, while not a native format for many proprietary clients, MBOX (and <fddLink id="fdd000388">EML</fddLink>) has &quot;achieved a certain status as de facto
+standards because most modern email clients and servers can import and export one or both of
+the formats&quot; including Thunderbird, Apple Mail, Outlook and Eudora. In addition, external programs such as Aid4Mail,  Emailchemy and Xena can convert between
+the two formats and numerous proprietary formats. Once in an MBOX or <fddLink id="fdd000388">EML</fddLink> format, the data can be parsed into XML using standardized schemas such as the Email Account Schema defined in the <a href="http://siarchives.si.edu/cerp/">CERP project.</a>
+			</p>
+			<p>Native or normalized MBOX files can be used as access copies because they can be imported into a variety of email clients.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>[Unknown, probably none].</fdd:licensingAndPatents>
+		<fdd:transparency>Text processing tools can be readily used on the plain text files used to store the email messages.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>The message structure helps declare the subtype but there’s a lot of variation even within the established patterns.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>None</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors/>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>.mbox</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>MBOX database files sometimes have an &quot;.mbox&quot; extension, but according to the specification, this is not required nor expected. </fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/mbox</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Not registered in IANA but listed in RFC 4155</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>See note</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>There are no magic numbers for MBOX. Instead, MBOX database files can be recognized by having a leading character sequence of &quot;From&quot;, followed by a single Space character (0x20), followed by additional printable character data. </fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<a href="http://homepage.ntlworld.com/jonathan.deboynepollard/FGA/mail-mbox-formats.html">Jonathan de Boyne Pollard</a> describes the many incompatibilities among the MBOX formats: </p>
+			<ul>
+				<li>Messages cannot be reliably read from <fddLink id="fdd000384">MBOXO</fddLink> and <fddLink id="fdd000385">MBOXRD</fddLink> format mailboxes by <fddLink id="fdd000386">MBOXCL</fddLink> and <fddLink id="fdd000387">MBOXCL2</fddLink> readers.</li>
+				<li>There is no guarantee that any &quot;Content-Length:&quot; headers in the original message are correct and appropriate, which are preserved exactly as they are by <fddLink id="fdd000384">MBOXO</fddLink> and <fddLink id="fdd000385">MBOXRD</fddLink>.</li>
+				<li>
+					<fddLink id="fdd000387">MBOXCL2</fddLink> readers cannot return messages with no &quot;Content-Length:&quot; headers.</li>
+				<li>Messages cannot be reliably read from <fddLink id="fdd000387">MBOXCL2</fddLink> format mailboxes by <fddLink id="fdd000384">MBOXO</fddLink> or <fddLink id="fdd000385">MBOXRD</fddLink> readers.
+</li>
+				<li>Delivering messages to <fddLink id="fdd000387">MBOXCL2</fddLink> format mailboxes with <fddLink id="fdd000384">MBOXO</fddLink> or <fddLink id="fdd000385">MBOXRD</fddLink> tools will corrupt the mailbox, rendering all subsequently delivered messages irretrievable</li>
+				<li>Because &quot;From &quot; at the start of a line is more probable than &quot;&gt;From &quot; in real-world messages, an <fddLink id="fdd000385">MBOXRD</fddLink> reader will restore a greater number of messages written to a mailbox by an <fddLink id="fdd000384">MBOXO</fddLink> tool to their original forms than an <fddLink id="fdd000385">MBOXRD</fddLink> tool, but will not restore all messages.
+</li>
+				<li>Conversely, when an <fddLink id="fdd000384">MBOXO</fddLink> reader is used, less message corruption will be observed in the final results if the messages were written by an <fddLink id="fdd000384">MBOXO</fddLink> tool than if they were written by an <fddLink id="fdd000385">MBOXRD</fddLink> tool.</li>
+			</ul>
+			<p>
+				<a href="http://en.wikipedia.org/wiki/Mbox">Wikipedia</a> reports that &quot;different MBOX formats use various mutually incompatible mechanisms to enable message file locking, including fcntl(), lockf(), and &quot;dot locking&quot; which are problematic in network mounted file systems, such as the Network File System (NFS). Because more than one message is stored in a single file, some form of file locking is needed to avoid the corruption that can result from two or more processes modifying the mailbox simultaneously. This could happen if a network email delivery program delivers a new message at the same time as a mail reader is deleting an existing message. MBOX files should be locked also while they are being read. Otherwise the reader may see corrupted message contents if another process is modifying the mbox at the same time, even though no actual file corruption occurs.&quot;</p>
+			<p>Because MBOX stores the contents of an entire folder in one file, the size of the MBOX single file can become exceedingly large. Any corruption in the file may affect the ability of certain clients to access individual messages or even the entire folder.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>The naming scheme was developed by Daniel J. Bernstein, Rahul Dhesi, and others in 1996. Each version originated from a different version of Unix.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://tools.ietf.org/rfc/rfc4155.txt</link>
+					<tag>RFC 4155:  The application/mbox Media Type</tag>
+					<comment>The application/mbox Media Type</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://qmail.org/qmail-manual-html/man5/mbox.html</link>
+					<tag>mbox - file containing mail messages</tag>
+					<comment>This is a the de facto standards document for MBOX formats</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000393">IMF</fddLink>
+					</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://homepage.ntlworld.com/jonathan.deboynepollard/FGA/mail-mbox-formats.html</link>
+					<tag>MBOX is a family of several mutually incompatible mailbox formats</tag>
+					<comment>Useful history and discussion by Jonathan de Boyne Pollard</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://kb.mozillazine.org/Importing_and_exporting_your_mail#Mbox_files</link>
+					<tag>Importing and exporting your mail</tag>
+					<comment>Information about adoption and importing/exporting MBOX variants</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://kb.wisc.edu/wiscmail/page.php?id=6436</link>
+					<tag>WiscMail / WiscMail Plus - Importing &quot;mbox&quot; mailboxes into desktop email clients</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.jwz.org/doc/mailsum.html</link>
+					<tag>Mail Summary Files</tag>
+					<comment>From 2000, use of MBOX variants in Netscape Mail</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://cr.yp.to/proto/maildir.html</link>
+					<tag>Using Maildir Format</tag>
+					<comment>Describes the Maildir format which became an alternative to MBOX</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Mbox</link>
+					<tag>Wikipedia: MBOX</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://dx.doi.org/10.7207/twr11-01</link>
+					<tag>Preserving Email by Christopher J. Prom. DPC Technology Watch Report 11-01</tag>
+					<comment>Very helpful discussion of the challenges in preserving email collections, especially in describing workflows and tools. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://siarchives.si.edu/cerp/</link>
+					<tag>CERP: The Collaborative Electronic Records Project</tag>
+					<comment>Takes email accounts that have been normalized to MBOX files and parses them out to XML following an email preservation schema.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://mobisocial.stanford.edu/muse/</link>
+					<tag>MUSE</tag>
+					<comment>A tool for working with email archives developed by Stanford&apos;s Mobisocial Lab</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.history.ncdcr.gov/SHRAB/ar/emailpreservation/reports.htm</link>
+					<tag>Preservation of Electronic Mail Collaboration Initiative</tag>
+					<comment>Collaborative effort to develop XML schema for email records</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Tool sets for MBOX</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://xena.sourceforge.net/</link>
+							<tag>XENA</tag>
+							<comment>Email migration and conversion tool developed by the National Archives of Australia</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.weirdkid.com/products/emailchemy/</link>
+							<tag>EmailChemy</tag>
+							<comment>Proprietary Java application tool for email format migration and conversion tool</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.aid4mail.com/</link>
+							<tag>Aid4Mail</tag>
+							<comment>Desktop email migration and conversion tool</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.mailstore.com/en/mailstore-home.aspx</link>
+							<tag>MailStore</tag>
+							<comment>Conversion tool, proprietary but free for personal use</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://email.about.com/cs/standards/a/mbox_format.htm</link>
+					<tag>The mbox Format:
+How email clients store mail on your hard disk</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

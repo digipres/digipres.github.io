@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?altova_sps U:\edit_2013\fddCreation_20130906.sps?>
+<fdd:FDD id="fdd000378" titleName="Microsoft Outlook PST 2003 (Unicode)" shortName="PST_Unicode" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd=".\fdd.xsd" xsi:schemaLocation=".\fdd.xsd fdd.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>text</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>other</fdd:value>
+				<fdd:comment>email</fdd:comment>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2013-11-25</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Microsoft Outlook 2003 Personal Folders File (Unicode)</fdd:fullName>
+		<fdd:description>
+			<p>The Personal Folders File or PST is an open proprietary data file format used to store local copies of messages, calendar events, and other items within Microsoft software including Microsoft Office Outlook. PST files are used to store archived items and to maintain off-line availability of the items.</p>
+			<p>See <fddLink id="fdd000377">PST_ANSI</fddLink> for a description of general PST strucutre and characteristics. </p>
+			<p>The two versions of PST, <fddLink id="fdd000377">PST_ANSI</fddLink> and PST_Unicode, are differentiated primarily by software implementation versions, character sets, maximum file size constraints and bit values. </p>
+			<p>PST_Unicode is the default format used by Office Outlook versions starting with Outlook 2003 and includes Outlook 2007, Outlook 2010 and Outlook 2013. It employs the Unicode character set. </p>
+			<p>The file size constraints for PST_Unicode are significantly larger than the <fddLink id="fdd000377">PST_ANSI </fddLink>overall size limit of 2 gigabytes (GB). PST_Unicode can support <a href="http://support.microsoft.com/kb/830336">file sizes up to 20 GB in Outlook 2003 and Outlook 2007</a> and <a href="http://support.microsoft.com/kb/982577">file sizes up to 50 GB for Outlook 2010 and Outlook 2013</a>. According to <a href="http://support.microsoft.com/kb/832925">Microsoft</a>, these file size limits can be extended but would negatively impact performance. </p>
+			<p>PST_Unicode uses 64-bit values to represent <a href="http://msdn.microsoft.com/en-us/library/ff387585%28v=office.12%29.aspx">block IDs (BIDs)</a> and <a href="http://msdn.microsoft.com/en-us/library/ff386553%28v=office.12%29.aspx"> byte index (IB)</a>.</p>
+		</fdd:description>
+		<fdd:shortDescription>PST_Unicode is a Unicode character set-based data file used by Microsoft Office Outlook 2003 and later versions to store email messages, calendar events and other items on a local computer. It replaced PST_ANSI as the default format starting with Office Outlook 2003. </fdd:shortDescription>
+		<fdd:productionPhase>PST files provide a mechanism for the centralized storage of email folders, email messages, their attachments, contacts, calendar items, etc. </fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000377</fdd:id>
+					<fdd:shortName>PST_ANSI</fdd:shortName>
+					<fdd:titleName>Microsoft Outlook PST 97-2002 (ANSI)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment/>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse/>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully documented. Proprietary file format developed by Microsoft.</fdd:disclosure>
+		<fdd:documentation>Microsoft [MS-PST]: Outlook Personal Folders (.pst) File Format specification available from Microsoft. See <a href="#specs">Format Specifications</a> below.</fdd:documentation>
+		<fdd:adoption>
+			<p>The Outlook .pst files are used for POP3, IMAP, and HTTP accounts and are supported by several Microsoft client applications, including Microsoft Exchange Client, Windows Messaging, and Microsoft Office Outlook. </p>
+			<p>Outlook 2003, Outlook 2007, Outlook 2010 and Outlook 2013 can read, write, and create both ANSI and Unicode PST files.  By 2010 (when the specification was made public by Microsoft), <fddLink id="fdd000377">PST_ANSI</fddLink> was considered a legacy format with a recommendation that it not be used to create new PST files. The default format was declared to be PST_Unicode.</p>
+			<p>PST_Unicode files are not compatible with Microsoft Outlook 97-2002 which read <fddLink id="fdd000377">PST_ANSI </fddLink> files only.</p>
+			<p>At least two open-source software libraries have been developed to examine and manipulate PST files: <a href="http://code.google.com/p/libpff/">libpff</a>, a library (in C, with python bindings partially implemented as of late 2013) to access PST and related formats; <a href="http://pstsdk.codeplex.com/">PST File Format SDK</a>, a cross-platform C++ library for reading PST files, developed under Microsoft auspices through a 2009-2010 project.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>See <fddLink id="fdd000377">PST_ANSI</fddLink>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>See <fddLink id="fdd000377">PST_ANSI</fddLink>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>The PST format version is declared in the file header. According to the specification, the <i>wVer</i> field for a PST_Unicode file must have a value of 23.  Folder objects, message objects, and attachment objects all have properties which include the header fields users typically see in an email application as well as many properties relating to the status, management, and history of the object in an Outlook application.  A message object also has a recipients table that identifies each recipient and may have an attachments table that lists and identifies attachments.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>See <fddLink id="fdd000377">PST_ANSI</fddLink>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:textQF>
+			<fdd:normalText>PST_Unicode can only represent UTF-16 strings (Unicode character encoding). </fdd:normalText>
+			<fdd:structure>
+				<p>At the physical level, the file starts with a header, followed by an optional density list, and then a series of mapping structures interspersed at set intervals between blocks of data. The mapping structures are of fixed size, and repeat as often as needed to encapsulate areas of data as the file grows.</p>
+				<p>At the logical level, a .pst file has three layers: the Node Database (NDB) layer, the Lists, Tables, and Properties (LTP) layer, and the Messaging layer.</p>
+				<p>An important structural improvement of PST_Unicode over <fddLink id="fdd000377">PST_ANSI </fddLink> is that PST_Unicode files contain additional FPMap pages in addition to the initial FPMap in the HEADER, thereby extending their size limit beyond the 2 GB size limit demonstrated in <fddLink id="fdd000377">PST_ANSI </fddLink> files.</p>
+				<p>The semantic structure of messages (with their headers) in folders and attachments linked to messages is represented in the Messaging layer.</p>
+				<p>Since this format is designed for active use in an email system as a stand-alone message store, the full semantics required and/or observed in the system that generated the file is represented. </p>
+			</fdd:structure>
+		</fdd:textQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000377">PST_ANSI</fddLink>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000377">PST_ANSI</fddLink>
+				</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000377">PST_ANSI</fddLink>
+				</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>File signature</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Hex: 53 4D 17 00 </fdd:sigValue>
+						<fdd:sigValue>Hex: 53 4D 15 00
+</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Offset 8 bytes from start of file.  In conjunction with the magic number at the beginning of the file, this identifies that the file is a PST file using the PST_Unicode version.  The 0x17 value is much more frequently found. According to Metz in <a href="https://googledrive.com/host/0B3fBvzttpiiScU9qcG5ScEZKZE0/Personal%20Folder%20File%20%28PFF%29%20format.pdf">Personal Folder File (PFF) file format specification
+Analysis of the PFF format</a>, the 0x15 value is believed to indicate the same format as 0x17 value (i.e. PST_Unicode) and was found in an 64-bit PST file created by the software Visual Recovery for Exchange Server but it is not common.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>See <fddLink id="fdd000377">PST_ANSI</fddLink>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://msdn.microsoft.com/en-us/library/ff385210%28v=office.12%29.aspx</link>
+					<tag>Microsoft	[MS-PST]: Outlook Personal Folders (.pst) File Format. v20130206. </tag>
+					<comment>Format specification from Microsoft that covers both PST_ANSI and PST_Unicode files.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Property schemas for PST Message objects and Folder objects are defined by separate documents.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/cc463900%28v=exchg.80%29.aspx</link>
+							<tag>[MS-OXCMSG]: Message and Attachment Object Protocol</tag>
+							<comment>Specifies the basic property schema for a Message object </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/cc433482%28v=exchg.80%29.aspx</link>
+							<tag>[MS-OXOMSG]: Email Object Protocol</tag>
+							<comment>Specifies the basic property schema for a Message object </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/cc433490%28v=exchg.80%29.aspx</link>
+							<tag>[MS-OXPROPS]: Exchange Server Protocols Master Property List</tag>
+							<comment>Specifies the basic property schema for a Message object and the default property schema for a Folder object</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/cc433475%28v=exchg.80%29.aspx</link>
+							<tag>[MS-OXCFOLD]: Folder Object Protocol</tag>
+							<comment>Specifies the default property schema for a Folder object</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://nationalarchives.gov.uk/PRONOM/x-fmt/249</link>
+					<tag>PRONOM entry for x-fmt/249</tag>
+					<comment>Information in PRONOM from the UK National Archives about Microsoft Outlook Personal Folders (Unicode) 2003-2007. PUID: x-fmt/249</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://pstviewtool.codeplex.com/</link>
+					<tag>PST Data Structure View Tool (PSTViewTool)</tag>
+					<comment>This tool which facilitates viewing the file structure of PST files is no longer actively supported but may be useful nonetheless. The tool only supports PST_Unicode, not PST_ANSI.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>File size constraints for PST_Unicode </fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://support.microsoft.com/kb/982577</link>
+							<tag>The file size limits of .pst and .ost files are larger in Outlook 2010 and Outlook 2013</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://support.microsoft.com/kb/830336</link>
+							<tag>The .pst file has a different format and folder size limit in Outlook 2007 and in Outlook 2003</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000377">PST_ANSI</fddLink>
+					</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.history.ncdcr.gov/SHRAB/ar/emailpreservation/reports.htm</link>
+					<tag>Preservation of Electronic Mail Collaboration Initiative</tag>
+					<comment>Collaborative effort to develop XML schema for email records, including PST files</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

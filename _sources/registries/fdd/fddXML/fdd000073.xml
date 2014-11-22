@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000073" titleName="TIFF/EP, ISO 12234-2:2001" shortName="TIFF/EP_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2012-11-13</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>TIFF/EP, Tag Image File Format/Electronic Photography (common name); ISO 12234-2:2001, Electronic still-picture imaging – Removable memory – Part 2: TIFF/EP image data format (formal name)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>raster image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>TIFF/EP_1  is based on a subset of TIFF 6.0 (<fddLink id="fdd000022">TIFF_6</fddLink>), together with a subset of <fddLink id="fdd000146">EXIF</fddLink> tags and concepts.   However, there are some differences and extensions.  TIFF/EP_1 was intended as suitable as a raw camera image format and to be as compatible as possible with TIFF 6.0.  A TIFF/EP_1 file is a valid TIFF file that contains the TIFF/EP format identifier and conforms to certain restrictions
+described in ISO 12234-2:2001. The TIFF/EP_1 header is exactly the same as the TIFF header. The use of the
+TIFF/EP format and revision number is identified in the TIFF/EPStandardID tag-field (Tag 37398); this tag is mandatory for a TIFF/EP file. ISO 12234-2 (TIFF/EP_1) introduced several new TIFF tags; which will be ignored by a baseline TIFF viewer.  See <a href="../content/tiff_tags.shtml">Tags for TIFF and Related Specifications</a> for more on TIFF tags.</p>
+			<p>Differences from EXIF are more substantial.  In particular, values for a few metadata items are stored using different tags and a different method for including a thumbnail in a TIFF file is specified.</p>
+			<p>Although TIFF/EP_1 was not adopted by most camera manufacturers per se, it did serve as the basis for Adobe&apos;s <fddLink id="fdd000188">DNG</fddLink> and some manufacturers' raw formats.</p>
+			<p>TIFF/EP_1 readers must handle images stored in uncompressed form, or using JPEG baseline DCT-based lossy compression as specified in <a href="http://partners.adobe.com/public/developer/en/tiff/TIFFphotoshop.pdf">Adobe Photoshop: TIFF Technical Notes (March 22, 2002)</a>.  Other compression schemes are permitted but readers are not required to handle them.  TIFF Tag 259, mandatory in TIFF/EP, indicates the Compression method: 1 for uncompressed; 7 for JPEG baseline DCT-based lossy compression.  If an image compression method is used in TIFF/EP, an uncompressed Baseline TIFF-readable &quot;thumbnail&quot; image (with a reduced-resolution) should also be stored in the 0th IFD, to allow the images to be viewed and identified using a Baseline TIFF 6.0 reader.</p>
+		</fdd:description>
+		<fdd:shortDescription>A subtype of TIFF 6.0 that contains the TIFF/EP format identifier and conforms to certain restrictions on TIFF and EXIF tags, as described in ISO 12234-2:2001.  TIFF/EP_1 was intended as suitable as a raw camera image format and to be as compatible as possible with TIFF 6.0.</fdd:shortDescription>
+		<fdd:productionPhase>Intended as a standard raw image format for digital cameras.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000022</fdd:id>
+					<fdd:shortName>TIFF_6</fdd:shortName>
+					<fdd:titleName>TIFF, Revision 6</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>Uncompressed image data as in <fddLink id="fdd000023">TIFF_UNC</fddLink>.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000149</fdd:id>
+					<fdd:shortName>JPEG_DCT_BL</fdd:shortName>
+					<fdd:titleName>JPEG DCT Compression Encoding, Baseline</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>As defined in ISO/IEC 10918-1:1994.  TIFF/EP readers must be able to decode this compression encoding.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000034</fdd:id>
+					<fdd:shortName>JPEG_orig_LL</fdd:shortName>
+					<fdd:titleName>JPEG Original Lossless Compression (ISO/IEC 10918)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>TIFF/EP readers are not required to decode images compressed with this encoding. The compilers of this resource assume that the &quot;JPEG Lossless Compression&quot; referred to in ISO 12234-2:2001 is the lossless encoding from ISO/IEC 10918:1994, which is a included as a normative reference.  The specification for TIFF/EP makes no mention of ISO/IEC 14495:1999, which introduced another lossless JPEG encoding (<fddLink id="fdd000151">JPEG_LS</fddLink>).  <a href="../contact_format.shtml">Comments welcome</a>.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Open standard.  Prepared and maintained by ISO/TC 42/WG18, Photography, Electronic still picture imaging.</fdd:disclosure>
+		<fdd:documentation>ISO 12234-2:2001, Electronic still-picture imaging – Removable memory – Part 2: TIFF/EP image data format</fdd:documentation>
+		<fdd:adoption>
+			<p>Because a TIFF/EP_1 file is a valid TIFF 6.0 file, all TIFF viewers should be able to open a TIFF/EP_1 file.  However, professional image processing tools are necessary to take advantage of the raw image data and all the metadata that may be in a TIFF/EP file.</p>
+			<p>TIFF/EP_1 was not adopted per se by leading camera manufacturers as a raw image format standard, the original intent for the specification.  Meanwhile, as of December 2010, according to a <a href="http://www.barrypearson.co.uk/articles/dng/products_y7.htm">table compiled by Barry Pearson</a>, a number of manufacturers have adopted Adobe&apos;s DNG format (described in the DNG specification as an extension of TIFF/EP) as a native format or an optional output from the camera, while others continue using a proprietary raw format.  Some manufacturers' raw formats take advantage of the tags introduced in ISO 12234-2:2001 and may, as in Nikon&apos;s raw NEF format, according to <a href="http://www.barrypearson.co.uk/articles/dng/raw.htm">Barry Pearson&apos;s What&apos;s in a Raw File?</a>, include a TIFF/EPStandardID tag (37398).  Adobe&apos;s <fddLink id="fdd000188">DNG, version 1.1</fddLink> format specification states that a file can comply with the TIFF/EP_1 standard and also be a valid DNG file. The compilers of this resource are not aware of any product that produces files that comply with both specifications.  <a href="../contact_format.shtml">Comments welcome</a>.   See <a href="#notes">Notes</a> below for more on relationship of TIFF/EP_1 to DNG 1.1.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>TBD</fdd:licensingAndPatents>
+		<fdd:transparency>Depends on bitstream encoding.</fdd:transparency>
+		<fdd:selfDocumentation>See <fddLink id="fdd000022">TIFF_6</fddLink>.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>None</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>See <fddLink id="fdd000022">TIFF_6</fddLink>.</fdd:normalImage>
+			<fdd:clarity>See <fddLink id="fdd000022">TIFF_6</fddLink>.</fdd:clarity>
+			<fdd:colorMaint>The ICC (InterColour) profile, contained in the InterColourProfile tag-field (tag 34675), may be used to provide the information
+required to interpret the digital code values of a color image. See also <fddLink id="fdd000022">TIFF_6</fddLink>.</fdd:colorMaint>
+			<fdd:graphics>No support for typography or vector graphics</fdd:graphics>
+			<fdd:multispectral>TIFF/EP_1 is not intended for multispectral use.  All TIFF/EP
+readers shall handle greyscale, RGB and YCbCr data.</fdd:multispectral>
+			<fdd:beyondImage>Image data may optionally be stored using a single image component having a color filter array (CFA) area
+pattern of the image data derived from a single-chip color CCD image sensor.  However, TIFF/EP readers are not required to
+handle this raw type of image data.  The tags used to describe a CCD’s CFA pattern in TIFF/EP_1 are: SamplesPerPixel,
+PlanarConfiguration, CFARepeatPatternDim, CFAPattern and SensingMethod.</fdd:beyondImage>
+		</fdd:stillImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>tif</fdd:sigValue>
+					<fdd:sigValue>tiff</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000022">TIFF_6</fddLink>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000022">TIFF_6</fddLink>.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Indicator for profile, level, version, etc.</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>1 0 0 0</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Tag 37398 (TIFF/EPstandardID) is mandatory for TIFF/EP and indicates the version of the TIFF/EP standard in use.  The value shown here is for TIFF/EP_1, as specified in ISO 12234-2:2001.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>TIFF/EP_1 uses the TIFF/JPEG specification as described in <a href="http://partners.adobe.com/public/developer/en/tiff/TIFFphotoshop.pdf">Adobe Photoshop: TIFF Technical Notes (March 22, 2002)</a>. This method differs from
+the JPEG method described in the original TIFF 6.0 specification. In the method used within TIFF/EP_1, each image segment
+(tile or strip) contains a complete JPEG data stream that is valid according to the ISO JPEG standard
+(ISO/IEC 10918-1).</p>
+			<p>In TIFF/EP_1 files, the 0th IFD should be an image that can be read by a baseline TIFF 6.0 reader. Since JPEG
+compression is not required for baseline TIFF 6.0 readers, if the full-resolution image is stored using
+compression, the TIFF/EP_1 file should include an uncompressed thumbnail (reduced-resolution) image stored in the 0th IFD.  The thumbnail should be stored in strips,
+rather than in tiles, in order to be fully compatible with TIFF 6.0 baseline readers.</p>
+			<p>The Adobe DNG version 1.1 specification claims compatibility with the (then draft) specification of TIFF/EP_1.  DNG permits all TIFF/EP tags and uses explicitly some of the tags introduced in TIFF/EP, particularly in relation to support for CFA (Colour Filter Array) photometric interpretation.  The DNG specification recommends (a) that the first IFD contain a low-resolution thumbnail and (b) the use of SubIFD trees, both as described in the TIFF/EP_1 specification.  See <fddLink id="fdd000188">DNG_1_1</fddLink> for more on the relationship of DNG to TIFF/EP_1.</p>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:specReference>
+					<specRefDetail rel="snum">ISO 12234-2</specRefDetail>, <specRefDetail rel="stitle">Electronic still-picture imaging – Removable memory – Part 2: TIFF/EP image data format</specRefDetail>. <specRefDetail rel="date">2001</specRefDetail>
+				</fdd:specReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.barrypearson.co.uk/top2009/downloads.htm</link>
+					<tag>Barry Pearson&apos;s Downloads page</tag>
+					<comment>Includes drafts (from 1998 and 2000) of the TIFF/EP specification.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://partners.adobe.com/public/developer/en/tiff/TIFFphotoshop.pdf</link>
+					<tag>Adobe Photoshop: TIFF Technical Notes</tag>
+					<comment>March 22, 2002</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Tag_Image_File_Format_/_Electronic_Photography</link>
+					<tag>TIFF/EP on Wikipedia</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/154</link>
+					<tag>TIFF/EP at PRONOM</tag>
+					<comment>Pronom Identifier (PUID) is fmt/154.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.barrypearson.co.uk/articles/dng/products_y7.htm</link>
+					<tag>DNG support, through end December 2010
+</tag>
+					<comment>Includes list of cameras supporting DNG (and thus not TIFF/EP) as native format.  Substantive content of this page was frozen by 27 September 2011</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Raw_image_format</link>
+					<tag>Raw image format on Wikipedia</tag>
+					<comment>Useful summary of elements in a raw image format, in which category the page includes the TIFF/EP format, from a digital camera</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

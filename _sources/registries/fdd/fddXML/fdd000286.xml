@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000286" titleName="Spatial Data Transfer Standard" shortName="SDTS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>file-group</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2011-10-25</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Spatial Data Transfer Standard (SDTS) </fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>geospatial data formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The American National Standards Institute’s (ANSI) Spatial Data Transfer Standard (SDTS), was designed to be a robust way of transferring earth-referenced spatial data between dissimilar computer systems with the potential for no information loss. The SDTS specifies
+exchange constructs, such as format,
+structure, and content, for spatially
+referenced vector and raster (including
+gridded) data.</p>
+			<p>Within an SDTS dataset, data and metadata is transferred in a variety of <i>modules</i> that can be individually ingested as needed by
+the recipient.   In most implementations, the modules correspond to
+files and are encoded following the ISO/IEC 8211 standard.  In this case, the file extension for all files is .DDF, unless a module must be broken into multiple modules, in which case, the extensions .DDG, .DDH, etc. are used.  Depending on the SDTS profile, file names are typically consistent with the 8.3 convention used in computer systems at the time the SDTS standard was developed.  SDTS specifies standard four-letter tags in upper case for modules of various categories.
+Typically, names for files in a dataset have the form XXXXAAAA.DDF where XXXX is an identifier for the dataset and AAAA the tag that identifies the module category.
+ Some common &quot;AAAA&quot; categories include IDEN (Identification), DQHL (Data Quality/Lineage), SPDM (Spatial Domain), CEL1 (Cells for layer 1 of a raster object) MDEF (Data Dictionary Definition Module), and MDOM (Data Dictionary Domain Module).</p>
+		</fdd:description>
+		<fdd:shortDescription>The American National Standards Institute’s (ANSI) Spatial Data Transfer Standard (SDTS) is a mechanism for archiving and transferring spatial data (including metadata) between dissimilar computer systems. </fdd:shortDescription>
+		<fdd:productionPhase>Middle-state format used for data transfer.  Appropriate for application-neutral archiving.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:relatedTo/>
+				<fdd:comment>Spatial Data Transfer Standard, FIPSPUB 173-1.  Not described at this Web site at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000307</fdd:id>
+					<fdd:shortName>ISO_8211</fdd:shortName>
+					<fdd:titleName>ISO/IEC 8211 Data Descriptive File (DDF)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Although SDTS allows for other serializations, in practice, ISO_8211 is the only serialization in use. </fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000301</fdd:id>
+					<fdd:shortName>SDTS_TVP</fdd:shortName>
+					<fdd:titleName>Spatial Data Transfer Standard - Topological Vector Profile</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Defined in part 4 of the SDTS standard.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo/>
+				<fdd:comment>Spatial Data Transfer Standard - Raster Profile. Defined in part 5 of the SDTS standard.  Not described on this website at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo/>
+				<fdd:comment>Spatial Data Transfer Standard - Point Profile. Defined in part 6 of the SDTS standard.  Not described on this website at this time.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully disclosed.  The main standard and one profile were submitted to ANSI and published as an ANSI standard.  Remaining profiles were revised later and approved as FGDC standards.</fdd:disclosure>
+		<fdd:documentation>
+			<p>The six parts of the SDTS standard are organized into the base specification (Parts 1-3) and multiple profiles (Parts 4-6).  </p>
+			<ul>
+				<li>Part 1 - Logical Specifications</li>
+				<li>Part 2 - Spatial Features</li>
+				<li>Part 3 - ISO 8211 Encoding</li>
+				<li>Part 4 - Topological Vector Profile</li>
+				<li>Part 5 - Raster Profile</li>
+				<li>Part 6 - Point Profile</li>
+			</ul>
+			<p>Parts 1-4 are published as ANSI INCITS 320-1998 (R2003) and can be purchased.   Documentation for all parts can be found at <a href="http://mcmcweb.er.usgs.gov/sdts/standard.html">http://mcmcweb.er.usgs.gov/sdts/standard.html</a>
+			</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>Compliance with SDTS was made mandatory for U.S. federal agencies in the mid-1990s for geospatial data that would be made available outside the agencies.  The U. S. Geological Survey (USGS) has converted their 1:24,000-scale (7.5-min quad size) 15m and 30m Digital Elevation Models (<fddLink id="fdd000285">DEM</fddLink>) to Spatial Data Transfer Standard (SDTS) Raster Profile and their 1:24K Digital Line Graph (DLG) data to <fddLink id="fdd000301">STDS_TVP</fddLink> (SDTS Topological Vector Profile format).  These resources are available in SDTS and in other formats.  As of October 2011, USGS web pages about the SDTS standard carry a note as follows: &quot;Note: The information on this page is being retained for technical and historical reference only. The site is not under active maintenance and may include expired information and outdated links.&quot;</p>
+			<p>SDTS has been available for use by state and local governments, the private sector, and research and academic organizations.  However there has been little adoption of SDTS as a data distribution format outside the U.S. federal government.  Major GIS applications, such as the ESRI products, support the import of SDTS data made available by USGS and other U.S. Govt. agencies, such as NOAA's National Geodetic Survey.</p>
+			<p>SDTS was a recommended format for geospatial data transferred to Libraries and Archives Canada for long-term archiving.  Its use has been somewhat limited, however, due to the complexity of processing needed for the myriad files associated with the format. As a result, more data has become available in more widely supported formats such as <fddLink id="fdd000281">ESRI_grid</fddLink>, <fddLink id="fdd000283">BIL_file</fddLink>, <fddLink id="fdd000022">TIFF_6</fddLink>, etc.  As an example, see information about the National Elevation Dataset (NED) at <a href="http://web.archive.org/20120623100226/http://seamless.usgs.gov/faq_listing.php?id=1">USGS Seamless Data Warehouse FAQs, "Available Data"</a> as provided until late 2012.</p>
+			<p>Some software applications can read STDS formatted data including ESRI ArcView and Mapinfo MID.  Translators or extensions may be needed to import STDS into current software applications.  A list of free translators can be found at <a href="http://software.geocomm.com/translators/sdts/">Geocommunity.com Software Translators.</a>
+			</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No known license or patent concerns for generation and use of the format.  <a href="../contact_format.shtml">Comments welcome.</a>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>Knowledge and understanding of the standard and the ISO/IEC 8211 standard are needed to build tools to use data stored in this binary format. These standards are designed to facilitate the building of software for data extraction and use.</fdd:transparency>
+		<fdd:selfDocumentation>The choice of <fddLink id="fdd000307">ISO_8211</fddLink> as the serialization (encoding) to include in the standard, was &quot;to place the encoding of this standard in a standardized vehicle that provides the syntax and semantics necessary to the transport of files, records, fields and subfields accompanied by their data description in a machine-readable form.&quot;</fdd:selfDocumentation>
+		<fdd:externalDependencies>None beyond the need for specialized software.</fdd:externalDependencies>
+		<fdd:techProtection>No known concerns.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>ddf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>SDTS employs the extension used for <fddLink id="fdd000307">ISO-8211</fddLink> for modules (component files).</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>tar.gz</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Complete SDTS datasets are often bundled using tar and then compressed using gZip, yielding the two-element extension tar.gz.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>SPATIAL DATA TRANSFER STANDARD</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Should be present in subfield STID of the IDEN (identification) module(s) for a dataset.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>The string &quot;SPATIAL DATA TRANSFER STANDARD&quot; and the name of any applicable profile should be present in an IDEN module/file for a dataset.  The subfields STID and PRID are used for this purpose.</p>
+			<p>Part 2 of the SDTS standard is a vocabulary of labels/names for spatial features found on maps.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>A version of SDTS was standardized in 1994 as NIST FIPSPUB 173-1. This was superseded by a version, known as ANSI NCITS 320-1998 that was ratified by the American National Standards Institute (ANSI) June 9, 1998.  The 1998 version made extensive changes to the raster capabilities; only parts 1 and 3 were changed.  The 1998 standard was re-affirmed by ANSI in 2003 and in 2008, without change.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://webstore.ansi.org/RecordDetail.aspx?sku=ANSI+INCITS+320-1998+(R2003)</link>
+					<tag>Information technology - Spatial Data Transfer, ANSI INCITS 320-1998 (R2003)</tag>
+					<comment>Technically, this is the 2003 revision. Identical to original 1998 standard, which was re-affirmed without change in 2003 and 2008..</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://mcmcweb.er.usgs.gov/sdts/standard.html#view</link>
+					<tag>View the SDTS Document (DRAFT).</tag>
+					<comment>HTML version of the approved 1998 draft.  </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://mcmcweb.er.usgs.gov/sdts/standard.html</link>
+					<tag>FIPSPUB 173-1, 1994.  Spatial Data Transfer Standard</tag>
+					<comment>At bottom of HTML page, earlier version published by NIST.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://mcmcweb.er.usgs.gov/sdts/</link>
+					<tag>Spatial Data Transfer Standard (SDTS) Information Site</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://data.geocomm.com/sdts/fs07799.pdf</link>
+					<tag>USGS Spatial Data Transfer Standard (SDTS) Fact Sheet (May 1999)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://software.geocomm.com/translators/sdts/</link>
+					<tag>Geocommunity.com Software Translators for SDTS DEMs</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.terrainmap.com/rm39.html</link>
+					<tag>terrainmap.com blog</tag>
+					<comment>See "Free Digital Elevation Model (DEM) and Free Satellite Imagery Download Links," top 4 entries.  Accessed 25 October 2011. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://data.geocomm.com/sdts/</link>
+					<tag>Everything You Want To Know About SDTS!</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://thor-f5.er.usgs.gov/sdts/articles/ascii/sdts_tutorial.txt</link>
+					<tag>Retrieving and Unpacking SDTS Data: Tutorial and Users Manual </tag>
+					<comment>Dated Jun 23, 1998</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.3dartist.com/WP/sdts/sdtsnotes.htm</link>
+					<tag>SDTS Notes</tag>
+					<comment>By Bill Allen.  Last updated 2001.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://spatialnews.geocomm.com/whitepapers/sdts.html</link>
+					<tag>SDTS Documents</tag>
+					<comment>Produced by Spatial News from other sources.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

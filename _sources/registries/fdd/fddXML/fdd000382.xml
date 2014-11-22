@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000382" titleName="GeoJSON, Version 1.0" shortName="GeoJSON_1_0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2014-01-21</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>GeoJSON, Version 1.0</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>geospatial data formats</fdd:keyword>
+			<fdd:keyword>vector image formats</fdd:keyword>
+			<fdd:keyword>georeferenced image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>GeoJSON is a geospatial data interchange format based on JavaScript Object Notation (JSON).  GeoJSON is a format for representing a variety of geographic data structures. A GeoJSON object may represent a geometry, a feature, or a collection of features. GeoJSON supports the geometry types listed below as object types. A GeoJSON feature contains a geometry object and additional properties; a feature collection represents a list of features.</p>
+			<p>A complete GeoJSON data structure is always a single JSON object consisting of a collection of name/value pairs, known as members.   The GeoJSON specification imposes additional constraints to define a GeoJSON object:</p>
+			<ul>
+				<li>The GeoJSON object must have a member with the name &quot;type&quot;.  The value of the type member must be one of: <i>Point</i>, <i>MultiPoint</i>, <i>LineString</i>, <i>MultiLineString</i>, <i>Polygon</i>, <i>MultiPolygon</i>, <i>GeometryCollection</i>, <i>Feature</i>, or <i>FeatureCollection</i>.</li>
+				<li>A GeoJSON object may have an optional &quot;crs&quot; member, the value of which must be a coordinate reference system object</li>
+				<li>A GeoJSON object may have a &quot;bbox&quot; member, the value of which must be a bounding box array</li>
+			</ul>
+		</fdd:description>
+		<fdd:shortDescription>A geospatial data interchange format based on JavaScript Object Notation (JSON). </fdd:shortDescription>
+		<fdd:productionPhase>An interchange format for geospatial data, typically used during data collection or to transmit selected structured data to a system that will further manipulate the data and/or present it to end users.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000381</fdd:id>
+					<fdd:shortName>JSON</fdd:shortName>
+					<fdd:titleName>JSON (JavaScript Object Notation)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has extension</fdd:typeOfRelationship>
+				<fdd:comment>TopoJSON, describes lines and polygons in terms of shared arcs.  Not described separately on this resource at this time.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse/>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Openly documented.  Developed by a group of individuals in 2008.  Published as an Internet Draft in January 2014.</fdd:disclosure>
+		<fdd:documentation>
+			<a href="http://geojson.org/geojson-spec.html">The GeoJSON Format</a> at geojson.org</fdd:documentation>
+		<fdd:adoption>
+			<p>Rapidly adopted for Web applications involving mapping.  The GeoJSON site has a <a href="http://wiki.geojson.org/Users">page listing GeoJSON users</a>.</p>
+			<p>GeoJSON is used for defining geographic coverage of an App that uses Apple&apos;s iOS MapKit.  See <a href="https://developer.apple.com/library/ios/documentation/userexperience/conceptual/LocationAwarenessPG/ProvidingDirections/ProvidingDirections.html">instructions on Providing Directions in iOS</a>.  The geographic coverage file is used by the Maps app and the App
+Store, to look up apps on the App Store that are capable of
+providing directions in a target region.</p>
+			<p>Although ESRI supports a more complex JSON-based format in its GeoServices REST Specification, various open source projects, including projects by ESRI are developing conversion tools.  See <a href="#useful">Useful References</a> below.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No licensing concerns.</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>GeoJSON is based on text using UNICODE and uses a very simple structure.  The names used for object types defined in the specification are common English words.  GeoSON is easy for humans to read and write and for machines to parse and generate.  UTF-8 is most commonly used, but UTF-16 and UTF-32 are also permitted.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>See <fddLink id="fdd000381">JSON</fddLink>.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>None</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:normalDataset>
+				<p>GeoJSON is based on <fddLink id="fdd000381">JSON</fddLink> and inherits the same limitations.</p>
+				<p>JSON is intended for data interchange and does not employ strong data-typing for numbers or have explicit support for dates.  All data is represented as text, with numbers being in base 10 as sequences of digits (including the common exponent notation to express very small or very large numbers).  JSON is not appropriate for applications requiring
+binary data.  Boolean values <i>true</i> and <i>false</i> are allowed as values.  There is minimal support for coding missing data, using the <i>null</i> value.</p>
+			</fdd:normalDataset>
+			<fdd:accessSoftware>GeoJSON is sufficiently simple that support for reading or writing it has been integrated into almost every GIS system or tool used for applications on the Web.</fdd:accessSoftware>
+			<fdd:dataDocumentation>TBD</fdd:dataDocumentation>
+			<fdd:beyondDataset>None.</fdd:beyondDataset>
+		</fdd:datasetQF>
+		<fdd:gisQF>
+			<fdd:normalGIS>
+				<p>The purpose of GeoJSON is to support map generation by providing georeferencing information for features through geospatial positions, and geometry objects constructed from positions.  Positions are represented in longitude, latitude, and, optionally altitude, as decimal numbers.  The default (and strongly recommended) Coordinate Reference System is WGS84, but alternative systems can be specified.  The recommended nomenclature for CRS systems is to use OGC (Open Geospatial Consortium) URNs, for example urn:ogc:def:crs:OGC::CRS84 (for WGS84).  EPSG identifiers, originally from the European Petroleum Survey Group and now maintained by the International Association of Oil and Gas Producers (OGP) can also be used.  Alternatively, the parameters for a CRS can be linked to by URL.</p>
+			</fdd:normalGIS>
+			<fdd:metadataGIS>There are no special provisions within GeoJSON for representing richer GIS metadata as defined by FGDC or ISO 19115.  </fdd:metadataGIS>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>json</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>
+					<a href="http://en.wikipedia.org/wiki/GeoJSON">Wikipedia entry for GeoJSON</a> indicates that the file extension used for JSON is used for GeoJSON.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/json</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>
+					<a href="http://en.wikipedia.org/wiki/GeoJSON">Wikipedia entry for GeoJSON</a> indicates that the MIME type registered with IANA for JSON is used for GeoJSON.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000381">JSON</fddLink>.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes/>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://geojson.org/geojson-spec.html</link>
+					<tag>The GeoJSON Format Specification, Version 1.0</tag>
+					<comment>June 2008</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.geojson.org/</link>
+					<tag>Home page for GeoJSON format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/GeoJSON</link>
+					<tag>Wikipedia entry for GeoJSON</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>In January 2014, an Internet Draft with the GeoJSON specification was released.  As for all Internet Drafts, this is considered a work in progress and will expire in six months.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.ietf.org/id/draft-butler-geojson-00.txt</link>
+							<tag>The GeoJSON Format (Internet Draft -- while active)</tag>
+							<comment>This URL will probably fail after July 12, 2014 (its expiry date)</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://tools.ietf.org/id/draft-butler-geojson-00.txt</link>
+							<tag>The GeoJSON Format (Internet Draft)</tag>
+							<comment>This URL may continue to be accessible after the expiry date.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://gdal.org/ogr/drv_geojson.html</link>
+					<tag>GeoJSON Driver information from OGR</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://developer.apple.com/library/ios/documentation/userexperience/conceptual/LocationAwarenessPG/ProvidingDirections/ProvidingDirections.html</link>
+					<tag>Providing Directions (in Apple&apos;s iOS, for location-aware applications)</tag>
+					<comment>GeoJSON is used for defining geographic coverage of Apps in Apple&apos;s iTunes catalog.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/TopoJSON</link>
+					<tag>Wikipedia entry for TopoJSON</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/Esri/geojson-utils</link>
+					<tag>GeoJSON Utils</tag>
+					<comment>Scripts and utilities for converting between GeoJSON and Esri JSON.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://terraformer.io/arcgis-parser/</link>
+					<tag>ArcGIS JSON Parser</tag>
+					<comment>A plugin that handles 2-way conversion between GeoJSON and the JSON-based geometry format used by Esri in its GeoServices REST specification.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://blog.geomusings.com/2013/06/10/geojson-from-arcgis-server/</link>
+					<tag>GeoJSON From ArcGIS Server</tag>
+					<comment>Blog posting from June 2013, that describes a server extension to ArcGIS to support GeoJSON retrieval from the server. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000031" titleName="MrSID Image Format, Generation 2" shortName="MrSID_MG2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2012-11-13</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>MrSID Image Format (Multi-resolution Seamless Image Database), Generation 2</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>MrSID</fdd:keyword>
+			<fdd:keyword>raster image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description> MrSID is a patented, wavelet-based file format designed to enable portability of massive bit-mapped (raster) images. The format employs discrete wavelet transformations (DWT) in a seamless fashion on tile subsets of the image data and stores the wavelet coefficients in a data structure that supports efficient retrieval of the data needed to generate a specified rectangular zone of the image at a chosen spatial resolution.  The data structure of a MrSID image is a set of bitplanes designed to support 'transactions' of image data by extracting and delivering exactly and only those bitplanes necessary to construct a view according to desired scene, scale, or image quality, independent of bandwidth constraints.  The format was designed to enable instantaneous viewing and manipulation of imagery both locally and over networks without sacrificing quality.</fdd:description>
+		<fdd:shortDescription>A patented, wavelet-based file format designed to enable portability of massive bit-mapped (raster) images.  Used commonly for maps.</fdd:shortDescription>
+		<fdd:productionPhase>Most often a middle-state or final-state format.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has later version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000184</fdd:id>
+					<fdd:shortName>MrSID_MG3</fdd:shortName>
+					<fdd:titleName>MrSID Image Format, Generation 3</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>Before the development of JPEG 2000, LC used MrSID_MG2 as a service format for large digitized images (primarily maps). Between 1996 and 2005, LC created MrSID_MG2 derivatives from master uncompressed TIFF images (<fddLink id="fdd000023">TIFF_UNC</fddLink>) to facilitate zooming for close study of detail over the web.  JPEG 2000 (Part 1, lossy), <fddLink id="fdd000140">J2K_C_LSY</fddLink>, is now used in place of MrSID, and substitution of JPEG 2000 for MrSID images produced earlier has been completed.</fdd:experience>
+		<fdd:preference>Neither preferred nor acceptable as a master format.    </fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Proprietary format. Owned by <a href="http://www.lizardtech.com/">LizardTech</a>, subsidiary of Celartem Technology Inc. (HERCULES:4330), a Japan-based technology company focused on storage and distribution technologies for digital images.</fdd:disclosure>
+		<fdd:documentation>No public specification.  Documentation for the GeoExpress software development toolkit includes information about compression options, metadata support, and some information about the file format.  U.S. Patent 5,710,835 provides information about the compression methodology.</fdd:documentation>
+		<fdd:adoption>
+			<p>Adoption has been quite extensive for certain categories of image (e.g. maps, aerial photography), particularly in the cartographic community.  Most GIS applications use the MrSID SDK to integrate MrSID support into their tools.</p>
+			<p>Libraries and other archival institutions have used it as a service format, but usually considered uncompressed TIFFs as the master or archival form.  As tools for JPEG 2000 (Part 1, lossy) became available in 2004, use of that format (also based on wavelet compression) began to replace MrSID in some library contexts.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+Proprietary wavelet compression is exploited by LizardTech. U.S. Patent 5,710,835 was granted to Jonathan Bradley, et al. in January 1998 for an invention related to storage and retrieval of data contained in very large digital images.  Quoting from the patent application, "This invention was made with government support under Contract No. W-7405-ENG-36 awarded by the U.S. Department of Energy. The government has certain rights in the invention."  Very few products can be used for compression/encoding beyond LizardTech's own. LizardTech's own encoding product is priced based on annual compression volume.
+		</fdd:licensingAndPatents>
+		<fdd:transparency>The format for image data is proprietary.  Use requires sophisticated decompression tools, available only in compiled form through a licensed SDK (software developers toolkit).  Equivalent tools could only be built with full access to the proprietary specifications.</fdd:transparency>
+		<fdd:selfDocumentation>
+			TBD.
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			None
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			None
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>Good support.</fdd:normalImage>
+			<fdd:clarity>Excellent support for images with very high spatial resolution.  An FAQ page dated 2001 stated, in relation to tonal resolution, "Currently, MrSID Geo works only with grayscale and RGB imagery (8- and 24-bit images). Multi-spectral data will be supported in the near future." </fdd:clarity>
+			<fdd:colorMaint>TBD</fdd:colorMaint>
+			<fdd:graphics>No support for vector graphics.</fdd:graphics>
+			<fdd:beyondImage>Since MrSID is widely used for geospatial images, it incorporates metadata to support georeferencing, geo-rectification, etc. for use in GIS systems.</fdd:beyondImage>
+		</fdd:stillImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>sid</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>image/x-mrsid-image</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>ASCII: msid</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Observed as first 4 characters of MrSID files created at LC.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:history>LizardTech was founded in 1992 to build valuable business solutions from technologies created by the leading research organizations including Los Alamos National Laboratory (LANL) and AT&amp;T Labs.  The compression technology in the MrSID format was developed at LANL.  LizardTech licensed Generation I of its patented MrSID software from Los Alamos National Laboratory. MrSID was developed by the same team that created the standard for storage and transfer of the FBI's large fingerprint image library.  In early 2005, the LizardTech product line that incorporates MrSID encoding used the name GeoExpress; ExpressServer supports image delivery.</fdd:history>
+	</fdd:notes>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.google.com/patents?id=40kbAAAAEBAJ&amp;dq=5,710,835</link>
+					<tag>U.S. Patent 5,710,835</tag>
+					<comment>Storage and retrieval of large digital images.
+ Inventor: Jonathan N. Bradley</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.lizardtech.com/products/geoexpress/</link>
+					<tag>GeoExpress product information</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://web.archive.org/web/20110522210303/http://www.lizardtech.com/files/geo/techinfo/MrSID_Tech_Primer.pdf</link>
+					<tag>MrSID Technology Primer</tag>
+					<comment>2004.  Explanation of multiresolution structure.  Via Internet Archive.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.lizardtech.com/developer/</link>
+					<tag>LizardTech Developer Site</tag>
+					<comment>Provides access to SDK toolkit and documentation. As of 2011, download of the Decode toolkit required registration, but no other commitment was needed. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.lizardtech.com/downloads/category/</link>
+					<tag>LizardTech Downloads Site</tag>
+					<comment>Offers free download of viewers for Windows and iOS.  GeoViewer for Windows supports conversion from MrSID to GeoTIFF, PNG, or JPEG</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/392</link>
+					<tag>PRONOM entry for MrSID</tag>
+					<comment>PUID is fmt/392.  As of November 2012, PRONOM does not distinguish between generations of MrSID format.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:articleReference>
+					<articleRefDetail rel="au">Deal, John Grizz</articleRefDetail>.  "<articleRefDetail rel="atitle">Massive Raster Imagery: A new standard for compressing and displaying files is born.</articleRefDetail>&quot;    <articleRefDetail rel="jtitle">Earth Observation Magazine</articleRefDetail>, <articleRefDetail rel="date">March 1998</articleRefDetail>.  The magazine has ceased publication.  The article is accessible through the Internet Archive at <a href="http://web.archive.org/web/20041101042311/http://www.eomonline.com/Common/Archives/1998mar/98mar_deal.html">http://web.archive.org/web/20041101042311/http://www.eomonline.com/Common/Archives/1998mar/98mar_deal.html</a>
+				</fdd:articleReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:usefulReferences>
+</fdd:FDD>

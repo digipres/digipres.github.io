@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000143" titleName="JPEG 2000 Part 1 (Core) jp2 File Format" shortName="JP2_FF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-wrapper</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2011-12-20</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ISO/IEC 15444-1:2004. Information technology -- JPEG 2000 image coding system -- Part 1: Core coding system, Annex I: JP2 file format syntax (formal name) JPEG 2000 jp2 file format (common name)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>JPEG 2000</fdd:keyword>
+			<fdd:keyword>jp2</fdd:keyword>
+			<fdd:keyword>raster image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>Wrapper developed by the Joint Photographic Experts Group (JPEG) for still images using JPEG 2000 core encoding.  Its role (although not its extended capabilities) has been compared to that played by <fddLink id="fdd000018">JFIF</fddLink> for <fddLink id="fdd000017">JPG_DCT</fddLink> (JPEG encoding).  The extended capabilities of JP2 grow out of its object-based design and its ability to wrap object types beyond JPEG 2000 core bitstreams, e.g., auxiliary opacity/transparency channels, color profile information, and other metadata.  See <a href="#notes">Notes</a> below for additional information.</fdd:description>
+		<fdd:shortDescription>Wrapper developed by the Joint Photographic Experts Group (JPEG) for still images using JPEG 2000 core encoding.  The extended capabilities of JP2 grow out of its object-based design and its ability to wrap object types beyond JPEG 2000 core bitstreams, e.g., auxiliary opacity/transparency channels, color profile information, and other metadata.</fdd:shortDescription>
+		<fdd:productionPhase>May be used for content in initial, middle, and final states.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000079</fdd:id>
+					<fdd:shortName>ISO_BMFF</fdd:shortName>
+					<fdd:titleName>ISO Base Media File Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000167</fdd:id>
+					<fdd:shortName>JP2_J2K_C_LL</fdd:shortName>
+					<fdd:titleName>JP2 File Format with JPEG 2000 Core Coding, Lossless</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000168</fdd:id>
+					<fdd:shortName>JP2_J2K_C_LSY</fdd:shortName>
+					<fdd:titleName>JP2 File Format with JPEG 2000 Core Coding, Lossy</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000195</fdd:id>
+					<fdd:shortName>JP2_J2K_C_Profile_0</fdd:shortName>
+					<fdd:titleName>JP2 File with Profile 0 for JPEG 2000 Part 1, Core Coding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000197</fdd:id>
+					<fdd:shortName>JP2_J2K_C_Profile_1</fdd:shortName>
+					<fdd:titleName>JP2 File with Profile 1 for JPEG 2000 Part 1, Core Coding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000212</fdd:id>
+					<fdd:shortName>JP2_J2K_C_Profile_3</fdd:shortName>
+					<fdd:titleName>JP2 File with Profile 3 for JPEG 2000 Part 1, Core Coding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000214</fdd:id>
+					<fdd:shortName>JP2_J2K_C_Profile_4</fdd:shortName>
+					<fdd:titleName>JP2 File with Profile 4 for JPEG 2000 Part 1, Core Coding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000169</fdd:id>
+					<fdd:shortName>JP2_J2K_C_BIIF_01_00</fdd:shortName>
+					<fdd:titleName>JP2 File with BIIF Profile for JPEG 2000 Part 1, Core Coding, Version 01.00</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000193</fdd:id>
+					<fdd:shortName>JP2_J2K_C_NDNP</fdd:shortName>
+					<fdd:titleName>JP2 File with NDNP Profile for JPEG 2000 Part 1, Core Coding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>JP2_FF files with lossy compression are being used for the service images of maps in American Memory, where they have replaced the <fddLink id="fdd000031">MrSID</fddLink> files used formerly to provide zoom capabilities for large images.  Meanwhile, the Library and the National Endowment for the Humanities have specified <fddLink id="fdd000193">JP2_J2K_C_NDNP</fddLink> for use as lossy-compressed service images in the <a href="http://www.loc.gov/ndnp/">National Digital Newspaper Program</a>, launched during 2004.  MXF files that wrap JPEG 2000 codestreams (bitstreams not wrapped in the file format described here) are the preservation masters in the video reformatting work carried out by the Library's Motion Picture, Broadcasting, and Recorded Sound Division at the Packard Campus.  These video-frame-image codestreams are encoded with lossless <fddLink id="fdd000139">J2K_C_LL</fddLink>.</fdd:experience>
+		<fdd:preference>For still images, as of 2011, the Library employs JPEG 2000 as service images and continues to create uncompressed bitmaps in TIFF files as masters.  At this time, however, Library staff investigate options for creating masters for some content classes as JPEG 2000 files.  Meanwhile, lossless JPEG 2000 encoding is in use for preservation master copies of video recordings.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Open standard.  Developed by Joint Technical Committee ISO/IEC JTC 1, Information technology, Subcommittee SC 29, Coding of audio, picture, multimedia and hypermedia information incollaboration with ITU-T.</fdd:disclosure>
+		<fdd:documentation>
+			<p>ISO/IEC 15444-1:2004. Information technology -- JPEG 2000 image coding system -- Part 1: Core coding system, Annex I: JP2 file format syntax.</p>
+			<p>See complete list of ISO/IEC JPEG 2000 documents in <a href="#specs">Format specifications</a> below.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>There is increasing implementation of JPEG 2000 in archive and library digitization of books, pictorial collections, maps, and other materials that can be reproduced as still images.  A good overview was provided at the <a href="http://www.digitizationguidelines.gov/resources/jpeg2000.html">JPEG 2000 Summit</a> held at the Library of Congress in 2011.  Meanwhile, the <a href="http://jpeg2000wellcomelibrary.blogspot.com/">Wellcome Library</a> in the UK has evangelized for greater use of the format in digitization projects. Some cultural heritage institutions, including the Library of Congress, formerly used MrSID to support zoom views of large images such as maps and have now migrated to JPEG 2000 as a service format, often implemented to create <fddLink id="fdd000013">JPEG_DCT</fddLink> (the earlier JPEG codec) images on the fly for presentation in the browser. </p>
+			<p>Many image manipulation programs and software libraries can now read and write JP2 files.  Insight (Luna), ContentDM (DiMeMa), and Digitool (Ex Libris) can now use JPEG2000 and have deployed server-side transformation to deliver an image to the user within a regular web-browser. Software encoders designed for general DSP (digital signal processing) chips are now available.  </p>
+			<p>Examples of significant adoption of JPEG2000 include the Digital Cinema Initiative (see <fddLink id="fdd000200">Digital Cinema Initiative Package (DCP), Version 1.0</fddLink>) and use by the <a href="http://hirise.lpl.arizona.edu/images/jp2.html">High Resolution Imaging Science Experiment (HiRISE)</a> flying on board NASA's MARS Reconnaissance Orbiter mission.</p>
+			<p>At the same time, JPEG 2000 encoding is not generally built into still-photography camera chips nor is JPEG 2000 decoding native to Web browsers, and this has led some commentators to compare JPEG 2000 unfavorably to <fddLink id="fdd000013">JPEG_DCT</fddLink> in terms of adoption.  JPEG_DCT is native to virtually all still-image digital cameras and Web browsers.  Meanwhile, however, JPEG 2000 has begun to appear as a built-in option in moving image cameras. </p>
+			<p>Earlier indications of adoption were reported in the <i>Guide to the Practical Implementation of JPEG 2000</i> (2003, see <a href="#useful">Useful references</a> below): "Some of the aerial photography on the street-mapping web site MapQuest.com is provided by a JPEG 2000 back-end system, chosen for its ability to extract small regions from very large images at high speed.  Yahoo! Messenger, an instant-messaging client with video capabilities, also uses JPEG 2000, to achieve high compression and hence higher resolution and frame-rate. In both cases, the use of JPEG 2000 is not typically manifest to the end-user." See also Peter Murray's 2004 presentation <a href="http://old.cni.org/tfms/2004b.fall/abstracts/PB-adoption-murray.html">Adoption of JPEG 2000 by Libraries and Archives</a>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>Licensing is associated with the encoding; see <fddLink id="fdd000138">J2K_C</fddLink>.
+		</fdd:licensingAndPatents>
+		<fdd:transparency>See <fddLink id="fdd000138">J2K_C</fddLink>
+		</fdd:transparency>
+		<fdd:selfDocumentation>A small set of metadata is required: basic image data (height, width, number of components, bit-depth); color specification (see notes on color maintenance below), and a flag indicating the presence or absence of intellectual property information.  This may be supplemented by optional information, e.g., capture or dispay resolution (relating pixel size to physical size) and by data presented in three optional <i>boxes</i>: (1) a box for XML data (specific recommendations regarding XML are provided in Part 2 of the standard and pertain to <fddLink id="fdd000154">JPX</fddLink> but may be used in JP2 as well), (2) an IPR box (see technical protection considerations just below), and (3) a UUID box which provides for an object identifier or identifier-references to other digital objects (described by one commentator as providing a generic mechanism for extending the file format to include application-specific data).
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>Like the rest of the members of the JPEG 2000 file format family, JP2_FF provides an IPR box for rights management information that may be used as inputs to access management systems.  Additional related elements are covered by part 8 of the specification, JPEG 2000 image coding system: Secure JPEG 2000.  The compilers of this Web site have not investigated Secure JPEG 2000.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>Good support</fdd:normalImage>
+			<fdd:clarity>See <fddLink id="fdd000138">J2K_C</fddLink>
+			</fdd:clarity>
+			<fdd:colorMaint>Rich support, further extended in <fddLink id="fdd000154">JPX</fddLink>.  In JP2_FF, the color space of the decompressed image data is indicated in the Color Specification box inside the JP2 Header box, which contains the ICC profile when applicable. If the color spaces <i>sRGB</i>, <i>sYCC</i>, or the defined greyscale space are used, this is indicated by a number. For palettized images, the Palette box holds the look-up table and the Component Mapping box defines which codestream components map to which palette components or bypass the palette. The resulting components are called channels in the standard to distinguish them from the initial codestream components. Finally, the Channel Definition box maps codestream components (if unpalettized) or channels to color components, allowing them to be permuted if desired and enabling support for alphachannels (opacity) as well as color channels.  Note that <fddLink id="fdd000138">J2K_C</fddLink> provides information about actual color encoding.</fdd:colorMaint>
+			<fdd:graphics>No support for vector graphics.</fdd:graphics>
+			<fdd:multispectral>Not supported in JP2_FF; support is provided in <fddLink id="fdd000154">JPX_FF</fddLink>.</fdd:multispectral>
+			<fdd:beyondImage>The JPEG 2000 family offers many extended functionalities, some of which grow out of the options of scalability offered by the various encodings, and which extend to the interactivity provided by JPIP, Part 9 of the JPEG 2000 standard; see <a href="http://www.jpeg.org/jpeg2000/j2kpart9.html">JPEG 2000 Interactive Protocol</a>.
+			</fdd:beyondImage>
+		</fdd:stillImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>jp2</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>image/jp2</fdd:sigValue>
+					<fdd:sigValue>image/jpeg2000</fdd:sigValue>
+					<fdd:sigValue>image/jpeg2000-image</fdd:sigValue>
+					<fdd:sigValue>image/x-jpeg2000-image</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From the <a href="http://filext.com/">File Extension Source</a>; the first MIME is also provided by <a href="http://www.rfc-editor.org/rfc/rfc3745.txt">http://www.rfc-editor.org/rfc/rfc3745.txt</a>
+				</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 00 00 00 0C 6A 50 20 20 0D 0A 87 0A 00 00 00 14 66 74 79 70 6A 70 32</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From the <a href="http://filext.com/">File Extension Source</a>; Annex I of the official specification indicates that this string includes the Signature Box identifier and contents and the File Type Box identifier.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>File type brand (ISO Base Media File Format)</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>jp2\040 [jp2 plus the space character]</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Value in the File Type Box, which is similar to the <fddLink id="fdd000079">ISO_BMFF</fddLink> file type box.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Uniform Type Identifier (Mac OS)</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>jp2\040</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>As specified by Annex I.2.1 of the specification.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>The JPEG 2000 file format family includes:</p>
+			<ul>
+				<li>JP2_FF, JPEG 2000 Part 1 (Core) jp2 File Format (this document)</li>
+				<li>
+					<fddLink id="fdd000154">JPX_FF</fddLink>, JPEG 2000 Part 2 (Extensions) jpf (jpx) File Format</li>
+				<li>
+					<fddLink id="fdd000144">JPM_FF</fddLink>, JPEG 2000 Part 6 (Compound) jpm File Format</li>
+			</ul>
+			<p>The family is descended from <fddLink id="fdd000052">QuickTime</fddLink>.  This lineage is shared with <fddLink id="fdd000079">ISO_BMFF</fddLink> and its offshoots, which include <fddLink id="fdd000155">MP4_FF_2</fddLink>, <fddLink id="fdd000137">MP4_FF_AVCE</fddLink>, and <fddLink id="fdd000127">MJ2_FF</fddLink>, itself a wrapper for JPEG 2000 core-encoded images that represent sets of film or video frames.</p>
+			<p>From <i>Guide to the Practical Implementation of JPEG 2000</i>, cited in <a href="#useful">Useful references</a> below: "JP2 was designed to be inherently extensible. The extended file formats that are defined in later parts of the standard all incorporate a degree of backwards-compatibility with JP2: for each extended format it is possible to construct extended files that also conform to JP2. (A JP2 reader would ignore any extensions that it did not understand.) Thus, the definition of JP2 in Part 1 can also be considered an implicit definition of an architecture known informally as the JP family . . . .  A JP family file is a sequence of boxes. [These are called <i>atoms</i> in the QuickTime specification. -- <i>ed</i>]  A box consists of a 4-byte length field followed by a 4-byte type field followed by the content of the box. The content is defined for each box type and may include boxes. A box whose content consists only of boxes is called a superbox. There are two special values of the length field. A value of zero means that the box extends to the end of the file. A value of 1 means that the true length of the box follows the type field (before the content) in an 8-byte extended length field; this permits boxes up to (2<sup>64</sup> - 1) bytes in length. The length includes the whole box from the start of the length field to the end of the content."</p>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 15444-1:2004.  Information technology -- JPEG 2000 image coding system: Core coding system. Defines a set of lossless (bit-preserving) and lossy compression methods for coding bi-level, continuous-tone grey-scale, palletized colour, or continuous-tone colour digital still images; specifies decoding processes for converting compressed image data to reconstructed image data; specifies a codestream syntax containing information for interpreting the compressed image data; specifies a file format; provides guidance on encoding processes for converting source image data to compressed image data; provides guidance on how to implement these processes in practice.  Also: Cor. 1 (2007) and 2 (2008); Amd. 1 (2006), Profiles for digital cinema applications; Amd. 2 (2009), Extended profiles for cinema and video production and archival applications; Amd. 3 (2010), Profiles for broadcast applications.</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 15444-2:2004.  Information technology -- JPEG 2000 image coding system: Extensions. Defines a set of lossless (bit-preserving) and lossy compression methods for coding continuous-tone, bi-level, grey-scale, colour digital still images, or multi-component images; specifies extended decoding processes for converting compressed image data to reconstructed image data; specifies an extended codestream syntax containing information for interpreting the compressed image data; specifies an extended file format; specifies a container to store image metadata; defines a standard set of image metadata; provides guidance on extended encoding processes for converting source image data to compressed image data; provides guidance on how to implement these processes in practice.  Also: Cor. 3 (2005) and 4 (2007); Amd. 2 (2006), Extended capabilities marker segment.</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 15444-3:2007.  Information technology -- JPEG 2000 image coding system -- Part 3: Motion JPEG 2000. Specifies The use of the wavelet-based JPEG 2000 codec for the coding and display of timed sequences of images (motion sequences), possibly combined with audio, and composed into an overall presentation. In this specification, a file format is defined, and guidelines for the use of the JPEG 2000 codec for motion sequences are supplied. ISO/IEC 15444-3:2007 also specifies profiles and the framework, concepts, methodology for testing and the criteria to be achieved to claim compliance.  Also: Amd. 1 (2010), Additional profiles for archiving applications.</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 15444-4:2004.  Information technology -- JPEG 2000 image coding system -- Part 4: Conformance testing. Specifies the framework, concepts, methodology for testing, and criteria to be achieved to claim compliance to ITU-T Recommendation T.800 | ISO/IEC 15444-1. It provides a framework for specifying abstract test suites and for defining the procedures to be followed during compliance testing; specifies compliance testing procedures for encoding and decoding using JPEG 2000 Part 1; specifies codestreams, decoded images, and error metrics to be used with the testing procedures; specifies abstract test suites; provides guidance for creating an encoder compliance test.</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 15444-5:2003.  Information technology -- JPEG 2000 image coding system: Reference software. Provides two independently created software reference implementations of ISO/IEC 15444-1, in order to assist implementers of ISO/IEC 15444-1 in testing and understanding its content.  The reference software is informative only.  ISO/IEC 15444-5:2003 does not define any additional part of the JPEG 2000 image coding system. . . .  Note that the reference software does not implement a conforming JP2 file reader.  Also: Amd. 1 (2003), Reference software for the JP2 file format.</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 15444-6:2003.  Information technology -- JPEG 2000 image coding system -- Part 6: Compound image file format. Defines a normative but optional file format for storing compound images using the JPEG 2000 file format family architecture. A compound image is an image that may contain scanned images, synthetic images or both, and that preferably requires a mix of continuous tone and bi-level compression methods. Besides defining a binary container for a mix of continuous-tone and bi-level images, this format defines a composition model that describes how the multiple images are combined to generate a compound image. This composition model is based on the multi-layer Mixed Raster Content (MRC) imaging model, defined in ITU-T T.44 | ISO/IEC 16485.  The name of the file format defined in this part of ISO/IEC 15444 is JPEG 200 Multi-layer or JPM.  Part 6 includes: a binary container for multiple bi-level and continuous-tone images used to represent a compound image; a mechanism by which multiple images can be combined into a single compound image, based on the Mixed Raster Content model; a mechanism for grouping multiple images in a hierarchy of layout objects, pages and page collections; a mechanism for storing JPEG 2000 and other compressed image data formats; a mechanism by which metadata can be included in files specified by ISO/IEC 15444-6:2003.</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 15444-8:2007 
+Information technology -- JPEG 2000 image coding system: Secure JPEG 2000.  Part 8: ISO/IEC 15444-8:2007 specifies the framework, concepts, and methodology for securing JPEG 2000 codestreams. It defines (a) a normative codestream syntax containing information for interpreting secure image data;(b) a normative process for registering JPSEC tools with a registration authority delivering a unique identifier; (c) informative examples of JPSEC tools in typical use cases;
+(d) informative guidelines on how to implement security services and related metadata.
+ Also: Amd. 1 (2008), File format security.</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 15444-9:2005 
+Information technology -- JPEG 2000 image coding system: Interactivity tools, APIs and protocols. Part 9: Defines, in an extensible manner, syntaxes and methods for the remote interrogation and optional modification of JPEG 2000 codestreams and files. . . . the defined syntaxes and methods are referred to as the JPEG 2000 Interactive Protocol, &quot;JPIP&quot;, and interactive applications using JPIP are referred to as &quot;JPIP systems&quot;.  Also: Cor. 1 (2007) and Cor. 2 (2008); Amd. 1 (2006), APIs, metadata, and editing; Amd. 2 (2008), JPIP extensions; Amd. 3 (2008), JPIP extensions to 3D data; Amd. 4 (2010), JPIP server and client profiles.</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 15444-10:2008. 
+Information technology -- JPEG 2000 image coding system: Extensions for three-dimensional data. Part 10: defines a set of lossless (bit-preserving) and lossy compression methods for coding continuous-tone, bi-level, grey-scale, colour digital volumetric images, or multi-component volumetric images. This set of methods extends the elements in the core coding system defined in ISO/IEC 15444-1 and ISO/IEC 15444-2. . . .  ISO/IEC 15444-10:2008 also defines extensions to the compressed data format, i.e. interchange format and the abbreviated formats.
+
+In particular, for ISO/IEC 15444-2, the following extensions are supported by ISO/IEC 15444-10:2008:
+variable DC offset; arbitrary wavelet transform kernels; multi-component transformations;
+non-linear transformations;
+region-of-interest.
+</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 15444-11:2007 
+Information technology -- JPEG 2000 image coding system: Wireless.  Part 11: Provides a syntax that allows JPEG 2000 coded image data to be protected for transmission over wireless channels and networks. Protection services include error detection and correction capability for header and bitstream, description of the error sensitivity of different portions of the compressed data, and description of possible residual errors in the compressed data. . . .  These services are designed so as to maintain the inherent features of JPEG 2000, such as scalability and access to various spatial areas, resolution levels, colour components and quality layers.</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 15444-12:2008.  Information technology -- JPEG 2000 image coding system -- Part 12: Specifies the ISO base media file format, which is a general format forming the basis for a number of other more specific file formats. This format contains the timing, structure, and media information for timed sequences of media data, such as audio/visual presentations.
+
+ISO/IEC 15444-12:2008 is applicable to JPEG 2000, but its technical content is identical to that of ISO/IEC 14496-12:2008, which is applicable to MPEG-4. Also: Amd.1 (2009), General improvements including hint tracks, metadata support and sample groups; Cor. 1 (2008), Cor. 2 (2009), Cor. 3 (2009), Cor. 4 (2011).</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 15444-13:2008 
+Information technology -- JPEG 2000 image coding system: An entry level JPEG 2000 encoder.  Part 13: Defines a normative entry level JPEG 2000 encoder providing one or more optional complete encoding paths that use various features defined in ISO/IEC 15444. It provides for an entry-level encoder that can be used in various applications with guidelines on its use, based on patents for which royalty and license fee free declarations are available.
+
+Also defines a set of lossless (bit-preserving) and lossy compression methods for coding bi-level, continuous-tone greyscale, palletized colour, or continuous-tone colour digital still images.</fdd:specReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.jpeg.org/jpeg2000/</link>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.digitizationguidelines.gov/resources/jpeg2000.html</link>
+					<tag>Federal Agencies JPEG 2000 Summit</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://jpeg2000wellcomelibrary.blogspot.com/</link>
+					<tag>Wellcome Library (UK) blog on JPEG 2000 for digitization</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.jpeg.org/jpeg2000/j2kpart9.html</link>
+					<tag>About the JPIP interactive protocol</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://web.archive.org/web/20090214200733/http://www.compression-links.info/JPEG2000</link>
+					<tag>Compression Links Info: JPEG 2000 Area</tag>
+					<comment>IA archived version of a site with links to compression performance outcomes and comparisons of JPEG 2000 compression to that of other codecs.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://compression.ru/video/codec_comparison/jpeg2000_codecs_comparison_en.html</link>
+					<tag>MSU JPEG 2000 Image Codecs Comparison</tag>
+					<comment>Includes comparison of JPEG 2000 compression performance by different applications.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ietf.org/rfc/rfc3745.txt</link>
+					<tag>MIME types for JPEG 2000</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.c10n.info/?s=jpeg2000</link>
+					<tag>Data Compression News Blog: JPEG2000</tag>
+					<comment>(http://www.c10n.info/?s=jpeg2000)</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.cni.org/topics/metadata/adoption-of-jpeg-2000-by-libraries-and-archives-the-future-of-digital-imaging/</link>
+					<tag>Adoption of JPEG 2000 by Libraries and Archives</tag>
+					<comment>2004 presentation at CNI by Peter Murray.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://dltj.org/article/j2kig-minutes/</link>
+					<tag>Minutes of the ALA/LITA JPEG2000 Interest Group meeting in June 2006</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.loc.gov/ndnp/guidelines/</link>
+					<tag>National Digital Newspaper Program technical guidelines</tag>
+					<comment>Includes documents that pertain to implementation of JPEG 2000.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://hiroc.lpl.arizona.edu/images/jp2.html</link>
+					<tag>High Resolution Imaging Science Experiment: JPEG2000 FAQ</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.accusoft.com/picmedx.htm</link>
+					<tag>PICTools Medical
+advanced medical imaging technology</tag>
+					<comment>Example of JPEG 2000 in medical imaging.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.absolutvision.com/</link>
+					<tag>AbsolutVision</tag>
+					<comment>JPEG 2000 at a stock picture agency.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:bookReference>Colyer, Greg and Richard Clark. <i>Guide to the Practical Implementation of JPEG 2000.</i> London: British Standards Institute, 2003.  ISBN: 0580412423 BSI: PD 6777:2003.  Available as PDF file; link to point-of-sale and references to other helpful works at <a href="http://www.jpeg.org/jpeg2000/index.html">http://www.jpeg.org/jpeg2000/index.html</a>.</fdd:bookReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:usefulReferences>
+</fdd:FDD>

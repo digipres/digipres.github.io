@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?altova_sps fddCreation.sps?>
+<fdd:FDD id="fdd000004" titleName="Advanced Authoring Format (AAF) Object, Version 1.1" shortName="AAF_1_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd=".\fdd.xsd" xsi:schemaLocation=".\fdd.xsd fdd.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenres>
+				<fdd:gdfrGenre>moving-image</fdd:gdfrGenre>
+				<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+			</fdd:gdfrGenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-wrapper</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:updates>
+			<fdd:date>2011-12-16</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Advance Authoring Format (AAF) Object Specification, Version 1.1</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>AAF</fdd:keyword>
+			<fdd:keyword>wrapper formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>Object-based file format that wraps metadata together with video, audio, and other bitstreams ("essences"), optimized for the interchange of content by creators ("authors") across platforms and between applications, generally intended for implementation in computer systems. Essences may also be external, e.g., a videotape.</p>
+			<p>Most commentators describe AAF as "wrapping all elements of a project for continued production or archiving" and "allowing for the expression of complex relationships between parts," while they describe the <fddLink id="fdd000013">MXF</fddLink> subtype as "the 'digital equivalent of videotape,'" an allusion to tape's simple, linear structure.  See the Notes for <fddLink id="fdd000013">MXF</fddLink> for a comparison of AAF and MXF.</p>
+			<p>AAF metadata is stored in Mobs (Metadata objects) that are equivalent to <i>packages</i> in the <fddLink id="fdd000013">MXF</fddLink> format; Mobs were called "packages" in earlier versions of AAF.  <i>CompositionMobs</i> describe creative decisions on how to combine or modify essences, <i>MasterMobs</i> collect and may synchronize essence data, and provide indirect access to essences independent of storage details, <i>File SourceMobs</i> provide direct access to and describe essences, which may be stored as computer files, and <i>Physical SourceMobs</i> describe physical media such as a videotape or film.  Packages similar to these exist in MXF, excepting <i>CompositionMobs</i>.</p>
+			<p>Mobs have one or more <i>MobSlots</i> that represent the passage of time, and are thus equivalent to MXF <i>tracks</i>: <i>StaticMobSlots</i> describe essences with no specific relationship to time, e.g., static text; <i>TimelineMobSlots</i> describe essence data that has a fixed or continuous relationship with time, e.g., video, audio, timecode; <i>EventMobSlots</i> describe essence data that has an irregular relationship with time, e.g., events controlled by signals sent to the GPI (General-Purpose Interface) port on various video devices.</p>
+			<p>
+				<a href="#specs">Specifications</a> for the AAF <i>Stored Format</i> and the AAF <i>Low-Level Container</i> describe the relationship of the format to Microsoft's Structured Storage specification; platform support, however, extends to Macintosh, Linus, Irix, and Solaris operating systems.</p>
+		</fdd:description>
+		<fdd:shortDescription>AAF is an object-based file format that wraps metadata together with video, audio, and other bitstreams optimized for the interchange of content by creators across platforms and between applications.  Designed for editing, compare AAF to MXF called the &quot;equivalent to videotape.&quot;</fdd:shortDescription>
+		<fdd:productionPhase>Initial-state for editing, or middle-state format for material exchange or archiving.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000013</fdd:id>
+					<fdd:shortName>MXF</fdd:shortName>
+					<fdd:titleName>Material Exchange Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>Various video, sound, and other essences (bitstreams), whose specific AAF associations are not documented at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:comment>AAF Object Versions 1.0 and 1.0.1, not documented at this time</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>See preference note.</fdd:experience>
+		<fdd:preference>The Library&apos;s Packard Campus National Audio-Visual Conservation Center employs the <fddLink id="fdd000206">MXF File, OP1a, Lossless JPEG 2000 in Generic Container</fddLink> subtype as the preservation master for reformatted video recordings.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully disclosed. Developed by the Advanced Authoring Format Association, founded in 2000 and renamed <a href="http://www.amwa.tv">Advanced Media Workflow Association, Inc.</a> (AMWA) in 2007.
+</fdd:disclosure>
+		<fdd:documentation>The object specification is titled <a href="http://www.amwa.tv/downloads/specifications/aafobjectspec-v1.1.pdf">Advanced Authoring Format (AAF) Object Specification v1.1</a> (2004-11-05).  Related specifications are titled <a href="http://www.amwa.tv/downloads/specifications/aafcontainerspec-v1.0.1.pdf">Advanced Authoring Format (AAF) Low-Level Container Specification v1.0.1</a> (2004) and <a href="http://www.amwa.tv/downloads/specifications/aafstoredformatspec-v1.0.1.pdf">Advanced Authoring Format (AAF) Stored Format Specification v1.0.1</a> (2004).	</fdd:documentation>
+		<fdd:adoption>During the period 2000-2007, there was growing interest and some use of AAF.  The main advocates were members of the (then) AAF Association, including hardware and software manufacturers (e.g., AVID and SONY), television companies (e.g., BBC and Turner networks), government (National Geospatial-Intelligence Agency [NGA], formerly the National Imagery and Mapping Agency [NIMA]), and movie studios (e.g., Warner Brothers).  Adoption was enhanced by the availability of the open source <a href="http://aaf.sourceforge.net/">AAF software developers kit (SDK)</a>.  From about 2008 forward, industry interest has focused on extending the use of the <fddLink id="fdd000013">MXF</fddLink> subtype (an SMPTE standard), especially through Application Specifications developed within the <a href="http://www.amwa.tv">AMWA</a>, the successor to the AAF Association.</fdd:adoption>
+		<fdd:licensingAndPatents>None identified; see note on external dependencies below.  A disclaimer on the AAF Object Specification cover sheet calls attention to "the possibility that implementation and compliance . . . may require the use of subject matter covered by patent rights."  The AAF Low-Level Container Specification cover sheet includes this statement: "Certain patent rights holders have filed a statement of willingness to grant a patent license to all implementers of this specification desiring to obtain such a license, consistent with the requirements of the AAFA Intellectual Property Policy . . . . all negotiations regarding such terms and conditions must take place between the individual parties outside the context of the AAFA. Further information regarding those parties who have claimed patent rights in the specification and expressed their willingness to provide a license may be obtained from the AAFA Executive Director."</fdd:licensingAndPatents>
+		<fdd:transparency>Wrapper is transparent; overall transparency depends upon the essence encoding. All video codecs depend upon algorithms and tools to read and will require sophistication to build tools.</fdd:transparency>
+		<fdd:selfDocumentation>Extensive metadata is required by or may optionally be placed in AAF files, although for the most part this is <i>system</i> or <i>structural metadata</i>, i.e., about the structure of the file, e.g., the relationship of parts, whether the essence is stored in little or big endian, index tables that provide information on the essence (display size, compression algorithm, the time line of a media clip, etc.), size of a sector, where a new partition starts, etc.  The specification does not address the topic of intellectual or "bibliographic" metadata.<br/>
+			<br/>AAF is a binary format.  In 2004, there was an effort under way to define <i>AAF-X</i>, an XML-schema-based representation of AAF metadata.  The compiler of this format description is not aware of the outcome of this effort.</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			Transparency
+		</fdd:externalDependencies>
+		<fdd:techProtection>No information found.  Since the format is used in initial- and middle-state environments (not for content distribution), protection technology may not be important at the level of the format itself.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:movingImageQF>
+			<fdd:normalVideo>AAF files are not intended to <i>play</i> in the customary sense, although an AAF application that receives a <i>composition Mob</i> will "play" the content.  AAF-capable applications are intended to support professional multimedia editing.</fdd:normalVideo>
+			<fdd:clarity>Potentially excellent; depends upon the essence encodings selected.</fdd:clarity>
+			<fdd:beyondVideo>Extensive in this authoring format, not documented here.</fdd:beyondVideo>
+		</fdd:movingImageQF>
+		<fdd:soundQF>
+			<fdd:normalSound>AAF files are not intended to <i>play</i> in the customary sense, although an AAF application that receives a <i>composition Mob</i> will "play" the content.  AAF-capable applications are intended to support professional multimedia editing.</fdd:normalSound>
+			<fdd:fidelity>Potentially excellent; depends upon encoding.</fdd:fidelity>
+			<fdd:channels>There appears to be no limit to the number of tracks; thus multiple sound tracks may be included.</fdd:channels>
+			<fdd:beyondSound>Supports various features not documented here.</fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>aaf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://filext.com/">The File Extension Source</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>Not found.</fdd:sigValueNA>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>Not found.</fdd:sigValueNA>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>File signature</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>{0x42464141, 0x000d, 0x4d4f,{0x06, 0x0e, 0x2b, 0x34, 0x01, 0x01, 0x01, 0xff}}</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>For StructuredStorages files with 512 byte sector size.  The signature is the CLSID (class identifier) of the Root IStorage. From the AAF Stored Format Specification v1.0.1, p. 13.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>File signature</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>{0x0d010201, 0x0200, 0x0000,{0x06, 0x0e, 0x2b, 0x34, 0x03, 0x02, 0x01, 0x01}}</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>For StructuredStorages files with 4096 byte sector size.  The signature is the CLSID (class identifier) of the Root IStorage. From the AAF Stored Format Specification v1.0.1, p. 13.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>In 2005, the AAF Association Web site offered this mission statement: "The Advanced Authoring Format defines authoring as 'the creation of multimedia content including related metadata.' Today, content authoring usually involves opening source media, manipulating or editing the content and then resaving. AAF aims to remove cross platform project bottlenecks often hit when files are interchanged between applications. These include loss of project metadata, the need to rewrite whole files in order to edit them, limited off-line to on-line communication, poor referencing to other files and many other issues. In an ideal environment, a user would work with many different applications without worrying about interchange."<br/>
+			<br/>In a slide show delivered in 2002, Brad Gilmer, the executive director of the AAF Association, reported that the AAF software developers kit (SDK) was being extended by SONY to permit applications to read and write MXF files. Meanwhile, the AAF Association reports that they are beginning the development of an <i>archiving protocol</i> during 2005.  Gilmer said that a protocol says, "use the AAF specifications 'this' way for 'this' application."  After 2007, similar concepts were applied by AMWA (the successor organization) as it oversees the drafting of  <a href="http://www.amwa.tv/projects/application_specifications.shtml">Application Specifications</a> for MXF, the SMPTE-standardized AAF subtype.</fdd:general>
+		<fdd:history>From the AAF Association Web site in 2005: "Incorporated in January 2000, the AAF Association, Inc. is a broadly-based trade association intended to promote the development and adoption of AAF technology throughout the media industry." The successor <a href="http://www.amwa.tv/about/">Advanced Media Workflow Assocation</a> was established in 2007.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.amwa.tv/downloads/specifications/aafobjectspec-v1.1.pdf</link>
+					<tag>Advanced Authoring Format (AAF) Object Specification v1.1</tag>
+					<comment>(2004-11-05)</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.amwa.tv/downloads/specifications/aafcontainerspec-v1.0.1.pdf</link>
+					<tag>Advanced Authoring Format (AAF) Low-Level Container Specification v1.0.1</tag>
+					<comment>(2004)</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.amwa.tv/downloads/specifications/aafstoredformatspec-v1.0.1.pdf</link>
+					<tag>Advanced Authoring Format (AAF) Stored Format Specification v1.0.1</tag>
+					<comment>(2004)</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.amwa.tv/</link>
+					<tag>Advanced Media Workflow Association</tag>
+					<comment>Successor to AAF Association.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://aaf.sourceforge.net/</link>
+					<tag>AAF software developers kit (SDK)</tag>
+					<comment/>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://filext.com/</link>
+					<tag>The File Extension Source</tag>
+					<comment/>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:bookReference>
+					<i>Motion Imaging</i>, July/August 2004.  This double issue of the monthly journal of the Society of Motion Picture, and Television Engineers (SMPTE) is devoted to the Advanced Authoring Format (AAF) and the Material Exchange Format (MXF).</fdd:bookReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:usefulReferences>
+</fdd:FDD>

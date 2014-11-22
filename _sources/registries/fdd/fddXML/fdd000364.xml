@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000364" titleName="YUY2 Video Picture Encoding" shortName="YUY2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>moving-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2013-02-12</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>YUY2 Video Picture Encoding</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>video formats</fdd:keyword>
+			<fdd:keyword>uncompressed video formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>A digital, color-difference component video picture format identified by the FOURCC code YUY2.  This format employs 4:2:2 chroma subsampling with each sample represented by 8 bits of data.  It is essentially the same as <fddLink id="fdd000365">UYVY</fddLink> but with different component ordering packed within the two-pixel macropixel: Byte 0=8-bit Y'0; Byte 1=8-bit Cb; Byte 2=8-bit Y'1; Byte 3=8-bit Cr.</p>
+			<p>The FOURCC Web site provides <a href="http://www.fourcc.org/yuv.php#YUY2">additional information and a helpful diagram</a>.  The structure appears to be the same as that of a format that Apple tags as <a href="https://developer.apple.com/library/mac/technotes/tn2162/_index.html#//apple_ref/doc/uid/DTS40013070-CH1-TNTAG8-_YUV2__4_2_2_COMPRESSION_TYPE">yuv2</a>, the designation also referenced by SMPTE in the MXF standard (ST 377-1:2009, annex G); <a href="../contact_format.shtml">Comments welcome</a>.  Using their own four-character code for this format, an <a href="https://developer.apple.com/library/mac/technotes/tn2162/_index.html">Apple developer page</a> writes, "'yuv2' is a format used by PC-based display cards . . . typically used to accelerate MPEG decompression. Macintosh built-in video digitizers also use 'yuv2'."</p>
+			<p>YUY2 encoding (like all uncompressed formats identified by FOURCC codes) allows for variation in features like picture size, aspect ratio (square or non-square pixels), component levels (i.e., levels for Y, Cb, and Cr in either video range or wide range), and a given instance may contain video from interlaced or progressive sources.  (See comment about interlacing and field order in the <a href="#notes">Notes</a> below.) In order for an application to play the video back correctly or, say, to hand it off for successful inclusion in a video production side by side with other footage, all of these facts ought to be declared in metadata embedded in the file wrapper or associated with the file. In order for an application to play the video back correctly, these facts must be declared in metadata embedded in the file wrapper or associated with the file. The need for such metadata (and a way to compensate if it is missing) is suggested by the "Appendix: Backwards Compatibility" section of an <a href="https://developer.apple.com/library/mac/technotes/tn2162/_index.html">Apple developer page</a> that provides "best assumptions" to support playback for yuv2 video when the metadata is absent.</p>
+		</fdd:description>
+		<fdd:shortDescription>A digital, color-difference component video picture format identified by the FOURCC code YUY2.  This format employs 4:2:2 chroma subsampling with each sample represented by 8 bits of data.  It is essentially the same as UYVY but with different component ordering packed within the two-pixel macropixel: Byte 0=8-bit Y'0; Byte 1=8-bit Cb; Byte 2=8-bit Y'1; Byte 3=8-bit Cr.</fdd:shortDescription>
+		<fdd:productionPhase>Employed in post-production or editing (middle phase) and dissemination (final phase).</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000366</fdd:id>
+					<fdd:shortName>AVI_YUY2</fdd:shortName>
+					<fdd:titleName>AVI File Format with YUY2 Video Encoding </fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000369</fdd:id>
+					<fdd:shortName>QT_YUY2</fdd:shortName>
+					<fdd:titleName>Quicktime File Format with YUY2 (yuv2) Video Encoding </fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000372</fdd:id>
+					<fdd:shortName>MXF_GC_UNC_YUY2</fdd:shortName>
+					<fdd:titleName>MXF Generic Container with Uncompressed Video Essence YUY2 (yuv2)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000375</fdd:id>
+					<fdd:shortName>Matroska_YUY2</fdd:shortName>
+					<fdd:titleName>Matroska File Format with YUY2 Video Encoding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:comment>Other video file wrappers not described at this Web site at this time.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>No extensive experience.</fdd:experience>
+		<fdd:preference>None. For preservation reformatting, the Library of Congress&apos; Packard Campus for Audio-Visual Conservation has chosen <fddLink id="fdd000206">MXF_OP1a_JP2_LL</fddLink> (lossless JPEG 2000 wrapped in MXF operational pattern 1a).</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>YUY2 structure is described at an open Web site managed by FOURCC.org.  The identical yuv2 format is documented by Apple at an open Web page.  Also documented by SMPTE in annex G of standard ST 377-1:2011.</fdd:disclosure>
+		<fdd:documentation>Segment on <a href="http://www.fourcc.org/yuv.php#YUY2">FOURCC.org YUV documentation</a> page.  Segment on <a href=" https://developer.apple.com/library/mac/technotes/tn2162/_index.html#//apple_ref/doc/uid/DTS40013070-CH1-TNTAG8-_YUV2__4_2_2_COMPRESSION_TYPE">Apple developer documentation</a>, page titled <i>Uncompressed Y´CbCr Video in QuickTime Files</i>.  See also SMPTE ST 377:2011, annex G.</fdd:documentation>
+		<fdd:adoption>Widely adopted.</fdd:adoption>
+		<fdd:licensingAndPatents>None.</fdd:licensingAndPatents>
+		<fdd:transparency>Relatively transparent; requires tools to write and read.</fdd:transparency>
+		<fdd:selfDocumentation>Not applicable; provided by the file wrapper.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None.</fdd:externalDependencies>
+		<fdd:techProtection>None.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:movingImageQF>
+			<fdd:normalVideo>Supported</fdd:normalVideo>
+			<fdd:clarity>Very good; this 8-bit sampling is, however, surpassed by the 10-bit sampling found in <fddLink id="fdd000353">V210</fddLink> and other encodings.  See also <a href="#notes">Notes</a> below.</fdd:clarity>
+			<fdd:beyondVideo>Not applicable.</fdd:beyondVideo>
+		</fdd:movingImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:other>
+				<fdd:tag>Microsoft FOURCC</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>YUY2</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>From the <a href="http://www.fourcc.org/yuv.php#YUY2">FOURCC YUV page</a>.  This identifier will be found in files like <fddLink id="fdd000366">AVI_YUY2</fddLink>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>yuv2</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Apple Video Codec four-character code.  From an <a href="https://developer.apple.com/library/mac/technotes/tn2162/_index.html#//apple_ref/doc/uid/DTS40013070-CH1-TNTAG8-_YUV2__4_2_2_COMPRESSION_TYPE">Apple developer page</a>.  This identifier will be found in files like <fddLink id="fdd000370">QT_YUY2</fddLink>.  Note that the same Apple developer page provides this Apple codec name: Component Video.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>AV_PIX_FMT_YUYV422</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>FFmpeg AV_PIX_FMT. From <a href="http://ffmpeg.org/doxygen/trunk/pixfmt_8h.html#a9a8e335cf3be472042bc9f0cf80cd4c5a4b8a29937744c722f35fccafb91ebdf0">this FFmpeg page</a> and <a href="http://git.videolan.org/?p=ffmpeg.git;a=blob;f=libavutil/pixdesc.c">this FFmpeg page</a> (line 143). The compiler of this resource is uncertain as to whether this identifier is found in file headers or elsewhere in the file; <a href="../contact_format.shtml">comments welcome</a>.  It may appear in applications that handle the picture data.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Registry: 06.0E.2B.34.04.01.01.0A</fdd:sigValue>
+						<fdd:sigValue>Item: 04.01.02.01.01.02.01.02</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>SMPTE Universal Label, as found in ST 377-1:2009, annex G, also in <a href="http://www.smpte-ra.org/mdd/">SMPTE Labels Registry</a> as specified in RP224v12-2012. This identifier will be found in files like <fddLink id="fdd000373">MXF_GC_UNC_YUY2</fddLink>.
+</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Interlacing and field order.</b> This writer&apos;s understanding is that, when the source footage is interlaced, YUY2 encoding does not group together all the odd and even lines as they would be grouped in the two fields that make up a video frame on, say, a videotape.  All YUY2 pixel data is presented in a left-right, top-down order that could be called progressive. To put it another way, for interlaced picture data, the tape presents alternate lines in the two fields that make up a frame: line 1, line 3, line 5, etc., and then line 2, line 4, line 6, etc.  In contrast, YUY2 encodes the data as line 1, line 2, line 3, line 4, line 5, line 6, etc.</p>
+			<p>In fact, on a tape, which comes first (1, 3, 5 or 2, 4, 6) represents what is called <i>field order</i> or <i>field cadence</i>.  There are two options for field order: <i>upper</i> (field 2 is dominant, so the second field is drawn first) and <i>lower</i> (field 1 is dominant, so the first field is drawn first).  Generally, upper is used by 640 x 480 systems, while lower is most common in professional 720 x 486 and DV 720 x 480 systems.</p>
+			<p>As noted in the Description section above, even though YUY2's serialization of the data is progressive, and many players will work well without help, it may be the case that a user will wish to "restore" footage archived as YUY2 in a manner that will, say, intercut with other footage.  Such restoration may require the decoding system to be aware that this footage was originally interlaced and to know the original field order.  That&apos;s a job for metadata.</p>
+			<p>
+				<b>8- and 10-bit sampling.</b> In principle, 10-bit encoding is superior in clarity to 8-bit, due to the reduction in tonal contouring and other artifacts.  Some specialists argue, however, that there is no benefit for certain classes of material.  One university expert wrote, &quot;We digitize Betacam SX tape to 8-bit <fddLink id="fdd000365">UYVY</fddLink> but Digibeta to 10-bit V210 because these selections align with the nature of the data that is actually sent out over SDI from these tapes. . . .  SDI is 10-bit data, but when I piped the SDI video data from an SX tape to a binary display I could see the 9th and 10th bits were always zero. Thus by taking only the first 8 bits I could get all meaningful data . . . .  I have about 3,000 SX hours to preserve and choosing 8-bit instead of 10 saves me about 90 TB of storage&quot; (private communication).</p>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://msdn.microsoft.com/en-us/library/windows/desktop/dd206750%28v=vs.85%29.aspx</link>
+					<tag>Recommended 8-Bit YUV Formats for Video Rendering (Windows)</tag>
+					<comment>Includes description of YUY2.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://developer.apple.com/library/mac/technotes/tn2162/_index.html#//apple_ref/doc/uid/DTS40013070-CH1-TNTAG8-_YUV2__4_2_2_COMPRESSION_TYPE</link>
+					<tag>yuv2 segment within Uncompressed Y´CbCr Video in QuickTime Files</tag>
+					<comment>yuv2 is Apple&apos;s code for Microsoft&apos;s and FOURCC.org&apos;s UYVY.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.fourcc.org/yuv.php#YUY2</link>
+					<tag>YUV pixel formats</tag>
+					<comment>FOURCC.org page segment on UYVY.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

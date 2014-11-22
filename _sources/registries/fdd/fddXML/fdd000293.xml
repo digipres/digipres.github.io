@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000293" titleName="ESRI Arc Geodatabase" shortName="GeoDB" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>database</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>family</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2011-08-05</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ESRI Arc Geodatabase</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>geospatial data formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The ESRI Arc Geodatabase (GeoDB) implements a data model that extends the georelational data model that is the basis for the ESRI <fddLink id="fdd000284">ArcInfo_Coverage</fddLink> data format.  For example, based on technological developments not available when the Coverage format was developed, the Geodatabase adds support for object-oriented functionality and takes advantage of the capabilities of off-the-shelf relational data base management systems. The Geodatabase data model serves as the common data storage and management framework for all ArcGIS software from v8.0 onward.  The data model supports, as standard, a rich collection of objects (rows in a database table) and features (objects with geometry).  It also supports advanced feature types such as geometric and logical networks, true curves, complex polylines, and user-defined features.  Vector features can have two, three, or four dimensions (<i>x, y, z, </i>and <i>m</i>).  Users can define topological and association relationships and rules that define how feature classses interact. </p>
+			<p>Included in the Geodatabase model is a storage mechanism for spatial and attribute data that contains specific storage structures for features, collections of features, attributes, relationships between attributes, and relationships between features.  The Geodatabase has two major concepts:  first, a physical store of geographic information inside a relational database management system (DBMS);  secondly, a data model that supports objects with attributes and behavior, and transactional views of the database including versioning. Behavior describes how an object or feature can be edited and displayed.  Behavior includes, but is not limited to relationships, validation rules, subtypes, and default values. With associated behaviors, data entry is regulated more efficiently, and data contamination issues can be avoided.  </p>
+			<p>The DBMS for a Geodatabase is implemented using the user&apos;s choice of a commercial off-the-shelf database management system that stores all spatial data (vector, raster, address, measures, CAD, etc.) in multiple formats including:	</p>
+			<ul>
+				<li>Simple features such as shapefiles</li>
+				<li>Custom features with business logic and editing rules</li>
+				<li>Attribute data</li>
+				<li>Metadata</li>
+				<li>Images</li>
+				<li>Raster/Grid data</li>
+				<li>CAD data</li>
+			</ul>
+			<p>The geodatabase schema includes the definitions, integrity rules, and behavior for these and for extended capabilities. These include properties for coordinate systems, coordinate resolution, feature classes, topologies, networks, raster catalogs, relationships, domains, and so forth. This schema information is persisted in a collection of geodatabase meta tables in the DBMS. These tables define the integrity and behavior of the geographic information.</p>
+			<p>The Geodatabase data model is expressed in three different geodatabase types:  file geodatabases (GeoDB_File), personal geodatabases (GeoDB_Personal), and spatial database engine (GeoDB_SDE) geodatabases. The three expressions allow progressively more capability for basic and advanced spatial analysis. </p>
+			<ul>
+				<li>File geodatabases are stored as folders in a file system.  Each dataset is held as a file that can scale up to 1 terabyte in size.  The File geodatabase is the recommended native data format for ArcGIS stored in a file system folder.  </li>
+				<li>Personal geodatabases have all datasets stored within a Microsoft Access data file that is limited in size to 2 gigabytes, and tied to the Windows operating system.  </li>
+				<li>ArcSDE geodatabases are stored in a relational database using Oracle, Microsoft SQL Server, IBM DB2, or IBM Informix, and PostgreSQL.  These multiuser geodatabases require the use of ArcSDE software and can be unlimited in size and numbers of users.  ArcSDE is the recommended native data format for ArcGIS stored and managed in a relational database. </li>
+			</ul>
+			<p>For a more complete comparison of the key characteristics of the three different geodatabase types, see <a href="http://webhelp.esri.com/arcgisdesktop/9.2/index.cfm?TopicName=Types_of_geodatabases">Types of geodatabases.</a> More information about the individual database types is available at <fddLink id="fdd000294">GeoDB_File</fddLink> and <fddLink id="fdd000329">GeoDB_SDE</fddLink>.  Geodatabases can be exported from ArcGIS as <fddLink id="fdd000295">GeoDB_XML</fddLink> workspaces.</p>
+			<p>The primary mechanism used in a Geodatabase to organize and use geographic information in ArcGIS is the <i>dataset</i>. Three primary dataset types are used:</p>
+			<ul>
+				<li>Feature classes</li>
+				<li>Raster datasets</li>
+				<li>Attribute tables</li>
+			</ul>
+			<p>Creating a collection of these dataset types is the first step in designing and building a geodatabase.  Users typically start by building a number of these fundamental dataset types.  They then add to or extend their geodatabase with more advanced capabilities (such as by adding topologies, networks, or subtypes) to model GIS behavior, maintain data integrity and work with a set of spatial relationships.  </p>
+		</fdd:description>
+		<fdd:shortDescription>ESRI Arc Geodatabase is the common data storage and management framework for ArcGIS v 8.x onwards.  This data model is expressed in file geodatabases and personal geodatabases for single users, and spatial database engine geodatabases for multi-use and/or enterprise geodatabases.  </fdd:shortDescription>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000284</fdd:id>
+					<fdd:shortName>ArcInfo_Coverage</fdd:shortName>
+					<fdd:titleName>ESRI ArcInfo Coverage</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>GeoDB replaces ArcInfo_Coverage for coverage data; ArcInfo_Coverage is no longer editable in ArcGIS software for releases subsequent to 8.3.  Coverages must be stored in an ESRI Geodatabase format to be editable. </fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000295</fdd:id>
+					<fdd:shortName>GeoDB_XML</fdd:shortName>
+					<fdd:titleName>ESRI Geodatabase (XML)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Exchange format used by ArcGIS to import and export all items and data in a geodatabase such as domains, rules, feature datasets, and topologies. 
+</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000294</fdd:id>
+					<fdd:shortName>GeoDB_File</fdd:shortName>
+					<fdd:titleName>GeoDB, ESRI Geodatabase (File-based)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>The file-based geodatabase is one option for data storage for a single-user ESRI Geodatabase.
+It is implemented as a collection of binary files in a file system.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000329</fdd:id>
+					<fdd:shortName>GeoDB_SDE</fdd:shortName>
+					<fdd:titleName>GeoDB, ESRI Geodatabase ArcSDE</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>The spatial database engine is the multi-user and/or enterprise option for data storage for an ESRI Geodatabase.  </fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:shortName>GeoDB_Personal</fdd:shortName>
+					<fdd:titleName>GeoDB, ESRI Geodatabase (Personal)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>An option for data storage for a single-user ESRI Geodatabase that is implemented as a single Microsoft Access file.  ESRI recommends file geodatabases over Microsoft Access Personal Geodatabases, because they offer more functionality and better performance.  The Personal Geodatabase format is not described at this time on this website.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>A proprietary data framework used for ESRI GIS software applications.  The partial documentation that is available is cited below.</fdd:disclosure>
+		<fdd:documentation>Partial documentation in ESRI application help information: <a href="http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=An_overview_of_the_geodatabase">An overview of the geodatabase</a> and <a href="http://help.arcgis.com/en/arcgisdesktop/10.0/help/003n/003n000000r4000000.htm">The architecture of a geodatabase</a>.  The different storage options for ESRI geodatabases  are described in <a href="http://webhelp.esri.com/arcgisdesktop/9.2/index.cfm?TopicName=Types_of_geodatabases">Types of geodatabases</a>.</fdd:documentation>
+		<fdd:adoption>The Geodatabase data model was introduced by ESRI in the late 1990s with the release of version ArcGIS 8.0.  The release of the ArcGIS suite constituted a major change in ESRI&apos;s software offerings, aligning all their client and server products under one software architecture known as ArcGIS, developed using Microsoft Windows COM standards.  While the ESRI shapefile is still quite prevalent in the industry, at least for sharing and transferring datasets among different systems, the geodatabase is becoming the mechanism of choice for data sharing and data interoperability among organizations, and departments within a single organization.   While older ESRI (non-ArcGIS) products are still available, most of the GIS software market share that ESRI holds (approximately 36 percent worldwide as of 2002) is taken by ArcGIS products.  See <a href="http://en.wikipedia.org/wiki/ArcGIS">ArcGIS from Wikipedia</a> and <a href="http://www.esri.com/library/whitepapers/pdfs/cots-gis.pdf">COTS GIS:  The Value of a Commercial Geographic Information System</a> for more information.</fdd:adoption>
+		<fdd:licensingAndPatents>See External Dependencies below.</fdd:licensingAndPatents>
+		<fdd:transparency>Transparency depends on the storage option used.</fdd:transparency>
+		<fdd:selfDocumentation>The Geodatabase format supports the application of metadata and requires specifications of data types for attribute data.  Semantic descriptions of a dataset and its attributes(variables) are optional.</fdd:selfDocumentation>
+		<fdd:externalDependencies>Software dependencies: <fddLink id="fdd000294">GeoDB_File</fddLink> and GeoDB_Personal (not described on this Web site) geodatabases can be used within ArcGIS software, i.e., ArcView, ArcEditor, and ArcInfo. GeoDB_Personal geodatabases have been used in ArcGIS since Version 8.0 using the Microsoft Access data file structure (.mdb file).  <fddLink id="fdd000329">GeoDB_SDE</fddLink> (spatial database engine) geodatabases work with a variety of DBMS storage models including IBM DB2, IBM Informix, Oracle, PostgreSQL, and Microsoft SQL Server.</fdd:externalDependencies>
+		<fdd:techProtection>Whether technological protection can be applied will depend on the storage option used.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:gisQF>
+			<fdd:normalGIS>The geodatabase data model allows users to take advantage of both basic and advanced spatial analysis when GIS data is stored within the geodatabase.  Complex business logic can be applied to GIS data to create more detailed and accurate spatial data models that represent real-world GIS application workflows. Examples include land parcel management; natural resources management; river and stream system modeling; utility network system modeling, such as gas, water, and sewage pipelines; and three-dimensional surface modeling of the landscape.
+			<p>By storing feature classes within a feature dataset, geospatial relationships can be modeled between the feature classes, enabling more advanced GIS analysis. The more common types of geospatial relationship data structures in the geodatabase are:</p>
+				<ul>
+					<li>
+						<b>Topology</b> -- Defines and enforces data integrity rules for features. For example, there should be no gaps between polygons. It supports topological relationship queries and navigation, such as feature adjacency or connectivity and sophisticated feature editing tools, and allows feature construction from unstructured geometry (for example, constructing polygon features from line features).</li>
+					<li>
+						<b>Geometric Networks</b> -- Consists of a set of connected edges and junctions (line and point features) that, along with connectivity rules, are used to represent and model the behavior of a common network infrastructure in the real world. Water distribution, electrical lines, gas pipelines, telephone services, and water flow in a stream are all examples of resource flows that can be modeled and analyzed using a geometric network.</li>
+					<li>
+						<b>Network Dataset</b> -- Consists of a set of connected edges and junctions, as well as turn features, along with connectivity rules, that represent and model the behavior of transportation network systems. Highways, roads, and streets in a city; rail lines; and bus routes are examples of undirected network flows that can be modeled with a network dataset.</li>
+					<li>
+						<b>Terrain</b> -- A data structure that is generated from a mass collection of elevation measurement points, typically from remote-sensing data sources. It is a triangulated irregular network (TIN)-based data structure with multiple levels of resolution and is used to represent surface morphology. A terrain is used for 3D surface modeling applications.</li>
+					<li>
+						<b>Cadastral Fabric</b> -- A continuous surface of connected parcel features that represents the record of survey for an area of land. This data structure enables GIS data to be integrated with survey data to maintain a consistent and accurate survey record..</li>
+				</ul>
+				<p>Additional business logic in the geodatabase, in the form of subtypes and attribute domains, can also be applied to GIS data. Subtypes enable categorization of data in a table or feature class.  Collectively, these examples of business logic in the geodatabase help streamline data entry and ensure the integrity of a user's GIS data. The geodatabase data model is designed to enable users to leverage and optimize their GIS data to its full potential and maintain a consistent, accurate repository of GIS data.  See <a href="http://www.esri.com/news/arcnews/winter0809articles/the-geodatabase.html">The Geodatabase:  Modeling and Managing Spatial Data</a> for more information.</p>
+			</fdd:normalGIS>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:notes>
+		<fdd:general>See <a href="http://webhelp.esri.com/arcgisserver/9.3/java/index.htm#geodatabases/the_geod468616361.htm"> The geodatabase is object-relational</a> for more information about the object-relational model behind GeoDB.</fdd:general>
+		<fdd:history>Prior to the development of the ArcGIS data model and software suite, ESRI developed the Arc/INFO (now usually written as ArcInfo) workstation and various GUI based products for a suite known as ArcView GIS.  In 1999, ESRI released ArcGIS 8.0 to provide a single integrated software architecture that included the geodatabase, an object-relational model.  All subsequent ArcGIS products to date have used that model.  More information about the history of ArcGIS products can be found in the Wikipedia article <a href="http://en.wikipedia.org/wiki/ArcGIS">ArcGIS.</a>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>ESRI provides no public specification for the Geodatabase formats (storage options) that can be used with ArcGIS software.  However, its online documentation provides some relevant explanations.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://webhelp.esri.com/arcgisdesktop/9.2/index.cfm?TopicName=An_Overview_of_the_Geodatabase</link>
+							<tag>An overview of the geodatabase</tag>
+							<comment>From ARCGIS 9.2 Desktop Help.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://help.arcgis.com/en/arcgisdesktop/10.0/help/003n/003n000000r4000000.htm</link>
+							<tag>The architecture of a geodatabase</tag>
+							<comment>From online help for ArcGIS 10.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://webhelp.esri.com/arcgisdesktop/9.2/index.cfm?TopicName=Types_of_geodatabases</link>
+							<tag>Types of geodatabases</tag>
+							<comment>ArcGIS 9.2 Desktop Help</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.esri.com/software/arcgis/geodatabase</link>
+					<tag>Geodatabase Data Storage and Management for GIS: Overview</tag>
+					<comment/>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.esri.com/news/arcnews/winter0809articles/the-geodatabase.html</link>
+					<tag>The Geodatabase: Modeling and Managing Spatial Data</tag>
+					<comment>Published in ArcNews, Winter 2008/2009 </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://downloads2.esri.com/support/whitepapers/ao_/arcgis_geodb_multiuser.pdf</link>
+					<tag>Working with the Geodatabase: Powerful Multiuser Editing and Sophisticated Data Integrity</tag>
+					<comment>An ESRI White Paper.  February 2002</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/ArcGIS</link>
+					<tag>ArcGIS from Wikipedia</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.esri.com/library/whitepapers/pdfs/cots-gis.pdf</link>
+					<tag>COTS GIS:  The Value of a Commercial Geographic Information System</tag>
+					<comment>An ESRI White Paper.  August 2002</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://webhelp.esri.com/arcgisserver/9.3/java/geodatabases/the_geod468616361.htm</link>
+					<tag>The geodatabase is object-relational</tag>
+					<comment>From ArcGIS Server 9.3 Help</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.esri.com/news/arcuser/0701/migrating.html</link>
+					<tag>Migrating Coverages to Geodatabases</tag>
+					<comment>Clarifies the relationships between GeoDB and ArcInfo_Coverage</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.geog.ucsb.edu/~kclarke/G176B/DataModels.ppt</link>
+					<tag>Geographical Data Modeling: UML and Data Modeling Elements: Examples from the Marine Data Model and ArcHydro</tag>
+					<comment>PowerPoint slide show</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://dusk2.geo.orst.edu/buffgis/PPT/geo580_3.ppt</link>
+					<tag>Models and Structures of ArcGIS: UML and Data Modeling Elements</tag>
+					<comment>PowerPoint slide show</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.lib.ncsu.edu/ncgdap/presentations/esri09_essic.ppt</link>
+					<tag>Are Geodatabases a Suitable Long-Term Archival Format?</tag>
+					<comment>PowerPoint slide show by Jeff Essic and Matt Sumner, NCSU Libraries, 2009</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

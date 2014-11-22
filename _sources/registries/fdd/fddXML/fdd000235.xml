@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000235" titleName="ARC_IA, Internet Archive ARC file format" shortName="ARC_IA" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>aggregate</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-wrapper</fdd:gdfrComposition>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>web-archive</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2008-02-14</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ARC_IA, Internet Archive ARC file format.</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>ARC</fdd:keyword>
+			<fdd:keyword>Internet Archive</fdd:keyword>
+			<fdd:keyword>web harvesting</fdd:keyword>
+			<fdd:keyword>web archiving</fdd:keyword>
+			<fdd:keyword>web capture</fdd:keyword>
+			<fdd:keyword>container formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>Specifies a method for combining multiple digital resources into an aggregate archival file together with related information, used since 1996 by the Internet Archive to store 'web crawls' as sequences of content blocks harvested from the World Wide Web. </fdd:description>
+		<fdd:shortDescription>Internet Archive ARC file format.  Superseded by WARC format.</fdd:shortDescription>
+		<fdd:productionPhase>Used for web-accessible content in archived state, representing the final form disseminated in final state over the web to a user agent (web browser).</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>Data of various types, for example, HTML pages, images as GIF, JPEG, etc.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has later version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000236</fdd:id>
+					<fdd:shortName>WARC</fdd:shortName>
+					<fdd:titleName>Web ARChive file format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>LC has substantial volumes of captured web sites in the ARC_IA format. See <a href="http://www.loc.gov/webarchiving/technical.html">http://www.loc.gov/webarchiving/technical.html</a></fdd:experience>
+		<fdd:preference>LC's preferred format for harvested Web sites harvested in bulk is now <fddLink id="fdd000236">WARC</fddLink>. ARC is acceptable as a legacy format.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Developed by the Internet Archive (Brewster Kahle).  Documentation and tools to use files in the format freely available.
+		</fdd:disclosure>
+		<fdd:documentation>Described at <a href="http://www.archive.org/web/researcher/ArcFileFormat.php">http://www.archive.org/web/researcher/ArcFileFormat.php</a>
+		</fdd:documentation>
+		<fdd:adoption>The file format developed for the <a href="http://crawler.archive.org/">Heritrix</a> web crawler, supported by the <a href="http://netpreserve.org/about/index.php">International Internet Preservation Consortium</a>.</fdd:adoption>
+		<fdd:licensingAndPatents>
+			None.
+		</fdd:licensingAndPatents>
+		<fdd:transparency>The wrapper is transparent; contained data varies.
+		</fdd:transparency>
+		<fdd:selfDocumentation>In the ARC files containing the actual archived "documents" (html, gif, jpeg, ps, etc.) each document is preceded by some header information about the document: the document file format, the document size, outward links that the document contains, etc.  At the Internet Archive, each ARC file has a corresponding DAT file that contains only the header information. </fdd:selfDocumentation>
+		<fdd:externalDependencies>User access depends on large-scale indexing of a corpus of ARC files or a separate copy of the record headers (e.g. Internet Archive DAT files).  Indexing the DAT files can support user access by URL and date, as in the <a href="http://www.archive.org/web/web.php">Wayback Machine</a>.
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			None.
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:webArchiveQF>
+			<fdd:normalWeb>Supported through Internet Archive's <a href="http://www.archive.org/web/web.php">Wayback Machine</a> or equivalent tool.</fdd:normalWeb>
+			<fdd:docHarvest>Allows for basic information about the time of harvesting, the IP address of the harvesting machine, Internet Media Type (MIME type) and response code for the harvest transaction, etc.</fdd:docHarvest>
+			<fdd:efficiency>Excellent for efficient bulk harvesting and efficient indexing for access by URL and date.  The use of coordinated ARC and DAT files is one way to support efficient indexing for such access.</fdd:efficiency>
+			<fdd:stewardship>The capabilities in ARC that support long-term management of a corpus of web archive files is basic.  <fddLink id="fdd000236">WARC</fddLink> was developed as an extension to ARC, in part to provide better capabilities for managing Web archives for the long term.  See <a href="../content/webarch_quality.shtml">
+Web Sites and Pages: Quality and Functionality Factors</a>.</fdd:stewardship>
+		</fdd:webArchiveQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>arc</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>ARC files are not typically transmitted to users or used in ways that depend on recognition by file type.</fdd:note>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.archive.org/web/researcher/ArcFileFormat.php</link>
+					<tag>Internet Archive: Research Access, ARC file format</tag>
+					<comment/>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.archive.org/web/researcher/dat_file_format.php</link>
+					<tag>Internet Archive: Research Access, DAT file format</tag>
+					<comment/>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.archive.org/web/researcher/data_available.php</link>
+					<tag>Internet Archive: Research Access, Data Available</tag>
+					<comment/>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.archive.org/web/web.php</link>
+					<tag>Internet Archive: Wayback Machine</tag>
+					<comment/>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://crawler.archive.org/articles/developer_manual/arcs.html</link>
+					<tag>Heritrix developer documentation:  Chapter 13. Internet Archive ARC files</tag>
+					<comment/>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

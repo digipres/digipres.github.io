@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000022" titleName="TIFF, Revision 6.0" shortName="TIFF_6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-wrapper</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2009-09-28</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>TIFF (Tagged Image File Format), Revision 6.0</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>raster image formats</fdd:keyword>
+			<fdd:keyword>TIFF</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>A tag-based file format for storing and interchanging raster images.  TIFF serves as a wrapper for different bitstream encodings for bit-mapped (raster) images.  The different encodings may represent different compression schemes and different schemes for color representation (photometric interpretation).  See also <a href="#notes">Notes</a>.</p>
+			<p>The most recent version of TIFF is 6.0, published in 1992.  Since TIFF images conforming to earlier versions are valid TIFF 6.0 files, the information in this description is also pertinent to earlier versions of the TIFF standard.  Many TIFF files with uncompressed image data are still being created as TIFF 5.0 files.</p>
+		</fdd:description>
+		<fdd:shortDescription>A tag-based file format for storing and interchanging raster images. TIFF serves as a wrapper for different bitstream encodings for bit-mapped (raster) images. The different encodings may represent different compression schemes and different schemes for color representation (photometric interpretation).</fdd:shortDescription>
+		<fdd:productionPhase>Most often an initial-state or middle-state format; may serve as final-state format.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:comment>TIFF, Revision 5.0, not separately described</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000023</fdd:id>
+					<fdd:shortName>TIFF_UNC</fdd:shortName>
+					<fdd:titleName>TIFF, Uncompressed Bitmap</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000024</fdd:id>
+					<fdd:shortName>TIFF_G4</fdd:shortName>
+					<fdd:titleName>TIFF Bitmap with Group 4 Compression</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000074</fdd:id>
+					<fdd:shortName>TIFF_LZW</fdd:shortName>
+					<fdd:titleName>TIFF Bitmap with LZW Compression</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000237</fdd:id>
+					<fdd:shortName>TIFF_PYR</fdd:shortName>
+					<fdd:titleName>TIFF, Pyramid</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000072</fdd:id>
+					<fdd:shortName>TIFF/IT</fdd:shortName>
+					<fdd:titleName>TIFF/IT, for Image Technology</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000073</fdd:id>
+					<fdd:shortName>TIFF/EP</fdd:shortName>
+					<fdd:titleName>TIFF/EP, for Digital Photography</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000188</fdd:id>
+					<fdd:shortName>DNG_1_1</fdd:shortName>
+					<fdd:titleName>Adobe Digital Negative (DNG), Version 1.1</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000279</fdd:id>
+					<fdd:shortName>GeoTIFF_1_0</fdd:shortName>
+					<fdd:titleName>GeoTIFF, Revision 1.0</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has extension</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000328</fdd:id>
+					<fdd:shortName>BigTIFF</fdd:shortName>
+					<fdd:titleName>BigTIFF</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>Bitstream encodings for other compression schemes, not documented at this time.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>TIFF 5.0 and 6.0 have been used by the American Memory project as the master format for most digital reproductions from paper and photographic media such as negatives. For the first several years of the project, most images of typographic pages (no illustrations) were formatted as <fddLink id="fdd000024">TIFF_G4</fddLink>; in more recent years, such originals have been captured as grayscale images, generally formatted as as <fddLink id="fdd000023">TIFF_UNC</fddLink> uncompressed bitmaps.  Pictorial items from printed matter, original photographs, and other graphic arts are generally reproduced as <fddLink id="fdd000023">TIFF_UNC</fddLink>.  For TIFF images from paper originals, the spatial resolution tends to be from 300 to 400 dpi (based on dimension of original on paper).  When reformatting photographic negatives, the Library of Congress Prints and Photographs Division (P&amp;P) often uses 4,000 to 5,000 pixels on long side and a bit depth of 8 bits (grayscale) or 24 bits (RGB color).  Certain high-value content has warranted higher spatial resolution or bit-depth; in some of its black-and-white negative reformatting projects, P&amp;P has produced grayscale files with 16 bits per pixel.</fdd:experience>
+		<fdd:preference>One of the preferred formats for bitmapped images.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully documented. TIFF was developed by the Aldus and Microsoft Corporations, and the specification is owned by Aldus (now absorbed into the Adobe Corporation).  The TIFF tag set is extensible through a registry maintained by Adobe; the list of registered extensions is not available from Adobe; see <a href="../content/tiff_tags.shtml">Tags for TIFF and Related Specifications</a>.</fdd:disclosure>
+		<fdd:documentation>
+			<p>
+				<a href="http://partners.adobe.com/public/developer/en/tiff/TIFF6.pdf">TIFF, Revision 6.0, Final -- June 3, 1992</a> (at http://partners.adobe.com/public/developer/en/tiff/TIFF6.pdf) </p>
+			<p>
+				<a href="http://cool.conservation-us.org/bytopic/imaging/std/tiff5.html">TIFF 5.0 Aldus/Microsoft Technical Memorandum:  8/8/88</a> (at http://cool.conservation-us.org/bytopic/imaging/std/tiff5.html)</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>Particular subtypes are very widely deployed as master formats for scanned images.  Not supported by all browsers in native format but, as of early 2004, new PC configurations tend to include a viewer.</p>
+			<p>The format is widely supported by image-manipulation applications (Adobe Photoshop and many others), by desktop publishing and page layout applications (QuarkXPress, Adobe InDesign, and others), and by scanning, faxing, word processing, optical character recognition, and other applications. </p>
+			<p>Particular TIFF subtypes are preferred data formats in the list of <a href="http://fclaweb.fcla.edu/node/795">FCLA recommended formats</a>. Library and Archives Canada has also adopted TIFF as a <a href="http://www.collectionscanada.gc.ca/obj/012018/f2/012018-2200-e.pdf">recommended format</a> for still images. </p>
+			<p>EXIF metadata (see <fddLink id="fdd000145">TIFF_UNC_EXIF</fddLink> and <fddLink id="fdd000073">TIFF/EP</fddLink>), a desireable form of self-documentation, is very often provided by digital cameras.
+</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>Not exploited for the TIFF wrapper format. The only widely used compression scheme for the embedded image data that has been subject to patent claims in recent years is <fddLink id="fdd000135">LZW</fddLink> (Lempel-Ziv-Welch) compression, i.e., in <fddLink id="fdd000074">TIFF_LZW</fddLink>. The LZW patent is generally reported as having expired in 2003 (U.S.) and 2004 (Europe and Japan).</fdd:licensingAndPatents>
+		<fdd:transparency>Depends on bitstream encoding.
+		</fdd:transparency>
+		<fdd:selfDocumentation>The TIFF specification defines a framework for an Image File Header (IFH), Image File Directories (IFDs), and associated bitmaps. Each IFD and its associated bitmap are sometimes called a <i>TIFF subfile</i>. There is no limit to the number of subfiles a TIFF image file may contain.  Each IFD contains one or more data structures called <i>tags</i>, each one of which is a 12-byte record that contains a specific piece of information about the bitmapped data. The TIFF specification defines a number of tags and a set of rules for extensibility; see <a href="../content/tiff_tags.shtml">Tags for TIFF and Related Specifications</a>. Tags are always found in contiguous groups within each IFD.
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None
+		</fdd:externalDependencies>
+		<fdd:techProtection>None
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>Good support.</fdd:normalImage>
+			<fdd:clarity>Excellent support for images with very high spatial resolution. The standard is flexible as to color space and bit depth.  In practice, 8-bit grayscale and 24-bit RGB color are common; some activities create files with greater than 8 bits per channel (color or greyscale).</fdd:clarity>
+			<fdd:colorMaint>
+				<p>The TIFF tag for the ICC profile (tag 34675, <i>InterColourProfile</i>) for a capture device has been added as a &quot;private&quot; extension in the <fddLink id="fdd000072">TIFF/IT</fddLink> and <fddLink id="fdd000073">TIFF/EP</fddLink> standards.<footNote id="1"/> Extended tags of this kind may be used in any TIFF_6 file, although they may not be recognized by all readers. ICC <a href="http://www.color.org/icc1V42.pdf">Profile version 4.2.0.0</a> (Specification ICC.1:2004-10, page 69) provides guidance for embedding ICC profiles in TIFF files: "as a single TIFF field or Image File Directory (IFD)." Meanwhile, Adobe Photoshop software appears to provide an alternate means to embed an ICC profile in a TIFF file; the compilers of this Web site seek explanatory <a href="../contact_format.shtml">comments</a> from readers: how proprietary or interoperable is PhotoShop embedding of ICC profiles?</p>
+				<p>Color space is indicated in <i>Photometric Interpretation</i> (tag 262); in TIFF_6, this tag does not include sRGB as a value, although sRGB images may be delivered tagged as RGB.<footNote id="2"/>
+				</p>
+			</fdd:colorMaint>
+			<fdd:graphics>No support for vector graphics.</fdd:graphics>
+			<fdd:beyondImage>Multi-page files supported for a sequence of images.</fdd:beyondImage>
+		</fdd:stillImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>tif</fdd:sigValue>
+					<fdd:sigValue>tiff</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The TIFF 6.0 standard recommends the use of tif (or TIF) as  extension.  Macintosh Filetype is TIFF and tiff is sometimes found as a filename extension.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>image/tiff</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From the <a href="http://www.rfc-editor.org/rfc/rfc2302.txt">IETF</a> (RFC2302).</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>image/tif</fdd:sigValue>
+					<fdd:sigValue>image/x-tif</fdd:sigValue>
+					<fdd:sigValue>image/x-tiff</fdd:sigValue>
+					<fdd:sigValue>application/tif</fdd:sigValue>
+					<fdd:sigValue>application/x-tif</fdd:sigValue>
+					<fdd:sigValue>application/tiff</fdd:sigValue>
+					<fdd:sigValue>application/x-tiff</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Selected from <a href="http://filext.com/">The File Extension Source</a>
+				</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 49 49 2A 00</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For little endian byte order; from the <a href="http://jhove.sourceforge.net/tiff-hul.html">JHOVE page</a> for TIFF.<br/>
+				</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 49 49</fdd:sigValue>
+					<fdd:sigValue>ASCII: II</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For little endian byte order; from Gary Kessler's <a href="http://www.garykessler.net/library/file_sigs.html">File Signatures</a>.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 4D 4D 00 2A</fdd:sigValue>
+					<fdd:sigValue>ASCII: MM</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For big endian byte order; from the <a href="http://jhove.sourceforge.net/tiff-hul.html">JHOVE page</a> for TIFF and <a href="http://paulbourke.net/dataformats/tiff/">http://paulbourke.net/dataformats/tiff/</a>.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>The acronym TIFF is variously glossed as <i>Tagged</i> Image File Format and <i>Tag</i> Image File Format; the title page of the 1992 specification does not spell out the abbreviation. According to the Wikipedia article <a href="http://en.wikipedia.org/wiki/TIFF">Tagged Image File Format</a> (consulted on August 30, 2006), earlier versions of the specification used <i>Tag Image File Format</i>.</p>
+			<p>
+				<a href="http://www.fileformat.info/format/tiff/">FileFormatInfo</a> offers an overview of the format: files are organized into three sections: the Image File Header (IFH), the Image File Directory (IFD), and the bitmap data. Of these three sections, only the IFH and IFD are required. It is possible to have a TIFF file with no bitmapped data, although such a file would be highly unusual. A TIFF file that contains multiple images has one IFD and one bitmap per image stored.</p>
+		</fdd:general>
+		<fdd:history>The Wikipedia article <a href="http://en.wikipedia.org/wiki/TIFF">Tagged Image File Format</a> (consulted on August 30, 2006) reports that the format was originally created by the company Aldus, jointly with Microsoft, for use with PostScript printing. <a href="http://www.fileformat.info/format/tiff/">FileFormatInfo</a> reports that Aldus first published a TIFF specification in 1986 and many consider this to be &#34;version 3&#34;. Another motive to create the specification was to encourage desktop scanner vendors of the mid-1980s to agree on a common scanned image file format, rather than have each company promulgate its own proprietary format. In the beginning, TIFF was only a bilevel image format, since that was all that desktop scanners could handle. As scanners became more powerful, and as desktop computer disk space became more plentiful, TIFF grew to accommodate grayscale images, then color images. Today, TIFF is a popular format for high-color-depth images, along with JPEG and PNG. Adobe Systems, which acquired the PageMaker publishing program from Aldus, now controls the TIFF specification.       </fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://partners.adobe.com/public/developer/tiff/index.html</link>
+					<tag/>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://partners.adobe.com/public/developer/en/tiff/TIFF6.pdf</link>
+					<tag/>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.npes.org/pdf/TIFF-v6.pdf</link>
+					<tag/>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://cool.conservation-us.org/bytopic/imaging/std/tiff5.html</link>
+					<tag/>
+					<comment>(specification for version 5)</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://partners.adobe.com/public/developer/en/tiff/TIFFPM6.pdf</link>
+					<tag>Adobe PageMaker 6.0: TIFF Technical Notes, 1995</tag>
+					<comment>Also known as TIFF Specification Supplement 1. Adobe technical notes relating to TIFF files created by PageMaker. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://partners.adobe.com/public/developer/en/tiff/TIFFphotoshop.pdf</link>
+					<tag>Adobe Photoshop: TIFF Technical Notes, 2002</tag>
+					<comment>Also known as TIFF Specification Supplement 2. This document describes use of JPEG compression within a TIFF image, correcting an earlier, flawed specification. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://jhove.sourceforge.net/tiff-hul.html</link>
+					<tag>JHOVE TIFF-hul module</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.fileformat.info/format/tiff/</link>
+					<tag>TIFF at FileFormat.Info</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The Encyclopedia of Graphic File Formats, 2nd Edition, 1996 (EGFF) has information on this format.  See print citation below.  Online access is available at:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.fileformat.info/format/tiff/egff.htm</link>
+							<tag>EGFF: TIFF File Format Summary
+</tag>
+							<comment>From FileFormat.Info.  This presentation states that the work has been released under a Creative Commons Attribution license.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://web.archive.org/web/20071210094024/http://www.fileformat.info/format/tiff/egff.htm</link>
+							<tag>EGFF: TIFF File Format Summary
+</tag>
+							<comment>From FileFormat.Info, via Internet Archive&apos;s Wayback Machine.  Included because FileFormat.info has not been updated recently (as of November 2012) and was not functioning for a period.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://netghost.narod.ru/gff/graphics/summary/tiff.htm</link>
+							<tag>EGFF: TIFF</tag>
+							<comment>Copy made available from a site in Russia.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nilesritter.com/webdocs/tiff/</link>
+					<tag>Niles Ritter's Unofficial TIFF Home Page</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://preserve.harvard.edu/guidelines/imagedig.html</link>
+					<tag>Guidance for Digitizing Images</tag>
+					<comment>From Harvard University Library</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.awaresystems.be/imaging/tiff/faq.html</link>
+					<tag>AWare Systems TIFF FAQ</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.awaresystems.be/imaging/tiff/tifftags.html</link>
+					<tag>AWare Systems info about TIFF tags</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.digitalpreservation.gov/formats/content/tiff_tags.shtml</link>
+					<tag>Tags for TIFF and Related Specifications</tag>
+					<comment>From Library of Congress resource: Sustainability of Digital Formats.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.digitizationguidelines.gov/guidelines/digitize-tiff.html </link>
+					<tag>Guidelines: TIFF Image Metadata</tag>
+					<comment>From the Federal Agencies Still Image Digitization Working Group.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.color.org/icc1V42.pdf</link>
+					<tag>ICC Profile version 4.2.0.0</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://web.archive.org/web/20070627164620/http://www.tiki-lounge.com/~raf/tiff/fields.html</link>
+					<tag>Ross Finlayson's TIFF Web page (from Internet Archive)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://paulbourke.net/dataformats/tiff/</link>
+					<tag>Paul Bourke's TIFF Image Creation instructions</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://fclaweb.fcla.edu/node/795</link>
+					<tag>FCLA recommended formats</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.collectionscanada.gc.ca/obj/012018/f2/012018-2200-e.pdf</link>
+					<tag>Library and Archives Canada recommended formats, as of October 2010.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:bookReference>
+					<bookRefDetail rel="au">Murray, James D.</bookRefDetail> and <bookRefDetail rel="au">William vanRyper</bookRefDetail>. <bookRefDetail rel="btitle">Encyclopedia of Graphics File Formats, 2nd Edition.</bookRefDetail> 
+Sebastopol, CA. : O'Reilly &amp; Associates, <bookRefDetail rel="date">1996</bookRefDetail>. Includes CD-ROM with complete text of book, and copies of several file format specifications. </fdd:bookReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:usefulReferences>
+	<fdd:footNotes>
+		<fdd:footNote id="1">
+			<fdd:text>The most effective color maintenance systems rely on the existence of an ICC (International Color Consortium) profile of the capture device, which can then be compared to profiles for output devices, permitting appropriate adjustments of image color.</fdd:text>
+		</fdd:footNote>
+		<fdd:footNote id="2">
+			<fdd:text>The color space sRGB, standardized as IEC 61966-2-1, establishes an image viewing environment with a known color temperature (6500 degrees Kelvin) and gamma (2.2), thus increasing the user's ability to maintain color.</fdd:text>
+		</fdd:footNote>
+	</fdd:footNotes>
+</fdd:FDD>

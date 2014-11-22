@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000340" titleName="KML, Version 2.2" shortName="KML_2_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2012-04-02</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>KML (formerly Keyhole Markup Language), Version 2.2</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>geospatial data formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>KML is a file format used to display geographic data in a 2-D or 3-D earth browser, such as Google Earth, Google Maps.  The markup specification was originally developed by Keyhole, Inc. for use in a product called Keyhole Earth Viewer.  Keyhole was acquired by Google in 2004 and the product became Google Earth.    KML, version 2.2. was adopted as an international standard in 2008 by the Open Geospatial Consortium, Inc. (OGC).</p>
+			<p>KML is an XML grammar used to encode and transport representations of geographic data for display in an earth browser (3D) or online map (2D). KML encodes what to show and how to show it, using a tag-based structure with nested elements and attributes. KML focuses on geographic visualization, including annotation of maps and images. KML files can pinpoint locations, add image overlays, and expose rich data through icons and captions.  KML can support not only the presentation of data on the globe, but also control the user&apos;s navigation in the sense of directing where to go and where to look.</p>
+			<p>KML relies on a single Coordinate Reference System, which is not referenced explicitly in KML files.  The encoding of every kml:Location and coordinate tuple uses geodetic longitude,
+geodetic latitude, and altitude (in that order) as defined in Annex A of the KML specification by the GML Coordinate
+Reference System (CRS) with identifier LonLat84_5773.  The vertical datum, used for altitude measurements is the WGS84 EGM96 Geoid.</p>
+			<p>KML files are very often distributed in KMZ files, which are zipped files with a .kmz extension.  A KMZ file contains a single root KML document, typically a file named &quot;doc.kml&quot; at the root directory level but the first .kml file entry in the KMZ file is the actual one selected in Google Earth regardless of its name.  Files for referenced overlays, images, icons, etc., including network-linked KML files, can be included. Referenced files are typically in subdirectories.  To be compatible with all geobrowsers, the zip file should use no compression or DEFLATE compression (i.e. be compatible with the 1993 PKWARE 2.0 version of the ZIP specification, as <a href="http://www.iana.org/assignments/media-types/application/zip">registered with IANA</a>).</p>
+			<p>The KML format supports dynamic incorporation of remote KML data.  Hence a single KML or KMZ file may not be complete.  For real-time use this feature is useful to reduce the needed bandwidth.</p>
+		</fdd:description>
+		<fdd:shortDescription>KML is a file format used to support display of geographic data in a 3D earth browser or 2D online maps.</fdd:shortDescription>
+		<fdd:productionPhase>Primarily a final phase format for delivery of data ready for visualization in an earth browser or in a map displayed online or on a mobile phone. Also a convenient format for use by non-specialists using mass market tools to assemble data to share or re-use for a specific purpose.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000077</fdd:id>
+					<fdd:shortName>XML_Schema</fdd:shortName>
+					<fdd:titleName>W3C XML Schema Language</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000296</fdd:id>
+					<fdd:shortName>GML</fdd:shortName>
+					<fdd:titleName>Geography Markup Language</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>KML 2.2 utilizes some basic geometry elements from GML 2.1.2: point, line string, linear ring, polygon.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:comment>KMZ, zipped package of KML, not described separately on this website at this time.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>An openly documented format adopted as an implementation standard, by the Open Geospatial Consortium (OGC), an international voluntary consensus standards organization. </fdd:disclosure>
+		<fdd:documentation>Available from OGC, <a href="http://portal.opengeospatial.org/files/?artifact_id=27810">OGC 07-147r2</a>. Related documents at <a href="http://www.opengeospatial.org/standards/kml/">http://www.opengeospatial.org/standards/kml/</a>.  Schema at <a href="http://schemas.opengis.net/kml/">http://schemas.opengis.net/kml/</a>.</fdd:documentation>
+		<fdd:adoption>
+			<p>Widest use is through popular applications from Google: Google Earth and Google Maps.</p>
+			<p>The range of users is described in very similar wording in both the specification (quoted here) and at <a href="https://developers.google.com/kml/faq#whousesid">KML Developers FAQ: Who uses KML?</a> (consulted in April 2012): &quot;The KML community is wide and varied. Casual users create KML Placemarks to
+identify their homes, describe journeys, and plan cross-country hikes and cycling
+ventures. Scientists use KML to provide detailed mappings of resources, models, and
+trends such as volcanic eruptions, weather patterns, earthquake activity, and mineral
+deposits. Real estate professionals, architects, and city development agencies use KML
+to propose construction and visualize plans. Students and teachers use KML to explore
+people, places, and events, both historic and current. Organizations such as National
+Geographic, UNESCO, and the Smithsonian have all used KML to display their rich sets
+of global data.&quot; These users are not necessarily aware that they are using KML; they may simply be using an application that uses KML to save user data.</p>
+			<p>As of early 2012, KML is supported in professional tools such as ESRI ArcGIS and consumer tools such as Bing Maps from Microsoft.  It is also supported in <a href="http://techbase.kde.org/Projects/Marble">Marble</a>, a software library for virtual globe and atlas browsing in educational contexts, based on KDE, an open source toolkit.</p>
+			<p>Government agencies and other producers of GIS data have started making some data available in KML, particularly derivative data intended for use in particular professional or recreational contexts and for educational use. It was endorsed by FGDC (Federal Geographic Data Committee) as an external standard in 2010, and a 2011 survey indicated that almost half of the responding agencies made use of it.  Examples of data made available in KML include:</p>
+			<ul>
+				<li>
+					<a href="http://waterwatch.usgs.gov/index.php?m=stategage&amp;w=kml">http://waterwatch.usgs.gov/index.php?m=stategage&amp;w=kml</a>
+				</li>
+				<li>
+					<a href="http://www.srh.noaa.gov/gis/kml/">http://www.srh.noaa.gov/gis/kml/</a>
+				</li>
+				<li>
+					<a href="http://mrdata.usgs.gov/geology/state/state.php?state=MD">http://mrdata.usgs.gov/geology/state/state.php?state=MD</a>
+				</li>
+				<li>
+					<a href="http://earthquake.usgs.gov/learn/kml.php">http://earthquake.usgs.gov/learn/kml.php</a>
+				</li>
+				<li>
+					<a href="http://pubs.usgs.gov/of/2009/1139/">http://pubs.usgs.gov/of/2009/1139/</a>
+				</li>
+				<li>
+					<a href="http://www.gelib.com/usgs-topographic-maps-2.htm">http://www.gelib.com/usgs-topographic-maps-2.htm</a>
+				</li>
+				<li>
+					<a href="http://www.gelib.com/">http://www.gelib.com/</a>
+				</li>
+			</ul>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No known license or patent concerns for generation and use of the format.  <a href="../contact_format.shtml">Comments welcome.</a>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>Based on XML and hence readable with a basic text viewer or editor.  KML uses human-readable tags and a simple model that makes a KML instance document understandable on its own.  KML instances have a predictable structure.  KML defines an extension mechanism; extensions may be less easy to interpret.</fdd:transparency>
+		<fdd:selfDocumentation>TBD.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None.</fdd:externalDependencies>
+		<fdd:techProtection>TBD</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:gisQF>
+			<fdd:normalGIS>
+				<p>KML is an XML language designed to support geographic visualization in 2D (on a map) or 3D (on a globe), including annotation of maps and images.  Hence it can be used to specify layers for use in creating maps in a GIS system.</p>
+				<p>Quoting from the specification, KML can be used to:</p>
+				<ul>
+					<li>Annotate the Earth</li>
+					<li>Specify icons and labels to identify locations on the surface of the planet</li>
+					<li>Create different camera positions to define unique views for KML features</li>
+					<li>Define image overlays to attach to the ground or screen</li>
+					<li>Define styles to specify KML feature appearance</li>
+					<li>Write HTML descriptions of KML features, including hyperlinks and embedded images</li>
+					<li>Organize KML features into hierarchies</li>
+					<li>Locate and update retrieved KML documents from local or remote network locations</li>
+					<li>Define the location and orientation of textured 3D objects</li>
+				</ul>
+			</fdd:normalGIS>
+			<fdd:metadataGIS>KML has very limited support for metadata as recommended by ISO 19115 or FGDC.  The coordinate reference system in use is implicit, in that KML uses a single CRS.</fdd:metadataGIS>
+			<fdd:grids>Not designed to support grid-based analysis.</fdd:grids>
+			<fdd:beyondGIS>Many features of KML that support web-based visualization aspects are beyond the normal functionality of geospatial data formats.  These include support for styling, embedding HTML for captions, incorporating textured 3D models, etc.  Support for incorporating remote KML data is also a special feature.</fdd:beyondGIS>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>.kml</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.google-earth.kml+xml</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="http://www.iana.org/assignments/media-types/application/vnd.google-earth.kml+xml">registration at IANA</a>.</fdd:note>
+			</fdd:internetMediaType>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>The OGC KML standard provides a mechanism for extensions - additional elements that contain information beyond what is available in the standard (learn more about XML namespaces at w3.org). With the launch of Google Earth 5.0, Google provided extensions to KML to support a number of new features, including support for &quot;tours.&quot;  These extensions use the gx prefix and the following namespace URI:
+
+ xmlns:gx=&quot;http://www.google.com/kml/ext/2.2&quot;</p>
+			<p>KML is a language for the visualization of geographic information tailored for Google Earth and similar spatial browsers.  In contrast, GML is a language to encode geographic content for any application.  KML can be used to carry GML content, and GML can be “styled” to KML for the purposes of presentation.  KML instances may be transformed losslessly to GML, however roughly 90% of GML&apos;s structures (such as, to name a few, metadata, coordinate reference systems, horizontal and vertical datums, etc.) cannot be transformed to KML.</p>
+		</fdd:general>
+		<fdd:history/>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.opengeospatial.org/standards/kml</link>
+					<tag>OGC KML specifications</tag>
+					<comment>At Open Geospatial Consortium (OGC).</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Keyhole_Markup_Language</link>
+					<tag>KML page at Wikipedia</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://kml4earth.appspot.com/kmlErrata.html</link>
+					<tag>KML Reference Errata and Addendum</tag>
+					<comment>From KML4Earth</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The Google developers site provides a lot of good information:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://developers.google.com/kml/documentation/</link>
+							<tag>KML Documentation Introduction</tag>
+							<comment>Main page, with links to other documents.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://developers.google.com/kml/documentation/kmlreference</link>
+							<tag>KML Reference</tag>
+							<comment>Describes all the elements in KML, including those in Google&apos;s extension.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://developers.google.com/kml/documentation/kml_tut</link>
+							<tag>KML Tutorial</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://developers.google.com/kml/documentation/topicsinkml</link>
+							<tag>KML Developer&apos;s Guide</tag>
+							<comment>How-to articles on various topics, aimed at use for Google Earth.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://developers.google.com/kml/documentation/kmzarchives</link>
+							<tag>What is a KMZ File?</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://kmlvalidator.com/content/faq.htm</link>
+					<tag>KML FAQ</tag>
+					<comment>From Galdos Systems, provided in relation to their KML Validator product.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The OGC network (a community forum) provides some pages that relate to KML.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.ogcnetwork.net/kml</link>
+							<tag>KML resource at OGC Network</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=An_overview_of_KML_support_in_ArcGIS
+
+</link>
+					<tag>An overview of KML support in ArcGIS</tag>
+					<comment>ArcGIS 9.3 Desktop Help</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

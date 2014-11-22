@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000397" titleName="DOCX Transitional (Office Open XML), ISO 29500:2008-2012, ECMA-376, Editions 1-4" shortName="DOCX/OOXML_2012" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>text</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2014-08-12</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>DOCX, (Office Open XML, WordprocessingML) ISO 29500:2008-2012, also ECMA-376, Editions 1-4.</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>document formats</fdd:keyword>
+			<fdd:keyword>markup languages</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The Office Open XML-based word processing format using .docx as a file extension has been the default format produced for new documents by versions of Microsoft Word since Word 2007.  The format was designed to incorporate the full semantics and functionality of the binary .doc format produced by earlier versions of Microsoft Word.   For convenience, this format description uses DOCX to identify the corresponding format.  The primary content of a DOCX file is marked up in WordprocessingML, which is specified in parts 1 and 4 of <i>ISO/IEC 29500, Information technology -- Document description and processing
+languages -- Office Open XML File Formats (OOXML)</i>.  This description focuses on the specification in <i>ISO/IEC 29500:2012</i> and represents the format variant known as &quot;Transitional.&quot;  Although editions of ISO 29500 were published in 2008 and 2011, the specification in the standard has had very few changes other than clarifications and corrections to match actual usage in documents since WordprocessingML was first standardized in ECMA-376, Part 1 in 2006.  Hence, this description should be read as applying to all WordprocessingML versions published by ECMA International and by ISO/IEC through 2012.  See <a href="#notes">Notes</a> below for more detail on the chronological versions and minor differences.</p>
+			<p>A DOCX file is packaged using the Open Packaging Conventions (<fddLink id="fdd000363">OPC/OOXML_2012</fddLink>, itself based on <fddLink id="fdd000355">ZIP_6_2_0</fddLink>).  The package can be explored, by opening with ZIP software, typically by changing the file extension to <i>.zip</i>.  The top level of a minimal package will typically have three folders (<i>_rels</i>, <i>docProps</i>, and <i>word</i>) and one file part (<i>[Content_Types].xml</i>).  The <i>word</i> folder holds the primary content of the document in the file part <i>document.xml</i>.  The other folders and contained parts support efficient navigation and manipulation of the package:</p>
+			<ul>
+				<li>
+					<b>_rels</b> is a Relationships folder, containing a single file <i>.rels</i> (which may be hidden from file listings, depending on operating system and settings).  It lists and links to the key parts in the package, using URIs to identify the type of relationship of each key part to the package.  In particular it specifies a relationship to <i>word/document.xml</i> as the primary <i>officeDocument</i> and to parts within <i>docProps</i> as core and extended properties.</li>
+				<li>
+					<b>docProps</b> is a folder that contains properties for the document as a whole, typically including a set of core properties, a set of extended or application-specific properties, and a thumbnail preview for the document.</li>
+				<li>
+					<b>[Content_Types].xml</b> is a file part, a mandatory part in any OPC package, that lists the content types (using MIME Internet Media Types as defined in <a href="http://tools.ietf.org/html/rfc6838">RFC 6838</a>) for parts within the package.</li>
+			</ul>
+			<p>The <i>word</i> folder contains at a minimum <i>document.xml</i> and files and subsidiary folders that support presentation styles and themes.  Headers and footers are stored in separate parts if present.  The minimal structure for <i>document.xml</i> will include a nested set of elements: </p>
+			<ul>
+				<li>&lt;w:body&gt; --- text body</li>
+				<li>&lt;w:p&gt; --- paragraph</li>
+				<li>&lt;w:r&gt; --- run, text having a given set of formatting parameters, e.g., font face and size, regular, bold or italic, etc.</li>
+				<li>&lt;w:t&gt; --- textual characters, allowing any Unicode character allowed by XML</li>
+			</ul>
+			<p>Optional elements <i>&lt;w:pPr&gt;</i> and <i>&lt;w:rPr&gt;</i> define the formatting properties of a particular paragraph or run.</p>
+			<p>The standards documents that specify this format run to over six thousand pages.  Useful but thorough introductions to the DOCX format can be found at:</p>
+			<ul>
+				<li>
+					<a href="http://officeopenxml.com/anatomyofOOXML.php">Anatomy of a WordProcessingML File</a> by Daniel Dick of Reuters.</li>
+				<li>
+					<a href="http://msdn.microsoft.com/en-us/library/office/gg278308.aspx">Structure of a WordprocessingML document </a> from Open XML SDK documentation.  Includes <a href="http://msdn.microsoft.com/en-us/library/office/gg278308.aspx#TypDocScen">diagram showing typical document parts</a>.</li>
+			</ul>
+		</fdd:description>
+		<fdd:shortDescription>A format for word-processing documents in the Open Office XML (ISO 29500) format family, developed originally by Microsoft and used as the default format used by Microsoft Word 2007 and later versions.  Specified in parts 1 and 4 of ISO/IEC 29500, Information technology -- Document description and processing languages -- Office Open XML File Formats (OOXML).</fdd:shortDescription>
+		<fdd:productionPhase>Can be used in any production phase.  Particularly used for creating documents (initial state) and for editing and review (middle-state).  Documents that are formally published are often converted to a format that is designed for final publication and not for convenient editing.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000395</fdd:id>
+					<fdd:shortName>OOXML Family</fdd:shortName>
+					<fdd:titleName>OOXML (ISO/IEC 29500) Format Family</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000363</fdd:id>
+					<fdd:shortName>OPC/OOXML_2012</fdd:shortName>
+					<fdd:titleName>Open Packaging Conventions (Office Open XML), ISO 29500-2:2008-2012</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000396</fdd:id>
+					<fdd:shortName> MCE/OOXML_2012</fdd:shortName>
+					<fdd:titleName>Markup Compatibility and Extensibility (Office Open XML), ISO 29500-3:2008-2012, ECMA-376, Editions 1-4</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has modified version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000400</fdd:id>
+					<fdd:shortName>DOCX/OOXML_Strict_2012</fdd:shortName>
+					<fdd:titleName>DOCX Strict (Office Open XML), ISO 29500-1: 2008-2012</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>The Strict variant of DOCX disallows legacy markup as specified in Part 4 of ISO/IEC 29500.  Hence the Strict variant has less support for backwards compatibility when converting documents from older formats.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:comment>Associated template format using extension .dotx, not described separately on this website.  A .dotx template file is a WordprocessingML document based on the same schema and namespaces (specified in ISO/IEC 29500) as a .docx file.  The difference is its intended use.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:comment>WordprocessingML documents or templates with embedded macros, using file extensions .docm and .dotm, not described separately at this website.  The language used by Microsoft for macros, VBA, is not covered by the ISO/IEC 29500 specification, but is fully documented by Microsoft.  Macros are embedded as parts in the OPC package.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000075</fdd:id>
+					<fdd:shortName>XML</fdd:shortName>
+					<fdd:titleName>Extensible Markup Language (XML)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>Used by Library of Congress staff.  Sometimes used as the master for documents published by the Library of Congress as PDFs, for example for oral history transcripts in the <a href="http://www.loc.gov/collections/civil-rights-history-project/about-this-collection/">Civil Rights History Project</a>.</fdd:experience>
+		<fdd:preference>For works acquired for its collections, the list of <a href="http://www.loc.gov/preservation/resources/rfs/textmus.html">Library of Congress Recommended Format Specifications for Textual and Musical works</a>, as of June 2014, includes the OOXML family of formats, which includes the DOCX format, as acceptable for textual works and electronic serials. Since the binary (.doc) format is not listed as either preferred or acceptable, the DOCX format is implicitly preferred over the binary equivalent.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>International open standard.  Maintained by ISO/IEC JTC1 SC34/WG4.  Originated by Microsoft Corporation and first standardized through ECMA International in 2006.  Approval as ISO/IEC 29500 was in 2008.</fdd:disclosure>
+		<fdd:documentation>
+			<p>
+				<i>ISO/IEC 29500-1, Information technology -- Document description and processing
+languages -- Office Open XML File Formats -- Part 1: Fundamentals and Markup Language Reference</i>   and <i>ISO/IEC 29500-4, Information technology -- Document description and processing
+languages -- Office Open XML File Formats -- Part 4: Transitional Migration Features</i>.  Latest version (dated 2012 as of August 2014) is available from <a href="http://standards.iso.org/ittf/PubliclyAvailableStandards/">ISO/IEC Publicly Available Standards</a>.</p>
+			<p>All editions of the OOXML standards as published by ECMA are available from <a href="http://www.ecma-international.org/publications/standards/Ecma-376.htm">ECMA-376: Office Open XML File Formats</a>.  See <a href="#notes">Notes</a> below for version chronology.</p>
+			<p>The Transitional variant of DOCX is specified by applying the differences described in Part 4 (Transitional Migration Features) to the specification in Part 1. Part 4 cannot be read without detailed reference to subclauses in Part 1.</p>
+			<p>Annex L of Part 1 is a Primer (informative rather than normative) that introduces key features of WordprocessingML, relating elements and attributes to intended functionality through examples.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>Very widely used. DOCX was originally developed by Microsoft as an XML-based format to replace the proprietary binary format that uses the .doc file extension.  Since Word 2007, DOCX has been the default format for the Save operation.  Although the market share for the Microsoft Office productivity suite is declining, in the enterprise arena, it was still 90% in 2012, according to Gartner, as <a href="http://money.cnn.com/2013/11/13/technology/enterprise/microsoft-office-google-docs/">
+reported by CNN Money</a> in Nov 2013.  That article sees Google Docs as the primary competitor; Google Docs can export in six formats, with DOCX top of the list (as of September 2014).  A <a href="http://lifehacker.com/google-unveils-slides-for-android-native-docx-editing-1595851400">June 2014 blog post by LifeHacker</a> reported that Google Docs can now edit DOCX files natively, without format conversion. A <a href="http://googledrive.blogspot.com/2014/06/newdocssheetsslides.html">Google Drive blog post from June 25, 2014</a> confirms this introduction and indicates that the same feature is built-in to its mobile Apps.</p>
+			<p>Wikipedia&apos;s <a href="http://en.wikipedia.org/wiki/Office_Open_XML#Application_support">Office Open XML: Application Support</a> and <a href="http://en.wikipedia.org/wiki/List_of_software_that_supports_Office_Open_XML">List of software that supports Office Open XML</a> document support in a wide variety of word-processing applications and file conversion software, including the open source Libre Office (Read and Write support) and Apache OpenOffice (Read support).</p>
+			<p>The compilers of this resource are not aware of any word-processing applications other than Word 2013 that can create the Strict variant of DOCX (as defined in Part 1 of the ISO/IEC 29500 standard).  Tests in September 2014 indicated that Google Docs and Libre Office both created new documents in the Transitional variant described in this document, as indicated by the namespace declarations, even when the document includes no elements or attributes not present in the Strict versions of the schemas.  This corresponds to the default behavior of Microsoft Word 2013.</p>
+			<p>DOCX is an acceptable format for a number of national archival institutions, including the <a href="http://www.loc.gov/preservation/resources/rfs/textmus.html">Library of Congress</a>, the <a href="http://www.archives.gov/records-mgmt/policy/transfer-guidance-tables.html">U.S. National Archives</a>, <a href="http://naa.gov.au/Images/Digital-Preservation-Software-Platform-v1_tcm16-47139.pdf">National Archives of Australia</a>, and <a href="http://www.collectionscanada.gc.ca/obj/012018/f2/012018-2200-e.pdf">Library and Archives Canada</a>. Many journal publishers prefer or even mandate DOCX for article submission; some provide associated templates (see examples among <a href="#useful">Useful References</a>, below).</p>
+			<p>
+				<a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>The specification originated from Microsoft Corporation. Current and future versions of ISO/IEC 29500 and ECMA-376 are covered by Microsoft&apos;s <a href="http://www.microsoft.com/openspecifications/en/us/programs/osp/default.aspx">Open Specification Promise</a>, whereby Microsoft &quot;irrevocably promises&quot; not to assert any claims against those making, using, and selling conforming implementations of any specification covered by the promise (so long as those accepting the promise refrain from suing Microsoft for patent infringement in relation to Microsoft&apos;s implementation of the covered specification).</p>
+			<p>Features introduced into DOCX through the MCE mechanism may be subject to patent protection.  However, Microsoft&apos;s <a href="http://www.microsoft.com/openspecifications/en/us/programs/interop/interoperability-principles/default.aspx">interoperability principles</a> indicate &quot;Microsoft will also make available a list of any of its patents that cover any extensions, and will make available patent licenses on reasonable and non-discriminatory terms.&quot;</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>The structure and text of a DOCX file are all represented in XML and hence viewable without special tools, although XML-aware tools that can show the element hierarchy make viewing and interpretation more convenient.  The most commonly used parts, elements, and attributes have recognizable names.  Simple documents can be interpreted with very basic tools.  However, interpreting the semantics of some elements and the correspondence of some elements and attributes to word-processing functionality will require understanding of both the schema and the textual specification.  The specification provides valuable examples, for example of text effects, and not all normative constraints for DOCX can be represented fully in the W3C XML Schema Language (<fddLink id="fdd000077">XML_Schema_1_0</fddLink>).</p>
+			<p>The transparency of embedded image, audio, and video files depends on the formats of those files.</p>
+			<p>For transparency of the package containing the constituent parts of the DOCX file, see <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>The property file /docProps/core.xml is mandatory for OPC packages, although all elements are optional.  For more on self-documentation of the package containing the constituent parts of the DOCX file, see <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>.</p>
+			<p>A single optional part with a pre-defined set of extended properties for the package is permitted.  Microsoft uses the part name /docProps/app.xml for this and it is always present in DOCX files created by Microsoft.  The extended properties (each optional and non-repeatable) are primarily administrative and are not related to the intellectual or bibliographic nature of the document.  Elements include: name of creating application; version of creating application; various size metrics (pages, words, etc.); template used; document security level; and a list of embedded hyperlinks.  Libre Office and Google Docs use the same part name for the extended properties part, but the part typically records many fewer properties.  Both applications identify themselves as the creating application for non-empty documents.</p>
+			<p>The nature of the OPC package would permit the addition of a part that included rich XML-based metadata, preferably in a well-known schema, and was listed in the top-level relationships file with an appropriate relationship type.  However, no part of ISO/IEC 29500:2012 predefines such a relationship.  Embedding such a part in an OPC package could be done without affecting the primary document content.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			<p>None beyond XML-aware software.</p>
+			<p>See also <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>.</p>
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			<p>See <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>.</p>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:textQF>
+			<fdd:normalText>Editable document, with embedded support for powerful word-processing functionality.  Textual content is conveniently extractable for quotation and for indexing. Full support for Unicode character set.</fdd:normalText>
+			<fdd:structure>Paragraphs and sections are easily recognized, as are headers and footers.  Excellent support is available for higher-level constructs through the consistent use of named styles (e.g., for headings), automatically generated tables of contents and indexes, and structured templates.  However, use of such styles is not required, and structural semantics may only be reflected through font usage and paragraph indenting.</fdd:structure>
+			<fdd:layout>Excellent support for layout choices.  Represents entire layout and formatting as intended by an author who used a word-processor for which DOCX is a native format. Bi-directional and vertical display of text can be specified. Differences in detail can occur on display if the original fonts used are not available in the system used for viewing or due to conversion from another word-processing format with different markup semantics. </fdd:layout>
+			<fdd:mathDiag>
+				<p>ISO/IEC 29500 defines Office Math Markup Language, a mathematical markup language that can be embedded in WordprocessingML. Microsoft has published XSLT transformations to convert between MathML and Office Math Markup Language.  Key reasons given for not using MathML directly in DOCX include:</p>
+				<ul>
+					<li>Word supports equations embedded within paragraphs and MathML&apos;s presentation markup is designed for independent presentation of mathematical expressions.</li>
+					<li>Use of MathML would not allow tracking for changes within mathematical expressions.</li>
+				</ul>
+			</fdd:mathDiag>
+			<fdd:beyondText>
+				<p>In contrast to formats designed for documents as publications, word-processing formats such as DOCX typically store much information associated with the process of creating and reviewing documents, including tracked changes, threaded comments, and other annotations.  DOCX supports embedding of other OOXML content (including spreadsheetML, presentationML,  DrawingML, and Office Mathematical Markup Language), embedding of media objects in binary formats, and links to external media objects, such as images, audio, or video.</p>
+				<p>DOCX files may include markup to support building an index or bibliography from references entered in the text.  DOCX documents may include tables of contents generated automatically from section headings; such files will include elements and attributes to support regeneration of the table of contents using the author&apos;s choice of levels to include and of layout style.</p>
+				<p>DOCX files may include forms designed to be filled in by a reader.  The DOCX specification includes markup to support convenient navigation between fields in a form and to constrain information entered in forms (for example, to be a date or a choice from a drop-down menu.</p>
+				<p>In contrast to the Strict variant of DOCX, the Transitional variant described here may include markup to support backwards compatibility and to preserve visual and functional characteristics of documents originating in earlier word-processing formats.</p>
+			</fdd:beyondText>
+		</fdd:textQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>docx</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Three closely related filetypes have different extensions: .dotx for template files; .docm for document files with embedded macros; and .dotm for template files with embedded macros.  All are based on the same WordprocessingML specification and on ISO/IEC 29500.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.openxmlformats-officedocument.wordprocessingml.document</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.wordprocessingml.document">IANA registration</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:other>
+				<fdd:tag>XML namespace declaration</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>http://schemas.openxmlformats.org/wordprocessingml/2006/main</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>This namespace declaration is for the Transitional variant of DOCX.  It occurs in the mandatory Main Document part of a DOCX file (package) with the name <i>/word/document.xml</i> and is mapped to the prefix <i>w</i>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Target=&quot;word/document.xml&quot;</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Will occur in in the &lt;Relationships&gt; element in the top-level Relationships part (<i>/_rels/.rels</i> part) in an OPC package for a DOCX file.  In a Transitional DOCX, it will be the target of a relationship of type <i>http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument</i>.  See root namespace and source relationship for Main Document Part in ISO/IEC 29500-4:2012, §9.1.10, which refers to ISO/IEC 29500-1:2012, §11.3.10.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>This description uses filenames (e.g., core.xml) that are used by most, if not all, implementations.  As parts are defined by their content type in the mandatory [Content_Types].xml file part, use of these names is conventional rather than mandatory.</p>
+			<p>
+				<b>Relationship between DOCX and binary .doc format</b>: Conversion from the binary .doc format to DOCX using the Save As operation in Microsoft Word is designed to have 100 percent fidelity.  For Word 2007, the formats should be equivalent.  Features added since Word 2007 will usually not be supported in the binary format; when converting from DOCX to .doc, later versions of Word will attempt to &quot;down-convert&quot; to supported features and will present a compatibility check that indicates which features will be converted or lost.</p>
+			<p>
+				<b>Conversion between DOCX and ODT</b>: Acknowledging the interest in whether conversion between DOCX and ODT (OpenDocument Format word-processing) files could be reliable, ISO started a work item to explore this issue.  <i>ISO/IEC TR 29166:2011 Information technology -- Document description and processing languages -- Guidelines for translation between ISO/IEC 26300 and ISO/IEC 29500 document formats</i> is the output of that expert working group.   The report documents the challenges of translation between OOXML and ODF formats, including the word-processing formats, based on the standards as documented at the time.  This report, <a href="http://standards.iso.org/ittf/PubliclyAvailableStandards/c045245_ISO_IEC_TR_29166_2011.zip">available from ITTF</a>, describes features and functionality for the three primary types of office document and characterizes the translatability of features and functions as <i>high</i>, <i>medium</i>, or <i>low</i>.  The challenges are significant since the two formats use different underlying models.  Although simple documents can be effectively converted, a round-trip to an identical document should never be expected.  Display differences will be common after conversion, most of no semantic significance, but many resulting in different pagination or spacing.  Among the features that are particularly problematic for conversion, and could lead to problems of more substance, are:</p>
+			<ul>
+				<li>Use of Themes in DOCX documents, since ODF has no equivalent concept</li>
+				<li>East Asian fonts, particularly when mixing Western and East Asian fonts, representing dates and times, and <i>ruby text</i>.</li>
+				<li>Tables within tables</li>
+				<li>Embedded vector graphics, since OOXML uses DrawingML and ODT uses SVG.</li>
+				<li>Tracked changes.  [To be addressed by changes to the ODF specification.  See paragraph on OSBA below.]</li>
+				<li>Bibliographies.  Note that conversion/preservation of bibliographies might be more effectively done by converting the underlying database.</li>
+				<li>Forms</li>
+				<li>Numbering of nested lists</li>
+			</ul>
+			<p>Microsoft documents how it handles features that do not correspond when the Save As .odt feature is used in <a href="http://office.microsoft.com/en-us/word-help/differences-between-the-opendocument-text-odt-format-and-the-word-docx-format-HA010355788.aspx">Differences between the OpenDocument Text (.odt) format and the Word (.docx) format</a>.</p>
+			<p>The Open Source Business Alliance (OSBA) has a <a href="http://www.osb-alliance.de/en/working-groups/projekte/ooxml-filter/">crowd-funded project to improve the handling of OOXML files within LibreOffice and Apache OpenOffice</a>.  Funding is provided by interested institutions.  Phase 1, completed in September 2013, emphasized the visual presentation of documents and covered formatting of borders, tables, lists, and comments and embedding of fonts. A proposed <a href="http://www.osb-alliance.de/en/working-groups/projekte/major-features-in-loaoo/">specification for Phase 2</a> was published in Spring 2014.  This includes application enhancements to function more like Microsoft Word, particularly for mail-merge, and production of a revised, more complete specification for change-tracking markup within the ODF format.</p>
+			<p>When considering tools for conversion from OOXML to ODF, it is important to understand which version of ODF is the target.  Significant extensions to the standard have been made since ODF 1.1, but ODF 1.1 is the only version that has completed the ISO/IEC standardization process as of August 2014, with some amendments and corrections.  ODF 1.2 is nearing approval as an ISO standard.  Office 2013 supports export to ODF 1.2, but without change tracking.  ODF 1.3 is already in the works, and LibreOffice offers the option save as &quot;1.2 Extended.&quot;  See <a href="http://en.wikipedia.org/wiki/OpenDocument">Wikipedia entry for Open Document Format</a> and <a href="https://wiki.documentfoundation.org/Development/ODF_Implementer_Notes#ODF_Extensions">ODF Implementer Notes from LibreOffice Development wiki</a>.  The compilers of this resource believe that some of the amendments and features added in new versions of ODF are expected to improve the fidelity of conversion when supported in conversion tools but have no direct experience.  New editions of ISO/IEC 29500 were published in 2011 and 2012; however, the changes were primarily corrections and clarifications to reflect DOCX documents as produced in practice.  Of more relevance in relation to fidelity of conversion is whether a document includes any of the few new features introduced in recent versions of Word and marked up in the Markup Compatibility and Extensibility namespace (<fddLink id="fdd000395">MCE/OOXML_2012</fddLink>).  Microsoft has documented these extensions in <a href="http://msdn.microsoft.com/en-us/library/dd773189.aspx">[MS-DOCX] Word Extensions to the Office Open XML (.docx) File Format</a>.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>The original DOCX specification was published in ECMA-376, Part 1 in 2006.  Between then and 2012, the main change to the specification for WordprocessingML has been the split between WML Strict (as defined in Part 1) and WML Transitional (as defined in Part 4 in conjunction with Part 1).  Editions of ISO/IEC 29500 and ECMA 376 between 2008 and 2012 related to wordprocessingML have primarily been corrections and clarifications.  The chronology of editions specifying DOCX/OOXML_2012 is:</p>
+			<ul>
+				<li>ECMA-376, Part 1, 1st edition (December 2006)</li>
+				<li>ISO/IEC 29500-1:2008; ISO/IEC 29500-4:2008</li>
+				<li>ECMA-376, Part 1, 2nd edition (December 2008) [specification identical to ISO/IEC 29500-1:2008]; ECMA-376, Part 4, 2nd edition (December 2008) [specification identical to ISO/IEC 29500-4:2008]</li>
+				<li>ISO/IEC 29500-1:2011; ISO/IEC 29500-4:2011</li>
+				<li>ECMA-376, Part 1, 3rd edition (June 2011) [specification identical to ISO/IEC 29500-1:2011]; ECMA-376, Part 4, 3rd edition (June 2011) [specification identical to ISO/IEC 29500-4:2011]
+</li>
+				<li>ISO/IEC 29500-1:2012; ISO/IEC 29500-4:2012</li>
+				<li>ECMA-376, Part 1, 4th edition (December 2012) [specification identical to ISO/IEC 29500-1:2012]; ECMA-376, Part 4, 4th edition (December 2012) [specification identical to ISO/IEC 29500-4:2012]</li>
+			</ul>
+			<p>Another chronology of relevance to digital archivists is the support for DOCX in different versions of the Office software.  Files created by the Microsoft Office applications have a /docProps/app.xml part that contains properties for the document as a whole, including &lt;Application&gt; and &lt;AppVersion&gt;.  Values for AppVersion are numeric, representing internal version numbers used by Microsoft during development: 12 = Windows Office 2007 or Office for Mac 2008; 14 = Windows Office 2010 or Mac Office 2011; 15 = Office 2013.</p>
+			<ul>
+				<li>
+					<b>Office 2007:</b> Read, Transitional (this format) only.  Write (as default), Transitional only.  Based on ECMA-376, Edition 1.  Also introduced read/write support for ODF 1.1.</li>
+				<li>
+					<b>Office 2010:</b> Read, Transitional and Strict.  Write (as default), Transitional only.  Based on ISO/IEC 29500:2008.  Also read/write support for ODF 1.1</li>
+				<li>
+					<b>Office for Mac 2011:</b> Read, Transitional (this format) only.  Write (as default), Transitional only.  As of August 2014, there is not a desktop Office for Mac that can read or write Strict.</li>
+				<li>
+					<b>Office 2013:</b> Read, Transitional and Strict.  Write, Transitional (as default), Strict (as option).  Based on ISO/IEC 29500:2011.  Introduced read/write support for ODF 1.2.</li>
+			</ul>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The latest versions of ISO/IEC 29500 are made available at no charge from ISO. The formal titles of the two parts that together specify the Transitional variant of DOCX are <i>Information technology -- Document description and processing
+languages -- Office Open XML File Formats -- Part 1:  Fundamentals and Markup Language Reference</i> (which specifies the Strict variant) and <i>Information technology -- Document description and processing
+languages -- Office Open XML File Formats -- Part 4: Transitional Migration Features</i>.  The schemas for the Transitional variant described here are available as <a href="http://standards.iso.org/ittf/PubliclyAvailableStandards/c061798_ISO_IEC_29500-4_2012_Electronic_inserts.zip">electronic inserts</a> to Part 4.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/index.html</link>
+							<tag>ISO/IEC Publicly Available Standards</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c061750_ISO_IEC_29500-1_2012.zip</link>
+							<tag>ISO/IEC 29500-1:2012, specification document</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c061798_ISO_IEC_29500-4_2012.zip</link>
+							<tag>ISO/IEC 29500-4:2012, specification document</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c061798_ISO_IEC_29500-4_2012_Electronic_inserts.zip</link>
+							<tag>Schemas in W3C XML Schema language and in RELAX NG for the Transitional variant of DOCX.</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ecma-international.org/publications/standards/Ecma-376.htm</link>
+					<tag>ECMA-376: Office Open XML File Formats</tag>
+					<comment>Provides access to all chronological published versions.  </comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://nationalarchives.gov.uk/PRONOM/fmt/412</link>
+					<tag>PRONOM entry for fmt/412</tag>
+					<comment>Information in PRONOM from UK National Archives about DOCX.   PUID: fmt/412</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.wordprocessingml.document</link>
+					<tag>IANA registration for MIME media type for DOCX (wordprocessingML) files.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Office_Open_XML</link>
+					<tag>Wikipedia entry for Office Open XML</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/List_of_software_that_supports_Office_Open_XML</link>
+					<tag>Wikipedia list of software supporting Office Open XML</tag>
+					<comment>Not necessarily kept up-to-date.  In September 2014, several links had been detected by Wikipedia&apos;s automated link-checking tool as &quot;dead links.&quot;</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Microsoft provides various documentation pages related to DOCX.  Much of this documentation is aimed at programmers writing applications that manipulate WordprocessingML markup directly, perhaps using the Open XML SDK.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/office/bb448854.aspx</link>
+							<tag>Welcome to the Open XML SDK 2.5 for Office</tag>
+							<comment>In June 2014, the Open XML SDK was made available as open source.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/office/gg278308.aspx</link>
+							<tag>Structure of a WordprocessingML document (Open XML SDK)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://openxmldeveloper.org/wiki/w/wiki/introduction-to-wordprocessingml.aspx</link>
+							<tag>Introduction to WordProcessingML</tag>
+							<comment>From the OpenXMLDeveloper wiki. Links to video explanations that are screencasts showing use of Visual Studio.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/office/gg278327.aspx</link>
+							<tag>Working with WordprocessingML Documents</tag>
+							<comment>Introduces basic topics for working with WordprocessingML (.docx) files through program code.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/office/ff686712.aspx</link>
+							<tag>Mastering Text in Open XML WordprocessingML Documents</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/office/ff433640.aspx</link>
+							<tag>Using Open XML WordprocessingML Documents as Data Sources</tag>
+							<comment>Introduces &quot;content controls&quot; and how their use to define structured areas within a document can facilitate tasks that involve entering text or data in a form for convenient later extraction.  </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/office/ff629396.aspx</link>
+							<tag>Identifying Open XML Word-Processing Documents with Tracked Revisions</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://blogs.office.com/2012/08/13/new-file-format-options-in-the-new-office/</link>
+							<tag>New file format options in the new Office [Office 2013]</tag>
+							<comment>Announces support for writing files in DOCX Strict and ODF 1.2 formats.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://office.microsoft.com/en-us/word-help/differences-between-the-opendocument-text-odt-format-and-the-word-docx-format-HA010355788.aspx</link>
+							<tag>Differences between the OpenDocument Text (.odt) format and the Word (.docx) format</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://blogs.msdn.com/b/murrays/archive/2006/10/07/mathml-and-ecma-math-_2800_omml_2900_-.aspx</link>
+							<tag>MathML and Ecma Math (OMML)</tag>
+							<comment>By Murray Sargent in his Math in Office blog.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/dd773189.aspx</link>
+							<tag>[MS-DOCX] Word Extensions to the Office Open XML (.docx) File Format</tag>
+							<comment>Describes extensions to the format used in the Word Application, and represented in document files through the use of Markup Compatibility and Extensibility (MCE)</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.microsoft.com/openspecifications/en/us/programs/interop/interoperability-principles/default.aspx</link>
+							<tag>Interoperability Principles</tag>
+							<comment>Indicates that Microsoft will document extensions to standards implemented in its high-volume products on its website.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://news.microsoft.com/download/archived/presskits/eu-msft/docs/microsoftinteroperabilityundertaking16dec2009.doc</link>
+							<tag>Microsoft Interoperability Undertaking, Dec 16, 2009</tag>
+							<comment>Public undertaking to address competition concerns from the European Commission.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://officeopenxml.com/anatomyofOOXML.php</link>
+					<tag>Anatomy of a WordProcessingML File</tag>
+					<comment>By Daniel Dick, principal attorney editor at Thomson Reuters.  The site is in no way affiliated with his employer.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c045245_ISO_IEC_TR_29166_2011.zip</link>
+					<tag>ISO/IEC TR 29166:2011 Information technology -- Document description and processing languages -- Guidelines for translation between ISO/IEC 26300 and ISO/IEC 29500 document formats</tag>
+					<comment>Highlights challenges to conversion between DOCX and ODT word-processing formats.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Selected lists of preferred or acceptable formats and other deposit or submission guidelines. As of September 2014, several national archival institutions list DOCX (or OOXML in general) as acceptable.  Publisher submission guidelines often mandate use of DOCX and some provide a template file.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.loc.gov/preservation/resources/rfs/textmus.html</link>
+							<tag>Library of Congress Recommended Formats for Textual Works and Musical Compositions</tag>
+							<comment>Issued 2014.  Lists DOCX as acceptable.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.archives.gov/records-mgmt/policy/transfer-guidance-tables.html</link>
+							<tag>U.S. National Archives: Format Guidance for the Transfer of Permanent Electronic Records – Tables of File Formats </tag>
+							<comment>NARA 2014-04: Appendix A.  Revision of March 2014.  Lists DOCX as Acceptable.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://naa.gov.au/Images/Digital-Preservation-Software-Platform-v1_tcm16-47139.pdf</link>
+							<tag>National Archives of Australia: Dissecting the Digital Preservation Software Platform</tag>
+							<comment>Version 1.0, last modified in 2011.  Lists DOCX as acceptable.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.collectionscanada.gc.ca/obj/012018/f2/012018-2200-e.pdf</link>
+							<tag>Library and Archives Canada: File Format Guidelines for Preservation and Long-term Access</tag>
+							<comment>Version 1.0s from 2010.  Lists DOCX as acceptable.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://journal.imbio.de/instructions_word.php</link>
+							<tag>Journal of Integrated Bioinformatics: Instructions for Manuscripts in Microsoft Word</tag>
+							<comment>Mandates use of DOCX or LaTex using templates provided.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://dev.biologists.org/site/submissions/manuscript_prep.xhtml#file_formats</link>
+							<tag>Development: Manuscript Preparation Guidelines: File Format</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://stm.sciencemag.org/site/misc/auth_inst_ra.xhtml#6</link>
+							<tag>Science Translational Medicine (AAAS): File naming and formats for initial submission</tag>
+							<comment>DOCX is preferred.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://jlsc-pub.org/jlsc/authors.html#format</link>
+							<tag>Journal of Libraries and Scholarly Communication Submission Guidelines: Formats</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Links to information about support for DOCX or OOXML in general from selected software applications:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.altova.com/xmlspy/office-open-xml.html</link>
+							<tag>Altova: Office Open XML support</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Jesper Lund Stocholm has been actively involved in OOXML standardization and in building tools that manipulate and convert OOXML and ODF documents.  His posts are based on careful reading of the specifications, understanding of users&apos; needs and the marketplace, and practical experience.  </fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://idippedut.dk/</link>
+							<tag>a &apos;mooh&apos; point: blog home page</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://idippedut.dk/post/Do-your-math-OOXML-and-OMML</link>
+							<tag>Do your math - OOXML and OMML (Updated 2008-02-12)</tag>
+							<comment>About representation of mathematics in DOCX</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://idippedut.dk/post/Moving-towards-OOXML3cS3e</link>
+							<tag>Moving towards OOXML(S) -- dated February 2010</tag>
+							<comment>This and the following post discuss Microsoft&apos;s progress in implementing the Strict variant of DOCX (and other OOXML document types)</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://idippedut.dk/post/Moving-towards-OOXML3cS3e-%28update%29</link>
+							<tag>Moving towards OOXML(S) (update) -- dated May 2010</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://wiki.documentfoundation.org/Feature_Comparison:_LibreOffice_-_Microsoft_Office</link>
+					<tag>Feature Comparison: LibreOffice - Microsoft Office</tag>
+					<comment>Focuses on differences between applications.  Some differences reflect differences between semantics of DOCX and ODT that would likely give problems on conversion.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Some background to Microsoft commitments to interoperability:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://news.microsoft.com/2009/12/16/microsoft-statement-on-european-commission-decision/</link>
+							<tag>Microsoft Statement on European Commission Decision -- December 16, 2009</tag>
+							<comment>Microsoft made commitments to open documentation and other support for interoperability in this statement.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://go.microsoft.com/fwlink/?LinkId=179741</link>
+							<tag>Persistent link to the December 16, 2009 Microsoft Statement on European Commission Decision</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

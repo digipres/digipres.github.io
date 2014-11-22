@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000243" titleName="HD Photo, Version 1.0 (Windows Media Photo)" shortName="WMP_1_0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2008-02-19</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>HD Photo, Version 1.0 (formerly Windows Media Photo)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>HD Photo</fdd:keyword>
+			<fdd:keyword>Windows Media Photo</fdd:keyword>
+			<fdd:keyword>Windows Media formats</fdd:keyword>
+			<fdd:keyword>raster image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>Format for continuous-tone still images that supports a wide range of features including:</p>
+			<ul>
+				<li>Multiple color formats for display or print</li>
+				<li>Fixed or floating point, high-dynamic-range image encoding</li>
+				<li>Lossless or high-quality lossy compression</li>
+				<li>Efficient decoding for multiple resolutions and sub-regions</li>
+				<li>Minimal overhead for format conversion or transformations during decoding</li>
+			</ul>
+			<p>The developer states that the format delivers &#34;a lightweight, high-performance algorithm with a small memory footprint that enables practical, in-device encoding and decoding.&#34; </p>
+			<p>Support for HD Photo is provided by the Windows Imaging Component (WIC) installable codec architecture and the Windows Presentation Foundation (WPF; concerned in part with user interfaces) developed for the Windows Vista operating system.  Microsoft states that Vista represents the integration of imaging at the operating system level, reducing the level of activity required of specific applications.</p>
+			<p>In a July 31, 2007, press release, Microsoft Corp. announced the decision by the Joint Photographic Expert Group (JPEG) to introduce a new work item for the standardization of HD Photo which, if approved, would lead to a format tentatively titled &quot;JPEG XR."</p>
+		</fdd:description>
+		<fdd:shortDescription>Format for continuous-tone still images that supports a wide range of features including: multiple color formats for display or print, fixed or floating point, high-dynamic-range image encoding, lossless or high-quality lossy compression, efficient decoding for multiple resolutions and sub-regions, and minimal overhead for format conversion or transformations during decoding.</fdd:shortDescription>
+		<fdd:productionPhase>Used for content in middle and final states. If adopted by camera manufacturers, then initial-state use would also occur.</fdd:productionPhase>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None.</fdd:experience>
+		<fdd:preference>None.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			Developed by the Microsoft Corporation.
+		</fdd:disclosure>
+		<fdd:documentation>
+			The container format and API are specified in the <i>HD Photo Feature Specification</i> (2006); in February 2012, available from <a href="http://msdn.microsoft.com/en-us/windows/hardware/gg463400.aspx">http://msdn.microsoft.com/en-us/windows/hardware/gg463400.aspx</a>.  Information about the HD Photo compressed bitstream format and how to implement an encoder and decoder are part of the HD Photo Device Porting Kit 1.0 (DPK) provides; in February 2012, available from <a href="http://msdn.microsoft.com/en-us/windows/hardware/gg463381.aspx">http://msdn.microsoft.com/en-us/windows/hardware/gg463381.aspx</a>.
+		</fdd:documentation>
+		<fdd:adoption>Introduced in 2006, with some dependency on the level of adoption of the new Windows Vista operating/application system, available in 2007.  In December 2007, Microsoft announced the availability of plug-ins for Adobe PhotoShop. The compiler of this page has not encountered indications of significant adoption of WMP_1_0 as of early 2008; <a href="../contact_format.shtml">Comments welcome</a>.</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>Licensing applies to applications that create or display images, not to the images themselves. A Microsoft Web page consulted in August 2006 and no longer available in January 2007 (http://www.microsoft.com/windows/windowsmedia/licensing/wmphoto.aspx) stated, "Under most conditions, Windows Media Photo technology is available free of charge; royalties are associated only with specific licensing conditions."</p>
+			<p>According to the <i>Wikipedia</i> article <a href="http://en.wikipedia.org/wiki/HD_Photo">&#34;HD Photo&#34;</a> (consulted February 6, 2008), &quot;A Microsoft representative stated in a January 2007 interview that in order to encourage the adoption and use of HD Photo, the specification is made available under the Microsoft Open Specification Promise, which asserts that Microsoft offers the specification for free, and will not file suit on the patented technology, and that open-source software can therefore make use of the format. However, as of Microsoft&apos;s December 4, 2007 update, HD Photo is still not among the technologies that Microsoft has listed as being covered by the Open Specification Promise.&quot;</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>Depends upon algorithms and tools to read; will require sophistication to build tools.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>WMP_1_0 uses a &#34;TIFF-like&#34; file container to store image data in a table of Image File Directory (IFD) tags, using tag numbers from  TIFF's baseline, extended, and &#34;private&#34; sets. Examples of tags drawn from extended and private TIFF sets: ICCProfile (34675), XMPMetadata (700), and EXIFMetadata (34665). For an overview of tags, including a listing of WMP_1_0 tags, see <a href="../content/tiff_tags.shtml">Tags for TIFF and Related Specifications</a>.</p>
+			<p>The large number of possible image encodings are identified by means of GUIDs specified by Microsoft. (This contrasts with an approach based upon the placement of data in a set of tags for such features as bits per pixel, photometric interpretation, and so on.)</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>No DRM technology; see <a href="#notes">Notes</a> below.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>Supported.</fdd:normalImage>
+			<fdd:clarity>Very high levels of image quality are supported. The <i>Wikipedia</i> article <a href="http://en.wikipedia.org/wiki/HD_Photo">&#34;HD Photo&#34;</a> (as of February 6, 2008) reports, &#34;HD Photo is an image codec that gives a high-dynamic-range image encoding while requiring only integer operations (with no divides) for both compression and decompression. It supports monochrome, RGB, CMYK and even n-channel color representation, using up to 16-bit unsigned integer representation, or up to 32-bit fixed point or floating point representation, and also supports RGBE (Radiance). . . .  All color representations are transformed to an internal color representation. The transformation is entirely reversible, so, by using appropriate quantizers, both lossy and lossless compression can be achieved.&#34;</fdd:clarity>
+			<fdd:colorMaint>Excellent support; files can include ICC profiles; extended color gamuts are supported.</fdd:colorMaint>
+			<fdd:graphics>Not investigated</fdd:graphics>
+			<fdd:beyondImage>Paraphrasing The <i>Wikipedia</i> article <a href="http://en.wikipedia.org/wiki/HD_Photo">&#34;HD Photo&#34;</a> (as of February 6, 2008): An alpha channel may be present for transparency. The format allows decoding part of an image, without decoding the entire image. Full decoding is also unnecessary for certain operations such as cropping, downsampling, horizontal or vertical flips, or cardinal rotations.</fdd:beyondImage>
+		</fdd:stillImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>hdp</fdd:sigValue>
+					<fdd:sigValue>wdp</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From the <i>Wikipedia</i> article <a href="http://en.wikipedia.org/wiki/HD_Photo">&#34;HD Photo&#34;</a> (as of February 6, 2008).  The extension &quot;wdp&quot; is labeled &quot;formerly.&quot;</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>image/vnd.ms-photo</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From the <i>Wikipedia</i> article <a href="http://en.wikipedia.org/wiki/HD_Photo">&#34;HD Photo&#34;</a> (as of February 6, 2008)</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 49 49 BC</fdd:sigValue>
+					<fdd:sigValue>ASCII: II.</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From the <a href="http://filext.com/">The File Extension Source</a>
+				</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Regarding compression:</b> The <i>Wikipedia</i> article <a href="http://en.wikipedia.org/wiki/HD_Photo">&#34;HD Photo&#34;</a> offers a good overview of the format.  The following summation is from the January 2007 version of this article; a more detailed version was available in February 2008. The 2007 summation stated that HD Photo &#34;uses a reversible color space conversion, a reversible lapped biorthogonal transform and a non-arithmetic entropy encoding scheme, which is very efficient in preserving high frequency image data. This makes the algorithm retain a higher image quality at high compression ratios. The transform operation needs 3 multiply and add operations and 7 add or shift operations at the highest quality level and in the highest performance mode, 1 multiply and add operation and 4 add or shifts are required per pixel, giving the codec a high performance. [HD Photo] processes images in 16x16 macroblocks.&#34;</p>
+			<p>
+				<b>Regarding digital rights management</b>: In a <a href="http://blogs.msdn.com/b/andy_simonds/archive/2005/10/06/477954.aspx">blog</a> consulted in August 2006, HD Photo Program Manager Bill Crow commented:</p>
+			<ul>
+				<li>Windows Media DRM is ideal for publishing audio and video, but is really not that  useful for still photography. Most commercial scenarios for digital photos  require that the customer receive direct access to the image, which basically  defeats the approach used by Windows Media DRM (where the goal is to protect the content all the way to the glass or speakers). Also, Windows Media DRM is designed for a &#34;few to many&#34; publishing model; the DRM license gerneration technology does not easily allow anyone to generate their own DRM licenses.</li>
+				<li>While we are looking at DRM for photos for possible support in the future, the initial implementation was deliberately been designed to be simple, lightweight and easy for partners to implement directly in devices. That said, you can currently use Windows Document Rights Management for very effective management of rights access to digital photos.</li>
+				<li>We're investigating more comprehensive solutions to manage digital photo access rights, copyright protection and provenance guarantees as features for future versions of Windows Media Photo.</li>
+			</ul>
+			<p>
+				<b>Other notes: </b>
+				<a href="http://blogs.msdn.com/b/billcrow/">Bill Crow's own blog</a> is informative; here are some excerpts collected in August 2006:</p>
+			<ul>
+				<li>Our current encoder tools include a choice between the sample applications that are part of the Windows Media Photo Device Porting Kit (DPK) or an encoder utility based on the Windows Imaging Components (WIC) interfaces that we developed internally for our own testing purposes.  Both tools are command line utilities, and each has its own specific strengths.</li>
+				<li>The fundamental goal with a high dynamic range, wide gamut pixel format is to never discard image information that falls outside the visible range.  The entire tonal spectrum is always retained, regardless of the current exposure or color adjustments. Using fixed point or floating point values, pixel information is encoded using an extended numerical range.  The visible portion of the numerical range is a subset of the total numerical range that can be encoded with fixed point or floating point values.  . . . If color or exposure adjustment pushes a pixel value outside the visible range, rather than losing this value (as is the case with unsigned integer representations), the numerical value is still retained.  If a subsequent adjustment brings that pixel value back into the visible range, the correct numerical value is fully recovered.  This dramatically eliminates the issues and concerns with &#34;flattening&#34; a file.  Most color or exposure adjustments are completely reversible, eliminating the need to restart with the original RAW file or an intermediate layered editing file.</li>
+			</ul>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://msdn.microsoft.com/en-us/windows/hardware/gg463400.aspx</link>
+					<tag>HD Photo Specification</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://msdn.microsoft.com/en-us/windows/hardware/gg463381.aspx</link>
+					<tag>HD Photo Device Porting Kit 1.0 (DPK)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/HD_Photo</link>
+					<tag>Wikipedia article</tag>
+					<comment/>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://blogs.msdn.com/b/billcrow/</link>
+					<tag>Bill Crow blog</tag>
+					<comment>Crow was the Windows Media Photo Program Manager.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://blogs.msdn.com/b/andy_simonds/archive/2005/10/06/477954.aspx</link>
+					<tag>Andy Simonds blog</tag>
+					<comment>Includes exchange about DRM and other info.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://filext.com/</link>
+					<tag>The File Extension Source</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

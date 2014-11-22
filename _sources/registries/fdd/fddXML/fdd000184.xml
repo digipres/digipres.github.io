@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000184" titleName="MrSID Image Format, Generation 3" shortName="MrSID_MG3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2012-11-13</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>MrSID Image Format (Multi-resolution Seamless Image Database), Generation 3</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>raster image formats</fdd:keyword>
+			<fdd:keyword>georeferenced image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>MrSID is a patented, wavelet-based file format designed to enable portability of massive bit-mapped (raster) images. The format employs discrete wavelet transformations (DWT) in a seamless fashion on tile subsets of the image data and stores the wavelet coefficients in a data structure that supports efficient retrieval of the data needed to generate a specified rectangular zone of the image at a chosen spatial resolution.  The data structure of a MrSID image is a set of bitplanes designed to support 'transactions' of image data by extracting and delivering exactly and only those bitplanes necessary to construct a view according to desired scene, scale, or image quality, independent of bandwidth constraints.  The format was designed to enable instantaneous viewing and manipulation of imagery both locally and over networks without sacrificing quality.</p>
+			<p>New features in Generation 3 of the image format include lossless compression, multiple images in a composite file, and support for selective optimization and decoding by scene or region.  Also included is support for multispectral data and user-supplied color transforms (rather than the default RGB to YIQ chrominance-luminance transform).</p>
+		</fdd:description>
+		<fdd:shortDescription>A patented, wavelet-based file format designed to enable portability of massive bit-mapped (raster) images.  Used commonly for maps.</fdd:shortDescription>
+		<fdd:productionPhase>Most often a middle-state or final-state format.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000031</fdd:id>
+					<fdd:shortName>MrSID_MG2</fdd:shortName>
+					<fdd:titleName>MrSID Image Format, Generation 2</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>No experience with Generation 3 of MrSID.</fdd:experience>
+		<fdd:preference>Neither preferred nor acceptable as a master format.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>See <fddLink id="fdd000031">MrSID_MG2</fddLink>.
+		</fdd:disclosure>
+		<fdd:documentation>See <fddLink id="fdd000031">MrSID_MG2</fddLink>.
+		</fdd:documentation>
+		<fdd:adoption>See <fddLink id="fdd000031">MrSID_MG2</fddLink>.
+		</fdd:adoption>
+		<fdd:licensingAndPatents>See <fddLink id="fdd000031">MrSID_MG2</fddLink>.
+		</fdd:licensingAndPatents>
+		<fdd:transparency>See <fddLink id="fdd000031">MrSID_MG2</fddLink>.
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			TBD.
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			None
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			None
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>Good support.</fdd:normalImage>
+			<fdd:clarity>See <fddLink id="fdd000031">MrSID_MG2</fddLink>.  In addition, Generation 3 supports lossless compression.</fdd:clarity>
+			<fdd:colorMaint>TBD</fdd:colorMaint>
+			<fdd:graphics>No support for vector graphics.</fdd:graphics>
+			<fdd:beyondImage>Since MrSID is widely used for geospatial images, it incorporates metadata to support georeferencing, geo-rectification, etc. for use in GIS systems.  MrSID, Generation 3 allows multiple images in a file to create composite images.</fdd:beyondImage>
+		</fdd:stillImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>sid</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>image/x-mrsid-image</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:internetMediaType>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:history>See <fddLink id="fdd000031">MrSID_MG2</fddLink>.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000031">MrSID_MG2</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.lizardtech.com/products/geoexpress/</link>
+					<tag>GeoExpress product information</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://web.archive.org/web/20110522210303/http://www.lizardtech.com/files/geo/techinfo/MrSID_Tech_Primer.pdf</link>
+					<tag>MrSID Technology Primer</tag>
+					<comment>2004.  Explanation of multiresolution structure.  Via Internet Archive.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.lizardtech.com/files/geo/datasheets/MG4_White_Paper.pdf</link>
+					<tag>LizardTech’s MrSID Technology</tag>
+					<comment>2010 primer.  Includes brief description of differences between MrSID format generations.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.lizardtech.com/developer/</link>
+					<tag>LizardTech Developer Site</tag>
+					<comment>Provides access to SDK toolkit and documentation. As of 2011, download of the Decode toolkit required registration, but no other commitment was needed. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.lizardtech.com/downloads/category/</link>
+					<tag>LizardTech Downloads Site</tag>
+					<comment>Offers free download of viewers for Windows and iOS.  GeoViewer for Windows supports conversion from MrSID to GeoTIFF, PNG, or JPEG</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/392</link>
+					<tag>PRONOM entry for MrSID</tag>
+					<comment>PUID is fmt/392.  As of November 2012, PRONOM does not distinguish between generations of MrSID format.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:articleReference>
+					<articleRefDetail rel="au">Deal, John Grizz</articleRefDetail>.  "<articleRefDetail rel="atitle">Massive Raster Imagery: A new standard for compressing and displaying files is born.</articleRefDetail>&quot;    <articleRefDetail rel="jtitle">Earth Observation Magazine</articleRefDetail>, <articleRefDetail rel="date">March 1998</articleRefDetail>.  The magazine has ceased publication.  The article is accessible through the Internet Archive at <a href="http://web.archive.org/web/20041101042311/http://www.eomonline.com/Common/Archives/1998mar/98mar_deal.html">http://web.archive.org/web/20041101042311/http://www.eomonline.com/Common/Archives/1998mar/98mar_deal.html</a>
+				</fdd:articleReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:usefulReferences>
+</fdd:FDD>

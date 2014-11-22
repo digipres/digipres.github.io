@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000002" titleName="WAVE Audio File Format with LPCM audio" shortName="WAVE_LPCM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2010-06-01</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Waveform Audio File Format (WAVE) with Linear PCM bitstream</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>audio formats</fdd:keyword>
+			<fdd:keyword>recorded sound formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>WAVE file format with Linear Pulse Code Modulation (LPCM) audio.</fdd:description>
+		<fdd:shortDescription>WAVE file format with Linear Pulse Code Modulation (LPCM) audio.</fdd:shortDescription>
+		<fdd:productionPhase>Used for content in initial, middle, and final states.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000001</fdd:id>
+					<fdd:shortName>WAVE</fdd:shortName>
+					<fdd:titleName>WAVE Audio File Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000025</fdd:id>
+					<fdd:shortName>RIFF</fdd:shortName>
+					<fdd:titleName>Resource Interchange File Format (RIFF)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000011</fdd:id>
+					<fdd:shortName>LPCM</fdd:shortName>
+					<fdd:titleName>Linear Pulse Code Modulated Audio (LPCM)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>When reformatting analog sound recordings, the Broadcast WAVE format (either version, <fddLink id="fdd000356">WAVE_BWF_1</fddLink> or <fddLink id="fdd000357">WAVE_BWF_2</fddLink>), wrapping <fddLink id="fdd000011">LPCM</fddLink>, is used as the archival master format for mono and stereo audio at the <a href="http://www.loc.gov/avconservation/packard/">Packard Campus for Audio-Visual Conservation</a> and by the <a href="http://www.loc.gov/folklife/">American Folklife Center</a>. </fdd:experience>
+		<fdd:preference>The Broadcast WAVE format (either version), wrapping <fddLink id="fdd000011">LPCM</fddLink>, is preferred as the archival master format for mono and stereo audio when reformatting analog sound recordings.  The Library is a participant in the <a href="http://www.digitizationguidelines.gov">Federal Agencies Audio-Visual Working Group</a> that published a <a href="http://www.digitizationguidelines.gov/guidelines/digitize-embedding.html">recommended specification</a> for BWF bext metadata conforming to version 1 in 2009, with an update conforming to version 2 in 2012.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>See <fddLink id="fdd000001">WAVE</fddLink>.</fdd:disclosure>
+		<fdd:documentation>See <fddLink id="fdd000001">WAVE</fddLink>.</fdd:documentation>
+		<fdd:adoption>Very widely used.
+</fdd:adoption>
+		<fdd:licensingAndPatents>No special issues.</fdd:licensingAndPatents>
+		<fdd:transparency>See <fddLink id="fdd000001">WAVE</fddLink> and <fddLink id="fdd000011">LPCM</fddLink>.</fdd:transparency>
+		<fdd:selfDocumentation>See <fddLink id="fdd000001">WAVE</fddLink>.	</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>Not applic.able.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:soundQF>
+			<fdd:normalSound>Good support.</fdd:normalSound>
+			<fdd:fidelity>See <fddLink id="fdd000001">WAVE</fddLink>. </fdd:fidelity>
+			<fdd:channels>Requires use of WAVE Format Extensible (WAVE_FORMAT_EXTENSIBLE).  See <a href="http://msdn.microsoft.com/en-us/windows/hardware/gg463006.aspx">http://msdn.microsoft.com/en-us/windows/hardware/gg463006.aspx</a>.</fdd:channels>
+			<fdd:samples>Not supported.</fdd:samples>
+			<fdd:beyondSound>Files greater than 4 GB in size may be produced using the MBWF (&quot;RF64 with a bext chunk&quot;) specification, <a href="http://tech.ebu.ch/docs/tech/tech3306-2009.pdf">EBU-TECH 3306, MBWF / RF64:
+An extended File Format
+for Audio</a> (2009). See <a href="#notes">Notes</a>.</fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>
+					<p>See <a href="fdd000001.shtml">WAVE</a>
+					</p>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>
+					<p>See <a href="fdd000001.shtml">WAVE</a>
+					</p>
+				</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>
+					<p>See <a href="fdd000001.shtml">WAVE</a>
+					</p>
+				</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Microsoft WAVE format registry</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>0x0001</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>From <a href="http://msdn.microsoft.com/en-us/library/ms867195">Microsoft registry</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:history>Format created by Microsoft and introduced with Windows 3.1.  Adopted as basis for European Broadcasting Union (EBU) <fddLink id="fdd000003">WAVE_LPCM_BWF</fddLink> standard.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.tactilemedia.com/info/MCI_Control_Info.html</link>
+					<tag>Multimedia Programming Interface and Data Specifications 1.0.  August 1991</tag>
+					<comment>Issued jointly by IBM Corporation and Microsoft Corporation.  Also available at http://www.seanet.com/Users/matts/riffmci/riffmci.htm.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:specReference> Microsoft Corporation. <i>Microsoft Windows Multimedia Programmer's Reference.</i> Redmond, WA: Microsoft Press, 1991. Chapter 8.</fdd:specReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000001">WAVE</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

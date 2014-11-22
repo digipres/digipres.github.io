@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000241" titleName="Camera Raw Formats (Group Description)" shortName="CAM_RAW" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2006-10-04</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Camera Raw Formats</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>raster image formats</fdd:keyword>
+			<fdd:keyword>digital camera file formats</fdd:keyword>
+			<fdd:keyword>Camera Raw</fdd:keyword>
+			<fdd:keyword>crw</fdd:keyword>
+			<fdd:keyword>cr2</fdd:keyword>
+			<fdd:keyword>raf</fdd:keyword>
+			<fdd:keyword>dcr</fdd:keyword>
+			<fdd:keyword>kdc</fdd:keyword>
+			<fdd:keyword>mrw</fdd:keyword>
+			<fdd:keyword>nef</fdd:keyword>
+			<fdd:keyword>orf</fdd:keyword>
+			<fdd:keyword>pef</fdd:keyword>
+			<fdd:keyword>x3f</fdd:keyword>
+			<fdd:keyword>srf</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>Collective description of a group of proprietary formats employed by digital cameras that use a color filter array or Fovean sensor to capture image data. Several examples are listed in <a href="#sign">File type signifiers</a> below.</p>
+			<p>Raw files contain data captured by the sensors in the array. The data generally receives a very modest amount of processing before being output by the camera. The production of usable images requires additional processing after the data files have been transferred to a computer. Some information about this pre- and post-processing is provided in the <a href="#notes">Notes</a> below.</p>
+			<p>Raw files permit the creator-editor to interpret the image as the various post-processing steps are applied, tailoring an outcome that suits the subject matter and intended use. This outcome may be contrasted to the production of "finished" images in a camera&#8212;typically formatted as <fddLink id="fdd000145">TIFF_UNC_EXIF</fddLink> or <fddLink id="fdd000147">JPEG_EXIF</fddLink>&#8212;for which algorithms built into the camera make the post-processing decisions for the photographer.</p>
+			<p>The proprietary nature of raw formats, however, means that there is a risk that any given format will not be supported for the long term, especially if the manufacturer goes out of business. In at least one instance, data elements have been encrypted within a raw format, forcing the use of the manufacturer's own software for post-processing. The proprietary and undocumented nature of raw formats has been the subject of complaint by professionals; one outlet for their ideas is the <a href="http://www.openraw.org/">OpenRAW organization</a>. Meanwhile, formats that normalize camera raw data, like Adobe's <fddLink id="fdd000188">DNG_1_1</fddLink>, are intended to mitigate this risk. (DNG may also contain a copy of the raw file as created.)</p>
+		</fdd:description>
+		<fdd:shortDescription>A group of proprietary formats employed by digital cameras that use a color filter array to capture image data. Raw files contain data captured by the sensors in the array.</fdd:shortDescription>
+		<fdd:productionPhase>Used for content in the initial state.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000188</fdd:id>
+					<fdd:shortName>DNG_1_1</fdd:shortName>
+					<fdd:titleName>Adobe Digital Negative (DNG), Version 1.1</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>Nikon <i>nef</i> raw files have been created by and are held by the American Folklife Center.</fdd:experience>
+		<fdd:preference>None at this writing, although normalization to <fddLink id="fdd000188">DNG_1_1</fddLink> may emerge as a preferred practice.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>There is very little disclosure of raw format specifications by manufacturers and this is a contentious issue for some photographers; see, for example, Michael Reichmann and Juergen Specht's <a href="http://www.luminous-landscape.com/TheRawFlaw.pdf">The Raw Flaw</a> (2005).</fdd:disclosure>
+		<fdd:adoption>Varied, depends upon the extent of use of specific cameras. Several of the camera brands <a href="http://www.adobe.com/products/photoshop/extend.html">listed by Adobe</a> are very popular.</fdd:adoption>
+		<fdd:licensingAndPatents>Not investigated at this time.
+		</fdd:licensingAndPatents>
+		<fdd:transparency>All raw formats require special software to convert them into usable images. Some raw formats are exported from the camera in a compressed mode.
+		</fdd:transparency>
+		<fdd:selfDocumentation>Most formats include metadata, both for the interpretation of the data (e.g., about white balance) and to provide the types of additional information specified by <fddLink id="fdd000146">EXIF_2_2</fddLink>. Professionals in the field report, however, that raw files do not support the widely used IPTC structure for descriptive metadata, or do so in a non-standard and imperfect way.
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None
+		</fdd:externalDependencies>
+		<fdd:techProtection>Not investigated at this time.
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>Provided when files are opened in special software.</fdd:normalImage>
+			<fdd:clarity>High levels of image quality are <i>latent</i> in each raw file.  The data must be processed to yield an image; the processing can adjust images for a number of desired outcomes.</fdd:clarity>
+			<fdd:colorMaint>See professional photographer Richard Anderson's comments headed <i>Accurate Rendering</i> in <a href="#notes">Notes</a> below. The <a href="http://www.adobe.com/products/photoshop/extend.displayTab2.html">specification</a> for <fddLink id="fdd000188">DNG_1_1</fddLink> has a brief outline for mapping camera color space to CIE XYZ color space (pp. 47-48).</fdd:colorMaint>
+			<fdd:graphics>Not relevant</fdd:graphics>
+			<fdd:beyondImage>Raw files are highly malleable; see <a href="#notes">Notes</a> below.</fdd:beyondImage>
+		</fdd:stillImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>cr2</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Produced by Canon cameras</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>crw</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Produced by Canon cameras</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 49 49 1A 00 00 00 48 45 41 50 43 43 44 52 02 00 01</fdd:sigValue>
+					<fdd:sigValue>ASCII: II [null] HEAPCCDR</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For <i>crw</i>; from <a href="http://filext.com/">The File Extension Source</a>; see also <a href="http://owl.phy.queensu.ca/~phil/exiftool/canon_raw.html">The Canon RAW (CRW) File Format</a>
+				</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>dcr</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Produced by Kodak cameras</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>kdc</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Produced by Kodak cameras</fdd:note>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>mrw</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Produced by Minolta cameras</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 00 4D 52 4D</fdd:sigValue>
+					<fdd:sigValue>ASCII: .MRM</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For <i>mrw</i>; from <a href="http://filext.com/">The File Extension Source</a>
+				</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>nef</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Produced by Nikon cameras</fdd:note>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>orf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Produced by Olympus cameras</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>According to <a href="http://web.archive.org/web/20080303102012/http://www.virtual-cafe.com/~dhh/tools.d/exifprobe.d/exifprobe_output002.html">Exifprobe documentation</a>, &#34;Olympus has taken the unusual step of marking their formats with unique &#39;magic numbers&#39; in the header (a different magic number for each flavor).  . . . One of the formats (magic=0x5352=&#39;RS&#39;) contains primary image data in &#39;packed&#39; 12 bit CFA format. The other (magic=0x4f52=&#39;RO&#39;) provides 12 bit &#39;unpacked&#39; (16 bits per sample) CFA data.&#34;</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>pef</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Produced by Pentax cameras</fdd:note>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>raf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Produced by Fuji cameras</fdd:note>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>srf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Produced by Sony cameras</fdd:note>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>x3f</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Produced by Sigma cameras</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 46 4F 56 62</fdd:sigValue>
+					<fdd:sigValue>ASCII: FOVb</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For <i>x3f</i>; from <a href="http://filext.com/">The File Extension Source</a>
+				</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Regarding processing of raw files in the camera prior to export:</b> The <i>Wikipedia</i> article <a href="http://en.wikipedia.org/wiki/Raw_image_format">&#34;Raw Image Format&#34;</a> (as of August 17, 2006) reports, &#34;In general, this processing is limited to algorithms that require direct access to the camera's hardware. This includes &#39;long exposure noise reduction&#39; (aka &#39;dark frame subtraction&#39;) and the mapping out of &#39;hot&#39; (too bright) or &#39;dead&#39; (too dim) pixels. It also often includes rudimentary noise reduction.&#34;  For a discussion of dead pixels, see <a href="http://web.archive.org/web/20070513082749/http://www.cs.wisc.edu/~jduffy/699/">http://web.archive.org/web/20070513082749/http://www.cs.wisc.edu/~jduffy/699/</a>.</p>
+			<p>
+				<b>Regarding post-processing:</b> Most digital camera color filter arrays employ the Bayer pattern (an array with twice the number of green elements than red or blue, to produce sufficient green information to satisfy the needs of human perception). The conversion of this data to the familiar red, blue, and green channels of an RGB image is called <i>demosaicing</i>. Bruce Fraser's excellent white paper <a href="http://wwwimages.adobe.com/www.adobe.com/content/dam/Adobe/en/products/photoshop/pdfs/understanding_digitalrawcapture.pdf">&#34;Understanding Digital Raw Capture&#34;</a> names the other post-processing actions typically entailed in the conversion of a raw file: </p>
+			<ul>
+				<li>White balance</li>
+				<li>Colorimetric interpretation</li>
+				<li>Gamma correction</li>
+				<li>Noise reduction, anti-aliasing, and sharpening</li>
+			</ul>
+			<p>It is worth noting that the Fovean sensor used in Sigma, Polaroid, and HanVision cameras employs a structure that is drastically different from the Bayer array and produces raw images comprised of RGB data. Fovean raw files from Sigma cameras can be processed using Adobe software.</p>
+			<p>
+				<b>Regarding accurate rendering:</b> From a paper by the professional photographer Richard Anderson for a 2006 symposium at the I3A (International Imaging Industry Association, apparently disbanded as of October 2013): </p>
+			<p>&#34;In color management theory, completely accurate rendering from scene through camera to computer to finished print requires profiling of all devices. There is some debate as to whether cameras can and should be profiled, and how those profiles should be used by a RAW processing software. I use the solution provided by the Adobe Camera RAW calibrate tab, where a MacBeth 24 color checker can be photographed, and a script can be run that essentially creates a camera profile unique to each camera body. Others prefer treating the camera as essentially a scanner, where they shoot a color target, measure it and create a camera profile. Whether this profile works under all lighting conditions, or just the specific condition under which the target was shot is the subject of some debate. There is the issue of how the profile should be applied, before or after rendering for instance. Also, not all software has the ability to apply profiles in the rendering process.&#34;</p>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Proprietary RAW formats evolve as camera manufacturers bring out new models; they are not usually openly documented. Some specifications or approximations to specifications can be found under Useful References, below:</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://wwwimages.adobe.com/www.adobe.com/content/dam/Adobe/en/products/photoshop/pdfs/understanding_digitalrawcapture.pdf</link>
+					<tag>Understanding Digital Raw Capture</tag>
+					<comment>By Bruce Fraser </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://web.archive.org/web/20080303102012/http://www.virtual-cafe.com/~dhh/tools.d/exifprobe.d/exifprobe_output002.html</link>
+					<tag>Exifprobe documentation: Supported file formats.</tag>
+					<comment>Information about various raw formats is included.  As of March 2012, the page could not be found; link here is to Internet Archive. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Raw_image_format</link>
+					<tag>Wikipedia on Raw Image Format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.openraw.org/</link>
+					<tag>OpenRAW organization</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://xyrion.org/ciff/CIFFspecV1R04.pdf</link>
+					<tag>Documentation of the Canon CIFF wrapper format</tag>
+					<comment>The basis for the Canon crw format. (A  comment from a reader indicated that the Canon cr2 format is TIFF-based.)</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://owl.phy.queensu.ca/~phil/exiftool/canon_raw.html</link>
+					<tag>About the crw format</tag>
+					<comment/>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.dalibor.cz/minolta/raw_file_format.htm</link>
+					<tag>About the Minolta mrw format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.proxel.se/x3f.html</link>
+					<tag>X3F Tools</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.photofo.com/x3f-raw-format/</link>
+					<tag>X3F SIGMA RAW documentation project</tag>
+					<comment>From photofo.com.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://web.archive.org/web/20070317042320/http://www.x3f.info/technotes/FileDocs/X3F_Format.pdf</link>
+					<tag>About X3F format</tag>
+					<comment>Via Internet Archive Wayback Machine</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.luminous-landscape.com/TheRawFlaw.pdf</link>
+					<tag>The Raw Flaw</tag>
+					<comment>About issues related to proprietary raw formats </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.adobe.com/products/photoshop/extend.html</link>
+					<tag>Lists camera brands supported by the Adobe Camera Raw plugin for Photoshop.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.adobe.com/products/photoshop/extend.displayTab2.html</link>
+					<tag>Specification for dng format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://web.archive.org/web/20070513082749/http://www.cs.wisc.edu/~jduffy/699/</link>
+					<tag>Discussion of dead pixels</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

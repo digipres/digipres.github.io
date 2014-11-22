@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000348" titleName="ISO Disk Image File Format" shortName="ISO_image" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>any</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:updates>
+			<fdd:date>2012-08-01</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ISO Disk Image File Format</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>container formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>Archive file containing the content from (or destined for) an optical disk, originally limited to data formatted to comply with the ISO 9660 standard (1988), hence the format name and the <i>iso</i> file extension.  Beginning in the 1990s, the term ISO Disk Image File Format (or simply <i>ISO image</i>) has also been applied to data structured in terms of the Universal Disk Format (UDF) specification developed and maintained by the Optical Storage Technology Association (OSTA), standardized as ISO/IEC 13346 (1995 and 1999) and ECMA-167 (1997).  UDF is used for computer data storage for a broad range of media, including DVDs and Blu-Ray disks, supplanting ISO 9660.</p>
+			<p>The ISO Disk Image File Format is typically used to package or bundle software, databases, authored DVD video programs, and the like.  For example, most distributions of the open-source Linux operating system are distributed as ISO images of the installation media. Some independent filmmakers distribute their works (which may contain interactive elements) as downloadable ISO disk images to be consumed as if they were DVDs.</p>
+			<p>ISO image files, unlike normal files, are not <i>opened</i> but rather are <i>mounted</i>. ISO image files contain the data contents of every written sector of an optical disc, including the optical disc file system if one is present.  Thus it is a <i>media-independent</i> version of a <i>media-dependent</i> format.  However, for playback or exploitation of the content, the dependencies on players (including CD and DVD players), operating systems,  rights-related technical protection systems, and other software remain, just as they do for the original (or to-be-produced) physical disk. For organizations seeking to preserve content, ISO Disk Image Format Files support the important goal of bit preservation but not long-term content management.</p>
+			<p>The term <i>ISO Disk Image File Format</i> is used to name a range of variants that are not governed by a single comprehensive specification.  In addition to the ISO 9660 and UDF types identified above, the structure for an ISO disk image may employ extensions like the Rock Ridge Interchange Protocol, an IEEE standard that supports the preservation of POSIX (Unix-style) permissions and longer names; the Joliet filesystem specified by Microsoft that supports names stored in Unicode, thus allowing almost any character to be used, even from non-Latin scripts; El Torito, which enables CDs to be bootable on PCs; and Apple ISO 9660 Extensions, which add support for Mac-OS-specific file characteristics.  Tools and operating systems offer varying support for these extensions; in some cases the <i>media-independent</i> entity may not be fully <i>system independent</i>.  <a href="../contact_format.shtml">Comments welcome</a> that clarify the impact of the use of these extensions on long-term data management.</p>
+		</fdd:description>
+		<fdd:shortDescription>File containing the content from (or destined for) an optical disk.  The ISO Disk Image File Format (or simply ISO image) is used for data structured following ISO 9660 (1988) or the later Universal Disk Format (UDF) specification developed and maintained by the Optical Storage Technology Association (OSTA).</fdd:shortDescription>
+		<fdd:productionPhase>Final-state package, although dissemination is most often via the actual disk and not the disk image file.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:comment>Disk Image (family), not described at this Web site at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Other</fdd:typeOfRelationship>
+				<fdd:comment>Apple Disk Image; functionally similar proprietary disk image format for the Mac OS X operating system, <i>dmg</i> extension. Not described at this Web site at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Other</fdd:typeOfRelationship>
+				<fdd:comment>CFS (Compact File Set file format); open archive file format and software distribution container format that uses the Joliet file system and is very similar to ISO 9660. Not described at this Web site at this time.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>Used as the master file format for the preservation reformatting of physical disks (e.g., CD-ROMs) in the Tangible Media Project, beginning in 2011.  Also used as the preservation master file format for write-once DVD disks containing oral histories received by the Veterans History Project, as specified on pages 21-25 in <a href="http://dl.dropbox.com/u/11583358/IntrmMastVidFormatRecs_20111114.pdf">Determining Suitable Digital Video Formats for Medium-term Storage</a>.</fdd:experience>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>There is no comprehensive single specification for all of the variant formats called <i>ISO image</i>.  Three international standards offer specifications for the relevant disk formats and, by implication, for the media-independent representation of disk content.  Other relevant specifications have been published by standards bodies and corporate entities. </fdd:disclosure>
+		<fdd:documentation>
+			<p>ISO 9660:1988. <i>Information processing -- Volume and file structure of CD-ROM for information interchange</i>
+			</p>
+			<p>ISO/IEC 13346, parts 1 through 5, 1995 and 1999; running title <i>Information technology -- Volume and file structure of write-once and rewritable media using non-sequential recording for information interchange</i>; see list under <a href="#specs">Specifications</a> below.</p>
+			<p>ECMA-167. <i>Volume and File Structure for Write-Once and Rewritable Media using Non-Sequential Recording for Information Interchange</i>, 3rd edition (June 1997).</p>
+			<p>IEEE P1282, <i>Rock Ridge Interchange Protocol Draft Standard, version 1.12</i>, adopted 1994-07-08.</p>
+			<p>
+				<i>Joliet Specification, Extensions to the CD-ROM Recording Spec ISO 9660:1988
+ for Unicode, Version 1</i>; May 22, 1995.</p>
+		</fdd:documentation>
+		<fdd:adoption>Widely adopted.  A variety of tools exist to make an ISO Image file from a disk, but these tools may vary in the degree to which they support the various structural extensions that may be found on the original disk, and the degree to which they produce reports that describe the process and outcome of a given action.  Computer operating systems also vary in terms of the degree that they support ISO Image files.</fdd:adoption>
+		<fdd:licensingAndPatents>None identified</fdd:licensingAndPatents>
+		<fdd:transparency>Package is transparent but the elements in the package may be formatted as complex binary objects.</fdd:transparency>
+		<fdd:selfDocumentation>A number of naming conventions and descriptors are required by the specification. These generally apply to the package structure and not to the data that it contains.</fdd:selfDocumentation>
+		<fdd:externalDependencies>Operating system that permits mounting the disk image as a drive, or an application for the purpose.</fdd:externalDependencies>
+		<fdd:techProtection>Not fully investigated. Data within the ISO 9660 structure may be independently encrypted.  The use of filesystem extensions like Rock Ridge permits the use of POSIX (Portable Operating System Interface) and thus Unix-like permission settings for files within the package.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>iso</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/x-iso9660-image</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From the Wikipedia <a href="http://en.wikipedia.org/wiki/ISO_image">ISO Image</a> article.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 43 44 30 30 31</fdd:sigValue>
+					<fdd:sigValue>ASCII: CD001</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://www.garykessler.net/library/file_sigs.html">Gary Kessler's File Signatures page</a>. This may be limited to strict ISO 9660 files.  Kessler reports, &quot;This signature usually occurs at byte offset 32769 (0x8001),
+34817 (0x8801), or 36865 (0x9001).&quot;</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Uniform Type Identifier (Mac OS)</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>public.iso-image</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>From the Wikipedia <a href="http://en.wikipedia.org/wiki/ISO_image">ISO Image</a> article.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>ISO disk image files are employed by various organizations as a format for long-term, file-based management of data copied from a physical disk.  As noted above, however, ISO file content (like the original disk) may have dependencies that, over time, make access difficult.  For this reason, some organizations may additionally (or instead) copy files as individual files and present the content in terms of a filesystem hierarchy. But this method does not provide a way to get back to the bootable disk (if that&apos;s what was started with) and might overlook hidden files.</p>
+			<p>Multisession disks may cause difficulties in reformatting.  One manufacturer of a tool for reformatting disks as ISO image files reported, "There are some instances of [multisession] UDF discs that may cause issue, but these will be flagged [in the reports provided by the tool]. This manifests itself by the rip only grabbing the first session or write on the disc." (Personal communication with the compiler of this page.)</p>
+			<p>Regarding the Joliet specification, a Microsoft <a href="http://support.microsoft.com/kb/125630">support page</a> (&quot;last review&quot; in 2011) reports, "Because the Joliet specification is ISO 9660 compliant, CD-ROM disks recorded according to the Joliet specification may continue to interchange data with non-Joliet systems. The designs for the System Use Sharing Protocol, RockRidge extensions for POSIX semantics, CD-XA System Use Area Semantics, and Apple's Finder Flags and Resource Forks all port in a straightforward manner to the Joliet specification. These protocols are not an integral part of the Joliet specification, however. Support for Joliet is included in Windows 95, and the spec is now included in the Win95 DDK docs. It will also be included in a future version of Windows NT." (This page consulted in July 2012.)</p>
+			<p>The ISO disk image format (and file formats that carry extensions like .img and .dmg) are associated with optical disk media.  Other disk image formats are associated with magnetic media, i.e., floppy disks and hard drives (and probably solid state media as well).  These formats--and the software applications that produce them--are intended to serve a variety of uses including safeguarding of "live" or active files on a disk, recovering data from a damaged disk, backing up data, and carrying out forensic work like legal discovery or the reconstruction of, say, a playwright's creative process.  The pros and cons of <i>logical</i> and <i>forensic</i> copies of disk content are informally discussed in by a handful of librarians in <a href="http://web.archive.org/web/20130605212030/http:/libraries.stackexchange.com/questions/949/how-should-archives-decide-between-creating-logical-or-forensic-disk-images-of-d">How should archives decide between creating logical or forensic disk images of drives on computers accessioned as part of personal papers collections?</a> Filename extensions in this zone of interest include .aaf, .dd, .dim, .ad1, and others.  Some of these will be described at this Web site in the future.</p>
+			<p>Readers may be interested in the extent of the specifications that apply to the content on an authored video DVD; see, for example, the specifications section of the Wikipedia article <a href="http://en.wikipedia.org/wiki/DVD">DVD</a> (consulted July 20, 2012).  Licenses and specification books are sold via the <a href="http://www.dvdfllc.co.jp/">DVD Format/Logo Licensing Corporation in Japan</a>.  See also the <a href="http://www.aidinc.com/features/dvdfaq.asp">Introductory DVD Authoring FAQ</a>.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>From the Wikipedia article <a href="http://en.wikipedia.org/wiki/ISO_9660">ISO 9660</a>: &quot;[This format] traces its roots to the High Sierra Format file system [which] arranged file information in a dense, sequential layout to minimize nonsequential access by using a hierarchical (eight levels of directories deep) tree file system arrangement, similar to UNIX and FAT. To facilitate cross platform compatibility, it defined a minimal set of common file attributes (directory or ordinary file and time of recording) and name attributes (name, extension, and version), and used a separate system use area where future optional extensions for each file may be specified. High Sierra was adopted in December 1986 (with changes) as an international standard by Ecma International as ECMA-119 and submitted for fast tracking to the ISO, where it was eventually accepted as ISO 9660:1988.&quot; (Page consulted in July 2012.)</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ecma-international.org/publications/standards/Ecma-167.htm</link>
+					<tag>ECMA-167. Volume and File Structure for Write-Once and Rewritable Media using Non-Sequential Recording for Information Interchange, 3rd edition (June 1997).</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>ftp://ftp.ymi.com/pub/rockridge/rrip112.ps</link>
+					<tag>IEEE P1282,
+Rock Ridge
+Interchange Protocol
+Draft Standard, version 1.12, adopted 1994-07-08</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.buildorbuy.org/pdf/joliet.pdf</link>
+					<tag>Joliet Specification, Extensions to the CD-ROM Recording Spec ISO 9660:1988
+ for Unicode, Version 1; May 22, 1995</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:specReference>ISO 9660:1988.  Information processing -- Volume and file structure of CD-ROM for information interchange.</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 13346-1:1995.  Information technology -- Volume and file structure of write-once and rewritable media using non-sequential recording for information interchange -- Part 1: General</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 13346-2:1999. Information technology -- Volume and file structure of write-once and rewritable media using non-sequential recording for information interchange -- Part 2: Volume and boot block recognition</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 13346-3:1999. Information technology -- Volume and file structure of write-once and rewritable media using non-sequential recording for information interchange -- Part 3: Volume structure</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 13346-4:1999. Information technology -- Volume and file structure of write-once and rewritable media using non-sequential recording for information interchange -- Part 4: File structure</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 13346-5:1995.  Information technology -- Volume and file structure of write-once and rewritable media using non-sequential recording for information interchange -- Part 5: Record structure</fdd:specReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://support.microsoft.com/kb/125630</link>
+					<tag>Joliet Specification for CD-ROM</tag>
+					<comment>Informational page on Joliet from Microsoft.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www-01.ibm.com/support/docview.wss?uid=nas13120cbcb6ece1d59862572f0006826da</link>
+					<tag>IBM support for ISO 9660 extensions</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://tldp.org/HOWTO/Filesystems-HOWTO-8.html</link>
+					<tag>Information about filesystems and CD-ROMs</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.digitizationguidelines.gov/audio-visual/documents/IntrmMastVidFormatRecs_20111001.pdf</link>
+					<tag>Determining Suitable Digital Video Formats for Medium-term Storage</tag>
+					<comment>Report by George Blood for the Library of Congress; includes section pertaining to ISO disk images for long-term management of authored DVDs.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.dvdfllc.co.jp/</link>
+					<tag>DVD Format/Logo Licensing Corporation</tag>
+					<comment>Japanese source for specifications and licenses that pertain to video DVDs.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.aidinc.com/features/dvdfaq.asp</link>
+					<tag>Introductory DVD Authoring FAQ</tag>
+					<comment>General technical information about video DVDs.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://web.archive.org/web/20130605212030/http:/libraries.stackexchange.com/questions/949/how-should-archives-decide-between-creating-logical-or-forensic-disk-images-of-d</link>
+					<tag>Resource from Stack Exchange on creating logical or forensic disc images for personal papers collections</tag>
+					<comment>Accessed via the Internet Archive Wayback Machine</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

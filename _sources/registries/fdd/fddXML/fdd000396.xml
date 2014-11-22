@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000396" titleName="Markup Compatibility and Extensibility (Office Open XML), ISO 29500-3:2008-2012, ECMA-376, Editions 1-4" shortName="MCE/OOXML_2012" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>any</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2014-07-17</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Markup Compatibility and Extensibility (MCE), ISO 29500-3:2008-2012, also ECMA-376, Editions 1-4.</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>document formats</fdd:keyword>
+			<fdd:keyword>markup languages</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>MCE, Markup Compatibility and Extensibility defines a set of conventions for forward compatibility of markup specifications, applicable not only to the Open Office XML (OOXML) specifications defined in ISO/IEC 29500, but also to other markup specifications based on XML. These conventions allow XML documents created by later versions of applications to be handled by earlier versions.  Files in any of the primary OOXML file formats, .docx,. pptx, or .xslx, may include MCE constructs, for example, so that Office 2007 can read files created in later versions of Office that use text styles or slide transitions not defined in ISO/IEC 29500.  MCE is also employed in ECMA 388: Open XML Paper Specification (OpenXPS), a standard used for print drivers.  In OpenXPS, MCE may be used by different printer manufacturers to support tailored printer characteristics.</p>
+			<p>This description focuses on the MCE format as specified in part 3 of <i>ISO/IEC 29500:2012, Information technology -- Document description and processing
+languages -- Office Open XML File Formats (OOXML)</i>.  However, since the specification has very few changes since first standardized as ECMA-376, Part 3 in 2006, this description can be read as applying to all versions published by ECMA International and by ISO/IEC through 2012.  See <a href="#notes">Notes</a> below for more detail on the chronological versions and minor differences.  In this format description, the names MCE and MCE/OOXML_2012 should be considered equivalent.</p>
+			<p>The MCE specification defines a small set of XML elements and attributes, in the MCE namespace (identified by <i>http://schemas.openxmlformats.org/markup-compatibility/2006</i>).  Applications producing documents
+can use these elements and attributes to guide applications consuming the documents as to how best to handle elements and attributes those applications might not understand.
+MCE elements and attributes let producing applications use features added in new
+versions or extensions of a markup specification for new documents, in a way that remains interoperable with consuming applications that do not understand these features.  Use of MCE typically involves pre-processing documents containing MCE elements and attributes to produce a document that will be understood by the consuming application.  MCE elements and attributes support several compatibility and extension constructs, as summarized below:</p>
+			<ul>
+				<li>Namespaces can be declared as ignorable, allowing identification of some markup as not essential to the document content, and enabling graceful degradation of functionality.  An example of usage is in <a href="#notes">Notes</a> below.</li>
+				<li>Elements in ignorable namespaces can be marked for their content to be processed rather than ignored. This allows producing applications to prevent loss of content nested within an element in an ignorable namespace when processed by consuming applications that do not understand that namespace but do understand the namespace(s) of the nested content.</li>
+				<li>Namespaces that must be understood by consuming applications in order to process
+the document can be declared. This allows producing applications to set minimum compatibility requirements for consuming applications.</li>
+				<li>Alternative representations of document content can be specified. This allows producing applications to include content alternatives for consuming applications with differing sets of understood namespaces and corresponding capabilities.</li>
+				<li>Application-defined extension elements enable producing applications to introduce features within particular elements defined by a markup specification. Consuming applications might retain application-defined extension elements even if they do not process them in any other way.</li>
+			</ul>
+		</fdd:description>
+		<fdd:shortDescription>An encoding format that defines a set of conventions for forward compatibility of markup specifications, applicable not only to Open Office XML specifications, but also to other markup specifications using XML. These conventions allow XML documents created by applications of later versions or extensions to be handled by applications of earlier versions. The MCE specification is part 3 of ISO/IEC 29500, Information technology -- Document description and processing languages -- Office Open XML File Formats (OOXML).</fdd:shortDescription>
+		<fdd:productionPhase>MCE encoding can be used in any production phase.  Original use was for Office Open XML office documents, which are certainly created (initial state), exchanged for editing and review (middle-state) and may be published (final-state) as files that employ elements and attributes from the Markup Compatibility and Extensibility namespace.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000395</fdd:id>
+					<fdd:shortName>OOXML Family</fdd:shortName>
+					<fdd:titleName>OOXML (ISO/IEC 29500) Format Family</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:comment>Application-specific formats in the OOXML family and the OPC packaging format.  See <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>.  These include .docx, .pptx, and .xlsx files as produced by Microsoft Office products since Office 2007, not separately described in this resource at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:comment>OpenXPS, ECMA-388: Open XML Paper Specification, not separately described in this resource at this time.  OpenXPS specifically uses ECMA-376, 1st edition as a normative reference.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000075</fdd:id>
+					<fdd:shortName>XML</fdd:shortName>
+					<fdd:titleName>Extensible Markup Language (XML)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>The MCE specification defines a namespace and its elements and attributes.  These constructs are designed for embedding in XML documents.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None</fdd:experience>
+		<fdd:preference>Preferences for formats in the OOXML family will be expressed at the level of file formats, for example, by file extension.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>International open standard.  Maintained by ISO/IEC JTC1 SC34/WG4.  Originated by Microsoft Corporation and first standardized through ECMA International in 2006.  Approval as part 3 of ISO/IEC 29500 was in 2008.</fdd:disclosure>
+		<fdd:documentation>
+			<p>
+				<i>ISO/IEC 29500-3, Information technology -- Document description and processing
+languages -- Office Open XML File Formats -- Part 3: Markup Compatibility and Extensibility.</i>  Latest version (2012 as of August 2014) is available from <a href="http://standards.iso.org/ittf/PubliclyAvailableStandards/">ISO/IEC Publicly Available Standards</a>.</p>
+			<p>All editions of the OOXML standards as published by ECMA are available from <a href="http://www.ecma-international.org/publications/standards/Ecma-376.htm">ECMA-376: Office Open XML File Formats</a>.  See <a href="#notes">Notes</a> below for version chronology.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>MCE/OOXML_2012 was originally developed by Microsoft as a mechanism for implementing backwards and forwards compatibility among versions of its Office products.  Files in the .docx, .xslx, and .pptx format created in versions of Office since Office 2010 may incorporate MCE constructs to handle new features introduced in versions after Office 2007.  <a href="http://www.ecma-international.org/publications/standards/Ecma-388.htm">ECMA 388: Open XML Paper Specification</a> (OpenXPS), another format originating with Microsoft and a significant component of Windows 8, allows for MCE constructs to be incorporated, based on the ECMA-376, 1st edition text.  The OpenXPS format is used in printer drivers; individual printer manufacturers may introduce new features through use of MCE.  <a href="../contact_format.shtml">Comments welcome</a>
+			</p>
+			<p>Generating appropriate MCE correctly is a complex task requiring understanding of features supported by different versions of different applications as well as the formats.  The compilers of this resource are not aware of non-Microsoft applications that routinely generate documents incorporating MCE constructs. There have been very occasional suggestions that MCE might be useful with other XML-based file formats, e.g., <a href="http://broadcast.oreilly.com/2009/02/safe-plurality-markup-compatab.html">2009 blog posting at oreilly.com</a> and <a href="https://lists.oasis-open.org/archives/office/201308/msg00019.html">2013 email message on ODF committee list</a>.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>The <a href="http://libopc.codeplex.com/">libOPC</a> software toolkit has code for processing MCE constructs encountered on input and for controlling the writing of MCE constructs for output of files using the Open Packaging Conventions format (<fddLink id="fdd000363">OPC/OOXML_2012</fddLink>).  Applications and software libraries that can import .docx/.xslx/.pptx files should be able to process MCE constructs but the compilers of this resource are not aware of the reliability of such processing.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>The specification originated from Microsoft Corporation.  MCE/OOXML_2012 and future versions of ISO/IEC 29500-3 and ECMA-376 are covered by Microsoft&apos;s <a href="http://www.microsoft.com/openspecifications/en/us/programs/osp/default.aspx">Open Specification Promise</a>, whereby Microsoft &quot;irrevocably promises&quot; not to assert any claims against those making, using, and selling implementations of any specification covered by the promise (so long as those accepting the promise refrain from suing Microsoft for patent infringement in relation to Microsoft&apos;s implementation of the covered specification).</p>
+			<p>Features introduced into markup specifications through the MCE mechanism may be subject to patent protection.  However, Microsoft&apos;s <a href="http://www.microsoft.com/openspecifications/en/us/programs/interop/interoperability-principles/default.aspx">interoperability principles</a> indicate &quot;Microsoft will also make available a list of any of its patents that cover any extensions, and will make available patent licenses on reasonable and non-discriminatory terms.&quot;</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>Since MCE defines a namespace that comprises a small collection of elements and attributes and is designed for use in XML documents, its use within XML files can be detected and interpreted by a human through a text editor as well as easily recognized and parsed by automated systems.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>Not applicable.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>Effective application of the compatibility constructs requires MCE processor software that recognizes MCE constructs and uses them to prepare a document for use in conjunction with a set of names of namespaces understood by a consuming application.  Such software may be integrated into the file import modules of applications, as it is in Microsoft Office since 2007.</fdd:externalDependencies>
+		<fdd:techProtection>
+			<p>Not applicable.</p>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors/>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>MCE is used within files marked up in other XML specifications.  Filename extensions are determined by the containing file.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:other>
+				<fdd:tag>XML namespace declaration</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>http://schemas.openxmlformats.org/markup-compatibility/2006</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Files may contain a namespace declaration that links this namespace identifier to a prefix even if they do not incorporate any elements and attributes that are not defined by Parts 1, 2, and 4 of the ISO 29500 standard. The prefixes &quot;mc:&quot; and &quot;mce:&quot; are both found in documentation and sample files, but, as in all XML, any prefix may be associated with any namespace through an <i>xmlns</i> declaration. </fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>The prefix used for the MCE namespace <i>http://schemas.openxmlformats.org/markup-compatibility/2006</i> is typically <i>mc:</i> or <i>mce:</i>. In XML, any prefix may be associated with any namespace through an <i>xmlns</i> declaration and so, other prefixes may be used.  Documents created by Microsoft Office applications may declare the MCE namespace and list namespaces used for new features in recent Office versions as <i>ignorable</i>, whether or not the new features and MCE elements or attributes are used in the document.</p>
+			<p>Here is a simple example, adapted from <a href="http://openxmldeveloper.org/blog/b/openxmldeveloper/archive/2012/09/21/markup-compatibility-and-extensibility.aspx">a blog post that demonstrates use of MCE to use a decorative font style not defined in ISO/IEC 29500</a>, of declaring a namespace as ignorable, with mce: used as prefix for MCE namespace:</p>
+			<ul>
+				<li>A new namespace is defined for the XML markup of a style introduced in a new version of Microsoft Word and declared to use w14: as prefix.</li>
+				<li> A new feature, for applying a glow style to text is encoded using the new namespace. For example: &lt;w14:glow w14:rad=&quot;228600&quot;&gt;...&lt;/w14:glow&gt;.</li>
+				<li>The new namespace is marked as ignorable using mce:Ignorable=&quot;w14&quot;.</li>
+			</ul>
+			<p>Features introduced through use of MCE are more likely to lead to interoperability problems than features supported by the underlying markup specification.  Following its declared <a href="http://www.microsoft.com/openspecifications/en/us/programs/interop/interoperability-principles/default.aspx">interoperability principles</a>, Microsoft documents, and makes available license-free, extensions made using MCE in high-volume products such as applications in the Office suite, through documents such as those listed below:</p>
+			<ul>
+				<li>
+					<a href="http://msdn.microsoft.com/en-us/library/gg548604.aspx">Word, Excel, and PowerPoint Standards Support</a>.  Hierarchy of pages listing all extensions related to features introduced to the family of formats defined in ISO/IEC 29500 and support for interoperability with ODF 1.1 and ODF 1.2 (as standardized through ISO/IEC 26300).  Includes links to specific extension sets listed below with mention of selected extensions as examples of how MCE has been used.</li>
+				<li>
+					<a href="http://msdn.microsoft.com/en-us/library/dd773189.aspx">[MS-DOCX]: Word Extensions to the Office Open XML (.docx) File Format</a>.  Extensions are outlined at <a href="http://msdn.microsoft.com/en-us/library/dd924696%28v=office.12%29.aspx">1.3 Structure Overview (Synopsis)</a>.  Several relate to support for multiple authorship and commenting and review processes. Another introduces support for the Saudi Arabian Um Al-Qura lunar calendar with fallback to the <i>hijri</i> calendar type.</li>
+				<li>
+					<a href="http://msdn.microsoft.com/en-us/library/dd922181.aspx">[MS-XLSX]: Excel (.xlsx) Extensions to the Office Open XML SpreadsheetML File Format</a>.  Extensions include support for caching and for the Power Pivot add-in for importing large amounts of data from multiple sources.</li>
+				<li>
+					<a href="http://msdn.microsoft.com/en-us/library/dd926741.aspx">[MS-PPTX]: PowerPoint (.pptx) Extensions to the Office Open XML File Format</a>.  Extensions are outlined in <a href="http://msdn.microsoft.com/en-us/library/dd773240%28v=office.12%29.aspx">1.3 Overview</a>.  Extensions include new forms of slide transitions introduced in Office 2010.</li>
+				<li>
+					<a href="http://msdn.microsoft.com/en-us/library/dd905216.aspx">[MS-ODRAWXML]: Office Drawing Extensions to Office Open XML Structure</a>. Extensions are outlined at <a href="http://msdn.microsoft.com/en-us/library/dd950583%28v=office.12%29.aspx">1.3 Structure Overview (Synopsis)</a>.  Extensions include: advanced chart enhancements; support for W3C InkML (language for representing ink entered with an electronic pen or stylus) and the EMMA (Extensible MultiModal Annotation) markup language (for interpreting user input through several modes of interaction); mathematical expressions as graphics in DrawingML as alternate content.  Use of drawing extensions may occur in any of the three file types.</li>
+			</ul>
+		</fdd:general>
+		<fdd:history>
+			<p>Since the original MCE specification was published as ECMA-376, Part 3 in 2006, there has been no change in the MCE format.  Editions of ISO/IEC 29500-3 and ECMA 376 through 2012 define the same namespace, elements, and attributes; changes to the MCE specification have been limited to clarifications and corrections.  The chronology of editions specifying MCE/OOXML_2012 is:</p>
+			<ul>
+				<li>ECMA-376, Part 3, 1st edition (December 2006)</li>
+				<li>ISO/IEC 29500-3:2008</li>
+				<li>ECMA-376, Part 3, 2nd edition (December 2008) [specification identical to ISO/IEC 29500-3:2008]</li>
+				<li>ISO/IEC 29500-3:2011</li>
+				<li>ECMA-376, Part 3, 3rd edition (June 2011) [specification identical to ISO/IEC 29500-3:2011]</li>
+				<li>ISO/IEC 29500-3:2012</li>
+				<li>ECMA-376, Part 3, 4th edition (December 2012) [specification identical to ISO/IEC 29500-3:2012]</li>
+			</ul>
+			<p>A new edition of the MCE specification has been prepared and a Draft International Standard ballot started in June 2014.  The intent is to improve the explanation and to emphasize the applicability of MCE  beyond OOXML to support interoperability.  This edition does not introduce new features but does remove some flexibility that had not been exploited in practice and is deemed unnecessary. The process for handling MCE on file import is clarified.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The latest version of ISO/IEC 29500-3 is made available at no charge from ISO. The formal title is <i>Information technology -- Document description and processing
+languages -- Office Open XML File Formats -- Part 3: Markup Compatibility and Extensibility</i>
+					</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/index.html</link>
+							<tag>ISO/IEC Publicly Available Standards</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c061797_ISO_IEC_29500-3_2012.zip</link>
+							<tag>ISO/IEC 29500-3:2012, specification document</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ecma-international.org/publications/standards/Ecma-376.htm</link>
+					<tag>ECMA-376: Office Open XML File Formats</tag>
+					<comment>Provides access to all chronological published versions.  </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.iso.org/iso/catalogue_detail.htm?csnumber=65533</link>
+					<tag>ISO/IEC DIS 29500-3  (DIS as of June 2014)</tag>
+					<comment>Page for new MCE draft international standard in ISO catalog.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Microsoft provides various documentation pages related to MCE.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/openspecifications/gg482166.aspx</link>
+							<tag>Microsoft Office Document Format Compatibility and Extensibility.   December 2010</tag>
+							<comment>Discusses specific challenges in the evolution of the Microsoft Office file formats, and highlights MCE features as potential solutions.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/gg548604.aspx</link>
+							<tag>Word, Excel, and PowerPoint Standards Support</tag>
+							<comment>From Microsoft Developer Network.  Links to descriptions of extensions introduced with versions of Office since Office 2007.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/dd773189.aspx</link>
+							<tag>[MS-DOCX]: Word Extensions to the Office Open XML (.docx) File Format</tag>
+							<comment>Describes new features in Word that are supported by use of MCE in Microsoft Office. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/dd924696.aspx</link>
+							<tag>Word Extensions to the Office Open XML (.docx) File Format -- 1.3 Structure Overview (Synopsis)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/dd922181.aspx</link>
+							<tag>[MS-XLSX]: Excel (.xlsx) Extensions to the Office Open XML SpreadsheetML File Format</tag>
+							<comment>Describes new features in Excel that are supported by use of MCE in Microsoft Office. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/dd926741.aspx</link>
+							<tag>[MS-PPTX]: PowerPoint (.pptx) Extensions to the Office Open XML File Format</tag>
+							<comment>Describes new features in PowerPoint that are supported by use of MCE in Microsoft Office. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/dd773240.aspx</link>
+							<tag>PowerPoint (.pptx) Extensions to the Office Open XML File Format -- 1.3 Overview</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/dd905216.aspx</link>
+							<tag>[MS-ODRAWXML]: Office Drawing Extensions to Office Open XML Structure</tag>
+							<comment>Extensions to drawing format used in Word, Excel, PowerPoint</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/dd950583.aspx</link>
+							<tag>Office Drawing Extensions to Office Open XML Structure -- 1.3 Structure Overview (Synopsis)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.microsoft.com/openspecifications/en/us/programs/interop/interoperability-principles/default.aspx</link>
+							<tag>Interoperability Principles</tag>
+							<comment>Indicates that Microsoft will document extensions to standards implemented in its high-volume products on its website.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.microsoft.com/en-us/news/presskits/eu-msft/docs/microsoftinteroperabilityundertaking16dec2009.doc</link>
+							<tag>Microsoft Interoperability Undertaking, Dec 16, 2009</tag>
+							<comment>Public undertaking to address competition concerns from the European Commission.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://openxmldeveloper.org/blog/b/openxmldeveloper/archive/2012/09/21/markup-compatibility-and-extensibility.aspx</link>
+					<tag>Blog post by Florian Reuter introducing Markup Compatibility and Extensibility</tag>
+					<comment>From OpenXMLdeveloper.org.  With example.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://libopc.codeplex.com/</link>
+					<tag>Home page for open source libOPC library</tag>
+					<comment>libOPC can handle documents incorporating MCE constructs.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ecma-international.org/publications/standards/Ecma-388.htm</link>
+					<tag>ECMA-388: Open XML Paper Specification (OpenXPS)</tag>
+					<comment>This standard allows for MCE, as defined in Ecma-376, Edition 1 to be incorporated.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://news.softpedia.com/news/LibreOffice-4-1-1-RC1-Arrives-with-New-Features-374447.shtml</link>
+					<tag>LibreOffice 4.1.1 RC1 Arrives with New Features. August, 2013</tag>
+					<comment>Announcement includes, &quot;Initial MCE support has been added in the writerfilter ooxml tokenizer.&quot;</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000303" titleName="GML in JPEG 2000 for Geographic Imagery" shortName="GMLJP2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2011-11-09</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>GML in JPEG 2000 for Geographic Imagery (GMLJP2)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>georeferenced image formats</fdd:keyword>
+			<fdd:keyword>raster image formats</fdd:keyword>
+			<fdd:keyword>geospatial data formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>GMLJP2 specifies how to encode and embed metadata for georeferencing JPEG2000 images using Geography Markup Language (<fddLink id="fdd000296">GML</fddLink>).  The primary role of GMLJP2 is to provide an XML
+encoding of the metadata necessary to make the JPEG document a
+georeferenced or geographic image. This is accomplished by providing,
+in GML, the description of the image geometry and radiometry (spectral information).
+ JPEG 2000 files containing GMLJP2 markup can be located and displayed in the correct position on the earth&apos;s surface by a Geographic Information System (GIS) that supports the format.   As a modification of the JPEG 2000 standard, the georeferencing purpose of GMLJP2 is similar to the purpose of the <fddLink id="fdd000279">GeoTIFF</fddLink>modification of the TIFF standard.  In addition, GML data can be used to encode coverage metadata, geographic features, annotations, and supporting components for
+coordinate reference systems and unit of measure definitions.</p>
+			<p>The introduction to the standard states, &quot;This specification defines the means by which GML is to be used within JPEG 2000
+images for geographic imagery. This includes the following:</p>
+			<ul>
+				<li>Specification of the uses of GML within JPEG 2000 data files.</li>
+				<li>Packaging mechanisms for including GML within JPEG 2000 data files.</li>
+				<li>Specific GML application schemas to support the encoding of OGC coverages
+within JPEG 2000 data files.</li>
+			</ul>
+			<p>The term &quot;GMLJP2&quot; is often used, as convenient shorthand, to refer to a JPEG2000 instance that has GMLJP2 metadata embedded.</p>
+		</fdd:description>
+		<fdd:shortDescription>The primary function of GMLJP2 (GML in JPEG 2000 for Geographic Imagery) is as a standard for georeferencing JPEG2000 images using Geography Markup Language (GML).  In addition, GML data can be used to encode coverage metadata, geographic features, annotations, and supporting components for coordinate reference systems and unit of measure definitions.</fdd:shortDescription>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000296</fdd:id>
+					<fdd:shortName>GML</fdd:shortName>
+					<fdd:titleName>Geographic Markup Language (GML)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>GMLJP2 represents a profile of GML, specifying a subset of XML-based GML constructs, combined with specifications on packaging within a JPEG 2000 file.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000154</fdd:id>
+					<fdd:shortName>JPX_FF</fdd:shortName>
+					<fdd:titleName>JPEG 2000 Part 2 (Extensions) jpf (jpx) File Format</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>GMLJP2 requires the use of JPEG 2000 Part 2 (JPX), but recommends use of the JP2 Compatibility Feature, as specified in Annex I of Part 1 of the JPEG 2000 standard, ISO-15444.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>An openly documented standard maintained by the Open Geospatial Consortium (OGC). </fdd:disclosure>
+		<fdd:documentation>The primary specification is OGC 05-047r3: <a href="http://portal.opengeospatial.org/files/?artifact_id=13252">GML in JPEG 2000 for Geographic Imagery (GMLJP2) Encoding Specification</a>, January 20, 2006.  In addition, <a href="http://www.jpeg.org/public/wg1n2887.doc">Including GML data based on the OpenGIS standard in JPEG 2000 family files</a> from the JPEG standardization working group provides important interoperability recommendations from the JPEG perspective.</fdd:documentation>
+		<fdd:adoption>
+			<p>Adoption of the GMLJP2 metadata markup specification depends on adoption of the JPEG 2000 format (<fddLink id="fdd000143">JP2_FF</fddLink>) for geospatial images.  An August 2010 technical report, <a href="https://portal.dgiwg.org/files/?artifact_id=5654&amp;format=doc">DGIWG JPEG 2000 (JP2K) Scoping Study Report</a>, commissioned by the international Defense Geospatial Information Working Group (DGIWG) recommended the use of JPEG 2000, using Part 1 of the JPEG 2000 standard, together with embedded georeferencing metadata. Given that GMLJP2 has not yet been updated to be consistent with GML 3.2.1, the recommendation for georeferencing was to embed both GMLJP2 and and an earlier form of metadata markup (GeoJP2), with a caveat that GeoJP2 was likely to be deprecated in the future.</p>
+			<p>Support for reading and creating JPEG 2000 files with metadata following the GMLJP2 standard is provided in several tools for manipulating geospatial raster images.  These include <a href="http://www.gdal.org/">GDAL</a> (Geospatial Data Abstraction Library) and LizardTech <a href="http://www.lizardtech.com/products/geoexpress/">GeoExpress</a>. Imagery servers from PCI Geomatics and Exelis (formerly ITT) Visual Information Solutions also handle JPEG 2000 imagery with GMLJP2 markup.  A free stand-alone metadata editor for JP2 files  was made available by J2K-Codec in July 2011.</p>
+			<p>A <a href="http://essi-lab.eu/earthserver.eu/long_news.html">news posting</a> in August 2012 from Earthserver.eu indicates that GMLJP2 is widely adopted and relies on the GMLCOV specification for coverages.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No rights claimed in the XML-based markup per se.  See Licensing and Patents entry for <fddLink id="fdd000138">J2K_C</fddLink>, for information about licensing (and waiving of rights by patent holders) for the basic JPEG 2000 image encoding.</fdd:licensingAndPatents>
+		<fdd:transparency>The XML-based markup prescribed in the GMLJP2 specification, once extracted,  is readable with text editors and XML-aware softtware.</fdd:transparency>
+		<fdd:selfDocumentation>The markup specification provides guidance on the inclusion of metadata and annotations intended to describe the source, context, and characteristics of the underlying imagery. Metadata properties may come from metadata schemas defined outside the GMLJP2 standard.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None beyond the availability of appropriate software.</fdd:externalDependencies>
+		<fdd:techProtection>Not applicable to the metadata markup per se.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>jpx</fdd:sigValue>
+					<fdd:sigValue>jp2</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Technically, a file with GMLJP2 markup uses features specified in Part 2 of the JPEG 2000 standard.  This would normally call for a .jpx extension.  However, the recommended practice is to declare the file as JP2-compatible.  In that case, the .jp2 extension is permitted.  See <a href="http://www.jpeg.org/public/wg1n2887.doc">Including GML data based on the OpenGIS standard in JPEG 2000 family files</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>67</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>The GMLJP2 specification indicates that a Reader Requirements &quot;Box&quot; in the image file should have value 67, to indicate that the file contains GML data following the GMLJP2 standard.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general/>
+		<fdd:history>Proposers and contributors to the specification that became the GMLJP2 standard adopted by OGC include: LizardTech, Galdos Systems, Boeing, EUSC (European Union Satellite Centre), SPOT (Satellite Pour l&apos;observation de la Terre), USGS (U.S. Geological Survey), ITT (developer of IDL, ENVI, IAS and other imagery applications, now known as Exelis Visual Information Solutions), NASA (US National Aeronautics and Space Administration), PCI Geomatics, Intergraph, DMSG (DM Solutions Group), and BAE Systems.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://portal.opengeospatial.org/files/?artifact_id=13252</link>
+					<tag>GML in JPEG 2000 for Geographic Imagery (GMLJP2) Encoding Specification</tag>
+					<comment>OGC Document 05-047r3.  June 26, 2005.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.jpeg.org/public/wg1n2887.doc</link>
+					<tag>Including GML data based on the OpenGIS standard in JPEG 2000 family files</tag>
+					<comment>Document N2887, March 11, 2003.  From standardization working group on Coding of Still Pictures ISO/IEC JTC 1/SC 29/WG 1 (ITU-SG8) </comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.opengeospatial.org/standards/gmljp2</link>
+					<tag>OGC: OpenGIS standards: GML in JPEG 2000 for Geographic Imagery Encoding</tag>
+					<comment> </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://portal.dgiwg.org/files/?artifact_id=5654&amp;amp;format=doc</link>
+					<tag>DGIWG JPEG 2000 (JP2K) Scoping Study Report</tag>
+					<comment>August 2010.  Section 6.5 relates to GMLJP2.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The Geospatial Data Abstraction Library (GDAL) is a translator library for raster geospatial data formats.  It supports use of several external libraries that read and write JPEG2000 images with geo-referencing.  Listed below are links to the list of raster formats supported by GDAL and to individual pages about those JPEG2000 library options that mention GMLJP2 support (as of November 2011). <a href="../contact_format.shtml">Comments welcome.</a>
+					</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.gdal.org/formats_list.html</link>
+							<tag>GDAL Raster Formats</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.gdal.org/frmt_jp2ecw.html</link>
+							<tag>JP2ECW -- ERDAS JPEG2000</tag>
+							<comment>Mentions support for &quot;the new GML-in-JPEG2000 specification developed at OGC.&quot;  Provides GMLJP2 option for file creation.te GMLG</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.gdal.org/frmt_jp2kak.html</link>
+							<tag>JP2KAK -- JPEG2000 (based on Kakadu)</tag>
+							<comment>Provides GMLJP2 option for file creation.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://demo.lizardtech.com/files/exp/datasheets/GMLJP2_DS.pdf</link>
+					<tag>GMLJP2 Data Sheet</tag>
+					<comment>From LizardTech.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://web.archive.org/web/20110102052125/http://www.ittvis.com/portals/0/whitepapers/IAS_Standards_based_architec_whitepaper.pdf</link>
+					<tag>Standards Based Architecture for Imagery Compression and Delivery</tag>
+					<comment>Brochure from ITT Visual Information Solutions (now Exelis Visual Information Solutions) on the standards employed in their streaming Image Application Server.  Mentions that metadata in GMLJP2 format can be provided to users alongside streamed content.  No longer available online; link provided here is via Internet Archive</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.exelisvis.com/portals/0/pdfs/ias/Brochure_IAS.pdf</link>
+					<tag>Image Access Solutions brochure</tag>
+					<comment>In some ways, this is an update of the paper from ITT listed above.  However, no specific mention is made of GMLJP2.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.pcigeomatics.com/pressnews/2008_PCI_webtest.html</link>
+					<tag>PCI Geomatics’ Web Coverage Server successfully passes compliancy testing.</tag>
+					<comment>Press release about compliancy with OGC standards or recommendations, including GMLJP2.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://j2k-codec.com/mde.html</link>
+					<tag>JP2 Metadata Editor</tag>
+					<comment>This tool claims basic support for GMLJP2 metadata.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://essi-lab.eu/earthserver.eu/long_news.html</link>
+					<tag>News from the European EarthServer Climate Data Service</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

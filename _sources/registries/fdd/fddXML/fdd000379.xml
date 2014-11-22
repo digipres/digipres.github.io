@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000379" titleName="Microsoft Outlook Item (MSG)" shortName="MSG" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>text</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>other</fdd:value>
+				<fdd:comment>email</fdd:comment>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2014-03-28</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Microsoft Outlook Item (MSG) </fdd:fullName>
+		<fdd:description>
+			<p>The Outlook Item MSG (.msg) file format is a syntax for storing a single Message object, such as an email, an appointment, a contact, a task, and so on, in a file. Any properties that are present on the Message object, including Attachment objects, are also present in the MSG file.</p>
+			<p>MSG is based on the <fddLink id="fdd000380">CFB_3</fddLink> format which implements a simplified file system through a hierarchical collection of storage objects and stream objects which behave as directories and files, respectively within a single file. Message files contain objects which contain properties and collections of properties.  For all intents and purposes, objects are represented by storages and properties are represented and reside in streams.</p>
+			<p>MSG specifies five storage elements, each representing one major component of the Message object and a number of streams are contained within those storages, each stream representing a property (or a set of properties) of that component.</p>The storages are: <ul>
+				<li>Recipient object storage</li>
+				<li>Attachment object storage</li>
+				<li>Embedded Message object storage</li>
+				<li>Custom attachment storage</li>
+				<li>Named property mapping storage</li>
+			</ul>
+			<p>The numbers and types of storages and streams present in a MSG file depend on the type of Message object, the number of Recipient objects and Attachment objects it has, and other properties. Properties define attributes of the object like the sender email, whether a read receipt was requested by the sender, whether this message was auto forwarded, an attachment’s filename, etc. </p>
+			<p>String properties in MSG must be either Unicode or non-Unicode. The .msg File Format does not allow the presence of both simultaneously.</p>
+		</fdd:description>
+		<fdd:shortDescription>The Microsoft Outlook Item (MSG) file format is used to format a Message object, such as an email message, an appointment, a contact, a task, etc., for storage in the file system. </fdd:shortDescription>
+		<fdd:productionPhase>MSG files provide a mechanism for the storage of an email message, an appointment, a contact, or a task within a file system.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000380</fdd:id>
+					<fdd:shortName>CFB_3</fdd:shortName>
+					<fdd:titleName>Compound File Binary File Format, Version 3</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment/>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000392</fdd:id>
+					<fdd:shortName>CFB_4</fdd:shortName>
+					<fdd:titleName>Compound File Binary File Format, Version 4</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment/>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse/>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully documented. Proprietary file format developed by Microsoft.</fdd:disclosure>
+		<fdd:documentation>
+			<a href="http://msdn.microsoft.com/en-us/library/cc463912%28v=exchg.80%29.aspx">Microsoft [MS-MSG]: Outlook Item (.msg) File Format</a> specification available from Microsoft. </fdd:documentation>
+		<fdd:adoption>MSG is implemented in the following Microsoft products: Microsoft Exchange Server 2003-2013 and Microsoft Office Outlook 2003-2013. </fdd:adoption>
+		<fdd:licensingAndPatents>MSG is a Microsoft product and may be covered by licenses and patents. MSG is not covered by Microsoft&apos;s Open Specification Promise or Community Promise.</fdd:licensingAndPatents>
+		<fdd:transparency>A .msg file can be saved in Outlook or compatible email client and then viewed in an hex editor or binary file parser. </fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>See <fddLink id="fdd000380">CFB_3</fddLink>
+			</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>None</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors/>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>.msg</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://msdn.microsoft.com/en-us/library/ee160779%28v=exchg.80%29.aspx">specification</a>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.ms-outlook</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Not registered with IANA but listed on <a href="http://webdesign.about.com/od/multimedia/a/mime-types-by-content-type.htm">MIME Types by Content Type</a>. </fdd:note>
+			</fdd:internetMediaType>
+			<fdd:other>
+				<fdd:tag>File signature</fdd:tag>
+				<fdd:values>
+					<fdd:note>See <fddLink id="fdd000380">CFB_3</fddLink>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<a href="http://msdn.microsoft.com/en-us/library/ee157268%28v=exchg.80%29.aspx">Microsoft reports</a> that there are scenarios for which storing a Message object in the MSG format would not be advisable:</p>
+			<ul>
+				<li>Maintaining a large standalone archive. A better option would be a more full-featured format that can render views more efficiently.</li>
+				<li>Sending information to an unknown receiver. In this scenario, it is possible that the format is not supported by the receiver or that information that is private or irrelevant might be transmitted.</li>
+			</ul>
+			<p>MSG provides some security mechanisms for ensuring that clients read the correct number of bytes from constituent streams.</p>
+			<ul>
+				<li>In the case of multiple-valued variable length properties, the length stream contains the lengths of each value. Clients can compare the lengths obtained from there with the actual length of the value streams. If they are not in sync, it can be assumed that there is data corruption.</li>
+				<li> In case of the strings, stream entries are stored prefixed with their lengths; and if any inconsistency is detected, clients can assume that there is data corruption.</li>
+			</ul>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://msdn.microsoft.com/en-us/library/cc463912%28v=exchg.80%29.aspx</link>
+					<tag>[MS-OXMSG]: Outlook Item (.msg) File Format</tag>
+					<comment>Format specification from Microsoft </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Property schemas for MSG Message objects are defined by separate documents.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/cc463900%28v=exchg.80%29.aspx</link>
+							<tag>[MS-OXCMSG]: Message and Attachment Object Protocol</tag>
+							<comment>Specifies the basic property schema for a Message object </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/cc433490%28v=exchg.80%29.aspx</link>
+							<tag>[MS-OXPROPS]: Exchange Server Protocols Master Property List</tag>
+							<comment>Specifies the basic property schema for a Message object and the default property schema for a Folder object</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Helpful blog series from Microsoft Open Specifications Support Team Blog on MSG format</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://blogs.msdn.com/b/openspecification/archive/2009/11/06/msg-file-format-part-1.aspx</link>
+							<tag>.MSG File Format (Part 1)</tag>
+							<comment>Overview of the MSG format</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://blogs.msdn.com/b/openspecification/archive/2010/06/20/msg-file-format-rights-managed-email-message-part-2.aspx</link>
+							<tag>.MSG File Format, Rights Managed Email Message (Part 2)</tag>
+							<comment>General exploration of rights managed MSG email messages </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://blogs.msdn.com/b/openspecification/archive/2011/06/14/msg-file-format-rights-managed-email-message-part-3.aspx</link>
+							<tag>.MSG File Format, Rights Managed Email Message (Part 3)</tag>
+							<comment>More detail about rights managed MSG email messages </comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000380">CFB_3</fddLink>
+					</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

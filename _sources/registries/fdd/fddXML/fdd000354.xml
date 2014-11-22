@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000354" titleName="ZIP File Format (PKWARE)" shortName="ZIP_PK" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>aggregate</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>family</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-bundle</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrTransform>compression</fdd:gdfrTransform>
+		<fdd:updates>
+			<fdd:date>2012-11-12</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ZIP File Format (PKWARE)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>ZIP</fdd:keyword>
+			<fdd:keyword>archive file formats</fdd:keyword>
+			<fdd:keyword>package formats</fdd:keyword>
+			<fdd:keyword>container formats</fdd:keyword>
+			<fdd:keyword>bundling formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>This format is designed for cross-platform data exchange and efficient data storage for a set of related files. ZIP_PK is a de facto industry standard, developed, maintained, and openly documented by <a href="http://www.pkware.com/">PKWARE</a>.  The original version of the format was developed by Phil Katz (hence the &quot;PK&quot; in PKWARE).  ZIP_PK combines data compression, file management, and data encryption within a portable archive format.  A ZIP file is a package containing one or more files, usually compressed  and sometimes encrypted.  The basic structure consists of a sequence of chunks comprising a &quot;local file header&quot; followed by the file data (after compression and/or encryption) followed by a chunk known as the &quot;central directory,&quot; which lists the files in the package along with key metadata to support their extraction, decryption, etc.  Over the years the format has been extended by PKWARE to adapt to new expectations of users and to changing technology, for example, to allow improved methods for compression and encryption, to support larger file sizes, and to support UNICODE UTF-8 for filenames.  See <a href="#notes">Notes</a> below for more detail on chronological versions.</p>
+			<p>Over the years a few variants of the ZIP format have been introduced by other companies, variants that were not necessarily fully compatible with any particular ZIP_PK version, with the differences often being related to timing of introduction of new features, such as support for long file names or stronger encryption.  For clarity, the compilers of this resource have chosen to use the name &quot;ZIP_PK&quot; for the format described in this document.  See <a href="#notes">Notes</a> below for a brief discussion of variants.</p>
+			<p>ZIP_PK has been adopted as the package or container for several digital formats that represent a single document or other logical unit but comprise multiple files.  These include:</p>
+			<ul>
+				<li>Office Open XML (OOXML, standardized as ECMA 376 and ISO/IEC 29500)</li>
+				<li>Office Document Format (ODF, version 1.0 from OASIS, later standardized as ISO/IEC 26300)</li>
+				<li>Java ARchive (JAR, used to distribute software applications or libraries in the Java programming language)</li>
+				<li>EPUB (for electronic publications, developed by the International Digital Publishing Forum).  See <fddLink id="fdd000308">EPUB_3</fddLink>.</li>
+			</ul>
+		</fdd:description>
+		<fdd:shortDescription>A de facto industry standard for cross-platform data exchange and efficient data storage, combining data compression and data encryption in a portable archive format for a set of related files.</fdd:shortDescription>
+		<fdd:productionPhase>May be used at any lifecycle phase for bundling/packaging files together for exchange, storage, or distribution.  In particular, XML-based office productivity formats use a ZIP package that may be used during the initial creating phase; and XML-based formats such as EPUB, intended for distributing published (final-stage) documents, also use ZIP as a package or container.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000355</fdd:id>
+					<fdd:shortName>ZIP_6_2_0</fdd:shortName>
+					<fdd:titleName>ZIP file format, version 6.2.0 (PKWARE)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Version 6.2.0 of the APPNOTE.TXT from PKWARE, published in 2004, has been incorporated into Office OpenXML (OOXML, ISO 29500-2:2008-2012) and the Open Document Format (ODF: 1.0 and 1.2 as published by OASIS) as the document container format.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000362</fdd:id>
+					<fdd:shortName>ZIP_6_3_3</fdd:shortName>
+					<fdd:titleName>ZIP File Format, Version 6.3.3 (PKWARE)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Chosen as the basis for a proposed ISO specification (to be ISO/IEC 21320, once approved) for a Document Container Format.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000361</fdd:id>
+					<fdd:shortName>ZIP_21320_1</fdd:shortName>
+					<fdd:titleName>Document Container File: Core (based on ZIP 6.3.3)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>As of January 2014, in Committee Draft stage as ISO/IEC CD 21320-1.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>The ZIP_PK format has other chronological versions, more of which may be separately described in the future, for example, if specific versions are incorporated into other specifications.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has modified version</fdd:typeOfRelationship>
+				<fdd:comment>Other entities have introduced variant format versions using the .zip extension, not strictly compatible with any particular chronological version of ZIP_PK, but using its extension capabilities.  See <a href="#notes">Notes</a> below for a brief discussion of variants and compatibility.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress has several workflows that rely on the ZIP format for transmitting digital content to the library.  These workflows rely on open-source toolkits and/or desktop decompressors.  The BagIt software Library (BIL) used for many transmissions is available at <a href="http://sourceforge.net/projects/loc-xferutils/">http://sourceforge.net/projects/loc-xferutils/</a>.  As of September 2012, the ZIP capabilities in BIL are based on <a href="http://commons.apache.org/compress/zip.html">Apache Commons Compress</a>.  In all current workflows, the ZIP format is used for transmission only, with the ZIP wrapper discarded after successful extraction of the contents.</fdd:experience>
+		<fdd:preference>To date, the Library of Congress has found no need to stipulate particular versions of ZIP_PK or particular features of the format to avoid.  In general the Library of Congress does not accept content submitted in encrypted form.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>The ZIP_PK format has been developed and maintained by PKWARE, Inc. since 1998.  The format specification is proprietary, but the most recent version has always been openly disclosed as the .ZIP Application Note with a file name of APPNOTE.TXT.</fdd:disclosure>
+		<fdd:documentation>
+			<p>In the past, PKWARE provided public access only to the <a href="http://www.pkware.com/documents/casestudies/APPNOTE.TXT">most recent Application Note</a>. In association with the standardization of Office Open XML (OOXML) as ISO 29500:2008, access was also provided to the <a href="http://www.pkware.com/documents/APPNOTE/APPNOTE_6.2.0.txt">version 6.2.0</a> explicitly incorporated into that format specification.  As of this writing (September 2012), PKWARE provides access to <a href="http://www.pkware.com/support/zip-app-note/archives">an archive of selected versions of the .ZIP Application Note</a>.</p>
+			<p>See <a href="#notes">Notes</a> below for a chronology of versions of APPNOTE.TXT introducing significant new features to the format.  Changes between <a href="http://www.pkware.com/documents/APPNOTE/APPNOTE-6.3.2.TXT">version 6.3.2 (2007)</a> and <a href="http://www.pkware.com/documents/APPNOTE/APPNOTE-6.3.3.TXT">version 6.3.3 (2012)</a> of APPNOTE.TXT do not reflect changes in the format, but rather editorial and layout changes based on discussions with an ISO working group that studied the ZIP format.  Changes, such as adding paragraph numbers, were made to making it easier for ISO standards to reference the ZIP specification in an unambiguous and reliable way.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>The ZIP_PK format has been very widely adopted.  Most usage has been and continues to be based on a subset of features, resulting in a high level of interoperability.  Many tools exist to create and read ZIP files that do not include strong encryption, including tools integrated into operating systems for personal computers and/or stand-alone tools shipped with new computers.  See <a href="http://en.wikipedia.org/wiki/ZIP_(file_format)#Version_history">http://en.wikipedia.org/wiki/ZIP_(file_format)</a> for many examples; just a few will be mentioned here.</p>
+			<p>The originator of the format, PKWARE, provides a range of products, from a free ZIP Reader for Windows, PKZIP and SecureZIP for Windows Desktop and various IBM platforms, to server-based products.  As of September 2012, Windows (&quot;compressed folders&quot;) and Mac OS (Archive Utility) have built in support for a subset of ZIP features.  Earlier versions of these operating systems typically shipped with &quot;lite&quot; versions of utilities such as WinZip and Stuffit. Most versions of Unix (including the version that underlies recent Mac OS versions, ship with <i>zip</i> and <i>unzip</i> utilities, made available from <a href="http://info-zip.org/">Info-ZIP</a> along with open-source software libraries compatible with many operating systems.  The Info-ZIP software, developed starting in 1990 to provide ZIP-compatible tools for operating systems other than DOS, supports the most useful features supported by the ZIP_PK format, and has been widely incorporated into other products, including WinZip and <a href="http://jhove.sourceforge.net/thirdpartymodules/zipmodule.html">JHOVE (JSTOR/Harvard Object Validation Environment)</a>.  Its capabilities have thus served as a common denominator for interoperability.  As of 2012, the latest version of Info-ZIP&apos;s <i>zip</i> utility is from 2008 and of <i>unzip</i> is from 2009; these versions support filenames in UTF-8 and the ZIP64 extension introduced by PKWARE in 2001 to handle large files.  A Java-based utility <i>java.util.zip</i> is included in the Java Developer Kit.  Apache Commons Compress extends the functionality of <i>java.util.zip</i>.  As of September 2012, Apache Commons Compress is based on Java 5 rather than Java 7 (the current version of Java).  Several perl and python software libraries for manipulating ZIP files can be found on the web as of September 2012.  Note: Many ZIP utilities or software libraries support only a subset of ZIP_PK features, particularly those available without licensing.  Many compression/archiving utilities, including PKZIP, support ZIP_PK (.zip) as one of several input/output file formats.  <a href="../contact_format.shtml">Comments welcome.</a>
+			</p>
+			<p>ZIP_PK has been used as a packaging or container format in other format specifications.  These format specifications typically do not incorporate patented features of ZIP_PK and typically constrain the use of other features, for example, allowing only the DEFLATE algorithm for compression. Features that do tend to get incorporated, at least in later versions, include: long filenames, encoding of filenames, etc. in UTF-8, and the ZIP64 mechanism introduced by PKWARE for handling large ZIP files.  See <a href="#notes">Notes</a> below for more detail.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>According to <a href="http://www.pkware.com/about-us/phil-katz">Our Founder -- Phil Katz</a>, on the PKWARE website (as of September 2012) the original developer&apos;s &quot;decision to dedicate the .ZIP extension and file format specification to the public domain helped the .ZIP file format become a globally open standard.&quot; As a result, many utilities for creating or reading files in the ZIP_PK format have been and can be developed without separate license agreements.  Two mechanisms supported by more recent versions of the format are covered by PKWARE patents: portions of the strong encryption technology support; and a technique for issuing and incorporating patches to content previously distributed as ZIP archives.  Tools that manipulate ZIP files but avoid use of these mechanisms can be developed without license concerns.  See <a href="#notes">Notes</a> below for more detail on the scope of PKWARE patents and licensing.</p>
+			<p>Third parties with rights associated with code incorporated into PKWARE&apos;s own ZIP Reader products are listed, with license terms, at <a href="http://www.pkware.com/Support-Desktop/zipreaderthirdparty">http://www.pkware.com/Support-Desktop/zipreaderthirdparty</a>.  All (as of September 2012) were made available to PKZIP under some form of public (open-source) license and would presumably be available to other tool developers.  The compilers of this resource are not aware of any patent concerns with compression or encryption methods for which the ZIP_PK specification as of September 2012, version 6.3.3 of APPNOTE.TXT, has identifying codes.  <a href="../contact_format.shtml">Comments welcome.</a>
+			</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>Depends upon algorithms and tools to read. Would require sophistication to build tools from scratch. </fdd:transparency>
+		<fdd:selfDocumentation>Since the format provides a mechanism to bundle files together, a component file that provides rich metadata in a standard or application-specific format can be included in a ZIP file.  This practice has been incorporated into the package specifications for EPUB, OOXML, ODF, etc.  The ZIP_PK specification includes a central directory, which contains the metadata required to extract the contents of the ZIP file, i.e., file names and directory structure.  The inclusion of comments for each file is supported within the format, but not (or only partially) by some utilities or software libraries.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None, beyond the availability of software to extract and decompress the files contained in a ZIP file.  The ZIP_PK format itself includes a mechanism for defining within a ZIP file the minimum version that must be supported to extract, decompress, and decrypt (if needed) the contents.  Minimum versions for particular extensions and methods for compression and encryption are documented in APPNOTE.TXT.  Note: Use of strong encryption may rely on keys conveyed externally or external authentication procedures.</fdd:externalDependencies>
+		<fdd:techProtection>An important feature of the ZIP_PK format is the ability to encrypt the contained files individually.  Over the years, support for increasingly strong forms of encryption, and for encryption of the ZIP central directory has been added.  Certain applications that employ the ZIP format to bundle files together, such as OOXML (ISO/IEC 29500-2:2012), explicitly prohibit encryption.  Others, such as SCORM and EPUB, employ their own application-specific approaches to encryption.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:otherQF>
+			<fdd:factor>
+				<fdd:tag>Bundling/compression</fdd:tag>
+				<fdd:note>Separate functionality factors for comparing formats that are used to bundle and or compress files have not been developed. From the perspective of digital preservation, consideration of the sustainability factors above is more important than the degree of compression.</fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>Beyond normal</fdd:tag>
+				<fdd:note>Two mechanisms supported by the ZIP_PK format go beyond the functions of bundling and compression.  The first is the ability to construct a self-extracting executable .zip file.  The second is a &quot;patching&quot; mechanism, described in <a href="#notes">Notes</a> below.</fdd:note>
+			</fdd:factor>
+		</fdd:otherQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>zip</fdd:sigValue>
+					<fdd:sigValue>ZIP</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Other extensions are used for particular applications that use the ZIP format as a container, for example, <fddLink id="fdd000308">EPUB_3</fddLink>, which recommends .epub as the file extension.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/zip</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="http://www.iana.org/assignments/media-types/application/zip">registration at IANA</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:other>
+				<fdd:tag>File signature</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Hex: 50 4B 03 04</fdd:sigValue>
+						<fdd:sigValue>ASCII:  P K etx eot</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>In the specification, this 4-byte &quot;local&quot; file header signature is expressed in little-endian form as 0x04034b50.  The compilers of this resource have chosen to express the ZIP signifiers in the byte-order that is consistent with most documentation for internal file signifiers, such as <a href="http://www.nationalarchives.gov.uk/PRONOM/">PRONOM</a> and the File Extension Source (<a href="http://filext.com/file-extension/ZIP">FILext</a>).  Most ZIP files begin with this 4-byte string, since most ZIP files begin with a local file header.  However, as pointed out in <a href="http://en.wikipedia.org/wiki/Zip_%28file_format%29#Structure">http://en.wikipedia.org/wiki/Zip_(file_format)</a>, a ZIP file does not need to begin with a file entry.  The signature patterns below should also be considered.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>File signature</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Hex: 50 4B 01 02 {...} 50 4B 05 06 {...}
+</fdd:sigValue>
+						<fdd:sigValue>ASCII: P K soh stx  {...} P K enq ack {...}</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>This signature pattern adapted from PRONOM for convenient display represents the beginning of a central directory record and the mandatory end of central directory record which will be found at or near the end of a ZIP file.  See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/263">PRONOM record for ZIP (PUID: x-fmt/263)</a>, which documents signatures at both the beginning and end of the file.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>File signature</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Hex: 50 4B 05 06</fdd:sigValue>
+						<fdd:sigValue>ASCII: P K enq ack</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>At <a href="http://www.garykessler.net/library/file_sigs.html">http://www.garykessler.net/library/file_sigs.html</a> this signature based on the mandatory <i>end of central directory</i> record is documented as a <i>Trailer</i> signature, with a stipulation to expect 18 additional bytes before the end of the file.  APPNOTE.TXT 6.3.3 stipulates that a valid file should have one and only one <i>end of central directory</i> record, but does not state explicitly that it be at the physical end of the file.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>File signature</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Hex: 50 4B 05 06</fdd:sigValue>
+						<fdd:sigValue>ASCII: P K enq ack</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>At beginning of empty ZIP archive file. From <a href="http://www.garykessler.net/library/file_sigs.html">http://www.garykessler.net/library/file_sigs.html</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>File signature</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Hex: 50 4B 07 08</fdd:sigValue>
+						<fdd:sigValue>ASCII: P K bel bs</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>At beginning of first file of a split or spanned ZIP archive. From <a href="http://www.garykessler.net/library/file_sigs.html">http://www.garykessler.net/library/file_sigs.html</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Use of ZIP file format in other specifications:</b> The notes here describe the relationship of some specifications based on ZIP to versions and features of ZIP_PK.  These notes are based on the specification documents.</p>
+			<ul>
+				<li>The <b>SCORM</b> (Sharable Content Object Reference Model, used for learning materials) includes a Package Interchange Format (PIF) based on ZIP. The SCORM 2004 Content Aggregation Model mandates compliance with PKZip v 2.04g and <a href="http://www.ietf.org/rfc/rfc1951.txt">RFC 1951 ( DEFLATE)</a> as the only compression algorithm. Numbering of versions of the PKZip software and the APPNOTE.TXT specification do not correspond; however, the timelines on <a href="http://en.wikipedia.org/wiki/PKZIP">http://en.wikipedia.org/wiki/PKZIP</a> and <a href="http://en.wikipedia.org/wiki/ZIP_(file_format)">http://en.wikipedia.org/wiki/ZIP_(file_format)</a> suggest that SCORM 2004 usage corresponds to APPNOTE.TXT version 2.x.</li>
+				<li>
+					<b>JAR</b> files, packages used to transmit software in the Java programming language are also based on the ZIP file format. The JAR specification was originally based on an <a href="ftp://ftp.info-zip.org/pub/infozip/doc/appnote-19970311-iz.zip">APPNOTE.TXT version dated 1997-03-11 modified by Info-ZIP</a> and based on a PKWARE version dated 1996-02-15.  The <a href="http://docs.oracle.com/javase/7/docs/api/java/util/jar/package-summary.html">JAR utility description</a> also specifies that file-names must be encoded in UTF-8.  Compression, if applied, uses <a href="http://www.ietf.org/rfc/rfc1951.txt">RFC 1951 (DEFLATE)</a>. Version 7 of the Java platform (current as of September 2012) refers to the latest APPNOTE.TXT for optional use of the ZIP64 extension to support large files and for indicating the use of UTF-8 (Appendix D).  The Java platform does not support encryption. [Aside: program code can be <i>obfuscated</i> (e.g., by changing meaningful names for variables, etc. to &quot;a,&quot; &quot;b,&quot;...) to make it hard to read.]</li>
+				<li>
+					<b>The Open Packaging Conventions (OPC, Part 2 of ISO/IEC 29500, OOXML)</b> are based on <a href="http://www.pkware.com/documents/APPNOTE/APPNOTE_6.2.0.txt">version 6.2.0 of APPNOTE.TXT</a>. Compression is restricted to DEFLATE; digital signatures are not supported.  Details on the use of ZIP in OPC are in section 10 and Annex C of ISO/IEC 29500-2:2012.</li>
+				<li>Version 1.2 of <b>ODF</b> (Open Document Format for Office Applications) from OASIS incorporates <a href="http://www.pkware.com/documents/APPNOTE/APPNOTE_6.2.0.txt">version 6.2.0 of APPNOTE.TXT</a>. The only compression algorithm allowed is DEFLATE (RFC 1951).  ODF defines its own encryption mechanism.  Version 1.0 of ODF (as published as ISO/IEC 26300:2006) referred to the <a href="ftp://ftp.info-zip.org/pub/infozip/doc/appnote-19970311-iz.zip">APPNOTE.TXT version dated 1997-03-11 from Info-ZIP</a>, because no appropriate version was made available publicly by PKWARE at the time because the version 6.2.0 referred to by the original ODF specification from OASIS had been superseded.  Now that PKWARE maintains an archive of documentation to facilitate persistent references, Version 1.2 of ODF again refers to version 6.2.0 of APPNOTE.TXT at PKWARE.</li>
+				<li>Versions 2 and 3 of <b>EPUB</b> define OCF (Open Container Format) as a package for encapsulating the components of an electronic publication.  <fddLink id="fdd000308">EPUB_3</fddLink> mandates a container format based on ZIP as defined by <a href="http://www.pkware.com/documents/APPNOTE/APPNOTE-6.3.0.TXT">version 6.3.0 of APPNOTE.TXT</a>. In <fddLink id="fdd000278">EPUB_2</fddLink>, the ZIP-based container was supported but not mandated.  The only compression algorithm allowed is DEFLATE (RFC 1951).  Split ZIP archives are explicitly prohibited.  Encryption is only allowed using an EPUB-specific approach.  File names, etc. must be in UTF-8. Use of the PKWARE ZIP64 extension (version 1 only) is allowed but discouraged unless the content requires it.</li>
+				<li>
+					<a href="http://www.digitalpreservation.gov/documents/bagitspec.pdf">BagIt</a>, a hierarchical file packaging format for
+storage and transfer of arbitrary digital content.  A &quot;bag&quot; has just enough
+structure to enclose descriptive &quot;tags&quot; and a &quot;payload&quot; but
+does not require knowledge of the payload&apos;s internal semantics.  A typical serialization as a single file is based on ZIP or TAR.</li>
+			</ul>
+			<p>Bearing in mind changes in technology since the original ZIP_PK, it appears to the compiler of this description that a common set of features for the most interoperable usage is emerging, including: the basic ZIP_PK structure with CRC-32 for checking file integrity, DEFLATE compression (or no compression), and support for long filenames, for filenames, etc., encoded in UTF-8, and for large files through ZIP64.  ZIP_PK features avoided in these specifications include: encryption as supported in ZIP_PK; other compression schemes; other features covered by PKWARE patents.  Application-specific approaches have been developed for file manifests (with more information than in the ZIP Central Directory), metadata, digital signatures, and encryption.  <a href="../contact_format.shtml">Comments welcome.</a>
+			</p>
+			<p>
+				<b>PKWARE patents and licensing:</b>  One set of changes between <a href="http://www.pkware.com/documents/APPNOTE/APPNOTE-6.3.2.TXT">version 6.3.2 (2007)</a> and <a href="http://www.pkware.com/documents/APPNOTE/APPNOTE-6.3.3.TXT">version 6.3.3 (2012)</a> of APPNOTE.TXT was intended to add clarity to the specification in relation to the scope and applicability of PKWARE&apos;s patents, making clearer to potential developers the particular sections of the specification that have any relationship to PKWARE&apos;s patents, with the implication that reliance on other sections should provide no patent concerns.  Statements in version 6.3.3 include: &quot;Portions of the Strong Encryption technology defined in this specification are covered under patents and pending patent applications.&quot; and &quot;Patch support is provided by PKPatchMaker(tm) technology and is covered under U.S. Patents and Patents Pending.&quot;  [See explanation of &quot;patch technology&quot; immediately below.]  In specific sections of version 6.3.3 of APPNOTE.TXT that relate to these two features, pointers are made to Section 10 of version 6.3.3 of APPNOTE.TXT, entitled &quot;Incorporating PKWARE Proprietary Technology into Your Product.&quot; This section includes the following statement, &quot;The Use or Implementation in a product of APPNOTE technological components pertaining to either strong encryption or patching requires a separate, executed license agreement from PKWARE.&quot; and provides contact information.  These formal statements may be read in the context of the purpose expressed in the new section 1.1.1 of version 6.3.3 of APPNOTE.TXT, &quot;This specification is intended to define a cross-platform,
+interoperable file storage and transfer format.  Since its first publication in 1989, PKWARE, Inc. (&quot;PKWARE&quot;) has remained committed to ensuring the interoperability of the .ZIP file format through periodic publication and maintenance of this specification.  We trust that all .ZIP compatible vendors and application developers that use and benefit from this format will share and support this commitment to interoperability.&quot;</p>
+			<p>PKWARE declares the patents it owns at <a href="http://www.pkware.com/support/intellectual-property">http://www.pkware.com/support/intellectual-property</a>.  In addition, as of September 2012, several similar patent applications are pending.</p>
+			<p>
+				<b>Patching technology support in ZIP format:</b>  Jim Peterson of PKWARE provided the following explanation:  The &quot;patching&quot; technology is a means for using ZIP files to distribute revised document content by delivering only the changed elements of a prior document instead of having to deliver a complete new copy of the revised version.  The premise is that a user delivers version 1 of a file to other users.  Later, version 2 is prepared for delivery to the same recipients.  The patching technology provides capabilities to compare version 1 and version 2 and distill out only the differences between the documents.  The user distributing version 2 can then deliver only the differences rather than a whole new document with the objective of reducing the amount of information to deliver to update a user from version 1 to version 2.  Upon receipt, the changes can be applied directly the original version 1 of the document/file with the end result that version 2 becomes available to the receiving users through the patching technology.
+
+</p>
+			<p>
+				<b>Support for ZIP_PK features:</b>  The <a href="http://www.pkware.com/documents/APPNOTE/APPNOTE-6.3.3.TXT">2012 version 6.3.3 of the .ZIP Application Note</a> indicates, &quot;Newer versions of this format specification are intended to remain interoperable with all prior versions whenever technically possible.&quot;  Although PKWARE products are likely to support all features in ZIP_PK, other ZIP utilities will not necessarily support optional features.  In particular, support for any particular compression or encryption method is optional.  Section 4 of the 2012 version 6.3.3 of APPNOTE.TXT provides a clearer specification of which features are mandatory and which optional than earlier versions.  Section 4.1.3 states, &quot;Compression method 8 (Deflate) is the method used by default by most Zip compatible application programs.&quot;  Apache Commons Compress, a software toolkit built in Java, provides some informative details on creating interoperable ZIP files at <a href="http://commons.apache.org/compress/index.html">http://commons.apache.org/compress/index.html</a>
+			</p>
+			<p>
+				<b>Variants from other vendors:</b>  Due to differences in timing of introduction of features in different products, such as WinZip and the Info-ZIP tools, some files with a .zip extension produced in the past may not strictly comply with the ZIP_PK specification as represented by a particular edition of APPNOTE.TXT.  Others may use the mechanisms for extensibility in ZIP_PK in ways that other utilities do not recognize.  In general, a consensus towards convergence has emerged in recent years.  For example, features introduced by other developers have been folded back into the ZIP_PK specification.  The compilers of this resource are unable to determine how serious the potential problem of incompatible legacy files is in practice.  Experience at the Library of Congress with the use of ZIP files for transmission of digital content to the library has been almost entirely trouble-free.</p>
+			<p>The WinZip product introduced a .zipx extension to distinguish archive files that used more advanced features, retaining .zip for files using only the features supported by most ZIP utilities.  Version 6.3.3 of APPNOTE.TXT mentions .zipx as an extension that may be used for files compliant with the format it specifies.  The compilers of this resource are not aware of any use of the .zipx extension for files created by tools other than WinZip.  <a href="../contact_format.shtml">Comments welcome.</a>
+			</p>
+			<p>Several different tools that have  "zip" in their names have their own native storage format and do not necessarily support the ZIP_PK format described here, for example, <i>gzip</i>; <i>7-zip</i>; and <i>bzip2</i>.</p>
+			<p>
+				<b>Data integrity checks:</b>  A mandatory feature of the ZIP_PK format is the use of a 32-bit cyclic redundancy check (CRC) for each file using a specific CRC-32 algorithm.  On decompression, ZIP utilities are expected to recalculate a CRC on the decompressed file and check against the CRC stored in the ZIP archive file.  In addition, ZIP_PK provides a way to store optional digital signatures.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>
+				<b>Chronology for APPNOTE.TXT versions:</b> Since the first publication of APPNOTE.TXT in 1990, ZIP_PK has been extended in response to a changing technological environment, while retaining its straightforward structure.  As new features have been added to ZIP_PK, care has been taken to ensure backwards compatibility, so that new software versions can read files in all previous versions of the format specification.  A chronology of significant versions of the APPNOTE specification for ZIP_PK, prior to and including 2012, follows below.  The details and descriptions were provided by Jim Peterson, Chief Scientist, PKWARE.  Versions not on this list introduced only minor changes, such as corrections or support for an additional compression method.</p>
+			<ul>
+				<li>1.0, 1990-03-15	[<a href="http://hdl.loc.gov/loc.gdc/digformat.000009.1">http://hdl.loc.gov/loc.gdc/digformat.000009.1</a>]<br/>Initial ZIP format created by Phil Katz of PKWARE, Inc.  Includes original 96-bit (triple 32-bit) password encryption storage definition.  </li>
+				<li>2.0, 1993-02-01 [<a href="http://hdl.loc.gov/loc.gdc/digformat.000010.1">http://hdl.loc.gov/loc.gdc/digformat.000010.1</a>]
+					<br/>Introduces the Deflate data compression algorithm which becomes one of the most widely used compression algorithms.</li>
+				<li>4.0, 2000-11-01  [<a href="http://hdl.loc.gov/loc.gdc/digformat.000011.1">http://hdl.loc.gov/loc.gdc/digformat.000011.1</a>]<br/>Introduces support for using digital signatures to verify data in a ZIP file and adds the fast Deflate64 data compression algorithm.</li>
+				<li>4.5, 2001-11-01 [<a href="http://hdl.loc.gov/loc.gdc/digformat.000012.1">http://hdl.loc.gov/loc.gdc/digformat.000012.1</a>]<br/>Introduces support for storing more than 65535 files in a ZIP file and file sizes exceeding the previous 4 gigabyte limit.</li>
+				<li>5.2, 2003-07-16   [<a href="http://hdl.loc.gov/loc.gdc/digformat.000013.1">http://hdl.loc.gov/loc.gdc/digformat.000013.1</a>]<br/>Introduces initial storage specification for adding stronger encryption using algorithms exceeding 128-bits based on passwords, digital certificates, or a combination of both simultaneously.</li>
+				<li>6.2.0, 2004-04-26   [<a href="http://hdl.loc.gov/loc.gdc/digformat.000014.1">http://hdl.loc.gov/loc.gdc/digformat.000014.1</a>]<br/>Defines storage specification to support encrypting ZIP file metadata, such as file names, within the ZIP Central Directory.  Reference version for incorporating the ZIP format into Office Open XML File Format standard ECMA-376 (versions 1, 2, and 3) and ISO/IEC 29500 (versions published in 2008 and 2012).</li>
+				<li>6.2.2, 2006-01-06   [<a href="http://hdl.loc.gov/loc.gdc/digformat.000015.1">http://hdl.loc.gov/loc.gdc/digformat.000015.1</a>]<br/>Documents final storage specification for adding stronger encryption using algorithms exceeding 128-bits using passwords, digital certificates, or a combination of both simultaneously.</li>
+				<li>6.3.0, 2006-09-29   [<a href="http://hdl.loc.gov/loc.gdc/digformat.000016.1">http://hdl.loc.gov/loc.gdc/digformat.000016.1</a>]<br/>Documents support within ZIP files for using hash algorithms of SHA-256, SHA-384 and SHA-512; incorporates LZMA and PPMd data compression algorithms; support for Blowfish and Twofish data encryption algorithms; definition of UTF-8 international file name storage.</li>
+				<li>6.3.3, 2012-09-01   [<a href="http://hdl.loc.gov/loc.gdc/digformat.000017.1">http://hdl.loc.gov/loc.gdc/digformat.000017.1</a>]<br/>Formatting changes to the document add conformance requirements and support easier referencing by other standards that incorporate the ZIP format.</li>
+			</ul>
+			<p>
+				<b>ZIP_PK in the international standards environment:</b>  As described in <a href="http://en.wikipedia.org/wiki/ZIP_(file_format)#Standardization">http://en.wikipedia.org/wiki/ZIP_(file_format)</a>, a proposed project to create an ISO/IEC international standard for a format compatible with ZIP failed to pass a 2010 ballot of national standards bodies.  Instead, a study period was initiated, resulting in recommendations documented in <a href="http://kikaku.itscj.ipsj.or.jp/sc34/open/1621.pdf">ISO/IEC JTC 1/SC 34 N 1621</a>.  The recommendations were (a) to have PKWARE continue its maintenance of the ZIP Application Note, (b) to plan for a new multi-part ISO standard to build on top of the ZIP Application Note, and (c) to propose a new work item for Part 1 of the new standard for a Document Container File.  The new work item was approved in August 2011 and is under way, as <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=60101">ISO/IEC 21320-1 - Information technology -- Document Container File -- Part 1: Core</a>.  It appears to the compiler of this format description that the objectives for this new standard will include consideration of criteria similar to the factors used on this resource to assess formats for sustainability of digital content.  In November 2012, a <a href="http://kikaku.itscj.ipsj.or.jp/sc34/open/1855.pdf">working draft of ISO/IEC 21320-1</a> was made available for discussion.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>As of September 2012, PKWARE provides online access to the latest specification, known as the .ZIP Application Note, and stored as APPNOTE.TXT, and an archived selection of earlier versions.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.pkware.com/support/zip-app-note</link>
+							<tag>Introduction to .ZIP Application Note</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.pkware.com/documents/casestudies/APPNOTE.TXT</link>
+							<tag>Current version of APPNOTE.TXT from PKWARE</tag>
+							<comment>This URL always leads to the latest version.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.pkware.com/support/zip-app-note/archives</link>
+							<tag>Archive of .ZIP Application Notes from PKWARE</tag>
+							<comment>The earliest version made available publicly on the PKWARE site (as of September 2012) is 4.5.0.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.iana.org/assignments/media-types/application/zip</link>
+					<tag>Registration of internet media type for ZIP at IANA.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/ZIP_(file_format)</link>
+					<tag>Wikipedia page for ZIP file format</tag>
+					<comment>Includes a version history listing key advances in the ZIP_PK specification through versions of the APPNOTE.TXT document.  Also discusses efforts since 2012 to bring the ZIP format into the international standards environment. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>ISO/IEC 21320-1 is a standards effort approved in August 2011 under ISO/IEC JTC 1/SC 34/WG1 [Markup Languages] for core requirements for a document container file.  This effort is expected to produce a specification document of &quot;core&quot; requirements for a document container file that is a profile of ZIP_PK.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=60101</link>
+							<tag>ISO catalogue entry for ISO/IEC CD 21320-1.</tag>
+							<comment>As of December 2013, this only provides information that the standard is &quot;under development.&quot;</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://kikaku.itscj.ipsj.or.jp/sc34/open/1621.pdf</link>
+							<tag>ISO/IEC JTC 1/SC 34 N 1621: Proposal for a New Work Item on Information Technology -- Document Container File -- Part 1: Core [WG1]</tag>
+							<comment>This document provides the starting background for ISO/IEC NP 21320-1.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://kikaku.itscj.ipsj.or.jp/sc34/open/1855.pdf</link>
+							<tag>November 2012 working draft of ISO/IEC 21320-1</tag>
+							<comment>This version was made available for discussion.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ietf.org/rfc/rfc1951.txt</link>
+					<tag>RFC 1951: DEFLATE Compressed Data Format Specification version 1.3</tag>
+					<comment>No changes to the format had been made since version 1.1, only changes to the document.  States, &quot;Phil Katz designed the deflate format.  Jean-Loup Gailly and Mark
+Adler wrote the related software described in this specification.&quot;</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Cyclic_redundancy_check</link>
+					<tag>Wikipedia page for Cyclic Redundancy Check (CRC)</tag>
+					<comment>Background on CRC.  ZIP_PK uses a specific 32-bit CRC algorithm, cited in APPNOTE.TXT.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Info-ZIP is the open-source project of a group originally formed in 1990 as a mailing list. To quote from the group&apos;s website, &quot;Info-ZIP&apos;s purpose is to provide free, portable, high-quality versions of the Zip and UnZip compressor-archiver utilities that are compatible with the DOS-based PKZIP by PKWARE, Inc.&quot; 
+
+Info-ZIP tools and libraries support Unix, Mac OS, Windows, and many other operating systems.  Code from Info-ZIP has been the basis for many other ZIP implementations. Info-ZIP&apos;s documentation of the ZIP format has been relied on historically by other developers and in other specifications, such as JAR, since PKWARE made only the most recent version of APPNOTE.TXT available.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://info-zip.org/</link>
+							<tag>Info_ZIP home page</tag>
+							<comment>As of February 2013, the last update was in 2008.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>ftp://ftp.info-zip.org/pub/infozip/doc/</link>
+							<tag>Documentation from Info-ZIP</tag>
+							<comment>Includes Info-ZIP variants on APPNOTE.TXT dated from 1996 to 2004.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://en.wikipedia.org/wiki/Info-ZIP</link>
+							<tag>Wikipedia page for Info-ZIP</tag>
+							<comment>Includes chronology of versions of the Info-ZIP utilities.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://docs.oracle.com/javase/7/docs/technotes/guides/jar/index.html</link>
+					<tag>Java Archive (JAR) Files, Java SE, version 7</tag>
+					<comment>The Java programming language was originally developed at Sun Microsystems, acquired in early 2010 by Oracle.  The associated toolkit includes java.jar.util, which, in turn, depends on java.zip.util.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://commons.apache.org/compress/zip.html</link>
+					<tag>ZIP Package in Apache Commons Compress toolkit</tag>
+					<comment>This page describes how this package extends the java.zip.util that it is based on.  It also has useful tips on creating interoperable ZIP files. As of September 2012, the latest version of Commons Compress (1.4.1) requires Java 5</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/x-fmt/263</link>
+					<tag>ZIP file format entry at PRONOM</tag>
+					<comment>PUID is x-fmt/263</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://jhove.sourceforge.net/thirdpartymodules/zipmodule.html</link>
+					<tag>Third-party ZIP and GZIP modules for JHOVE, from Portico</tag>
+					<comment>Retrieved 2012-09-22.  Described as draft and dated 4-April-2007.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.pkware.com/Support-Desktop/zipreaderthirdparty</link>
+					<tag>PKWARE, Inc., Third-Party License Summary for ZIP Reader</tag>
+					<comment/>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.winzip.com/aes_info.htm</link>
+					<tag>WinZip: AES Encryption Information</tag>
+					<comment>This page (as of September 2012, last updated in 2009) discusses how WinZip extended the ZIP format to support AES encryption.  Although the page does not mention PKWARE, the phrase &quot;basic ZIP file format&quot; refers to a modifed version of APPNOTE, distributed by Info-Zip, based on PKWARE's APPNOTE dated Feb 15, 1996, and updated to take account of the 6.2.0 version dated April 26, 2004.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://kb.winzip.com/kb/entry/36/</link>
+					<tag>Is WinZip compatible with older versions of WinZip and other Zip file utilities?</tag>
+					<comment>Explains WinZip options for creating .zip or .zipx files.  The .zip files created by WinZip are intended for greatest compatibility with other Zip file utilities.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

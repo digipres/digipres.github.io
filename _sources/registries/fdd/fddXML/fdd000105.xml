@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000105" titleName="MP3 File Format" shortName="MP3_FF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2010-06-29</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>MP3 File Format</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>audio formats</fdd:keyword>
+			<fdd:keyword>recorded sound formats</fdd:keyword>
+			<fdd:keyword>MP3</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>De facto file format for sound that wraps <fddLink id="fdd000012">MP3_ENC</fddLink> bitstreams, which may be post- or prepended by the informally specified <fddLink id="fdd000106">ID3</fddLink> metadata blocks.</fdd:description>
+		<fdd:shortDescription>De facto file format for sound that wraps MP3_ENC bitstreams, which may be post- or prepended by the informally specified ID3 metadata blocks.</fdd:shortDescription>
+		<fdd:productionPhase>Generally used for final-state, end-user delivery. </fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000012</fdd:id>
+					<fdd:shortName>MP3_ENC</fdd:shortName>
+					<fdd:titleName>MP3 (MPEG Layer III Audio Encoding)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000107</fdd:id>
+					<fdd:shortName>ID3v1</fdd:shortName>
+					<fdd:titleName>ID3 Metadata, Version 1</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000108</fdd:id>
+					<fdd:shortName>ID3v2</fdd:shortName>
+					<fdd:titleName>ID3 Metadata, Version 2</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>Used extensively as non-streaming service format for American Memory.  Currently one of the accepted formats for electronic registration of audio by the U.S. Copyright Office in the <a href="http://www.copyright.gov/eco/help-file-types.html">eCO</a> program.</fdd:experience>
+		<fdd:preference>See <fddLink id="fdd000012">MP3_ENC</fddLink>
+		</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			Not documented
+		</fdd:disclosure>
+		<fdd:documentation>
+			See <fddLink id="fdd000012">MP3_ENC</fddLink> and its subtypes for documentation of the bitstream. See <fddLink id="fdd000106">ID3</fddLink> and its subtypes for documentation of the metadata blocks.
+		</fdd:documentation>
+		<fdd:adoption>
+			Very widely adopted for World Wide Web dissemination and playback on specialized devices.
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			None for the file structure; see <fddLink id="fdd000012">MP3_ENC</fddLink> for discussion of patent claims pertaining to the bitstream.
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			See <fddLink id="fdd000012">MP3_ENC</fddLink>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			See <fddLink id="fdd000012">MP3_ENC</fddLink> and <fddLink id="fdd000106">ID3</fddLink> and its subtypes.
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			None
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			None. </fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:soundQF>
+			<fdd:normalSound>Good support.</fdd:normalSound>
+			<fdd:fidelity>See <fddLink id="fdd000012">MP3_ENC</fddLink>
+			</fdd:fidelity>
+			<fdd:channels>See <fddLink id="fdd000012">MP3_ENC</fddLink>
+			</fdd:channels>
+			<fdd:samples>None</fdd:samples>
+			<fdd:beyondSound>None. See also <fddLink id="fdd000108">ID3v2</fddLink>.</fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>mp3</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>There is no  &quot;official&quot; file format associated with MPEG-1 and MPEG-2 content.  Many MP3 files contain both the audio bitstream and <fddLink id="fdd000106">ID3</fddLink> metadata.<br/>
+					<br/>Various auxiliary or related files exist; for example, <i>m3u</i> and <i>pls</i> files contain playlists associated with MP3; each of these formats works well with some players and not with others. </fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>audio/mpeg</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://www.ietf.org/">IETF</a> (Internet Engineering Task Force) <a href="http://www.rfc-editor.org/rfc/rfc3003.txt">RFC 3003</a>
+				</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>audio/x-mpeg</fdd:sigValue>
+					<fdd:sigValue>audio/mp3 </fdd:sigValue>
+					<fdd:sigValue>audio/x-mp3 </fdd:sigValue>
+					<fdd:sigValue>audio/mpeg3 </fdd:sigValue>
+					<fdd:sigValue>audio/x-mpeg3 </fdd:sigValue>
+					<fdd:sigValue>audio/mpg </fdd:sigValue>
+					<fdd:sigValue>audio/x-mpg </fdd:sigValue>
+					<fdd:sigValue>audio/x-mpegaudio</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Additional examples selected from <a href="http://filext.com/">The File Extension Source</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: FF FB 30</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://filext.com/">The File Extension Source</a>.  The compiler of this document seeks confirmation of the accuracy of these numbers, or about their applicability to all variants of MP3.  The standards document for the <fddLink id="fdd000012">MP3_ENC</fddLink> bitstream (ISO/IEC 11172-3:1993, section 2.4.2.3, p. 20) states that MPEG-1 audio headers begins with "1111 1111 1111" (syncword) followed by "1" (for this standard), followed by "01" for layer III, followed by "1" if the stream has no redundancy, and then provides bits that indicate stream's bitrate.  The bitstream "1111 1111 1111 1011" has "FFFB" as its hexadecimal equivalent.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>ID3 marker</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>ASCII: 3DI</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>When <fddLink id="fdd000106">ID3</fddLink> metadata is placed in a MP3_FF file, established conventions call for this marker. For <fddLink id="fdd000107">ID3v1</fddLink>, the marker is positioned 10 bytes preceding the metadata.  For <fddLink id="fdd000108">ID3v2</fddLink> data, the marker is positioned in the first 3 bytes of the file when the metadata is pre-pended and 10 bytes from the end of a file when it is post-pended.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/ID3</link>
+					<tag>ID3</tag>
+					<comment>article in Wikipedia, consulted February 2007 .</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

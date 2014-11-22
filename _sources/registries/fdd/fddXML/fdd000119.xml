@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000119" titleName="Standard MIDI File Format" shortName="SMF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-wrapper</fdd:gdfrComposition>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2004-06-07</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Standard MIDI File Format</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>structured music formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>Wrapper format for MIDI data. From the <a href="http://www.midi.org/techspecs/midispec.php ">specification</a> from MIDI.org (an arm of the MIDI Manufacturers Association): "This chunk architecture is similar to that used by the Electronic Arts <fddLink id="fdd000115">IFF format</fddLink>, and the chunks described herein could easily be placed in an IFF file.  The MIDI file itself is not an IFF file: it contains no nested chunks, and chunks are not constrained to be an even number of bytes long." (Section 4, p. 3)</p>
+			<p>MIDI stands for Musical Instrument Digital Interface</p>
+		</fdd:description>
+		<fdd:shortDescription>Wrapper format for MIDI data.</fdd:shortDescription>
+		<fdd:productionPhase>May be used by composers or arrangers for initial-state activities, in middle-state exchange of data or archiving, or for final-state, end-user delivery.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000102</fdd:id>
+					<fdd:shortName>MIDI_SD</fdd:shortName>
+					<fdd:titleName>MIDI sequence data</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000115</fdd:id>
+					<fdd:shortName>IFF</fdd:shortName>
+					<fdd:titleName>IFF (EA Interchange File Format 1985)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None</fdd:experience>
+		<fdd:preference>None established at this time</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			Fully documented.  Developed by the <a href="http://www.midi.org/">MIDI Manufacturers Association</a>.
+		</fdd:disclosure>
+		<fdd:documentation>
+			<i>The Complete MIDI 1.0 Detailed Specification</i> (2001), available for purchase from <a href="http://www.midi.org/techspecs/index.php ">MIDI.org</a>.
+		</fdd:documentation>
+		<fdd:adoption>
+			See <fddLink id="fdd000102">MIDI_SD</fddLink>.
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			See <fddLink id="fdd000102">MIDI_SD</fddLink>.
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			Transparent wrapper. See also <fddLink id="fdd000102">MIDI_SD</fddLink>.
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<i>Header chunks</i> are used to identify <i>track chunks</i> within the file; <i>Meta-Events</i> include sequence information, text inclusions, copyright notices, track names, and more.
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			See <fddLink id="fdd000102">MIDI_SD</fddLink>.
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			None known to the compilers of this document.
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:soundQF>
+			<fdd:normalSound>Not applicable; see <fddLink id="fdd000102">MIDI_SD</fddLink>.</fdd:normalSound>
+			<fdd:fidelity>Not applicable; see <fddLink id="fdd000102">MIDI_SD</fddLink>.</fdd:fidelity>
+			<fdd:channels>Not applicable; see <fddLink id="fdd000102">MIDI_SD</fddLink>.</fdd:channels>
+			<fdd:samples>No; see <fddLink id="fdd000121">XMF</fddLink>.</fdd:samples>
+			<fdd:beyondSound>See <fddLink id="fdd000102">MIDI_SD</fddLink>.  The compilers of this document have not investigated the degree to which such added functionality is provided by SMF as distinct from other file formats and/or application software.  See <a href="#notes">Notes</a> for comment on karaoke applications.</fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>mid</fdd:sigValue>
+					<fdd:sigValue>midi</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Selected from <a href="http://filext.com/">The File Extension Source</a>.  Also listed at the site: <i>mff</i>, <i>mdi</i>, and <i>kar</i> for karaoke MIDI files; see also <a href="#notes">Notes</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>audio/mid</fdd:sigValue>
+					<fdd:sigValue>audio/m </fdd:sigValue>
+					<fdd:sigValue>audio/midi </fdd:sigValue>
+					<fdd:sigValue>audio/x-midi </fdd:sigValue>
+					<fdd:sigValue>application/x-midi</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Selected from <a href="http://filext.com/">The File Extension Source</a>; for <i>kar</i> karaoke files, <i>x-music/x-midi</i> is added. No Internet Media Type for MIDI found at <a href="http://www.iana.org/assignments/media-types/">http://www.iana.org/assignments/media-types/</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 4D 54 68 64</fdd:sigValue>
+					<fdd:sigValue>ASCII: MThd</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://www.garykessler.net/library/file_sigs.html">Gary Kessler's File Signatures Table</a>. <a href="http://filext.com/">The File Extension Source</a> reports this for Hex: 4D 54 68 64 00 00 00 06 00 01 00.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>MIDI data is placed in numerous types of files, including files used in games and specialized devices.  One alternative to SMF is <fddLink id="fdd000120">RMID</fddLink>, based in the Microsoft <fddLink id="fdd000025">RIFF</fddLink> specification but deprecated at the MIDI.org site.</p>
+			<p>
+				<a href="http://filext.com/">The File Extension Source</a> reports that "the .KAR [karaoke] file format was designed by Tune 1000 Corp. They have abandonded it, but it is still the prevailing file format in shareware/public domain market. Other Karaoke formats include: .MID+.TXK, .MID, .CRT, and .ST3. . . . Various programs use this extension; too many to list individually."</p>
+		</fdd:general>
+		<fdd:history>See <fddLink id="fdd000102">MIDI_SD</fddLink>.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:specReference>SMF is defined within <specRefDetail rel="stitle">The Complete MIDI 1.0 Detailed Specification</specRefDetail> (2001), described at <a href="http://www.midi.org/techspecs/midispec.php ">http://www.midi.org/techspecs/midispec.php </a> and available for purchase from <a href="http://www.midi.org/techspecs/index.php">http://www.midi.org/techspecs/index.php</a>.  As of September 2008, <a href="http://www.midi.org/techspecs/smf.php">this page</a> indicates, &quot;In 2008 the five [SMF] documents will be combined into a new document which will be available for download.&quot;</fdd:specReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Many pages at the MIDI Manufacturers Association provide access to information.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.midi.org/</link>
+							<tag>MIDI Manufacturers Association home page</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.midi.org/techspecs/index.php </link>
+							<tag>List of specification documents, technical notes, tutorials, etc.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.midi.org/techspecs/index.php</link>
+							<tag>Tech Specs &amp; Info page</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Musical_Instrument_Digital_Interface</link>
+					<tag>Wikipedia entry for Musical Instrument Digital Interface</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000394" titleName="iCalendar Electronic Calendar and Scheduling Format" shortName="iCal" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>text</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>other</fdd:value>
+				<fdd:comment>calendar</fdd:comment>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2014-05-01</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>iCalendar Electronic Calendar and Scheduling Format</fdd:fullName>
+		<fdd:description>
+			<p>iCalendar, or iCal, is a widely-used format for the exchange of electronic calendaring and scheduling data between applications or systems. Based on the <a href="http://www.imc.org/pdi/">vCalendar</a> format created by the Internet Mail Consortium, iCalendar files can be exchanged through a wide variety of methods including SMTP, HTTP,  interactive desktop protocols such as the use of a memory-based clipboard or drag/drop interactions, and others because they are designed to be independent of specific transport protocols. The iCalendar format supports functionality such as requesting, replying to, modifying, and canceling meetings or appointments, to-dos, and journal entries. Through the iCalendar Transport-independent Interoperability Protocol (iTIP) defined in <a href="http://www.ietf.org/rfc/rfc2446.txt">RFC 2446</a>, iCalendar objects can be used to define other calendaring and scheduling operations such as requesting for and replying with free/busy time data.</p>
+			<p>See <a href="#notes">Notes</a> for description of the file structure.</p>
+		</fdd:description>
+		<fdd:shortDescription>iCalendar is a commonly used format for the exchange of electronic calendaring and scheduling data between applications or systems. </fdd:shortDescription>
+	</fdd:identificationAndDescription>
+	<fdd:localUse/>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>Open standards available from Internet Engineering Task Force (IETF).</p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>iCalendar is fully documented though RFC 5545, RFC 2446, and RFC 2447.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>According to <a href="http://en.wikipedia.org/wiki/ICalendar">Wikipedia</a> (accessed on May 1, 2014), &quot;iCalendar is used and supported by a large number of products, including Google Calendar, Apple Calendar (formerly iCal), IBM Lotus Notes, Yahoo! Calendar, Evolution (software), eM Client, Lightning extension for Mozilla Thunderbird and SeaMonkey, and partially by Microsoft Outlook and Novell GroupWise.&quot;</p>
+			<p>The <a href="http://microformats.org/wiki/icalendar-implementations">iCalendar implementation page</a> on Microformats.com provides details about some modifications for specific implementations including Apple iCal 2.0.5 (date and date-time formatting) and Microsoft Outlook 2003 (where the VEVENTS calendar component is required to have UID, DTSTAMP, and METHOD properties or an error is returned).</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>None</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>The primary content of iCalendar files is straightforward text that can be read by humans or processed by computers.  An iCalendar file consists of lines of text, each line limited to 75 octets and delimited by a CRLF sequence.  The default character encoding is UTF-8.  To facilitate automated parsing, <a href="http://www.ietf.org/rfc/rfc5545.txt">RFC 5545</a> defines the iCalendar format using ABNF notation, as defined in <a href="http://www.ietf.org/rfc/rfc5234.txt">RFC 5234</a>. </p>
+			<p>Applications must also read, but are not required to write, US-ASCII.</p>
+			<p>Calendar objects, such as events, may have binary attachments encoded using the BASE64 encoding defined in <a href="http://www.ietf.org/rfc/rfc4648.txt">RFC 4648</a> and embedded inline.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>iCalendar has syntax and structure that features well-defined metadata. See <a href="#notes">Notes</a> for description of the file structure.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			<p>None</p>
+		</fdd:externalDependencies>
+		<fdd:techProtection>None</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors/>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>.ics</fdd:sigValue>
+					<fdd:sigValue>.ifb</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>
+					<p>.ics is used to designate a file containing calendaring and scheduling information consistent with text/calendar MIME content type.</p>
+					<p>.ifb is used to designate a file containing free or busy time information consistent with text/calendar MIME content type. </p>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>text/calendar</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>
+					<p>Registered with IANA</p>
+				</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:other>
+				<fdd:tag>Mac OS file type</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>iCal</fdd:sigValue>
+						<fdd:sigValue>iFBf</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>
+						<p>"iCal" is used to designate a file containing calendaring and scheduling information consistent with text/calendar MIME media type.</p>
+						<p>"iFBf" is used to designate a file containing free or busy time information consistent with text/calendar MIME media type.</p>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>At the most basic level, iCalendar files are organized into individual lines of text (called content lines) which are limited to 75 octets in length. Content lines are delimited by a CRLF sequence. Long data items (i.e., longer than 75 octets) can be split between any two characters by inserting a CRLF immediately followed by a single SPACE or TAB white-space character.</p>
+			<p>At a higher level of structure, the Calendaring and Scheduling Core Object is a collection of calendaring and scheduling information. Typically, this information will consist of an iCalendar stream with a one or more sequentially grouped iCalendar objects together in an iCalendar stream.</p>
+			<p>Within the iCalendar object, the first line must be "BEGIN:VCALENDAR" and the last line must be "END:VCALENDAR". Between these encapsulating lines is the iCalendar body which consists of a sequence of calendar properties and one or more calendar components. The calendar properties are attributes that apply to the calendar object as a whole.  The calendar components are collections of properties that express a particular calendar semantic.  For example, the calendar component can specify an event, a to-do, a journal entry, time zone information, free/busy time information, or an alarm.</p>
+			<p>Within the iCalendar body structure:</p>
+			<ul>
+				<li>two calendar properties are required and may not appear more than once: "PRODID" which specifies the identifier for the product that created the iCalendar object and "VERSION" which specifies the identifier corresponding to the highest version number or the minimum and maximum range of the iCalendar specification that is required in order to interpret the iCalendar object. The value "VERSION:2.0" indicates that the data is in iCalendar format as specified in <a href="http://www.ietf.org/rfc/rfc5545.txt">RFC 5545</a>. "VERSION:1.0" is used to specify that data is in the now-defunct <a href="http://www.imc.org/pdi/">vCalendar format</a>;</li>
+				<li>two calendar properties are optional and may not appear more than once: &quot;CALSCALE&quot; which defines the calendar scale used for the calendar information specified in the iCalendar object (default is Gregorian) and &quot;METHOD&quot; which defines the iCalendar object method associated with the calendar object;</li>
+				<li>other calendar properties are optional and may appear more than once.</li>
+			</ul>
+			<p>Applications that import iCalendar objects are expected to support all of the component types defined in RFC 5545. Practically, this means that applications are expected to ignore values they don't recognize and should not silently drop any components as that can lead to user data loss.</p>
+			<p>Moreover, compliant applications must generate iCalendar streams in the UTF-8 charset and must accept iCalendar streams in UTF-8 or US-ASCII charsets. A different character set can be specified using the &quot;charset&quot; MIME parameter.</p>
+			<p>iCalendar objects can have attachments. The default value type for the Attach descriptive component property is <a href="http://en.wikipedia.org/wiki/Uniform_resource_identifier">URI</a>.  The value type can also be set to BINARY to indicate inline binary encoded content information.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>iCalendar is based on the <a href="http://www.imc.org/pdi/">vCalendar</a> format published in 1996 by the Internet Mail Consortium (IMC). <a href="http://www.ietf.org/rfc/rfc2445.txt">RFC 2445</a>, which defined the first iCalendar format, was created by the Internet Engineering Task Force Calendaring and Scheduling Working Group in 1998; the <a href="http://www.ietf.org/rfc/rfc5545.txt">RFC 5545</a> update and current specification was published by IETF in 2009.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>RFCs for iCal</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.ietf.org/rfc/rfc5545.txt</link>
+							<tag>RFC 5545: Internet Calendaring and Scheduling Core Object Specification (iCalendar)</tag>
+							<comment>Current RFC</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.ietf.org/rfc/rfc2445.txt</link>
+							<tag>RFC 2445: Internet Calendaring and Scheduling Core Object Specification (iCalendar)</tag>
+							<comment>Obsoleted by RFC 5545</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.ietf.org/rfc/rfc2446.txt</link>
+							<tag>RFC 2446: iCalendar Transport-Independent Interoperability Protocol (iTIP) Scheduling Events, BusyTime, To-dos and Journal Entries</tag>
+							<comment>Specifies how calendaring systems use iCalendar objects to inter-operate with other calendar systems</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.ietf.org/rfc/rfc2447.txt</link>
+							<tag>RFC 2447: iCalendar Message-Based Interoperability Protocol (iMIP)</tag>
+							<comment>Specifies a binding from RFC 2446 (iTIP) to Internet email-based transports</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/ICalendar</link>
+					<tag>Wikipedia entry for iCalendar</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Calendaring_software</link>
+					<tag>Wikipedia entry for Calendaring Software</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/388</link>
+					<tag>Internet Calendar and Scheduling format entry at PRONOM</tag>
+					<comment>PUID is fmt/388. Outline entry only</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.imc.org/pdi/</link>
+					<tag>vCard and vCalendar</tag>
+					<comment>Information about vCalendar, precursor to iCal, from the now defunct IMC</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://support.google.com/calendar/answer/45664?hl=en</link>
+					<tag>Google: Format iCalendar files</tag>
+					<comment>Basic overview of format including instructions on editing iCalendar files</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://microformats.org/wiki/icalendar-implementations</link>
+					<tag>Microformats.org iCalendar implementations</tag>
+					<comment>Includes modifications for specific implementations</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

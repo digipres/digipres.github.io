@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000188" titleName="Adobe Digital Negative (DNG), Version 1.1" shortName="DNG_1_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2012-02-07</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Adobe Digital Negative (DNG), Version 1.1</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>raster image formats</fdd:keyword>
+			<fdd:keyword>digital camera file formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>File format for storing and interchanging <fddLink id="fdd000241">CAM_RAW</fddLink> (camera raw) images, usually accompanied by JPEG secondary version(s) of the images.  The raw image data is processed for placement in the DNG file wrapper by software applications like Adobe Camera Raw, a plug-in for PhotoShop. These applications give users options for processing the raw image data into various versions, as indicated by the &quot;may contain&quot; relationships in this description and discussed in  <a href="#notes">Notes</a> below.  The &quot;default&quot; action usually produces a version of the still-mosaiced raw data compressed with <fddLink id="fdd000334">JPEG_orig_LL</fddLink>. The conversion applications also generate special metadata about image characteristics that is recorded under DNG tags that represent an extension to the normal TIFF set; see <a href="#notes">Notes</a> below. The special metadata is later used in various applications that interpret the camera raw data to produce a variety of image outputs.</p>
+			<p>Many commentators refer to DNG as an extension of <fddLink id="fdd000022">TIFF_6</fddLink> format and note its compatibility with the <fddLink id="fdd000073">TIFF/EP</fddLink> standard. The DNG specification states, "It is possible (but not required) for a DNG file to simultaneously comply with both the Digital Negative specification and the TIFF/EP standard." (p. 10)</p>
+			<br/>
+			<p>In <a href="#notes">Notes</a> below, see the comment concerning what is sometimes called <i>Linear DNG</i> as compared to <i>Raw DNG</i>.</p>
+		</fdd:description>
+		<fdd:shortDescription>File format for storing and interchanging camera raw images, usually accompanied by JPEG secondary version(s) of the images.  The raw image data is processed for placement in the DNG file wrapper by software applications like Adobe Camera Raw, a plug-in for PhotoShop.</fdd:shortDescription>
+		<fdd:productionPhase>Middle-state format.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000022</fdd:id>
+					<fdd:shortName>TIFF_6</fdd:shortName>
+					<fdd:titleName>TIFF, Revision 6.0</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>DNG listed here as subtype of TIFF_6. Adobe and others describe the relationship as &quot;extension&quot;; <a href="../contact_format.shtml">Comments welcome</a>.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000241</fdd:id>
+					<fdd:shortName>CAM_RAW</fdd:shortName>
+					<fdd:titleName>Camera Raw Formats (Group Description)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000334</fdd:id>
+					<fdd:shortName>JPEG_orig_LL</fdd:shortName>
+					<fdd:titleName>JPEG Original Lossless Compression (ISO/IEC 10918)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>In DNG, this compression is applied to the raw camera data.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000149</fdd:id>
+					<fdd:shortName>JPEG_DCT_BL</fdd:shortName>
+					<fdd:titleName>JPEG DCT Compression Encoding, Baseline</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Used when the Photometric Interpretation is YCbCr or grayscale.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>Linear raw when produced by certain cameras or by de-mosaicing CFA data. Not described at this Web site at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000146</fdd:id>
+					<fdd:shortName>EXIF_2_2</fdd:shortName>
+					<fdd:titleName>Exif Exchangeable Image File Format, Version 2.2</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Block of metadata; the Exif specification title uses the terminology &quot;image file format.&quot;</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>XMP data, not described at this Web site at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:comment>Adobe Digital Negative (DNG), Version 1.0.0.0 (2004), not described at this Web site at this time</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has later version</fdd:typeOfRelationship>
+				<fdd:comment>Adobe Digital Negative (DNG), Version 1.2.0.0 (2008), not described at this Web site at this time</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has later version</fdd:typeOfRelationship>
+				<fdd:comment>Adobe Digital Negative (DNG), Version 1.3.0.0 (2009), not described at this Web site at this time</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has later version</fdd:typeOfRelationship>
+				<fdd:comment>Adobe Digital Negative (DNG), Version 1.4.0.0 (2012), not described at this Web site at this time</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Other</fdd:typeOfRelationship>
+				<fdd:comment>Adobe CinemaDNG (2009), for sequence of moving image frames, not described at this Web site at this time</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>See <fddLink id="fdd000022">TIFF_6</fddLink>
+		</fdd:experience>
+		<fdd:preference>None established. LC staff, however, have intermittently discussed the value of a preference for born-digital photographs in DNG form (&quot;somewhat normalized&quot;), as compared to camera raw files (<fddLink id="fdd000241">CAM_RAW</fddLink>; &quot;too raw&quot;) or uncompressed TIFF files (<fddLink id="fdd000023">TIFF_UNC</fddLink>; &quot;too cooked&quot;). </fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully documented.  Developed by Adobe Systems, Inc.
+		</fdd:disclosure>
+		<fdd:documentation>
+			<a href="http://web.archive.org/web/20051108165239/http://www.adobe.com/products/dng/pdfs/dng_spec.pdf">Digital Negative (DNG) Specification</a>, version 1.1.0.0 (February 2005).  Note that this version is from the Internet Archive; when consulted in February 2014, Adobe&apos;s own site offered access to <a href="http://wwwimages.adobe.com/www.adobe.com/content/dam/Adobe/en/products/photoshop/pdfs/dng_spec_1.4.0.0.pdf">version 1.4.0.0</a>, with <a href="http://wwwimages.adobe.com/www.adobe.com/content/dam/Adobe/en/products/photoshop/pdfs/dng_spec.pdf">version 1.3.0.0</a> discoverable by a search.</fdd:documentation>
+		<fdd:adoption>The breadth and depth of support is outlined in the <a href="http://en.wikipedia.org/wiki/Digital_Negative">Wikipedia Digital Negative</a> article.  Adobe's DNG converter applications add support for proprietary camera formats on a regular basis. Barry Pearson's <a href="http://www.barrypearson.co.uk/articles/dng/products_y1.htm">DNG products</a> Web page ("frozen" as of the end-of-2005 update) lists 77 non-Adobe products that support DNG.</fdd:adoption>
+		<fdd:licensingAndPatents>Adobe <a href="http://www.adobe.com/products/photoshop/extend.displayTab2.html">statement</a> consulted in February 2012: "Adobe provides the DNG Specification to the public for the purpose of encouraging implementation of this file format in a compliant manner. This [Web page] is a patent license granted by Adobe to individuals and organizations that desire to develop, market and/or distribute hardware and software that reads and/or writes image files compliant with the DNG Specification."</fdd:licensingAndPatents>
+		<fdd:transparency>Wrapper is transparent; encoded image bitstream may require tools to render.</fdd:transparency>
+		<fdd:selfDocumentation>See <a href="../content/tiff_tags.shtml">Tags for TIFF and Related Specifications</a>.  Metadata may be embedded in a DNG file using tags from (1) <fddLink id="fdd000022">TIFF_6</fddLink>,  (2) <fddLink id="fdd000073">TIFF/EP</fddLink> or <fddLink id="fdd000146">EXIF_2_2</fddLink> (see also <fddLink id="fdd000145">TIFF_UNC_EXIF</fddLink>), (3) IPTC (TIFF tag 33723), and (4) XMP (TIFF tag 700).<br/>
+			<br/>Regarding TIFF/EP and EXIF, the DNG specification states that TIFF/EP stores the tags in IFD 0 (IFD stands for Image File Directories, in effect segments of a TIFF file), while TIFF_UNC_EXIF stores them in a separate IFD. Either location is allowed but the EXIF location is preferred. Proprietary metadata that may be used by camera manufacturer's raw convertors is to placed under private tags, in private IFDs, and/or a private MakerNote. (pp. 12-13)</fdd:selfDocumentation>
+		<fdd:externalDependencies>None
+		</fdd:externalDependencies>
+		<fdd:techProtection>None
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>The format behaves like any TIFF file.  Images encoded as raw will be rendered with a "normal" look by a reader that can interpret the special metadata in a DNG file.</fdd:normalImage>
+			<fdd:clarity>Raw image data and DNG's special metadata support the output of images with high levels of clarity, depending upon the capabilies of the camera used to produce them. See <a href="#notes">Notes</a> below.</fdd:clarity>
+			<fdd:colorMaint>Excellent. Support provided for ICC profiles and for color space identification.</fdd:colorMaint>
+			<fdd:graphics>Not relevant in this camera-oriented format.</fdd:graphics>
+			<fdd:multispectral>Not investigated for this description.</fdd:multispectral>
+			<fdd:beyondImage>The format is intended for use with image manipulation tools that execute a variety of processes to transform the DNG into "pictures" suitable for different outputs.</fdd:beyondImage>
+		</fdd:stillImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>dng</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Recommended by the specification (p. 11)</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>tif</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The specification states that "readers should accept either the '.DNG' or '.TIF' extensions for compatibility with TIFF/EP." (p. 11)</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>image/tiff</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>This is suggested in an indirect way by some commentators;         <a href="../contact_format.shtml">Comments welcome</a>
+				</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>Not found.</fdd:sigValueNA>
+				<fdd:note>DNG may use the magic numbers associated with <fddLink id="fdd000022">TIFF_6</fddLink>; <a href="../contact_format.shtml">Comments welcome</a>
+				</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Rationale for DNG.</b> From the specification: "Seeking a greater degree of flexibility and artistic control, professional photographers increasingly opt to manipulate raw data from their digital cameras. Unlike JPEG and TIFF formats which store images that have been processed by the camera, camera raw files capture unprocessed or minimally processed data directly from the camera sensor. Because they are analogous to film negatives in a photographer's workflow, camera raw formats are often referred to as 'digital negatives.' Camera raw formats offer both advantages and disadvantages. One advantage is increased artistic control for the end user. The user can precisely adjust a range of parameters, including white balance, tone mapping, noise reduction, sharpening and others, to achieve a desired look. One disadvantage is that unlike JPEG and TIFF files which are ready  for immediate use, camera raw files must be processed before they can be used, typically through software provided by the camera manufacturer or through a converter like the Adobe Camera Raw plug-in for Adobe Photoshop software." (p. 9) Adobe provides a free Adobe DNG Converter that translates  raw files from many of today's popular cameras.</p>
+			<p>
+				<b>Re: TIFF tags.</b> The DNG specification (version 1.1, discussed here) lists some restrictions or extensions for the TIFF tags BitsPerSample, Compression, Photometric Interpretation, and Orientation (pp. 15-16). It also lists DNG-specific tags, including but not limited to: DNGversion, UniqueCameraModel, LocalizedCameraModel, CFAPlaneColor (CFA stands for Color Filter Array), CFALayout, LinearizationTable, BlackLevel, WhiteLevel, DefaultScale (for cameras with non-square pixels), BestQualityScale, DefaultCropOrigin, DefaultCropSize, CameraSerialNumber, LensInfo, RawDataUniqueID, OriginalRawFileName, OriginalRawFileData (to incorporate the raw file as created), AsShotICCProfile, and CurrentICCProfile (pp. 17-44). The specification also describes how raw camara sensor values are mapped to linear reference values (p. 45) and how camera color space is mapped to CIE XYZ color space (pp. 47-48).</p>
+			<p>
+				<b>"Raw DNG" and "Linear DNG."</b> The photographer <a href="http://www.barrypearson.co.uk/articles/dng/linear.htm">Barry Pearson</a> writes that DNG files are well understood to contain "mosaiced" sensor data (typically from a Bayer array), and he calls this format <i>Raw DNG</i>.  But he reminds readers of another option, <i>Linear DNG</i>, said to be "a rarer variety of DNG, containing RGB image data (or not just RGB!) arranged in a rectilinear format. (Most practical examples of Linear DNG hold RGB image data, but it isn't a constraint, and 4 or more colours are allowed. For example, A Linear DNG obtained by converting the raw file from a Sony F828 has an extra channel, 'Aqua,' rather like Cyan). This RGB image data may have come from demosaiced raw image data, or from another source such as TIFF or JPEG or something else. (There is little difference between 'demosaiced' and 'never mosaiced')."</p>
+			<p>Jeff Schewe, writing in a 2005 issue of <a href="http://photoshopnews.com/2005/05/23/dng-workflow-part-i/">PhotoshopNews.com</a> reported that Adobe's DNG convertor application "allows you to either keep the DNG in the un-demosaiced form or to demosaic the file and convert to a linear file. Generally, you'll want to keep the file in its un-demosaiced form as there is a space savings. Linear DNGs have already been converted to RGB files and therefore are larger."  The article as presented includes an inserted editor's note: "[Digital imaging expert] Bruce Fraser sent the following comment regarding Linear DNG: 'The only reason to use Linear DNG is to feed the file to a DNG reader that can't understand the particular flavor of DNG that DNG Converter creates for the specific camera, or to act as an interchange format&#8212;e.g., lens correx with DxO can write out a linear DNG that ACR can read. This is typically NOT an option people want, not because of size considerations, but because it's no longer really raw&#8212;it's half-baked. All the operations that take place during demosaicing are set in stone and can't be redone.'&quot;</p>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://web.archive.org/web/20051108165239/http://www.adobe.com/products/dng/pdfs/dng_spec.pdf</link>
+					<tag>Digital Negative (DNG) Specification, Version 1.1.0.0</tag>
+					<comment>Archived version from the Internet Archive. The Adobe Web site offers access to the most recent version.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://wwwimages.adobe.com/www.adobe.com/content/dam/Adobe/en/products/photoshop/pdfs/dng_spec.pdf</link>
+					<tag>Digital Negative (DNG) Specification, Version 1.4.0.0 (2012)</tag>
+					<comment>For reference: Adobe&apos;s most recent version; in February 2014, this was version 1.4.0.0.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://wwwimages.adobe.com/www.adobe.com/content/dam/Adobe/en/products/photoshop/pdfs/dng_spec.pdf</link>
+					<tag>Digital Negative (DNG) Specification, Version 1.3.0.0 (2009)</tag>
+					<comment>Supplanted in September 2012.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.adobe.com/products/photoshop/extend.displayTab2.html</link>
+					<tag>Adobe DNG page</tag>
+					<comment>General information, includes patent license statement.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.adobe.com/products/photoshop/extend.html</link>
+					<tag>Adobe camera raw and conversion information page</tag>
+					<comment>Includes links to two Adobe documents by Bruce Fraser: "Understanding digital raw capture" and "Linear gamma."</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.barrypearson.co.uk/articles/dng/</link>
+					<tag>DNG articles and links</tag>
+					<comment>Barry Pearson&apos;s DNG Web site.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.barrypearson.co.uk/articles/dng/linear.htm</link>
+					<tag>Barry Pearson on Linear DNG.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://photoshopnews.com/2005/05/23/dng-workflow-part-i/</link>
+					<tag>DNG Workflow</tag>
+					<comment>By Jeff Schewe in PhotoshopNews.com.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Digital_negative</link>
+					<tag>Wikipedia entry for Digital Negative</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.openraw.org/node/1482/</link>
+					<tag>OpenRAW discussion of DNG and raw</tag>
+					<comment>OpenRaw is an organization concerned about proprietary nature of camera raw files.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

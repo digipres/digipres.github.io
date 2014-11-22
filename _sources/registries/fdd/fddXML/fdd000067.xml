@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000067" titleName="ASF (Advanced Systems Format)" shortName="ASF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenres>
+				<fdd:gdfrGenre>moving-image</fdd:gdfrGenre>
+				<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+			</fdd:gdfrGenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-wrapper</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2007-04-06</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Advanced Systems Format (ASF)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>container formats</fdd:keyword>
+			<fdd:keyword>wrapper formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>File format that wraps various content bitstreams; data types can include audio, video, script command, JPEG-compressed still images, binary, and other streams defined by developers.  This description is focused on the use of the format for audio and video.</fdd:description>
+		<fdd:shortDescription>File format that wraps various content bitstreams; data types can include audio, video, script command, JPEG-compressed still images, binary, and other streams defined by developers.</fdd:shortDescription>
+		<fdd:productionPhase>Typically a final state format for enduser delivery; may be used as a middle-state format, e.g., the video source when producing lower-resolution streaming versions.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000027</fdd:id>
+					<fdd:shortName>WMA</fdd:shortName>
+					<fdd:titleName>Windows Media Audio</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>File format.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000091</fdd:id>
+					<fdd:shortName>WMV</fdd:shortName>
+					<fdd:titleName>Windows Media Video</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment> File format</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>ASF files containing streams of other types and/or produced by other codecs, not documented at this time.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None</fdd:experience>
+		<fdd:preference>
+			<p>For audio, <fddLink id="fdd000002">WAVE_LPCM</fddLink> is preferred.</p>
+			<p>For file-based compressed video, bitstreams encoded as <fddLink id="fdd000028">MPEG-2</fddLink> (various profiles, the higher the better) or <fddLink id="fdd000155">MP4-FF_2</fddLink> (MPEG-4, various encodings and profiles, the higher the better) are preferred.</p>
+			<p>For uncompressed or losslessly compressed video, which is generally preferred to lossy compressed, <fddLink id="fdd000013">MXF</fddLink> may be preferred as a wrapper; this topic will be developed in a future investigation.</p>
+		</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully documented.  Proprietary format developed by Microsoft.</fdd:disclosure>
+		<fdd:documentation>
+			<a href="http://www.microsoft.com/en-us/download/details.aspx?displaylang=en&amp;id=14995">Advanced Systems Format (ASF) Specification</a>; as of February 4, 2014, the PDF and XPS files downloadable were for revision 01.20.06, May, 2012.  December 2004 specification is available as <a href="http://msdn.microsoft.com/en-us/library/bb643323.aspx">HTML page</a>.</fdd:documentation>
+		<fdd:adoption>
+			<fddLink id="fdd000027">WMA</fddLink> appears to be widely adopted; the compilers of this document do not know the extent of adoption of <fddLink id="fdd000091">WMV</fddLink>.</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<a href="http://windows.microsoft.com/en-us/windows/windowsmedia-components-licensing">Licensed</a> by Microsoft; fees are for use of tools to create content or for the provision of decoders to endusers, not per use or per unit distributed.</fdd:licensingAndPatents>
+		<fdd:transparency>The ASF wrapper is transparent.  Regarding the transparency of the codecs that may be contained, see: <fddLink id="fdd000092">WMA9</fddLink>, <fddLink id="fdd000093">WMA9_PRO</fddLink>, <fddLink id="fdd000094">WMA9_LL</fddLink>, <fddLink id="fdd000095">WMV9</fddLink>, and <fddLink id="fdd000096">WMV9_PRO</fddLink>.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>Metadata is contained in Header Objects, consisting of many types of subobjects for various kinds of technical metadata.  Producers may also include a Content Description Object for "bibliographic" metadata, including "Author", "Title", "Copyright", "Description", and "Rating."  Other objects may be used to extend this description and for information about digital rights management and other purposes.</p>
+			<p>ASF uses an extensible set of GUIDs (Globally Unique IDentifiers) to identify all objects and entities within ASF files, including media types, codec types, error correction approaches, and other elements.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>The Content Encryption Object within the header lets authors protect content by using Microsoft Digital Rights Manager version 1.  The Extended Content Encryption Object lets authors protect content by using the <a href="http://www.microsoft.com/windows/windowsmedia/howto/articles/drmarchitecture.aspx">Windows Media Rights Manager</a> Software Development Kit (SDK).  Using this tool, encrypted digital media files can be set to require the acquisition of a license containing a key before the the content can be played.
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:movingImageQF>
+			<fdd:normalVideo>Good support.</fdd:normalVideo>
+			<fdd:clarity>Depends on codec used for bitstream.</fdd:clarity>
+			<fdd:beyondVideo>Supports content types beyond audio and video. Can be used with SAMI (Microsoft Synchronized Accessible Media Exchange), a captioning format that the Windows Media Player interprets in order to present text synchronized with audio and video (and other content forms).</fdd:beyondVideo>
+		</fdd:movingImageQF>
+		<fdd:soundQF>
+			<fdd:normalSound>Good support.</fdd:normalSound>
+			<fdd:fidelity>Depends on codec used for bitstream.</fdd:fidelity>
+			<fdd:channels>Depends on embedded bitstream.</fdd:channels>
+			<fdd:samples>Depends on embedded bitstream.</fdd:samples>
+			<fdd:beyondSound>See Moving Image factors above. </fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>asf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For files that do not contain Windows Media-based bitstreams.  Note that <i>wma</i> is specified for <fddLink id="fdd000027">WMA</fddLink>, Windows Media Audio, and <i>wmv</i> for <fddLink id="fdd000091">WMV</fddLink>, Windows Media Video.  Both <i>wma</i> and <i>wmv</i> have their own Internet Media Type designators and unique ASF GUIDs.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.ms-asf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://www.iana.org/assignments/media-types/application/vnd.ms-asf">IANA</a>.  Also in LC implementation of Apache mime.types.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>audio/asf</fdd:sigValue>
+					<fdd:sigValue>video/x-ms-asf-plugin </fdd:sigValue>
+					<fdd:sigValue>application/x-mplayer2 </fdd:sigValue>
+					<fdd:sigValue>video/x-ms-asf </fdd:sigValue>
+					<fdd:sigValue>video/x-ms-asf-plugin </fdd:sigValue>
+					<fdd:sigValue>video/x-ms-wm </fdd:sigValue>
+					<fdd:sigValue>video/x-ms-wmx</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Selected from <a href="http://filext.com/">The File Extension Source</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 30 26 B2 75 8E 66 CF 11 A6 D9 00 AA 00 62 CE 6C</fdd:sigValue>
+					<fdd:sigValue>ASCII: 0&amp;²u.fÏ.¦Ù.ª.bÎl</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For extension <i>asf</i>; from <a href="http://www.garykessler.net/library/file_sigs.html">Gary Kessler's File Signatures Table</a>.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>ASF GUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>Globally Unique IDentifiers that vary according to the element or feature included in the file; see the <a href="http://www.microsoft.com/en-us/download/details.aspx?displaylang=en&amp;id=14995">Advanced Systems Format (ASF) Specification</a>, Section 10, pp. 88 ff.  Specification also available as <a href="http://msdn.microsoft.com/en-us/library/bb643323.aspx">HTML page</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:history>The format was initally developed to support streaming media, and commentators report that <i>ASF</i> originally stood for <i>Advanced Streaming Format</i>.  As potential uses went beyond streaming, it came to be called <i>Advanced Systems Format</i>, and it appears to function more or less as a successor-replacement for <fddLink id="fdd000025">RIFF</fddLink>.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The specification for ASF is available from Microsoft as HTML, PDF, and XPS.  As of March 3, 2012, this was revision 01.20.03, December 2004</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/bb643323.aspx</link>
+							<tag>Advanced Systems Format (ASF) Specification, as HTML page</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.microsoft.com/en-us/download/details.aspx?displaylang=en&amp;id=14995</link>
+							<tag>Advanced Systems Format (ASF) Specification, as PDF and XPS</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://msdn.microsoft.com/en-us/library/dd757562.aspx</link>
+					<tag>Overview of the ASF Format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.microsoft.com/windows/windowsmedia/howto/articles/drmarchitecture.aspx</link>
+					<tag>Architecture of Windows Media Rights Manager</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://windows.microsoft.com/en-us/windows/windowsmedia-components-licensing</link>
+					<tag>Windows Media Licensing</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

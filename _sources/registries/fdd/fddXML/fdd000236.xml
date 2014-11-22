@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000236" titleName="WARC, Web ARChive file format" shortName="WARC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>aggregate</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>web-archive</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2009-08-31</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>WARC (Web ARChive) file format</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>WARC</fdd:keyword>
+			<fdd:keyword>web harvesting</fdd:keyword>
+			<fdd:keyword>web capture</fdd:keyword>
+			<fdd:keyword>web archiving</fdd:keyword>
+			<fdd:keyword>international standards for digital formats</fdd:keyword>
+			<fdd:keyword>container formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>The WARC (Web ARChive) format specifies a method for combining multiple digital resources into an aggregate archival file together with related information. The WARC format is a revision of the Internet Archive's ARC File Format [ARC_IA] format that has traditionally been used to store "web crawls" as sequences of content blocks harvested from the World Wide Web.  The WARC format generalizes the older format to better support the harvesting, access, and exchange needs of archiving organizations. Besides the primary content currently recorded, the revision accommodates related secondary content, such as assigned metadata, abbreviated duplicate detection events, and later-date transformations.</fdd:description>
+		<fdd:shortDescription>Web ARChive file format.  ISO 28500:2009.  Used by archival institutions to store content harvested by web crawls, for example via use of the Heritrix harvesting tool.</fdd:shortDescription>
+		<fdd:productionPhase>Used for web-accessible content in archived state, representing the final form disseminated in final state over the web to a user agent (web browser).</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>      Data of various types; see <a href="#notes">Notes</a> below</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000235</fdd:id>
+					<fdd:shortName>ARC_IA</fdd:shortName>
+					<fdd:titleName>Internet Archive ARC file format</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>      </fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>
+			<a href="http://www.loc.gov/webarchiving/">LC&apos;s web harvesting activities</a> capture web sites in the WARC format.  LC also has web archives in the predecessor <fddLink id="fdd000235">ARC_IA</fddLink> format. </fdd:experience>
+		<fdd:preference>LC's preferred format for harvested Web sites harvested in bulk is WARC. </fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			Open standard, publicly documented, developed under the auspices of the International Internet Preservation Consortium.  Submitted in May 2005 as a work item through ISO TC46/SC4, it was approved as an International Standard in May 2009. ISO TC46/SC4/WG12, convened by the
+Bibliothèque nationale de France, is the working group responsible for maintenance.</fdd:disclosure>
+		<fdd:documentation>
+			<a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=44717">ISO 28500:2009, Information and documentation -- WARC file
+format</a> is available from ISO for purchase. The draft standard that was the basis for approval, ISO/DIS 28500, is at <a href="http://bibnum.bnf.fr/WARC/warc_ISO_DIS_28500.pdf">http://bibnum.bnf.fr/WARC/warc_ISO_DIS_28500.pdf</a>. 		</fdd:documentation>
+		<fdd:adoption>
+			The file format was designed to support the requirements of members of the <a href="http://netpreserve.org/about-us">International Internet Preservation Consortium</a>.
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			None.
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			The wrapper is transparent; contained data varies.
+		</fdd:transparency>
+		<fdd:selfDocumentation>In the WARC files containing the actual archived "documents" (html, gif, jpeg, ps, etc.) each document is preceded by basic information about the document.</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			User access depends on large-scale indexing of a corpus.  
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			None.
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:webArchiveQF>
+			<fdd:normalWeb>Supported through Internet Archive's <a href="http://www.archive.org/web/web.php">Wayback Machine</a> or equivalent tool.</fdd:normalWeb>
+			<fdd:docHarvest>Allows for substantial information about the time of harvesting, the IP address of the harvesting machine, Internet Media Type (MIME type) and response code for the harvest transaction, the purpose of harvesting, etc.</fdd:docHarvest>
+			<fdd:efficiency>Excellent for efficient bulk harvesting and efficient indexing for access by URL and date.  The structured record headers can be extracted and stored separately for efficient indexing.  WARC supports duplicate elimination and compression to reduce file sizes for storage,  transmission, and indexing after harvesting.  </fdd:efficiency>
+			<fdd:stewardship>WARC was developed as an extension to ARC in part to provide better capabilities for managing Web archives for the long term.  See <a href="../content/webarch_quality.shtml">Web Sites and Pages: Quality and Functionality Factors</a>.</fdd:stewardship>
+		</fdd:webArchiveQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>warc</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>WARC files are not typically transmitted to users or used in ways that depend on recognition by file type.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/warc</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:internetMediaType>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>The WARC file format is a revision and generalization of the ARC format used by the Internet Archive to store information blocks harvested by web crawlers.</fdd:general>
+		<fdd:history>An HTML version of WARC File Format (Version 0.9) is at <a href="http://archive-access.sourceforge.net/warc/warc_file_format-0.9.html">http://archive-access.sourceforge.net/warc/warc_file_format-0.9.html</a>.  Subsequent drafts are also available at <a href="http://archive-access.sourceforge.net/warc/">http://archive-access.sourceforge.net/warc/</a> in various formats.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://archive-access.sourceforge.net/warc/warc_file_format-0.9.html</link>
+					<tag>WARC File Format (Version 0.9)</tag>
+					<comment>The final version and an earlier draft of the ISO 28500 standard are listed below.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:specReference>
+					<specRefDetail rel="snum">ISO 28500:2009</specRefDetail>, <specRefDetail rel="stitle">Information and documentation -- WARC file format</specRefDetail>. (<a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=44717">http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=44717</a>).  The published standard from ISO.</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>
+					<specRefDetail rel="snum">ISO/DIS 28500</specRefDetail>: <specRefDetail rel="stitle">Information and documentation — The WARC File Format.</specRefDetail> (<a href="http://bibnum.bnf.fr/WARC/warc_ISO_DIS_28500.pdf">http://bibnum.bnf.fr/WARC/warc_ISO_DIS_28500.pdf</a>)  The Draft International Standard that was the basis for voting and approval.</fdd:specReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://bibnum.bnf.fr/WARC/</link>
+					<tag>The WARC File Format (ISO 28500) - Information, Maintenance, Drafts</tag>
+					<comment>Hosted by the Bibliothèque Nationale de France.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.iwaw.net/05/kunze.pdf</link>
+					<tag>WARC: an archiving format for the Web</tag>
+					<comment>A presentation on WARC by John Kunze (CDL) at 5th International Web Archiving Workshop (IWAW05).</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://archive-access.sourceforge.net/warc/</link>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://dx.doi.org/10.7207/twr13-01</link>
+					<tag>Web-Archiving: DPC Technology Watch Report 13-01</tag>
+					<comment>Maureen Pennock.  March 2013.  Makes frequent reference to the use of WARC and related tools.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

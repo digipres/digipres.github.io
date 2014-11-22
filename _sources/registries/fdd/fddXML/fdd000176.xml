@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000176" titleName="MXF Format Generic Container" shortName="MXF_GC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenreAndSubgenres>
+				<fdd:gdfrGenre>moving-image</fdd:gdfrGenre>
+				<fdd:gdfrSubgenres>
+					<fdd:gdfrSubgenre>sound</fdd:gdfrSubgenre>
+				</fdd:gdfrSubgenres>
+			</fdd:gdfrGenreAndSubgenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-wrapper</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2012-01-18</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Material Exchange Format (MXF) -- MXF Generic Container</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>container formats</fdd:keyword>
+			<fdd:keyword>wrapper formats</fdd:keyword>
+			<fdd:keyword>generic digital formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The native essence container for the <fddLink id="fdd000013">MXF</fddLink> file format that carries video, audio, metadata and other "payloads," i.e., bitstreams called <i>essences</i> in the audio-visual community.  See <a href="#notes">Notes</a> for additional information.</p>
+			<p>The container is described as "streamable," meaning that its audio-visual content can be "continuously decoded through mechanisms such as interleaving essence components with stream-based metadata."  (The term does not refer to <i>streaming</i> in sense that this word is used in connection with protocols like the Real-Time Transport Protocol [RTP] and the Real Time Streaming Protocol [RTSP].)</p>
+			<p>Note about the MXF Constrained Generic Container: This modification of the MXF Generic Container is defined by SMPTE ST 379-2:2010, and it is not described at this Web site at this time.  The abstract for the constrained container states: &quot;This standard defines the data structure at the signal interfaces of networks or storage media. This standard does not define internal storage formats for MXF compliant devices.&quot;</p>
+		</fdd:description>
+		<fdd:shortDescription>The native essence container for the MXF file format that carries video, audio, metadata and other 'payloads,' i.e., bitstreams called essences in the audio-visual community.  The container is described as 'streamable,' meaning that its audio-visual content can be 'continuously decoded through mechanisms such as interleaving essence components with stream-based metadata.'</fdd:shortDescription>
+		<fdd:productionPhase>Middle-state format for material exchange or archiving; may also be a final state format for use in a delivery context, e.g., broadcasting.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000013</fdd:id>
+					<fdd:shortName>MXF</fdd:shortName>
+					<fdd:titleName>Material Exchange Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000129</fdd:id>
+					<fdd:shortName>MXF_GC_UNC</fdd:shortName>
+					<fdd:titleName>MXF Generic Container Mapped to Uncompressed Images</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000128</fdd:id>
+					<fdd:shortName>MXF_GC_MPEG-2</fdd:shortName>
+					<fdd:titleName>MXF Generic Container Mapped to MPEG-2 Video Bitstream</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000163</fdd:id>
+					<fdd:shortName>MXF_GC_SDTI-CP</fdd:shortName>
+					<fdd:titleName>MXF Generic Container Mapped to SDTI Content Package</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000172</fdd:id>
+					<fdd:shortName>MXF_GC_DV-DIF</fdd:shortName>
+					<fdd:titleName>MXF Generic Container Mapped to DV-DIF Packets</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000201</fdd:id>
+					<fdd:shortName>MXF_GC_JP2</fdd:shortName>
+					<fdd:titleName>MXF Generic Container Mapped to JPEG 2000</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000202</fdd:id>
+					<fdd:shortName>MXF_GC_AES3</fdd:shortName>
+					<fdd:titleName>MXF Generic Container Mapped to AES3 Audio (LPCM)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>MXF generic container mapped to other encodings, not documented at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has modified version</fdd:typeOfRelationship>
+				<fdd:comment>MXF Constrained Generic Container (SMPTE ST 379-2:2010).  Not described at this Web site at this time.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>See <fddLink id="fdd000013">MXF</fddLink>
+		</fdd:experience>
+		<fdd:preference>See <fddLink id="fdd000013">MXF</fddLink>
+		</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Open standard. Developed by the Society of Motion Picture and Television Engineers (SMPTE), a member of the American National Standards Institute (ANSI).
+		</fdd:disclosure>
+		<fdd:documentation>SMPTE ST 379-1:2009, <i>Material Exchange Format (MXF) -- MXF Generic Container.</i> For a full list of citations, see Format specifications in <a href="fdd000013.shtml#specs">MXF</a>.
+		</fdd:documentation>
+		<fdd:adoption>See <fddLink id="fdd000013">MXF</fddLink>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>See <fddLink id="fdd000013">MXF</fddLink>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>Depends upon encoding.</fdd:transparency>
+		<fdd:selfDocumentation>Extensive system or structural metadata is required to support the use of the various bitstreams placed in the Generic Containers, and this metadata is encoded as KLV (Key-Length-Value) data, and is found with the bitstreams in the container.  Descriptive metadata for users is associated with the <fddLink id="fdd000013">MXF</fddLink> format itself.
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None
+		</fdd:externalDependencies>
+		<fdd:techProtection>See <fddLink id="fdd000013">MXF</fddLink>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:movingImageQF>
+			<fdd:normalVideo>Not applicable</fdd:normalVideo>
+			<fdd:clarity>Potentially excellent; depends upon encoding.</fdd:clarity>
+			<fdd:beyondVideo>Not applicable</fdd:beyondVideo>
+		</fdd:movingImageQF>
+		<fdd:soundQF>
+			<fdd:normalSound>Not applicable</fdd:normalSound>
+			<fdd:fidelity>Potentially excellent; depends upon encoding. For example, the specification set includes a mapping of <fddLink id="fdd000003">WAVE_LCPM_BWF</fddLink> (a "storage" format; the same encoding is also referred to as the "interface format" <fddLink id="fdd000142">AES3</fddLink>) into the MXF Generic Container; see the subtype <fddLink id="fdd000207">MXF_AES3</fddLink>.</fdd:fidelity>
+			<fdd:channels>See <fddLink id="fdd000013">MXF</fddLink>
+			</fdd:channels>
+			<fdd:beyondSound>Not applicable</fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+			</fdd:internetMediaType>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:note>Item type identifier found at byte 13 in each KLV coded element; varies by essence type.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>Selected and paraphrased from pages 2-5 of the specification: "The MXF generic container comprises a contiguous sequence of content packages, each of which has up to five basic components known as items."  Types include <i>system items</i> (metadata or control elements related to the container or the other item types), <i>picture items</i>, <i>sound items</i>, <i>data items</i> (for data essences, e.g., closed caption data or tele-text), <i>compound items</i> ("indivisible mixture of different essence types").</p>
+			<p>Content packages may be of constant or variable length.  "Each content package represents the essence and metadata elements interleaved over a defined duration (typically 1 picture frame) and is constructed of up to five items . . . ."  The MXF container offers two forms of essence mapping.  "In <i>frame-based</i> mapping, there may be one or more content packages in the essence container.  If there is only one content package, it shall represent the contents of a single frame or field."  "In <i>clip-based</i> mapping, there shall be only one content package in the essence container.  The duration of the clip may be one or more frames . . . ."</p>
+		</fdd:general>
+		<fdd:history>See <fddLink id="fdd000013">MXF</fddLink>.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:specReference> SMPTE 379-1:2009. Material Exchange Format (MXF) - MXF Generic Container</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>SMPTE 379-2:2010. Material Exchange Format (MXF) - MXF Constrained Generic Container</fdd:specReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000013">MXF</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

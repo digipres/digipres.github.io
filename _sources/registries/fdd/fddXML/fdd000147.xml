@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000147" titleName="JPEG Encoded File with Exif Metadata" shortName="JPEG_EXIF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenreAndSubgenres>
+				<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+				<fdd:gdfrSubgenres>
+					<fdd:gdfrSubgenre>sound</fdd:gdfrSubgenre>
+				</fdd:gdfrSubgenres>
+			</fdd:gdfrGenreAndSubgenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2012-01-30</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>JPEG file with Exif metadata (common name).  </fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>raster image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>One of two file types defined in the Exif specifications, mainly intended for digital photography. Employs baseline JPEG compression encoding (ISO/IEC 10918-1), which ensures that JPEG_EXIF files can be read by many image software applications.  Exif's special contribution is metadata inserted as application marker segments (APP1 and APP2), representing a significant extension beyond JPEG's typical provision.</p>
+			<p>Several Web sites, including <a href="http://sylvana.net/jpegcrop/exifpatch.html">http://sylvana.net/jpegcrop/exifpatch.html</a>, report that the placement of application marker segments (APPn) relative to start of image (SOI) means that a valid JPEG_EXIF image cannot also be a valid <fddLink id="fdd000018">JFIF</fddLink> image.</p>
+			<p>The Exif specification also provides a method for recording thumbnails and allows for the inclusion of audio in the <fddLink id="fdd000001">WAVE</fddLink> format, to support such things as a photographer's spoken annotations.</p>
+		</fdd:description>
+		<fdd:shortDescription>Employs baseline JPEG compression encoding (ISO/IEC 10918-1), which ensures that JPEG_EXIF files can be read by many image software applications.  Exif's special contribution is metadata inserted as application marker segments (APP1 and APP2), representing a significant extension beyond JPEG's typical provision.</fdd:shortDescription>
+		<fdd:productionPhase>Generally applied by cameras in initial-state picture creation; may also be used for middle- and final-state archiving or end-user delivery. </fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000149</fdd:id>
+					<fdd:shortName>JPEG_DCT_BL</fdd:shortName>
+					<fdd:titleName>JPEG DCT Compression Encoding, Baseline</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment/>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000146</fdd:id>
+					<fdd:shortName>EXIF_2_2</fdd:shortName>
+					<fdd:titleName>Exif Exchangeable Image File Format, Version 2.2</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Specification defines metadata elements for use in JPEG-EXIF.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>Prints and Photographs Division holds a modest number of digital-camera generated photographs in JPEG_EXIF.</fdd:experience>
+		<fdd:preference>General preference for still images is for uncompressed; rich metadata always welcome. Thus, for digital-camera photographs, <fddLink id="fdd000145">TIFF_UNC_EXIF</fddLink> would be preferred (<fddLink id="fdd000024">TIFF_UNC</fddLink> acceptable); <fddLink id="fdd000147">JPEG_EXIF</fddLink> is acceptable and preferred to <fddLink id="fdd000018">JFIF</fddLink> (also acceptable).</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully disclosed, non-proprietary standard.  JPEG is an ISO/IEC standard; Exif is from JEITA (Japan Electronics and Information Technology Industries Association).
+		</fdd:disclosure>
+		<fdd:documentation>See <fddLink id="fdd000017">JPEG</fddLink> and <fddLink id="fdd000146">EXIF_2_2</fddLink>
+		</fdd:documentation>
+		<fdd:adoption>Very widely adopted in digital cameras and supported by a number of image software applications. JPEG_EXIF may be more widely adopted than TIFF_UNC_EXIF.
+		</fdd:adoption>
+		<fdd:licensingAndPatents>See <fddLink id="fdd000017">JPEG</fddLink> and <fddLink id="fdd000146">EXIF_2_2</fddLink>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>See <fddLink id="fdd000149">JPEG_DCT_BL</fddLink>.
+		</fdd:transparency>
+		<fdd:selfDocumentation>Good support.  The Exif IFD (Image File Directory) attribute set defined in the specification includes tags pertaining to the Exif version, color space, camera manufacturer, date and time, and an extensive set pertaining to "picture-taking conditions." (pp. 24-25) Also from the specification: "Related attribute information for . . . compressed . . . files is stored in the tag information format defined in TIFF Rev. 6.0. Information specific to the camera system and not defined in TIFF is stored in private tags registered for Exif. . . . The reason for using the TIFF Rev. 6.0 tag format in the compressed [JPEG] file APP1 segment is to facilitate exchange of attribute data between Exif compressed [JPEG] and uncompressed [TIFF] files." (p. 2)</fdd:selfDocumentation>
+		<fdd:externalDependencies>None.
+		</fdd:externalDependencies>
+		<fdd:techProtection>None.
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>Good support.</fdd:normalImage>
+			<fdd:clarity>Good. See <fddLink id="fdd000149">JPEG_DCT_BL</fddLink> and see also <a href="#notes">Notes</a>.</fdd:clarity>
+			<fdd:colorMaint>Good.  The Exif tag set permits the identification of files that use sRGB.<footNote id="1"/> There appears to be no tag for the ICC profile<footNote id="2"/> for a capture device.</fdd:colorMaint>
+			<fdd:graphics>No support for vector graphics.</fdd:graphics>
+			<fdd:beyondImage>Supports thumbnails and audio content.</fdd:beyondImage>
+		</fdd:stillImageQF>
+		<fdd:soundQF>
+			<fdd:normalSound>Good support.</fdd:normalSound>
+			<fdd:fidelity>Good, depending on encoding, sampling frequency, and word length.  Exif supports the following encodings: <fddLink id="fdd000011">LPCM</fddLink> and <fddLink id="fdd000039">μ-Law</fddLink> PCM (conforming to ITU-T G.711) for uncompressed audio data; IMA <fddLink id="fdd000041">ADPCM</fddLink> (Adaptive Differential PCM) for compressed audio data.  Highest fidelity from LPCM is limited in this standard to CD quality (44.1 kHz sampling and 16 bit words).</fdd:fidelity>
+			<fdd:channels>Stereo only.</fdd:channels>
+			<fdd:samples>None</fdd:samples>
+			<fdd:beyondSound>None.</fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>jpg</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Based on examination of files in Library of Congress collections</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>Although JPEG_EXIF files are not <fddLink id="fdd000018">JFIF</fddLink> files, the same MIME types may be used, e.g., <i>image/jpeg</i>. Comments welcome.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>HEX:  FF D8 FF E1 xx xx 45 78 69 66 00</fdd:sigValue>
+					<fdd:sigValue>	ASCII: ÿØÿà..EXIF.</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The 0xFF 0xD8 part of the string is universal to all JPEG encoded bitstreams; the remainder of the string is wrapper specific.  The ASCII rendering is from Gary Kessler's <a href="http://www.garykessler.net/library/file_sigs.html">File Signatures Table</a>.  See also <a href="#notes">Notes</a> in this description for a discussion of the point of conflict with JFIF file wrappers.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>According to <a href="http://sylvana.net/jpegcrop/exifpatch.html">http://sylvana.net/jpegcrop/exifpatch.html</a>, &quot;IJG based software writes a JFIF APP0 marker between SOI and Exif APP1 marker.
+According to the Exif specification, the Exif APP1 marker has to follow immediately after the SOI, just as the JFIF specification requires the same for the JFIF APP0 marker!
+Therefore a JPEG file cannot legally be both Exif and JFIF at the same time!&apos;</p>
+			<p>From the specification: "The combination of pixel composition and pixel sampling for image data shall be RGB 4:4:4 and either Y:Cb:Cr =4:2:2 or Y:Cb:Cr = 4:2:0. The pixel composition of image data shall also be 8 bits each. This specification is appliedsimilarly to thumbnails. As sampling points on the elements making up pixels, the Y and Cb,Cr sampling points may be either co-sited or centered. . . . In the case of Y:Cb:Cr = 4:2:2, spatial co-siting is recommended for the sake of improved image quality on TV systems. For Y:Cb:Cr = 4:2:0, spatial centering is recommended as per the TIFF default and is [sic; "as in the" may have been intended] most common format of the personal computer applications." (page 5)</p>
+		</fdd:general>
+		<fdd:history>See <fddLink id="fdd000146">EXIF_2_2</fddLink>.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://web.archive.org/web/20131230103425/http://exif.org/specifications.html</link>
+					<tag>Specifications for EXIF 2.1 and 2.2 from former EXIF.org site</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.jeita.or.jp/cgi-bin/standard_e/list.cgi?cateid=1&amp;subcateid=4</link>
+					<tag>English language page for JEITA EXIF standards</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:docGroup>
+					<fdd:intro>See <fddLink id="fdd000017">JPEG</fddLink> for list of ISO/IEC 10918 standards.</fdd:intro>
+				</fdd:docGroup>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.media.mit.edu/pia/Research/deepview/exif.html</link>
+					<tag>Description of Exif file format</tag>
+					<comment>By TsuruZoh Tachibanaya.  Note that this page is complete, but the links in the table of contents do not work.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://sylvana.net/jpegcrop/exifpatch.html</link>
+					<tag>Exif Patch</tag>
+					<comment>Pertains to impact on EXIF data when Independent JPEG Group (IJG) based software is used to edit files; notes from 2001 and 2002.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000017">JPEG</fddLink> and <fddLink id="fdd000146">EXIF_2_2</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+	<fdd:footNotes>
+		<fdd:footNote id="1">
+			<fdd:text>The color space sRGB, standardized as IEC 61966-2-1, establishes an image viewing environment with a known color temperature (6500 degrees Kelvin) and gamma (2.2), thus increasing the user's ability to maintain color.</fdd:text>
+		</fdd:footNote>
+		<fdd:footNote id="2">
+			<fdd:text>The most effective color maintenance systems rely on the existence of an ICC (International Color Consortium) profile of the capture device, which can then be compared to profiles for output devices, permitting appropriate adjustments of image color.</fdd:text>
+		</fdd:footNote>
+	</fdd:footNotes>
+</fdd:FDD>

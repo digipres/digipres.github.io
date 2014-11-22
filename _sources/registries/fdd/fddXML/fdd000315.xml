@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000315" titleName="PDF, Geospatial Encoding (Adobe)" shortName="PDF_geospatial" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenreAndSubgenres>
+				<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+				<fdd:gdfrSubgenres>
+					<fdd:gdfrSubgenre>dataset</fdd:gdfrSubgenre>
+				</fdd:gdfrSubgenres>
+			</fdd:gdfrGenreAndSubgenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2010-09-21</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>PDF, Adobe Geospatial Encoding (PDF Version 1.7, ExtensionLevel 3)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>Portable Document Format (PDF)</fdd:keyword>
+			<fdd:keyword>georeferenced image formats</fdd:keyword>
+			<fdd:keyword>PDF</fdd:keyword>
+			<fdd:keyword>geospatial data formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>ExtensionLevel 3 of PDF (Portable Document Format), introduced by Adobe Systems with Acrobat 9.0 in June 2008, included a number of new features, including &quot;a geospatial coordinate system&quot; and a &quot;number of PDF constructs ... to support geospatially registered content.&quot;  The important constructs include two dictionaries for a viewport (a region on a page, assumed to contain an image).  </p>
+			<p>The first geospatial construct is a new GEO subtype of <i>measure dictionary</i>. This type of measure dictionary defines the relationship between points or regions in the two-dimensional viewport space and points or regions with respect to an underlying model of the earth.  A geospatial measure dictionary describes the bounds of the map in relation to the rectangular viewport (also known as a neatline), specifies a projected or geographic coordinate reference system that applies to the source data, and optionally provides a different coordinate system to use for display and preferred display units.  The coordinate systems are defined either by using EPSG codes or by using WKT (well known text).  See <a href="#notes">Notes</a> below for more details on EPSG codes and WKT, the two de facto standards for referring to pre-defined coordinate systems.  The geospatial measure dictionary must also have an array of registration points used to tie points on the map image to geospatial points defined in the coordinate space.
+
+</p>
+			<p> The second geospatial structure is a new dictionary type, PtData.  A PtData dictionary comprises two related arrays.  The syntax and semantics are specified in an array of names for data elements with predefined names for three elements: LAT, latitude in degrees; LON, longitude in degrees; ALT, altitude in meters.  The second array XPTS is an array of arrays corresponding to the named elements.  This structure is designed to allow attribute values to be associated with points and presented to users within a PDF viewer.  It highlights the fact that Adobe&apos;s geospatial features for PDF are intended to support 3D geospatial data as well as 2D. </p>
+		</fdd:description>
+		<fdd:shortDescription>Geographical markup within PDF documents, introduced in extension to PDF 1.7 (equivalent to ISO 32000-1:2008) published by Adobe Systems Incorporated in June 2008 in association with release of Acrobat 9.0.   </fdd:shortDescription>
+		<fdd:productionPhase>In general, a final-state format for delivery to end users.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000313</fdd:id>
+					<fdd:shortName>PDF_1_7_ext03</fdd:shortName>
+					<fdd:titleName>PDF, Version 1.7, ExtensionLevel 3 </fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None.</fdd:experience>
+		<fdd:preference>None.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Part of published extension by Adobe Systems Incorporated to international standard, ISO 32000-1:2008.</fdd:disclosure>
+		<fdd:documentation>
+			<p>In Adobe Supplement to the ISO 32000, BaseVersion:1.7, ExtensionLevel:3, available at <a href="http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/adobe_supplement_iso32000.pdf">http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/adobe_supplement_iso32000.pdf</a>
+			</p>
+		</fdd:documentation>
+		<fdd:adoption>TBD</fdd:adoption>
+		<fdd:licensingAndPatents>See <fddLink id="fdd000277">PDF_1_7</fddLink>.  Since Adobe plans to submit the features in ExtensionLevel 3 for incorporation into the next ISO version of the PDF specification, it seems reasonable to assume that there will be no licensing problems for this particular extension.</fdd:licensingAndPatents>
+		<fdd:transparency>In practice, most PDFs with geospatial data have compression filters applied to most of the file content.  This is because the purpose for creating these documents is to distribute them to end users, including to mobile devices.  Even the <i>measure dictionary</i>, which specifies the coordinate reference system is often compressed. Note that such compression is forbidden in <fddLink id="fdd000125">PDF/A</fddLink> documents.</fdd:transparency>
+		<fdd:selfDocumentation>The <i>measure dictionary</i> supplies geospatial metadata for maps or other georegistered illustrations in a PDF file.  See <fddLink id="fdd000277">PDF_1_7</fddLink>.  </fdd:selfDocumentation>
+		<fdd:externalDependencies>See <fddLink id="fdd000277">PDF_1_7</fddLink>.</fdd:externalDependencies>
+		<fdd:techProtection>The encoding itself has no means of protection.  Encryption or other forms of technical protection may be applied to the file in which the georegistration information is embedded.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>The geospatial encoding is independent of image quality and functionality.  See <fddLink id="fdd000030">PDF</fddLink> for discussion of quality and functionality factors for images in PDF documents.</fdd:normalImage>
+		</fdd:stillImageQF>
+		<fdd:gisQF>
+			<fdd:normalGIS>TBD</fdd:normalGIS>
+			<fdd:metadataGIS>TBD</fdd:metadataGIS>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+				<fdd:note>Adobe&apos;s geospatial encoding does not define a file format, but an encoding for georegistration information and geospatial data that may be associated with an image.  In practice, it will be embedded in a file in some version of the PDF format, and that file will likely have the extension <i>pdf</i>.</fdd:note>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>For encoding geographic coordinate systems in the measure dictionary, either of two mechanisms may be used.  In either case, the objective is to specify unambiguously the geodetic datum, geoid/ellipsoid/spheroid, coordinate system, and any map projection in use for the image or data. </p>
+			<ul>
+				<li>EPSG (European Petroleum Survey Group) codes.  These are assigned by the Surveying and Positioning Committee of the International Association of Oil &amp; Gas producers (<a href="http://www.ogp.org.uk/">OGP</a>), formerly known as the European Petroleum Survey Group, and made available as the EPSG Geodetic Parameter Dataset at <a href="http://www.epsg-registry.org/">http://www.epsg-registry.org/</a>. From <a href="http://www.epsg.org/guides/G7-1.html">Using the EPSG Geodetic Parameter Dataset</a>:  "The EPSG Dataset is a repository of parameters required to: define a <i>coordinate reference system</i> (CRS), which ensures that coordinates describe position unambiguously; and define transformations and conversions that allow coordinates to be changed from one CRS to another CRS.  As an example, 4269 is the EPSG code for the coordinate reference system usually referred to as &quot;NAD83&quot;.</li>
+				<li>WKT (well known text).  WKT values are structured, human-readable, textual strings, that describe the elements of a coordinate reference system.  They have been declared by the Open Geospatial Consortium and documented in an appendix to <a href="http://portal.opengeospatial.org/files/?artifact_id=25355">OGC 06-103r4</a>: OpenGIS Implementation Specification for Geographic Information - Simple feature access - Part 1: Common Architecture.  Essentially the same document has been published as <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=40114">ISO 19125-1:2004</a>.  WKT is employed in many GIS systems.  The WKT equivalent of EPSG code 4269 is:<p>GEOGCS["GCS_North_American_1983",<br/>
+ DATUM["D_North_American_1983",<br/>
+  SPHEROID["GRS_1980",6378137.0,298.257222101]],<br/>
+PRIMEM["Greenwich",0.0],<br/>
+  UNIT["Degree",0.0174532925199433]]</p>
+				</li>
+			</ul>
+		</fdd:general>
+		<fdd:history>PDF 1.7 was released in November 2006 in association with version 8 of Acrobat and Adobe Reader.  In January 2007, Adobe announced the intention to pursue standardization through TC 171/SC 2 of ISO.  This process led to publication as ISO 32000-1 in July 2008.  With the release of Acrobat 9.0 in June 2008, Adobe published the specification of ExtensionLevel 3, including support for georegistered content.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/adobe_supplement_iso32000.pdf</link>
+					<tag>Adobe Supplement to the ISO 32000, BaseVersion:1.7, ExtensionLevel:3.  June 2008</tag>
+					<comment>Adobe Systems Incorporated.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Adobe Systems Incorporated provides access both to its original PDF Reference 1.7 and the variant document that was approved as ISO 32000-1:2008.  The latter was re-organized and re-formatted in line with ISO guidelines.  The number of functional differences are assumed to be small, since Adobe describes the specifications as &quot;matching.&quot;</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/PDF32000_2008.pdf</link>
+							<tag>Document management — Portable document format — Part 1: PDF 1.7</tag>
+							<comment>As distributed by Adobe after adoption as ISO 32000-1:2008, with permission of ISO.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/pdf_reference_1-7.pdf</link>
+							<tag>PDF Reference, Sixth Edition, Version 1.7. November 2006</tag>
+							<comment>Published by Adobe Systems Incorporated before ISO standardization.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.adobe.com/devnet/pdf/pdf_reference_archive.html</link>
+					<tag>Adobe PDF Reference Archive of specifications prior to current version of PDF.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:specReference>
+					<specRefDetail rel="snum">ISO 32000-1</specRefDetail>:<specRefDetail rel="date">2008</specRefDetail>. <specRefDetail rel="stitle">Document management -- Portable document format -- Part 1: PDF 1.7</specRefDetail>.  <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=51502">Available for purchase from ISO</a>
+				</fdd:specReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Portable_Document_Format</link>
+					<tag>Portable Document Format from Wikipedia</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Well-known_text</link>
+					<tag>Well-known text (WKT) from Wikipedia</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.epsg-registry.org/</link>
+					<tag>EPSG Geodetic Parameter Dataset</tag>
+					<comment>Includes codes that specify coordinate reference systems.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.epsg.org/guides/G7-1.html</link>
+					<tag>Using the EPSG Geodetic Parameter Dataset</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://portal.opengeospatial.org/files/?artifact_id=25355</link>
+					<tag>OGC 06-103r4: Simple feature access -- Part 1: Common architecture</tag>
+					<comment>Open Geospatial Consortium (OGC)</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=40114</link>
+					<tag>Geographic information -- Simple feature access -- Part 1: Common architecture.</tag>
+					<comment>WKT syntax is defined in an appendix, together with a list of WKT elements and values.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://prj2epsg.org/search</link>
+					<tag>Prj2EPSG service</tag>
+					<comment>Converts from WKT to EPSG codes and vice versa.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

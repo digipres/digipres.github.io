@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000312" titleName="GeoPDF Encoding (TerraGo), version 2.2" shortName="GeoPDF_2_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenreAndSubgenres>
+				<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+				<fdd:gdfrSubgenres>
+					<fdd:gdfrSubgenre>dataset</fdd:gdfrSubgenre>
+				</fdd:gdfrSubgenres>
+			</fdd:gdfrGenreAndSubgenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2010-10-28</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>GeoPDF (TerraGo) Encoding, Version 2.2</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>geospatial data formats</fdd:keyword>
+			<fdd:keyword>georeferenced image formats</fdd:keyword>
+			<fdd:keyword>Portable Document Format (PDF)</fdd:keyword>
+			<fdd:keyword>PDF</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>GeoPDF (a registered trademark of TerraGo Technologies) defines an encoding of georegistration information that allows association of an arbitrary coordinate reference system to an illustration on a page of a PDF document.  GeoPDF is specified as an extension to Adobe PDF, as described in <a href="http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/pdf_reference_1-7.pdf">PDF Reference  1.7</a>.   This encoding supports the functionality in the GeoPDF Toolbar and other TerraGo products designed to &quot;deliver complex maps and images from the desks of a few technical experts to the hands of many field operators in a simple to use format.&quot;  The specification of version 2.2 of this encoding was published in 2007 by the Open Geospatial Consortium (OGC) as <a href="http://portal.opengeospatial.org/files/?artifact_id=33332">OGC 08-139</a>.</p>
+			<p>To quote from the OGC Best Practice document, &quot;Conceptually, GeoPDF® specifies <i>map frames</i> associated with a PDF page.  A minimal map frame describes a coordinate reference system that is associated with the entire document page.  This association provides a collection of tuples that map the page (PDF) coordinate system to the known coordinate reference system.&quot;  Often, the document consists of one page containing a single map or other georegistered illustration.  However, a map frame may be associated with a region on a page; there may be multiple map frames on a given page; and a document may have more than one page containing illustrations with GeoPDF encoding.</p>
+			<p>One intended functionality of the encoding is to support calculation of the position in coordinates of any point on the map image and thus to associate annotations and linked files with a particular geospatial location.  This location can be expressed in any coordinate reference system, since the encoding includes sufficient information to perform conversions between coordinate systems.  The georegistration encoding also supports measurement, such as calculation of distances between points.</p>
+			<p>Although the GeoPDF encoding for georegistration is publicly specified, the position of TerraGo Technologies is that the only file that is a GeoPDF file is a file created using a TerraGo product (either a TerraGo product or a TerraGo module incorporated into a GIS from another vendor, such as ESRI&apos;s ArcGIS).  Such files can contain data payloads associated with locations on the georegistered image.  The detailed encoding for these data payloads does not appear to be publicly specified.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:description>
+		<fdd:shortDescription>An encoding of georegistration information that can be associated with an illustration on a page of a PDF file.  This encoding supports functionality in the GeoPDF Toolbar and other TerraGo products.</fdd:shortDescription>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000030</fdd:id>
+					<fdd:shortName>PDF</fdd:shortName>
+					<fdd:titleName>Portable Document Format</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Although GeoPDF 2.2 was developed with PDF, Version 1.7 in mind, both OGC and the developers believe that it can be used with earlier versions, at least from Version 1.3.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:comment>Earlier versions of GeoPDF were used in products of Layton Graphics and TerraGo.  They are not publicly specified and are not described on this Web site.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None.</fdd:experience>
+		<fdd:preference>None.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>The GeoPDF technique for embedding georegistration information for maps into a PDF file was developed at Layton Graphics, Inc. and is now maintained by TerraGo Technologies.  The specification of version 2.2 has been accepted and published as a best practice by the Open Geospatial Consortium (OGC).</fdd:disclosure>
+		<fdd:documentation>As of September 2010, the best practice listed by the Open Geospatial Consortium was published on April 16, 2009 as OGC 08-139r2: <i>GeoPDF Encoding Best Practice Version 2.2.</i> Available online at <a href="http://portal.opengeospatial.org/files/?artifact_id=33332">http://portal.opengeospatial.org/files/?artifact_id=33332</a>.</fdd:documentation>
+		<fdd:adoption>
+			<p>As of September 2010, several U.S. government agencies produced and distributed maps as PDF files with GeoPDF encoding, including the United States Geological Survey (USGS), the U.S. Army Corps of Engineers, and the National Geospatial-Intelligence Agency.  See <a href="http://web.archive.org/web/20130214180326/http://www.agc.army.mil/fact_sheet/GeoPDF_Fact_Sheet.pdf">U.S. Army Corps of Engineers 2012 factsheet on Geospatial PDF</a> for information on the use of GeoPDF for map distribution by the U.S. Army Corps of Engineers.  TerraGo Technologies has worked with several GIS vendors, such as ESRI and Intergraph, to develop modules that can create PDF files with GeoPDF encoding and import annotations added in the field back into a GIS system.</p>
+			<p>In September 2011, USGS published documents about techniques and methods (including formats) for two programs established recently.  Both programs use GeoPDF as a format for distribution of digital maps for public use.  See <a href="http://pubs.usgs.gov/tm/tm11b2/">http://pubs.usgs.gov/tm/tm11b2/</a>, US Topo Product Standard, for a specification of the digital replacement for the standard USGS printed maps at 1:24,000.  See also <a href="http://pubs.usgs.gov/tm/11b03/">http://pubs.usgs.gov/tm/11b03/</a>, Standards for Scanned U.S. Geological Survey Historical Topographic Quadrangle Collection.</p>
+			<p>The compilers of this document <a href="../contact_format.shtml">welcome comments</a> contributing additional information about adoption of GeoPDF as a georegistration encoding.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>GeoPDF is a registered trademark of TerraGo Technologies.  According to the specification published by OGC, the term GeoPDF may only be applied to products created under license from Terrago.   However, the intent behind publishing the specification under a royalty-free license was to allow others to write software to read and write files using this method of geo-registration.</p>
+			<p>See <fddLink id="fdd000030">PDF</fddLink> description for patent and licensing information associated with PDF.</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>Judging from example files, this georegistration encoding can usually be read by using an ASCII text editor to open the PDF file.  In practice, most PDFs have compression filters applied to most of the file content.  </fdd:transparency>
+		<fdd:selfDocumentation>The GeoPDF encoding itself supplies limited geospatial metadata for maps or other georegistered illustrations in a PDF file.</fdd:selfDocumentation>
+		<fdd:externalDependencies>To get full value from a PDF with GeoPDF encoding as a user, you need the TerraGo Toolbar, an add-on to Adobe Reader or the equivalent application for mobile devices.  At October 2011, the toolbar is freely downloadable (after registration), but works only on Windows.</fdd:externalDependencies>
+		<fdd:techProtection>The encoding itself has no means of protection.  Encryption or other forms of technical protection may be applied to the file in which the georegistration information is embedded.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>The geospatial encoding is independent of image quality and functionality.  See <fddLink id="fdd000030">PDF</fddLink> for discussion of quality and functionality factors for images in PDF documents.</fdd:normalImage>
+			<fdd:clarity>See <fddLink id="fdd000030">PDF</fddLink>.</fdd:clarity>
+			<fdd:colorMaint>See <fddLink id="fdd000030">PDF</fddLink>.</fdd:colorMaint>
+			<fdd:graphics>See <fddLink id="fdd000030">PDF</fddLink>.</fdd:graphics>
+			<fdd:multispectral>TBD</fdd:multispectral>
+			<fdd:beyondImage>See <fddLink id="fdd000030">PDF</fddLink>.</fdd:beyondImage>
+		</fdd:stillImageQF>
+		<fdd:gisQF>
+			<fdd:normalGIS>
+				<p>The GeoPDF encoding for georegistration of an illustration in a PDF file defines a <i>map frame</i> for the image, by providing data to map the coordinate system of the PDF page to a known coordinate reference system.  Three types of coordinate reference systems are supported: geodetic, projected, and unregistered cartesian (for engineering).  The map frame specifies the coordinate transformation matrix, all parameters required for a map projection (if used), the reference ellipsoid, and the geodetic datum.</p>
+				<p>GeoPDF supports a list predefined geodetic datums and ellipsoids, by means of codes that correspond to names used by the GeoTrans software from the U.S. National Geospatial-Intelligence Agency.  Note that in its specification of the GeoPDF encoding [OGC 08-139r2], &quot;the OGC recognizes that the specification of the datum, ellipsoid, and CRS codes as used in this document do not conform to the EPSG database, the current de-facto normative reference for CRS metadata.&quot;  GeoPDF also supports custom geodetic datum definitions.  A geodetic datum is comprised of an ellipsoid, a known origin point, and a prime meridian. For GeoPDF encodings, a Greenwich prime meridian is assumed. The description for a custom geodetic datum may also specify a <i>shift</i> operation that converts (at least approximately) the geodetic datum’s coordinates to the widely-used World Geodetic System 1984 geodetic datum (WGS84).</p>
+			</fdd:normalGIS>
+			<fdd:metadataGIS>GeoPDF encoding provides specific geospatial metadata associated with an image within a document.  GeoPDF makes no assumptions or recommendations with respect to GIS metadata for the  PDF document as a whole.  Version 1.4 of PDF and later support embedding of any metadata in XMP packages.</fdd:metadataGIS>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+				<fdd:note>GeoPDF does not define a file format, but an encoding for georegistration information that may be associated with an image.  In practice, it will be embedded in a file in some version of the PDF format, and that file will likely have the extension <i>pdf</i>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:other>
+				<fdd:tag>File signature</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>/LGIDict</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>A PDF file including GeoPDF encoding will be recognized by the existence of an LGIDict entry associated with at least one page in the PDF.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>The TerraGo product line uses the GeoPDF georegistration encoding to support the collection of information in the field using annotations (markups) associated with a point on the map.  Application domains include emergency management, and management of natural resources and remote assets such as utility poles and railway track.</p>
+			<p>GeoPDF uses features of the PDF architecture to embed georegistration information into a page object.  It was the first widely adopted technique for supporting georegistration within a PDF.  With the release of Acrobat 9.0 and <fddLink id="fdd000313">ExtensionLevel 3 to PDF, Version 1.7</fddLink> in June 2008, Adobe introduced its own schemes for recording georegistration and 3D information in PDF documents.  It remains to be seen whether users of GeoPDF migrate to the Adobe geospatial encoding.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>The original GeoPDF encoding was developed at  Layton Graphics, Inc. in the early 2000s. The use of the name LGIDict for the encoding object within a PDF file reflects that origin.  Version 1 was drafted in 2002; version 2 was introduced in November 2003.  The mapping group of Layton Graphics was spun off as TerraGo Technologies in September 2005.</p>
+			<p>The specification of version 2.2 of the GeoPDF encoding was published as a best practice by the Open Geospatial Consortium (OGC) in April 2009.</p>
+			<p>The TerraGo product line now supports the Adobe geospatial extensions (introduced with Acrobat 9.1 in June 2008) as well as GeoPDF &quot;under the hood.&quot;</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:specReference>
+					<specRefDetail rel="snum">OGC 08-139r2</specRefDetail>.  <specRefDetail rel="stitle">GeoPDF Encoding Best Practice Version 2.2</specRefDetail>. <specRefDetail rel="date">2009</specRefDetail>.  Available online at <a href="http://portal.opengeospatial.org/files/?artifact_id=33332">http://portal.opengeospatial.org/files/?artifact_id=33332</a>.</fdd:specReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://geopdf.blogspot.com/</link>
+					<tag>GeoPDF blog</tag>
+					<comment>A blog, with most contributions by George Demmy of TerraGo Technologies, involved in the original development of the encoding.  In September 2010, this blog was closed with a message that blogging about GeoPDF would continue on a TerraGo blog (since discontinued).</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.terragotech.com/</link>
+					<tag>TerraGo Technologies website</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.terragotech.com/resources</link>
+					<tag>Resources page from Terrago</tag>
+					<comment>Includes case studies and data sheets.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/GeoPDF</link>
+					<tag>GeoPDF at Wikipedia</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://store.usgs.gov/locator/about_digital_maps.html</link>
+					<tag>USGS Store: About GeoPDF Maps</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.agc.army.mil/Media/FactSheets/FactSheetArticleView/tabid/11913/Article/10220/geospatial-portable-document-format-geopdf.aspx</link>
+					<tag>Factsheet from 2012 on GeoPDF distributions by the U.S. Army Corps of Engineers.</tag>
+					<comment>Version with illustrations from 2012 via Internet Archive Wayback Machine at http://web.archive.org/web/20130214180326/http://www.agc.army.mil/fact_sheet/GeoPDF_Fact_Sheet.pdf</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/pdf_reference_1-7.pdf</link>
+					<tag>PDF Reference, Sixth Edition, Version 1.7. November 2006</tag>
+					<comment>Published by Adobe Systems Incorporated.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://pubs.usgs.gov/tm/tm11b2/</link>
+					<tag>US Topo Product Standard</tag>
+					<comment>US Topo Product Standard: U.S. Geological Survey Techniques and Methods 11–B2.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://pubs.usgs.gov/tm/11b03/</link>
+					<tag>Standards for Scanned U.S. Geological Survey Historical Topographic Quadrangle Collection
+</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.kmi-dev.com/component/k2/4811-the-geopdf-project</link>
+					<tag>The GeoPDF project, by Raymond Caputo</tag>
+					<comment>August 2013 article on adoption of GeoPDF in the U.S. government.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:articleReference>
+					<articleRefDetail rel="au">Caputo, Raymond G.</articleRefDetail>
+					<articleRefDetail rel="atitle">The GeoPDF project: Creating maps for the non-mapper</articleRefDetail>.  <articleRefDetail rel="jtitle">Engineer</articleRefDetail>: The Professional Bulletin for Army Engineers.  January-April <articleRefDetail rel="date">2010</articleRefDetail>.  ISSN:<articleRefDetail rel="issn">1554-9496</articleRefDetail>.  Available online at <a href="http://www.wood.army.mil/engrmag/PDFs%20for%20Jan-Apr%2010/Caputo.pdf">http://www.wood.army.mil/engrmag/PDFs%20for%20Jan-Apr%2010/Caputo.pdf</a>
+				</fdd:articleReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:usefulReferences>
+</fdd:FDD>

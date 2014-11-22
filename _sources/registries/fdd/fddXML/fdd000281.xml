@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000281" titleName="ESRI ArcInfo Grid" shortName="ESRI_grid" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-group</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2011-10-24</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ESRI ArcInfo Grid</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>geospatial data formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>ESRI ArcInfo Grid (ESRI_grid) is a raster file format developed by ESRI to contain information about geographic space in a grid.  A grid defines geographic space as an array of equally sized square grid points (also known as cells) arranged in rows and columns.  Grids are useful for representing geographic phenomena that vary continuously over space, and for performing spatial modeling and analysis of flows, trends, and surfaces such as hydrology.  Each grid cell, referenced by its x,y coordinate location, stores a numeric value that represents a geographic attribute (such as elevation or surface slope) for that unit of space.  In the ESRI_grid format this numeric attribute may be a 32-bit signed integer or a 32-bit (single precision) floating point number.</p>
+			<p>The native binary ESRI Grid format comprises a number of component files.  These files are stored within an ArcInfo workspace, which may incorporate several grids and other geospatial datasets, such as coverages. An ArcInfo workspace contains one INFO subdirectory and a separate subdirectory for each ESRI_grid.  The INFO directory holds several files that  maintain information about each grid and other datasets in the workspace.  The name of an ESRI_grid cannot start with a number or use spaces, and cannot be longer than 13 characters (a multiband grid is allowed up to 9 characters ).  Each GRID subdirectory contains several component files that store geographic location and attribute data for the corresponding grid. Not all of them are necessary for the ESRI_grid to display.  Each component file is stored in one of three storage types: INFO format (See <a href="#notes">Notes</a>), ASCII format, or binary format. </p>
+			<p>In a GRID directory, the following tables and files are found: </p>
+			<ul>
+				<li>
+					<b>dblbnd.adf</b> (aka bnd.adf) -- The boundary file contains the minimum and maximum x,y coordinates for an ESRI_grid.  The boundary is a rectangle that encompasses the cells of a grid;  it is stored in map coordinates.  All grid BNDs are stored in double precision.  This file will have a corresponding .nit and .data files in the INFO directory of an ESRI_grid. This information is stored in INFO format.</li>
+				<li>
+					<b>hdr.adf</b> -- The header file contains information about the ESRI-grid's cell resolution, type (integer or floating point), compression, and tile information.  This information is in binary format. </li>
+				<li>
+					<b>log</b> -- The log file contains a history about the creation of and alterations to an ESRI_grid. (See <a href="#notes">Notes.</a>) This information is in ASCII format.</li>
+				<li>
+					<b>prj.adf</b> -- The projection file stores the known map projection information of the ESRI_grid. It is optional.  This information is in ASCII format.</li>
+				<li>
+					<b>sta.adf</b> -- The statistics (minimum, maximum, mean, and standard deviation) of the cell values are stored in the sta.adf file.  Values in the statistics are floating point values.  They should be not changed using INFO commands.  This file will have a corresponding .nit and .data files in the INFO directory of an ESRI_grid. More information about sta.adf files can be found in <a href="http://support.esri.com/en/knowledgebase/techarticles/detail/30616">What is the file structure of an Arc/INFO Grid?</a> This information is in INFO format.</li>
+				<li>
+					<b>vat.adf</b> -- The value attribute table (VAT) stores the the attribute data associated with the zones of the grid. The vat.adf can only exist for integer grids.  This file will have a corresponding .nit and .data files in the INFO directory of an ESRI_grid.  More information about vat.adf files can be found in <a href="http://support.esri.com/en/knowledgebase/techarticles/detail/30616">What is the file structure of an Arc/INFO Grid?</a>  This information is in INFO format. </li>
+				<li>
+					<b>w001001.adf</b> -- Stores the value of each cell in the first (base) tile of the grid.  Subsequent tiles will be numbered sequentially.  See explanation in <a href="#notes">Notes.</a>  This information is in binary format.</li>
+				<li>
+					<b>w001001x.adf</b> -- Stores the index for the blocks in the tile. If the grid has more than one tile, the value and index .adf file names will increment correspondingly. This information is in binary format.</li>
+			</ul>
+			<p>Also included in an ArcInfo Workspace is an INFO subdirectory containing files that maintain information about the ESRI_grid and other associated datasets in the workspace.  In an INFO directory, the following tables and files are found: </p>
+			<ul>
+				<li>
+					<b>arcNNNN.dat</b> (where N is any integer) -- Stores the relative path to the grid data file (e.g., "../soils/vat.adf") . This information is stored in INFO format.</li>
+				<li>
+					<b>arcNNNN.nit</b> -- Stores file structure and field definition information of the grid.  For any particular grid, the NNNN values for .dat and .nit should match.  This information is stored in INFO format.</li>
+				<li>
+					<b>arc.dir</b> -- Contains the data dictionary for the grid.  </li>
+			</ul>
+			<p>Two types of grids can be found in the ESRI_grid, integer and floating point.  Integer grids are used to represent discrete data, i.e., that which has known and definable boundaries.   An integer grid is used to determine where a data object begins and where it ends,  e.g., a lake in a landscape.  Floating point grids represent continuous data, i.e., data whose boundaries cannot be precisely defined;  instead, the boundaries are measured in terms of a relationship to a fixed point such as elevation measured from sea level.</p>
+			<p>Grids are implemented using a tiled raster data structure in which the basic unit of data storage is a rectangular block of cells. Blocks are stored on disk in compressed form in a variable-length file structure referred to as a tile. Each block is stored as one variable-length record.</p>
+			<p>The size of the tile for a grid is based on the number of rows and columns in the grid at the time of creation. The upper limit on the size of a tile is set by the application and is very large (currently set at 4,000,000 x 4,000,000 cells). As a result, most grids used for GIS applications are automatically stored in a single tile. The spatial data for a grid is automatically split across multiple tiles if the size of the grid at the time of creation is larger than the upper limit for the size of a tile.		</p>
+			<p>For more information about grid data structure and storage, see <a href="http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=About_the_ESRI_grid_format">About the ESRI Grid format.</a>
+			</p>
+			<p>Grids can be combined into an ordered set of spatially overlapping grids treated as a single entity, called a grid <i>stack.</i>  Grids (also known as "layers") are combined into a stack to facilitate multivariate analyses such as cluster analysis, classification, and principal component analysis.  A stack has the following characteristics:  a set of layers with each layer corresponding to a grid, a map extent, a cell size, a data type, and a projection stored in an ASCII file.  Each layer in the grid has an index number indicating its order in the stack, all of which must be in the same workspace.  The boundaries of the input layers for a grid stack can overlap exactly, partially, or not all, but the stack is considered to be only the area where the layers overlap.  Computations against the stack will only be done against the overlapping area as declared by the intersection of the boundaries in the bnd.adr file.  If no common area exists between the input layers, the stack will be empty and no computations will occur. As with a simple grid, the name of a grid stack cannot start with numbers, contain spaces or be longer than nine characters.</p>
+			<p>Any number of data types (real or integer) within a layer can be combined into a stack.  The cell size of stack defaults to the coarsest layer in the stack.  The stack is stored in the INFO directory as is information about the grids of which it is comprised.  The grids of which a stack is comprised are not duplicated in a grid, but instead are referenced in the stack-related files.  The directory in which the stack is located will have the following files within it:</p>
+			<ul>
+				<li>
+					<b>*.stk</b> -- (where * indicates the user generated name of the stack) This file contains a table that stores the names of the grids that comprise the stack, their corresponding index values, and the record number of the grid.  The INDEX column gives the position of a grid in the stack while the GRID column lists the grid names that comprise the stack.  Other columns can be added to the stack table, but the INDEX and GRID values should not be altered unless using appropriate stack management commands found in the GRID functionality within the ArcGIS tools.  </li>
+				<li>
+					<b>prj.adr</b> -- As with the description for prj.adr above, this file, when present, stores the projection information of the stack.  Since a stack is treated as a single entity, all grids in a stack must be in the same projection.  If the projection is unknown for all input grids in the stack, no prj.adr file is created.  The projection information is used to ensure that the same geographic area is being occupied by each grid in the stack</li>
+			</ul>
+		</fdd:description>
+		<fdd:shortDescription>ESRI ArcInfo Grid (ESRI_grid) is a raster file format developed by ESRI to contain information about geographic space in a grid.  They are useful for representing geographic phenomena that vary continuously over space, and for performing spatial modeling and analysis of flows, trends, and surfaces such as hydrology.</fdd:shortDescription>
+		<fdd:productionPhase>The ESRI_grid and grid_stack formats are most often used as middle state formats to facilitate extensive spatial analysis of the rasters they contain.  When ESRI introduced the binary format for ArcInfo products, however, they introduced an ASCII format (ESRI ArcInfo ASCII GRID) that was designed as to take advantage of the simple and portable ASCII file structure for exchange or export of the ESRI_grid and grid stack.  There are limitations on exporting an ESRI_grid using the ESRI ASCII Grid, however.  See <a href="#notes">Notes</a> for more information about exporting a grid.  
+ </fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo/>
+				<fdd:comment>ESRI ArcInfo ASCII Grid, a non-proprietary ASCII format designed for data interchange between systems.
+	ESRI ArcInfo Grid proprietary binary files can be exported as ESRI ASCII Grids.	This format is not described on this website at this time.  See <a href="#notes">Notes</a> for warnings about the export process. </fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Partially documented raster data storage format native to ESRI</fdd:disclosure>
+		<fdd:documentation>Fairly complete documentation can be found in <a href="http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=About_the_ESRI_Grid_format">About the ESRI Grid Format</a>, from ArcGIS Desktop 9.3 Help. </fdd:documentation>
+		<fdd:adoption>ESRI_grids are used quite extensively, especially to represent and compute elevation and slope data.  For example, LIDAR data are quite often processed into ESRI_grids for applications such as forestry, world climate models, and others.  See the ESRI White Paper <a href="http://www.esri.com/library/whitepapers/pdfs/lidar-analysis-forestry.pdf">Lidar Analysis in ArcGIS 9.3.1 for Forestry Applications </a> to find out more about the context for and specific instructions to create a raster DEM as an ESRI_grid.  Other examples of data available in ESRI_grid format include those from the National Center for Airborne Laser Mapping <a href="http://www.ncalm.cive.uh.edu/data/distribution.html">NCALM</a>.</fdd:adoption>
+		<fdd:licensingAndPatents>ESRI Licensing agreements detail the terms of use and compliance for ESRI GIS software per <a href="http://www.esri.com/legal/software-license">http://www.esri.com/legal/software-license</a>. </fdd:licensingAndPatents>
+		<fdd:transparency>TBD</fdd:transparency>
+		<fdd:selfDocumentation>TBD</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			<p>ESRI_grid and grid stacks are created, and usually read by ESRI's ArcGIS products.  If another software product is used to view and or process an ESRI_grid, the software must treat the whole directory as a single grids and understand the relationships among the component files. If ArcGIS software is not available to read the ESRI_grid, there are tools available to convert the files into a format that is compatible with other software, e.g., <a href="http://www.gdal.org/">GDAL - Geospatial Data Abstraction Library.</a>.  Frank Warmerdam&apos;s description of the <a href="http://home.gdal.org/projects/aigrid/aigrid_format.html">Arc/Info Binary Grid Format</a> is from the perspective of someone developing a utility to convert raster data into and out of the ESRI_grid format.</p>
+		</fdd:externalDependencies>
+		<fdd:techProtection>TBD</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:normalDataset>
+				<p>ESRI_grid stacks are used to reference multiple ESRI_grids as a multiband raster dataset.  The directory in which an ESRI_grid stack is found will contain an INFO subdirectory with a simple text file called a *.stk file that stores the path and name of each ESRI Grid contained within it on a separate line.</p>
+				<p>In using ESRI_grids, it is sometimes not possible to have data for each cell in a grid.  The design of the ESRI_grid is such that every cell in a grid has a value assigned to it; however, cells without actual values can be assigned NoData on the grid representing that theme. NoData and 0 (zero) are not the same; 0 is a valid value. For this reason, NoData cells cannot be used in calculating the statistics in a grid's STA table.  For more information about the the use of NoData, see <a href="http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=NoData_in_raster_datasets">NoData in raster datasets.  </a>
+				</p>
+			</fdd:normalDataset>
+		</fdd:datasetQF>
+		<fdd:gisQF>
+			<fdd:normalGIS/>
+			<fdd:grids>
+				<p>This format is limited to two types of grids: integer and floating point. Integer grids represent discrete data and floating-point grids represent continuous data.</p>
+				<p>Grids are implemented using a tiled raster data structure in which the basic unit of data storage is a rectangular block of cells. Blocks are stored on disk in compressed form in a variable-length file structure referred to as a tile. Each block is stored as one variable-length record.  The blocked storage organization for grids supports both sequential and random spatial access to large raster datasets. The blocking structure imposes no restrictions on the joint analysis of grids. Tiles and blocks from different grids also need not coincide in map space for joint analysis. The tile and block structure of a grid is completely hidden from the user, who always creates and manipulates a grid as though it were a seamless raster of uniformly square cells.  A common application of ESRI_grid formats are digital elevation models or DEMs that facilitate analysis resulting in hillshade or view corridor estimates, for instance.</p>
+				<p>Grids use a run-length raster compression scheme that can be adapted at the block level. Each block is tested to determine the depth (bits per cell) to be used for the block and to determine which storage technique (cell by cell or run length coded) is more efficient. The block is stored in the format that requires less disk space. The adaptive compression scheme is the optimal choice because of its ability to efficiently represent both homogeneous categorical data and heterogeneous continuous data while supporting joint analysis using both types of data. Single layer per-cell operations, such as data reclassification, operate directly on runs of data without decompression. Multilayer per-cell operations on compressed input layers intersect runs of data from the different layers and operate on the intersected runs. Single layer per-neighborhood operations and multilayer per-cell operations that mix compressed and uncompressed data expand runs into cells and perform traditional cell-by-cell processing transparently.  The tile-block structure of a grid is also transparent to any application programs that access the spatial data in a grid. Programs that manipulate grids access the spatial data by setting a rectangular window defined in map coordinates.  Helpful illustrations of the structure of ESRI_grids and ESRI_grid stacks can be found in the ArcGIS Desktop 9.3 Help topic, <a href="http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?id=3104&amp;pid=3101&amp;topicname=About_the_ESRI_Grid_format">About the ESRI Grid Format</a>.</p>
+				<p>Another example of the use of an ESRI_grid is when block interpolation is desired.  Block interpolation is an interpolation method that predicts the average value of a phenomena within a specified areas.  The specified area can be an irregularly shaped polygon, such as a forest stand, a more regularly shaped polygon, such as a field, or can be a series of equally shaped sqares, as in the case of an ESRI_grid.  For this example, the ESRI_grid would be created from a geostatistical layer that contained point data fitting within a block of cells.  See more information about this example of using an ESRI_grid from the ArcGIS 9.3 Desktop Help topic <a href="http://resources.esri.com/help/9.3/arcgisdesktop/com/gp_toolref/geostatistical_analyst_toolbox/creating_a_grid_from_a_geostatistical_layer.htm">Creating a grid from a geostatistical layer.</a>
+				</p>
+				<p>See <a href="#notes">Notes</a> for more information about how attributes for both integer and continuous data grids are stored.  See <a href="http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=Discrete_and_continuous_data">Discrete and continuous data</a> for more information about the differences between discrete and continuous data.</p>
+			</fdd:grids>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>adf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>There are a number of files that may be included in a GRID directory that contain this file extension.  They include dblbnd or bnd (boundary) files, hdr (header) files, prj (projection) files, sta (statistics) files, vat (value attribute table) files, w1001001 (value of each cell in the first or base tile of the grid) file / files, and w001001x (index for the blocks in the base or first tile) file.  </fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>dat</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The arcNNNN file with this extension (where N denotes any integer) is a file in the INFO directory of the ESRI_grid that stores the relative path to the grid data file.  It must be matched by a .nit file with the same name in the INFO directory.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>nit</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The arcNNNN file with this extension (where N denotes any integer) is a file in the INFO directory of the ESRI_grid that stores the file structure and field definition information of the grid.  It must be matched by a .dat file with the same name in the INFO directory.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>stk</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The *.stk file (where * indicates the grid stack name) is a simple text file file in the directory for an ESRI_grid stack.  This file contains a table that stores the names of the grids comprising the stack, their corresponding index values, and the record number of the grid.</fdd:note>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>INFO format:</b> The INFO format is an ESRI native format that can be read and edited only by ArcGIS products.  They should not be edited with other applications or removed with the operating system.</p>
+			<p>
+				<b>log file:</b> The log file is an ASCII file that contains information about the creation of and alterations to a grid. The log monitors the actions performed on the grid, but it does not contain every action performed with the grid. Since all GRID functions result in a new grid, only GRID commands, such as RENAME and COPY, can alter an existing grid and be entered into the LOG file. The LOG file can be accessed, like all ASCII files, through system commands or any text editor.</p>
+			<p>
+				<b>w001001.adf:</b> The w001001.adf binary format file stores the value of each cell in the first (base) tile of the GRID.  If the GRID is floating point, the values are single precision.  The upper limit on the size of a tile is very large and most grids are stored using a single tile. Tiles are implemented as variable-length binary files. With versions prior to ARC/INFO 7.x, these files were named q0x1y1 and q0x1y1x and will still work with the current software. If the grid has more than one tile, the value and index .adf file names will increment correspondingly. The w001001x.adf binary format file stores the index for the blocks in the tile. For example, the data files for tile 2 could be w001002.adf &amp; w001002x.adf, tile 3 could be w001003.adf &amp; w001003x.adf, and so on. The actual numbering of additional tiles is automatic and is based on their spatial relationship to the first tile. </p>
+			<p>
+				<b>Attribute storage:</b> integer grid stores its attributes in a value attribute table (VAT) that has one record for each unique value in the grid.  The record stores the unique value and the number of cells in the grid represented by that value.  For more information about the VAT and how to use them, see <a href="http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=Raster_dataset_attribute_tables">Raster dataset attribute tables.</a> The range of data values that can be stored in integer grids range from -2147483648 to 2147483647 (-2<sup>31</sup> to 2<sup>31</sup>-1).  </p>
+			<p>Floating point grids do not have a VAT because the cells in the grid can assume any value within a given range of values.  The cell value itself is the attribute that describes the location. For example, in a grid that represents elevation data in meters above sea level, a cell with a value of 10.1662 indicates that the location is about 10 meters above sea level. Floating-point grids can store values from -3.4x10<sup>38</sup> to 3.4x10<sup>38</sup>.</p>
+			<p>
+				<b>Exporting a grid with ESRI ASCII grid</b> -- Exporting a grid can result in an export file much larger than the original grid, even when Full compression is used. This is because each grid cell must be represented in the export file in ASCII format, which is less efficient than the grid's binary format. Also, integer grids are stored in a compressed format, which cannot be maintained in the export file. The best solution is not to export large grids. All ArcInfo platforms that support grids now read the same file format, so exporting is not necessary. To create a single file for transfer, a utility, such as PKZIP (or "tar" on UNIX systems), can be used to place the workspace containing the grid into a single file. Versions of PKZIP and tar are available on both UNIX and PC systems. A warning note:  When using PKZIP or tar, it is important to create a temporary workspace and copy the grids to be transferred into it to make sure that the INFO tables necessary for proper import of the ESRI_grids are not lost.  </p>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=About_the_ESRI_Grid_format</link>
+					<tag>About the ESRI Grid Format</tag>
+					<comment>Release 9.3, November 12, 2009. This is an informal specification published by ESRI. 
+
+</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://support.esri.com/en/knowledgebase/techarticles/detail/30616</link>
+					<tag>FAQ:  What is the file structure of an Arc/INFO Grid?</tag>
+					<comment>ESRI Knowledge Base Technical Article ID: 30616.  </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://home.gdal.org/projects/aigrid/aigrid_format.html</link>
+					<tag>Arc/Info Binary Grid Format</tag>
+					<comment>by Frank Warmerdam (warmerdam@pobox.com)</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=Discrete_and_continuous_data</link>
+					<tag>Discrete and continuous data</tag>
+					<comment>ArcGIS 9.2 Desktop Help.  Last modified September 22, 2008</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://support.esri.com/en/knowledgebase/techarticles/detail/30617</link>
+					<tag>HowTo:  Send an Arc/INFO GRID or coverage through email or FTP</tag>
+					<comment>ESRI Knowledge Base - Technical Article # 30617</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://support.esri.com/en/knowledgebase/techarticles/detail/17135</link>
+					<tag>HowTo:  Fix WinZip configuration and avoid data corruption</tag>
+					<comment>ESRI Knowledge Base - Technical Article # 17135</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=Raster_dataset_attribute_tables</link>
+					<tag>Raster dataset attribute tables</tag>
+					<comment>ArcGIS 9.2 Desktop Help. Last modified Septebmer 22, 2008</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=NoData_in_raster_datasets</link>
+					<tag>NoData in raster datasets</tag>
+					<comment>ArcGIS Desktop 9.3 Help.  Last modified November 12, 2009</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://resources.esri.com/help/9.3/arcgisdesktop/com/gp_toolref/geostatistical_analyst_toolbox/creating_a_grid_from_a_geostatistical_layer.htm</link>
+					<tag>Creating a grid from a geostatistical layer</tag>
+					<comment>ArcGIS 9.3 Webhelp Topic.  Last modified October 28, 2008</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.esri.com/library/whitepapers/pdfs/lidar-analysis-forestry.pdf</link>
+					<tag>Lidar Analysis in ArcGIS 9.3.1 for Forestry Applications</tag>
+					<comment>June 2010.  An ESRI White Paper.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ncalm.cive.uh.edu/data/distribution.html</link>
+					<tag>NCALM -- National Center for Airborne Laser Mapping</tag>
+					<comment>Data distribution information.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.gdal.org/</link>
+					<tag>GDAL - Geospatial Data Abstraction Library</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/x-fmt/218</link>
+					<tag>ESRI Arc/Info Binary Grid at PRONOM</tag>
+					<comment>PRONOM Unique Identfier (PUID) is x-fmt/218.  The original specification of the UK National Archives PUID stated that an &apos;x-fmt&apos; PUID should not be considered persistent. However, as of October 2011, the PRONOM website indicates that existing x-fmt PUIDs will be supported as permanent and that no more x-fmt PUIDs will be created.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Esri_grid</link>
+					<tag>Esri Grid at Wikipedia</tag>
+					<comment>As of September 2011, the Wikipedia page provides a good description of the ASCII Grid format, but only links to further information for the binary format.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

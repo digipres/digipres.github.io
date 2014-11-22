@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000284" titleName="ESRI ArcInfo Coverage " shortName="ArcInfo_Coverage" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2011-08-04</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ESRI ArcInfo Coverage </fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>geospatial data formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>An ESRI ArcInfo Coverage is a georelational data model that stores vector data;  i.e., both the spatial (location) and the attribute (descriptive) data for geographic features. ArcInfo_Coverages use a set of feature classes to represent geographic features. Each feature class stores a set of points, lines (arcs), polygons, or annotation (text). Feature attributes are stored in the ArcInfo_Coverage's .adf files. Other attributes can be stored in INFO tables or tables in an RDBMS, then joined to features with a layer or a relationship class.  ArcInfo_Coverages can have topology, which determines the relationships between features.  </p>
+			<p>An ArcInfo_Coverage is stored as a directory. The directory name is the ArcInfo_Coverage name. An organized collection of ArcInfo_Coverages is called a workspace.  An ArcInfo_Coverage stores a set of thematically associated data considered to be a unit. A single ArcInfo_Coverage usually represents a single layer, such as soils, streams, roads, or land use. In an ArcInfo_Coverage, features are stored as both primary features (points, arcs, polygons) and secondary features (tics, links, annotation). Feature attributes are described and stored independently in feature attribute tables.   Each ArcInfo_Coverage workspace has an INFO database stored under a subdirectory, named info. Each .adf file in an ArcInfo_Coverage folder is related to a pair of the .dat and .nit files in the INFO folder. The arc.dir file in the INFO directory is used to keep track of which pair of .nit and .dat files is related to which .adf file. For information about the data types supported by the ArcInfo_Coverage INFO attribute tables, see <a href="#notes">Notes.</a>  Also, see <a href="#notes">Notes</a> for information about ArcInfo_Coverage data limitations for a single coverage.  </p>
+			<p>More than one feature class is often required to define the features in an ArcInfo_Coverage.  For example, line and polygon feature classes both exist in an ArcInfo_Coverage representing polygon features.  Polygon features also have label points, which appear as a separate feature class.  Every ArcInfo_Coverage has a feature class containing tic points, which represent known, real-world coordinates.  These tic points help define the extent of an ArcInfo_Coverage;  they do not represent any actual data points within the ArcInfo_Coverage. </p>
+The set of features contained in an ArcInfo_Coverage depends on the type of geographic phenomena being modeled.  The types of feature classes that can be found in an ArcInfo_Coverage include:  
+<ul>
+				<li>
+					<i>Point</i> --  A point defined by an x,y coordinate pair used to represent point features or assign User-IDs to polygons.  Used to establish point locations such as well sites, and mountain peaks.  Attributes for a point feature are found in an attribute table named pat.adf.</li>
+				<li>
+					<i>Arc</i>  --  A line defined as a set of ordered x,y coordinates used to represent linear features and polygon boundaries such as street sections, contours, streams, sewers, power lines, and gas lines.  Attributes for an arc feature are found in an attribute table named aat.adf.</li>
+				<li>
+					<i>Node</i> --  The endpoints of an arc or the point at which two or more arcs connect representing features such as valves on pipelines, intersections of streets, power poles, and manhole covers.  Attributes for a node feature are found in an attribute table names nat.adf.</li>
+				<li>
+					<i>Route</i> --  A linear feature composed of one or more arcs or parts of arcs representing a street, contour, stream network, sewer, power line network, gas line network, or street address.  Attributes for a route feature are found in a user named attribute table with extension *.rat.</li>
+				<li>
+					<i>Section</i> --  An arc or portion of an arc used to define a route or the building blocks of routes such as street sections, traffic lanes, pipe conditions, above- and below-ground transmission lines.  Attributes for a section feature are found in a user named attribute table with extension *.sec.</li>
+				<li>
+					<i>Polygon</i> --  An area defined by the arcs that make up its boundary, including arcs defining any islands inside.  User-IDs are assigned to label points.  Polygons represent area features such as soil units, land use, parcels, building footprints, forest stands, and ownership.  Attributes for a polygon feature are found in an attribute table named pat.adf.</li>
+				<li>
+					<i>Region</i> --  A collection of one or more contiguous or noncontiguous polygons defining a geographic feature.  Polygons or multiple polygons represent census geography, areas of states (e.g., Hawaii), and overlapping wildlife habitat. Attributes for a region feature are found in a user named attribute table with extension *.pat.</li>
+				<li>
+					<i>Annotation</i> --  A text string describing a geographic feature.  Shape points are used to position and draw annotations that represent feature labels such as street names, and place-names on road maps.  The annotation labels are found in user defined tables with extension *.txt.</li>
+				<li>
+					<i>Tic</i> --  A geographic reference or control point used to register and transform the coordinates in an ArcInfo_Coverage.  Used for geographic registration and control for digitizing.  Tics allow ArcInfo_Coverage coordinates to be registered to a common coordinate system (universal transverse Mercator [UTM] meters, state plane feet, and so on) and, therefore, relate locations of features in an ArcInfo_Coverage to locations on the earth's surface. Tics are important for registering map sheets during digitizing and editing by registering the source material to the data capture device (for example, a digitizer or stereoplotter) and transforming coordinates from units such as digitizer inches into real-world coordinates such as state plane feet or UTM meters.  Attributes for a tic feature are found in an attribute table named tic.adf.  The tic.adf file contains the IDTIC (User-ID for each tic), the XTIC (tic's x-coordinate), and the YTIC (the tic's y-coordinate).  See <a href="#notes">Notes</a> to find out more information about ArcInfo_Coverage tic files and their role in managing coordinates properly.</li>
+				<li>
+					<i>Link</i> --  Links between features are stored in a lnk.adf file.  More info TBD.</li>
+				<li>
+					<i>Coverage extent</i> --  A geographic feature that describes the outer boundary of an ArcInfo_Coverage.  It is the minimum bounding rectangle that defines the coordinate limits (extreme minimum and maximum coordinates) of ArcInfo_Coverage arcs, label points, and by definition, polygons, route systems, and regions.  The geographic extent information for an ArcInfo_Coverage is stored in the bnd.adf file.  The bnd.adf file is used by many ESRI software applications to set the geographic extent for drawing a coverage.  In addition, it is often used as a default map extent for quick coverage display.  Many spatial processes use the bnd.adf file to determine whether one coverage overlaps another and to sort coverage features by location for processing.  The bnd.adf file contains the XMIN ( x-coordinate of the ArcInfo_Coverage extent's lower left corner), the YMIN ( y-coordinate of the ArcInfo_Coverage extent's lower left corner),the XMAX ( x-coordinate of the ArcInfo_Coverage extent's upper right corner), and the YMAX ( y-coordinate of the ArcInfo_Coverage extent's upper right corner). The coordinates for links, tics, and annotation can fall outside the bnd.adf file. An ArcInfo_Coverage containing no arcs or label points (or a single label point) will have an undefined bnd.adf.</li>
+			</ul>
+			<p>There are three noteworthy characteristics of the link between the spatial and tabular data that represent features: </p>
+			<ul>
+				<li>The features in the ArcInfo_Coverage exist in a one-to-one relationship with the corresponding records in the feature attribute table.</li>
+				<li>ArcGIS maintains the link between the feature and the attribute record through the unique identifier assigned to each feature. This is the feature's sequence number.</li>
+				<li>The feature's sequence number is physically stored in two places for an ArcInfo_Coverage: in the files containing the locational data for each feature (for example, x,y coordinate pairs) and with the corresponding record in the feature attribute table. ArcGIS automatically creates and maintains this connection.</li>
+			</ul>
+			<p>The contents of an ArcInfo_Coverage directory appear differently in ArcCatalog than they do in Windows Explorer. For a table summarizing the main set of files used to store each ArcInfo_Coverage feature class, and the common files used by ArcGIS to manage the spatial information as well as how they are viewed in both ArcCatalog and Windows Explorer, see <a href="http://help.arcgis.com/en/arcgisdesktop/10.0/help/0014/001400000002000000.htm">Contents of a coverage workspace.</a>	
+For restrictions on names for ArcInfo_Coverage see <a href="#notes">Notes.</a>
+			</p>
+		</fdd:description>
+		<fdd:shortDescription>An ESRI ArcInfo_Coverage is a georelational data model that stores vector data—it contains both the spatial (location) and attribute (descriptive) data for geographic features.  </fdd:shortDescription>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000293</fdd:id>
+					<fdd:shortName>GeoDB</fdd:shortName>
+					<fdd:titleName>ESRI Arc Geodatabase</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment> Coverages in the ESRI ArcInfo Coverage format cannot be edited in ArcGIS 8.3 and subsequent versions.  The data model and functionality it supports have been superseded by the ESRI Arc Geodatabase model and form.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000291</fdd:id>
+					<fdd:shortName>e00</fdd:shortName>
+					<fdd:titleName>ESRI ArcInfo Interchange File (e00)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>The ArcInfo interchange file format, also known as an export file (.e00), is used to enable an ESRI ArcInfo Coverage (or other ArcInfo data structure) and associated INFO tables to be transferred between different machines and systems.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Equivalent to</fdd:typeOfRelationship>
+				<fdd:relatedTo/>
+				<fdd:comment>PC ARC/INFO Coverage, not described on this website at this time. Similar to ESRI ArcInfo Coverage, except that attributes are stored in dBASE tables.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Proprietary ArcInfo format developed by ESRI.</fdd:disclosure>
+		<fdd:documentation>Partial documentation in the following: ArcGis Desktop 9.3 (November 25, 2008): <a href="http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=How_Coverages_are_stored">How coverages are stored</a>
+		</fdd:documentation>
+		<fdd:adoption>Legacy format.  No longer fully supported for creation by ESRI.  Tools built into current ArcGIS desktop applications such as ArcInfo Workstation are still available to convert ArcInfo_Coverages into shapefiles and geodatabases as there are still some legacy datasets available in ArcInfo_Coverage formats.  See the ArcGIS Knowledge Base technical article <a href="http://support.esri.com/en/knowledgebase/techarticles/detail/17179">HowTo: Convert a polygon shapefile to a coverage using SHAPEARC.</a>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>See External Dependencies below.</fdd:licensingAndPatents>
+		<fdd:transparency>TBD</fdd:transparency>
+		<fdd:selfDocumentation>TBD</fdd:selfDocumentation>
+		<fdd:externalDependencies>Software dependencies:  ArcInfo_Coverages can be viewed using ArcGIS Explorer, a free GIS viewer.  ArcInfo_Coverages can be worked with in ArcCatalog with an ArcEditor or ArcInfo license.  ESRI ArcInfo Coverages created with ArcInfo before version 7 are unavailable in ArcCatalog.  ArcInfo_Coverages cannot be edited in ArcGIS 8.3 or ArcMap 8.3 or subsequent versions. The ArcInfo_Coverage geoprocessing tools only work with an ArcInfo Workstation software license.</fdd:externalDependencies>
+		<fdd:techProtection>TBD</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:normalDataset>
+				<p>Data types permitted for ArcInfo_Coverage attributes include: binary integers (2 or 4 bytes); decimal integers; floating point numbers (single or double precision); decimal numbers (up to 16 digits); dates; and character strings (up to 320 alphanumeric characters).  Details are in the section Supported Item Types in <a href="http://help.arcgis.com/en/arcgisdesktop/10.0/help/0014/00140000000q000000.htm">Fields (items) in coverage attribute tables.</a>
+				</p>
+				<p>ArcInfo_Coverage attributes are stored in INFO files, typically with an .adf extension, in the coverage folder.  The specification of the format for each record in the data file is referred to as the item definition.  In ArcGIS, items are more commonly known as fields, attributes, or columns in a table.  Each record in a coverage attribute (INFO) table can have up to 4,096 characters or bytes.  This is the sum of the input widths of the items in the attribute table. Any number of items can be defined for the data file.</p>
+				<p>Items are defined by their name, data type, number of characters (or bytes) used to store values, display width, and (for decimal numbers) number of decimals you want to display.  The INFO table allows fields for item name (any name with up to 16 alphanumeric characters), item width (number of spaces (or bytes) used to store item values), output width (Number of spaces (or bytes) used to display item values), item type (the data type of the item), and number of decimals (the number of digits to the right of the decimal place for item types that hold decimal numbers).   More detailed information can be found at: <a href="http://help.arcgis.com/en/arcgisdesktop/10.0/help/0014/00140000000q000000.htm">Fields (items) in coverage attribute tables.</a>
+				</p>
+				<p>There are limitations on size for the INFO data files, nodes, coordinates per arc, arcs per polygon and node, arcs, points, polygons, route systems, routes, section, region subclasses, regions, polygons per region, tics, annotation subclasses, levels of annotation, annotation strings, and user-ID values that can be included in a single coverage.  There are also constraints to feature attribute tables when stored in INFO data files.  These constraints do not apply to external relational database management systems.  There are also coverage processing limitations that are usually caused by extremely complex coverages.  More specifics on each of these conditions can be found at <a href="http://help.arcgis.com/en/arcgisdesktop/10.0/help/0014/00140000001r000000.htm">Coverage data limitations.</a>
+				</p>
+			</fdd:normalDataset>
+		</fdd:datasetQF>
+		<fdd:gisQF>
+			<fdd:normalGIS>
+				<p>Support for georeferencing and other basic spatial functions done with coverages are greatly facilitated by the creation and use of topologies and of the use of double-precision coordinates.</p>
+				<p>
+					<b>Topologies:  </b>In an ArcInfo_Coverage polygon, line feature classes are necessary to support regions and routes. This approach requires additional effort to make sure polygons and lines do not overlap when they should not. This is where topology comes in. Adding topology to an ArcInfo_Coverage allows users to define integrity rules on the feature classes. Rules such as no overlaps or gaps for polygons (regions), routes must be on top of other routes, and points must be on top of route endpoints allow the user to maintain ArcInfo_Coverage-like integrity on the data when it is necessary. </p>
+				<p>The extra steps necessary to create a topology include defining the rules and making the software properly determine the necessary connections and adjacencies, assign the codes or identifiers, and build the tables to enforce the rules.  In addition, there can be much human effort involved in correcting or cleaning the data once the topology has been created and run over the data.  For many datasets, however, the gains in efficiency and analytical capability far outweigh the extra effort needed to build the topology.  Later ESRI products, from ArcGIS 8.3 on, have improved the tools for building topologies by generalizing them beyond the single physical data model represented by ArcInfo_Coverages to wider varieties of geodatabases.  For more information about topologies in ArcInfo_Coverages, see <a href="http://help.arcgis.com/en/arcgisdesktop/10.0/help/0014/001400000016000000.htm">Coverage topology.</a>   For information about topologies and their use in both ArcInfo_Coverages and geodatabases that includes a comparison between them, and instructions for converting ArcInfo_Coverage data to geodatabase feature classes, see the May 2003 ESRI White Paper, <a href="http://downloads2.esri.com/support/whitepapers/ao_/geodatabase-topology.pdf">ArcGIS:  Working with Geodatabase Topology.</a>
+				</p>
+				<p>
+					<b>Double-Precision Coordinates:  </b>One important characteristic of a coverage is its resolution or the precision at which the location and shape of geographic features are stored.  Coverage resolution is influenced by three factors:  the coordinate precision specified;  the precision of the input device; and the scale of input documents and coverage processing tolerances, particularly the fuzzy tolerance used in many geoprocessing commands.  </p>
+				<p>Coordinate precision refers to the mathematical exactness of a coordinate and is based on the possible number of significant digits that can be stored for each coordinate.  Coverage datasets are stored in either single- or double-precision coordinates.  Double-precision coordinates for coverages should be used whenever possible.  This allows extremely small fuzzy tolerances to be set up for all processing, thereby minimizing the effects of fuzzy processing on coordinate shifting when rubbersheeting or using other georectification methods.  For more information about ArcInfo_Coverage resolution, see <a href="http://help.arcgis.com/en/arcgisdesktop/10.0/help/0014/001400000004000000.htm">Coverage resolution (precision).  </a>
+				</p>
+			</fdd:normalGIS>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>adf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>A number of files with extension .adf may be found in an ArcInfo_Coverage directory representing either attributes for the thematically organized features within the coverage or the geographic extent of the coverage.  Single or multiple coverages representing single or multiple layers of information (features) are found within an ArcInfo_Coverage workspace.  Within a workspace, each ArcInfo_Coverage is contained within its own directory.  Within the Coverage directory there is a sub-directory called <i>info</i> or <i>INFO</i>  containing files that maintain the relationships among the features and the attribute tables that further describe the features.  Types of *.adf files that could be included in an ArcInfo_Coverage  include:
+				<ul>
+						<li>
+							<i>pat.adf:  </i>Attributes for a <b>point</b> defined by an x,y coordinate pair used to represent point features or assign User-IDs to polygon.</li>
+						<li>
+							<i>aat.adf:  </i>Attributes for an <b>arc</b> defined as a set of ordered x,y coordinates used to represent linear features and polygon boundaries.</li>
+						<li>
+							<i>nat.adf:  </i>Attributes for a <b>node</b> defined as the endpoints of an arc or the point at which two or more arcs connect.</li>
+						<li>
+							<i>pat.adf:  </i>Attributes for a <b>polygon</b> -- an area defined by the arcs that make up its boundary, including arcs defining any islands inside the area.</li>
+						<li>
+							<i>link.adf:  </i>
+							<b>Links</b> between features.</li>
+						<li>
+							<i>tic.adf:  </i>Contains the <b>geographic coordinates</b> that allow a coverage to be registered to a common coordinate system and, therefore, relate locations within the coverage to locations on the Earth.  All coverages within a workspace should use the same tics although each coverage will have its own tic file.</li>
+						<li>
+							<i>bnd.adf:  </i>The <b>geographic extent </b> information for an ArcInfo_Coverage, expressed in coordinates.  The coordinates for links, tics, and annotations can fall outside the bnd.adf file.  An ArcInfo_Coverage containing no arcs or label points (or a single label point) will have an undefined bnd.adf.  </li>
+					</ul>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>rat</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>A user named attribute table for a <b>route</b> feature in an ArcInfo_Coverage.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>sec</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>A user named attribute table for a <b>section</b> feature in an ArcInfo_Coverage.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>pat</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>A user named attribute table for a <b>region</b> feature in an ArcInfo_Coverage.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>txt</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>User defined  tables containing the labels for an <b>annotation</b> feature in an ArcInfo_Coverage.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>nit</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>User named binary file named arcXXXX.nit containing the information necessary to read the attributes for a feature in an ArcInfo_Coverage that are found in the associated *.adf files.  The other binary file necessary to read the attributes is the .dat file.  In addition, an arc.dir file is necessary to identify which .dat and .nit files are related to which .adf files.  All these files must be contained in the INFO subdirectory within the directory of a given ArcInfo_Coverage.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>dat</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>User named binary file named arcXXXX.dat containing the information necessary to read the attributes for a feature in an ArcInfo_Coverage that are found in the associated *.adf files.  The other binary file necessary to read the attributes is the .nit file.  In addition, an arc.dir file is necessary to identify which .dat and .nit files are related to which .adf files.  All these files must be contained in the INFO subdirectory within the directory of a given ArcInfo_Coverage.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>dir</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>File named arc.dir containing the information necessary to read the attributes for a feature in an ArcInfo_Coverage that are found in the associated *.adf files.  Binary files necessary to read the attributes are the .nit files, and the .dat files.  The arc.dir file identifies which .dat and .nit files relate to which .adf files.  All these files must be contained in the INFO subdirectory within the directory of a given ArcInfo_Coverage.</fdd:note>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Naming restrictions:  </b>There are some limitations on the names that can be used by coverages.  The following are some limitations on the coverage names:
+</p>
+			<ul>
+				<li>Cannot be longer than 13 characters</li>
+				<li>Cannot contain spaces</li>
+				<li>Cannot start with a number</li>
+				<li>Does not have an extension</li>
+				<li>Must be in all lowercase letters</li>
+			</ul>
+			<p>Each coverage workspace has an INFO database stored under a subdirectory called "INFO". Each .adf file in a coverage folder is related to a pair of the .dat and .nit files in the INFO folder. The arc.dir file in the INFO directory is used to keep track of which pair of .nit and .dat files is related to which .adf file.  Note:  Never delete the INFO folder, because that will corrupt your coverage.</p>
+			<p>
+				<b>Coverage tic files and coordinate management:</b> 
+Although each coverage contains tics, it is important to recognize that all the coverages in a GIS database should use the same tics. Tic locations should be established using known, real-world locations that can be recorded for each map sheet prior to beginning coverage automation. These common tic locations should be given the same Tic-ID and recorded on every map sheet in the project to ensure that each coverage shares a common locational reference. Examples of suitable tics include corners of map sheets, intersections of roads, and control points located by survey markers.  Ideally, a master tic file will be available for a coverage that will use the same tics that have been recorded on each map sheet for the Tic-IDs and their known real-world x,y coordinates.  Once a master tic file is created, it can be used to create tics for all data collected in the same area. Each coverage should contain at least four tics.</p>
+			<p>Two other coverage files store essential information for coordinate management within a coverage: the coordinate definition file, prf.adf, holds the coverage's map projection information, and the tolerances file, tol.adf, holds a number of processing tolerances. One of the tolerances maintained in the tol.adf file is a tic match tolerance. Although these files are optional, using them will ensure proper coordinate management.  For more information, see <a href="http://help.arcgis.com/en/arcgisdesktop/10.0/help/0014/00140000000w000000.htm">Coverage tics.</a>
+			</p>
+			<p>
+				<b>Use of Topologies:  </b> ArcInfo Coverages have the capacity to define topological models for the vector data they contain.  Topology -- the spatial relationship between geographic features -- is fundamental to ensuring data quality.  Topology enables advanced spatial analysis and plays a fundamental role in ensuring the quality of a GIS database.  ArcInfo_Coverages represent one of the early mechanisms for defining topologies.  By understanding the physical data model of an ArcInfo_Coverage with its arcs, nodes, polygons, routes, and regions, it's possible to better understand how an ArcInfo_Coverage represents space, how it is edited, and how it can be used to constrain and validate features as part of a database design. Also, by defining topologies, data producers can greatly improve the speed, accuracy, and utility of many spatial data operations by enforcing strict connectivity, by recording connectivity and adjacency, and by maintaining information about the relationships between and among points, lines, and polygons in spatial data.  Topologies can be particularly helpful for network analysis and for creating clean overlays / layers of data.  For example, if you need to make sure that the footprint of a building in a building layer does not overlap the property lines within a different layer (cadastral data), rules can be added to a topology ensuring that violation will be noted and can be corrected.</p>
+			<p>The ArcInfo_Coverage data model is a collection of features classes that can share geometry among them.  It employs a CLEAN/Validate process with integrity rules / flags for maintaining the topology.  With ArcInfo_Coverages, if different feature classes that share the same geometry are needed, either regions or routes can be created on top of the underlying features. For instance, suppose parcels, lots, and easements within the database need to be maintained with geometry shared where appropriate. An ArcInfo_Coverage that contained arc and polygon features along with three region subclasses would represent the parcels, lots, and easements.  Atomic polygon features would need to be managed even though the features of interest are in the region feature classes. The topological rules for the ArcInfo_Coverage are hardwired, unavoidable, and nonviolable.  </p>
+			<p>
+				<b>Versions of coverages:  </b>
+PC ARC/INFO coverages are similar to ArcInfo_Coverages, except that their attributes are stored in dBASE tables. PC ARC/INFO coverages can be previewed in ArcCatalog and metadata can be created for them, but other data management operations, such as copy, paste, and delete, are not available.  </p>
+			<p>When working with versions of coverages, converting the workspace using ArcInfo Workstation will allow access to the content of the coverages in ArcCatalog.</p>
+		</fdd:general>
+		<fdd:history>ESRI ArcInfo Coverages cannot be edited in ArcGIS 8.3 and subsequent versions. The ArcInfo_Coverage editing functionality has been removed from ArcMap 8.3 and onward.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=How_Coverages_are_stored</link>
+					<tag>How coverages are stored</tag>
+					<comment>Partial documentation; ArcGis Desktop 9.3, November 25, 2008</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=What_is_a_Coverage</link>
+					<tag>What is a coverage? </tag>
+					<comment>ArcGis Desktop 9.3.  
+Last modified November 25, 2008</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://help.arcgis.com/en/arcgisdesktop/10.0/help/0014/001400000002000000.htm</link>
+					<tag>Contents of a coverage workspace </tag>
+					<comment>ArcGis Desktop 10.0.  Published June 8, 2010</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://help.arcgis.com/en/arcgisdesktop/10.0/help/0014/001400000016000000.htm</link>
+					<tag>Coverage topology </tag>
+					<comment>ArcGis Desktop 10.0.  Published June 8, 2010</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://avce00.maptools.org/docs/v7_bin_cover.html</link>
+					<tag>Arc/Info Binary Coverage Format Analysis</tag>
+					<comment>By Daniel Morisette</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://downloads2.esri.com/support/whitepapers/ao_/geodatabase-topology.pdf</link>
+					<tag>ArcGIS:  Working with Geodatabase Topology </tag>
+					<comment>May 2003 ESRI White Paper; Coverage and Geodatabase models are compared on page 11</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://help.arcgis.com/en/arcgisdesktop/10.0/help/0014/001400000004000000.htm</link>
+					<tag>Coverage resolution (precision)</tag>
+					<comment>ArcGis Desktop 10.0.  Published June 8, 2010</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://help.arcgis.com/en/arcgisdesktop/10.0/help/0014/00140000000q000000.htm</link>
+					<tag>Fields (items) in coverage attribute tables</tag>
+					<comment>ArcGis Desktop 10.0.  Published June 8, 2010</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://help.arcgis.com/en/arcgisdesktop/10.0/help/0014/00140000001r000000.htm</link>
+					<tag>Coverage data limitations</tag>
+					<comment>ArcGis Desktop 10.0.  Published June 8, 2010</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://help.arcgis.com/en/arcgisdesktop/10.0/help/0014/00140000000w000000.htm</link>
+					<tag>Coverage tics</tag>
+					<comment>ArcGis Desktop 10.0.  Published June 8, 2010</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://support.esri.com/en/knowledgebase/techarticles/detail/17179</link>
+					<tag>HowTo:  Convert a polygon shapefile to a coverage using SHAPEARC</tag>
+					<comment>ArcGis Knowledge Base - Technical Article ID# 17179</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.esri.com/news/arcuser/0701/migrating.html</link>
+					<tag>Migrating Coverages to Geodatabases</tag>
+					<comment>Clarifies the relationships between GeoDB and ArcInfo_Coverage</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.geog.ucsb.edu/~kclarke/G176B/DataModels.ppt</link>
+					<tag>Geographical Data Modeling: UML and Data Modeling Elements: Examples from the Marine Data Model and ArcHydro</tag>
+					<comment>PowerPoint slide show</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://dusk2.geo.orst.edu/buffgis/PPT/geo580_3.ppt</link>
+					<tag>Models and Structures of ArcGIS: UML and Data Modeling Elements</tag>
+					<comment>PowerPoint slide show</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.lib.ncsu.edu/ncgdap/presentations/esri09_essic.ppt</link>
+					<tag>Are Geodatabases a Suitable Long-Term Archival Format?</tag>
+					<comment>PowerPoint slide show by Jeff Essic and Matt Sumner, NCSU Libraries, 2009</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

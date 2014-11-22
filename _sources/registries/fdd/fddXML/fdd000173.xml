@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000173" titleName="DV-DIF (Digital Video Digital Interface Format)" shortName="DV-DIF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>moving-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2011-12-26</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>DV-DIF (Digital Video Digital Interface Format)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>DV</fdd:keyword>
+			<fdd:keyword>video formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>Interface format for <fddLink id="fdd000183">DV</fddLink>, the Digital Video family of related video encodings (DV, DVCAM, and DVCPRO).  A frame of data in the DV format stream is divided into several DIF sequences, each of which is composed of an integral number of 80-byte DIF blocks.  DIF blocks are the basic units of DV streams, and each block contains a 3-byte ID header that specifies the block type and its position in the DIF sequence.  There are five types of DIF blocks: DIF sequence header, Subcode, Video Auxiliary information (VAUX), Audio, and Video.  DV-DIF blocks can be stored as files in raw form (.dv or .dif extension) or wrapped in such file formats as AVI, QuickTime, and MXF.</p>
+			<p>DV encoding is described in <fddLink id="fdd000183">DV</fddLink>. More information on DV-DIF is provided in <a href="#notes">Notes</a> below. <a href="../contact_format.shtml">Comments</a> on this format description are welcome.</p>
+		</fdd:description>
+		<fdd:shortDescription>Interface format for DV, the Digital Video family of related video encodings (DV, DVCAM, and DVCPRO). </fdd:shortDescription>
+		<fdd:productionPhase>Generally a initial-state or middle-state format.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000183</fdd:id>
+					<fdd:shortName>DV</fdd:shortName>
+					<fdd:titleName>Digital Video Encoding (DV, DVCAM, DVCPRO)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000190</fdd:id>
+					<fdd:shortName>AVI_DV</fdd:shortName>
+					<fdd:titleName>AVI, DV Digital Video</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000191</fdd:id>
+					<fdd:shortName>QTV_DV</fdd:shortName>
+					<fdd:titleName>QuickTime Video, DV Digital Video</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000172</fdd:id>
+					<fdd:shortName>MXF_GC_DV-DIF</fdd:shortName>
+					<fdd:titleName>MXF Generic Container Mapped to DV-DIF Data</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:comment>Other file wrappers, not documented here</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>See <fddLink id="fdd000183">DV</fddLink>
+		</fdd:experience>
+		<fdd:preference>See <fddLink id="fdd000183">DV</fddLink>
+		</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>See <fddLink id="fdd000183">DV</fddLink>
+		</fdd:disclosure>
+		<fdd:documentation>See <fddLink id="fdd000183">DV</fddLink>
+		</fdd:documentation>
+		<fdd:adoption>See <fddLink id="fdd000183">DV</fddLink>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>See <fddLink id="fdd000183">DV</fddLink>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>See <fddLink id="fdd000183">DV</fddLink>
+		</fdd:transparency>
+		<fdd:selfDocumentation>Pertains to the file format; see the subtypes listed above or the wrappers <fddLink id="fdd000059">AVI</fddLink>, <fddLink id="fdd000052">QuickTime</fddLink>, and <fddLink id="fdd000013">MXF</fddLink>.
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None for files; see <fddLink id="fdd000183">DV</fddLink> for information about videocassette applications.
+		</fdd:externalDependencies>
+		<fdd:techProtection>Pertains to the file format; see the subtypes listed above or the wrappers <fddLink id="fdd000059">AVI</fddLink>, <fddLink id="fdd000052">QuickTime</fddLink>, and <fddLink id="fdd000013">MXF</fddLink>.
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:movingImageQF>
+			<fdd:normalVideo>See <fddLink id="fdd000183">DV</fddLink>
+			</fdd:normalVideo>
+			<fdd:clarity>See <fddLink id="fdd000183">DV</fddLink>
+			</fdd:clarity>
+			<fdd:beyondVideo>See <fddLink id="fdd000183">DV</fddLink>
+			</fdd:beyondVideo>
+		</fdd:movingImageQF>
+		<fdd:soundQF>
+			<fdd:normalSound>See <fddLink id="fdd000183">DV</fddLink>
+			</fdd:normalSound>
+			<fdd:fidelity>See <fddLink id="fdd000183">DV</fddLink>
+			</fdd:fidelity>
+			<fdd:beyondSound>See <fddLink id="fdd000183">DV</fddLink>
+			</fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>dv</fdd:sigValue>
+					<fdd:sigValue>dif</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For unwrapped "raw" files. For wrapped files, see <fddLink id="fdd000190">AVI_DV</fddLink>, <fddLink id="fdd000191">QTV_DV</fddLink>, and <fddLink id="fdd000172">MXF_GC_DV-DIF</fddLink>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>video/x-dv</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For unwrapped "raw" files, from <a href="http://filext.com/">The File Extension Source</a>. For wrapped files, see <fddLink id="fdd000190">AVI_DV</fddLink>, <fddLink id="fdd000191">QTV_DV</fddLink>, and <fddLink id="fdd000172">MXF_GC_DV-DIF</fddLink>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>Not found.</fdd:sigValueNA>
+				<fdd:note>
+					<p>None discovered for raw files</p>
+				</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>SMPTE 383M (MXF Mapping of DV-DIF to Generic Container) reports that single-frame distributions of DV-DIF data are defined in SMPTE 314M, SMPTE 370M, IEC 61834-2 (for a complete list of specification documents, see <a href="fdd000183.shtml#specs">DV format specifications</a>).  SMPTE 383M (page 2) also reports:</p>
+			<ul>
+				<li>For 60-cycle systems, there are ten identical DIF sequences in each DIF channel.</li>
+				<li>For 50-cycle systems, twelve.  Each DIF sequence is assigned to a DIF channel.</li>
+				<li>For 25 MB/s IEC DV and DV-based compression: one DIF channel.</li>
+				<li> For 50 MB/s DV-based compression: two channels.</li>
+				<li>For 100 MB/s DV-based compression: four channels.</li>
+			</ul></fdd:general>
+	</fdd:notes>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000183">DV</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

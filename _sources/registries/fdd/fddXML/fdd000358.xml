@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000358" titleName="MusicXML, Version 3" shortName="MusicXML_3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>other</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>other</fdd:value>
+				<fdd:comment>music notation</fdd:comment>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2012-10-09</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>MusicXML, Version 3</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>structured music formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>MusicXML is an XML-based format for representing Western musical notation with specifications available both as XML DTDs and in W3C&apos;s XML Schema Language. To quote from the DTDs, &quot;The MusicXML format is designed to represent musical scores,
+specifically common western musical notation from the 17th
+	century onwards. It is designed as an interchange format
+	for notation, analysis, retrieval, and performance
+	applications. Therefore it is intended to be sufficient,
+not optimal, for these applications.&quot;  Consistent with the objective, MusicXML is widely used for interchange between different types of applications, such as <a href="http://en.wikipedia.org/wiki/Scorewriter">scorewriters</a> and music production systems.  The design of MusicXML was based on formats
+for music notation developed before XML was available and also draws on basic features of <fddLink id="fdd000102">MIDI sequence data</fddLink> while expressing them in explicit and human-readable elements.  MusicXML represents the semantics of the underlying musical
+data.  MusicXML can carry enough information to produce a printed score, but the format does not represent printed pages directly, in contrast to <fddLink id="fdd000030">PDF</fddLink>.</p>
+			<p>MusicXML can represent scores either partwise (measures/bars within parts) or timewise (parts
+within measures).  XSLT stylesheets that transform a partwise score to a timewise score or vice versa are distributed with the specification.  MusicXML has two different top-level DTDs, each with its own root element. In the partwise DTD, the root element is &lt;score-partwise&gt; and the part (for a particular instrument) is primary, with measures contained within each part. In the timewise DTD, the root element is &lt;score-timewise&gt; and the measure is primary, with musical parts for different instruments contained within each measure. The XML Schema (.xsd) specification for MusicXML includes both of the top-level document elements.  In addition, a MusicXML file with an &lt;opus&gt; root element is used to combine like scores into a work, for example for movements in a symphony.</p>
+			<p>Since MusicXML files are often large in comparison to the native binary formats used by score-writing software, they are often distributed as ZIP files, using Deflate compression and .mxl as file extension.  See <fddLink id="fdd000354">ZIP_PK</fddLink> for information about ZIP in general.</p>
+		</fdd:description>
+		<fdd:shortDescription>An XML-based format for representing Western musical notation.  Represents the semantics of the underlying musical
+data, designed as an interchange format for music notation, analysis, retrieval, and performance applications.</fdd:shortDescription>
+		<fdd:productionPhase>Typically an exchange (middle-state) format.  MusicXML files can be used to derive display files via applications that support composition or utilities to view or print scores.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000076</fdd:id>
+					<fdd:shortName>XML_DTD</fdd:shortName>
+					<fdd:titleName>XML Document Type Definition</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000077</fdd:id>
+					<fdd:shortName>XML_Schema_1_0</fdd:shortName>
+					<fdd:titleName>W3C XML Schema Language</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:comment>Versions 1 and 2 of MusicXML, not described separately on this website.  Scores compliant with versions 1 and 2 are also valid version 3 files.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:comment>In addition to the straightforward XML version, a compressed form of MusicXML has been defined, based on the ZIP format, and using the .mxl file extension.  Compressed MusicXML is not currently described separately on this website.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully, openly documented through XML document type definitions (DTDs) and a specification in the W3C XML Schema language. Originally developed by Michael Good of Recordare LLC.  Recordare was acquired by MakeMusic, Inc., in late 2011.  Make Music makes the specification available under a <a href="http://www.musicxml.com/for-developers">Public License</a>.</fdd:disclosure>
+		<fdd:documentation>
+			<p>The specification for MusicXML , Version 3 and for previous versions are available from <a href="http://www.musicxml.com/for-developers">http://www.musicxml.com/for-developers</a>
+			</p>
+			<p>Extensive <a href="http://www.musicxml.com/tutorial/">tutorials</a> on the MusicXML website support the specification.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>To quote from <a href="http://musescore.org/en">MuseScore.org</a> in October 2012: &quot;MusicXML is the universal standard for sheet music and can be used by most of the currently available scorewriters including Sibelius, Finale, and more than 100 others. It is the recommended format for sharing your sheet music between different scorewriters.&quot;  Similarly the Music Notation Project, with an interest in alternative notations for music, particularly those that might be easier to learn than the traditional &quot;diatonic&quot; staff, states in relation to its <a href="http://musicnotation.org/software/open-source-strategy">open source software strategy</a>, &quot;There has finally emerged a successful standard interchange file format for music notation called MusicXML. MusicXML files can be read or written by a large number of music applications that run on a wide variety of computer platforms, including the two most popular commercial music notation applications, Finale and Sibelius.&quot;  The free Dolet plugins for Finale and Sibelius extend built-in MusicXML capabilities for faster and higher quality transfers between the two applications, including batch conversion to MusicXML.</p>
+			<p>MusicXML.com lists software that can read or write MusicXML at <a href="http://www.musicxml.com/software">http://www.musicxml.com/software</a>.  Another list of applications supporting MusicXML is at <a href="http://www.music-notation.info/en/formats/MusicXML.html">http://www.music-notation.info/en/formats/MusicXML.html</a>.  In August 2012, the <a href="http://en.wikipedia.org/wiki/MusicXML">Wikipedia page for MusicXML</a> stated that over 160 music notation programs supported MusicXML to some degree, including most scorewriting programs, most music OCR programs, and some music sequencing programs.</p>
+			<p>An <a href="http://libmusicxml.sourceforge.net/">open source software library</a> in C++ has been developed for version 2 of MusicXML.  As of October 2012, the project appears to be dormant.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>The XML-based specifications for MusicXML and associated distributed files can be freely used under a Public License.  Changes to the distributed schemas, etc. need to be acknowledged.  To quote from <a href="http://www.musicxml.com/tutorial/faq/">http://www.musicxml.com/tutorial/faq/</a>: &quot;The MusicXML DTDs and XSDs are available under a royalty-free license from MakeMusic. This license is modeled on those from the World Wide Web Consortium (W3C). If you follow the terms of the license, you do not need to pay anyone to use MusicXML in your products or research. MakeMusic has no patents issued or pending for the MusicXML DTDs and XSDs.&quot;</p>
+			<p>The formal license is available from <a href="http://www.musicxml.com/for-developers/">http://www.musicxml.com/for-developers/</a>
+			</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>Very transparent to a human reader or with a text editor.  Comprised entirely of XML with element names consisting of familar musical terms, such as &lt;note&gt;, &lt;duration&gt;, and &lt;pitch&gt;. </fdd:transparency>
+		<fdd:selfDocumentation>The MusicXML DTD and schema include an identification section, with elements in use in headers in the MuseData format and borrowing from Dublin Core. Explicit elements are Creator, Rights, Encoding (with several sub-elements), Source, Relation (optionally used to describe words, arrangement, etc.).  A Miscellaneous element can hold any other descriptive metadata that applies to the score as a whole.  In addition, the contents of the &lt;credit&gt; element contains text used to display or print credit information on a score, including identification of title, sub-title, composer, arranger, etc.  </fdd:selfDocumentation>
+		<fdd:externalDependencies>None.</fdd:externalDependencies>
+		<fdd:techProtection>The MusicXML specification includes no internal support for encryption or other technical protection.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:textQF>
+			<fdd:normalText>Although not strictly a format for text, formats for notated music share distinctions in functionality that are common with text.  A MusicXML instance can be used to display a score that can be viewed and printed.  Words (such as lyrics and credits) can be searched by text-indexing software.</fdd:normalText>
+			<fdd:structure>MusicXML represents the semantic structure of a score: key; measures (bars); notes with pitch and duration; musical parts for different instruments; lyrics/words, etc.</fdd:structure>
+			<fdd:layout>Music XML does not specify a precise layout with page-breaks, etc.  It does represent layout semantics that are important to the display of scores, such as: whether directions should go above or below a staff; spacing for staves; and scaling of features relative to a single measure that can be adjusted to fit a particular pagesize.</fdd:layout>
+			<fdd:mathDiag>Musical scores do not include mathematical or chemical formulae.  Hence this functionality factor is not relevant for music notation formats.</fdd:mathDiag>
+			<fdd:beyondText>MusicXML is designed to represent the semantics of music notation and characteristics for its display and performance.</fdd:beyondText>
+		</fdd:textQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>xml</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>An uncompressed MusicXML file is an XML file.  Compressed Music XML files use the .mxl extension.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.recordare.musicxml+xml</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See IANA <a href="http://www.iana.org/assignments/media-types/application/vnd.recordare.musicxml+xml">registration for uncompressed MusicXML</a>.  For compressed MusicXML files, the media type <i>application/vnd.recordare.musicxml</i> is used.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>None specified in IANA registration.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>MusicXML was designed for sharing sheet music files between applications, and for archiving them for use in the future. MusicXML complements the native file formats used by Finale and other music composition programs, which are designed for rapid, interactive use. The design of MusicXML was based on two earlier academic music formats
+for music notation, MuseData and Humdrum, and has deliberate commonalities with MIDI where appropriate. A useful comparison of music notation formats is <a href="http://www.glyndwr.ac.uk/cunninghams/research/SCunningham_MSc.pdf">Music File Formats and Project XEMO</a>, a Master&apos;s thesis by Stuart Cunningham.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>The format was developed by Recordare, LLC and copyright in the specifications is now owned by MakeMusic.  Michael Good, who developed MusicXML as the principal of Recordare, moved to MakeMusic in late 2011 and remains responsible for the format and associated documentation.  The version history for MusicXML is at <a href="http://www.musicxml.com/for-developers/version-history/">http://www.musicxml.com/for-developers/version-history/</a>.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.musicxml.com/for-developers/</link>
+					<tag>MusicXML Specification
+</tag>
+					<comment>As of October 2012, the current version of MusicXML is 3.0, released in August 2011.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.musicxml.com/</link>
+					<tag>Home page for the MusicXML format</tag>
+					<comment>Part of MakeMusic.  Links to specifications, FAQ, tutorials, publications, etc.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.118.5431</link>
+					<tag>MusicXML: An Internet-Friendly Format for Sheet Music [paper]</tag>
+					<comment>By Michael Good, developer of MusicXML.  A paper from the 2001 XML Conference hosted by IDEAlliance.  The paper is no longer available on the IDEAlliance website.  [This version states that it was rendered by www.RenderX.com.]</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://downloads2.makemusic.com/MusicXML/xml2001-talk.pdf</link>
+					<tag>MusicXML: An Internet-Friendly Format for Sheet Music [presentation]</tag>
+					<comment>2001 presentation based on paper cited above.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/MusicXML</link>
+					<tag>MusicXML page on Wikipedia</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.glyndwr.ac.uk/cunninghams/research/SCunningham_MSc.pdf</link>
+					<tag>Music File Formats and Project XEMO</tag>
+					<comment>By Stuart Cunningham, 2003.  Thesis for MSc in Multimedia Communications.  Thorough comparison of MusicXML, NIFF (Notation Interchange File Format) and MIDI formats.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://michaelgood.info/category/musicxml/</link>
+					<tag>Blog by MusicXML developer, Michael Good.</tag>
+					<comment>Link is to postings related to MusicXML</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Internet media types (MIME-types) were registered with IANA in 2007.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.iana.org/assignments/media-types/application/vnd.recordare.musicxml+xml</link>
+							<tag>Registration of application/vnd.recordare.musicxml+xml for uncompressed MusicXML</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.iana.org/assignments/media-types/application/vnd.recordare.musicxml</link>
+							<tag>Registration of application/vnd.recordare.musicxml for compressed MusicXML</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://musescore.org/en/handbook/file-format</link>
+					<tag>File format information from MuseScore</tag>
+					<comment>An annotated list of music formats, with brief descriptions of associated functionality.  </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.music-notation.info/en/formats/MusicXML.html</link>
+					<tag>MusicXML page on music-notation.info</tag>
+					<comment>Lists software that reads and writes MusicXML</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000154" titleName="JPEG 2000 Part 2 (Extensions) jpf (jpx) File Format" shortName="JPX_FF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-wrapper</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2011-12-21</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ISO/IEC 15444-2:2004. Information technology -- JPEG 2000 image coding system: Extensions, Annex M: JPX extended file format syntax (formal name) JPEG 2000 jpf or jpx file format (common name)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>JPEG 2000</fdd:keyword>
+			<fdd:keyword>jpf</fdd:keyword>
+			<fdd:keyword>jpx</fdd:keyword>
+			<fdd:keyword>raster image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>Wrapper developed by the Joint Photographic Experts Group (JPEG) for still images using JPEG 2000 extended encoding for digital still images, as well as other encodings (specification p. 177).  JPX_FF inherits features from its parent: <fddLink id="fdd000143">JP2_FF</fddLink>, JPEG 2000 Part 1 (Core) jp2 File Format.  JPX_FF images may be compatible with the JP2 reader specification (backwards compatible), thereby maximizing interoperability, or they may "completely defined" by the extensions in Part 2 of the standard and thus not compatible with JP2 readers.<br/>
+			<br/>The specification describes a <i>baseline profile</i> (pp. 168-69), a conforming JPX baseline reader would meet the following requirements:<ul>
+				<li>Render wavelet compression, need not render other types</li>
+				<li>Render only one (or the first) compositing layer</li>
+				<li>Need not support compression extensions other than irreversible decorrelation transform and non-linearity transformation</li>
+				<li>Support for a specific set of color spaces</li>
+				<li>Support for fragmented codestream in first layer, so long as all fragments are in the file</li>
+				<li>Expects to find the JP2 Header Box in a specific location</li>
+				<li>Properly interpret opacity channel information</li>
+			</ul>Support for georeferencing is provided via the GML in JPEG 2000 for Geographic Imagery (<fddLink id="fdd000303">GMLJP2</fddLink>) specification from the Open Geospatial Consortium (OGC). </fdd:description>
+		<fdd:shortDescription>Wrapper developed by the Joint Photographic Experts Group (JPEG) for still images using JPEG 2000 extended encoding for digital still images, as well as other encodings.  JPX_FF images may be compatible with the JP2 reader specification (backwards compatible), thereby maximizing interoperability, or they may 'completely defined' by the extensions in Part 2 of the standard and thus not compatible with JP2 readers.</fdd:shortDescription>
+		<fdd:productionPhase>May be used for content in initial, middle, and final states.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000141</fdd:id>
+					<fdd:shortName>J2K_EXT</fdd:shortName>
+					<fdd:titleName>JPEG 2000 Part 2, Coding Extensions</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>Uncompressed bitmap, not documented at this time</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>ITU-T "Group 3" FAX Compression (T.4), One Dimensional; commonly known as Modified Huffman (MH) encoding, not documented at this time</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>ITU-T "Group 3" FAX Compression (T.4), Two Dimensional; commonly known as Modified READ (MR) encoding, not documented at this time</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000136</fdd:id>
+					<fdd:shortName>ITU_G4</fdd:shortName>
+					<fdd:titleName>ITU-T "Group 4" FAX Compression (T.6)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Commonly known as Modified Modified READ (MMR) encoding</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000042</fdd:id>
+					<fdd:shortName>JBIG_1</fdd:shortName>
+					<fdd:titleName>JBIG1 Bitonal Image Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000017</fdd:id>
+					<fdd:shortName>JPEG_DCT</fdd:shortName>
+					<fdd:titleName>JPEG Lossy (DCT) Compression Encoding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000151</fdd:id>
+					<fdd:shortName>JPEG_LS</fdd:shortName>
+					<fdd:titleName>JPEG Lossless Compression</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000010</fdd:id>
+					<fdd:shortName>JBIG_2</fdd:shortName>
+					<fdd:titleName>JBIG2 Bitonal Image Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>JPEG 2000 Part 2 Extended File Format with JPEG 2000 (Part 2) Extended Encoding, Lossless, not documented at this time</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>JPEG 2000 Part 2 Extended File Format with JPEG 2000 (Part 2) Extended Encoding, Lossy, not documented at this time </fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None</fdd:experience>
+		<fdd:preference>None established</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Open standard.  Developed by Joint Technical Committee ISOAEC JTC 1, Information technology, Subcommittee SC 29, Coding of audio, picture, multimedia and hypermedia information incollaboration with ITU-T.
+		</fdd:disclosure>
+		<fdd:documentation>ISO/IEC 15444-2:2004. Information technology -- JPEG 2000 image coding system: Extensions, Annex M: JPX extended file format syntax. See complete list of ISO/IEC JPEG 2000 documents in <a href="fdd000143.shtml#specs">JP2_FF</a>.
+		</fdd:documentation>
+		<fdd:adoption>Implementations of JPEG 2000 (especially <fddLink id="fdd000138">J2K_C</fddLink> Part 1 core coding) are increasing.  The compiler of this document is not aware of the extent to which JPX_FF is being implemented.</fdd:adoption>
+		<fdd:licensingAndPatents>Licensing is associated with the encoding; see <fddLink id="fdd000141">J2K_EXT</fddLink>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>See <fddLink id="fdd000141">J2K_EXT</fddLink>
+		</fdd:transparency>
+		<fdd:selfDocumentation>All JPEG 2000 files are made up of "boxes," as described in the <a href="#notes">Notes</a> below, including an XML box typically used for metadata.  Regarding JPX_FF, Annex N of Part 2 of the specification provides detail about metadata and offers but does not require a specification based on <a href="http://xml.coverpages.org/dig35.html">DIG35</a> elements. This metadata specification includes four broad metadata categories: (1) image creation ("how," e.g., about the camera), (2) content description ("who," "what," "when," and "where"), (3) history ("how the image got to its present state," i.e., <i>provenance</i> metadata in the digital library lexicon), and (4) intellectual property rights (IPR) metadata (which may be used in conjunction with technological protection systems).  Additional boxes inherited from <a href="fdd000143.shtml">JP2_FF</a> include one for a unique identifier for the image or identifier-references to other digital objects, e.g., a UUID, and another for IPR metadata, possibly redundant with that included in the XML box.
+Support for georeferencing is provided via the GML in JPEG 2000 for Geographic Imagery (<fddLink id="fdd000303">GMLJP2</fddLink>) specification from the Open Geospatial Consortium (OGC).</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>Like all JPEG 2000 file formats, JPX_FF provides an IPR box for rights management information that may be used as inputs to access management systems. The IPR metadata expressed in the XML box may be redundant.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>Good support</fdd:normalImage>
+			<fdd:clarity>Depends upon encoding; see list in Relationships to other formats, above.</fdd:clarity>
+			<fdd:colorMaint>Rich support, detailed in Annex M of the specification.  The color space of the decompressed image data is indicated in the Color Specification box inside the Header box, which contains the ICC profile when applicable.  JPX_FF permits the establishment of enumerated color space values beyond <i>sRGB</i>, <i>sYCC</i>, and the defined greyscale space. ICC data in <fddLink id="fdd000143">JP2_FF</fddLink>are limited to Restricted ICC profiles; in JPX_FF, any ICC method may be used. Other color maintenance features are inherited from <fddLink id="fdd000143">JP2_FF</fddLink>, e.g., the Palette box and the Component Mapping box.</fdd:colorMaint>
+			<fdd:graphics>No support for vector graphics.</fdd:graphics>
+			<fdd:multispectral>Support is provided for what are called <i>multiple component</i> images; see annex J in the specification.</fdd:multispectral>
+			<fdd:beyondImage>The JPEG 2000 family offers many extended functionalities, some of which grow out of the options of scalability offered by the various encodings, and which extend to the interactivity provided by JPIP, Part 9 of the JPEG 2000 standard; see JPEG 2000 Interactive Protocol.</fdd:beyondImage>
+		</fdd:stillImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>jpf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>As specified by Annex M.2.1 of the specification.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>jpx</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://filext.com/">The File Extension Source</a>, also mentioned in <a href="http://www.rfc-editor.org/rfc/rfc3745.txt">http://www.rfc-editor.org/rfc/rfc3745.txt</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>image/jpx</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://www.rfc-editor.org/rfc/rfc3745.txt">http://www.rfc-editor.org/rfc/rfc3745.txt</a>
+				</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>Not found.</fdd:sigValueNA>
+				<fdd:note>
+					<a href="../contact_format.shtml">Comments welcome</a>
+				</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>File type brand (ISO Base Media File Format)</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>jp2\040 [jp2 plus the space character]</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>As specified by Annex M.2.1 of the specification: when compatible with the JP2 reader specification, place this value in the File Type Box (similar to the <fddLink id="fdd000079">ISO_BMFF</fddLink> file type box).</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>File type brand (ISO Base Media File Format)</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>jpx\040 [jpx plus the space character]</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>As specified by Annex M.2.1 of the specification: when "completely defined by" Part 2 (extensions) of the JPEG 2000 standard, place this value in the File Type Box.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Uniform Type Identifier (Mac OS)</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>jpx\040 </fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>As specified by Annex M.2.1 of the specification.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Image header box (JPEG 2000)</fdd:tag>
+				<fdd:values>
+					<fdd:note>Signifier for the encoded bitstream: 0=uncompressed bitmap; 1=for ITU-T T.4 "Group 3," One Dimensional, aka Modified Huffman (MH) encoding; 2=for ITU-T T.4 "Group 3," Two Dimensional, aka Modified READ (MR) encoding; 3=for ITU-T T.6 "Group 4," aka Modified Modified READ (MMR) encoding; 4=JBIG bi-level images; 5=JPEG encoding; 6=JPEG lossless encoding; 7=JPEG 2000 wavelet encoding (no specification part number indicated); 8=JBIG2 encoding; 9=JBIG images other than bi-level</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>The JPEG 2000 file format family includes:</p>
+			<ul>
+				<li>
+					<fddLink id="fdd000143">JP2_FF</fddLink>, JPEG 2000 Part 1 (Core) jp2 File Format</li>
+				<li>JPX_FF, JPEG 2000 Part 2 (Extensions) jpf (jpx) File Format (this document)</li>
+				<li>
+					<fddLink id="fdd000144">JPM_FF</fddLink>, JPEG 2000 Part 6 (Compound) jpm File Format</li>
+			</ul>
+			<p>The family is descended from <fddLink id="fdd000052">QuickTime</fddLink>.  This lineage is shared with <fddLink id="fdd000079">ISO_BMFF</fddLink> and its offshoots, which include <fddLink id="fdd000155">MP4_FF_2</fddLink>, <fddLink id="fdd000137">MP4_FF_AVCE</fddLink>, and <fddLink id="fdd000127">MJ2_FF</fddLink>, itself a wrapper for JPEG 2000 core-encoded images that represent sets of film or video frames.</p><p>From <i>Guide to the Practical Implementation of JPEG 2000</i>, cited in <a href="#useful">Useful references</a> below: "JP2 was designed to be inherently extensible. The extended file formats that are defined in later parts of the standard all incorporate a degree of backwards-compatibility with JP2: for each extended format it is possible to construct extended files that also conform to JP2. (A JP2 reader would ignore any extensions that it did not understand.) Thus, the definition of JP2 in Part 1 can also be considered an implicit definition of an architecture known informally as the &apos;JP family&apos; . . . .  A JP family file is a sequence of &apos;boxes&apos;. [These are called <i>atoms</i> in the QuickTime specification. -- <i>ed</i>]  A box consists of a 4-byte length field followed by a 4-byte type field followed by the content of the box. The content is defined for each box type and may include boxes. A box whose content consists only of boxes is called a superbox. There are two special values of the length field. A value of zero means that the box extends to the end of the file. A value of 1 means that the true length of the box follows the type field (before the content) in an 8-byte extended length field; this permits boxes up to (2<sup>64</sup> - 1) bytes in length. The length includes the whole box from the start of the length field to the end of the content."</p>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 15444-2:2004.  Information technology -- JPEG 2000 image coding system: Extensions. Defines a set of lossless (bit-preserving) and lossy compression methods for coding continuous-tone, bi-level, grey-scale, colour digital still images, or multi-component images; specifies extended decoding processes for converting compressed image data to reconstructed image data; specifies an extended codestream syntax containing information for interpreting the compressed image data; specifies an extended file format; specifies a container to store image metadata; defines a standard set of image metadata; provides guidance on extended encoding processes for converting source image data to compressed image data; provides guidance on how to implement these processes in practice.  Also: Cor. 3 (2005) and 4 (2007); Amd. 2 (2006), Extended capabilities marker segment.</fdd:specReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.jpeg.org/jpeg2000/</link>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ietf.org/rfc/rfc3745.txt</link>
+					<tag>MIME types for JPEG 2000</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://xml.coverpages.org/dig35.html</link>
+					<tag>DIG35 metadata information</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:bookReference>Colyer, Greg and Richard Clark. <i>Guide to the Practical Implementation of JPEG 2000.</i> London: British Standards Institute, 2003.  ISBN: 0580412423 BSI: PD 6777:2003.  Available as PDF file; link to point-of-sale at <a href="http://www.jpeg.org/jpeg2000/index.html">http://www.jpeg.org/jpeg2000/index.html</a>.</fdd:bookReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:usefulReferences>
+</fdd:FDD>

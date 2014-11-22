@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000028" titleName="MPEG-2 Video Encoding (H.262)" shortName="MPEG-2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>moving-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2011-12-01</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ISO/IEC 13818. Information technology -- Generic coding of moving pictures and associated audio information (formal name); MPEG-2  (common name)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>MPEG-2</fdd:keyword>
+			<fdd:keyword>MPEG</fdd:keyword>
+			<fdd:keyword>H.262</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>This description pertains to the video or picture encoding defined by the MPEG-2 family of specifications.  The key techniques employed in the MPEG-2 codec include intra-frame Discrete Cosine Transform (DCT) coding and motion-compensated inter-frame prediction;  See Notes for more detail.  All MPEG-2 streams (picture, sound or data) are based on elementary streams; in the case of picture (video), the elementary stream contains compressed frame images, plus sequence headers, group-of-picture (GOP) headers, and other data needed to decode the stream. An elementary stream is broken up into packets of variable length, forming a packetized elementary stream (PES). Each PES packet includes a header. Picture and sound elementary streams are combined to produce single-program <i>program streams</i>, which may be further combined with other programs in a multi-program <i>transport stream</i>.</fdd:description>
+		<fdd:shortDescription>Video or picture encoding defined by the MPEG-2 family of specifications.  The key techniques employed in the MPEG-2 codec include intra-frame Discrete Cosine Transform (DCT) coding and motion-compensated inter-frame prediction.  All MPEG-2 streams (picture, sound or data) are based on elementary streams; in the case of picture (video), the elementary stream contains compressed frame images, plus sequence headers and other data needed to decode the stream. Picture and sound elementary streams are combined to produce single-program streams, which may be further combined with other programs in a multi-program transport stream.</fdd:shortDescription>
+		<fdd:productionPhase>Generally a final-state (end-user delivery) format; <fddLink id="fdd000032">MPEG-2_MP</fddLink>, Main Profile, or <fddLink id="fdd000034">MPEG-2_422</fddLink>, 4:2:2 Profile, may be used as middle-state (broadcast production) formats. </fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000335</fdd:id>
+					<fdd:shortName>MPEG-2_family</fdd:shortName>
+					<fdd:titleName>MPEG-2 Encoding Family </fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000033</fdd:id>
+					<fdd:shortName>MPEG-2_SP</fdd:shortName>
+					<fdd:titleName> Simple Profile</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000032</fdd:id>
+					<fdd:shortName>MPEG-2_MP</fdd:shortName>
+					<fdd:titleName> Main Profile</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000034</fdd:id>
+					<fdd:shortName>MPEG-2_422</fdd:shortName>
+					<fdd:titleName>4:2:2 Profile</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>  Other MPEG-2 profiles not documented at this time: SNR Scalable, Spatially Scalable, and High.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:comment>MPEG-2 program stream or file with MPEG-2 video and <fddLink id="fdd000208">AES3 Digital Audio Interface, SMPTE Extensions</fddLink> (Dolby and surround audio encoding). Not described at this Web site at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000336</fdd:id>
+					<fdd:shortName>MPEG-2_MP_layer_2</fdd:shortName>
+					<fdd:titleName>MPEG-2 File with Main Profile Video and Layer II Audio Encoding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000337</fdd:id>
+					<fdd:shortName>MPEG-2_422_layer_2</fdd:shortName>
+					<fdd:titleName>MPEG-2 File with 422 Video and Layer II Audio Encoding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000338</fdd:id>
+					<fdd:shortName>MPEG_layer_2_audio</fdd:shortName>
+					<fdd:titleName>MPEG-1 and MPEG-2 Layer II Audio Encoding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000345</fdd:id>
+					<fdd:shortName>Matroska_MPEG-2</fdd:shortName>
+					<fdd:titleName>Matroska File Format with MPEG-2 Video Encoding (H.262)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>See <fddLink id="fdd000335">MPEG-2_family</fddLink>
+		</fdd:experience>
+		<fdd:preference>See <fddLink id="fdd000335">MPEG-2_family</fddLink>
+		</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Open standard. Developed by ISO technical program called the Moving Picture Experts Group (MPEG), Coding of audio, picture, multimedia and hypermedia information. Developed in joint partnership with ITU-T, who published the &#34;common text&#34; as H. 262.
+		</fdd:disclosure>
+		<fdd:documentation>ISO/IEC 13818; first approvals in 1994.  Ten parts have been published; parts 1, 2, 3, and 7 are central.  Part 2 concerns the coding and specifies profiles and levels.  See list of ISO documents in <a href="#specs">Format specifications</a> below.</fdd:documentation>
+		<fdd:adoption>
+			<p>Widely adopted for filemaking, DVD disks, and other applications.  Most significant is the format's required use in digital terrestrial broadcasting to homes in the United States and several other nations, as governed by the ATSC (Advanced Television Systems Committee) specifications. Many software tools exist for encoding and decoding.</p>
+			<p>Adoption is also indicated by the use of the underlying MPEG-2 encoding in other formats like VOB, MOD and tivo. Each of these formats is described in the Notes below. </p>
+			<p>Wide adoption may not extend to all profiles, levels, or parts of the standard.  [Evidence in various documents suggests that the Simple, Main, and 4:2:2 profiles are the most widely adopted. <a href="../contact_format.shtml">Comments welcome</a>]
+</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>Managed by <a href="http://www.mpegla.com/main/default.aspx">MPEG LA LLC</a> (http://www.mpegla.com/main/default.aspx).  Licenses pertain to tools and not to streams or files per se.</fdd:licensingAndPatents>
+		<fdd:transparency>Depends upon algorithms and tools to read; will require sophistication to build tools.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>Technical (coding) information is contained in the MPEG-2 bitstream in macroblock headers, slice headers, picture headers, Group of Picture (GOP) headers, and sequence headers.  The sequence header provides data needed before decoding can begin, such as the size of the picture and the frame rate. Because it is so important, the sequence header is usually repeated as often as twice a second.</p>
+			<p>The lack of metadata of the type called <i>bibliographic</i> by librarians motivated the MPEG group to develop MPEG-7, a separately standardized structure for metadata to support discovery and other purposes.</p>
+		</fdd:selfDocumentation>
+		<fdd:techProtection>MPEG-2 shares with MPEG-4 elements of a standardized Intellectual Property Management and Protection (IPMP) scheme; see <a href="https://datatracker.ietf.org/documents/LIAISON/file944.htm">Intellectual Property Management and Protection
+in MPEG Standards</a>.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:movingImageQF>
+			<fdd:normalVideo>Good support.</fdd:normalVideo>
+			<fdd:clarity>Moderate to very good, given that this is a format for lossy compression. Outcome will depend on the type and extent of compression, and the encoder used. </fdd:clarity>
+			<fdd:beyondVideo>The MPEG-2 transport stream permits the multiplexing of multiple programs.</fdd:beyondVideo>
+		</fdd:movingImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>mpg</fdd:sigValue>
+					<fdd:sigValue>mpeg</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>There is no explicit MPEG-2 file format; MPEG-2 content "ready to be delivered" is exchanged in a de facto file format that may carry one of these extensions.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>video/mpeg</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note> Registered with IANA [see <a href="">http://www.iana.org/assignments/media-types/video</a>] through <a href="http://www.ietf.org/rfc/rfc2046.txt">RFC 2046</a> from <a href="http://www.ietf.org/">IETF</a> (Internet Engineering Task Force).</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>video/mpv</fdd:sigValue>
+					<fdd:sigValue>video/mp2t</fdd:sigValue>
+					<fdd:sigValue> video/mp1s</fdd:sigValue>
+					<fdd:sigValue> video/mp2p </fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Registered with IANA [see <a href="">http://www.iana.org/assignments/media-types/video</a>] through <a href="http://www.ietf.org/rfc/rfc3555.txt">RFC 3555</a>; the four subtypes are glossed as "MPEG-1 or -2 Elementary Streams," "MPEG-2 Transport Streams," "MPEG-1 Systems Streams," and "MPEG-2 Program Streams" from <a href="http://www.ietf.org/">IETF</a> (Internet Engineering Task Force).</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>video/mpg</fdd:sigValue>
+					<fdd:sigValue>video/x-mpg</fdd:sigValue>
+					<fdd:sigValue>video/mpeg2</fdd:sigValue>
+					<fdd:sigValue>application/x-pn-mpg</fdd:sigValue>
+					<fdd:sigValue>video/x-mpeg</fdd:sigValue>
+					<fdd:sigValue>video/x-mpeg2a</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Additional examples selected from <a href="http://filext.com/">The File Extension Source</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 00 00 01 Bx</fdd:sigValue>
+					<fdd:sigValue>ASCII: ....</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://www.garykessler.net/library/file_sigs.html">Gary Kessler's File Signatures Table</a>.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Regarding MPEG-2 encoding:</b> the following has been excerpted and paraphrased from <a href="http://www.bbc.co.uk/rd/pubs/papers/paper_14/paper_14.shtml">http://www.bbc.co.uk/rd/pubs/papers/paper_14/paper_14.shtml</a>:</p>
+			<p>One MPEG-2 coding element employs discrete cosine transform (DCT). Each frame is broken into small blocks (8 pixels by 8 lines) of each component of the picture. A two-dimensional DCT is performed on the small blocks to produce blocks of DCT coefficients; the magnitude of each DCT coefficient indicates the contribution of a particular combination of horizontal and vertical spatial frequencies to the original picture block.</p>
+			<p>A second coding element employs motion-compensated inter-frame prediction, a technique that exploits temporal redundancy by attempting to predict the frame to be coded from a previous &apos;reference&apos; frame. The prediction cannot be based on a source picture because the prediction has to be repeatable in the decoder, where the source pictures are not available; consequently, the coder contains a local decoder which reconstructs pictures exactly as they would be in the decoder, from which predictions can be formed. The simplest inter-frame prediction of the block being coded would take the co-sited (i.e. the same spatial position) block from the reference picture. Motion-compensated inter-frame prediction, however, is more sophisticated and offsets any translational motion that has occurred between the block being coded and the reference frame.</p>
+			<p>In an MPEG-2 system, the DCT and motion-compensated interframe prediction are combined: the coder subtracts the motion-compensated prediction from the source picture to form a &apos;prediction error&apos; picture. The prediction error is transformed with the DCT, the coefficients are quantized and these quantized values coded using a variable length code.
+</p>
+			<p>MPEG-2 defines three picture types: Intra pictures (I-frames) are coded without reference to other pictures. They are used periodically to provide access points in the bitstream where decoding can begin.  Predictive pictures (P-frames) can use the previous I- or P-picture for motion compensation and may be used as a reference for further prediction. Bidirectionally-predictive&apos; pictures (B-frames) can use the previous and next I- or P-pictures for motion-compensation, and offer the highest degree of compression.  To enable backward prediction from a future frame, the coder reorders the pictures from natural &apos;display&apos; order to &apos;bitstream&apos; order so that the B-picture is transmitted after the previous and next pictures it references. This introduces a reordering delay dependent on the number of consecutive B-pictures. The different picture types typically occur in a repeating sequence, termed a &apos;Group of Pictures&apos; or GOP. A typical GOP in display order is: B1 B2 I3 B4 B5 P6 B7 B8 P9 B10 B11 P12.  For these, the corresponding bitstream order is: I3 B1 B2 P6 B4 B5 P9 B7 B8 P12 B10 B11.
+
+</p>
+			<p>
+				<b>Regarding the use of MPEG-2 encoding in other video formats:</b>
+			</p>
+			<p>
+				<i>VOB</i> (DVD <i>V</i>ideo <i>OB</i>ject) files are closely related to MPEG-2 files.  VOB files are assembled by DVD producers, and they contain the actual Video, Audio, Subtitle, and Menu contents in stream form.  The <a href="http://en.wikipedia.org/wiki/Main_Page">Wikipedia</a> entry for VOB (as of November 28, 2006), reports that "VOB files are encoded very much like standard MPEG-2 files. When the extension is renamed from .vob to .mpg or .mpeg the file will still be readable and will continue to hold all information, although most players supporting MPEG-2 don't support subtitle tracks.  In order to burn the VOB files to a DVD-R disc, other standard DVD-Video files are needed as well, including IFO and BUP files."</p>
+			<p>
+				<i>MOD</i> is a file format used in JVC, Panasonic and Canon tapeless video cameras. According to the <a href="http://en.wikipedia.org/wiki/MOD_and_TOD">Wikipedia</a> entry MOD files &quot;are file-based formats that are stored on a random-access media. Standard definition video is stored in MPEG program stream container files with MOD extension; in most other systems these files have extension MPG or MPEG. MOD video can be viewed on a computer with a player that is capable of reproducing MPEG-2 video. This video can be easily authored for watching on a DVD player without recompression, because it is fully compliant with DVD-video standard.&quot; Most nonlinear editing software cannot natively ingest MOD files. These files must first be converted using transcoding software like <a href="http://ffmpeg.org/">FFmpeg</a>.</p>
+			<p>From <a href="http://www.zatznotfunny.com/tivotogo-faq/">zatznotfunny</a>: "TiVoToGo files, having the .tivo extension, are essentially encrypted and fingerprinted mpeg [MPEG-2] files. MPEG is a common video format. Your unique Media Access Key (MAK) is appended to all shows as text, and perhaps embedded as a watermark in other ways. The TiVo Desktop software includes a .dll that is used to decrypt, or unlock, your show using your MAK. TiVo files can be viewed, converted, edited, transferred, and/or burned."</p>
+		</fdd:general>
+		<fdd:history>MPEG stands for the Moving Picture Experts Group, which began developing video compression standards in the 1980s.  The group was founded by two men described by one commentator as "the fiery Leonardo Chiariglione (CSELT, Italy)" and "the peaceful Hiroshi Yasuda (JVC, Japan)."  MPEG's initial development (of MPEG-1) was partly inspired by the H.261 video coding standard published by the ITU (International Telecom Union).</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 13818-1:2007 Information technology -- Generic coding of moving pictures and associated audio information: Systems. <i>Two primary purposes: 1). a syntax for transporting packets of audio and video bitstreams over digital channels and storage media, 2). a syntax for synchronizing video and audio streams.</i>
+					<footNote id="1"/>
+				</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 13818-1:2007/Amd 3:2009/Cor 1:2011</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 13818-1:2007/Cor 1:2008</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 13818-1:2000/Amd 1:2003 Carriage of metadata over ISO/IEC 13818-1 streams </fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 13818-1:2000/Amd 2:2004 Support of IPMP on MPEG-2 systems </fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC FDIS 13818-2 Information technology -- Generic coding of moving pictures and associated audio information: Video. <i>Jointly developed with the ITU-T, where it is known as recommendation H.262.  Describes syntax (header and bitstream elements) and semantics (algorithms telling what to do with the bits).</i>
+				</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 13818-2:2000/Cor 1:2002 </fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 13818-2:2000/Amd 1:2001 Content description data </fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 13818-4:2004 Information technology -- Generic coding of moving pictures and associated audio information -- Part 4: Conformance testing. <i>Conformance testing. Defines the meaning of MPEG conformance for all three parts (Systems, Video, and Audio), and provides two sets of test guidelines for determining compliance in bitstreams and decoders.</i>
+				</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 13818-4:2004/Amd 2:2005/Cor 1:2007</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 13818-4:2004/Cor 1:2007</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 13818-4:2004/Amd 2:2005/Cor 2:2009</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 13818-4:2004/Cor 2:2011</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 13818-4:2004/Amd 1:2005</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 13818-4:2004/Amd 2:2005</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 13818-4:2004/Amd 3:2009</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC TR 13818-5:2005 Information technology -- Generic coding of moving pictures and associated audio information -- Part 5: Software simulation.  <i>Contains an example ANSI C language software encoder and compliant decoder for video and audio.</i>
+				</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 13818-6:1998 Information technology -- Generic coding of moving pictures and associated audio information -- Part 6: Extensions for DSM-CC. <i>Extensions for Digital Storage Medium Command and Control (DSM-CC).  Provides a syntax for controlling VCR-style playback and random-access of bitstreams encoded onto digital storage mediums such as compact disc.</i>
+				</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 13818-6:1998/Amd 1:2000/Cor 1:2002</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 13818-6:1998/Cor 1:1999</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 13818-6:1998/Cor 2:2002</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 13818-6:1998/Amd 1:2000 Additions to support data broadcasting</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 13818-6:1998/Amd 2:2000 Additions to support synchronized download services, opportunistic data services and resource announcement in broadcast and interactive services</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 13818-6:1998/Amd 3:2001 Transport buffer model in support of synchronized user-to-network download protocol</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 13818-7:2003/Amd 1:2004 Embedding of bandwidth extension</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 13818-7:2006/Cor 1:2009</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 13818-7:2006/Cor 2:2010</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 13818-7:2006/Amd 1:2007</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> Part 8.  10-bit video extension. Withdrawn.</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 13818-9:1996 Information technology -- Generic coding of moving pictures and associated audio information -- Part 9: Extension for real time interface for systems decoders. <i>Real-Time Interface (RTI) for systems decoders defines a syntax for video on demand control signals between set-top boxes and head-end servers.</i>
+				</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 13818-10:1999 Information technology -- Generic coding of moving pictures and associated audio information -- Part 10: Conformance extensions for Digital Storage Media Command and Control (DSM-CC). <i>Related to part 6.</i>
+				</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 13818-11:2004 Information technology -- Generic coding of moving pictures and associated audio information -- Part 11: IPMP on MPEG-2 systems</fdd:specReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://web.archive.org/web/20090621154148/http://bmrc.berkeley.edu/frame/research/mpeg/mpeg2faq.html</link>
+					<tag>Berkeley FAQ</tag>
+					<comment>2009 Web page archived by the Internet Archive. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://mpeg.chiariglione.org/</link>
+					<tag>Moving Picture Experts Group website</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.mpeg.org/</link>
+					<tag>Website with links to MPEG  resources</tag>
+					<comment>Focuses on resources for MPEG-1 and MPEG-2.  When consulted in October 2013, a number of the links were bad.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.faqs.org/faqs/mpeg-faq/</link>
+					<tag>MPEG FAQ from 1996</tag>
+					<comment>About MPEG-1 and MPEG-2</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.pinnaclesys.com/files/MainPage/Professional/TopTabItems/products/dc1000/WhitePapers/DC1000-DVD1000MPEG2whitepaper.pdf</link>
+					<tag>MPEG-2 White Paper</tag>
+					<comment>From a product manufacturer.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.bbc.co.uk/rd/pubs/papers/paper_14/paper_14.shtml</link>
+					<tag>MPEG-2 Video Compression</tag>
+					<comment>A 1995 white paper by Phil Tudor of the BBC. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.tek.com/application/mpeg-2-transport-stream</link>
+					<tag>MPEG-2 / MPEG-4 / H.264</tag>
+					<comment>Documentation from the equipment manufacturer Tektronix.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.tek.com/document/primer/guide-mpeg-fundamentals-and-protocol-analysis</link>
+					<tag>A Guide to MPEG Fundamentals and Protocol Analysis</tag>
+					<comment>From Tektronix.  Registration required for download.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>A document entitled <i>Intellectual Property Management and Protection
+in MPEG Standards</i>  was presented at a W3C workshop on DRM and later distributed to the MPEG working group as an ISO/IEC document.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.w3.org/2000/12/drm-ws/pp/koenen.pdf</link>
+							<tag>Intellectual Property Management and Protection
+in MPEG Standards.  As presented at W3C meeting in December 2000.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://datatracker.ietf.org/documents/LIAISON/file944.htm</link>
+							<tag>Intellectual Property Management and Protection
+in MPEG Standards.  Published as ISO/IEC JTC1/SC29/WG11 N3943</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Many RFCs have been issued in relation to registration of MIME types for audio and video.  The MIME type video/mpeg is listed by IANA as registered in 1996 in RFC 2046, one of a set of RFCs issued in relation to MIME (Multipurpose Internet Mail Extensions).  Other MPEG-2 related media types are listed as registered in 2003 through RFC 3555, one of  payloads for RTP (Real-time Transport Protocol) payload formats.  RFCs 2046 and 3555 are available from IETF (Internet Engineering Task Force) both as plain text and in a view that provides links to antecedent and subsequent documents.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://datatracker.ietf.org/doc/rfc2046/</link>
+							<tag>RFC 2046 (with links to antecedent and subsequent RFCs)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.ietf.org/rfc/rfc2046.txt</link>
+							<tag>RFC 2046 (plain text)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://datatracker.ietf.org/doc/rfc3555/</link>
+							<tag>RFC 3555 (with links to antecedent and subsequent RFCs)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.ietf.org/rfc/rfc3555.txt</link>
+							<tag>RFC 3555 (plain text)</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.garykessler.net/library/file_sigs.html</link>
+					<tag>Gary Kessler's File Signatures Table</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://filext.com/</link>
+					<tag>The File Extension Source</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/VOB</link>
+					<tag>Wikipedia article on VOB</tag>
+					<comment>Consulted November 28, 2006.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/MOD_and_TOD</link>
+					<tag>Wikipedia article on MOD</tag>
+					<comment>Consulted February 15, 2012. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://ffmpeg.org/</link>
+					<tag>FFmpeg</tag>
+					<comment>Organization devoted to open approaches to digital video.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+	<fdd:footNotes>
+		<fdd:footNote id="1">
+			<fdd:text> The italicized blurbs in the specifications section are derived from the Berkeley Multimedia Research Center. This link is to the Internet Archive&apos;s saved copy of this page: <a href="http://web.archive.org/web/20090621154148/http://bmrc.berkeley.edu/frame/research/mpeg/mpeg2faq.html">MPEG-2 FAQ</a>
+			</fdd:text>
+		</fdd:footNote>
+	</fdd:footNotes>
+</fdd:FDD>

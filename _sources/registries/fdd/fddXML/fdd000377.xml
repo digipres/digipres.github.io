@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000377" titleName="Microsoft Outlook PST 97-2002 (ANSI)" shortName="PST_ANSI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>text</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>other</fdd:value>
+				<fdd:comment>email</fdd:comment>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2013-11-25</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Microsoft Outlook 97-2002 Personal Folders File (ANSI)</fdd:fullName>
+		<fdd:description>
+			<p>The Personal Folders File or PST is an open proprietary data file format used to store local copies of messages, calendar events, and other items within Microsoft software including Microsoft Office Outlook. PST files are used to store archived items and to maintain off-line availability of the items.</p>
+			<p>PST shares the same Personal Folders File format (PFF) structure as Offline Storage Table (OST) and Personal Address Book (PAB).</p>
+			<p>PST is a stand-alone, self-contained, structured binary file format that does not require any external dependencies. Each PST file represents a message store that contains an arbitrary hierarchy of Folder objects, which contains Message objects, which can contain Attachment objects. Information about Folder objects, Message objects, and Attachment objects are stored in properties, which collectively contain all of the information about the particular item.</p>
+			<p>A PST file is organized as two <a href="http://en.wikipedia.org/wiki/B-tree">B-trees</a> with 512 byte nodes and leaves. Its architecture is based on three logical layers.</p>
+			<ul>
+				<li>A NDB (Node Database) layer that allocates physical blocks of storage. The NDB layer consists of the header, file allocation information, blocks, nodes, and two BTrees: the Node BTree (NBT) and the Block BTree (BBT). The Block B-tree implements storage allocation within the PST file, based on data blocks with size up to 8 kbytes.</li>
+				<li>A LTP (Lists, Tables, and Properties) layer that implements higher-level concepts on top of the NDB construct and contains the core elements Property Context (PC) and Table Context (TC). A PC represents a collection of properties. A TC represents a two-dimensional table where the rows represent a collection of properties and the columns represent which properties are within the rows.</li>
+				<li>A Messaging layer (sometimes referred to as the PST layer) that implements folder objects, message objects, etc. as structures of lists, tables, and properties.</li>
+			</ul>
+			<p>For example, a message object consists logically of a set of properties, a recipients table, the message content, an optional attachment table, and attachments (which have there own sets of properties and content).  A message node connects the message object to its parent folder, the data block in which its properties are stored, and to the sub-nodes representing  the recipients table, attachment table, etc.</p>
+			<p>The two versions of PST, PST_ANSI and <fddLink id="fdd000378">PST_Unicode</fddLink>, are differentiated primarily by software implementation versions, character sets, maximum file size constraints and bit values. </p>
+			<p>Now considered a legacy format and replaced by <fddLink id="fdd000378">PST_Unicode</fddLink>, PST_ANSI was used by Microsoft Outlook 97-2002. It employs the American National Standards Institute (ANSI) character set and has an overall size limit of 2 gigabytes (GB). PST_ANSI uses 32-bit values to represent <a href="http://msdn.microsoft.com/en-us/library/ff387585%28v=office.12%29.aspx">block IDs (BIDs)</a> and <a href="http://msdn.microsoft.com/en-us/library/ff386553%28v=office.12%29.aspx"> byte index (IB)</a>.</p>
+		</fdd:description>
+		<fdd:shortDescription>PST_ANSI is an ANSI character set-based data file used by Microsoft Office Outlook 97-2002 to store email messages, calendar events and other items on a local computer. It was replaced by PST_Unicode starting with Office Outlook 2003.</fdd:shortDescription>
+		<fdd:productionPhase>PST files provide a mechanism for the centralized storage of email folders, email messages, their attachments, contacts, calendar items, etc. </fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has later version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000378</fdd:id>
+					<fdd:shortName>PST_Unicode</fdd:shortName>
+					<fdd:titleName>Microsoft Outlook PST 2003 (Unicode)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment/>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse/>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully documented. Proprietary file format developed by Microsoft.</fdd:disclosure>
+		<fdd:documentation>Microsoft [MS-PST]: Outlook Personal Folders (.pst) File Format specification available from Microsoft. See <a href="#specs">Format Specifications</a> below.</fdd:documentation>
+		<fdd:adoption>
+			<p>The Outlook .pst files are used for POP3, IMAP, and HTTP accounts and are supported by several Microsoft client applications, including Microsoft Exchange Client, Windows Messaging, and Microsoft Office Outlook. </p>
+			<p>PST_ANSI was implemented in Office Outlook versions 97-2002. Outlook 2003, Outlook 2007, and Outlook 2010 can read, write, and create both ANSI and Unicode PST files.  By 2010 (when the specification was made public by Microsoft), PST_ANSI was considered a legacy format with a recommendation that it not be used to create new PST files. The default format was declared to be <fddLink id="fdd000378">PST_Unicode</fddLink>.</p>
+			<p>At least two open-source software libraries have been developed to examine and manipulate PST files: <a href="http://code.google.com/p/libpff/">libpff</a>, a library (in C, with python bindings partially implemented as of late 2013) to access PST and related formats; <a href="http://pstsdk.codeplex.com/">PST File Format SDK</a>, a cross-platform C++ library for reading PST files, developed under Microsoft auspices through a 2009-2010 project.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>Covered by the <a href="http://www.microsoft.com/openspecifications/en/us/programs/osp/default.aspx">Microsoft Open Specification Promise</a>, whereby Microsoft "irrevocably promises" not to assert any claims against those making, using, and selling implementations of any specification covered by the promise (so long as those accepting the promise refrain from suing Microsoft for patent infringement in relation to Microsoft's implementation of the covered specification).</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>Depends upon algorithms and tools to read; will require sophistication to build tools. Text in messages may be encrypted and even when not encrypted cannot be rendered by a simple text viewer.  Even Microsoft in its <a href="http://msdn.microsoft.com/en-us/library/gg615595.aspx">Understanding the Outlook MS-PST Binary File Format</a> admits that "understanding and working with binary file formats in general, and the MS-PST file format in particular, can be a challenge. Fortunately, the <a href="http://pstsdk.codeplex.com/">PST File Format SDK</a> exists to make this easier."</p>
+			<p>Joachim Metz in <a href="#useful">Personal Folder File (PFF) Forensics:
+Analyzing the Horrible Reference File Format</a> says &quot;the actual data of an item within a PFF is scattered over different data structures...the bad news for forensic analysis is that PFF obfuscates the information in the data structures which makes a basic text string search impossible.&quot;</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>The PST format version is declared in the file header. According to the specification, the <i>wVer</i> field for a PST_ANSI file must have a value of 14 or 15.  Folder objects, message objects, and attachment objects all have properties which include the header fields users typically see in an email application as well as many properties relating to the status, management, and history of the object in an Outlook application.  A message object also has a recipients table that identifies each recipient and may have an attachments table that lists and identifies attachments.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>
+			<p>PST files may have encoding applied to data blocks (although not to header and BTree "pages") to provide data obfuscation.  A field in the file header indicates one of three levels/types for "encryption", defined in the specification as None; Compressible encryption; and High encryption.  Although the term "encryption" is used in these definitions, the specification documents two keyless cipher algorithms used to encode the data blocks in the PST. The specification (in section 4) indicates that these algorithms "can be conveniently decoded once the exact encoding algorithm is understood."  The compilers of this description are unable to confirm whether the open-source software libraries are able to decode "encrypted" PST files fully. Comments welcome.</p>
+			<p>Another form of protection is password protection which is available as an option in PST files. However, the <a href="#specs">Microsoft specification</a> admits that the password functionality in PST is not very robust, calling it &quot;a superficial mechanism&quot; that  &quot;does not provide any security benefit to preventing the PST data to be read by unauthorized parties.&quot; In essence, if a password is used, a CRC-32 hash of the password text is stored in the PidTagPstPassword property. If this property exists and is non-zero, implementations are expected to prompt the end user for a password, compute the CRC-32 hash of the user password, and verify it against the value stored in PidTagPstPassword. However, a password stored as a CRC-32 hash of the original password string is relatively weak and provides little functional security.</p>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:textQF>
+			<fdd:normalText>PST_ANSI can only represent ANSI character encoding. </fdd:normalText>
+			<fdd:structure>
+				<p>At the physical level, the file starts with a header, followed by an optional density list, and then a series of mapping structures interspersed at set intervals between blocks of data. The mapping structures are of fixed size, and repeat as often as needed to encapsulate areas of data as the file grows.</p>
+				<p>At the logical level, a .pst file has three layers: the Node Database (NDB) layer, the Lists, Tables, and Properties (LTP) layer, and the Messaging layer.</p>
+				<p>An important structural issue of PST_ANSI files is that they have a restricted size limit (2 GB) because PST_ANSI files only contain the initial FPMap in the header and no additional FPMap pages.</p>
+				<p>The semantic structure of messages (with their headers) in folders and attachments linked to messages is represented in the Messaging layer.</p>
+				<p>Since this format is designed for active use in an email system as a stand-alone message store, the full semantics required and/or observed in the system that generated the file is represented. </p>
+			</fdd:structure>
+		</fdd:textQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>.pst</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.ms-outlook</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>This is not registered with IANA but appears in <a href="http://www.forensicswiki.org/wiki/Personal_Folder_File_%28PAB,_PST,_OST%29">Forensic Wiki's page</a> on Personal Folder File (PAB, PST, OST). </fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 21 42 44 4E</fdd:sigValue>
+					<fdd:sigValue>ASCII: !BDN</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://msdn.microsoft.com/en-us/library/ff385210%28v=office.12%29.aspx">specification</a>.  This specification applies to the three Microsoft content types (PST, OST and PAB) that share the general PFF structure.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>File signature</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Hex: 53 4D 0E 00
+</fdd:sigValue>
+						<fdd:sigValue>Hex: 53 4D 0F 00
+</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Offset 8 bytes from start of file.  In conjunction with the magic number at the beginning of the file, this identifies that the file is a PST file using the PST_ANSI version.  The first value is more frequently found.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>The data models used for message objects in MS Outlook and in the message format used for Internet mail are significantly different. Microsoft has specified a detailed mapping in each direction: for &quot;MIME analysis&quot; and for &quot;MIME generation.&quot; 
+<a href="http://msdn.microsoft.com/en-us/library/cc463915.aspx">[MS-OXCMAIL]: RFC 2822 and MIME to Email Object Conversion Algorithm</a> describes this complex mapping in detail.  An important aspect is the use of an extra &quot;MIME skeleton&quot; property to store all incoming MIME message content that cannot be mapped cleanly to Microsoft&apos;s message object properties (often referred to as MAPI properties) so that the message can be regenerated.  As well as using the mapping in Outlook as the basis for email sent between Outlook application systems and the Internet (as opposed to message exchanges within and among Outlook systems), Microsoft provides a <a href="http://msdn.microsoft.com/en-us/library/office/ff960635.aspx">MAPI-MIME Conversion API</a> as part of Outlook.
+</p>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://msdn.microsoft.com/en-us/library/ff385210%28v=office.12%29.aspx</link>
+					<tag>Microsoft	[MS-PST]: Outlook Personal Folders (.pst) File Format. v20130206. </tag>
+					<comment>Format specification from Microsoft that covers both PST_ANSI and PST_Unicode files.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Property schemas for PST Message objects and Folder objects are defined by separate documents.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/cc463900%28v=exchg.80%29.aspx</link>
+							<tag>[MS-OXCMSG]: Message and Attachment Object Protocol</tag>
+							<comment>Specifies the basic property schema for a Message object </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/cc433482%28v=exchg.80%29.aspx</link>
+							<tag>[MS-OXOMSG]: Email Object Protocol</tag>
+							<comment>Specifies the basic property schema for a Message object </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/cc433490%28v=exchg.80%29.aspx</link>
+							<tag>[MS-OXPROPS]: Exchange Server Protocols Master Property List</tag>
+							<comment>Specifies the basic property schema for a Message object and the default property schema for a Folder object</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/cc433475%28v=exchg.80%29.aspx</link>
+							<tag>[MS-OXCFOLD]: Folder Object Protocol</tag>
+							<comment>Specifies the default property schema for a Folder object</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.forensicswiki.org/wiki/Personal_Folder_File_%28PAB,_PST,_OST%29</link>
+					<tag>Forensics Wiki Personal Folder File (PAB, PST, OST)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Personal_Storage_Table</link>
+					<tag>Wikipedia Personal Storage Table</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.microsoft.com/openspecifications/en/us/programs/osp/default.aspx</link>
+					<tag>Microsoft&apos;s Open Specification Promise</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.five-ten-sg.com/libpst/rn01re06.html</link>
+					<tag>Overview of format of MS Outlook .pst file</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://msdn.microsoft.com/en-us/library/gg615595.aspx</link>
+					<tag>Microsoft resource on Understanding the Outlook MS-PST Binary File Format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://pstsdk.codeplex.com/</link>
+					<tag>PST File Format SDK (pstsdk) is a cross-platform header only C++ library for reading PST files.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Microsoft provides related documents on the two-way conversion between Message objects and MIME-formatted textual streams. </fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/office/ff960635.aspx</link>
+							<tag>About the MAPI-MIME Conversion API</tag>
+							<comment>The MAPI-MIME Conversion API allows mail providers to convert between MIME objects and MAPI messages.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/cc463915.aspx</link>
+							<tag>[MS-OXCMAIL]: RFC 2822 and MIME to Email Object Conversion Algorithm</tag>
+							<comment>The RFC 2822 and MIME to Email Object Conversion Algorithm consists of a set of algorithms that applications use to convert data between these two representations of e-mail messages. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/office/cc765533.aspx</link>
+							<tag>MAPI Architecture Overview</tag>
+							<comment>Chart defining modular architecture for MAPI</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.digitalpreservation.gov/news/2010/20100924news_article_pedals_email_tool.html?loclr=blogsig</link>
+					<tag>PeDALS: Persistent Digital Archives and Library System</tag>
+					<comment>pen source software tool that extracts email, attachments and other objects from Microsoft Outlook Personal Folders (.pst) files, converting messages into XML. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The libpff package contains a cross-platform shared library, access tools as well as commentary and analysis on the Personal Folder File (PFF) and the Offline Folder File (OFF) formats.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://code.google.com/p/libpff/</link>
+							<tag>libpff project home page</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://googledrive.com/host/0B3fBvzttpiiScU9qcG5ScEZKZE0/PFF%20Forensics%20-%20analyzing%20the%20horrible%20reference%20file%20format.pdf</link>
+							<tag>Personal Folder File (PFF) forensics:
+Analyzing the horrible reference file format. Author: Joachim Metz
+</tag>
+							<comment>This specification is based on the work by libpst started in 2002 and was complimented by reverse engineering of the file format in 2008 and 2009. In
+2010 it was synced with Microsoft&apos;s official PST specification.
+</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://googledrive.com/host/0B3fBvzttpiiScU9qcG5ScEZKZE0/Personal%20Folder%20File%20%28PFF%29%20format.pdf</link>
+							<tag>Personal Folder File (PFF) file format specification: Analysis of the PFF format. Authored by Joachim Metz</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.forensicswiki.org/wiki/Libpff</link>
+							<tag>Forensics Wiki entry about libpff</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

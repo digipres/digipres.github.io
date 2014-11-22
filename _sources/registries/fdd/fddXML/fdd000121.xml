@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000121" titleName="XMF, eXtensible Music File Format, Version 1.0" shortName="XMF_1_0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-wrapper</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:updates>
+			<fdd:date>2011-02-28</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>XMF, eXtensible Music File Format, Version 1.0</fdd:fullName>
+		<fdd:description>
+			<p>XMF is a wrapper format for MIDI, Downloadable Sounds (DLS), and WAVE waveform data. From the <a href="http://www.midi.org/techspecs/xmf/xmf.php">specification</a> from MIDI.org: "XMF is low-overhead meta-file format . . . .  primarily intended to bundle existing standard music and sound file formats--such as <a href="fdd000119.shtml">SMF</a>, <fddLink id="fdd000118">DLS_1_1b</fddLink>, and <fddLink id="fdd000001">WAV</fddLink>--and not to replace any of them." (RP-030, p.2)  MIDI and audio data may be encapsulated in the XMF file or be linked via external URI reference. The <a href="http://www.midi.org/techspecs/xmf/xmf_faq.php">MIDI Manufacturers Association FAQ</a> states, "The most popular use of XMF is currently for mobile phone content, via the Mobile XMF file type."</p>
+			<p>The second part of the specification (RP-031) discusses <i>Type 0</i> and <i>Type 1</i> files: "both must contain at least one SMF file; inclusion of DLS files is optional" (p. 1), and "the SMF file images in an XMF <i>Type 0</i> file are guaranteed to be streamable." (RP-031, p. 2) [Is there a type that only contains external references to SMF and/or DLS data?]</p>
+			<p>Later versions of the meta file format (1.01 and 2.0 at this writing) define a set of four file types as outlined in Notes below.</p>
+		</fdd:description>
+		<fdd:shortDescription>Wrapper format for MIDI, Downloadable Sounds (DLS), and WAVE waveform data.  The most popular use of XMF is for mobile phone content, via the Mobile XMF variant.</fdd:shortDescription>
+		<fdd:productionPhase>May be used by composers or arrangers for initial-state activities, in middle-state exchange of data or archiving, or for final-state, end-user delivery.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000119</fdd:id>
+					<fdd:shortName>SMF</fdd:shortName>
+					<fdd:titleName>Standard MIDI File Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000118</fdd:id>
+					<fdd:shortName>DLS_1_1b</fdd:shortName>
+					<fdd:titleName>Downloadable Sounds Format, Version 1.1b</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has later version</fdd:typeOfRelationship>
+				<fdd:comment>XMF, eXtensible Music File Format, Version 1.01, not documented at this Web site.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has later version</fdd:typeOfRelationship>
+				<fdd:comment>XMF, eXtensible Music File Format, Version 2.00, not documented at this Web site.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None</fdd:experience>
+		<fdd:preference>None established at this time</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully documented.  Developed by the <a href="http://www.midi.org/">MIDI Manufacturers Association</a>.
+		</fdd:disclosure>
+		<fdd:documentation>The <i>XMF (eXtensible Music Format), Version 1.0</i> (2001) contains three parts: RP-030, general specification; RP-031, Type 1 and Type 0 files; and RP-032, meta event and patch type prefix.  As of February 2011, this version was no longer offered from <a href="http://www.midi.org/techspecs/xmf/xmf.php">MIDI.org</a>, although the successor versions were available there.</fdd:documentation>
+		<fdd:adoption>The <a href="http://www.midi.org/techspecs/xmf/xmf_faq.php">MIDI Manufacturers Association FAQ</a> states, "Many mobile phones can already open and play Mobile XMF files."  The compilers of this document have not confirmed the accuracy of this statement.  <a href="../contact_format.shtml">Comments welcome</a>.</fdd:adoption>
+		<fdd:licensingAndPatents>The <a href="http://www.midi.org/techspecs/xmf/xmf_faq.php">MIDI Manufacturers Association FAQ</a> states, "XMF is freely usable. The only thing you have to pay for is buying the specification documents."
+</fdd:licensingAndPatents>
+		<fdd:transparency>Transparent wrapper. See also <fddLink id="fdd000102">MIDI_SD</fddLink> and <fddLink id="fdd000118">DLS_1_1b</fddLink>.</fdd:transparency>
+		<fdd:selfDocumentation>Provided by <i>MetaDataItems</i>, which may be placed at any node in the file and may include technical, copyright, or descriptive information, e.g., title, name, author, etc. The specification speaks of a future plan to specify an XML semantic equivalent to the current mechanism.</fdd:selfDocumentation>
+		<fdd:externalDependencies>See <fddLink id="fdd000102">MIDI_SD</fddLink> and <fddLink id="fdd000118">DLS_1_1b</fddLink>.
+		</fdd:externalDependencies>
+		<fdd:techProtection>None known to the compilers of this document.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:soundQF>
+			<fdd:normalSound>Not applicable; see <fddLink id="fdd000102">MIDI_SD</fddLink> and <fddLink id="fdd000118">DLS_1_1b</fddLink>.</fdd:normalSound>
+			<fdd:fidelity>Not applicable; see <fddLink id="fdd000102">MIDI_SD</fddLink> and <fddLink id="fdd000118">DLS_1_1b</fddLink>.</fdd:fidelity>
+			<fdd:channels>Not applicable; see <fddLink id="fdd000102">MIDI_SD</fddLink>.</fdd:channels>
+			<fdd:samples>Yes, when an XMF instance contains or references <fddLink id="fdd000118">DLS_1_1b</fddLink>.</fdd:samples>
+			<fdd:beyondSound>The XMF specification (RP-032) discusses Meta-Events pertaining to assignment of data to instruments in an XMF context. See also <fddLink id="fdd000102">MIDI_SD</fddLink>; the compilers of this document have not investigated the degree to which such added functionality is provided by XMF as distinct from other file formats and/or application software.</fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>xmf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Suggested by the specification.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>mxmf </fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For Mobile-XMF, from <a href="http://www.iana.org/assignments/media-types/audio/vnd.nokia.mobile-xmf">http://www.iana.org/assignments/media-types/audio/vnd.nokia.mobile-xmf</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>audio/mobile-xmf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://filext.com/">The File Extension Source</a>, for Mobile-XMF.  See also <a href="http://www.iana.org/assignments/media-types/audio/vnd.nokia.mobile-xmf">http://www.iana.org/assignments/media-types/audio/vnd.nokia.mobile-xmf</a>: <i>audio/vnd.nokia.mobile-xmf</i>
+				</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 58 4D 46 5F</fdd:sigValue>
+					<fdd:sigValue>ASCII: XMF_</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://filext.com/">The File Extension Source</a>, for Mobile-XMF. </fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>In February 2011, the <a href="http://www.midi.org/techspecs/xmf/xmf.php">MIDI Manufacturers Association Web site XMF page</a> outlined the current set of XMF specifications: </p>
+			<ul>
+				<li>XMF Meta File Format (RP-030) [specification not offered]</li>
+				<li>XMF Meta File Format 1.01 (RP-039)</li>
+				<li>XMF Meta File Format 2.00 (RP-043)</li>
+				<li>XMF Type 0 and Type 1 Files (RP-031)</li>
+				<li>XMF Type 2 Files (Mobile XMF Files; RP-042)</li>
+				<li>XMF Type 3 Files (Audio Clips for Mobile XMF Files; RP-045)</li>
+				<li>XMF Type 4 Files (Interactive XMF or iXMF Files, no RP number provided)</li>
+			</ul>
+			<p>
+				<a href="http://en.wikipedia.org/wiki/MIDI">Wikipedia MIDI article</a> (consulted February 25, 2011): "The MMA [MIDI Manufacturers Association] has also defined (and AMEI [Association of Musical Electronics Industry, a Japan-based trade group] has approved) a new family of file formats, XMF (Extensible Music File), some of which package SMF chunks with instrument data in DLS format (Downloadable Sounds, also an MMA/AMEI specification), to much the same effect as the MOD file format. The XMF container is a binary format (not XML-based, although the file extensions are similar)."</p>
+			<p>From <a href="http://www.iana.org/assignments/media-types/audio/vnd.nokia.mobile-xmf">http://www.iana.org/assignments/media-types/audio/vnd.nokia.mobile-xmf</a> (2004): "Mobile XMF is a Musical Instrument Digital Interface (MIDI) specification developed by MMA and AMEI."</p>
+		</fdd:general>
+		<fdd:history>The development of XMF post-dates that of <fddLink id="fdd000120">RMID</fddLink>, the use of which is <a href="http://www.midi.org/techspecs/index.php">deprecated</a> at the MIDI.org web site.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:specReference>
+					<i>XMF Specification</i> (2001); as of February 2011, no longer available from MIDI.org (former URL: http://www.midi.org/about-midi/specshome.shtml).  Note that successor versions are available from the <a href="http://www.midi.org/techspecs/xmf/xmf.php">MIDI.org XMF Web page</a> (http://www.midi.org/techspecs/xmf/xmf.php).</fdd:specReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.midi.org/techspecs/xmf/xmf_faq.php</link>
+					<tag>XMF FAQ</tag>
+					<comment>From the MIDI Manufacturers Association.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.wordiq.com/definition/MIDI</link>
+					<tag>http://www.wordiq.com/definition/MIDI</tag>
+					<comment>Scroll down for a short description of XMF.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.iana.org/assignments/media-types/audio/vnd.nokia.mobile-xmf</link>
+					<tag>2003 vendor registration of MIME media type by Nokia</tag>
+					<comment>Includes description of Mobile XMF.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ietf.org/rfc/rfc4723.txt</link>
+					<tag>Mobile XMF MIME</tag>
+					<comment>2006 registration of audio/mobile-xmf as MIME media type with IANA.  Technically this refers to version 2.0 of XMF.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/MIDI</link>
+					<tag>Wikipedia MIDI article</tag>
+					<comment>Includes section on XMF.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://filext.com/</link>
+					<tag>The File Extension Source</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

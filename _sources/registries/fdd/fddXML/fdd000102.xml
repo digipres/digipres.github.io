@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000102" titleName="MIDI Sequence Data" shortName="MIDI_SD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2004-06-07</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Musical Instrument Digital Interface (MIDI) Sequence Data</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>structured music formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>Bitstream encoding format for MIDI "messages" that, in the words of the standards document, "can be thought of as instructions which tell a music synthesizer how to play a piece of music."</p>
+			<p>Three levels have been established to manage player conformance: </p>
+			<ul>
+				<li>General MIDI System Level 1 (GM1), designed to provide the minimum level of compatibility among MIDI hardware and software; includes 128 presets for instruments and 47 for percussion</li>
+				<li>General MIDI System Level 2 (GM2), extensions to provide greater functionality, may not be as widely supported</li>
+				<li>General MIDI Lite (GM lite), reduced performance, especially in mobile applications</li>
+			</ul>
+		</fdd:description>
+		<fdd:shortDescription>Bitstream encoding format for MIDI "messages" that, in the words of the standards document, "can be thought of as instructions which tell a music synthesizer how to play a piece of music."</fdd:shortDescription>
+		<fdd:productionPhase>May be used by composers or arrangers for initial-state activities, in middle-state exchange of data or archiving, or for final-state, end-user delivery.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000119</fdd:id>
+					<fdd:shortName>SMF</fdd:shortName>
+					<fdd:titleName>Standard MIDI File format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000121</fdd:id>
+					<fdd:shortName>XMF_1_0</fdd:shortName>
+					<fdd:titleName>XMF, eXtensible Music File Format, Version 1.0</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:comment>Other file or wrapper formats, not documented at this time</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None</fdd:experience>
+		<fdd:preference>None established at this time</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			Fully documented. Developed by the <a href="http://www.midi.org/">MIDI Manufacturers Association</a>.
+		</fdd:disclosure>
+		<fdd:documentation>
+			<i>The Complete MIDI 1.0 Detailed Specification</i> (2001), available for <a href="http://www.midi.org/techspecs/midispec.php ">purchase</a> from MIDI.org (an arm of the MIDI Manufacturers Association), together with other documentation including the <i>XMF Specification</i>. <a href="http://www.blitter.com/~russtopia/MIDI/~jglatt/tech/midispec.htm">Third party site</a> offering access to the specification or a derivation thereof.
+		</fdd:documentation>
+		<fdd:adoption>
+			Widely adopted. Many tools exist for encoding and decoding.
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			None in the underlying technology.	</fdd:licensingAndPatents>
+		<fdd:transparency>
+			Relatively transparent.
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			"Messages" that identify channel numbers and other data are embedded in the bitstream; header and info chunks (and their equivalents) are provided by wrappers; see <fddLink id="fdd000119">SMF</fddLink>, <fddLink id="fdd000121">XMF_1_0</fddLink>, and <fddLink id="fdd000120">RMID</fddLink>.
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			Playback as sound requires sequencers that control when individual sound elements should start and stop, attributes such as volume and pitch, and other effects that should be applied to the sound elements, which may be short sections of waveform sound (sometimes called samples) or data elements that characterize a sound so that a synthesizer (which may be in software or hardware) or sound generator (usually hardware) can produce the actual sound.  Printed output requires software to transpose MIDI data into notation.
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			None
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:soundQF>
+			<fdd:normalSound>See external dependencies, above.</fdd:normalSound>
+			<fdd:fidelity>Not applicable; fidelity depends upon the performance of external hardware and software.</fdd:fidelity>
+			<fdd:channels>Yes. GM1 features as many as 16 channels.</fdd:channels>
+			<fdd:samples>Not applicable</fdd:samples>
+			<fdd:beyondSound>Specialized applications may (a) produce notation on screen or on paper, (b) streaming playback in a web setting, (c) permit file playback with selective control over the number of channels, e.g., to suppress the synthesized violin when a live musician is present, and adjustments of pitch and tempo, (d) present karaoke content, in which texts are synchronized with the music, and (e) control performances or equipment, as with MIDI Show Control for live theater or multimedia, or to play the role of instrument in the midst of a group of live performers, or MIDI Machine Control for tape recorders and their digital successors.</fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000119">SMF</fddLink>, <fddLink id="fdd000121">XMF_1_0</fddLink>, and <fddLink id="fdd000120">RMID</fddLink>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000119">SMF</fddLink>, <fddLink id="fdd000121">XMF_1_0</fddLink>, and <fddLink id="fdd000120">RMID</fddLink>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000119">SMF</fddLink>, <fddLink id="fdd000121">XMF_1_0</fddLink>, and <fddLink id="fdd000120">RMID</fddLink>.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:history>From the <a href="http://web.archive.org/web/20090117232701/http://eamusic.dartmouth.edu/~wowem/hardware/midi.html">Women on the Web/ElectronMedia</a> site (formerly online at Dartmouth College, now only at Internet Archive): "The analog synthesizers from the 1960-70s were all monophonic. . . . In the late 1970's the Oberheim company developed the first polyphonic synth; it was a four voice analog keyboard. Shortly after the Oberheim release, companies like Sequential Circuits, Yamaha, Moog, Arp, and Roland started developing their own polyphonic synthesizers. The Oberheim OBX and Rhodes Chroma synthesizers both came out in the late 70's (ca. 1979); they were the first synths that came with a computer interface. The digital interface allowed for three of the same kind (same manufacturers) of instruments to be cascaded, or connected, to one another.  At the same time the first digital sequencers came out (there had been sequencers on the analog synthesizers, including the Arp, Buchla, and Moog instruments), the Roland Micro Composer and the Oberheim DSX had the first digital sequencers. Finally, in 1982 at a National Association of Music Merchants (NAMM) convention, the participants discussed a proposal for standardizing the transmission and reception of musical performance information digitally between all types of electronic musical instruments. The original proposal was called the UMI--Universal Musical Interface. In 1983, after a series of revision, this became MIDI--Musical Instrument Digital Interface. Sequential Circuits and Roland were the first companies to introduce MIDI keyboards; shortly after that, Yamaha released the DX7. Now there are MIDI mixers, lighting mixers, effects units and dance mats."</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.midi.org/techspecs/midispec.php</link>
+					<tag>About the Complete MIDI 1.0 Detailed Specification</tag>
+					<comment>This page from the MIDI Manufacturers Association provides links to all elements of the specification, including addenda.  The specification is available for purchase.  Some supplementary documentation is downloadable free.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.midi.org/techspecs/index.php</link>
+					<tag>Tech Specs &amp; Info</tag>
+					<comment>Menu of all related specifications and documents from MIDI Manufacturers Association.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.blitter.com/~russtopia/MIDI/~jglatt/tech/midispec.htm</link>
+					<tag>Third party site</tag>
+					<comment>Offers access to the MIDI specification or a derivation thereof.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:specReference>
+					<i>The Complete MIDI 1.0 Detailed Specification</i> (2001), available for purchase from <a href="http://www.midi.org/techspecs/midispec.php">MIDI.org</a> (http://www.midi.org/techspecs/index.php)</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>
+					<i>XMF Specification</i>, available for purchase from <a href="http://www.midi.org/techspecs/xmf/xmf.php">MIDI.org</a> (http://www.midi.org/techspecs/xmf/xmf.php)</fdd:specReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.midi.org</link>
+					<tag>MIDI Manufacturers Association</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://web.archive.org/web/20090117232701/http://eamusic.dartmouth.edu/~wowem/hardware/midi.html</link>
+					<tag>MIDI page</tag>
+					<comment>From Women on the Web/ElectronMedia, resource formerly at Dartmouth College, now only at Internet Archive. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.blitter.com/~russtopia/MIDI/~jglatt/</link>
+					<tag>MIDI Technical Fanatic's Brainwashing Center</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Musical_Instrument_Digital_Interface</link>
+					<tag>MIDI page from Wikipedia</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Dave_Smith_(engineer)</link>
+					<tag>Wikipedia page for engineer who contributed to MIDI development</tag>
+					<comment>Includes brief description of early MIDI history.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000063" titleName="MJPEG (Motion JPEG) Video Codec" shortName="MJPEG" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>moving-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2011-12-05</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Motion JPEG Video Codec</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>Motion JPEG</fdd:keyword>
+			<fdd:keyword>video formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>Bitstream encoding for video in which each frame [or field?] is compressed using the <fddLink id="fdd000017">JPEG</fddLink> still-image compression algorithm.  Taken as a sequence, the series of frames represent the source video.  MJPEG bitstreams are often wrapped in <fddLink id="fdd000059">AVI</fddLink> files where they carry the Four-Character Code (FOURCC) <i>MJPG</i>.  MJPEG bitstreams may also be managed or wrapped in other ways.</p>
+			<p>Avery Lee, writing in the rec.video.desktop newsgroup in 2001, commented that "MJPEG, or at least the MJPEG in AVIs having the MJPG fourcc, is restricted JPEG with a fixed -- and *omitted* -- Huffman table.  The JPEG must be YCbCr colorspace, it must be 4:2:2, and it must use basic Huffman encoding, not arithmetic or progressive.  . . . You can indeed extract the MJPEG frames and decode them with a regular JPEG decoder, but you have to prepend the DHT segment to them, or else the decoder won't have any idea how to decompress the data.  The exact table necessary is given in the OpenDML spec.&apos;</p>
+		</fdd:description>
+		<fdd:shortDescription>Bitstream encoding for video in which each frame [or field?] is compressed using the JPEG still-image compression algorithm. Taken as a sequence, the series of frames represent the source video. MJPEG bitstreams are often wrapped in AVI files where they carry the Four-Character Code (FOURCC) MJPG.</fdd:shortDescription>
+		<fdd:productionPhase>Generally a middle-state (video production) format; after editing, the bitstream is typically compressed in another encoding for end-user delivery.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000060</fdd:id>
+					<fdd:shortName>AVI_MJPEG</fdd:shortName>
+					<fdd:titleName>Audio Video Interleaved, MJPEG</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000089</fdd:id>
+					<fdd:shortName>QTV_MJPEG</fdd:shortName>
+					<fdd:titleName>QuickTime MJPEG</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>Difficult to describe.  The underlying coding algorithms are well documented through the <fddLink id="fdd000017">JPEG</fddLink> standards activity.  However, additional information about use and wrappers is either informal or exists as proprietary implementations; see the comments in <i>Description</i>, above, and in some of the <a href="#useful">Useful references</a> below.</p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>None identified as of April 26, 2004. See <a href="#notes">Notes</a> below.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>Discussion in various web sites together with the availability of software tools suggests that there has been some use of MJPEG.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>Apparently none, except as indicated for <fddLink id="fdd000017">JPEG</fddLink>.</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>Depends upon algorithms and tools to read; will require sophistication to build tools.  See also the comment in <i>Description</i>, above.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			Not applicable; provided by wrapper formats.
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			None.
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			Not applicable; provided by wrapper formats.
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:movingImageQF>
+			<fdd:normalVideo>Not applicable</fdd:normalVideo>
+			<fdd:clarity>Very good to excellent, depending upon sampling (e.g., 4:2:2 as compared to 4:1:1, etc.), capture of both fields for each frame, the type and extent of compression, and the encoder used.</fdd:clarity>
+			<fdd:beyondVideo>Not applicable.</fdd:beyondVideo>
+		</fdd:movingImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Microsoft FOURCC</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>MJPG</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Used when this codec is wrapped in Microsoft file formats, e.g., <fddLink id="fdd000059">AVI</fddLink> and <fddLink id="fdd000067">ASF</fddLink>; see, for example the <a href="http://www.iana.org/assignments/wave-avi-codec-registry/wave-avi-codec-registry.xml">archived version of the Microsoft registry</a> mounted by IANA.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>Slight discussion of MJPEG in <a href="http://www.jmcgowan.com/avicodecs.html">John McGowan's AVI Overview: Audio and Video Codecs</a> (http://www.jmcgowan.com/avicodecs.html).</fdd:general>
+	</fdd:notes>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.jmcgowan.com/avicodecs.html</link>
+					<tag>John McGowan's AVI Overview: Audio and Video Codecs</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.morgan-multimedia.com/morgan/php/products.php?sProductId=4</link>
+					<tag>Morgan Multimedia M-JPEG Codec</tag>
+					<comment>Description of one vendor&apos;s codec for Motion JPEG.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.morgan-multimedia.com/morgan/php/support.php?iId=30</link>
+					<tag>Morgan Multimedia M-JPEG Configuration Options</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.mainconcept.com/</link>
+					<tag>Main Concept Multimedia Technologies</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Archived snapshots of &quot;Microsoft registry&quot; at Internet Archive.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://web.archive.org/web/20100922105522/http://www.microsoft.com/whdc/archive/fourcc.mspx</link>
+							<tag>Microsoft registry, as of December 2001</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://web.archive.org/web/20100620230818/http://msdn.microsoft.com/en-us/library/ms867195.aspx</link>
+							<tag>Microsoft registry, as of June 2003</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.iana.org/assignments/wave-avi-codec-registry/wave-avi-codec-registry.xml</link>
+					<tag>WAVE and AVI Codec Registries (Historic Registry)
+</tag>
+					<comment>Former &quot;Microsoft registry&quot; as archived by IANA in 2008.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

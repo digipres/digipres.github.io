@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000283" titleName="Band Interleaved by Line (BIL) Image File" shortName="BIL_file" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2011-09-12</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Band Interleaved by Line (BIL) Image File</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>raster image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>A binary raster file format for aerial photography, satellite imagery, and spectral data.  The BIP data organization can handle any number of bands, and thus accommodates black and white, grayscale, pseudocolor, true color, and multi-spectral image data.  Additional information is needed to interpret the image data, such as the numbers of rows, columns, and bands, if there is a color map, and latitude and longitude to relate the image to geospatial locations.  This information may be supplied in a file header (typical on the legacy tapes originally used for storing satellite image data) or in a companion file, for example, as an ASCII header (.hdr) file in the ESRI implementation (See <a href="#notes">Notes</a>).  BIL is generally one member of a pair or cluster of companion files that are typically stored in the same file directory or project workspace, with all component files having the same filename and identified by individual file extension.  Images stored in BIL format have pixels stored band by band for each line, or row, of the image.  See  <fddLink id="fdd000304">BIL_enc</fddLink> for more specific encoding information. 
+</p>
+		</fdd:description>
+		<fdd:shortDescription>A basic binary raster image file format, used for aerial photography and spectral data. The BIL file is a binary file of raw data that requires additional information, usually represented in an associated ASCII file, to be interpreted correctly.  </fdd:shortDescription>
+		<fdd:productionPhase>Raster image file produced, for example, by remote sensing systems and spectrometers. It is practical to use as a middle-state format for some forms of spectral analysis.  Also used as an end-state format for distribution for some US government data. </fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000304</fdd:id>
+					<fdd:shortName>BIL_enc</fdd:shortName>
+					<fdd:titleName>Band Interleaved by Line (BIL) Encoding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse/>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Documentation is provided by multiple sources, including the publicly available specification from Environmental Systems Research Institute, Inc. (ESRI).
+</fdd:disclosure>
+		<fdd:documentation>
+			<a href="http://downloads.esri.com/support/whitepapers/other_/eximgav.pdf">Extendable Image Formats for ArcView GIS 3.1 and 3.2</a>; ESRI White Paper, July 1999; Description of
+BIL/BIP/BSQ is on page 8.</fdd:documentation>
+		<fdd:adoption>
+			<p>Several U.S. Government agencies and other data archives distribute geospatial data in the BIL format:</p>
+			<ul>
+				<li>NASA  Landsat data is distributed in both BIL and <fddLink id="fdd000288">BIP</fddLink> (band interleaved by pixel) formats. </li>
+				<li>Raster data layers distributed by USGS with <a href="http://hydrosheds.cr.usgs.gov/data.php">HydroSHEDS</a> are distributed in ESRI BIL format or ESRI Grid format.</li>
+				<li>The <a href="http://ned.usgs.gov/">National Elevation Dataset (NED)</a> from USGS uses BIL as its simple raster option for download.</li>
+				<li>Black-and-white Digital Orthophoto Quarter Quadrangle (DOQQ) data is distributed by USGS in the BIL format.</li>
+				<li>The Center for International Earth Science Information Network (CIESIN) uses BIL as its simple raster option for download of <a href="http://sedac.ciesin.columbia.edu/data/collection/gpw-v3">Gridded Population of the World (GPW)</a> and <a href="http://sedac.ciesin.columbia.edu/data/collection/wildareas-v2">Last of the Wild (Wildlife Conservation Society)</a> datasets.</li>
+			</ul>
+			<p>BIL spatial data can be displayed in <a href="http://mcmcweb.er.usgs.gov/drc/dlgv32pro/">USGS Digital Data Viewer: dlgv32 Pro</a> a limited-feature version of commercial software <a href="http://www.globalmapper.com/">Global Mapper</a>. USGS Digital Data Viewer requires a header file (usually .hdr, .ers, or .aux) to load the BIL file.  Visual rendering and write/export  instructions for BIL are available in many software libraries, such as GDAL, and  applications, such as AutoCAD, ESRI&apos;s ArcGIS, ENVI, Generic Database (GDB) Technology, Global Mapper, MATLAB, Oracle, etc. </p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>None.</fdd:licensingAndPatents>
+		<fdd:transparency>The raw data has a simple form and is easily interpreted if the image dimensions in pixels, the number of spectral bands, and the number of bits per band are known.</fdd:transparency>
+		<fdd:selfDocumentation>An embedded or companion ASCII header file may contain a wide range of data regarding image capture instrumentation, date, and other data  for identifying, displaying, and georeferencing the image. </fdd:selfDocumentation>
+		<fdd:externalDependencies>Accompanying header files may be compatible only with certain software applications.</fdd:externalDependencies>
+		<fdd:techProtection>No capabilities for encryption or other technical protection mechanism inherent in the format or in its use have been found by the compilers of this analysis.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>See <fddLink id="fdd000304">BIL_enc</fddLink>
+			</fdd:normalImage>
+			<fdd:clarity>See <fddLink id="fdd000304">BIL_enc</fddLink>
+			</fdd:clarity>
+			<fdd:colorMaint>See <fddLink id="fdd000304">BIL_enc</fddLink>
+			</fdd:colorMaint>
+			<fdd:graphics>See <fddLink id="fdd000304">BIL_enc</fddLink>
+			</fdd:graphics>
+			<fdd:multispectral>The BIL data organization can handle any number of bands, and thus accommodates black and white, grayscale, pseudocolor, true color, and multi-spectral image data.  BIL data stores pixel information for separate bands within the same file, so that the user can choose to display just one specific band in a multi-band image.  The Band Interleaved by Line encoding (<fddLink id="fdd000304">BIL_enc</fddLink>) allows fairly easy access to both spatial and spectral information making it a common raster format supported by many GIS systems.</fdd:multispectral>
+			<fdd:beyondImage>When supported by suitable georeferencing information and metadata to support interpretation of spectra in accompanying files, as is often the case in practice for geospatial data, this file format supports geospatial analysis, including grid-based analysis.</fdd:beyondImage>
+		</fdd:stillImageQF>
+		<fdd:gisQF>
+			<fdd:normalGIS>BIL files are often produced by remote sensing systems and spectrometers. BIL data can be immediately read/accessed with ESRI and other GIS applications, including  USGS Digital Data Viewer.</fdd:normalGIS>
+			<fdd:metadataGIS>In ESRI&apos;s BIL implementation, accompanying files provide ancillary information, including metadata.  In particular, projection information is provided in an ASCII text file with extension .prj.  The ESRI world file, with extension .blw,  is an ASCII text file containing coordinate information. It is used by some packages for geo-referencing of BIL image data. The ESRI header file, with extension .hdr, can contain a wide range of data regarding image capture instrumentation, date, and other data  for identifying, displaying, and georeferencing the image.</fdd:metadataGIS>
+			<fdd:grids>As a raster format, data in the BIL encoding is inherently adaptable
+to grid-based analysis, so long as accompanying information is
+provided to document the scale, coordinate reference system, and
+projection so that the image can be registered against a grid chosen
+for analysis.  An ESRI BIL file (with its supporting files) is easily converted to the ESRI Grid format.</fdd:grids>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>.bil</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note/>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>BSQ, BIL, and BIP represent alternative ways of storing images in memory or on disk. The initials stand for band-sequential, band-interleaved-by-line, and band-interleaved-by-pixel, respectively. These image formats are also sometimes called &quot;band-interleaved&quot;, &quot;row-interleaved&quot;, and &quot;pixel-interleaved&quot;, respectively.  Images are stored in one format or another to facilitate expected image manipulations. The BIL (band-interleaved-by-line) encoding is a compromise format, allowing fairly easy access to both spatial and spectral information.</p>
+			<p>To be interpreted properly, a BIL binary image file must have an associated ASCII header file. This header file contains ancillary data about the image such as the number of rows and columns in the image, if there is a color map, and latitude and longitude.  </p>
+			<p>In ESRI applications, accompanying the BIL file are four image description files  (each in ASCII text format): a header file, a statistics file, a resolution file, and a color file.  The header file (.hdr) describes the nature of the image data, through the use of keywords and values.  The statistics file (.stx) is an optional file that describes the image statistics for each spectral band. It records the minimum and maximum pixel values, the mean, the standard deviation, and the two linear contrast stretch parameters.   The resolution file (.blw), also known as a &quot;world file&quot; describes the height and width of each cell and the coordinate position of the top left cell of the data.  The color file (.clr) is an optional file that describes the image colormap (this file type is not used in the GPW data).</p>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://downloads.esri.com/support/whitepapers/other_/eximgav.pdf</link>
+					<tag>Extendable Image Formats for ArcView GIS 3.1 and 3.2</tag>
+					<comment>ESRI White Paper.  July 1999.  Description of
+BIL/BIP/BSQ is on page 8.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?topicname=BIL,_BIP,_and_BSQ_raster_files</link>
+					<tag>BIL, BIP and BSQ raster files </tag>
+					<comment>From ArcGIS 9.3 Desktop Help.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://idlcoyote.com/ip_tips/where3.html</link>
+					<tag>What do BSQ, BIL, and BIP mean, really?</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://hydrosheds.cr.usgs.gov/data.php</link>
+					<tag>HydroSHEDS: Data formats and distribution</tag>
+					<comment>Hydrological data and maps based on SHuttle Elevation Derivatives at multiple Scales.
+
+From USGS and the World Wildlife Fund..</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://ned.usgs.gov/</link>
+					<tag>National Elevation Dataset</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://online.wr.usgs.gov/ngpo/doq/</link>
+					<tag>Birthplace of the DOQ - USGS Western Region</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://sedac.ciesin.columbia.edu/data/collection/gpw-v3</link>
+					<tag>Gridded Population of the World - GPW v3</tag>
+					<comment>From CIESIN Socioeconomic Data and Application Center (SEDAC)</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://sedac.ciesin.columbia.edu/data/collection/wildareas-v2</link>
+					<tag>Last of the Wild, V2</tag>
+					<comment>From CIESIN Socioeconomic Data and Application Center (SEDAC)</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://mcmcweb.er.usgs.gov/drc/dlgv32pro/</link>
+					<tag>USGS Digital Data Viewer: dlgv32 Pro</tag>
+					<comment>The commercial equivalent tool is named Global Mapper.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

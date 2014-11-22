@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000323" titleName="CSV, Comma Separated Values (RFC 4180)" shortName="CSV_strict" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2012-11-27</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>CSV, Comma Separated Values (strict form as described in RFC 4180)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>CSV</fdd:keyword>
+			<fdd:keyword>numeric data formats</fdd:keyword>
+			<fdd:keyword>scientific data formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>CSV is a simple format for representing a rectangular array (matrix) of numeric and textual values.  It an example of a &quot;flat file&quot; format.  It is a delimited data format that has fields/columns separated by the comma character %x2C (Hex 2C) and records/rows/lines separated by characters indicating a line break.  RFC 4180 stipulates the use of CRLF pairs to denote line breaks, where CR is %x0D (Hex 0D) and LF is %x0A (Hex 0A).  Each line should contain the same
+number of fields.  Fields that contain a special character (comma, CR, LF, or double quote), must be &quot;escaped&quot; by enclosing them in double quotes (Hex 22).  An optional header line may appear as the first line
+of the file with the same format as normal record lines.  This
+header will contain names corresponding to the fields in the file
+and should contain the same number of fields as the records in the rest of the file.  CSV commonly employs US-ASCII as character set, but other character sets are permitted.</p>
+		</fdd:description>
+		<fdd:shortDescription>Simple, delimited data format for rectangular data arrays. Fields/columns are separated by the comma character and records/rows/lines are separated by line breaks. Fields containing special characters (comma, CR, LF, double quotes) must be enclosed in double quotes.  </fdd:shortDescription>
+		<fdd:productionPhase>May be used at any stage in the lifecycle of a dataset.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has modified version</fdd:typeOfRelationship>
+				<fdd:comment>Variants of the strict form described here exist.  See <a href="#notes">Notes</a> below.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None in relation to collection holdings</fdd:experience>
+		<fdd:preference>None</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>A simple <i>de facto</i> format, for which no single, official specification exists. The strict variant of the format described here was registered with IANA for the text/csv MIME type in RFC 4180.</p>
+			<p>In RFC 4180, the required section in an RFC for MIME type registration that documents the &quot;Published Specification&quot; reads: &quot;While numerous private specifications exist for various programs
+and systems, there is no single &apos;master&apos; specification for this format.  An attempt at a common definition can be found in Section
+2 [of RFC 4180].&quot;</p>
+			<p>Some <a href="#useful">Useful References</a> provide variant specifications.</p>
+		</fdd:disclosure>
+		<fdd:documentation>IETF RFC 4180: Common Format and MIME Type for Comma-Separated Values (CSV) Files.  2005.  Available at <a href="http://tools.ietf.org/html/rfc4180">http://tools.ietf.org/html/rfc4180</a> or <a href="http://www.ietf.org/rfc/rfc4180.txt">http://www.ietf.org/rfc/rfc4180.txt</a>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>Widely used as an exchange format for tabular data.  Although very limited in functionality, there are many data exchange or data preservation contexts for which it is adequate, particularly when the syntax and semantics of fields are described in ancillary documentation that is also exchanged or preserved.  CSV files can be imported and exported by almost any software designed for storing or manipulating data, including relational database systems, spreadsheet software, and statistical analysis software.</p>
+			<p>CSV is a preferred format for interchange in many contexts because it is so easy to process.   <a href="http://fclaweb.fcla.edu/uploads/recFormats.pdf">Recommended Data Formats for Preservation Purposes in the Florida Digital Archive</a> lists CSV as a format with a high confidence level of providing ongoing access in a usable form.  CSV is a recommended format for data deposit with <a href="http://www.collectionscanada.gc.ca/obj/012018/f2/012018-2200-e.pdf">Library and Archives Canada</a>, a <a href="http://libguides.mit.edu/content.php?pid=456907&amp;sid=3741704">supported format in MIT&apos;s DSpace</a> implementation, and a <a href="http://www.ncdcr.gov/Portals/26/PDF/guidelines/file_formats_in-house_preservation.pdf">recommended format for long-term retention</a> by the State Archives of North Carolina.  CSV was one of the primary formats into which the UK National Archives converted datasets that were selected for the <a href="http://www.nationalarchives.gov.uk/webarchive/archiving-datasets.htm">National Digital Archive of Datasets</a>  between 1997 and 2010 (after which a government initiative promoting open data eliminated the need for such conversion by the National Archives).  It is the <a href="http://daac.ornl.gov/PI/pi_info.shtml">preferred format for preparing tabular environmental data</a> at the Oak Ridge National Laboratory and its use for tabular data is a <a href="http://www.dataone.org/best-practices/document-and-store-data-using-stable-file-formats">best practice</a> for the DataONE (Data Observation Network for Earth) project.  Most government open data initiatives have CSV as one of the primary formats in which data can be downloaded. For example, CSV is one of the formats in which data from the U.S. <a href="http://www.data.gov/">Data.gov</a> can be downloaded.  Others include <fddLink id="fdd000263">XML</fddLink>, ESRI shapefiles (<fddLink id="fdd000280">ESRI_shape</fddLink>), and <fddLink id="fdd000340">KML</fddLink>.  The last two are for geospatial data.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>None.</fdd:licensingAndPatents>
+		<fdd:transparency>A simple text-based format that is very transparent, being both human-readable and easily machine-processable.</fdd:transparency>
+		<fdd:selfDocumentation>Poor.  There is no internal capability to represent metadata, although the optional header row may provide some clues to the semantics of the columns.  For preservation, an associated codebook is desirable, listing and describing the fields, and indicating types and ranges for field data values.  In some contexts, the relevant information is supplied by documentation for a larger corpus or resource, rather than for each dataset. </fdd:selfDocumentation>
+		<fdd:externalDependencies>None.</fdd:externalDependencies>
+		<fdd:techProtection>None.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:normalDataset>An extremely simple format with limited capabilities.  The format does not support strong data typing and is limited to representing a simple tabular structure.</fdd:normalDataset>
+			<fdd:accessSoftware>The simple nature of the CSV format allows easy programming for parsing and using the data.  </fdd:accessSoftware>
+			<fdd:dataDocumentation>No support.  Most guidelines for use of the format for archiving datasets call for data documentation in separate files in appropriate formats.</fdd:dataDocumentation>
+			<fdd:beyondDataset>None.</fdd:beyondDataset>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>.csv</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>No particular extension is specified or required, but <i>.csv</i> is often used.  </fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>text/csv</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Registered with IANA via <a href="http://tools.ietf.org/html/rfc4180">RFC 4180</a>.</fdd:note>
+			</fdd:internetMediaType>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>Several relatively common variations from the strict form specified by RFC 4180 are found and may be supported by software tools such as those listed below as <a href="#useful">Useful References</a>:</p>
+			<ul>
+				<li>In locales where the comma character is used in place of a decimal <i>point</i> in numbers, the separator between fields/columns is often a semicolon.</li>
+				<li>The line break character may be CR or LF, not necessarily CRLF.</li>
+				<li>Some Unix-based applications may use a different escape mechanism for indicating that one of the separator characters occurs within a text value.   The individual character is preceded by a backslash character rather than enclosing the entire string in double quotes.</li>
+				<li>Single quotes may be treated as equivalent to double-quotes for escaping (also known as &quot;text-qualification&quot;).</li>
+			</ul>
+			<p>Several other caveats are worth noting:</p>
+			<ul>
+				<li>The last record in a file may or may not end with a line break character.
+</li>
+				<li>Non-printable characters may be included in text fields by using one of several c-style character escape sequences: \### or \o### Octal; \x## Hex; \d### Decimal; and \u#### Unicode.
+</li>
+				<li>The treatment of whitespace adjacent to field and record separators varies among applications.  If whitespace at the beginning and end of a textual field value is significant, the text string should be text-qualified, i.e. enclosed in quotes.</li>
+				<li>In some uses, there is an assumption of strong data typing, with unquoted fields considered to be numeric, and quoted fields considered to be text data.</li>
+			</ul>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>RFC 4180 is available online from IETF at more than one site and in more than one format:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://tools.ietf.org/html/rfc4180</link>
+							<tag>RFC 4180 in various formats</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.ietf.org/rfc/rfc4180.txt</link>
+							<tag>RFC 4180 in plain text</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Comma-separated_values</link>
+					<tag>CSV at Wikipedia</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://supercsv.sourceforge.net/csv_specification.html</link>
+					<tag>CSV format specification</tag>
+					<comment>From sourceforge site for Super CSV</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.creativyst.com/Doc/Articles/CSV/CSV01.htm</link>
+					<tag>The Comma Separator Value (CSV) File Format</tag>
+					<comment>From Creativyst Software.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.csvreader.com/csv_format.php</link>
+					<tag>CSV Files</tag>
+					<comment>From website for CSVReader and DataStreams software. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://fclaweb.fcla.edu/content/csv</link>
+					<tag>FDA File Format Details: CSV</tag>
+					<comment>From Florida Digital Archive</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

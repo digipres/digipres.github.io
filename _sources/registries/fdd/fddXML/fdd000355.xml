@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000355" titleName="ZIP File Format, Version 6.2.0 (PKWARE)" shortName="ZIP_6_2_0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>aggregate</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-bundle</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrTransform>compression</fdd:gdfrTransform>
+		<fdd:updates>
+			<fdd:date>2012-11-27</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ZIP File Format, Version 6.2.0 (PKWARE)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>ZIP</fdd:keyword>
+			<fdd:keyword>archive file formats</fdd:keyword>
+			<fdd:keyword>package formats</fdd:keyword>
+			<fdd:keyword>container formats</fdd:keyword>
+			<fdd:keyword>bundling formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The ZIP format is designed for cross-platform data exchange and efficient data storage for a set of related files. <fddLink id="fdd000354">ZIP_PK</fddLink> is a de facto industry standard, developed, maintained, and openly documented by <a href="http://www.pkware.com/">PKWARE</a>.  The original version of the format was developed by Phil Katz (hence the &quot;PK&quot; in PKWARE).  Like the earlier versions of ZIP_PK, ZIP_6_0_2, published in April 2004, combines data compression, file management, and data encryption within a portable archive format.  A ZIP file is a package containing one or more files, usually compressed  and sometimes encrypted.  The basic structure consists of a sequence of chunks comprising a &quot;local file header&quot; followed by the file data (after compression and/or encryption) followed by a chunk known as the &quot;central directory,&quot; which lists the files in the package along with key metadata to support their extraction, decryption, etc.  Of the extensions to ZIP since its introduction that are most significant for open, interoperable functionality, version 6.2.0 supports:</p>
+			<ul>
+				<li>the widely used Deflate data compression algorithm;</li>
+				<li>support for large files, raising the 65535 limit on the number of files in a ZIP file and
+allowing file sizes beyond the previous 4 gigabyte limit.</li>
+			</ul>
+			<p>Of the functional extensions other than new compression methods and enhanced encryption, version 6.2.0 lacks one extension that has proved important for worldwide adoption.  It does not support the use of UNICODE in filenames.  See <fddLink id="fdd000354">ZIP_PK</fddLink> for detail on other chronological versions.</p>
+			<p>ZIP_6_2_0 has been incorporated as the package or container for digital formats that represent a single document or other logical unit but comprise multiple files.  See <a href="#notes">Notes</a> below for details on use by OOXML (Office Open XML) and ODF (Open Document Format).</p>
+		</fdd:description>
+		<fdd:shortDescription>2004 version of de facto industry standard for cross-platform data exchange used by OOXML (Office Open XML, ISO 29500, 2008-2012) and ODF (Open Document Format).</fdd:shortDescription>
+		<fdd:productionPhase>May be used at any lifecycle phase for bundling/packaging files together for exchange, storage, or distribution.  In particular, XML-based office productivity formats OOXML and ODF have used constrained forms of this version of the ZIP format to package the component files of their XML-based formats for editable office documents.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000354</fdd:id>
+					<fdd:shortName>ZIP_PK</fdd:shortName>
+					<fdd:titleName>ZIP File Format (PKWARE)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000363</fdd:id>
+					<fdd:shortName>OPC/OOXML_2012</fdd:shortName>
+					<fdd:titleName>Open Packaging Conventions (Office Open XML), ISO 29500-2:2008-2012</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>ZIP_6_2_0 is used as the basis for storing office documents in versions 1.0 through 1.2 of Office Document Format (ODF), standardized as ISO 26300 (not described at this web site at this time).</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>See <fddLink id="fdd000354">ZIP_PK</fddLink>.</fdd:experience>
+		<fdd:preference>See <fddLink id="fdd000354">ZIP_PK</fddLink>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>The ZIP_PK format has been developed and maintained by PKWARE, Inc. since 1998.  The format specification is proprietary, but the most recent version has always been openly disclosed as the .ZIP Application Note with a file name of APPNOTE.TXT.</fdd:disclosure>
+		<fdd:documentation>
+			<p>Version 6.2.0 of ZIP is documented in <a href="http://www.pkware.com/documents/APPNOTE/APPNOTE-6.2.0.txt">APPNOTE.TXT, Version 6.2.0 (April 2004)</a>.</p>
+		</fdd:documentation>
+		<fdd:adoption>See <fddLink id="fdd000354">ZIP_PK</fddLink>.</fdd:adoption>
+		<fdd:licensingAndPatents>See <fddLink id="fdd000354">ZIP_PK</fddLink>.</fdd:licensingAndPatents>
+		<fdd:transparency>See <fddLink id="fdd000354">ZIP_PK</fddLink>.</fdd:transparency>
+		<fdd:selfDocumentation>See <fddLink id="fdd000354">ZIP_PK</fddLink>.</fdd:selfDocumentation>
+		<fdd:externalDependencies>See <fddLink id="fdd000354">ZIP_PK</fddLink>. </fdd:externalDependencies>
+		<fdd:techProtection>See <fddLink id="fdd000354">ZIP_PK</fddLink>.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:otherQF>
+			<fdd:factor>
+				<fdd:tag>Bundling/compression</fdd:tag>
+				<fdd:note>Separate functionality factors for comparing formats that are used to bundle and or compress files have not been developed. From the perspective of digital preservation, consideration of the sustainability factors above is more important than the degree of compression.</fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>Beyond normal</fdd:tag>
+				<fdd:note>See <fddLink id="fdd000354">ZIP_PK</fddLink>.</fdd:note>
+			</fdd:factor>
+		</fdd:otherQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>zip</fdd:sigValue>
+					<fdd:sigValue>ZIP</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Other extensions are used for particular applications that use the ZIP format as a container, for example, OOXML specifies .docx, .xslx, .pptx as the file extension, depending on the document type.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/zip</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Other Internet Media Types are used for particular applications that use the ZIP format as a container, for example, ODF  uses application/vnd.oasis.opendocument.txt for textual doxuments.  See also <fddLink id="fdd000354">ZIP_PK</fddLink>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:other>
+				<fdd:tag>File signature</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000354">ZIP_PK</fddLink>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>ZIP_6_2_0 has been incorporated as the package or container for several digital formats that represent a single document or other logical unit but comprise multiple files.  These include:</p>
+			<ul>
+				<li>Office Open XML (OOXML, standardized as ECMA 376 and ISO/IEC 29500)<br/>The Open Packaging Conventions (OPC, Part 2 of ISO/IEC 29500, OOXML) are based on version 6.2.0. Compression is restricted to DEFLATE; digital signatures are not supported.  Details on the use of ZIP in OPC are in section 10 and Annex C of ISO/IEC 29500-2:2012.</li>
+				<li>Office Document Format (ODF), standardized as ISO/IEC 26300<br/>
+Version 1.2 of <b>ODF</b> (Open Document Format for Office Applications) from OASIS incorporates version 6.2.0. The only compression algorithm allowed is DEFLATE (RFC 1951).  ODF defines its own encryption mechanism.  Version 1.0 of ODF (as published as ISO/IEC 26300:2006) referred to the <a href="ftp://ftp.info-zip.org/pub/infozip/doc/appnote-19970311-iz.zip">APPNOTE.TXT version dated 1997-03-11 from Info-ZIP</a>, because no appropriate version was made available publicly by PKWARE at the time because the version 6.2.0 referred to by the original ODF specification from OASIS had been superseded.   Now that PKWARE maintains an archive of documentation to facilitate persistent references, Version 1.2 of ODF again refers to version 6.2.0.</li>
+			</ul>
+		</fdd:general>
+		<fdd:history/>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.pkware.com/documents/APPNOTE/APPNOTE-6.2.0.txt </link>
+					<tag>APPNOTE.TXT - .ZIP File Format Specification - Version: 6.2.0</tag>
+					<comment>April 26, 2004</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000354">ZIP_PK</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ietf.org/rfc/rfc1951.txt</link>
+					<tag>RFC 1951: DEFLATE Compressed Data Format Specification version 1.3</tag>
+					<comment>No changes to the format had been made since version 1.1, only changes to the document.  The RFC states, &quot;Phil Katz designed the deflate format.  Jean-Loup Gailly and Mark
+Adler wrote the related software described in this specification.&quot;</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Cyclic_redundancy_check</link>
+					<tag>Wikipedia page for Cyclic Redundancy Check (CRC)</tag>
+					<comment>Background on CRC.  ZIP_PK and its versions, including ZIP_6_2_0, use a specific 32-bit CRC algorithm, cited in APPNOTE.TXT.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/x-fmt/263</link>
+					<tag>ZIP file format entry at PRONOM</tag>
+					<comment>PUID is x-fmt/263</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

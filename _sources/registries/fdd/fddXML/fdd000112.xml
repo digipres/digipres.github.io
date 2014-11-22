@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000112" titleName="Advanced Audio Coding (MPEG-2), Audio Data Interchange Format" shortName="AAC_ADIF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2005-11-09</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Formal name (from MPEG-2 documentation that specifies both the AAC_MP2 bitstream and the ADIF file structure.): ISO/IEC 13818-7:2003. Information technology -- Generic coding of moving pictures and associated audio information -- Part 7: Advanced Audio Coding (AAC). Common names: AAC and ADIF.</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>MPEG</fdd:keyword>
+			<fdd:keyword>MPEG-2</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>Bitstream encoding and file format designed for efficient distribution of sound files over moderate bandwidth connections; may be used at higher data rates for better fidelity.  ADIF stands for <i>Audio Data Interchange Format</i> and consists of a brief header that precedes AAC data in a file.  Note that the compression approach in <fddLink id="fdd000036">AAC_MP2</fddLink> (used in this format) was subsequently refined as <fddLink id="fdd000114">AAC_MP4</fddLink>, which requires a different decoder.</fdd:description>
+		<fdd:shortDescription>Bitstream encoding and file format designed for efficient distribution of sound files over moderate bandwidth connections; may be used at higher data rates for better fidelity. ADIF stands for Audio Data Interchange Format.</fdd:shortDescription>
+		<fdd:productionPhase>Generally used for final-state, end-user delivery. </fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000028</fdd:id>
+					<fdd:shortName>MPEG-2</fdd:shortName>
+					<fdd:titleName>MPEG-2 Video Encoding (H.262)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000036</fdd:id>
+					<fdd:shortName>AAC_MP2</fdd:shortName>
+					<fdd:titleName>Advanced Audio Coding (MPEG-2)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None</fdd:experience>
+		<fdd:preference>The Broadcast WAVE format (either version, <fddLink id="fdd000356">WAVE_BWF_1</fddLink> or <fddLink id="fdd000357">WAVE_BWF_2</fddLink>), wrapping <fddLink id="fdd000011">LPCM</fddLink>, is preferred as the archival master format for mono and stereo audio when reformatting analog sound recordings. Preferences for born-digital acquisitions have not been formally established as of this writing, but acceptable formats will certainly include WAVE, MP3, AAC, and possibly others.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Open standard. Developed through ISO technical program <a href="http://www.iso.org/iso/iso_technical_committee.html?commid=45316">JTC 1/SC 29</a> for coding of audio, picture, multimedia and hypermedia information by Working Group 11 (WG11) aka the Moving Picture Experts Group (<a href="http://mpeg.chiariglione.org">MPEG</a>).</fdd:disclosure>
+		<fdd:documentation>ISO/IEC 13818-7:2003. Information technology -- Generic coding of moving pictures and associated audio information -- Part 7: Advanced Audio Coding (AAC). See also <fddLink id="fdd000028">MPEG-2</fddLink>.
+		</fdd:documentation>
+		<fdd:adoption>
+			See <fddLink id="fdd000036">AAC_MP2</fddLink>.
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			See <fddLink id="fdd000036">AAC_MP2</fddLink>.
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			See <fddLink id="fdd000036">AAC_MP2</fddLink>.
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>According to the Audio Coding Wiki, which is no longer available as of June, 2010, the ADIF format actually is just one header at the beginning of the AAC file. And the rest of the data are consecutive raw data blocks. This file format is meant for simple local storing purposes unlike ADTS or LATM which are meant for streaming AAC. The ADIF header is made up of the following tagged elements; the field size in bits is provided in the parentheses, followed by a comment: </p>
+			<ul>
+				<li>adif_id/ (32). Always has value "ADIF"</li>
+				<li>copyright_id_present (1).</li>
+				<li>copyright_id (72). Only present if copyright_id_present has value 1</li>
+				<li>original_copy (1).</li>
+				<li>home (1).</li>
+				<li>bitstream_type (1).  0 for CBR; 1 for VBR</li>
+				<li>bitrate (23). For CBR: bitrate; for VBR: peak bitrate; 0 means unknown</li>
+				<li>num_program_config_elements (4).</li>
+			</ul>
+			<p>The next two elements are repeated (num_program_config_elements+1) times:</p>
+			<ul>
+				<li>buffer_fullness (20).  Only if bitstream_type has value 0</li>
+				<li>program_config_element (VAR).</li>
+			</ul>
+		</fdd:selfDocumentation>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:soundQF>
+			<fdd:normalSound>Good support.</fdd:normalSound>
+			<fdd:fidelity>See <fddLink id="fdd000036">AAC_MP2</fddLink>.</fdd:fidelity>
+			<fdd:channels>See <fddLink id="fdd000036">AAC_MP2</fddLink>.</fdd:channels>
+			<fdd:samples>See <fddLink id="fdd000036">AAC_MP2</fddLink>.</fdd:samples>
+			<fdd:beyondSound>See <fddLink id="fdd000036">AAC_MP2</fddLink>.</fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>aac</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://filext.com/">The File Extension Source</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>Not found.</fdd:sigValueNA>
+				<fdd:note>None identified as of 2004-05-26.</fdd:note>
+			</fdd:internetMediaType>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:formatSpecifications>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 13818-7:2003 Information technology -- Generic coding of moving pictures and associated audio information -- Part 7: Advanced Audio Coding (AAC).</fdd:specReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.mp3-tech.org/aac.html</link>
+					<tag>MPEG-2/MPEG-4 AAC</tag>
+					<comment>Page from MP3-tech.org.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>"MP3 and AAC Explained" is a 1999 article by Karlheinz Brandenburg, Fraunhofer Institute, Erlangen, Germany.  It has good detail but with a focus on <fddLink id="fdd000036">AAC_MP2</fddLink>.  It is available in several locations and at least two forms.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.iis.fraunhofer.de/content/dam/iis/en/dokumente/AMM/Conference-Paper/AES17_mp3-and-AAC-explained-1.pdf</link>
+							<tag>MP3 and AAC Explained (as PDF)</tag>
+							<comment>As published in proceedings of the 17th AES International Conference on High Quality Audio Coding, 1999, Sept 2-5.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.telos-systems.com/support/tech-talk/138-guest-papers/267-mp3-and-aac-explained</link>
+							<tag>MP3 and AAC Explained (transcribed to HTML)</tag>
+							<comment>Transcription to HTML around 2013 indicates the article&apos;s classic status and continuing usefulness.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

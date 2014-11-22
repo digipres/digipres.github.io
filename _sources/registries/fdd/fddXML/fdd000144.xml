@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000144" titleName="JPEG 2000 Part 6 (Compound) jpm File Format" shortName="JPM_FF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-wrapper</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2012-01-03</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ISO/IEC 15444-6:2003. Information technology -- JPEG 2000 image coding system -- Part 6: Compound image file format (formal name); JPEG 2000 jpm file format (common name)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>JPEG 2000</fdd:keyword>
+			<fdd:keyword>jpm</fdd:keyword>
+			<fdd:keyword>raster image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>Format developed by the Joint Photographic Experts Group (JPEG) to serve document imaging. JPM files contain layered still images that use JPEG 2000 and other encodings. The format's compositing model is based on the Mixed Raster Content standard (ISO/IEC 16485).  The JPM file format inherits features from its parent: <fddLink id="fdd000143">JP2_FF</fddLink>, JPEG 2000 Part 1 (Core) jp2 File Format.<br/>
+			<br/>The JPM standard specifies:<ul>
+				<li>a binary container for multiple bi-level and continuous-tone images used to represent a compound image</li>
+				<li>a mechanism by which multiple images can be combined into a single compound image</li>
+				<li>a mechanism for grouping multiple images in a hierarchy of layout objects, pages and page collections</li>
+				<li>a mechanism for storing JPEG 2000 and other compressed image data formats</li>
+				<li>a mechanism for the inclusion of metadata</li>
+			</ul>The above-named mechanisms employ what is called <i>structural metadata</i> in digital library projects.<br/>
+			<br/>The specification describes a <i>Web profile</i> and three <i>decompression profiles</i> (pp. 67-68).  The former has a number of constraints, e.g., on compression types and color space.  The decompression profiles constrain files to the use of a single compression method: JPEG 2000, JPEG, and JBIG2.  Additional information about the format is provided in <a href="#notes">Notes</a>, below.</fdd:description>
+		<fdd:shortDescription>Format developed by the Joint Photographic Experts Group (JPEG) to serve document imaging. JPM files contain layered still images that use JPEG 2000 and other encodings. The format's compositing model is based on the Mixed Raster Content standard (ISO/IEC 16485).  The JPM file format inherits features from its parent: JP2_FF, JPEG 2000 Part 1 (Core) jp2 File Format.</fdd:shortDescription>
+		<fdd:productionPhase>May be used for content in initial, middle, and final states.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>Uncompressed bitmap, not documented at this time</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>ITU-T "Group 3" FAX Compression (T.4), One Dimensional; commonly known as Modified Huffman (MH) encoding, not documented at this time</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>ITU-T "Group 3" FAX Compression (T.4), Two Dimensional; commonly known as Modified READ (MR) encoding, not documented at this time</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000136</fdd:id>
+					<fdd:shortName>ITU_G4</fdd:shortName>
+					<fdd:titleName>ITU-T "Group 4" FAX Compression (T.6)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Commonly known as Modified Modified READ (MMR) encoding</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000042</fdd:id>
+					<fdd:shortName>JBIG_1</fdd:shortName>
+					<fdd:titleName>JBIG1 Bitonal Image Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000017</fdd:id>
+					<fdd:shortName>JPEG_DCT</fdd:shortName>
+					<fdd:titleName>JPEG Lossy (DCT) Compression Encoding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000151</fdd:id>
+					<fdd:shortName>JPEG_LS</fdd:shortName>
+					<fdd:titleName>JPEG Lossless Compression</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000141</fdd:id>
+					<fdd:shortName>J2K_EXT</fdd:shortName>
+					<fdd:titleName>JPEG 2000 Part 2, Coding Extensions</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000010</fdd:id>
+					<fdd:shortName>JBIG_2</fdd:shortName>
+					<fdd:titleName>JBIG2 Bitonal Image Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>Run length encoding, not documented at this time</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None</fdd:experience>
+		<fdd:preference>None established</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Open standard.  Developed by Joint Technical Committee ISOAEC JTC 1, Information technology, Subcommittee SC 29, Coding of audio, picture, multimedia and hypermedia information in collaboration with ITU-T.</fdd:disclosure>
+		<fdd:documentation>ISO/IEC 15444-6:2003. Information technology -- JPEG 2000 image coding system -- Part 6: Compound image file format.<br/>See complete list of ISO/IEC JPEG 2000 documents in <a href="fdd000143.shtml#specs">JP2_FF</a>.</fdd:documentation>
+		<fdd:adoption>Although implementations of JPEG 2000 (especially <fddLink id="fdd000138">J2K_C</fddLink> Part 1 core coding) increased in 2003 and 2004, and are expected to accelerate markedly in 2005, the compiler of this document is not aware of the extent to which JPM_FF is being implemented.
+		</fdd:adoption>
+		<fdd:licensingAndPatents>None identified in specification, which states that "some of the elements of this document may be the subject of patent rights." (p. iv)</fdd:licensingAndPatents>
+		<fdd:transparency>Depends upon algorithms and tools to read; will require sophistication to build tools.</fdd:transparency>
+		<fdd:selfDocumentation>All JPEG 2000 files are made up of "boxes," as described in the <a href="#notes">Notes</a> below, including an XML box typically used for metadata. The specification does not include any particular specification for XML data.  Additional boxes inherited from <fddLink id="fdd000143">JP2_FF</fddLink> include one for a unique identifier for the image or identifier-references to other digital objects, e.g., a UUID, and another for IPR metadata, possibly redundant with that included in the XML box.
+		Amendment 1 (2007) is titled <i>Hidden Metadata</i>; not investigated for this description at this time.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None.</fdd:externalDependencies>
+		<fdd:techProtection>Like all JPEG 2000 file formats, JPM_FF provides an IPR box for rights management information that may be used as inputs to access management systems.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>Good support</fdd:normalImage>
+			<fdd:clarity>Depends upon encoding; see list in Relationships to other formats, above.</fdd:clarity>
+			<fdd:colorMaint>Rich support; the color space of the decompressed image data is indicated in the Color Specification box inside the Header box, which contains the ICC profile when applicable. Other color maintenance features are inherited from <fddLink id="fdd000143">JP2_FF</fddLink>, e.g., the Palette box and the Component Mapping box.</fdd:colorMaint>
+			<fdd:graphics>No support for vector graphics.</fdd:graphics>
+			<fdd:multispectral>Not investigated for this description.</fdd:multispectral>
+			<fdd:beyondImage>JPM data may be fragmented over several files or network resources and reassembled by a network client.  Annex E of the specification explains how to construct URLs that reference sub-elements of a JPM file.  Meanwhile, the JPEG 2000 family offers many extended functionalities, some of which grow out of the options of scalability offered by the various encodings, and which extend to the interactivity provided by JPIP (ISO/IEC 15444-9:2005; JPEG 2000 image coding system: Interactivity tools, APIs and protocols).</fdd:beyondImage>
+		</fdd:stillImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>jpm</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>As specified by Annex A.1 of the specification.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>image/jpm</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>As specified by Annex A.1 of the specification.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>Not found.</fdd:sigValueNA>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>File type brand (ISO Base Media File Format)</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>jpm\040</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Value is &quot;jpm&quot; followed by the space character. When "completely defined by" Part 6 of the JPEG 2000 standard. The File Type Box is similar to the <fddLink id="fdd000079">ISO_BMFF</fddLink> file type box.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Uniform Type Identifier (Mac OS)</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>jpm\040</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>As specified by Annex A.1 of the specification.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Image header box (JPEG 2000)</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>Signifier for the encoded bitstream: 0=uncompressed bitmap; 1=for ITU-T T.4 "Group 3," One Dimensional, aka Modified Huffman (MH) encoding; 2=for ITU-T T.4 "Group 3," Two Dimensional, aka Modified READ (MR) encoding; 3=for ITU-T T.6 "Group 4," aka Modified Modified READ (MMR) encoding; 4=JBIG bi-level images; 5=JPEG encoding; 6=JPEG lossless encoding; 7=JPEG 2000 wavelet encoding (no specification part number indicated); 8=JBIG2 encoding; 9=JBIG images other than bi-level; 10=run length encoding</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>The JPEG 2000 file format family includes:</p>
+			<ul>
+				<li>
+					<fddLink id="fdd000143">JP2_FF</fddLink>, JPEG 2000 Part 1 (Core) jp2 File Format </li>
+				<li>
+					<fddLink id="fdd000154">JPX_FF</fddLink>, JPEG 2000 Part 2 (Extensions) jpf (jpx) File Format</li>
+				<li>JPM_FF, JPEG 2000 Part 6 (Compound) jpm File Format (this document)</li>
+			</ul>
+			<p>The family is descended from <fddLink id="fdd000052">QuickTime</fddLink>.  This lineage is shared with <fddLink id="fdd000079">ISO_BMFF</fddLink> and its offshoots, which include <fddLink id="fdd000155">MP4_FF_2</fddLink>, <fddLink id="fdd000137">MP4_FF_AVCE</fddLink>, and <fddLink id="fdd000127">MJ2_FF</fddLink>, itself a wrapper for JPEG 2000 core-encoded images that represent sets of film or video frames.</p>
+			<p>The description of this standard at the <a href="http://www.iso.org/">ISO Web site</a> may be paraphrased as follows:</p>
+			<p>A compound image may contain scanned images, synthetic images or both, often requiring a mix of continuous tone and bi-level compression. The JPM specification defines a binary container for a mix of continuous-tone and bi-level images, and also defines a composition model that describes how the multiple images are combined to generate a compound image, based on the multi-layer Mixed Raster Content (MRC) imaging model, defined in ISO/IEC 16485.</p>
+			<p>The name of the file format defined in part 6 of ISO/IEC 15444 is JPEG 2000 Multi-layer or JPM.  The format is useful for applications that store multiple pages, images with mixed content, and/or images that need more structure than provided in JP2. A JPM file stores a compound image document as a sequence of pages, each of which consists of a sequence of layout objects, each of which in turn consists of an MRC mask-image object pair. A JPM file can support MRC-encoded data, binary-only objects and pages, JPEG 2000-compressed objects and pages, or a mixture of all. Each of these elements (page, layout object, mask/image object) may have a label and associated metadata.</p>
+			<p>Each JPM file contains a main <i>page collection</i>, which is used to organize and navigate the pages in a compound image document. A key feature of JPM is its support of fragmented JPEG 2000 codestreams to enable progressive and interactive rendering in web applications. A JPM file may be self-contained in that it contains all the data needed to composite the page or pages in the file. A JPM file may also reference images and data in external files.</p>
+			<p>The hierarchy is: <i>page collections</i> contain <i>pages</i> which contain <i>layout objects</i> which contain <i>mask</i> and <i>image objects</i>.</p></fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 15444-6:2003.  Information technology -- JPEG 2000 image coding system -- Part 6: Compound image file format. Defines a normative but optional file format for storing compound images using the JPEG 2000 file format family architecture. A compound image is an image that may contain scanned images, synthetic images or both, and that preferably requires a mix of continuous tone and bi-level compression methods. Besides defining a binary container for a mix of continuous-tone and bi-level images, this format defines a composition model that describes how the multiple images are combined to generate a compound image. This composition model is based on the multi-layer Mixed Raster Content (MRC) imaging model, defined in ITU-T T.44 | ISO/IEC 16485. </fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference>ISO/IEC 15444-6:2003/Amd 1:2007.  Hidden Metadata.</fdd:specReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.jpeg.org/jpeg2000/</link>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ietf.org/rfc/rfc3745.txt</link>
+					<tag>MIME types for JPEG 2000</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:bookReference>
+					<bookRefDetail rel="au">Colyer, Greg</bookRefDetail> and <bookRefDetail rel="au">Richard Clark</bookRefDetail>. <bookRefDetail rel="btitle">Guide to the Practical Implementation of JPEG 2000</bookRefDetail>. London: British Standards Institute, 2003.  ISBN: <bookRefDetail rel="isbn">0580412423</bookRefDetail> BSI: PD 6777:2003.  Available as PDF file; link to point-of-sale at <a href="http://www.jpeg.org/jpeg2000/index.html">http://www.jpeg.org/jpeg2000/index.html</a>.</fdd:bookReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:usefulReferences>
+</fdd:FDD>

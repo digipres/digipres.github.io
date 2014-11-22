@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000357" titleName="Broadcast WAVE Audio File Format, Version 2" shortName="WAVE_BWF_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2012-10-25</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>EBU Broadcast Wave Format, Version 2</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>audio formats</fdd:keyword>
+			<fdd:keyword>recorded sound formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>File format intended for the exchange of audio material between different broadcast environments and equipment based on different computer platforms. Based on the Microsoft WAVE audio file format, Broadcast Wave adds a required &quot;Broadcast Audio Extension&quot; (bext) chunk to hold the minimum information considered necessary for broadcast applications. Additional metadata chunks have also been developed; see <a href="#notes">Notes</a>. More information is provided in the format description for <fddLink id="fdd000356">WAVE_BWF_1</fddLink> (version 1).</p>
+			<p>The most significant new element in version 2 is the inclusion of metadata pertaining to the measurement of loudness in the file.  Additional information about this, and links to related standards and other informative documents, will be found on page 12 of <a href="http://www.digitizationguidelines.gov/audio-visual/documents/Embed_Intro_20120423.pdf">Embedding Metadata in Digital Audio Files: Introductory Discussion for the Federal Agencies Guideline</a>.</p>
+		</fdd:description>
+		<fdd:shortDescription>File format intended for the exchange of audio material between different broadcast environments and equipment based on different computer platforms. Based on the Microsoft WAVE audio file format, Broadcast Wave adds a required &quot;Broadcast Audio Extension&quot; (bext) chunk to hold the minimum information considered necessary for broadcast applications. </fdd:shortDescription>
+		<fdd:productionPhase>Used for content in initial, middle, and final states.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Modification of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000001</fdd:id>
+					<fdd:shortName>WAVE</fdd:shortName>
+					<fdd:titleName>WAVE Audio File Format </fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000011</fdd:id>
+					<fdd:shortName>LPCM</fdd:shortName>
+					<fdd:titleName>Linear Pulse Code Modulated Audio (LPCM)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>MPEG-1 and MPEG-2 Layer I Audio Encoding, not described at this Web site</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000338</fdd:id>
+					<fdd:shortName>MPEG_layer_2_audio</fdd:shortName>
+					<fdd:titleName>MPEG-1 and MPEG-2 Layer II Audio Encoding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000359</fdd:id>
+					<fdd:shortName>WAVE_BWF_LPCM_2</fdd:shortName>
+					<fdd:titleName>Broadcast WAVE File Format, Version 2, with LPCM Audio</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:comment>EBU Broadcast Wave File Format (1997, sometimes called &quot;Version 0&quot;), not described at this Web site.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000356</fdd:id>
+					<fdd:shortName>WAVE_BWF_1</fdd:shortName>
+					<fdd:titleName>Broadcast WAVE Audio File Format, Version 1</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has extension</fdd:typeOfRelationship>
+				<fdd:comment>MBWF / RF64:
+An extended File Format
+for Audio, not described at this Web site at this time.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>When reformatting analog sound recordings, the Broadcast WAVE format (either version), wrapping <fddLink id="fdd000011">LPCM</fddLink>, is used as the archival master format for mono and stereo audio at the <a href="http://www.loc.gov/avconservation/packard/">Packard Campus for Audio-Visual Conservation</a> and by the <a href="http://www.loc.gov/folklife/">American Folklife Center</a>. </fdd:experience>
+		<fdd:preference>The Broadcast WAVE format (either version), wrapping <fddLink id="fdd000011">LPCM</fddLink>, is preferred as the archival master format for mono and stereo audio when reformatting analog sound recordings.  The Library is a participant in the <a href="http://www.digitizationguidelines.gov">Federal Agencies Audio-Visual Working Group</a> that published a <a href="http://www.digitizationguidelines.gov/guidelines/digitize-embedding.html">recommended specification</a> for BWF bext metadata conforming to version 1 in 2009, with an update conforming to version 2 in 2012.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Open standard developed as a refinement of the WAVE format by the European Broadcast Union (EBU), a standards developing organization.</fdd:disclosure>
+		<fdd:documentation>
+			<a href="https://tech.ebu.ch/docs/tech/tech3285.pdf">EBU Tech 3285 - Specification of the Broadcast Wave Format (BWF) - Version 2 - (2011)</a>.  Other related EBU standards are listed in the format description for <fddLink id="fdd000356">version 1</fddLink>.
+</fdd:documentation>
+		<fdd:adoption>Widely recommended, including as the preferred format for the delivery of music recordings to record companies in the Draft Recommendation for Delivery of Recorded Music Projects developed by the Delivery Specifications Committee of the Producer's and Engineer's Wing of the Recording Academy (National Academy of the Recording Arts and Sciences). Audio format specified in AES31-3, the Audio Engineering Society's specification for session project interchange, where LPCM encoding is implied but not specified.</fdd:adoption>
+		<fdd:licensingAndPatents>None.</fdd:licensingAndPatents>
+		<fdd:transparency>The file format is transparent.  For information on the transparency of the included audio encodings, see <fddLink id="fdd000011">LPCM</fddLink> and <fddLink id="fdd000338">MPEG_layer_II_audio</fddLink>.  BWF metadata is human-readable.</fdd:transparency>
+		<fdd:selfDocumentation>The Broadcast Audio Extension (bext chunk) holds metadata identifying the originator and the date and time of creation, and technical-adminstrative metadata, e.g., about loudness.   Additional options for embedding metadata are outlined in the format description for <fddLink id="fdd000356">version 1</fddLink>.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>None</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:soundQF>
+			<fdd:normalSound>Supported</fdd:normalSound>
+			<fdd:fidelity>Depends upon encoding; see <fddLink id="fdd000002">WAVE_LPCM</fddLink> or <fddLink id="fdd000338">MPEG_layer_II_audio</fddLink>.</fdd:fidelity>
+			<fdd:channels>May depend upon encoding; see <fddLink id="fdd000002">WAVE_LPCM</fddLink> or <fddLink id="fdd000338">MPEG_layer_II_audio</fddLink>.  Note that multichannel audio is supported in the MBWF (&quot;RF64 with a bext chunk&quot;) specification, <a href="http://tech.ebu.ch/docs/tech/tech3306-2009.pdf">EBU-TECH 3306, MBWF / RF64:
+An extended File Format
+for Audio</a> (2009).</fdd:channels>
+			<fdd:samples>Not supported</fdd:samples>
+			<fdd:beyondSound>Files greater than 4 GB in size may be produced using the MBWF (&quot;RF64 with a bext chunk&quot;) specification, <a href="http://tech.ebu.ch/docs/tech/tech3306-2009.pdf">EBU-TECH 3306, MBWF / RF64:
+An extended File Format
+for Audio</a> (2009). See <a href="#notes">Notes</a>.</fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>wav</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>
+					<p>See <fddLink id="fdd000001">WAVE</fddLink>
+					</p>
+				</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>
+					<p>See <fddLink id="fdd000001">WAVE</fddLink>
+					</p>
+				</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>Four metadata chunks beyond bext have been established for Broadcast WAVE files. First is AES46 (initially standardized in 2002 and revised in 2007): AES standard for network and file transfer of audio Audio-file transfer and exchange Radio traffic audio delivery extension to the broadcast-WAVE-file format.  Its purpose is stated as &quot;an interchange
+medium by audio production and on-air delivery systems to exchange audio data  . . . along with basic scheduling, traffic or continuity information.&quot;  Second is axml, developed by the EBU in 2003, with a corollary schema called aXML. This is potentially useful but seems not to have been widely adopted.  See <a href="http://tech.ebu.ch/docs/tech/tech3285s5.pdf">Specification of the Broadcast Wave Format; A Format for Audio Data Files in Broadcasting; Supplement 5: &lt;axml&gt; Chunk</a>, accessed April 16, 2012.  Third is iXML, developed by a British trade group, the Institute of Broadcast Sound (IBS), a group of audio hardware and software manufacturers who sought to facilitate transfer of production metadata across systems..  The current version of the <a href="http://www.ixml.info/">specification</a> is dated 2010; earlier versions of the specification can be found in the Internet Archive Wayback machine.  The iXML website lists 16 companies and 23 products that use the data structure, and iXML is also being developed as a standard by the Audio Engineering Society (AES).  Fourth is an implementation of Adobe's <a href="http://wwwimages.adobe.com/www.adobe.com/content/dam/Adobe/en/devnet/xmp/pdfs/cc-201306/XMPSpecificationPart1.pdf">XMP Specification</a>.  This structure can exist as a "sidecar" file or be embedded in a variety of content-essence files, including WAVE (need not be Broadcast WAVE).  XMP has been widely adopted by professional photographers because it is well supported in the ubiquitous family of Adobe imaging software, where it generally takes the form of the news-oriented metadata standard from International Press and Telecommunications Council (IPTC).  Adobe and the IPTC are actively exploring ways to expand the use of XMP among audio and video producers, especially in the field of journalism.</p>
+			<p>From the Wikipedia article <a href="http://en.wikipedia.org/wiki/RF64">RF64</a> (consulted October 26, 2012): &quot;RF64 is a BWF-compatible multichannel file format enabling file sizes to exceed 4 GB. It has been specified by the European Broadcasting Union. The file format is designed to meet the requirements for multichannel sound in broadcasting and audio archiving. It is based on the Microsoft RIFF/WAVE format and Wave Format Extensible for multichannel parameters. Additions are made to the basic specification to allow for more than 4 GB file sizes when needed (the new maximum filesize is now approximately 16 exabytes). . . .  In its basic form, the 32-bit chunk size field at offset 4 in the file is set to -1 (0xFFFFFFFF), and immediately following that a new &apos;DS64&apos; chunk is inserted (before the FMT chunk). This new DS64 chunk will contain the 64-bit sizes of the DATA chunk(s), using a simple sequential table mechanism to point to additional DATA chunks. The first 4 bytes of the file are then changed from &apos;RIFF&apos; to &apos;RF64&apos;. . . .  An RF64 file with a bext chunk becomes an MBWF-file. The terms ‘RF64’ and ‘MBWF’ can then be considered synonymous.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>There have been three iterations of the BWF format under the general specification number EBU Tech 3285. Version 0 (as it came to be called) was published in 1997. Version 1, which differs from Version 0 in the use of 64 of the 254 reserved bytes to contain a SMPTE UMID identifier, was published July 2001. Version 1 was followed by six supplements with additional information. Version 2 references these supplements and adds elements that pertain to loudness metadata.</p>
+			<p>How can you identify the version?  One method is to take advantage of the facts that (a) the bext chunks in Version 0 files do not have a space reserved for the UMID and (b) the bext chunks for neither Version 0 or Version 1 files have spaces for loudness metadata.  Thus, if a file has BEXT data but no UMID or loudness values, it is Version 0. (The version 0 value for the BEXT Version element is not specified in EBU Tech 3285; the Broadcast WAVE <a href="http://www.digitizationguidelines.gov/audio-visual/documents/Embed_Guideline_20120423.pdf">guideline</a> from the Federal Agencies Digitization Guideline Initiative recommends using the value 0000h.)  If a file has BEXT data and a UMID value but no loudness values, it is Version 1. (EBU specifies 0001h as the value for the Version element.)
+If a file has BEXT data and loudness values, it is Version 2. (EBU specifies 0002h as the value for the Version element.)</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://tech.ebu.ch/docs/tech/tech3285.pdf</link>
+					<tag>EBU Tech 3285 - Specification of the Broadcast Wave Format (BWF) - Version 2 - (2011)</tag>
+					<comment>Version 2 of BWF is a substantial revision that incorporates Loudness Metadata (in accordance with EBU R 128) and which takes account of the publication of Supplements 1 – 6 and other relevant documentation.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://tech.ebu.ch/docs/tech/tech3306-2009.pdf</link>
+					<tag>EBU – TECH 3306: MBWF / RF64:
+An extended File Format
+for Audio (2009)</tag>
+					<comment>Permits file sizes greater than 4 GB and various types of multichannel audio.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ebu.ch/fr/technical/publications/userguides/bwf_user_guide.php</link>
+					<tag>http://www.ebu.ch/fr/technical/publications/userguides/bwf_user_guide.php</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.digitizationguidelines.gov/audio-visual/documents/Embed_Intro_20120423.pdf</link>
+					<tag>Embedding Metadata in Digital Audio Files: Introductory Discussion for the Federal Agencies Guideline (2012)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.digitizationguidelines.gov/audio-visual/documents/Embed_Guideline_20120423.pdf</link>
+					<tag>Embedding Metadata in Digital Audio Files:
+Guideline for Federal Agency Use of Broadcast WAVE Files (2012)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.digitizationguidelines.gov/audio-visual/documents/AVPS_Audio_Metadata_Overview_090612.pdf</link>
+					<tag>Assess Options for Embedding Metadata in WAVE Files: Assessment Report and Initial Recommendations (2009)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/2</link>
+					<tag>BWF version 1 file format entry at PRONOM</tag>
+					<comment>PUID is x-fmt/2.  No PRONOM entry for version 2 exists at this writing.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/1</link>
+					<tag>BWF version 0 file format entry at PRONOM</tag>
+					<comment>PUID is x-fmt/1.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

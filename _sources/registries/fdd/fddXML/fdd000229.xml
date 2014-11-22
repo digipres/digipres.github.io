@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000229" titleName="HDF5, Hierarchical Data Format, Version 5" shortName="HDF5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2012-01-24</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>HDF5, Hierarchical Data Format, Version 5</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>numeric data formats</fdd:keyword>
+			<fdd:keyword>scientific data formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>HDF5 is a general purpose library and file format for storing scientific data.  HDF5 can store two primary types of objects: datasets and groups. A dataset is essentially a multidimensional array of data elements, and a group is a structure for organizing objects in an HDF5 file. Using these two basic objects, one can create and store almost any kind of scientific data structure, such as images, arrays of vectors, and structured and unstructured grids. They can be mixed and matched in HDF5 files according to user needs.  HDF5 does not limit the size of files or the size or number of objects in a file.  HDF5 does not require all data to be written at once; datasets may be extended later if necessary. Metadata objects can be defined using a similar object model.</p>
+			<p>HDF5 was designed to address some of the limitations of the HDF 4.x library and to address current and anticipated requirements of modern systems and applications.  The HDF4 and HDF5 file formats are completely different.  Distinctions between the data models and the APIs are described at <a href="http://www.hdfgroup.org/h5h4-diff.html">http://www.hdfgroup.org/h5h4-diff.html</a>.  Another feature comparison is at <a href="http://www.hdfgroup.org/h4vsh5.html">http://www.hdfgroup.org/h4vsh5.html</a>.  To quote from this FAQ page, &quot;The HDF5 data model is &apos;simpler&apos; in the sense that it has fewer objects and has a consistent object model throughout.  In comparison, HDF4 has many more objects and lacks a clear object model.  On the other hand, the HDF5 data model exposes many details.  This makes the object model very powerful, but usually requires the user program to handle many routine details.  In contrast, the HDF4 objects are simpler, requiring less programming to accomplish simple tasks. &quot;  This issue is mitigated in part by the inclusion in the software library of  higher-level APIs to manipulate HDF5 structures equivalent to HDF4 object types.</p>
+		</fdd:description>
+		<fdd:shortDescription>HDF5 is a general purpose software library (with APIs in several programming languages) and an associated file format for storing scientific data.  The data model includes two primary objects: a multidimensional array of records, called a dataset; and a structure for grouping objects.</fdd:shortDescription>
+		<fdd:productionPhase>Generally used for middle- and final-state archiving. </fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>Includes version 5.0 and later releases not documented separately here.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000332</fdd:id>
+					<fdd:shortName>NetCDF-4</fdd:shortName>
+					<fdd:titleName>Network Common Data Form, version 4</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>NetCDF-4 intentionally supports a simpler data model than HDF5.  Use is made in NetCDF-4 of some features only available in HDF5 1.8 and later.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000228</fdd:id>
+					<fdd:shortName>HDF4</fdd:shortName>
+					<fdd:titleName>Hierarchical Data Format, Version 4</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None</fdd:experience>
+		<fdd:preference>None</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>The HDF software was developed and supported by NCSA and is freely available.  In July 2005, NCSA announced that the "Hierarchical Data Format group is spinning off from the National Center for Supercomputing Applications (NCSA) as a non-profit corporation supporting open source software and non-proprietary data formats."</p>
+			<p>Source code for the HDF libraries is available in C. Source for the Fortran and C++ interfaces is also available.  A library of Java tools, which act as a Java wrapper for HDF5 binaries is available as Java source.</p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>Documentation for the software libraries is at <a href="http://www.hdfgroup.org/HDF5/doc/">http://www.hdfgroup.org/HDF5/doc/</a>.  The file format specification is at <a href="http://www.hdfgroup.org/HDF5/doc/H5.format.html">http://www.hdfgroup.org/HDF5/doc/H5.format.html</a>.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>The 2005 press release for the spin-off of the HDF Group from NCSA stated, &quot;These freely available tools are used by an estimated 2 million users in fields from environmental science to the aerospace industry and by entities including the U.S. Department of Energy, NASA, and Boeing.  It is used world-wide in many fields, including Environmental Science, Neutron Scattering, Non-Destructive Testing, and Aerospace, to name a few. Scientific projects that use HDF include NASA's HDF-EOS project, and the DOE's Advanced Simulation and Computing Program.&quot;  A list of organizations using HDF5, working in many scientific disciplines, is at <a href="http://www.hdfgroup.org/HDF5/users5.html">http://www.hdfgroup.org/HDF5/users5.html</a>.</p>
+			<p>NASA&apos;s Earth Observing System, the primary data repository for understanding global climate change, uses HDF4 and HDF5. The Federal Geospatial Data Committee (FGDC) includes HDF5 on its list of <a href="http://www.fgdc.gov/standards/fgdc-endorsed-external-standards/index_html">FGDC  Endorsed External Standards</a>.</p>
+			<p>Software applications that make use of HDF5 are listed at <a href="">http://www.hdfgroup.org/tools5desc.html</a>.  Tools for analysis and visualization that can handle HDF5 data files include the commercial products IDL, MATLAB, and Mathematica.  Other applications or toolkits that can handle HDF5 data include R and GDAL (Geospatial Data Abstraction Library).  An HDF5 handler for <a href="http://opendap.org/">OPeNDAP</a> (Open-source Project for a Network Data Access Protocol) has been developed to support dynamic access to data selected from within an HDF5 file from other visualization software.</p>
+			<p>Important data resources using HDF5 as a data format include most data products produced by NASA&apos;s Aura spacecraft mission.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>No concerns for non-commercial use.</p>
+			<p>One of the optional compression methods supported is Szip.  Since Release 1.6.0, the HDF5 software library has been shipped including Szip compression software based on an algorithm developed at the Jet Propulsion Laboratory and patented by NASA.  A license to users of HDF software permits decompression using the integrated Szip code by all users and permits compression for non-commercial scientific use.  Commercial use of the Szip compression requires a separate license.  See <a href="http://www.hdfgroup.org/doc_resource/SZIP/Commercial_szip.html">Szip Copyright and License Statement, as Distributed in the HDF Source Code</a>.</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>The HDF5 format is designed to give scientists flexibility to store their data in a form and layout that supports high performance for the intended primary use of the data.  The resulting file cannot be interpreted without access to functional HDF5-aware software.  The software includes a utility h5dump, which permits output of the contents of an HDF5 file to an ASCII file or to an XML in conformance with either a DTD or XML Schema, available at <a href="http://www.hdfgroup.org/HDF5/XML/">http://www.hdfgroup.org/HDF5/XML/</a>.  For long-term archiving and transfer among operating systems, use of the IEEE formats for numbers would be preferred over the &quot;native&quot; formats, allowed for performance reasons.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>An HDF5 structure is self-describing from a technical perspective, allowing an application to interpret the structure and contents of a file without any outside information. The format supports user-defined attributes that can be used to add descriptive metadata to the file as a whole or any component data object.  There is no explicit support for embedding structured metadata using a particular schema or syntax.  However, a metadata object, e.g., a chunk of XML in a known schema, can be defined and embedded using the basic object model features.  The <a href="http://www.opennavsurf.org/whitepapers.html">Open Navigation Surface</a> specification for a Bathymetric Attributed Grid (BAG) object uses this approach, with the ISO 19115 compliant metadata stored in XML as a character stream.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			<p>None, beyond HDF5-aware software.</p>
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			<p>None.</p>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:normalDataset>
+				<p>Data types supported for interoperability include: signed and unsigned integers of 8, 16, 32, and 64 bits; floating point (32-bit) and double-length (64-bit) binary numbers in IEEE big-endian, and IEEE little-endian; and an ASCII string type.  The format also supports &quot;native&quot; formats for characters, integers, and floating point numbers.  The &quot;native&quot; datatype formats are intended for use on a single operating system, to avoid unnecessary processing to convert between an external format and the format used in the computer in primary use.  In addition to atomic datatypes, datatypes are also predefined for a few common compound classes, including arrays and enumerations (e.g., for lists of permitted values). In addition to these predefined datatypes, users can define custom atomic datatypes and can construct complex structured datatypes from other datatypes.</p>
+				<p>HDF5 supports two basic and complementary data models, a <i>dataset</i> and a <i>group</i>. In HDF5 the term <i>dataset</i> has a specific meaning.  A dataset consists of a <i>dataspace</i> and a single <i>datatype</i>.  A dataspace defines the organization of the data elements in a dataset, in particular, the number and size of the dimensions of a multidimensional array.  All elements in a dataset must conform to a particular datatype.  Groups can contain datasets in collections or hierarchies.  The HDF5 data model can support complex data relationships and dependencies through its grouping and linking mechanisms.</p>
+			</fdd:normalDataset>
+			<fdd:accessSoftware>
+				<p>An integral component of HDF5 is a software library that provides an API (in Fortran90, C, C++, and Java) to read and write files in the HDF5 format.</p>
+			</fdd:accessSoftware>
+			<fdd:dataDocumentation>
+				<p>HDF5 offers the capability to annotate a file as a whole or any individual dataset, using attributes and groups of attributes.  There is no explicit support  in HDF5 for embedding structured metadata using a particular schema or syntax.  However, a particular community can use the attribute features in specified ways or package metadata in a consistent way and embed metadata packages as special HDF5 data objects. For example, the HDF-EOS5 format, which is based on HDF5 also specifies a metadata structure.</p>
+			</fdd:dataDocumentation>
+			<fdd:beyondDataset>
+				<p>HDF5 supports multiple unlimited dimensions in its multimensional arrays.</p>
+				<p>Arrays can be chunked to improve access times for particular operations, commonly used for a particular dataset.  Chunked data can be compressed selectively by variable.</p>
+			</fdd:beyondDataset>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>h5</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Extension used in HDF5 documentation.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 89 48 44 46 0d 0a 1a 0a</fdd:sigValue>
+					<fdd:sigValue>ASCII: \211 HDF \r \n \032 \n</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>As described in <a href="http://www.hdfgroup.org/HDF5/doc/H5.format.html">HDF5 format specification</a>. The HDF5 superblock, which begins with the 8-byte format signature, may begin at certain predefined offsets within the HDF5 file: 0, 512, 1024, 2048, and multiples of two thereafter.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>There are two HDF formats, HDF (4.x and previous releases) and HDF5. These formats are completely different and NOT compatible.  As of January 2012, there are no plans to drop support of HDF4, but new features will not be added.  New projects are encouraged to use HDF5.  However, it is reported by some that HDF5&apos;s more powerful and flexible format can be challenging to use.</p>
+			<p>HDF5 is distributed with some high-level APIs, which use the simple underlying model to model some commonly used data structures, particulalry structures that were supported explicitly in HDF4, such as images, color palettes, and tables of similarly structured records.</p>
+			<p>As of January 2012, Parallel HDF5, a version of the HDF5 software designed to work with MPI (Message Passing Interface protocol) and MPI I/O software libraries, does not support some features of HDF5.  In particular, compressed data can not be written in parallel fashion; and variable-length datatypes are not supported.</p>
+		</fdd:general>
+		<fdd:history>The HDF Group [<a href="http://www.hdfgroup.org/">http://www.hdfgroup.org/</a>] was spun off from the National Center of Supercomputing Applications (NCSA) as a non-profit corporation in July 2005. The HDF Group (THG), continues to support open source software and the non-proprietary HDF4 and HDF5 data formats.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.hdfgroup.org/HDF5/doc/</link>
+					<tag>Latest version of documentation for HDF5 software libraries and data format.  As of January 2012, the latest version of HDF5 software is 1.8.8.</tag>
+					<comment/>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.hdfgroup.org/HDF5/doc/H5.format.html</link>
+					<tag>HDF5 File Format Specification Version 2.0</tag>
+					<comment>Includes specification for Version 1 variations in B-tree structures and data object headers.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.hdfgroup.org/HDF5/doc/ddl.html</link>
+					<tag>BNF specification for HDF5 file</tag>
+					<comment/>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Many resources on the website of The HDF Group provide useful information about HDF5 and associated tools.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.hdfgroup.org/</link>
+							<tag> HDF Group main website</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.hdfgroup.org/HDF5/XML/</link>
+							<tag>HDF5 XML Information Page</tag>
+							<comment>Links to DTD and XML Schema specifications.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.hdfgroup.org/HDF5/doc/RM/Tools.html#Tools-Dump</link>
+							<tag>h5dump utility</tag>
+							<comment>Permits data export to ASCII and XML forms.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://hdfeos.net/</link>
+					<tag>HDF-EOS Tools and Information Center</tag>
+					<comment>The HDF-EOS format used by NASA for its Earth Observing System) has versions based on HDF4 and HDF5.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.fgdc.gov/standards/fgdc-endorsed-external-standards/index_html</link>
+					<tag>FGDC  Endorsed External Standards</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.opennavsurf.org/whitepapers.html</link>
+					<tag>Open Navigation Surface: White papers</tag>
+					<comment>The ONS data format is based on HDF5, with metadata embedded as a character stream object.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

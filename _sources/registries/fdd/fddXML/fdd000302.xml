@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 rel. 2 sp2 (http://www.altova.com) by The Library of Congress (LIBRARY OF CONGRESS) -->
+<?altova_sps fddCreation.sps?>
+<fdd:FDD id="fdd000302" titleName="Vector Product Format" shortName="VPF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd=".\fdd.xsd" xsi:schemaLocation=".\fdd.xsd fdd.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenres>
+				<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+				<fdd:gdfrGenre>database</fdd:gdfrGenre>
+			</fdd:gdfrGenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>file-group</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2011-11-01</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Vector Product Format (VPF)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>geospatial data formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>The Vector Product Format (VPF) is a standard data structure developed in 1996 as a U.S. Military Standard for geospatial data based on a georelational data model. It is designed to be compatible with a widevariety
+of applications and products and to allow application software to
+read data directly from computer-readable media without prior
+conversion to an intermediate form. VPF uses tables and indexes
+that permit direct access by spatial location and thematic content
+and is designed to be used with any digital geographic data in
+vector format that can be represented using nodes, edges, and
+faces. A VPF-compliant database product must include all mandatory tables and columns described in section 5 of the specification. The VPF data model may be considered to be layered into four structural levels. At the lowest level, a VPF database consists of feature classes. In the database, these feature classes are defined using VPF primitive and attribute tables. Feature classes make up coverages, which in turn make up libraries; and finally, a database is made up of libraries.</fdd:description>
+		<fdd:shortDescription>The Vector Product Format (VPF) is a standard format, structure, and organization for large geographic databases based on a georelational data model intended for direct use and  designed to be used with any digital geographic data in vector format that can be represented using nodes, edges, and faces.
+</fdd:shortDescription>
+		<fdd:productionPhase>Georelational data model intended for direct use.</fdd:productionPhase>
+		<fdd:relationships/>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Unclassified United States military standard.</fdd:disclosure>
+		<fdd:documentation>Military
+Standard, Vector Product Format, MIL-STD-2407 28 June 1996.  Each VPF product is defined by a separate product specification referring to the RPF standard. </fdd:documentation>
+		<fdd:adoption>
+			<p>Approved for use by all Departments and Agencies of the Department of Defense, including the  US Defence Mapping Agency for the distribution of its vector data sets . </p>
+			<p>National Geospatial-Intelligence Agency (NGA)&apos;s <a href="http://dnc.nga.mil">Digital Nautical Chart</a> is an unclassified, vector-based digital database containing maritime significant features essential for safe marine navigation produced in the standard Vector Product Format (VPF) allowing for modeling real world features in digital geographic databases. The Digital Nautical Chart database uses a table based georelational data model and supports GIS applications such as mission planning, command and control, and situational awareness. </p>
+			<p>The original <a href="http://shoreline.noaa.gov/data/datasheets/wvs.html">World Vector Shoreline (WVS)</a> was a digital data file containing the shorelines, international boundaries, and country names of the world. The National Imagery and Mapping Agency, now the National Geospatial-Intelligence Agency (NGA)'s WVS data were processed into NGA’s Vector Product Format in 1995, resulting in the highest resolution demarcation of coastline then globally available, the World Vector Shoreline Plus. See the Vector Product Format (VPF) World Vector Shoreline (WVSPLUS) Draft Specification (MIL-PRF-89012A dated August 24, 1999) for a detailed product definition.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>Trademarked by the National Geospatial-Intelligence Agency</fdd:licensingAndPatents>
+		<fdd:transparency>VPF allows application software to read
+data directly from the storage medium without prior
+conversion to another format. VPF uses tables and
+indexes that permit direct access
+to thematic content.</fdd:transparency>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:gisQF>
+			<fdd:metadataGIS>
+				<p>VPF provides a number of options for
+encoding data quality information. The information itself can be
+encoded at any level within the VPF structure depending upon its
+basic thematic and spatial characteristics. VPF data producers
+are encouraged to make use of the data quality table whenever
+possible. In instances where DQ characteristics vary spatially,
+the use of data quality coverages is strongly recommended.</p>
+				<p>VPF contains a self-defining data
+dictionary that permits user understanding of features
+and their attributes. </p>
+				<p>A VPF database
+may contain seven types of data quality information: source,
+positional accuracy, attribute accuracy, date status, logical
+consistency, feature completeness, and attribute completeness.
+, Definitions of these quality types are provided in MIL-STD-2407 appendix E.</p>
+			</fdd:metadataGIS>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>VPF uses only three types of files: directories, tables, and
+indexes. Certain table, directory, and filename extensions are reserved; see <a href="#notes">Notes</a>.</fdd:note>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>VPF is a trademark of the National Geospatial-Intelligence Agency.</p>
+			<p>The specification reserves certain names for tables, coverage directories, and table name extensions.  These are specified in tables 13, 14, and 15 on pages 53-55.</p>
+			<p>Reserved file names</p>
+			<ul>
+				<li>cat, Coverage Attribute Table</li>
+				<li>cnd, Connected Node Primitive</li>
+				<li>csi, Connected Node Spatial Index</li>
+				<li>dht, Database Header Table</li>
+				<li>dqt, Data Quality Table</li>
+				<li>ebr, Edge Bounding Rectangle</li>
+				<li>edg, Edge Primitive</li>
+				<li>end, Entity Node Primitive</li>
+				<li>esi, Edge Spatial Index</li>
+				<li>fac, Face Primitive</li>
+				<li>fbr, Face Bounding Rectangle</li>
+				<li>fca, Feature Class Attribute Table</li>
+				<li>fcs, Feature Class Schema Table</li>
+				<li>fsi, Face Spatial Index</li>
+				<li>grt, Geographic Reference Table</li>
+				<li>lat, Library Attribute Table</li>
+				<li>lht, Library Header Table</li>
+				<li>nsi, Entity Node Spatial Index</li>
+				<li>rng, Ring Table</li>
+				<li>txt, Text Primitive</li>
+				<li>tsi, Text Spatial Index</li>
+				<li>char.vdt, Character Value Description Table</li>
+				<li>int .vdt, Integer Value Description Table</li>
+			</ul>
+			<p>Reserved directory names</p>
+			<ul>
+				<li>1ibref, Library reference coverage</li>
+				<li>dq, Data quality coverage</li>
+				<li>tileref, Tile reference coverage</li>
+				<li>gazette, Names reference coverage</li>
+			</ul>
+			<p>Reserved table name extensions</p>
+			<ul>
+				<li>.abr, Area Bounding Rectangle Table</li>
+				<li>.aft, Area Feature Table</li>
+				<li>.ajt, Area Join Table</li>
+				<li>.ati, Area Thematic Index</li>
+				<li>.cbr, Complex Bounding Rectangle Table</li>
+				<li>.cft, Complex Feature Table</li>
+				<li>.cjt, Complex Join Table</li>
+				<li>.cti, Complex Thematic Index</li>
+				<li>.doc, Narrative Table</li>
+				<li>.dpt, Diagnostic Point Table</li>
+				<li>.fit, Feature Index Table</li>
+				<li>.fti, Feature Index Table Thematic Index</li>
+				<li>.jti, Join Thematic Index</li>
+				<li>.lbr, Line Bounding Rectangle Table</li>
+				<li>.lft, Line Feature Table</li>
+				<li>.ljt, Line Join Table</li>
+				<li>.lti, Line Thematic Index</li>
+				<li>.pbr, Point Bounding Rectangle Table</li>
+				<li>.pft, Point Feature Table</li>
+				<li>.pjt, Point Join Table</li>
+				<li>.pti, Point Thematic Index</li>
+				<li>.rat, Related Attribute Table</li>
+				<li>.rpt, Registration Point Table</li>
+				<li>.tft, Text Feature Table</li>
+				<li>.tti, Text Thematic Index</li>
+			</ul>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://earth-info.nga.mil/publications/specs/printed/2407/2407_VPF.pdf</link>
+					<tag>Department of Defense Interface Standard for Vector Product Format</tag>
+					<comment>
+28 June 1996.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.everyspec.com/MIL-STD/MIL-STD-2000-2999/MIL-STD-2407_6900/</link>
+					<tag>Alternate source for Military
+Standard, Vector Product Format, MIL-STD-2407</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://earth-info.nga.mil/publications/specs/printed/vpf/int_milprf0089049.pdf</link>
+					<tag>Performance Specification Vector Product Format (VPF) Products, General Specification For</tag>
+					<comment>
+24 November 1998
+</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://earth-info.nga.mil/publications/specs/printed/2407/MIL-STD-2407change_notice1.pdf</link>
+					<tag>DoD Interface Standard, Vector Product Format (VPF), Change Notice 1</tag>
+					<comment>
+26-October-99
+</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://earth-info.nga.mil/publications/specs/printed/89012a/0089012A.pdf</link>
+					<tag>Vector Product Format (VPF) World Vector Shoreline (WVSPLUS) Draft Specification (MIL-PRF-89012A dated August 24, 1999)</tag>
+					<comment/>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://shoreline.noaa.gov/data/datasheets/wvs.html</link>
+					<tag>NOAA Shoreline Website: World Vector Shorelines</tag>
+					<comment/>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

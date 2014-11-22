@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000200" titleName="Digital Cinema Initiative Distribution Package (DCP), Version 1.0" shortName="DCP_1_0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>moving-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-wrapper</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2011-12-27</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Digital Cinema Initiative Package (DCP).  Described in the Digital Cinema System Specification v1.0, July 20, 2005</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>DCI</fdd:keyword>
+			<fdd:keyword>digitial motion picture formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The DCP is a set of encrypted files representing digital moving image content packaged for shipment to theaters. The DCP is based on the <fddLink id="fdd000177">DCDM_1_0</fddLink>, and its files or <i>tracks</i> contain images, audio, subpictures and/or timed text, and auxiliary data.  Only the image track is compressed in the DCP; see <a href="#notes">Notes</a> below.  The DCP consists of the package itself (with all of the track files) and a separate XML Packing List that identifies and includes file-integrity checks ("hash") for each file, as well as a public key and digital signature that is part of the overall security system.</p>
+			<p>The overall Digital Cinema Initiative (DCI) <a href="fdd000177.shtml#specs">system specification</a> defines a life cycle in which content exists in a succession of states:</p>
+			<ul>
+				<li>DSM.  Content originates as a <i>Digital Source Master</i>; format selected by producer, not specified</li>
+				<li>
+					<fddLink id="fdd000177">DCDM_1_0</fddLink>.  Content is shaped into a <i>Digital Cinema Distribution Master</i>, covered by the specification</li>
+				<li>DCP.  Content is compressed and encrypted for transport to the theater as a <i>Digital Cinema Package</i>, covered by the specification</li>
+				<li>DCDM (again).  Content is unpackaged, decrypted, and decompressed at the theater for exhibition.</li>
+			</ul>
+			<p>The overall system specification devotes considerable space to the required capabilities for playback and projection systems in theaters, and regarding security and content protection.</p>
+		</fdd:description>
+		<fdd:shortDescription>The DCP is a set of encrypted files representing digital moving image content packaged for shipment to theaters. The DCP is based on the DCDM, and its files or tracks contain images, audio, subpictures and/or timed text, and auxiliary data.</fdd:shortDescription>
+		<fdd:productionPhase>Final-state for use in a distribution chain; may also serve as a middle-state format for archiving.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000273</fdd:id>
+					<fdd:shortName>MXF_OP1a_JP2_LSY</fdd:shortName>
+					<fdd:titleName>MXF File, OP1a, Lossy JPEG 2000 in Generic Container</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000177</fdd:id>
+					<fdd:shortName>DCDM_1_0</fdd:shortName>
+					<fdd:titleName>Digital Cinema Initiative Distribution Master, Version 1.0</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:comment>Draft versions of overall specification: Digital Cinema System Specification v4.2 (August 2004), v4.3 (December 2004), v5.0 (March 2005), v5.1 (April 2005), and v5.2 (June 2005), not documented at this time</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None</fdd:experience>
+		<fdd:preference>None</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			Fully disclosed. Developed by the <a href="http://www.dcimovies.com/">Digital Cinema Initiatives</a>. [See <a href="#notes">Notes</a> below for information on the relationship of the DCI to the SMPTE DC28 standards-development process.]
+		</fdd:disclosure>
+		<fdd:documentation>
+			The DCP is one element defined in the Digital Cinema System Specification v5.2, June 2005.  The specification is accessible to members at the <a href="http://www.dcimovies.com/">Digital Cinema Initiatives</a> Web site.
+		</fdd:documentation>
+		<fdd:adoption>The digital distribution of movies has been adopted rapidly in the United States following the SMPTE standardization of DCP.  See for example, <a href="http://www.filmjournal.com/filmjournal/content_display/news-and-features/features/technology/e3i6e1af20cf8f6d2fb94cd8d64bc8948e7">&quot;The ABCs of DCPs: Unwrapping the Digital Cinema Package&quot;</a> an article from the theater operator&apos;s point of view  and states &quot;the studios will cease 35mm
+distribution by 2015; the buzz is that 90% of U.S. theatres will be digital by 2013; and
+back in January there were more digital than 35mm theatre screens.&quot; </fdd:adoption>
+		<fdd:licensingAndPatents>
+			None identified.  The specification includes a disclaimer: "Compliance with this document may require use of one or more features covered by proprietary rights . . . no position is taken by DCI with respect to the validity of any patent of other proprietary right." (p. vii)
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+		The Packing List will be transparent. The package itself will be compressed and encrypted and not transparent; like a ZIP file, the DCP exists to support the movement of data. The encryption method for non-interleaved MXF frame-wrapped tracks is defined in SMPTE 429-6:2006. The algorithm and mode for the KLV encrypted triplets is defined in the Cipher Algorithm metadata item within the Cryptographic Context Set. The default is Advanced Encryption Standard (AES) cipher as defined by NIST SP 800-38a. </fdd:transparency>
+		<fdd:selfDocumentation>    The Packing List identifies each file, includes file-integrity checks ("hash") for each file, as well as a public key and digital signature that is part of the overall security system. Optional "MIC" (media content integrity) hash values can be created at the KLV triplet level using a structure which parallels that for encryption defined in SMPTE 429-6:2006. The MIC value within the KLV triplet is calculated only on the V portion of triplet - not the K and L.  The hash algorithm type is defined in the "MIC Algorithm" metadata item within the Cryptographic Context Set. The default algorithm is SHA-1. The actual hash value is stored on the "MIC" metadata item within the Encrypted Triplet Variable Length Pack.    </fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			See <fddLink id="fdd000177">DCDM_1_0</fddLink>
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			Employs a public-private key, signature based system.
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:movingImageQF>
+			<fdd:normalVideo>Not relevant; see <fddLink id="fdd000177">DCDM_1_0</fddLink>
+			</fdd:normalVideo>
+			<fdd:clarity>Not relevant; see <fddLink id="fdd000177">DCDM_1_0</fddLink>
+			</fdd:clarity>
+			<fdd:beyondVideo>Not relevant; see <fddLink id="fdd000177">DCDM_1_0</fddLink>
+			</fdd:beyondVideo>
+		</fdd:movingImageQF>
+		<fdd:soundQF>
+			<fdd:normalSound>Not relevant; see <fddLink id="fdd000177">DCDM_1_0</fddLink>
+			</fdd:normalSound>
+			<fdd:fidelity>Not relevant; see <fddLink id="fdd000177">DCDM_1_0</fddLink>
+			</fdd:fidelity>
+			<fdd:channels>Not relevant; see <fddLink id="fdd000177">DCDM_1_0</fddLink>
+			</fdd:channels>
+			<fdd:beyondSound>Not investigated at this time.</fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>In the <fddLink id="fdd000177">DCDM_1_0</fddLink>, the image track consists of uncompressed data mapped to the MXF Generic Container in accord with SMPTE standard 384M, using the frame wrapping method.  In the DCP, the image track consists of lossy JPEG 2000 data mapped to the MXF Generic Container in accord with SMPTE standard 422M, and using JPEG 2000 codestreams conforming to <fddLink id="fdd000211">J2K_C_Profile_3</fddLink> (for 2K) and <fddLink id="fdd000213">J2K_C_Profile_4</fddLink> (for 4K).</fdd:general>
+		<fdd:history>
+			<p>From the <a href="http://www.dcimovies.com/">Digital Cinema Initiatives Web site</a>: "Digital Cinema Initiatives, LLC (DCI) was created in March 2002, as a joint venture of Disney, Fox, MGM, Paramount, Sony Pictures Entertainment, Universal and Warner Bros. Studios. DCI's primary purpose is to establish and document voluntary specifications for an open architecture for digital cinema that ensures a uniform and high level of technical performance, reliability and quality control. DCI will also facilitate the development of business plans and strategies to help spur deployment of digital cinema systems in movie theaters."</p>
+			<p>The formal standardization of DCI specifications is being overseen by the SMPTE technology committee DC28, made up of four working groups preparing more than 20 separate items.  The relationship of this to the Digital Cinema Initiative (and a European counterpart) was articulated in 2006 by the <a href="http://www.imago.org/">European Federation of Cinematographers</a>: "The establishment of a new standard for the future digital cinema projection copy has been delegated to the SMPTE [DC28 technology committee]. Both DCI (Digital Cinema Initiatives) and EDCF-T (European Digital Cinema Forum - Technical Module) are input bodies towards SMPTE DC28. . . .  Now that the DCI published their specifications it is to expect that the standardization work at SMPTE will accelerate and it is possible that SMPTE may finalize the standard in less than a year from now."</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>SMPTE DCP specifications </fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.smpte.org/standards</link>
+							<tag>SMPTE ST 429-6:2006</tag>
+							<comment>Defines encryption and content integrity methods</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.imago.org</link>
+					<tag>European Federation of Cinematographers</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.filmjournal.com/filmjournal/content_display/news-and-features/features/technology/e3i6e1af20cf8f6d2fb94cd8d64bc8948e7</link>
+					<tag>The ABCs of DCPs: Unwrapping the Digital Cinema Package</tag>
+					<comment>Film Journal International, August 28, 2012.  Discusses DCP and its importance to theater operators, including costs and financing for the digital equipment.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://csrc.nist.gov/publications/nistpubs/800-38a/sp800-38a.pdf</link>
+					<tag>NIST Recommendation for Block
+2001 Edition
+Cipher Modes of Operation </tag>
+					<comment>Defines the Advanced Encryption Standard (AES) cipher </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://mkpe.com/digital_cinema/faqs/tech_faqs.php</link>
+					<tag>MKPE Digital Cinema Technology
+Frequently Asked Questions (FAQs)</tag>
+					<comment>Useful discussions about Interop and SMPTE DCP</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:bookReference>Swartz, Charles S., editor.  <i>Understanding Digital Cinema: A Professional Handbook</i>.  Amsterdam; Boston: Focal Press, 2005.  LCCN: 2004021603; ISBN: 0240806174.</fdd:bookReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:usefulReferences>
+</fdd:FDD>

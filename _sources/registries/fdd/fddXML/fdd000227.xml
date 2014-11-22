@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000227" titleName="Ogg FLAC Audio Format, Version 1.0" shortName="Ogg_FLAC_1_0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2008-02-19</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Ogg FLAC Audio Format, Version 1.0</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>audio formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>Compressed FLAC data encapsulated in an Ogg transport layer, which helps overcome certain shortcomings of the transport system elements included in the &quot;native FLAC&quot; format. These native elements do not comprise a transport layer in terms of standard codec design; the transport cannot be entirely separated from the payload, and this approach does not support more elaborate transport mechanisms such as multiple logical streams.</fdd:description>
+		<fdd:shortDescription>Compressed FLAC data encapsulated in an Ogg transport layer,which helps overcome certain shortcomings of the transport system elements included in the &quot;native FLAC&quot; format.</fdd:shortDescription>
+		<fdd:productionPhase>Generally used for final-state, end-user delivery. </fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000026</fdd:id>
+					<fdd:shortName>Ogg</fdd:shortName>
+					<fdd:titleName>Ogg File Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000198</fdd:id>
+					<fdd:shortName>FLAC_1_1_2</fdd:shortName>
+					<fdd:titleName>FLAC (Free Lossless Audio Codec), Version 1.1.2</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None</fdd:experience>
+		<fdd:preference>
+			<fddLink id="fdd000002">WAVE_LCPM</fddLink> preferred for master copies of waveform sound.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Developed by <a href="http://www.xiph.org">xiph</a> as an open source and patent-free project.</fdd:disclosure>
+		<fdd:documentation>Published online at <a href="https://xiph.org/flac/ogg_mapping.html">https://xiph.org/flac/ogg_mapping.html</a>. This text includes the phrase &quot;Version 1.0 of the FLAC-to-Ogg mapping.&quot;</fdd:documentation>
+		<fdd:adoption>Unknown to the compiler of this document.</fdd:adoption>
+		<fdd:licensingAndPatents>None.</fdd:licensingAndPatents>
+		<fdd:transparency>Wrapper is transparent; encoding depends upon algorithms and tools to read; requires sophistication to build tools.</fdd:transparency>
+		<fdd:selfDocumentation>See <fddLink id="fdd000026">Ogg</fddLink> and <fddLink id="fdd000198">FLAC</fddLink>.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None.</fdd:externalDependencies>
+		<fdd:techProtection>None.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:soundQF>
+			<fdd:normalSound>Good support.</fdd:normalSound>
+			<fdd:fidelity>Potentially excellent. See <fddLink id="fdd000198">FLAC</fddLink>.</fdd:fidelity>
+			<fdd:channels>See <fddLink id="fdd000198">FLAC</fddLink>.</fdd:channels>
+			<fdd:samples>See <fddLink id="fdd000198">FLAC</fddLink>.</fdd:samples>
+			<fdd:beyondSound>Not investigated at this time.</fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>Not found.</fdd:sigValueNA>
+				<fdd:note>May be the same as <fddLink id="fdd000026">Ogg</fddLink>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>May be the same as <fddLink id="fdd000026">Ogg</fddLink>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000026">Ogg</fddLink>.  See also <a href="#notes">Notes</a> below.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>Regarding file type signifiers, <a href="https://xiph.org/flac/ogg_mapping.html">https://xiph.org/flac/ogg_mapping.html</a> reports that Version 1.0 of the FLAC-to-Ogg mapping is a simple identifying header followed by pure native FLAC data. The first packet of a stream consists of: 
+<ul>
+				<li>The one-byte packet type 0x7F</li>
+				<li>The four-byte ASCII signature "FLAC", i.e. 0x46, 0x4C, 0x41, 0x43</li>
+				<li>A one-byte binary major version number for the mapping, e.g. 0x01 for mapping version 1.0</li>
+				<li>A one-byte binary minor version number for the mapping, e.g. 0x00 for mapping version 1.0</li>
+				<li>A two-byte, big-endian binary number signifying the number of header (non-audio) packets, not including this one. This number may be zero (0x0000) to signify 'unknown' but be aware that some decoders may not be able to handle such streams.</li>
+				<li>The four-byte ASCII native FLAC signature "fLaC" according to the FLAC format specification</li>
+			</ul>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://xiph.org/flac/ogg_mapping.html</link>
+					<tag>FLAC-to-Ogg Mapping</tag>
+					<comment>This text includes the phrase &quot;Version 1.0 of the FLAC-to-Ogg mapping.&quot;</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000026">Ogg</fddLink> and <fddLink id="fdd000198">FLAC</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

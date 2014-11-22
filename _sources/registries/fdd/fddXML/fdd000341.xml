@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000341" titleName="FF Video Codec 1" shortName="FFV1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>moving-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2012-05-29</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>FF Video Codec 1</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>lossless compression</fdd:keyword>
+			<fdd:keyword>video formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>FFV1 is a lossless intra-frame codec from the <a href="http://ffmpeg.org/">FFmpeg</a> project and its current leader Michael Niedermayer.  According to its website, FFmpeg is &quot;a complete, cross-platform solution to record, convert and stream audio and video. It includes libavcodec - the leading audio/video codec library.&quot;<footNote id="1"/> Niedermayer&apos;s <a href="http://www.ffmpeg.org/~michael/ffv1.html">specification</a> states that FFV1 is a &quot;simple and efficient lossless intra only codec,&quot; meaning that the compression is applied within each frame as opposed to inter-frame compression which is applied over groups of frames. The FFV1 Wikipedia <a href="http://en.wikipedia.org/wiki/FFV1">article</a>, consulted May 7, 2012, reports that FFV1 uses &quot;either variable length coding or arithmetic coding for entropy coding.&quot;<footNote id="2"/>
+		</fdd:description>
+		<fdd:shortDescription>FFV1 is a lossless intra-frame codec from the FFmpeg project. The description states that FFV1 is a &quot;simple and efficient lossless intra only codec,&quot; meaning that the compression is applied within each frame as opposed to inter-frame compression which is applied over groups of frames. </fdd:shortDescription>
+		<fdd:productionPhase>Middle state, used for storage or archiving</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000349</fdd:id>
+					<fdd:shortName>AVI_FFV1</fdd:shortName>
+					<fdd:titleName>AVI File Format with FFV1 video encoding</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment/>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000343</fdd:id>
+					<fdd:shortName>Matroska_FFV1</fdd:shortName>
+					<fdd:titleName>Matroska File Format with FFV1 video encoding</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment/>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None</fdd:experience>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>As of this writing (May, 2012) documentation is still in process. Developed as an open source project; see history section of the <a href="#notes">Notes</a> below. </fdd:disclosure>
+		<fdd:documentation>Published online at <a href="http://www.ffmpeg.org/~michael/ffv1.html">http://www.ffmpeg.org/~michael/ffv1.html</a>. Niedermayer&apos;s March 2010 <a href="http://git.videolan.org/?p=ffmpeg.git;a=commit;h=0e22d68834ad260c599bd53e7f155864873a3310">GitHub commit note</a> indicates that the codec is no longer &quot;experimental.&quot; Nevertheless, the FFV1 Wikipedia <a href="http://en.wikipedia.org/wiki/FFV1">article</a>, consulted on May 7, 2012,  reports that the &quot;bitstream is [now] fixed, but documentation remains incomplete... [S]tarting April 2012, efforts are being undertaken in order to improve its documentation.&quot;</fdd:documentation>
+		<fdd:adoption>Modest adoption in heritage repositories. The <a href="http://www.mediathek.at/">Austrian Mediathek</a> uses FFV1 encoding wrapped in <fddLink id="fdd000059">AVI</fddLink> for their preservation masters. Information about their use of FFV1 can be found <a href="http://www.dva-profession.mediathek.at/documentation/2-dva-profession-used-at-the-austrian-mediathek/">here</a>. <a href="http://www.vancouverarchives.ca/2011/10/a-day-in-the-lives-of-2-archivists-gone-digital/">The City of Vancouver Archives</a> uses FFV1 encoding wrapped in the <fddLink id="fdd000342">Matroska</fddLink> container, as discussed briefly on the archives&apos; <a href="http://www.vancouverarchives.ca/2011/11/celebrating-%E2%80%9Chollywood-north%E2%80%9D-yaletown-productions-inc-fonds/">blog</a>. <a href="https://www.archivematica.org/wiki/Main_Page">Archivematica</a> - &quot;a free and open-source digital preservation system that is designed to maintain standards-based, long-term access to collections of digital objects&quot; - lists FFV1 (wrapped in the <fddLink id="fdd000342">Matroska</fddLink> container with <fddLink id="fdd000011">LPCM</fddLink> audio) as one of its &quot;preservation formats&quot; <a href="https://www.archivematica.org/wiki/Media_type_preservation_plans">here</a>.</fdd:adoption>
+		<fdd:licensingAndPatents>The <a href="http://www.ffmpeg.org/~michael/ffv1.html">specification</a> carries this notice: &quot;Copyright 2003-2012 Michael Niedermayer&quot; and also states that &quot;this text can be used under the GNU Free Documentation License or GNU General Public License.&quot;</fdd:licensingAndPatents>
+		<fdd:transparency>Depends upon algorithms and tools to read; will require sophistication to build tools.
+</fdd:transparency>
+		<fdd:selfDocumentation>Section 4 of the specification indicates that the types of technical metadata required to read and play the file are provided in frame headers.  Additional metadata, if any, would be carried by the wrapper format.  <a href="http://www.digitalpreservation.gov/formats/contact_format.shtml">Comments Welcome</a>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>Not provided by the bitstream encoding.  Technical protections, if any, would be provided by the wrapper format.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:movingImageQF>
+			<fdd:normalVideo>Supported</fdd:normalVideo>
+			<fdd:clarity>Lossless compression that retains all of the video picture information presented to the encoder. <a href="http://www.digitalpreservation.gov/formats/contact_format.shtml">Comments Welcome</a>
+			</fdd:clarity>
+			<fdd:beyondVideo>One specialist in the field <a href="http://dericed.com/papers/reconsidering-the-checksum-for-audiovisual-preservation/">reports</a> that &quot;version 1.3 of FFV1, currently marked as an experimental encoder, adds a mandatory CRC checksum to each frame header.&quot;</fdd:beyondVideo>
+		</fdd:movingImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:other>
+				<fdd:tag>Microsoft FOURCC</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>FFV1</fdd:sigValue>
+					</fdd:sigValues>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:history>
+			<p>The Wikipedia <a href="http://en.wikipedia.org/wiki/FFmpeg">FFmpeg</a> article, consulted May 7, 2012, reports that the FFmpeg project &quot;was started by Fabrice Bellard (using the pseudonym &quot;Gerard Lantau&quot;) and has been maintained by Michael Niedermayer since 2004. . .  .   The name of the project comes from the MPEG video standards group, together with &apos;FF&apos; for &apos;fast forward.&apos;&quot; Niedermayer&apos;s <a href="http://www.ffmpeg.org/~michael/ffv1.html">Web page</a> states that an FFV1 encoder and decoder have been part of the FFmpeg library since 2003. Incidentally, the section of the specification devoted to frame header metadata includes the tag &quot;version&quot; with possible values of &quot;0&quot; or &quot;1.&quot;</p>
+			<p>The FFV1 developers are currently testing versions 1.2 and 1.3 but have made no official announcements about their release. (The &quot;V&quot; in FFV1 stands for &quot;Video Codec,&quot; not &quot;version.&quot;)</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www1.mplayerhq.hu/~michael/ffv1.html</link>
+					<tag>FFV1 Video Codec Specification</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archivematica.org/wiki/Video</link>
+					<tag>Archivematica&apos;s list of media types listing FFV1 as one of their &quot;preservation formats&quot;</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.vancouverarchives.ca/2011/10/a-day-in-the-lives-of-2-archivists-gone-digital/</link>
+					<tag>A City of Vancouver Archives&apos; blog post mentioning their use of FFV1</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://compression.ru/video/codec_comparison/pdf/msu_lossless_codecs_comparison_2007_eng.pdf</link>
+					<tag>Lossless
+Video Codecs
+Comparison 2007 by MSU Graphics &amp; Media Lab
+Video Group</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://wiki.multimedia.cx/index.php?title=FFV1</link>
+					<tag>MultimediaWiki entry for FFV1 </tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://ffmpeg.org/</link>
+					<tag>FFmpeg project website </tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.dva-profession.mediathek.at/documentation/2-dva-profession-used-at-the-austrian-mediathek/</link>
+					<tag>Information about the Austrian Mediathek&apos;s use of FFV1</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://dericed.com/papers/reconsidering-the-checksum-for-audiovisual-preservation/</link>
+					<tag>Reconsidering the Checksum for Audiovisual Preservation</tag>
+					<comment>Online article by Dave Rice, CUNY.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+	<fdd:footNotes>
+		<fdd:footNote id="1">
+			<fdd:text>According to the Wikipedia <a href="http://en.wikipedia.org/wiki/Libavcodec">libavcodec</a> article, consulted on May 7, 2012, the name refers to &quot;a free software/open source LGPL-licensed library of codecs for encoding and decoding video and audio data. Same name but incompatible libraries are provided from both FFmpeg project and Libav project.&quot;</fdd:text>
+		</fdd:footNote>
+		<fdd:footNote id="2">
+			<fdd:text>According to the Wikipedia <a href="http://en.wikipedia.org/wiki/Entropy_%28information_theory%29">Entropy (information theory)</a> article, consulted on May 7, 2012, entropy encoding &quot;creates and assigns a unique prefix-free code to each unique symbol that occurs in the input. These entropy encoders then compress data by replacing each fixed-length input symbol by the corresponding variable-length prefix-free output codeword. The length of each codeword is approximately proportional to the negative logarithm of the probability. Therefore, the most common symbols use the shortest codes.&quot;</fdd:text>
+		</fdd:footNote>
+	</fdd:footNotes>
+</fdd:FDD>

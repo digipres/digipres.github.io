@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000106" titleName="ID3 Metadata for MP3" shortName="ID3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2010-06-29</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ID3 Metadata for MP3</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>MP3</fdd:keyword>
+			<fdd:keyword>metadata formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>Structured data chunk containing descriptive metadata about the file to which it is appended, virtually always an <fddLink id="fdd000105">MP3_FF</fddLink> (MP3 sound file). Referred to by its creators as an "informal standard" for a "container format," the two versions of ID3 permit the identification of title, artist, date, genre, etc.</fdd:description>
+		<fdd:shortDescription>Structured data chunk containing descriptive metadata about the file to which it is appended, virtually always an MP3_FF (MP3 sound file). Permits the identification of title, artist, date, genre, etc.</fdd:shortDescription>
+		<fdd:productionPhase>Generally used for final-state, end-user delivery. </fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000107</fdd:id>
+					<fdd:shortName>ID3v1</fdd:shortName>
+					<fdd:titleName>ID3, Version 1</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000108</fdd:id>
+					<fdd:shortName>ID3v2</fdd:shortName>
+					<fdd:titleName>ID3, Version 2</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>Images, encrypted information, etc.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000105</fdd:id>
+					<fdd:shortName>MP3_FF</fdd:shortName>
+					<fdd:titleName>MP3 file format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>ID3 is used extensively with American Memory MP3 service files. Although many are limited to version 1 tagging, examples like <a href="http://lcweb4.loc.gov/afc/afcreed/130/13033b03.mp3">http://lcweb4.loc.gov/afc/afcreed/130/13033b03.mp3</a> include tagging in both versions 1 and 2.</fdd:experience>
+		<fdd:preference>General preference for recorded sound is <fddLink id="fdd000002">WAVE_LCPM</fddLink>.  For compressed sound, high-bitrate <fddLink id="fdd000012">MP3_ENC</fddLink> is acceptable. If examples are acquired, the Library prefers documentation to be as extensive as possible; an ID3 chunk, especially <fddLink id="fdd000108">ID3v2</fddLink>, is very suitable for the delivery of such metadata.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			Version 2 is fully documented; version 1 less so.  Developed by Martin Nilsson and colleagues; see also <a href="#notes">Notes</a>.
+		</fdd:disclosure>
+		<fdd:documentation>
+			See <fddLink id="fdd000107">ID3v1</fddLink> and <fddLink id="fdd000108">ID3v2</fddLink>
+		</fdd:documentation>
+		<fdd:adoption>
+			Very widely adopted for World Wide Web dissemination and playback on specialized devices.
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			None
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			Easily parsed binary bitstream.
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			Not applicable as it pertains to ID3 itself; ID3 contains descriptive ("bibliographic") metadata as its payload. <fddLink id="fdd000108">ID3v2</fddLink> (version 2) is much more extensive than <fddLink id="fdd000107">ID3v1</fddLink> (version 1).
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			None
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			None
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:soundQF>
+			<fdd:normalSound>Not applicable</fdd:normalSound>
+			<fdd:fidelity>Not applicable</fdd:fidelity>
+			<fdd:channels>Not applicable</fdd:channels>
+			<fdd:samples>Not applicable</fdd:samples>
+			<fdd:beyondSound>
+				<fddLink id="fdd000108">ID3v2</fddLink> (version 2) appears to allow for synchronized texts, e.g., karaoke, and supports &quot;addenda&quot; for chapter markers, tables of contents, and accessibility support.</fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>See <i>3DI</i> marker information in <a href="#notes">Notes</a> below.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>ID3 binary content is structured as "frames" just like <fddLink id="fdd000012">MP3_ENC</fddLink> (MP3 audio encoding).</p>
+			<p>When ID3 metadata is placed in a <fddLink id="fdd000105">MP3_FF</fddLink> file, established conventions call for the use of the <i>ID3 marker</i> which consists of the string "3DI".  For <fddLink id="fdd000107">ID3v1</fddLink>, the marker is positioned 10 bytes preceding the metadata.  For <fddLink id="fdd000108">ID3v2</fddLink> data, the marker is positioned in the first 3 bytes of the file when the metadata is pre-pended and 10 bytes from the end of a file when it is post-pended.</p></fdd:general>
+		<fdd:history>According to Martin Nilsson's web site <a href="http://id3.org/History">ID3.org</a>, Erik Kemp was the first to append metadata to an MP3 file in 1996, with a program named <i>Studio3</i>.  This idea was elaborated by Nilsson (a Swedish electrical engineer and antenna researcher), Michael Mutschler (a colleague from Germany), and others, and emerged first as <fddLink id="fdd000107">ID3v1</fddLink> and later, with richer expression, as <fddLink id="fdd000108">ID3v2</fddLink>.  Their account of their own work provides no dates, except to indicate that it postdates Kemp's contribution.  Mutschler is also associated with <a href="http://www.mutschler.de/mp3ext/">MP3ext</a>, described as a shell extension for the Windows Explorer that adds features for MP3 files.</fdd:history>
+	</fdd:notes>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://id3.org/</link>
+					<tag>ID3.org</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://id3.org/History</link>
+					<tag>ID3 history</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/ID3</link>
+					<tag>ID3 entry in Wikipedia</tag>
+					<comment>Consulted February 2007.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://lcweb4.loc.gov/afc/afcreed/130/13033b03.mp3</link>
+					<tag>Sample American Memory MP3 file</tag>
+					<comment>With tagging in both ID3v1 and ID3v2 </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.mutschler.de/mp3ext/</link>
+					<tag>MP3ext</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000385" titleName="MBOXRD Email Format" shortName="MBOXRD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>text</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>other</fdd:value>
+				<fdd:comment>email</fdd:comment>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2014-03-04</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>MBOXRD Email Format </fdd:fullName>
+		<fdd:description>
+			<p>MBOXRD is one of the <fddLink id="fdd000383">MBOX</fddLink> family of related file formats used for holding collections of electronic mail messages. See <fddLink id="fdd000383">MBOX</fddLink> for a description of the syntax.</p>
+			<p>MBOXRD was designed to solve the message corruption problems inherent in the <fddLink id="fdd000384">MBOXO</fddLink> format. It employs "reversible From quoting" because it allows for differentiating between ">From " found in the original message from ">From " found in a transformed <fddLink id="fdd000384">MBOXO</fddLink> file.  This is important because lines that begin with &quot;&gt;From &quot; act as the separator lines between email messages; if &quot;&gt;From &quot; appears in any line in original text outside of the start of a new message, it will become a misplaced separator line and incorrectly mark a new message when indeed, there is no new message.</p>
+			<p>In MBOXRD files, any line of the message, in either the header or the body, that begins with zero or more &apos;&gt;&apos; characters followed by the five characters &apos;F&apos;, &apos;r&apos;, &apos;o&apos;, &apos;m&apos;, and &apos; &apos;, has a single greater-than sign (&quot;&gt;&quot;) character prepended to it. When a message is read from a MBOXRD mailbox file, it is transformed back so that any line of the message, in either the header or the body, that begins with one or more &apos;&gt;&apos; characters followed by the five characters &apos;F&apos;, &apos;r&apos;, &apos;o&apos;, &apos;m&apos;, and &apos; &apos;, has the single leading &apos;&gt;&apos; character removed from it.</p>
+			<p>Because "From " at the start of a line is more probable than ">From " in real-world messages, an MBOXRD reader will restore a greater number of messages written to a mailbox by an MBOXO tool to their original forms than an MBOXRD tool, but will not and cannot restore all messages. </p>
+		</fdd:description>
+		<fdd:shortDescription>MBOXRD is one of the MBOX family of related file formats used for holding collections of email messages within a single file. MBOXRD files adds one greater-than sign (“&gt;”) to any line that begins with zero or more &quot;&gt;&quot; followed by &quot;From &quot;.</fdd:shortDescription>
+		<fdd:productionPhase/>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000383</fdd:id>
+					<fdd:shortName>MBOX</fdd:shortName>
+					<fdd:titleName>MBOX Email Format</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment/>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse/>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>See <fddLink id="fdd000383">MBOX</fddLink>
+		</fdd:disclosure>
+		<fdd:documentation>See <fddLink id="fdd000383">MBOX</fddLink>
+		</fdd:documentation>
+		<fdd:adoption>The Mozilla family of MUAs including Thunderbird, Mozilla Suite, Netscape, Portable Thunderbird, Postbox, Spicebird, SeaMonkey as well as the open source version of Eudora use a slightly modified version of the MBOXRD variant with more complicated &quot;From &quot; line quoting rules.  See also <fddLink id="fdd000383">MBOX</fddLink>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>See <fddLink id="fdd000383">MBOX</fddLink>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>See <fddLink id="fdd000383">MBOX</fddLink>
+		</fdd:transparency>
+		<fdd:selfDocumentation>See <fddLink id="fdd000383">MBOX</fddLink>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>See <fddLink id="fdd000383">MBOX</fddLink>
+		</fdd:externalDependencies>
+		<fdd:techProtection>See <fddLink id="fdd000383">MBOX</fddLink>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors/>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue/>
+				</fdd:sigValues>
+				<fdd:note>See <fddLink id="fdd000383">MBOX</fddLink>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue/>
+				</fdd:sigValues>
+				<fdd:note>See <fddLink id="fdd000383">MBOX</fddLink>
+				</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue/>
+				</fdd:sigValues>
+				<fdd:note>See <fddLink id="fdd000383">MBOX</fddLink>
+				</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>See <fddLink id="fdd000383">MBOX</fddLink> for compatibility issues.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>MBOXRD format originated in 1995 and is named after Rahul Dhes (hence the RD) although several people were working on the same issues during this time, 
+<a href="">Tim Goodwin</a> being one. </p>
+			<p>
+				<a href="http://homepage.ntlworld.com/jonathan.deboynepollard/FGA/mail-mbox-formats.html ">qmail switched</a> from MBOXO to MBOXRD on 1996-03-02. </p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000383">MBOX</fddLink>
+					</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000384">MBOXO</fddLink>
+					</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

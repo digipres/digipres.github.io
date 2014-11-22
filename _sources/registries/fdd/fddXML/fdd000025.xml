@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000025" titleName="RIFF (Resource Interchange File Format)" shortName="RIFF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenres>
+				<fdd:gdfrGenre>moving-image</fdd:gdfrGenre>
+				<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+			</fdd:gdfrGenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-wrapper</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:updates>
+			<fdd:date>2004-09-16</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Resource Interchange File Format (RIFF)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>RIFF</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>RIFF (Resource Interchange File Format) is a tagged file structure for multimedia resource files. Strictly speaking, RIFF is not a file format, but a file structure that defines a class of more specific file formats, some of which are listed here as subtypes. The basic building block of a RIFF file is called a chunk.  Chunks are identified by four-character codes and an application such as a viewer will skip chunks with codes it does not recognize.  The basic chunk is a RIFF chunk, which must start with a second four-character code, a label that identifies the particular RIFF &quot;form&quot; or subtype. Applications that play or render RIFF files may ignore chunks with labels they do not recognize.  Chunks can be nested.  The RIFF structure is the basis for a few important file formats, but has not been used as the wrapper structure for any file formats developed since the mid 1990s.</p>
+		</fdd:description>
+		<fdd:shortDescription>A tagged file structure for multimedia resource files. Strictly speaking, RIFF is not a file format, but a file structure that defines a class of more specific file formats.</fdd:shortDescription>
+		<fdd:productionPhase>Not applicable.  Depends on subtype.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000001</fdd:id>
+					<fdd:shortName>WAVE</fdd:shortName>
+					<fdd:titleName>WAVE Audio File Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000059</fdd:id>
+					<fdd:shortName>AVI</fdd:shortName>
+					<fdd:titleName>Audio Video Interleaved</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000118</fdd:id>
+					<fdd:shortName>DLS_1_1b</fdd:shortName>
+					<fdd:titleName>Downloadable Sounds, Version 1.1b</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000120</fdd:id>
+					<fdd:shortName>RMID</fdd:shortName>
+					<fdd:titleName>RIFF-based MIDI File Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>LC has experience with some RIFF subtypes.  See <fddLink id="fdd000002">WAVE_LPCM</fddLink>, <fddLink id="fdd000059">AVI</fddLink>.</fdd:experience>
+		<fdd:preference>Depends on subtype.  See <fddLink id="fdd000002">WAVE_LPCM</fddLink>, <fddLink id="fdd000059">AVI</fddLink>, and <fddLink id="fdd000120">RMID</fddLink>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully documented. Documentation freely available. Proprietary format developed by Microsoft and IBM for Windows 3.1.
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>Multimedia Programming Interface and Data Specifications 1.0. IBM Corporation and Microsoft Corporation, August 1991. Available online, e.g., at <a href="http://www.tactilemedia.com/info/MCI_Control_Info.html">http://www.tactilemedia.com/info/MCI_Control_Info.html</a>
+			</p>
+			<p>Multimedia Data Standards Update April 15, 1994 at <a href="http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/Docs/RIFFNEW.pdf">http://www-mmsp.ece.mcgill.ca//Documents/AudioFormats/WAVE/Docs/RIFFNEW.pdf</a>
+			</p>
+		</fdd:documentation>
+		<fdd:adoption>Certain subtypes are widely adopted. In particular, see <fddLink id="fdd000001">WAVE</fddLink> and <fddLink id="fdd000059">AVI</fddLink>. 
+		</fdd:adoption>
+		<fdd:licensingAndPatents>None
+		</fdd:licensingAndPatents>
+		<fdd:transparency>RIFF itself is transparent as a wrapper. Transparency of subtypes is determined by the encoding of the wrapped content.  See subtypes.
+		</fdd:transparency>
+		<fdd:selfDocumentation>The RIFF format allows for nested <i>chunks</i>.    Defined within the RIFF specifications is an INFO List chunk, designed to hold various specific metadata elements.  The extent to which INFO List chunks have been used to embed descriptive and technical metadata is not clear.  In addition, new chunk types can be defined.  For example, Broadcast WAVE (<fddLink id="fdd000356">WAVE_BWF_1</fddLink> and <fddLink id="fdd000357">WAVE_BWF_2</fddLink>) adds a "Broadcast Audio Extension" chunk to hold the minimum information considered necessary for broadcast applications.
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None.
+		</fdd:externalDependencies>
+		<fdd:techProtection>None.
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:otherQF>
+			<fdd:factor>
+				<fdd:tag>Not applicable</fdd:tag>
+				<fdd:note>Quality and functionality factors not directly applicable; depends on subtype. Certain subtypes are widely adopted. In particular, see <fddLink id="fdd000001">WAVE</fddLink> and <fddLink id="fdd000059">AVI</fddLink>.</fdd:note>
+			</fdd:factor>
+		</fdd:otherQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+				<fdd:note>Depends on subtype.</fdd:note>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:history>The RIFF format specifications were first developed by IBM and Microsoft, and published by in 1991 in <i>Microsoft Windows Multimedia Programmer's Reference</i>.  At that time, Microsoft indicated that the RIFF structure was the preferred structure for new multimedia formats.  However, the RIFF structure does not appear to have been adopted for any new file formats established since the early 1990s. Microsoft now uses  <fddLink id="fdd000067">ASF</fddLink> (Advanced Systems Format) as a wrapper for media content. As of August 2004, Microsoft Windows Media player supported the most widely adopted RIFF-based files: <fddLink id="fdd000001">WAVE</fddLink>, <fddLink id="fdd000059">AVI</fddLink> and <fddLink id="fdd000120">RMID</fddLink>, but documentation makes little mention of RIFF per se.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Specification document for RIFF is available at several sites, including:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.kk.iij4u.or.jp/~kondo/wave/mpidata.txt</link>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.tactilemedia.com/info/MCI_Control_Info.html</link>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/Docs/RIFFNEW.pdf</link>
+					<tag>Multimedia Data Standards Update</tag>
+					<comment>April 15, 1994. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:bookReference>
+					<bookRefDetail rel="btitle">Microsoft Windows Multimedia Programmer&apos;s Reference</bookRefDetail>. Redmond, Washington: Microsoft Press, <bookRefDetail rel="date">1991</bookRefDetail>. ISBN: <bookRefDetail rel="isbn">1-55615-389-91991</bookRefDetail>.   Chapter 8 describes the RIFF tagged file structure.</fdd:bookReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.johnloomis.org/cpe102/asgn/asgn1/riff.html</link>
+					<tag>RIFF File Structure</tag>
+					<comment>Materials associated with programming assignment in course on Network Computing.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.tactilemedia.com/info/MCI_Control_Info.html</link>
+					<tag>Multimedia Programming Interface and Data Specifications 1.0</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:bookReference>
+					<bookRefDetail rel="au">Murray, James D. </bookRefDetail>and <bookRefDetail rel="au">William vanRyper</bookRefDetail>. <bookRefDetail rel="btitle">Encyclopedia of Graphics File Formats, Second Edition.</bookRefDetail>  Sebastopol, CA. : O&apos;Reilly &amp; Associates, <bookRefDetail rel="date">1994</bookRefDetail>. Includes CD-ROM with complete text of book, and copies of several file format specifications. </fdd:bookReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:usefulReferences>
+</fdd:FDD>

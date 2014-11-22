@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000352" titleName="Uncompressed YCbCr Video Picture Stream (4:2:2)" shortName="Vid_Unc_Pix_422" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>moving-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2013-01-25</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Uncompressed YCbCr Video Picture Stream Family (4:2:2)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>video formats</fdd:keyword>
+			<fdd:keyword>uncompressed video formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>A digital, color-difference component video picture stream in which the two chroma components are sampled at half the rate of luma.  Reducing the horizontal chroma resolution by one-half reduces the bandwidth of the uncompressed video signal by one-third with little visual impact.  As noted in the <fddLink id="fdd000351">Vid_Unc_Pix</fddLink> format description, broadcast professionals designate the three components as YCbCr (or Y&apos;CbCr), while specialists in data networks and computer applications tend to use the term YUV (or Y&apos;UV).</p>
+			<p>Chroma subsampling is usually expressed as a three-part ratio (in this case 4:2:2) although it may also include a fourth part (e.g., 4:2:2:4), when alpha or transparency data is part of the stream.  As explained in the Wikipedia article <a href="http://en.wikipedia.org/wiki/4:2:2">Chroma subsampling</a>, the ratio describes the number of luma and chroma samples &quot;in a conceptual region that is J pixels wide, and 2 pixels high.&quot;  The three key parts of the ratio are as follows, omitting the alpha channel:</p>
+			<ul>
+				<li>J: horizontal sampling reference (width of the conceptual region). Usually and in this case: 4.</li>
+				<li>a: number of chrominance samples (Cr, Cb) in the first row of J pixels.  In this case: 2.</li>
+				<li>b: number of (additional) chrominance samples (Cr, Cb) in the second row of J pixels.  In this case: 2.</li>
+			</ul>
+			<p>For 4:2:2 picture data, the conceptual region consists of a block of eight pixels that &quot;contains&quot; 12 samples: 8 luma and 4 chroma.</p>
+			<p>Uncompressed YCbCr 4:2:2 video streams are encountered with two different sets of levels, one standardized and one ad hoc.  The standardized levels are specified by the International Telecommunications Union Radiocommunication Sector (ITU-R) and are often referred to as &quot;video range,&quot; &quot;legal levels,&quot; or &quot;studio swing.&quot;  These levels carry values from 16-235 for Y and 16-240 for Cr and Cb, assuming 8 bits per sample (higher values if 10-bit).  The specification for &quot;last generation&quot; standard definition picture is ITU-R Recommendation BT.601 (often called Rec. 601 or by its former name, CCIR 601).  BT.601 encoding of North American 525-line 60 Hz and European (and other) 625-line 50 Hz signals (both interlaced) yields 720 luminance samples and 360 chrominance samples per line (non-square pixels).  The specification for &quot;current generation&quot; digital picture is ITU-R BT.709 and it codifies interlaced and progressive scanned picture at a variety of picture sizes and frame rates (square pixels in the specification&apos;s later versions).  In professional video production, BT.601 and BT.709 signals are carried by the SMPTE-standardized serial digital interfaces (SDI, HD-SDI, etc.). Meanwhile, ad hoc uncompressed YCbCr 4:2:2 video streams with &quot;wide range&quot; or &quot;super white&quot; levels (from 0-255, assuming 8 bits per sample) may be produced in desktop computer graphics systems.  In all cases--BT.601, BT.709, and &quot;wide range&quot;--the data for a pair of pixels are stored in the order Cb-Y1-Cr-Y2, with the chrominance samples co-sited with the first luminance sample. Some additional information is provided in the <a href="#notes">Notes</a>.</p>
+			<p>Uncompressed 4:2:2 video picture streams are encoded (some would say <i>serialized</i> or <i>formatted</i>) when they are incorporated into files, using wrappers like <fddLink id="fdd000059">AVI</fddLink>, <fddLink id="fdd000052">Quicktime</fddLink>, <fddLink id="fdd000342">Matroska</fddLink>, and <fddLink id="fdd000013">MXF</fddLink>.  The actual byte structure for the encoded picture-data is governed by semi-formal specifications and conventions.  In many cases, these encodings are identified by their FOURCC codes, a widely used four-character identifier system often associated with Microsoft (but see the complex history in the Wikipedia article <a href="http://en.wikipedia.org/wiki/Fourcc">FourCC</a>, consulted January 8, 2013).  There are a number of possible encodings for uncompressed video; the <a href="http://www.fourcc.org/yuv.php">FOURCC YUV page</a> (consulted January 8, 2013) provides codes for 30 packed and 20 planar encodings (see <a href="#notes">Notes</a> below).</p>
+			<p>The three subtypes described at this Web site at this time are ones frequently used by preservation-oriented archives when reformatting older analog and media-dependent digital videotapes.  All are packed formats and our description titles use the encodings&apos; FOURCC codes.  The descriptions provide additional identifying tags from Apple (sometimes consisting of Apple&apos;s own four-character codes), the ffmpeg organization, and the Society of Motion Picture and Television Engineers (SMPTE).</p>
+		</fdd:description>
+		<fdd:shortDescription>A digital, color-difference component video picture stream in which the two chroma components are sampled at half the rate of luma.  Reducing the horizontal chroma resolution by one-half reduces the bandwidth of the uncompressed video signal by one-third with little visual impact. </fdd:shortDescription>
+		<fdd:productionPhase>Employed in creation(initial phase), post-production or editing (middle phase), and dissemination (final phase).</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000351</fdd:id>
+					<fdd:shortName>Vid_Unc_Pix</fdd:shortName>
+					<fdd:titleName>Uncompressed YCbCr Video Picture Stream Family</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000353</fdd:id>
+					<fdd:shortName>V210</fdd:shortName>
+					<fdd:titleName>V210 Video Picture Encoding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000365</fdd:id>
+					<fdd:shortName>UYUV</fdd:shortName>
+					<fdd:titleName>UYUV Video Picture Encoding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000364</fdd:id>
+					<fdd:shortName>YUY2</fdd:shortName>
+					<fdd:titleName>YUY2 Video Picture Encoding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>Other 4:2:2 uncompressed video picture encodings.  Not described at this Web site at this time.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>Underpins many video streams in LC collections, both in digital videotape and in files.</fdd:experience>
+		<fdd:preference>Not applicable.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Not relevant to this description; see Disclosure information for the subtypes listed under Relationships.</fdd:disclosure>
+		<fdd:documentation>Not applicable.  Several relevant online articles are cited in <a href="#useful">Useful references</a> below.</fdd:documentation>
+		<fdd:adoption>Widely adopted.</fdd:adoption>
+		<fdd:licensingAndPatents>None.</fdd:licensingAndPatents>
+		<fdd:transparency>Transparent.</fdd:transparency>
+		<fdd:selfDocumentation>Not applicable.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None.</fdd:externalDependencies>
+		<fdd:techProtection>None.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:movingImageQF>
+			<fdd:normalVideo>Supported</fdd:normalVideo>
+			<fdd:clarity>Excellent, with 10-bit sampling surpassing 8-bit.  Streams with 4:4:4 chroma subsampling would provide greater clarity; 4:2:0 and other streams would provide less.</fdd:clarity>
+			<fdd:beyondVideo>Not applicable.</fdd:beyondVideo>
+		</fdd:movingImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<i>BT.601 and BT.709.</i>  The International Telecommunications Union Radiocommunication Sector (ITU-R) BT.601, published in 1987, was designed to provide a common digital standard for interoperability between the three analog video/TV systems (NTSC, PAL, and SECAM).  ITU-R BT.601 enables their signals to be converted to digital and then easily converted back again to any of the three for distribution.  Meanwhile, version 1 of BT.709 was published in 1990 and has seen a number of significant changes and extensions; version 5 was published in 2008.</p>
+			<p>The Farlex Free Dictionary entry <a href="http://encyclopedia2.thefreedictionary.com/ITU-R+BT.709">ITU-R BT.709</a> (consulted January 8, 2013) summarizes the sampling frequencies used for both standards: BT.601(standard for SDTV), Luma sampling rate = 13.5 MHz, chroma sampling rate=6.75 MHz (4:2:2); BT.709 (standard for HDTV), Luma sampling=74.25 MHz, chroma sampling=37.125 MHz (4:2:2).</p>
+			<p>
+				<i>Video and wide range</i>.  The ITU-R specifications support values for Y, Cb, and Cr that conform to what is sometimes called &quot;video range,&quot; &quot;legal range,&quot; or &quot;studio swing&quot; levels.  Expressed in terms of 8-bit tonal range values, video range has a 16-235 levels for Y and 16-240 levels for Cr and Cb.  The term video range is used to contrast with &quot;wide range&quot; or &quot;super white &quot; values from 0 to 255, sometimes used when video signals are created using computer-based graphics applications.</p>
+			<p>
+				<i>Packed and planar encodings.</i>  In a packed video-picture encoding, the Y, Cb (U) and Cr (V) samples are packed together into macropixels stored in a single array.  This contrasts with planar formats where each component is stored as a separate array with the final image consisting of a fusing of the three separate planes.  According to the <a href="http://wiki.videolan.org/YUV">Wiki</a> from the non-profit VideoLAN organization, "Packed formats are very popular inside webcams. In hardware, using separate planes is inefficient: several memory accesses are needed for each pixel. Packed formats are easier and thus cheaper to use. On the other hand, packet formats cannot normally deal with vertical sub-sampling. Otherwise scan lines would have different sizes. So generally, packed formats are horizontally subsampled, especially by a factor of 2 (i.e. YUV 4:2:2)."</p>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Ycbcr</link>
+					<tag>Wikipedia article YCbCr, consulted January 8, 2013</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/YUV</link>
+					<tag>Wikipedia article YUV, consulted January 8, 2013</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/NTSC</link>
+					<tag>Wikipedia article NTSC, consulted January 8, 2013</tag>
+					<comment>Historical information on broadcasting and introduction of color.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Rec._601</link>
+					<tag>Rec. 601</tag>
+					<comment>About ITU-R standard BT.601.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Rec._709 </link>
+					<tag>Rec. 709</tag>
+					<comment>About ITU-R standard BT.709.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://encyclopedia2.thefreedictionary.com/ITU-R+BT.601</link>
+					<tag>ITU-R BT.601</tag>
+					<comment>Short entry, reference Wikipedia article.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://developer.apple.com/library/mac/technotes/tn2162/_index.html</link>
+					<tag>Uncompressed Y´CbCr Video in QuickTime Files</tag>
+					<comment>Although focused on Quicktime, includes generally useful information.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://developer.apple.com/library/mac/technotes/tn2273/_index.html</link>
+					<tag>QuickTime Pixel Format FourCCs</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.glennchan.info/articles/technical/chroma/chroma1.htm</link>
+					<tag>Towards Better Chroma Subsampling</tag>
+					<comment>Explanatory article by Glenn Chan.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.analog.com/static/imported-files/tech_docs/emp199.pdf</link>
+					<tag>Page from the book Basics of Embedded Video and Image Processing</tag>
+					<comment>Covers chroma subsampling and byte structure in words and diagrams.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.avforums.com/forums/home-entertainment-computers/1474013-pixel-format-video-dynamic-range-settings-thread.html</link>
+					<tag>Forum on video pixel formats and dynamic range</tag>
+					<comment>Useful information on getting from SDI video to files, about level ranges and sample byte structure.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

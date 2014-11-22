@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000005" titleName="AIFF (Audio Interchange File Format)" shortName="AIFF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-wrapper</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:updates>
+			<fdd:date>2007-12-14</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Audio Interchange File Format (AIFF)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>container formats</fdd:keyword>
+			<fdd:keyword>wrapper formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>File format for sound that wraps various sound bitstreams, ranging from uncompressed waveform to MIDI. Files with LPCM waveform data are the focus of this discussion.  Compressed waveforms are wrapped by AIFF-C (or an earlier version sometimes referred to as AIFC), not documented at this web site.</fdd:description>
+		<fdd:shortDescription>File format for sound that can wrap various sound bitstreams, ranging from uncompressed LPCM waveform to MIDI. </fdd:shortDescription>
+		<fdd:productionPhase>Used primarily as a initial- or middle-state format, including use as a master file for audio captured live digitally or reformatted from analog sources.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000115</fdd:id>
+					<fdd:shortName>IFF</fdd:shortName>
+					<fdd:titleName>Electronic Arts Interchange File Format 1985</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment/>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000116</fdd:id>
+					<fdd:shortName>AIFF_LPCM</fdd:shortName>
+					<fdd:titleName>AIFF with LPCM Audio</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment/>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>AIFF-C in which the &quot;C&quot; signifies its extension to handle compressed audio data (August 1991, not documented at this Web site at this time) </fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>AIFF files may contain other sound encodings not documented here</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000011</fdd:id>
+					<fdd:shortName>LPCM</fdd:shortName>
+					<fdd:titleName>Linear Pulse Code Modulated Audio (LPCM)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment> encoded audio</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000102</fdd:id>
+					<fdd:shortName>MIDI_SD</fdd:shortName>
+					<fdd:titleName>MIDI sequence data</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment/>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>Other sound encodings, not documented here</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None</fdd:experience>
+		<fdd:preference>General preference for recorded sound is <fddLink id="fdd000002">WAVE_LPCM</fddLink>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>Fully documented. Developed by Apple Computer, Inc.</p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>AIFF and AIFF-C documentation produced by Apple and carrying no copyright notice is available from third parties.  The principal document is titled <i>Audio Interchange File Format (AIFF): A Standard for Samples Sound Files, Version 1.3</i> (Apple Computer, Inc) and it also forms Annex C to the CD-I IFF specification published by the American Interactive Media group. The compiler of this document was unable to locate the specifications at the Apple web site.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>Widely adopted among Apple users engaged in professional audio work; some adoption beyond, although most Windows users select <fddLink id="fdd000001">WAVE</fddLink>, which is functionally equivalent.  <fddLink id="fdd000116">AIFF_LPCM</fddLink> is used as the master format by the Harvard University Library Digital Initiative audio reformatting activity.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>None known to the compilers of this document.</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>Wrapper is transparent.  The transparency of the audio bitstreams is a function of the encoding used; for example, see <fddLink id="fdd000011">LPCM</fddLink>.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>AIFF includes various chunks, each with a header that provides technical information; text chunks as defined from the supertype <fddLink id="fdd000115">IFF</fddLink> format include <i>name</i>, <i>author</i>, <i>copyright</i>, and <i>annotation</i>.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			None
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			<p>None known to the compilers of this document.</p>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:soundQF>
+			<fdd:normalSound>Good support.</fdd:normalSound>
+			<fdd:fidelity>Excellent to good, depending upon encoding parameters selected.</fdd:fidelity>
+			<fdd:channels>Mono, stereo, 3-channel, quad, and four and six channel surround sound are supported for waveform data, depending upon encoding; MIDI data may carry multi-channel information. [?]</fdd:channels>
+			<fdd:samples>Not researched for this document</fdd:samples>
+			<fdd:beyondSound>Not applicable; added functionality may be associated with non-waveform data.</fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>aif</fdd:sigValue>
+					<fdd:sigValue>aiff</fdd:sigValue>
+					<fdd:sigValue>ief</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>
+					<i>aif</i> is most widely used as a file extension.  <a href="http://en.wikipedia.org/wiki/Audio_Interchange_File_Format">Wikipedia</a> reports use of <i>aiff</i>. <a href="http://www.webopedia.com/TERM/A/AIFF.html">Webopedia</a> reports that <i>ief</i> is used as an extension.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>audio/aiff</fdd:sigValue>
+					<fdd:sigValue>audio/x-aiff</fdd:sigValue>
+					<fdd:sigValue> sound/aiff</fdd:sigValue>
+					<fdd:sigValue> audio/rmf</fdd:sigValue>
+					<fdd:sigValue> audio/x-rmf</fdd:sigValue>
+					<fdd:sigValue> audio/x-pn-aiff</fdd:sigValue>
+					<fdd:sigValue> audio/x-gsm</fdd:sigValue>
+					<fdd:sigValue> audio/x-midi</fdd:sigValue>
+					<fdd:sigValue> audio/vnd.qcelp</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://filext.com/">The File Extension Source</a>. Note that encoding, e.g., <i>gsm</i>, <i>midi</i> and <i>qcelp</i>, is often a part of the MIME string. Internet Media Type for AIFF not found at <a href="http://www.iana.org/assignments/media-types/">http://www.iana.org/assignments/media-types/</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 46 4F 52 4D 00</fdd:sigValue>
+					<fdd:sigValue>ASCII: FORM</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://filext.com/">The File Extension Source</a>.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Mac OS file type</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>AIFF</fdd:sigValue>
+					</fdd:sigValues>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://lehre.hki.uni-koeln.de/kurz/kurz1/planets/fileformats/AIFFSpecs.pdf</link>
+					<tag>AIFF specification documents </tag>
+					<comment/>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://paulbourke.net/dataformats/audio/</link>
+					<tag>Creating AIFF Audio Formatted Files</tag>
+					<comment>By Paul Bourke. 1996</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://sox.sourceforge.net/AudioFormats-11.html#ss11.1</link>
+					<tag>AIFF and AIFC format notes</tag>
+					<comment/>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Audio_Interchange_File_Format</link>
+					<tag>Audio Interchange File Format entry on Wikipedia</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

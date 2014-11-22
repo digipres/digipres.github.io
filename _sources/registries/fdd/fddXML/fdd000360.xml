@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000360" titleName="PDF/A-3, PDF for Long-term Preservation, Use of ISO 32000-1, With Embedded Files" shortName="PDF/A-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>text</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2012-11-19</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ISO 19005-3. Document management - Electronic document file format for long-term preservation - Part 3: Use of ISO 32000-1 with support for embedded files (PDF/A-3)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>Portable Document Format (PDF)</fdd:keyword>
+			<fdd:keyword>PDF/A</fdd:keyword>
+			<fdd:keyword>document formats</fdd:keyword>
+			<fdd:keyword>PDF</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>PDF/A-3 is a constrained form of Adobe PDF version 1.7 (as defined in ISO 32000-1) intended to be suitable for archiving of page-oriented documents for which PDF is already being used in practice.   PDF/A-3 adds a single and highly significant feature to its predecessor <fddLink id="fdd000319">PDF/A-2</fddLink> (ISO 19005-2) specification, to permit the embedding within a PDF/A file a file, or files, in any other format, not just other PDF/A files (as permitted in PDF/A-2).</p>
+			<p>See <fddLink id="fdd000318">PDF/A</fddLink> for more information about the PDF/A family of standards.  See <fddLink id="fdd000319">PDF/A-2</fddLink> for information about the version of the PDF/A standard that PDF/A-3 extends.</p>
+			<p>As in PDF/A-2, the PDF/A-3 standard defines three levels of conformance:  conformance level A satisfies all requirements in the specification; level B is a lower level of conformance, satisfying requirements intended to be those minimally necessary to ensure that the rendered visual appearance of a conforming file is preservable over the long term.  The specification notes that &quot;Level B conforming files might not have sufficiently rich internal information to allow for the preservation of the document&apos;s logical structure and content text stream in natural reading order, which is provided by Level A conformance.&quot; An intermediate level of conformance, Level U conformance corresponds to Level B conformance with the additional requirement that all text in the document have Unicode equivalents.</p>
+			<p>PDF/A-3 allows for embedding of files of any type, but imposes requirements beyond those in &quot;regular&quot; <fddLink id="fdd000277">PDF 1.7 </fddLink>files as defined by ISO 32000-1.  Files that comply with these requirements are termed &quot;associated&quot; files; an explicit association must be made between each embedded files and the containing PDF or object or structure (e.g., image, page, or logical section) within the PDF.  See <a href="#notes">Notes</a> below for more detail on the association mechanism.  Predefined values for relationships for associated files (in the required AFRelationship key) are <i>Source</i>, <i>Data</i>, <i>Alternative</i>, <i>Supplement</i>, and <i>Unspecified</i>.  MIME types must be provided for associated files.  The PDF/A-3 specification requires the use of <i>application/octet-stream</i> if a more specific MIME type is not known.  The compilers of this resource have not determined whether more explicit characterization necessary to support long-term preservation (e.g., version) can be indicated.  <a href="../contact_format.shtml">Comments welcome</a>.  Human-readable descriptions for the associated files can be provided and are recommended.  Conforming readers must provide a mechanism for a user to choose to extract and save (not open) associated files.</p>
+			<p>See <a href="#notes">Notes</a> below for use cases and examples that illustrate motivation for adding support for embedded files to the PDF/A-3 standard.</p>
+		</fdd:description>
+		<fdd:shortDescription>A constrained form of Adobe PDF version 1.7 (as defined in ISO 32000-1)intended to be suitable for archiving page-oriented documents for which PDF is already being used in practice.  This version of PDF/A also allows files in any other format to be embedded.</fdd:shortDescription>
+		<fdd:productionPhase>A final-state format for delivery to end users and long-term preservation of the document as disseminated to users.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000030</fdd:id>
+					<fdd:shortName>PDF</fdd:shortName>
+					<fdd:titleName>Portable Document Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000277</fdd:id>
+					<fdd:shortName>PDF_1_7</fdd:shortName>
+					<fdd:titleName>PDF, Version 1.7  (ISO 32000-1:2008)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Extension of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000318</fdd:id>
+					<fdd:shortName>PDF/A</fdd:shortName>
+					<fdd:titleName>PDF for Long-term Preservation</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Extension of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000319</fdd:id>
+					<fdd:shortName>PDF/A-2</fdd:shortName>
+					<fdd:titleName>PDF for Long-term Preservation, Use of ISO 32000-1 (PDF 1.7)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>PDF/A-3a, PDF/A-3u, PDF/A-3b, not separately described at this website.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>LC was represented on the working group for the original PDF/A standard and continues to participate in the development of new versions.</fdd:experience>
+		<fdd:preference>
+			<p>The Library of Congress expresses preferences for formats for content (primarily in physical form) for its collections through the &quot;Best Edition&quot; specification from the U.S. Copyright Office in <a href="http://www.copyright.gov/circs/circ07b.pdf">Circular 7b</a>.  Circular 7b (as reviewed in 09⁄2012) lists formats acceptable for mandatory deposit of Electronic Serials available only online, in order of preference. For page-oriented renditions, PDF/A appears first on the list.  Other forms of PDF are acceptable, preferably with searchable text.  The preference for PDF/A was declared before PDF/A-3 was published, and the preference should not be interpreted as acceptance for copyright deposit of any files embedded in a PDF/A-3 file.  The Library has not expressed a preference regarding PDF/A-3, pending community-wide experience with this version of the PDF/A format.</p>
+			<p>See <fddLink id="fdd000319">PDF/A-2</fddLink>.</p>
+		</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>Open standard, published by ISO in October 2012.  Developed by the working group <a href="http://pdf.editme.com/">ISO/TC 171 SC2, Document Imaging Applications, Application Issues</a>, for which <a href="http://www.aiim.org/">AIIM</a> (The Association for Information and Image Management) acts as secretariat. under the auspices of ISO. It is a Joint Working Group, including participation from ISO/TC 46 SC11, Archives/records Management, ISO/TC 130, Graphics Technology, and ISO/TC 42, Photography.
+</p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>
+				<a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=50655">ISO 19005-3:2012.	Document management -- Electronic document file format for long-term preservation -- Part 1: Use of ISO 32000-1 with support for embedded files (PDF/A-3)</a>. The standard cannot be used without <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=51502">ISO 32000-1. Document management -- Portable document format -- Part 1: PDF 1.7</a>, which it uses as a normative reference.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>As of November 2012, PDF/A-3 is a brand new standard.  It is too early to assess adoption of PDF/A-3 per se, although several vendors of tools supporting creation of or conversion to PDF/A have announced that they already offer support for embedded files.  See <fddLink id="fdd000318">PDF/A</fddLink> for a discussion of adoption of PDF/A in general, bearing in mind whether that discussion still considers only PDF/A-1 and PDF/A-2.   <a href="../contact_format.shtml">Comments</a> welcome.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No concerns for PDF/A per se.  Licensing or patent concerns may arise for embedded files.</fdd:licensingAndPatents>
+		<fdd:transparency>See <fddLink id="fdd000318">PDF/A</fddLink> in relation to PDF/A-1 and PDF/A-2.  For PDF/A-3, transparency and characterization of embedded files are primary concerns for long-term preservation.</fdd:transparency>
+		<fdd:selfDocumentation>See <fddLink id="fdd000318">PDF/A</fddLink>.</fdd:selfDocumentation>
+		<fdd:externalDependencies>See <fddLink id="fdd000318">PDF/A</fddLink>.</fdd:externalDependencies>
+		<fdd:techProtection>See <fddLink id="fdd000318">PDF/A</fddLink>.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:textQF>
+			<fdd:normalText>See <fddLink id="fdd000318">PDF/A</fddLink>.</fdd:normalText>
+			<fdd:structure>See <fddLink id="fdd000318">PDF/A</fddLink>. </fdd:structure>
+			<fdd:layout>See <fddLink id="fdd000318">PDF/A</fddLink>.</fdd:layout>
+			<fdd:mathDiag>See <fddLink id="fdd000318">PDF/A</fddLink>.</fdd:mathDiag>
+			<fdd:beyondText>See <fddLink id="fdd000318">PDF/A</fddLink>.</fdd:beyondText>
+		</fdd:textQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>pdf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The standard does not indicate that a different extension should be used to distinguish PDF from PDF/A.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000318">PDF/A</fddLink>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000318">PDF/A</fddLink>.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Indicator for profile, level, version, etc.</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>The standard specifies that the PDF/A version and conformance level of a file shall be specified using the PDF/A Identification extension schema defined in the standard.  This schema has two mandatory elements: pdfaid:part (integer) and pdfaid:conformance (closed list of text values).  A PDF/A-3 file should have the integer value 3 for pdfaid:part.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>File signature</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000318">PDF/A</fddLink>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>The specification does not present the motivation for extending the PDF/A-2 format to support the embedding of files of any type.  A single illustrative example appears in Annex E.  This example is a PDF text document that displays a mathematical equation and includes a chart based on a spreadsheet.  Associated files that might be embedded in the PDF/A-3 include a word-processing file (with relationship <i>Source</i> to the whole document), a MathML expression of the equation (with relationship <i>Supplement</i> to the structure or Form Xobject that displays the equation), and a spreadsheet file and CSV file (both associated with the same chart with relationship <i>Data</i>).  A richer expression of use cases is made in a <a href="http://www.youtube.com/watch?v=g-tJRSsZHyc">recording of a webinar</a>,  from vendor Luratech, entitled <i>PDF/A-3, All change for document based processes!</i>  The <a href="http://www.youtube.com/watch?v=g-tJRSsZHyc">webinar</a> makes statements about the intent of the standard that are not found in the standard itself.  Most significantly, the presenter indicates that in a PDF/A-3 file, the embedded files should be considered &quot;non-archival.&quot; In other words, the source or supplementary material is considered as only of short-term or temporary use.  What should be considered as &quot;archived&quot; for the long term is only the primary PDF content with its visible page display.  Secondly, uses cases chosen for what was primarily a marketing presentation with existing customers in mind indicate workflows and use contexts during the primary lifecycle of a document that could have benefits for entities responsible for longer-term archiving.  These use cases included:</p>
+			<ul>
+				<li>Hybrid archiving.  If every revision of a document is accompanied by storing a PDF/A-3 file with the source word-processing file embedded, the document is archive-ready whenever editing stops;</li>
+				<li>Embedding richer metadata in &quot;native&quot; discipline-specific or application-specific format:  Although PDF/A already requires and supports XMP, many metadata schemes have rich XML representations that are not easily converted to RDF, on which XMP is based.  However, rich metadata in a well-known application-specific format could be embedded and associated with the document as a whole -- in addition to XMP metadata using built-in schema.</li>
+				<li>German standard under development for electronic invoice exchange format based on PDF/A-3.  The invoice data can be represented in machine-readable form as an XML file embedded in a human-readable PDF/A-3.</li>
+			</ul>
+			<p>Annex E of ISO 19005-3:2012 specifies that each embedded file in a PDF/A-3 file must be identified in a file specification dictionary (as described in section 7.11.3 of ISO 32000-1).  The inclusion (in a Desc key) of a human-readable description of the file is recommended.  The associated embedded bitstream dictionary (essentially a header for the embedded bitstream itself) must include a MIME type (in a Subtype key), using <i>application/octet-bitstream</i> if a more precise MIME type is not known.  The embedded bitstream dictionary must also include a Params key that contains at least a ModDate key to indicate the latest modification date of the file embedded.  The specification for the Params key (in section 7.11.4.1 of ISO 32000-1) does not seem to allow for embedding file characteristic details more specific than a MIME type.  <a href="../contact_format.shtml">Comments</a> welcome.  Relationships for associated files must be expressed in a new key introduced for PDF/A-3 (and expected to be in the forthcoming ISO 32000-2 standard for regular PDF).  This AFRelationship key is located in the file specification dictionary.  It indicates a relationship type of <i>Source</i>, <i>Data</i>, <i>Alternative</i>, <i>Supplement</i>, and <i>Unspecified</i>.  Relationship links are established from the document or parts of the document by use of the AF key, which contains an array of file specification dictionaries (as described above).  Files associated with the entire document are represented by an AF key in the Catalog for the PDF file.  Files associated with a page are represented by an AF key in the relevant Page dictionary.  Files associated with an Image XObject or A Form XObject are represented by an AF key in the attributes dictionary for the object.  Similarly, a file associated with a logical structure (such as an article or a table) or an annotation is represented by an AF key in the structure dictionary or annotation dictionary.  A mechanism also exists to relate an associated file to a marked section of content; however, use of relationships to structures is preferred.</p>
+			<p>See also <fddLink id="fdd000318">PDF/A</fddLink>.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>The primary difference between PDF/A-1 and PDF/A-2 was the use of a later underlying version of PDF.  Added capabilities, all in compliance with ISO 32000-1, included:</p>
+			<ul>
+				<li>Improvements to tagged PDF (for enhanced accessibility)</li>
+				<li>Compressed Object and XRef streams (for smaller file sizes)</li>
+				<li>Support for embedding of PDF/A-compliant file attachments, portable collections and PDF packages</li>
+				<li>Support for transparency in images</li>
+				<li>Support for JPEG 2000 compression for images</li>
+			</ul>
+			<p> See also <fddLink id="fdd000318">PDF/A</fddLink>.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=57229&amp;commid=53674</link>
+					<tag>ISO 19005-3:2012.  Document management -- Electronic document file format for long-term preservation -- Part 2: Use of ISO 32000-1 with support for embedded files (PDF/A-3)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=51502</link>
+					<tag>ISO 32000-1. Document management -- Portable document format -- Part 1: PDF 1.7</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.pdfa.org/competence-centers/pdfa-competence-center/</link>
+					<tag>PDF/A Competence Center</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.youtube.com/watch?v=g-tJRSsZHyc</link>
+					<tag>Webinar from Luratech:  PDF/A-3, All change for document based processes!
+</tag>
+					<comment>Webinar offered soon after publication of PDF/A-3 specification as ISO 19005-3:2012</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/PDF/A</link>
+					<tag>PDF/A on Wikipedia</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Digital preservation staff at the Library of Congress have seen the differences between PDF/A-3 and the other PDF/A versions as significant enough to raise the question of the suitability of PDF/A-3 as an archival format in its blog, The Signal, dedicated to digital preservation topics and issues.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://blogs.loc.gov/digitalpreservation/2012/11/all-in-embedded-files-in-pdfa/</link>
+							<tag>All In! Embedded Files in PDF/A</tag>
+							<comment>Posted soon after publication of the standard. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://blogs.loc.gov/digitalpreservation/2014/02/new-ndsa-report-the-benefits-and-risks-of-the-pdfa-3-file-format-for-archival-institutions/</link>
+							<tag>New NDSA Report: The Benefits and Risks of the PDF/A-3 File Format for Archival Institutions</tag>
+							<comment>Posted to announce publication of the report, in Februrary 2014. </comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.digitalpreservation.gov/ndsa/working_groups/documents/NDSA_PDF_A3_report_final022014.pdf</link>
+					<tag>The Benefits and Risks of the PDF/A-3 File Format for Archival Institutions</tag>
+					<comment>Published in February 2014 by the National Digital Stewardship Organization.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://pdf.editme.com/PDFA</link>
+					<tag>PDF/A: public face of ISO TC171 SC2 WG5</tag>
+					<comment/>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://pdf.editme.com/PDFAEmbedded</link>
+					<tag>PDFA Embedded</tag>
+					<comment>Discussion among PDF/A WG members on pros and cons of allowing embedded files</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000318">PDF/A</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

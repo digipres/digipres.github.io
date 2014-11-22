@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000294" titleName="GeoDB, ESRI Geodatabase (File-based)" shortName="GeoDB_File" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>database</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-group</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2011-08-05</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ESRI Geodatabase (File-based)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>geospatial data formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>The GeoDB, ESRI Geodatabase (File-based) or GeoDB_File is a subtype of the <fddLink id="fdd000293">GeoDB</fddLink>.  The GeoDB is the primary data storage model for ArcGIS.  It is a container of spatial and attribute data and enables the user to store many different types of GIS data within its structure.  Its structure is implemented either in an RDBMS or as a collection of files in a file system.   As an implementation of the GeoDB data model, the GeoDB_File is designed to:<ul>
+				<li>Provide a widely available, simple, and scalable geodatabase solution for all users</li>
+				<li>Provide a portable geodatabase that works across operating systems</li>
+				<li>Scale up to provide fast performance for very large datasets, e.g., those containing well over 300 million features or scale beyond 500 gigabytes per file</li>
+				<li>Use an efficient data structure optimized for performance and storage that allows users to compress vector data to a read-only format, and uses about one third less storage space by comparison with shapefiles and personal geodatabases</li>
+				<li> Improve performance by comparison with shapefiles for operations involving attributes, such as classification or creating overlays </li>
+			</ul>
+			<p>As a subtype of the geodatabase data model, the GeoDB_File is implemented as a collection of binary files in a native file system.  It is designed as a single-user geodatabase.   The GeoDB_File has no size capacity limit, although by default, within the geodatabase each table can store up to 1 terabyte of data.  The table size limitation can be changed so that a table can store up to 256 terabytes, if desired.  Each GeoDB_File can hold many datasets.  Within each dataset, each feature class can scale up to hundreds of millions of vector features.The GeoDB_File does not support versioning or geodatabase archiving.  It supports limited geodatabase replication if used as a child geodatabase in either one-way or checkout/check-in geodatabase replication. Security and permissions associated with the GeoDB_File are those provided by the operating file system as is any database administration.</p>
+			<p>The GeoDB_File is best used for personal or locally (file system) stored GIS projects rather than the GeoDB, ESRI Geodatabase (Personal) or GeoDB_Personal format that is implemented in Microsoft Access because it offers more functionality and better performance.   The GeoDB_File can be converted, using migration tools included in the ArcGIS software suite,  to the <fddLink id="fdd000329">GeoDB_SDE</fddLink> implementation of the GeoDB data model when multi-user editing, more complexity in description, or more capacity for spatial analysis is desired.  See <a href="http://blogs.esri.com/esri/arcgis/2008/11/11/migrating-your-existing-data-into-the-geodatabase/">Migrating your existing data into the Geodatabase</a> and <a href="http://www.esri.com/news/arcuser/0701/migrating.html">Migrating Coverages to Geodatabases</a> for more information on converting other ESRI formats to the GeoDB_File format.</p>
+		</fdd:description>
+		<fdd:shortDescription>The GeoDB_File is a single-user subtype of the ESRI ArcGeodatabase that stores a collection of binary files in a native computer file system rather than in an RDBMS. </fdd:shortDescription>
+		<fdd:productionPhase>Full life cycle format alternative to the other single-user ESRI Geodatabase, the GeoDB_Personal format.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000284</fdd:id>
+					<fdd:shortName>ArcInfo Coverage </fdd:shortName>
+					<fdd:titleName>ESRI ArcInfo Coverage </fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>The ArcGIS coverage format is a legacy format superseded by the ESRI Arc Geodatabase data model that is expressed in single and multi-user geodatabases. Coverages cannot be edited in ArcGIS 8.3 and subsequent versions. </fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000293</fdd:id>
+					<fdd:shortName>GeoDB</fdd:shortName>
+					<fdd:titleName>ESRI Arc Geodatabase</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>The data model that serves as the framework for all Arc geodatabases, whether single user or multi-user.  This data model has superseded the ESRI ArcInfo Coverage format which cannot be edited in ArcGIS 8.3 and subsequent versions.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:shortName>GeoDB_Personal</fdd:shortName>
+					<fdd:titleName>GeoDB, ESRI Geodatabase (Personal)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>An option for data storage for a single-user ESRI Geodatabase that is implemented as a single Microsoft Access file.  As of 2011, ESRI recommends GeoDB_File file-based geodatabases over Microsoft Access Personal Geodatabases, because they offer more functionality and better performance.  The Personal Geodatabase format is not described at this time on this website.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000329</fdd:id>
+					<fdd:shortName>GeoDB_SDE</fdd:shortName>
+					<fdd:titleName>GeoDB, ESRI Geodatabase ArcSDE</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>The spatial database engine is the multi-user option for data storage for an ESRI Geodatabase. </fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000295</fdd:id>
+					<fdd:shortName>GeoDB_XML</fdd:shortName>
+					<fdd:titleName>ESRI Geodatabase (XML)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Used by ArcGIS to import and export all items and data in a geodatabase such as domains, rules, feature datasets, and topologies.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>A proprietary database structure used in ESRI GIS products.</fdd:disclosure>
+		<fdd:documentation>ESRI does not provide a complete specification of the database structure employed in ArcGIS.  The different types of geodatabases are described in <a href="http://webhelp.esri.com/arcgisdesktop/9.2/index.cfm?TopicName=Types_of_geodatabases">Types of geodatabases, ArcGIS 9.2 Desktop Help, January 14, 2008</a>.</fdd:documentation>
+		<fdd:adoption>The geodatabase data model was introduced by ESRI in the late 1990s with the release of version ArcGIS 8.0.  The release of the ArcGIS suite constituted a major change in ESRI's software offerings, aligning all their client and server products under one software architecture known as ArcGIS, developed using Microsoft Windows COM standards.  While the ESRI shapefile is still quite prevalent in the industry, at least for sharing and transferring datasets among different systems, the geodatabase is becoming the mechanism of choice for data sharing and data interoperability among organizations, and departments within a single organization.   While older ESRI (non-ArcGIS) products are still available, most of the GIS software market share that ESRI holds (approximately 36 percent worldwide as of 2002) is taken by ArcGIS products.  See <a href="http://en.wikipedia.org/wiki/ArcGIS">ArcGIS from Wikipedia</a> and <a href="http://www.esri.com/library/whitepapers/pdfs/cots-gis.pdf">COTS GIS:  The Value of a Commercial Geographic Information System</a> for more information. </fdd:adoption>
+		<fdd:licensingAndPatents>ESRI Licensing agreements detail the terms of use and compliance for ESRI GIS software per <a href="http://www.esri.com/legal/software-license">http://www.esri.com/legal/software-license</a>.  </fdd:licensingAndPatents>
+		<fdd:transparency>The data in a GeoDB_File database is in an undocumented binary form and usually compressed.  Until June 2011, there was no way to understand the contents except through ArcGIS procedures.  In June 2011, ESRI published a limited <a href="http://web.archive.org/web/20130113235706/http://resources.arcgis.com/content/geodatabases/10.0/file-gdb-api">API</a> (in C++) that provides some capabilities for exploring and extracting data directly. </fdd:transparency>
+		<fdd:selfDocumentation>TBD</fdd:selfDocumentation>
+		<fdd:externalDependencies>Software dependencies:  File (single user) geodatabases are freely available to all purchasers of ArcGIS desktop software, i.e., ArcView, ArcEditor, and ArcInfo. There is a varying level of functionality between ArcView, ArcEditor, and ArcInfo.  ArcView allows the user to create and edit single user geodatabases.  The user cannot, however, create or manage geometric networks and relationships.  Basic functionality such as defining attribute domains is included.  For a more robust geodatabase environment, ArcEditor or ArcInfo are recommended as they provide full functionality of the geodatabase data model.  Both single user and and multiuser geodatabases can be created and edited.  Features such as geometric networks, relationships, feature-lined annotation, multiuser editing, custom data models, and image storage are all incorporated within ArcEditor and ArcInfo.  A comparison of functionality among ArcView, ArcEditor, and ArcInfo can be found on Page 9 of <a href="http://downloads2.esri.com/support/whitepapers/ao_/arcgis_geodb_multiuser.pdf">Working with the Geodatabase:  Powerful Multiuser Editing and Sophisticated Data Integrity.</a>
+		</fdd:externalDependencies>
+		<fdd:techProtection>No concerns.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:gisQF>
+			<fdd:normalGIS>The GeoDB is designed to have a comprehensive GIS data model, geospatial modeling capabilities, and a scalable architecture.  Thus, as a GeoDB, (and like the GeoDB_SDE, a multi-user subtype of the GeoDB), the GeoDB_File is designed to be able to create topologies, raster catalogs, network datasets, terrain datasets, address locators, and other means for providing GIS functionality for managing, manipulating and analyzing data. The single-user geodatabase formats and related software do not provide support for versioning, geodatabase replication, geodatabase archiving or long term (time) transaction management.  </fdd:normalGIS>
+			<fdd:metadataGIS>There are no special provisions for containing GIS metadata in the GeoDB_File format.</fdd:metadataGIS>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>gdb</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The .gdb file is a container to hold the feature datasets, feature classes, and associated tables  that are related to each other.  When the .gdb file is opened using ArcGIS software, various file types can usually be found within .gdb file including attribute tables, topologies and feature classes such as polygons.  Associated data important for the use of the data in the .gdb such as shapefiles and .xml files containing metadata need to be kept with the .gdb, usually in the same file directory in order to retain the associations.  </fdd:note>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>File-based datasets do not support joint editing, except by means of operational procedures.  When more than one user needs data access, files are either copied or mounted across a network. It is possible to have more than one editor in the GeoDB_File at the same time, provided they are editing in different tables, feature classes or feature datasets.  Generally, an RDBMS-backed geodatabase is used in preference to a file-based geodatabase when group editing is required.</p>
+			<p>In late 2011, the Geospatial Multistate Archive and Preservation Project (GeoMAPP) produced a <a href="http://www.geomapp.net/docs/Geodatabase_Report_v1.0_final_20111206.pdf">report</a> comparing the archival challenges presented by the GeoDB_File and GeoDB_Personal formats.</p>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://webhelp.esri.com/arcgisdesktop/9.2/index.cfm?TopicName=Types_of_geodatabases</link>
+					<tag>Types of geodatabases.  ArcGIS 9.2 Desktop Help</tag>
+					<comment>This is not a complete or formal specification for the GeoDB_File format.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://proceedings.esri.com/library/userconf/pug07/papers/workshops/file-gdb.pdf</link>
+					<tag>File geodatabase, ArcGIS 9.2 </tag>
+					<comment>ESRI 2007 User's Conference slideshow</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.geomapp.net/docs/Geodatabase_Report_v1.0_final_20111206.pdf</link>
+					<tag>Archival Challenges Associated with the ESRI Personal Geodatabase and File Database Formats</tag>
+					<comment>Report by GeoMAPP (Geospatial Multistate Archive and Preservation Partnership).  December 2011.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.esri.com/news/arcuser/0701/migrating.html</link>
+					<tag>Migrating Coverages to Geodatabases</tag>
+					<comment>ArcUser Newsletter, July-September 2001</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://webhelp.esri.com/arcgisdesktop/9.2/index.cfm?TopicName=An_Overview_of_the_Geodatabase</link>
+					<tag>An overview of the geodatabase</tag>
+					<comment> ARCGIS 9.2 Desktop Help, January 14, 2008</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.esri.com/news/arcnews/winter0809articles/the-geodatabase.html</link>
+					<tag>The Geodatabase: Modeling and Managing Spatial Data</tag>
+					<comment>Published in ArcNews, Winter 2008/2009 </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://downloads2.esri.com/support/whitepapers/ao_/arcgis_geodb_multiuser.pdf</link>
+					<tag>Working with the GeoDatabase: Powerful Multiuser Editing and Sophisticated Data Integrity</tag>
+					<comment>An ESRI White Paper.  February 2002</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/ArcGIS</link>
+					<tag>ArcGIS from Wikipedia</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.esri.com/library/whitepapers/pdfs/cots-gis.pdf</link>
+					<tag>COTS GIS:  The Value of a Commercial Geographic Information System</tag>
+					<comment>An ESRI White Paper.  August 2002</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://blogs.esri.com/esri/arcgis/2008/11/11/migrating-your-existing-data-into-the-geodatabase/</link>
+					<tag>Migrating your existing data into the Geodatabase</tag>
+					<comment>From ArcGIS Resource Center Blog:  Inside the Geodatabase</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://web.archive.org/web/20130113235706/http://resources.arcgis.com/content/geodatabases/10.0/file-gdb-api</link>
+					<tag>File Geodatabase API</tag>
+					<comment>This page is no longer online; link provided via Internet Archive.  The API is still available.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.esri.com/software/arcgis/geodatabase/interoperability</link>
+					<tag>Interoperability: Esri File Geodatabase API and Geodatabase XML</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

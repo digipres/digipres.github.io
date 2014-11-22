@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000288" titleName="Band Interleaved by Pixel (BIP) Image File" shortName="BIP_file" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2011-09-19</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Band Interleaved by Pixel (BIP) Image File</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>raster image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>A binary raster file format for aerial photography, satellite imagery, and spectral data.  The BIP data organization can handle any number of bands, and thus accommodates black and white, grayscale, pseudocolor, true color, and multi-spectral image data.  Additional information is needed to interpret the image data, such as the numbers of rows, columns, and bands, if there is a color map, and latitude and longitude to relate the image to geospatial locations.  This information may be supplied in a file header (typical on the legacy tapes originally used for storing satellite image data) or in a companion file, for example, as an ASCII header (.hdr) file in the ESRI implementation (See <a href="#notes">Notes</a>).  BIP is generally one member of a pair or cluster of companion files that are typically stored in the same file directory or project workspace, with all component files having the same filename and identified by individual file extension.  Images stored in BIP format have the first pixel for all bands in sequential order, followed by the second pixel for all bands, followed by the third pixel for all bands, etc., interleaved up to the number of pixels, see  <fddLink id="fdd000305">BIP_enc</fddLink> for more specific encoding information. 
+</p>
+		</fdd:description>
+		<fdd:shortDescription>A basic binary raster image file format, used for aerial photography and spectral data. The BIP file is a binary file of raw data that requires additional information, usually represented in an associated ASCII file, to be interpreted correctly.  </fdd:shortDescription>
+		<fdd:productionPhase>Raster image file produced, for example, by remote sensing systems and spectrometers. It is practical to use as a middle-state format if all bands in an image are to be used, for example for spectral analysis.  Also as an end-state format for distribution for some US government satellite data. </fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000305</fdd:id>
+					<fdd:shortName>BIP_enc</fdd:shortName>
+					<fdd:titleName>Band Interleaved by Pixel (BIP) Encoding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse/>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Documentation is provided by multiple sources, including the publicly available specification from Environmental Systems Research Institute, Inc. (ESRI).
+</fdd:disclosure>
+		<fdd:documentation>
+			<a href="http://downloads.esri.com/support/whitepapers/other_/eximgav.pdf">Extendable Image Formats for ArcView GIS 3.1 and 3.2</a>; ESRI White Paper, July 1999; Description of
+BIL/BIP/BSQ is on page 8.</fdd:documentation>
+		<fdd:adoption>
+			<p>Several U.S. Government agencies and other data archives distribute geospatial data in the BIL format:</p>
+			<ul>
+				<li>NASA  Landsat data has been distributed in <fddLink id="fdd000304">BIL</fddLink> (band interleaved by line) or BIP (band interleaved by pixel) formats. </li>
+				<li>Digital Orthophoto Quadrangle (DOQ) distributed by USGS are another example of GIS data featuring the BIP format.</li>
+				<li>The USGS Native DOQ format consists of an ASCII keyword header followed by a series of 8-bit binary image lines for B/W and 24-bit band-interleaved-by-pixel (BIP) for color. </li>
+			</ul>
+			<p>BIP spatial data can be displayed in <a href="http://mcmcweb.er.usgs.gov/drc/dlgv32pro/">USGS Digital Data Viewer: dlgv32 Pro</a> a limited-feature version of commercial software <a href="http://www.globalmapper.com/">Global Mapper.</a> USGS Digital Data Viewer requires a header file (usually .hdr, .ers, or .aux) to load the BIP file.  Implementations of BIP are used in ESRI, TSG, and other applications.  Visual rendering and write/export  instructions for BIP are available in many software libraries, such as GDAL, and applications, such as AutoCAD, ESRI&apos;s ArcGIS, ENVI, Generic Database (GDB) Technology, Global Mapper, MATLAB, Oracle, etc. </p>
+			<p>	The ESRI implementation of a BIP file is a cluster of files (see <a href="#notes">Notes</a>).</p>
+			<p>Geological analysis of BIP spectral reflectance data of minerals, rocks and soils, including drill cores and chips, can be performed with <a href="http://www.thespectralgeologist.com/">The Spectral Geologist (TSG)</a> and integrated with other geological datasets (see <a href="#notes">Notes</a>). </p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>None.</fdd:licensingAndPatents>
+		<fdd:transparency>The raw data has a simple form and is easily interpreted if the image dimensions in pixels, the number of spectral bands, and the number of bits per band are known.</fdd:transparency>
+		<fdd:selfDocumentation>An embedded or companion ASCII header file may contain a wide range of data regarding image capture instrumentation, date, and other data  for identifying, displaying, and georeferencing the image. </fdd:selfDocumentation>
+		<fdd:externalDependencies>Accompanying header files may be compatible only with certain software applications.</fdd:externalDependencies>
+		<fdd:techProtection>No capabilities for encryption or other technical protection mechanism inherent in the format or in its use have been found by the compilers of this analysis.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>See <fddLink id="fdd000305">BIP_enc</fddLink>
+			</fdd:normalImage>
+			<fdd:clarity>See <fddLink id="fdd000305">BIP_enc</fddLink>
+			</fdd:clarity>
+			<fdd:colorMaint>See <fddLink id="fdd000305">BIP_enc</fddLink>
+			</fdd:colorMaint>
+			<fdd:graphics>See <fddLink id="fdd000305">BIP_enc</fddLink>
+			</fdd:graphics>
+			<fdd:multispectral>The BIP data organization can handle any number of bands, and thus accommodates black and white, grayscale, pseudocolor, true color, and multi-spectral image data.  BIP data stores pixel information for separate bands within the same file, so that the user can choose to display just one specific band in a multi-band image. The Band Interleaved by Pixel encoding (<fddLink id="fdd000305">BIP_enc</fddLink>) supports efficient extraction of individual spectra and spectral averages.</fdd:multispectral>
+			<fdd:beyondImage>When supported by suitable georeferencing information and metadata to support interpretation of spectra in accompanying files, as is often the case in practice for geospatial data, this file format supports geospatial analysis, including grid-based analysis.</fdd:beyondImage>
+		</fdd:stillImageQF>
+		<fdd:gisQF>
+			<fdd:normalGIS>BIP files are often produced by remote sensing systems and spectrometers. BIP data can be immediately read/accessed with ESRI and other GIS applications, including  USGS Digital Data Viewer.</fdd:normalGIS>
+			<fdd:metadataGIS>In ESRI&apos;s BIP implementation, accompanying files provide ancillary information, including metadata.  In particular, projection information is provided in an ASCII text file with extension .prj.  The ESRI world file, with extension .bpw,  is an ASCII text file containing coordinate information. It is used by some packages for geo-referencing of BIP image data. The ESRI header file, with extension .hdr, can contain a wide range of data regarding image capture instrumentation, date, and other data  for identifying, displaying, and georeferencing the image.</fdd:metadataGIS>
+			<fdd:grids>As a raster format, data in the BIP encoding is inherently adaptable
+to grid-based analysis, so long as accompanying information is
+provided to document the scale, coordinate reference system, and
+projection so that the image can be registered against a grid chosen
+for analysis.  An ESRI BIP file (with its supporting files) is easily converted to the ESRI Grid format.</fdd:grids>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>.bip</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note/>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>BSQ, BIL, and BIP represent alternative ways of storing images in memory or on disk. The initials stand for band-sequential, band-interleaved-by-line, and band-interleaved-by-pixel, respectively. These image formats are also sometimes called &quot;band-interleaved&quot;, &quot;row-interleaved&quot;, and &quot;pixel-interleaved&quot;, respectively.  Images are stored in one format or another to facilitate expected image manipulations. The BIL (band-interleaved-by-line) encoding is a compromise format, allowing fairly easy access to both spatial and spectral information.</p>
+			<p>To be interpreted properly, a BIP binary image file must have an associated ASCII header file. This header file contains ancillary data about the image such as the number of rows and columns in the image, if there is a color map, and latitude and longitude.  </p>
+			<p> BIP image files used for spectral analysis in other contexts, such as geology, will have comparable associated files. For example, The Spectral Geologist (TSG) application, developed by the Australian CSIRO, is an industry standard tool for geological analysis of spectral reflectance data of minerals, rocks and soils. In TSG the BIP file, a  *.tsg and *.ini are required to be in the same directory for the TSG application to open the *.tsg file and view the *.bip data.</p>
+			<p>In ESRI applications,  accompanying the BIP file are four image description files  (each in ASCII text format): a header file, a statistics file, a resolution file, and a color file.  The header file (.hdr) describes the nature of the image data, through the use of keywords and values.  The statistics file (.stx) is an optional file that describes the image statistics for each spectral band. It records the minimum and maximum pixel values, the mean, the standard deviation, and the two linear contrast stretch parameters.   The resolution file (.bpw), also known as a &quot;world file&quot; describes the height and width of each cell and the coordinate position of the top left cell of the data.  The color file (.clr) is an optional file that describes the image colormap.</p>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://downloads.esri.com/support/whitepapers/other_/eximgav.pdf</link>
+					<tag>Extendable Image Formats for ArcView GIS 3.1 and 3.2</tag>
+					<comment>ESRI White Paper.  July 1999.  Description of
+BIL/BIP/BSQ is on page 8.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?topicname=BIL,_BIP,_and_BSQ_raster_files</link>
+					<tag>BIL, BIP and BSQ raster files </tag>
+					<comment>From ArcGIS 9.3 Desktop Help.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://idlcoyote.com/ip_tips/where3.html</link>
+					<tag>What do BSQ, BIL, and BIP mean, really?</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://mcmcweb.er.usgs.gov/drc/dlgv32pro/</link>
+					<tag>USGS Digital Data Viewer: dlgv32 Pro</tag>
+					<comment>The commercial equivalent tool is named Global Mapper.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.thespectralgeologist.com/</link>
+					<tag>The Spectral Geologist </tag>
+					<comment>Processing and analysis software package designed for analysis of field or laboratory spectrometer data and integration of  spectral data with other geological datasets.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

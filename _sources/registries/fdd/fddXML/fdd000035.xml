@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000035" titleName="MPEG-1 Video Coding (H.261)" shortName="MPEG-1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>moving-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2011-12-01</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ISO/IEC 11172. Information technology -- Coding of moving pictures and associated audio for digital storage media at up to about 1,5 Mbit/s (formal name), MPEG-1 (common name)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>MPEG</fdd:keyword>
+			<fdd:keyword>MPEG-1</fdd:keyword>
+			<fdd:keyword>H.261</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>Compression encoding for video that may be accompanied by audio, identical to <a href="http://www.itu.int/rec/T-REC-H.261-199303-I/en">ITU-T</a> (International Telecommunications Union-Telecommunication Standardization Sector) recommendation H.261.  Low bandwidth, originally developed to store video on media like CDs; later widely used in online environments.</fdd:description>
+		<fdd:shortDescription>Compression encoding for video that may be accompanied by audio, identical to ITU-T (International Telecommunications Union-Telecommunication Standardization Sector) recommendation H.261.</fdd:shortDescription>
+		<fdd:productionPhase>Generally a final-state (end-user delivery) format. </fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000012</fdd:id>
+					<fdd:shortName>MP3_ENC</fdd:shortName>
+					<fdd:titleName>MP3 audio encoding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000090</fdd:id>
+					<fdd:shortName>QTV_MPEG</fdd:shortName>
+					<fdd:titleName>QuickTime MPEG</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000338</fdd:id>
+					<fdd:shortName>MPEG_layer_2_audio</fdd:shortName>
+					<fdd:titleName>MPEG-1 and MPEG-2 Layer II Audio Encoding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>Used extensively for access copies of American Memory reformatted moving image content, ca. 1990-2010.</fdd:experience>
+		<fdd:preference>For preservation reformatting, the Library of Congress&apos; Packard Campus for Audio-Visual Conservation has chosen <fddLink id="fdd000206">MPEG-2, Main Profile</fddLink>  (lossless JPEG 2000 wrapped in MXF operational pattern 1a).</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Open standard. Developed through ISO technical program <a href="http://www.iso.org/iso/iso_technical_committee.html?commid=45316">JTC 1/SC 29</a> for coding of audio, picture, multimedia and hypermedia information by Working Group 11 (WG11) aka the Moving Picture Experts Group (<a href="http://mpeg.chiariglione.org">MPEG</a>).</fdd:disclosure>
+		<fdd:documentation>ISO/IEC 11172; first approvals in 1991.  Five parts have been published; parts 1, 2, and 3 are central.  See list of ISO documents in <a href="#specs">Format specifications</a> below.
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>Widely adopted for filemaking and World Wide Web access.  Many software tools exist for encoding and decoding.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>None known</fdd:licensingAndPatents>
+		<fdd:transparency>Depends upon algorithms and tools to read; will require sophistication to build tools.
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>Technical (coding) information is contained in the MPEG-1 bitstream in various headers.  Image height and width, for example, are embedded within the sequence header.</p>
+			<p>The lack of metadata of the type called <i>descriptive</i> by librarians motivated the MPEG group to develop MPEG-7, a separately standardized structure for metadata to support discovery and other purposes.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>None</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:movingImageQF>
+			<fdd:normalVideo>Good support.</fdd:normalVideo>
+			<fdd:clarity>Moderate.  Typical files have a picture size of 352x240 pixels (non-square pixels) and a data rate of 1.5 Mb/s, which means that only field of each video frame is captured.  One <a href="http://www.faqs.org/faqs/mpeg-faq/part1/">commentator</a> (http://www.faqs.org/faqs/mpeg-faq/part1/) reports that the source input format (SIF) for MPEG-1 "is CCIR-601 [component video] decimated by 2:1 in the horizontal direction, 2:1 in the time direction, and an additional 2:1 in the chrominance vertical direction. And some lines are cut off to make sure things divide by 8 or 16 where needed."  Outcome will depend on the type and extent of compression, and the encoder used.</fdd:clarity>
+			<fdd:beyondVideo>None</fdd:beyondVideo>
+		</fdd:movingImageQF>
+		<fdd:soundQF>
+			<fdd:normalSound>Good support.</fdd:normalSound>
+			<fdd:fidelity>Moderate, given that this is a format for compression.  Audio layer three encoding in the standard is also known as <fddLink id="fdd000012">MP3_ENC</fddLink>. Outcome will depend on the type and extent of compression, and the encoder used.</fdd:fidelity>
+			<fdd:channels>MP3 supports five main channels and an optional LFE (Low Frequency Encoding or Effects) channel, i.e., 5.1 surround sound.</fdd:channels>
+			<fdd:beyondSound>None.</fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>mpg</fdd:sigValue>
+					<fdd:sigValue>mpeg</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>There is no explicit MPEG-1 file format; MPEG-1 content "ready to be delivered" is exchanged in a de facto file format that may carry one of these extensions.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>video/mpeg</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://www.ietf.org/">IETF</a> (Internet Engineering Task Force) <a href="http://www.rfc-editor.org/rfc/rfc2046.txt">RFC 2046</a>
+				</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>video/mpv</fdd:sigValue>
+					<fdd:sigValue>video/mp1s</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://www.ietf.org/">IETF</a> (Internet Engineering Task Force) <a href="http://www.rfc-editor.org/rfc/rfc3555.txt">RFC 3555</a>; these subtypes are glossed as "MPEG-1 or -2 Elementary Streams" and "MPEG-1 Systems Streams."</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>video/mpg</fdd:sigValue>
+					<fdd:sigValue>video/x-mpg</fdd:sigValue>
+					<fdd:sigValue>application/x-pn-mpg</fdd:sigValue>
+					<fdd:sigValue>video/x-mpeg</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Additional examples selected from <a href="http://filext.com/">The File Extension Source</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 00 00 01 Bx</fdd:sigValue>
+					<fdd:sigValue>ASCII: ....</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://www.garykessler.net/library/file_sigs.html">Gary Kessler's File Signatures Table</a>.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:history>MPEG stands for the Moving Picture Experts Group, which began developing video compression standards in the 1980s.  The group was founded by two men described by one commentator as "the fiery Leonardo Chiariglione (CSELT, Italy)" and "the peaceful Hiroshi Yasuda (JVC, Japan)."  MPEG's initial development was partly inspired by the H.261 video coding standard published by the ITU (International Telecom Union).</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 11172-1:1993   Information technology -- Coding of moving pictures and associated audio for digital storage media at up to about 1,5 Mbit/s -- Part 1: Systems</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 11172-1:1993/Cor 1:1996</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 11172-1:1993/Cor 2:1999</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 11172-2:1993   Information technology -- Coding of moving pictures and associated audio for digital storage media at up to about 1,5 Mbit/s -- Part 2: Video</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 11172-2:1993/Cor 1:1996</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 11172-2:1993/Cor 2:1999</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 11172-2:1993/Cor 3:2003</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 11172-3:1993   Information technology -- Coding of moving pictures and associated audio for digital storage media at up to about 1,5 Mbit/s -- Part 3: Audio</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 11172-3:1993/Cor 1:1996</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC 11172-4:1995   Information technology -- Coding of moving pictures and associated audio for digital storage media at up to about 1,5 Mbit/s -- Part 4: Compliance testing</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:specReference> ISO/IEC TR 11172-5:1998   Information technology -- Coding of moving pictures and associated audio for digital storage media at up to about 1,5 Mbit/s -- Part 5: Software simulation</fdd:specReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://mpeg.chiariglione.org/</link>
+					<tag>Moving Picture Experts Group website</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.mpeg.org/</link>
+					<tag>Website with links to MPEG  resources</tag>
+					<comment>Focuses on resources for MPEG-1 and MPEG-2.  When consulted in October 2013, a number of the links were bad.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.faqs.org/faqs/mpeg-faq/</link>
+					<tag>MPEG FAQ from 1996</tag>
+					<comment>About MPEG-1 and MPEG-2</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The Encyclopedia of Graphic File Formats, 2nd Edition, 1996 (EGFF) has information on this format.  The EGFF section is titled MPEG; however the information relates to MPEG-1, predating <fddLink id="fdd000028">MPEG-2</fddLink>.  See print citation below.  Online access is available at:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.fileformat.info/format/mpeg/egff.htm</link>
+							<tag>EGFF: MPEG File Format Summary
+</tag>
+							<comment>From FileFormat.Info.  This presentation states that the work has been released under a Creative Commons Attribution license.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://web.archive.org/web/20071210094024/http://www.fileformat.info/format/mpeg/egff.htm</link>
+							<tag>EGFF: MPEG File Format Summary
+</tag>
+							<comment>From FileFormat.Info, via Internet Archive&apos;s Wayback Machine.  Included because FileFormat.info has not been updated recently (as of November 2012) and was not functioning for a period.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://netghost.narod.ru/gff/graphics/summary/mpeg.htm</link>
+							<tag>EGFF: MPEG (in fact MPEG-1)</tag>
+							<comment>Copy made available from a site in Russia.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.iso.org/iso/home/store/catalogue_tc/catalogue_tc_browse.htm?commid=45316</link>
+					<tag>JTC 1/SC 29 </tag>
+					<comment>The ISO technical committees of which the Moving Picture Experts Group (MPEG) acts as a subgroup.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Many RFCs have been issued in relation to registration of MIME types for audio and video.  The MIME type video/mpeg is listed by IANA as registered in 1996 in RFC 2046, one of a set of RFCs issued in relation to MIME (Multipurpose Internet Mail Extensions).  Other MPEG-2 related media types are listed as registered in 2003 through RFC 3555, one of  payloads for RTP (Real-time Transport Protocol) payload formats.  RFCs 2046 and 3555 are available from IETF (Internet Engineering Task Force) both as plain text and in a view that provides links to antecedent and subsequent documents.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://datatracker.ietf.org/doc/rfc2046/</link>
+							<tag>RFC 2046 (with links to antecedent and subsequent RFCs)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.ietf.org/rfc/rfc2046.txt</link>
+							<tag>RFC 2046 (plain text)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://datatracker.ietf.org/doc/rfc3555/</link>
+							<tag>RFC 3555 (with links to antecedent and subsequent RFCs)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.ietf.org/rfc/rfc3555.txt</link>
+							<tag>RFC 3555 (plain text)</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.garykessler.net/library/file_sigs.html</link>
+					<tag>Gary Kessler's File Signatures Table</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:bookReference>
+					<bookRefDetail rel="au">Murray, James D.</bookRefDetail> and <bookRefDetail rel="au">William vanRyper</bookRefDetail>. <bookRefDetail rel="btitle">Encyclopedia of Graphics File Formats, 2nd Edition.</bookRefDetail> 
+Sebastopol, CA. : O'Reilly &amp; Associates, <bookRefDetail rel="date">1996</bookRefDetail>. Includes CD-ROM with complete text of book, and copies of several file format specifications. </fdd:bookReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:usefulReferences>
+</fdd:FDD>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000189" titleName="Bitmap Image File (BMP), Version 5" shortName="BMP_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2011-12-12</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Microsoft Windows Bitmap Format (BMP), version 5</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>DIB (device-independent bitmap)</fdd:keyword>
+			<fdd:keyword>raster image formats</fdd:keyword>
+			<fdd:keyword>icon formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>BMP is a simple raster graphics image file format designed to store bitmap digital images independently of a display device, originally and primarily on Microsoft Windows and OS/2 operating systems.
+ The format is sometimes known as Device-Independent Bitmap (DIB), since, when loaded into memory using Windows software, the image is held as a DIB structure.  Several backwards-compatible versions have been introduced with new versions of Windows.  As of late 2011, the current version of BMP is version 5, introduced with Windows 98 in 1998.  This description focuses on version 5, but is relevant for earlier versions, since the structure has remained similar for backwards compatibility.  The <a href="http://en.wikipedia.org/wiki/BMP_file_format">Wikipedia article on BMP</a> has a table describing the differences between versions.</p>
+			<p>To quote from part 1 of a <a href="http://www.drdobbs.com/architecture-and-design/the-bmp-file-format-part-1/184409517">1995 article by David Charlap in Dr. Dobbs&apos;s Journal</a>, &quot;Unlike other image-file formats like GIF (CompuServe&apos;s Graphic Interchange File format) and JPEG (Joint Photographic Experts Group), the BMP file format was not designed to be portable. Instead, it was designed to easily work with the Windows API using the same structures that Windows applications use to manipulate in-memory bitmaps. As the API changed, so did the BMP file format.&quot;  BMP is used primarily for icons, screen grabs, and other purposes within Windows.</p>
+			<p>The BMP File Format version 5 is capable of storing 2D digital images of arbitrary width, height, and resolution, both monochrome and color, in various color depths (1, 4, 8, 16, 24, 32, or 64 bits per pixel).  Colors may be indexed.  Optional features include compression (specific lossless compression algorithms that are fast to decompress), alpha channels, and ICC color profiles.  In practice most BMP images are uncompressed, and 16 bpp and 32bpp images are always uncompressed.</p>
+			<p>The structure of a BMP file incorporates two headers. The first is a 14-byte BITMAPFILEHEADER.  This specifies the type of bitmap file, the size of the file, and the position (offset) in the file where the pixel data begins.  This header simply permits a check for the filetype and for damage.  The second header, known in general as a DIB header, supplies technical information needed to render the image, such as bits-per-pixel, image height and width in pixels, compression method.  The second header will have a different name, size and different set of elements recorded depending on the version of the specification.  Later versions of the DIB header added new elements at the end of the header. If an ICC profile is specified, the DIB header provides a pointer to the the beginning of the ICC information.  If a color table is used it is at the end of the DIB header.  Following the color table, which is mandatory for color depths of 8 or less, comes the image data.  Finally, ICC Profile information, either embedded or as a reference by path to another file.</p>
+		</fdd:description>
+		<fdd:shortDescription>Simple raster graphics image format, designed by Microsoft to store device-independent 2D images.  Used primarily for icons and other purposes associated with the Windows graphical interface and system functions.  </fdd:shortDescription>
+		<fdd:productionPhase>Used primarily for system-related and ephemeral purposes, such as icons, screen-grabs, and passing of bit-mapped images between Windows applications.  Not usually delivered to the public, but occasional instances are found in web pages.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:comment>Versions 2, 3, 4 for Windows, and versions for OS/2, not separately described at this time.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>LC does not create BMP images in order to reproduce collection items or support collection preservation.   Occasional BMP images may, however, be harvested as web-page elements.</fdd:experience>
+		<fdd:preference>When digitizing collection items or acquiring born-digital pictorial content, the Library of Congress prefers <fddLink id="fdd000022">TIFF_6</fddLink>, <fddLink id="fdd000143">JPEG 2000</fddLink>, <fddLink id="fdd000188">DNG</fddLink>, or <fddLink id="fdd000149">JPEG</fddLink>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>A proprietary format, introduced and controlled by Microsoft.  Documented as part of programmer support for users of Microsoft software development kits.</fdd:disclosure>
+		<fdd:documentation>
+			<p>Microsoft has never published a specification document for BMP. Information about structure and data encoding methods has been included in a number of programmer&apos;s references, manuals, online help facilities, and files associated with the Microsoft Windows Software Development Kits (SDKs).  However, the format is well understood and has been described in detail at various times in ways that many consider more helpful.  Many of these descriptions do not cover the latest version.  As of December 2011, Microsoft makes information available through the Microsoft Developers Network (MSDN) Knowledge Base.  A selected list of documentation sources follows:</p>
+			<ul>
+				<li>Bitmap Storage
+from the MSDN Library [<a href="http://msdn.microsoft.com/en-us/library/dd183391.aspx">http://msdn.microsoft.com/en-us/library/dd183391.aspx</a>]</li>
+				<li>Wikipedia page for BMP [<a href="http://en.wikipedia.org/wiki/BMP_file_format">http://en.wikipedia.org/wiki/BMP_file_format</a>]</li>
+				<li>Description from 1994 in Encyclopedia of Graphic File Formats [<a href="http://www.fileformat.info/format/bmp/egff.htm">http://www.fileformat.info/format/bmp/egff.htm</a>].  Covers version 1-4.</li>
+				<li>Microsoft description for version 3 [<a href="http://www.fileformat.info/format/bmp/spec/e27073c25463436f8a64fa789c886d9c/view.htm">http://www.fileformat.info/format/bmp/spec/e27073c25463436f8a64fa789c886d9c/view.htm</a>]</li>
+			</ul>
+		</fdd:documentation>
+		<fdd:adoption>The primary use of the BMP format is within the Windows operating system. The format is acknowledged as being unsuited for general use on the web or interoperability.  However, because an uncompressed BMP image has such a simple structure, BMP is well supported in image viewing and manipulation software and as an inline image format recognized by web browsers.</fdd:adoption>
+		<fdd:licensingAndPatents>No concerns.</fdd:licensingAndPatents>
+		<fdd:transparency>A simple raster format.  Although compression is supported, most BMP images are not compressed.</fdd:transparency>
+		<fdd:selfDocumentation>No support for embedded metadata.  The only information in headers is technical information needed to render the image.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>None</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>A simple raster format.  Panning and zooming is straightforward if needed.</fdd:normalImage>
+			<fdd:clarity>In principle, BMP images may have up to 64 bits per pixel, with image size limited only by file size.  In practice, apart from as an intermediate or ephemeral format within the context of a Windows application, BMP is used primarily for small images in contexts where high-bit depth is not considered necessary.</fdd:clarity>
+			<fdd:colorMaint>Since the introduction of version 5, ICC profiles can be recorded in BMP images.</fdd:colorMaint>
+			<fdd:graphics>No support for vector graphics or typography.</fdd:graphics>
+			<fdd:multispectral>No support for multispectral images.</fdd:multispectral>
+			<fdd:beyondImage>No capabilites beyond normal.</fdd:beyondImage>
+		</fdd:stillImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>bmp</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>In addition to .bmp, a .dib extension is mentioned in some very early documentation, but Microsoft&apos;s own 1992 documentation [<a href="http://msdn.microsoft.com/en-us/library/ms969901.aspx">DIBs and Their Use</a>] states that the file extension of a Windows DIB file is .bmp.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>image/x-bmp</fdd:sigValue>
+					<fdd:sigValue>image/x-ms-bmp</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From Wikipedia page on BMP</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>image/bmp</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Frequently used in Microsoft documentation, but not registered with IANA at <a href="http://www.iana.org/assignments/media-types/image/index.html">http://www.iana.org/assignments/media-types/image/index.html</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>BM</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The bitmap file type is declared in the first two bytes of the BMP file.  Within Windows, only &quot;BM&quot; has been used.  For OS/2, some other type codes were used: &quot;BA&quot;; &quot;CI&quot;; &quot;IC&quot;; &quot;CP&quot;; &quot;PT&quot;</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Microsoft has not published specifications for the various versions of BMP that have been associated with different versions of Windows.  Rather, the format has been documented as part of Software Development Kits and online support.  Listed below are relevant support pages from the MSDN site, current as of December 2011.  </fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/dd183391.aspx</link>
+							<tag>Bitmap Storage</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/dd183386.aspx</link>
+							<tag>Bitmap Header Types</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/dd183383.aspx</link>
+							<tag>Bitmap Compression</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/BMP_file_format</link>
+					<tag>BMP file format entry in Wikipedia</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The Encyclopedia of Graphic File Formats, 2nd Edition, 1996 (EGFF) has information on this format.  See print citation below.  Online access is available at:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.fileformat.info/format/bmp/egff.htm</link>
+							<tag>EGFF: Microsoft Windows Bitmap File Format Summary
+</tag>
+							<comment>From FileFormat.Info.  This presentation states that the work has been released under a Creative Commons Attribution license.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://web.archive.org/web/20071210094024/http://www.fileformat.info/format/bmp/egff.htm</link>
+							<tag>EGFF: Microsoft Windows Bitmap File Format Summary
+</tag>
+							<comment>From FileFormat.Info, via Internet Archive&apos;s Wayback Machine.  Included because FileFormat.info has not been updated recently (as of November 2012) and was not functioning for a period.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://netghost.narod.ru/gff/graphics/summary/micbmp.htm</link>
+							<tag>EGFF: Microsoft Windows Bitmap</tag>
+							<comment>Copy made available from a site in Russia.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>In 1995, David Charlap described the BMP format in detail in a two-part article in Dr. Dobb&apos;s Journal:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.drdobbs.com/architecture-and-design/the-bmp-file-format-part-1/184409517</link>
+							<tag>The BMP File Format, Part 1
+</tag>
+							<comment>March 1, 1995.  Vol 20, Issue 3.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.drdobbs.com/the-bmp-file-format-part-2/184409533?pgno=5</link>
+							<tag>The BMP File Format, Part 2</tag>
+							<comment>April 1, 1995.  Vol 20, Issue 4.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://msdn.microsoft.com/en-us/library/ms969901.aspx</link>
+					<tag>DIBs and Their Use.</tag>
+					<comment>1992 documentation from Microsoft.  Previously available as &quot;DIBs and Their Uses [Article ID: 81498]&quot; at http://support.microsoft.com/kb/81498</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Other descriptions of the BMP File format, not currently maintained and without coverage of Version 5, are listed below.  They are from sources that were well respected when current.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://paulbourke.net/dataformats/bmp/</link>
+							<tag>BMP image format
+ by Paul Bourke</tag>
+							<comment>1998</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.martinreddy.net/gfx/2d/BMP.txt</link>
+							<tag>Text file on BMP in formats compilation by Martin Reddy</tag>
+							<comment>Appears to cover version 3.  Possibly a copy of Microsoft documentation.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Sample BMP images are available at:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://wvnvms.wvnet.edu/vmswww/bmp.html</link>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://entropymine.com/jason/bmpsuite/</link>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:bookReference>
+					<bookRefDetail rel="au">Murray, James D.</bookRefDetail> and <bookRefDetail rel="au">William vanRyper</bookRefDetail>. <bookRefDetail rel="btitle">Encyclopedia of Graphics File Formats, 2nd Edition.</bookRefDetail> 
+Sebastopol, CA. : O'Reilly &amp; Associates, <bookRefDetail rel="date">1996</bookRefDetail>. Includes CD-ROM with complete text of book, and copies of several file format specifications. </fdd:bookReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:usefulReferences>
+</fdd:FDD>

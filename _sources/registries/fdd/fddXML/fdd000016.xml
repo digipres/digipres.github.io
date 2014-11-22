@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000016" titleName="PCM, Pulse Code Modulated Audio" shortName="PCM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2010-06-01</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Pulse code modulation </fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>audio formats</fdd:keyword>
+			<fdd:keyword>recorded sound formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>Type of encoding used for audio bitstreams.  Pulse code modulation was originally developed in 1939 as a method for transmitting digital signals over analog communications channels.  The same technique proved effective as a method of sampling and quantizing audio for encoding in digital form.  Variants are based on different mathematical techniques for quantization, including linear, logarithmic, and adaptive.  The method was developed in 1939 by the English inventor Alec H. Reeves.</p>
+			<p>Linear PCM is an uncompressed format.  Compressed variants are widely used for telephony and other low-bandwidth applications.</p>
+		</fdd:description>
+		<fdd:shortDescription>Type of encoding used for audio bitstreams. Pulse code modulation was originally developed in 1939 as a method for transmitting digital signals over analog communications channels. The same technique proved effective as a method of sampling and quantizing audio for encoding in digital form. </fdd:shortDescription>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000011</fdd:id>
+					<fdd:shortName>LPCM</fdd:shortName>
+					<fdd:titleName>Linear PCM</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000038</fdd:id>
+					<fdd:shortName>A-Law</fdd:shortName>
+					<fdd:titleName>A-Law Compressed Sound Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000039</fdd:id>
+					<fdd:shortName>&#181;-Law</fdd:shortName>
+					<fdd:titleName>&#181;-Law Compressed Sound Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000040</fdd:id>
+					<fdd:shortName>DPCM</fdd:shortName>
+					<fdd:titleName>Differential PCM Sound Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000041</fdd:id>
+					<fdd:shortName>ADPCM</fdd:shortName>
+					<fdd:titleName>Adaptive Differential PCM Sound Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>
+			<p>When reformatting analog sound recordings, the Broadcast WAVE format (<fddLink id="fdd000356">WAVE_BWF_1</fddLink> and <fddLink id="fdd000357">WAVE_BWF_2</fddLink>), wrapping <fddLink id="fdd000011">LPCM</fddLink>, is used as the archival master format for mono and stereo audio at the <a href="http://www.loc.gov/avconservation/packard/">Packard Campus for Audio-Visual Conservation</a> and by the <a href="http://www.loc.gov/folklife/">American Folklife Center</a>.</p>
+		</fdd:experience>
+		<fdd:preference>
+			<p>The Broadcast WAVE format (<fddLink id="fdd000356">WAVE_BWF_1</fddLink> and <fddLink id="fdd000357">WAVE_BWF_2</fddLink>), wrapping <fddLink id="fdd000011">LPCM</fddLink>, is preferred as the archival master format for mono and stereo audio when reformatting analog sound recordings.  The Library is a participant in the <a href="http://www.digitizationguidelines.gov">Federal Agencies Audio-Visual Working Group</a> that published a <a href="http://www.digitizationguidelines.gov/guidelines/digitize-embedding.html">recommended specification</a> for BWF bext metadata conforming to version 1 in 2009, with an update conforming to version 2 in 2012.</p>
+		</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>The basic technique is described fully in textbooks.  Some implementations (subtypes) have been adopted as international standards (particularly for telephony applications) or fully documented in file format specifications (e.g. for WAVE_LPCM).
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>Telephony applications (A-Law, µ-Law) standardized through ITU Recommendation G.711 (11/88). Corresponding ANSI-C code is available in the G.711 module of the ITU-T G.191 Software Tools Library. Incorporated into Broadcast Wave standard (<fddLink id="fdd000356">WAVE_BWF_1</fddLink> and <fddLink id="fdd000357">WAVE_BWF_2</fddLink>).</p>
+			<p>For use in WAVE: Multimedia Programming Interface and Data Specifications 1.0.  IBM Corporation and Microsoft Corporation, August 1991.  Available online, e.g., at  <a href="http://www.tactilemedia.com/info/MCI_Control_Info.html">http://www.tactilemedia.com/info/MCI_Control_Info.html</a>
+			</p>
+		</fdd:documentation>
+		<fdd:adoption>Very widely used for encoding bitstreams.  Used on audio CDs, Digital Audio Tape (DAT).  Default bitstream encoding for WAVE and AIFF.  One of the bitstream encodings supported for sound on DVD-Video.  Coders and decoders available as chips.  
+		</fdd:adoption>
+		<fdd:licensingAndPatents>None
+		</fdd:licensingAndPatents>
+		<fdd:transparency>Uncompressed linear PCM is comparable in transparency to uncompressed bit-mapped images.  See <fddLink id="fdd000002">WAVE_LPCM</fddLink>
+		</fdd:transparency>
+		<fdd:selfDocumentation>Not applicable.  Metadata can be embedded in some file formats that incorporate PCM bitstreams (e.g., WAVE, AIFF).
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None
+		</fdd:externalDependencies>
+		<fdd:techProtection>None
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:soundQF>
+			<fdd:fidelity>High audio resolution is supported by high sampling rates and high bit-depth (word length).  PCM with uncompressed linear quantization is used for digital audio, with a sampling rate of 48kHz currently recommended by the Audio Engineering Society (AES) for the "origination, processing, and interchange of audio programs."  44.1kHz sampling is standard for audio CDs; 96kHz is a recommended sampling frequency for use when higher bandwidth is available, and is generally recommended for preservation reformatting.  Telephony applications use non-linear quantization for more efficient use of low bandwidth for speech.  </fdd:fidelity>
+			<fdd:channels>PCM encodes a single sound channel.  Support for multichannel audio depends on file format and relies on interleaving or synchronization of PCM streams.</fdd:channels>
+			<fdd:samples>Not applicable</fdd:samples>
+			<fdd:beyondSound>Not applicable</fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Pulse-code_modulation</link>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:bookReference>
+					<bookRefDetail rel="btitle">Pulse code modulation techniques : with applications in communications and data recording</bookRefDetail>.  <bookRefDetail rel="au">Bill Waggener</bookRefDetail>.  New York : Van Nostrand Reinhold, <bookRefDetail rel="date">1995</bookRefDetail>.  ISBN-10: <bookRefDetail rel="isbn">0442014368</bookRefDetail>.  ISBN-13: <bookRefDetail rel="isbn">9780442014360</bookRefDetail>.</fdd:bookReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:bookReference>
+					<bookRefDetail rel="btitle">Digital Coding of Waveforms</bookRefDetail>.   <bookRefDetail rel="au">N.S Jayant</bookRefDetail> and <bookRefDetail rel="au">Peter Noll</bookRefDetail>. Prentice Hall, <bookRefDetail rel="date">1984</bookRefDetail>.  ISBN-10: <bookRefDetail rel="isbn">0132119137</bookRefDetail>.  ISBN-13: <bookRefDetail rel="isbn">9780132119139</bookRefDetail>.</fdd:bookReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:usefulReferences>
+</fdd:FDD>

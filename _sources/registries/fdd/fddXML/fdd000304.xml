@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000304" titleName="Band Interleaved by Line (BIL) Image Encoding" shortName="BIL_enc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2011-09-12</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Band Interleaved by Line (BIL) Image Encoding</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>raster image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>Band interleaved by line (BIL) is is one of three primary methods for encoding image data for multiband raster images in the geospatial domain, such as images obtained from satellites.  BIL is not in itself an image format, but is a scheme for storing the actual pixel values of an image in a file band by band for each line, or row, of the image.  For example, given a three-band image, all three bands of data are written
+for row one, all three bands of data are written for row two, and so on.  The BIL encoding is a compromise format, allowing fairly easy access to both spatial and spectral information. The BIL data organization can handle any number of bands, and thus accommodates black and white, grayscale, pseudocolor, true color, and multi-spectral image data.</p>
+			<p>Additional information is needed to interpret the image data, such as the numbers of rows, columns, and bands, and relate the image to geospatial locations.  This information may be supplied in a file header (typical on the tapes originally used for satellite image data) or in files associated with a raw image data file.</p>
+		</fdd:description>
+		<fdd:shortDescription>BIL image encoding stores all pixel information for all bands line by line (row) for an image.</fdd:shortDescription>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000283</fdd:id>
+					<fdd:shortName>BIL_file</fdd:shortName>
+					<fdd:titleName>Band Interleaved by Line (BIL) Image File</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Equivalent to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000305</fdd:id>
+					<fdd:shortName>BIP_enc</fdd:shortName>
+					<fdd:titleName>Band Interleaved by Pixel (BIP) image encoding</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>An alternative ordering for raster image data, optimal for accessing the image spectral information.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Equivalent to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000306</fdd:id>
+					<fdd:shortName>BSQ_enc</fdd:shortName>
+					<fdd:titleName>Band SeQuential (BSQ) image encoding</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>An alternative ordering for raster image data, optimal for accessing the image spatial information or information for a particular color or spectral band.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>This simple uncompressed raster data encoding is easily and frequently described, requiring no formal specification.</fdd:disclosure>
+		<fdd:documentation>
+			<p>The BIL/BIP/BSQ image data organizations are described in many places, including: <a href="http://www.iro.umontreal.ca/~mignotte/IFT6150/ComplementCours/UnderstandingRasters.pdf">Understanding Rasters</a> by Joseph Collins-Unruh and <a href="http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?topicname=BIL,_BIP,_and_BSQ_raster_files">BIL, BIP and BSQ raster files</a> from ESRI online documentation.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>A common raster image encoding for remote sensor data. BIL provides a compromise in performance between 
+spatial and spectral processing (in comparison to BIP and BSQ encodings) and, according to the tutorial <a href="http://www.exelisvis.com/portals/0/pdfs/envi/Getting_Started_with_ENVI.pdf">Getting Started with ENVI</a> is the recommended format for most of the image analysis processing tasks supported by the ENVI software.  See <fddLink id="fdd000283">BIL_file</fddLink> for information on imagery distributed in BIL format.  <a href="http://eoedu.belspo.be/en/satellites/spot.htm">SPOT</a> (Satellite Pour l&apos;Observation de la Terre) has used BIL as a primary image data ordering, with one file per spectral band (and thus is equivalent to BSQ ordering) but has switched to <fddLink id="fdd000279">GeoTIFF</fddLink> (which uses BIP ordering).</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>None.</fdd:licensingAndPatents>
+		<fdd:transparency>The raw data has a simple form and is easily interpreted if the image dimensions in pixels, the number of spectral bands, and the number of bits per band are known.</fdd:transparency>
+		<fdd:selfDocumentation>The encoding cannot be interpreted without external information to indicate the number of bands, the number of bits per band, number of rows and columns in the image, etc.  This information is typically provided in headers or associated files.  Headers or associated files may hold other forms of metadata.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>None for the encoding per se.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>This is a basic raster encoding.  To interpret as an image, technical metadata (e.g. to define colorspace, orientation, scale) must be supplied in an accompanying data structure.</fdd:normalImage>
+			<fdd:clarity>Spatial resolution and bit-depth are not limited by the BIL encoding per se but may be constrained in some usage contexts.</fdd:clarity>
+			<fdd:colorMaint>No support for color management in the encoding.  Documentation of spectral values for bands, or interpretation of false colors (see <a href="#notes">Notes</a>) should be supplied in an accompanying data structure.</fdd:colorMaint>
+			<fdd:graphics>No support for vector graphics or special effects.</fdd:graphics>
+			<fdd:multispectral>The BIL (band-interleaved-by-line) encoding is a compromise format, allowing fairly easy access to both spatial and spectral information.</fdd:multispectral>
+			<fdd:beyondImage>None</fdd:beyondImage>
+		</fdd:stillImageQF>
+		<fdd:gisQF>
+			<fdd:normalGIS>
+				<p>When an image in this encoding has geo-referencing information in a header or associated file in a commonly used format, use within a GIS is straightforward. See <fddLink id="fdd000283">BIL_file</fddLink> for  examples of projects and agencies from which imagery is distributed in BIL format.  Several of these sources use the ESRI conventions for accompanying geo-referencing data.  See <a href="http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?topicname=BIL,_BIP,_and_BSQ_raster_files">ArcGIS Desktop Help: BIL, BIP, and BSQ Raster Files</a> for ESRI specific information about use of this encoding in ESRI GIS.</p>
+			</fdd:normalGIS>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000283">BIL_file</fddLink>, Band Interleaved by Line (BIL) Image File</fdd:note>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>BSQ, BIL, and BIP represent alternative ways of storing images in memory or on disk. The initials stand for band-sequential, band-interleaved-by-line, and band-interleaved-by-pixel, respectively. These image formats are also sometimes called &quot;band-interleaved&quot;, &quot;row-interleaved&quot;, and &quot;pixel-interleaved&quot;, respectively.  Images are stored in one format or another to facilitate expected image manipulations. The BSQ format is optimal for spatial access to any part of a single spectral band.  The BIP format is optimal for spectral analysis.  The BIL (band-interleaved-by-line) encoding is a compromise format, allowing fairly easy access to both spatial and spectral information.  It is straightforward, but resource-intensive for large images, to transpose BIL images to BIP or BSQ format and vice versa.</p>
+			<p>Color maintenance in this information resource pertains to a format&apos;s support for color management, e.g., by the inclusion of ICC profiles.  The intention of color management is to maximize the retention of accurate color in terms of <a href="//en.wikipedia.org/wiki/CIE_1931_color_space">human perception</a>, generally expressed in terms of tristimulus values.  In contrast, the color encoded in multispectral and hyperspectral imaging does not relate to tristimulus values and human perception as defined in the 1931 CIE publication.  Rather, the banded colors in multispectral and hyperspectral imaging (sometimes even called &quot;false colors&quot;) map the distribution of electromagnetic radiation at defined wavelengths (including ones not visible to the eye) in order to support scientific and technological documentation.  Thus there may be a special sense in which the concept of color maintenance applies: multispectral and hyperspectral formats must document the wavelength used to &quot;expose&quot; each band. Metadata in or associated with the format may also document the intention.  For example, mid-infrared radiation at 1550-1750 nm is often placed in one band in order to image vegetation and soil moisture content and some forest fires.</p>
+		</fdd:general>
+		<fdd:history>BIL, BIP, and BSQ encodings were documented for use in CCT tape formats for Landsat satellite data from 1972 on.  File formats for disk were developed based on experience with the tape versions.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The BIL/BIP/BSQ image data organizations are described in many places, including:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.iro.umontreal.ca/~mignotte/IFT6150/ComplementCours/UnderstandingRasters.pdf</link>
+							<tag>Understanding Rasters</tag>
+							<comment>By Joseph Collins-Unruh.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?topicname=BIL,_BIP,_and_BSQ_raster_files</link>
+							<tag>BIL, BIP and BSQ raster files </tag>
+							<comment>From ArcGIS 9.3 Desktop Help.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://downloads.esri.com/support/whitepapers/other_/eximgav.pdf</link>
+					<tag>Extendable Image Formats for ArcView GIS 3.1 and 3.2</tag>
+					<comment>ESRI White Paper.  July 1999.  Description of
+BIL/BIP/BSQ is on page 8.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.exelisvis.com/portals/0/pdfs/envi/Getting_Started_with_ENVI.pdf</link>
+					<tag>Getting Started with ENVI</tag>
+					<comment>Introductory material for ENVI (ENvironment for Visualizing Images), software from ITT Visual Information Solutions for the visualization, analysis, and presentation of all types of digital imagery.  Description of BIL/BIP/BSQ is in section headed ENVI Image Files</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://idlcoyote.com/ip_tips/where3.html</link>
+					<tag>What do BSQ, BIL, and BIP mean, really?</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://eoedu.belspo.be/en/satellites/spot.htm</link>
+					<tag>SPOT (Satellite Pour l&apos;Observation de la Terre)
+
+</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000290" titleName="Digital Orthophotos (DOQ &amp; DOQQ)" shortName="DOQ" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2011-09-17</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Digital Orthophotos (Quadrangle and Quarter Quadrangle)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>raster image formats</fdd:keyword>
+			<fdd:keyword>georeferenced image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>A Digital Orthophoto Quadrangle (DOQ) is a digital image that has the properties of an orthographic projection, derived from a digitized perspective aerial photograph or other remotely sensed image data by differential rectification so that image displacements caused by camera tilt and terrain relief are removed. The DOQ combines the image characteristics of the original photograph with the georeferenced qualities of a map.  Ground features are displayed in their true position, allowing for the direct measurement of distance, areas, angles, and positions.
+
+DOQs are cast to the UTM projection and referenced to the NAD 27 or NAD 83 datum.  DOQs may be black and white (B/W), natural color, or color-infrared (CIR) images.</p>
+			<p>Digital orthophoto and DOQ refer to both the 1-meter ground resolution
+quarter-quadrangle digital orthophoto (3.75- x 3.75-minutes in
+extent) and the one or two-meter ground resolution quadrangle
+digital orthophoto (7.5- x 7.5-minutes in extent). The acronym DOQQ is used for quarter-quadrangle orthophotos when the distinction from the quadrangle DOQ orthophotos is necessary.  The native DOQ is formatted with an ASCII keyword header followed by a series of 8-bit binary image lines. Color DOQs are 24-bit band-interleaved-by-pixel (BIP) images. The header contains a wide range of data for identifying, displaying, and georeferencing the image. Digital orthophotos are also available from USGS in the <fddLink id="fdd000279">GeoTIFF</fddLink> format, cast to the UTM projection and referenced to the NAD 83 datum.  GeoTIFF DOQs consist of a georeferenced <fddLink id="fdd000022">TIFF</fddLink>, with all geographic referencing information embedded within the .tif file. </p>
+			<p>Since an orthophoto shows features that may be omitted on maps, a DOQ can be used as a base image to assemble, review, and revise other data, especially digital line graphs (DLG) and topographic maps. When the DOQ is combined with other digital products, such as digital raster graphics (DRG) or digital elevation models (DEM), the resulting image provides additional visual information for the extraction and revision of base cartographic information. </p>
+		</fdd:description>
+		<fdd:shortDescription>A digital image with the properties of an orthographic projection. It is derived from a digitized perspective aerial photograph or other remotely sensed image data.</fdd:shortDescription>
+		<fdd:productionPhase>DOQs are middle or final-state images, derived from source aerial or satellite photographs by orthorectification.  DOQs are often used as a base image for other cartographic products.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000305</fdd:id>
+					<fdd:shortName>BIP</fdd:shortName>
+					<fdd:titleName>Band Interleaved by Pixel (BIP) Image Encoding</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Color DOQs are 24-bit band-interleaved-by-pixel (BIP) images.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Openly accessible specification.</fdd:disclosure>
+		<fdd:documentation>Standards for Digital Orthophotos <a href="http://nationalmap.gov/standards/doqstds.html">http://nationalmap.gov/standards/doqstds.html</a> from USGS.</fdd:documentation>
+		<fdd:adoption>
+			<p>DOQs are generated and distributed by many agencies in the U.S. Federal Government and by states, including <a href="http://nationalmap.gov/ortho.html">nationalmap.gov</a>.  See <a href="http://www.ndop.gov/data.html">http://www.ndop.gov/data.html</a> for a list of agencies and states offering orthoimagery data.</p>
+			<p>In 1997, the WMC and Microsoft Corporation entered into a Cooperative Research and Development Agreement to make DOQs easily available to the public through the TerraServer USA Web site.  This service was later incorporated into the National Map.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>None</fdd:licensingAndPatents>
+		<fdd:transparency>DOQs are distributed in compressed and uncompressed forms.  The uncompressed form is more transparent and can be interpreted more easily with basic tools.  Header information is in ASCII.</fdd:transparency>
+		<fdd:selfDocumentation>The DOQ header contains information to support identification, georeferencing, and appropriate display, including date of creation, agency creating the DOQ, and details for source data from which the DOQ was derived. </fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>None</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>doq</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Various services identifying filetypes from extensions suggest that .doq is used as the extension for native DOQ files.  This usage is a convention, not in the specification.</fdd:note>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:history>Orthophoto production began at the USGS Western Mapping Center (WMC) in Menlo Park, California (now called the Western Geographic Science Center), in 1965.  The first USGS National Mapping Program Standard for Digital Orthophotos was released in 1992.  Relatively small changes were made in 1993.  In December 1996, a complete revision of both format and content of the DOQ header was issued, together with updated technical standards for imagery.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://nationalmap.gov/standards/doqstds.html</link>
+					<tag>USGS Standards for Digital Orthophotos</tag>
+					<comment>Issued in December 1996.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ndop.gov/</link>
+					<tag>National Digital Orthoimagery Program (NDOP)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://lta.cr.usgs.gov/DOQs</link>
+					<tag>USGS Long-term Archive:  Digital Orthophoto Quadrangles (DOQs)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://pubs.er.usgs.gov/publication/fs05701</link>
+					<tag>USGS GeoData Digital Orthophoto Quadrangles</tag>
+					<comment>USGS Fact Sheet 057-01. 2001</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://pubs.usgs.gov/fs/2001/0057/</link>
+					<tag>USGS GeoData Digital Orthophoto Quadrangles</tag>
+					<comment>Alternative source for USGS Fact Sheet 057-01, dated 2001</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://online.wr.usgs.gov/ngpo/doq/</link>
+					<tag>Birthplace of the DOQ—USGS Western Region: USGS DOQ Home Page</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://nationalmap.gov/ortho.html</link>
+					<tag>Orthoimagery from The National Map</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://spatialnews.geocomm.com/education/tutorials/doq1/usgs_doq.html</link>
+					<tag>Digital Orthophoto Quadrangles</tag>
+					<comment>Tutorial from Spatial News.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.extension.org/pages/13088/what-is-a-doqq</link>
+					<tag>What is a DOQQ?</tag>
+					<comment>From eXtension.org</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

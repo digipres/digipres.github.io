@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000226" titleName="CDF, Common Data Format (multidimensional datasets)" shortName="CDF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2008-03-10</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial (low priority for LC)</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Common Data Format</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>numeric data formats</fdd:keyword>
+			<fdd:keyword>space physics data formats</fdd:keyword>
+			<fdd:keyword>scientific data formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>CDF is a conceptual data abstraction for storing, manipulating, and accessing multidimensional data sets.  The basic component of CDF is a software programming interface that is a device-independent view of the CDF data model.  In addition to the actual data being stored, CDF also stores user-supplied descriptions of the data, known as metadata. This self-describing property allows CDF to be a generic, data-independent format that can store data from a wide variety of disciplines.  The application developer is insulated from the actual physical file format for reasons of conceptual simplicity, device independence, and future expandability.  CDF files created on any given platform can be transported to any other platform to which CDF is ported and used with any CDF tools or layered applications.  <p>CDF Version 2.7 and up contain support for Java Application Program Interfaces (APIs), in addition to the C and Fortran APIs of earlier versions.</p>
+		</fdd:description>
+		<fdd:shortDescription>Common Data Format (CDF) is a conceptual data abstraction for storing, manipulating, and accessing multidimensional data sets.  The basic component of CDF is a software programming interface that is a device-independent view of the CDF data model.  The application developer is insulated from the actual physical file format for reasons of conceptual simplicity, device independence, and future expandability.  CDF files created on any given platform can be transported to any other platform onto which CDF is ported and used with any CDF tools or layered applications.</fdd:shortDescription>
+		<fdd:productionPhase>Generally used for middle- and final-state archiving. </fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>Has several versions not documented separately here.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None</fdd:experience>
+		<fdd:preference>None</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			Fully documented.  Specifications of the format and the APIs in Java, C, and Fortran are freely available. Source code for the CDF software package is also freely available.
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>Available from <a href="http://cdf.gsfc.nasa.gov/">http://cdf.gsfc.nasa.gov/</a>.  Documentation includes CDF User's Guide and complete list of APIs and their descriptions in reference manuals for the supported programming languages.  Maintained by the Space Physics Data Facility (SPDF) at NASA/Goddard Space Flight Center.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>In use in various versions since 1985.  From CDF FAQ: &quot;The CDF software package is used by hundreds of government agencies, universities, and private and commercial organizations as well as independent researchers on both national and international levels.  CDF has been adopted by the International Solar-Terrestrial Physics (ISTP) project as well as the Central Data Handling Facilities (CDHF) as their format of choice for storing and distributing key parameter data.&quot;</p>
+			<p>CDF is supported by commercial and open source data analysis/visualization software such as IDL, MATLAB, and IBM's Data Explorer (XP).</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			None.
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			TBD.
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>CDF control information acts as an embedded data dictionary.  Additional metadata appropriate for any particular dataset can be stored as attribute entries as part of the application data within the CDF.  Guidelines for the Space Physics community are found at <a href="http://spdf.gsfc.nasa.gov/sp_use_of_cdf.html">http://spdf.gsfc.nasa.gov/sp_use_of_cdf.html</a>
+			</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			None.
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			None.
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:normalDataset>Good support.  Structured representation of typed data.</fdd:normalDataset>
+			<fdd:accessSoftware>The basic component of CDF is a software programming interface that is a device-independent view of the CDF data model. Hence the specification focuses on an API rather than on organization of data in files.  APIs in Fortran and C are available for all versions, in Java for version 2.7 and up.</fdd:accessSoftware>
+			<fdd:dataDocumentation>Capabilities for embedding user documentation for the dataset as a whole or for particular elements through a data dictionary can support documentation of precision, provenance, etc.</fdd:dataDocumentation>
+			<fdd:beyondDataset>
+				<p>CDF is designed to support multi-dimensional data.  The CDF structure is based on variable definitions (name, data type, number of dimensions, sizes, etc.) where a collection of data elements is defined in terms of a variable. The structure of CDF allows one to define an unlimited number of variables completely independent (loosely coupled) of one another and disparate in nature, a group of variables that illustrate a strong dependency (tightly coupled) on one another or both simultaneously. </p>
+				<p>Compared to HDF format, CDF permitted cross-linking data from different instruments and spacecraft in ISTP with one development effort (according to <a href="http://nssdc.gsfc.nasa.gov/nost/fep/researcher-szabo-cdf.html">http://nssdc.gsfc.nasa.gov/nost/fep/researcher-szabo-cdf.html</a>). </p>
+			</fdd:beyondDataset>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>cdf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://www.fileinfo.com/">http://www.fileinfo.com/</a>.</fdd:note>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>In 2002, the CDF office developed an XML-based markup language called CDF Markup Language (CDFML) to describe CDF data and metadata.<p>Translators among various data formats, including CDF are available at <a href="http://cdf.gsfc.nasa.gov/html/dttools.html">http://cdf.gsfc.nasa.gov/html/dttools.html</a>
+			</p>
+		</fdd:general>
+		<fdd:history>
+			<p>CDF was designed and developed in 1985 by the National Space Science Data Center (NSSDC) at NASA/GSFC. CDF was originally written in FORTRAN and only ran in VAX/VMS environments.</p>
+			<p>CDF V3.0 was released on February 10, 2005.  V3.0 is backward compatible with CDF V2.7, V2.6, and V2.5, but not vice versa.  Libraries for CDF 3.0.0 and later will read a file that was created with CDF 2.5, 2.6, or 2.7 library, and save the file in the version that was originally created under (not 3.0).  A file created from scratch with CDF 3.0.0 or later will be stored in the new format.  The 3.0 format is incompatible with the previous versions of the CDF library.  As of January 2012, the latest version of the CDF library is 3.3.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://cdaweb.gsfc.nasa.gov/pub/software/cdf/dist/cdf33_1_2/Documentation/cdf33ifd.pdf</link>
+					<tag>CDF Internal Format Description</tag>
+					<comment>As of January 2012, the current version of CDF was 3.3.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://cdaweb.sci.gsfc.nasa.gov/pub/software/cdf/dist/</link>
+					<tag>Archive of CDF versions</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://cdf.gsfc.nasa.gov/</link>
+					<tag>CDF home page</tag>
+					<comment>At NASA&apos;s Space Physics Data Facility</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://cdf.gsfc.nasa.gov/html/FAQ.html</link>
+					<tag>FAQ on CDF format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://cdf.gsfc.nasa.gov/html/sw_and_docs.html</link>
+					<tag>CDF Software Download page</tag>
+					<comment>For Unix, Macintosh, Windows, and other operating systems.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://spdf.gsfc.nasa.gov/sp_use_of_cdf.html</link>
+					<tag>Space Physics Guidelines for CDF</tag>
+					<comment>Includes guidelines on names and attributes for variables and metadata for an entire dataset.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

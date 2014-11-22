@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000291" titleName="ESRI ArcInfo interchange file (E00) " shortName="E00" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2011-09-07</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ESRI ArcInfo interchange file (E00) </fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>geospatial data formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>ESRI ArcInfo interchange file (E00) is a proprietary ESRI file format intended to support the transfer between ESRI systems of different types of geospatial data used in ESRI software.  The format uses a basic ASCII representation and was designed to be robust for transfer rather than efficient for direct processing.  Export  functions in ESRI software assemble all the data and definition files relevant to a particular coverage, grid, or TIN (triangulated irregular network) into a single logical file.  Because E00 was developed when capacity for physical transfer was often a limiting factor (e.g. using floppy disks), the logical file may be broken into a sequence of physical files.  E00 was not designed as a publication or distribution format, although it has been used for that purpose.  For many years, it was the only reliable way to exchange data between ESRI systems; as of 2011, there are effective tools for conversion and exchange in binary form without requiring conversion to ASCII and back.</p>
+			<p>To adapt <a href="http://support.esri.com/en/knowledgebase/gisdictionary/term/arcinfo%20interchange%20file">ESRI&apos;s definition</a>, E00 is used to enable a coverage, grid, or TIN and the information in the associated INFO directory to be transferred between multiple file systems, across multiple computers not connected by any type of file sharing network, and across multiple computer architectures.  The purpose of the format was to exchange datasets in various ESRI formats between users of ESRI&apos;s ArcInfo software.  Also known as ArcInfo export files, the E00 files have an extension of at least an .E00 (E zero zero) and may have more files with extension of .E<i>nn</i> where <i>nn</i> indicates the sequencing of separate, associated interchange files.  An E00 file contains the information to be exchanged in a fixed-length, ASCII format.  It can be fully, partially compressed, or uncompressed ASCII depending upon the EXPORT option used to create it in the ArcInfo toolset.</p>
+			<p>The ArcInfo data model separates data files containing coordinate and geometry data files for each individual feature or layer from the tabular data for the layer that could include attributes tables, boundary, and tic location tables.  The coordinate and geometry data files are contained in a file directory / workspace named separately from the INFO directory in which the tabular data is contained.  Both the layer directories and the INFO directory are necessary for the workspace to function effectively.  The EXPORT command that creates the E00 exports a layer's coordinate and geometry data directory and any tabular data from the INFO directory associated with that layer into a single interchange file that will allow complete recreation of the coverage, grid, TIN or INFO table when imported.  If more than one interchange file has been created, it reflects the fact that the interchange file was too large for the storage media available at the time the interchange file was created, e.g., floppy disks.</p>
+			<p>The conversion process by which an E00 file is imported into any ArcGIS software has a number of prerequisites related to directory and file naming and construction that should be followed for successful conversion.  Some of these requirements include:</p>
+			<ul>
+				<li>The input E00 file cannot be placed in a directory that has a space in the name or in the path to the directory. </li>
+				<li>The output coverage or grid cannot be written to a directory that has a space in the name or in the path to the directory.</li>
+				<li>The output coverage or grid name should be in lower case, cannot be over 13 characters long, and cannot contain spaces or special characters.  Underscores are permitted.</li>
+				<li>The coverage name can be the same as the original E00 file, but this is not required. </li>
+			</ul>
+			<p>Other important information useful to read before importing an E00 file into ArcGIS products as well as information about how to construct WinZip files in which an E00 file might be transported can be found in an ESRI Knowledge Base Technical Article at <a href="http://support.esri.com/en/knowledgebase/techarticles/detail/21052">HowTo:  Import an ArcInfo interchange file (E00) in ArcGIS, Article ID:  21052.</a>
+			</p>
+		</fdd:description>
+		<fdd:shortDescription>This proprietary ESRI ArcInfo interchange file format was developed to enable the transfer of data files created using ArcInfo for coverages, grids, and TINs (triangulated irregular networks) between systems running ESRI software.</fdd:shortDescription>
+		<fdd:productionPhase>
+			<p>A middle state format, intended for exchange of data among different systems running ESRI software.</p>
+		</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000284</fdd:id>
+					<fdd:shortName>ArcInfo_Coverage</fdd:shortName>
+					<fdd:titleName>ESRI ArcInfo Coverage</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>The ArcInfo_Coverage format is a legacy format superseded by the ESRI Arc Geodatabase data model. Coverages cannot be edited in ArcGIS 8.3 and subsequent versions. E00 files are the original means of exchange for ArcInfo Coverages.  </fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000281</fdd:id>
+					<fdd:shortName>ESRI_Grid</fdd:shortName>
+					<fdd:titleName>ESRI ArcInfo Grid</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>The ESRI_Grid format is a raster data storage format native to ESRI.  E00 files are the original means of exchange for ESRI_grid files.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo/>
+				<fdd:comment>The ESRI ArcInfo TIN format is a vector file format native to ESRI.  TIN files depict geographic surfaces as contiguous non-overlapping triangles used to match the elevation of a terrain exactly.  This file format is not described on this website at this time.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Partially disclosed proprietary transfer format from ESRI.</fdd:disclosure>
+		<fdd:documentation>
+			<p>ESRI does not provide a specification for the E00 format.  Without such a specification, some users have analysed files as created to derive a description of the format: <a href="http://avce00.maptools.org/docs/v7_e00_cover.html">Arc/Info Export (E00) Format Analysis </a>.</p>
+			<p>Most of the available documentation from ESRI specifically about the E00 format describes the requirements before, and process of using the E00 file to import the tabular data it contains into its associated coverage, TIN or grid.  Although the E00 files are ASCII files, no comprehensive information has been found describing how the information in E00 files should be interpreted or reconstructed to be useful in a GIS.  The format analysis mentioned above does not document all segments found in E00 files available for download.</p>
+		</fdd:documentation>
+		<fdd:adoption>Use of the E00 file format was much more prevalent when ESRI_Coverage files were created more frequently.  While E00 files can still be found, there is less need to create them at present as the ArcGIS tools provide binary compatibility between products without having to translate attribute data into ASCII and back.  </fdd:adoption>
+		<fdd:licensingAndPatents>See External Dependencies below.</fdd:licensingAndPatents>
+		<fdd:transparency>Since the E00 file format is simple ASCII, it can be read by any text viewer to see what information is contained in the file.  This transformation to text, however, does not mean the file can be used in a GIS without ArcGIS or standalone conversion tools.</fdd:transparency>
+		<fdd:selfDocumentation>TBD</fdd:selfDocumentation>
+		<fdd:externalDependencies>Software:  Export to interchange file in ArcGIS tools converts a coverage to an interchange file for transfer to another platform.  Import to interchange in ArcGIS tools brings the interchange file into the tool and converts it to a feature that can be manipulated by the GIS such as an ArcInfo_Coverage. This functionality requires an ArcInfo license and will only be available in ArcToolbox if  ArcInfo Workstation is installed.  
+Simple viewing of an E00 (coverage) file can be accomplished by using a number of software viewers such as <a href="http://go.pcigeomatics.com/l/13502/2012-06-14/w582">FreeView from PCI Geomatics</a>.  Lists and links to other data viewers can be found from Geocomm.com at <a href="http://software.geocomm.com/viewers/">Software -- Viewers.</a>
+		</fdd:externalDependencies>
+		<fdd:techProtection>The E00 format uses simple ASCII files and does not support encryption or other form of technical protection.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:gisQF>
+			<fdd:normalGIS>The E00 file format has been most commonly used to convey INFO tables that are part of the ArcInfo_Coverage (vector) format and the ESRI_Grid (raster) format.    The E00 file format can hold both the tabular information that the native binary format from which the E00 is exported can contain and the table description required to reconstruct the coverage or grid.  Thus, the data structure in an E00 is capable of supporting the normal functionality of these other formats.  Transfer of the native groups of files for a coverage or grid is not a reliable method for exchange without additional steps; creation of the E00 file ensures that the geometry or coordinate data associated with a grid or coverage will be fully understood and usable.</fdd:normalGIS>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>.e00</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>ArcInfo interchange files are ASCII files that have a .E00 extension, which increments to .E01, .E02, and so on, if the interchange file is composed of several separate files.</fdd:note>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>Care must be taken when an E00 file is created to ensure that the feature type (e.g., coverage) of the data being exchanged is declared so that the import functions of the ArcInfo or ArcGIS, or other conversion tools can recreate the proper feature type.  Specific instructions about importing and exporting E00 files that are coverages can be found from ESRI Resources documentation including <a href="http://resources.esri.com/help/9.3/arcgisengine/java/gp_toolref/coverage_tools/import_from_interchange_file_coverage_.htm">Import from Interchange File (Coverage)</a> and <a href="http://resources.esri.com/help/9.3/arcgisengine/java/gp_toolref/coverage_tools/export_to_interchange_file_coverage_.htm">Export to Interchange File (Coverage).</a>
+			</p>
+			<p>As a simple ASCII file, data in .E00 can be opened and viewed using any common text editor.  The data cannot be recreated or used in a GIS system, however, unless it is exported either into an ArcInfo or ArcGIS environment, or imported into a coverage or grid using stand-alone conversion tools such as IMPORT71.  These conversion tools can then turn the coverage with its converted E00 files into ESRI shapefiles to be edited, if desired.  For more information about working with E00 data and the IMPORT71 tool, see <a href="http://spatialnews.geocomm.com/education/tutorials/e00data/">Working with .E00 data.</a>
+			</p>
+		</fdd:general>
+		<fdd:history>The ArcInfo data model for which the E00 file format supports data interchange has been superseded by the ESRI Arc Geodatabase <fddLink id="fdd000293">GeoDB</fddLink> data model that provides easier interoperability among ArcGIS file formats.  </fdd:history>
+	</fdd:notes>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://support.esri.com/en/knowledgebase/gisdictionary/term/arcinfo%20interchange%20file</link>
+					<tag>ArcInfo interchange file -- definition</tag>
+					<comment>From ESRI GIS Dictionary</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://walrus.wr.usgs.gov/infobank/programs/html/definition/e00.html</link>
+					<tag>USGS CMG &quot;E00 Exchange Format&quot; Definition</tag>
+					<comment>From USGS Coastal and Marine Geology website.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Without a public specification from ESRI, some users have analysed files to derive a description of the E00 format.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://avce00.maptools.org/docs/v7_e00_cover.html</link>
+							<tag>Arc/Info Export (E00) Format Analysis
+</tag>
+							<comment>Update by Daniel Morisette of earlier analysis document by Val Mushinskiy.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://spatialnews.geocomm.com/whitepapers/e00.pdf</link>
+							<tag>Earlier version, entitled Analysis of ARC export file format for ARC/INFO (REV 6.1.1)
+</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>ESRI provides help with importing and exporting e00 files, including preparation and the import or export operation.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://resources.esri.com/help/9.3/arcgisengine/java/gp_toolref/coverage_tools/import_from_interchange_file_coverage_.htm</link>
+							<tag>Import from Interchange File (Coverage)</tag>
+							<comment>ESRI Help Resources for 9.3</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://resources.esri.com/help/9.3/arcgisengine/java/gp_toolref/coverage_tools/how_import_from_interchange_file_coverage_works.htm</link>
+							<tag>How Import from Interchange file (Coverage) works</tag>
+							<comment>ESRI Help Resources for 9.3</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://resources.esri.com/help/9.3/arcgisengine/java/gp_toolref/coverage_tools/export_to_interchange_file_coverage_.htm</link>
+							<tag>Export to Interchange File (Coverage)</tag>
+							<comment>ESRI Help Resource for 9.3</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://resources.esri.com/help/9.3/arcgisengine/java/gp_toolref/coverage_tools/how_export_to_interchange_file_coverage_works.htm</link>
+							<tag>How Export to Interchange File (Coverage) works</tag>
+							<comment>ESRI Help Resource for 9.3</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=ArcView%209%20import%20tools</link>
+							<tag>ArcView9 import tools</tag>
+							<comment>ArcGIS Desktop 9.3 Help.  Last modified September 20, 2008.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://resources.esri.com/help/9.3/arcgisserver/adf/java/help/api/arcobjects/com/esri/arcgis/geoprocessing/tools/coveragetools/import.html</link>
+							<tag>Import (ArcObjects Java API)</tag>
+							<comment>ESRI Help Resource for 9.3</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://support.esri.com/en/knowledgebase/techarticles/detail/21052</link>
+							<tag>HowTo:  Import an ArcInfo interchange file (E00) in ArcGIS</tag>
+							<comment>Knowledge Base - Technical Article # 21052</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Tutorials and instructions for the import and export of E00 files have been developed by entities other than ESRI.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://pubs.usgs.gov/of/2000/of00-006/htm/interrd.htm</link>
+							<tag>ArcInfo interchange format readme</tag>
+							<comment>From USGS.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://courses.washington.edu/gis250/lessons/find_data/data_import.html</link>
+							<tag>Data Import section of ESRM 250 Course, University of Washington Department of Forestry</tag>
+							<comment>ESRM 250 is an Introduction to GIS in Forest Resources.  Includes screen shots and specific examples to follow.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://library.oceanteacher.org/OTMediawiki/index.php/Data_Format_Conversion_Tools</link>
+							<tag>Data Format Conversion Tools</tag>
+							<comment/>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://spatialnews.geocomm.com/education/tutorials/e00data/</link>
+							<tag>Working with .e00 data</tag>
+							<comment/>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://forums.arcgis.com/threads/934-beta-10-importing-an-arcinfo-interchange-file-%28e00%29-arccatalog-issue</link>
+					<tag>Thread:  Beta 10:  Importing an ArcInfo Interchange file (E00) ArcCatalog Issue</tag>
+					<comment>Forum Thread from ArcGIS Resource Center</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://go.pcigeomatics.com/l/13502/2012-06-14/w582</link>
+					<tag>FreeView from PCI Geomatics</tag>
+					<comment>Free viewer that runs on MS Windows.  Supports over 100 raster and vector formats.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://software.geocomm.com/viewers/</link>
+					<tag>Software -- Viewers</tag>
+					<comment>From Geocommunity at geocomm.com</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

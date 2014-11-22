@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000292" titleName="Digital Raster Graphic as TIFF" shortName="DRG_AS_TIFF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-group</fdd:category>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2011-10-26</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Digital Raster Graphic as TIFF</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>raster image formats</fdd:keyword>
+			<fdd:keyword>georeferenced image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>A DRG as TIFF is a georeferenced raster image of a published map saved in GeoTIFF format.   Files distributed in this format are scanned images of USGS topographic maps.  USGS DRG images are stored in TIFF version 6.0.  DRGs are georeferenced to the plane ground coordinates of the Universal Transverse Mercator (UTM) coordinate system. The DRG product contains georeferencing information in three places for convenience of end users with different software tools: in the TIFF file following the GeoTIFF standard (version 1); in a separate metadata file; and in an optional world file (*.tfw) which contains partial georeferencing information. The USGS DRG product consists of two mandatory physical files: the TIFF image and a text file of metadata. A third file, an Arc/Info world file, has been included, though this is not required by the product standard.
+The associated DRG image (.TIF), world (.TFW), and metadata (.FGD) files incorporate an intelligent data set name (DSN) consisting of descriptive metadata wrapped around a standardized kernel that describes
+the spatial location of the file.  The intent of this file naming protocol
+is to positively identify the spatial identity of the file and describe its
+categoric identity.</p>
+			<p>USGS DRG images are stored in TIFF version 6.0, using PackBits compression (run-length encoding).</p>
+			<p>DRG&apos;s can be easily combined with other digital cartographic products such as digital elevation models (DEM) and digital orthophoto quadrangles (DOQ). DRG&apos;s are made by scanning published paper maps on high-resolution scanners. The raster image is georeferenced and fit to the Universal Transverse Mercator (UTM) projection. Colors are standardized to remove scanner limitations and artifacts.</p>
+		</fdd:description>
+		<fdd:shortDescription>A DRG as TIFF is a georeferenced raster image of a published map saved in GeoTIFF format.   
+
+</fdd:shortDescription>
+		<fdd:productionPhase>A final-state format when considered as a replacement for the printed maps scanned.  A middle-state format, in that its normalized characteristics make it suitable for combining with other cartographic information to produce specialized maps.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000279</fdd:id>
+					<fdd:shortName>GeoTIFF</fdd:shortName>
+					<fdd:titleName>GeoTIFF</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Georeferencing information is embedded following GeoTIFF standard, version 1.0. 
+</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000022</fdd:id>
+					<fdd:shortName>TIFF_6</fdd:shortName>
+					<fdd:titleName>TIFF, Revision 6.0</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment/>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Requires</fdd:typeOfRelationship>
+				<fdd:relatedTo/>
+				<fdd:comment>Companion metadata file with extension .fgd, not described separately on this website.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo/>
+				<fdd:comment>An optional &quot;world file&quot; (*.tfw) containing partial georeferencing information.  </fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Standard developed and published by the U.S. Geological Survey.</fdd:disclosure>
+		<fdd:documentation>USGS Standards for Digital Raster Graphics, version 2.0, 2001 (<a href="http://nationalmap.gov/standards/drgstds.html">http://nationalmap.gov/standards/drgstds.html</a>).</fdd:documentation>
+		<fdd:adoption>
+			<p>This format was designed specifically for the USGS DRG product, which is based on USGS maps scanned from paper.  This product produced a uniform set of the most recent published version of the USGS standard quadrangle maps for the 7.5 minute, 30x60-minute, and 1x2-degree series.  A new specification (and package of formats) is being used for scanned historical maps (from all series) as of September 2011.  See <a href="#notes">Notes</a> below.</p>
+			<p>As of October 2011, USGS web pages about the DRG  format and product bear the following note: &quot;Note: The information on this page is being retained for technical and historical reference only. The site is not under active maintenance and may include expired information and outdated links.&quot;  USGS is in the process of retiring the DRGs as a series.  The <a href="http://nationalmap.gov/historical/">Historical Topographic Map Collection</a> will incorporate a replacement set.  See <a href="#notes">Notes</a> below for more detail.</p>
+			<p>Some other entities may have produced DRG files, with or without the GeoTIFF encoding.  For example, the Tennessee Valley Authority (TVA) distributes digitized maps as regular TIFF_6 images, but with associated .tfw and metadata files that support ingest into GIS systems.</p>
+			<p>Since georeferencing information is provided in alternative ways, DRG images can be used by a wide variety of GIS systems and tools for displaying, printing, and manipulating images.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>None</fdd:licensingAndPatents>
+		<fdd:transparency>Good.  Uses TIFF format with simple compression.  Accompanying metadata file is in ASCII text.</fdd:transparency>
+		<fdd:selfDocumentation>Mandatory accompanying metadata file provides georeferencing information and information about the source map.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None.</fdd:externalDependencies>
+		<fdd:techProtection>None.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>See <fddLink id="fdd000022">TIFF_6</fddLink>.</fdd:normalImage>
+			<fdd:clarity>The format itself is capable of high spatial resolution and bit-depth.  In practice, DRGs were produced with clarity constrained by equipment capabilities.</fdd:clarity>
+			<fdd:colorMaint>DRGs were produced with a limited color palette appropriate to the characteristics of the printed originals.  No special steps were taken in relation to color management.</fdd:colorMaint>
+			<fdd:graphics>No support for vector graphics or typographic effects.</fdd:graphics>
+			<fdd:multispectral>Not applicable.  DRGs were designed for printing and screen display.</fdd:multispectral>
+			<fdd:beyondImage>Georeferencing metadata is embedded in the GeoTIFF file.</fdd:beyondImage>
+		</fdd:stillImageQF>
+		<fdd:gisQF>
+			<fdd:normalGIS>Since georeferencing information is provided in alternative ways, these DRG images can be used by a wide variety of GIS systems and tools for displaying, printing, and manipulating images.</fdd:normalGIS>
+			<fdd:metadataGIS>The specification for the accompanying .fgd file is compliant with the 1994 Federal Geographic Data Committee (FGDC) Content Standard for Digital Geospatial Metadata.</fdd:metadataGIS>
+			<fdd:grids>Not applicable to digitized paper maps.</fdd:grids>
+			<fdd:beyondGIS>None.</fdd:beyondGIS>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>tif </fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The specification indicates the DRG files distributed by USGS will use .tif as the extension for the GeoTIFF images</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>fgd</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The specification indicates that DRG files distributed by USGS will use .fgd as the extension for the FGDC-compliant metadata.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>image/tiff</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From the <a href="http://www.rfc-editor.org/rfc/rfc2302.txt">IETF</a> (RFC2302).</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>image/tif</fdd:sigValue>
+					<fdd:sigValue>image/x-tif</fdd:sigValue>
+					<fdd:sigValue>image/x-tiff</fdd:sigValue>
+					<fdd:sigValue>application/tif</fdd:sigValue>
+					<fdd:sigValue>application/x-tif</fdd:sigValue>
+					<fdd:sigValue>application/tiff</fdd:sigValue>
+					<fdd:sigValue>application/x-tiff</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Selected from <a href="http://filext.com/">The File Extension Source</a>
+				</fdd:note>
+			</fdd:internetMediaType>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>As from October 2006, USGS DRGs have been available for download from the Internet Archive at <a href="http://www.archive.org/details/maps_usgs">http://www.archive.org/details/maps_usgs</a>.</fdd:general>
+		<fdd:history>
+			<p>DRG files were produced under the original product standard from 1995 to 2001. A complete revision to the standard was proposed in 2000, completed in May 2001, and implemented starting in October 2001.  The version 2.0 2001 revised standard, which raised the scanning resolution to 500 dpi, is backwardly compatible with the original standard. All existing DRGs remain compliant with both standard versions. The original set of DRGs were produced from 1995 to 1998, with about 1,000 DRGs for replacement maps published during the next several years.</p>
+			<p>As of September 2011, USGS is scanning and distributing digitized historic maps in the <fddLink id="fdd000312">GeoPDF</fddLink> format for convenient use, a revised version of TIFF specification as master image, and metadata in XML.  See <a href="http://pubs.usgs.gov/tm/11b03/">Standards for Scanned U.S. Geological Survey Historical Topographic Quadrangle Collection</a>.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://nationalmap.gov/standards/drgstds.html</link>
+					<tag>USGS Standards for Digital Raster Graphics, version 2.0, 2001</tag>
+					<comment> 
+</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://topomaps.usgs.gov/drg/drg_overview.html</link>
+					<tag>Overview of the USGS Digital Raster Graphic (DRG) Program</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://pubs.usgs.gov/tm/11b03/</link>
+					<tag>Standards for Scanned U.S. Geological Survey Historical Topographic Quadrangle Collection
+</tag>
+					<comment>September 2011.  Describes new specification for USGS scanning of historical maps.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.es-geo.com/download/TIFF_JPEG_Guide_63SP1.pdf</link>
+					<tag>Using Geocoded TIFF &amp; JPEG Files
+in ER Mapper 6.3 with SP1</tag>
+					<comment>From Earthstar Geographics; about &quot;world files&quot; for TIFF (tfw), JPEG (jgw, jpegw, jpw), and BMP (bpw).</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

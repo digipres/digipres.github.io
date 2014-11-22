@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000107" titleName="ID3 Metadata for MP3, Version 1" shortName="ID3v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2010-06-22</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ID3 Metadata for MP3, Version 1</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>metadata formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>Structured data chunk containing descriptive metadata about the file to which it is post-pended, virtually always an <fddLink id="fdd000105">MP3_FF</fddLink> (MP3 sound file). Referred to by its creators as an "informal standard," ID3v1 permits the identification of title, artist, date, genre, etc.  See <a href="#notes">Notes</a> for more information.</fdd:description>
+		<fdd:shortDescription>Structured data chunk containing descriptive metadata about the file to which it is post-pended, virtually always an MP3_FF (MP3 sound file). Referred to by its creators as an "informal standard," ID3v1 permits the identification of title, artist, date, genre, etc.</fdd:shortDescription>
+		<fdd:productionPhase>Generally used for final-state, end-user delivery. </fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000106</fdd:id>
+					<fdd:shortName>ID3</fdd:shortName>
+					<fdd:titleName>ID3 Metadata for MP3</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000105</fdd:id>
+					<fdd:shortName>MP3_FF</fdd:shortName>
+					<fdd:titleName>MP3 file format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>See <fddLink id="fdd000106">ID3</fddLink>
+		</fdd:experience>
+		<fdd:preference>See <fddLink id="fdd000106">ID3</fddLink>
+		</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			Version 1 partially documented.  Developed by Martin Nilsson and colleagues, whose <a href="http://id3.org/">ID3.org</a> web site is now strongly oriented to <fddLink id="fdd000108">ID3v2</fddLink>, version 2.
+		</fdd:disclosure>
+		<fdd:documentation>
+			Documentation for version 1 available at <a href="http://id3.org/ID3v1">ID3.org</a> and <a href="http://www.dougscripts.com/itunes/itinfo/id3tags00.php">Doug's AppleScripts for iTunes</a>.
+		</fdd:documentation>
+		<fdd:adoption>
+			Very widely adopted for World Wide Web dissemination and playback on specialized devices.
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			None
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			See <fddLink id="fdd000106">ID3</fddLink>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			See <fddLink id="fdd000106">ID3</fddLink>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			None
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			None
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:soundQF>
+			<fdd:normalSound>Not applicable</fdd:normalSound>
+			<fdd:fidelity>Not applicable</fdd:fidelity>
+			<fdd:channels>Not applicable</fdd:channels>
+			<fdd:samples>Not applicable</fdd:samples>
+			<fdd:beyondSound>None</fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>See <i>3DI</i> marker information in <a href="#notes">Notes</a> below.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>ID3v1 binary content is structured as "frames" just like <fddLink id="fdd000012">MP3_ENC</fddLink> (MP3 audio encoding). Version 1 is limited to 125 bytes of data; four tags are limited to 30 bytes, one to 4 bytes, and the genre tag to a one-byte code.</p>
+			<p>When <fddLink id="fdd000106">ID3</fddLink> metadata is placed in a <fddLink id="fdd000105">MP3_FF</fddLink> file, established conventions call for the use of the <i>ID3 marker</i> which consists of the string "3DI".  For ID3v1, the marker is positioned 10 bytes preceding the metadata.  For <fddLink id="fdd000108">ID3v2</fddLink> data, the marker is positioned in the first 3 bytes of the file when the metadata is pre-pended and 10 bytes from the end of a file when it is post-pended.</p></fdd:general>
+	</fdd:notes>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://id3.org/ID3v1</link>
+					<tag>ID3v1 page at ID3.org</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.dougscripts.com/itunes/itinfo/id3tags00.php</link>
+					<tag>ID3v1 notes at Doug's AppleScripts for iTunes</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://id3.org/</link>
+					<tag>ID3.org</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

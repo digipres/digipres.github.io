@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000285" titleName="Digital Elevation Model (DEM) Format" shortName="DEM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+				<fdd:comment/>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2011-10-03</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Digital Elevation Model (DEM) Format</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>geospatial data formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>A digital elevation model (DEM) represents terrain elevations for ground positions at regularly spaced horizontal intervals. The USGS &quot;native&quot; DEM format was developed specifically for this category of data and dates from 1992.  A DEM dataset is a single file comprising 1024-byte ASCII-encoded (text) blocks that fall into three record categories called A, B, and C. There is no cross-platform ambiguity since line ending control codes are not used, and all data including numbers is represented in readable text form. </p>
+			<p>The A record contains information defining the general characteristics of the DEM, including its name, boundaries, units of measurement, minimum and maximum elevations, number of B records, and projection parameters. Each B record consists of an elevation profile with associated header information, and the optional C record contains accuracy data. Each file contains a single A record and may contain a single C record, while there is a separate B record for each elevation profile.</p>
+		</fdd:description>
+		<fdd:shortDescription>A digital elevation model (DEM) is a digital file representing terrain elevations for ground positions at regularly spaced horizontal intervals. </fdd:shortDescription>
+		<fdd:productionPhase>DEM is a middle-state format used in the generation of three-dimensional graphics displaying terrain slope, aspect (direction of slope), and terrain profiles between selected points. </fdd:productionPhase>
+		<fdd:relationships/>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Open standard.</fdd:disclosure>
+		<fdd:documentation>
+			<a href="http://nationalmap.gov/standards/demstds.html">Digital Elevation Model Standards</a>  (http://nationalmap.gov/standards/demstds.html).  From USGS.</fdd:documentation>
+		<fdd:adoption>
+			<p>It is an open standard, and is used throughout the world. It has been superseded by the USGS&apos;s own SDTS format but the format remains popular due to large numbers of legacy files, self-containment, relatively simple field structure and broad, mature software support.</p>As of 2006, the USGS no longer distributes elevation data in the DEM format, but, due to popular demand, USGS data has been made available in the DEM format by other sources, e.g., <a href="http://www.webgis.com/terraindata.html">WebGIS Terrain Data</a>.</fdd:adoption>
+		<fdd:licensingAndPatents>No licensing concerns.</fdd:licensingAndPatents>
+		<fdd:transparency>Very good.</fdd:transparency>
+		<fdd:selfDocumentation>The single type A record in a DEM file contains information describing the data in the type B records.  The optional single type C record provides information on the accuracy of the data.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>None</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>dem</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Conventional usage.</fdd:note>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>The USGS has produced five different digital elevation products. Although all are identical in the manner the data are structured, each varies in sampling interval, geographic reference system, areas of coverage, and accuracy; with the primary differing characteristic being the spacing, or sampling interval, of the data. 
+<ul>
+				<li>7.5-Minute DEM 30- x 30-meter data spacing </li>
+				<li>2-Arc-Second DEM 2- x 2-arc-second data spacing </li>
+				<li>15-Minute Alaska DEM 2- x 3-arc-second data spacing </li>
+				<li>7.5-Minute Alaska DEM 1- x 2-arc-second data spacing .</li>
+				<li>1-degree DEM 3- x 3-arc-second data spacing</li>
+			</ul>
+			<p>DEMs may be used in the generation of three-dimensional graphics displaying terrain slope, aspect (direction of slope), and terrain profiles between selected points. At the USGS, DEMs have been used in combination with digital raster graphics (DRG&apos;s), digital line graphs (DLG&apos;s), and digital orthophoto quadrangles (DOQ&apos;s) to both enhance the visual information for data extraction and revision purposes and to create aesthetically pleasing and dramatic hybrid digital images. Non-graphic applications such as modeling terrain and gravity data for use in the search for energy resources, calculating the volume of proposed reservoirs, and determining landslide probability have also been developed.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>The DEM format originates from 1992.  Starting in 1995, the 7.5-minute USGS DEM data was converted to the newer <fddLink id="fdd000286">SDTS</fddLink> format.  As of September 2011, DEM datasets in SDTS format are available for download from <a href="http://www.geocomm.com/">GeoCommunity</a> at the <a href="http://data.geocomm.com/">GIS Data Depot</a>.</p>
+			<p>Starting in 2006, USGS no longer distributes elevation data in the DEM format.  However, USGS elevation data in the DEM format is available from other sources, e.g., <a href="http://www.webgis.com/terraindata.html">WebGIS Terrain Data</a>.  Other entities still issue elevation data in the USGS &quot;native&quot; DEM format described here.</p>
+			<p>USGS elevation data is available in other formats for user-selected regions for online viewing or download from the National Map
+as the <a href="http://nationalmap.gov/data_delivery/ned.html">National Elevation Dataset</a>.  See <a href="http://www.terrainmap.com/rm39.html">Free Digital Elevation Model (DEM) and Free Satellite Imagery Download Links</a> for a discussion of the transition away from the DEM format by USGS and links to sites that support the ongoing demand for elevation data in the DEM format.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://nationalmap.gov/standards/demstds.html</link>
+					<tag>Digital Elevation Model Standards</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://pubs.er.usgs.gov/publication/fs04000</link>
+					<tag>US GeoData Digital Elevation Models Fact Sheet 040-00</tag>
+					<comment>April 2000</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://agdc.usgs.gov/data/usgs/geodata/dem/dugdem.pdf</link>
+					<tag>Digital Elevation Model (DEM): Data Users Guide 5</tag>
+					<comment>1993 data specification, examples. etc.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://web.archive.org/web/20080308061006/http://eros.usgs.gov/guides/dem.html</link>
+					<tag>USGS Digital Elevation Model (DEM) Guide</tag>
+					<comment>Via Internet Archive.  No longer available from USGS EROS program.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://web.archive.org/web/20080511221408/http://eros.usgs.gov/guides/usgs_dem_supplement.html</link>
+					<tag>DEM Data Record Format</tag>
+					<comment>Includes annotated examples for the three record types, A, B, and C.  From Internet Archive.  No longer available from USGS EROS program.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

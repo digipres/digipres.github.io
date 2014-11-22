@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000393" titleName="Internet Message Format " shortName="IMF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>text</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>other</fdd:value>
+				<fdd:comment>email</fdd:comment>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2014-04-02</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Internet Message Format</fdd:fullName>
+		<fdd:description>
+			<p>Internet Message Format (IMF) is the standardized ASCII-based syntax
+required by SMTP for all email message bitstreams used by MTAs when moving messages between computers. IMF is standardized by RFC 5322.  IMF syntax itself does not cover other types of non-text data in email messages such as images, audio or other sorts of structured data which are described in other parts of the MIME document series (RFC 2045, RFC 2046, RFC 2049). </p>
+			<p>IMF requires that messages use only US-ASCII characters and that the characters are divided into lines. A line is a series of characters that is delimited by carriage-return (CR) immmediately followed by line-feed (LF). Taken together, these are commonly abbreviated as CRLF.  Each line of characters is limited to no more than 998 characters, and is encouraged, for the sake of interoperability, to be no more than 78 characters. </p>
+			<p>An IMF-compliant email message consists of a header section comprised of defined fields followed, optionally, by a body. The header section is a sequence of lines of characters with special syntax as defined in this specification. The body is simply a sequence of characters that follows the header section and is separated from the header section by an empty line (i.e., a line with nothing preceding the CRLF).</p>
+			<p>Header fields are well defined lines beginning with a field name, followed by a colon (":"), followed by a field body, and terminated by CRLF. Header field bodies may have a structured or unstructured syntax.  Header fields may appear in any order, and they have been known to be reordered occasionally when transported over the Internet. Selected fields may repeat within the header.</p>
+			<p>Required header fields include:</p>
+			<ul>
+				<li>
+					<i>origination date</i> or orig-date, formatted as field name &quot;Date&quot; followed
+by a date-time specification (Date: date-time CRLF) which specifies the date and time at which the creator
+of the message indicated that the message was complete and ready to
+enter the mail delivery system. This typically represents when the message author presses the Send button.</li>
+				<li>the grouping of several fields that comprise the <i>originator address</i> set including <i>from</i>, formatted as From: mailbox-list CRLF. <i>sender</i> when applicable and formatted as Sender: mailbox CRLF, and optionally <i>reply-to</i> formatted as Reply-To: address-list CRLF.
+</li>
+			</ul>
+			<p>All other header fields are optional and include: <i>reply-to, to, cc, bcc, message-id, in-reply-to, references, subject, comments, keywords</i>
+			</p>
+			<p>Message bodies are simply lines of US-ASCII characters but with two essential requirements:</p>
+			<ul>
+				<li>CR and LF MUST only occur together as CRLF; they MUST NOT appear
+independently in the body.</li>
+				<li>Lines of characters in the body MUST be limited to 998 characters,
+and SHOULD be limited to 78 characters, excluding the CRLF</li>
+			</ul>
+		</fdd:description>
+		<fdd:shortDescription>The Internet Message Format is format in which text messages are transferred over the Internet. </fdd:shortDescription>
+		<fdd:productionPhase/>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000383</fdd:id>
+					<fdd:shortName>MBOX</fdd:shortName>
+					<fdd:titleName>MBOX Email Format</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment/>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000388</fdd:id>
+					<fdd:shortName>EML</fdd:shortName>
+					<fdd:titleName>Email (Electronic Mail Format)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000377</fdd:id>
+					<fdd:shortName>PST_ANSI</fdd:shortName>
+					<fdd:titleName>Microsoft Outlook 97-2002 Personal Folders File (ANSI)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000378</fdd:id>
+					<fdd:shortName>PST_Unicode</fdd:shortName>
+					<fdd:titleName>Microsoft Outlook 2003 Personal Folders File (Unicode)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse/>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully documented</fdd:disclosure>
+		<fdd:documentation>IMF is fully documented in RFC 5322 and its antecedents, RFC 2822 and RFC 822.</fdd:documentation>
+		<fdd:adoption>IMF is the standard syntax defined by IETF for the message bitstream when moving email message from one computer to another. As such, it is highly adopted and interoperable with many tool sets and application. </fdd:adoption>
+		<fdd:licensingAndPatents>None</fdd:licensingAndPatents>
+		<fdd:transparency>IMF files are US-ASCII text so are easily accessible through processing tools can be readily used on the plain text files </fdd:transparency>
+		<fdd:selfDocumentation>Metadata is available through the well-structured header fields.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>None</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors/>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>message/rfc822</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>This is the common MIME type for all formats based on RFC 822.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>IMF has been developed in step with Simple Mail Transfer Protocol. SMTP
+is the widely used protocol to send email messages from the authors mail program or email client to the mail server and between servers too. Where SMTP is equivalent to the message envelope, IMF is equivalent to the letter within the envelope. Receiving mail from a server is accomplished using POP or IMAP. </fdd:general>
+		<fdd:history>
+			<p>RFC822, published in 1982, established the framework for the header structure and was widely used. Revisions and refinements to this structure include RFC 1123 (1989), RFC 2822 (2001) and most recently RFC 5322 (2008). RFC5233 includes this summary of the changes between RFCs: 
+
+“One important difference between the obsolete (interpreting) and the current (generating) syntax is that in structured header field bodies (i.e., between the colon and the CRLF of any structured header field), white space characters, including folding white space, and comments could be freely inserted between any syntactic tokens. This allowed many complex forms that have proven difficult for some implementations to parse. Another key difference between the obsolete and the current syntax is that the rule … regarding lines composed entirely of white space in comments and folding white space does not apply. The NUL character (ASCII value 0) was once allowed, but is no longer for compatibility reasons. Similarly, USASCII control characters other than CR, LF, SP, and HTAB (ASCII values 1 through 8, 11, 12, 14 through 31, and 127) were allowed to appear in header field bodies. CR and LF were allowed to appear in messages other than as CRLF.” </p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>RFCs for IMF</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.ietf.org/rfc/rfc5322.txt</link>
+							<tag>RFC 5322: Internet Message Format</tag>
+							<comment>Current standard. RFC 5322 obsoletes RFC 2822 which in turn obsoletes RFC 822</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.ietf.org/rfc/rfc2822.txt</link>
+							<tag>RFC 2822: Internet Message Format</tag>
+							<comment>Obsoleted by RFC 5322; obsoletes RFC 822</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.ietf.org/rfc/rfc0822.txt</link>
+							<tag>RFC 822: Standard for the Format of ARPA Internet Text Messages</tag>
+							<comment>Superseded by RFC 2833</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.ietf.org/rfc/rfc1123.txt</link>
+							<tag>RFC 1123: Requirements for Internet Hosts -- Application and Support</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Related RFCs</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.ietf.org/rfc/rfc2045.txt</link>
+							<tag>RFC 2045: Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.ietf.org/rfc/rfc2046.txt</link>
+							<tag>RFC 2046: Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.ietf.org/rfc/rfc2049.txt</link>
+							<tag>RFC 2049: Multipurpose Internet Mail Extensions (MIME) Part Five: Conformance Criteria and Examples</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.ietf.org/rfc/rfc5321.txt</link>
+							<tag>RFC 5321: Simple Mail Transfer Protocol</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://cr.yp.to/immhf.html</link>
+					<tag>Internet mail message header format</tag>
+					<comment>Describes format of an Internet mail message header</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.significantproperties.org.uk/email-testingreport.html</link>
+					<tag>InSPECT – Email Testing Report. InSPECT: Investigating Significant Properties of Electronic Content
+</tag>
+					<comment>Discussion of important characteristics of email objects that would need to be retained in a preservation workflow.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.dpconline.org/component/docman/doc_download/714-twrpreservingemailpreviewdecember2011</link>
+					<tag>Preserving Email: DPC Technology Watch report 2011 by Christopher J. Prom</tag>
+					<comment>Excellent coverage of issues with preserving email. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Email</link>
+					<tag>Wikipedia: Email</tag>
+					<comment>Helpful article which discusses the structures and protocol of email messages</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000237" titleName="TIFF, Pyramid" shortName="TIFF_PYR" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2005-12-29</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial (low priority for LC)</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>TIFF, Pyramid</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>raster image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>TIFF is a tag-based file format for storing and interchanging raster images.  A TIFF file can hold multiple images in a single file.  The term "Pyramid TIFF" is used to describe a TIFF file that wraps a sequence of bitmaps that each represent the same image at increasingly coarse spatial resolutions.  The individual images may be compressed or tiled. Compression is used when storage space savings are significant; tiling may yield more efficient delivery when most use involves zooming into image sections rather than viewing the whole.  The term <i>Pyramid TIFF</i> or <i>pyramid-encoded TIFF</i> has been applied to different approaches, each based on valid internal TIFF structures, that have been used to support dynamic delivery of the underlying image at different spatial resolutions.  Pyramid TIFF files created by different applications are not necessarily the same in structure. In particular, judging from analysis with JHOVE and the <i>identify</i> command in ImageMagick, Adobe's Photoshop and Image Magick generate files with different internal TIFF structures; in both cases, most software that can handle TIFFs appears to recognize the primary (full-size) TIFF without problem.</p>
+			<p>[Note: For convenience for the compilers of this resource, and to allow human readers to see the differences between the two forms of TIFF that may get called  "Pyramid TIFF", we describe the two variants in a single document.  In a format registry intended to support automated processes, they would need separate identification.]</p>
+		</fdd:description>
+		<fdd:shortDescription>The term "Pyramid TIFF" is used for a TIFF file that wraps a sequence of bitmaps that each represent the same image at increasingly coarse spatial resolutions.  The individual images may be compressed or tiled.  At least two different approaches to representing multi-resolution images using the TIFF IFD structure are found in practice.</fdd:shortDescription>
+		<fdd:productionPhase>Most often a middle-state format intended to support efficient dynamic delivery of final-state format images at different resolutions.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000022</fdd:id>
+					<fdd:shortName>TIFF_6</fdd:shortName>
+					<fdd:titleName>TIFF, Revision 6.0</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>Uncompressed image bitmap</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>Compressed JPEG image bitmap</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>LC has no experience with Pyramid TIFFs and does not plan to use them.</fdd:experience>
+		<fdd:preference>TIFF is one of the preferred formats for bitmapped images.  However, <fddLink id="fdd000023">TIFF_UNC</fddLink> or <fddLink id="fdd000024">TIFF_G4</fddLink> are preferred as master images.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>See <fddLink id="fdd000022">TIFF_6</fddLink>
+		</fdd:disclosure>
+		<fdd:documentation>No separate description of an internal representation of the images at multiple resolutions has been located for either the form of Pyramid TIFF created by Adobe or the form created by Image Magick.  See <fddLink id="fdd000022">TIFF_6</fddLink> for documentation on the underlying TIFF 6.0 specification.	</fdd:documentation>
+		<fdd:adoption>
+			<p>Most image manipulation programs that can handle TIFFs can read the primary (full-size) image but some will ignore the smaller images.  Adobe Photoshop (since version 6) can write (Save As) Pyramid TIFF files, but allows access only to the primary image.</p>
+			<p>The IIPImage server, designed to deliver zoomable images efficiently over the Internet describes the multiresolution formats it supports at <a href="http://iipimage.sourceforge.net/documentation/images/">http://iipimage.sourceforge.net/documentation/images/</a>.  Images must be JPEG2000 or &quot;tiled pyramidal&quot; TIFFs.  The description and the sample image provided suggest that support is for the form of pyramidal TIFF created by Image Magick.  The page indicates that image processing applications GIMP and VIPS support the required image format and that the <i>libtiff</i> software library can also be used.</p>
+			<p>The eRez Imaging Server supported efficient delivery of images stored in the form of Pyramid TIFF files generated by Adobe.  As of version 3.1 (released Spring 2005), eRez also supported pyramid TIFFs created by Image Magick.  However, as of July 2012, the Yawah company that developed the eRez product no longer has its own website.  The old yawah.com URL resolves to the Adobe URL for its Scene7 product.  The User Guide for Scene7 indicates that all images are converted to the &quot;PTIFF&quot; format.</p>
+			<p>TIFF itself is very widely adopted as a master file format.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>None known.
+		</fdd:licensingAndPatents>
+		<fdd:transparency>Depends on whether individual image bitstreams are compressed.  Chaining of IFD and SubIFDs within a TIFF can be followed and understood given knowledge of the basic TIFF structure.
+		</fdd:transparency>
+		<fdd:selfDocumentation>For capability from the TIFF specification itself, see <fddLink id="fdd000022">TIFF_6</fddLink>.  For a valuable extension, see <fddLink id="fdd000145">TIFF_UNC_EXIF</fddLink>.
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None
+		</fdd:externalDependencies>
+		<fdd:techProtection>None
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>Good support.</fdd:normalImage>
+			<fdd:clarity>See <fddLink id="fdd000022">TIFF_6</fddLink>
+			</fdd:clarity>
+			<fdd:colorMaint>See <fddLink id="fdd000022">TIFF_6</fddLink>
+			</fdd:colorMaint>
+			<fdd:graphics>See <fddLink id="fdd000022">TIFF_6</fddLink>
+			</fdd:graphics>
+			<fdd:beyondImage>Pyramid TIFFs are designed to support efficient zooming to different spatial resolutions, by storing the same image at multiple resolutions. </fdd:beyondImage>
+		</fdd:stillImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>
+					<p>See <fddLink id="fdd000022">TIFF_6</fddLink>
+					</p>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>tif</fdd:sigValue>
+					<fdd:sigValue>tiff</fdd:sigValue>
+					<fdd:sigValue>ptif</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Image Magick uses .ptif for its Pyramid TIFFs.  See <fddLink id="fdd000022">TIFF_6</fddLink>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>
+					<p>See <fddLink id="fdd000022">TIFF_6</fddLink>.</p>
+				</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>Pyramid TIFFs are always considerably larger than the primary source image (assuming no compression).  Both Adobe Photoshop and ImageMagick generate a sequence of sub-images using a factor of 50% by linear dimension (25% by area and hence image size).  This results in a file that is at least 25% larger than the source file and approaches 33% larger rapidly as the number of sub-images increases.</p>
+			<p>==Notes on ImageMagick Pyramid encoded TIFF (referred to as PTIF and PTIFF)==</p>
+			<p>Sample output from ImageMagick <i>identify</i> command for a .ptif file created by the ImageMagick <i>convert</i> command: </p>
+			<p>$ identify 3c17082u.ptif<br/>3c17082u.ptif[0] TIFF 4096x3295+0+0 PseudoClass 256c 8-bit 17.2m 0.270u 0:01<br/>3c17082u.ptif[1] TIFF 2048x1647+0+0 PseudoClass 256c 8-bit 17.2m 0.070u 0:01<br/>3c17082u.ptif[2] TIFF 1024x823+0+0 PseudoClass 256c 8-bit 17.2m 0.020u 0:01 <br/>3c17082u.ptif[3] TIFF 512x411+0+0 PseudoClass 256c 8-bit 17.2m 0.010u 0:01  <br/>3c17082u.ptif[4] TIFF 256x205+0+0 PseudoClass 256c 8-bit 17.2m 0.010u 0:01  <br/>3c17082u.ptif[5] TIFF 128x102+0+0 PseudoClass 256c 8-bit 17.2m 0.010u 0:01  </p>
+			<p>When viewed with the TDump utility packaged with <a href="http://sourceforge.net/projects/jhove/files/jhove/JHOVE%201.7/">JHOVE</a>, the File shows a flat structure with 6 IFDs. All 6 IFDs identify themselves via the 254 (NewSubFileType) tag with value 2 as "single page of multi-page image". See below:<br/>
+				<br/>00000000: "II" (little endian) 42 LONG @13496328  <br/> ...  <br/>13496328: IFD 1 with 20 entries  <br/>13496330: 254 (NewSubFileType) LONG 1 = 2  <br/>13496342: 256 (ImageWidth) SHORT 1 = 4096  <br/>13496354: 257 (ImageLength) SHORT 1 = 3295  <br/> ...  <br/>13496570: NextIFDOffset LONG @16882942  <br/> ...  <br/>16882942: IFD 2 with 20 entries  <br/>16882944: 254 (NewSubFileType) LONG 1 = 2  <br/>16882956: 256 (ImageWidth) SHORT 1 = 2048  <br/>16882968: 257 (ImageLength) SHORT 1 = 1647  <br/> ...  <br/>16883184: NextIFDOffset LONG @17729364  <br/> ...  <br/>17729364: IFD 3 with 20 entries  <br/>17729366: 254 (NewSubFileType) LONG 1 = 2  <br/>17729378: 256 (ImageWidth) SHORT 1 = 1024  <br/>17729390: 257 (ImageLength) SHORT 1 = 823  <br/>
+				<br/>etc.</p>
+			<p>==Notes on Adobe Photoshop Pyramid TIFF==<br/>
+				<br/>Sample output from Image Magick <i>identify</i> command for a Pyramid TIFF file (with a main image and 3 reduced-size versions) as saved from Adobe Photoshop 7.0.1:<br/>
+				<br/>$identify Pyramid-Tiff-Sample.tif   <br/>   Pyramid-Tiff-Sample.tif TIFF 6429x7500+0+0 PseudoClass 256c 8-bit 61.1m 0.810u 0:05</p>
+			<p>On the other hand, the TDump utility packaged with JHOVE identifies a main image IFD and a sequence of reduced image IFDs. The IFDs are identifed as reduced-size images by having a 254 (NewSubFileType) tag with value 1, as shown below. 	</p>
+			<p>00000000: "II" (little endian) 42 <br/>00000008: IFD 1 with 20 entries <br/>00000010: 254 (NewSubFileType) LONG 1 = 0 <br/>00000022: 256 (ImageWidth) SHORT 1 = 6429 <br/>00000034: 257 (ImageLength) SHORT 1 = 7500 <br/>  ... <br/>00000202: 330 (SubIFDs) IFD 1 = 48238676 <br/> ... <br/>48238676: IFD 2 with 13 entries <br/>48238678: 254 (NewSubFileType) LONG 1 = 1 <br/>48238690: 256 (ImageWidth) SHORT 1 = 3215 <br/>48238702: 257 (ImageLength) SHORT 1 = 3750 <br/> ... <br/>48238834: NextIFDOffset LONG 60295104 <br/>60295104: IFD 3 with 13 entries <br/>60295106: 254 (NewSubFileType) LONG 1 = 1 <br/>60295118: 256 (ImageWidth) SHORT 1 = 1608 <br/>60295130: 257 (ImageLength) SHORT 1 = 1875 <br/> ... <br/>60295262: NextIFDOffset LONG 63310282 <br/>63310282: IFD 4 with 13 entries <br/>63310284: 254 (NewSubFileType) LONG 1 = 1 <br/>63310296: 256 (ImageWidth) SHORT 1 = 804 <br/>63310308: 257 (ImageLength) SHORT 1 = 938 <br/> ... </p>
+			<p>Explanation of the Adobe 7 Pyramid TIFF structure from libTIFF mailing list: "All differently sized versions are part of the single main IFD, either the main image in that IFD, or the image in a SubIFD of that IFD. That should indicate to a reader that this is all really the same image. The NewSubfileType tag is used as an extra indication of this relation. The SubIFDs tag points only to the first SubIFD, and each SubIFD points to the next." </p>
+		</fdd:general>
+		<fdd:history>LibTIFF mailing list discussion at <a href="http://www.asmail.be/msg0055062923.html">http://www.asmail.be/msg0055062923.html</a> indicates that earlier versions of Adobe software used a different approach when creating Pyramid TIFFs.  The discussion reveals that pyramid TIFFs in the GIS world (as of late 2004) usually followed the older approach. The compilers of this resource are unable to determine whether the &quot;older approach&quot; corresponds to the ImageMagick approach. <a href="../contact_format.shtml">Comments welcome</a>.</fdd:history>
+	</fdd:notes>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.asmail.be/msg0055062923.html</link>
+					<tag>Discussion from LibTIFF mailing list</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://iipimage.sourceforge.net/documentation/images/</link>
+					<tag>Image formats used in IIPImage server</tag>
+					<comment>IIPImage serves zoomable images based on pyramidal TIFFs or JPEG 2000.  Instructions for creating pyramidal TIFFs are included. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://web.archive.org/web/20080706131639/http://erez3.yawah.com/erez4/html/Working%20with%20Digital%20Master%20Images.html</link>
+					<tag>Working with Digital Master Images.</tag>
+					<comment>Documentation for eRez Imaging Server, via the Internet Archive&apos;s Wayback Machine.  Includes instructions for saving as Pyramid TIFF from Adobe Photoshop.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://studio.imagemagick.org/script/formats.php</link>
+					<tag>Formats supported by Image Magick</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

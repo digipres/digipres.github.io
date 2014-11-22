@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000380" titleName="Microsoft Compound File Binary File Format, Version 3" shortName="CFB_3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenres>
+				<fdd:gdfrGenre>text</fdd:gdfrGenre>
+				<fdd:gdfrGenre>spreadsheet</fdd:gdfrGenre>
+				<fdd:gdfrGenre>moving-image</fdd:gdfrGenre>
+			</fdd:gdfrGenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2014-02-25</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Microsoft Compound File Binary File Format, Version 3</fdd:fullName>
+		<fdd:description>
+			<p>Microsoft Compound File Binary (CFB) file format is also known as the Object Linking and Embedding (OLE) or Component Object Model (COM) structured storage compound file implementation binary file format.  CFB implements a simplified file system through a hierarchical collection of storage objects and stream objects. A storage object is comparable to a file system directory in that just as a directory can contain other directories and files, a storage object can contain other storage objects and stream objects. A parent storage object can also track the locations and sizes of the child storage object and stream objects nested beneath it. A stream object is comparable to a file in that a stream contains user-defined data stored as a consecutive sequence of bytes. A compound file consists of the root storage object with optional child storage objects and stream objects in a nested hierarchy.</p>
+			<p>The purpose of structured storage is to reduce the performance penalties and overhead associated with storing separate objects in a flat file. Structured storage solves performance problems by eliminating the need to totally rewrite a file whenever a new object is added, or an existing object increases in size. The new data is written to the next available free location in the file, and the storage object updates an internal structure that maintains the locations of its storage objects and stream objects. At the same time, structured storage enables end users to interact and manage a compound file as if it were a single file rather than a nested hierarchy of separate objects. </p>
+			<p>There are two active versions of CFB, version 3 and <fddLink id="fdd000392">version 4</fddLink>. One major distinction between the versions is that the sector size for version 3 is of 512 bytes and the sector size for version 4 is 4096 bytes.</p>
+			<p>A compound file is divided into equal-length sectors, the smallest addressable unit of a disk. The first sector contains the compound file header. Subsequent sectors are identified by a 32-bit non-negative integer number, called the sector number. A group of sectors can form a sector chain, which is a linked list of sectors forming a logical byte array, even though the sectors can be in non-consecutive locations in the compound file. The main structure used to manage sector allocation and sector chains is the <a href="http://en.wikipedia.org/wiki/File_Allocation_Table">file allocation table (FAT).</a>The FAT contains an array of 32-bit sector numbers, where the index represents a sector number, and its value represents the next sector in the chain, or a special value. This allows a compound file to contain many sector chains in a single file. </p>
+			<p>The known size of all structures within a compound file must be specified when the compound file is transmitted or retrieved. For this reason, CFB is not recommended for real-time streaming, progressive rendering, or open-ended data protocols where the size of streams is unknown at the time of transmission.</p>
+			<p>The minimum size of a compound file is three sectors: one header, one FAT sector and one directory sector.</p>
+			<ul>
+				<li>A 512-byte sector compound file MUST be no greater than 2 GB in size for compatibility reasons. This means that every stream, including the directory entry array and mini stream, inside a 512-byte sector compound file must be less than 2 GB in size.
+</li>
+				<li>The maximum number of directory entries (storage objects, stream objects, and unallocated objects) in a 512-byte sector compound file is limited by the 2 GB file size, resulting in slightly less than 16 million directory entries.
+</li>
+				<li>The maximum size of the mini stream is slightly less than 256 GB. The maximum size of the mini stream in a 512-byte sector compound file is limited by the 2 GB file size. </li>
+			</ul>
+			<p>The structured storage profile of CFB formed the basis for the <fddLink id="fdd000004">AAF</fddLink> specification.</p>
+		</fdd:description>
+		<fdd:shortDescription>The Microsoft Compound File Binary File Format (CFB) file format is used for storing storage objects and stream objects in a hierarchical structure within a single file. </fdd:shortDescription>
+		<fdd:productionPhase/>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000379</fdd:id>
+					<fdd:shortName>MSG</fdd:shortName>
+					<fdd:titleName>Microsoft Outlook Item</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment/>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has later version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000392</fdd:id>
+					<fdd:shortName>CFB_4</fdd:shortName>
+					<fdd:titleName>Microsoft Compound File Binary File Format, Version 4</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000004</fdd:id>
+					<fdd:shortName>AAF_1_1</fdd:shortName>
+					<fdd:titleName>Advanced Authoring Format (AAF) Object, Version 1.1</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>
+					<p>Early versions of the AAF format detailed use of the structured storage systems outlined in CFB to store the objects on disk.</p>
+				</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse/>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully documented. Proprietary file format developed by Microsoft.</fdd:disclosure>
+		<fdd:documentation>
+			<a href="http://msdn.microsoft.com/en-us/library/dd942138.aspx">Microsoft [MS-CFB]: Compound File Binary File Format</a> specification available from Microsoft.</fdd:documentation>
+		<fdd:adoption>CFB is implemented in a <a href="http://msdn.microsoft.com/en-us/library/dd942433.aspx">wide range of Microsoft products</a> including Office for Mac 1998 - 2008 and Windows operating systems NY 4.0 - 8.1. </fdd:adoption>
+		<fdd:licensingAndPatents>CFB is a Microsoft product and may be covered by licenses and patents. CFB is not covered by Microsoft&apos;s Open Specification Promise or Community Promise.</fdd:licensingAndPatents>
+		<fdd:transparency>Dependant on the implementation.</fdd:transparency>
+		<fdd:selfDocumentation>None</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>
+			<p>Because a compound file is stored as a single file in the file-system, normal file-system security mechanisms can be used to secure the compound file. This includes read/write permissions, Access Control List (ACL), and encryption (NTFS EFS or BitLocker) where appropriate.</p>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors/>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue/>
+				</fdd:sigValues>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue/>
+				</fdd:sigValues>
+				<fdd:note/>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue/>
+					<fdd:sigValue/>
+				</fdd:sigValues>
+				<fdd:note/>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>File signature</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Hex: D0 CF 11 E0 A1 B1 1A E1</fdd:sigValue>
+						<fdd:sigValue>Hex: 0x0003 (version 3)</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>From <a href="http://msdn.microsoft.com/en-us/library/ff385210%28v=office.12%29.aspx">specification</a>.  This specification applies to the all Microsoft content types that share the general CFB structure.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>In addition to the Major Version field value declaration of the version number in the header, the Sector Shift field specifies the sector size depending on the version declaration. If Major Version is 3, then the Sector Shift must be 0x0009, specifying a sector size of 512 bytes.</p>
+			<p>In a compound file, all integer fields, including Unicode characters encoded in UTF-16, must be stored in little-endian byte order. The only exception is in user-defined data streams, where the compound file structure does not impose any restrictions.</p>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://msdn.microsoft.com/en-us/library/dd942138.aspx</link>
+					<tag>Microsoft	[MS-CFB] Compound File Binary File Format Specification</tag>
+					<comment>Format specification from Microsoft </comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://blogs.msdn.com/b/openspecification/archive/2009/07/24/exploring-the-compound-file-binary-format.aspx</link>
+					<tag>Exploring the Compound File Binary Format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://msdn.microsoft.com/en-us/library/ydd3k45e.aspx</link>
+					<tag>Containers: Compound Files</tag>
+					<comment>Overview of components and implementation of compound files in OLE applications</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://msdn.microsoft.com/en-us/library/aa378734.aspx</link>
+					<tag>[MSDN-STS] Microsoft Corporation, &quot;About Structured Storage&quot;</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Compound_File_Binary_Format</link>
+					<tag>Wikipedia Compound File Binary Format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/File_Allocation_Table</link>
+					<tag>Wikipedia File Allocation Table (FAT)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.amwa.tv/downloads/whitepapers/291_gilmer1_0702.pdf</link>
+					<tag>AAF
+— the Advanced Authoring Format by Brad Gilmer</tag>
+					<comment>Overview of AAF with mention of Microsoft&apos;s structured storage</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.amwa.tv/downloads/specifications/aafcontainerspec-v1.0.1.pdf</link>
+					<tag>Advanced Authoring Format Low-Level Container Specification</tag>
+					<comment>AAF Association
+Advanced Authoring
+Format (AAF)
+earlier specification document referencing CFB</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

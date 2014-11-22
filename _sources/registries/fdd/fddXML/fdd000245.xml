@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000245" titleName="DSDIFF, Direct Stream Digital Interchange File Format, Version 1.5" shortName="DSDIFF_1_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:updates>
+			<fdd:date>2011-03-09</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Direct Stream Digital Interchange File Format, DSDIFF, Version 1.5</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>audio formats</fdd:keyword>
+			<fdd:keyword>recorded sound formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>Format for the storage or exchange of one-bit delta sigma modulated audio, often called <i>Direct Stream Digital</i>, or for the losslessly compressed version called Direct Stream Transfer (DST).<br/>
+			<br/>As of 2006, delta sigma modulation is almost exclusively disseminated to endusers on the tangible media format called Super Audio CDs (SACDs), developed by SONY in association with Philips. The DSDIFF_1_5 file format is used by music producers to store DSD content or to deliver it &quot;to the label&quot; for reproduction on SACDs.</fdd:description>
+		<fdd:shortDescription>Format Description for DSDIFF - Format for the storage or exchange of one-bit delta sigma modulated audio, often called Direct Stream Digital, or for the losslessly compressed version called Direct Stream Transfer (DST).</fdd:shortDescription>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000115</fdd:id>
+					<fdd:shortName>IFF</fdd:shortName>
+					<fdd:titleName>IFF (EA Interchange File Format 1985)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000230</fdd:id>
+					<fdd:shortName>DSD</fdd:shortName>
+					<fdd:titleName>One-bit Delta Sigma Audio Encoding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>DST, Direct Stream Transfer format for lossless encoded DSD audio, not documented at this Web site</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>Marker information, in what is called a <i>Time File</i>, used to support certain editorial or production workflows, not documented at this Web site</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None, although the collections of the Motion Picture, Broadcasting, and Recorded Sound Division include SACDs.</fdd:experience>
+		<fdd:preference>None.  For preservation reformatting, the Library prefers Broadcast WAVE (<fddLink id="fdd000356">WAVE_BWF_1</fddLink> and <fddLink id="fdd000357">WAVE_BWF_2</fddLink>).</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Developed by Royal Philips Electronics of the Netherlands, now overseen by Sonic Studio LLC.</fdd:disclosure>
+		<fdd:documentation>
+			<a href="http://www.sonicstudio.com/pdf/dsd/DSDIFF_1.5_Spec.pdf">Direct Stream Digital Interchange File Format, DSDIFF, Version 1.5 (2004)</a> and <a href="http://www.sonicstudio.com/pdf/dsd/DSDIFF_1.5_RecommendedUsage.pdf">Recommended Usage of DSDIFF Version 1.5</a>.
+		</fdd:documentation>
+		<fdd:adoption>Adoption of file version unknown.</fdd:adoption>
+		<fdd:licensingAndPatents>Not investigated.</fdd:licensingAndPatents>
+		<fdd:transparency>Transparent wrapper. DSD bitstream is relatively transparent; DST is likely to be less so.</fdd:transparency>
+		<fdd:selfDocumentation>See <fddLink id="fdd000115">IFF</fddLink>.
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>Not investigated.
+		</fdd:externalDependencies>
+		<fdd:techProtection>None indicated in specification.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:soundQF>
+			<fdd:normalSound>Details unknown; this is a very specialized format for professional producers.</fdd:normalSound>
+			<fdd:fidelity>See <fddLink id="fdd000230">DSD</fddLink>
+			</fdd:fidelity>
+			<fdd:channels>DSDIFF_1_5  files can be structured for 2 channels or for &#34;5- or 6-channels&#34; (presumably for 5.1 mixes).   SACDs may contain a 2-channel stereo mix, a surround mix (usually the 5.1 layout), other mixes, or even multiple mmix versions.</fdd:channels>
+			<fdd:samples>Not applicable</fdd:samples>
+			<fdd:beyondSound>Not fully investigated.  DSDIFF_1_5 files can be divided into ten <i>Division Files</i> to overcome size limits imposed by some operating systems.</fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>dff</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Indicated in <i>Recommended Usage</i>, p. 16</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>dft</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For a DSDIFF_1_5 <i>Time File</i>; see <i>Recommended Usage</i>, p. 18</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>dfn (n is an integer from 0 to 9)</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For a DSDIFF_1_5 <i>Division Files</i>, not to exceed ten in number; see <i>Recommended Usage</i>, p. 16</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>None found</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>
+					<a href="../contact_format.shtml">Comments welcome</a>
+				</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>None found</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>
+					<a href="../contact_format.shtml">Comments welcome</a>
+				</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.sonicstudio.com/pdf/dsd/DSDIFF_1.5_Spec.pdf</link>
+					<tag>Direct Stream Digital Interchange File Format, DSDIFF, Version 1.5 (2004)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.sonicstudio.com/pdf/dsd/DSDIFF_1.5_RecommendedUsage.pdf</link>
+					<tag>Recommended Usage of DSDIFF version 1.5, Version 1 (2004)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://web.archive.org/web/20090415170952/http://sonicstudio.com/support/knowledgebase.html#nexStage</link>
+					<tag>Support KnowledgeBase from Sonic Studio: DSD and SACD products</tag>
+					<comment>Sonic Studio was responsible for development of DSD and SACD, having acquired the complete portfolio of products and services from the ProTECH subsidiary of Philips.  However, Sonic Studio no longer seems to be supporting this older knowledgebase or separate DSD products.  This link is to a 2009 snapshot of the resources via Internet Archive. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Super_Audio_CD</link>
+					<tag>Wikipedia article on SACD</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.sa-cd.net/faq</link>
+					<tag>FAQ on SACD technology</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
