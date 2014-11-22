@@ -175,7 +175,7 @@ def enumerate_ff_formats(site):
     source['stats']['total_w_extension'] = total_w_extension
     source['stats']['total_w_uti'] = total_w_uti
     source['source_prefix'] = "http://fileformats.archiveteam.org/wiki/"
-    with open("registries/mediawikis/ffw.yml", 'w') as outfile:
+    with open("digipres.github.io/_sources/registries/mediawikis/ffw.yml", 'w') as outfile:
         outfile.write( yaml.safe_dump(source, default_flow_style=False) ) 
 
 
