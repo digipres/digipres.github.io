@@ -15,7 +15,7 @@ python download-trid-data.py
 cd -
 
 cd ../../..
-python registries/mediawikis/scan-wikis.py
+python digipres.github.io/_sources/registries/mediawikis/scan-wikis.py
 cd -
 
 git commit -m "Refreshed the known format data sources." .
