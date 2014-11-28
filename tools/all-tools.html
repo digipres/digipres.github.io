@@ -28,7 +28,9 @@ permalink: /tools/all-tools/
 <div class="panel panel-default">
 <div class="panel-heading">
 {% capture sectitle %}Tool: {{ tool.title_full }}{% endcapture %}
-    <h3 class="panel-title" id="{% include anchor.html anchor=sectitle %}"><a href="#{% include anchor.html anchor=sectitle %}" style="color: black">{{ tool.title_full }}</a><span class="pull-right"><a href="http://coptr.digipres.org/{{ tool.title_url }}" title="View &amp; edit on COPTR"><button type="button" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-link"></span></button></a></span></h3>
+<h3 class="panel-title" id="{% include anchor.html anchor=sectitle %}"><a href="#{% include anchor.html anchor=sectitle %}" style="color: black">{{ tool.title_full }}</a>
+{% include _tool_edit_link.html tool=tool show_title=false %}
+</h3>
 </div>
 <div class="panel-body">
 

@@ -48,8 +48,9 @@ permalink: /tools/by-type/
 {% for tool in sorted_tools %}
 {% if tool.content_types contains ct[1]['title'] %}
 <tr class="toolgrid-row {{ ct[1]['title_url'] | downcase | replace: '%','' }}">
-{% capture sectitle %}Tool: {{ tool.title_full }}{% endcapture %}
-<th><a href="{{ site.baseurl }}/tools/all-tools/#{% include anchor.html anchor=sectitle %}" title="{{ tool.purpose | replace: '"',"'" }}">{{ tool.title }}</a></th>
+<th>
+{% include _tool_edit_link.html tool=tool %}
+</th>
 {% for cat in site.data.tools.function_tree %}
 <td style="vertical-align: middle; text-align: center;" class="toolgrid-col {{ cat['title_url'] | downcase | replace: '%','' }}">
 {% if tool.topcats contains cat.title %}

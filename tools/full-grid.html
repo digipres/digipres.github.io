@@ -34,8 +34,9 @@ permalink: /tools/ubergrid/
 {% for tool in sorted_tools %}
 {% if tool.content_types contains ct[1]['title'] %}
 <tr class="{% cycle 'odd', 'even' %}">
-{% capture sectitle %}Tool: {{ tool.title_full }}{% endcapture %}
-<th><a href="{{ site.baseurl }}/tools/all-tools/#{% include anchor.html anchor=sectitle %}">{{ tool.title }}</a></th>
+<th>
+{% include _tool_edit_link.html tool=tool %}
+</th>
 {% for cat in site.data.tools.function_tree %}
 {% for subcat in cat.subcats %}
 <td style="vertical-align: middle; text-align: center;">

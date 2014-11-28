@@ -67,7 +67,9 @@ permalink: /tools/by-type-and-function/
 {% if tool.subcats contains subcat[0] %}
 
 {% capture sectitle %}Tool: {{ tool.title_full }}{% endcapture %}
-<li><b><a href="{{ site.baseurl }}/tools/all-tools/#{% include anchor.html anchor=sectitle %}" style="color: black">{{ tool.title_full }}</a></b> - {{ tool.purpose }}<a href="http://coptr.digipres.org/{{ tool.title_url }}" title="View &amp; edit on COPTR" class="pull-right" style="color: grey;"><span class="glyphicon glyphicon-link"></span></a></li>
+<li><b><a href="{{ site.baseurl }}/tools/all-tools/#{% include anchor.html anchor=sectitle %}" style="color: black">{{ tool.title_full }}</a></b> - {{ tool.purpose }}
+{% include _tool_edit_link.html tool=tool show_title=false %}
+</li>
 
 {% endif %}
 {% endif %}
