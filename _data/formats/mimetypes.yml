@@ -13068,13 +13068,6 @@ mimetypes:
       regId: tika
     sort_depth: 0
     sort_key: message/imdn+xml
-- - message/news
-  - id: message/news
-    identifiers:
-    - formatId: message/news
-      regId: tika
-    sort_depth: 0
-    sort_key: message/news
 - - message/partial
   - id: message/partial
     identifiers:
@@ -13082,23 +13075,6 @@ mimetypes:
       regId: tika
     sort_depth: 0
     sort_key: message/partial
-- - message/rfc822
-  - id: message/rfc822
-    identifiers:
-    - formatId: internet e-mail message format
-      regId: ffw
-    - formatId: message/rfc822
-      regId: tika
-    - formatId: x-fmt/429
-      regId: pronom
-    - formatId: fmt/278
-      regId: pronom
-    - formatId: fdd000393
-      regId: fdd
-    - formatId: fdd000388
-      regId: fdd
-    sort_depth: 0
-    sort_key: message/rfc822
 - - message/s-http
   - id: message/s-http
     identifiers:
@@ -13134,13 +13110,6 @@ mimetypes:
       regId: tika
     sort_depth: 0
     sort_key: message/vnd.si.simp
-- - message/x-emlx
-  - id: message/x-emlx
-    identifiers:
-    - formatId: message/x-emlx
-      regId: tika
-    sort_depth: 0
-    sort_key: message/x-emlx
 - - model/example
   - id: model/example
     identifiers:
@@ -15151,6 +15120,47 @@ mimetypes:
       regId: tika
     sort_depth: 0
     sort_key: text/x-texinfo
+- - text/x-tika-text-based-message
+  - id: text/x-tika-text-based-message
+    identifiers:
+    - formatId: text/x-tika-text-based-message
+      regId: tika
+    sort_depth: 0
+    sort_key: text/x-tika-text-based-message
+- - message/news
+  - id: message/news
+    identifiers:
+    - formatId: message/news
+      regId: tika
+    sort_depth: 1
+    sort_key: text/x-tika-text-based-message . message/news
+    supertype: text/x-tika-text-based-message
+- - message/rfc822
+  - id: message/rfc822
+    identifiers:
+    - formatId: internet e-mail message format
+      regId: ffw
+    - formatId: message/rfc822
+      regId: tika
+    - formatId: x-fmt/429
+      regId: pronom
+    - formatId: fmt/278
+      regId: pronom
+    - formatId: fdd000393
+      regId: fdd
+    - formatId: fdd000388
+      regId: fdd
+    sort_depth: 1
+    sort_key: text/x-tika-text-based-message . message/rfc822
+    supertype: text/x-tika-text-based-message
+- - message/x-emlx
+  - id: message/x-emlx
+    identifiers:
+    - formatId: message/x-emlx
+      regId: tika
+    sort_depth: 1
+    sort_key: text/x-tika-text-based-message . message/x-emlx
+    supertype: text/x-tika-text-based-message
 - - text/x-url
   - id: text/x-url
     identifiers:
@@ -15939,4 +15949,4 @@ mimetypes:
     sort_depth: 0
     sort_key: x-world/x-3dmf
 stats:
-  total_mimetypes: 2041
+  total_mimetypes: 2042
