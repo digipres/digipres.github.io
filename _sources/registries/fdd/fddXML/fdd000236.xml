@@ -27,7 +27,10 @@
 			<fdd:keyword>international standards for digital formats</fdd:keyword>
 			<fdd:keyword>container formats</fdd:keyword>
 		</fdd:keywords>
-		<fdd:description>The WARC (Web ARChive) format specifies a method for combining multiple digital resources into an aggregate archival file together with related information. The WARC format is a revision of the Internet Archive's ARC File Format [ARC_IA] format that has traditionally been used to store "web crawls" as sequences of content blocks harvested from the World Wide Web.  The WARC format generalizes the older format to better support the harvesting, access, and exchange needs of archiving organizations. Besides the primary content currently recorded, the revision accommodates related secondary content, such as assigned metadata, abbreviated duplicate detection events, and later-date transformations.</fdd:description>
+		<fdd:description>
+			<p>The WARC (Web ARChive) format specifies a method for combining multiple digital resources into an aggregate archival file together with related information. The WARC format is a revision of the Internet Archive's ARC File Format [<fddLink id="fdd000235">ARC_IA</fddLink>] format that has traditionally been used to store "web crawls" as sequences of content blocks harvested from the World Wide Web.  The WARC format generalizes the older format to better support the harvesting, access, and exchange needs of archiving organizations. Besides the primary content currently recorded, the revision accommodates related secondary content, such as assigned metadata, abbreviated duplicate detection events, and later-date transformations.</p>
+			<p>A WARC format file is the concatenation of one or more WARC records.  A WARC record consists of a record header followed by a record content block and two newlines; the header has mandatory named fields that document the date, type, and length  of the record and support the convenient retrieval of each harvested resource (file).  There are eight types of WARC record: &apos;warcinfo&apos;, &apos;response&apos;, &apos;resource&apos;, &apos;request&apos;, &apos;metadata&apos;, &apos;revisit&apos;, &apos;conversion&apos;, and &apos;continuation&apos;.  The content blocks in a WARC file may contain resources in any format; examples include the binary image or audiovisual files that may be embedded or linked to in HTML pages.</p>
+		</fdd:description>
 		<fdd:shortDescription>Web ARChive file format.  ISO 28500:2009.  Used by archival institutions to store content harvested by web crawls, for example via use of the Heritrix harvesting tool.</fdd:shortDescription>
 		<fdd:productionPhase>Used for web-accessible content in archived state, representing the final form disseminated in final state over the web to a user agent (web browser).</fdd:productionPhase>
 		<fdd:relationships>
@@ -57,15 +60,14 @@
 Bibliothèque nationale de France, is the working group responsible for maintenance.</fdd:disclosure>
 		<fdd:documentation>
 			<a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=44717">ISO 28500:2009, Information and documentation -- WARC file
-format</a> is available from ISO for purchase. The draft standard that was the basis for approval, ISO/DIS 28500, is at <a href="http://bibnum.bnf.fr/WARC/warc_ISO_DIS_28500.pdf">http://bibnum.bnf.fr/WARC/warc_ISO_DIS_28500.pdf</a>. 		</fdd:documentation>
+format</a> is available from ISO for purchase. The draft standard that was the basis for approval, ISO/DIS 28500, is at <a href="http://bibnum.bnf.fr/WARC/WARC_ISO_28500_version1_latestdraft.pdf">http://bibnum.bnf.fr/WARC/WARC_ISO_28500_version1_latestdraft.pdf</a>. 		</fdd:documentation>
 		<fdd:adoption>
 			The file format was designed to support the requirements of members of the <a href="http://netpreserve.org/about-us">International Internet Preservation Consortium</a>.
 		</fdd:adoption>
 		<fdd:licensingAndPatents>
 			None.
 		</fdd:licensingAndPatents>
-		<fdd:transparency>
-			The wrapper is transparent; contained data varies.
+		<fdd:transparency>The WARC wrapper is transparent. Contained data  harvested from the Web may be in any format.  Transparency varies by format.
 		</fdd:transparency>
 		<fdd:selfDocumentation>In the WARC files containing the actual archived "documents" (html, gif, jpeg, ps, etc.) each document is preceded by basic information about the document.</fdd:selfDocumentation>
 		<fdd:externalDependencies>
@@ -119,7 +121,7 @@ format</a> is available from ISO for purchase. The draft standard that was the b
 			</fdd:citation>
 			<fdd:citation>
 				<fdd:specReference>
-					<specRefDetail rel="snum">ISO/DIS 28500</specRefDetail>: <specRefDetail rel="stitle">Information and documentation — The WARC File Format.</specRefDetail> (<a href="http://bibnum.bnf.fr/WARC/warc_ISO_DIS_28500.pdf">http://bibnum.bnf.fr/WARC/warc_ISO_DIS_28500.pdf</a>)  The Draft International Standard that was the basis for voting and approval.</fdd:specReference>
+					<specRefDetail rel="snum">ISO/DIS 28500</specRefDetail>: <specRefDetail rel="stitle">Information and documentation — The WARC File Format.</specRefDetail> (<a href="http://bibnum.bnf.fr/WARC/WARC_ISO_28500_version1_latestdraft.pdf">http://bibnum.bnf.fr/WARC/WARC_ISO_28500_version1_latestdraft.pdf</a>).  The Draft International Standard that was the basis for voting and approval.</fdd:specReference>
 			</fdd:citation>
 		</fdd:citations>
 	</fdd:formatSpecifications>
@@ -142,6 +144,8 @@ format</a> is available from ISO for purchase. The draft standard that was the b
 			<fdd:url>
 				<fdd:urlReference>
 					<link>http://archive-access.sourceforge.net/warc/</link>
+					<tag>WARC File Format specifications</tag>
+					<comment>From sourceforge page for Internet Archive ARC access tools</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
@@ -149,6 +153,27 @@ format</a> is available from ISO for purchase. The draft standard that was the b
 					<link>http://dx.doi.org/10.7207/twr13-01</link>
 					<tag>Web-Archiving: DPC Technology Watch Report 13-01</tag>
 					<comment>Maureen Pennock.  March 2013.  Makes frequent reference to the use of WARC and related tools.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/iipc/openwayback/wiki/General-overview</link>
+					<tag>OpenWayback: General Overview</tag>
+					<comment>OpenWayback is an open source Java application designed to query and access archived web material.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://webarchive.jira.com/wiki/display/Heritrix/Heritrix+Output#HeritrixOutput-WARCfiles</link>
+					<tag>Heritrix 3.0 and 3.1 User Guide: Output/WARC files</tag>
+					<comment>Heritrix is the Internet Archive&apos;s open-source web crawler project.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://webarchive.jira.com/wiki/pages/viewpage.action?pageId=4817</link>
+					<tag>WARC (Web ARChive) sample files</tag>
+					<comment>From knowledge base supporting Heritrix software.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>

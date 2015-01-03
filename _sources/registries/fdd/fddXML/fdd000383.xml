@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?altova_sps U:\edit_2013\fddCreation_20130906.sps?>
-<fdd:FDD id="fdd000383" titleName="MBOX Email Format" shortName="MBOX" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd=".\fdd.xsd" xsi:schemaLocation=".\fdd.xsd fdd.xsd">
+<fdd:FDD id="fdd000383" titleName="MBOX Email Format" shortName="MBOX" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>text</fdd:gdfrGenre>
@@ -124,9 +123,12 @@ the two formats and numerous proprietary formats. Once in an MBOX or <fddLink id
 			</fdd:internetMediaType>
 			<fdd:magicNumbers>
 				<fdd:sigValues>
-					<fdd:sigValue>See note</fdd:sigValue>
+					<fdd:sigValue>00 0D BB A0</fdd:sigValue>
 				</fdd:sigValues>
-				<fdd:note>There are no magic numbers for MBOX. Instead, MBOX database files can be recognized by having a leading character sequence of &quot;From&quot;, followed by a single Space character (0x20), followed by additional printable character data. </fdd:note>
+				<fdd:note>
+					<p>The value listed is for the MBOX Table of Context file and, <a href="http://www.garykessler.net/library/file_sigs.html">Gary Kessler says</a>, the next four bytes appear to be the number of e-mails in the associated MBOX file. <a href="http://tools.ietf.org/rfc/rfc4155.txt">RFC 4155</a> does not list a magic number but instead says that  MBOX database files can be recognized by having a leading character sequence of &quot;From&quot; followed by a single Space character (0x20), followed by additional printable character data. <a href="http://www.digitalpreservation.gov/formats/contact_format.shtml">Comments welcome.</a>
+					</p>
+				</fdd:note>
 			</fdd:magicNumbers>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>

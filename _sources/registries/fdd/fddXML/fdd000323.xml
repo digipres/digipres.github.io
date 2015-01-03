@@ -50,16 +50,19 @@ and should contain the same number of fields as the records in the rest of the f
 			<p>In RFC 4180, the required section in an RFC for MIME type registration that documents the &quot;Published Specification&quot; reads: &quot;While numerous private specifications exist for various programs
 and systems, there is no single &apos;master&apos; specification for this format.  An attempt at a common definition can be found in Section
 2 [of RFC 4180].&quot;</p>
-			<p>Some <a href="#useful">Useful References</a> provide variant specifications.</p>
+			<p>Some <a href="#useful">Useful References</a> below provide variant specifications.</p>
 		</fdd:disclosure>
 		<fdd:documentation>IETF RFC 4180: Common Format and MIME Type for Comma-Separated Values (CSV) Files.  2005.  Available at <a href="http://tools.ietf.org/html/rfc4180">http://tools.ietf.org/html/rfc4180</a> or <a href="http://www.ietf.org/rfc/rfc4180.txt">http://www.ietf.org/rfc/rfc4180.txt</a>
 		</fdd:documentation>
 		<fdd:adoption>
 			<p>Widely used as an exchange format for tabular data.  Although very limited in functionality, there are many data exchange or data preservation contexts for which it is adequate, particularly when the syntax and semantics of fields are described in ancillary documentation that is also exchanged or preserved.  CSV files can be imported and exported by almost any software designed for storing or manipulating data, including relational database systems, spreadsheet software, and statistical analysis software.</p>
-			<p>CSV is a preferred format for interchange in many contexts because it is so easy to process.   <a href="http://fclaweb.fcla.edu/uploads/recFormats.pdf">Recommended Data Formats for Preservation Purposes in the Florida Digital Archive</a> lists CSV as a format with a high confidence level of providing ongoing access in a usable form.  CSV is a recommended format for data deposit with <a href="http://www.collectionscanada.gc.ca/obj/012018/f2/012018-2200-e.pdf">Library and Archives Canada</a>, a <a href="http://libguides.mit.edu/content.php?pid=456907&amp;sid=3741704">supported format in MIT&apos;s DSpace</a> implementation, and a <a href="http://www.ncdcr.gov/Portals/26/PDF/guidelines/file_formats_in-house_preservation.pdf">recommended format for long-term retention</a> by the State Archives of North Carolina.  CSV was one of the primary formats into which the UK National Archives converted datasets that were selected for the <a href="http://www.nationalarchives.gov.uk/webarchive/archiving-datasets.htm">National Digital Archive of Datasets</a>  between 1997 and 2010 (after which a government initiative promoting open data eliminated the need for such conversion by the National Archives).  It is the <a href="http://daac.ornl.gov/PI/pi_info.shtml">preferred format for preparing tabular environmental data</a> at the Oak Ridge National Laboratory and its use for tabular data is a <a href="http://www.dataone.org/best-practices/document-and-store-data-using-stable-file-formats">best practice</a> for the DataONE (Data Observation Network for Earth) project.  Most government open data initiatives have CSV as one of the primary formats in which data can be downloaded. For example, CSV is one of the formats in which data from the U.S. <a href="http://www.data.gov/">Data.gov</a> can be downloaded.  Others include <fddLink id="fdd000263">XML</fddLink>, ESRI shapefiles (<fddLink id="fdd000280">ESRI_shape</fddLink>), and <fddLink id="fdd000340">KML</fddLink>.  The last two are for geospatial data.</p>
+			<p>CSV is a preferred format for interchange in many contexts because it is so easy to process.   <a href="http://fclaweb.fcla.edu/uploads/recFormats.pdf">Recommended Data Formats for Preservation Purposes in the Florida Digital Archive</a> lists CSV as a format with a high confidence level of providing ongoing access in a usable form.  CSV is a recommended format for data deposit with <a href="http://www.collectionscanada.gc.ca/obj/012018/f2/012018-2200-e.pdf">Library and Archives Canada</a>, a <a href="http://libguides.mit.edu/c.php?g=176372&amp;p=1158986">supported format in MIT&apos;s DSpace</a> implementation, and a <a href="http://www.ncdcr.gov/Portals/26/PDF/guidelines/file_formats_in-house_preservation.pdf">recommended format for long-term retention</a> by the State Archives of North Carolina.  CSV was one of the primary formats into which the UK National Archives converted datasets that were selected for the <a href="http://www.nationalarchives.gov.uk/webarchive/archiving-datasets.htm">National Digital Archive of Datasets</a>  between 1997 and 2010 (after which a government initiative promoting open data eliminated the need for such conversion by the National Archives).  It is the <a href="http://daac.ornl.gov/PI/pi_info.shtml">preferred format for preparing tabular environmental data</a> at the Oak Ridge National Laboratory and its use for tabular data is a <a href="http://www.dataone.org/best-practices/document-and-store-data-using-stable-file-formats">best practice</a> for the DataONE (Data Observation Network for Earth) project.  Most government open data initiatives have CSV as one of the primary formats in which data can be downloaded. For example, CSV is one of the formats in which data from the U.S. <a href="http://www.data.gov/">Data.gov</a> can be downloaded.  Others include <fddLink id="fdd000263">XML</fddLink>, ESRI shapefiles (<fddLink id="fdd000280">ESRI_shape</fddLink>), and <fddLink id="fdd000340">KML</fddLink>.  The last two are for geospatial data.</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>None.</fdd:licensingAndPatents>
-		<fdd:transparency>A simple text-based format that is very transparent, being both human-readable and easily machine-processable.</fdd:transparency>
+		<fdd:transparency>
+			<p>A simple text-based format that is very transparent, being both human-readable and easily machine-processable.</p>
+			<p>Simple tools have been developed to validate files and visualize the content of the variables/columns.  See, for example, <i>CSV Fingerprint</i> or <i>CSV Lint</i> in <a href="#useful">Useful References</a> below.</p>
+		</fdd:transparency>
 		<fdd:selfDocumentation>Poor.  There is no internal capability to represent metadata, although the optional header row may provide some clues to the semantics of the columns.  For preservation, an associated codebook is desirable, listing and describing the fields, and indicating types and ranges for field data values.  In some contexts, the relevant information is supplied by documentation for a larger corpus or resource, rather than for each dataset. </fdd:selfDocumentation>
 		<fdd:externalDependencies>None.</fdd:externalDependencies>
 		<fdd:techProtection>None.</fdd:techProtection>
@@ -161,6 +164,26 @@ and systems, there is no single &apos;master&apos; specification for this format
 					<link>http://fclaweb.fcla.edu/content/csv</link>
 					<tag>FDA File Format Details: CSV</tag>
 					<comment>From Florida Digital Archive</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://setosa.io/blog/2014/08/03/csv-fingerprints/</link>
+					<tag>Setosa blog: CSV Fingerprints</tag>
+					<comment>The blog post includes a box to paste a CSV file into for visualization.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://source.opennews.org/articles/all-about-csv-fingerprint/</link>
+					<tag>All About CSV Fingerprint</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://csvlint.io/</link>
+					<tag>CSV Lint</tag>
+					<comment>Simple online format validator for CSV files</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>

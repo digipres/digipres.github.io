@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000395" titleName="OOXML Format Family -- ISO 29500" shortName="OOXML Family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+<fdd:FDD id="fdd000395" titleName="OOXML Format Family -- ISO/IEC 29500 and ECMA 376" shortName="OOXML_Family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenres>
@@ -16,23 +16,37 @@
 		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
 		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2014-07-12</fdd:date>
+			<fdd:date>2014-12-09</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Preliminary</fdd:draftStatus>
 	</fdd:properties>
 	<fdd:identificationAndDescription>
-		<fdd:fullName>Office Open XML (OOXML, ISO 29500, ECMA 376) Format Family</fdd:fullName>
+		<fdd:fullName>Office Open XML (OOXML, ISO/IEC 29500, ECMA 376) Format Family</fdd:fullName>
 		<fdd:keywords>
 			<fdd:keyword>document formats</fdd:keyword>
 		</fdd:keywords>
 		<fdd:description>
-			<p>TBD</p>
+			<p>This description is an overview of the <i>family</i> of formats defined by <i>ISO/IEC 29500:  Information technology -- Document description and processing languages -- Office Open XML File Formats</i> and the corresponding <i>ECMA 376</i> specifications.</p>
+			<p>This family of XML-based formats was designed by Microsoft to match the functionality of the proprietary binary formats that had been used as the default formats in Microsoft Office applications (Word, Excel, and PowerPoint) through Office 2003 and be fully compatible with the existing corpus of documents.  In December 2005, a Technical Committee of the ECMA standardization organization (TC45) was established to review documentation for the proposed Office Open XML specification submitted by Microsoft.  The committee incorporated expertise from large customers using Microsoft Office for enterprise systems, software vendors already developing products to read, write, and transform office documents, and archival institutions with an interest in long-term preservation.  The resulting document was approved as ECMA 376 in December 2006 and was then submitted for standardization through ISO/IEC JTC 1 in early 2007.  Approval as ISO/IEC 29500 followed in early 2008. ISO/IEC 29500 incorporated many detailed changes and a restructuring of the parts.  One important change was to separate the specifications for markup that supports the functional requirements of the three main content categories from the specifications for elements and attributes that support backwards compatibility and legacy formats.  Legacy markup was documented in a new part under the title <i>Transitional Migration Features</i>.  Files that comply withISO/IEC 29500 Part 1 are termed "Strict" and files that comply with Part 4 (which is structured as textual modifications to Part 1) are termed "Transitional."</p>
+			<p>The primary members of the OOXML Format Family are document formats for the key office productivity content categories:</p>
+			<ul>
+				<li>DOCX for word-processing files, specified via WordprocessingML.  See <fddLink id="fdd000397">DOCX/OOXML_2012</fddLink>.</li>
+				<li>XLSX for spreadsheet files, specified via SpreadsheetML.  See <fddLink id="fdd000398">XLSX/OOXML_2012</fddLink>.</li>
+				<li>PPTX for presentation/slideshow files, specified via PresentationML.  See <fddLink id="fdd000399">PPTX/OOXML_2012</fddLink>.</li>
+			</ul>
+			<p>Key supporting members of the format family include:</p>
+			<ul>
+				<li>A package format based on ZIP that is used as a container by all three primary OOXML content categories and other non-OOXML file formats, such as Visio .vsdx and Open XML Paper Specification .oxps files.  See <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>.</li>
+				<li>A markup language, Markup Compatibility and Extensibility (MCE), for supporting extensibility of an XML-based format over time, so that files created by future application versions and using new elements and attributes in new namespaces can be structured in a way that earlier application versions can still read the files and take appropriate actions when faced with markup using the new namespaces.  Any of the three primary content types can include markup using the MCE namespace and schema.  Like OPC, MCE can be applied beyond OOXML.  See <fddLink id="fdd000396">MCE/OOXML_2012</fddLink>.</li>
+			</ul>
+			<p>WordprocessingML, SpreadsheetML, and PresentationML are specified in Parts 1 and 4 of ISO/IEC 29500.  Part 1 defines the Strict variant of these three formats.  Part 4, written as a supplement to Part 1, specifies additional markup to support compatibility with various legacy applications.  The Transitional variant of each of these formats allows markup documented in Part 4 in addition to that documented in Part 1.  In addition to the three main markup languages (MLs), the standard defines several supporting markup languages and schemas: DrawingML, which includes markup for graphical elements in any of the three main document types, including embedded images, vector graphics for diagrams, and analytical charts derived from data in a document; Office Math Markup Language (OMML), which supports the display of mathematics in the context of applications that support collaborative editing and tracked changes within mathematical expressions; a schema for bibliographies; and several supporting schemas for document properties (core, extended, and custom).  Part 4 includes the specification for VML, a deprecated graphics language superseded by DrawingML.</p>
+			<p>Several closely related formats are covered completely or in large part by the ISO/IEC 29500 and ECMA 376 specifications.  These include documents used as templates for other documents and macro-enabled variants of the primary content types.  See <a href="#notes">Notes</a> below.</p>
 		</fdd:description>
-		<fdd:shortDescription>TBD</fdd:shortDescription>
-		<fdd:productionPhase>OOXML can be used in any production phase for office documents, which are certainly created (initial state), exchanged for editing and review (middle-state) and may be published (final-state).</fdd:productionPhase>
+		<fdd:shortDescription>Overview of the family of formats defined by ISO/IEC 29500:  Information technology -- Document description and processing languages -- Office Open XML File Formats.  Includes DOCX, XLSX, and PPTX.</fdd:shortDescription>
+		<fdd:productionPhase>OOXML can be used in any production phase for office documents, as they are created (initial state), exchanged for editing and review (middle-state), and published (final-state).</fdd:productionPhase>
 		<fdd:relationships>
 			<fdd:relationship>
-				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
 				<fdd:relatedTo>
 					<fdd:id>fdd000363</fdd:id>
 					<fdd:shortName>OPC/OOXML_2012</fdd:shortName>
@@ -41,7 +55,65 @@
 			</fdd:relationship>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
-				<fdd:comment>Application-specific formats in the OOXML family and the OPC packaging format.  See <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>.  These include .docx, .pptx, and .xlsx files as produced by Microsoft Office products since Office 2007, not described at this web site at this time.</fdd:comment>
+				<fdd:relatedTo>
+					<fdd:id>fdd000397</fdd:id>
+					<fdd:shortName>DOCX/OOXML_2012</fdd:shortName>
+					<fdd:titleName>DOCX Transitional (Office Open XML), ISO 29500:2008-2012, ECMA-376</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Uses WordprocessingML in an <fddLink id="fdd000363">OPC/OOXML_2012</fddLink> package.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000400</fdd:id>
+					<fdd:shortName>DOCX/OOXML_Strict_2012</fdd:shortName>
+					<fdd:titleName>DOCX Strict (Office Open XML), ISO 29500-1:2008-2012, ECMA-376, Editions 2-4</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Disallows legacy markup permitted in DOCX Transitional to support backwards compatibility.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000398</fdd:id>
+					<fdd:shortName>XLSX/OOXML_2012</fdd:shortName>
+					<fdd:titleName>XLSX Transitional (Office Open XML), ISO 29500:2008-2012, ECMA-376</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Uses SpreadsheetML in an <fddLink id="fdd000363">OPC/OOXML_2012</fddLink> package.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000401</fdd:id>
+					<fdd:shortName>XLSX/OOXML_Strict_2012</fdd:shortName>
+					<fdd:titleName>XLSX Strict (Office Open XML), ISO 29500-1:2008-2012, ECMA-376, Editions 2-4</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Disallows legacy markup permitted in XLSX Transitional to support backwards compatibility.  Permits storage of dates in profile of ISO 8601 date and time format.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000399</fdd:id>
+					<fdd:shortName>PPTX/OOXML_2012</fdd:shortName>
+					<fdd:titleName>PPTX Transitional (Office Open XML), ISO 29500:2008-2012, ECMA-376</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Uses PresentationML in an <fddLink id="fdd000363">OPC/OOXML_2012</fddLink> package.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000402</fdd:id>
+					<fdd:shortName>PPTX/OOXML_Strict_2012</fdd:shortName>
+					<fdd:titleName>PPTX Strict (Office Open XML), ISO 29500-1:2008-2012, ECMA-376, Editions 2-4</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Disallows legacy markup permitted in PPTX Transitional to support backwards compatibility.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>Other application-specific formats fully defined by OOXML as specified in ISO/IEC 29500.  These include .dotx, .potx, and .xltx, template files as used and produced by Microsoft Office products since Office 2007.  The template formats are not described separately at this web site; they are essentially identical to the corresponding document formats, which are described as subtypes and linked above.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has modified version</fdd:typeOfRelationship>
+				<fdd:comment>Other application-specific formats closely related to OOXML.  These include .docm, .pptm, and .xlsm files, macro-enabled formats as produced by Microsoft Office products since Office 2007.  The macro-enabled variant formats are not described at this web site at this time.  See <a href="#notes">Notes</a> below for more on Microsoft Office use of macros.</fdd:comment>
 			</fdd:relationship>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
@@ -52,10 +124,11 @@
 				</fdd:relatedTo>
 			</fdd:relationship>
 			<fdd:relationship>
-				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
 				<fdd:relatedTo>
 					<fdd:id>fdd000355</fdd:id>
-					<fdd:shortName>ZIP File Format, Version 6.2.0 (PKWARE)</fdd:shortName>
+					<fdd:shortName>ZIP_6_2_0</fdd:shortName>
+					<fdd:titleName>ZIP File Format, Version 6.2.0 (PKWARE)</fdd:titleName>
 				</fdd:relatedTo>
 			</fdd:relationship>
 			<fdd:relationship>
@@ -68,56 +141,111 @@
 			</fdd:relationship>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>
+			<p>LC was represented on ECMA TC45 during the initial standardization processes and continues to be active in the maintenance through SC34/WG4.</p>
+			<p>For other aspects of LC experience with OOXML, see individual subtypes, particularly <fddLink id="fdd000397">DOCX/OOXML_2012</fddLink>, <fddLink id="fdd000398">XLSX/OOXML_2012</fddLink>, and <fddLink id="fdd000399">PPTX/OOXML_2012</fddLink>.</p>
+		</fdd:experience>
+		<fdd:preference>
+			<p>See individual subtypes, particularly <fddLink id="fdd000397">DOCX/OOXML_2012</fddLink>, <fddLink id="fdd000398">XLSX/OOXML_2012</fddLink>, and <fddLink id="fdd000399">PPTX/OOXML_2012</fddLink>.</p>
+		</fdd:preference>
+	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>Family of formats based on international open standard.  Maintained by ISO/IEC JTC1 SC34/WG4.  Originated by Microsoft Corporation and first standardized through ECMA International in 2006.  Approval as ISO/IEC 29500 was in 2008.</fdd:disclosure>
 		<fdd:documentation>
 			<p>
 				<i>ISO/IEC 29500, Information technology -- Document description and processing
-languages -- Office Open XML File Formats -- Parts 1-4.</i>  Latest version (2012 as of July 2014) is available from <a href="http://standards.iso.org/ittf/PubliclyAvailableStandards/">ISO/IEC Publicly Available Standards</a>.</p>
+languages -- Office Open XML File Formats -- Parts 1-4.</i>  Latest version (2012 as of December 2014) is available from <a href="http://standards.iso.org/ittf/PubliclyAvailableStandards/">ISO/IEC Publicly Available Standards</a>.</p>
 			<p>All editions of the OOXML standards as published by ECMA are available from <a href="http://www.ecma-international.org/publications/standards/Ecma-376.htm">ECMA-376: Office Open XML File Formats</a>.  See <a href="#notes">Notes</a> below for a chronology.</p>
+			<p>Annex L of Part 1 is a Primer (informative rather than normative) that introduces key features of the constituent markup languages, including WordprocessingML, SpreadsheetML, and PresentationML, relating elements and attributes to intended functionality through examples.</p>
 		</fdd:documentation>
-		<fdd:adoption>
-			<p>TBD</p>
-		</fdd:adoption>
+		<fdd:adoption>Widely adopted.  See individual subtypes for more detail.</fdd:adoption>
 		<fdd:licensingAndPatents>
-			<p>The specification originated from Microsoft Corporation.  MCE/OOXML_2012 and future versions of ISO/IEC 29500-3 and ECMA-376 are covered by Microsoft&apos;s <a href="http://www.microsoft.com/openspecifications/en/us/programs/osp/default.aspx">Open Specification Promise</a>, whereby Microsoft &quot;irrevocably promises&quot; not to assert any claims against those making, using, and selling implementations of any specification covered by the promise (so long as those accepting the promise refrain from suing Microsoft for patent infringement in relation to Microsoft&apos;s implementation of the covered specification).</p>
+			<p>The specification originated from Microsoft Corporation.  Current and future versions of ISO/IEC 29500 and ECMA-376 are covered by Microsoft&apos;s <a href="http://www.microsoft.com/openspecifications/en/us/programs/osp/default.aspx">Open Specification Promise</a>, whereby Microsoft &quot;irrevocably promises&quot; not to assert any claims against those making, using, and selling conforming implementations of any specification covered by the promise (so long as those accepting the promise refrain from suing Microsoft for patent infringement in relation to Microsoft&apos;s implementation of the covered specification).</p>
 		</fdd:licensingAndPatents>
 		<fdd:transparency>
-			<p>TBD</p>
+			<p>For transparency of the package containing the constituent parts of the DOCX file, see <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>.</p>
+			<p>Inside the OPC package, the OOXML formats are XML-based and inherently more transparent than their binary predecessors.  See individual subtypes for more detail.</p>
 		</fdd:transparency>
 		<fdd:selfDocumentation>
-			<p>TBD</p>
+			<p>See individual subtypes, in particular <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>, the package format that is used by the other formats.</p>
 		</fdd:selfDocumentation>
-		<fdd:externalDependencies/>
-		<fdd:techProtection>
-			<p>TBD</p>
-		</fdd:techProtection>
+		<fdd:externalDependencies>
+			<p>None, beyond XML-aware software.  See individual subtypes, in particular <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>, the package format that is used by the other formats.</p>
+		</fdd:externalDependencies>
+		<fdd:techProtection>Encryption is not permitted within the OPC package [<fddLink id="fdd000363">OPC/OOXML_2012</fddLink>] used to wrap all OOXML documents as of 2014.  However, an OPC package may be encrypted and some applications using this container format as the basis for a more specific format, may use encryption during interchange or DRM for distribution.</fdd:techProtection>
 	</fdd:sustainabilityFactors>
-	<fdd:qualityAndFunctionalityFactors/>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:otherQF>
+			<fdd:factor>
+				<fdd:tag>See individual subtypes</fdd:tag>
+				<fdd:note>
+					<p>See individual subtypes, particularly <fddLink id="fdd000397">DOCX/OOXML_2012</fddLink>, <fddLink id="fdd000398">XLSX/OOXML_2012</fddLink>, and <fddLink id="fdd000399">PPTX/OOXML_2012</fddLink>.</p>
+				</fdd:note>
+			</fdd:factor>
+		</fdd:otherQF>
+	</fdd:qualityAndFunctionalityFactors>
 	<fdd:fileTypeSignifiers>
 		<fdd:signifiersGroup>
 			<fdd:filenameExtension>
 				<fdd:sigValues>
 					<fdd:sigValue>docx</fdd:sigValue>
-					<fdd:sigValue>xslx</fdd:sigValue>
+					<fdd:sigValue>xlsx</fdd:sigValue>
 					<fdd:sigValue>pptx</fdd:sigValue>
 				</fdd:sigValues>
-				<fdd:note>And extensions used by other formats based on the OOXML specifications.</fdd:note>
+				<fdd:note>And extensions used by other formats based on the OOXML specifications.  See <a href="#notes">Notes</a> below.</fdd:note>
 			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd/openxmlformats-officedocument.wordprocessingml.document</fdd:sigValue>
+					<fdd:sigValue>application/vnd/openxmlformats-officedocument.spreadsheetml.document</fdd:sigValue>
+					<fdd:sigValue>application/vnd/openxmlformats-officedocument.presentationml.document</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://www.iana.org/assignments/media-types/media-types.xhtml">IANA assignments site</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:other>
+				<fdd:tag>File signature</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000354">ZIP_PK</fddLink>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
 			<fdd:other>
 				<fdd:tag>XML namespace declaration</fdd:tag>
 				<fdd:values>
 					<fdd:sigValues>
-						<fdd:sigValue>http://schemas.openxmlformats.org/?????</fdd:sigValue>
+						<fdd:sigValue>http://schemas.openxmlformats.org/.../2006/main</fdd:sigValue>
+						<fdd:sigValue>http://purl.oclc.org/ooxml/.../main</fdd:sigValue>
 					</fdd:sigValues>
+					<fdd:note>The first pattern is for the Transitional variants of the three OOXML document types, with the ellipses being replaced by <i>wordprocessingml</i>, <i>spreadsheetml</i>, or <i>presentationml</i> as appropriate.  The second pattern applies to the Strict variants of the three document types, with the same substitutions for the ellipses.</fdd:note>
 				</fdd:values>
 			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
-		<fdd:general/>
+		<fdd:general>
+			<p>
+				<b>File extensions used:</b>  The extensions listed below are commonly used.  They are not defined in ISO/IEC 29500, but most of them are specified in the many MIME type registrations made with IANA, using the pattern <i>application/vnd.openxmlformats-officedocument...</i>.  Macro-enabled versions of the primary document types and of templates are for files that do not technically comply with the OOXML standard, which does not permit the use of macros.  But the files do use the <fddLink id="fdd000363">OPC/OOXML_2012</fddLink> package specification and many parts of the package follow the official standard.  See note below for more on macro-enabled files, which are documented by Microsoft.</p>
+			<ul>
+				<li>Wordprocessing file extensions: .docx (document); dotx (template). Not strictly OOXML but very closely related: .docm (macro-enabled document); .dotm (macro-enabled template)</li>
+				<li>Spreadsheet file extensions: .xlsx (spreadsheet); .xltx (template).  Not strictly OOXML but very closely related:  .xlsm (macro-enabled spreadsheet); .xltm (macro-enabled template); .xlsb (XML-based structure with binary data, for faster loading and smaller files, intended to address early performance problems for very large .xlsx spreadsheets)</li>
+				<li>Presentation file extensions: .pptx (presentation for editing); .ppsx (slideshow for running); .potx (presentation template); .pptm (macro-enabled presentation for editing); .ppsm (macro-enabled slideshow for running); .potm (macro-enabled template)</li>
+			</ul>
+			<p>
+				<b>Macro-enabled variants:</b>  The macro-enabled variants of the OOXML formats are straightforward extensions of the primary formats without macros.  They use <fddLink id="fdd000363">OPC/OOXML_2012</fddLink> as a package, simply adding a few parts that contain the macros and associated data.  Macros for Office are written in Visual Basic for Applications (VBA).  Note that macros do not work in Office for Mac 2008. In Office for Mac 2011 (the latest version as of 2014), macros are supported.  However, not all macros originally written for a Windows version of Office will run on a Mac without modification to take account of differences between the implementations of VBA for the Windows and Mac (OS X) versions of Office, for example those that use ActiveX or other Windows-specific features.  The additional parts for macros are defined in three supplementary documents:</p>
+			<ul>
+				<li>
+					<a href="http://msdn.microsoft.com/en-us/library/cc313094.aspx">[MS-OVBA]</a> specifies the format for a file that holds the macro code for a VBA (Visual Basic for Applications) Project.  All the macros for a workbook are included in a single file/part.</li>
+				<li>
+					<a href="http://msdn.microsoft.com/en-us/library/dd925808.aspx">[MS-OFFMACRO]</a>, applicable to Office 2007, specifies the structure that connects the VBA Project part to the workbook, including an optional part for VBA Supplemental Data, and two parts that support use of older macros from Excel 4.0 (Macro Sheets and International Macro Sheets).</li>
+				<li>
+					<a href="http://msdn.microsoft.com/en-us/library/dd947889.aspx">[MS-OFFMACRO2]</a> performs the same function as [MS-OFFMACRO], but is applicable to Office 2010 and Office 2013.  The two specifications are almost identical except for the standards they reference and one small new feature added to VBA with version 7.0.</li>
+			</ul>
+			<p>Note that the VBA Editor used to develop macros and distributed as part of desktop Office applications for Windows (but hidden from users by default), offers the ability to export VBA macro code as a .BAS file (which is a regular text file).  Microsoft applications offer a Save As option to drop the macro-related parts from a macro-enabled file and create a regular document. This is commonly done to archive a snapshot of a document or spreadsheet in which macros are used to update the file, perhaps based on external data.  Apache Open Office and LibreOffice offer options as to how to handle macros on import of .xlsm files.  Neither application can run all VBA macros as-is, although, according to <a href="https://help.libreoffice.org/Common/Using_Microsoft_Office_and">Using Microsoft Office and LibreOffice</a> in late 2014, &quot;recent versions of LibreOffice can run some Visual Basic scripts&quot; if the feature is enabled.</p>
+		</fdd:general>
 		<fdd:history>
-			<p>The original OOXML specification was published as ECMA-376 in 2006, there has been no change in the MCE format.   The chronology of editions specifying OOXML is:</p>
+			<p>The first XML-based formats for Word and Excel were included in the release of Office 2003; these were flat XML files. These are <a href="http://msdn.microsoft.com/en-us/library/aa214923.aspx">partially documented</a> on the Microsoft Development Network (MSDN) site.  These formats were precursors to OOXML, with both similarities and significant differences.</p>
+			<p>The original OOXML specification was published as ECMA-376 in 2006.  The primary difference between that version and the version published as ISO/IEC 29500:2008 was the split between the Strict variants of DOCX, XLSX, and PPTX (as specified in Part 1) and the Transitional variants (as defined in Part 4 in conjunction with Part 1).   All versions since ISO/IEC 29500:2008 specify essentially the same format.  The editions published by ISO/IEC in 2011 and 2012 consisted primarily of clarifications and corrections. In particular, modifications to Part 4 (Transitional Migration Features) have been intended to ensure that the specification corresponds to the corpus of existing documents and that interoperability between existing applications was improved rather than disrupted.  See individual subtypes, particularly <fddLink id="fdd000397">DOCX/OOXML_2012</fddLink>, <fddLink id="fdd000398">XLSX/OOXML_2012</fddLink>, and <fddLink id="fdd000399">PPTX/OOXML_2012</fddLink> for more detail for the three primary OOXML document types.  The chronology of editions specifying the OOXML family of formats is:</p>
 			<ul>
 				<li>ECMA-376, 1st edition (December 2006)</li>
 				<li>ISO/IEC 29500:2008</li>
@@ -127,7 +255,19 @@ languages -- Office Open XML File Formats -- Parts 1-4.</i>  Latest version (201
 				<li>ISO/IEC 29500:2012</li>
 				<li>ECMA-376, 4th edition (December 2012) [specification identical to ISO/IEC 29500:2012]</li>
 			</ul>
-			<p>A new edition of Part 3 of the specification, for Markup Compatibility and Extensibility, has been prepared and a Draft International Standard ballot started in June 2014.   The intent is to clarify the explanation and to emphasize the applicability of MCE  beyond OOXML to support interoperability.  This edition does not introduce any new features but does remove some flexibility that had not been exploited in practice and is deemed unnecessary. Most important, makes the process for handling MCE on file import much clearer.</p>
+			<p>A new edition of Part 3 of the specification, for Markup Compatibility and Extensibility, has been prepared.  It was approved in September 2014 and will be published in early 2015.   The intent of the update was to clarify the text and to emphasize the applicability of MCE  beyond OOXML to support interoperability.  The new edition does not introduce new features but does remove some flexibility that had not been exploited in practice and is deemed unnecessary. Most importantly, it makes the process for handling MCE on file import much clearer.</p>
+			<p>Another chronology of relevance to digital archivists is the support for OOXML formats in different versions of the Office software.  Files created by the Microsoft Office applications have a /docProps/app.xml part that contains properties for the document as a whole, including &lt;Application&gt; and &lt;AppVersion&gt;.  Values for AppVersion are numeric, representing internal version numbers used by Microsoft during development: 12 = Windows Office 2007 or Office for Mac 2008; 14 = Windows Office 2010 or Mac Office 2011; 15 = Office 2013.</p>
+			<ul>
+				<li>
+					<b>Office 2007:</b> Read, Transitional only.  Write (as default), Transitional only.  Based on ECMA-376, Edition 1.  Also introduced read/write support for ODF 1.1.</li>
+				<li>
+					<b>Office 2010:</b> Read, Transitional and Strict.  Write (as default), Transitional only.  Based on ISO/IEC 29500:2008.  Also read/write support for ODF 1.1</li>
+				<li>
+					<b>Office for Mac 2011:</b> Read, Transitional only.  Write (as default), Transitional only.  As of December 2014, there is not a desktop Office for Mac that can read or write Strict.</li>
+				<li>
+					<b>Office 2013:</b> Read, Transitional and Strict.  Write, Transitional (as default), Strict (as option).  Based on ISO/IEC 29500:2011.  Introduced read/write support for ODF 1.2.</li>
+			</ul>
+			<p>A test of the iPad version of Excel in December 2014 revealed &quot;Microsoft Macintosh Excel&quot; for the value for Application and &quot;15.0300&quot; as the value for Appversion.  The file used the Transitional namespace.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
 		</fdd:history>
 	</fdd:notes>
 	<fdd:formatSpecifications>
@@ -143,8 +283,20 @@ languages -- Office Open XML File Formats </i>
 							<tag>ISO/IEC Publicly Available Standards</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c061750_ISO_IEC_29500-1_2012.zip</link>
+							<tag>ISO/IEC 29500-1:2012, Fundamentals and Markup Language Reference</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c061796_ISO_IEC_29500-2_2012.zip</link>
+							<tag>ISO/IEC 29500-2:2012, Open Packaging Conventions</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
 							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c061797_ISO_IEC_29500-3_2012.zip</link>
 							<tag>ISO/IEC 29500-3:2012, Markup Compatibility and Extensibility</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c061798_ISO_IEC_29500-4_2012.zip</link>
+							<tag>ISO/IEC 29500-4:2012, Transitional Migration Features</tag>
 						</fdd:urlReference>
 					</fdd:urlList>
 				</fdd:urlGroup>
@@ -153,7 +305,7 @@ languages -- Office Open XML File Formats </i>
 				<fdd:urlReference>
 					<link>http://www.ecma-international.org/publications/standards/Ecma-376.htm</link>
 					<tag>ECMA-376: Office Open XML File Formats</tag>
-					<comment>Provides access to all chronological published versions.  </comment>
+					<comment>Provides access to all chronological published versions of all parts.  </comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
@@ -161,9 +313,154 @@ languages -- Office Open XML File Formats </i>
 	<fdd:usefulReferences>
 		<fdd:urls>
 			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Office_Open_XML</link>
+					<tag>Wikipedia entry for Office Open XML</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ecma-international.org/memento/TC45-M.htm</link>
+					<tag>TC45 - Office Open XML Formats
+- Activities</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ecma-international.org/news/TC45_current_work/OpenXML%20White%20Paper.pdf</link>
+					<tag>Office Open XML Overview</tag>
+					<comment>Published by ECMA TC45 in 2006 when OOXML was submitted to ECMA for ballot by members.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/List_of_software_that_supports_Office_Open_XML</link>
+					<tag>Wikipedia list of software supporting Office Open XML</tag>
+					<comment>Not necessarily kept up-to-date.  In September 2014, several links had been detected by Wikipedia&apos;s automated link-checking tool as &quot;dead links.&quot;</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
 				<fdd:urlGroup>
-					<fdd:intro>TBD</fdd:intro>
+					<fdd:intro>Microsoft provides many pages related to OOXML in blogs, tutorials, and reference materials.  Much of this documentation is aimed at programmers writing applications that manipulate OOXML markup directly, perhaps using the Open XML SDK.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/office/bb448854.aspx</link>
+							<tag>Welcome to the Open XML SDK 2.5 for Office</tag>
+							<comment>In June 2014, the Open XML SDK was made available as open source.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://openxmldeveloper.org/</link>
+							<tag>OpenXMLDeveloper.org</tag>
+							<comment>A community site hosted by Microsoft, with discussion forums, tutorial materials, and news related to the OpenXML Software Development Kit (SDK).</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://openxmldeveloper.org/discussions/formats/default.aspx</link>
+							<tag>Formats:  Discussions about working with different Open XML Formats</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://blogs.office.com/2012/08/13/new-file-format-options-in-the-new-office/</link>
+							<tag>New file format options in the new Office [Office 2013]</tag>
+							<comment>Announces support for writing files in DOCX Strict and ODF 1.2 formats.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/aa338205%28v=office.12%29.aspx</link>
+							<tag>Introducing the Office (2007) Open XML File Formats</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://support.office.com/en-us/article/Open-XML-Formats-and-file-name-extensions-5200d93c-3449-4380-8e11-31ef14555b18</link>
+							<tag>Open XML Formats and file name extensions</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/gg548604.aspx</link>
+							<tag>Word, Excel, and PowerPoint Standards Support</tag>
+							<comment>Includes full technical specifications for extensions Microsoft has introduced using the techniques specified in ISO/IEC 29500, Part 3, Markup Compatibility and Extensibility.  See descriptions for individual subtypes for more detail.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.microsoft.com/openspecifications/en/us/programs/osp/default.aspx</link>
+							<tag>Microsoft&apos;s Open Specification Promise</tag>
+							<comment>Published: September 12, 2006. Revised: February 15, 2007</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.microsoft.com/openspecifications/en/us/programs/interop/interoperability-principles/default.aspx</link>
+							<tag>Interoperability Principles</tag>
+							<comment>Indicates that Microsoft will document extensions to standards implemented in its high-volume products on its website.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://news.microsoft.com/download/archived/presskits/eu-msft/docs/microsoftinteroperabilityundertaking16dec2009.doc</link>
+							<tag>Microsoft Interoperability Undertaking, Dec 16, 2009</tag>
+							<comment>Public undertaking to address competition concerns from the European Commission.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
 				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c045245_ISO_IEC_TR_29166_2011.zip</link>
+					<tag>ISO/IEC TR 29166:2011 Information technology -- Document description and processing languages -- Guidelines for translation between ISO/IEC 26300 and ISO/IEC 29500 document formats</tag>
+					<comment>Highlights challenges to conversion between OOXML and ODF formats.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://officeopenxml.com/index.php</link>
+					<tag>What is OOXML?</tag>
+					<comment>Includes extensive explanatory documentation on the three primary OOXML content categories and DrawingML. By Daniel Dick, principal attorney editor at Thomson Reuters.  The site is in no way affiliated with his employer.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://wiki.documentfoundation.org/Feature_Comparison:_LibreOffice_-_Microsoft_Office</link>
+					<tag>Feature Comparison: LibreOffice - Microsoft Office</tag>
+					<comment>As of late 2014, this page compares features of LibreOffice 4.3.4 and Microsoft Office 2013, highlighting differences.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Although not fully defined within ISO/IEC 29500, variants of the XLSX, DOCX, and PPTX formats can be macro-enabled, to support automated dynamic functionality not supported by the markup defined in the standard.  Microsoft Office supports the use of VBA (Visual Basic for Applications) as a macro language and has documented markup extensions used to wrap macros in macro-enabled document packages.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/dd925808.aspx</link>
+							<tag>[MS-OFFMACRO]: Office Macro-Enabled File Format</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/dd947889.aspx</link>
+							<tag>[MS-OFFMACRO2]: Office Macro-Enabled File Format Version 2</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msdn.microsoft.com/en-us/library/cc313094.aspx</link>
+							<tag>[MS-OVBA]: Office VBA File Format Structure</tag>
+							<comment>Specifies the Office VBA File Format Structure, a persistence format for embedding macros within a host document</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources related to treatment of macros when importing macro-enabled files into other applications or saving macros and documents separately.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://help.libreoffice.org/Common/Using_Microsoft_Office_and</link>
+							<tag>Using Microsoft Office and LibreOffice</tag>
+							<comment>Includes discussion of treatment of macros in macro-enabled OOXML files read in to LibreOffice.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://wiki.openoffice.org/wiki/Documentation/OOo3_User_Guides/Calc_Guide/Load_Save_options</link>
+							<tag>Apache Open Office Help: Choosing options for loading and saving documents</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.pcmag.com/article2/0,2817,2387068,00.asp</link>
+							<tag>Save and Restore Your Macros</tag>
+							<comment>From 10 Essential Microsoft Word 2010 Tips for Advanced Users, PC Magazine, June 16, 2011. The same Alt-F11 technique works for desktop versions of other Microsoft Office applications. </comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://msdn.microsoft.com/en-us/library/aa214923.aspx</link>
+					<tag>Welcome to the Microsoft Office Word 2003 XML Software Development Kit (SDK) [Word 2003 XML Reference]</tag>
+					<comment>Documentation for working with the flat XML format used in Office 2003, a precursor to OOXML.</comment>
+				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
 	</fdd:usefulReferences>

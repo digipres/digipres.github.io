@@ -33,7 +33,7 @@
 languages -- Office Open XML File Formats (OOXML)</i>.  However, since this specification has very few changes since the format was first standardized as ECMA-376, Part 2 in 2006, the description can be read as applying to all versions published by ECMA International and by ISO/IEC through 2012.  See <a href="#notes">Notes</a> below for more detail on the chronological versions and minor differences.  In this format description, the names OPC and OPC/OOXML_2012 should be considered equivalent.</p>
 			<p>An OPC package is a container that holds a collection of parts. The purpose of the package is to aggregate constituent
 components of a document (or other type of content) into a single object. The OPC specification describes an abstract model and a single physical format based on the ZIP File Format [<fddLink id="fdd000355">ZIP_6_2_0</fddLink>].  As shown in a diagram on page 1 of <a href="http://download.microsoft.com/download/d/6/f/d6f2864a-f4f2-44cd-b080-797339b7433f/OfficeXMLMarkupExplained_en.docx">Open XML: The Markup Explained</a> by Wouter van Vugt, the Open Packaging Conventions builds on the core technologies of XML, Unicode, and ZIP.  The OPC specification incorporates schemas for expressing relationships among parts, for identifying the content types for parts, and for storing digital signatures for parts.  There is also a schema for describing the package as a whole through &quot;core properties,&quot; which uses selected Dublin Core metadata elements in addition to some OPC-specific elements.  In order to support efficient characterization of an OPC container without extracting all its parts, the content type of each part must be expressed in the form of a MIME type (Internet Media type) either individually or by use of a default type based on the file extension, in a special <i>stream</i> called [Content_Types.xml].  Another requirement is that all parts of the package must be discoverable by following relationships.  A file called <i>_rels/.rels</i> will define a relationship to the main part (perhaps a document) and each part can have an associated .rels file with relationships to any embedded or associated files.</p>
-			<p>OPC is based on version 6.2.0 of the ZIP File Format as defined in APPNOTE.TXT, Version 6.2.0 (<fddLink id="fdd000355">ZIP_6_2_0</fddLink>. Compression in OPC is restricted to the &quot;deflate&quot; algorithm; encryption mechanisms as defined in APPNOTE.TXT are not permitted.  The digital signature mechanism defined in APPNOTE.TXT is not permitted, but OPC/OOXML_2012 provides an alternate mechanism for optional digital signatures for parts in an OPC package.</p>
+			<p>OPC is based on version 6.2.0 of the ZIP File Format as defined in APPNOTE.TXT, Version 6.2.0 (<fddLink id="fdd000355">ZIP_6_2_0</fddLink>). Compression in OPC is restricted to the &quot;deflate&quot; algorithm; encryption mechanisms as defined in APPNOTE.TXT are not permitted.  The digital signature mechanism defined in APPNOTE.TXT is not permitted, but OPC/OOXML_2012 provides an alternate mechanism for optional digital signatures for parts in an OPC package.</p>
 		</fdd:description>
 		<fdd:shortDescription>A bundling format designed to contain a collection of files (termed &quot;parts&quot;) that represent a single logical whole.  The OPC specification is part 2 of ISO/IEC 29500, Information technology -- Document description and processing languages -- Office Open XML File Formats (OOXML).</fdd:shortDescription>
 		<fdd:productionPhase>An OPC package container can be used in any production phase.  Original use was for Office Open XML office documents, which are certainly created (initial state), exchanged for editing and review (middle-state) and may be published (final-state) in an OPC container.</fdd:productionPhase>
@@ -41,11 +41,19 @@ components of a document (or other type of content) into a single object. The OP
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
 				<fdd:relatedTo>
+					<fdd:id>fdd000395</fdd:id>
+					<fdd:shortName>OOXML_Family</fdd:shortName>
+					<fdd:titleName>OOXML (ISO/IEC 29500) Format Family</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
 					<fdd:id>fdd000355</fdd:id>
 					<fdd:shortName>ZIP_6_2_0</fdd:shortName>
 					<fdd:titleName>ZIP File Format, Version 6.2.0 (PKWARE)</fdd:titleName>
 				</fdd:relatedTo>
-				<fdd:comment>Various features of the ZIP File Format are not permitted in OPC.  Details on the use of ZIP in OPC are in section 10 and Annex C of ISO/IEC 29500-2:2012.  </fdd:comment>
+				<fdd:comment>Various features of the ZIP File Format are not permitted in OPC.  Details on the use of ZIP in OPC are in section 10 and Annex C of ISO/IEC 29500-2:2012.</fdd:comment>
 			</fdd:relationship>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
@@ -61,7 +69,55 @@ parts in the package.
 			</fdd:relationship>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
-				<fdd:comment>Application-specific formats based on the OPC package.  These include .docx, .pptx, and .xlsx files as produced by Microsoft Office products since 2003, not described at this web site at this time. Microsoft has made more use of OPC: Visio 2013 introduced a new file format based on OPC; NuGet, an extension for Microsoft Visual Studio that provides an interface for managing third-party libraries for NET projects uses OPC to package source code modules.  The SMPTE Media Package (ST 2053:2011) is based on OPC; see <a href="#notes">Notes</a> below for a brief description of ST 2053 and how it refines OPC.  AutoCAD&apos;s Design Web Format .dwfx is also based on OPC.</fdd:comment>
+				<fdd:relatedTo>
+					<fdd:id>fdd000397</fdd:id>
+					<fdd:shortName>DOCX/OOXML_2012</fdd:shortName>
+					<fdd:titleName>DOCX Transitional (Office Open XML), ISO 29500:2008-2012; ECMA-376, Editions 1-4</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000398</fdd:id>
+					<fdd:shortName>XLSX/OOXML_2012</fdd:shortName>
+					<fdd:titleName>XLSX Transitional (Office Open XML), ISO 29500:2008-2012; ECMA-376, Editions 1-4</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000399</fdd:id>
+					<fdd:shortName>PPTX/OOXML_2012</fdd:shortName>
+					<fdd:titleName>PPTX Transitional (Office Open XML), ISO 29500:2008-2012; ECMA-376, Editions 1-4</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000400</fdd:id>
+					<fdd:shortName>DOCX/OOXML_Strict_2012</fdd:shortName>
+					<fdd:titleName>DOCX Strict (Office Open XML), ISO 29500:2008-2012; ECMA-376, Editions 2-4</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000401</fdd:id>
+					<fdd:shortName>XLSX/OOXML_Strict_2012</fdd:shortName>
+					<fdd:titleName>XLSX Strict(Office Open XML), ISO 29500:2008-2012; ECMA-376, Editions 2-4</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000402</fdd:id>
+					<fdd:shortName>PPTX/OOXML_Strict_2012</fdd:shortName>
+					<fdd:titleName>PPTX Strict (Office Open XML), ISO 29500:2008-2012; ECMA-376, Editions 2-4</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>Other application-specific formats based on the OPC package.  Microsoft has made more use of OPC: Visio 2013 introduced a new file format based on OPC; NuGet, an extension for Microsoft Visual Studio that provides an interface for managing third-party libraries for NET projects uses OPC to package source code modules.  The SMPTE Media Package (ST 2053:2011) is based on OPC; see <a href="#notes">Notes</a> below for a brief description of ST 2053 and how it refines OPC.  AutoCAD&apos;s Design Web Format .dwfx is also based on OPC.</fdd:comment>
 			</fdd:relationship>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
@@ -74,6 +130,10 @@ parts in the package.
 			</fdd:relationship>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>See individual subtypes.</fdd:experience>
+		<fdd:preference>See individual subtypes.</fdd:preference>
+	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>International open standard.  Maintained by ISO/IEC JTC1 SC34/WG4.  Originated by Microsoft Corporation and first standardized through ECMA International in 2006.  Approval as part 2 of ISO/IEC 29500 was in 2008.</fdd:disclosure>
 		<fdd:documentation>
@@ -89,13 +149,13 @@ Conventions.</i>  Latest version (2012 as of December 2012) is available from <a
 dump the structure of an OPC container and extract parts from an OPC container.  Libopc also handles MCE (Markup Compatibility and Extensibility), another part of the OOXML standard that may be employed to support extensions to XML-based formats using the OPC container as a basis.  In addition, most ZIP tools will unpack an OPC container if the file extension is changed to <i>.zip</i>.</p>
 			<p>In June 2014, Microsoft released the <a href="https://github.com/OfficeDev/Open-XML-SDK">Open XML SDK as open source</a>.  Among other capabilities, this SDK provides the ability to open OPC packages, extract parts, and construct new OPC packages.</p>
 		</fdd:adoption>
-		<fdd:licensingAndPatents>The specification originated from Microsoft Corporation.  OPC/OOXML_2012 and future versions of ISO/IEC 29500-2 and ECMA-376 are covered by Microsoft&apos;s <a href="http://www.microsoft.com/openspecifications/en/us/programs/osp/default.aspx">Open Specification Promise</a>, whereby Microsoft &quot;irrevocably promises&quot; not to assert any claims against those making, using, and selling implementations of any specification covered by the promise (so long as those accepting the promise refrain from suing Microsoft for patent infringement in relation to Microsoft&apos;s implementation of the covered specification).</fdd:licensingAndPatents>
+		<fdd:licensingAndPatents>The specification originated from Microsoft Corporation.  OPC/OOXML_2012 and future versions of ISO/IEC 29500-2 and ECMA-376 are covered by Microsoft&apos;s <a href="http://www.microsoft.com/openspecifications/en/us/programs/osp/default.aspx">Open Specification Promise</a>, whereby Microsoft &quot;irrevocably promises&quot; not to assert any claims against those making, using, and selling conforming implementations of any specification covered by the promise (so long as those accepting the promise refrain from suing Microsoft for patent infringement in relation to Microsoft&apos;s implementation of the covered specification).</fdd:licensingAndPatents>
 		<fdd:transparency>
 			<p>As a container, transparency corresponds to that of <fddLink id="fdd000354">ZIP_PK</fddLink>.  It depends upon algorithms and tools to interpret and extract contents.  It would require sophistication to build tools from scratch, but many tools exist.  The parts/files that represent the structure of the OPC package are all in XML and thus both human readable and easily machine processable.  Transparency ultimately depends on the files contained in the package.</p>
 		</fdd:transparency>
 		<fdd:selfDocumentation>
 			<p>The built-in support for metadata is limited.  OPC has an optional part with the name Core Properties.  This part has fifteen elements, all optional and all non-repeatable.  Six are selected from the main Dublin Core Metadata Initiative (<a href="http://dublincore.org/">DCMI</a>) set (title; creator; description; subject; identifier; language) and two from the supplementary dcterms vocabulary (created; modified).</p>
-			<p>Specifications that build on OPC to define more specific package formats can permit or require the inclusion of a richer metadata appropriate for a particular context.  For example, any XML-based metadata representation can easily be included as an OPC part to describe the package as a whole.  Some package specifications might define mechanisms for attaching descriptive or structural metadata to subsidiary content parts.</p>
+			<p>Specifications that build on OPC to define more specific package formats can permit or require the inclusion of a richer metadata appropriate for a particular context.  For example, any XML-based metadata representation can easily be included as an OPC part to describe the package as a whole and given a relationship from the Core Properties part (as indicated in ISO/IEC 29500-2:2012, §11.3).  Some package specifications might define mechanisms for attaching descriptive or structural metadata to subsidiary content parts.</p>
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>Depends on files/parts contained in the OPC package.</fdd:externalDependencies>
 		<fdd:techProtection>Encryption is not permitted within the OPC package.  However, an OPC container may be encrypted and some applications using this container format as the basis for a more specific format, may use encryption during interchange or DRM for distribution.</fdd:techProtection>
@@ -229,9 +289,9 @@ and Andrey Shur. August 2007</comment>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://blogs.office.com/b/office-next/archive/2012/08/13/the-new-office-expands-file-format-options.aspx</link>
+					<link>http://blogs.office.com/2012/08/13/new-file-format-options-in-the-new-office/</link>
 					<tag>New file format options in the new Office</tag>
-					<comment>From the Office Next blog, posting by Jim Thatcher on August 13, 2012.  Has useful table of formats supported for reading and writing in versions of Office since Office 2003.</comment>
+					<comment>Originally posted in the Office Next blog, posting by Jim Thatcher on August 13, 2012.  Has useful table of formats supported for reading and writing in versions of Office since Office 2003.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>

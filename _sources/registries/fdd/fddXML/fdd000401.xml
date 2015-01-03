@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000401" titleName="XLSX Strict (Office Open XML), ISO 29500:2008-2012" shortName="XLSX/OOXML_Strict_2012" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>spreadsheet</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2014-12-04</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>XLSX Strict, (Office Open XML, Spreadsheet ML) ISO 29500:2008-2012, also ECMA-376, Editions 2-4.</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>dataset formats</fdd:keyword>
+			<fdd:keyword>markup languages</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The Strict variant of XLSX disallows a variety of elements and attributes that are permitted in the more common Transitional variant (<fddLink id="fdd000398">XLSX/OOXML_2012</fddLink>).  The markup for the Strict variant is essentially a subset of markup for the Transitional variant, but the schemas use different namespaces and are distributed separately in complete form.</p>
+			<p>The Strict variant of XLSX described here was introduced during the standardization in ISO/IEC 29500 in 2008 with the intention of excluding features included in ECMA-376, Edition 1 that were present simply to handle bugs and features of earlier spreadsheet applications.  The intent of the split of the markup specification into Strict (Part 1) and Transitional (Part 4) was that applications would create new documents in the Strict variant; however, in practice, pressure for backwards compatibility has meant that most new files are marked up by applications using the Transitional namespace even if they use no features that are incompatible with the Strict specification.</p>
+			<p>Among the key differences between the Strict variant and the Transitional variant are:</p>
+			<ul>
+				<li>Use of VML (Vector Markup Language) for graphics is not permitted in XLSX Strict.  All graphics, for example in charts, are represented using DrawingML.</li>
+				<li>Characters in XLSX Strict are based on UNICODE.  Other character sets and codepage technologies are not permitted.</li>
+				<li>To comply with XLSX Strict, elements and attributes with deprecated names that use &quot;left&quot; and &quot;right&quot; in relation to start and end of text must be replaced by substitutes that are neutral in relation to the direction of text.</li>
+				<li>Legacy techniques for protecting workbooks and their contents are disallowed in XLSX Strict.</li>
+				<li>XLSX Strict has a value type for cells of <i>date</i>, using the Complete, Extended Format Calendar representations in ISO 8601.  For reasons of backwards compatibility, this typed use of ISO 8601 dates is not permitted in XLSX Transitional.  See <a href="#notes">Notes</a> below.</li>
+				<li>XLSX Strict does not permit the use of representations for drawing elements and attributes where percentages used to specify scaling and positioning are represented as integers outside the range 0-100.  This technique was formerly used for performance reasons.</li>
+			</ul>
+			<p>For discussion of other aspects of the Strict XLSX format, see the description of the more common Transitional variant of XLSX, <fddLink id="fdd000398">XLSX/OOXML_2012</fddLink>.</p>
+		</fdd:description>
+		<fdd:shortDescription>A format for spreadsheet documents in the Open Office XML (ISO 29500) format family, developed originally by Microsoft.  Specified in part 1 of ISO/IEC 29500, Information technology -- Document description and processing languages -- Office Open XML File Formats (OOXML).  Excel 2010 could read XLSX Strict documents; Excel 2013 can read and write XLSX Strict documents.</fdd:shortDescription>
+		<fdd:productionPhase>Can be used in any production phase: for creating documents (initial state): for editing and review (middle-state); and for final distribution.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000395</fdd:id>
+					<fdd:shortName>OOXML_Family</fdd:shortName>
+					<fdd:titleName>OOXML (ISO/IEC 29500) Format Family</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000363</fdd:id>
+					<fdd:shortName>OPC/OOXML_2012</fdd:shortName>
+					<fdd:titleName>Open Packaging Conventions (Office Open XML), ISO 29500-2:2008-2012</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000396</fdd:id>
+					<fdd:shortName> MCE/OOXML_2012</fdd:shortName>
+					<fdd:titleName>Markup Compatibility and Extensibility (Office Open XML), ISO 29500-3:2008-2012, ECMA-376, Editions 1-4</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Modification of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000398</fdd:id>
+					<fdd:shortName>XLSX/OOXML_2012</fdd:shortName>
+					<fdd:titleName>XLSX Transitional (Office Open XML), ISO 29500-1: 2008-2012</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>The Transitional variant of XLSX allows legacy markup as specified in Part 4 of ISO/IEC 29500.  Hence the Transitional variant has more support for backwards compatibility when converting documents from older formats.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000075</fdd:id>
+					<fdd:shortName>XML</fdd:shortName>
+					<fdd:titleName>Extensible Markup Language (XML)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>In 2014, the Library of Congress is not aware of any documents in the Strict form of XLSX in its collections.  Staff do not use a version of Excel that can produce spreadsheets in the XLSX Strict variant.</fdd:experience>
+		<fdd:preference>For works acquired for its collections, the list of <a href="http://www.loc.gov/preservation/resources/rfs/data.html">Library of Congress Recommended Format Specifications for Datasets/Databases</a>, as of June 2014, includes XLSX (.xlsx) as a preferred format for datasets. It does not distinguish between the Strict and the more common Transitional <fddLink id="fdd000398">XLSX/OOXML_2012</fddLink> form in its preferences.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>International open standard.  Maintained by ISO/IEC JTC1 SC34/WG4.  Originated by Microsoft Corporation and first standardized through ECMA International in 2006.  Approval as ISO/IEC 29500 was in 2008.</fdd:disclosure>
+		<fdd:documentation>
+			<p>
+				<i>ISO/IEC 29500-1, Information technology -- Document description and processing
+languages -- Office Open XML File Formats -- Part 1: Fundamentals and Markup Language Reference</i>.  Latest version (dated 2012 as of August 2014) is available from <a href="http://standards.iso.org/ittf/PubliclyAvailableStandards/">ISO/IEC Publicly Available Standards</a>.</p>
+			<p>All editions of the OOXML standards as published by ECMA are available from <a href="http://www.ecma-international.org/publications/standards/Ecma-376.htm">ECMA-376: Office Open XML File Formats</a>.  See <a href="#notes">Notes</a> below for version chronology.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>The Strict variant of XLSX is not widely used or supported as of September 2014. The ability to read Strict DOCX files was implemented in Microsoft&apos;s Excel 2010; Excel 2013 added the ability to write Strict files as an option. Office 365 (a cloud-based product) can also read and write Strict files. As of September 2014, the latest version of Excel for a desktop Mac (in Office for Mac 2011) can neither write nor read Strict files.</p>
+			<p>Versions of LibreOffice since 4.2.3 can read Strict XLSX files. A test using LibreOffice 4.3 suggests that XLSX files written by that application are always in the more common Transitional form.</p>
+			<p>Whether the Strict version of XLSX is more widely used in the future will likely depend on whether pressure on software vendors from governments for its adoption outweighs market pressure, which currently seems to favor backwards compatibility.</p>
+			<p>The compilers of this resource are not aware of any spreadsheet applications other than Excel 2013 (or equivalent Excel Online or Excel App) that can create the Strict variant of XLSX (as defined in Part 1 of the ISO/IEC 29500 standard).  Tests in November 2014 indicated that Google Sheets and Libre Office both created new documents in the Transitional variant, as indicated by the namespace declarations, even when the document includes no elements or attributes not present in the Strict versions of the schemas.  This corresponds to the default behavior of Microsoft Excel 2013.</p>
+			<p>
+				<a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>See the more common Transitional form of XLSX, <fddLink id="fdd000398">XLSX/OOXML_2012</fddLink>.</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>See the more common Transitional form of XLSX, <fddLink id="fdd000398">XLSX/OOXML_2012</fddLink>.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>See the more common Transitional form of XLSX, <fddLink id="fdd000398">XLSX/OOXML_2012</fddLink>.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			<p>See the more common Transitional form of XLSX, <fddLink id="fdd000398">XLSX/OOXML_2012</fddLink>.</p>
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			<p>See the more common Transitional form of XLSX, <fddLink id="fdd000398">XLSX/OOXML_2012</fddLink>.</p>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:textQF>
+			<fdd:normalText>
+				<p>See the more common Transitional form of XLSX, <fddLink id="fdd000398">XLSX/OOXML_2012</fddLink>.</p>
+			</fdd:normalText>
+		</fdd:textQF>
+		<fdd:datasetQF>
+			<fdd:normalDataset>
+				<p>See the more common Transitional form of XLSX, <fddLink id="fdd000398">XLSX/OOXML_2012</fddLink>.</p>
+			</fdd:normalDataset>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>xlsx</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">IANA registration</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:other>
+				<fdd:tag>XML namespace declaration</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>http://purl.oclc.org/ooxml/spreadsheetml/main</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>This namespace declaration is for the Strict variant of XLSX.  It occurs in the mandatory Main Document part of a XLSX file (package), which usually has the name <i>/xl/workbook.xml</i>.  The use of <i>/xl/workbook.xml</i> as the name of the main part is conventional, rather than mandated in ISO 29500.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Target=&quot;xl/workbook.xml&quot;</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>This signifier assumes the usual name of the main part of an XLSX file. The target declaration will occur in the top-level Relationships part (<i>\_rels\.rels</i> part in an OPC package of a Strict XLSX file, as an attribute of a &lt;Relationship&gt; element within the Relationships element.  It will be the target of a relationship of type <i>http://purl.oclc.org/ooxml/officeDocument/relationships/officeDocument</i>.  See root namespace and source relationship for Main Document Part in ISO/IEC 29500-1:2012, §12.3.23. </fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Textual and serial numeric representations of dates and times:</b> In the Strict variant of XLSX, dates may be stored using textual forms specified in the ISO 8601 standard.  Late in the ISO standardization process for OOXML, a proposal was made to adopt the ISO 8601 format for dates and times in spreadsheets.  Dates and times in spreadsheets have usually been stored as numbers (sometimes termed &quot;serial date-time&quot; values), which use less space in memory or files, are convenient for common date-based calculations, and easily presented in a user-specified display format (following local conventions and using different scripts).  The experts present at the ISO 29500 Ballot Resolution Meeting where votes were held on the outstanding proposals for the OOXML format were primarily experts in XML and in textual documents rather than with spreadsheets (see <a href="https://aristippus303.wordpress.com/2009/10/22/why-do-we-need-serial-dates-in-the-transitional-form-of-is-29500/">Why do we need serial dates in the Transitional form of IS 29500?</a>, a 2009 blog post).  The details of the proposal as approved had several shortcomings, recognized by spreadsheet experts once ISO 29500:2008 was published and software developers began to build tools. Firstly, no existing applications would be able to recognize and handle dates in the ISO 8601 format if they were included in XLSX Transitional files, as permitted by the published standard.  See, for example, <a href="http://idippedut.dk/post/Losing-data-the-silent-way-ISO8601-dates">Losing data the silent way - ISO8601-dates</a>.  Since the intent of the Transitional variant of ISO 29500 was to be compatible with the existing corpus of .xlsx documents and the applications designed to handle them, an amendment to Part 4 to disallow ISO 8601 dates in the Transitional variant was introduced.  Secondly, ISO 8601 is a very flexible format, and any use in a context that aims at interoperability needs to be specific about which particular textual string patterns are expected for dates and times.  An amendment to specify particular string patterns for use in XLSX Strict, selected from the variety allowed by ISO 8601, was introduced as an amendment to Part 1.  The associated amendments to Parts 1 and 4 were approved in December 2011 and incorporated into ISO 29500:2012.   The changes were almost entirely in the text of the standard, with minimal changes to the schemas for SpreadsheetML, apart from disallowing the date cell-type in XLSX Transitional.  The compilers of this resource are not aware of any SpreadsheetML implementations that would have generated XLSX Transitional files with dates in the ISO 8601 textual form that is no longer compliant with ISO 29500-4. <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>See also the more common Transitional form of XLSX, <fddLink id="fdd000398">XLSX/OOXML_2012</fddLink>.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>See the more common Transitional form of XLSX, <fddLink id="fdd000398">XLSX/OOXML_2012</fddLink>.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The latest versions of ISO/IEC 29500 are made available at no charge from ISO. The formal titles of the Part 1 that specifies the Strict variant of XLSX is <i>Information technology -- Document description and processing
+languages -- Office Open XML File Formats -- Part 1:  Fundamentals and Markup Language Reference</i>.  The schemas for the Strict variant described here are available as <a href="http://standards.iso.org/ittf/PubliclyAvailableStandards/c061798_ISO_IEC_29500-4_2012_Electronic_inserts.zip">electronic inserts</a> to Part 1.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/index.html</link>
+							<tag>ISO/IEC Publicly Available Standards</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c061750_ISO_IEC_29500-1_2012.zip</link>
+							<tag>ISO/IEC 29500-1:2012, Fundamentals and Markup Language Reference</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c061750_ISO_IEC_29500-1_2012_Electronic_inserts.zip</link>
+							<tag>Schemas in W3C XML Schema language and in RELAX NG for the Strict variant of XLSX.</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ecma-international.org/publications/standards/Ecma-376.htm</link>
+					<tag>ECMA-376: Office Open XML File Formats</tag>
+					<comment>Provides access to all chronological published versions.  </comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://aristippus303.wordpress.com/2009/10/22/why-do-we-need-serial-dates-in-the-transitional-form-of-is-29500/</link>
+					<tag>Why do we need serial dates in the Transitional form of IS 29500?</tag>
+					<comment>2009 blog post by Gareth Horton, a spreadsheet expert who later took an active role in preparing the amendments to ISO 29500 that addressed the shortcomings highlighted in this blog post. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://idippedut.dk/post/Losing-data-the-silent-way-ISO8601-dates</link>
+					<tag>Losing data the silent way - ISO8601-dates</tag>
+					<comment>Blog post from April 2009 by Jesper Stocholm, who has been actively involved in standardization of office formats and in building tools that manipulate and convert OOXML files.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://wiki.documentfoundation.org/Feature_Comparison:_LibreOffice_-_Microsoft_Office</link>
+					<tag>Feature Comparison: LibreOffice - Microsoft Office</tag>
+					<comment>Indicates that LibreOffice 4.3 supports reading of Strict OOXML files.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.libreofficeforum.org/node/7505</link>
+					<tag>What is the level of support for MS Office formats?</tag>
+					<comment>Feb 2014 blog post from &quot;unofficial LibreOffice support forum&quot; with later addenda.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>
+						<p>See also references listed for the more common Transitional form of XLSX, <fddLink id="fdd000398">XLSX/OOXML_2012</fddLink>.</p>
+					</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

@@ -18,7 +18,7 @@
 			</fdd:gdfrDomain>
 		</fdd:gdfrDomains>
 		<fdd:updates>
-			<fdd:date>2014-04-02</fdd:date>
+			<fdd:date>2014-10-29</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -26,8 +26,8 @@
 		<fdd:fullName>Internet Message Format</fdd:fullName>
 		<fdd:description>
 			<p>Internet Message Format (IMF) is the standardized ASCII-based syntax
-required by SMTP for all email message bitstreams used by MTAs when moving messages between computers. IMF is standardized by RFC 5322.  IMF syntax itself does not cover other types of non-text data in email messages such as images, audio or other sorts of structured data which are described in other parts of the MIME document series (RFC 2045, RFC 2046, RFC 2049). </p>
-			<p>IMF requires that messages use only US-ASCII characters and that the characters are divided into lines. A line is a series of characters that is delimited by carriage-return (CR) immmediately followed by line-feed (LF). Taken together, these are commonly abbreviated as CRLF.  Each line of characters is limited to no more than 998 characters, and is encouraged, for the sake of interoperability, to be no more than 78 characters. </p>
+required by SMTP for all email message bitstreams used by a <a href="http://en.wikipedia.org/wiki/Message_transfer_agent">message transfer agent</a>, sometimes referred to as a mail transfer agent or MTA, when moving messages between computers. IMF is standardized by RFC 5322.  IMF syntax itself does not cover other types of non-text data in email messages such as images, audio or other sorts of structured data which are described in other parts of the MIME document series (RFC 2045, RFC 2046, RFC 2049). </p>
+			<p>IMF requires that messages use only US-ASCII characters and that the characters are divided into lines. A line is a series of characters that is delimited by carriage-return (CR) immediately followed by line-feed (LF). Taken together, these are commonly abbreviated as CRLF.  Each line of characters is limited to no more than 998 characters, and is encouraged, for the sake of interoperability, to be no more than 78 characters. </p>
 			<p>An IMF-compliant email message consists of a header section comprised of defined fields followed, optionally, by a body. The header section is a sequence of lines of characters with special syntax as defined in this specification. The body is simply a sequence of characters that follows the header section and is separated from the header section by an empty line (i.e., a line with nothing preceding the CRLF).</p>
 			<p>Header fields are well defined lines beginning with a field name, followed by a colon (":"), followed by a field body, and terminated by CRLF. Header field bodies may have a structured or unstructured syntax.  Header fields may appear in any order, and they have been known to be reordered occasionally when transported over the Internet. Selected fields may repeat within the header.</p>
 			<p>Required header fields include:</p>
@@ -86,6 +86,14 @@ and SHOULD be limited to 78 characters, excluding the CRLF</li>
 					<fdd:titleName>Microsoft Outlook 2003 Personal Folders File (Unicode)</fdd:titleName>
 				</fdd:relatedTo>
 			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000391</fdd:id>
+					<fdd:shortName>CCA</fdd:shortName>
+					<fdd:titleName>cc:Mail Archive Email Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse/>
@@ -94,7 +102,9 @@ and SHOULD be limited to 78 characters, excluding the CRLF</li>
 		<fdd:documentation>IMF is fully documented in RFC 5322 and its antecedents, RFC 2822 and RFC 822.</fdd:documentation>
 		<fdd:adoption>IMF is the standard syntax defined by IETF for the message bitstream when moving email message from one computer to another. As such, it is highly adopted and interoperable with many tool sets and application. </fdd:adoption>
 		<fdd:licensingAndPatents>None</fdd:licensingAndPatents>
-		<fdd:transparency>IMF files are US-ASCII text so are easily accessible through processing tools can be readily used on the plain text files </fdd:transparency>
+		<fdd:transparency>
+			<p>IMF files are US-ASCII text so are accessible through plain text processing tools. </p>
+		</fdd:transparency>
 		<fdd:selfDocumentation>Metadata is available through the well-structured header fields.</fdd:selfDocumentation>
 		<fdd:externalDependencies>None</fdd:externalDependencies>
 		<fdd:techProtection>None</fdd:techProtection>
@@ -205,8 +215,15 @@ is the widely used protocol to send email messages from the authors mail program
 			<fdd:url>
 				<fdd:urlReference>
 					<link>http://en.wikipedia.org/wiki/Email</link>
-					<tag>Wikipedia: Email</tag>
+					<tag>Wikipedia entry for Email</tag>
 					<comment>Helpful article which discusses the structures and protocol of email messages</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Message_transfer_agent</link>
+					<tag>Wikipedia entry for Message Transfer Agent</tag>
+					<comment>Overview of the role of MTA in moving email across computers and systems</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
