@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000419" titleName="GeoPackage Encoding Standard (OGC), version 1.0" shortName="GeoPackage_1_0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2015-01-19</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>GeoPackage Encoding Standard (OGC), version 1.0</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>vector graphic formats</fdd:keyword>
+			<fdd:keyword>raster image formats</fdd:keyword>
+			<fdd:keyword>georeferenced image formats</fdd:keyword>
+			<fdd:keyword>geospatial data formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The GeoPackage Encoding Standard from the Open Geospatial Consortium specifies GeoPackages for exchange and GeoPackage SQLite Extensions that permit direct use, without
+intermediate format translations, of vector geospatial features and/or tile matrix sets of earth images and raster maps at various
+scales. GeoPackages are designed to be interoperable across enterprise and personal computing environments and
+usable on mobile devices with
+limited connectivity and bandwidth.  An important use case for designing GeoPackage was mobile device use.</p>
+			<p>A GeoPackage is a platform-independent SQLite database file that contains data and
+metadata tables with names and structures as defined in the standard, having specified definitions, integrity assertions, format limitations
+and content constraints.  A useful diagram of the tables defined is Figure 1 in the Introduction (page viii).  A more detailed <a href="http://www.geopackage.org/spec/#_geopackage_tables_detailed_diagram">diagram</a> is in Appendix B, clause B.11, as Figure 4.  Version 1.0 of the GeoPackage standard is based on version 3 of the SQLite file format.</p>
+			<p>A GeoPackage has two required tables:</p>
+			<ul>
+				<li>The <i>gpkg_spatial_ref_sys</i> table documents coordinate reference systems used for data in the package.  It must include a record for WGS-84.</li>
+				<li>The <i>gpkg_contents</i> table provides identifying and descriptive information for the tables containing data. It acts as a directory of the primary content in the file.</li>
+			</ul>
+			<p>A GeoPackage may incorporate data for vector features and/or for tiled raster images.</p>
+			<ul>
+				<li>Vector feature data: A GeoPackage with vector feature data has a
+<i>gpkg_geometry_columns</i> table that identifies the geometry columns in feature tables, which contain user
+data representing features.  Geometries supported include, points, curves, lines, polygons, etc.  See GIS <a href="#factors">functionality factors</a> for a complete list.  Feature attributes are
+columns in a feature table. Features are rows in a feature table.</li>
+				<li>Raster image data: A GeoPackage can store multiple raster and tile pyramid data sets. In a standard GeoPackage, tiles may be in JPEG or PNG encoding.</li>
+			</ul>
+			<p>An SQLite database that use constructs from the GeoPackage specification but also contains additional data elements (tables or columns)
+or SQL constructs (data types, functions, indexes, constraints or triggers) that are not specified in the
+GeoPackage Encoding Standard, is referred to as an Extended GeoPackage.  Version 1.0 of the Geopackage Encoding Standard defines mechanisms for extension and documents a few registered extensions, including the use of WEBP for image tiles.</p>
+		</fdd:description>
+		<fdd:shortDescription>Non-proprietary package format from the Open Geospatial Consortium for geospatial data that can contain vector feature data and/or tiled raster image sets in a platform-independent SQLite database file.  Designed to be interoperable across enterprise and personal computing environments and usable on mobile devices.</fdd:shortDescription>
+		<fdd:productionPhase>Primarily a middle-state format for a package of tiled raster images and/or vector features that can be transmitted between applications.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:comment>SQLite database file, not described separately on this site.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None</fdd:experience>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Open standard documented in freely available standard.  Developed and maintained by the Open Geospatial Consortium (OGC).</fdd:disclosure>
+		<fdd:documentation>
+			<p>The standard can be downloaded from <a href="http://www.opengeospatial.org/standards/geopackage">OGC: GeoPackage Encoding Standard </a> or consulted online at <a href="http://www.geopackage.org/spec/">http://www.geopackage.org/spec/</a>.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>As of January 2015, this standard is still new.  It is supported in whole or in part by several GIS software tools:</p>
+			<ul>
+				<li>GDAL, a driver library used by other GIS products, introduced support for feature data in geopackages in its version 1.11 (first available in a development version in February 2014). Raster support was added to the development version of GDAL 2.0 in December 2014.</li>
+				<li>SAFE software&apos;s FME 2015.0 <a href="http://blog.safe.com/2015/01/whats-great-fme-2015/#new-formats">introduced a Reader/Writer for GeoPackage</a>.</li>
+				<li>Support for GeoPackage  is in LuciadLightspeed, LuciadMobile, LuciadFusion and a free GeoPackage viewer for Android from <a href="http://www.luciad.com/">Luciad</a>.  Luciad also provides a small C-library <a href="https://bitbucket.org/luciad/libgpkg">libgpkg</a> as an open-source library for reading and writing GeoPackage compliant SQLite files.</li>
+				<li>ESRI ArcGIS <a href="http://blogs.esri.com/esri/arcgis/2014/04/14/support-for-ogc-geopackages-in-arcgis/">introduced support for the standard GeoPackage vector features in version 10.2.2 (after support for the draft specification in 10.2.1).  Full support was expected in version 10.3.</a>
+				</li>
+				<li>MapLink Pro 8.0 from Envitia</li>
+				<li>SpatiaLite</li>
+				<li>
+					<a href="http://geotools.org/">GeoTools</a> began developing support for GeoPackage in late 2013 and improved it in releases in 2014 and early 2015.</li>
+				<li>
+					<a href="http://docs.geoserver.org/latest/en/user/community/geopkg/index.html">Geoserver</a> has GeoPackage support.</li>
+			</ul>
+			<p>In late 2014, Terrago announced its OpenGeoPDF initiative, which includes as a first phase, support in Terrago Publisher 6.6 for embedding feature data used in a GeoPDF file using a GeoPackage attachment rather than Adobe&apos;s object data mechanism.  Terrago Toolbar 6.6&apos;s Identify tool can display the feature attributes.  The GeoPackage file can be extracted and saved as a separate file.</p>
+			<p>The compilers of this resource are not aware of adoption of GeoPackage for distributed map products or in map delivery services.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No apparent concerns.  SQLite, on which GeoPackage is built is a relational database software package for which source code and documentation is in the public domain.  The OGC GeoPackage Encoding Standard document is made available on a royalty free,
+non-discriminatory basis.  The document includes a boilerplate call for OGC to be notified of any patents that implementations of the specification might infringe.</fdd:licensingAndPatents>
+		<fdd:transparency>One intent of the GeoPackage format is to have a compact representation appropriate to use for applications on mobile devices.  Compact representations of information are inherently less easy for human readers.  The .gpkg file is in the <a href="http://www.sqlite.org/fileformat.html">SQLite database file format</a>.  This format is a binary format and uses b-trees to store table data.  B-trees support rapid access to data within tables, and are a basic technique used for organizing data for sorting and searching.  Open source software is available for manipulating .gkpg files.  The SQLite database file format specification cites the particular b-tree algorithms used.  The algorithms are described in Donald Knuth&apos;s <i>The Art of Computer Programming</i> [<a href="http://lccn.loc.gov/97002147">LCCN: 97002147</a>], Volume 3, pages 471-479.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>The format defines an optional table
+<i>gpkg_data_columns</i>
+
+to hold descriptions of the data field in a specified column, including: short name, title, description, and a link to descriptions of constraints (min/max, etc.) stored in a supplementary table, <i>gpkg_data_column_constraints</i>.</p>
+			<p>The format also defines an optional <i>gpkg_metadata</i> table may contain
+metadata in encodings for which MIME types exist (with a default of <i>text/xml</i>) based on any authoritative metadata
+specification, such as ISO 19115, ISO 19115-2, ISO 19139, Dublin Core, CSDGM, DDMS, NMF/NMIS, etc. The GeoPackage interpretation of what constitutes <i>metadata</i> is broad. It also includes UML models encoded in XMI, GML Application Schemas, ISO 19110 feature catalogues, OWL and SKOS taxonomies, etc.  A GeoPackage that contains a <i>gpkg_metadata</i> table is required to have a <i>gpkg_metadata_reference</i> table to
+associate metadata in the <i>gpkg_metadata</i> table with data in the feature, and tiles tables.  The two tables are intended to provide the
+support necessary to implement the hierarchical metadata model defined in ISO 19115.  Metadata values can be associated with the entire geopackage or to a table, column, row, or table cell (row/col).</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None beyond software to unpack the data structures.</fdd:externalDependencies>
+		<fdd:techProtection>The SQLite application does have an extension that supports encryption.  However, the GeoPackage 1.0 specification does not provide for any encryption within the package.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>Raster image tiles can be in <fddLink id="fdd000149">JPEG_DCT_BL</fddLink> or <fddLink id="fdd000153">PNG</fddLink> encodings in the standard GeoPackage.</fdd:normalImage>
+			<fdd:clarity>Limited to 8-bits per channel.</fdd:clarity>
+			<fdd:colorMaint>See <fddLink id="fdd000149">JPEG_DCT_BL</fddLink> or <fddLink id="fdd000153">PNG</fddLink>.</fdd:colorMaint>
+			<fdd:graphics>No support for vector graphics in raster tiles. Vector graphics and other features are supported through feature tables.  See Dataset and GIS factors below.</fdd:graphics>
+			<fdd:multispectral>No support within a single raster image layer.</fdd:multispectral>
+		</fdd:stillImageQF>
+		<fdd:datasetQF>
+			<fdd:normalDataset>
+				<p>Data types from SQLite supported are: boolean, tinyint (8 bits), smallint (16 bits), mediumint (32 bits), int/integer (64 bits), float (32 bits), double/real (64 bits), text (UTF-8 or UTF16), blob, date (<i>YYYY-MM-DD</i>, stored as text), datetime (<i>YYYY-MM-DD</i>T<i>HH:MM:SSS</i>Z stored as text).  Also defined is a type for representing a geometry type, typically selected from a set defined in the standard but optionally user-defined.  The blob datatype appears to be usable in limited circumstances, either using a structure fully defined in the standard, or associated with a MIME type.</p>
+			</fdd:normalDataset>
+			<fdd:accessSoftware>
+				<p>A package compliant with version 1.0 of the encoding standard is intended to provide SQL access to its
+contents via SQLite version 3 software APIs.</p>
+			</fdd:accessSoftware>
+			<fdd:dataDocumentation>
+				<p>The format allows embedding of rich metadata of all types.  See Self-documentation in <a href="#sustainability">Sustainability Factors</a> above.</p>
+			</fdd:dataDocumentation>
+		</fdd:datasetQF>
+		<fdd:gisQF>
+			<fdd:normalGIS>
+				<p>Each table for features or tiles must have an associated spatial reference system. If the <i>srs_id</i> column value references a geographic coordinate reference
+system (CRS), then the min/max x/y values are in decimal degrees; otherwise, the srs_id
+references a projected CRS and the min/max x/y values are in the units specified by that CRS.  The <i>gpkg_spatial_ref_sys</i> table in a GeoPackage is required to include a record for WGS-84.</p>
+				<p>Geometry types supported in a GeoPackage include: Point,Curve, LineString, Surface, CurvePolygon, Polygon, GeometryCollection, MultiSurface, MultiPolygon, MultiCurve, MultiLineString, MultiPoint.</p>
+			</fdd:normalGIS>
+			<fdd:metadataGIS>
+				<p>The format allows embedding of rich metadata of all types.  See Self-documentation in <a href="#sustainability">Sustainability Factors</a> above.</p>
+			</fdd:metadataGIS>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>gpkg</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Defined in the standard.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex:  53 51 4c 69 74 65 20 66 6f 72 6d 61 74 20 33 00</fdd:sigValue>
+					<fdd:sigValue>ASCII:  SQLite format 3</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>In first 16 bytes of the file. Defined in the standard.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Indicator for profile, level, version, etc.</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Octal:  47 50 31 30</fdd:sigValue>
+						<fdd:sigValue>ASCII:  GP10</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>In the application
+id field (byte offset 68) of the SQLite database header.  Indicates version 1.0 of GeoPackage.  Defined in standard and <a href="http://www.sqlite.org/src/artifact?ci=trunk&amp;filename=magic.txt">SQLite magic.txt file</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>The standard requires that a Geopackage satisfy two integrity checks that are optional for SQLite database files in general, but supported by SQLite PRAGMA software. The SQLite PRAGMA integrity_check SQL command must return <i>ok</i> for a
+GeoPackage.  The SQLite PRAGMA foreign_key_check SQL with no parameter value must
+return an empty result set indicating no invalid foreign key values.</p>
+			<p>The standard defines a StandardGeoPackageBinary subformat used to record feature table geometries with or without optional
+elevation (Z) and/or measure (M) values in SQL blobs.  This subformat is based on Well-Known Binary as defined in ISO/IEC 13249-3:2011 [<a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53698">Information Technology -- Database languages -- SQL multimedia and application packes -- Part 3: Spatial</a>] clause 5.1.46, with the addition of an explicit encoding for an empty point set, which is not defined in ISO 13249-3.</p>
+			<p>Extensions documented in the specification include additional
+geometry types, additional SQL geometry functions, and WEBP as an additional tile image format.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>Some history and influences on the format development are described by Even Rouault (a GDAL developer) in a <a href="http://erouault.blogspot.com/2014/12/gdal-geopackage-raster-support.html">blog post</a>.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://portal.opengeospatial.org/files/?artifact_id=56357</link>
+					<tag>OGC® GeoPackage Encoding Standard 1.0 (12-128r10)</tag>
+					<comment>Official specification as PDF </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link> http://www.opengis.net/doc/IS/geopackage/1.0</link>
+					<tag>Alternative URL for OGC® GeoPackage Encoding Standard 1.0</tag>
+					<comment>&quot;External&quot; reference to the specification document.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.opengeospatial.org/standards/geopackage</link>
+					<tag>OGC: GeoPackage Encoding Standard</tag>
+					<comment>Introductory page that provides access to the specification and related documents.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.geopackage.org/spec/</link>
+					<tag>OGC® GeoPackage Encoding Standard</tag>
+					<comment>Link-rich online version of specification.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53698</link>
+					<tag>ISO/IEC 13249-3:2011, Information technology -- Database languages -- SQL multimedia and application packages -- Part 3: Spatial</tag>
+					<comment>GeoPackage specification depends heavily on this ISO standard</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://jtc1sc32.org/doc/N2251-2300/32N2279-text_for_ballot-CD_13249-3.pdf</link>
+					<tag>Draft text for ISO/IEC 13249-3:2011</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.geopackage.org/</link>
+					<tag>GeoPackage website</tag>
+					<comment>Includes list of implementations.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.fit.vutbr.cz/~rychly/public/docs/slides-iso-iec-13249/slides-iso-iec-13249.print.pdf</link>
+					<tag>Slideshow on SQL multimedia and application packages: 
+ISO/IEC 13249 SQL/MM</tag>
+					<comment>By Marek Rychlý.  3rd April 2014.  Illustrates geometry types.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ogcnetwork.net/geopackage</link>
+					<tag>Geopackage page on OGC Network site</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://openjump.blogspot.com/2014/02/openjump-plus-reads-ogc-geopackages.html</link>
+					<tag>OpenJUMP PLUS reads OGC GeoPackages</tag>
+					<comment>Blog post from February 2014.  Indicates that GDAL has support for vector data in GeoPackage, starting in version 1.11.  It was in development versions in February 2014.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://erouault.blogspot.com/2014/12/gdal-geopackage-raster-support.html</link>
+					<tag>GDAL GeoPackage raster support</tag>
+					<comment>Post by Even Rouault, December 15, 2014</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.gdal.org/drv_geopackage.html</link>
+					<tag>GDAL:  GeoPackage vector driver</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.gdal.org/drv_geopackage_raster.html</link>
+					<tag>GDAL:  GeoPackage raster driver</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>ESRI Blog posts on support in ESRI products</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://blogs.esri.com/esri/arcgis/2014/04/14/support-for-ogc-geopackages-in-arcgis/</link>
+							<tag>Support for OGC GeoPackage specification in ArcGIS. (April 14, 2014)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://blogs.esri.com/esri/arcgis/2014/10/10/whats-inside-the-new-10-2-4-release-of-arcgis-runtime-sdk-for-java/</link>
+							<tag>The 10.2.4 release of ArcGIS Runtime SDK for Java: What’s inside?</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://lists.opengeospatial.org/pipermail/geopackage/</link>
+					<tag>Geopackage Listserv Archives</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://lists.opengeospatial.org/pipermail/geopackage/2014-November/000083.html</link>
+					<tag>[Geopackage] &quot;OpenGeoPDF&quot; linkage to geopackage?</tag>
+					<comment>Thread on listserv from November 2014</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www10.giscafe.com/blogs/gissusan/2014/11/25/terrago-releases-opengeopdf-technology/</link>
+					<tag>Terrago releases OpenGeoPDF technology.  Nov 25, 2014</tag>
+					<comment>Post by Susan Smith at GISCafe</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.sqlite.org/fileformat.html</link>
+					<tag>The SQLite Database File Format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.sqlite.org/src/artifact?ci=trunk&amp;filename=magic.txt</link>
+					<tag>SQLite magic.txt file</tag>
+					<comment>Lists registered values for SQLite application ID, including &quot;gp10&quot; for GeoPackage 1.0.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://sqlite.org/copyright.html</link>
+					<tag>SQLite Copyright</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

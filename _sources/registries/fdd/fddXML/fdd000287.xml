@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000287" titleName="ESRI World File" shortName="ESRI_World" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2015-01-28</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ESRI World File</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>geospatial data formats</fdd:keyword>
+			<fdd:keyword>georeferenced image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>World files establish an image-to-world transformation that converts the image coordinates to real-world coordinates on a map.
+ The world file describes the height and width represented by each cell/pixel and the coordinate position of the top left cell of the image data. It gives the information with six numeric parameters, each in its own line.  These numeric parameters are used to transform the raw pixel image data into a world coordinate system for relating to a map (georeferencing).</p>
+			<p>The image-to-world transformation is a six-parameter transformation in the form of:</p>
+			<ul>
+				<li>x1 = Ax + By + C</li>
+				<li>y1 = Dx + Ey + F</li>
+			</ul>
+			<p>where:</p>
+			<ul>
+				<li>x1 = calculated x-coordinate of the pixel on the map</li>
+				<li>y1 =  calculated y-coordinate of the pixel on the map</li>
+				<li>x = column number of a pixel in the image</li>
+				<li>y = row number of a pixel in the image</li>
+				<li>A = x-scale; dimension of a pixel in map units in x direction</li>
+				<li>B, D = rotation terms</li>
+				<li>C, F = translation terms; x,y map coordinates of the center of the upper left pixel</li>
+				<li>E = negative of y-scale; dimension of a pixel in map units in y direction</li>
+			</ul>
+			<p>The parameters are stored in the order: A, D, B, E, C, F.   Each parameter is stored as ASCII characters.  The numbers may not be stored in scientific notation.  A sample file has the following six lines:</p>
+			<ul>
+				<li>20.17541308822119</li>
+				<li>0.00000000000000</li>
+				<li>0.00000000000000</li>
+				<li>-20.17541308822119</li>
+				<li>424178.11472601280548</li>
+				<li>4313415.90726399607956</li>
+			</ul>
+			<p>A world file has no capability to define a projection or coordinate reference system or indicate what CRS is assumed.  Hence it cannot provide full georeferencing information as supported by some image formats. for example using tags in <fddLink id="fdd000279">GeoTIFF</fddLink>.  ESRI products appear to use a world file if it exists in the same directory as an image file, in preference to using the embedded georeferencing information.</p>
+			<p>See <a href="http://en.wikipedia.org/wiki/World_file">Wikipedia entry on world file</a> for a comprehensive discussion of world files.</p>
+		</fdd:description>
+		<fdd:shortDescription>A simple text file developed for use by ESRI GIS applications and used by other GIS applications for aligning images with other georeferenced images and data.  A world file establishes, through numeric parameters, an image-to-world transformation that converts the image coordinates to geospatial coordinates.
+ </fdd:shortDescription>
+		<fdd:productionPhase>A middle-state format used within GIS applications to align an image with related geo-reference images and data.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Requires</fdd:typeOfRelationship>
+				<fdd:comment>Associated raster image file, typically one without embedded georeferencing data, for example, <fddLink id="fdd000283">BIL_file</fddLink>, <fddLink id="fdd000288">BIP_file</fddLink>, or <fddLink id="fdd000289">BSQ_file</fddLink>.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>This is a simple text format with no formal specification.  Many adequate descriptions exist.</fdd:disclosure>
+		<fdd:documentation>World files, as used by ESRI, are described in many places where geospatial resources are documented or provided.  See, for example, <a href="http://desktop.arcgis.com/en/desktop/latest/manage-data/raster-and-images/world-files-for-raster-datasets.htm">http://desktop.arcgis.com/en/desktop/latest/manage-data/raster-and-images/world-files-for-raster-datasets.htm</a> (from help for ESRI&apos;s ArcGIS Desktop), <a href="http://www.kralidis.ca/gis/worldfile.htm"> http://www.kralidis.ca/gis/worldfile.htm</a> (simple, brief),  or <a href="http://en.wikipedia.org/wiki/World_file"> http://en.wikipedia.org/wiki/World_file</a> (more complete).</fdd:documentation>
+		<fdd:adoption>Very widely adopted for use in rotating raster image files to align with other georeferenced data in ESRI applications.</fdd:adoption>
+		<fdd:licensingAndPatents>No licensing concerns.</fdd:licensingAndPatents>
+		<fdd:transparency>Very good.</fdd:transparency>
+		<fdd:selfDocumentation>None, beyond association with an image file by filename. Not relevant for this format for supplemental files.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None.</fdd:externalDependencies>
+		<fdd:techProtection>No concerns.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>tfw</fdd:sigValue>
+					<fdd:sigValue>tifw</fdd:sigValue>
+					<fdd:sigValue>jgw</fdd:sigValue>
+					<fdd:sigValue>jpgw</fdd:sigValue>
+					<fdd:sigValue>pgw</fdd:sigValue>
+					<fdd:sigValue>bpw</fdd:sigValue>
+					<fdd:sigValue>bipw</fdd:sigValue>
+					<fdd:sigValue>bmpw</fdd:sigValue>
+					<fdd:sigValue>blw</fdd:sigValue>
+					<fdd:sigValue>bilw</fdd:sigValue>
+					<fdd:sigValue>bqw</fdd:sigValue>
+					<fdd:sigValue>bsqw</fdd:sigValue>
+					<fdd:sigValue>btw</fdd:sigValue>
+					<fdd:sigValue>rcw</fdd:sigValue>
+					<fdd:sigValue>rlcw</fdd:sigValue>
+					<fdd:sigValue>sdw</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>There is not a formal list of file extensions.  See <a href="#notes">Notes</a> below for more on naming of world files.  ESRI software will follow the approach described informally there to associate a world file with an image file in the same directory.  The rules do not guarantee uniqueness.  For example, a .bpw file may be associated with a .bip image or a .bmp image.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>text/plain</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>None</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>World files do not specify a coordinate system. 
+This information is usually stored in the raster image file itself or in a separate supplementary file.  For example, ESRI has used .prj files to specify coordinate systems and projections using <i>well-known text</i> (WKT).</p>
+			<p>The y-scale (E) is almost always negative because the origins of an image and a geographic coordinate system are different. The origin of an image is usually located in the upper-left corner, whereas the origin of the map coordinate system is located in the lower-left corner. Row values in the image increase from the origin downward, while y-coordinate values in the map increase from the origin upward.</p>
+			<p>In general, world files use the same name as the image, with a &quot;w&quot; appended. For example, the world file for the image file mytown.tif would be called mytown.tifw, and the world file for redlands.rlc would be redlands.rlcw. However, since some older software only accepts 3-letter file extensions, the first and third characters of the image file&apos;s suffix and a final &quot;w&quot; are sometimes used for the world file suffix. Therefore the world files for mytown.tif and redlands.rlc might be mytown.tfw and redlands.rcw, respectively.</p>
+			<p>ESRI supports another text file that it calls a &quot;world&quot; file, for Computer-Aided Design (CAD) files.  The CAD world files use the .wld file extension and have different semantics.</p>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://desktop.arcgis.com/en/desktop/latest/manage-data/raster-and-images/world-files-for-raster-datasets.htm</link>
+					<tag>World files for raster datasets</tag>
+					<comment>From help for ESRI&apos;s ArcGIS for Desktop.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.kralidis.ca/gis/worldfile.htm</link>
+					<tag>Brief description of &quot;world&quot; file format.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/World_file</link>
+					<tag>World file description from Wikipedia</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://wiki.gis.com/wiki/index.php/World_file</link>
+					<tag>Wiki.GIS.com: World file</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://andrewharvey4.wordpress.com/2011/02/20/reading-and-writing-esri-world-files/
+</link>
+					<tag>Reading and Writing ESRI World Files</tag>
+					<comment>Blog post with diagrams showing how rotation is used to align an image with a coordinate grid.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.goldensoftware.com/knowledge-base/surfer/1088-what-is-an-esri-world-file-and-can-i-make-my-own</link>
+					<tag>What is an ESRI World file and can I make my own?</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.remotesensing.org/geotiff/faq.html#WorldFile1</link>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://apps.nationalarchives.gov.uk/pronom/fmt/367</link>
+					<tag>PRONOM entry for ESRI World File</tag>
+					<comment>PUID is fmt/367</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.trincoll.edu/~cgeiss/courses/arcgis/arc_mrsid.htm</link>
+					<tag>ArcGIS Help - 1. Importing MrSID files</tag>
+					<comment>2003 explanation of need to use .sdw world files with some MrSID files.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

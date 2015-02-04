@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000418" titleName="LAS (LASer) File Format, Version 1.4" shortName="LAS_1_4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2015-01-14</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>LAS (LASer) File Format, Version 1.4</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>geospatial data formats</fdd:keyword>
+			<fdd:keyword>georeferenced image formats</fdd:keyword>
+			<fdd:keyword>vector graphic formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>LAS is a file format for the interchange of 3-dimensional point cloud data.  Although developed primarily for exchange of lidar point cloud data, this format supports the exchange of any 3-dimensional x,y,z tuplet data.   Lidar uses ultraviolet, visible, or near infrared light to image objects and instruments fitted to aircraft and satellites use lidar for surveying and mapping.  See <a href="#notes">Notes</a> below for more on lidar and point clouds.  The LAS specification was developed and is maintained as a public specification by the American Society for Photogrammetry and Remote Sensing (<a href="http://www.asprs.org/">ASPRS</a>).  USGS has established the 3D Elevation Program (<a href="http://nationalmap.gov/3DEP/">3DEP</a>), which will generate lidar data for the entire continental United States and Hawaii, using the LAS 1.4 format to deliver raw point cloud data.  The data is used to derive images and 3D surface models.</p>
+			<p>The introduction to the LAS format from ASPRS explains the rational for developing the format: &quot;This binary file format is an alternative to proprietary systems or a generic ASCII file interchange system used by many companies. The problem with proprietary systems is obvious in that data cannot be easily taken from one system to another. There are two major problems with the ASCII file interchange. The first problem is performance because the reading and interpretation of ASCII elevation data can be very slow and the file size can be extremely large, even for small amounts of data. The second problem is that all information specific to the lidar data is lost. The LAS file format is a binary file format that maintains information specific to the lidar nature of the data while not being overly complex.&quot;  Numbers in LAS are stored in binary form to save space and to eliminate the processing time needed to convert numbers in ASCII to a form usable for calculation.  See <a href="#notes">Notes</a> below for more details on number formats used in LAS.</p>
+			<p>The LAS format consists of four types of record.  All data are binary in little-endian format.  Version 1.4 is based on a 64-bit file structure. The record types are listed here in the order found in a LAS file.</p>
+			<ul>
+				<li>The mandatory single header block contains a file signature (LASF), basic metadata identifying the project, number and type of point data records, dimensions of x,y,z range included, and pointers to the major sections of the file.</li>
+				<li>Optional Variable Length Records (VLRs) contain variable types of data including projection
+information, metadata, waveform packet information, and user application data. VLRs are limited
+to a data payload of 65,535 bytes.</li>
+				<li>Point Data Records form the primary content of the file.  LAS 1.4 defines types 0 through 10 for types of point data.  All point records in a file must be of the same type.  See <a href="#notes">Notes</a> below.</li>
+				<li>Optional Extended Variable Length Records (EVLRs) allow a larger data payload than VLRs and can be conveniently appended to the end of a LAS file</li>
+			</ul>
+			<p>Features added with version 1.4 include:</p>
+			<ul>
+				<li>Backward compatibility with LAS 1.1 – LAS 1.3 when payloads consist of only legacy content</li>
+				<li>Extension of offsets and field sizes to support full 64-bit values.</li>
+				<li>Extension of several features to allow higher quality data and support more powerful equipment.</li>
+				<li>Support for Well Known Text (WKT) definitions for Coordinate Reference
+Systems (to replace use of <fddLink id="fdd000279">GeoTIFF</fddLink> conventions).</li>
+				<li>Support for Domain Profiles.  These profiles may extend the LAS format in controlled ways.</li>
+			</ul>
+		</fdd:description>
+		<fdd:shortDescription>File format for the interchange of 3-dimensional point cloud data, developed and is maintained as a public specification by the American Society for Photogrammetry and Remote Sensing (ASPRS).  Developed primarily for exchange of LIDAR point cloud data, this format supports the exchange of any 3-dimensional x,y,z tuplet data. </fdd:shortDescription>
+		<fdd:productionPhase>A middle-state format for data interchange.  Also used for archiving point cloud data.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:comment>Versions 1.0 through 1.3, not described separately on this site.  Versions through 1.3 used a 32-bit file structure.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Equivalent to</fdd:typeOfRelationship>
+				<fdd:comment>LAZ, a losslessly compressed variant of LAS.  <a href="http://www.laszip.org/">LASzip</a> compresses the point data using mechanisms appropriate to the different elements of the data and typical characteristics.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Congressional Cartography Program of the Library of Congress has limited experience using LIDAR point cloud data in the LAS format to prepare maps for Congress or the Congressional Research Service.</fdd:experience>
+		<fdd:preference/>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Publicly available standard developed and maintained by the American Society for Photogrammetry and Remote Sensing (<a href="http://www.asprs.org">ASPRS</a>).  Intended for use without license.</fdd:disclosure>
+		<fdd:documentation>All versions of the LAS File Format Specification are available from <a href="http://www.asprs.org/Committee-General/LASer-LAS-File-Format-Exchange-Activities.html">LASer (LAS) File Format Exchange Activities</a> at ASPRS.  As of January 2015, the latest version is <a href="http://www.asprs.org/a/society/committees/standards/LAS_1_4_r13.pdf">Revision 13, July 2013</a>.</fdd:documentation>
+		<fdd:adoption>
+			<p>Widely used for lidar point cloud data.  See <a href="https://cloud.sdsc.edu/v1/AUTH_opentopography/www/shortcourses/11SCEC_course/11SCEC_LiDARintro.pdf">Introduction to Lidar</a>, a tutorial slideshow from Open Topography. Although point cloud data can be described in ASCII text files, such files are very clumsy to use, because of the time required to import data and convert the numbers to binary for analysis.  In practice, lidar point cloud datasets are usually shared in LAS files or losslessly compressed derivatives of LAS.</p>
+			<p>The National Geospatial Program:
+Lidar Base Specification, ver. 1.2, November 2014 requires (on page 6) that &quot;All processing will be carried out with the understanding that all point deliverables are required to be fully compliant with ASPRS LAS Specification, version 1.4, using Point Data Record Format 6, 7, 8, 9 or 10.</p>
+			<p>Software libraries available for manipulation of data in the LAS format includes: <a href="http://rapidlasso.com/LAStools/">LAStools</a>, a suite of batch-scriptable, multicore command line tools, that can also be run in a native GUI and are available as a LiDAR processing toolboxes for ArcGIS and QGIS; <a href="https://github.com/grantbrown/laspy">Laspy</a>, a python interface for reading/modifying/creating .LAS lidar files matching specification 1.0-1.4.; and <a href="http://www.pdal.io/tutorial/reading.html">PDAL</a>, a C++ library intended to support data translation.</p>
+			<p>LAS 1.4 is used as a distribution format for data generated by the 3D Elevation Program (3DEP).  The 3DEP initiative, under USGS and the National Map, is gathering lidar data to support generation of high-quality topographic data and other three-dimensional representations of the nation&apos;s natural and constructed features. The primary goal of 3DEP is to systematically collect enhanced elevation data in the form of high-quality light detection and ranging (lidar) data over the continental United States, Hawaii, and the U.S. territories, with data acquired over an 8-year period. Interferometric synthetic aperture radar (ifsar) data will be collected over Alaska, where cloud cover and remote locations preclude the use of lidar.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No concerns.  Developed by ASPRS as a publicly usable format.</fdd:licensingAndPatents>
+		<fdd:transparency>A binary format.  Not easily viewable by human readers, but using a very straightforward structure for which developing software for basic data extraction would be simple.</fdd:transparency>
+		<fdd:selfDocumentation>The header provides basic metadata to support identification of the file and retrieval of data.  Richer metadata can be included as VLR or EVLR records. </fdd:selfDocumentation>
+		<fdd:externalDependencies>None beyond LAS-aware software.</fdd:externalDependencies>
+		<fdd:techProtection>The format provides no mechanism for technical protection of the data.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:normalDataset>
+				<p>Not a general-purpose dataset format. Designed for point cloud data.  Includes mechanisms for holding x,y,z values at different scales.</p>
+				<p>See <a href="#notes">Notes</a> for details on data types used in LAS.</p>
+			</fdd:normalDataset>
+			<fdd:dataDocumentation>The LAS format provides two mechanisms that can be used to document the provenance and quality of the data.  Several fields in the header contribute to identification of the project or lidar-gathering flight from which the data come, the software that generated the file, and the file creation date. Other metadata or a textual description of the file can be embedded in a LAS file using VLR or EVLR records.</fdd:dataDocumentation>
+		</fdd:datasetQF>
+		<fdd:gisQF>
+			<fdd:normalGIS>Designed specifically for delivery of point cloud data, and generated via equipment on aircraft or satellites in swaths determined by flight paths.  Georeferencing information is mandatory, with coordinate reference system recorded either using Well Known Text (preferred in LAS 1.4) or appropriate tags from the <fddLink id="fdd000279">GeoTiff</fddLink> specification.</fdd:normalGIS>
+			<fdd:metadataGIS>Could be included in a LAS file using VLR or EVLR records.</fdd:metadataGIS>
+			<fdd:grids>As data expressed as values at points in three dimensions, the data in a LAS file is not directly usable for grid-based analysis.  However, tools exist to aggregate data points in cells in a two-dimensional grid.</fdd:grids>
+			<fdd:beyondGIS>The format allows for the addition, as EVLR records, the waveform data associated with the returns from laser pulses.</fdd:beyondGIS>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>las</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The file extension is not mandated in the specification.  However, it is specified in the <a href="http://pubs.usgs.gov/tm/11b4/">Lidar Base Specification</a> from USGS, which is the specification in use for the National Map 3DEP data.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>LASF</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>In first 4 bytes of the file.  From specification.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Indicator for profile, level, version, etc.</fdd:tag>
+				<fdd:values>
+					<fdd:note>Bytes 25 and 26 of the header block are for major and minor version numbers for the LAS specification.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>A useful description of how lidar data is gathered is in <a href="http://coast.noaa.gov/digitalcoast/_/pdf/lidar101.pdf">Lidar 101</a> from <a href="http://coast.noaa.gov/digitalcoast/">NOAA&apos;s Digital Coast program</a>:  &quot;When an airborne laser is pointed at a targeted area on the ground, the beam of light is reflected by the surface it encounters. A sensor records this reflected light to measure a range. When laser ranges are combined with position and orientation data generated from integrated GPS and Inertial Measurement Unit systems, scan angles, and calibration data, the result is a dense, detail-rich group of elevation points, called a &apos;point cloud.&apos;
+
+Each point in the point cloud has three-dimensional spatial coordinates (latitude, longitude, and height) that correspond to a particular point on the Earth&apos;s surface from which a laser pulse was reflected. The point clouds are used to generate other geospatial products, such as digital elevation models, canopy models, building models, and contours.&quot;</p>
+			<p>Point records of types 0-10 are specified in LAS 1.4.  In the list below, <i>Core-0</i> and <i>Core-6</i> are not terms from the specification, but used here as shorthand. </p>
+			<ul>
+				<li>0: Core-0.  20 bytes.  Includes X, Y, Z values, intensity of pulse return, return identification, classification (see below), scan angle, and identifier for the source for this point data, if derived from an earlier dataset.</li>
+				<li>1: Core-0 + GPS time</li>
+				<li>2: Core-0 + three 16-bit color channels</li>
+				<li>3: Core-0 + GPS time and three 16-bit color channels</li>
+				<li>4:  Type 1 + wave packets.  Wave packets  may be stored in the file or in an auxiliary file with the same name and extension <i>.wdp</i>.</li>
+				<li>5: Type 3 + wave packets</li>
+				<li>6: Core-6 (allowing more bits for return data, and making GPS time mandatory)</li>
+				<li>7: Core-6 + three 16-bit color channels </li>
+				<li>8: Type 7 + NIR (near infra-red) channel</li>
+				<li>9: Core-6 + wave packets</li>
+				<li>10: Type 9 + three color channels and NIR channel.</li>
+			</ul>
+			<p>The core data of a point record includes a &quot;Classification&quot; byte, a numerical code which represents an interpretation of the point as of a class.  Examples of predefined classes are &quot;ground,&quot; &quot;low vegetation,&quot; &quot;building,&quot; &quot;road surface,&quot; etc.</p>
+			<p>The binary LAS format incorporates data types conformant to the 1999 ANSI C Language Specification (ANSI/ISO/IEC 9899:1999 (&quot;C99&quot;): char (1 byte); unsigned char (1 byte); short (2 bytes); unsigned short (2 bytes); long (4 bytes); unsigned long (4 bytes); long long (8 bytes); unsigned long long (8 bytes); float (4 byte IEEE floating point format); double (8 byte IEEE floating point format); string (a variable series of 1 byte characters, ASCII encoded, null terminated).</p>
+			<p>LAS, Version 1.4 introduced the concept of a Domain Profile, a derivative of the base LAS specification that adds (but does not remove
+or alter existing) point classes and attributes to meet the application-specific needs of a particular
+subset of the broad lidar community (e.g., the coastal/bathymetric lidar community, or the
+powerline mapping community). New classes can
+be added to Point Data Record Formats 6-10. New attributes must be incorporated using Extra Bytes VLRs.</p>
+			<p>LAS files can be very large despite the binary nature of the format. Two formats that compress LAS in a lossless fashion and tailored to characteristics of the data exist.  The LAZ format was informally documented in <a href="http://www.cs.unc.edu/~isenburg/lastools/download/laszip.pdf">LASzip: lossless compression of LiDAR data</a>, by Martin Isenburg in 2011, and is usable through the open source <a href="http://www.laszip.org/">LASzip</a> software library.
+	Several agencies distribute data in the LAZ format.  In early 2014, ESRI <a href="http://www.lidarnews.com/content/view/10214/">introduced</a> its own lossless compression format, zLAS.  Open data supporters raise objections to the introduction of this proprietary format.  See for example, <a href="http://blog.lidarnews.com/esri-las-optimizer-updated">Esri LAS Optimizer Updated (Nov 8, 2014)</a> from the LiDAR News blog and linked earlier posts.  In <a href="http://resources.arcgis.com/en/communities/3d/01n30000000n000000.htm">Additional samples for LAS files</a>, ESRI explains &quot;zLAS files are much smaller and more efficient to use, especially on the cloud and over networks, than regular LAS.&quot; The compilers of this resource are not aware of detailed technical or functional reasons that motivated ESRI to introduce the new format rather than use LAZ. <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>Since version 1.4 of the LAS File Format Specification was approved in November, 2011, minor revisions have been issued:</p>
+			<ul>
+				<li>R11 - Approved Version (Nov 2011)</li>
+				<li>R12 - Errata (June 2012) - Typographical Corrections</li>
+				<li>R13 - Added Domain Profile Section (July 2013)</li>
+			</ul>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.asprs.org/a/society/committees/standards/LAS_1_4_r13.pdf</link>
+					<tag>LAS Specification, Version 1.4, Revision 13. 15 July 2013</tag>
+					<comment>Latest version as of January 2015.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.asprs.org/Committee-General/LASer-LAS-File-Format-Exchange-Activities.html</link>
+					<tag>LASer (LAS) File Format Exchange Activities</tag>
+					<comment>From the American Society for Photogrammetry and Remote Sensing (ASPRS).  Provides access to all versions of the LAS Format specification, starting from version 1.0, published in May 2003.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Lidar</link>
+					<tag>Wikipedia entry for Lidar (aka LIDAR or LiDAR)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://laspy.readthedocs.org/en/latest/tut_background.html</link>
+					<tag>Background: What are LAS Files? </tag>
+					<comment>From tutorial on Laspy, a python API for working with LAS files.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.e-education.psu.edu/geog481/l1_p6.html</link>
+					<tag>Characteristics of Lidar Data.  From course on topographic mapping with lidar
+
+</tag>
+					<comment>Includes section on data formats.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://pubs.usgs.gov/tm/11b4/</link>
+					<tag>National Geospatial Program:
+Lidar Base Specification, ver. 1.2, November 2014</tag>
+					<comment>States on p. 6, &quot;All processing will be carried out with the understanding that all point deliverables are required to be fully compliant with ASPRS LAS Specification, version 1.4, using Point Data Record Format 6, 7, 8, 9 or 10.&quot;</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://nationalmap.gov/3DEP/</link>
+					<tag>National Map: 3D Elevation Program (3DEP)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://pubs.usgs.gov/circ/1399/</link>
+					<tag>USGS:  The 3D Elevation Program Initiative—A Call for Action</tag>
+					<comment>September 15, 2014</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://cloud.sdsc.edu/v1/AUTH_opentopography/www/shortcourses/11SCEC_course/11SCEC_LiDARintro.pdf</link>
+					<tag>Tutorial slideshow on LiDAR</tag>
+					<comment>Includes discussion of formats for point cloud data.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.laszip.org/</link>
+					<tag>LASzip - free and lossless LiDAR compression</tag>
+					<comment>A free product of rapidlasso GmbH that compresses LAS files into LAZ format</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.cs.unc.edu/~isenburg/lastools/download/laszip.pdf</link>
+					<tag>LASzip: lossless compression of LiDAR data</tag>
+					<comment>By Martin Isenburg. [2011]</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.cs.unc.edu/~isenburg/lastools/</link>
+					<tag>LAStools: award-winning software for rapid LiDAR processing</tag>
+					<comment>By Martin Isenburg.  After a while, the page redirects to rapidlasso.com, Isenburg&apos;s company, which now maintains and sells the LAStools software. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://rapidlasso.com/</link>
+					<tag>Rapidlasso GmbH</tag>
+					<comment>Software developer of LAStools and LASzip</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/grantbrown/laspy</link>
+					<tag>LAS-Read-Writer-in-Python</tag>
+					<comment>Python library for reading, modifying and creating .LAS LIDAR files.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://lidar.cr.usgs.gov/</link>
+					<tag>CLICK: Center for Lidar Information Coordination and Knowledge.</tag>
+					<comment>Has a long list of links to lidar data, software, and documents.  As of January 2015, it does not seem very actively maintained.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.liblas.org/</link>
+					<tag>libLAS - LAS 1.0/1.1/1.2 ASPRS LiDAR data translation toolset</tag>
+					<comment>According to the developers, this C/C++ library has largely been superseded by LAStools and laspy.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.lidarnews.com/content/view/10214/</link>
+					<tag>Esri Introduces Optimized LAS (January 2014)</tag>
+					<comment>Announcement by ESRI in Lidar News</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://blog.lidarnews.com/esri-las-optimizer-updated</link>
+					<tag>Esri LAS Optimizer Updated (Nov 8, 2014)</tag>
+					<comment>Includes links to earlier posts about the zLAS introduction, some of which have extensive comment threads.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.arcgis.com/home/item.html?id=787794cdbd384261bc9bf99a860a374f</link>
+					<tag>LAS Optimizer 1.2</tag>
+					<comment>ESRI download page for utility that creates .zlas files.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

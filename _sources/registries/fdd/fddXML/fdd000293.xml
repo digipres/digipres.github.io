@@ -105,8 +105,8 @@ It is implemented as a collection of binary files in a file system.</fdd:comment
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>A proprietary data framework used for ESRI GIS software applications.  The partial documentation that is available is cited below.</fdd:disclosure>
 		<fdd:documentation>Partial documentation in ESRI application help information: <a href="http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=An_overview_of_the_geodatabase">An overview of the geodatabase</a> and <a href="http://help.arcgis.com/en/arcgisdesktop/10.0/help/003n/003n000000r4000000.htm">The architecture of a geodatabase</a>.  The different storage options for ESRI geodatabases  are described in <a href="http://webhelp.esri.com/arcgisdesktop/9.2/index.cfm?TopicName=Types_of_geodatabases">Types of geodatabases</a>.</fdd:documentation>
-		<fdd:adoption>The Geodatabase data model was introduced by ESRI in the late 1990s with the release of version ArcGIS 8.0.  The release of the ArcGIS suite constituted a major change in ESRI&apos;s software offerings, aligning all their client and server products under one software architecture known as ArcGIS, developed using Microsoft Windows COM standards.  While the ESRI shapefile is still quite prevalent in the industry, at least for sharing and transferring datasets among different systems, the geodatabase is becoming the mechanism of choice for data sharing and data interoperability among organizations, and departments within a single organization.   While older ESRI (non-ArcGIS) products are still available, most of the GIS software market share that ESRI holds (approximately 36 percent worldwide as of 2002) is taken by ArcGIS products.  See <a href="http://en.wikipedia.org/wiki/ArcGIS">ArcGIS from Wikipedia</a> and <a href="http://www.esri.com/library/whitepapers/pdfs/cots-gis.pdf">COTS GIS:  The Value of a Commercial Geographic Information System</a> for more information.</fdd:adoption>
-		<fdd:licensingAndPatents>See External Dependencies below.</fdd:licensingAndPatents>
+		<fdd:adoption>The Geodatabase data model was introduced by ESRI in the late 1990s with the release of version ArcGIS 8.0.  The release of the ArcGIS suite constituted a major change in ESRI&apos;s software offerings, aligning all their client and server products under one software architecture known as ArcGIS, developed using Microsoft Windows COM standards.  While the ESRI shapefile is still quite prevalent in the industry, at least for sharing and transferring datasets among different systems, the geodatabase is becoming the mechanism of choice for data sharing and data interoperability among organizations, and departments within a single organization.   While older ESRI (non-ArcGIS) products are still available, most of the GIS software market share that ESRI holds (approximately 36 percent worldwide as of 2002) is taken by ArcGIS products.  See <a href="http://en.wikipedia.org/wiki/ArcGIS">ArcGIS from Wikipedia</a> and <a href="http://web.archive.org/web/20120703053620/http://www.esri.com/library/whitepapers/pdfs/cots-gis.pdf">COTS GIS:  The Value of a Commercial Geographic Information System</a> for more information.</fdd:adoption>
+		<fdd:licensingAndPatents>ESRI Licensing agreements detail the terms of use and compliance for ESRI GIS software per <a href="http://www.esri.com/legal/software-license">http://www.esri.com/legal/software-license</a>.</fdd:licensingAndPatents>
 		<fdd:transparency>Transparency depends on the storage option used.</fdd:transparency>
 		<fdd:selfDocumentation>The Geodatabase format supports the application of metadata and requires specifications of data types for attribute data.  Semantic descriptions of a dataset and its attributes(variables) are optional.</fdd:selfDocumentation>
 		<fdd:externalDependencies>Software dependencies: <fddLink id="fdd000294">GeoDB_File</fddLink> and GeoDB_Personal (not described on this Web site) geodatabases can be used within ArcGIS software, i.e., ArcView, ArcEditor, and ArcInfo. GeoDB_Personal geodatabases have been used in ArcGIS since Version 8.0 using the Microsoft Access data file structure (.mdb file).  <fddLink id="fdd000329">GeoDB_SDE</fddLink> (spatial database engine) geodatabases work with a variety of DBMS storage models including IBM DB2, IBM Informix, Oracle, PostgreSQL, and Microsoft SQL Server.</fdd:externalDependencies>
@@ -114,8 +114,9 @@ It is implemented as a collection of binary files in a file system.</fdd:comment
 	</fdd:sustainabilityFactors>
 	<fdd:qualityAndFunctionalityFactors>
 		<fdd:gisQF>
-			<fdd:normalGIS>The geodatabase data model allows users to take advantage of both basic and advanced spatial analysis when GIS data is stored within the geodatabase.  Complex business logic can be applied to GIS data to create more detailed and accurate spatial data models that represent real-world GIS application workflows. Examples include land parcel management; natural resources management; river and stream system modeling; utility network system modeling, such as gas, water, and sewage pipelines; and three-dimensional surface modeling of the landscape.
-			<p>By storing feature classes within a feature dataset, geospatial relationships can be modeled between the feature classes, enabling more advanced GIS analysis. The more common types of geospatial relationship data structures in the geodatabase are:</p>
+			<fdd:normalGIS>
+				<p>The geodatabase data model allows users to take advantage of both basic and advanced spatial analysis when GIS data is stored within the geodatabase.  Complex business logic can be applied to GIS data to create more detailed and accurate spatial data models that represent real-world GIS application workflows. Examples include land parcel management; natural resources management; river and stream system modeling; utility network system modeling, such as gas, water, and sewage pipelines; and three-dimensional surface modeling of the landscape.</p>
+				<p>By storing feature classes within a feature dataset, geospatial relationships can be modeled between the feature classes, enabling more advanced GIS analysis. The more common types of geospatial relationship data structures in the geodatabase are:</p>
 				<ul>
 					<li>
 						<b>Topology</b> -- Defines and enforces data integrity rules for features. For example, there should be no gaps between polygons. It supports topological relationship queries and navigation, such as feature adjacency or connectivity and sophisticated feature editing tools, and allows feature construction from unstructured geometry (for example, constructing polygon features from line features).</li>
@@ -133,7 +134,7 @@ It is implemented as a collection of binary files in a file system.</fdd:comment
 		</fdd:gisQF>
 	</fdd:qualityAndFunctionalityFactors>
 	<fdd:notes>
-		<fdd:general>See <a href="http://webhelp.esri.com/arcgisserver/9.3/java/index.htm#geodatabases/the_geod468616361.htm"> The geodatabase is object-relational</a> for more information about the object-relational model behind GeoDB.</fdd:general>
+		<fdd:general>See <a href="http://desktop.arcgis.com/en/desktop/latest/manage-data/geodatabases/the-architecture-of-a-geodatabase.htm#ESRI_SECTION1_387E791ADEE84881B90081FD9EC6E947"> The geodatabase is object-relational</a> for more information about the object-relational model behind GeoDB.</fdd:general>
 		<fdd:history>Prior to the development of the ArcGIS data model and software suite, ESRI developed the Arc/INFO (now usually written as ArcInfo) workstation and various GUI based products for a suite known as ArcView GIS.  In 1999, ESRI released ArcGIS 8.0 to provide a single integrated software architecture that included the geodatabase, an object-relational model.  All subsequent ArcGIS products to date have used that model.  More information about the history of ArcGIS products can be found in the Wikipedia article <a href="http://en.wikipedia.org/wiki/ArcGIS">ArcGIS.</a>
 		</fdd:history>
 	</fdd:notes>
@@ -167,9 +168,9 @@ It is implemented as a collection of binary files in a file system.</fdd:comment
 		<fdd:urls>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.esri.com/software/arcgis/geodatabase</link>
-					<tag>Geodatabase Data Storage and Management for GIS: Overview</tag>
-					<comment/>
+					<link>http://desktop.arcgis.com/en/desktop/latest/manage-data/geodatabases/what-is-a-geodatabase.htm</link>
+					<tag>What is a geodatabase?</tag>
+					<comment>From help pages for ArcGIS for Desktop, version 10.3 (or later)</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
@@ -194,9 +195,9 @@ It is implemented as a collection of binary files in a file system.</fdd:comment
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.esri.com/library/whitepapers/pdfs/cots-gis.pdf</link>
+					<link>http://web.archive.org/web/20120703053620/http://www.esri.com/library/whitepapers/pdfs/cots-gis.pdf</link>
 					<tag>COTS GIS:  The Value of a Commercial Geographic Information System</tag>
-					<comment>An ESRI White Paper.  August 2002</comment>
+					<comment>An ESRI White Paper.  August 2002. No longer online from ESRI.  Link is through Wayback machine at Internet Archive.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>

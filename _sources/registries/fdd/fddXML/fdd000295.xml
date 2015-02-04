@@ -24,8 +24,7 @@
 <p>There are three types of XML documents that can be created in ArcGIS: a workspace document, a record set document, and a data changes document. </p>
 			<ul>
 				<li>
-					<b>Workspace Document</b> -- XML Workspace documents are used to share schema information, exchange feature datasets and all of their contents, as well as any datasets with all associated data elements that have relationships to a dataset selected for export.  The Workspace documents hold all of the contents of a geodatabase or any subset of the content including all of the schema information and, optionally, the data.  
-				<p>The XML Workspace document contains two elements:  WorkspaceDefinition and WorkspaceData.  The schema, relationship, and behavior information exported as part of the WorkspaceDefinition section includes all simple and custom features data, participation in networks and topologies, network connectivity and topology rules, simple and composite relationships, and any other information associated with the geodatabase datasets. Therefore, all behavior associated with the geodatabase is preserved and can be re-created when the XML document is imported. The WorkspaceData contains the data for the dataset as well as attributes describing the dataset name and type.  </p>
+					<b>Workspace Document</b> -- XML Workspace documents are used to share schema information, exchange feature datasets and all of their contents, as well as any datasets with all associated data elements that have relationships to a dataset selected for export.  The Workspace documents hold all of the contents of a geodatabase or any subset of the content including all of the schema information and, optionally, the data.<p>The XML Workspace document contains two elements:  WorkspaceDefinition and WorkspaceData.  The schema, relationship, and behavior information exported as part of the WorkspaceDefinition section includes all simple and custom features data, participation in networks and topologies, network connectivity and topology rules, simple and composite relationships, and any other information associated with the geodatabase datasets. Therefore, all behavior associated with the geodatabase is preserved and can be re-created when the XML document is imported. The WorkspaceData contains the data for the dataset as well as attributes describing the dataset name and type.</p>
 					<p>Using the WorkspaceDefinition and WorkspaceData elements, workspace documents contain the schema of a geodatabase and, optionally, data from its tables. The XML Workspace Document was designed to separate the  the definition  from the actual data so that software agents need read only the definition section of the document to discover what it contains.  By making the data section optional, a workspace document can be used to transfer only schema information.  In the case of tables and feature classes, the name of the data element in the definition section corresponds to the name of the table data in the data section. Other datasets, such as topologies, geometric networks, or feature datasets, appear only in the definition section and no data is exported for them.</p>
 				</li>
 				<li>
@@ -33,11 +32,10 @@
 				<li>
 					<b>Data Changes Document</b> -- As part of geodatabase transaction and version management, users may want to share and work with change-only record sets. The XML Data Changes document is used to share changes or updates among geodatabases and between the geodatabase and external systems. It does this by only distributing changes that can be tracked in the geodatabase using versioning.  The primary information of a Data Changes document is an UpdateGram in which only changes are delivered as part of the XML document. </li>
 			</ul>
-			<p>The XML schema for GeoDB_XML, GdbExchange.xsd can be found in the Program Files\ArcGIS\XMLSchema directory of the file system upon which ArcGIS products are implemented.   </p>
+			<p>The XML schema for GeoDB_XML, GdbExchange.xsd can be found in the Program Files\ArcGIS\XMLSchema directory of the file system upon which ArcGIS products are implemented.</p>
 		</fdd:description>
 		<fdd:shortDescription>ESRI&apos;s Geodatabase XML (GeoDB_XML) format is ESRI&apos;s open mechanism for data sharing among ArcGIS users, and for information interchange between geodatabases and external systems.  </fdd:shortDescription>
-		<fdd:productionPhase> Primarily used as a middle-state format for transfer and exchange of geodatabase data and schema among ArcGIS products.  For specific instructions on copying the schema of a geodatabase and other production tasks, see the discussion on the ESRI Developer Network Documentation Library at <a href="http://edndoc.esri.com/arcobjects/9.2/NET_Server_Doc/manager/geodatabase/creating_a_geodatabase/copyin-1662552459.htm">Copying the schema of a geodatabase. </a>
-		</fdd:productionPhase>
+		<fdd:productionPhase> Primarily used as a middle-state format for transfer and exchange of geodatabase data and schema among ArcGIS products.  For specific instructions on copying the schema of a geodatabase and other production tasks, see the discussion on the ESRI Developer Network Documentation Library at <a href="http://edndoc.esri.com/arcobjects/9.2/NET_Server_Doc/manager/geodatabase/creating_a_geodatabase/copyin-1662552459.htm">Copying the schema of a geodatabase</a>.</fdd:productionPhase>
 		<fdd:relationships>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
@@ -100,7 +98,7 @@ after product installation.</p>
 	</fdd:sustainabilityFactors>
 	<fdd:qualityAndFunctionalityFactors>
 		<fdd:gisQF>
-			<fdd:normalGIS>Any products of spatial analysis as reflected in topologies, tables of attributes, network analysis, etc.  should be transferable as part of an XML workspace document using the GeoDB_XML format.  If the data structure alone of a given geodatabase is desired,  the GeoDB_XML format can be used to transfer  the geodatabase schema without the data.  In addition, simple changes to a database can be transferred between geodatabase versions using the GeoDB_XML format by using the portion of the GeoDB_XML schema that documents the changes in the geodatabase (Data Changes Document).<p>There is some indication that limitations in the ArcGIS tools also limit what can be transferred using the GeoDB_XML format.  For instance, in cases when the user is interested in saving and restoring a geometric network within a geodatabase, ArcCatalog forces the user to drop any existing geometric network data when new data is to be included from another version of a geodatabase or an associated geodatabase.  Other tool sets have been created to work around this problem, namely Geodatabase Designer 2.  For discussion of this problem, see <a href="http://www.wildsong.biz/index.php?title=Geodatabases">Geodatabases from Wildsong Wiki.</a>
+			<fdd:normalGIS>Any products of spatial analysis as reflected in topologies, tables of attributes, network analysis, etc.  should be transferable as part of an XML workspace document using the GeoDB_XML format.  If the data structure alone of a given geodatabase is desired,  the GeoDB_XML format can be used to transfer  the geodatabase schema without the data.  In addition, simple changes to a database can be transferred between geodatabase versions using the GeoDB_XML format by using the portion of the GeoDB_XML schema that documents the changes in the geodatabase (Data Changes Document).<p>There is some indication that limitations in the ArcGIS tools also limit what can be transferred using the GeoDB_XML format.  For instance, in cases when the user is interested in saving and restoring a geometric network within a geodatabase, ArcCatalog forces the user to drop any existing geometric network data when new data is to be included from another version of a geodatabase or an associated geodatabase.  Other tool sets have been created to work around this problem, namely Geodatabase Designer 2.  For discussion of this problem, see <a href="http://wiki.wildsong.biz/index.php/Geodatabases">Geodatabases from Wildsong Wiki.</a>
 				</p>
 			</fdd:normalGIS>
 		</fdd:gisQF>
@@ -150,6 +148,11 @@ after product installation.</p>
 							<comment>An ESRI Technical Paper, June 2008.  Published as PDF.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
+							<link>http://support.esri.com/en/knowledgebase/whitepapers/view/productid/43/metaid/695/</link>
+							<tag>XML Schema of the Geodatabase</tag>
+							<comment>New location for same document.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
 							<link>http://edndoc.esri.com/arcobjects/9.0/ArcGISDevHelp/TechnicalDocuments/Geodatabase/XML_Schema/XMLSchema.htm</link>
 							<tag>XML Schema of the Geodatabase, ArcGIS SDK</tag>
 							<comment>Published as HTML.</comment>
@@ -166,9 +169,8 @@ after product installation.</p>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.esri.com/software/arcgis/geodatabase/interoperability</link>
-					<tag>Geodatabase Interoperabillity</tag>
-					<comment>ESRI's "Understanding Our World"</comment>
+					<link>http://www.esri.com/software/arcgis/geodatabase-old/interoperability</link>
+					<tag>ESRI: Geodatabase Interoperabillity</tag>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
@@ -194,7 +196,7 @@ after product installation.</p>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://arcscripts.esri.com/details.asp?dbid=13484"</link>
+					<link>http://arcscripts.esri.com/details.asp?dbid=13484</link>
 					<tag>ArcScripts for Geodatabase Designer v2 (9.2)</tag>
 					<comment>Public domain script by Richie Carmichael using Visual Basic.</comment>
 				</fdd:urlReference>
@@ -208,9 +210,9 @@ after product installation.</p>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://docs.safe.com/fme/html/FME_ReadersWriters/Default.htm#geodatabase_xml/geodatabase_xml.htm</link>
-					<tag>ESRI XML Geodatabase Reader/Writer</tag>
-					<comment>from Safe Software Inc.</comment>
+					<link>http://docs.safe.com/fme/html/FME_Desktop_Documentation/Subsystems/FME_Readers_Writers/Content/geodatabase_xml/quick_facts_geodatabase_xml.htm</link>
+					<tag>ESRI XML Geodatabase Quick Facts for Reader/Writer</tag>
+					<comment>From Safe Software Inc.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>

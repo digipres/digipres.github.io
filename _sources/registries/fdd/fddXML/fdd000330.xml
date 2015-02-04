@@ -16,7 +16,7 @@
 			</fdd:gdfrDomain>
 		</fdd:gdfrDomains>
 		<fdd:updates>
-			<fdd:date>2012-01-14</fdd:date>
+			<fdd:date>2015-01-29</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -27,14 +27,13 @@
 			<fdd:keyword>scientific data formats</fdd:keyword>
 		</fdd:keywords>
 		<fdd:description>
-			<p>NetCDF is a set of software libraries and self-describing, machine-independent data formats for array-oriented scientific data.  The first version of the format was developed in the late 1980s at the Unidata Program Center, with the objective of building a file format that would permit sharing of data among atmospheric scientists.  It has found wide use in other scientific communities, with different communities developing discipline-specific <a href="http://www.unidata.ucar.edu/software/netcdf/docs/conventions.html">conventions</a>.  The format was and is designed to be portable, platform-independent, scalable, and appendable.  See <a href="#notes">Notes</a> below for more detail on design objectives.  </p>
-			<p>As of January 2012, there are four variants of the format. The first two, known as Classic and 64-bit Offset, are nearly identical and together are often referred to as netCDF-3.  This format description is for netCDF-3.  The later formats, based on HDF5 will be described separately.  The classic format was the only format for netCDF data created between
+			<p>NetCDF is a set of software libraries and self-describing, machine-independent data formats for array-oriented scientific data.  The first version of the format was developed in the late 1980s at the Unidata Program Center, with the objective of building a file format that would permit sharing of data among atmospheric scientists.  It has found wide use in other scientific communities, with different communities developing discipline-specific <a href="http://www.unidata.ucar.edu/software/netcdf/docs/conventions.html">conventions</a>.  The format was and is designed to be portable, platform-independent, scalable, and appendable.  See <a href="#notes">Notes</a> below for more detail on design objectives.</p>
+			<p>As of January 2015, there are four variants of the format. The first two, known as Classic and 64-bit Offset, are nearly identical and together are often referred to as netCDF-3.  This format description is for netCDF-3.  The later formats, based on HDF5 will be described separately.  The classic format was the only format for netCDF data created between
 1989 and 2004 by the reference software from Unidata.   It is still the
 default format for new netCDF data files, and the form in which most
 netCDF data is stored.  The intent is to maintain support for netCDF-3 indefinitely.</p>
 			<p>The netCDF-3 format supports one flexible and widely applicable data model: annotated multidimensional arrays of typed elements.  The representation of these arrays uses a structure of dimensions, variables, and attributes.  A netCDF classic or 64-bit offset dataset is stored as a single file
-comprising two parts:
-</p>
+comprising two parts:</p>
 			<ul>
 				<li>a header, containing all the information about dimensions, attributes,
 and variables, but not the variable data</li>
@@ -70,13 +69,13 @@ dimension; this data is stored as a variable number of fixed-size records, with 
 		</fdd:disclosure>
 		<fdd:documentation>
 			<p>Software can be downloaded from <a href="http://www.unidata.ucar.edu/downloads/netcdf/index.jsp">http://www.unidata.ucar.edu/downloads/netcdf/index.jsp</a>.  Documentation is at <a href="http://www.unidata.ucar.edu/software/netcdf/docs/">http://www.unidata.ucar.edu/software/netcdf/docs/</a>.</p>
-			<p>The format (in Classic and 64-bit offset variants) has been recognized and re-published as a standard by both NASA&apos;s Earth Science Data Systems Working Groups [<a href="http://earthdata.nasa.gov/our-community/esdswg/standards-process-spg/rfc/esds-rfc-011-netcdf-classic">ESDS-RFC-011</a>] and by the Open Geospatial Consortium (OGC) standard [<a href="http://www.opengeospatial.org/standards/netcdf">OGC 10-090 and 10-092</a>]. The organization and wording of these standards is different but the governing BNF description for the format is the same.</p>
+			<p>The format (in Classic and 64-bit offset variants) has been recognized and re-published as a standard by both NASA&apos;s Earth Science Data Systems [<a href="https://earthdata.nasa.gov/standards/netcdf-classic">https://earthdata.nasa.gov/standards/netcdf-classic</a>] and by the Open Geospatial Consortium (OGC)[<a href="http://www.opengeospatial.org/standards/netcdf">OGC 10-090 and 10-092</a>]. The organization and wording of these standards is different but the governing BNF description for the format is the same.</p>
 		</fdd:documentation>
 		<fdd:adoption>
-			<p>NetCDF-3 is widely used in atmospheric and earth sciences.  See <a href="http://www.unidata.ucar.edu/software/netcdf/usage.html">Where is NetCDF used?</a> from Unidata.  One indication of its popularity is the number of communities that have developed <a href="http://www.unidata.ucar.edu/software/netcdf/docs/conventions.html">conventions</a> for metadata and variable names.  The Climate and Forecast (CF) conventions are the most fully developed and are in the OGC standardization process.  They incorporate many conventions that are applicable to other geospatial data domains.</p>
-			<p>As noted under Documentation above, NetCDF-3 has been formally adopted as a standard by OGC and NASA's Earth Science Data Systems.  The Federal Geographic Data Committee includes netCDF on its <a href="http://www.fgdc.gov/standards/fgdc-endorsed-external-standards/index_html">list of FGDC Endorsed External Standards</a>.</p>
+			<p>NetCDF-3 is widely used in atmospheric and earth sciences.  See <a href="http://www.unidata.ucar.edu/software/netcdf/usage.html">Where is NetCDF used?</a> from Unidata.  One indication of its popularity is the number of communities that have developed <a href="http://www.unidata.ucar.edu/software/netcdf/docs/conventions.html">conventions</a> for metadata and variable names.  The Climate and Forecast (CF) conventions are the most fully developed and were approved as an OGC standard in February 2013.  They incorporate many conventions that are applicable to other geospatial data domains.</p>
+			<p>As noted under Documentation above, NetCDF-3 has been formally adopted as a standard by OGC and NASA's Earth Science Data Systems.  The Federal Geographic Data Committee includes netCDF on its <a href="http://www.fgdc.gov/standards/fgdc-endorsed-external-standards/index_html">list of FGDC Endorsed External Standards</a>.  See a <a href="http://www.unidata.ucar.edu/software/netcdf/docs/standards.html">timeline of standards body endorsements</a> from Unidata.</p>
 			<p>NetCDF-3 is supported by significant tools for analysis and visualization, including the commercial products IDL, MATLAB, and ESRI&apos;s ArcGIS, and the open-source VTK (Visualization Toolkit). Other analysis applications that support netCDF include: FERRET, GrADS, IDV, NCL, NCO, ncview, Panoply, and R.  Conversion toolkits for geospatial formats, such as the open source <a href="http://www.gdal.org/frmt_netcdf.html">GDAL</a> and commercial <a href="http://www.safe.com/fme/format-search/network-common-data-form-netcdf/index.php">FME</a> (from Safe Software) also support netCDF-3.  Unidata maintains a <a href="http://www.unidata.ucar.edu/software/netcdf/software.html">list of software supporting netCDF</a>.</p>
-			<p>NetCDF-3 Classic is used as a master format for a number of collaborative projects.  For example, the CMIP5 Coupled Model Intercomparison Project has standardized on netCDF-3 Classic, with one output variable per file, and using the netCDF CF (Climate and Forecast) metadata conventions in a specific way.  This large collection of data is the basis for a study by the Intergovernmental Panel on Climate Change.  The Alfred Wegener Institutue for Polar and Marine Research has developed a module <a href="http://aforge.awi.de/gf/project/jhove2">JANEME</a> for <a href="http://www.jhove2.org/">JHOVE2</a> to characterize netCDF files and extract metadata into both a Dublin Core template and a profile of ISO 19115 adopted by the Collaborative Climate Community Data and Processing Grid (C3grid).</p>
+			<p>NetCDF-3 Classic is used as a master format for a number of collaborative projects.  For example, the CMIP5 Coupled Model Intercomparison Project has standardized on netCDF-3 Classic, with one output variable per file, and using the netCDF <a href="http://cfconventions.org/">CF (Climate and Forecast) metadata conventions</a> in a specific way.  This large collection of data is the basis for a study by the Intergovernmental Panel on Climate Change.  The Alfred Wegener Institutue for Polar and Marine Research has developed a module <a href="http://aforge.awi.de/gf/project/jhove2">JANEME</a> for <a href="http://www.jhove2.org/">JHOVE2</a> to characterize netCDF files and extract metadata into both a Dublin Core template and a profile of ISO 19115 adopted by the Collaborative Climate Community Data and Processing Grid (C3grid).</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>
 			<p>No concerns.</p>
@@ -85,8 +84,8 @@ dimension; this data is stored as a variable number of fixed-size records, with 
 			<p>NetCDF-3 is a binary format that requires the netCDF software libraries for the data to be accessed and manipulated.  However, the ncdump utility that is distributed with the software libraries converts the entire contents of a netCDF-3 file to an ASCII form.</p>
 		</fdd:transparency>
 		<fdd:selfDocumentation>
-			<p>NetCDF-3 offers the capability to apply attributes to a file as a whole or any individual variable.  There is no explicit support  for embedding structured metadata using a particular schema or syntax.  However, <a href="http://www.unidata.ucar.edu/software/netcdf/docs/conventions.html">conventions</a> developed by a community enable the use of standard names for physical quantities and metadata elements.  There is a recommendation that datasets identify which conventions they adhere to through a global <i>Conventions</i> attribute.  There is also a recommendation for dataset description attributes to use to support discovery through digital libraries, etc. See <a href="http://www.unidata.ucar.edu/software/thredds/current/netcdf-java/formats/DataDiscoveryAttConvention.html">2005 version of recommendation at Unidata</a> and <a href="http://wiki.esipfed.org/index.php/Attribute_Convention_for_Data_Discovery_(ACDD)">updated recommendation from ESIP</a>.  A global attribute <i>Metadata_Conventions</i> is recommended to identify use of this attribute convention.</p>
-			<p>Of particular note among conventions are the Climate and Forecast (CF) conventions, which include a substantial <a href="http://cf-pcmdi.llnl.gov/documents/cf-standard-names/standard-name-table/">table of standard names</a> and definitions for physical quantities commonly represented by data, with associated recommendations on units.  This actively maintained vocabulary covers many sub-disciplines of meteorology and climatology and also includes standard names and recommendations for physical quantities relevant to other geospatial contexts.</p>
+			<p>NetCDF-3 offers the capability to apply attributes to a file as a whole or any individual variable.  There is no explicit support  for embedding structured metadata using a particular schema or syntax.  However, <a href="http://www.unidata.ucar.edu/software/netcdf/docs/conventions.html">conventions</a> developed by a community enable the use of standard names for physical quantities and metadata elements.  There is a recommendation that datasets identify which conventions they adhere to through a global <i>Conventions</i> attribute.  There is also a recommendation for dataset description attributes to use to support discovery through digital libraries, etc. See <a href="http://www.unidata.ucar.edu/software/thredds/current/netcdf-java/formats/DataDiscoveryAttConvention.html">2005 version of recommendation at Unidata</a> and <a href="http://wiki.esipfed.org/index.php/Attribute_Convention_for_Data_Discovery">updated recommendation from ESIP</a>.  A global attribute <i>Metadata_Conventions</i> is recommended to identify use of this attribute convention.</p>
+			<p>Of particular note among conventions are the Climate and Forecast (CF) conventions, which include a substantial <a href="http://cfconventions.org/standard-names.html">table of standard names</a> and definitions for physical quantities commonly represented by data, with associated recommendations on units.  This actively maintained vocabulary covers many sub-disciplines of meteorology and climatology and also includes standard names and recommendations for physical quantities relevant to other geospatial contexts.</p>
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>None beyond access to netCDF-aware software.</fdd:externalDependencies>
 		<fdd:techProtection>None.</fdd:techProtection>
@@ -113,7 +112,7 @@ dimension; this data is stored as a variable number of fixed-size records, with 
 				<ul>
 					<li>
 The <a href="http://ferret.wrc.noaa.gov/noaa_coop/coop_cdf_profile.html">COARDS conventions</a> (at  http://ferret.wrc.noaa.gov/noaa_coop/coop_cdf_profile.html) were developed under the sponsorship of NOAA&apos;s Cooperative Ocean/Atmosphere Research Data Service in the mid 1990s to specify a standard way to document and organize longitude, latitude, vertical coordinate variables, and time or date, and how to relate other variables to that four-dimensional structure.</li>
-					<li>The Climate and Forecast <a href="http://cf-pcmdi.llnl.gov/">CF conventions</a> (at http://cf-pcmdi.llnl.gov/) generalize and extend the COARDS conventions.  The CF conventions, of which the first version was published in 2003, define metadata elements that provide a definitive description of what the data in each variable represents, and the spatial and temporal properties of the data. A design objective for the CF conventions is that a dataset that complies with the more constrained COARDS conventions should also comply with the CF conventions, which allow additional ways to express positions and time.
+					<li>The Climate and Forecast <a href="http://cfconventions.org/">CF conventions</a> (at http://cfconventions.org/) generalize and extend the COARDS conventions.  The CF conventions, of which the first version was published in 2003, define metadata elements that provide a definitive description of what the data in each variable represents, and the spatial and temporal properties of the data. A design objective for the CF conventions is that a dataset that complies with the more constrained COARDS conventions should also comply with the CF conventions, which allow additional ways to express positions and time.
 </li>
 				</ul>
 			</fdd:normalGIS>
@@ -160,8 +159,7 @@ The <a href="http://ferret.wrc.noaa.gov/noaa_coop/coop_cdf_profile.html">COARDS 
 			<ul>
 				<li>
 					<i>Self-Describing</i>. A netCDF file includes information about the data
-it contains.
-   </li>
+it contains.</li>
 				<li>
 					<i>Portable</i>. A netCDF file can be accessed by computers with
 different ways of storing integers, characters, and floating-point
@@ -173,8 +171,7 @@ numbers.</li>
 file without copying the dataset or redefining its structure.</li>
 				<li>
 					<i>Sharable</i>. One writer and multiple readers may simultaneously
-access the same netCDF file.
-</li>
+access the same netCDF file.</li>
 				<li>
 					<i>Archivable</i>. Access to all earlier forms of netCDF data will be
 supported by current and future versions of the software.</li>
@@ -205,11 +202,12 @@ supported by current and future versions of the software.</li>
 					<fdd:urlList>
 						<fdd:urlReference>
 							<link>http://www.opengeospatial.org/standards/netcdf</link>
-							<tag>OGC Network Common Data Form (NetCDF) Core Encoding Standard, Version 1</tag>
+							<tag>OGC Network Common Data Form (NetCDF) standards suite</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>http://earthdata.nasa.gov/our-community/esdswg/standards-process-spg/rfc/esds-rfc-011-netcdf-classic</link>
-							<tag>ESDS-RFC-011: NetCDF Classic as NASA Earth Science Data Systems standard</tag>
+							<link>https://earthdata.nasa.gov/standards/netcdf-classic</link>
+							<tag>EOSDIS Standards and References: NetCDF Classic and 64-bit Offset File Formats</tag>
+							<comment>EOSDIS is NASA&apos;s Earth Observation System Data and Information Systems unit.  The standard is numbered ESDS-RFC-011.</comment>
 						</fdd:urlReference>
 					</fdd:urlList>
 				</fdd:urlGroup>
@@ -241,12 +239,12 @@ supported by current and future versions of the software.</li>
 				<fdd:urlReference>
 					<link>http://ferret.wrc.noaa.gov/noaa_coop/coop_cdf_profile.html</link>
 					<tag>COARDS netCDF conventions</tag>
-					<comment>Developed under the sponsorship of NOAA&apos;s Cooperative Ocean/Atm.osphere Research Data Service in the mid 1990s</comment>
+					<comment>Developed under the sponsorship of NOAA&apos;s Cooperative Ocean/Atmosphere Research Data Service in the mid 1990s</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://cf-pcmdi.llnl.gov/</link>
+					<link>http://cfconventions.org/</link>
 					<tag>CF (Climate and Forecast) netCDF conventions</tag>
 					<comment>Under active management.</comment>
 				</fdd:urlReference>
@@ -275,6 +273,27 @@ supported by current and future versions of the software.</li>
 				<fdd:urlReference>
 					<link>http://en.wikipedia.org/wiki/NetCDF</link>
 					<tag>NetCDF from Wikipedia</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://wiki.esipfed.org/index.php/Attribute_Convention_for_Data_Discovery</link>
+					<tag>Attribute Convention for Data Discovery (ACDD) 1-3</tag>
+					<comment>Builds on NetCDF User Guide recommendations and the NetCDF Climate and Forecast Metadata Conventions.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://apps.nationalarchives.gov.uk/pronom/fmt/282</link>
+					<tag>PRONOM entry for NetCDF-3 Classic</tag>
+					<comment>PUID is fmt/282</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://apps.nationalarchives.gov.uk/pronom/fmt/283</link>
+					<tag>PRONOM entry for NetCDF-3 64-bit</tag>
+					<comment>PUID is fmt/283</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>

@@ -29,7 +29,7 @@
 		<fdd:description>
 			<p>The ESRI Shapefile (known here as the ESRI <i>Shapefile format</i>), stores nontopological geometry and attribute information for the spatial features in a data set.  A shapefile consists minimally of a main file, an index file, and a dBASE  table.</p>
 			<p>In the main file, the geometry for a feature is stored as a shape comprising a set of vector coordinates.  This main file is a direct access, variable-record-length file in which each record describes a shape with a list of its vertices.  In the index file, each record contains the offset of the corresponding main file record from the beginning of the main file.  Attributes are held in a dBASE format file.     The dBASE table contains feature attributes with one record per feature.  Attribute records in the dBASE file must be in the same order as records in the main file.    Each attribute record has a one-to-one relationship with the associated shape record. </p>
-			<p>The shapefile format can support point, line, and area features.  Area features are represented as closed loop, double-digitized polygons.  </p>
+			<p>The shapefile format can support point, line, and area features.  Area features are represented as closed loop, double-digitized polygons.</p>
 			<p>Instances of the Shapefile format have often been used as a data exchange format from ESRI formats to non-ESRI applications.  The format is most useful for writing simple features and attributes quickly as there are limitations inherent in the Shapefile format related to both geometry and attributes.  As outlined elsewhere in this description, these limitations may cause loss of data when using shapefiles to contain or exchange complex geometry or attributes.  The Shapefile format may be used as an intermediary between data creation applications and more functionally capable GIS formats and applications, albeit with the limitations noted in the Dataset/Normal Dataset section.</p>
 			<p>The cluster of files is typically stored in the same file directory or project workspace, with all component files having the same filename (prefix) and identified by individual file extension (suffixes).  Three components are mandatory: a main file that contains the feature geometry (.shp), an index file that stores the index of the feature geometry (.shx), and a dBASE table (.dbf) that stores the attribute information of features.  A comprehensive list of component files follows: </p>
 			<ul>
@@ -38,13 +38,13 @@
 with a list of its vertices. </li>
 				<li>
 					<i>shx</i> -- Index file (mandatory).  In the index file, each record contains the offset of the
-corresponding main file record from the beginning of the main file. The index file (.shx) contains a 100-byte header followed by 8-byte, fixed-length records.   </li>
+corresponding main file record from the beginning of the main file. The index file (.shx) contains a 100-byte header followed by 8-byte, fixed-length records.</li>
 				<li>
 					<i>dbf</i> -- dBASE Table file (mandatory); a constrained form of <fddLink id="fdd000325">DBF</fddLink> that contains feature attributes with one record per feature. The one-to-one relationship
 between geometry and attributes is based on record number. Attribute records in the
 dBASE file must be in the same order as records in the main file.</li>
 				<li>
-					<i>sbn</i> -- Part 1 of spatial index for read-write instances of the Shapefile format.  If present, essential for correct processing.  </li>
+					<i>sbn</i> -- Part 1 of spatial index for read-write instances of the Shapefile format.  If present, essential for correct processing.</li>
 				<li>
 					<i>sbx</i> -- Part 2 of spatial index for read-write instances of the Shapefile format.  If present, essential for correct processing.</li>
 				<li>
@@ -60,7 +60,7 @@ dBASE file must be in the same order as records in the main file.</li>
 				<li>
 					<i>ixs</i> -- Geocoding index for read/write shapefiles.   If present, essential for correct processing. </li>
 				<li>
-					<i>mxs</i> --Geocoding index for read-write shapefiles (ODB format). </li>
+					<i>mxs</i> --Geocoding index for read-write shapefiles (ODB format).</li>
 				<li>
 					<i>prj</i> -- Projections Definition file; stores coordinate system information.</li>
 				<li>
@@ -92,6 +92,9 @@ Shapefiles can be created by exporting any data source to a shapefile,  digitizi
 			</fdd:relationship>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:preference>For works acquired for its collections, the list of <a href="http://www.loc.gov/preservation/resources/rfs/stillimg.html">Library of Congress Recommended Format Specifications for Still Image works</a>, as of June 2014, indicates that the Shapefile format, ESRI_Shape, is a preferred format for cartographic images.  Since ESRI_Shape is supported by widely adopted geospatial information systems and by well supported open source software libraries it is also a preferred format for geospatial data.  See the <a href="http://www.loc.gov/preservation/resources/rfs/data.html">Library of Congress Recommended Format Specifications for Datasets/Databases</a>.</fdd:preference>
+	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>Fully documented. Developed and regulated by the Environmental Systems Research Institute, Inc. (ESRI), as an open specification for data interoperability among ESRI and other software products.</fdd:disclosure>
 		<fdd:documentation>
@@ -296,14 +299,16 @@ represent a &quot;no data&quot; value.</p>
 			<p>The Shapefile format can be useful as a middle state when exporting data for use in a non-ESRI software application, or for exporting data to use in ArcView 3 or ArcInfo Workstation. The Shapefile format can be used to write simple features and attributes quickly, such as for ArcGIS Server geoprocessing services. But as is outlined in the ESRI Help explanation <a href="http://webhelp.esri.com/arcgisdesktop/9.3/index.cfm?TopicName=Geoprocessing_considerations_for_shapefile_output">&quot;Geoprocessing Considerations for Shapefile Output,&quot;</a>, the format does not handle the full life cycle of data creation, editing, versioning, and archiving, thus inhibiting its use in modern life-cycle, active database management.</p>
 			<p>Here is some detail on the adoption of the Shapefile format by U.S. government agencies:</p>
 			<ul>
-				<li>The <a href="http://www.nationalatlas.gov/pros.html">National Atlas of the United States of America</a> vector file map layers are available in Shapefile format.  They were formerly available in Shapefile and SDTS-TVP formats, but SDTS-TVP support is to be dropped in January 2012, because of lack of demand.</li>
+				<li>The <a href="http://www.nationalatlas.gov/pros.html">National Atlas of the United States of America</a> vector file map layers were available in Shapefile format during the 1997-2014 period the Atlas was online.  These layers were formerly also available in the SDTS-TVP format, but SDTS-TVP support was dropped in mid-2012, because of lack of demand.</li>
+				<li>The <a href="http://ned.usgs.gov/downloads.html">National Elevation Dataset (NED) Spatial Metadata</a> is available in Shapefile format.</li>
 				<li>United States Census Bureau <a href="http://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html">Cartographic Boundary Files</a> are available in ARC/INFO EXPORT (.e00) format, ArcView Shapefile (.shp) format, and ARC/INFO Ungenerate (ASCII) format. The Census Bureau also provides a utility <a href="http://www.census.gov/geo/landview/lv6help/shp2mie.html">SHP2MIE</a>, that translates a shapefile into a MARPLOT Import Export (MIE) file for use in the Census’ LandView software, LandView 6 (A Viewer for the Environmental Protection Agency, U.S. Census Bureau, and U.S. Geological Survey Data and Maps ).</li>
 				<li>NOAA's Office of Coast Survey (OCS) <a href="http://www.nauticalcharts.noaa.gov/csdl/mbound.htm">maritime limit data</a> are distributed as shp.</li>
 				<li>United States Environmental Protection Agency distributes <a href="http://www.epa.gov/envirofw/geo_data.html">Regulated Facility Data</a> as Shapefiles.</li>
 				<li>
 					<a href="http://shoreline.noaa.gov/data/datasheets/usgs.html">Vector Shoreline data</a> originating from the U.S. Geological Survey (USGS) are available from NOAA as Shapefiles.</li>
+				<li>Data from the NTIA&apos;s <a href="http://www.broadbandmap.gov/data-download">National Broadband Map</a> is available as Shapefile and CSV.</li>
 			</ul>
-			<p>Shapefiles are often distributed, e.g. through the National Atlas, as compressed packages that combine the related files and reduce download time.  The USGS Digital Data Viewer: dlgv32 Pro and the related commercial software from Blue Marble Geographics, Global Mapper, can load directly Shapefiles distributed as compressed .tar.gz files.</p>
+			<p>Shapefiles are often distributed as compressed packages that combine the related files and reduce download time.  The <a href="http://www.bluemarblegeo.com/products/global-mapper-dlvg32.php">USGS Digital Data Viewer: dlgv32 Pro</a> a limited-feature version of commercial software <a href="http://www.bluemarblegeo.com/products/global-mapper.php/">Global Mapper</a>, can load directly Shapefiles distributed as compressed .tar.gz files.</p>
 		</fdd:general>
 		<fdd:history>
 			<p>ESRI introduced the Shapefile format as a part of ArcView GIS version 2 during the 1990s. The format was welcome because interest in simple geometric structures had grown during the 1990s as disk storage and hardware costs decreased and computational speed increased. At the same time, existing geographic information system (GIS) datasets were more readily available, and the work of GIS users was evolving from primarily data compilation activities to include data use, analysis, and data sharing. Shapefiles could be easily created from many GIS systems and, over time, shapefiles were widely adopted as a de facto standard.</p>
@@ -340,9 +345,9 @@ represent a &quot;no data&quot; value.</p>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.nationalarchives.gov.uk/PRONOM/x-fmt/235</link>
+					<link>http://apps.nationalarchives.gov.uk/PRONOM/x-fmt/235</link>
 					<tag>ESRI Arc/View Shapefile at Pronom</tag>
-					<comment>Pronom Identifier (PUID)  is  x-fmt/235.  The original specification of the UK National Archives PUID states that an &apos;x-fmt&apos; PUID should not be considered persistent. However, as of October 2011, the PRONOM website indicates that existing x-fmt PUIDs will be supported as permanent and that no more x-fmt PUIDs will be created.</comment>
+					<comment>Pronom Identifier (PUID) is x-fmt/235.  The original specification of the UK National Archives PUID states that an &apos;x-fmt&apos; PUID should not be considered persistent. However, as of October 2011, the PRONOM website indicates that existing x-fmt PUIDs will be supported as permanent and that no more x-fmt PUIDs will be created.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
@@ -378,8 +383,15 @@ represent a &quot;no data&quot; value.</p>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.nationalatlas.gov/pros.html</link>
-					<tag>National Atlas of the Unites States of America vector file map layers</tag>
+					<link>https://web.archive.org/web/20140930111704/http://www.nationalatlas.gov/pros.html</link>
+					<tag>National Atlas of the United States of America (1997-2014) -- for professionals</tag>
+					<comment>Vector file map layers in the atlas were distributed as Shapefiles.  The National Atlas was taken offline on October 1, 2014.  Link is via the Internet Archive&apos;s Wayback Machine.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://ned.usgs.gov/downloads.html</link>
+					<tag>National Elevation Dataset (NED) Spatial Metadata</tag>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
@@ -405,6 +417,20 @@ represent a &quot;no data&quot; value.</p>
 					<link>http://shoreline.noaa.gov/data/datasheets/usgs.html</link>
 					<tag>Vector shoreline data from NOAA Shoreline Website</tag>
 					<comment>Data compiled by U.S. Geological Survey (USGS)</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.broadbandmap.gov/data-download</link>
+					<tag>National Broadband Map</tag>
+					<comment>Shapefile is one of the formats in which the map data is available.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.bluemarblegeo.com/products/global-mapper-dlvg32.php</link>
+					<tag>USGS Digital Data Viewer: dlgv32 Pro</tag>
+					<comment>A limited version of the Global Mapper software from Blue Marble Geographics.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>

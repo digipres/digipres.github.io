@@ -17,14 +17,15 @@
 			</fdd:gdfrDomain>
 		</fdd:gdfrDomains>
 		<fdd:updates>
-			<fdd:date>2011-09-28</fdd:date>
+			<fdd:date>2015-01-19</fdd:date>
 		</fdd:updates>
-		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
 	</fdd:properties>
 	<fdd:identificationAndDescription>
 		<fdd:fullName>BigTIFF</fdd:fullName>
 		<fdd:keywords>
 			<fdd:keyword>raster image formats</fdd:keyword>
+			<fdd:keyword>georeferenced image formats</fdd:keyword>
 		</fdd:keywords>
 		<fdd:description>
 			<p>Variant of the TIFF format that uses 64-bit offsets thereby supporting files up to 18,000 petabytes in size, vastly transcending TIFF&apos;s normal 4 GB limit.  Since the format also supports all of the normal features and header tags of TIFF_6 and the extended metadata offered by GeoTIFF, it provides good service in the GIS domain, medical imaging, and other applications that employ large scanners or cameras.</p>
@@ -56,22 +57,28 @@
 		<fdd:disclosure>Open standard.</fdd:disclosure>
 		<fdd:documentation>
 			<a href="http://www.awaresystems.be/imaging/tiff/bigtiff.html">Specification</a> ("The BigTIFF File Format Proposal") provided online by AWare Systems.</fdd:documentation>
-		<fdd:adoption>BigTIFF is supported by the following software libraries:<ul>
+		<fdd:adoption>
+			<p>BigTIFF is supported by the following software libraries:</p>
+			<ul>
 				<li>
 					<a href="http://www.gdal.org/">GDAL - Geospatial Data Abstraction Library</a> maintained by <a href="http://www.osgeo.org/">Open Source Geospatial Foundation (OSGeo)</a>
 				</li>
-				<li>Beta version of <a href="http://www.remotesensing.org/libtiff/">LibTIFF 4.0</a>
-				</li>
+				<li>
+					<a href="http://www.remotesensing.org/libtiff/">LibTIFF 4.0 and later</a>, available from remotesensing.org</li>
 			</ul>
-				BigTIFF is supported by the following software applications:<ul>
+			<p>BigTIFF is supported by the following software applications:</p>
+			<ul>
 				<li>Avenza’s Geographic Imager.</li>
 				<li>USGS Digital Data Viewer: dlgv32 Pro.</li>
-				<li>ArcGIS 10.</li>
+				<li>MATLAB</li>
+				<li>ArcGIS, Introduced in 10.0.</li>
 				<li>STIFF, an astronomical pipeline software that converts scientific FITS images to the more popular TIFF format for illustration purposes.</li>
-				<li>Aperio&apos;s ScanScope slide scanning systems and Spectrum digital pathology information management software.</li>
+				<li>Zoomify</li>
+				<li>Openslide</li>
+				<li>A variety of imaging systems for pathology and histology.</li>
 			</ul>
 		</fdd:adoption>
-		<fdd:licensingAndPatents>The BigTIFF enhancements in Aperio’s libtiff  were made by Ole Eichhorn (ole@aperio.com) of Aperio Technologies (www.aperio.com) and (in the words of the <a href="http://bigtiff.org/">Web page</a>) "are donated to the public domain, in  gratitude to Sam Leffler, Silicon Graphics, Joris Van Damme, AWare Systems, Frank Warmerdam, Andrey Kisley, Mike Welles, and all who have worked on libtiff over the years to provide such a great tool.  The aperio libtiff changes were published on an 'as is' basis and neither Ole Eichhorn nor Aperio Technologies make any warranty as to their fitness for any intended use."  TIFF is a registered trademark of Aldus Corp., now owned by Adobe. </fdd:licensingAndPatents>
+		<fdd:licensingAndPatents>The BigTIFF enhancements in Aperio’s libtiff  were made by Ole Eichhorn (formerly of Aperio Technologies, now part of Leica Biosystems) and (in the words of the <a href="http://bigtiff.org/">bigtiff.org web page</a>) "are donated to the public domain, in  gratitude to Sam Leffler, Silicon Graphics, Joris Van Damme, AWare Systems, Frank Warmerdam, Andrey Kisley, Mike Welles, and all who have worked on libtiff over the years to provide such a great tool.  The aperio libtiff changes were published on an 'as is' basis and neither Ole Eichhorn nor Aperio Technologies make any warranty as to their fitness for any intended use."  See also <fddLink id="fdd000022">TIFF_6</fddLink>. </fdd:licensingAndPatents>
 		<fdd:transparency>Wrapper is as transparent as <fddLink id="fdd000022">TIFF_6</fddLink>
 		</fdd:transparency>
 		<fdd:selfDocumentation>Header provides some metadata.</fdd:selfDocumentation>
@@ -84,9 +91,6 @@
 			<fdd:clarity>
 				<p>Excellent support for images with very high spatial resolution. </p>
 			</fdd:clarity>
-			<fdd:colorMaint>
-				<fddLink id="fdd000022"/>
-			</fdd:colorMaint>
 			<fdd:beyondImage/>
 		</fdd:stillImageQF>
 		<fdd:gisQF>
@@ -139,9 +143,12 @@
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
 		<fdd:general>BigTIFF is supported in the GDAL - Geospatial Data Abstraction Library maintained by Open Source Geospatial Foundation (OSGeo).  The BigTIFF format is also adopted by large format scanners, medical imaging, astronomy and in other fields of endeavor. </fdd:general>
-		<fdd:history>The BigTIFF design was first proposed in 2004 by Joris Van Damme of AWare Systems and refined on the AWare Systems mailing list.  Contributors to the AWare Systems design discussion included Lynn Quam, Frank Warmerdam, Chris Cox, Rob Tillaart, Dan Smith, Bob Freisenhahn, Andrey Kiselev, Phillip Crews, and Gerben Vos. 
-In 2007 Aperio  released a version of libtiff which supportd BigTIFF files. The BigTIFF enhancements in Aperio’s libtiff  were made by Ole Eichhorn (ole@aperio.com) of Aperio Technologies (www.aperio.com) and (in the words of the <a href="http://www.aperio.com/bigtiff/">Web page</a>) &quot;were donated to the public domain, in  gratitude to Sam Leffler, Silicon Graphics, Joris Van Damme, Aware Systems, Frank Warmerdam, Andrey Kisley, Mike Welles, and all who had worked on libtiff over the years to provide such a great tool.  The aperio libtiff changes were published on an &apos;as is&apos; basis and neither Ole Eichhorn nor Aperio Technologies made or make any warranty as to their fitness for any intended use.  
-In 2007, WeoGeo,Safe Software, Leica Geosystems, and ESRI sponsored Joris Van Damme &amp; Frank Warmerdam (the libtiff and gdal maintainers) with a project for updating libtiff to <a href="http://www.remotesensing.org/libtiff/">LibTiff 4.0</a>.&quot; The BigTIFF <a href="http://www.remotesensing.org/libtiff/BigTIFFProposal.html">upgrade to LibTiff</a> is in beta as of April 2011, and an explanation of why this status remains is provided in <a href="http://www.asmail.be/msg0054536609.html">a message</a> from Frank Warmerdam (consulted September 28, 2011).  </fdd:history>
+		<fdd:history>
+			<p>The BigTIFF design was first proposed in 2004 by Joris Van Damme of AWare Systems and refined on the AWare Systems mailing list.  Contributors to the AWare Systems design discussion included Lynn Quam, Frank Warmerdam, Chris Cox, Rob Tillaart, Dan Smith, Bob Freisenhahn, Andrey Kiselev, Phillip Crews, and Gerben Vos. 
+In 2007 Aperio  released a version of libtiff which supportd BigTIFF files. The BigTIFF enhancements in Aperio’s libtiff  were made by Ole Eichhorn, then of Aperio Technologies (as of January 2015, taken over by Leica) and (in the words of the <a href="http://bigtiff.org/">bigtiff.org web page</a>) &quot;were donated to the public domain, in gratitude to Sam Leffler, Silicon Graphics, Joris Van Damme, Aware Systems, Frank Warmerdam, Andrey Kisley, Mike Welles, and all who had worked on libtiff over the years to provide such a great tool.  The aperio libtiff changes were published on an &apos;as is&apos; basis and neither Ole Eichhorn nor Aperio Technologies made or make any warranty as to their fitness for any intended use.  
+In 2007, WeoGeo, Safe Software, Leica Geosystems, and ESRI sponsored Joris Van Damme &amp; Frank Warmerdam (the libtiff and gdal maintainers) with a project for updating libtiff to <a href="http://www.remotesensing.org/libtiff/">LibTiff 4.0</a>.&quot;  </p>
+			<p> As of January 2015, the official source for the libtiff library appears to be at <a href="http://www.remotesensing.org/libtiff/">http://www.remotesensing.org/libtiff/</a>, with version 4.0.3 being the latest stable version.   Judging from the dates on download files, version 4.0.0 was released on Dec 21, 2011, followed by 4.0.1 (February 2012), 4.0.2 (June 2012), and 4.0.3 (September 2012). Code is also available from <a href="http://bigtiff.org/">bigtiff.org</a> (formerly at www.aperio.com/bigtiff); however, this is a fork based on earlier code (3.8.2), with a latest version as of January 2015 of 4.1.  The compilers of this resource are not aware of documentation describing differences between the two code variants; <a href="../contact_format.shtml">comments welcome</a>.</p>
+		</fdd:history>
 	</fdd:notes>
 	<fdd:formatSpecifications>
 		<fdd:urls>
@@ -178,8 +185,22 @@ When built with internal libtiff or with libtiff &gt;= 4.0, GDAL also supports r
 			<fdd:url>
 				<fdd:urlReference>
 					<link>http://bigtiff.org/</link>
-					<tag>Aperio&apos;s BigTIFF version of the libtiff library</tag>
-					<comment/>
+					<tag>BigTIFF version of the libtiff library</tag>
+					<comment>This unofficial fork of the libtiff code originated with Aperio, now part of Leica Biosystems.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://blogs.mathworks.com/steve/2013/08/07/tiff-bigtiff-and-blockproc/</link>
+					<tag>TIFF, BigTIFF, and blockproc</tag>
+					<comment>Blog post from 2013 about reading BigTIFF files in Matlab.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.bluemarblegeo.com/products/global-mapper-dlvg32.php</link>
+					<tag>USGS Digital Data Viewer: dlgv32 Pro</tag>
+					<comment>A limited version of the Global Mapper software from Blue Marble Geographics.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
