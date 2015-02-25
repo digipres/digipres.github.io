@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000407" titleName="Expert Witness Disk Image, ASR SMART" shortName="EWF_SMART" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>any</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:updates>
+			<fdd:date>2015-02-23</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Expert Witness Compression Format, ASR SMART</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>container formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>Version of the EWF	<i>bitstream</i> image format from ASR Data (SMART brand), generally similar to the description offered in <fddLink id="fdd000406">EWF_Family</fddLink>. </p>
+			<p>EWF_SMART files contain four sections:</p>
+			<ul>
+				<li>Header section</li>
+				<li>Volume section</li>
+				<li>Table section</li>
+				<li>Next and Done section</li>
+			</ul>
+		</fdd:description>
+		<fdd:shortDescription>First version of the EWF bitstream image format from ASR Data (SMART brand).</fdd:shortDescription>
+		<fdd:productionPhase>Typically used for data analysis and not part of a process to create new content.  May be used to archive data.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000406</fdd:id>
+					<fdd:shortName>EWF_Family</fdd:shortName>
+					<fdd:titleName>Expert Witness Format (EWF) Family</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully documented. Proprietary format developed by ASR Data.  Documentation freely available; formerly on the ASR Data Web site (http://www.asrdata.com/SMART/whitepaper.html), now available at the Internet Archive.  Same documentation also available on Simson Garfinkel&apos;s Forensics Wiki.</fdd:disclosure>
+		<fdd:documentation>Internet Archive copy at various URLs, including <a href="https://web.archive.org/web/20070202102106/http://www.asrdata.com/SMART/whitepaper.html">https://web.archive.org/web/20070202102106/http://www.asrdata.com/SMART/whitepaper.html</a>; Forensics Wiki version at <a href="http://forensicswiki.org/wiki/ASR_Data%27s_Expert_Witness_Compression_Format">http://forensicswiki.org/wiki/ASR_Data%27s_Expert_Witness_Compression_Format</a>
+		</fdd:documentation>
+		<fdd:adoption>Not investigated at this time.  In archives (as distinct from legal and law enforcement settings), where tools like <a href="http://www.bitcurator.net/">Bit Curator</a> and <a href="http://accessdata.com/product-download/digital-forensics/ftk-imager-version-3.2.0">FTK Imager</a> are in wide use, user comments suggest that <fddLink id="fdd000408">EWF_E01</fddLink> and AFF (description forthcoming) are most frequently employed.</fdd:adoption>
+		<fdd:licensingAndPatents>Not investigated at this writing.</fdd:licensingAndPatents>
+		<fdd:transparency>See <fddLink id="fdd000406">EWF_family</fddLink>
+		</fdd:transparency>
+		<fdd:selfDocumentation>See <fddLink id="fdd000406">EWF_family</fddLink>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>See <fddLink id="fdd000406">EWF_family</fddLink>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>s01</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Filename extensions for the first 99 content segments are .s01, .s02, through .s99; followed by .saa, .sab, and so on.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 45 56 46 09 0D 0A FF 00</fdd:sigValue>
+					<fdd:sigValue>ASCII: EVF...ÿ.</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From Gary Kessler&apos;s <a href="http://www.garykessler.net/library/file_sigs.html">File Signatures Table</a>.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes/>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.forensicswiki.org/wiki/ASR_Data%27s_Expert_Witness_Compression_Format</link>
+					<tag>ASR Data&apos;s Expert Witness Compression Format</tag>
+					<comment>The 2002 specification, no longer accessible at ASR Data, as presented by Simson Garfinkel on the Forensics Wiki.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20070202102106/http://www.asrdata.com/SMART/whitepaper.html</link>
+					<tag>ASR Data&apos;s Expert Witness Compression Format</tag>
+					<comment>One of several Internet Archive holdings of the specification.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://53efc0a7187d0baa489ee347026b8278fe4020f6.googledrive.com/host/0B3fBvzttpiiSMTdoaVExWWNsRjg/Expert%20Witness%20Compression%20Format%20%28EWF%29.pdf</link>
+					<tag>EWF specification:
+Expert Witness Compression Format specification</tag>
+					<comment>Joachim Metz&apos;s reverse-engineered documentation of EWF subtypes including EWF_E01.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://accessdata.com/product-download/digital-forensics/ftk-imager-version-3.2.0</link>
+					<tag>Download page for FTK Imager</tag>
+					<comment>Free tool from AccessData, also the source for the more extensive FTK Toolkit.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.bitcurator.net/</link>
+					<tag>BitCurator Web site</tag>
+					<comment>Tool to support digital content management, including work with disk images and forensic analysis.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

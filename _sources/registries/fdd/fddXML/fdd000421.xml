@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000421" titleName="ESRI ArcInfo ASCII Grid" shortName="ESRI_ASCII_grid" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenreAndSubgenres>
+				<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+				<fdd:gdfrSubgenres>
+					<fdd:gdfrSubgenre>still-image</fdd:gdfrSubgenre>
+				</fdd:gdfrSubgenres>
+			</fdd:gdfrGenreAndSubgenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2015-02-07</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ESRI ArcInfo ASCII Grid</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>raster image formats</fdd:keyword>
+			<fdd:keyword>geospatial data formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>Output format created by the GRIDASCII command (from ArcInfo Workstation) and by  the Raster to ASCII tool in ArcGIS for Desktop.
+
+ESRI_ASCII_grid is an interchange format, used primarily for exchange with other programs.  The file contents represents a single measure for each cell in a rectangular grid.  Any coordinate system can be used to define the grid, including the widely used angular measurements with <a href="http://www.esri.com/news/arcuser/0400/wdside.html">arc-seconds</a> as units.  Cells must be &quot;square&quot; in the chosen unit since cell size is defined by a single parameter.</p>
+			<p>The file begins with header information that defines the properties of the raster, such as the cell size, the number of rows and columns, and the coordinates of the origin of the raster.  The header keywords can be in upper or lower case.  The header information is followed by cell data; numeric values are ordered by column within row.  Within each row, values are delimited by spaces and rows are separated by a carriage return.  
+Either integer or floating point numbers can be used for the individual data values.  The spatial location of the raster is specified by the location of the lower left cell, and by either the center of the lower left cell or the lower left corner of the lower left cell.  Row 1 of the data is at the top of the raster, row 2 is below row 1, and so on.
+</p>
+			<ul>
+				<li>NCOLS <i>xxx</i>
+				</li>
+				<li>NROWS <i>xxx</i>
+				</li>
+				<li>XLLCENTER <i>xxx</i>
+ or  XLLCORNER <i>xxx</i>
+				</li>
+				<li>YLLCENTER <i>xxx</i>
+ or  YLLCORNER <i>xxx</i>
+				</li>
+				<li>CELLSIZE <i>xxx</i>
+					<br/>[the length of one side of a square grid cell in same units as coordinate system used to locate the lower left center]</li>
+				<li>NODATA_VALUE <i>xxx</i>
+				</li>
+				<li>Row 1 data</li>
+				<li>Row 2 data</li>
+				<li>etc.</li>
+			</ul>
+			<p>Cells without actual values can be assigned a <i>NoData</i> value.  The default value for <i>NoData</i> is -9999 but a different value can be specified in the header as shown in example below.</p>
+			<p>A short example:</p>
+			<ul>
+				<li>NCOLS 4</li>
+				<li>NROWS 6</li>
+				<li>XLLCORNER 378923</li>
+				<li>YLLCORNER 4072345
+</li>
+				<li>CELLSIZE 30</li>
+				<li>NODATA_VALUE -99</li>
+				<li>-99 -99 5 2
+</li>
+				<li>-99 20 100 36</li>
+				<li>3 8 35 10</li>
+				<li>32 42 50 6</li>
+				<li>88 75 27 9</li>
+				<li>13 5 1 -99</li>
+			</ul>
+			<p>Various discussions suggest that scientific notation may be used for the numeric values.  See, for example, notes entitled <a href="http://code.env.duke.edu/projects/mget/export/HEAD/MGET/Trunk/PythonPackage/dist/TracOnlineDocumentation/Documentation/ArcGISReference/ArcInfoASCIIGrid.ToArcGISRaster.html">Convert ArcInfo ASCII Grid to ArcGIS Raster</a> from Duke University.</p>
+		</fdd:description>
+		<fdd:shortDescription>An interchange format, used primarily for exchange of a single layer of gridded or raster data between software programs.  The file contents represents a single measure for each cell in a rectangular grid.  All numbers are expressed in ASCII characters.</fdd:shortDescription>
+		<fdd:productionPhase>Primarily a middle-state format used for data exchange.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Equivalent to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000422</fdd:id>
+					<fdd:shortName>ESRI_GridFloat</fdd:shortName>
+					<fdd:titleName>ESRI GridFloat Output File</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>An equivalent format that stores the numeric values in binary format, often resulting in smaller files.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Very simple file format, designed by ESRI for exchange of gridded data for a single measure.  ESRI describes the format informally in its application help files.</fdd:disclosure>
+		<fdd:documentation>
+			<p>In the latest help for ESRI&apos;s ArcGIS for Desktop, <a href="http://desktop.arcgis.com/en/desktop/latest/manage-data/raster-and-images/esri-ascii-raster-format.htm">Esri ASCII raster format</a> describes the format.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>Widely supported by GIS applications.  Designed by ESRI as a software-independent interchange format before all ESRI applications could read the internally used <fddLink id="fdd000281">ESRI_Grid</fddLink> format.</p>
+			<p>Has been used by some agencies to distribute gridded data, but typically not for large datasets, for which <fddLink id="fdd000281">ESRI_Grid</fddLink>, <fddLink id="fdd000422">ESRI_GridFloat</fddLink>, or raw <fddLink id="fdd000283">BIL_file</fddLink> are used because binary numbers result in smaller files.  See, for example, <a href="http://prism.oregonstate.edu/documents/PRISM_formats.pdf">PRISM Gridded Climate Data - Formats</a>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No concerns.</fdd:licensingAndPatents>
+		<fdd:transparency>Excellent.  Entire file is human readable.</fdd:transparency>
+		<fdd:selfDocumentation>No support for contextual documentation within the data file.  The header is limited to describing the size and scale of the grid and its location in reference to an associated coordinate system.  Neither the measure represented by the gridded values nor the associated coordinate system are described within the file.  In many contexts, rich metadata is provided in an accompanying sidecar file when this format is used to distribute data.  The coordinate reference system may be specified in a sidecar .prj file.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>No capabilities for encryption or other technical protection.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors/>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>asc</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>The format called here ESRI_ASCII_Grid has been known by variant names over the years.  As of early 2015, ESRI&apos;s website is not consistent.  Among the names that have been used:</p>
+			<ul>
+				<li>ASCII Grid
+</li>
+				<li>ArcGIS for Desktop Advanced ASCII Grid format</li>
+				<li>ArcInfo ASCII Grid</li>
+				<li>AAIGRID (in GDAL documentation)</li>
+				<li>ARC ASCII</li>
+			</ul>
+		</fdd:general>
+		<fdd:history/>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://desktop.arcgis.com/en/desktop/latest/manage-data/raster-and-images/esri-ascii-raster-format.htm</link>
+					<tag>Esri ASCII raster format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://desktop.arcgis.com/en/desktop/latest/tools/conversion-toolbox/raster-to-ascii.htm</link>
+					<tag>ArcGIS Conversion Toolbox: Raster to ASCII</tag>
+					<comment>The description here does not include the XLLCENTER/YLLCENTER options.  This suggests that the option to align using the lower left cell center rather than the lower left corner of the lower left cell is not used by this tool. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://desktop.arcgis.com/en/desktop/latest/manage-data/raster-and-images/supported-raster-dataset-file-formats.htm</link>
+					<tag>Supported raster dataset file formats -- from Help files for ArcGIS for Desktop</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.gdal.org/frmt_various.html</link>
+					<tag>Various Supported GDAL Raster Formats: AAIGrid -- Arc/Info ASCII Grid</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://code.env.duke.edu/projects/mget/export/HEAD/MGET/Trunk/PythonPackage/dist/TracOnlineDocumentation/Documentation/ArcGISReference/ArcInfoASCIIGrid.ToArcGISRaster.html</link>
+					<tag>Convert ArcInfo ASCII Grid to ArcGIS Raster
+-- relating to ArcGIS 9.1</tag>
+					<comment>Highlights some oddities and shortcomings of the conversion tool and the format. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://library.oceanteacher.org/OTMediawiki/index.php/Raster_and_Grid_Formats</link>
+					<tag>OceanTeacher:  Raster and Grid Formats </tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://prism.oregonstate.edu/documents/PRISM_formats.pdf</link>
+					<tag>PRISM Gridded Climate Data – Formats</tag>
+					<comment>This project distributes some climatology data in ESRI_ASCII_Grid format.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ngdc.noaa.gov/mgg/greatlakes/michigan.html</link>
+					<tag>Bathymetry of Lake Michigan 
+from NOAA/NGDC</tag>
+					<comment>ESRI_ASCII_Grid (ARC ASCII) is one of the download formats for this resource</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Esri_grid</link>
+					<tag>Wikipedia entry for ESRI Grid</tag>
+					<comment>Covers ASCII and binary Grid formats.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://docs.codehaus.org/display/GEOTOOLS/ArcInfo+ASCII+Grid+format</link>
+					<tag>GeoTools:  ArcInfo ASCII Grid format 
+</tag>
+					<comment>From 2006.  Includes some useful clarifications.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

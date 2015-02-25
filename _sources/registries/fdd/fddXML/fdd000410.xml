@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000410" titleName="Expert Witness Disk Image, EnCase Ex01 Bitstream" shortName="EWF_Ex01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>any</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:updates>
+			<fdd:date>2015-02-23</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Expert Witness Compression Format, EnCase Ex01 Bitstream</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>container formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>Second version of the EWF	<i>bitstream</i> or <i>forensic</i> image format from Guidance Software (EnCase brand), generally similar to the description offered in <fddLink id="fdd000406">EWF_Family</fddLink>.  According to Joachim Metz, Guidance&apos;s official name for this format
+and its <fddLink id="fdd000410">EWF_Lx01</fddLink> counterpart is <i>EnCase Evidence File Format Version 2</i>. For this and the counterpart <fddLink id="fdd000411">EWF_Lx01</fddLink> format, Metz reports that the data is either compressed or uncompressed, although the &quot;no compression&quot; option seems not to be supported in applications.  If compressed, the choices are the open-source program BZip2 or LZ; unlike EnCase&apos;s first version formats, multiple levels of compression are no longer offered. Metz&apos;s note about LZ compression mentions deflate, RFC1950,
+and zlib. </p>
+			<p>EWF_Ex01 (and the counterpart <fddLink id="fdd000411">EWF_Lx01</fddLink>) files contain 20 sections.  The following list is based on <a href="https://53efc0a7187d0baa489ee347026b8278fe4020f6.googledrive.com/host/0B3fBvzttpiiSMTdoaVExWWNsRjg/Expert%20Witness%20Compression%20Format%202%20%28EWF2%29.pdf">Metz's analysis</a>, which provides section type values for all of the sections; Metz uses the section type value when referring to the two "unknown" sections.</p>
+			<ul>
+				<li>Device information</li>
+				<li>Case data</li>
+				<li>Sector data</li>
+				<li>Sector table</li>
+				<li>Error table</li>
+				<li>Session table</li>
+				<li>Increment data</li>
+				<li>MD5 hash</li>
+				<li>SHA1 hash</li>
+				<li>Restart data</li>
+				<li>Encryption keys</li>
+				<li>Memory extents table</li>
+				<li>Next</li>
+				<li>Final information</li>
+				<li>Done</li>
+				<li>Analytical data</li>
+				<li>Single files data</li>
+				<li>Single files (unknown table, section type value 0x00000021)</li>
+				<li>Single files MD5 hash table</li>
+				<li>Single files (unknown table, section type value 0x00000023)</li>
+			</ul>
+		</fdd:description>
+		<fdd:shortDescription>Second version of the EWF bitstream or forensic image format from Guidance Software (EnCase brand).</fdd:shortDescription>
+		<fdd:productionPhase>Typically used for data analysis and not part of a process to create new content.  May be used to archive data.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000406</fdd:id>
+					<fdd:shortName>EWF_Family</fdd:shortName>
+					<fdd:titleName>Expert Witness Format (EWF) Family</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000408</fdd:id>
+					<fdd:shortName>EWF_E01</fdd:shortName>
+					<fdd:titleName>Expert Witness Format, Encase E01 Bitstream</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Open documentation produced via reverse engineering by Joachim Metz.</fdd:disclosure>
+		<fdd:documentation>
+			<a href="https://53efc0a7187d0baa489ee347026b8278fe4020f6.googledrive.com/host/0B3fBvzttpiiSMTdoaVExWWNsRjg/Expert%20Witness%20Compression%20Format%202%20%28EWF2%29.pdf">EWF 2 specification:
+Expert Witness Compression Format version 2 specification</a>
+		</fdd:documentation>
+		<fdd:adoption>In archives (as distinct from legal and law enforcement settings), where tools like <a href="http://www.bitcurator.net/">Bit Curator</a> and <a href="http://accessdata.com/product-download/digital-forensics/ftk-imager-version-3.2.0">FTK Imager</a> are in wide use, user comments suggest that the <fddLink id="fdd000408">EWF_E01</fddLink> and AFF (description forthcoming) bitstream formats are more widely used than EWF_Ex01.</fdd:adoption>
+		<fdd:licensingAndPatents>Not investigated at this writing.</fdd:licensingAndPatents>
+		<fdd:transparency>See <fddLink id="fdd000406">EWF_family</fddLink>
+		</fdd:transparency>
+		<fdd:selfDocumentation>See <fddLink id="fdd000406">EWF_family</fddLink>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>See <fddLink id="fdd000406">EWF_family</fddLink>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>Ex01</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Filename extensions for the first 99 content segments are .Ex01, .Ex02, through .Ex99; followed by .ExAA, .ExAB, and so on.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 45 56 46 32 0D 0A 81 00</fdd:sigValue>
+					<fdd:sigValue>ASCII: EVF2....</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From Gary Kessler&apos;s <a href="http://www.garykessler.net/library/file_sigs.html">File Signatures Table</a>.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes/>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://53efc0a7187d0baa489ee347026b8278fe4020f6.googledrive.com/host/0B3fBvzttpiiSMTdoaVExWWNsRjg/Expert%20Witness%20Compression%20Format%202%20%28EWF2%29.pdf</link>
+					<tag>EWF 2 specification:
+Expert Witness Compression Format version 2 specification</tag>
+					<comment>Joachim Metz&apos;s reverse-engineered documentation of EWF subtypes including EWF_Ex01.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Bzip2</link>
+					<tag>Wikipedia article &quot;bzip2&quot;</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://accessdata.com/product-download/digital-forensics/ftk-imager-version-3.2.0</link>
+					<tag>Download page for FTK Imager</tag>
+					<comment>Free tool from AccessData, also the source for the more extensive FTK Toolkit.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.bitcurator.net/</link>
+					<tag>BitCurator Web site</tag>
+					<comment>Tool to support digital content management, including work with disk images and forensic analysis.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
