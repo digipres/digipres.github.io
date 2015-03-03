@@ -71,6 +71,16 @@
   </mime-type>
 
   <mime-type type="application/cals-1840"/>
+
+  <mime-type type="application/cbor">
+    <acronym>CBOR</acronym>
+    <_comment>Concise Binary Object Representation container</_comment>
+    <tika:link>http://tools.ietf.org/html/rfc7049</tika:link>
+    <magic priority="40">
+      <match value="0xd9d9f7" type="string" offset="0" />
+    </magic>
+  </mime-type>
+
   <mime-type type="application/ccxml+xml">
     <glob pattern="*.ccxml"/>
   </mime-type>
@@ -92,7 +102,13 @@
   <mime-type type="application/dca-rft"/>
   <mime-type type="application/dec-dx"/>
   <mime-type type="application/dialog-info+xml"/>
-  <mime-type type="application/dicom"/>
+
+  <mime-type type="application/dicom">
+    <_comment>DICOM medical imaging data</_comment>
+    <magic priority="50">
+      <match value="DICM" type="string" offset="128"/>
+    </magic>
+  </mime-type>
 
   <mime-type type="application/dita+xml">
     <sub-class-of type="application/xml"/>
@@ -202,6 +218,19 @@
   <mime-type type="application/index.obj"/>
   <mime-type type="application/index.response"/>
   <mime-type type="application/index.vnd"/>
+
+  <mime-type type="application/inf">
+    <_comment>Windows setup INFormation</_comment>
+    <tika:link>http://msdn.microsoft.com/en-us/library/windows/hardware/ff549520(v=vs.85).aspx</tika:link>
+    <alias type="application/x-setupscript"/>
+    <alias type="application/x-wine-extension-inf"/>
+    <sub-class-of type="text/plain"/>
+    <magic priority="30">
+      <match value="[version]" type="string" offset="0" />
+      <match value="[strings]" type="string" offset="0" />
+    </magic>
+  </mime-type>
+
   <mime-type type="application/iotp"/>
   <mime-type type="application/ipp"/>
   <mime-type type="application/isup"/>
@@ -598,6 +627,37 @@
   <mime-type type="application/sdp">
     <glob pattern="*.sdp"/>
   </mime-type>
+
+  <mime-type type="application/sereal">
+    <_comment>Sereal binary serialization format</_comment>
+    <tika:link>https://github.com/Sereal/Sereal/blob/master/sereal_spec.pod</tika:link>
+    <glob pattern="*.srl"/>
+  </mime-type>
+  <mime-type type="application/sereal;version=1">
+    <sub-class-of type="application/sereal"/>
+    <magic priority="50">
+      <match value="0x6C72733D" type="little32" offset="0">
+        <match value="0x01" mask="0x0F" type="string" offset="4"/>
+      </match>
+    </magic>
+  </mime-type>
+  <mime-type type="application/sereal;version=2">
+    <sub-class-of type="application/sereal"/>
+    <magic priority="50">
+      <match value="0x6C72733D" type="little32" offset="0">
+        <match value="0x02" mask="0x0F" type="string" offset="4"/>
+      </match>
+    </magic>
+  </mime-type>
+  <mime-type type="application/sereal;version=3">
+    <sub-class-of type="application/sereal"/>
+    <magic priority="50">
+      <match value="0x6C72F33D" type="little32" offset="0">
+        <match value="0x03" mask="0x0F" type="string" offset="4"/>
+      </match>
+    </magic>
+  </mime-type>
+
   <mime-type type="application/set-payment"/>
   <mime-type type="application/set-payment-initiation">
     <glob pattern="*.setpay"/>
@@ -2789,9 +2849,11 @@
   </mime-type>
 
   <mime-type type="application/x-debian-package">
+    <alias type="application/vnd.debian.binary-package"/>
     <sub-class-of type="application/x-archive"/>
     <magic priority="60">
       <match value="!&lt;arch&gt;\ndebian-binary" type="string" offset="0"/>
+      <match value="!&lt;arch&gt;\ndebian-split" type="string" offset="0"/>
     </magic>
     <glob pattern="*.deb"/>
     <glob pattern="*.udeb"/>
@@ -3077,8 +3139,8 @@
       <match value="\037\213" type="string" offset="0" />
       <match value="\x1f\x8b" type="string" offset="0" />
     </magic>
-    <glob pattern="*.tgz" />
     <glob pattern="*.gz" />
+    <glob pattern="*.tgz" />
     <glob pattern="*-gz" />
     <glob pattern="*.emz" />
   </mime-type>
@@ -5017,10 +5079,24 @@
   <mime-type type="multipart/signed"/>
   <mime-type type="multipart/voice-message"/>
 
+  <mime-type type="text/dif+xml">
+    <root-XML localName="DIF"/>
+    <root-XML localName="DIF" namespaceURI="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/"/>
+    <glob pattern="*.dif"/>
+    <sub-class-of type="application/xml"/>
+  </mime-type>
+
   <mime-type type="text/x-actionscript">
     <_comment>ActionScript source code</_comment>
     <glob pattern="*.as"/>
     <sub-class-of type="text/plain"/>
+  </mime-type>
+
+  <mime-type type="text/dif+xml">
+    <root-XML localName="DIF"/>
+    <root-XML localName="DIF" namespaceURI="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/"/>
+    <glob pattern="*.dif"/>
+    <sub-class-of type="application/xml"/>
   </mime-type>
 
   <mime-type type="text/x-ada">
