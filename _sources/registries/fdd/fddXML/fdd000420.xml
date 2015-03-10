@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000420" titleName="ERDAS IMAGINE (IMG) Format" shortName="ERDAS_IMG" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>file-group</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2015-02-01</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ERDAS IMAGINE File Format (IMG)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>raster image formats</fdd:keyword>
+			<fdd:keyword>geospatial data formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The format we are calling ERDAS_IMG to distinguish from other uses of the .img file extension is a proprietary, partially documented format for multi-layer geo-referenced raster images developed originally for use with ERDAS IMAGINE software.  This format is used widely for processing remote sensing data, since it provides a framework for integrating sensor data and imagery from many sources. This description covers all chronological versions of the format because the compilers of this resource have been unable to find documentation that clearly distinguishes between formats as produced by different versions of the software. <a href="../contact_format.shtml">Comments welcome</a>.  This format is one of the formats used for <a href="http://nationalmap.gov/data_delivery/">data delivery via the National Map</a> as of early 2015, in particular for the National Elevation Dataset (NED).</p>
+			<p>A key capability of ERDAS_IMG is that it distinguishes between two types of raster layer:</p>
+			<ul>
+				<li>
+					<b>Continuous</b>:  A continuous raster layer typically represents an image captured by a sensor array comparable to a digital camera.  Values may represent a single band or multiple bands.  The value measured at each pixel may relate to any quantity measured in a continuous range, including aerial or satellite imagery, temperature, elevation, etc.</li>
+				<li>
+					<b>Thematic</b>:  A thematic raster layer comprises pixels that have been classified, or put into distinct categories. Each pixel has a single value, which is simply a numeric code for a particular category.  A &quot;false&quot; or &quot;pseudo&quot; color is used to represent each category for display. Since the category values are not necessarily related, gradations that are helpful in true color mode are not usually useful in pseudo color. The class system gives the thematic layer a discrete look, in which each class can have its own color.</li>
+			</ul>
+			<p>Another key feature of the ERDAS_IMG format is that it is designed to store technical and georeferencing/geocoding metadata from the source data imported as layers.  This supplies a record of provenance.  See <a href="http://doc.hexagongeospatial.com/ERDAS%20IMAGINE/ERDAS_IMAGINE_Help/#ExternalFileFormatHeaderObjectTypes.htm">External File Format Header Object Types</a>.</p>
+			<p>ERDAS IMAGINE software uses a tiled format to store raster layers. The tiled format allows raster layers to be
+displayed and resampled quickly. The default tile size used to be 64 pixels by 64 pixels, but now appears to be 512 pixels by 512 pixels.  Within a tile, raster data uses the <fddLink id="fdd000306">BSQ_enc</fddLink> ordering for pixels. Optionally, a large raster layer may be organized in a &quot;pyramid&quot; for faster processing. In pyramid layers, reduced, subsampled raster layers are created from the original
+raster layer.</p>
+			<p>ERDAS_IMG is based on a <a href="http://doc.hexagongeospatial.com/ERDAS%20IMAGINE/ERDAS_IMAGINE_Help/#HFAObjectDirectory.htm">Hierarchical File Format (HFA)</a> structure.  Many of the items that can be included are optional. In addition, because of the open nature of the HFA format, developers may create and add new types of items to the file.  Raster layers may be compressed using a variant of Run Length Encoding known as <a href="https://wiki.hexagongeospatial.com/index.php?title=Image_Compression">Dynamic Range Run Length Encoding</a>.</p>
+			<p>For images requiring more than 2 Gbytes of disk space (although some sources indicate that the limit is now 4 Gbytes), a two file dataset is required. The .img file contains the usual structure of headers and structural metadata but the actual image data is kept in a separate non-HFA file format, known as a <i>Large Raster Spill File</i>, with the extension .ige.</p>
+		</fdd:description>
+		<fdd:shortDescription>A proprietary, partially documented format for multi-layer geo-referenced raster images developed originally for use with ERDAS IMAGINE software.  A key capability of the format is that it distinguishes betweenthematic and continuous raster layers.</fdd:shortDescription>
+		<fdd:productionPhase>Primarily a middle-state format, used to hold a collection of raster layers derived from differing sources, and aligned in preparation for flattening to a single layer for printing or display, for example as <fddLink id="fdd000279">GeoTIFF</fddLink>. See <a href="#notes">Notes</a> below for an example workflow.  An ERDAS_IMG file is often archived or distributed as a version that supports the ability to revise the final image, for example, by adjusting coloring for thematic raster layers or merge with additional data.</fdd:productionPhase>
+		<fdd:relationships/>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Proprietary, partially documented.  Originally developed by ERDAS, Inc., now part of <a href="http://www.hexagongeospatial.com/">Hexagon Geospatial</a>.</fdd:disclosure>
+		<fdd:documentation>Partial documentation in the help system for ERDAS IMAGINE software at <a href="http://doc.hexagongeospatial.com/ERDAS%20IMAGINE/ERDAS_IMAGINE_Help/#ERDASIMAGINEFileFormatConcept.htm">http://doc.hexagongeospatial.com/ERDAS%20IMAGINE/ERDAS_IMAGINE_Help/#ERDASIMAGINEFileFormatConcept.htm</a>.  See all links in the IMG HFA MIF section of the help files.</fdd:documentation>
+		<fdd:adoption>
+			<p>Various government agencies and projects distribute data in ERDAS_IMG format, including: the <a href="http://www.mrlc.gov/">Multi-Resolution Land Characteristics (MRLC) consortium</a>; the <a href="http://coast.noaa.gov/ccapftp/">Coastal Change Analysis Program</a>, and the <a href="http://ned.usgs.gov/faq.html#FORMATS">National Elevation Dataset</a>.  Accompanying metadata sometimes mentions a particular version, presumed to refer to the version of ERDAS IMAGINE used to create the files.  For example, the National Land Cover Database from MRLC, uses version 9.3.</p>
+			<p>Viewing the ERDAS_IMG multi-layered images requires specialized software.  A free desktop viewer, <a href="http://www.hexagongeospatial.com/products/remote-sensing/erdas-er-viewer/overview">ERDAS ER Viewer</a> is available from Hexagon Geospatial.  ERDAS_IMG files can be viewed in GeoViewer, <a href="http://www.lizardtech.com/downloads/category/">freely downloadable from LizardTech</a>.  ERDAS_IMG files can be read and written by ArcGIS Desktop and other ESRI applications.  See <a href="http://desktop.arcgis.com/en/desktop/latest/manage-data/raster-and-images/supported-raster-dataset-file-formats.htm">Supported raster dataset file formats</a> from ArcGIS help.  It is also supported by Safe Software&apos;s FME engine for format conversion.</p>
+			<p>There appear to be two software libraries that support the reading and writing of ERDAS_IMG files:</p>
+			<ul>
+				<li>The open source GDAL/OGR library. See <a href="http://www.gdal.org/frmt_hfa.html">GDAL: HFA -- Erdas Imagine .img</a>. This capability in GDAL derives from a project evidently supported by Intergraph around 2004.  Intergraph was owner of ERDAS IMAGINE software at the time.  This project yielded a C++ API that is integrated into GDAL and also a utility img2tif designed to convert ERDAS_IMG files to GeoTIFFs.  As of January 2015, the former link to the source code for img2tif (with a date of 2006) is no longer online. See <a href="http://web.archive.org/web/20130730133056/http://home.gdal.org/projects/imagine/hfa_index.html">former project page</a>  via the Internet Archive for more information.  The compilers of this resource do not know whether GDAL support handles new variants of the ERDAS_IMG format. <a href="../contact_format.shtml">Comments welcome</a>.  This library is used by the open source <a href="http://www.qgis.org/">QGIS</a> and <a href="http://grass.osgeo.org/">GRASS</a> applications.</li>
+				<li>The IMAGINE Developers&apos; Toolkit, included in the Producer suite of the Power Portfolio from Hexagon Geospatial.  This toolkit supports reading and writing of ERDAS_IMG files.</li>
+			</ul>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>TBD</fdd:licensingAndPatents>
+		<fdd:transparency>Header information and definitions for layers and tables are in ASCII.  However, the raster data itself is in binary and usually highly compressed.</fdd:transparency>
+		<fdd:selfDocumentation>TBD.  Incorporates header information from imported source files.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None beyond the need for specialized software.</fdd:externalDependencies>
+		<fdd:techProtection>No support for encryption within the format is apparent from the documentation.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>ERDAS_IMG is designed for building raster images from layers from different sources.  It is not typically used for digital photography or other images from a single source.  The technical structure of an ERDAS_IMG file supports panning, zooming, and printing given a choice as to which raster layers to display.</fdd:normalImage>
+			<fdd:clarity>The format is designed to use different number of bits per pixel for each band in each layer depending on the source data.  Values up to 64 bits per pixel are supported.  Spatial resolution (e.g., in pixels per inch) is not relevant for remote sensing images.  In terms of pixel dimensions, the format is used for very large images mosaiced from  many sub-images.</fdd:clarity>
+			<fdd:colorMaint>Strict color maintenance is not seen as a requirement for remote sensing data and there is no support for ICC profiles in ERDAS_IMG.</fdd:colorMaint>
+			<fdd:graphics>No support for vector graphics.</fdd:graphics>
+			<fdd:multispectral>Good support.  A raster layer may have any number of bands.</fdd:multispectral>
+			<fdd:beyondImage>Can incorporate and align many raster layers in a way that permits users to choose which layers to present on a display or print.</fdd:beyondImage>
+		</fdd:stillImageQF>
+		<fdd:gisQF>
+			<fdd:normalGIS>Georeferencing/geocoding metadata can be stored for each source layer in an ERDAS_IMG file.  This allows layers to be transformed to a single projection for display or printing.</fdd:normalGIS>
+			<fdd:metadataGIS>Richer contextual metadata for files distributed in this format is typically stored in an accompanying file.  USGS files have accompanying FGDC metadata, often in several formats (e.g., XML, HTML and plain text).</fdd:metadataGIS>
+			<fdd:grids>The raster data in layers in an ERDAS_IMG file is inherently griddable.</fdd:grids>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>img</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>All ERDAS_IMG resources include a .img file.  But large images over 4 Gbytes (and sometimes those between 2 and 4 Gbytes as well), also have a .ige file. See below.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>ASCII: EHFA_HEADER_TAG</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>This magic number is not unique to the .img file from ERDAS.  It applies to other ERDAS files based on the HFA structure.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>ige</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Used for a Large Raster Spill File if needed.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>ASCII: ERDAS_IMG_EXTERNAL_RASTER</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Applies to files with .ige extension.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>As of January 2015, ERDAS IMAGINE software is distributed by Hexagon Geospatial, which is part of the Intergraph Corporation.  Intergraph is in turn part of the Hexagon conglomerate, which acquired Intergraph in 2010.</p>
+			<p>The <a href="http://landsat.usgs.gov/ERDAS_Approach.php">Landsat team recommend a workflow</a> using an ERDAS_IMG file as an intermediate file in order to fill in pixels that are missing in source images from Landsat 7.  The final output of the workflow is a <fddLink id="fdd000279">GeoTIFF</fddLink> image designed to be aesthetic rather than scientifically precise.  <a href="http://www.fs.fed.us/foresthealth/technology/pdfs/DASM_ERDAS_Image_Map_Manual_2012.pdf">Preparing Image Base Maps for the Digital Aerial
+Sketchmapping (DASM) System</a>, from the U.S. Forestry Service, provides instructions for another map-making workflow.  This workflow outputs the ERDAS_IMG file as well as files in <fddLink id="fdd000018"> JFIF_1_02</fddLink> (JPEG File Interchange Format) and <fddLink id="fdd000184">MrSID</fddLink> formats.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>See <a href="http://www.hexagon.com/en/Our-History.htm">Hexagon: Our History</a> for the complex chain of corporate acquisitions.  The Internet Archive reveals a view of the complex branding context for ERDAS IMAGINE over the years.  A website for ERDAS, www.erdas.com, was first captured by the Internet Archive in 1997.  The company described itself as a &quot;mapping software company specializing in Geographic Imaging solutions since 1978.&quot;  The version of ERDAS IMAGINE was 8.3.  The company description in August 2008 indicates that ERDAS was acquired by Leica Geosystems in 2001 and that Hexagon had acquired Leica Geosystems in 2005.  ERDAS IMAGINE 2009 was version 9.3. By June 2012, www.erdas.com redirected to geospatial.intergraph.com.  As of January 2015, the earlier URLs redirect to www.hexagongeospatial.com, a site first crawled by the Internet Archive in May 2014.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://doc.hexagongeospatial.com/ERDAS%20IMAGINE/ERDAS_IMAGINE_Help/#ERDASIMAGINEFileFormatConcept.htm</link>
+					<tag>ERDAS IMAGINE File Format Concept</tag>
+					<comment>A small cluster of pages (with IMG HFA MIF as the parent page) provides all the documentation provided for the ERDAS_IMG format.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://web.archive.org/web/20130730133056/http://home.gdal.org/projects/imagine/hfa_index.html</link>
+					<tag>Earlier documentation for the .img format is linked from this page, courtesy of the Internet Archive.  The documentation dates from no later than 2004 and possibly from several years earlier.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://wiki.hexagongeospatial.com/index.php?title=Main_page</link>
+					<tag>HexGeoWiki</tag>
+					<comment>Extends and replaces the ERDAS Field Guide, formerly available as PDF.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://doc.hexagongeospatial.com/ERDAS IMAGINE/ERDAS_IMAGINE_Help/#img.htm</link>
+					<tag>Preferences for IMAGINE Image Files (Native)</tag>
+					<comment>Help file that describes settings for ERDAS IMAGINE that may control characteristics of ERDAS_IMG files created.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Various pages related to GDAL/OGR have information on the ERDAS_IMG format:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.gdal.org/frmt_hfa.html</link>
+							<tag>HFA -- Erdas Imagine .img</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://web.archive.org/web/20130730133056/http://home.gdal.org/projects/imagine/hfa_index.html</link>
+							<tag>Imagine (.img) Reader</tag>
+							<comment>Link via Internet Archive.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://web.archive.org/web/20130730133056/http://home.gdal.org/projects/imagine/iau_docu0.pdf</link>
+							<tag>Documentation for ERDAS IMAGINE .img Files</tag>
+							<comment>Link via Internet Archive</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://web.archive.org/web/20130730133056/http://home.gdal.org/projects/imagine/iau_docu1.pdf</link>
+							<tag>Documentation for MIF (Machine Independent Format)</tag>
+							<comment>MIF is a subformat used in HFA and ERDAS_IMG.  Link via Internet Archive</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://web.archive.org/web/20130730133056/http://home.gdal.org/projects/imagine/ige_format.html</link>
+							<tag>Erdas Imagine .ige (Large Raster Spill File) Format</tag>
+							<comment>Link via Internet Archive</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://web.archive.org/web/20090902221811/http://home.gdal.org/projects/imagine/dump.txt</link>
+							<tag>A text dump of the file structure for a sample file</tag>
+							<comment>Link via Internet Archive</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://web.archive.org/web/20130730133056/http://home.gdal.org/projects/imagine/img2tif_src.zip</link>
+							<tag>Source code for img2tif</tag>
+							<comment>Link via Internet Archive</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://lists.osgeo.org/pipermail/gdal-dev/2013-December/037731.html</link>
+					<tag>How to open Erdas Imagine .ige (Large Raster Spill File) Format with gdal</tag>
+					<comment>From [gdal-dev] message from December 2013. Recommends opening the .img file which refers to the .ige file.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://landsat.usgs.gov/ERDAS_Approach.php</link>
+					<tag>Gap-Filling Landsat 7 SLC-off Single Scenes Using ERDAS Imagine</tag>
+					<comment>Workflow to modify neighboring pixels in a single Landsat 7 SLC-off scene, creating a final aesthetic image.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.bl.uk/ipres2008/presentations_day2/29_Kosovic.pdf</link>
+					<tag>Implementing Preservation Services over the Storage Resource Broker.  by Douglas Kosovic and Jane Hunter, iPres 2008</tag>
+					<comment>This paper presented at the 2008 iPres conference describes a test of preservation services that involved migration of proprietary ERDAS_IMG files to GeoTIFF images.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.hexagongeospatial.com</link>
+					<tag>Hexagon Geospatial</tag>
+					<comment>Corporate home page</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Erdas_Imagine</link>
+					<tag>Wikipedia entry for ERDAS IMAGINE</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.intergraph.com/about_us/history.aspx</link>
+					<tag>Intergraph History</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://field-guide.blogspot.com/2009/04/brief-history-of-erdas-imagine.html</link>
+					<tag>A Brief History of ERDAS IMAGINE</tag>
+					<comment>Originally posted in April 2009, but with additions to the timeline through 2014.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>ftp://ftp.ecn.purdue.edu/jshan/86/help/html/appendices/erdas_imagine__img_files.htm</link>
+					<tag>Copy of documentation for ERDAS_IMG from ERDAS.  Date unknown.</tag>
+					<comment>Refers to default tile size as 64 pixels by 64 pixels.  As of January 2015, the default is 512 pixels by 512 pixels.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.gis.usu.edu/manuals/labbook/erdas/manuals/FieldGuide.pdf</link>
+					<tag>ERDAS Field Guide, Fifth Edition, Revised and Expanded, 1999</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Examples of adoption for distribution.  For most of these examples, ERDAS_IMG and GeoTIFF images are made available.  As of January 2015, when accompanying metadata indicates a version, it typically indicates version 9.3 or earlier for ERDAS_IMG files. </fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.mrlc.gov/</link>
+							<tag> Multi-Resolution Land Characteristics (MRLC) consortium</tag>
+							<comment>A group of federal agencies who coordinate and generate consistent and relevant land cover information at the national scale for a wide variety of environmental, land management, and modeling applications.  National Land Cover Database products are distributed in the ERDAS_IMG (version 9.3) format.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://gisdata.usgs.gov/bulk.php</link>
+							<tag>Bulk Data.  Instructions for process for acquiring bulk data.</tag>
+							<comment>Lists ERDAS_IMG as the format for the National Land Cover Database.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://coast.noaa.gov/ccapftp/</link>
+							<tag>Data from Coastal Change Analysis Program</tag>
+							<comment>Raster images available as IMG and GeoTIFF</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://ned.usgs.gov/faq.html#FORMATS</link>
+							<tag>National Elevation Dataset FAQ: What formats are available?</tag>
+							<comment>As of January 2015, indicates availability in ArcGRID, GridFloat and ERDAS_IMG formats.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://nationalmap.gov/data_delivery/</link>
+							<tag>National Map: Date Delivery Updates</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://pubs.usgs.gov/sim/3104/</link>
+							<tag>Mineral and Vegetation Maps of the Bodie Hills, Sweetwater Mountains, and Wassuk Range, California/Nevada, Generated from ASTER Satellite Data</tag>
+							<comment>Follow link to Downloads Directory to find the .img files.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://pubs.usgs.gov/ds/552/data/raster/</link>
+							<tag>Seafloor Geology and Benthic Habitats, San Pedro Shelf, Southern California</tag>
+							<comment>Prepared by USGS in cooperation with the Sanitation Districts of Los Angeles County and the Orange County Sanitation District.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
