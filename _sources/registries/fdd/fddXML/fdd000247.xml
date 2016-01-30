@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000247" titleName="OpenDocument Format (ODF) Family, OASIS and ISO/IEC 26300" shortName="ODF_family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenres>
+				<fdd:gdfrGenre>text</fdd:gdfrGenre>
+				<fdd:gdfrGenre>spreadsheet</fdd:gdfrGenre>
+				<fdd:gdfrGenre>presentation</fdd:gdfrGenre>
+				<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+				<fdd:gdfrGenre>any</fdd:gdfrGenre>
+			</fdd:gdfrGenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-bundle</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>office/business</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2015-09-17</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ODF Family.  OASIS name: Open Document Format for Office Applications (OpenDocument).  ISO name: ISO/IEC 26300, Information technology -- Open Document Format for Office Applications (OpenDocument)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>document formats</fdd:keyword>
+			<fdd:keyword>container formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>This description is an overview of the family of formats defined by ISO/IEC 26300: Information technology -- Document description and processing languages --  Open Document Format for Office Applications (OpenDocument) and the corresponding family of Open Document Format (ODF) specifications from OASIS.</p>
+			<p>The formats in the ODF family are XML-based, application-independent, and platform-independent file formats for editable documents.  The specifications have been developed and are maintained by <a href="https://www.oasis-open.org/org">OASIS (Organization for the Advancement of Structured Information Standards)</a>.  The ODF specifications are intended to support document authoring, editing, viewing, exchange and archiving for text documents, spreadsheets, presentation graphics, drawings, charts and similar documents commonly created or used in personal productivity software applications.</p>
+			<p>In addition to being XML-based and designed to support editing, requirements in the <a href="https://www.oasis-open.org/committees/office/charter.php">charter for the Open Document Format technical committee</a> included:</p>
+			<ul>
+				<li>it [the ODF format] must be friendly to transformations using XSLT or similar XML-based languages or tools</li>
+				<li>it should keep the document&apos;s content and layout information separate
+such that they can be processed independently of each other</li>
+				<li>it should &apos;borrow&apos; from similar, existing standards wherever possible and permitted. [See <a href="#notes">General Notes</a> below for a list of XML-based standards used by ODF.]</li>
+			</ul>
+			<p>
+				<b>Content categories:</b>  The ODF family of formats includes subtypes for documents in different content categories, such as word-processing, spreadsheet, and presentation file formats.  Documents comprise related component files bundled in a container/wrapper format called a &quot;package.&quot; A typical ODF document has the following components:</p>
+			<ul>
+				<li>
+					<b>mimetype</b> -- one-line file containing the appropriate MIME type for the document type, for example, <i>application/vnd.oasis.opendocument.text</i> for a word-processing document.</li>
+				<li>
+					<b>./META-INF/manifest.xml</b> -- mandatory, a list of all the files in the ZIP-based package with their media types (MIME types), including information required for decrypting each file as relevant</li>
+				<li>
+					<b>content.xml</b> -- actual content of the document, with markup inspired by HTML.  Like HTML, ODF uses a &quot;mixed-content&quot; model for markup (with elements permitted to include both raw text and other elements), resulting in files that are relatively human-readable.  See <a href="#notes">Notes</a> below on mixed-content markup.  The primary content is inside an <i>&lt;office:body&gt;</i> element, but this file may also contain the elements: <i>&lt;office:scripts&gt;</i>, <i>&lt;office:font-face-decls&gt;</i>, and <i>&lt;office:automatic-styles&gt;</i>.</li>
+				<li>
+					<b>styles.xml</b> --  in ODF all formatting is done through styles.  This file contains named styles, for example for headings of various levels and defaults for displaying dates and numbers.  The <i>&lt;office:automatic-styles&gt;</i> section of a <i>content.xml</i> file is typically used for styles created automatically by implementations when users choose individual formatting features, such as emphasizing a word in bold-face or italics.</li>
+				<li>
+					<b>./Pictures/</b> -- directory containing any embedded images in common formats such as JPEG or PNG</li>
+				<li>
+					<b>./Thumbnails/thumbnail.png</b> -- image to use as thumbnail</li>
+				<li>
+					<b>meta.xml</b> -- file metadata, which may include not only predefined elements, but also user-defined elements and custom elements.  See <a href="#sustainability">Self-documentation</a> below for details.</li>
+				<li>
+					<b>settings.xml</b> -- holds settings that relate neither to content nor to layout of the specific document, for example, settings associated with the latest print action.</li>
+			</ul>
+			<p>
+				<b>Chronological versions:</b> OASIS has developed and published three versions of the ODF specification.  Version 1.0 was published in May 2005, version 1.1 in February 2007, and version 1.2 in September 2011.  Changes between ODF 1.0 and 1.1 were relatively minor, apart from extensions to address accessibility concerns.  On this site, the plan is, over time, to develop descriptions for the package formats and categorical subtypes based on ODF 1.1 (also covering ODF 1.0), and separate descriptions for the ODF 1.2 versions.  The <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=office">OASIS Open Document Format for Office Applications (OpenDocument) TC</a> is working on ODF 1.3, with a key effort being a markup structure for change-tracking that supports simultaneous collaborative editing.  For the history of the format prior to submission for standardization through OASIS, and for more detail on ISO standardization for the later ODF versions, see <a href="#notes">History Notes</a> below.</p>
+			<p>
+				<b>ODF package formats:</b> An ODF document is always in a package that aggregates constituent
+components of a document (or other type of content) into a single object. The main ODF package specification is based on the ZIP format as defined in APPNOTE.TXT from PKWARE (see <fddLink id="fdd000354">ZIP_PK</fddLink>).  For details of the ODF package formats, see <fddLink id="fdd000424">ODF_package_1_1</fddLink> for ODF 1.1 and <fddLink id="fdd000425">ODF_package_1_2</fddLink> for ODF 1.2.</p>
+			<p>ZIP permits use of various compression and encryption algorithms.  Compression in ODF files is restricted to the &quot;deflate&quot; algorithm.  Encryption mechanisms as defined in APPNOTE.TXT are not permitted.  A single encryption mechanism is specified for <fddLink id="fdd000424">ODF_package_1_1</fddLink> and the approach is updated in ODF 1.2 (<fddLink id="fdd000425">ODF_package_1_2</fddLink>) specification to allow stronger encryption.  Digital signatures are not supported in ODF 1.1; support for digital signatures was added in ODF 1.2.</p>
+			<p>See <a href="#notes">Notes</a> below for more detail on versions of ZIP referenced by different versions of ODF. Also, see <a href="#notes">Notes</a> below for information about an alternative wrapper format, a &quot;flat&quot; Single OpenDocument XML file format.</p>
+		</fdd:description>
+		<fdd:shortDescription>A family of formats designed for office productivity applications, including word-processing, spreadsheets, and presentations. Specification maintained by OASIS.  The regular ODF files are in packages based on the ZIP format and incorporating an XML-based manifest file to list component files.  A Flat XML representation is also defined.</fdd:shortDescription>
+		<fdd:productionPhase>An ODF document can be used in any production phase.  However, textual ODF documents (.odt) and presentations (.odp) are often converted to a static format rather than an editing format for final publication or archiving.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000428</fdd:id>
+					<fdd:shortName>ODF_text_1_2</fdd:shortName>
+					<fdd:titleName>OpenDocument Text Document Format (ODT) , Version 1.2, ISO 26300-1:2015</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000439</fdd:id>
+					<fdd:shortName>ODF_spreadsheet_1_2</fdd:shortName>
+					<fdd:titleName>OpenDocument Spreadsheet Document Format (ODS), Version 1.2, ISO 26300-1:2015</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000435</fdd:id>
+					<fdd:shortName>ODF_presentation_1_2</fdd:shortName>
+					<fdd:titleName>OpenDocument Presentation Document Format (ODP), Version 1.2, ISO 26300-1:2015</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000436</fdd:id>
+					<fdd:shortName>ODF_draw_1_2</fdd:shortName>
+					<fdd:titleName>OpenDocument Drawing Document Format (ODG), Version 1.2, ISO 26300-1:2015</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000437</fdd:id>
+					<fdd:shortName>ODF_chart_1_2</fdd:shortName>
+					<fdd:titleName>OpenDocument Chart Document Format (ODC), Version 1.2, ISO 26300-1:2015</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000355</fdd:id>
+					<fdd:shortName>ZIP_6_2_0</fdd:shortName>
+					<fdd:titleName>ZIP File Format, Version 6.2.0 (PKWARE)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Various features of the ZIP File Format are not permitted in ODF.  ODF 1.2 uses ZIP 6.2.0 as the normative basis for the package specification.  See <a href="#notes">Notes</a> below for more detail on versions referenced by earlier ODF specifications.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:comment>META-INF/manifest.xml file. This manifest file, not described separately in this resource, is mandatory in all ODF packages.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:comment>OpenOffice.org 1.0 format, a precursor to ODF, not described on this site at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has later version</fdd:typeOfRelationship>
+				<fdd:comment>ODF 1.2 Extended formats, variants with additional markup supported by ODF implementations, for example LibreOffice and Apache OpenOffice, since OpenOffice 3.2. </fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000424</fdd:id>
+					<fdd:shortName>ODF_package_1_1</fdd:shortName>
+					<fdd:titleName>OpenDocument Package Format, ODF 1.1</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Includes ODF 1.0, not described separately at this site.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000425</fdd:id>
+					<fdd:shortName>ODF_package_1_2</fdd:shortName>
+					<fdd:titleName>OpenDocument Package Format, ODF 1.2</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000263</fdd:id>
+					<fdd:shortName>XML_1_0</fdd:shortName>
+					<fdd:titleName>XML (Extensible Markup Language) 1.0</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>ODF specifications include normative RELAX NG schemas.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:preference>The Library of Congress <a href="http://www.loc.gov/preservation/resources/rfs/textmus.html">Recommended Format Statement (RFS) 2015-2016</a> includes ODF (ISO/IEC 26300) as an acceptable format for textual works in digital form.  In general, the Library of Congress prefers formats intended for final publication of textual works, rather than editable formats.  Editable formats will be found in collections of papers of organizations and individuals.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>International open standard.  Maintained by <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=office">OASIS Open Document Format for Office Applications (OpenDocument) TC</a>.  To summarize from the <a href="https://www.oasis-open.org/org/faq">OASIS FAQ</a>, OASIS promotes the development and adoption of open standards, using transparent governance and operating procedures, and offering a range of membership levels to support an inclusive, international, and balanced member base.</fdd:disclosure>
+		<fdd:documentation>
+			<p>Specifications from OASIS: <a href="https://www.oasis-open.org/standards#opendocumentv1.2">Open Document Format for Office Applications (OpenDocument) Specification v1.2</a>.  For other versions, see <a href="#specs">Format specifications</a> below or the list on the page for the <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=office">OASIS OpenDocument TC</a>.</p>
+			<p>Specifications published as ISO/IEC 26300, with the latest versions available on <a href="http://standards.iso.org/ittf/PubliclyAvailableStandards/">http://standards.iso.org/ittf/PubliclyAvailableStandards/</a>:</p>
+			<ul>
+				<li>ISO/IEC 26300:2006, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.0 and Amd 1:2012, to align with ODF 1.1 as published by OASIS.</li>
+				<li>ISO/IEC 26300-1:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2 -- Part 1: OpenDocument Schema</li>
+				<li>ISO/IEC 26300-2:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2 -- Part 2: Recalculated Formula (OpenFormula) Format</li>
+				<li>ISO/IEC 26300-3:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2 -- Part 3: Packages</li>
+			</ul>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>As of 2015, office software suites using ODF as native file format include: <a href="https://www.libreoffice.org/about-us/who-are-we/">LibreOffice</a>, <a href="https://www.openoffice.org/product/index.html">Apache OpenOffice</a>, and <a href="https://www.calligra.org/tour/calligra-suite/">Calligra</a>.  LibreOffice and Apache OpenOffice (AOO) derive from a split in 2010 when Sun Microsystems, sponsor of the open source OpenOffice.org was acquired by Oracle and some developers left to form LibreOffice. Oracle later licensed the OpenOffice codebase to the open source Apache organization.  See <a href="#notes">Notes</a> below for more detail on relationship between the AOO and LibreOffice projects in 2015.  Both AOO and LibreOffice instal with a default format variant described as ODF 1.2 Extended.  See <a href="#notes">Notes/History</a> below for more on ODF 1.2 Extended.  KOffice, an important product during the development of ODF, is no longer supported; its website was taken down in 2012.  The Calligra suite has developed from a fork with KOffice in 2010.   The KDE project and organization, formerly associated with the KOffice software application continues and the <a href="https://community.kde.org/Calligra">Calligra Development Wiki</a> is part of the KDE Community Wiki.  Microsoft Office 2013 and Office 365 permit the choice of ODF 1.2 or 1.1 as the default format for new files; when editing such files, features not supported in ODF will be hidden from users and no translation between ODF and OOXML occurs.  The compilers of this resource believe that these suites offer three independent codebases that use the ODF format as the underlying native format: from OpenOffice/LibreOffice; Calligra/KDE; and Microsoft.  Additionally, since the fork between OpenOffice and LibreOffice, significant differences between their codebases have been introduced. <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>Other office applications that support ODF include: <a href="http://www.abiword.org/">AbiWord</a> (open source), which has a plug-in; <a href="http://www.multiracio.com/index.php?lang=en&amp;style=eurooffice&amp;page=eo">EuroOffice</a>, which extends OpenOffice/LibreOffice, in particular with support for spelling and grammar checkers for many European languages; and <a href="http://www.wordperfect.com/us/product/office-suite/#tab2">Corel WordPerfect Office Suite</a> (since version X4).  Two suites formerly available as independent products are no longer maintained:  <a href="https://en.wikipedia.org/wiki/StarOffice">StarOffice</a> and <a href="https://en.wikipedia.org/wiki/IBM_Lotus_Symphony">IBM Lotus Symphony</a>. Code from these products was made available to Apache OpenOffice.</p>
+			<p>A number of government bodies have adopted the ODF family of formats as mandatory or recommended for documents which must be editable to support collaboration within the government or between the government and the public or other entities.  The <a href="https://en.wikipedia.org/wiki/OpenDocument_adoption">Wikipedia page on OpenDocument Adoption</a> is intended to document evaluation or adoption of ODF by governments.  As of April 2015, the page was clearly out of date.  Examples of governmental policy documents that mandate ODF among editable documents include:</p>
+			<ul>
+				<li>The <a href="https://www.gov.uk/government/publications/open-standards-for-government/sharing-or-collaborating-with-government-documents">United Kingdom: Sharing or collaborating with government documents</a>, which mandates ODF 1.2.  The UK government <a href="https://www.gov.uk/government/news/open-document-formats-selected-to-meet-user-needs">announced format choices in July 2014</a>.</li>
+				<li>In 2012, Portugal issued a regulation incorporating a list of mandatory formats.  The only editable format for documents listed was ODF 1.1.  See <a href="https://dre.pt/application/dir/pdf1sdip/2012/11/21600/0646006465.pdf">regulation in Portuguese</a> and the <a href="http://www.computerweekly.com/blogs/public-sector/2012/11/-tablemytable-border-collapsec.html">list as presented in Computer Weekly</a>.</li>
+				<li>In 2009, Norway adopted a new set of obligatory information technology standards, mandating ODF as the only editable format for exchanging documents between the government and users by email. See <a href="https://www.regjeringen.no/en/aktuelt/new-obligatory-it-standards-for-the-stat/id570650/">announcement and summary in English</a>.</li>
+				<li>
+					<a href="http://eping.governoeletronico.gov.br/">Brazil&apos;s ePING</a> (Standards for Interoperability for Electronic Government) includes ODF 1.2 and ISO/IEC 26300: 2008 as the only editable formats for office documents.  Several other South American nations appear to have similar regulations.</li>
+			</ul>
+			<p>Policy documents that include ODF among acceptable formats for exchange of editable documents with governments include:.</p>
+			<ul>
+				<li>Version 5.0 of the German <a href="http://www.cio.bund.de/Web/DE/Architekturen-und-Standards/SAGA/SAGA%205-aktuelle%20Version/saga_5_aktuelle_version_node.html">Standards and Architecture for e-Government Applications (SAGA)</a> includes ODF and OOXML among its formats under observation (beobachtet).  Neither is yet categorized as recommended (empfohlen) or mandatory (verbindlich).  This listing of formats is is a guide for system builders in relation to formats they need to be prepared to support.</li>
+				<li>
+					<a href="https://joinup.ec.europa.eu/elibrary/factsheet/egovernment-denmark-june-2014-v160">eGovernment in Denmark-June 2014-v.16.0</a> indicates that Denmark continues to accept editable documents in &quot;all common formats (including OpenDocument Format - ODF  and Office Open XML - OOXML).</li>
+				<li>In France, the <a href="http://references.modernisation.gouv.fr/interoperabilite">RGI (Référentiel Général d’Interopérabilité)</a> issued in 2009 listed both ODF and OOXML in the status of &quot;under observation&quot; in relation to interoperability.  As of Summer 2015, a new version of the RGI in draft form indicates that ODF is recommended.</li>
+				<li>In January 2014, a statement from the Vice-President of the European Commission Maroš Šefčovič recommended, &quot;For revisable documents, all European institutions are recommended to support as a minimum two ISO standards, the Open Document Format (ODT) and Office Open XML (OOXML).&quot;  See <a href="https://joinup.ec.europa.eu/community/osor/news/ec-recommends-supporting-open-document-format">EC recommends supporting open document format</a>.</li>
+			</ul>
+			<p>A sampling of support and categorization by archival institutions follows:</p>
+			<ul>
+				<li>U.S. National Archives <a href="http://www.archives.gov/records-mgmt/policy/transfer-guidance-tables.html#textualdata">lists</a> ODF 1.0 as Recommended.</li>
+				<li>neither the <a href="http://deepblue.lib.umich.edu/static/about/deepbluepreservation.html">University of Michigan: Deep Blue Preservation and Format Support Policy</a> nor <a href="http://libguides.mit.edu/c.php?g=176372&amp;p=1158986">DSpace@MIT: Format Support</a> list ODF specifically, but files in XML with accompanying schema are supported in both repositories.</li>
+				<li>
+					<a href="http://www.arkivverket.no/eng/Public-Sector/Regulations/Transfer-of-electronic-records">Provisions concerning transfer of electronic records to the National Archives of Norway</a> also treat ODF in the same way as other XML-based documents and require the transmission of the associated schema.</li>
+				<li>The <a href="http://fclaweb.fcla.edu/uploads/recFormats.pdf">Recommended Data Formats for Preservation Purposes in the Florida Digital Archive</a> from 2012 assigns a medium confidence level to ODF.</li>
+				<li>
+					<a href="https://www.archivematica.org/wiki/Format_policies">Archivematica Format Policies</a> specify ODF as a preservation format, suggesting a conversion to PDF for access.</li>
+				<li>
+					<a href="http://www.bac-lac.gc.ca/eng/services/government-information-resources/guidelines/Pages/guidelines-file-formats-transferring-information-resources-enduring-value.aspx">Libraries and Archives Canada: Guidelines on File Formats for Transferring Information Resources of Enduring Value</a> lists ODF 1.0 as a Preferred format.</li>
+				<li>
+					<a href="http://www.naa.gov.au/Images/Digital-Preservation-Software-Platform-v1_tcm16-47139.pdf">Dissecting the Digital Preservation
+Software Platform</a> (update from 2011) from the National Archives of Australia specifies ODF as the preferred open format for office documents to which other office formats will be converted.</li>
+			</ul>
+			<p>Despite all the official mandates and recommendations, adoption of ODF formats has been slow, particularly in the U.S.  See, for example, <a href="http://www.linuxinsider.com/story/81547.html">The Long Slog to Level the Document Playing Field</a> from January 2015.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No concerns.  See <a href="https://www.oasis-open.org/policies-guidelines/ipr">OASIS Intellectual Property Rights (IPR) Policy</a> and <a href="https://www.oasis-open.org/committees/office/ipr.php">IPR statements from Sun Microsystems, Inc.</a> specific to technology contributed to the ODF project.</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>The XML-based files defined by the ODF schema are both human-readable and machine-processable.  The mixed-content markup model, the prefixes, and the names for elements and attributes in the specification contribute to human readability.  See <a href="#notes">Notes</a> below on mixed-content markup.</p>
+			<p>Transparency of the ZIP-based container corresponds to that of <fddLink id="fdd000354">ZIP_PK</fddLink>.  It depends upon algorithms and tools to interpret and extract contents.  It would require sophistication to build tools from scratch, but many tools exist.</p>
+			<p>Transparency ultimately depends on the files contained in the package.  Files may be encrypted.  Binary files, such as image files, may be included in the document package.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>Pre-defined metadata elements for the document as a whole include:</p>
+			<ul>
+				<li>From the Dublin core namespace, using the <i>dc:</i> prefix: Title, Creator (of most recent modification), Description, Subject, Date (last modified), Language</li>
+				<li>From the ODF specification, using the <i>meta:</i> prefix: Generator (creating software application), Keywords, Initial Creator, Creation Date and Time, Modification Date and Time, Print Date and Time, Document Template, Document Statistics (word count, page count, etc.)</li>
+			</ul>
+			<p>The pre-defined elements are all optional and repeatable.  However, applications are not required to update multiple occurrences in a specific way to reflect modifications to a document.</p>
+			<p>In addition to pre-defined elements, ODF 1.0/1.1 specified markup to allow addition user-defined elements to be expressed by name and value. ODF 1.0/1.1 also provided a mechanism for custom metadata, by indicating that all content in an <i>office:meta</i> element should be preserved.  In ODF 1.2, the earlier mechanism for custom metadata was deprecated in favor of using new markup specified for incorporating RDF-based metadata.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>Depends on files contained in the package.</fdd:externalDependencies>
+		<fdd:techProtection>Encryption is supported for files within an ODF package.  In addition, an ODF package file may be encrypted during interchange or as part of DRM controlling distribution.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:otherQF>
+			<fdd:factor>
+				<fdd:tag>See note</fdd:tag>
+				<fdd:note>Quality and functionality factors will be considered for subtypes for specific content categories.  See for example, <fddLink id="fdd000428">ODF_text_1_2</fddLink>.</fdd:note>
+			</fdd:factor>
+		</fdd:otherQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>ODF package files use extensions appropriate to the type of document packaged.  Hence, .odt, .odp, .ods, are all extensions used for ODF packages.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>ODF package files use MIME types appropriate to the type of document packaged, using the pattern <i>application/vnd.oasis.opendocument.</i>xxxxx.  For example, the MIME type for an ODF text document is <i>application/vnd.oasis.opendocument.text</i>.  See <fddLink id="fdd000428">ODF_text_1_2</fddLink>.  The MIME type for a Flat ODF file is found in an attribute for the top-level <i>&lt;office:document&gt;</i> element.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000354">ZIP_PK</fddLink>.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Indicator for profile, level, version, etc.</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>The four root elements used in the primary files in an ODF package all permit an attribute that records the ODF version, e.g, &quot;1.0&quot; or &quot;1.2&quot;.  In a Flat ODF file the version is in an attribute for the top-level <i>&lt;office:document&gt;</i> element.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Namespaces defined in ODF specification and schema :</b> The OpenDocument Schema defines a number of namespaces used for different types of content, e.g., <i>text:</i>, <i>table:</i>, <i>chart:</i>, etc.  A namespace is not constrained to a particular document category, but usable in any appropriate context.  For example, the elements and attributes in the table: namespace are used for tables in text documents and for tables in spreadsheets.  Namespaces defined in ODF 1.2 for different types of content include:</p>
+			<ul>
+				<li>
+					<b>anim:</b>  For animation content.</li>
+				<li>
+					<b>chart:</b>  For chart content.</li>
+				<li>
+					<b>dr3d:</b>  For 3D graphic content.</li>
+				<li>
+					<b>draw:</b>  For graphic content.</li>
+				<li>
+					<b>form:</b>  For forms and form controls.</li>
+				<li>
+					<b>presentation:</b>  For presentation content and controls.</li>
+				<li>
+					<b>table:</b>  For tables in text documents, in spreadsheets, or in presentations.</li>
+				<li>
+					<b>text:</b>  For text documents or text parts in other document categories.</li>
+			</ul>
+			<p>Additional namespaces are used for elements and attributes that relate to ODF packages and generic ODF features, including <b>meta:</b>, <b>odf:</b>, <b>office:</b>, <b>style:</b>, <b>manifest:</b> and <b>number:</b> (for display styling for numbers).  Two namespaces are used primarily to hold application-specific content: <b>config:</b>, for application settings and <b>script:</b>, for macros.  The ODF specification does not prescribe any particular macro language.  It permits the inclusion of scripts in any language and allows the language for any embedded script to be declared.</p>
+			<p>ODF 1.2 introduced a new namespace, <b>db:</b>, designed to support use as a stand-alone database front-end document and to allow documents of other categories to import data from databases, for example to support mail-merge or dynamic update of charts from external data.</p>
+			<p>
+				<b>Standards from which ODF borrows:</b> XML-based standards and the prefixes used in ODF are:</p>
+			<ul>
+				<li>
+					<b>dc:</b>
+					<a href="http://dublincore.org/documents/dces/">Dublin Core</a> namespace (DCMI) is imported</li>
+				<li>
+					<b>xlink:</b>
+					<a href="http://www.w3.org/TR/xlink/">XLink</a> namespace is imported</li>
+				<li>
+					<b>math:</b>
+					<a href="http://www.w3.org/TR/MathML2/">MathML</a> namespace is imported</li>
+				<li>
+					<b>xforms:</b>
+					<a href="http://www.w3.org/TR/xforms/">XForms</a> namespace is imported</li>
+				<li>
+					<b>fo:</b> used for attributes that are compatible to
+attributes in <a href="http://www.w3.org/TR/2001/REC-xsl-20011015/">XSL</a>
+				</li>
+				<li>
+					<b>svg:</b> used for elements and attributes that are
+compatible to elements or attributes
+in <fddLink id="fdd000020">SVG 1.1</fddLink>
+				</li>
+				<li>
+					<b>smil:</b> used for attributes that are compatible to
+attributes in <a href="http://www.w3.org/TR/2005/REC-SMIL2-20050107/">SMIL 2.0</a>
+				</li>
+			</ul>
+			<p>
+				<b>Mixed-content markup:</b>  A simple example of an ODF paragraph demonstrates the readability of mixed-content markup:</p>
+			<ul>
+				<li>&lt;text:p text:style-name=&quot;Standard&quot;&gt;</li>
+				<li> This is a </li>
+				<li> &lt;text:span text:style-name=&quot;T1&quot;&gt;very basic&lt;/text:span&gt;</li>
+				<li> document</li>
+				<li> &lt;text:span text:style-name=&quot;T2&quot;&gt;with some&lt;/text:span&gt;</li>
+				<li> formatting, and a</li>
+				<li> &lt;text:a xlink:href=&quot;http://example.com&quot;&gt;hyperlink&lt;/text:a&gt;</li>
+				<li>&lt;/text:p&gt;</li>
+			</ul>
+			<p>The definitions for the named styles (Standard, T1 and T2) will be stored in the separate styles.xml file.  For a comparison with the markup for the same paragraph in OOXML, see <a href="http://opendocumentfellowship.com/introduction/odf_vs_oxml_part_II">OpenDocument vs Microsoft OpenXML - Part II</a>, a page from the website of the OpenDocument Fellowship, an organization that used to promote ODF, but now appears inactive.</p>
+			<p>Although human readability is an advantage and can make it easier for programmers to understand the structure when developing code to parse or display the content, mixed-content has disadvantages too.  See <a href="http://www.itworld.com/article/2786321/development/mixed-content-myopia.html">Mixed content myopia</a> for the opinion of a programmer who points out some challenges.  More directly related to ODF, if a paragraph element allows mixed content, but it is necessary to apply attributes to a piece of text within the paragraph, for example, when tracking changes, then it is necessary to put that text into its own element, which detracts from the readability.</p>
+			<p>
+				<b>ZIP versions used for ODF</b>:  Version 1.0 as published by OASIS used a reference to the latest version of appnote.txt from PKWARE, which was subject to unannounced updates by the owner, PKWARE.  Versions 1.0 from ISO/IEC and 1.1 from OASIS referred to an <a href="ftp://ftp.info-zip.org/pub/infozip/doc/appnote-19970311-iz.zip">unofficial variant of PKWARE&apos;s appnote.txt from Info-ZIP</a>.  This adaptation of PKWARE&apos;s specification explicitly removed some capabilities for encryption and other services patented by PKWARE. The Info-ZIP software was used widely as a library for working with an interoperable open subset of the ZIP format.  The open source Info-ZIP project has not seen much action since early 2009, although betas have been released since then.   ODF 1.2 uses PKWARE&apos;s version 6.2.0 of appnote.txt [see <fddLink id="fdd000355">ZIP_6_2_0</fddLink>].  The compilers of this resource are not aware of substantive differences in the intent of the ZIP specifications in ODF 1.0-1.2 or among software implementations creating ODF files.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>
+				<b>Flat ODF format:</b>  Although ODF documents are almost always packaged in ZIP files, a format that is a Single OpenDocument XML file is specified.  The specification is in clause 2.1 (Document Roots) the specification for ODF 1.1 and in clause 3.1.2 (Single OpenDocument XML file) in ODF 1.2 Part 1.  This format is often termed <i>Flat ODF</i>.  The root of a Flat ODF file is the <i>&lt;office-document&gt;</i> element.  In contrast, a packaged ODF document has several separate XML files in its ZIP-based structure with root elements: <i>&lt;office-document-content&gt;</i>; <i>&lt;office-document-styles&gt;</i>; <i>&lt;office-document-meta&gt;</i>; and <i>&lt;office-document-settings&gt;</i>.  There are advantages to the flat representation for parsing, validation, document comparison, and programmatic generation with basic XML tools, as argued by Fridrich
+Štrba in <a href="http://plugfest.opendocsociety.org/lib/exe/fetch.php?media=plugfests:201210_berlin:fridrichplugfestberlin2012.pdf">Flat ODF as the Swiss Army Knife</a>.</p>
+			<p>
+				<b>Relationship between Apache OpenOffice and LibreOffice:</b> Although the codebase for LibreOffice and Apache OpenOffice (AOO) has common heritage, the codebases have grown apart since the 2010 split.  The fact that the organizations opted for different open source licenses means that although LibreOffice can absorb code from the AOO project, the reverse is not true.  According to <a href="http://www.howtogeek.com/187663/openoffice-vs.-libreoffice-whats-the-difference-and-which-should-you-use/">a blog post by Chris Hoffman at How-To Geek</a>, &quot;The Apache OpenOffice project uses the Apache License, while the LibreOffice uses a dual LGPLv3 / MPL license. The practical result is LibreOffice can take OpenOffice’s code and incorporate it into LibreOffice — the licenses are compatible. ... the two different licenses only allow a one-way transfer of code. LibreOffice can incorporate OpenOffice’s code, but OpenOffice can’t incorporate LibreOffice’s code.&quot;  Daniel Brunner, head of the IT department of Switzerland&apos;s Federal Supreme Court has argued that the two projects should merge back together, as reported in <a href="https://joinup.ec.europa.eu/community/osor/news/open-and-libre-office-projects-should-reunite">Open and Libre Office projects should reunite</a> in September 2014.  In response, <a href="http://standardsandfreedom.net/index.php/2014/09/26/reunification/">Reuniting LibreOffice and AOO – a personal take</a> is a blog post by Charles-Henri Schulz, who was heavily involved in OpenOffice and ODF standardization before the split and later in building support for LibreOffice, concludes that the projects themselves have little interest in merging and without such interest there would be no benefit.  His personal view is clearly that arguments made by outsiders for a reconciliation are flawed.  <a href="http://www.linux-magazine.com/Online/Blogs/Off-the-Beat-Bruce-Byfield-s-Blog/LibreOffice-OpenOffice-and-rumors-of-unification">LibreOffice, OpenOffice, and rumors of unification</a>, another blog post response, this one by Bruce Byfield, concludes that, &quot;the idea of unification should be shelved as unworkable.&quot;  He includes the sentence, &quot;In other words, for some reason, development of OpenOffice has all but stalled, while LibreOffice remains an active project.&quot;</p>
+		</fdd:general>
+		<fdd:history>
+			<p>
+				<b>History prior to ODF standardization:</b> The charter stated, &quot;Since the OpenOffice.org XML format specification was developed to meet these criteria and has proven its value in real life, this TC will use it as the basis for its work. ... In the first phase, this TC will use proven and established constructs so that the resulting standard can satisfy the immediate needs of many users, as well as serve as a base for future, less restricted development. ... In the second phase, this TC will maintain the specification delivered in phase 1 and will extend it to encompass additional areas of applications or users, which may also include adapting the specification to recent developments in office applications.&quot;  The first phase resulted in a Committee Draft in March 2004.  The second phase, of maintenance and extension, is ongoing.  After publication of ODF 1.0 by OASIS in May 2005, ODF 1.0 was submitted to ISO/IEC JTC1/SC34 for ISO standardization in late 2005 and published as ISO/IEC 26300:2006 in late 2006.</p>
+			<p>A detailed chronology for the development of ODF prior to publication of version 1.0 by OASIS follows:</p>
+			<ul>
+				<li>
+					<b>1999</b>: Sun Microsystems acquired the StarOffice Suite from the German “Star Division” company.  At the time, StarOffice used a binary format and did not support Unicode, but the programming team was already working on an XML-based format.  Sun offered StarOffice 5.0 for free download which created a stir in the software industry.</li>
+				<li>
+					<b>2000</b>: Sun launched the OpenOffice.org project (aka OOo), which developed an open file format called the &quot;OpenOffice.org XML file format&quot; or, later, the &quot;OpenOffice.org 1.0 format.&quot;  The first draft of the format specification was released.</li>
+				<li>
+					<b>2001</b>: Sun opened the source code that was the basis for StarOffice 6.0 and OpenOffice.org 1.0.  Both applications used the XML-based format as native file format; neither supported a binary alternative.</li>
+				<li>
+					<b>2002</b>:  Support for CJK and scripts requiring complex text layout was added.  Discussions began with the KOffice project over improvements to the format.  The OpenOffice.org 1.0 format was submitted for OASIS standardization.  In addition to Sun Microsystems, founding members included Boeing, Stellent, Arbortext, the National Archive of Australia, and the Society of Biblical Literature. The first conference call of the OASIS Technical Committee (TC) was on Dec 16, 2002.</li>
+				<li>
+					<b>2003</b>: KDE (developer of KOffice) joined the TC and active work began to prepare the standard, including adapting to new versions of standards incorporated into the specification, such as SVG and CSS.  Enhancements to the format as submitted included switching from XML DTDs to Relax-NG as schema language; better support for validation; and extensions to support functionality in KOffice and OpenOffice.org 2.0.</li>
+				<li>
+					<b>2004</b>:  Two committee drafts were circulated within OASIS and made available for public review.  The name of the specification was changed to &quot;OASIS Open Document Format for Office Applications (OpenDocument),&quot; abbreviated to ODF.</li>
+				<li>
+					<b>2005</b>: ODF 1.0 was approved as an OASIS standard in May. StarOffice 8.0 from Sun Microsystems, with ODF 1.0 support, was released in September.</li>
+			</ul>
+			<p>The chronology above was pieced together from a variety of sources, including <a href="http://www.robweir.com/blog/2007/06/file-format-timeline.html">Rob Weir&apos;s 2007 blog post</a>, <a href="http://www-03.ibm.com/able/resources/odfintro.html">Introduction to OpenDocument Format</a> (from IBM, apparently from 2006), <a href="http://www.theguardian.com/technology/2006/jul/13/guardianweeklytechnologysection.insideit">Office opens its doors</a> (July 2006 article in the Guardian newspaper), <a href="http://xml.coverpages.org/Dekkers-OOocompanalysis.pdf">Office
+Productivity
+Suite
+Competitive
+Analysis</a> (by Martijn
+W.H.
+Dekkers.  2002), <a href="https://web.archive.org/web/20081211023133/http://idealliance.org/proceedings/xtech05/papers/03-02-02/">From Open Source to Open Standard: The OASIS OpenDocument Format</a> (presented by Michael Brauer at XTech 2005: XML, the Web and beyond.  April 2005), and <a href="https://www.oasis-open.org/committees/download.php/21450/oasis_odf_advantages_10dec2006.pdf">Open by Design: The Advantages of the OpenDocument Format</a> (2006 OASIS white paper).</p>
+			<p>After the OASIS approval of ODF 1.0, the specification was submitted to ISO/IEC JTC1/ SC34 in late 2005, with approval as ISO/IEC 23600 in May 2006 and publication in late 2006.  Maintenance of ODF continues to be through the <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=office">OASIS Open Document Format for Office Applications (OpenDocument) TC</a>.</p>
+			<p>
+				<b>History since ODF standardization through ISO:</b>  OASIS has developed and published two additional versions of the ODF specification.  Version 1.1 was published in February 2007, and version 1.2 in September 2011.  Changes between ODF 1.0 and 1.1 were relatively minor, apart from extensions to address accessibility concerns.  A 2012 amendment to ISO/IEC 26300:2006 brought the ISO standard into alignment with ODF 1.1.  ODF 1.2 was approved by ISO/IEC JTC1/SC34/WG6 in September 2014 and published as an ISO/IEC standard in June 2015. ODF 1.2 introduced several substantive extensions, for digital signatures, for RDF-based metadata, and OpenFormula for spreadsheet formulas.</p>
+			<p>
+				<b>History of OpenOffice implementations after standardization through ISO:</b>  According to <a href="https://en.wikipedia.org/wiki/OpenOffice.org">Wikipedia entry for OpenOffice.org</a>, &quot;Versions 2.0–2.3.0 default to the ODF 1.0 file format; versions 2.3.1–2.4.3 default to ODF 1.1; versions 3.0 onward default to ODF 1.2.&quot;.  No later than OpenOffice 3.2 (released in February 2010), new versions of OpenOffice (and successors AOO and LibreOffice) have installed with a default format described as ODF 1.2 Extended.  From <a href="https://www.openoffice.org/dev_docs/features/3.2/">OpenOffice.org 3.2 New Features</a>, &quot;As OpenOffice.org 3.2 currently requires a superset of the ODF 1.2 specification, the software now warns users when ODF 1.2 Extended features have been used.&quot;  LibreOffice provides both an <a href="https://wiki.documentfoundation.org/ODF#Why_does_LibreOffice_save_extended_ODF_by_default.3F">explanation</a> for this practice and <a href="https://wiki.documentfoundation.org/Development/ODF_Implementer_Notes">detailed documentation on its extensions</a>.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Specifications as published by OASIS</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.oasis-open.org/standards#opendocumentv1.2</link>
+							<tag>Open Document Format for Office Applications (OpenDocument) Specification v1.2</tag>
+							<comment>Provides links to all versions of all parts of specifications and supporting files for ODF 1.2.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.oasis-open.org/standards#opendocumentv1.1</link>
+							<tag>Open Document Format for Office Applications (OpenDocument) Specification v1.1</tag>
+							<comment>Provides links to all versions of specifications and supporting files for ODF 1.1.  Includes errata.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.oasis-open.org/standards#opendocumentv1.0</link>
+							<tag>Open Document Format for Office Applications (OpenDocument) Specification v1.0</tag>
+							<comment>Provides links to all versions of specifications and supporting files for ODF 1.0.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Specifications as published by ISO/IEC as ISO 26300:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c066363_ISO_IEC_26300-1_2015.zip</link>
+							<tag>ISO/IEC 26300-1:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2, Part 1: OpenDocument Schema</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c066375_ISO_IEC_26300-2_2015.zip</link>
+							<tag>ISO/IEC 26300-2:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2, Part 2: Recalculated Formula (OpenFormula) Format</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c066376_ISO_IEC_26300-3_2015.zip</link>
+							<tag>ISO/IEC 26300-3:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2, Part 3 Packages</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c043485_ISO_IEC_26300_2006(E).zip</link>
+							<tag>ISO/IEC 26300:2006, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.0</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c059302_ISO_IEC_26300_2006_Amd_1_2012.zip</link>
+							<tag>Amd 1:2012, to align with ODF version 1.1</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=office</link>
+					<tag>OASIS Open Document Format for Office Applications (OpenDocument) TC</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://opendocument.xml.org/</link>
+					<tag> OpenDocument XML.org web site</tag>
+					<comment>No longer active, retained primarily as legacy information. Latest official additions appear to have been in 2011.  However, areas of the site accepting user submission of news. etc. do have newer content.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.openoffice.org/xml/general.html</link>
+					<tag>OpenOffice.org XML File Format</tag>
+					<comment>Background and specifications for XML-based format used for OpenOffice.org 1.0.  A precursor of ODF.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/OpenDocument</link>
+					<tag>Wikipedia entry for OpenDocument</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/OpenDocument_adoption</link>
+					<tag>Wikipedia entry for adoption of OpenDocument as the format for collaboration with government agencies through editable documents.</tag>
+					<comment>Listed by country and government. Not kept up-to-date.  As of April 2015, many listings refer to 2009 and 2010 as in the future. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20081211023133/http://idealliance.org/proceedings/xtech05/papers/03-02-02/</link>
+					<tag>From Open Source to Open Standard: The OASIS OpenDocument Format XTech 2005: XML, the Web and beyond.  April 2005. </tag>
+					<comment>By Michael Brauer, then leading the OpenOffice.org XML project at Sun Microsystems and chair of the OASIS Open Document Format Technical Committee.of Sun Microsystems</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Rob Weir of IBM, and chair or co-chair of the OASIS OpenDocument TC between 2007 and 2014, has discussed ODF developments in occasional blog posts, including:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.robweir.com/blog/2007/06/file-format-timeline.html</link>
+							<tag>An ODF/OOXML File Format Timeline.  June 2007</tag>
+							<comment>Looks backward to 1995.  Includes milestones for XML, and XML-based standards used in ODF (e.g., MathML, SVG).</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.robweir.com/blog/2011/02/the-versions-of-odf.html</link>
+							<tag>The Versions of ODF. February 2011</tag>
+							<comment>Includes mention of future version 1.3.  The timeline laid out here proved optimistic.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.robweir.com/blog/2014/09/isoiec-jtc1-approves-odf-1-2-pas-ballot.html</link>
+							<tag>ISO/IEC JTC1 Approves ODF 1.2 PAS Ballot</tag>
+							<comment>September 2014 blog post by Rob Weir.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www-03.ibm.com/able/resources/odfintro.html</link>
+					<tag>Introduction to OpenDocument Format </tag>
+					<comment>Page from IBM&apos;s Human Ability and Accessibility Center.  Undated, but apparently from 2006.  Includes introductory description of the ODF format and a chronology of development of version 1.0.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://ask.libreoffice.org/en/question/32602/difference-between-styles-and-automatic-styles/</link>
+					<tag>Ask LibreOffice: difference between styles and automatic-styles</tag>
+					<comment>Provides useful discussion of the two locations used to hold formatting styles in ODF files, the styles.xml file or the automatic-styles section of the content.xml file.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.pkware.com/documents/APPNOTE/APPNOTE-6.2.0.txt </link>
+					<tag>APPNOTE.TXT - .ZIP File Format Specification - Version: 6.2.0</tag>
+					<comment>April 26, 2004.  Normative reference for ODF 1.2.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>ftp://ftp.info-zip.org/pub/infozip/doc/appnote-19970311-iz.zip</link>
+					<tag>Unofficial variant of ZIP specification cited in OASIS ODF 1.1 and ISO/IEC 26300:2006</tag>
+					<comment>The URL is not the same as cited in the ODF specifications because the file is on a different host.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://xml.coverpages.org/Dekkers-OOocompanalysis.pdf</link>
+					<tag>Office
+Productivity
+Suite
+Competitive
+Analysis.  By Martijn
+W.H.
+Dekkers.  2002</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.theguardian.com/technology/2006/jul/13/guardianweeklytechnologysection.insideit</link>
+					<tag>Office opens its doors.</tag>
+					<comment>Article from July 2006 in Guardian newspaper.  On the decision by Micorosoft to to support open source development on SourceForge to build an adapter for Word 2007 to allow the word processor to work with ODF.
+</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.jisc.ac.uk/media/documents/techwatch/tsw0702pdf.pdf</link>
+					<tag>XML-based Office Document Standards.  By Walter
+Ditch.  August 2007</tag>
+					<comment>Includes discussion of advantages and disadvantages of ODF and OOXML as of 2007.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.oasis-open.org/committees/download.php/21450/oasis_odf_advantages_10dec2006.pdf</link>
+					<tag>Open by Design: The Advantages of the OpenDocument Format.  OASIS white paper.  2006</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.csun.edu/~hcmth008/odf/open_document.pdf</link>
+					<tag>Toward XML-based Office Documents (A Brief Introduction)</tag>
+					<comment>By Jacek Polewczak.  November 2008.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.openoffice.org/about_us/milestones.html</link>
+					<tag>OpenOffice.org History and Milestones 1999-2005</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/OpenOffice.org</link>
+					<tag>Wikipedia entry for OpenOffice.org</tag>
+					<comment>Covers history of OOo through acquisition on Sun by Oracle and Oracle&apos;s discontinuation of support in 2011.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/NeoOffice</link>
+					<tag>Wikipedia entry for NeoOffice</tag>
+					<comment>Includes a graphic illustrating the forks and various derivatives of Star Office, where the format that became ODF originated.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://plugfest.opendocsociety.org/lib/exe/fetch.php?media=plugfests:201210_berlin:fridrichplugfestberlin2012.pdf</link>
+					<tag>Flat ODF as the Swiss Army Knife (2012) </tag>
+					<comment>By Fridrich
+Štrba.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.linuxtag.org/2012/fileadmin/www.linuxtag.org/slides/Svante%20Schubert%20-%20ODF%20-%20Advanced%20document%20collaboration.p334.pdf</link>
+					<tag>ODF – Advanced Document
+Collaboration.  2012. </tag>
+					<comment>Slides by Svante Schubert laying out considerations for change tracking in ODF 1.3.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.oasis-open.org/committees/download.php/54805/ACM-WorkInProgress-Interoperable-Document-Collaboration-20141209.pdf</link>
+					<tag>Interoperable Document Collaboration. By Svante Schubert and Patrick Durusau.  December 2014</tag>
+					<comment>Introduces &quot;Merge-Enabled Change Tracking (MCT)&quot; as the approach selected for integration into the next version of  ODF.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://cwiki.apache.org/confluence/display/Corinthia/ODF</link>
+					<tag>ODF: General Information (from Apache Software Foundation wiki)</tag>
+					<comment>Well-informed pointers to authoritative and reliable ODF documentation.  Indicates that Apache plans to build a collection of documents constructed deliberately to test interoperability.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Below are miscellaneous links that illuminate the support for ODF in various office applications.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Comparison_of_OpenDocument_software</link>
+							<tag>Wikipedia entry for Comparision of OpenDocument Software.</tag>
+							<comment>As of April 2015, this page appears out-of-date, listing some products that are no longer available, and without discussion of support for ODF 1.2.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://opendocumentfellowship.com/applications</link>
+							<tag>Applications support for ODF (likely dating from 2007/8, certainly no later than 2010))</tag>
+							<comment>Out of date and unmaintained, but of interest from a historical perspective.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.h-online.com/open/features/LibreOffice-A-fresh-page-for-OpenOffice-1097358.html</link>
+							<tag>LibreOffice - A fresh page for OpenOffice
+by Richard Hillesley</tag>
+							<comment>Blog post from 2010 with good history coverage.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://plugfest.opendocsociety.org/doku.php?id=start&amp;idx=implementations</link>
+							<tag>Implementations listed at plugfest.opendocsociety.org</tag>
+							<comment>This site documents errors and anomalies found by programmers with implementations.  Such problems may have been fixed in later application versions.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.howtogeek.com/187663/openoffice-vs.-libreoffice-whats-the-difference-and-which-should-you-use/</link>
+							<tag>OpenOffice vs. LibreOffice: What’s the Difference and Which Should You Use?</tag>
+							<comment>Includes explanation of the effect of the different public licenses chosen by the two open-source projects.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://standardsandfreedom.net/index.php/2014/09/26/reunification/</link>
+							<tag>Reuniting LibreOffice and AOO – a personal take.  Sept. 2014</tag>
+							<comment>Blog post by Charles-H. Schulz, a founding member and one of the former directors of the Document Foundation, home of the LibreOffice project.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://standardsandfreedom.net/index.php/2015/11/29/does-odf-still-matter/</link>
+							<tag>Does the Open Document Format still matter? Nov. 2015</tag>
+							<comment>Blog post by Charles-H. Schulz, in which he argues that CIOs will not be persuaded to use open formats per se, but that LibreOffice is now strong enough as a product to be accepted as a &quot;solution.&quot;</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.linux-magazine.com/Online/Blogs/Off-the-Beat-Bruce-Byfield-s-Blog/LibreOffice-OpenOffice-and-rumors-of-unification</link>
+							<tag>LibreOffice, OpenOffice, and rumors of unification.  Sept. 30, 1914</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.abisource.com/wiki/PluginMatrix</link>
+							<tag>AbiWord Plugin Matrix</tag>
+							<comment>AbiWord uses plugins to provide less used functionality without increasing the size of the base AbiWord installation. This page lists the plugins available, including OpenDocument. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.abisource.com/wiki/OpenDocument_support</link>
+							<tag>OpenDocument support in AbiWord</tag>
+							<comment>Explains that &quot; AbiWord is unlikely to ever use that format [ODF] by default.&quot;</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.wordperfect.com/us/product/office-suite/#tab2</link>
+							<tag>WordPerfect Office Suite – Standard Edition</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.multiracio.com/index.php?lang=en&amp;style=eurooffice&amp;page=eo</link>
+							<tag>EuroOffice application suite</tag>
+							<comment>A derivative of LibreOffice and Apache OpenOffice that extends those applications with extensions, particularly for language support for English, German, French, Italian, Spanish, Polish, and Hungarian.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://userbase.kde.org/What_is_KDE</link>
+							<tag>What is KDE, from KDE UserBase Wiki</tag>
+							<comment>The KDE development workspace has a Linux focus, but some applications, such as those in the Calligra suite, run on other platforms.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://wiki.scribus.net/canvas/Scribus</link>
+							<tag>Scribus (desktop publishing application)</tag>
+							<comment>Scribus is an Open Source DTP (Desktop Publishing) application for Linux and other flavors of Unix and Unix-like systems, including Mac OS X, as well as Windows 2000 or later.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Below are links related to official adoption of ODF by national governments and other institutions:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.cio.bund.de/Web/DE/Architekturen-und-Standards/SAGA/SAGA%205-aktuelle%20Version/saga_5_aktuelle_version_node.html</link>
+							<tag>Standards and Architecture for e-Government Applications (SAGA) </tag>
+							<comment>In German.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://references.modernisation.gouv.fr/interoperabilite</link>
+							<tag>RGI (Référentiel Général d’Interopérabilité) </tag>
+							<comment>In French. RGI is translated at april.org [https://www.april.org/en/] as &quot;general interoperability framework.&quot;</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://eping.governoeletronico.gov.br/</link>
+							<tag>Padrões de Interoperabilidade de Governo Eletrônico - ePING</tag>
+							<comment>In Portuguese</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://joinup.ec.europa.eu/community/open_standards_ict/home</link>
+							<tag>Open Standards for ICT Procurement (DG CONNECT project, European Commission)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://joinup.ec.europa.eu/community/nifo/og_page/nifo-factsheets</link>
+							<tag>National eGovernment factsheets of 34 countries</tag>
+							<comment>From National Interoperability Framework Observatory NIFO).  For each of the 28 Member States of the EU and for six additional countries.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.linuxinsider.com/story/81547.html</link>
+					<tag>The Long Slog to Level the Document Playing Field.  January 2015</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Microsoft has documented in detail its support for specific elements in the ODF specifications in the different versions of Microsoft Office applications, Word, Excel, and Powerpoint.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/ee908653.aspx</link>
+							<tag>[MS-OODF]: Office Implementation Information for ODF 1.1 Standards Support</tag>
+							<comment>Relates to support in Office 2007 (starting with Service Pack 2) for ODF 1.1</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/ee908651.aspx</link>
+							<tag>[MS-OODF2]: Office Implementation Information for ODF 1.1 Version 2 Standards Support</tag>
+							<comment>Relates to support in Office 2010 and 2013 for ODF 1.1</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/hh695327.aspx</link>
+							<tag>[MS-OODF3]: Office Implementation Information for ODF 1.2 Standards Support</tag>
+							<comment>Relates to support in Office 2013 for ODF 1.2</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Links related to ODF 1.2 Extended.  The &apos;extended&apos; features implemented in applications are candidates for inclusion in the next version of ODF.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://wiki.documentfoundation.org/ODF#Why_does_LibreOffice_save_extended_ODF_by_default.3F</link>
+							<tag>Why does LibreOffice save extended ODF by default?</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://wiki.documentfoundation.org/Development/ODF_Implementer_Notes</link>
+							<tag>LibreOffice: Development/ODF Implementer Notes</tag>
+							<comment>Links to lists of extensions to OpenDocument markup and to OpenFormula.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.openoffice.org/dev_docs/features/3.2/</link>
+							<tag>OpenOffice.org 3.2 New Features -- February 2010</tag>
+							<comment>Mentions use of ODF 1.2 Extended.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

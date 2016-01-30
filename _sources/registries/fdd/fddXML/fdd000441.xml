@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000441" titleName="OpenDocument Database Front End Document Format (ODB), Version 1.2,  ISO 26300-1:2015" shortName="ODF_dbfront_1_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>database</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>office/business</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2015-12-29</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>OpenDocument Database Front End Document Format (ODB), Version 1.2.  Part of OASIS Open Document Format for Office Applications, Version 1.2 and the equivalent ISO 26300-1:2015.</fdd:fullName>
+		<fdd:description>
+			<p>The OpenDocument Database Front End Document Format (ODB), Version 1.2 (given the short name <i>ODF_dbfront_1_2</i> here) is a format for editable documents that are front ends to databases, which may be local or remote, stored as a file or accessed through a database server.  It is one of several subtypes in the <fddLink id="fdd000247">ODF family</fddLink> for particular content categories.  This description relates to part 1 of the ODF 1.2 specification as published by OASIS and the equivalent ISO/IEC 26300-1:2015 specification.  The standard specifies markup for database front ends using the ODF <i>db:</i> namespace.  Such database objects may be embedded into ODF documents of other categories. The standard also allows for free-standing database front end documents with the file extension <i>.odb</i>.</p>
+			<p>The primary ODF markup used for database front ends is specified in the <i>db:</i> namespace, with the <i>&lt;office:database&gt;</i> element as a container for a database front end.  This <i>&lt;office:database&gt;</i> element may contain the following elements in the <i>db:</i> namespace:</p>
+			<ul>
+				<li>
+					<i>&lt;db:data-source&gt;</i>, which contains elements that define whether the database is in a file or accessible via a database server and how to make a connection.</li>
+				<li>
+					<i>&lt;db:forms&gt;</i>
+				</li>
+				<li>
+					<i>&lt;db:queries&gt;</i>
+				</li>
+				<li>
+					<i>&lt;db:reports&gt;</i>
+				</li>
+				<li>
+					<i>&lt;db:schema-definition&gt;</i>
+				</li>
+				<li>
+					<i>&lt;db:table-representation&gt;</i>
+				</li>
+			</ul>
+			<p>The data may be stored in the document, or retrieved by reference to another source.  According to <a href="http://www.thefrugalcomputerguy.com/libreoffice-base/Overview.php">the Frugal Computer Guy</a>, &quot;LibreOffice Base is a front end database manager that can be used to create forms and reports from a variety of databases including MySql as well as others.
+
+LibreOffice Base can be used to create small embedded databases when used with Java-based HSQLDB as its storage engine (The LibreOfice Base default database). This makes LibreOffice Base appear as if it were a database manager and the database, but it is not. LibreOffice Base is just the front end allowing us to tie into the actual database.&quot;  According to <a href="https://wiki.documentfoundation.org/images/e/e8/BH40-BaseHandbook.pdf">LibreOffice Base Handbook: Accessing external databases</a>, external databases supported by that software include: dBase, MySQL, Oracle (using JDBC), PostgreSQL, and other databases accessible using ODBC and JDBC query processors.  The external databases supported by any application that supports ODF_dbfront_1_2 will be application-dependent.</p>
+			<p>The ODF specification covers two physical forms for ODF documents, a flat form as a single XML file and a package form based on the <fddLink id="fdd000355">ZIP_6_2_0</fddLink> format.  This description focuses on the more commonly used ZIP-based package format for ODF database front end files, given the <i>.odb</i> file extension.</p>
+			<p>An ODF package can be recognized as a database front end document in several ways.  Externally, there is the .odb file extension.  The primary internal indication is that the mandatory file named <i>mimetype</i> will contain the string &quot;application/vnd.oasis.opendocument.database&quot;.  An additional way to recognize an ODF database front end document is that  the <i>&lt;office:body&gt;</i> element, a child of the root <i>&lt;office:document-content&gt;</i> element in <i>content.xml</i> has the child element <i>&lt;office:database&gt;</i>.</p>
+			<p>See Notes in <fddLink id="fdd000247">ODF Family</fddLink> for more information about the flat XML-only variant of ODF files.  For a flat ODF database front end file, the root <i>&lt;office:document&gt;</i> element has an <i>office:mimetype</i> attribute with the value indicated above.</p>
+			<p>For details of the ZIP-based package for ODF_dbfront_1_2, see <fddLink id="fdd000425">ODF_package_1_2</fddLink>.  The typical files for a minimal database front end document include:  <i>mimetype</i> (one-line file containing only the string &quot;application/vnd.oasis.opendocument.database&quot;; 
+<i>./META-INF/manifest.xml</i> (package manifest); <i>content.xml</i> (database front end content); <i>styles.xml</i> (display formatting).  The package specification defines the form for the package manifest, and options for digital signatures, encryption, etc.</p>
+		</fdd:description>
+		<fdd:shortDescription>An XML-based format for a database front end that is editable.  File extension .odb is used for a free-standing database front end document.   May be embedded within other document formats in the OpenDocument Format (ODF) family.  Documented in ODF 1.2 Part 1.  </fdd:shortDescription>
+		<fdd:productionPhase>Can be used in any production phase as an operational system, rather than as a publication that has a final state. </fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000247</fdd:id>
+					<fdd:shortName>ODF_Family</fdd:shortName>
+					<fdd:titleName>OpenDocument Format (ODF) Family, OASIS and ISO/IEC 26300</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000439</fdd:id>
+					<fdd:shortName>ODF_spreadsheet_1_2</fdd:shortName>
+					<fdd:titleName>OpenDocument Spreadsheet Document Format (ODS), Version 1.2, ISO 26300:2015</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:comment>Other ODF document categories.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000425</fdd:id>
+					<fdd:shortName>ODF_package_1_2</fdd:shortName>
+					<fdd:titleName>OpenDocument Package Format, ODF 1.2, ISO 26300-3:2015</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000355</fdd:id>
+					<fdd:shortName>ZIP_6_2_0</fdd:shortName>
+					<fdd:titleName>ZIP File Format, Version 6.2.0 (PKWARE)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Various features of the ZIP File Format are not permitted in ODF.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:comment>META-INF/manifest.xml file. This manifest file is mandatory in all ODF packages.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000263</fdd:id>
+					<fdd:shortName>XML_1_0</fdd:shortName>
+					<fdd:titleName>XML (Extensible Markup Language) 1.0</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment> A normative RELAX NG schema is part of the specification for ODF 1.2, which includes the specification for database front end documents.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse/>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>International open standard.  Developed and maintained by <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=office">OASIS Open Document Format for Office Applications (OpenDocument) TC</a> as part of the OpenDocument Format (ODF) 1.2 specification published by OASIS in 2011.  Also approved as part of the equivalent ISO/IEC 26300-1:2015 by ISO/IEC JTC1/SC34.</fdd:disclosure>
+		<fdd:documentation>
+			<p>Specifications from OASIS: <a href="https://www.oasis-open.org/standards#opendocumentv1.2">Open Document Format for Office Applications (OpenDocument) Version 1.2</a>.  Specification for ODF 1.2 database front end documents are found primarily in Chapter 12 (Database Front-end Document Content) and section 7.6 (Database Fields) of Part 1 of the specification.  Since visual interfaces for databases are likely to be based on tables, chapter 9 is also relevant.  The technical specification is part of a <a href="http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-schema.rng">normative RNG schema for primary component files for ODF documents.</a>.</p>
+			<p>The identical specification is published as <a href="http://standards.iso.org/ittf/PubliclyAvailableStandards/c066376_ISO_IEC_26300-3_2015.zip">ISO/IEC 26300-1:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2 Part 1: OpenDocument Schema.</a>
+			</p>
+			<p>The ODF 1.2 specification is divided into three parts, with the bulk of the markup specification in Part 1: OpenDocument Schema.  The package specification has been moved into a separate Part 3: Packages.</p>
+			<p>See <fddLink id="fdd000247">ODF_Family</fddLink> for a listing of namespaces that can be incorporated into any ODF 1.1 or ODF 1.2 document and links to associated specifications.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>The compilers of this resource have found no specific evidence of widespread adoption of this category of ODF file.  It is likely used primarily by individuals or organizations that have chosen to use an ODF-based office suite of software, such as <a href="https://www.libreoffice.org/">Libre Office</a>.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>Database applications will usually be chosen for features, functionality, or compatibility/familiarity -- and not for the underlying format.  For example, <a href="http://lifehacker.com/battle-of-the-office-suites-microsoft-office-and-libre-1147940828">Battle of the Office Suites: Microsoft Office and LibreOffice Compared</a> points out that &quot;LibreOffice is compatible with a lot more systems, including Windows, OS X, and Linux,&quot; while Microsoft Access is limited to Windows.  The same article states, &quot;Base has fantastic integration with MySQL, PostgreSQL, and Thunderbird, whereas Access integrates better with Outlook and Paradox.&quot;</p>
+			<p>See <fddLink id="fdd000247">ODF-Family</fddLink> for more detail on adoption of ODF in general, and particularly for mandates or recommendations for ODF when exchanging editable documents among government agencies and the individiduals or organizations they serve.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No concerns.  See <fddLink id="fdd000247">ODF_Family</fddLink>.</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>The structure and text of an ODB file are represented in XML and hence viewable without special tools, although XML-aware tools that can show the element hierarchy make viewing and interpretation more convenient.  The most commonly used parts, elements, and attributes have recognizable names. Simple documents can be interpreted with very basic tools. However, interpreting the semantics of some elements and the correspondence of some elements and attributes to database terminology or functionality will require not only understanding of the schema and the specification text, but familiarity with the associated terminology and functionality.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>As for other members of the ODF 1.2 family, ODF_dbfront_1_2 has support for metadata based on RDF (W3C&apos;s Resource Description Framework).  As well as using RDF for metadata for the document package as a whole, RDF can be attached to elements within the document&apos;s content.</p>
+			<p>Pre-defined metadata elements for the document as a whole, stored in an <i>&lt;office:meta&gt;</i> element  include:</p>
+			<ul>
+				<li>From the Dublin core namespace, using the <i>dc:</i> prefix: Title, Creator (of most recent modification), Description, Subject, Date (last modified), Language</li>
+				<li>From the ODF specification, using the <i>meta:</i> prefix: Generator (creating software application), Keywords, Initial Creator, Creation Date and Time, Modification Date and Time, Print Date and Time, Document Template, Document Statistics (word count, page count, etc.),</li>
+			</ul>
+			<p>The pre-defined elements are all optional and repeatable.  However, applications are not required to update multiple occurrences in a specific way to reflect modifications to a document.</p>
+			<p>Also supported in ODF 1.2 is an XML structure for user-defined metadata, based on triplets of name, data type, and value.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			<p>Depends on features used.  An ODF_dbfront_1_2 database front end often relies on externally stored data or SQL access to a remote database.</p>
+		</fdd:externalDependencies>
+		<fdd:techProtection>Encryption is supported for files within an ODF 1.2 package.  In addition, an ODF package file may be encrypted during interchange or as part of DRM controlling distribution.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:normalDataset>
+				<p>Since ODF_dbfront_1_2 is a front end to a database structured in some other format or by an independent application, the available data types are controlled by that format or application.  For example, numeric data types supported by the HSQLDB engine (integrated into Libre Office as the default for embedded databases) are: Tiny integer, Small integer, Integer, Big integer; Decimal and Numeric (both with accuracy to 50 decimal places); Real; and Double precision.</p></fdd:normalDataset>
+			<fdd:accessSoftware>ODF_dbfront_1_2 is a front end to a database structured in some other format.  In the long term, support for access to the data itself is likely to be better facilitated by direct access to the source database, perhaps using SQL.  The sources that support SQL may be susceptible to use of <fddLink id="fdd000426">SIARD</fddLink> for archiving.</fdd:accessSoftware>
+			<fdd:dataDocumentation>ODF 1.2 packages have no specific support for rich discipline-specific metadata or codebooks in externally specified schemas. See Self-documentation in <a href="#sustainability">Sustainability Factors </a>above.</fdd:dataDocumentation>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>odb</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>
+					<i>.odb</i> is the extension used for an ODF database front end file.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.oasis.opendocument.database</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>Magic numbers that apply to ODF document category subtypes incorporate the magic number for  <fddLink id="fdd000354">ZIP_PK</fddLink>,  the string <i>mimetype</i> at position 30, and the MIME subtype string value at position 38.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Indicator for profile, level, version, etc.</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>ASCII: office:version=&quot;1.2&quot;</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>The four root elements used in the primary files in an ODF package all require an attribute that records the ODF version.  This is the signifier that distinguishes ODF 1.2 packages from earlier versions.  Documents without this attribute are assumed to be from version 1.1 or earlier.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:history>
+			<p>This category of ODF document was introduced in ODF 1.2.  See <fddLink id="fdd000247">ODF_family</fddLink> for more on the history ODF in general.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Specifications as published by OASIS</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.oasis-open.org/standards#opendocumentv1.2</link>
+							<tag>Open Document Format for Office Applications (OpenDocument) Specification v1.2</tag>
+							<comment>Provides links to all versions of specifications and supporting files for ODF 1.2.  The specification for the database front end file and the db: namespace is in Part 1: Schemas.  The specification for the ODF package is in ODF 1.2, Part 3: Packages (available as ODT, PDF, and HTML.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-schema.rng</link>
+							<tag>Normative RNG schema for mandatory manifest file for an ODF 1.2 package.</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Specifications as published by ISO/IEC</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c066363_ISO_IEC_26300-1_2015.zip</link>
+							<tag>ISO/IEC 26300-1:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2, Part 1: Schema</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c066376_ISO_IEC_26300-3_2015.zip</link>
+							<tag>ISO/IEC 26300-1:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2, Part 3: Packages</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.libreoffice.org/discover/base/</link>
+					<tag>LibreOffice Base: A powerful manager for all databases</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.thefrugalcomputerguy.com/libreoffice-base/Overview.php</link>
+					<tag>TheFrugalComputerGuy.com:  LibreOffice Base
+Overview Page</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://help.libreoffice.org/Common/Database_1</link>
+					<tag>LibreOffice Database (from LibreOffice Help)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://wiki.documentfoundation.org/Faq/Base</link>
+					<tag>Frequently asked questions - Base (from LibreOffice)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://wiki.documentfoundation.org/images/b/b8/GS4208-GettingStartedWithBase.pdf</link>
+					<tag>LibreOffice: Getting Started with Base (Chapter 8 of Getting Started Guide)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://wiki.documentfoundation.org/images/e/e8/BH40-BaseHandbook.pdf</link>
+					<tag>LibreOffice: Base Handbook.  July 2013, based on LO version 4.0.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://wiki.openoffice.org/wiki/FAQ_(Base)</link>
+					<tag>Apache OpenOffice: FAQ (Base)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.calligra.org/kexi/</link>
+					<tag>Calligra Kexi</tag>
+					<comment>Although most software in the Calligra suite uses ODF formats, Kexi is based on the SQLite engine and format.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://kexi-project.org/wiki/wikiview/index.php@KexiComparisons.html</link>
+					<tag>Kexi: Comparisons to other database applications</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://lifehacker.com/battle-of-the-office-suites-microsoft-office-and-libre-1147940828</link>
+					<tag>Battle of the Office Suites: Microsoft Office and LibreOffice Compared</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://wiki.documentfoundation.org/Feature_Comparison:_LibreOffice_-_Microsoft_Office#Database_program:_LibreOffice_Base_vs._Microsoft_Access</link>
+					<tag>Database program: LibreOffice Base vs. Microsoft Access (from LibreOffice)</tag>
+					<comment>Feature comparison between LibreOfficeBase and Microsoft Access.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.infinitecampus.com/policies/digital-repository-services-terms-of-service/acceptable-file-upload-types</link>
+					<tag>Infinite Campus: Acceptable file upload types</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000247">ODF_Family</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

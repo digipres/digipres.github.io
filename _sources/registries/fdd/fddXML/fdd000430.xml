@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000430" titleName="CPIM Instant Message Format" shortName="CPIM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>text</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>other</fdd:value>
+				<fdd:comment>instant message</fdd:comment>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2015-09-01</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>CPIM Instant Message Format</fdd:fullName>
+		<fdd:description>
+			<p>CPIM, short for Common Presence and Instant Messaging, is the common data message format that must be used by any CPIM-compliant message transfer protocol including instant messaging.  Standardized through <a href="https://www.ietf.org/rfc/rfc3862.txt">RFC 3862</a>, the design of the CPIM format is intended to enable security to be applied, while itself remaining agnostic about the specific security mechanisms that may be appropriate for a given application.  This content format is intended to be used to exchange possibly-secured messages between different instant messaging protocols. Very strict adherence to the message format (including whitespace usage) may be needed to achieve interoperability.</p>
+			<p>A Message/CPIM object is a two-part entity, where the first part contains the message metadata and the second part is the message content. The two parts are separated from the enclosing MIME header fields and also from each other by blank lines. The end of the message body is defined by the framing mechanism of the protocol used. Unlike <fddLink id="fdd000431">SMS</fddLink>, CPIM messages do not have a character limit.</p>
+			<p>See <a href="#notes">Notes</a> for description of the file structure and for information about the Instant Message Protocol.</p>
+		</fdd:description>
+		<fdd:shortDescription>CPIM is the canonical data format for instant messages. </fdd:shortDescription>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000393</fdd:id>
+					<fdd:shortName>IMF</fdd:shortName>
+					<fdd:titleName>Internet Message Format</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Similar header syntax. See <a href="#notes">Notes</a> for details</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse/>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully documented.</fdd:disclosure>
+		<fdd:documentation>CPIM is documented through a set of related documents in the IETF Standards Track, specifically <a href="https://www.ietf.org/rfc/rfc3862.txt">RFC 3862</a> and <a href="https://www.ietf.org/rfc/rfc5438.txt">RFC 5438</a> which extends the header fields. See  <a href="#specs">Format Specifications</a> for details.</fdd:documentation>
+		<fdd:adoption>CPIM is the standard syntax defined by IETF for instant messages transfered through the message transfer protocol.  As such, it is highly adopted and interoperable with many tool sets and applications.</fdd:adoption>
+		<fdd:licensingAndPatents>None</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>Apart from when encrypted, CPIM files are usually simple text files and can be opened in Notepad or a web browser.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>Metadata is available through the well-structured header fields.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>
+			<a href="https://www.ietf.org/rfc/rfc3862.txt">RFC 3862</a> states that CPIM &quot;is designed with security in mind&quot; in that &quot;it is designed to be used with MIME security multiparts
+for signatures and encryption.&quot;</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>message/CPIM</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Defined in <a href="https://www.ietf.org/rfc/rfc3862.txt">RFC 3862</a>. Other MIME headers may be used as appropriate for the message transfer environment.</fdd:note>
+			</fdd:internetMediaType>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>The MIME headers for the overall message identifies the message as a CPIM-formatted message. This includes the required Message/CPIM header but also may include other MIME headers as appropriate for the message. The MIME header is followed by a blank separator line.</p>
+			<p>The separator line is followed by message headers. Message headers carry information relevant to the end-to-end transfer of the message from sender to receiver.  Other header syntax is similar to <fddLink id="fdd000393">IMF</fddLink> including "From," "To," "cc," "DateTime," and "Subject." Header names and other text must be used as given, using exactly the indicated upper- and lower-case letters. One interesting difference is that IMF requires 7-bit ASCII which is problematic for encoding international character sets while CPIM requires UTF-8 character encoding though except for header names which require US-ASCII. Message headers must not be modified, reformatted or reordered in transit, but in some circumstances they may be examined by a CPIM message transfer protocol. Headers use UTF-8 character encoding throughout. CPIM is extended through RFC 5438 with new header fields that enable endpoints to request Instant Message Disposition Notifications.</p>
+			<p>After the message header is the encapsulated MIME object containing the message content. MIME content headers MUST include at least a Content-Type header. Message content may be any MIME type. A message header may indicate a language for its value by including ";lang=tag" after the header name and colon, where "tag" is a language identifying token per RFC 3066. </p>
+			<p>Finally, the message may close with MIME security multiparts for signatures as detailed in RFC 1847, appropriate security protocols (e.g., S/MIME or openPGP ), and encryption cryptographic schemes.</p>
+			<p>Instant messaging, defined in RFC 2778, follows the Instant Message Protocol in which a sender provides instant messages to the instant message service which attempts delivery to a specific instant inbox address. The instant inbox address must have an <i>Open </i>status, indicating that the inbox is "available" or "open for business" for the instant message to be accepted. A <i>Closed</i> status means "unavailable" or "closed to business" and the instant message will not be delivered.</p>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>RFCs for CPIM</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.ietf.org/rfc/rfc3862.txt</link>
+							<tag>RFC 3862: Common Presence and Instant Messaging (CPIM): Message Format</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.ietf.org/rfc/rfc3860.txt</link>
+							<tag>RFC 3860: Common Profile for Instant Messaging (CPIM)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.ietf.org/rfc/rfc3861.txt</link>
+							<tag>RFC 3861: Address Resolution for Instant Messaging and Presence</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Related RFCs</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.ietf.org/rfc/rfc2778.txt</link>
+							<tag>RFC 2778: A Model for Presence and Instant Messaging</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.ietf.org/rfc/rfc2779.txt</link>
+							<tag>RFC 2779: Instant Messaging / Presence Protocol Requirements</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.ietf.org/rfc/rfc5438.txt</link>
+							<tag>RFC 5438: Instant Message Disposition Notification (IMDN)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.ietf.org/rfc/rfc3261.txt</link>
+							<tag>RFC 3261:  SIP: Session Initiation Protocol</tag>
+							<comment>Protocol for creating, modifying, and terminating sessions with one or more participants including Internet telephone calls, multimedia distribution, and multimedia conferences.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Instant_messaging</link>
+					<tag>Wikipedia entry for Instant messaging</tag>
+					<comment>Includes discussion of many email formats including EML</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Instant_Messaging_and_Presence_Protocol</link>
+					<tag>Wikipedia entry for Instant Messaging and Presence Protocol</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://fileformats.archiveteam.org/wiki/E-Mail,_newsgroups,_and_forums</link>
+					<tag>Archive Team E-Mail, newsgroups, and forums</tag>
+					<comment>Useful list of IM clients</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

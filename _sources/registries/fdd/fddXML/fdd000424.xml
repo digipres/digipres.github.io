@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000424" titleName="OpenDocument Package Format, ODF 1.1,  ISO/IEC 26300:2006" shortName="ODF_package_1_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>aggregate</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-bundle</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>office/business</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2015-09-16</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ODF 1.1 Package.  OASIS name: Open Document Format for Office Applications (OpenDocument) v1.1. ISO name: ISO/IEC 26300:2006, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.0</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>document formats</fdd:keyword>
+			<fdd:keyword>container formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>An ODF package is a container that holds a collection of parts, aggregating
+components of a document (or other type of content) into a single object.  The packaged document may be a word-processing document, a spreadsheet, a presentation, a chart, a drawing, etc..  The ODF package is based on the ZIP File Format [<fddLink id="fdd000354">ZIP_PK</fddLink>].  This description for ODF_package_1_1 covers versions 1.0 and 1.1 of ODF as published by OASIS.  It also covers ISO/IEC 26300:2006, which aligns with version 1.1 as published by OASIS when supplemented by Amd 1:2012.  The ODF package is specified in clause 17 of the <a href="http://docs.oasis-open.org/office/v1.1/OS/OpenDocument-v1.1.pdf">OASIS ODF 1.1 specification</a>, which is essentially identical to the same clause in the OASIS ODF 1.0 specification.  Versions 1.0 from ISO/IEC and 1.1 from OASIS referred to an <a href="ftp://ftp.info-zip.org/pub/infozip/doc/appnote-19970311-iz.zip">unofficial variant of PKWARE&apos;s appnote.txt from Info-ZIP</a>. This adaptation of PKWARE&apos;s specification explicitly removed some capabilities for encryption and other services patented by PKWARE. The Info-ZIP software was used widely as a library for working with an interoperable open subset of the ZIP format.  The open source Info-ZIP project has not seen much action since early 2009, although betas have been released since then.  In ODF_package_1_1, compression  is restricted to the &quot;deflate&quot; algorithm.   A single encryption mechanism is specified for ODF_package_1_1.  Encryption mechanisms as defined in APPNOTE.TXT for <fddLink id="fdd000354">ZIP_PK</fddLink> are not permitted.  Digital signatures are not supported in ODF_package_1_1. Note that ODF 1.2 uses PKWARE&apos;s version 6.2.0 of APPNOTE.TXT [see <fddLink id="fdd000355">ZIP_6_2_0</fddLink>].  The compilers of this resource are not aware of substantive differences in the intent of the ZIP specifications in ODF 1.0-1.2 or among software implementations creating ODF files.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>A manifest file is mandatory in all ODF document packages. It must be named META-INF/manifest.xml.  It
+contains a list of files in the package, their media types (MIME types), and information required for decrypting each file as relevant.</p>
+			<p>Also mandatory in this ZIP-based package is a &quot;stream&quot; that provides a magic number for identifying a file as an ODF document of a particular category.  From section 17.4 of the ODF 1.1 specification: &apos;the package should contain a stream called &quot;mimetype&quot;. This stream should be first stream of the package&apos;s zip file, it shall not be compressed, and it shall not use an &quot;extra field&quot; in its header ...
+The purpose is to allow packaged files to be identified through &quot;magic number&quot; mechanisms, such as Unix&apos;s file/magic utility. If a ZIP file contains a stream at the beginning of the file that is uncompressed, and has no extra data in the header, then the stream name and the stream content can be found at fixed positions. More specifically, one will find:</p>
+			<ul>
+				<li>a string &quot;PK&quot; at position 0 of all zip files</li>
+				<li>a string &quot;mimetype&quot; at position 30 of all such package files</li>
+				<li>the mimetype itself at position 38 of such a package.</li>
+			</ul>
+			<p>Although the ODF 1.1 specification uses the term &quot;stream,&quot; the magic number requirement is equivalent to including a text file with the specified character string as the first file in the ZIP archive.</p>
+		</fdd:description>
+		<fdd:shortDescription>A wrapper/bundling format designed to contain a collection of files that in aggregate represent a single logical document in the OpenDocument Format (ODF) family.  Based on the ZIP format and incorporating an XML-based manifest file to list component files.</fdd:shortDescription>
+		<fdd:productionPhase>An ODF package can be used in any production phase.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000247</fdd:id>
+					<fdd:shortName>ODF_Family</fdd:shortName>
+					<fdd:titleName>OpenDocument Format (ODF) Family, OASIS and ISO/IEC 26300</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000427</fdd:id>
+					<fdd:shortName>ODF_text_1_1</fdd:shortName>
+					<fdd:titleName>OpenDocument Text Document Format (ODT), Version 1.1,  ISO/IEC 26300:2006</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>Formats for various other content categories, including for spreadsheet and presentation files, not yet described on this site.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000354</fdd:id>
+					<fdd:shortName>ZIP_PK</fdd:shortName>
+					<fdd:titleName>ZIP File Format (PKWARE)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Various features of the ZIP File Format are not permitted in ODF.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:comment>META-INF/manifest.xml file. This manifest file is mandatory in all ODF packages.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:comment>ODF 1.0, not described separately at this site.  Section 17 of the specifications for ODF 1.0 and ODF 1.1, where the package format is specified, are essentially identical.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has later version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000425</fdd:id>
+					<fdd:shortName>ODF_package_1_2</fdd:shortName>
+					<fdd:titleName>OpenDocument Package Format, ODF 1.2</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000263</fdd:id>
+					<fdd:shortName>XML_1_0</fdd:shortName>
+					<fdd:titleName>XML (Extensible Markup Language) 1.0</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment> A normative RELAX NG schema for manifest.xml is part of the specification for ODF_package_1_1.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:preference>The Library of Congress <a href="http://www.loc.gov/preservation/resources/rfs/textmus.html">Recommended Format Statement (RFS) 2015-2016</a> includes ODF (ISO/IEC 26300) as an acceptable format for textual works in digital form.  The RFS list does not distinguish between versions of ODF.  In general, the Library of Congress prefers formats intended for final publication of textual works, rather than editable formats.  Editable formats will be found in collections of papers of organizations and individuals.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>International open standard.  Developed and maintained by <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=office">OASIS Open Document Format for Office Applications (OpenDocument) TC</a>.</fdd:disclosure>
+		<fdd:documentation>
+			<p>Specifications from OASIS: <a href="https://www.oasis-open.org/standards#opendocumentv1.1">Open Document Format for Office Applications (OpenDocument) Specification v1.1</a>;  <a href="http://docs.oasis-open.org/office/v1.1/OS/OpenDocument-manifest-schema-v1.1.rng">Normative RNG schema for mandatory.manifest file.</a>
+			</p>
+			<p>Specification for ODF 1.0 published as ISO/IEC 26300: ISO/IEC 26300:2006, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.0 and Amd 1:2012, to align with OASIS version 1.1.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>The major applications supporting ODF can read and write files in ODF 1.1.  Lists of approved formats may or may not be specific about the ODF versions recommended; however, as of early 2015, ISO/IEC 26300:2006, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.0, which is equivalent to ODF 1.1 from OASIS and thus to ODF_package_1_1, is frequently the version cited. This is probably because ODF_package_1_2 was not published until June 2015 as an ISO/IEC standard.  Such citations should not be interpreted as preferences for the earlier version.</p>
+			<p>See <fddLink id="fdd000247">ODF-Family</fddLink> for more detail.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No concerns.  See <fddLink id="fdd000247">ODF-Family</fddLink>.</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>As a container, transparency corresponds to that of <fddLink id="fdd000354">ZIP_PK</fddLink>.  It depends upon algorithms and tools to interpret and extract contents.  It would require sophistication to build tools from scratch, but many tools exist.  The files that represent the structure of the ODF package are all in XML and thus both human readable and easily machine processable.  Transparency ultimately depends on the files contained in the package.  Files may be encrypted.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>The built-in support for metadata in the package specification per se is limited to structural metadata to support extraction of component files.  ODF 1.1 support for metadata is through three mechanisms defined in clauses 2.2 (Document Metadata) and clause 3 (Metadata Elements) of the OASIS ODF 1.1 specification: predefined elements explicitly listed in the specification; user-defined metadata, using a specified XML structure for a triplet of name, data type, and value; and custom metadata, held in arbitrary elements within the &lt;office:meta&gt; element.  The ODF 1.1 specification requires implementers to preserve custom metadata.  Note that the use of arbitrary custom metadata was deprecated in ODF 1.2 and replaced by support for RDF-based metadata.</p>
+			<p>Pre-defined metadata elements for the document as a whole include:</p>
+			<ul>
+				<li>From the Dublin core namespace, using the <i>dc:</i> prefix: Title, Creator (of most recent modification), Description, Subject, Date (last modified), Language</li>
+				<li>From the ODF specification, using the <i>meta:</i> prefix: Generator (creating software application), Keywords, Initial Creator, Creation Date and Time, Modification Date and Time, Print Date and Time, Document Template, Document Statistics (word count, page count, etc.), </li>
+			</ul>
+			<p>The pre-defined elements are all optional and repeatable.  However, applications are not required to update multiple occurrences in a specific way to reflect modifications to a document.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>Depends on files contained in the package.</fdd:externalDependencies>
+		<fdd:techProtection>Encryption is supported for files within an ODF package.  In addition, an ODF package file may be encrypted during interchange or as part of DRM controlling distribution.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:otherQF>
+			<fdd:factor>
+				<fdd:tag>Bundling/compression</fdd:tag>
+				<fdd:note>Separate functionality factors for comparing formats that are used to bundle and or compress files have not been developed. From the perspective of digital preservation, consideration of the sustainability factors above is more important than the degree of compression.</fdd:note>
+			</fdd:factor>
+		</fdd:otherQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>ODF package files use extensions appropriate to the type of document packaged.  Hence, .odt, .odp, .ods, are all extensions used for ODF packages.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>ODF package files use MIME types appropriate to the type of document packaged.  The appropriate MIME types are listed in Appendix C of the OASIS specification for ODF 1.1.  They use the pattern <i>application/vnd.oasis.opendocument.</i>xxx. See for example, <a href="https:www.iana.org/assignments/media-types/application/vnd.oasis.opendocument.spreadsheet">registration for ODF spreadsheet category at IANA</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>Magic numbers that apply to document category subtypes, incorporate the magic number for  <fddLink id="fdd000354">ZIP_PK</fddLink>,  the string <i>mimetype</i> at position 30, and the MIME subtype string value at position 38.  See, for example, <a href="https:www.iana.org/assignments/media-types/application/vnd.oasis.opendocument.spreadsheet">registration for ODF spreadsheet category at IANA</a>.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Indicator for profile, level, version, etc.</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>ASCII: office:version=&quot;1.0&quot;</fdd:sigValue>
+						<fdd:sigValue>ASCII: office:version=&quot;1.1&quot;</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>The four root elements used in the primary files in an ODF package all permit an attribute that records the ODF version.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:history>
+			<p>Section 17, the package specification for ODF, is essentially identical in version 1.0 and 1.1 of the ODF specification from OASIS.  There were no significant changes to section 17 in Errata 01 to ODF 1.1, approved by OASIS in 2013.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Specifications as published by OASIS</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.oasis-open.org/standards#opendocumentv1.1</link>
+							<tag>Open Document Format for Office Applications (OpenDocument) Specification v1.1</tag>
+							<comment>Provides links to all versions of specifications and supporting files for ODF 1.1.  The specification for the ODF package is in section 17 of the main ODF 1.1 specification (available as ODT, PDF, and HTML.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://docs.oasis-open.org/office/v1.1/OS/OpenDocument-manifest-schema-v1.1.rng</link>
+							<tag>Normative RNG schema for mandatory manifest file for an ODF 1.1 package.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://docs.oasis-open.org/office/v1.1/errata01/os/OpenDocument-v1.1-errata01-os.zip</link>
+							<tag>Open Document Format for Office Applications (OpenDocument) v1.1 Errata 01</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Specifications as published by ISO/IEC as ISOIEC 26300:2006</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c043485_ISO_IEC_26300_2006(E).zip</link>
+							<tag>ISO/IEC 26300:2006, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.0</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c059302_ISO_IEC_26300_2006_Amd_1_2012.zip</link>
+							<tag>Amd 1:2012, to align with ODF version 1.1</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/</link>
+							<tag>Full list of Freely Available Standards from ISO/IEC.  Includes ISO/IEC 26300, with all corrigenda .</tag>
+							<comment>In accordance with ISO/IEC JTC 1 and the ISO and IEC Councils these International Standards are publicly available.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/OpenDocument</link>
+					<tag>Wikipedia entry for OpenDocument</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=office</link>
+					<tag>OASIS Open Document Format for Office Applications (OpenDocument) TC</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://opendocument.xml.org/</link>
+					<tag> OpenDocument XML.org web site</tag>
+					<comment>No longer active, retained primarily as legacy information. Latest official additions appear to have been in 2011.  However, areas of the site accepting user submission of news. etc. do have newer content.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000247">ODF_Family</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

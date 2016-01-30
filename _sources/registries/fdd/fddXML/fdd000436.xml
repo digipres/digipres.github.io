@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000436" titleName="OpenDocument Drawing Document Format (ODG), Version 1.2,  ISO 26300-1:2015" shortName="ODF_draw_1_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>office/business</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2015-11-02</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>OpenDocument Drawing Document Format (ODG), Version 1.2.  Part of OASIS Open Document Format for Office Applications, Version 1.2 and the equivalent ISO 26300-1:2015.</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>vector graphic formats</fdd:keyword>
+			<fdd:keyword>markup languages</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The OpenDocument Drawing Document Format (ODG), Version 1.2 (given the short name <i>ODF_draw_1_2</i> here) is a format for editable graphics documents.  It is one of several subtypes in the <fddLink id="fdd000247">ODF family</fddLink> for particular content categories.  Designed to be a native format for vector-graphics applications,  the format is sometimes called ODG after its usual file extension.  The term ODG will be used here to refer to ODF_draw_1_2 and other chronological versions of the OpenDocument Drawing format. This description relates primarily to part 1 of the ODF 1.2 specification as published by OASIS and the equivalent ISO/IEC 26300-1:2015 specification.</p>
+			<p>The primary ODF graphical markup used in drawings is specified in the <i>draw:</i> namespace, with the <i>draw:page</i> element as a container for a single drawing.  This <i>draw:page</i> element can directly contain layers, frames, drawing objects (e.g. rectangles, circles, and other shapes), and forms.  These child elements can also be used within textual documents and in spreadsheets. The <i>draw:page</i> element is used for slides in a presentation and in that context, the <i>draw:page</i> element  may include animations and notes text associated with the slide.  The elements that define drawing objects often permit selected attributes or child elements from <fddLink id="fdd000020"> SVG_1_1</fddLink> (Structured Vector Graphics) using <i>svg:</i> as namespace prefix.  An additional namespace prefix, <i>dr3d:</i> is used to generate renderings to two dimensions of 3D objects by defining projections, light sources, etc.</p>
+			<p>The ODF specification covers two physical forms for ODF documents, a flat form as a single XML file and a package form based on the <fddLink id="fdd000355">ZIP_6_2_0</fddLink> format.  This description focuses on the more commonly used ZIP-based package format for ODF drawing files, given the <i>.odg</i> file extension.  Files using the same markup specification and package but with an extension of <i>.otg</i> are for use as drawing document templates.</p>
+			<p>An ODF package can be recognized as a drawing (graphics) document in several ways.  Externally, there are file extensions for two ways in which ODF drawing documents may be used in graphics applications, as noted above.  The primary internal indication is that the mandatory file named <i>mimetype</i> will contain one of the corresponding strings listed as <a href="#sign">File type signifiers</a> below.  An additional way to recognize an ODF drawing document is that  the &lt;office:body&gt; element, a child of the root &lt;office:document-content&gt; element in content.xml has the child element &lt;office:drawing&gt;.</p>
+			<p>The ZIP-based package for any ODF file contains, at a minimum, five files:  a one-line <i>mimetype</i> file containing a single text string; <i>content.xml</i>; <i>styles.xml</i>; <i>meta.xml</i>; and <i>settings.xml</i>.  The typical <i>content.xml</i> file for a minimal drawing file for a single page has the basic form:</p>
+			<ul>
+				<li>&lt;office:document-content&gt;</li>
+				<li>&lt;office:automatic-styles&gt;</li>
+				<li>... styles created automatically based on direct user choices, e.g., for fill color for a particular shape, with references to fuller and named style specifications in <i>styles.xml</i> ...</li>
+				<li>&lt;/office:automatic-styles&gt;</li>
+				<li>&lt;office:body&gt;</li>
+				<li>&lt;office:drawing&gt;</li>
+				<li>&lt;draw:page &gt; ... vector graphics elements, for example a rectangle filled with the solid color specified in the named style <i>gr1</i> ... &lt;draw:rect draw:style-name=&quot;gr1&quot;  svg:width=&quot;12.1cm&quot; svg:height=&quot;12.1cm&quot; svg:x=&quot;4.635cm&quot; svg:y=&quot;1.418cm&quot;&gt;&lt;/draw:rect&gt;&lt;/draw:page&gt;</li>
+				<li>&lt;/office:drawing&gt;</li>
+				<li>&lt;/office:body&gt;</li>
+				<li>&lt;/office:document-content&gt;</li>
+				<li>Note that several of these elements will usually have attributes omitted here.  Note also that when the svg: namespace has appropriate attributes, ODF uses them rather than defining its own.  Additional elements in the office: namespace may be included within the office:drawing element to reflect application-specific defaults.</li>
+			</ul>
+			<p>The corresponding <i>styles.xml</i> file will contain additional style specifications, for example, named styles and defaults.</p>
+			<p>See Notes in <fddLink id="fdd000247">ODF Family</fddLink> for more information about the flat XML-only variant of ODF files.  For a flat ODF drawing file, the root &lt;office:document&gt; element has an office:mimetype attribute with one of
+the values listed below as <a href="#sign">File signifiers</a>.</p>
+			<p>For details of the ZIP-based package for ODF_draw_1_2, see <fddLink id="fdd000425">ODF_package_1_2</fddLink>.  The package specification defines the form for a package manifest, and options for digital signatures, encryption, etc.</p>
+			<p>Apart from changes to the underlying package format, changes made to the markup for ODF drawings between ODF versions 1.1 and 1.2 appear to be few.  There were no new elements in the draw: namespace between ODF 1.1 and ODF 1.2. See Appendix G of the <a href="http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-part1.html">ODF 1.2 Part 1 specification</a> for details.</p>
+		</fdd:description>
+		<fdd:shortDescription>An XML-based format for editable graphics documents, usually with .odg as file extension.   Part of the OpenDocument Format (ODF) family.  Documented in ODF 1.2 Part 1.  Component files are packaged using a constrained version of the ZIP format.  Incorporates an XML-based manifest file to list component files.</fdd:shortDescription>
+		<fdd:productionPhase>Can be used in any production phase. Particularly used for creating documents (initial state) and for editing and review (middle-state). Documents that are formally published are often converted to an image format that is designed for final publication and not for convenient editing.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000247</fdd:id>
+					<fdd:shortName>ODF_Family</fdd:shortName>
+					<fdd:titleName>OpenDocument Format (ODF) Family, OASIS and ISO/IEC 26300</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000425</fdd:id>
+					<fdd:shortName>ODF_package_1_2</fdd:shortName>
+					<fdd:titleName>OpenDocument Package Format, ODF 1.2, ISO 26300-3:2015</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000355</fdd:id>
+					<fdd:shortName>ZIP_6_2_0</fdd:shortName>
+					<fdd:titleName>ZIP File Format, Version 6.2.0 (PKWARE)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Various features of the ZIP File Format are not permitted in ODF.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:comment>META-INF/manifest.xml file. This manifest file is mandatory in all ODF packages.  Not described separately at this time.  See <fddLink id="fdd000425">ODF_package_1_2</fddLink> for more information.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:comment>ODG V 1.1, not described separately on this site.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000263</fdd:id>
+					<fdd:shortName>XML_1_0</fdd:shortName>
+					<fdd:titleName>XML (Extensible Markup Language) 1.0</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment> A normative RELAX NG schema is part of the specification for ODF 1.2, which includes the specification for drawing documents.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:preference>
+			<p>For vector graphic images for its collections, the Library of Congress prefers formats that are designed for final publication, rather than formats designed as editable.  See <a href="http://www.loc.gov/preservation/resources/rfs/stillimg.html#ogdigital">Recommended Formats Statement: Still Image Works - Other Graphic Images - Digital</a>.</p>
+		</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>International open standard.  Developed and maintained by <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=office">OASIS Open Document Format for Office Applications (OpenDocument) TC</a> as part of the OpenDocument Format (ODF) 1.2 specification published by OASIS in 2011.  Also approved as part of the equivalent ISO/IEC 26300-1:2015 by ISO/IEC JTC1/SC34.</fdd:disclosure>
+		<fdd:documentation>
+			<p>Specifications from OASIS: <a href="https://www.oasis-open.org/standards#opendocumentv1.2">Open Document Format for Office Applications (OpenDocument) Version 1.2</a>.  Specification for ODF 1.2 drawing documents are found primarily in chapter 10 of Part 1 of the specification.  Since drawings may contain tables, chapter 9 is also relevant.  The technical specification is part of a <a href="http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-schema.rng">normative RNG schema for primary component files for ODF documents.</a>.</p>
+			<p>The identical specification is published as <a href="http://standards.iso.org/ittf/PubliclyAvailableStandards/c066376_ISO_IEC_26300-3_2015.zip">ISO/IEC 26300-1:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2 Part 1: OpenDocument Schema.</a>
+			</p>
+			<p>The ODF 1.2 specification is divided into three parts, with the bulk of the markup specification in Part 1: OpenDocument Schema.  The package specification has been moved into a separate Part 3: Packages.</p>
+			<p>See <fddLink id="fdd000247">ODF-Family</fddLink> for a listing of namespaces that can be incorporated into any ODF 1.1 or ODF 1.2 document and links to associated specifications.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>The major office suites using ODF as primary native format family include special applications for drawing based on vector graphics and can read and write drawing documents as defined in ODF 1.2:</p>
+			<ul>
+				<li>LibreOffice uses ODF 1.2 as its native format, according to <a href="https://blog.documentfoundation.org/2015/07/17/open-document-format-odf-1-2-published-as-international-standard-263002015-by-isoiec/">July 17, 2015 blog post</a> from The Document Foundation.  See <a href="https://www.libreoffice.org/discover/draw/">LibreOffice Draw</a> and <a href="https://wiki.documentfoundation.org/images/a/ad/DG43-DrawGuide.pdf">LibreOffice 4.3 Draw Guide</a>.</li>
+				<li>OpenOffice introduced support for ODF 1.2 in the beta version of 3.0 in 2008, according to <a href="http://www.openoffice.org/marketing/3.0/featurelistbeta.html">Release Notes for OpenOffice 3.0 beta</a>.  <a href="https:www.openoffice.org/product/draw.html">Apache OpenOffice Draw</a> uses ODG as its native format.</li>
+				<li>Calligra has two drawing applications: <a href="https://www.calligra.org/karbon/features/">Karbon</a>, designed for producing artistic vector graphics and <a href="https://www.calligra.org/flow/">Calligra Flow</a>, designed for flow-charting.  Calligra Flow uses ODG as the underlying file format.  Karbon can import and export ODG files.</li>
+			</ul>
+			<p>Vector Graphics applications that can export ODG files include:  Inkscape (limited as indicated in <a href="http://tavmjong.free.fr/INKSCAPE/MANUAL/html/File-Export.html#File-Export-Other">manual</a> in late 2015).</p>
+			<p>Desktop publishing applications that can import ODG files include:  <a href="http://www.scribus.net/">Scribus</a>
+			</p>
+			<p>The adoption of software applications for creating vector graphics depends mainly on (a) the type of graphic being created (e.g., flowchart vs. creative art) and (b) the functional characteristics of the application that appeal to an individual user.  The format that is used during the editing phase appears less important than the export formats for the finished graphic.</p>
+			<p>Microsoft Office, which has supported direct editing of ODF 1.2 text and spreadsheet documents since Office 2013, does not have an independent vector graphics module.  Hence, editing of an independent ODF drawing file is not supported in Microsoft Office.  See <a href="https://msdn.microsoft.com/en-us/library/jj670965.aspx">[MS-OODF3] 2.1.6: Part 1, Section 3.5, office:drawing</a>.  </p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No concerns.  See <fddLink id="fdd000247">ODF-Family</fddLink>.</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>The structure and text of an ODG file are all represented in XML and hence viewable without special tools, although XML-aware tools that can show the element hierarchy make viewing and interpretation more convenient.  The most commonly used parts, elements, and attributes have recognizable names. Simple documents can be interpreted with very basic tools. However, interpreting the semantics of some elements and the correspondence of some elements and attributes to vector graphics functionality will require not only understanding of the schema and the specification text, but familiarity with the associated functionality.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>As for other members of the ODF 1.2 family, ODF_draw_1_2 added support for metadata based on RDF (W3C&apos;s Resource Description Framework).  As well as using RDF for metadata for the document package as a whole, RDF can be attached to elements within the document&apos;s content.  The use of &quot;custom&quot; metadata as specified in ODF 1.1 is deprecated in ODF 1.2.</p>
+			<p>Pre-defined metadata elements for the document as a whole, stored in an <i>office:meta</i> element  include:</p>
+			<ul>
+				<li>From the Dublin core namespace, using the <i>dc:</i> prefix: Title, Creator (of most recent modification), Description, Subject, Date (last modified), Language</li>
+				<li>From the ODF specification, using the <i>meta:</i> prefix: Generator (creating software application), Keywords, Initial Creator, Creation Date and Time, Modification Date and Time, Print Date and Time, Document Template, Document Statistics (word count, page count, etc.), </li>
+			</ul>
+			<p>The pre-defined elements are all optional and repeatable.  However, applications are not required to update multiple occurrences in a specific way to reflect modifications to a document.</p>
+			<p>Also supported in both ODF 1.1 and ODF 1.2 is an XML structure for user-defined metadata, based on triplets of name, data type, and value.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			<p>Depends on features used.  Drawing documents in ODF_draw_1_2 format may include links to externally stored images, applets or plugins intended to import content from an external document or data source; see clause 10.4 in Part 1 of the specification.</p>
+			<p>ODF_draw_1_2 files can incorporate other images.  PNG is recommended for raster images and SVG for vector graphics.  However, other image formats are permitted.</p>
+		</fdd:externalDependencies>
+		<fdd:techProtection>Encryption is supported for files within an ODF 1.1 or ODF 1.2 package.  In addition, an ODF package file may be encrypted during interchange or as part of DRM controlling distribution.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>Good support.</fdd:normalImage>
+			<fdd:clarity>Scalable.</fdd:clarity>
+			<fdd:colorMaint>ODF 1.2 uses the notation #rrggbb to specify colors.  The specification does not mention ICC color profiles.</fdd:colorMaint>
+			<fdd:graphics>Rich support.</fdd:graphics>
+			<fdd:multispectral>Not applicable.</fdd:multispectral>
+			<fdd:beyondImage>Support for animations and &quot;scenes&quot; that render 3D objects using specified projection, lighting, etc.  Change-tracking in text boxes in drawings.</fdd:beyondImage>
+		</fdd:stillImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>odg</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>
+					<i>.odg</i> is the extension used for a regular ODF drawing file.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.oasis.opendocument.graphics</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The MIME types for ODF_draw_1_2  are the same as for earlier versions</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>Magic numbers that apply to ODF document category subtypes incorporate the magic number for  <fddLink id="fdd000354">ZIP_PK</fddLink>,  the string <i>mimetype</i> at position 30, and the MIME subtype string value at position 38.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Indicator for profile, level, version, etc.</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>ASCII: office:version=&quot;1.2&quot;</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>The four root elements used in the primary files in an ODF package all require an attribute that records the ODF version.  This is the signifier that distinguishes ODF 1.2 packages from earlier versions.  Documents without this attribute are assumed to be from version 1.1 or earlier.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>otg</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The extension .otg is used for a drawing document used as a template.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.oasis.opendocument.graphics-template</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:internetMediaType>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>In addition to specifying the ODF_draw_1_2 free-standing drawing document format, ODF 1.2 specifies how drawings using the same markup can be embedded in textual documents and in presentations.   Each slide in an ODF presentation document is a <i>draw:page</i> element.  Drawings can be embedded in a textual document in several ways, using the <i>draw:frame</i> element.  The <i>draw:frame</i> element may contain detailed drawing markup directly.  However, if the <i>draw:frame</i> element has a <i>draw:object</i> or <i>draw:object-ole</i> child element, a separate named object is referred to.  This object may be present in the package or linked to externally.  Certain drawing elements, such as shapes and lines, can be embedded within paragraphs directly.</p>
+			<p>The specification for ODF 1.2 Drawings uses several individual elements and attributes from SVG.  As well as attributes that define dimensions and positions of shapes, these include svg:title and svg:description to name parts of drawings and offer text to support accessibility.  See <a href="http://www.w3.org/Graphics/SVG/WG/wiki/Proposals/SVG_in_ODF">Proposals/SVG in ODF</a> from January 2011.</p>
+			<p>ODF 1.2 introduced the concept of an ODF Extended document, and has a related clause 3.17 on Foreign Elements and Attributes. The inclusion of support for this possibility was controversial, judging from a <a href="http://orcmid.com/blog/2010/02/worst-nightmare-opendocument-format.asp">blog post by Dennis Hamilton and subsequent comments</a>, but some mechanism of this sort is necessary to support the introduction and testing of enhancements to the format to fulfill customer demand for new features in applications.  ODF 1.1 also permitted the use of elements beyond those covered by the specification.  Section 1.5 of the <a href="http://docs.oasis-open.org/office/v1.1/OS/OpenDocument-v1.1-html/OpenDocument-v1.1.html">ODF 1.1 specification</a> begins, &quot;Documents that conform to the OpenDocument specification may contain elements and attributes not specified within the OpenDocument schema. Such elements and attributes must not be part of a namespace that is defined within this specification and are called foreign elements and attributes.&quot;  OASIS produced a so-called &quot;strict&quot; schema, that could be used to permit only elements defined in the specification.  The specification indicates how applications should treat foreign elements. The compilers of this resource have not determined whether there is a substantive difference between ODF 1.1 and ODF 1.2 in relation to the inclusion and recommended treatment of foreign elements and attributes.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>Some compatibility/interoperability problems have been reported for different implementations.  See <a href="#useful">Useful References</a> below.  The compilers of this resource do not know whether these problems will be addressed in later software releases. <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>See <fddLink id="fdd000425">ODF_package_1_2</fddLink> for discussion of changes to ODF in general between versions 1.1 and 1.2.  Changes to the specification for drawing documents between versions 1.1 and 1.2 were  limited to corrections and small modifications requested by implementers.  <a href="http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-part1.html#__RefHeading__1420418_253892949">Appendix G of the ODF 1.2 schema specification</a> indicates that no new elements were added to the draw: namespace and only two new attributes were added.</p>
+			<p>See <fddLink id="fdd000247">ODF_family</fddLink> for more on the history ODF in general.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Specifications as published by OASIS</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.oasis-open.org/standards#opendocumentv1.2</link>
+							<tag>Open Document Format for Office Applications (OpenDocument) Specification v1.2</tag>
+							<comment>Provides links to all versions of specifications and supporting files for ODF 1.2.  The specification for the drawing file and the draw: namespace is in Part 1: Schemas.  The specification for the ODF package is in ODF 1.2, Part 3: Packages (available as ODT, PDF, and HTML.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-schema.rng</link>
+							<tag>Normative RNG schema for mandatory manifest file for an ODF 1.2 package.</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Specifications as published by ISO/IEC</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c066363_ISO_IEC_26300-1_2015.zip</link>
+							<tag>ISO/IEC 26300-1:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2, Part 1: Schema</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c066376_ISO_IEC_26300-3_2015.zip</link>
+							<tag>ISO/IEC 26300-1:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2, Part 3: Packages</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://books.evc-cit.info/odbook/ch06.html</link>
+					<tag>OASIS OpenDocument Essentials.  Chapter 6. Drawings</tag>
+					<comment>Based on ODF 1.1.  Still applicable to ODF 1.2, since markup changes for drawings were minimal.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://orcmid.com/blog/2010/02/worst-nightmare-opendocument-format.asp</link>
+					<tag>Worst Nightmare: OpenDocument Format Embraced Extended.  February 27, 2010.</tag>
+					<comment>The original post by Dennis E. Hamilton (aka Orcmid) stimulated a flurry of responses (mainly by Rob Weir) and counter-responses.  Hamilton and Weir have both been active in many phases of ODF standardization and OpenOffice application development.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.w3.org/Graphics/SVG/WG/wiki/Proposals/SVG_in_ODF</link>
+					<tag>Proposals/SVG in ODF.  January 2011</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.libreoffice.org/get-help/documentation/</link>
+					<tag>LibreOffice.  Get Help/Documentation</tag>
+					<comment>Lists and links to manuals for individual LibreOffice modules, including LibreOffice Draw.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://wiki.documentfoundation.org/images/a/ad/DG43-DrawGuide.pdf</link>
+					<tag>LibreOffice Draw 4.3 Guide</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.openoffice.org/product/draw.html</link>
+					<tag>Apache OpenOffice Draw</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.calligra.org/karbon/features/</link>
+					<tag>Calligra -- Karbon: Features </tag>
+					<comment>Identifies formats that can be imported and exported by Karbon.  ODG is in both lists.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.calligra.org/flow/</link>
+					<tag>Calligra Flow for diagramming and flowcharting</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://tavmjong.free.fr/INKSCAPE/MANUAL/html/File-Export.html#File-Export-Other</link>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://wiki.scribus.net/canvas/Scribus_1.5.0_Readme</link>
+					<tag>Scribus 1.5.0 Readme.  May 2015</tag>
+					<comment>Indicates that the ODG importer for Scribus has been completely rewritten.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://msdn.microsoft.com/en-us/library/hh695327.aspx</link>
+					<tag>[MS-OODF3]: Office Implementation Information for ODF 1.2 Standards Support</tag>
+					<comment>Relates to support in Office 2013 for ODF 1.2.  Long list of descriptions on whether and how Word 2013, Excel 2013, and PowerPoint 2013 applications use elements in the ODF 1.2 format. organized by sections of the ODF 1.2 specification.  </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Some compatibility problems have been reported with transfers of drawing files between implementations.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://wiki.scribus.net/canvas/Importing_Complex_OpenOffice.org_and_OpenDocument_Drawings</link>
+							<tag>Importing Complex OpenOffice.org and OpenDocument Drawings</tag>
+							<comment>Provides a workaround for transfers of complex graphics between Open Office and Scribus</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://favapps.wordpress.com/2014/11/13/diagram-flowchart-and-graph/</link>
+							<comment>Mentions incompatibility between Calligra Flow and LibreOffice.  No details are provided.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://comments.gmane.org/gmane.comp.kde.devel.calligra/3554</link>
+							<tag>Calligra-devel thread -- CDR import - map to what format?</tag>
+							<comment>Indicates that ODG supports multi-page drawing documents, but that vector-graphics applications may not.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://apps.nationalarchives.gov.uk/pronom/fmt/297</link>
+					<tag>PRONOM entry for OpenDocument Drawing 1.2</tag>
+					<comment>PUID for ODG 1.2 is fmt/297</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000247">ODF_Family</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

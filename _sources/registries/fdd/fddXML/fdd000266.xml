@@ -15,7 +15,7 @@
 		<fdd:gdfrComposition>container-wrapper</fdd:gdfrComposition>
 		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:updates>
-			<fdd:date>2008-03-18</fdd:date>
+			<fdd:date>2015-12-03</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Partial</fdd:draftStatus>
 	</fdd:properties>
@@ -24,8 +24,6 @@
 		<fdd:keywords>
 			<fdd:keyword>wrapper formats</fdd:keyword>
 			<fdd:keyword>container formats</fdd:keyword>
-			<fdd:keyword>audio formats</fdd:keyword>
-			<fdd:keyword>video formats</fdd:keyword>
 		</fdd:keywords>
 		<fdd:description>
 			<p>Operational Pattern (OP) for a file with a single playable essence comprising a single essence element or interleaved essence elements, i.e., the content may consist of multiple, interleaved tracks of picture and sound.  According to an Avid <a href="http://www.avid.com/static/resources/common/documents/mxf.pdf">promotional booklet</a>, OP1a files are &quot;nicely self-contained and can work well in applications where each file represents a complete program or take . . . [but] may be less applicable to content authoring steps such as non-linear editing, where programs are created by slicing and dicing different sections of source material.&quot;  The latter application is better served by <fddLink id="fdd000265">MXF_OP-Atom</fddLink>.</p>
@@ -121,7 +119,7 @@
 		<fdd:disclosure>Open standard. Developed by the Society of Motion Picture and Television Engineers (SMPTE), a member of the American National Standards Institute (ANSI).</fdd:disclosure>
 		<fdd:documentation>SMPTE 378M-2004, Material Exchange Format (MXF) -- Operational pattern 1A (Single Item, Single Package)</fdd:documentation>
 		<fdd:adoption>
-			<p>OP1a is supported in SONY and Avid commercial devices and systems.  In 2006-07, the Public Broadcasting System was standardizing an Application Specification (<fddLink id="fdd000270">MXF_AS-PBS</fddLink>), for use in the non-real-time distribution of programs to member stations, and this AS indicates that OP1a is generally to be used (exceptions are to use OP2a).  The <a href="http://www.fpdigital.com/Solutions/Migrate/">SAMMA</a> device used to reformat videotapes outputs <fddLink id="fdd000271">MXF_SAMMA</fddLink>, which is believed to use OP1a.</p>
+			<p>OP1a is supported in many commercial devices and systems.  It is central to various MXF Application Specifications (profiles from user communities), including the Public Broadcasting System, the initial developer of <a href="http://www.amwa.tv/projects/AS-03.shtml">AS-03</a>, for use in the non-real-time distribution of programs to member stations.  The <a href="https://web.archive.org/web/20040216125228/http:/www.media-matters.net/products-samma.php">SAMMA</a> device used to reformat videotapes outputs OP1a files.</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>See <fddLink id="fdd000013">MXF</fddLink>
 		</fdd:licensingAndPatents>
@@ -135,7 +133,17 @@
 		</fdd:techProtection>
 	</fdd:sustainabilityFactors>
 	<fdd:fileTypeSignifiers>
-		<fdd:signifiersGroup/>
+		<fdd:signifiersGroup>
+			<fdd:other>
+				<fdd:tag>Header partition pack key (MXF)</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>06 0E 2B 34 04 01 01 01 0D 01 02 01 01 01 09</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>UL for OP1a Operational Pattern declaration in Header Partition Pack</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:formatSpecifications>
 		<fdd:citations>
@@ -155,15 +163,24 @@
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.mog-solutions.com/img_upload/PDF/MOG_SOLUTIONS_operational_patterns_NAB2007.pdf</link>
+					<link>http://web.archive.org/web/20120524143601/http://www.mog-solutions.com/img_upload/PDF/MOG_SOLUTIONS_operational_patterns_NAB2007.pdf</link>
 					<tag>Operational Patterns . . . the MXF Flavors?</tag>
 					<comment>By Ernesto Santos, MOG Solutions.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
-				<fdd:urlGroup>
-					<fdd:intro>See also <fddLink id="fdd000013">MXF</fddLink>.</fdd:intro>
-				</fdd:urlGroup>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20040216125228/http:/www.media-matters.net/products-samma.php</link>
+					<tag>SAMMA information page</tag>
+					<comment>Web harvest of 2004 version of page at Media Matters site.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.amwa.tv/projects/AS-03.shtml</link>
+					<tag>AS-03: MXF Program Delivery </tag>
+					<comment>About AS-03, link to the specification.</comment>
+				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
 	</fdd:usefulReferences>

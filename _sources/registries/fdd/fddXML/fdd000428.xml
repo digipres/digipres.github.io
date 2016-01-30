@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000428" titleName="OpenDocument Text Document Format (ODT), Version 1.2,  ISO 26300-1:2015" shortName="ODF_text_1_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>text</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>office/business</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2015-08-30</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>OpenDocument Text Document Format (ODT), Version 1.2.  Part of OASIS Open Document Format for Office Applications, Version 1.2 and the equivalent ISO 26300-1:2015.</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>document formats</fdd:keyword>
+			<fdd:keyword>markup languages</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The OpenDocument Text Document Format (ODT), Version 1.2 (given the short name <i>ODF_text_1_2</i> here) is a format for editable textual documents.  It is one of several subtypes in the <fddLink id="fdd000247">ODF family</fddLink> for particular content categories.  Designed to be a native format for word-processing applications,  the format is sometimes called ODT after its usual file extension.  The term ODT will be used here to refer to ODF_text_1_2 and other chronological versions of the OpenDocument Text format. This description relates primarily to part 1 of the ODF 1.2 specification as published by OASIS and the equivalent ISO/IEC 26300-1:2015 specification.  The specification covers two physical forms for ODF text documents, a flat form as a single XML file and a package form based on the <fddLink id="fdd000355">ZIP_6_2_0</fddLink> format.  This description focuses on the more commonly used ZIP-based package format, given the <i>.odt</i> file extension.  Files using the same markup specification and package but with an extension of <i>.ott</i> are for use as document templates.  Similarly, files using the same markup specification and package but with an extension of <i>.odm</i> are for use as a &quot;master&quot; text file that primarily comprises subdocuments, e.g., for a book, with chapters as subdocuments.</p>
+			<p>An ODF package can be recognized as a textual document in several ways.  Externally, there are file extensions for three ways in which ODF text documents may be used in word-processing applications, as noted above.  The primary internal indication is that the mandatory file named <i>mimetype</i> will contain one of the corresponding strings listed as <a href="#sign">File signifiers</a> below.  An additional way to recognize a textual ODF document is that  the &lt;office:body&gt; element, a child of the root &lt;office:document-content&gt; element in content.xml has the child element &lt;office:text&gt;.</p>
+			<p>The ZIP-based package for any ODF file contains, at a minimum, five files:  a one-line <i>mimetype</i> file containing a single text string; <i>content.xml</i>; <i>styles.xml</i>; <i>meta.xml</i>; and <i>settings.xml</i>.  The typical <i>content.xml</i> file for a minimal text file has the basic form:</p>
+			<ul>
+				<li>&lt;office:document-content&gt;</li>
+				<li>&lt;office:text &gt;</li>
+				<li>&lt;office:automatic-styles&gt;</li>
+				<li>... styles created automatically by implementations when a user chooses format features, such as a font, directly.  See style <i>P1</i> used below.  May include references to fuller style specifications in styles.xml ...</li>
+				<li>&lt;/office:automatic-styles&gt;</li>
+				<li>&lt;office:body&gt;</li>
+				<li>&lt;text:p text:style-name=&quot;P1&quot;&gt;Hello World&lt;/text:p&gt;</li>
+				<li>&lt;/office:body&gt;</li>
+				<li>&lt;/office:text&gt;</li>
+				<li>&lt;/office:document-content&gt;</li>
+				<li>Note that several of these elements will usually have attributes omitted here.  Additional elements in the office: namespace may be included within the office:text element to reflect application-specific defaults.</li>
+			</ul>
+			<p>The corresponding <i>styles.xml</i> file will contain much fuller style specifications needed for even the most simple document, including choices or defaults for page layout, hyphenation, spacing, writing orientation, etc.</p>
+			<p>See Notes in <fddLink id="fdd000247">ODF Family</fddLink> for more information about the flat XML-only variant of ODF files.  For a flat textual ODF file, the root &lt;office:document&gt; element has an office:mimetype attribute with one of
+the three values listed below as <a href="#sign">File signifiers</a>.</p>
+			<p>For details of the ZIP-based package for ODF_text_1_2, see <fddLink id="fdd000425">ODF_package_1_2</fddLink>.  The package specification defines the form for a package manifest, and options for digital signatures, encryption, etc.</p>
+			<p>Apart from changes to the underlying package format, changes made to the markup for textual ODF documents between ODF versions 1.1 and 1.2 are few.  They relate mainly to added formatting options for lists, tables, and references. See Appendix G of the <a href="http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-part1.html">ODF 1.2 Part 1 specification</a> for details.</p>
+		</fdd:description>
+		<fdd:shortDescription>An XML-based format for editable textual documents, usually with .odt as file extension. Part of the OpenDocument Format (ODF) family.  Documented in ODF 1.2 Part 1.  Component files are packaged using a constrained version of the ZIP format.  Incorporates an XML-based manifest file to list component files.</fdd:shortDescription>
+		<fdd:productionPhase>Can be used in any production phase. Particularly used for creating documents (initial state) and for editing and review (middle-state). Documents that are formally published are often converted to a format that is designed for final publication and not for convenient editing.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000247</fdd:id>
+					<fdd:shortName>ODF_Family</fdd:shortName>
+					<fdd:titleName>OpenDocument Format (ODF) Family, OASIS and ISO/IEC 26300</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000425</fdd:id>
+					<fdd:shortName>ODF_package_1_2</fdd:shortName>
+					<fdd:titleName>OpenDocument Package Format, ODF 1.2, ISO 26300-3:2015</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000355</fdd:id>
+					<fdd:shortName>ZIP_6_2_0</fdd:shortName>
+					<fdd:titleName>ZIP File Format, Version 6.2.0 (PKWARE)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Various features of the ZIP File Format are not permitted in ODF.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:comment>META-INF/manifest.xml file. This manifest file is mandatory in all ODF packages.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000427</fdd:id>
+					<fdd:shortName>ODF_text_1_1</fdd:shortName>
+					<fdd:titleName>OpenDocument Text Document Format (ODT), Version 1.1, ISO 26300-1:2006</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000263</fdd:id>
+					<fdd:shortName>XML_1_0</fdd:shortName>
+					<fdd:titleName>XML (Extensible Markup Language) 1.0</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment> A normative RELAX NG schema is part of the specification for ODF 1.2, which includes the specification for text documents.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience/>
+		<fdd:preference>The Library of Congress <a href="http://www.loc.gov/preservation/resources/rfs/textmus.html">Recommended Format Statement (RFS) 2015-2016</a> includes ODF (ISO/IEC 26300) as an acceptable format for textual works in digital form.  The RFS list does not distinguish between versions of ODF.  In general, the Library of Congress prefers formats intended for final publication of textual works, rather than editable formats.  Editable word-processing formats will be found in collections of papers of organizations and individuals.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>International open standard.  Developed and maintained by <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=office">OASIS Open Document Format for Office Applications (OpenDocument) TC</a> as part of the OpenDocument Format (ODF) 1.2 specification published by OASIS in 2011.  Also approved as part of the equivalent ISO/IEC 26300-1:2015 by ISO/IEC JTC1/SC34.</fdd:disclosure>
+		<fdd:documentation>
+			<p>Specifications from OASIS: <a href="https://www.oasis-open.org/standards#opendocumentv1.2">Open Document Format for Office Applications (OpenDocument) Version 1.2</a>.  Specification for ODF 1.2 text documents are found primarily in chapters 5-8 of Part 1 of the specification.  The technical specification is part of a <a href="http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-schema.rng">normative RNG schema for primary component files for ODF documents.</a>.</p>
+			<p>The identical specification is published as <a href="http://standards.iso.org/ittf/PubliclyAvailableStandards/c066376_ISO_IEC_26300-3_2015.zip">ISO/IEC 26300-1:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2 Part 1: OpenDocument Schema.</a>
+			</p>
+			<p>Although there are few changes from ODF_text_1_1 to the schema that defines markup for textual documents, there is a completely new organization and style for the newer specification document.  The ODF 1.2 specification is divided into three parts, with the bulk of the markup specification in Part 1: OpenDocument Schema.  The package specification has been moved into a separate Part 3: Packages.  The new formula specification for spreadsheets is in its own Part 2: Recalculated Formula (OpenFormula) Format. Part 1, which is the part defining ODF_text_1_2, focuses on the schema, with fewer illustrative examples than its predecessor.</p>
+			<p>See <fddLink id="fdd000247">ODF-Family</fddLink> for a listing of namespaces that can be incorporated into any ODF 1.1 or ODF 1.2 document and links to associated specifications.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>The major applications supporting ODF can read and write text documents as defined in ODF 1.2:</p>
+			<ul>
+				<li>LibreOffice uses ODF 1.2 as its native format, according to <a href="https://blog.documentfoundation.org/2015/07/17/open-document-format-odf-1-2-published-as-international-standard-263002015-by-isoiec/">July 17, 2015 blog post</a> from The Document Foundation.</li>
+				<li>Microsoft has supported ODF 1.2 since Office 2013, according to <a href="http://blogs.msdn.com/b/chrisrae/archive/2014/04/15/odf-1-2-enters-the-iso-standardization-process.aspx">April 15, 2014 blog post</a> from Microsoft.</li>
+				<li>OpenOffice introduced support for ODF 1.2 in the beta version of 3.0 in 2008, according to <a href="http://www.openoffice.org/marketing/3.0/featurelistbeta.html">Release Notes for OpenOffice 3.0 beta</a>.</li>
+			</ul>
+			<p>See <fddLink id="fdd000247">ODF-Family</fddLink> for more detail on adoption of ODF in general, and particularly for mandates or recommendations for ODF when exchanging editable documents among government agencies and the individiduals or organizations they serve.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No concerns.  See <fddLink id="fdd000247">ODF-Family</fddLink>.</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>The structure and text of an ODT file are all represented in XML and hence viewable without special tools, although XML-aware tools that can show the element hierarchy make viewing and interpretation more convenient. The most commonly used parts, elements, and attributes have recognizable names. Simple documents can be interpreted with very basic tools. However, interpreting the semantics of some elements and the correspondence of some elements and attributes to word-processing functionality will require not only understanding of the schema and the specification text, but familiarity with the associated functionality.  </p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>As for other members of the ODF 1.2 family, ODF_text_1_2 added support for metadata based on RDF (W3C&apos;s Resource Description Framework).  As well as using RDF for metadata for the document package as a whole, RDF can be attached to elements within the document&apos;s content.  The use of &quot;custom&quot; metadata as specified in ODF 1.1 is deprecated in ODF 1.2.</p>
+			<p>Pre-defined metadata elements for the document as a whole, stored in an <i>office:meta</i> element  include:</p>
+			<ul>
+				<li>From the Dublin core namespace, using the <i>dc:</i> prefix: Title, Creator (of most recent modification), Description, Subject, Date (last modified), Language</li>
+				<li>From the ODF specification, using the <i>meta:</i> prefix: Generator (creating software application), Keywords, Initial Creator, Creation Date and Time, Modification Date and Time, Print Date and Time, Document Template, Document Statistics (word count, page count, etc.), </li>
+			</ul>
+			<p>The pre-defined elements are all optional and repeatable.  However, applications are not required to update multiple occurrences in a specific way to reflect modifications to a document.</p>
+			<p>Also supported in both ODF 1.1 and ODF 1.2 is an XML structure for user-defined metadata, based on triplets of name, data type, and value.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>Depends on features used.  Textual documents in ODF_text_1_2 format may include sections that import text from an external document or data source; see clause 5.4 in Part 1 of the specification. They may include links to external databases; see clause 7.6.  They can also import scripts from external sources; see subclause 7.7.9.</fdd:externalDependencies>
+		<fdd:techProtection>Encryption is supported for files within an ODF 1.1 or ODF 1.2 package.  In addition, an ODF package file may be encrypted during interchange or as part of DRM controlling distribution.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:textQF>
+			<fdd:normalText>Editable document, with embedded support for powerful word-processing functionality. Textual content is conveniently extractable for quotation and for indexing. Full support for Unicode character set.</fdd:normalText>
+			<fdd:structure>Paragraphs and sections are easily recognized, as are headers and footers. Excellent support is available for higher-level constructs through the consistent use of styles (e.g., for headings), automatically generated tables of contents and indexes, and structured templates. All formatting is represented in the stored ODT document by style structures in order to facilitate separation of the text and semantic structure from layout characteristics.  Style structures for a document are stored in one file, <i>styles.xml</i>. Textual content, including the semantic structure of chapters, paragraphs etc., are stored in <i>content.xml</i>.</fdd:structure>
+			<fdd:layout>Excellent support for layout choices. Represents entire layout and formatting as intended by an author who used a word-processor for which ODT is a native format. Bi-directional and vertical display of text can be specified. Differences in detail can occur on display if the original fonts used are not available in the system used for viewing or due to conversion from another word-processing format with different markup semantics.</fdd:layout>
+			<fdd:mathDiag>Mathematical equations can be included in documents by use of MathML either as independent files that can be embedded in a document or as drawing objects.</fdd:mathDiag>
+			<fdd:beyondText>
+				<p>In contrast to formats designed for documents as publications, word-processing formats such as ODT typically store much information associated with the process of creating and reviewing documents, including tracked changes and other annotations.</p>
+				<p>ODT files may include markup to support building an index or bibliography from references entered in the text.  ODT documents may include tables of contents generated automatically from section headings; such files will include elements and attributes to support regeneration of the table of contents using the author&apos;s choices of levels to include, of layout style, and of paragraphs to attach to headings.</p>
+				<p>ODT files may include forms designed to be filled in by a reader. The ODF 1.1 and 1.2 specifications include elements and attributes in the <b>forms</b> namespace to define presentation and controls for interactive forms.  It also allows use of the W3C <a href="http://www.w3.org/TR/xforms/">XForms</a> namespace for defining models and controls for forms.</p>
+			</fdd:beyondText>
+		</fdd:textQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>odt</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>
+					<i>.odt</i> is the extension used for a regular word-processing document.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.oasis.opendocument.text</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The MIME types for ODF_text_1_2  are the same as for ODF_text_1_1.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>Magic numbers that apply to ODF document category subtypes incorporate the magic number for  <fddLink id="fdd000354">ZIP_PK</fddLink>,  the string <i>mimetype</i> at position 30, and the MIME subtype string value at position 38.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Indicator for profile, level, version, etc.</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>ASCII: office:version=&quot;1.2&quot;</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>The four root elements used in the primary files in an ODF package all require an attribute that records the ODF version.  This is the signifier that distinguishes ODF 1.2 packages from earlier versions.  Documents without this attribute are assumed to be from version 1.1 or earlier.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>ott</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The extension .ott is used for a text document used as a template.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.oasis.opendocument.text-template</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:internetMediaType>
+		</fdd:signifiersGroup>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>odm</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The .odm extension is intended for an ODF text file that primarily comprises subdocuments, e.g., for a book, with chapters as subdocuments.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.oasis.opendocument.text-master</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The <i>text-master</i> MIME type is intended for an ODF text file that primarily comprises subdocuments, e.g., for a book, with chapters as subdocuments.</fdd:note>
+			</fdd:internetMediaType>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>ODF_text_1_2 introduces the concept of an ODF Extended document, and has a related clause 3.17 on Foreign Elements and Attributes. The inclusion of support for this possibility was controversial, judging from a <a href="http://orcmid.com/blog/2010/02/worst-nightmare-opendocument-format.asp">blog post by Dennis Hamilton and subsequent comments</a>, but some mechanism of this sort is necessary to support the introduction and testing of enhancements to the format to fulfill customer demand for new features in applications.  <fddLink id="fdd000427">ODF_text_1_1</fddLink> also permits the use of elements beyond those covered by the specification.  Section 1.5 of the ODF 1.1 specification begins, &quot;Documents that conform to the OpenDocument specification may contain elements and attributes not specified within the OpenDocument schema. Such elements and attributes must not be part of a namespace that is defined within this specification and are called foreign elements and attributes.&quot;  OASIS produced a so-called &quot;strict&quot; schema, that could be used to permit only elements defined in the specification.  The specification indicates how applications should treat foreign elements. The compilers of this resource have not determined whether there is a substantive difference between ODF 1.1 and ODF 1.2 in relation to the inclusion and recommended treatment of foreign elements and attributes.  <a href="../contact_format.shtml">Comments welcome</a>
+			</p>
+			<p>See Notes for <fddLink id="fdd000397">DOCX/OOXML_2012</fddLink> for notes on challenges for conversion between ODT and DOCX formats.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>See <fddLink id="fdd000425">ODF_package_1_2</fddLink> for discussion of changes to ODF in general between versions 1.1 and 1.2.  Changes to the specification for text documents between versions 1.1 and 1.2 were limited to corrections and small modifications requested by implementers.</p>
+			<p>See <fddLink id="fdd000247">ODF_family</fddLink> for more on the history ODF in general.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Specifications as published by OASIS</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.oasis-open.org/standards#opendocumentv1.2</link>
+							<tag>Open Document Format for Office Applications (OpenDocument) Specification v1.2</tag>
+							<comment>Provides links to all versions of specifications and supporting files for ODF 1.2.  The specification for the ODF package is in ODF 1.2, Part 3: Packages (available as ODT, PDF, and HTML.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-schema.rng</link>
+							<tag>Normative RNG schema for mandatory manifest file for an ODF 1.2 package.</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Specifications as published by ISOIEC</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c066363_ISO_IEC_26300-1_2015.zip</link>
+							<tag>ISO/IEC 26300-1:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2, Part 1: Schema</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c066376_ISO_IEC_26300-3_2015.zip</link>
+							<tag>ISO/IEC 26300-1:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2, Part 3: Packages</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.opendocumentformat.org/features/</link>
+					<tag>Key features of ODF</tag>
+					<comment>A promotional site for ODF.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.openoffice.org/documentation/manuals/oooauthors/MasterDocs.pdf</link>
+					<tag>Creating and Using Master Documents (OpenOffice documentation)</tag>
+					<comment>Master textual documents use the .odm extension and are termed &quot;global documents&quot; in the ODF 1.2 specification.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://wiki.documentfoundation.org/images/3/35/WG40-WriterGuideLO.pdf</link>
+					<tag>Writer Guide: Word Processing with Style.   LibreOffice 4 user documentation.</tag>
+					<comment>Chapter 10 describes the use of .ott Template files.  Chapter 13 describes the use of .odm Master Documents.  </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://support.office.com/en-us/article/Differences-between-the-OpenDocument-Text-odt-format-and-the-Word-docx-format-d9d51a92-56d1-4794-8b68-5efb57aebfdc</link>
+					<tag>Differences between the OpenDocument Text (.odt) format and the Word (.docx) format.</tag>
+					<comment>List includes features in DOCX for which ODT does not have equivalents.  This includes the Track Changes feature and a number of graphic elements.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://msdn.microsoft.com/en-us/library/hh695327.aspx</link>
+					<tag>[MS-OODF3]: Office Implementation Information for ODF 1.2 Standards Support</tag>
+					<comment>Relates to support in Office 2013 for ODF 1.2.  Long list of descriptions on whether and how Word 2013, Excel 2013, and PowerPoint 2013 applications use elements in the ODF 1.2 format. organized by sections of the ODF 1.2 specification.  </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://orcmid.com/blog/2010/02/worst-nightmare-opendocument-format.asp</link>
+					<tag>Worst Nightmare: OpenDocument Format Embraced Extended.  February 27, 2010.</tag>
+					<comment>The original post by Dennis E. Hamilton (aka Orcmid) stimulated a flurry of responses (mainly by Rob Weir) and counter-responses.  Hamilton and Weir have both been active in many phases of ODF standardization and OpenOffice application development.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://apps.nationalarchives.gov.uk/pronom/fmt/291</link>
+					<tag>PRONOM entry for OpenDocument Text 1.2</tag>
+					<comment>PUID for ODT 1.2 is fmt/291</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources that illuminate the utility of the Flat XML alternative to the package format.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://plugfest.opendocsociety.org/lib/exe/fetch.php?media=plugfests:201210_berlin:fridrichplugfestberlin2012.pdf</link>
+							<tag>Flat ODF as the Swiss Army Knife (2012) </tag>
+							<comment>By Fridrich
+Štrba.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://cwiki.apache.org/confluence/display/Corinthia/ODF</link>
+							<tag>ODF: General Information (from Apache Software Foundation wiki)</tag>
+							<comment>In the context of conformance testing, this page includes a section listing advantages of Single File Documents..</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000247">ODF_Family</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

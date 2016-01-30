@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000437" titleName="OpenDocument Chart Document Format (ODC), Version 1.2,  ISO 26300-1:2015" shortName="ODF_chart_1_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>office/business</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2015-11-02</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>OpenDocument Chart Document Format (ODC), Version 1.2.  Part of OASIS Open Document Format for Office Applications, Version 1.2 and the equivalent ISO 26300-1:2015.</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>markup languages</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The OpenDocument Chart Document Format (ODC), Version 1.2 (given the short name <i>ODF_chart_1_2</i> here) is a format for editable documents that are charts based on tables of data.  It is one of several subtypes in the <fddLink id="fdd000247">ODF family</fddLink> for particular content categories.  This description relates to part 1 of the ODF 1.2 specification as published by OASIS and the equivalent ISO/IEC 26300-1:2015 specification.  The standard specifies markup for charts using the ODF <i>chart:</i> namespace.  Such charts are often embedded into ODF documents of other categories. The standard also allows for free-standing chart documents with the file extension <i>.odc</i>.  This description focuses on the free-standing file format but, apart from the file signifiers, is largely applicable to embedded charts as well.</p>
+			<p>Although free-standing chart documents were certainly produced by early versions of OpenOffice and perhaps by its predecessors, it appears that, as of late 2015, current versions of Apache OpenOffice and LibreOffice, office suites that use ODF as the primary native format, do not generate free-standing chart documents.  Rather, they use the markup defined in the <i>chart:</i> namespace to define charts that are embedded in spreadsheets, textual documents, or presentations.  See <a href="#notes">Notes</a> below for a brief explanation of the mechanism used.</p>
+			<p>The primary ODF markup used for charts is specified in the <i>chart:</i> namespace, with the <i>&lt;chart:chart&gt;</i> element as a container for a single chart.  This <i>&lt;chart:chart&gt;</i> element contains elements in the <i>chart:</i> and <i>table:</i> namespaces defining chart labels, legend, and the data to be charted.  The data may be stored in the document, or retrieved by reference to another source.  The <i>&lt;chart:chart&gt;</i> element has an attribute <i>chart:class</i> that specifies the type of chart to be plotted.  Charts typically incorporate elements and attributes from the <i>table:</i>, <i>draw:</i>, and <i>svg:</i> namespaces.</p>
+			<p>For free-standing documents, the ODF specification covers two physical forms for ODF documents, a flat form as a single XML file and a package form based on the <fddLink id="fdd000355">ZIP_6_2_0</fddLink> format.  This description focuses on the more commonly used ZIP-based package format for ODF chart files, given the <i>.odc</i> file extension.  Files using the same markup specification and package but with an extension of <i>.otc</i> are for use as chart document templates.</p>
+			<p>An ODF package can be recognized as a chart document in several ways.  Externally, there are file extensions for two ways in which ODF chart documents may be used in graphics applications, as noted above.  The primary internal indication is that the mandatory file named <i>mimetype</i> will contain one of the corresponding strings listed as <a href="#sign">File signifiers</a> below.  An additional way to recognize an ODF chart document is that  the <i>&lt;office:body&gt;</i> element, a child of the root <i>&lt;office:document-content&gt;</i> element in <i>content.xml</i> has the child element <i>&lt;office:chart&gt;</i>.</p>
+			<p>See Notes in <fddLink id="fdd000247">ODF Family</fddLink> for more information about the flat XML-only variant of ODF files.  For a flat ODF chart file, the root <i>&lt;office:document&gt;</i> element has an <i>office:mimetype</i> attribute with one of
+the values listed below as <a href="#sign">File signifiers</a>.</p>
+			<p>For details of the ZIP-based package for ODF_chart_1_2, see <fddLink id="fdd000425">ODF_package_1_2</fddLink>.  The typical files for a minimal chart document include:  <i>mimetype</i> (one-line file containing only the string &quot;application/vnd.oasis.opendocument.chart&quot;; 
+<i>./META-INF/manifest.xml</i> (package manifest); <i>content.xml</i> (chart content); <i>styles.xml</i> (chart formatting).  The package specification defines the form for the package manifest, and options for digital signatures, encryption, etc.</p>
+			<p>Apart from changes to the underlying package format, changes made to the markup for ODF charts between ODF versions 1.1 and 1.2 were limited to a few enhancements and one added chart type.</p>
+		</fdd:description>
+		<fdd:shortDescription>An XML-based format for a chart that is editable or dynamically generated from a data source.  File extension .odc is used for a free-standing chart.   May be embedded within other document formats in the OpenDocument Format (ODF) family.  Documented in ODF 1.2 Part 1.  </fdd:shortDescription>
+		<fdd:productionPhase>Can be used in any production phase.  Particularly used for creating documents (initial state) and for editing and review (middle-state). Used in final-state contexts where dynamically generated charts based on current data are required.  Charts may also be converted to an image format that is designed for final publication and not for convenient editing.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000247</fdd:id>
+					<fdd:shortName>ODF_Family</fdd:shortName>
+					<fdd:titleName>OpenDocument Format (ODF) Family, OASIS and ISO/IEC 26300</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000439</fdd:id>
+					<fdd:shortName>ODF_spreadsheet_1_2</fdd:shortName>
+					<fdd:titleName>OpenDocument Spreadsheet Document Format (ODS), Version 1.2, ISO 26300:2015</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:comment>Other ODF document categories.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000425</fdd:id>
+					<fdd:shortName>ODF_package_1_2</fdd:shortName>
+					<fdd:titleName>OpenDocument Package Format, ODF 1.2, ISO 26300-3:2015</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000355</fdd:id>
+					<fdd:shortName>ZIP_6_2_0</fdd:shortName>
+					<fdd:titleName>ZIP File Format, Version 6.2.0 (PKWARE)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Various features of the ZIP File Format are not permitted in ODF.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:comment>META-INF/manifest.xml file. This manifest file is mandatory in all ODF packages.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:comment>ODC 1.1, not described separately on this site.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000263</fdd:id>
+					<fdd:shortName>XML_1_0</fdd:shortName>
+					<fdd:titleName>XML (Extensible Markup Language) 1.0</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment> A normative RELAX NG schema is part of the specification for ODF 1.2, which includes the specification for chart documents.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse/>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>International open standard.  Developed and maintained by <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=office">OASIS Open Document Format for Office Applications (OpenDocument) TC</a> as part of the OpenDocument Format (ODF) 1.2 specification published by OASIS in 2011.  Also approved as part of the equivalent ISO/IEC 26300-1:2015 by ISO/IEC JTC1/SC34.</fdd:disclosure>
+		<fdd:documentation>
+			<p>Specifications from OASIS: <a href="https://www.oasis-open.org/standards#opendocumentv1.2">Open Document Format for Office Applications (OpenDocument) Version 1.2</a>.  Specification for ODF 1.2 chart documents are found primarily in chapter 11 of Part 1 of the specification.  Since charts may contain tables and graphics, chapters 9 and 10 also relevant.  The technical specification is part of a <a href="http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-schema.rng">normative RNG schema for primary component files for ODF documents.</a>.</p>
+			<p>The identical specification is published as <a href="http://standards.iso.org/ittf/PubliclyAvailableStandards/c066376_ISO_IEC_26300-3_2015.zip">ISO/IEC 26300-1:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2 Part 1: OpenDocument Schema.</a>
+			</p>
+			<p>The ODF 1.2 specification is divided into three parts, with the bulk of the markup specification in Part 1: OpenDocument Schema.  The package specification has been moved into a separate Part 3: Packages.</p>
+			<p>See <fddLink id="fdd000247">ODF_Family</fddLink> for a listing of namespaces that can be incorporated into any ODF 1.1 or ODF 1.2 document and links to associated specifications.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>The compilers of this resource have found no evidence that current applications using ODF as a native format support the saving of free-standing chart files.  As of October 2015, documentation for both Apache Open Office and LibreOffice states that the applications do not create such files.  See <a href="#useful">Useful References</a> below.  The ODF_chart_1_2 markup however, is used widely to embed charts in other ODF document categories, particularly in spreadsheets.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No concerns.  See <fddLink id="fdd000247">ODF_Family</fddLink>.</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>The structure and text of an ODC file are all represented in XML and hence viewable without special tools, although XML-aware tools that can show the element hierarchy make viewing and interpretation more convenient.  The most commonly used parts, elements, and attributes have recognizable names. Simple documents can be interpreted with very basic tools. However, interpreting the semantics of some elements and the correspondence of some elements and attributes to charting terminology or functionality will require not only understanding of the schema and the specification text, but familiarity with the associated terminology and functionality.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>As for other members of the ODF 1.2 family, ODF_chart_1_2 added support for metadata based on RDF (W3C&apos;s Resource Description Framework).  As well as using RDF for metadata for the document package as a whole, RDF can be attached to elements within the document&apos;s content.  The use of &quot;custom&quot; metadata as specified in ODF 1.1 is deprecated in ODF 1.2.</p>
+			<p>Pre-defined metadata elements for the document as a whole, stored in an <i>&lt;office:meta&gt;</i> element  include:</p>
+			<ul>
+				<li>From the Dublin core namespace, using the <i>dc:</i> prefix: Title, Creator (of most recent modification), Description, Subject, Date (last modified), Language</li>
+				<li>From the ODF specification, using the <i>meta:</i> prefix: Generator (creating software application), Keywords, Initial Creator, Creation Date and Time, Modification Date and Time, Print Date and Time, Document Template, Document Statistics (word count, page count, etc.),</li>
+			</ul>
+			<p>The pre-defined elements are all optional and repeatable.  However, applications are not required to update multiple occurrences in a specific way to reflect modifications to a document.</p>
+			<p>Also supported in both ODF 1.1 and ODF 1.2 is an XML structure for user-defined metadata, based on triplets of name, data type, and value.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			<p>Depends on features used.  Chart documents in ODF_chart_1_2 format may include links to externally stored data.</p>
+		</fdd:externalDependencies>
+		<fdd:techProtection>Encryption is supported for files within an ODF 1.1 or ODF 1.2 package.  In addition, an ODF package file may be encrypted during interchange or as part of DRM controlling distribution.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>No special quality and functionality factors have been developed for chart diagrams.</fdd:normalImage>
+			<fdd:clarity>Scalable</fdd:clarity>
+			<fdd:colorMaint>ODF 1.2 uses the notation #rrggbb to specify colors. The specification does not mention ICC color profiles.</fdd:colorMaint>
+			<fdd:graphics>Specialized support for different types of charts based on tables of data, e.g., bar-chart, pie-chart, etc.</fdd:graphics>
+			<fdd:multispectral>Not applicable.</fdd:multispectral>
+			<fdd:beyondImage>Support for dynamic regeneration from updated data.</fdd:beyondImage>
+		</fdd:stillImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>odc</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>
+					<i>.odc</i> is the extension used for a free-standing ODF chart file.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.oasis.opendocument.chart</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The MIME types for ODF_chart_1_2  are the same as for earlier versions</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>Magic numbers that apply to ODF document category subtypes incorporate the magic number for  <fddLink id="fdd000354">ZIP_PK</fddLink>,  the string <i>mimetype</i> at position 30, and the MIME subtype string value at position 38.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Indicator for profile, level, version, etc.</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>ASCII: office:version=&quot;1.2&quot;</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>The four root elements used in the primary files in an ODF package all require an attribute that records the ODF version.  This is the signifier that distinguishes ODF 1.2 packages from earlier versions.  Documents without this attribute are assumed to be from version 1.1 or earlier.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>otc</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The extension <i>.otc</i> is used for a chart document used as a template.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.oasis.opendocument.chart-template</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:internetMediaType>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>In addition to specifying the ODF_chart_1_2 free-standing chart document format, ODF 1.2 specifies how charts using the same markup can be embedded in spreadsheets, textual documents (see <fddLink id="fdd000428">ODF_text_1_2</fddLink>), and presentations.  The mechanism for embedding a chart within an ODF document is to generate an ODF <i>object</i> that is equivalent to a .odc file, store it within the ZIP-based package, and refer to it through a <i>&lt;draw:object&gt;</i> element.  See <a href="http://books.evc-cit.info/odbook/ch08.html#chart-object-section">OASIS OpenDocument Essentials: Chapter 8. Charts -- Charts are Objects</a> for a fuller explanation and examples.  Sample files created in LibreOffice 4.3 confirmed the use of this mechanism.  The chart markup is in a named <i>object</i> folder that includes its own <i>content.xml</i> (with root element <i>&lt;office:document-content&gt;</i>), <i>meta.xml</i>, and <i>styles.xml</i> files.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>See <fddLink id="fdd000425">ODF_package_1_2</fddLink> for discussion of changes to ODF in general between versions 1.1 and 1.2.  Changes to the markup for charts between versions 1.1 and 1.2 were primarily enhancements requested by implementers.  <a href="http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-part1.html#__RefHeading__1420418_253892949">Appendix G of the ODF 1.2 schema specification</a> indicates that three new elements were added to the <i>chart:</i> namespace and a number of new attributes were added.</p>
+			<p>See <fddLink id="fdd000247">ODF_family</fddLink> for more on the history ODF in general.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Specifications as published by OASIS</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.oasis-open.org/standards#opendocumentv1.2</link>
+							<tag>Open Document Format for Office Applications (OpenDocument) Specification v1.2</tag>
+							<comment>Provides links to all versions of specifications and supporting files for ODF 1.2.  The specification for the chart file and the chart: namespace is in Part 1: Schemas.  The specification for the ODF package is in ODF 1.2, Part 3: Packages (available as ODT, PDF, and HTML.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-schema.rng</link>
+							<tag>Normative RNG schema for mandatory manifest file for an ODF 1.2 package.</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Specifications as published by ISO/IEC</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c066363_ISO_IEC_26300-1_2015.zip</link>
+							<tag>ISO/IEC 26300-1:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2, Part 1: Schema</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c066376_ISO_IEC_26300-3_2015.zip</link>
+							<tag>ISO/IEC 26300-1:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2, Part 3: Packages</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://books.evc-cit.info/odbook/ch08.html</link>
+					<tag>OASIS OpenDocument Essentials.  Chapter 8. Charts</tag>
+					<comment>Based on ODF 1.1.  Still applicable to ODF 1.2, since markup changes for charts were enhancements rather than changes in basics.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>ODF-based office suites that use the markup defined in the <i>chart:</i> namespace, but do not produce free-standing chart documents.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://wiki.openoffice.org/wiki/Documentation/BASIC_Guide/Charts</link>
+							<tag>Apache OpenOffice Documentation‎ | BASIC Guide -- Charts (Diagrams)</tag>
+							<comment>In November 2015, states, &quot;Charts are not treated as independent documents in OpenOffice.org, but as objects that are embedded in an existing document.&quot;</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://help.libreoffice.org/Common/XML_File_Formats</link>
+							<tag>LibreOffice | XML File Formats</tag>
+							<comment>In November 2015, states, &quot;ODF Chart is the name of the file format for stand alone charts. This format with the extension *.odc is currently not in use.&quot;</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000247">ODF_Family</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

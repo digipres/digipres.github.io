@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000431" titleName="Short Message Service (SMS) Message Format" shortName="SMS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>text</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>other</fdd:value>
+				<fdd:comment>text message</fdd:comment>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2015-09-02</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Short Message Service (SMS) Message Format</fdd:fullName>
+		<fdd:description>
+			<p>Short Message Service or SMS messages, as defined in <a href="https://www.ietf.org/rfc/rfc5724.txt">RFC 5724</a>, are short two-way alphanumeric paging messages that can be sent to and from SMS clients. SMS clients, including text messaging service component of phone, Web, or other mobile communication systems, are an integral part of the GSM (Global System for Mobile Communications) network technology. SMS uses standardized communications protocols to allow fixed line or mobile phone devices to exchange short text messages. SMS messages can be used to transport almost any kind of data (within the character limit).</p>
+			<p>One of the defining characteristics of SMS messages is the maximum length of 160 7-bit characters (140 octets). Although early drafts of the specification did not specify any standardized methods for concatenating SMS messages, SMS messages can be concatenated to form longer messages by following the concatenation method based on the header in the TP-User Data field as specified in 3GPP TS 23.040 although compliance to this protocol is not required. It is up to the user agent to decide whether to limit the length of the message, and how to indicate this limit in its user interface if necessary.</p>
+			<p>Character set also impacts the character limit. 7-bit characters from the 3GPP 23.038 GSM character set are the default although other character sets may be supported by specific applications. The use of another character set may impact the character limit, e.g., UCS-2 16-bit characters results in 70-character messages. If other character sets are used, applications handling SMS messages are required to map the character sets to and from the character set used for SMS messages. Implementations may choose to discard (or convert) characters in the message body that are not supported by the SMS character set they are using to send the SMS message.  If they do discard or convert characters, applications must notify the user.</p>
+			<p>The restricted character limits has increased the development and adoption of <a href="https://en.wikipedia.org/wiki/Internet_slang">Internet slang</a> which includes the use of abbreviations, acronyms, keyboard signals, emojis and shortened URLs to save keystrokes and to compensate for small character limits.</p>
+		</fdd:description>
+		<fdd:shortDescription>SMS is the canonical data format for instant messages sent via phone, Web or other mobile communication systems. </fdd:shortDescription>
+	</fdd:identificationAndDescription>
+	<fdd:localUse/>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully documented.</fdd:disclosure>
+		<fdd:documentation>SMS format is documented in <a href="https://www.ietf.org/rfc/rfc5724.txt">RFC 5724</a> which is in the IETF Standards Track. Documents from 3GPP define other aspects of the transmission process. See <a href="#specs">Format Specifications</a> for details.</fdd:documentation>
+		<fdd:adoption>Highly adopted. According to <a href="https://en.wikipedia.org/wiki/Short_Message_Service">Wikipedia</a>, &quot;SMS was the most widely used data application, with an estimated 3.5 billion active users, or about 80% of all mobile phone subscribers at the end of 2010.&quot; The article notes that SMS is being challenged by &quot;alternative messaging services such as Facebook Messenger, WhatsApp and Viber available on smart phones with data connections, especially in Western countries where these services are growing in popularity.&quot; <a href="https://en.wikipedia.org/wiki/Twitter">Twitter&apos;s</a> 140-character limit for tweets was designed to comply with the SMS format. In addition to cellular phones, most satellite phones support SMS. </fdd:adoption>
+		<fdd:licensingAndPatents>None</fdd:licensingAndPatents>
+		<fdd:transparency>Apart from when encrypted, SMS files are usually simple text files and can be opened in Notepad or a web browser.</fdd:transparency>
+		<fdd:selfDocumentation>Metadata is available through the well-structured header fields.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>SMS messages sent on the Global Service for Mobile communications (GSM) network have optional limited encryption only the airway traffic between the Mobile Station (MS) and the Base Transceiver Station (BTS) although this is through an  optionally encrypted &quot;weak and broken A5/1 or A5/2 stream cipher. The authentication is unilateral and also vulnerable.&quot; See <a href="#notes">Notes</a> for more about security issues.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:notes>
+		<fdd:general>
+			<p>SMS messages are transmitted through a formal "sms" URI syntax defined in RFC 5724. This includes declarations for a sms-recipient, telephone-subscriber (or telephone number), and message body.</p>
+			<p>According to <a href="https://en.wikipedia.org/wiki/Short_Message_Service#Vulnerabilities">Wikipedia</a>, SMS messages are vulnerable to security issues partially &quot;due to its store-and-forward feature, and the problem of fake SMS that can be conducted via the Internet. When a user is roaming, SMS content passes through different networks, perhaps including the Internet, and is exposed to various vulnerabilities and attacks.&quot; One of these is SMS Spoofing in which an account roaming on a foreign network is &quot;hijacked&quot; to send messages into other networks.</p>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.ietf.org/rfc/rfc5724.txt</link>
+					<tag>RFC 5724: URI Scheme for Global System for Mobile Communications (GSM) Short Message Service (SMS)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Relevant 3GPP Specifications:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.etsi.org/deliver/etsi_ts/123000_123099/123040/12.02.00_60/ts_123040v120200p.pdf</link>
+							<tag>3GPP: Technical realization of the Short Message Service (SMS) (3GPP TS 23.040 version 12.2.0 Release 12) </tag>
+							<comment>Defines the Short Message Protocol used to transmit SMS messages</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.etsi.org/deliver/etsi_ts/123000_123099/123040/12.02.00_60/ts_123040v120200p.pdf</link>
+							<tag>3GPP: Technical realization of the Short Message Service (SMS) (3GPP TS 23.040 version 12.2.0 Release 12) </tag>
+							<comment>Defines the Short Message Protocol used to transmit SMS messages</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.etsi.org/deliver/etsi_ts/123000_123099/123042/12.00.00_60/ts_123042v120000p.pdf</link>
+							<tag>3GPP: Compression algorithm for text messaging services</tag>
+							<comment>Describes the compression scheme</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.etsi.org/deliver/etsi_ts/123000_123099/123038/12.00.00_60/ts_123038v120000p.pdf</link>
+							<tag>3GPP: Alphabets and language-specific information (3GPP TS 23.038 version 12.0.0 Release 12) </tag>
+							<comment>Defines the character sets, languages and message handling requirements for SMS, CBS and USSD</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Short_Message_Service#Text_messaging_outside_GSM</link>
+					<tag>Wikipedia entry for Short Message Service</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Text_messaging</link>
+					<tag>Wikipedia entry for Text Messaging</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Twitter</link>
+					<tag>Wikipedia entry for Twitter</tag>
+					<comment>Description of Twitter&apos;s use of SMS formats for tweets</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

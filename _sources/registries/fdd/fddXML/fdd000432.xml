@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000432" titleName="HTML Electronic Calendar and Scheduling Format" shortName="hCalendar" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>text</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>other</fdd:value>
+				<fdd:comment>calendar</fdd:comment>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2015-09-04</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>HTML Electronic Calendar and Scheduling Format</fdd:fullName>
+		<fdd:description>
+			<p>The hCalendar microformat is a 1:1 representation of <fddLink id="fdd000394">iCal&apos;s</fddLink> VEVENT properties and values in semantic HTML using HTML classes and <i>rel</i> attributes. hCalendar events can be embedded directly in web pages. In addition, hCalendar enables applications to retrieve information about such events directly from web pages without having to reference a separate file.</p>
+			<p>See <a href="#notes">Notes</a> for description of the file structure.</p>
+		</fdd:description>
+		<fdd:shortDescription>The hCalendar microformat is a 1:1 representation of iCal&apos;s VEVENT properties and values in semantic HTML. </fdd:shortDescription>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000394</fdd:id>
+					<fdd:shortName>iCal</fdd:shortName>
+					<fdd:titleName>iCalendar Electronic Calendar and Scheduling Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:titleName>Geo (Microformat)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Microformat used to include the coordinates of the event&apos;s location within an hCalendar event. Not documented at this time.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse/>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>Open specification available from <a href="http://microformats.org/wiki/hcalendar">Microformats.org</a>
+			</p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>hCalendar is based on <fddLink id="fdd000394">iCal</fddLink> which is fully documented though RFC 5545, RFC 2446, and RFC 2447. Additional documentation available through<a href="http://microformats.org/wiki/hcalendar"> http://microformats.org/wiki/hcalendar</a>. Microformats.org also publishes the <a href="http://microformats.org/profile/hcalendar">hCalendar XMDP profile</a> which defines some of the class attribute values (class names) and their meanings according to the semantics defined in the hCalendar specification.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>Strong adoption. Microformats.com <a href="http://microformats.org/wiki/hcalendar-examples-in-wild">lists examples</a> of use including Wikipedia, Facebook, Yahoo!Local, University of Oxford (UK) and SubPop records. <a href="http://www.digitalpreservation.gov/formats/contact_format.shtml">Comments</a> welcome. </p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>This specification is subject to a royalty free patent policy, e.g. per the W3C Patent Policy, and IETF RFC 3667 and RFC 3668.</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>According to the <a href="http://microformats.org/wiki/what-are-microformats">original definition</a>, "designed for humans first and machines second, microformats are a set of simple, open data formats built upon existing and widely adopted standards."</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>hCalendar features well-defined metadata. See <fddLink id="fdd000394">iCal</fddLink> for syntax details.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			<p>None</p>
+		</fdd:externalDependencies>
+		<fdd:techProtection>None</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors/>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>html</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>
+					<p>
+						<a href="http://www.digitalpreservation.gov/formats/contact_format.shtml">Comments</a> welcome. </p>
+				</fdd:note>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>The basic format of hCalendar  is to use iCal object/property names in lower-case for class names, and to map the nesting of iCal objects directly into nested XHTML elements. As detailed in <a href="http://www.ietf.org/rfc/rfc5545.txt">RFC 5545</a>, VEVENT defines the iCal calendar component and is required for each event listing. Within vevent, two properties are required for hCalendar: <i>dtstart </i>(DATE-TIME when calendar component begins expressed in <a href="http://microformats.org/wiki/iso-8601">ISO 8601</a> format) and <i>summary</i> (short summary or subject for the calendar component). Optional properties include <i>location, url, dtend, duration (ISO date duration), rdate, rrule, category, description, uid, geo (latitude, longitude), attendee (partstat, role), contact, organizer, attach,</i> and <i>status</i>.  This list is still under development. One <a href="http://microformats.org/wiki/dtend-issue">compatibility issue with hCalendar to iCal conversation</a> is with the <i>dtend</i> property. The iCal specification expects <i>dtend</i> to record the day after the the last day of a multi-day event (a.k.a an exclusive end date) but hCalendar acknowledges that many users typically publish the end date of a multi-day event as the last day the event occurs (an inclusive end data). To compensate, hCalendar to iCalendar converters must automatically convert such inclusive hCalendar end date (dtend) property values to the equivalent exclusive iCalendar DTEND property values.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>The hCalendar microformat was initiated on 2005-06-20 at the Supernova Conference in San Francisco, CA.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://microformats.org/wiki/hcalendar</link>
+					<tag>Microformats.org hCalendar </tag>
+					<comment>Specification and implementation details for hCalendar</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000394">iCal</fddLink>
+					</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/hCalendar</link>
+					<tag>Wikipedia entry for hCalendar</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.xfront.com/microformats/hCalendar.html</link>
+					<tag>hCalendar Microformat (part 1): Roger Costello</tag>
+					<comment>Helpful slide show about hCalendar including discussion of date time issues</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.xfront.com/microformats/hCalendar_part2.html</link>
+					<tag>hCalendar Microformat (part 2): Roger Costello</tag>
+					<comment>Includes tutorial</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

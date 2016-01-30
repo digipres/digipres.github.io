@@ -47,6 +47,14 @@
     <glob pattern="*.aw"/>
   </mime-type>
 
+  <mime-type type="text/iso19139+xml">
+	  <root-XML localName="MD_metadata"/>
+	  <root-XML localName="MD_metadata" namespaceURI="http://www.isotc211.org/2005/gmd"/>
+	  <glob pattern="*.iso19139"/>
+	  <sub-class-of type="application/xml"/>
+   </mime-type>
+
+  
   <mime-type type="application/atom+xml">
     <root-XML localName="feed" namespaceURI="http://purl.org/atom/ns#"/>
     <root-XML localName="feed" namespaceURI="http://www.w3.org/2005/Atom"/>
@@ -76,9 +84,10 @@
     <acronym>CBOR</acronym>
     <_comment>Concise Binary Object Representation container</_comment>
     <tika:link>http://tools.ietf.org/html/rfc7049</tika:link>
-    <magic priority="40">
+    <magic priority="60">
       <match value="0xd9d9f7" type="string" offset="0" />
     </magic>
+    <glob pattern="*.cbor"/>
   </mime-type>
 
   <mime-type type="application/ccxml+xml">
@@ -472,7 +481,16 @@
     <tika:link>http://www.adobe.com/devnet/pdf/pdf_reference_archive.html</tika:link>
     <tika:uti>com.adobe.pdf</tika:uti>
     <magic priority="50">
+      <!-- Normally just %PDF- -->
       <match value="%PDF-" type="string" offset="0"/>
+      <!-- Sometimes has a UTF-8 Byte Order Mark first -->
+      <match value="\xef\xbb\xbf%PDF-" type="string" offset="0"/>
+    </magic>
+    <magic priority="20">
+      <!-- Low priority match for %PDF-#.# near the start of the file -->
+      <!-- Can trigger false positives, so set the priority rather low here -->
+      <match value="%PDF-1." type="string" offset="1:512"/>
+      <match value="%PDF-2." type="string" offset="1:512"/>
     </magic>
     <glob pattern="*.pdf"/>
   </mime-type>
@@ -506,11 +524,29 @@
   <mime-type type="application/pkcs7-signature">
     <glob pattern="*.p7s"/>
     <magic priority="50">
+      <!-- PEM encoded -->
       <match value="-----BEGIN PKCS7" type="string" offset="0"/>
-      <match value="0x3082FFFF06092a864886f70d0107FFa0" type="string"
-              mask="0xFFFF0000FFFFFFFFFFFFFFFFFFFF00FF" offset="0"/>
-      <match value="0x308006092a864886f70d0107FFa0" type="string"
-              mask="0xFFFFFFFFFFFFFFFFFFFFFFFF00FF" offset="0"/>
+      <!-- DER encoded, sequence+length, object=pkcs7-signedData -->
+      <match value="0x3080" offset="0">
+         <match value="0x06092a864886f70d0107FFa0" type="string"
+                 mask="0xFFFFFFFFFFFFFFFFFFFF00FF" offset="2"/>
+      </match>
+      <match value="0x3081" offset="0">
+         <match value="0x06092a864886f70d0107FFa0" type="string"
+                 mask="0xFFFFFFFFFFFFFFFFFFFF00FF" offset="3"/>
+      </match>
+      <match value="0x3082" offset="0">
+         <match value="0x06092a864886f70d0107FFa0" type="string"
+                 mask="0xFFFFFFFFFFFFFFFFFFFF00FF" offset="4"/>
+      </match>
+      <match value="0x3083" offset="0">
+         <match value="0x06092a864886f70d0107FFa0" type="string"
+                 mask="0xFFFFFFFFFFFFFFFFFFFF00FF" offset="5"/>
+      </match>
+      <match value="0x3084" offset="0">
+         <match value="0x06092a864886f70d0107FFa0" type="string"
+                 mask="0xFFFFFFFFFFFFFFFFFFFF00FF" offset="6"/>
+      </match>
     </magic>
   </mime-type>
 
@@ -974,6 +1010,33 @@
     <glob pattern="*.es3"/>
     <glob pattern="*.et3"/>
   </mime-type>
+
+  <mime-type type="application/vnd.etsi.asic-e+zip">
+    <acronym>ASiC-E</acronym>
+    <_comment>Extended Associated Signature Container</_comment>
+    <sub-class-of type="application/zip"/>
+    <!-- Spec says the Mimetype entry should be the first in the zip -->
+    <magic priority="60">
+      <match value="PK\003\004" type="string" offset="0">
+        <match value="mimetypeapplication/vnd.etsi.asic-e+zip" type="string" offset="30" />
+      </match>
+    </magic>
+    <glob pattern="*.asice" />
+  </mime-type>
+
+  <mime-type type="application/vnd.etsi.asic-s+zip">
+    <acronym>ASiC-S</acronym>
+    <_comment>Simple Associated Signature Container</_comment>
+    <sub-class-of type="application/zip"/>
+    <!-- Spec says the Mimetype entry should be the first in the zip -->
+    <magic priority="60">
+      <match value="PK\003\004" type="string" offset="0">
+        <match value="mimetypeapplication/vnd.etsi.asic-s+zip" type="string" offset="30" />
+      </match>
+    </magic>
+    <glob pattern="*.asics" />
+  </mime-type>
+
   <mime-type type="application/vnd.etsi.aoc+xml"/>
   <mime-type type="application/vnd.etsi.cug+xml"/>
   <mime-type type="application/vnd.etsi.iptvcommand+xml"/>
@@ -2775,20 +2838,38 @@
       <match value="%%%\ \ " type="string" offset="73"/>
       <match value="%\ BibTeX\ standard\ bibliography\ " type="string" offset="0"/>
       <match value="%%%\ \ @BibTeX-style-file{" type="string" offset="73"/>
-      <match value="@article{" type="string" offset="0"/>
-      <match value="@book{" type="string" offset="0"/>
-      <match value="@inbook{" type="string" offset="0"/>
-      <match value="@incollection{" type="string" offset="0"/>
-      <match value="@inproceedings{" type="string" offset="0"/>
-      <match value="@manual{" type="string" offset="0"/>
-      <match value="@misc{" type="string" offset="0"/>
-      <match value="@preamble{" type="string" offset="0"/>
-      <match value="@phdthesis{" type="string" offset="0"/>
-      <match value="@techreport{" type="string" offset="0"/>
-      <match value="@unpublished{" type="string" offset="0"/>
+      <match value="@article{" type="stringignorecase" offset="0"/>
+      <match value="@book{" type="stringignorecase" offset="0"/>
+      <match value="@inbook{" type="stringignorecase" offset="0"/>
+      <match value="@incollection{" type="stringignorecase" offset="0"/>
+      <match value="@inproceedings{" type="stringignorecase" offset="0"/>
+      <match value="@manual{" type="stringignorecase" offset="0"/>
+      <match value="@misc{" type="stringignorecase" offset="0"/>
+      <match value="@preamble{" type="stringignorecase" offset="0"/>
+      <match value="@phdthesis{" type="stringignorecase" offset="0"/>
+      <match value="@string{" type="stringignorecase" offset="0"/>
+      <match value="@techreport{" type="stringignorecase" offset="0"/>
+      <match value="@unpublished{" type="stringignorecase" offset="0"/>
+    </magic>
+    <magic priority="30">
+      <match value="%" type="string" offset="0">
+         <match value="\n@article{" type="stringignorecase" offset="2:128"/>
+         <match value="\n@book{" type="stringignorecase" offset="2:128"/>
+         <match value="\n@inbook{" type="stringignorecase" offset="2:128"/>
+         <match value="\n@incollection{" type="stringignorecase" offset="2:128"/>
+         <match value="\n@inproceedings{" type="stringignorecase" offset="2:128"/>
+         <match value="\n@manual{" type="stringignorecase" offset="2:128"/>
+         <match value="\n@misc{" type="stringignorecase" offset="2:128"/>
+         <match value="\n@preamble{" type="stringignorecase" offset="2:128"/>
+         <match value="\n@phdthesis{" type="stringignorecase" offset="2:128"/>
+         <match value="\n@string{" type="stringignorecase" offset="2:128"/>
+         <match value="\n@techreport{" type="stringignorecase" offset="2:128"/>
+         <match value="\n@unpublished{" type="stringignorecase" offset="2:128"/>
+      </match>
     </magic>
     <glob pattern="*.bib"/>
     <glob pattern="*.bibtex"/>
+    <sub-class-of type="text/plain"/>
   </mime-type>
 
   <mime-type type="application/x-bittorrent">
@@ -3194,13 +3275,19 @@
   </mime-type>
 
   <mime-type type="application/x-hwp">
+    <_comment>Hangul Word Processor File</_comment>
     <magic priority="50">
       <!--
         TIKA-330: Detection pattern based on signature strings from
         the hwpfilter/source/hwpfile.cpp file in OpenOffice.org.
+        This is for HWP before v5, v5 onwards use OLE2
       -->
       <match value="HWP Document File V" type="string" offset="0"/>
     </magic>
+  </mime-type>
+  <mime-type type="application/x-hwp-v5">
+    <_comment>Hangul Word Processor File v5</_comment>
+    <sub-class-of type="application/x-tika-msoffice"/>
   </mime-type>
 
   <mime-type type="application/x-ibooks+zip">
@@ -3680,6 +3767,14 @@
     <glob pattern="*.xap"/>
   </mime-type>
 
+  <mime-type type="application/x-snappy-framed">
+    <_comment>Snappy Framed</_comment>
+    <magic priority="50">
+      <match value="sNaPpY" type="string" offset="0"/>
+    </magic>
+    <glob pattern="*.sz"/>
+  </mime-type>
+
   <mime-type type="application/x-sqlite3">
     <magic priority="50">
       <match value="SQLite format 3\x00" type="string" offset="0"/>
@@ -3725,6 +3820,7 @@
       <match value="\\contentsline" type="string" offset="0"/>
     </magic>
     <glob pattern="*.tex"/>
+    <sub-class-of type="text/plain"/>
   </mime-type>
 
   <mime-type type="application/x-tex-tfm">
@@ -3783,6 +3879,7 @@
   <!-- =================================================================== -->
   <mime-type type="application/x-tika-ooxml">
     <sub-class-of type="application/zip"/>
+    <!-- Only works if the Content Types file is the first zip entry -->
     <magic priority="50">
       <match value="PK\003\004" type="string" offset="0">
         <match value="[Content_Types].xml" type="string" offset="30"/>
@@ -3886,7 +3983,9 @@
   </mime-type>
 
   <mime-type type="application/xhtml+xml">
-    <magic priority="50">
+    <!-- The magic priority for xhtml+xml needs to be lower than that of -->
+    <!--  files that contain HTML within them, e.g. mime emails -->
+    <magic priority="40">
       <match value="&lt;html xmlns=" type="string" offset="0:8192"/>
     </magic>
     <root-XML namespaceURI="http://www.w3.org/1999/xhtml" localName="html"/>
@@ -3986,6 +4085,22 @@
       <match value="PK\x07\x08" type="string" offset="0"/>
     </magic>
     <glob pattern="*.zip"/>
+  </mime-type>
+
+  <mime-type type="application/zlib">
+    <alias type="application/x-deflate"/>
+    <_comment>ZLIB Compressed Data Format</_comment>
+    <tika:link>http://tools.ietf.org/html/rfc1950</tika:link>
+    <magic priority="45">
+      <!-- Low/No compression -->
+      <match value="\x78\x01" type="string" offset="0" />
+      <!-- Medium compression -->
+      <match value="\x78\x5e" type="string" offset="0" />
+      <!-- Default compression -->
+      <match value="\x78\x9c" type="string" offset="0" />
+      <!-- Best compression -->
+      <match value="\x78\xda" type="string" offset="0" />
+    </magic>
   </mime-type>
 
   <mime-type type="application/x-7z-compressed">
@@ -4698,12 +4813,41 @@
     </magic>
   </mime-type>
 
+  <mime-type type="image/vnd.dxb">
+    <acronym>DXB</acronym>
+    <_comment>AutoCAD DXF simplified Binary</_comment>
+    <tika:link>http://en.wikipedia.org/wiki/AutoCAD_DXF</tika:link>
+    <magic priority="50">
+      <match value="AutoCAD DXB 1.0\r\n0x1A00" type="string" offset="0"/>
+    </magic>
+    <glob pattern="*.dxb"/>
+  </mime-type>
+
   <mime-type type="image/vnd.dxf">
     <acronym>DXF</acronym>
     <_comment>AutoCAD DXF</_comment>
     <tika:link>http://en.wikipedia.org/wiki/AutoCAD_DXF</tika:link>
+    <!-- DXF can be the text or binary representation -->
     <glob pattern="*.dxf"/>
   </mime-type>
+  <mime-type type="image/vnd.dxf;format=binary">
+    <sub-class-of type="image/vnd.dxf"/>
+    <_comment>AutoCAD DXF in Binary form</_comment>
+    <magic priority="50">
+      <match value="AutoCAD Binary DXF\r\n0x1A00" type="string" offset="0"/>
+    </magic>
+  </mime-type>
+  <mime-type type="image/vnd.dxf;format=ascii">
+    <sub-class-of type="image/vnd.dxf"/>
+    <_comment>AutoCAD DXF in ASCII Text form</_comment>
+    <magic priority="50">
+      <!-- Variable number of spaces before the code groups -->
+      <match value="0\r\nSECTION\r\n" offset="0:3">
+        <match value="2\r\nHEADER\r\n" offset="12:18"/>
+      </match>
+    </magic>
+  </mime-type>
+
   <mime-type type="image/vnd.fastbidsheet">
     <glob pattern="*.fbs"/>
   </mime-type>
@@ -5059,6 +5203,9 @@
 
   <mime-type type="message/rfc822">
     <magic priority="50">
+      <match value="Status:" type="string" offset="0"/>
+      <match value="X-Mozilla-Status:" type="string" offset="0"/>
+      <match value="X-Mozilla-Status2:" type="string" offset="0"/>
       <match value="Relay-Version:" type="stringignorecase" offset="0"/>
       <match value="#!\ rnews" type="string" offset="0"/>
       <match value="N#!\ rnews" type="string" offset="0"/>
@@ -5069,6 +5216,7 @@
       <match value="Received:" type="stringignorecase" offset="0"/>
       <match value="Message-ID:" type="stringignorecase" offset="0"/>
       <match value="Date:" type="string" offset="0"/>
+      <match value="User-Agent:" type="string" offset="0"/>
       <match value="MIME-Version:" type="stringignorecase" offset="0"/>
       <match value="X-Notes-Item:" type="string" offset="0">
         <match value="Message-ID:" type="string" offset="0:8192"/>
@@ -5149,7 +5297,7 @@
   <mime-type type="multipart/signed"/>
   <mime-type type="multipart/voice-message"/>
 
-  <mime-type type="text/dif+xml">
+  <mime-type type="application/dif+xml">
     <root-XML localName="DIF"/>
     <root-XML localName="DIF" namespaceURI="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/"/>
     <glob pattern="*.dif"/>
@@ -5160,13 +5308,6 @@
     <_comment>ActionScript source code</_comment>
     <glob pattern="*.as"/>
     <sub-class-of type="text/plain"/>
-  </mime-type>
-
-  <mime-type type="text/dif+xml">
-    <root-XML localName="DIF"/>
-    <root-XML localName="DIF" namespaceURI="http://gcmd.gsfc.nasa.gov/Aboutus/xml/dif/"/>
-    <glob pattern="*.dif"/>
-    <sub-class-of type="application/xml"/>
   </mime-type>
 
   <mime-type type="text/x-ada">
@@ -5346,7 +5487,6 @@
     <glob pattern="*.pod"/>
     <glob pattern="*.pom"/>
     <glob pattern="*.project"/>
-    <glob pattern="*.properties"/>
     <glob pattern="*.rng"/>
     <glob pattern="*.rnx"/>
     <glob pattern="*.roles"/>
@@ -5478,6 +5618,17 @@
     <glob pattern="*.wmls"/>
   </mime-type>
 
+  <mime-type type="text/vtt">
+    <_comment>Web Video Text Tracks Format</_comment>
+    <acronym>WebVTT</acronym>
+    <magic priority="40">
+      <match value="WEBVTT FILE\r" type="string" offset="0"/>
+      <match value="WEBVTT FILE\n" type="string" offset="0"/>
+    </magic>
+    <glob pattern="*.vtt"/>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
+
   <mime-type type="text/x-awk">
     <_comment>AWK script</_comment>
     <magic priority="50">
@@ -5536,6 +5687,9 @@
   <mime-type type="text/x-chdr">
     <_comment>C source code header</_comment>
     <glob pattern="*.h"/>
+    <magic priority="30">
+      <match value="#ifndef " type="string" offset="0"/>
+    </magic>
     <sub-class-of type="text/plain"/>
   </mime-type>
 
@@ -5554,6 +5708,9 @@
   <mime-type type="text/x-csrc">
     <alias type="text/x-c"/>
     <_comment>C source code</_comment>
+    <magic priority="30">
+      <match value="#include " type="string" offset="0"/>
+    </magic>
     <glob pattern="*.c"/>
     <sub-class-of type="text/plain"/>
   </mime-type>
@@ -5683,6 +5840,14 @@
     <sub-class-of type="text/plain"/>
   </mime-type>
 
+  <mime-type type="text/x-java-properties">
+    <_comment>Java Properties</_comment>
+    <alias type="text/x-properties" />
+    <alias type="text/properties" />
+    <glob pattern="*.properties"/>
+    <sub-class-of type="text/plain"/>
+  </mime-type>
+
   <mime-type type="text/x-jsp">
     <_comment>Java Server Page</_comment>
     <alias type="application/x-httpd-jsp"/>
@@ -5726,8 +5891,24 @@
 
   <mime-type type="text/x-matlab">
     <_comment>Matlab source code</_comment>
+    <!-- Multiple-output function definition -->
     <magic priority="50">
       <match value="function [" type="string" offset="0"/>
+    </magic>
+    <!-- Single-output or no output function definition -->
+    <magic priority="40">
+      <match value="function [a-zA-Z][A-Za-z0-9_]{0,5}" type="regex" offset="0"/>
+    </magic>
+    <!-- Two matlab-style comments fairly early in the file -->
+    <magic priority="25">
+      <match value="%" type="string" offset="0">
+         <match value="\n%" type="string" offset="2:120"/>
+      </match>
+      <match value="%" type="string" offset="0">
+         <match value="\r%" type="string" offset="2:120"/>
+      </match>
+      <match value="%%" type="string" offset="0">
+      </match>
     </magic>
     <!-- <glob pattern="*.m"/> - conflicts with text/x-objcsrc -->
     <sub-class-of type="text/plain"/>

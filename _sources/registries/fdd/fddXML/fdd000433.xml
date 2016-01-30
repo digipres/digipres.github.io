@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000433" titleName="Lotus Notes Storage Facility" shortName="NSF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>database</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>other</fdd:value>
+				<fdd:comment>email</fdd:comment>
+			</fdd:gdfrDomain>
+			<fdd:gdfrDomain>
+				<fdd:value>office/business</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2015-12-23</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Lotus Notes Storage Facility</fdd:fullName>
+		<fdd:description>
+			<p>The Notes Storage Facility (NSF) non-relational database file is used by IBM Lotus Notes and Domino software to store different kinds of data stored in a <i>Note</i>.  An NSF file is a collection of Notes. A Note is basically a container for a data object and associated metadata. Notes are used to store a variety of objects, e.g. emails, documents, appointments, etc. A Note usually incorporates at least one Item.  For example, an email Note usually has the plain text of an email message as an item, but may also have an HTML version and/or a rich text (composite) version of the message, and a <a href="https://en.wikipedia.org/wiki/Binary_large_object">BLOB (Binary Large Object)</a> as an attachment.</p>
+			<p>The mailbox database comprising Note types such as email messages, chat and instant messages, calendars entries and the list of To-Do as well as other archived data is stored in a single <i>username.nsf</i> file for each individual user. Contact Notes in the address book database are stored in the <i>names.nsf</i> file although contacts also can be saved into a readable format-vCard (VCF) or <fddLink id="fdd000323">Comma Separated Value (CSV)</fddLink> file. A third important component are Notebooks, also known as Personal Journals, comprises of personal documents and information. This database of Notes gets saved into the <i>notebook.nsf</i> file.</p>
+			<p>Structurally, a NSF file contains a file header (made up of a signature and the database header size), followed by the database header comprised of, among other data points, the software version information (not NSF file format version), file size and database identifier (DBID) the value of which consists an NSF date and time. Replication information (DBREPLICAINFO) is an important part of the database header. IBM Domino servers and Lotus Notes clients identify NSF files by their Replication Identifier (the value which consists an NSF date and time in local time) and keep replicate files synchronized by bi-directionally exchanging data, metadata, and application logic and design. Replication history, including direction (<i>never, send, receive</i>), is also stored in the database header. See <a href="#notes">General</a> for more information about replication.</p>
+			<p>The database header is followed by various data constructs including:</p>
+			<ul>
+				<li>superblock
+(containing a header, data and footer)</li>
+				<li>bucket descriptor block (containing a header, data and footer)</li>
+				<li>bitmap</li>
+				<li>Record Relocation Vector (RRV) bucket</li>
+				<li>summary buckets, and</li>
+				<li>non-summary buckets.</li>
+			</ul>
+		</fdd:description>
+		<fdd:shortDescription>The Notes Storage Facility (NSF) database file is used by IBM Lotus Notes and Domino to store different kind of objects like e-mail, appointments, documents, forms and views. </fdd:shortDescription>
+	</fdd:identificationAndDescription>
+	<fdd:localUse/>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>NSF is a proprietary format. Open partial documentation available through Lotus and working documentation produced by Joachim Metz, a specialist in information security and the forensic analysis of digital data.</fdd:disclosure>
+		<fdd:documentation>Lotus&apos; <a href="http://www-12.lotus.com/ldd/doc/uafiles.nsf/70817c90542892178525695b0051105c/2e559b131d346a028525697c00652c2b/$FILE/InsideNotes.pdf">Inside Notes</a> provides an overview of structural information starting on p. 14, chapter 1 (&quot;The Notes Database&quot;) and chapter 3 (&quot; Notes Storage Facility&quot;). Metz&apos;s <a href="https://cdc84f0d93e389b7188b23c1a8338de01b3dfa5b.googledrive.com/host/0B3fBvzttpiiSbkI4d1pRQmdMNWc/Notes%20Storage%20Facility%20%28NSF%29%20database%20file%20format.pdf">Notes Storage Facility (NSF) non-relational database file format:
+Analysis of the NFS database file format</a> is a working document for the NSF specification but is not yet complete. </fdd:documentation>
+		<fdd:adoption>
+			<p>Highly adopted thanks to what <a href="https://en.wikipedia.org/wiki/IBM_Notes#Related_software">Wikipedia</a> calls a "long market history and large installed base." Its encryption capabilities make it a popular choice among federal agencies and corporate entities dealing with classified and sensitive material. Reports of repeated predictions of the decline or impending demise of IBM Notes and Domino have long circulated although new software releases continue. In November 2014, <a href="http://www.infoworld.com/article/2849359/email-software/ibm-watson-verse-email-gmail-inbox.html">IBM</a> announced a new web-based product for email services named <i>Verse</i> which may encourage existing Notes users to migrate into Verse.</p>
+			<p>Email NSF files can be <a href="http://www-01.ibm.com/support/docview.wss?uid=swg21242327">exported to a variety of formats</a>. Starting with Release Notes 8.5.2, export to <fddLink id="fdd000388">EML</fddLink> was introduced. Options prior to that included "Adobe Acrobat (presumably a <fddLink id="fdd000030">PDF</fddLink> variant) or some other such file type" and export to ASCII Text or Microsoft RTF file "which exports the content of the message including the To, cc and bcc fields. The exported data can be used as an attachment."</p>
+			<p>IBM provides an 
+			<a href="https://www.ibm.com/developerworks/lotus/documentation/capi/">API</a> for IBM Notes and Domino software versions 7-9.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>NSF files are intended for use only with IBM Lotus Notes and Domino software. Several patents have been granted for methods associated with Lotus Notes.  The compilers of this resource have not determined whether these would significantly affect the ability to preserve or migrate NSF files. <a href="http://www.digitalpreservation.gov/formats/contact_format.shtml">Comments welcome</a>.</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>According to the <a href="https://www.iana.org/assignments/media-types/application/vnd.lotus-notes">IANA registration</a>, NSF files are binary with <a href="https://www.iana.org/assignments/media-types/application/vnd.lotus-notes">base64</a> encoding preferred.</p>
+			<p>Compression is an option for attachments to NSF email messages (although not for NSF data itself). Encryption is strongly supported. See <a href="#notes">Notes</a> for more information.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>Metadata documenting important characteristics of the resource found in the NSF file and database.</fdd:selfDocumentation>
+		<fdd:externalDependencies>NSF files are intended for use only with IBM Lotus Notes and Domino software. </fdd:externalDependencies>
+		<fdd:techProtection>One the strengths of the IBM Lotus Notes and Domino software is its support for encryption. See <a href="#notes">Notes</a> for more information.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:normalDataset>
+				<p>IBM Notes and Domino is a cross-platform, distributed document-oriented NoSQL database and messaging framework and rapid application development environment that includes pre-built applications like email, calendar, etc. Lotus Development&apos;s <a href="http://www-12.lotus.com/ldd/doc/uafiles.nsf/70817c90542892178525695b0051105c/2e559b131d346a028525697c00652c2b/$FILE/InsideNotes.pdf">Inside Notes</a> (p. 60)  stresses that &quot;the organization of a Notes database is different from that of a relational database, which contains
+tables of same-type &apos;records,&apos; or sets of fields, and is optimized for rapid access by table-oriented operations. A Notes database can contain any number of notes, and a note can contain any number and type of fields. In addition, there is information in the database header and in each note header that supports simultaneous access and replication between databases.&quot; This is echoed in <a href="https://en.wikipedia.org/wiki/IBM_Notes#Database">Wikipedia&apos;s</a> explanation of the benefits of this data structure: "No need to define size of fields, or datatype; Attributes (Notes fields) that are null take up no space in a database; Built-in full text searching."</p>
+			</fdd:normalDataset>
+			<fdd:accessSoftware>IBM provides an <a href="https://www.ibm.com/developerworks/lotus/documentation/capi/">API</a> for IBM Notes and Domino software versions 7-9.</fdd:accessSoftware>
+			<fdd:beyondDataset>Email messages stored as Notes have functionality beyond other types of Notes. For example, email messages can be encrypted before sending, after receipt or before saving, plaintext Body fields can be encrypted as cyphertext and attachments to email messages can be compressed. See <a href="#Notes">Notes</a> for details. </fdd:beyondDataset>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>.nsf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>
+					<p>PUIDs from PRONOM include x-fmt/336 (Lotus Notes Database Version 2), x-fmt/337 (Lotus Notes Database Version 3), x-fmt/338 (Lotus Notes Database Version 4) - all of these entries are outline records only.</p>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.lotus-notes</fdd:sigValue>
+					<fdd:sigValue>application/x-lotus-notes</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="https://www.iana.org/assignments/media-types/application/vnd.lotus-notes">https://www.iana.org/assignments/media-types/application/vnd.lotus-notes</a>
+				</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>1A 00 00 04 00 00</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://www.garykessler.net/library/file_sigs.html">Gary Kessler&apos;s File Signatures Table</a>. </fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>Encryption has a long history in Notes starting with Release 1.0 which introduced with mail and port encryption. The use of encryption was extended in Release 2.0 with document encryption and secret keys for field-level encryption. Database and database design encryption were added in Release 4.0, and Release 4.5 included document encryption with public keys. With email messages, only the plaintext Body field encrypted as cyphertext, not the Subject, Sender, and Date fields. Email messages can be encrypted before sending, after receipt or before saving. <a href="http://www-01.ibm.com/support/docview.wss?uid=swg21242327">Email message encryption is accomplished</a> through "a public and private key set to encrypt and decrypt data, as well as to validate digital signatures. The public and private key in a set are mathematically related to each other and  are unique to your User ID. Your public key is stored in your Notes certificate. Your certificate is stored in your User ID and the Domino Directory. Your private key is stored only in your User ID.&quot; Encrypted messages sent by other people use the public key from the intended recipients certificate located in the Domino Directory. When an encrypted messages is received, the private key in User ID decrypts the data.</p>
+			<p>IBM DeveloperWorks explains that <a href="http://www.ibm.com/developerworks/lotus/library/ls-Notes_Encryption/index.html#N101AF">full database encryption</a> (defined in the DBCREATE_ENCRYPT_ field) are labeled as <i>None, Simple, Medium, Strong</i> adding that "the stronger the encryption, the longer it takes to open the database. So long as you're not using disk compression, in most cases, the best option is medium encryption because of its balance between security strength and speedy access; however, if you're using disk compression, select simple encryption so that the disk compression works effectively." </p>
+			<p>Security information is stored in the Lotus Notes ID file, usually ending in a *.id extension. The security information along with the user password permits access to a server and personal encrypted information. </p>
+			<p>The length of the encryption key is limited appropriately to achieve a balance between encryption process time and security. Under current US export laws, IBM Notes supports only one version of the Notes PKI with 128-bit symmetric keys, 1024-bit public keys, and no workload reduction factor. See <a href="#notes">History</a> for more background on encryption key lengths and their impact on Notes.</p>
+			<p>Although compression is not used within NSF files themselves, attachments to NSF email messages (stored outside the NSF file) have three compression options: None, CX (Huffman encoding) or LZ1 (introduced in introduced in Notes 6).</p>
+			<p>Replication between two servers, or between a client and a server, can occur over a network or a point-to-point modem connection. Creation of a local replica of an NSF file on the hard disk of an IBM Notes client enables the user to fully use IBM Notes and Domino databases while working off-line. The client synchronizes any changes when client and server next connect. Local replicas are also sometimes maintained for use while connected to the network in order to reduce network latency.</p>
+			<p>
+				<a href="https://en.wikipedia.org/wiki/IBM_Notes#Programming">Wikipedia</a> states that &quot;A key feature of IBM Notes is that many replicas of the same database can exist at the same time on different servers and clients, across dissimilar platforms; the same storage architecture is used for both client and server replicas. Originally, replication in Notes happened at document (i.e., record) level. With release of Notes 4 in 1996, replication was changed so that it now occurs at field level. A database is a Notes Storage Facility (.nsf) file, containing basic units of storage known as a "note". Every note has a UniqueID that is shared by all its replicas. Every replica also has a UniqueID that uniquely identifies it within any cluster of servers, a domain of servers, or even across domains belonging to many organizations that are all hosting replicas of the same database. Each note also stores its creation and modification dates, and one or more Items.&quot;</p>
+		</fdd:general>
+		<fdd:history>
+			<p>Notes and Domino began in the work of Ray Ozzie, Tim Halvorsen, and Len Kawell, first on PLATO Notes at the University of Illinois and later on DECNotes. Lotus founder Mitch Kapor saw the potential in Ozzie's collaboration project and the rest is history. The first release of Lotus Notes shipped in 1989. Lotus Development Corporation originally developed &quot;Lotus Notes&quot; in 1989. IBM bought the Lotus corporation in 1995 and it became known as the Lotus Development division of IBM. As of 2015 it forms part of the IBM Software and Systems Group under the name &quot;IBM Collaboration Solutions&quot;.</p>
+			<p>According to <a href="https://en.wikipedia.org/wiki/IBM_Notes#Security">Wikipedia</a>, &quot;IBM Notes was the first widely adopted software product to use public key cryptography for client–server and server–server authentication and for encryption of data. Until US laws regulating encryption were changed in 2000, IBM and Lotus were prohibited from exporting versions of Notes that supported symmetric encryption keys that were longer than 40 bits.&quot; The US export laws restrictions on key length for encryption contributed to the development of three major editions of Notes: North American (uses 64-bits long encryption keys), International (&quot;64-bit key for the International edition, the top 24 bits are encrypted using the U.S. Government's public key and stored in what is called the Workfactor Reduction Field [WRF]. Splitting the key in this manner results in a key that's 40 bits for the U.S. Government and 64 bits for everyone else.&quot;), and French (a less secure plain 40-bit encryption key). </p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www-12.lotus.com/ldd/doc/uafiles.nsf/70817c90542892178525695b0051105c/2e559b131d346a028525697c00652c2b/$FILE/InsideNotes.pdf</link>
+					<tag>Inside Notes – The architecture of Notes and the Domino Server by Lotus Development Corporation</tag>
+					<comment>Overview of Notes architecture and design, structural information starting on p. 14, chapter 1 (&quot;The Notes Database&quot;) and chapter 3 (&quot; Notes Storage Facility&quot;).</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://cdc84f0d93e389b7188b23c1a8338de01b3dfa5b.googledrive.com/host/0B3fBvzttpiiSbkI4d1pRQmdMNWc/Notes%20Storage%20Facility%20%28NSF%29%20database%20file%20format.pdf</link>
+					<tag>Notes Storage Facility (NSF) database file format: Analysis of the NFS database file format by Joachim Metz</tag>
+					<comment>Working document for the NSF specification - not complete</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/IBM_Notes </link>
+					<tag>Wikipedia page for IBM Notes</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.forensicswiki.org/wiki/Notes_Storage_Facility_%28NSF%29</link>
+					<tag>Forensic Wiki Page on Notes Storage Facility (NSF)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.notesdesign.com/ndhtml/ndtutor.htm</link>
+					<tag>What is IBM/Domino Notes by Graham Stalley</tag>
+					<comment>Details architecture and history of Domino and Notes systems</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url/>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>PRONOM entries for NSF</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://nationalarchives.gov.uk/PRONOM/x-fmt/336</link>
+							<tag>PRONOM entry for x-fmt/336 (Lotus Notes Database Version 2)</tag>
+							<comment>Information in PRONOM from the UK National Archives about Lotus Notes Database Version 2. PUID: x-fmt/336</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://nationalarchives.gov.uk/PRONOM/x-fmt/337</link>
+							<tag>PRONOM entry for x-fmt/337 (Lotus Notes Database Version 3)</tag>
+							<comment>Information in PRONOM from the UK National Archives about Lotus Notes Database Version 3. PUID: x-fmt/337</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://nationalarchives.gov.uk/PRONOM/x-fmt/338</link>
+							<tag>PRONOM entry for x-fmt/338 (Lotus Notes Database Version 4)</tag>
+							<comment>Information in PRONOM from the UK National Archives about Lotus Notes Database Version 8. PUID: x-fmt/338</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ibm.com/developerworks/lotus/library/ls-Notes_Encryption/index.html</link>
+					<tag>Notes from Support: Notes Encryption - Locks for a Digital World by IBM Developer Works</tag>
+					<comment>Overview of encryption in general and its implementation in Notes</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.ibm.com/developerworks/lotus/library/ls-NDHistory/</link>
+					<tag>The History of Notes and Domino by IBM Developer Works</tag>
+					<comment>Overview history through Release 8</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nsftools.com/tips/NotesTips.htm</link>
+					<tag>NSF Tools: Notes Tips by Julian Robichaux</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.v-and-m.com/vmhomepage.nsf/Content/Notes+Mail+Encryption+Explained+?OpenDocument</link>
+					<tag>Notes Mail Encryption - Explained by John Vanderhoff</tag>
+					<comment>Details on encryption methods</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www-01.ibm.com/support/docview.wss?uid=swg21242327</link>
+					<tag>Saving Notes Mail Documents as Standalone Files by IBM TechNote</tag>
+					<comment>Export options for NSF email files</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www-12.lotus.com/ldd/doc/domino_notes/Rnext/help6_client.nsf/f4b82fbb75e942a6852566ac0037f284/87ab00e37f82c40685256c1c00380635?OpenDocument</link>
+					<tag>How Notes uses public and private keys for encrypting and signing mail by IBM Developer Works</tag>
+					<comment>Encryption mechanisms for NSF email</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.infoworld.com/article/2849359/email-software/ibm-watson-verse-email-gmail-inbox.html</link>
+					<tag>25 years after Lotus Notes, IBM tries to reinvent email again by Serdar Yegulalp </tag>
+					<comment>InfoWorld Tech Watch
+article about Verse web-based email&apos;s impact on Notes</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.ibm.com/developerworks/lotus/documentation/capi/</link>
+					<tag>IBM C/C++ API Toolkits for IBM Notes and Domino documentation</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

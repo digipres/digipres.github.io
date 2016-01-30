@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000426" titleName="SIARD (Software Independent Archiving of Relational Databases) Version 1.0" shortName="SIARD_1_0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>database</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-bundle</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>office/business</fdd:value>
+				<fdd:comment/>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2015-05-30</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>SIARD (Software Independent Archiving of Relational Databases) Version 1.0</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>generic digital formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>An open format developed by the Swiss Federal Archives, designed for archiving relational databases in a vendor-neutral form. A SIARD archive is a ZIP-based package of files based on XML and SQL:1999.   A SIARD file incorporates not only the database content, but also machine-processable structural metadata that records the structure of database tables and their relationships. The ZIP file contains an XML file describing the database structure (<i>metadata.xml</i>) as well as a collection of XML files, one per table, capturing the table content.  The SIARD archive may also contain text files and binary files representing database large objects (BLOBs and CLOBs).  SIARD permits direct access to individual tables by exploring with ZIP tools.  A SIARD archive is not an operational database but supports re-integration of the archived database into another relational database management system (RDBMS) that supports SQL:1999.  In addition, SIARD supports the addition of descriptive and contextual metadata that is not recorded in the database itself and the embedding of documentation files in the archive.</p>
+			<p>A relational database archived in the SIARD format consists of two components: the metadata, in a folder tree with root <i>header</i> which documents the structure of the archived database, and the table data in a folder tree with root <i>content</i>.  The structure of a typical content folder is:</p>
+			<ul>
+				<li>content/</li>
+				<li>-- schema0/</li>
+				<li>---- table0/</li>
+				<li>------ table0.xml</li>
+				<li>------ table0.xsd</li>
+				<li>---- table1/</li>
+				<li> ... </li>
+				<li>---- table2/</li>
+				<li> ... </li>
+			</ul>
+			<p>Notice that, for each table, the SIARD format requires a .xsd file defining the number of columns and the datatype for each column.  This XML Schema document is typically derived automatically as a SIARD archive is created from the database.  The table data is in the corresponding .xml file.  The SIARD metadata is stored in a file called <i>metadata.xml</i> in the <i>header</i> folder along with the corresponding <i>metadata.xsd</i> file.  The structure of the metadata.xml file must match the structure of the content file, e.g., have a corresponding number of tables and number of columns in each table.</p>
+			<p>SIARD 1.0 permits use of the 64 bit extension of the ZIP format introduced by PKWARE Inc. with version 4.5 of the ZIP specification in order to avoid the 4 Gbyte size limitation. ZIP64 is not as widely supported as ZIP32.  Although compression as supported by ZIP was originally not permitted, use of the &quot;deflate&quot; algorithm (the default compression option for ZIP) is supported in the SIARD software and was announced as a planned change in a <a href="http://www.eark-project.com/resources/conference-presentations/dpc-eark-event/24-dpcsfasiard">February 2015 presentation on SIARD</a> from the Swiss Federal Archives.</p>
+		</fdd:description>
+		<fdd:shortDescription>An open format especially designed for archiving relational databases in a vendor-neutral form.  A SIARD file is a ZIP-based archive of files that capture the structure and content of the database tables in XML, together with any BLOB and CLOB data objects.  </fdd:shortDescription>
+		<fdd:productionPhase>Designed specifically as a non-operational software independent archival format for relational databases.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000362</fdd:id>
+					<fdd:shortName>ZIP_6_3_3</fdd:shortName>
+					<fdd:titleName>ZIP File Format, Version 6.3.3 (PKWARE)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>The SIARD 1.0 specification refers to version 6.3.2 of the ZIP specification (APPNOTE.TXT), but 6.3.2 and 6.3.3 are technically identical, with the update consisting only of &quot;formatting changes to support easier referencing of this APPNOTE from other documents and standards.&quot;</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000077</fdd:id>
+					<fdd:shortName>XML_Schema_1_0</fdd:shortName>
+					<fdd:titleName>W3C XML Schema 1.0</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>Non-proprietary, openly documented standard developed by the Swiss Federal Archives, starting in the early 2000s.  Adopted and republished as a Swiss e-Government standard (CH-0165) in 2013.</p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>The SIARD 1.0 specification is available from site for Swiss E-Government standards (eCH). The original is in German.  Menu with versions of the specification in German, French, and English is at <a href="http://www.ech.ch/vechweb/page?p=dossier&amp;documentNumber=eCH-0165&amp;documentVersion=1.0">http://www.ech.ch/vechweb/page?p=dossier&amp;documentNumber=eCH-0165&amp;documentVersion=1.0</a>.  The menu includes associated documents, such as the schema for the SIARD metadata.xml file and requests for changes.</p>
+			<p>
+				<a href="http://www.bar.admin.ch/dienstleistungen/00823/01911/index.html?lang=en">Archiving of Databases: SIARD Suite</a>, from the Swiss Federal Archives, also provides access to the <a href="http://www.bar.admin.ch/dienstleistungen/00823/01911/index.html?lang=en&amp;download=NHzLpZeg7t,lnp6I0NTU042l2Z6ln1ad1IZn4Z2qZpnO2Yuq2Z6gpJCDeIN,gGym162epYbg2c_JjKbNoKSn6A--">format specification in English</a>.</p>
+			<p>The published SIARD 1.0 specification states that SIARD stands for &quot;Software Independent Archival of Relational Databases&quot; but the Swiss Federal Archives website and recent presentations use &quot;Archiving&quot; rather than &quot;Archival.&quot;  The compilers of this resource have chosen to use &quot;Archiving&quot; in the title for this format description.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>SIARD_1_0 was adopted by the PLANETS project as the recommended format for the preservation of relational databases in 2008.  in 2013, the format was adopted as a Swiss E-Government standard.  According to a <a href="http://wiki.opf-labs.org/display/KB/DBPRES+comprehensive+breakdown">draft list of formats adopted by various European archives as of early 2012</a>, SIARD (as-is or adapted) was used in national archives in Denmark, the Netherlands, and Germany, in addition to Switzerland.  Relational databases are a very important content category for national archives, but less common in the collections of libraries.</p>
+			<p>A reference suite of software is available for downloading with a free license from the <a href="http://www.bar.admin.ch/dienstleistungen/00823/01911/index.html?lang=en">Swiss Federal Archives</a>.  The source for this software is not open, but a project under E-ARK (European Archival Records and Knowledge Preservation) is aiming at an enhanced format and a fully open-source suite of software.  The updated format was originally named SIARD-E, but a <a href="http://www.eark-project.com/resources/specificationdocs/32-specification-for-siard-format-v20">public draft was issued in July 2015 as SIARD 2.0</a>.   According to <a href="http://www.eark-project.com/resources/earkprojupdates/29-projupd0315-1">E-ARK Project Update of March 2015</a>, the enhanced format will be based on the best practices from the existing SIARD, SIARDDK and DBML formats.  DBML was developed for archiving databases at the National Archives of Portugal (Direcção Geral de Arquivos).  SIARDDK (often written SIARDK) is a variant of SIARD 1.0 developed by the Danish National Archives, intended as a full SIP (Submission Information Package) that packages related documentation with the SIARD database object.  See <a href="#notes">Notes</a> below for more information on DBML and SIARDDK.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No license is required to use the format or implement software to create, render, or manipulate files in the SIARD format.</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>SIARD was designed to be transparent, representing relational database content as a collection of easily interpreted XML-based files in straightforward schemas with element names that reflect the database structure.  These files are human-readable and easily processed with widely available XML tools.  Queries and other SQL-based commands that are stored in the SIARD file are represented in UTF-8 (Unicode).  The files are packaged in a constrained form of the ZIP format that is supported by applications that can extract files from a ZIP32 or ZIP64 archive file.  However, many ZIP tools, including those distributed with Mac OS and Windows, do not support ZIP64.</p>
+			<p>Since relational database content may include Binary Large Database Objects (BLOBs), SIARD archives may include files that are not transparent.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>The SIARD format includes a schema for representing the structural metadata for the original relational database.  If semantic names for tables, columns, etc. were present in the original database, they can be captured automatically.  However, some elements are likely to need manual entry.  The schema also includes elements that can document the archiving processing.  See <a href="#notes">Notes</a> below for more details on the metadata schema, which can be downloaded from the <a href="http://www.ech.ch/vechweb/page?p=dossier&amp;documentNumber=eCH-0165&amp;documentVersion=1.0">eCH-0165 specification page</a>.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>None.  Encryption and password protection are not permitted in a SIARD archive file.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:normalDataset>
+				<p>SIARD_1_0 is designed as a non-operational snapshot of a relational database consistent with the SQL:1999 standard for the Structured Query Language. Subclause 4.1 of <a href="http://web.cecs.pdx.edu/~len/sql1999.pdf">Part 2 of the SQL:1999 specification</a> specifies the data types defined in SQL:1999. These include a variety of types for character data, numeric data, and date/time values.  Requirement P_4.3-3 of the SIARD specification indicates the XML datatypes that should be used for each data type supported in SQL:1999.  This section indicates that three time-related types in SQL:1999 are not supported in SIARD 1.0:  TIME WITH TIME ZONE; TIMESTAMP WITH TIME ZONE; and INTERVAL.  SIARD 1.0 does define how to handle Binary Large Objects (BLOBs) and Character Large Objects (CLOBs).</p>
+				<p>The SIARD 1.0 schema for metadata.xml does not enumerate the strings allowed for naming data types in the metadata for columns but merely constrains the form of permissible strings to letters and numbers.  <a href="http://www.ech.ch/vechweb/page?p=dossierRfc&amp;rfc_number=2015-13&amp;documentNumber=eCH-0165&amp;documentVersion=1.0">RFC 2015-13</a> is a request to specify data type mappings in more detail in the SIARD specification and metadata schema.</p>
+			</fdd:normalDataset>
+			<fdd:accessSoftware>
+				<p>A SIARD 1.0 archive file can be unpacked using tools that can handle ZIP64 files.  Apart from BLOBs, individual component files are XML-based or text in UTF-8 and can be read using widely available viewers for text and/or XML.</p>
+				<p>A SIARD archive file is designed to permit import into a RDBMS that supports SQL:1999 using an API based on ODBC.</p>
+			</fdd:accessSoftware>
+			<fdd:dataDocumentation>The SIARD 1.0 metadata schema does include metadata elements designed to identify a source RDBMS and document important aspects of the conversion into SIARD. See <a href="#notes">Notes</a> below for more on the provenance-related metadata elements in <i>metadata.xsd</i>. The SIARD specification states that it is intended to be an object that will be embedded in a package that can incorporate more contextual documentation.</fdd:dataDocumentation>
+			<fdd:beyondDataset>
+				<p>The SIARD_1_0 format is used by the SIARD 1.0 suite of software, which can both extract the database structure and content into a SIARD_1_0 archive file and regenerate a functioning database from a SIARD_1_0 file.  The relational database management systems supported by the SIARD software suite (according to the <a href="http://www.bar.admin.ch/dienstleistungen/00823/01911/index.html?lang=en">SIARD Suite website</a> in July 2015) are:</p>
+				<ul>
+					<li>Oracle</li>
+					<li>Microsoft SQL Server</li>
+					<li>MySQL</li>
+					<li>IBM DB2</li>
+					<li>Microsoft Access</li>
+				</ul>
+			</fdd:beyondDataset>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>siard</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From requirement G_4.1-4 in SIARD 1.0 specification.</fdd:note>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Metadata:</b> The pre-defined metadata schema for the mandatory <i>metadata.xml</i> file has the following elements that apply to the SIARD archive as a whole, including provenance details for the archiving process:</p>
+			<ul>
+				<li>dbname --  name of the archived database [mandatory]</li>
+				<li>description -- short free form description of the database content</li>
+				<li>archiver --  name of person responsible for archiving the database</li>
+				<li>archiverContact -- contact data (telephone number or email address) of archiver</li>
+				<li>dataOwner -- name of data owner (section and institution responsible for data) of database when it was archived [mandatory]</li>
+				<li>dataOriginTimespan --  time span during which data where entered into the database [mandatory]</li>
+				<li>producerApplication -- name and version of program that generated the metadata file</li>
+				<li>archivalDate -- date of creation of archive [mandatory]</li>
+				<li>messageDigest -- message digest code over all primary data in folder &quot;content&quot; [mandatory]</li>
+				<li>clientMachine -- DNS name of client machine from which SIARD was running for archiving</li>
+				<li>databaseProduct -- name of database product and version from which database originates </li>
+				<li>connection -- connection string used for archiving</li>
+				<li>databaseUser -- database user used for archiving </li>
+				<li>schemas --  list of schemas in database [mandatory]</li>
+				<li>users -- list of users in the archived database [mandatory]</li>
+				<li>roles -- list of roles in the archived database</li>
+				<li>privileges -- list of privileges in the archived database</li>
+			</ul>
+			<p>Key structural metadata is also held in the <i>metadata.xml</i> file. For each table, this includes the name of the table in the source database; its location in the archive folder hierarchy (see layout in the main format description above); an optional free text description; a list of columns each with name and data type; a count of rows;  identification of the column serving as primary key; and other optional technical details.  The <i>metadata.xml</i> file also holds structural details for other database features supported in SQL:1999, such as views, routines, constraints, triggers, and additional keys.</p>
+			<p>For each table the SIARD archive requires a schema (e.g., table0.xsd) derived from the structure of a table in the source database (and documented in the <i>metadata.xml</i> file in the SIARD archive) and mappings from source data types to W3C XML Schema (XSD) data types.  The SIARD 1.0 specification uses XML 1.1 as a normative reference, but is not specific about which version of XSD should be employed, possibly because XSD 1.1 was not approved by W3C until 2012.  The XSD data types used in the mappings in P_4.3-3 of the SIARD 1.0 specification are all defined in XSD 1.0 and XSD 1.1.  The SIARD archive requires a instance (e.g., table0.xml) that holds the data value content for table0 conforming to the corresponding schema (in this case, table0.xsd).</p>
+			<p>
+				<b>Proposed changes to SIARD:</b>  Proposals for changes to the SIARD specification are documented at <a href="http://www.ech.ch/vechweb/page?p=dossier&amp;documentNumber=eCH-0165&amp;documentVersion=1.0">eCH-0165: SIARD-Formatspezifikation</a> as RFCs.  <a href="http://www.ech.ch/vechweb/page?p=dossierRfc&amp;rfc_number=2015-30&amp;documentNumber=eCH-0165&amp;documentVersion=1.0">RFC 2015-30</a> indicates that there is a plan to submit SIARD for standardization by ISO.  In a February 2015 presentation, <a href="http://www.eark-project.com/resources/conference-presentations/dpc-eark-event/24-dpcsfasiard/file">Save your
+databases
+using SIARD!</a>, the Swiss Federal Archives noted particularly that planned changes included: data compression using &apos;deflate&apos;; splitting of the ZIP archive for very large files; and extension to full SQL:1999 support, including user-defined data types.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>
+				<b>Related formats and future joint developments:</b>  The E-ARK project  plans to develop a specification of an E-ARK archival relational database format based on the best practices from the existing SIARD, SIARDDK and DBML formats.  Early announcements used the name &quot;SIARD-E&quot;, but as work continued, the name &quot;SIARD 2.0&quot; emerged as preferred.  Feedback on a draft of the SIARD 2.0 specification was <a href="http://www.eark-project.com/news/29-siardfeedback">requested</a> by September 30, 2015.</p>
+			<p>The DBML format was developed as part of the RODA project at the National Archives of Portugal and archiving in DBML was part of the RODA Database Preservation Toolkit.  The RODA repository is now an open-source product of the company <a href="http://www.keep.pt/en/">KEEPSolutions</a>, a spin-off of the University of Minho formed by the developers.  The <a href="http://www.database-preservation.com">Database Preservation Toolkit</a> is now a separate project.  Support for SIARD 1.0 was added rather than producing a new version of DBML with fuller capture of database structure and contents.  KEEPSolutions is an active partner in the E-ARK project.</p>
+			<p>SIARDDK is a variant of SIARD adopted by the Danish National Archives.  The SIARD 1.0 specification assumes that the SIARD archive is a digital object that will be packaged inside an OAIS SIP (Submission Information Package) or AIP (Archival Information Package) with related documentation.  The SIARDDK variant is designed as a SIP, using the table structures as in SIARD, but also defining a complete structure for incorporating contextual documentation and package metadata.  In addition, SIARDDK uses the usual 32-bit ZIP format rather than ZIP64 and allows only one SQL schema per package.  The relationship between SIARD 1.0 and SIARDDK is documented at <a href="https://github.com/eark-project/siard-e-format/tree/master/SIARDDK">https://github.com/eark-project/siard-e-format/tree/master/SIARDDK</a>.</p>
+			<p>
+				<a href="http://www.ech.ch/vechweb/page?p=dossierRfc&amp;rfc_number=2014-105&amp;documentNumber=eCH-0165&amp;documentVersion=1.0">RFC 2014-105</a> requests that the SIARD specification be modified to permit use of &quot;deflate&quot; compression rather than requiring SIARD files to be uncompressed in the ZIP wrapper. The RFC indicates that SIARD software already supports this compression technique.  In early June 2015, the eCH website indicated that this was approved as an amendment to SIARD in March 2015; however, in mid-July 2015, this amendment could not be retrieved.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ech.ch/vechweb/page?p=dossier&amp;documentNumber=eCH-0165&amp;documentVersion=1.0</link>
+					<tag>eCH-0165: SIARD-Formatspezifikation </tag>
+					<comment>Documents official adoption of SIARD as a Swiss Federal Government Standard.  Includes specification in several languages and related documents.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.bar.admin.ch/dienstleistungen/00823/01911/index.html?lang=en</link>
+					<tag>SIARD page in English from Swiss Federal Archives.</tag>
+					<comment>Provides access to SIARD 1.0 specification in English. The original is in German.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.bar.admin.ch/dienstleistungen/00823/01911/index.html?lang=en</link>
+					<tag>Archiving of Databases: SIARD Suite</tag>
+					<comment>Home page for SIARD at Swiss Federal Archives.  Links to documentation for SIARD format and software download for SIARD Suite.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://arxiv.org/pdf/cs/0408054v1.pdf</link>
+					<tag>Providing Authentic Long-term Archival Access to Complex Relational Data. Stephan Heuscher et al.  July 19, 2004</tag>
+					<comment>Excellent introduction to SIARD from the team at the Swiss Federal Archives responsible for developing the SIARD format and software suite.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.eark-project.com/resources/conference-presentations/dpc-eark-event/24-dpcsfasiard</link>
+					<tag>Save your databases using SIARD!  February 2015</tag>
+					<comment>Good overview of SIARD in presentation at E-ARK meeting by Chiara Marciani and Roger Kaufmann of the Swiss Federal Archives.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.eark-project.com/resources/conference-presentations/dpc-eark-event</link>
+					<tag>Presentations given at DPC / E-ARK Data Warehouse Workshop Feb 2015</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.database-preservation.com/</link>
+					<tag>Database Preservation Toolkit</tag>
+					<comment>Open-source software development by KEEPSolutions and other partners in the E-ARK project.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://web.stanford.edu/group/dlss/pasig/PASIG_March2015/20150313_Presentations/Faria_KEEP.pdf</link>
+					<tag>PASIG 2015 presentation: Preserving
+digital records and databases.  By Luis Faria</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://purl.pt/24107/1/iPres2013_PDF/Database Preservation Evaluation Report - SIARD vs. CHRONOS.pdf</link>
+					<tag>Database Preservation Evaluation Report - SIARD vs.
+CHRONOS.  By Andrew Lindley, Austrian Institute of Technology.</tag>
+					<comment>Technical evaluation and comparison of the database preservation tools SIARD and CHRONOS (a commercial tool intended to support regulatory archiving requirements).</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The Open Planets Foundation (now known as the Open Preservation Foundation) has various resources related to SIARD on its informal wiki.  The following resources date from around 2012.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://wiki.opf-labs.org/display/KB/Database+Preservation</link>
+							<tag>Open Planets Foundation SIG: Database Preservation </tag>
+							<comment>Various links related to preserving databases, including documents related to SIARD.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://wiki.opf-labs.org/display/KB/Comparison+of+SIARD%2C+DBML+and+SIARDK+Working+Group</link>
+							<tag>Comparison of SIARD, DBML and SIARDK -- Working Group</tag>
+							<comment>This working group of the Open Preservation Foundation appears to have been short-lived but produced a useful summary of formats and tools used by member archives in 2012. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://wiki.opf-labs.org/display/KB/DBPRES+comprehensive+breakdown</link>
+							<tag>DRAFT breakdown of database archiving tools and formats currently used -- as of 2012.</tag>
+							<comment>As of June 2015 this page was last changed in March 2012 and is labeled DRAFT-DRAFT-DRAFT. </comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://blogs.loc.gov/digitalpreservation/2012/04/open-source-software-and-digital-preservation-an-interview-with-bram-van-der-werf-of-the-open-planets-foundation/</link>
+					<tag>Open Source Software and Digital Preservation: An Interview with Bram van der Werf of the Open Planets Foundation.  April, 2012 </tag>
+					<comment>Includes discussion of SIARD.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://fileformats.archiveteam.org/wiki/SIARD</link>
+					<tag>SIARD page from Let&apos;s Solve the File Format Problem</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://apps.nationalarchives.gov.uk/pronom/fmt/161</link>
+					<tag>PRONOM entry for SIARD 1.0</tag>
+					<comment>PUID for SIARD 1.0 is fmt/161</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Links to resources related to developing a second generation of the SIARD format and an associated open-source software toolkit.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.eark-project.com/resources/specificationdocs/32-specification-for-siard-format-v20</link>
+							<tag>Download page for specification for SIARD Format v2.0</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.eark-project.com/resources/specificationdocs/32-specification-for-siard-format-v20/file</link>
+							<tag>eCH-0165 SIARD Format Specification 2.0 (Draft). July 4, 2015</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.eark-project.com/news/29-siardfeedback</link>
+							<tag>E-ARK Project and Partners Seek Feedback on Version 2.0 of SIARD Format</tag>
+							<comment>Feedback was requested by September 30, 2015.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/eark-project/siard-2-format</link>
+							<tag>Github site for
+eark-project/siard-2-format
+</tag>
+							<comment>Includes links to early stages of work to produce a new version of the SIARD format, previously known as SIARD-E. The project also intends to deliver an associated open-source software toolkit.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The representation within SIARD 1.0 of relational database features and functions is based on SQL:1999.  The following links relate to that standard.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>ftp://ftp.iks-jena.de/mitarb/lutz/standards/sql/ansi-iso-9075-1-1999.pdf</link>
+							<tag>ISO/IEC 9075-1:1999.  Database Languages -- SQL -- Part 1: Framework (SQL/Framework)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://web.cecs.pdx.edu/~len/sql1999.pdf</link>
+							<tag>ISO/IEC 9075-2:1999.  Database Languages --  SQL -- Part 2: Foundation (SQL/Foundation)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://dbis-informatik.uibk.ac.at/files/ext/lehre/ss11/vo-ndbm/lit/ORel-SQL1999-IBM-Nelson-Mattos.pdf</link>
+							<tag>SQL99, SQL/MM, and SQLJ: An Overview of the SQL Standards.  </tag>
+							<comment>Attributed to IBM Database Common Technology.  Undated, but likely from 2001.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/SQL:1999</link>
+							<tag>Wikipedia entry for SQL:1999</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources related to using the SIARD software suite.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://e-records.chrisprom.com/using-siard-for-database-migration/</link>
+							<tag>Using SIARD for Database Migration.  Blog post by Chris Prom.  March 19, 2010</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://e-records.chrisprom.com/more-on-siard/</link>
+							<tag>More on SIARD.  Blog post by Chris Prom.  March 26, 2010</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://rawgit.com/keeps/db-preservation-toolkit/master/doc/Preparing_MSAccess_for_Migration.pdf</link>
+							<tag>Preparing a Microsoft Access Database for Migration</tag>
+							<comment>These steps may be needed before using SIARD to archive a Microsoft Access database.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>A selection of links related to preserving databases in general.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.eark-project.com/resources/conference-presentations/dpc-eark-event/25-dpcwoollarddatabases/file</link>
+							<tag>Why preserving databases matters and why it is harder than it sounds.  Matthew Woollard, Director, UK Data Service.  19 February 2015</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.craigsmullins.com/bp15.htm</link>
+							<tag>Regulatory Compliance and Database Archiving.  Craig S. Mullins.  IDUG Solutions Journal.  Vol. 14, No. 2 (Summer 2007)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://openpreservation.org/system/files/Database%20archiving%20review.pdf</link>
+							<tag>National Archives of the Netherlands PA/6-D13 --Database Preservation Case Study:
+Review.  12 July 2011 </tag>
+							<comment>From PLANETS
+project (IST-2006-033789)</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://conferences.idealliance.org/extreme/html/2007/Ramalho01/EML2007Ramalho01.html</link>
+							<tag>Relational Database Preservation through XML modelling.  2007</tag>
+							<comment>From Proceedings of Extreme Markup Languages, 2007.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.ieee-tcdl.org/Bulletin/v7n1/papers/freitas.pdf</link>
+							<tag>Significant Properties in the Preservation of Relational Databases, by Ricardo Andre Pereira Freitas</tag>
+							<comment>Bulletin of IEEE Technical Committee on Digital Libraries.  Volume 7, Issue 1,
+September 2011   ISSN 1937-7266
+</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://moreq2.eu/attachments/article/315/DPEbriefing_paper_Database_Preservation.pdf</link>
+							<tag>DPE Briefing Paper: Database Preservation. By Cristina Ribeiro and Gabriel David.</tag>
+							<comment>Undated.  Since funding for the DPE (Digital Preservation Europe) project ended in 2009, this briefing paper likely dates from between 2007 and 2009. </comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

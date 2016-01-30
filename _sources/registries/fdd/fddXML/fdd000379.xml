@@ -64,9 +64,11 @@
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>Fully documented. Proprietary file format developed by Microsoft.</fdd:disclosure>
 		<fdd:documentation>
-			<a href="http://msdn.microsoft.com/en-us/library/cc463912%28v=exchg.80%29.aspx">Microsoft [MS-MSG]: Outlook Item (.msg) File Format</a> specification available from Microsoft. </fdd:documentation>
+			<a href="https://msdn.microsoft.com/en-us/library/cc463912.aspx">[MS-OXMSG]: Outlook Item (.msg) File Format</a> specification available from Microsoft. </fdd:documentation>
 		<fdd:adoption>MSG is implemented in the following Microsoft products: Microsoft Exchange Server 2003-2013 and Microsoft Office Outlook 2003-2013. </fdd:adoption>
-		<fdd:licensingAndPatents>MSG is a Microsoft product and may be covered by licenses and patents. MSG is not covered by Microsoft&apos;s Open Specification Promise or Community Promise.</fdd:licensingAndPatents>
+		<fdd:licensingAndPatents>
+			<p>The MSG format specification is covered by the Microsoft Interoperability Program.  See <a href="#useful">Useful references</a> below.  Microsoft claims no patents in the MSG format.  Patents and licenses may apply to some operations and protocols that are used by Microsoft in its electronic mail products and that the MSG format is designed to support.  In late 2015, the only patents listed by Microsoft as associated with the related protocol specifications listed in this format description are associated with operational systems for managing messages according to a retention policy: <a href="http://www.google.com/patents/US8620869">US 8620869 B2 -- Techniques to manage retention policy tags</a>; and <a href="http://www.google.co.ve/patents/US20140095641">US 20140095641 A1 -- Techniques to manage retention policy tags</a>.</p>
+		</fdd:licensingAndPatents>
 		<fdd:transparency>A .msg file can be saved in Outlook or compatible email client and then viewed in an hex editor or binary file parser. </fdd:transparency>
 		<fdd:selfDocumentation>
 			<p>See <fddLink id="fdd000380">CFB_3</fddLink>
@@ -82,7 +84,7 @@
 				<fdd:sigValues>
 					<fdd:sigValue>msg</fdd:sigValue>
 				</fdd:sigValues>
-				<fdd:note>From <a href="http://msdn.microsoft.com/en-us/library/ee160779%28v=exchg.80%29.aspx">specification</a>
+				<fdd:note>From <a href="https://msdn.microsoft.com/en-us/library/ee160779.aspx">specification</a>
 				</fdd:note>
 			</fdd:filenameExtension>
 			<fdd:internetMediaType>
@@ -103,7 +105,7 @@
 	<fdd:notes>
 		<fdd:general>
 			<p>
-				<a href="http://msdn.microsoft.com/en-us/library/ee157268%28v=exchg.80%29.aspx">Microsoft reports</a> that there are scenarios for which storing a Message object in the MSG format would not be advisable:</p>
+				<a href="https://msdn.microsoft.com/en-us/library/ee157268.aspx">Microsoft reports</a> that there are scenarios for which storing a Message object in the MSG format would not be advisable:</p>
 			<ul>
 				<li>Maintaining a large standalone archive. A better option would be a more full-featured format that can render views more efficiently.</li>
 				<li>Sending information to an unknown receiver. In this scenario, it is possible that the format is not supported by the receiver or that information that is private or irrelevant might be transmitted.</li>
@@ -119,22 +121,22 @@
 		<fdd:urls>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://msdn.microsoft.com/en-us/library/cc463912%28v=exchg.80%29.aspx</link>
+					<link>https://msdn.microsoft.com/en-us/library/cc463912.aspx</link>
 					<tag>[MS-OXMSG]: Outlook Item (.msg) File Format</tag>
-					<comment>Format specification from Microsoft </comment>
+					<comment>Format specification from Microsoft. Document covered by Microsoft Interoperability Program.  No patents are associated with this specification.. </comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlGroup>
-					<fdd:intro>Property schemas for MSG Message objects are defined by separate documents.</fdd:intro>
+					<fdd:intro>Property schemas for MSG Message objects are defined by separate documents.  These protocol specifications are covered by the Microsoft Interoperability Program.  See <a href="#useful">Useful References</a> below.  The only associated patents listed by Microsoft relate to active operation of a mail system that uses tags to manage and expire messages in line with a retention policy.</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
-							<link>http://msdn.microsoft.com/en-us/library/cc463900%28v=exchg.80%29.aspx</link>
+							<link>https://msdn.microsoft.com/en-us/library/cc463900.aspx</link>
 							<tag>[MS-OXCMSG]: Message and Attachment Object Protocol</tag>
 							<comment>Specifies the basic property schema for a Message object </comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>http://msdn.microsoft.com/en-us/library/cc433490%28v=exchg.80%29.aspx</link>
+							<link>https://msdn.microsoft.com/en-us/library/cc433490.aspx</link>
 							<tag>[MS-OXPROPS]: Exchange Server Protocols Master Property List</tag>
 							<comment>Specifies the basic property schema for a Message object and the default property schema for a Folder object</comment>
 						</fdd:urlReference>
@@ -163,6 +165,35 @@
 							<link>http://blogs.msdn.com/b/openspecification/archive/2011/06/14/msg-file-format-rights-managed-email-message-part-3.aspx</link>
 							<tag>.MSG File Format, Rights Managed Email Message (Part 3)</tag>
 							<comment>More detail about rights managed MSG email messages </comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Links related to the Microsoft Interoperability Program, a documentation program designed in connection with the 2009 Interoperability Undertaking between Microsoft and the European Commission.  Covers Exchange-Outlook protocols documentation.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/gg134029.aspx</link>
+							<tag>Microsoft Interoperability Program.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://news.microsoft.com/2009/12/16/microsoft-statement-on-european-commission-decision/</link>
+							<tag>Microsoft Statement on European Commission Decision.  December 2009.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://go.microsoft.com/fwlink/?LinkId=179741</link>
+							<tag>Persistent Microsoft link to Microsoft Statement on European Commission Decision.  December 2009.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/openspecifications/dn750984</link>
+							<tag>Microsoft Open Specifications Programs: Patent Promises and Patents</tag>
+							<comment>Includes an interactive table that enables identification of any Microsoft patents or patent applications that Microsoft believes to be associated with a published specification. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/openspecifications/dn646762</link>
+							<tag>Microsoft Interoperability Program (MIP): Patent License and Covenant Agreements</tag>
+							<comment>See Patent Pledge for Open Source Developers.</comment>
 						</fdd:urlReference>
 					</fdd:urlList>
 				</fdd:urlGroup>

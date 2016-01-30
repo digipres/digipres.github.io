@@ -69,9 +69,9 @@ formats:
   extensions: []
   fdd: []
   mimetypes: []
-  name: Character Encodings
+  name: Character encoding
   pronom: []
-  source: Character_Encodings
+  source: Character_encoding
   uti: []
 - egff: []
   extensions: []
@@ -134,9 +134,12 @@ formats:
   extensions:
   - html
   - htm
+  - xhtml
+  - xht
   fdd: []
   mimetypes:
   - text/html
+  - application/xhtml+xml
   name: HTML
   pronom: []
   released: '1990'
@@ -176,13 +179,14 @@ formats:
 - egff: []
   extensions:
   - txt
+  - doc
   fdd: []
   mimetypes:
   - text/plain
-  name: TXT
+  name: Plain text
   pronom:
   - x-fmt/111
-  source: TXT
+  source: Plain_text
   uti: []
 - egff: []
   extensions: []
@@ -1305,7 +1309,8 @@ formats:
   fdd: []
   mimetypes: []
   name: YAML
-  pronom: []
+  pronom:
+  - fmt/818
   source: YAML
   uti: []
 - egff: []
@@ -1329,11 +1334,15 @@ formats:
   uti: []
 - egff: []
   extensions:
-  - fods
   - ods
-  fdd: []
+  - fods
+  - ots
+  fdd:
+  - fdd000438
+  - fdd000439
   mimetypes:
   - application/vnd.oasis.opendocument.spreadsheet
+  - application/vnd.oasis.opendocument.spreadsheet-template
   name: OpenDocument Spreadsheet
   pronom:
   - fmt/137
@@ -1366,9 +1375,9 @@ formats:
   - cdf
   fdd: []
   mimetypes: []
-  name: CDF
+  name: Common Data Format
   pronom: []
-  source: CDF
+  source: Common_Data_Format
   uti: []
 - egff: []
   extensions:
@@ -1787,6 +1796,7 @@ formats:
   - elf
   - o
   - so
+  - mod
   fdd: []
   mimetypes: []
   name: Executable and Linkable Format
@@ -1873,7 +1883,8 @@ formats:
   mimetypes:
   - application/vnd.sun.xml.writer
   name: SXW
-  pronom: []
+  pronom:
+  - fmt/128
   source: SXW
   uti: []
 - egff: []
@@ -1888,27 +1899,41 @@ formats:
   extensions:
   - sdw
   fdd: []
-  mimetypes: []
+  mimetypes:
+  - application/vnd.stardivision.writer
+  - application/x-starwriter
   name: SDW
-  pronom: []
+  pronom:
+  - fmt/812
+  - fmt/813
+  - x-fmt/400
   source: SDW
   uti: []
 - egff: []
   extensions:
   - sxi
+  - sti
   fdd: []
-  mimetypes: []
+  mimetypes:
+  - application/vnd.sun.xml.impress
+  - application/vnd.sun.xml.impress.template
   name: SXI
-  pronom: []
+  pronom:
+  - fmt/130
   source: SXI
   uti: []
 - egff: []
   extensions:
   - sdc
   fdd: []
-  mimetypes: []
+  mimetypes:
+  - application/vnd.stardivision.calc
+  - application/x-starcalc
   name: SDC
-  pronom: []
+  pronom:
+  - fmt/808
+  - fmt/809
+  - x-fmt/359
   source: SDC
   uti: []
 - egff: []
@@ -2003,6 +2028,7 @@ formats:
   name: PCPaint PIC
   pronom:
   - x-fmt/170
+  released: '1984'
   source: PCPaint_PIC
   uti: []
 - egff: []
@@ -2616,7 +2642,9 @@ formats:
   pronom: []
   source: Linear_Tape_File_System
   uti: []
-- egff: []
+- egff:
+  - bufr
+  - BUFR File Format Summary
   extensions: []
   fdd: []
   mimetypes: []
@@ -2638,6 +2666,14 @@ formats:
   extensions: []
   fdd: []
   mimetypes: []
+  name: Base2
+  pronom: []
+  source: Base2
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
   name: Akai Disk Format
   pronom: []
   source: Akai_Disk_Format
@@ -2649,7 +2685,8 @@ formats:
   mimetypes:
   - application/x-matlab-data
   name: MAT
-  pronom: []
+  pronom:
+  - fmt/806
   source: MAT
   uti: []
 - egff: []
@@ -4009,7 +4046,8 @@ formats:
   fdd: []
   mimetypes: []
   name: Statistica
-  pronom: []
+  pronom:
+  - fmt/210
   source: Statistica
   uti: []
 - egff: []
@@ -4195,15 +4233,17 @@ formats:
   - ogv
   - oga
   - spx
+  - ogm
+  - opus
   fdd: []
   mimetypes:
   - application/ogg
   - audio/ogg
   - video/ogg
-  name: OGG
+  name: Ogg
   pronom: []
   released: '1993'
-  source: OGG
+  source: Ogg
   uti: []
 - egff: []
   extensions:
@@ -4211,7 +4251,8 @@ formats:
   fdd: []
   mimetypes: []
   name: DEM
-  pronom: []
+  pronom:
+  - x-fmt/369
   released: '1992'
   source: DEM
   uti: []
@@ -4354,6 +4395,7 @@ formats:
 - egff: []
   extensions:
   - pl
+  - pl6
   - pm
   - ph
   - cgi
@@ -4697,9 +4739,9 @@ formats:
   extensions: []
   fdd: []
   mimetypes: []
-  name: MBR
+  name: Master Boot Record
   pronom: []
-  source: MBR
+  source: Master_Boot_Record
   uti: []
 - egff: []
   extensions:
@@ -5842,8 +5884,7 @@ formats:
   extensions:
   - caf
   fdd: []
-  mimetypes:
-  - application/octet-stream
+  mimetypes: []
   name: Codisk Audio File
   pronom: []
   source: Codisk_Audio_File
@@ -5880,8 +5921,7 @@ formats:
   extensions:
   - com
   fdd: []
-  mimetypes:
-  - application/octet-stream
+  mimetypes: []
   name: DOS executable (.com)
   pronom: []
   source: DOS_executable_%28.com%29
@@ -6814,7 +6854,8 @@ formats:
   fdd: []
   mimetypes: []
   name: Tap file
-  pronom: []
+  pronom:
+  - fmt/802
   released: '1997'
   source: Tap_file
   uti: []
@@ -7316,8 +7357,7 @@ formats:
   source: HMI
   uti: []
 - egff: []
-  extensions:
-  - opus
+  extensions: []
   fdd: []
   mimetypes: []
   name: Opus
@@ -8547,6 +8587,7 @@ formats:
 - egff: []
   extensions:
   - icc
+  - icm
   fdd: []
   mimetypes: []
   name: ICC profile
@@ -8602,7 +8643,10 @@ formats:
   - cpp
   - cc
   - cxx
+  - c++
   - h
+  - hh
+  - hpp
   fdd: []
   mimetypes: []
   name: C++
@@ -8873,7 +8917,9 @@ formats:
   pronom: []
   source: MakerNote
   uti: []
-- egff: []
+- egff:
+  - cmu
+  - CMU Formats File Format Summary
   extensions:
   - cmu
   - atk
@@ -9345,11 +9391,13 @@ formats:
   - ice
   fdd: []
   mimetypes: []
-  name: ICE
+  name: ICE (ICEOWS)
   pronom: []
-  source: ICE
+  source: ICE_%28ICEOWS%29
   uti: []
-- egff: []
+- egff:
+  - spiff
+  - SPIFF File Format Summary
   extensions:
   - jpg
   - jpeg
@@ -9667,9 +9715,9 @@ formats:
   - pc3
   fdd: []
   mimetypes: []
-  name: DEGAS formats
+  name: DEGAS image
   pronom: []
-  source: DEGAS_formats
+  source: DEGAS_image
   uti: []
 - egff: []
   extensions:
@@ -9850,7 +9898,9 @@ formats:
   - x-fmt/300
   source: XWD
   uti: []
-- egff: []
+- egff:
+  - sunraster
+  - Sun Raster File Format Summary
   extensions:
   - sun
   - ras
@@ -10126,6 +10176,8 @@ formats:
   uti: []
 - egff: []
   extensions:
+  - img
+  - als
   - pix
   fdd: []
   mimetypes: []
@@ -10188,6 +10240,7 @@ formats:
   pronom:
   - fmt/341
   - x-fmt/80
+  released: '1984'
   source: PICT
   uti: []
 - egff: []
@@ -10467,7 +10520,9 @@ formats:
   pronom: []
   source: PM_%28XV_image%29
   uti: []
-- egff: []
+- egff:
+  - rix
+  - RIX File Format Summary
   extensions:
   - rix
   - scx
@@ -10559,7 +10614,9 @@ formats:
   pronom: []
   source: Aley%27s_Module
   uti: []
-- egff: []
+- egff:
+  - cals
+  - CALS Raster File Format Summary
   extensions:
   - ct1
   - cal
@@ -11612,7 +11669,9 @@ formats:
   pronom: []
   source: OpenSSL_salted_format
   uti: []
-- egff: []
+- egff:
+  - dif
+  - Lotus DIF File Format Summary
   extensions:
   - dif
   fdd: []
@@ -11637,14 +11696,15 @@ formats:
   extensions: []
   fdd: []
   mimetypes: []
-  name: UDF
+  name: Universal Disk Format
   pronom: []
-  source: UDF
+  source: Universal_Disk_Format
   uti: []
 - egff: []
   extensions:
   - tif
   - tiff
+  - tfx
   fdd: []
   mimetypes:
   - image/tiff-fx
@@ -11937,7 +11997,9 @@ formats:
   uti: []
 - egff: []
   extensions: []
-  fdd: []
+  fdd:
+  - fdd000380
+  - fdd000392
   mimetypes: []
   name: Microsoft Compound File
   pronom:
@@ -12255,14 +12317,6 @@ formats:
   source: Xanga
   uti: []
 - egff: []
-  extensions: []
-  fdd: []
-  mimetypes: []
-  name: WordPress
-  pronom: []
-  source: WordPress
-  uti: []
-- egff: []
   extensions:
   - mrf
   fdd: []
@@ -12296,6 +12350,26 @@ formats:
   - fmt/505
   - fmt/506
   - fmt/507
+  - fmt/757
+  - fmt/758
+  - fmt/759
+  - fmt/760
+  - fmt/761
+  - fmt/762
+  - fmt/763
+  - fmt/764
+  - fmt/765
+  - fmt/766
+  - fmt/767
+  - fmt/768
+  - fmt/769
+  - fmt/770
+  - fmt/701
+  - fmt/772
+  - fmt/773
+  - fmt/774
+  - fmt/775
+  - fmt/776
   released: '1996'
   source: SWF
   uti: []
@@ -13396,7 +13470,8 @@ formats:
   fdd: []
   mimetypes: []
   name: TAP (ZX Spectrum)
-  pronom: []
+  pronom:
+  - fmt/801
   source: TAP_%28ZX_Spectrum%29
   uti: []
 - egff: []
@@ -13564,7 +13639,7 @@ formats:
   mimetypes: []
   name: SHA-3
   pronom: []
-  released: not yet
+  released: '2015'
   source: SHA-3
   uti: []
 - egff: []
@@ -13725,7 +13800,10 @@ formats:
   fdd: []
   mimetypes: []
   name: RPM
-  pronom: []
+  pronom:
+  - fmt/793
+  - fmt/794
+  - fmt/795
   source: RPM
   uti: []
 - egff: []
@@ -13755,7 +13833,9 @@ formats:
   pronom: []
   source: Xerox_EDMICS-RLC
   uti: []
-- egff: []
+- egff:
+  - face
+  - FaceSaver File Format Summary
   extensions:
   - face
   - fac
@@ -13864,7 +13944,9 @@ formats:
   pronom: []
   source: RLL_encoding
   uti: []
-- egff: []
+- egff:
+  - rtf
+  - Microsoft RTF File Format Summary
   extensions:
   - rtf
   fdd: []
@@ -13939,7 +14021,9 @@ formats:
   released: '1991'
   source: EMSI/IEMSI
   uti: []
-- egff: []
+- egff:
+  - cgm
+  - CGM File Format Summary
   extensions:
   - cgm
   fdd: []
@@ -13987,7 +14071,8 @@ formats:
   extensions:
   - diz
   fdd: []
-  mimetypes: []
+  mimetypes:
+  - text/plain
   name: FILE ID.DIZ
   pronom: []
   source: FILE_ID.DIZ
@@ -14023,10 +14108,12 @@ formats:
   - Atari ST Graphics Formats File Format Summary
   extensions:
   - pac
+  - seq
   fdd: []
   mimetypes: []
   name: STAD PAC
   pronom: []
+  released: '1986'
   source: STAD_PAC
   uti: []
 - egff: []
@@ -14148,28 +14235,41 @@ formats:
   - fods
   - fodg
   - fodp
-  fdd: []
+  fdd:
+  - fdd000247
+  - fdd000247
+  - fdd000424
+  - fdd000425
+  - fdd000427
+  - fdd000428
+  - fdd000438
+  - fdd000439
+  - fdd000436
+  - fdd000435
+  - fdd000437
+  - fdd000441
   mimetypes:
-  - application/vnd.oasis.opendocument.tex
+  - application/vnd.oasis.opendocument.text
+  - application/vnd.oasis.opendocument.text-template
+  - application/vnd.oasis.opendocument.text-master
+  - application/vnd.oasis.opendocument.text-web
   - application/vnd.oasis.opendocument.spreadsheet
+  - application/vnd.oasis.opendocument.spreadsheet-template
   - application/vnd.oasis.opendocument.graphics
+  - application/vnd.oasis.opendocument.graphics-template
   - application/vnd.oasis.opendocument.presentation
+  - application/vnd.oasis.opendocument.presentation-template
   - application/vnd.oasis.opendocument.chart
+  - application/vnd.oasis.opendocument.chart-template
   - application/vnd.oasis.opendocument.image
+  - application/vnd.oasis.opendocument.image-template
   - application/vnd.oasis.opendocument.formula
+  - application/vnd.oasis.opendocument.formula-template
   - application/vnd.oasis.opendocument.base
   - application/vnd.oasis.opendocument.database
-  - application/vnd.oasis.opendocument.text-template
-  - application/vnd.oasis.opendocument.spreadsheet-template
-  - application/vnd.oasis.opendocument.graphic-template
-  - application/vnd.oasis.opendocument.presentation-template
-  - application/vnd.oasis.opendocument.chart-template
-  - application/vnd.oasis.opendocument.image-template
-  - application/vnd.oasis.opendocument.formula-template
-  - application/vnd.oasis.opendocument.text-web
-  - application/vnd.oasis.opendocument.text-master
   name: OpenDocument
   pronom:
+  - fmt/135
   - fmt/135
   - fmt/136
   - fmt/290
@@ -14239,9 +14339,9 @@ formats:
   extensions: []
   fdd: []
   mimetypes: []
-  name: Locoscript
+  name: LocoScript
   pronom: []
-  source: Locoscript
+  source: LocoScript
   uti: []
 - egff: []
   extensions: []
@@ -14994,207 +15094,6 @@ formats:
   released: '1997'
   source: Blackboard_Learning_System
   uti: []
-- egff:
-  - ai
-  - Adobe Illustrator
-  - psd
-  - Adobe Photoshop
-  - atari
-  - Atari ST Graphics Formats
-  - dxf
-  - AutoCAD DXF
-  - 3ds
-  - Autodesk 3D Studio
-  - bdf
-  - BDF
-  - brl
-  - BRL-CAD
-  - bufr
-  - BUFR
-  - cals
-  - CALS Raster
-  - cgm
-  - CGM
-  - cmu
-  - CMU Formats
-  - dkb
-  - DKB
-  - dore
-  - Dore Raster File Format
-  - dpx
-  - DPX
-  - drhalo
-  - Dr. Halo
-  - dvmmovie
-  - DVM Movie
-  - eps
-  - Encapsulated PostScript
-  - face
-  - FaceSaver
-  - fax
-  - FAX Formats
-  - fits
-  - FITS
-  - fli
-  - FLI
-  - gemraster
-  - GEM Raster
-  - gemvector
-  - GEM VDI
-  - gif
-  - GIF
-  - grasp
-  - GRASP
-  - grib
-  - GRIB
-  - harvard
-  - Harvard Graphics
-  - hdf
-  - Hierarchical Data Format
-  - iff
-  - IFF
-  - iges
-  - IGES
-  - inset
-  - Inset PIX
-  - dvi
-  - Intel DVI
-  - jpeg
-  - JPEG File Interchange Format
-  - photocd
-  - Kodak Photo CD
-  - ycc
-  - Kodak YCC
-  - dif
-  - Lotus DIF
-  - lotuspic
-  - Lotus PIC
-  - lumena
-  - Lumena Paint
-  - macpaint
-  - Macintosh Paint
-  - macpict
-  - Macintosh PICT
-  - mspaint
-  - Microsoft Paint
-  - riff
-  - Microsoft RIFF
-  - rtf
-  - Microsoft RTF
-  - sylk
-  - Microsoft SYLK
-  - bmp
-  - Microsoft Windows Bitmap
-  - wmf
-  - Microsoft Windows Metafile
-  - miff
-  - MIFF
-  - mpeg
-  - MPEG
-  - mtv
-  - MTV
-  - naplps
-  - NAPLPS
-  - nff
-  - NFF
-  - 'off'
-  - 'OFF'
-  - os2bmp
-  - OS/2 Bitmap
-  - p3d
-  - P3D
-  - pbm
-  - PBM, PGM, PNM, and PPM
-  - pcx
-  - PCX
-  - pds
-  - PDS
-  - pictor
-  - Pictor PC Paint
-  - pixarrib
-  - Pixar RIB
-  - plot10
-  - Plot-10
-  - png
-  - PNG
-  - pov
-  - POV
-  - os2metafile
-  - Presentation Manager Metafile
-  - prt
-  - PRT
-  - qrt
-  - QRT
-  - quicktime
-  - QuickTime
-  - radiance
-  - Radiance
-  - rayshade
-  - Rayshade
-  - rix
-  - RIX
-  - rtrace
-  - RTrace
-  - saf
-  - SAF
-  - sense8
-  - Sense8 NFF
-  - sgiimage
-  - SGI Image File Format
-  - inventor
-  - SGI Inventor
-  - sgiyaodl
-  - SGI YAODL
-  - sgo
-  - SGO
-  - spiff
-  - SPIFF
-  - sunicon
-  - Sun Icon
-  - sunraster
-  - Sun Raster
-  - tddd
-  - TDDD
-  - tga
-  - TGA
-  - tiff
-  - TIFF
-  - ttddd
-  - TTDDD
-  - uray
-  - uRay
-  - utah
-  - Utah RLE
-  - vicar2
-  - VICAR2
-  - viff
-  - VIFF
-  - vis5d
-  - VIS-5D
-  - vividbob
-  - Vivid and Bob
-  - wavefrontobj
-  - Wavefront OBJ
-  - wavefrontrla
-  - Wavefront RLA
-  - wpg
-  - WordPerfect Graphics Metafile
-  - xbm
-  - XBM
-  - xpm
-  - XPM
-  - xwd
-  - XWD
-  - zbr
-  - ZBR
-  extensions: []
-  fdd: []
-  mimetypes: []
-  name: Encyclopedia of Graphics File Formats
-  pronom: []
-  released: '1994'
-  source: Encyclopedia_of_Graphics_File_Formats
-  uti: []
 - egff: []
   extensions:
   - m2k
@@ -15203,15 +15102,6 @@ formats:
   name: M2k
   pronom: []
   source: M2k
-  uti: []
-- egff: []
-  extensions: []
-  fdd: []
-  mimetypes: []
-  name: Netpbm
-  pronom: []
-  released: '1988'
-  source: Netpbm
   uti: []
 - egff: []
   extensions: []
@@ -15247,31 +15137,6 @@ formats:
   name: DOI
   pronom: []
   source: DOI
-  uti: []
-- egff: []
-  extensions: []
-  fdd: []
-  mimetypes: []
-  name: XnView
-  pronom: []
-  source: XnView
-  uti: []
-- egff: []
-  extensions: []
-  fdd: []
-  mimetypes: []
-  name: ImageMagick
-  pronom: []
-  source: ImageMagick
-  uti: []
-- egff: []
-  extensions: []
-  fdd: []
-  mimetypes: []
-  name: RECOIL
-  pronom: []
-  released: '2009'
-  source: RECOIL
   uti: []
 - egff: []
   extensions:
@@ -15319,11 +15184,15 @@ formats:
   uti: []
 - egff: []
   extensions:
-  - fodt
   - odt
-  fdd: []
+  - fodt
+  - ott
+  fdd:
+  - fdd000427
+  - fdd000428
   mimetypes:
   - application/vnd.oasis.opendocument.text
+  - application/vnd.oasis.opendocument.text-template
   name: OpenDocument Text
   pronom:
   - fmt/136
@@ -15535,11 +15404,11 @@ formats:
   fdd: []
   mimetypes:
   - image/x-portable-arbitrarymap
-  name: PAM (Portable Arbitrary Map)
+  name: Portable Arbitrary Map
   pronom:
   - fmt/405
   released: '2000'
-  source: PAM_%28Portable_Arbitrary_Map%29
+  source: Portable_Arbitrary_Map
   uti: []
 - egff: []
   extensions:
@@ -15711,9 +15580,12 @@ formats:
   extensions:
   - odg
   - fodg
-  fdd: []
+  - otg
+  fdd:
+  - fdd000436
   mimetypes:
   - application/vnd.oasis.opendocument.graphics
+  - application/vnd.oasis.opendocument.graphics-template
   name: OpenDocument Drawing
   pronom:
   - fmt/139
@@ -15972,7 +15844,9 @@ formats:
   - fmt/285
   source: GRIB
   uti: []
-- egff: []
+- egff:
+  - dvmmovie
+  - DVM Movie File Format Summary
   extensions:
   - dvm
   fdd: []
@@ -16247,14 +16121,6 @@ formats:
   pronom: []
   released: '2013'
   source: DissidentX
-  uti: []
-- egff: []
-  extensions: []
-  fdd: []
-  mimetypes: []
-  name: 7-Zip
-  pronom: []
-  source: 7-Zip
   uti: []
 - egff: []
   extensions:
@@ -16991,7 +16857,8 @@ formats:
   source: BLISS
   uti: []
 - egff: []
-  extensions: []
+  extensions:
+  - fth
   fdd: []
   mimetypes: []
   name: Forth
@@ -17435,9 +17302,9 @@ formats:
   - dot
   fdd: []
   mimetypes: []
-  name: DOT
+  name: Microsoft Word template
   pronom: []
-  source: DOT
+  source: Microsoft_Word_template
   uti: []
 - egff: []
   extensions:
@@ -17840,7 +17707,8 @@ formats:
   source: Visual_Basic
   uti: []
 - egff: []
-  extensions: []
+  extensions:
+  - xxe
   fdd: []
   mimetypes: []
   name: Xxencoding
@@ -17879,16 +17747,6 @@ formats:
   pronom: []
   released: '1989'
   source: Cartooners_actor_file
-  uti: []
-- egff: []
-  extensions:
-  - vbp
-  - vbproj
-  fdd: []
-  mimetypes: []
-  name: Visual Basic project file
-  pronom: []
-  source: Visual_Basic_project_file
   uti: []
 - egff: []
   extensions:
@@ -17970,7 +17828,8 @@ formats:
   fdd: []
   mimetypes: []
   name: Pages
-  pronom: []
+  pronom:
+  - fmt/824
   released: '2005'
   source: Pages
   uti: []
@@ -17981,7 +17840,8 @@ formats:
   fdd: []
   mimetypes: []
   name: Numbers
-  pronom: []
+  pronom:
+  - fmt/825
   released: '2005'
   source: Numbers
   uti: []
@@ -18299,10 +18159,14 @@ formats:
   extensions:
   - hpgl
   - hpg
+  - hgl
+  - plt
   fdd: []
   mimetypes: []
   name: HP-GL
-  pronom: []
+  pronom:
+  - x-fmt/83
+  - x-fmt/293
   source: HP-GL
   uti: []
 - egff: []
@@ -18393,7 +18257,8 @@ formats:
   fdd: []
   mimetypes: []
   name: T64
-  pronom: []
+  pronom:
+  - fmt/820
   source: T64
   uti: []
 - egff: []
@@ -18656,7 +18521,8 @@ formats:
   fdd: []
   mimetypes: []
   name: CSV Schema
-  pronom: []
+  pronom:
+  - fmt/800
   released: '2014'
   source: CSV_Schema
   uti: []
@@ -19470,7 +19336,8 @@ formats:
   source: Base58
   uti: []
 - egff: []
-  extensions: []
+  extensions:
+  - img
   fdd: []
   mimetypes: []
   name: KONTRON
@@ -20140,11 +20007,12 @@ formats:
   extensions:
   - clpi
   - clp
+  - cpi
   fdd: []
   mimetypes: []
-  name: CLPI
+  name: Blu-ray Clip info
   pronom: []
-  source: CLPI
+  source: Blu-ray_Clip_info
   uti: []
 - egff: []
   extensions:
@@ -20161,10 +20029,10 @@ formats:
   - fif
   fdd: []
   mimetypes: []
-  name: FIF (Fractal Image Format)
+  name: Fractal Image Format
   pronom:
   - x-fmt/320
-  source: FIF_%28Fractal_Image_Format%29
+  source: Fractal_Image_Format
   uti: []
 - egff: []
   extensions: []
@@ -20552,6 +20420,7 @@ formats:
 - egff: []
   extensions:
   - fli
+  - srf
   fdd: []
   mimetypes: []
   name: Flexible Line Interpretation
@@ -20864,7 +20733,9 @@ formats:
   pronom: []
   source: HomeWord
   uti: []
-- egff: []
+- egff:
+  - dvi
+  - Intel DVI File Format Summary
   extensions:
   - dvi
   - imr
@@ -21492,7 +21363,9 @@ formats:
   fdd: []
   mimetypes: []
   name: PCAP
-  pronom: []
+  pronom:
+  - fmt/779
+  - fmt/780
   source: PCAP
   uti: []
 - egff: []
@@ -21818,7 +21691,11 @@ formats:
   fdd: []
   mimetypes: []
   name: Harvard Graphics
-  pronom: []
+  pronom:
+  - x-fmt/32
+  - x-fmt/101
+  - x-fmt/324
+  - x-fmt/325
   released: '1986'
   source: Harvard_Graphics
   uti: []
@@ -21951,11 +21828,18 @@ formats:
 - egff: []
   extensions:
   - odp
-  fdd: []
+  - fodp
+  - otp
+  fdd:
+  - fdd000435
   mimetypes:
   - application/vnd.oasis.opendocument.presentation
+  - application/vnd.oasis.opendocument.presentation-template
   name: OpenDocument Presentation
-  pronom: []
+  pronom:
+  - fmt/138
+  - fmt/292
+  - fmt/293
   released: '2005'
   source: OpenDocument_Presentation
   uti:
@@ -22158,12 +22042,3217 @@ formats:
   released: '2013'
   source: SHARC
   uti: []
+- egff: []
+  extensions:
+  - '565'
+  fdd: []
+  mimetypes: []
+  name: OLPC 565
+  pronom: []
+  released: "\u22642007"
+  source: OLPC_565
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: GUID
+  pronom: []
+  source: GUID
+  uti: []
+- egff: []
+  extensions:
+  - synu
+  - syn
+  fdd: []
+  mimetypes: []
+  name: Synu
+  pronom: []
+  source: Synu
+  uti: []
+- egff: []
+  extensions:
+  - gme
+  fdd: []
+  mimetypes: []
+  name: GME
+  pronom: []
+  source: GME
+  uti: []
+- egff: []
+  extensions:
+  - art
+  fdd: []
+  mimetypes: []
+  name: Palette Master
+  pronom: []
+  source: Palette_Master
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Cyrillic alphabet
+  pronom: []
+  released: 9th century AD
+  source: Cyrillic_alphabet
+  uti: []
+- egff: []
+  extensions:
+  - fref
+  fdd: []
+  mimetypes:
+  - text/plain
+  name: Freenet node reference
+  pronom: []
+  released: 2011 (or earlier)
+  source: Freenet_node_reference
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Content Hash Key (Freenet)
+  pronom: []
+  released: ''
+  source: Content_Hash_Key_%28Freenet%29
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Keyword Signed Key (Freenet)
+  pronom: []
+  released: ''
+  source: Keyword_Signed_Key_%28Freenet%29
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Signed Subspace Key (Freenet)
+  pronom: []
+  released: ''
+  source: Signed_Subspace_Key_%28Freenet%29
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Updateable Subspace Key (Freenet)
+  pronom: []
+  released: 2010 or earlier
+  source: Updateable_Subspace_Key_%28Freenet%29
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: FCPv2
+  pronom: []
+  released: '2006'
+  source: FCPv2
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Content Hash Key (GNUnet)
+  pronom: []
+  released: '2001'
+  source: Content_Hash_Key_%28GNUnet%29
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Signed Subspace Key (GNUnet)
+  pronom: []
+  released: '2001'
+  source: Signed_Subspace_Key_%28GNUnet%29
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Keyword Signed Key (GNUnet)
+  pronom: []
+  released: '2001'
+  source: Keyword_Signed_Key_%28GNUnet%29
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Location identifier (GNUnet)
+  pronom: []
+  released: '2001'
+  source: Location_identifier_%28GNUnet%29
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Frost message XML
+  pronom: []
+  released: ''
+  source: Frost_message_XML
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Frost message URI
+  pronom: []
+  released: ''
+  source: Frost_message_URI
+  uti: []
+- egff: []
+  extensions:
+  - 4q
+  fdd: []
+  mimetypes: []
+  name: 4Q
+  pronom: []
+  released: '2015'
+  source: 4Q
+  uti: []
+- egff: []
+  extensions:
+  - asc
+  fdd: []
+  mimetypes: []
+  name: PGP public key
+  pronom: []
+  released: '1991'
+  source: PGP_public_key
+  uti: []
+- egff: []
+  extensions:
+  - pif
+  fdd: []
+  mimetypes: []
+  name: Program information file
+  pronom: []
+  source: Program_information_file
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: DOS configuration files
+  pronom: []
+  source: DOS_configuration_files
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Windows configuration files
+  pronom: []
+  source: Windows_configuration_files
+  uti: []
+- egff: []
+  extensions:
+  - bat
+  fdd: []
+  mimetypes: []
+  name: Dosstart.bat
+  pronom: []
+  source: Dosstart.bat
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Freenet node protocol
+  pronom: []
+  source: Freenet_node_protocol
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Makefile
+  pronom: []
+  source: Makefile
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Nginx configuration files
+  pronom: []
+  source: Nginx_configuration_files
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Nginx sites-available
+  pronom: []
+  source: Nginx_sites-available
+  uti: []
+- egff: []
+  extensions:
+  - types
+  fdd: []
+  mimetypes: []
+  name: Mime.types
+  pronom: []
+  source: Mime.types
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: MySQL error codes
+  pronom: []
+  source: MySQL_error_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: MariaDB error codes
+  pronom: []
+  source: MariaDB_error_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Configuration files
+  pronom: []
+  source: Configuration_files
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: SQLite result codes
+  pronom: []
+  source: SQLite_result_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Oracle database error messages/1
+  pronom: []
+  source: Oracle_database_error_messages/1
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Oracle database error messages/2
+  pronom: []
+  source: Oracle_database_error_messages/2
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Oracle database error messages/3
+  pronom: []
+  source: Oracle_database_error_messages/3
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Oracle database error messages/4
+  pronom: []
+  source: Oracle_database_error_messages/4
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Oracle database error messages/5
+  pronom: []
+  source: Oracle_database_error_messages/5
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Oracle database error messages/6
+  pronom: []
+  source: Oracle_database_error_messages/6
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Oracle database error messages/7
+  pronom: []
+  source: Oracle_database_error_messages/7
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Oracle database error messages/8
+  pronom: []
+  source: Oracle_database_error_messages/8
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Oracle database error messages/9
+  pronom: []
+  source: Oracle_database_error_messages/9
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Oracle database error messages/10
+  pronom: []
+  source: Oracle_database_error_messages/10
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Oracle database error messages/11
+  pronom: []
+  source: Oracle_database_error_messages/11
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Oracle database error messages/12
+  pronom: []
+  source: Oracle_database_error_messages/12
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Oracle database error messages/13
+  pronom: []
+  source: Oracle_database_error_messages/13
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Oracle database error messages/14
+  pronom: []
+  source: Oracle_database_error_messages/14
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Oracle database error messages
+  pronom: []
+  source: Oracle_database_error_messages
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Chrysler, Dodge, and Jeep Computer error codes
+  pronom: []
+  source: Chrysler%2C_Dodge%2C_and_Jeep_Computer_error_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Admiral stove fault codes
+  pronom: []
+  source: Admiral_stove_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Bosch stove fault codes
+  pronom: []
+  source: Bosch_stove_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Dacor stove fault codes
+  pronom: []
+  source: Dacor_stove_fault_codes
+  uti: []
+- egff: []
+  extensions:
+  - rmvb
+  fdd: []
+  mimetypes: []
+  name: RealMedia Variable Bitrate
+  pronom: []
+  source: RealMedia_Variable_Bitrate
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Estate stove fault codes
+  pronom: []
+  source: Estate_stove_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Frigidaire stove fault codes
+  pronom: []
+  source: Frigidaire_stove_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: GE stove fault codes
+  pronom: []
+  source: GE_stove_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: GE microwave fault codes
+  pronom: []
+  source: GE_microwave_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Gibson stove fault codes
+  pronom: []
+  source: Gibson_stove_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Hotpoint stove fault codes
+  pronom: []
+  source: Hotpoint_stove_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Jenn-Air stove fault codes
+  pronom: []
+  source: Jenn-Air_stove_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Kelvinator stove fault codes
+  pronom: []
+  source: Kelvinator_stove_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Kitchen Aid stove fault codes
+  pronom: []
+  source: Kitchen_Aid_stove_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Kitchen Aid built-in microwave oven fault codes
+  pronom: []
+  source: Kitchen_Aid_built-in_microwave_oven_fault_codes
+  uti: []
+- egff: []
+  extensions:
+  - Theme
+  fdd: []
+  mimetypes: []
+  name: Windows Theme
+  pronom: []
+  source: Windows_Theme
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Coordinate system
+  pronom: []
+  source: Coordinate_system
+  uti: []
+- egff: []
+  extensions:
+  - bat
+  fdd: []
+  mimetypes: []
+  name: Winstart.bat
+  pronom: []
+  source: Winstart.bat
+  uti: []
+- egff: []
+  extensions:
+  - dos
+  fdd: []
+  mimetypes: []
+  name: AUTOEXEC.DOS
+  pronom: []
+  source: AUTOEXEC.DOS
+  uti: []
+- egff: []
+  extensions:
+  - xim
+  fdd: []
+  mimetypes: []
+  name: Xim
+  pronom: []
+  released: ~1989
+  source: Xim
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Kitchen Aid Cooktop fault codes
+  pronom: []
+  source: Kitchen_Aid_Cooktop_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Kitchen Aid front loading automatic washer fault codes
+  pronom: []
+  source: Kitchen_Aid_front_loading_automatic_washer_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Kitchen Aid front loading gas and electric dryer fault codes
+  pronom: []
+  source: Kitchen_Aid_front_loading_gas_and_electric_dryer_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Magic Chef stove fault codes
+  pronom: []
+  source: Magic_Chef_stove_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Maytag stove fault codes
+  pronom: []
+  source: Maytag_stove_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Roper Range stove fault codes
+  pronom: []
+  source: Roper_Range_stove_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Sears model codes
+  pronom: []
+  source: Sears_model_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Tappan stove fault codes
+  pronom: []
+  source: Tappan_stove_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Thermador stove fault codes
+  pronom: []
+  source: Thermador_stove_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Whirlpool stove fault codes
+  pronom: []
+  source: Whirlpool_stove_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Whirlpool Duet front loading automatic washer fault codes
+  pronom: []
+  source: Whirlpool_Duet_front_loading_automatic_washer_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Whirlpool Duet front loading gas and electric dryer fault codes
+  pronom: []
+  source: Whirlpool_Duet_front_loading_gas_and_electric_dryer_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Whirlpool Calypso automatic washer fault codes
+  pronom: []
+  source: Whirlpool_Calypso_automatic_washer_fault_codes
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: "\u03A0fs"
+  pronom: []
+  source: '%CE%A0fs'
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Top level domain
+  pronom: []
+  released: '1985'
+  source: Top_level_domain
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: TLD .com
+  pronom: []
+  source: TLD_.com
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: TLD .mobi
+  pronom: []
+  source: TLD_.mobi
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: WMI class
+  pronom: []
+  source: WMI_class
+  uti: []
+- egff: []
+  extensions:
+  - scores
+  fdd: []
+  mimetypes:
+  - text/plain
+  name: Xbill.scores
+  pronom: []
+  source: Xbill.scores
+  uti: []
+- egff: []
+  extensions:
+  - scores
+  fdd: []
+  mimetypes:
+  - text/plain
+  name: Atomix.scores
+  pronom: []
+  source: Atomix.scores
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes:
+  - text/plain
+  name: Atc score
+  pronom: []
+  source: Atc_score
+  uti: []
+- egff: []
+  extensions:
+  - scores
+  fdd: []
+  mimetypes: []
+  name: Tetris-bsd.scores
+  pronom: []
+  source: Tetris-bsd.scores
+  uti: []
+- egff: []
+  extensions:
+  - dia
+  fdd: []
+  mimetypes: []
+  name: Dia
+  pronom: []
+  source: Dia
+  uti: []
+- egff: []
+  extensions:
+  - dia
+  fdd: []
+  mimetypes: []
+  name: DoItAgain
+  pronom: []
+  source: DoItAgain
+  uti: []
+- egff: []
+  extensions:
+  - eml
+  fdd: []
+  mimetypes: []
+  name: Thunderbird Message File
+  pronom: []
+  source: Thunderbird_Message_File
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Gnome Mahjongg history
+  pronom: []
+  source: Gnome_Mahjongg_history
+  uti: []
+- egff: []
+  extensions:
+  - gam
+  fdd: []
+  mimetypes: []
+  name: Master of Orion saved game
+  pronom: []
+  source: Master_of_Orion_saved_game
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: TLD .edu
+  pronom: []
+  source: TLD_.edu
+  uti: []
+- egff: []
+  extensions:
+  - xspf
+  fdd: []
+  mimetypes: []
+  name: XML Sharable Playlist
+  pronom: []
+  source: XML_Sharable_Playlist
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: TLD .xxx
+  pronom: []
+  source: TLD_.xxx
+  uti: []
+- egff: []
+  extensions:
+  - xml
+  fdd: []
+  mimetypes:
+  - text/xml
+  name: Skype shared configuration
+  pronom: []
+  source: Skype_shared_configuration
+  uti: []
+- egff: []
+  extensions:
+  - grp
+  fdd: []
+  mimetypes: []
+  name: Windows program group
+  pronom: []
+  source: Windows_program_group
+  uti: []
+- egff: []
+  extensions:
+  - class
+  fdd: []
+  mimetypes: []
+  name: Java bytecode
+  pronom: []
+  source: Java_bytecode
+  uti: []
+- egff: []
+  extensions:
+  - prg
+  - app
+  - ovl
+  - tos
+  - acc
+  - ttp
+  fdd: []
+  mimetypes: []
+  name: Atari ST executable
+  pronom: []
+  source: Atari_ST_executable
+  uti: []
+- egff: []
+  extensions:
+  - mus
+  fdd: []
+  mimetypes: []
+  name: Doom MUS
+  pronom: []
+  source: Doom_MUS
+  uti: []
+- egff: []
+  extensions:
+  - rsc
+  fdd: []
+  mimetypes: []
+  name: GEM resource file
+  pronom: []
+  source: GEM_resource_file
+  uti: []
+- egff: []
+  extensions:
+  - png
+  fdd: []
+  mimetypes: []
+  name: Freenet activelink
+  pronom: []
+  released: ''
+  source: Freenet_activelink
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Date Based Redirect
+  pronom: []
+  released: ''
+  source: Date_Based_Redirect
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: FCPv1.2
+  pronom: []
+  released: '2006'
+  source: FCPv1.2
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Nearly Instant Message
+  pronom: []
+  released: ''
+  source: Nearly_Instant_Message
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes:
+  - application/vnd.ms-package.3dmanufacturing-3dmodel+xml
+  - application/vnd.ms-printing.printticket+xml
+  name: 3MF
+  pronom: []
+  released: '2015'
+  source: 3MF
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Percent-encoding
+  pronom: []
+  source: Percent-encoding
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: URL encoding
+  pronom: []
+  source: URL_encoding
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes:
+  - application/x-www-form-urlencoded
+  name: Form URL encoding
+  pronom: []
+  source: Form_URL_encoding
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes:
+  - multipart/form-data
+  name: Multipart/Form-Data
+  pronom: []
+  source: Multipart/Form-Data
+  uti: []
+- egff: []
+  extensions:
+  - fdf
+  fdd: []
+  mimetypes:
+  - application/vnd.fdf
+  name: FDF
+  pronom: []
+  source: FDF
+  uti: []
+- egff: []
+  extensions:
+  - xfdf
+  fdd: []
+  mimetypes:
+  - application/vnd.adobe.xfdf
+  name: XFDF
+  pronom: []
+  source: XFDF
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: QUIC
+  pronom: []
+  released: '2013'
+  source: QUIC
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: ARK
+  pronom: []
+  source: ARK
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Canon XF-AVC
+  pronom: []
+  released: '2015'
+  source: Canon_XF-AVC
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Galen
+  pronom: []
+  source: Galen
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: ISRC
+  pronom: []
+  source: ISRC
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: HDRiRAW
+  pronom: []
+  source: HDRiRAW
+  uti: []
+- egff: []
+  extensions:
+  - stem.mp4
+  fdd: []
+  mimetypes: []
+  name: Stems
+  pronom: []
+  released: 2015-06
+  source: Stems
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Olive
+  pronom: []
+  source: Olive
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: SIRF
+  pronom: []
+  source: SIRF
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: XCEL
+  pronom: []
+  source: XCEL
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: XCDL
+  pronom: []
+  source: XCDL
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Linked Data Platform
+  pronom: []
+  released: '2015'
+  source: Linked_Data_Platform
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Hackaball
+  pronom: []
+  released: '2015'
+  source: Hackaball
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Oculus Rift
+  pronom: []
+  released: '2016'
+  source: Oculus_Rift
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: The Electron
+  pronom: []
+  released: '2015'
+  source: The_Electron
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Content Security Policy
+  pronom: []
+  released: '2012'
+  source: Content_Security_Policy
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Discourse
+  pronom: []
+  source: Discourse
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: CompuServe
+  pronom: []
+  source: CompuServe
+  uti: []
+- egff: []
+  extensions:
+  - fnt
+  fdd: []
+  mimetypes: []
+  name: GEM bitmap font
+  pronom: []
+  source: GEM_bitmap_font
+  uti: []
+- egff: []
+  extensions:
+  - cfn
+  fdd: []
+  mimetypes: []
+  name: Calamus Font
+  pronom: []
+  source: Calamus_Font
+  uti: []
+- egff: []
+  extensions:
+  - mbk
+  - mbs
+  fdd: []
+  mimetypes: []
+  name: STOS memory bank
+  pronom: []
+  source: STOS_memory_bank
+  uti: []
+- egff: []
+  extensions:
+  - geany
+  fdd: []
+  mimetypes: []
+  name: Geany project
+  pronom: []
+  source: Geany_project
+  uti: []
+- egff: []
+  extensions:
+  - dev
+  fdd: []
+  mimetypes: []
+  name: Dev-Cpp project
+  pronom: []
+  source: Dev-Cpp_project
+  uti: []
+- egff: []
+  extensions:
+  - mak
+  - vbp
+  - vbproj
+  fdd: []
+  mimetypes: []
+  name: VisualBasic project
+  pronom: []
+  source: VisualBasic_project
+  uti: []
+- egff: []
+  extensions:
+  - frm
+  fdd: []
+  mimetypes: []
+  name: VisualBasic form
+  pronom: []
+  source: VisualBasic_form
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Hebrew numerals
+  pronom: []
+  source: Hebrew_numerals
+  uti: []
+- egff: []
+  extensions:
+  - xml
+  fdd: []
+  mimetypes: []
+  name: Ant build file
+  pronom: []
+  source: Ant_build_file
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Data type
+  pronom: []
+  source: Data_type
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: C++ data types
+  pronom: []
+  source: C%2B%2B_data_types
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Char (C++)
+  pronom: []
+  source: Char_%28C%2B%2B%29
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Signed char
+  pronom: []
+  source: Signed_char
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: VoiceDescription
+  pronom: []
+  source: VoiceDescription
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: RF64
+  pronom: []
+  source: RF64
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: UPF
+  pronom: []
+  source: UPF
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Bento
+  pronom: []
+  source: Bento
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Unsigned char
+  pronom: []
+  source: Unsigned_char
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Bool (C++)
+  pronom: []
+  source: Bool_%28C%2B%2B%29
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: SQL data types
+  pronom: []
+  source: SQL_data_types
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Char16 t
+  pronom: []
+  source: Char16_t
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Char32 t
+  pronom: []
+  source: Char32_t
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: C++ UTF-8 character literal
+  pronom: []
+  source: C%2B%2B_UTF-8_character_literal
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Wchar t
+  pronom: []
+  source: Wchar_t
+  uti: []
+- egff: []
+  extensions:
+  - ini
+  - cfg
+  - conf
+  fdd: []
+  mimetypes: []
+  name: INI
+  pronom: []
+  source: INI
+  uti: []
+- egff: []
+  extensions:
+  - res
+  fdd: []
+  mimetypes: []
+  name: Windows resource
+  pronom: []
+  source: Windows_resource
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: XSD data types
+  pronom: []
+  source: XSD_data_types
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Java data types
+  pronom: []
+  source: Java_data_types
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: QuickBasic data types
+  pronom: []
+  source: QuickBasic_data_types
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Signed short int
+  pronom: []
+  source: Signed_short_int
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Signed int
+  pronom: []
+  source: Signed_int
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Signed long int
+  pronom: []
+  source: Signed_long_int
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Signed long long int
+  pronom: []
+  source: Signed_long_long_int
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Float (C++)
+  pronom: []
+  source: Float_%28C%2B%2B%29
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Double (C++)
+  pronom: []
+  source: Double_%28C%2B%2B%29
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: C++ pointer
+  pronom: []
+  source: C%2B%2B_pointer
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Two cows
+  pronom: []
+  source: Two_cows
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: C++ array
+  pronom: []
+  source: C%2B%2B_array
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Long double
+  pronom: []
+  source: Long_double
+  uti: []
+- egff: []
+  extensions:
+  - cdf
+  fdd: []
+  mimetypes:
+  - application/vnd.wolfram.cdf.text
+  - application/vnd.wolfram.cdf
+  name: Computable Document Format
+  pronom: []
+  released: '2011'
+  source: Computable_Document_Format
+  uti: []
+- egff: []
+  extensions:
+  - xb
+  fdd: []
+  mimetypes: []
+  name: XBIN
+  pronom: []
+  released: '1996'
+  source: XBIN
+  uti: []
+- egff: []
+  extensions:
+  - wad
+  fdd: []
+  mimetypes: []
+  name: Doom WAD
+  pronom: []
+  source: Doom_WAD
+  uti: []
+- egff: []
+  extensions:
+  - ips
+  fdd: []
+  mimetypes: []
+  name: IPS (binary patch format)
+  pronom: []
+  source: IPS_%28binary_patch_format%29
+  uti: []
+- egff: []
+  extensions:
+  - lzp
+  fdd: []
+  mimetypes: []
+  name: LazPaint
+  pronom: []
+  released: '2011'
+  source: LazPaint
+  uti: []
+- egff: []
+  extensions:
+  - sf2
+  fdd: []
+  mimetypes: []
+  name: SoundFont 2.0
+  pronom: []
+  source: SoundFont_2.0
+  uti: []
+- egff: []
+  extensions:
+  - pat
+  fdd: []
+  mimetypes: []
+  name: Gravis Ultrasound patch
+  pronom: []
+  source: Gravis_Ultrasound_patch
+  uti: []
+- egff:
+  - grasp
+  - GRASP File Format Summary
+  extensions:
+  - set
+  - fnt
+  fdd: []
+  mimetypes: []
+  name: GRASP font
+  pronom: []
+  source: GRASP_font
+  uti: []
+- egff: []
+  extensions:
+  - glif
+  fdd: []
+  mimetypes: []
+  name: Glyph Interchange Format
+  pronom: []
+  source: Glyph_Interchange_Format
+  uti: []
+- egff: []
+  extensions:
+  - pf2
+  fdd: []
+  mimetypes: []
+  name: PFF2
+  pronom: []
+  released: '[http://git.savannah.gnu.org/cgit/grub.git/commit/?id=1e901a7573970dadc8dff64403573cc8d64afb37
+    2009]'
+  source: PFF2
+  uti: []
+- egff: []
+  extensions:
+  - clp
+  fdd: []
+  mimetypes: []
+  name: Windows clipboard
+  pronom: []
+  source: Windows_clipboard
+  uti: []
+- egff: []
+  extensions:
+  - o
+  - so
+  fdd: []
+  mimetypes: []
+  name: A.out
+  pronom: []
+  source: A.out
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Multiboot
+  pronom: []
+  source: Multiboot
+  uti: []
+- egff: []
+  extensions:
+  - lwo
+  fdd: []
+  mimetypes: []
+  name: LightWave Object
+  pronom: []
+  source: LightWave_Object
+  uti: []
+- egff: []
+  extensions:
+  - lws
+  fdd: []
+  mimetypes: []
+  name: LightWave Scene
+  pronom: []
+  source: LightWave_Scene
+  uti: []
+- egff: []
+  extensions:
+  - dotm
+  fdd: []
+  mimetypes: []
+  name: DOTM
+  pronom: []
+  source: DOTM
+  uti: []
+- egff: []
+  extensions:
+  - dotx
+  fdd: []
+  mimetypes: []
+  name: DOTX
+  pronom: []
+  source: DOTX
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: DNS
+  pronom: []
+  source: DNS
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: WTF-8
+  pronom: []
+  source: WTF-8
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: GB18030
+  pronom: []
+  released: '2000'
+  source: GB18030
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Cyrillic numerals
+  pronom: []
+  source: Cyrillic_numerals
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Numeric and counting systems
+  pronom: []
+  source: Numeric_and_counting_systems
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Hangzhou numerals
+  pronom: []
+  source: Hangzhou_numerals
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Malayalam numerals
+  pronom: []
+  source: Malayalam_numerals
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Myanmar numerals
+  pronom: []
+  source: Myanmar_numerals
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Nko numerals
+  pronom: []
+  source: Nko_numerals
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Oriya numerals
+  pronom: []
+  source: Oriya_numerals
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Osmanya numerals
+  pronom: []
+  source: Osmanya_numerals
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Tamil numerals
+  pronom: []
+  source: Tamil_numerals
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Telugu numerals
+  pronom: []
+  source: Telugu_numerals
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Thai numerals
+  pronom: []
+  source: Thai_numerals
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Tibetan numerals
+  pronom: []
+  source: Tibetan_numerals
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Vai numerals
+  pronom: []
+  source: Vai_numerals
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Bengali numerals
+  pronom: []
+  source: Bengali_numerals
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Devanagari numerals
+  pronom: []
+  source: Devanagari_numerals
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Ethiopic numerals
+  pronom: []
+  source: Ethiopic_numerals
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Gujarati numerals
+  pronom: []
+  source: Gujarati_numerals
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Gurmukhi numerals
+  pronom: []
+  source: Gurmukhi_numerals
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Kannada numerals
+  pronom: []
+  source: Kannada_numerals
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Kayah numerals
+  pronom: []
+  source: Kayah_numerals
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Khmer numerals
+  pronom: []
+  source: Khmer_numerals
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Lao numerals
+  pronom: []
+  source: Lao_numerals
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Systematic symbols
+  pronom: []
+  source: Systematic_symbols
+  uti: []
+- egff: []
+  extensions:
+  - ups
+  fdd: []
+  mimetypes: []
+  name: UPS (binary patch format)
+  pronom: []
+  source: UPS_%28binary_patch_format%29
+  uti: []
+- egff: []
+  extensions:
+  - cut
+  fdd: []
+  mimetypes: []
+  name: CUT (Amstrad)
+  pronom: []
+  source: CUT_%28Amstrad%29
+  uti: []
+- egff: []
+  extensions:
+  - grf
+  fdd: []
+  mimetypes: []
+  name: GRF (Amstrad)
+  pronom: []
+  source: GRF_%28Amstrad%29
+  uti: []
+- egff: []
+  extensions:
+  - mic
+  fdd: []
+  mimetypes: []
+  name: Microsoft Image Composer
+  pronom: []
+  source: Microsoft_Image_Composer
+  uti: []
+- egff: []
+  extensions:
+  - v
+  - vp
+  fdd: []
+  mimetypes: []
+  name: Vista data file
+  pronom: []
+  released: "\u22641993"
+  source: Vista_data_file
+  uti: []
+- egff: []
+  extensions:
+  - p9
+  - p24
+  - e24
+  - l30
+  fdd: []
+  mimetypes: []
+  name: Signum font
+  pronom: []
+  source: Signum_font
+  uti: []
+- egff: []
+  extensions:
+  - dta
+  fdd: []
+  mimetypes: []
+  name: Zeiss BIVAS
+  pronom: []
+  source: Zeiss_BIVAS
+  uti: []
+- egff: []
+  extensions:
+  - ftc
+  fdd: []
+  mimetypes: []
+  name: Falcon True Color
+  pronom: []
+  source: Falcon_True_Color
+  uti: []
+- egff: []
+  extensions:
+  - icn
+  fdd: []
+  mimetypes: []
+  name: DEGAS Elite icon
+  pronom: []
+  source: DEGAS_Elite_icon
+  uti: []
+- egff: []
+  extensions:
+  - god
+  fdd: []
+  mimetypes: []
+  name: GodPaint
+  pronom: []
+  released: '1995'
+  source: GodPaint
+  uti: []
+- egff: []
+  extensions:
+  - gx1
+  fdd: []
+  mimetypes: []
+  name: GX1
+  pronom: []
+  source: GX1
+  uti: []
+- egff: []
+  extensions:
+  - gx2
+  fdd: []
+  mimetypes: []
+  name: GX2
+  pronom: []
+  released: "\u22641988"
+  source: GX2
+  uti: []
+- egff: []
+  extensions:
+  - tnc
+  fdd: []
+  mimetypes: []
+  name: SuperJPG thumbnail cache
+  pronom: []
+  source: SuperJPG_thumbnail_cache
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: WebAssembly
+  pronom: []
+  source: WebAssembly
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Tefifon
+  pronom: []
+  released: 1930s
+  source: Tefifon
+  uti: []
+- egff: []
+  extensions:
+  - pk
+  fdd: []
+  mimetypes: []
+  name: PK font
+  pronom: []
+  source: PK_font
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Pack-Ice
+  pronom: []
+  released: '1990'
+  source: Pack-Ice
+  uti: []
+- egff: []
+  extensions:
+  - pi4
+  - pi5
+  - pi6
+  - pi7
+  - pi8
+  - pi9
+  fdd: []
+  mimetypes: []
+  name: Extended DEGAS image
+  pronom: []
+  source: Extended_DEGAS_image
+  uti: []
+- egff: []
+  extensions:
+  - cat
+  fdd: []
+  mimetypes: []
+  name: Security Catalog
+  pronom: []
+  source: Security_Catalog
+  uti: []
+- egff: []
+  extensions:
+  - msu
+  fdd: []
+  mimetypes: []
+  name: Microsoft Update Standalone Package
+  pronom: []
+  source: Microsoft_Update_Standalone_Package
+  uti: []
+- egff: []
+  extensions:
+  - ahk
+  fdd: []
+  mimetypes: []
+  name: AutoHotkey
+  pronom: []
+  source: AutoHotkey
+  uti: []
+- egff: []
+  extensions:
+  - xpi
+  fdd: []
+  mimetypes:
+  - application/x-xpinstall
+  name: Cross-Platform Installer Module
+  pronom: []
+  source: Cross-Platform_Installer_Module
+  uti: []
+- egff: []
+  extensions:
+  - trp
+  fdd: []
+  mimetypes: []
+  name: EggPaint
+  pronom: []
+  source: EggPaint
+  uti: []
+- egff: []
+  extensions:
+  - tru
+  fdd: []
+  mimetypes: []
+  name: IndyPaint
+  pronom: []
+  released: '1993'
+  source: IndyPaint
+  uti: []
+- egff: []
+  extensions:
+  - ddif
+  fdd: []
+  mimetypes: []
+  name: DDIF
+  pronom: []
+  released: ~1986
+  source: DDIF
+  uti: []
+- egff: []
+  extensions:
+  - adf
+  fdd: []
+  mimetypes: []
+  name: ArtWorx Data Format
+  pronom: []
+  released: '1996'
+  source: ArtWorx_Data_Format
+  uti: []
+- egff: []
+  extensions:
+  - stl
+  fdd: []
+  mimetypes: []
+  name: EBU STL
+  pronom: []
+  source: EBU_STL
+  uti: []
+- egff: []
+  extensions:
+  - stl
+  fdd: []
+  mimetypes: []
+  name: Spruce subtitle format
+  pronom: []
+  source: Spruce_subtitle_format
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: EBU Timed Text
+  pronom: []
+  source: EBU_Timed_Text
+  uti: []
+- egff: []
+  extensions:
+  - ptx
+  fdd: []
+  mimetypes: []
+  name: V.Flash PTX
+  pronom: []
+  source: V.Flash_PTX
+  uti: []
+- egff: []
+  extensions:
+  - idf
+  fdd: []
+  mimetypes: []
+  name: ICEDraw
+  pronom: []
+  source: ICEDraw
+  uti: []
+- egff: []
+  extensions:
+  - bin
+  fdd: []
+  mimetypes: []
+  name: BIN (Binary Text)
+  pronom: []
+  source: BIN_%28Binary_Text%29
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: SAUCE
+  pronom: []
+  released: '1994'
+  source: SAUCE
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: NTFS
+  pronom: []
+  source: NTFS
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Processing
+  pronom: []
+  released: '2001'
+  source: Processing
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: SAFS
+  pronom: []
+  source: SAFS
+  uti: []
+- egff: []
+  extensions:
+  - grp
+  fdd: []
+  mimetypes: []
+  name: StarCraft group file
+  pronom: []
+  source: StarCraft_group_file
+  uti: []
+- egff: []
+  extensions:
+  - scr
+  fdd: []
+  mimetypes: []
+  name: Word for DOS screen capture
+  pronom: []
+  source: Word_for_DOS_screen_capture
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Thor
+  pronom: []
+  source: Thor
+  uti: []
+- egff:
+  - fax
+  - FAX Formats File Format Summary
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Fax formats
+  pronom: []
+  source: Fax_formats
+  uti: []
+- egff: []
+  extensions:
+  - apf
+  fdd: []
+  mimetypes: []
+  name: Async Professional Fax
+  pronom: []
+  source: Async_Professional_Fax
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: IPFS
+  pronom: []
+  source: IPFS
+  uti: []
+- egff:
+  - inset
+  - Inset PIX File Format Summary
+  extensions:
+  - pix
+  fdd: []
+  mimetypes: []
+  name: Inset PIX
+  pronom: []
+  source: Inset_PIX
+  uti: []
+- egff: []
+  extensions:
+  - dgi
+  fdd: []
+  mimetypes: []
+  name: DGI (Digi-Pic)
+  pronom: []
+  released: "\u22641986"
+  source: DGI_%28Digi-Pic%29
+  uti: []
+- egff:
+  - lotuspic
+  - Lotus PIC File Format Summary
+  extensions:
+  - pic
+  fdd: []
+  mimetypes: []
+  name: Lotus 1-2-3 Chart
+  pronom:
+  - x-fmt/82
+  released: ~1983
+  source: Lotus_1-2-3_Chart
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: DCS
+  pronom: []
+  source: DCS
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: ReFS
+  pronom: []
+  source: ReFS
+  uti: []
+- egff: []
+  extensions:
+  - nic
+  fdd: []
+  mimetypes: []
+  name: NeoDesk icon
+  pronom: []
+  source: NeoDesk_icon
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Brotli
+  pronom: []
+  released: '2013'
+  source: Brotli
+  uti: []
+- egff: []
+  extensions:
+  - flif
+  fdd: []
+  mimetypes: []
+  name: FLIF
+  pronom: []
+  source: FLIF
+  uti: []
+- egff: []
+  extensions:
+  - pxi
+  - pxs
+  fdd: []
+  mimetypes: []
+  name: Pixie (vector graphics)
+  pronom: []
+  released: '1997'
+  source: Pixie_%28vector_graphics%29
+  uti: []
+- egff: []
+  extensions:
+  - cod
+  fdd: []
+  mimetypes:
+  - image/cis-cod
+  name: Lightning Strike
+  pronom: []
+  released: "\u22641996"
+  source: Lightning_Strike
+  uti: []
+- egff: []
+  extensions:
+  - amos
+  fdd: []
+  mimetypes: []
+  name: AMOS BASIC tokenized file
+  pronom: []
+  released: '1990'
+  source: AMOS_BASIC_tokenized_file
+  uti: []
+- egff: []
+  extensions:
+  - gdf
+  fdd: []
+  mimetypes: []
+  name: General Data Format for Biosignals
+  pronom: []
+  source: General_Data_Format_for_Biosignals
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: CD-i
+  pronom: []
+  released: '1991'
+  source: CD-i
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes:
+  - text/x-cross-domain-policy
+  name: Adobe Cross Domain Policy File
+  pronom: []
+  source: Adobe_Cross_Domain_Policy_File
+  uti: []
+- egff: []
+  extensions:
+  - pbf
+  fdd: []
+  mimetypes: []
+  name: Portable Bitmap Format
+  pronom: []
+  released: '1995'
+  source: Portable_Bitmap_Format
+  uti: []
+- egff: []
+  extensions:
+  - bld
+  fdd: []
+  mimetypes: []
+  name: MegaPaint BLD
+  pronom: []
+  source: MegaPaint_BLD
+  uti: []
+- egff: []
+  extensions:
+  - ct
+  fdd: []
+  mimetypes: []
+  name: IRIS CMYK Front End Processor CT
+  pronom: []
+  source: IRIS_CMYK_Front_End_Processor_CT
+  uti: []
+- egff: []
+  extensions:
+  - svs
+  fdd: []
+  mimetypes: []
+  name: Aperio SVS
+  pronom: []
+  source: Aperio_SVS
+  uti: []
+- egff: []
+  extensions:
+  - md.html
+  fdd: []
+  mimetypes: []
+  name: Markdeep
+  pronom: []
+  released: '2015'
+  source: Markdeep
+  uti: []
+- egff: []
+  extensions:
+  - crg
+  fdd: []
+  mimetypes: []
+  name: Calamus Raster Graphic
+  pronom: []
+  source: Calamus_Raster_Graphic
+  uti: []
+- egff: []
+  extensions:
+  - amp.html
+  fdd: []
+  mimetypes: []
+  name: Accelerated Mobile Pages
+  pronom: []
+  released: '2015'
+  source: Accelerated_Mobile_Pages
+  uti: []
+- egff: []
+  extensions:
+  - cdk
+  fdd: []
+  mimetypes: []
+  name: Calamus
+  pronom: []
+  released: "\u22651987"
+  source: Calamus
+  uti: []
+- egff: []
+  extensions:
+  - iim
+  fdd: []
+  mimetypes: []
+  name: InShape IIM
+  pronom: []
+  released: "\u22641994"
+  source: InShape_IIM
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Portland Common Data Model
+  pronom: []
+  source: Portland_Common_Data_Model
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: MediaTrace
+  pronom: []
+  source: MediaTrace
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Portable Web Publications
+  pronom: []
+  source: Portable_Web_Publications
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: BaseX
+  pronom: []
+  source: BaseX
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: National Transmission Format
+  pronom: []
+  source: National_Transmission_Format
+  uti: []
+- egff: []
+  extensions:
+  - xga
+  fdd: []
+  mimetypes: []
+  name: XGA (Falcon)
+  pronom: []
+  source: XGA_%28Falcon%29
+  uti: []
+- egff: []
+  extensions:
+  - arts
+  fdd: []
+  mimetypes: []
+  name: ARTS
+  pronom: []
+  source: ARTS
+  uti: []
+- egff: []
+  extensions:
+  - warts
+  fdd: []
+  mimetypes: []
+  name: Warts
+  pronom: []
+  source: Warts
+  uti: []
+- egff: []
+  extensions:
+  - trs
+  - trp
+  - tre
+  - tru
+  fdd: []
+  mimetypes: []
+  name: Spooky Sprites
+  pronom: []
+  released: "\u22641995"
+  source: Spooky_Sprites
+  uti: []
+- egff: []
+  extensions:
+  - hmr
+  fdd: []
+  mimetypes: []
+  name: HMR
+  pronom: []
+  source: HMR
+  uti: []
+- egff: []
+  extensions:
+  - nif
+  fdd: []
+  mimetypes: []
+  name: NIF
+  pronom: []
+  source: NIF
+  uti: []
+- egff: []
+  extensions:
+  - j6i
+  fdd: []
+  mimetypes: []
+  name: J6I
+  pronom: []
+  source: J6I
+  uti: []
+- egff: []
+  extensions:
+  - sk
+  fdd: []
+  mimetypes: []
+  name: Skencil SK
+  pronom: []
+  source: Skencil_SK
+  uti: []
+- egff: []
+  extensions:
+  - sk1
+  fdd: []
+  mimetypes: []
+  name: SK1
+  pronom: []
+  source: SK1
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Oodle Data Compression
+  pronom: []
+  source: Oodle_Data_Compression
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Error codes and messages
+  pronom: []
+  source: Error_codes_and_messages
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: LZHAM
+  pronom: []
+  released: '2015'
+  source: LZHAM
+  uti: []
+- egff: []
+  extensions:
+  - pjf
+  fdd: []
+  mimetypes: []
+  name: PaintJet soft font
+  pronom: []
+  source: PaintJet_soft_font
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: JPEG XT
+  pronom: []
+  source: JPEG_XT
+  uti: []
+- egff: []
+  extensions:
+  - ipi
+  fdd: []
+  mimetypes: []
+  name: IPI
+  pronom: []
+  released: "\u22641993"
+  source: IPI
+  uti: []
+- egff: []
+  extensions:
+  - cd5
+  fdd: []
+  mimetypes: []
+  name: CD5
+  pronom: []
+  released: '2001'
+  source: CD5
+  uti: []
+- egff: []
+  extensions:
+  - wig
+  - a64
+  fdd: []
+  mimetypes: []
+  name: Wigmore Artist 64
+  pronom: []
+  released: ~1986
+  source: Wigmore_Artist_64
+  uti: []
+- egff: []
+  extensions:
+  - wlm
+  fdd: []
+  mimetypes: []
+  name: CompW
+  pronom: []
+  source: CompW
+  uti: []
+- egff: []
+  extensions:
+  - jpc
+  fdd: []
+  mimetypes: []
+  name: JPC (LuraWave)
+  pronom: []
+  source: JPC_%28LuraWave%29
+  uti: []
+- egff: []
+  extensions:
+  - lum
+  - col
+  fdd: []
+  mimetypes: []
+  name: Technicolor Dream
+  pronom: []
+  released: '1986'
+  source: Technicolor_Dream
+  uti: []
+- egff: []
+  extensions:
+  - nsr
+  fdd: []
+  mimetypes: []
+  name: The Newsroom
+  pronom: []
+  source: The_Newsroom
+  uti: []
+- egff: []
+  extensions:
+  - nc
+  fdd: []
+  mimetypes: []
+  name: MCrypt
+  pronom: []
+  source: MCrypt
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: ZSCII
+  pronom: []
+  source: ZSCII
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: UPX
+  pronom: []
+  source: UPX
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Miscellaneous File Formats
+  pronom: []
+  source: Miscellaneous_File_Formats
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Elements of File Formats
+  pronom: []
+  source: Elements_of_File_Formats
+  uti: []
+- egff: []
+  extensions:
+  - pxi
+  fdd: []
+  mimetypes: []
+  name: Pixie (programming language)
+  pronom: []
+  released: '2015'
+  source: Pixie_%28programming_language%29
+  uti: []
+- egff: []
+  extensions:
+  - axc
+  fdd: []
+  mimetypes:
+  - text/plain
+  name: Axc
+  pronom: []
+  source: Axc
+  uti: []
+- egff: []
+  extensions:
+  - axc
+  fdd: []
+  mimetypes:
+  - text/plain
+  name: ALC
+  pronom: []
+  source: ALC
+  uti: []
+- egff: []
+  extensions:
+  - axc
+  fdd: []
+  mimetypes:
+  - text/plain
+  name: ALD
+  pronom: []
+  source: ALD
+  uti: []
+- egff: []
+  extensions:
+  - axc
+  fdd: []
+  mimetypes:
+  - text/plain
+  name: ALI
+  pronom: []
+  source: ALI
+  uti: []
+- egff: []
+  extensions:
+  - axc
+  fdd: []
+  mimetypes:
+  - text/plain
+  name: ALT
+  pronom: []
+  source: ALT
+  uti: []
+- egff: []
+  extensions:
+  - axc
+  fdd: []
+  mimetypes:
+  - text/plain
+  name: AOI
+  pronom: []
+  source: AOI
+  uti: []
+- egff: []
+  extensions:
+  - axc
+  fdd: []
+  mimetypes:
+  - text/plain
+  name: ADD
+  pronom: []
+  source: ADD
+  uti: []
+- egff: []
+  extensions:
+  - axc
+  fdd: []
+  mimetypes:
+  - text/plain
+  name: ADI
+  pronom: []
+  source: ADI
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Enterprise software
+  pronom: []
+  source: Enterprise_software
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Microsoft Dynamics AX
+  pronom: []
+  source: Microsoft_Dynamics_AX
+  uti: []
+- egff: []
+  extensions:
+  - pp
+  fdd: []
+  mimetypes: []
+  name: PowerPacker
+  pronom: []
+  released: "\u22641989"
+  source: PowerPacker
+  uti: []
+- egff: []
+  extensions:
+  - tfm
+  fdd: []
+  mimetypes: []
+  name: TeX Font Metrics
+  pronom: []
+  source: TeX_Font_Metrics
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: FourCC
+  pronom: []
+  source: FourCC
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: QuickTime Animation
+  pronom: []
+  source: QuickTime_Animation
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: MS-DOS date/time
+  pronom: []
+  released: '1981'
+  source: MS-DOS_date/time
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Protected Interoperable File Format
+  pronom: []
+  released: '2010'
+  source: Protected_Interoperable_File_Format
+  uti: []
+- egff: []
+  extensions:
+  - vcdiff
+  fdd: []
+  mimetypes: []
+  name: VCDIFF
+  pronom: []
+  released: "\u22642002"
+  source: VCDIFF
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Windows System Error Code
+  pronom: []
+  source: Windows_System_Error_Code
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: HRESULT
+  pronom: []
+  source: HRESULT
+  uti: []
+- egff: []
+  extensions:
+  - p
+  - a
+  - r
+  - g
+  - b
+  fdd: []
+  mimetypes: []
+  name: Img Software Set
+  pronom: []
+  released: "\u22641989"
+  source: Img_Software_Set
+  uti: []
+- egff: []
+  extensions:
+  - bcif
+  fdd: []
+  mimetypes: []
+  name: BCIF
+  pronom: []
+  released: "\u22652010"
+  source: BCIF
+  uti: []
+- egff: []
+  extensions:
+  - sla
+  - scd
+  fdd: []
+  mimetypes: []
+  name: Scribus
+  pronom: []
+  source: Scribus
+  uti: []
+- egff: []
+  extensions:
+  - abk
+  fdd: []
+  mimetypes: []
+  name: AMOS Memory Bank
+  pronom: []
+  source: AMOS_Memory_Bank
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Resources
+  pronom: []
+  source: Resources
+  uti: []
+- egff: []
+  extensions:
+  - abs
+  - abk
+  fdd: []
+  mimetypes: []
+  name: AMOS AmBs
+  pronom: []
+  source: AMOS_AmBs
+  uti: []
+- egff: []
+  extensions:
+  - abk
+  fdd: []
+  mimetypes: []
+  name: AMOS Picture Bank
+  pronom: []
+  source: AMOS_Picture_Bank
+  uti: []
+- egff: []
+  extensions:
+  - nds
+  fdd: []
+  mimetypes: []
+  name: NDS
+  pronom: []
+  source: NDS
+  uti: []
+- egff: []
+  extensions:
+  - dcr
+  - dir
+  - dxr
+  fdd: []
+  mimetypes:
+  - application/x-director
+  name: Shockwave (Director)
+  pronom:
+  - x-fmt/341
+  - fmt/317
+  - fmt/486
+  released: "\u22641995"
+  source: Shockwave_%28Director%29
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: RIFX
+  pronom: []
+  released: '1991'
+  source: RIFX
+  uti: []
+- egff: []
+  extensions:
+  - ff
+  fdd: []
+  mimetypes: []
+  name: Farbfeld
+  pronom: []
+  released: '2016'
+  source: Farbfeld
+  uti: []
+- egff: []
+  extensions:
+  - mrf
+  - ppg
+  - pjg
+  - idx
+  fdd: []
+  mimetypes: []
+  name: Meta Raster Format
+  pronom: []
+  source: Meta_Raster_Format
+  uti: []
+- egff: []
+  extensions:
+  - pi
+  fdd: []
+  mimetypes: []
+  name: Pi (image format)
+  pronom: []
+  source: Pi_%28image_format%29
+  uti: []
+- egff: []
+  extensions:
+  - pic
+  fdd: []
+  mimetypes: []
+  name: PIC (Yanagisawa)
+  pronom: []
+  source: PIC_%28Yanagisawa%29
+  uti: []
+- egff: []
+  extensions:
+  - p2
+  fdd: []
+  mimetypes: []
+  name: PIC2
+  pronom: []
+  source: PIC2
+  uti: []
+- egff: []
+  extensions:
+  - sxw
+  - stw
+  - sxc
+  - stc
+  - sxd
+  - std
+  - sxi
+  - sti
+  - sxm
+  - sxg
+  fdd: []
+  mimetypes:
+  - application/vnd.sun.xml.writer
+  - application/vnd.sun.xml.writer.template
+  - application/vnd.sun.xml.calc
+  - application/vnd.sun.xml.calc.template
+  - application/vnd.sun.xml.draw
+  - application/vnd.sun.xml.draw.template
+  - application/vnd.sun.xml.impress
+  - application/vnd.sun.xml.impress.template
+  - application/vnd.sun.xml.math
+  - application/vnd.sun.xml.writer.global
+  name: OpenOffice.org XML
+  pronom:
+  - fmt/128
+  - fmt/129
+  - fmt/127
+  - fmt/130
+  source: OpenOffice.org_XML
+  uti: []
+- egff: []
+  extensions:
+  - sxd
+  - std
+  fdd: []
+  mimetypes:
+  - application/vnd.sun.xml.draw
+  - application/vnd.sun.xml.draw.template
+  name: SXD
+  pronom:
+  - fmt/127
+  source: SXD
+  uti: []
+- egff: []
+  extensions:
+  - sdw
+  - sgl
+  - sdc
+  - sda
+  - sdd
+  - sdp
+  - smf
+  - sds
+  - sdm
+  - vor
+  fdd: []
+  mimetypes:
+  - application/vnd.stardivision.writer
+  - application/vnd.stardivision.writer-global
+  - application/vnd.stardivision.calc
+  - application/vnd.stardivision.draw
+  - application/vnd.stardivision.impress
+  - application/vnd.stardivision.impress-packed
+  - application/vnd.stardivision.math
+  - application/vnd.stardivision.chart
+  - application/vnd.stardivision.mail
+  name: StarOffice binary formats
+  pronom:
+  - fmt/812
+  - fmt/813
+  - x-fmt/400
+  - fmt/808
+  - fmt/809
+  - x-fmt/359
+  - fmt/810
+  - fmt/811
+  - x-fmt/401
+  - fmt/814
+  - fmt/815
+  - x-fmt/360
+  source: StarOffice_binary_formats
+  uti: []
+- egff: []
+  extensions:
+  - sda
+  fdd: []
+  mimetypes:
+  - application/vnd.stardivision.draw
+  - application/x-stardraw
+  name: SDA (StarOffice)
+  pronom:
+  - fmt/810
+  - fmt/811
+  - x-fmt/401
+  source: SDA_%28StarOffice%29
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: HyperTalk
+  pronom: []
+  released: '1987'
+  source: HyperTalk
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: Atari ST color palette
+  pronom: []
+  source: Atari_ST_color_palette
+  uti: []
+- egff: []
+  extensions: []
+  fdd: []
+  mimetypes: []
+  name: HIPS
+  pronom: []
+  released: ~1982
+  source: HIPS
+  uti: []
+- egff: []
+  extensions:
+  - obml
+  - obml15
+  - obml16
+  fdd: []
+  mimetypes: []
+  name: OBML (Opera Binary Markup Language)
+  pronom: []
+  source: OBML_%28Opera_Binary_Markup_Language%29
+  uti: []
 source_prefix: http://fileformats.archiveteam.org/wiki/
 stats:
-  total_formats: 2265
-  total_w_egff: 172
-  total_w_extension: 2125
-  total_w_fdd: 172
-  total_w_mimetype: 278
-  total_w_pronom: 458
+  total_formats: 2612
+  total_w_egff: 92
+  total_w_extension: 2366
+  total_w_fdd: 192
+  total_w_mimetype: 336
+  total_w_pronom: 535
   total_w_uti: 6

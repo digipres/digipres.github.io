@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000439" titleName="OpenDocument Spreadsheet Document Format (ODS), Version 1.2,  ISO 26300:2015" shortName="ODF_spreadsheet_1_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenreAndSubgenres>
+				<fdd:gdfrGenre>spreadsheet</fdd:gdfrGenre>
+				<fdd:gdfrSubgenres>
+					<fdd:gdfrSubgenre>dataset</fdd:gdfrSubgenre>
+				</fdd:gdfrSubgenres>
+			</fdd:gdfrGenreAndSubgenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>office/business</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2015-12-06</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>OpenDocument Spreadsheet Document Format (ODS), Version 1.2.  Part of OASIS Open Document Format for Office Applications, Version 1.2 and the equivalent ISO 26300:2015.</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>spreadsheet formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The OpenDocument Spreadsheet Document Format (ODS), Version 1.2 (given the short name <i>ODF_spreadsheet_1_2</i> here) is an XML-based format for editable spreadsheet documents.  It is one of several subtypes in the <fddLink id="fdd000247">ODF family</fddLink> for particular content categories.  The format, an international standard, is specified in the ODF 1.2 specification as published by OASIS.  The ISO/IEC 26300:2015 specification is equivalent.  The key difference between <fddLink id="fdd000438">ODF_spreadsheet_1_1</fddLink> and <i>ODF_spreadsheet_1_2</i> is that the later version incorporates the OpenFormula specification for formulas and functions, whereas <i>ODF_spreadsheet_1_1</i> allowed any syntax for strings representing formulas.  This shortcoming led to interoperability problems resolved in version 1.2.</p>
+			<p>The primary ODF markup used for spreadsheets is specified in the <i>table:</i> namespace, with the <i>&lt;table:table&gt;</i> element as a container for each worksheet.  The same namespace and markup is used for tables in textual documents.</p>
+			<p>The ODF specification covers two physical forms for ODF documents, a flat form as a single XML file and a package form based on the <fddLink id="fdd000355">ZIP_6_2_0</fddLink> format.  See Notes in <fddLink id="fdd000247">ODF Family</fddLink> for more information about the flat XML-only variant of ODF files.  For a flat ODF spreadsheet file, usually given a file extension of .fods, the root <i>&lt;office:document&gt;</i> element has an <i>office:mimetype</i> attribute with one of
+the values listed below as <a href="#sign">File signifiers</a>.  This description focuses on the more commonly used ZIP-based package format for ODF spreadsheet files, typically given the <i>.ods</i> file extension.  Files using the same markup specification and package but with an extension of <i>.ots</i> are for use as spreadsheet document templates.</p>
+			<p>An ODF package can be recognized as a spreadsheet document in several ways.  Externally, there are file extensions for two ways in which ODF spreadsheet documents may be used, as noted above.  The primary internal indication is that the mandatory file named <i>mimetype</i> will contain one of the corresponding strings listed as <a href="#sign">File signifiers</a> below.  An additional way to recognize an ODF spreadsheet document is that  the <i>&lt;office:body&gt;</i> element, a child of the root <i>&lt;office:document-content&gt;</i> element in <i>content.xml</i> has the child element <i>&lt;office:spreadsheet&gt;</i>.</p>
+			<p>The typical <i>content.xml</i> file for a minimal spreadsheet file with a single worksheet has the basic form:</p>
+			<ul>
+				<li>&lt;office:document-content&gt;</li>
+				<li>&lt;office:automatic-styles&gt;  -- captures formatting styles created automatically in response to a direct user choice, such as a fill color for a cell, with references to fuller style specifications in the <i>styles.xml</i> file -- &lt;/office:automatic-styles&gt;</li>
+				<li>&lt;office:body&gt;</li>
+				<li>&lt;office:spreadsheet&gt;</li>
+				<li>&lt;table:table&gt; -- contains a series of &lt;table:table-column&gt; elements to describe each column in the table.  The column specifications are followed by &lt;table:table-row&gt; elements consisting of &lt;table:table-cell&gt; entries. A cell that contains a string will contain a child &lt;text:p&gt; element.  A cell containing a number will also contain a &lt;text:p&gt; that shows the display form of the value. The actual value is stored in the &lt;table:table-cell&gt; element using two attributes: <i>office:value-type</i> and <i>office:value</i>.  Numeric value types for cells are <i>float</i>, <i>percentage</i>, and <i>currency</i>.  Separate types are used to indicate date and time values.  For discussion of cells containing formulas, see <a href="#notes">Notes</a> below -- &lt;/table:table&gt;</li>
+				<li>&lt;/office:spreadsheet&gt;</li>
+				<li>&lt;/office:body&gt;</li>
+				<li>&lt;/office:document-content&gt;</li>
+			</ul>
+			<p>For details of the ZIP-based package for ODF_spreadsheet_1_2, see <fddLink id="fdd000425">ODF_package_1_2</fddLink>.  The typical files for a minimal spreadsheet document include:  <i>mimetype</i> (one-line file containing only the string &quot;application/vnd.oasis.opendocument.spreadsheet&quot;; 
+<i>./META-INF/manifest.xml</i> (package manifest); <i>content.xml</i> (spreadsheet content); <i>styles.xml</i> (spreadsheet formatting).  The package specification, in Part 3 of the ODF 1.2 specification defines the form for the package manifest, and options for digital signatures, encryption, etc.</p>
+		</fdd:description>
+		<fdd:shortDescription>An XML-based, international standard format for a spreadsheet that is editable.  Usual file extension is .ods.   Documented with formats for other content categories in the OpenDocument Format (ODF) 1.2.  Standard developed by OASIS and also approved as ISO/IEC 26300:2015.  Supersedes ODS 1.1.</fdd:shortDescription>
+		<fdd:productionPhase>Can be used in any production phase.  Particularly used for creating documents (initial state) and for editing and review (middle-state). Used in final-state contexts where recalculation based on current data is required.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000247</fdd:id>
+					<fdd:shortName>ODF_Family</fdd:shortName>
+					<fdd:titleName>OpenDocument Format (ODF) Family, OASIS and ISO/IEC 26300</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000437</fdd:id>
+					<fdd:shortName>ODF_chart_1_2</fdd:shortName>
+					<fdd:titleName>OpenDocument Chart Document Format (ODC), Version 1.2, ISO 26300-1:2015</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>Other ODF content objects, such as drawings.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000425</fdd:id>
+					<fdd:shortName>ODF_package_1_2</fdd:shortName>
+					<fdd:titleName>OpenDocument Package Format, ODF 1.2, part 3. ISO/IEC 26300-3:2015</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:comment>META-INF/manifest.xml file, not described separately on this resource at this time. This manifest file is mandatory in all ODF packages.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000438</fdd:id>
+					<fdd:shortName>ODF_spreadsheet_1_1</fdd:shortName>
+					<fdd:titleName>OpenDocument Spreadsheet Document Format (ODS), Version 1.1, ISO/IEC 26300:2015</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000263</fdd:id>
+					<fdd:shortName>XML_1_0</fdd:shortName>
+					<fdd:titleName>XML (Extensible Markup Language) 1.0</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment> A normative RELAX NG schema is part of the specification for ODF 1.1, which includes the specification for spreadsheet documents.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse/>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>International open standard.  Developed and maintained by <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=office">OASIS Open Document Format for Office Applications (OpenDocument) TC</a> as part of the OpenDocument Format (ODF) 1.2 specification published by OASIS in 2011.  Also approved as part of the equivalent ISO/IEC 26300:2015 by ISO/IEC JTC1/SC34.</fdd:disclosure>
+		<fdd:documentation>
+			<p>Specifications from OASIS: <a href="https://www.oasis-open.org/standards#opendocumentv1.2">Open Document Format for Office Applications (OpenDocument) Version 1.2</a>.  Specification for ODF 1.2 spreadsheet documents are found primarily in chapter 9 of of Part 1 the specification, with the specification for formulas in Part 2.  The technical markup specification is part of a <a href="http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-schema.rng">normative RNG schema for primary component files for ODF 1.2 documents.</a>.  The ZIP-based package is defined in Part 3.</p>
+			<p>The identical specification is published in:</p>
+			<ul>
+				<li>
+					<a href="http://standards.iso.org/ittf/PubliclyAvailableStandards/c066376_ISO_IEC_26300-3_2015.zip">ISO/IEC 26300-1:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2 Part 1: OpenDocument Schema</a>;</li>
+				<li>
+					<a href="http://standards.iso.org/ittf/PubliclyAvailableStandards/c066375_ISO_IEC_26300-2_2015.zip">
+ISO/IEC 26300-2:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2 Part 2: Recalculated Formula (OpenFormula) Format</a>;</li>
+				<li>and <a href="http://standards.iso.org/ittf/PubliclyAvailableStandards/c066376_ISO_IEC_26300-3_2015.zip">
+ISO/IEC 26300-2:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2 Part 3: Packages</a>.</li>
+			</ul>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>Versions 3.0 and onward of OpenOffice.org defaulted to ODF 1.2.  The version of OpenOffice.org at the time of the 2010 split between OpenOffice and LibreOffice was 3.3.</p>
+			<p>The major applications supporting ODF in 2015 can read and write spreadsheet documents as defined in ODF 1.2, although the default format may be termed &quot;ODF 1.2 Extended.&quot;</p>
+			<ul>
+				<li>LibreOffice recommends ODF 1.2 Extended as the default option for saving new files, but also allows users to default to ODF 1.2 or ODF 1.1.  <a href="https://wiki.documentfoundation.org/images/3/39/GS3502-SettingUpLibreOffice.pdf">Setting Up LibreOffice</a> shows how to change the default ODF version.  See <a href="#notes">Notes</a> for brief discussion of LibreOffice Extensions to ODF 1.2 as of late 2015.</li>
+				<li>Apache OpenOffice also supports ODF 1.2 (and has done so since version 3.0), with the product installing with ODF 1.2 Extended as the default ODF version.  The compilers of this resource have not determined how extensions supported by Apache OpenOffice compare with those for LibreOffice. <a href="../contact_format.shtml">Comments welcome</a>.</li>
+				<li>Microsoft first introduced support for ODF_spreadsheet_1_2 with  Excel 2013.  Microsoft <a href="https://msdn.microsoft.com/en-us/library/dd925326.aspx">lists ODF 1.2 as a &quot;persistence format&quot; for Excel</a>.  This indicates that use of ODF in Office does not involve conversion to and from <fddLink id="fdd000395">OOXML</fddLink>.  See <a href="#notes">Notes</a> and <a href="#useful">Useful references</a> below for information relating to how Microsoft supports ODF_spreadsheet _1_1, including the syntax for formulas, given that the ODF 1.1 specification does not mandate a particular syntax for formulas.</li>
+			</ul>
+			<p>Other products descended from early adopters of ODF include: <a href="http://www-03.ibm.com/software/products/en/ibmconnectionsdocs">IBM Connections Docs</a>, <a href="https://www.calligra.org/">Calligra</a>,
+<a href="http://www.neooffice.org/neojava/en/index.php">NeoOffice</a> (Mac-oriented fork from OpenOffice.org),
+and <a href="http://www.softmaker.com/en/softmaker-office-windows">SoftMaker</a>.  It is likely that all of these products can read and write ODF 1.2 documents, although the compilers of this resource have not confirmed this.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>See <fddLink id="fdd000247">ODF_family</fddLink> for information on the widespread adoption of the OpenDocument Format by governments for the exchange of editable documents for collaboration between government agencies and the public and other entities.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No concerns.  See <fddLink id="fdd000247">ODF_Family</fddLink>.</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>The structure and text of an ODS file are all represented in XML and hence viewable without special tools, although XML-aware tools that can show the element hierarchy make viewing and interpretation more convenient.  The most commonly used parts, elements, and attributes have recognizable names. Simple documents can be interpreted with very basic tools. However, interpreting the semantics of some elements and the correspondence of some elements and attributes to spreadsheet terminology or functionality will require not only understanding of the schema and the specification text, but familiarity with the associated terminology and functionality.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>As for other members of the ODF 1.2 family, ODF_spreadsheet_1_2 added support for metadata based on RDF (W3C&apos;s Resource Description Framework).  As well as using RDF for metadata for the document package as a whole, RDF can be attached to elements within the document&apos;s content.  The use of &quot;custom&quot; metadata as specified in ODF 1.1 is deprecated in ODF 1.2.</p>
+			<p>Pre-defined metadata elements for the document as a whole, stored in an <i>&lt;office:meta&gt;</i> element  include:</p>
+			<ul>
+				<li>From the Dublin core namespace, using the <i>dc:</i> prefix: Title, Creator (of most recent modification), Description, Subject, Date (last modified), Language</li>
+				<li>From the ODF specification, using the <i>meta:</i> prefix: Generator (creating software application), Keywords, Initial Creator, Creation Date and Time, Modification Date and Time, Print Date and Time, Document Template, Document Statistics (word count, page count, etc.),</li>
+			</ul>
+			<p>The pre-defined elements are all optional and repeatable.  However, applications are not required to update multiple occurrences in a specific way to reflect modifications to a document.</p>
+			<p>Also supported in both ODF 1.1 and ODF 1.2 is an XML structure for user-defined metadata, based on triplets of name, data type, and value.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			<p>Depends on features used.  Spreadsheets may include links to externally stored data.  Macros can be included.</p>
+		</fdd:externalDependencies>
+		<fdd:techProtection>Encryption is supported for files within an ODF 1.2 package.  In addition, an ODF package file may be encrypted during interchange or as part of DRM controlling distribution.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:textQF>
+			<fdd:normalText>
+				<p>No specific set of factors for assessing quality and functionality of a spreadsheet format has been developed. This format description uses selected factors for assessing formats for text and datasets.</p>
+				<p>Some spreadsheets have a printable or viewable report as a primary function.  Textual content in cells in ODF_spreadsheet_1_2 worksheets is conveniently extractable for quotation and for indexing.  Full support for Unicode.</p>
+			</fdd:normalText>
+			<fdd:structure>The semantic structure of formulas and their relationship to cells with values is fully represented.  Rectangular areas within a worksheet can be identified as tables, with labels for rows and columns.</fdd:structure>
+			<fdd:layout>Excellent support for layout choices. Represents entire layout and formatting as intended by an author who used an application for which ODF_spreadsheet_1_2 is a native format.  Differences in detail can occur on display if the original fonts used are not available in the system used for viewing.  Charts based on data in the spreadsheet are considered separate objects, which can be positioned on a sheet.</fdd:layout>
+			<fdd:mathDiag>
+				<p>Equations or formulas can be represented visually in ODF-spreadsheet_1_2 using MathML.  The MathML object is a separate object, which can be positioned on a page like a chart.</p>
+			</fdd:mathDiag>
+			<fdd:beyondText>As a format designed for creating and editing a spreadsheet, ODF_spreadsheet_1_2 stores information associated with the process of creation and review of spreadsheets, such as comments.  Also supported are embedded media objects in binary formats, and links to external media objects, such as images, audio, or video.</fdd:beyondText>
+		</fdd:textQF>
+		<fdd:datasetQF>
+			<fdd:normalDataset>
+				<p>ODF_spreadsheet_1_2 does not support the range of stored types as typical in database applications and programming languages, e.g., to distinguish integers from floating point numbers.  It uses a limited set of data types for values in cells. The only pure numeric type is <i>float</i>.  The OpenFormula specification (ODF 1.2: Part 2) does not prescribe a level of numeric precision, commenting that,&quot;Formulas define the correct result, and not the algorithm for calculation. Since computing systems have limited precision and range of numbers, some functions cannot or should not be naively implemented as their formulas suggest. This specification defines the mathematically correct answer, and allows implementors to choose the best algorithm that will meet that definition.&quot;  Most spreadsheet software has a practical limit of 15 decimal digits. This is insufficient for some forms of statistical analysis (see <a href="#useful">references</a> below).</p>
+				<p>Cells with numbers that are intended as percentages or currency values have distinct types.  Types and syntax for dates and times are based on XML Schema types.  There is a single <i>string</i> type for text.  There is also a <i>boolean</i> type with permitted values <i>true</i> and <i>false</i>.</p>
+			</fdd:normalDataset>
+			<fdd:accessSoftware>
+				<p>There is no API specifically aimed at the use of ODF_spreadsheet_1_2 to hold a dataset.  See <a href="#notes">Notes on Relationship to CSV</a> for discussion of widely used support for extracting data from a spreadsheet for use in statistical software.</p>
+			</fdd:accessSoftware>
+			<fdd:dataDocumentation>ODF 1.2 packages have no specific support for rich discipline-specific metadata or codebooks. See Self-documentation in <a href="#sustainability">Sustainability Factors</a> above.</fdd:dataDocumentation>
+			<fdd:beyondDataset>An ODF spreadsheet document can hold not only raw data, but also formulas that perform calculations on that data and present results as numbers or in graphical form.  It can also include: macros; visual mathematical representation of equations; and charts based on the spreadsheet data.</fdd:beyondDataset>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>ods</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>
+					<i>.ods</i> is the extension used for a spreadsheet file.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.oasis.opendocument.spreadsheet</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>Magic numbers that apply to ODF document category subtypes incorporate the magic number for  <fddLink id="fdd000354">ZIP_PK</fddLink>,  the string <i>mimetype</i> at position 30, and the MIME subtype string value at position 38.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>ots</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The extension <i>.ots</i> is used for a spreadsheet document used as a template.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.oasis.opendocument.spreadsheet-template</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:internetMediaType>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Formulas in ODF 1.2:</b> A cell containing a formula has a <i>table:formula</i> attribute.  The value of the attribute is a string representing the formula in some syntax, preceded by a namespace prefix that identifies the specification with which the formula complies.  If no namespace prefix is supplied, the namespace identified by &quot;urn:oasis:names:tc:opendocument:xmlns:of:1.2&quot; is assumed. This identifies the specification in Part 2 of the ODF 1.2 standard, often termed OpenFormula, and given the namespace prefix <i>of:</i>.  Other prefixes that might be found include:  <i>msoxl:</i>, used by Microsoft for its support of ODF spreadsheets; and <i>oooc:</i>. the namespace prefix used by OpenOffice.org before the development of OpenFormula, and adopted by various spreadsheet applications that built on the OpenOffice.org code.  However, conformance with the ODF 1.2 specification requires that &apos;All namespace prefixes used in the values of table:formula attributes values shall be bound to the &quot;urn:oasis:names:tc:opendocument:xmlns:of:1.2&quot; namespace.&apos;  This means that strict compliance with ODS 1.2 requires the OpenFormula syntax and function set.  The ability to use alternative namespaces permits extensions to OpenFormula to be deployed and tested in applications.</p>
+			<p>The OpenFormula specification in <a href="http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-part2.html">Part 2 of the ODF 1.2 specification</a> was developed by the <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=office-formula">OASIS: OpenDocument - Formula Sub-Committee</a>, which included active participation by both developers of OpenOffice and staff from Microsoft. The specification includes a formula grammar (syntax), a processing model for formula evaluation, and three sets of functions, allowing alternative levels of support for software libraries for evaluation of formulas.  The three levels/profiles are known as the &quot;small group&quot;, the &quot;medium group&quot;, and the &quot;large group.&quot;  The compilers of this resource have not found that applications declare which group they support, but suspect that the major applications aim to fulfil the requirements of a large group evaluator.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>Typically, an ODF formula follows the namespace prefix with an equals (&apos;=&apos;) sign.  This may be followed by a second &apos;=&apos; as a “forced recalculate” marker, followed by an expression.  If the second &apos;=&apos; is present, then the expression should be recalculated whenever a cell or other predecessor it depends on changes. Expressions can include the following basic components: constant numbers, constant text, operators, function calls, cell references including named ranges, in addition to advanced features such as <i>quoted labels</i> (defining rows or columns), <i>named expressions</i>, and <i>inline arrays</i>.  Cell references in OpenFormula expressions start with &apos;[&apos; and end with &apos;]&apos;.</p>
+			<p>Software for conversion between formulas as specified for OOXML spreadsheets and OpenFormula formulas was developed collaboratively as part of a more general translator between OOXML and ODF.   See <a href="http://odf-converter.sourceforge.net/newblog/index.php?2009/03">How the OpenXML/ODF Translator Deals with Formulas</a>.</p>
+			<p>
+				<b>Relationship to CSV</b>:
+The <fddLink id="fdd000323">CSV</fddLink> format is a simple textual format for rectangular datasets.
+Rows represent observations and columns represent the variables measured.  The first row may hold labels for the variables.
+Conversion from CSV to ODS is straightforward and offered as an import feature by most spreadsheet applications.  One caveat with import is that CSV imposes no limits to the precision of numeric value that can be represented. If numbers in a CSV file have more than 15 digits, the values will likely be rounded on conversion to ODS.
+
+If an ODS worksheet consists simply of data values where rows represent observations and columns represent variables, export/conversion to CSV is straightforward and widely offered by spreadsheet applications. If the top row gives variable names it will typically be exported appropriately.  However, the exported file does not distinguish between raw data and calculated values.  This loss of semantics may be significant in some contexts.</p>
+			<p>
+				<b>LibreOffice extensions to ODF 1.2:</b> LibreOffice explains  its use of ODF 1.2 Extended as the recommended version at <a href="https://wiki.documentfoundation.org/ODF#ODF_Extensions">LibreOffice ODF Extensions</a> and lists extensions at  <a href="https://wiki.documentfoundation.org/Development/ODF_Implementer_Notes/List_of_LibreOffice_ODF_Extensions">LibreOffice: Development/ODF Implementer Notes/List of LibreOffice ODF Extensions</a> and <a href="https://wiki.documentfoundation.org/Development/ODF_Implementer_Notes/List_of_LibreOffice_OpenFormula_Extensions">LibreOffice: Development/ODF Implementer Notes/List of LibreOffice OpenFormula Extensions</a>.  In December 2015, the majority of OpenFormula extensions are in the &apos;COM.MICROSOFT&apos; namespace and support interoperability between LibreOffice and Microsoft Excel.</p>
+			<p>
+				<b>Microsoft Excel support for ODF 1.2 files:</b>  According to <a href="https://msdn.microsoft.com/en-us/library/dd950944.aspx">[MS-OFFDI] Microsoft Office File Format Documentation Introduction</a>, support for ODF 1.2 was introduced in Office 2013.  Also, starting with Excel 2013, ODS 1.1 files opened and modified will be saved as ODS 1.2 files.</p>
+			<p>Excel 2013 and 2016 handling in ODF 1.2 files of formulas in different namespaces is described in <a href="https://msdn.microsoft.com/en-us/library/jj670910.aspx">[MS-OODF3]: 2.1.820 Part 1 Section 19.642, table:formula</a> in discussion of the attribute <i>table:formula</i>, when contained within the element <i>&lt;table:table-cell&gt;</i>, itself contained within a parent <i>&lt;office:spreadsheet \ table:table-row&gt;</i>.</p>
+			<ul>
+				<li>When saving the <i>table:formula</i> attribute, Excel precedes the formula string with the &apos;of&apos; namespace and saves a formula string that follows the OpenFormula specification (ODF 1.2 Part 2).</li>
+				<li> Formulas using the &apos;of&apos; namespace and those without a namespace are expected to follow the OpenFormula specification.  Formulas using the &apos;msoxl&apos; namespace follow  [ISO/IEC-29500-1] section 18.17, except that workbook-names are written as literal values.</li>
+				<li> When loading the attribute <i>table:formula</i>, Excel first looks at the namespace.  If the namespace is &apos;of&apos;, &apos;msoxl&apos;, or not specified, Excel will attempt to load the value of <i>table:formula</i> as a formula.  When loading the <i>table:formula</i> attribute, if the namespace is unknown, the <i>table:formula</i> attribute is not loaded, and the value “office:value” is used instead.  Hence the value displayed corresponds to the most recent value calculated, but the cell contains a static value rather than a formula that can be re-calculated. If the result of the formula is an error, Excel loads the <i>&lt;text:p&gt;</i> element and maps it to an Error data type. Error data types that Excel does not support are mapped to #VALUE!.</li>
+			</ul>
+		</fdd:general>
+		<fdd:history>
+			<p>The most substantial difference between <fddLink id="fdd000438">ODF_spreadsheet_1_1</fddLink> (ODS 1.1) and ODF_spreadsheet_1_2 (ODS 1.2) is the addition of the OpenFormula specification, which defines a syntax for cell formulas and rules for evaluation.  As a result, ODS 1.2 resolves many of the interoperability problems associated with ODS 1.1.</p>
+			<p>See <fddLink id="fdd000425">ODF_package_1_2</fddLink> for discussion of changes to ODF packages between versions 1.1 and 1.2.</p>
+			<p>See <fddLink id="fdd000247">ODF_family</fddLink> for more on the history of ODF in general.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Specifications as published by OASIS</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.oasis-open.org/standards#opendocumentv1.2</link>
+							<tag>Open Document Format for Office Applications (OpenDocument) Specification v1.2</tag>
+							<comment>Provides links to all versions of specifications and supporting files for ODF 1.2.  Specifications available as ODT, PDF, and HTML.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-part2.html</link>
+							<tag>Open Document Format for Office Applications (OpenDocument) Version 1.2:  Part 2: Recalculated Formula (OpenFormula) Format</tag>
+							<comment>Of particular importance for ODF_spreadsheet_1_2. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-schema.rng</link>
+							<tag>Normative RNG schema for markup of primary content in ODF 1.2 files.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-manifest-schema.rng</link>
+							<tag>Normative RNG schema for mandatory manifest file for an ODF 1.2 package.</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Specifications as published by ISO/IEC</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c066363_ISO_IEC_26300-1_2015.zip</link>
+							<tag>ISO/IEC 26300-1:2015.  Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2 -- Part 1: OpenDocument Schema</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c066363_ISO_IEC_26300-1_2015.zip</link>
+							<tag>ISO/IEC 26300-2:2015.  Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2 -- Part 2:  Recalculated Formula (OpenFormula) Format</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c066376_ISO_IEC_26300-3_2015.zip</link>
+							<tag>ISO/IEC 26300-3:2015.  Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2 -- Part 3:  Packages</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://books.evc-cit.info/odbook/ch05.html</link>
+					<tag>OASIS OpenDocument Essentials.  Chapter 5. Spreadsheets</tag>
+					<comment>Based on ODF 1.1.  Overall structure is the same.  Ignore examples with format syntax.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/OpenOffice.org</link>
+					<tag>Wikipedia entry for OpenOffice.org</tag>
+					<comment>Lists ODF versions used as native format, starting with support for ODF 1.0 in OpenOffice.org version 2.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://fileformats.archiveteam.org/wiki/ODS</link>
+					<tag>Archiveteam.org entry for OpenDocument Spreadsheet</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://apps.nationalarchives.gov.uk/pronom/fmt/295</link>
+					<tag>PRONOM entry for OpenDocument Spreadsheet 1.2</tag>
+					<comment>PUID for OpenDocument Spreadsheet 1.2 is fmt/295</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.openoffice.org/dev_docs/features/3.0/</link>
+					<tag>OpenOffice.org 3.0 New Features</tag>
+					<comment>Announces support for ODF 1.2.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nouenoff.nl/downloads/LibreOffice_AOO_CompetitiveFeatureMatrix_20150318.pdf</link>
+					<tag>Comparing LibreOffice and Apache OpenOffice</tag>
+					<comment>Includes timeline of releases and links to release notes as well as detailed comparison of features.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Microsoft technical documents on its support for ODF_spreadsheet_1_2 in Office</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/hh695327.aspx</link>
+							<tag>[MS-OODF3]: Office Implementation Information for ODF 1.2 Standards Support</tag>
+							<comment>Applies to both Client and Server implementations of Microsoft Office 2013 and Microsoft Office 2016</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/jj670910.aspx</link>
+							<tag>[MS-OODF3]:  2.1.820 Part 1 Section 19.642, table:formula</tag>
+							<comment>Includes description of how Excel 2013 and Excel 2016 deal with formulas in different namespaces.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/dd925326.aspx</link>
+							<tag>[MS-OFFDI]: 3. Microsoft Excel Persistence Formats</tag>
+							<comment>Lists OpenDocument Format as a persistence format for Excel. Includes ODF 1.2.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/dd950944.aspx</link>
+							<tag>[MS-OFFDI]: 3.5.2 Application and Versions</tag>
+							<comment>Indicates support for ODF 1.2 in Excel 2013.  Also that if an ODF 1.1 spreadsheet is opened in Excel 2013, it will be saved in ODF 1.2 format.  This likely applies also to Excel 2016.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://odf-converter.sourceforge.net/newblog/index.php?2009/03/13/28-how-the-openxml-odf-translator-deals-with-formulas</link>
+					<tag>Open XML / ODF Translator Add-ins for Office </tag>
+					<comment>March 2009 blog post relates to versions 2.5 and 3 of the converter</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://odf-converter.sourceforge.net/download.html</link>
+					<tag>Open XML / ODF Translator Add-ins for Office (version 4.0)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources related to numerical precision.  The typical numerical precision in spreadsheet formats/applications, including LibreOffice) is the <i>double-precision floating-point</i> format, also referred to as <i>binary64</i>.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Double-precision_floating-point_format</link>
+							<tag>Wikipedia entry for double-precision floating-point format (binary64)</tag>
+							<comment>As specified by IEEE 754 and IEC 60559.  IEEE 754-2008 and  ISO/IEC/IEEE 60559:2011 are identical standards for floating-point arithmetic.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.jstatsoft.org/article/view/v34i04</link>
+							<tag>On the Numerical Accuracy of Spreadsheets. Journal of Statistical Software, Vol. 34, Issue 4, April 2010</tag>
+							<comment>Based on Excel 2007 and other spreadsheet applications available in 2008, including Calc from OpenOffice.org.  Concludes, &quot;there is no safe choice among the spreadsheets here assessed.&quot;</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.libreoffice.org/discover/calc/</link>
+					<tag>LibreOffice Calc -- introduction</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://wiki.documentfoundation.org/images/4/47/CG41-CalcGuideLO.pdf</link>
+					<tag>LibreOffice Calc Guide</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/OpenFormula</link>
+					<tag>Wikipedia entry for OpenFormula</tag>
+					<comment>Provides some early history on the OpenFormula project and formation of the OASIS Technical Committee that developed the standard.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000247">ODF_Family</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
