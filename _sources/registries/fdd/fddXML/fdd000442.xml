@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?altova_sps U:\Formats\XML\edit_2013-14\fddCreation.sps?>
+<fdd:FDD id="fdd000442" titleName="AVI File Format with OpenDML Extensions, Version 1.02" shortName="AVI_OpenDML_1_02" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd=".\fdd.xsd" xsi:schemaLocation=".\fdd.xsd fdd.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>moving-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-wrapper</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:updates>
+			<fdd:date>2016-03-09</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>AVI File Format with OpenDML Extensions, Version 1.02</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>AVI</fdd:keyword>
+			<fdd:keyword>OpenDML</fdd:keyword>
+			<fdd:keyword>container formats</fdd:keyword>
+			<fdd:keyword>wrapper formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>Extended version of the AVI file format for moving image content that wraps a video bitstream with other data chunks.  The  most important impact of the extended version is increased file size.  The original 1992 Microsoft-IBM-defined AVI file consists of one <fddLink id="fdd000025">RIFF</fddLink> "chunk" tagged as <i>AVI</i>, with an effective limit in a FAT16 filesystem of 2 GB, small for a high resolution video file.  The 1995 OpenDML extensions, developed by an OpenDML group associated with Matrox Electronic Systems Ltd., specify multiple RIFF chunks that bring the capacity to whatever level the filesystem supports; one <a href="http://www.myvideoproblems.com/Tutorials/dv-aviFiles.htm">specialist reports</a> that NTFS can carry AVI files that reach 32 terabytes.  The added RIFF chunks are tagged <i>AVIX</i>.  Informally, the AVI OpenDML files are sometimed referred to a AVI 2.0, and the original format as AVI 1.0.</p>
+			<p>The tagging of the file's chunks and subchunks employs Microsoft's <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/dd318189%28v=vs.85%29.aspx">FOURCC</a> four character code.  Both the AVI and AVIX chunks contain a <i>movi</i> subchunk that carries the actual picture and sound data that may employ a wide range of codecs, including those listed under Relationships below, also identified by FOURCC tags. Like the original AVI file, the AVI chunk in an OpenDML file contains a <i>hdrl</i> or header subchunk that provides metadata about the video. Both the original AVI and OpenDML AVI files contain an index to the offsets of the data chunks within the file. In the original AVI file, the index is tagged <i>idx1</i> and identifies the location of video frames; in the OpenDML version, it is tagged <i>indx</i> and, among other changes, identifies the locations of video fields as well as frames. The field-level identifications are required to support playback of interlaced picture in professional video systems.  One <a href="http://www.myvideoproblems.com/Tutorials/dv-aviFiles.htm">commentator</a> notes that the &quot;meta index file structure [is] at the beginning of the [OpenDML] file as opposed to AVI 1.0, which uses an index at the end of a file, therefore AVI 2.0 has significant &quot;Seeking&quot; advantages- a must for large AVI files.&quot;</p>
+			<p>OpenDML was initially developed to support the carriage of a special form of <fddLink id="fdd000063">MJPEG</fddLink> (Motion JPEG), whose frames are encoded as JPEG-DIB (JPEG with Device-Independent Bit compression; see <a href="http://www.jmcgowan.com/odmlff2.pdf">OpenDML specification</a> page 36), a constrained version of <fddLink id="fdd000017">JPEG</fddLink> specified by Microsoft, with moving image usage detailed in the OpenDML specification.  See also comments in the <a href="#notes">Notes</a> below.</p>
+		</fdd:description>
+		<fdd:shortDescription>Extended version of the AVI file format for moving image content that wraps a video bitstream with other data chunks. </fdd:shortDescription>
+		<fdd:productionPhase>Used in all phases: as a master format; as a middle-state format, e.g., the video source when producing lower-resolution streaming versions; sometimes as a final state format for enduser delivery.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000025</fdd:id>
+					<fdd:shortName>RIFF</fdd:shortName>
+					<fdd:titleName>Microsoft Resource Interchange File Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Modification of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000059</fdd:id>
+					<fdd:shortName>AVI</fdd:shortName>
+					<fdd:titleName>AVI (Audio Video Interleaved) File Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000190</fdd:id>
+					<fdd:shortName>AVI_DV</fdd:shortName>
+					<fdd:titleName>AVI OpenDML with DV Digital Video</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000060</fdd:id>
+					<fdd:shortName>AVI_MJPEG</fdd:shortName>
+					<fdd:titleName>AVI OpenDML with MJPEG Codec</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000349</fdd:id>
+					<fdd:shortName>AVI_FFV1</fdd:shortName>
+					<fdd:titleName>AVI OpenDML with FFV1 Codec</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000240</fdd:id>
+					<fdd:shortName>AVI_210</fdd:shortName>
+					<fdd:titleName>AVI OpenDML with V210 Encoding</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment/>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000367</fdd:id>
+					<fdd:shortName>AVI_UYVY</fdd:shortName>
+					<fdd:titleName>AVI OpenDML with UYVY Encoding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000366</fdd:id>
+					<fdd:shortName>AVI_YUY2</fdd:shortName>
+					<fdd:titleName>AVI OpenDML with YUY2 Encoding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>AVI OpenDML files containing streams produced by other video codecs, not documented at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000001</fdd:id>
+					<fdd:shortName>WAVE</fdd:shortName>
+					<fdd:titleName>WAVE Audio File Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000070</fdd:id>
+					<fdd:shortName>MP3_CBR</fdd:shortName>
+					<fdd:titleName>MP3 Audio Encoding, Constant Bit Rate</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:preference>For preservation reformatting, the Library of Congress&apos; Packard Campus for Audio-Visual Conservation has chosen losslessy-compressed   <fddLink id="fdd000138">JPEG 2000</fddLink> encoded video wrapped in <fddLink id="fdd000013">MXF</fddLink>.  For web access: <fddLink id="fdd000081">MPEG-4_AVC</fddLink> (profile unknown).</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>Developed as an open specification by a committee working in association with Matrox Electronic Systems Ltd. of Canada.</p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>Documentation of the OpenDML extension version 1.02 available from <a href="http://www.morgan-multimedia.com/download/odmlff2.pdf">Morgan Multimedia</a> and other sites.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>Widely adopted for video production and filemaking.  Adoption may not extend to all permitted codecs and other features. The Wikipedia <a href="https://en.wikipedia.org/wiki/Audio_Video_Interleave">AVI</a> article describes the OpenDML extensions as widely adopted; however, in 2000, one commentator wrote that the introduction of Microsoft's Advanced System Format or <fddLink id="fdd000067">ASF</fddLink> had "pushed to one side" the OpenDML effort. The National Archives and Records Administration (NARA) uses AVI_OpenDML_1_02 as the preservation master format for their reformatted video materials. For more information see NARA&apos;s <a href="http://www.archives.gov/preservation/products/reformatting/video.html">Digitization Products and Services</a>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>None known to the compiler of this resource.</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>The AVI_OpenDML_1_02 file wrapper is transparent; the encoded video bistreams carried in the wrapper require tools and documentation to decode.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>Technical information is carried in header chunks (e.g., hdrl, movi, and others); descriptive metadata may appear in a RIFF INFO chunk. The OpenDML extensions add a Video Properties Header (vprp) that provides metadata beyond that in the original AVI format, e.g., concerning aspect ratio; OpenDML also offer table structures for improved description of timecode, including discontinuous instances.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>None</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:movingImageQF>
+			<fdd:normalVideo>Good support.</fdd:normalVideo>
+			<fdd:clarity>
+				<p>Depends upon the codec selected, with uncompressed or lossless codecs providing excellent clarity. </p>
+				<p>The OpenDML extensions were intended to increase quality in professional applications by supporting the representation of interlaced video (60 fields per second), 24 fps for content from motion picture film, and other features.</p>
+			</fdd:clarity>
+		</fdd:movingImageQF>
+		<fdd:soundQF>
+			<fdd:normalSound>Good support.</fdd:normalSound>
+			<fdd:fidelity>Good to excellent, given that the options for audio are those available in the <fddLink id="fdd000070">MP3_CBR</fddLink> and <fddLink id="fdd000001">WAVE</fddLink>  formats.</fdd:fidelity>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000059">AVI</fddLink>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000059">AVI</fddLink>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:other>
+				<fdd:tag>File signature</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>
+						<a href="http://apps.nationalarchives.gov.uk/pronom/fmt/5">PRONOM entry for fmt/5</a> provides signatures used by the DROID software to identify AVI files (not specifically AVI_OpenDML_1_02). This identification is based on the byte sequence from the the beginning of the file.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>Version 1.02 of the OpenDML specification is in general circulation, with &quot;last revision&quot; given as 1996 and &quot;reformatting&quot; as 1997.  The cover identifies the author as &quot;OpenDML AVI M-JPEG File Format Committee.&quot;  On the first inside page, a note provides the name Matrox Electronic Systems Ltd., and disclaims any patent infringments as well as stating that no license to Matrox patents is granted by the publication.</p>
+			<p>Section 7 of the specification is titled <i>MJPG Motion JPEG DIB Extensions</i>, and it provides detail about the implementation of this encoding in the file.  The compiler of this format descripotion did not carry out exhaustive research but the evidence in the specification, together with other scraps of information, leads to the following speculative conclusion: in 1996, some interested parties sought to take advantage of the still image <fddLink id="fdd000017">JPEG</fddLink> compression algorithm for moving images. (The JPEG standard for still images, ISO/IEC 10918-1, was first published in 1994.)  These parties concocted a method to bring together JPEG and AVI, called the OpenDML extensions.  Although Motion JPEG was the focus at the time the specification was drafted, in the years that followed the set of extensions have been applied as much or more to other codecs. <a href="../contact_format.shtml">Comments welcome</a>.  See also the history note in <fddLink id="fdd000059">AVI</fddLink>.</p>
+		</fdd:general>
+		<fdd:history>See the history note in <fddLink id="fdd000059">AVI</fddLink>.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.morgan-multimedia.com/download/odmlff2.pdf</link>
+					<tag>OpenDML AVI File Format Extensions, Version 1.02 (1997)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.jmcgowan.com/avi.html</link>
+					<tag>John McGowan's AVI Overview</tag>
+					<comment>Dated 1996-2004.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.jmcgowan.com/avicodecs.html</link>
+					<tag>John McGowan's AVI Audio and Video Codecs</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://en.wikipedia.org/wiki/Audio_Video_Interleave</link>
+					<tag>Wikipedia entry for AVI</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.avi-io.com/2_4_gig_issue.htm</link>
+					<tag>The 2 &amp; 4 Gigabyte issue with avi files</tag>
+					<comment>Comments about file sizes for AVI files.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.myvideoproblems.com/Tutorials/dv-aviFiles.htm</link>
+					<tag>Difference between type 1 and type 2 dv-avi files</tag>
+					<comment>Compares methods for AVI (and AVI OpenDML) carriage of DV video.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://apps.nationalarchives.gov.uk/pronom/fmt/5</link>
+					<tag>PRONOM entry for fmt/5</tag>
+					<comment>Information in PRONOM from UK National Archives about AVI, not specific to AVI_OpenDML_1_02. PUID: fmt/5.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://msdn.microsoft.com/en-us/library/windows/desktop/dd318189%28v=vs.85%29.aspx</link>
+					<tag>AVI RIFF File Reference</tag>
+					<comment>Documentation from Microsoft.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.garykessler.net/library/file_sigs.html</link>
+					<tag>Gary Kessler's File Signatures Table</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.iana.org/assignments/wave-avi-codec-registry/wave-avi-codec-registry.xml</link>
+					<tag>WAVE and AVI Codec Registries (Historic Registry)
+</tag>
+					<comment>Former &quot;Microsoft registry&quot; as archived by IANA in 2008.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

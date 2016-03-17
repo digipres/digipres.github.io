@@ -12,7 +12,7 @@
 		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
 		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2011-12-05</fdd:date>
+			<fdd:date>2016-03-10</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -23,18 +23,19 @@
 			<fdd:keyword>video formats</fdd:keyword>
 		</fdd:keywords>
 		<fdd:description>
-			<p>Bitstream encoding for video in which each frame [or field?] is compressed using the <fddLink id="fdd000017">JPEG</fddLink> still-image compression algorithm.  Taken as a sequence, the series of frames represent the source video.  MJPEG bitstreams are often wrapped in <fddLink id="fdd000059">AVI</fddLink> files where they carry the Four-Character Code (FOURCC) <i>MJPG</i>.  MJPEG bitstreams may also be managed or wrapped in other ways.</p>
-			<p>Avery Lee, writing in the rec.video.desktop newsgroup in 2001, commented that "MJPEG, or at least the MJPEG in AVIs having the MJPG fourcc, is restricted JPEG with a fixed -- and *omitted* -- Huffman table.  The JPEG must be YCbCr colorspace, it must be 4:2:2, and it must use basic Huffman encoding, not arithmetic or progressive.  . . . You can indeed extract the MJPEG frames and decode them with a regular JPEG decoder, but you have to prepend the DHT segment to them, or else the decoder won't have any idea how to decompress the data.  The exact table necessary is given in the OpenDML spec.&apos;</p>
+			<p>Bitstream encoding for video in which an image of each frame (perhaps also images of video fields; <a href="../contact_format.shtml">Comments welcome</a>) is encoded as JPEG-DIB (JPEG with Device-Independent Bit compression; see <a href="http://www.jmcgowan.com/odmlff2.pdf">OpenDML specification</a> page 36), a constrained version of <fddLink id="fdd000017">JPEG</fddLink> described in the specification as having been defined by Microsoft.  Played as a sequence, the series of frame images reproduce the source video.  The AVI wrapping of this image type for video is detailed in the <fddLink id="fdd000442">AVI_OpenDML_1_02</fddLink> specification cited above.</p>
+			<p>The Wikipedia article on <a href="https://en.wikipedia.org/wiki/Motion_JPEG">Motion JPEG</a> (consulted in March 2016) offers some insights into the format's origin: "Prior to the recent rise in MPEG-4 encoding in consumer devices, a progressive scan form of M-JPEG saw widespread use in the 'movie' modes of digital still cameras, allowing video encoding and playback through the integrated JPEG compression hardware with only a software modification. . . ."  Most MJPEG bitstreams are wrapped in <fddLink id="fdd000442">AVI_OpenDML_1_02</fddLink>, and these files carry the Microsoft Four-Character Code (FOURCC) <i>MJPG</i>. The OpenDML extensions to AVI were developed in 1996-97 to address this need.  MJPEG bitstreams may also be wrapped in other file formats.</p>
+			<p>Avery Lee, writing in the rec.video.desktop newsgroup in 2001, commented that "MJPEG, or at least the MJPEG in AVIs having the MJPG fourcc, is restricted JPEG with a fixed -- and *omitted* -- Huffman table.  The JPEG must be YCbCr colorspace, it must be 4:2:2, and it must use basic Huffman encoding, not arithmetic or progressive.  . . . You can indeed extract the MJPEG frames and decode them with a regular JPEG decoder, but you have to prepend the DHT segment to them, or else the decoder won't have any idea how to decompress the data.  The exact table necessary is given in the OpenDML spec.&quot;</p>
 		</fdd:description>
-		<fdd:shortDescription>Bitstream encoding for video in which each frame [or field?] is compressed using the JPEG still-image compression algorithm. Taken as a sequence, the series of frames represent the source video. MJPEG bitstreams are often wrapped in AVI files where they carry the Four-Character Code (FOURCC) MJPG.</fdd:shortDescription>
-		<fdd:productionPhase>Generally a middle-state (video production) format; after editing, the bitstream is typically compressed in another encoding for end-user delivery.</fdd:productionPhase>
+		<fdd:shortDescription>Bitstream encoding for video in which each frame is compressed using the JPEG still-image compression algorithm. Taken as a sequence, the series of frames represent the source video.</fdd:shortDescription>
+		<fdd:productionPhase>Generally a initial- or middle-state (video production) format; after editing, the bitstream is typically compressed in another encoding for end-user delivery.</fdd:productionPhase>
 		<fdd:relationships>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
 				<fdd:relatedTo>
 					<fdd:id>fdd000060</fdd:id>
 					<fdd:shortName>AVI_MJPEG</fdd:shortName>
-					<fdd:titleName>Audio Video Interleaved, MJPEG</fdd:titleName>
+					<fdd:titleName>AVI OpenDML with MJPEG Codec</fdd:titleName>
 				</fdd:relatedTo>
 			</fdd:relationship>
 			<fdd:relationship>
@@ -49,13 +50,13 @@
 	</fdd:identificationAndDescription>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>
-			<p>Difficult to describe.  The underlying coding algorithms are well documented through the <fddLink id="fdd000017">JPEG</fddLink> standards activity.  However, additional information about use and wrappers is either informal or exists as proprietary implementations; see the comments in <i>Description</i>, above, and in some of the <a href="#useful">Useful references</a> below.</p>
+			<p>The underlying coding algorithms are documented through the <fddLink id="fdd000017">JPEG</fddLink> encoding standard (ISO/IEC 10918-1:1994).  The profile for MJPEG is specified as part of the OpenDML extensions to AVI, an open specification produced by a committee working in association with Matrox Electronic Systems Ltd. of Canada.</p>
 		</fdd:disclosure>
 		<fdd:documentation>
-			<p>None identified as of April 26, 2004. See <a href="#notes">Notes</a> below.</p>
+			<p>Documentation via the OpenDML extension version 1.02 to AVI available from <a href="http://www.morgan-multimedia.com/download/odmlff2.pdf">Morgan Multimedia</a> and other sites. (See also <fddLink id="fdd000063">AVI_OpenDML_1_02</fddLink>.)</p>
 		</fdd:documentation>
 		<fdd:adoption>
-			<p>Discussion in various web sites together with the availability of software tools suggests that there has been some use of MJPEG.</p>
+			<p>The Wikipedia article on <a href="https://en.wikipedia.org/wiki/Motion_JPEG">Motion JPEG</a> (consulted in March 2016) states that &quot;M-JPEG is frequently used in non-linear video editing systems. Modern desktop CPUs are powerful enough to work with high-definition video so no special hardware is required and they in turn offer native random-access to a frame, M-JPEG support is also widespread in video-capture and editing equipment.&quot;</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>
 			<p>Apparently none, except as indicated for <fddLink id="fdd000017">JPEG</fddLink>.</p>
@@ -130,6 +131,13 @@
 				<fdd:urlReference>
 					<link>http://www.mainconcept.com/products/sdks/codec-sdk/video/motion-jpeg.html</link>
 					<tag>Main Concept Multimedia Technologies: Video Codecs -- Motion JPEG</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Motion_JPEG</link>
+					<tag>Motion JPEG</tag>
+					<comment>Wikipedia article.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>

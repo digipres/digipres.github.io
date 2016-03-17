@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000060" titleName="AVI, MJPEG Codec" shortName="AVI_MJPEG" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+<fdd:FDD id="fdd000060" titleName="AVI OpenDML with Motion JPEG Video" shortName="AVI_MJPEG" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>moving-image</fdd:gdfrGenre>
@@ -12,27 +12,28 @@
 		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2011-12-05</fdd:date>
+			<fdd:date>2016-03-08</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Partial</fdd:draftStatus>
 	</fdd:properties>
 	<fdd:identificationAndDescription>
-		<fdd:fullName>AVI (Audio Video Interleaved), Motion JPEG Video Codec</fdd:fullName>
+		<fdd:fullName>AVI OpenDML with Motion JPEG Video </fdd:fullName>
 		<fdd:keywords>
 			<fdd:keyword>video formats</fdd:keyword>
 			<fdd:keyword>AVI</fdd:keyword>
 			<fdd:keyword>Motion JPEG</fdd:keyword>
+			<fdd:keyword>OpenDML</fdd:keyword>
 		</fdd:keywords>
-		<fdd:description>File format that wraps an MJPEG video bitstream with other data chunks, e.g., audio, in an AVI wrapper</fdd:description>
-		<fdd:shortDescription>File format that wraps an MJPEG video bitstream with other data chunks, e.g., audio, in an AVI wrapper.</fdd:shortDescription>
-		<fdd:productionPhase>Generally a middle-state format (often used as the video source when producing lower-resolution streaming versions). </fdd:productionPhase>
+		<fdd:description>File format that wraps a series of JPEG images with other data chunks, e.g., audio, in <fddLink id="fdd000442">AVI_OpenDML_1_02</fddLink>, to produce a moving image sequence, referred to as <i>Motion JPEG</i> (MJPEG). The images represent individual frames (or fields? <a href="../contact_format.shtml">Comments welcome</a>) from a pre-existing video recording, generally analog.  The images employ a form of the <fddLink id="fdd000017">JPEG</fddLink> still image compression algorithm, as specified by <fddLink id="fdd000442">AVI_OpenDML_1_02</fddLink>.  Microsoft refers to this encoding as <i>JPEG DIB</i> (Device Independent Bitmap).  See <a href="#notes">Notes</a> for more information.</fdd:description>
+		<fdd:shortDescription>File format that wraps a series of JPEG images with other data chunks, e.g., audio, in AVI_OpenDML_1_02, to produce a moving image sequence, referred to as Motion JPEG (MJPEG).</fdd:shortDescription>
+		<fdd:productionPhase>Generally a middle-state or final-state format.</fdd:productionPhase>
 		<fdd:relationships>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
 				<fdd:relatedTo>
-					<fdd:id>fdd000059</fdd:id>
-					<fdd:shortName>AVI</fdd:shortName>
-					<fdd:titleName>Audio Video Interleaved</fdd:titleName>
+					<fdd:id>fdd000442</fdd:id>
+					<fdd:shortName>AVI_OpenDML_1_02</fdd:shortName>
+					<fdd:titleName>AVI File Format with OpenDML Extensions</fdd:titleName>
 				</fdd:relatedTo>
 			</fdd:relationship>
 			<fdd:relationship>
@@ -67,25 +68,24 @@
 		<fdd:preference>See <fddLink id="fdd000059">AVI</fddLink>.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
-		<fdd:disclosure>
-			See <fddLink id="fdd000059">AVI</fddLink> and <fddLink id="fdd000063">MJPEG</fddLink>
-		</fdd:disclosure>
-		<fdd:documentation>
-			See <fddLink id="fdd000059">AVI</fddLink> and <fddLink id="fdd000063">MJPEG</fddLink>
-		</fdd:documentation>
-		<fdd:adoption>AVI is widely adopted for video production and filemaking; commentator <a href="http://www.jmcgowan.com/avicodecs.html">John McGowan</a> writes, "Most PC video capture and editing systems capture video to AVI files using Motion JPEG video compression."</fdd:adoption>
-		<fdd:licensingAndPatents>See <fddLink id="fdd000059">AVI</fddLink>.</fdd:licensingAndPatents>
-		<fdd:transparency>See <fddLink id="fdd000063">MJPEG</fddLink>, especially the note in Description from a newsgroup writer pertaining to the difference between JPEG and MJPEG.</fdd:transparency>
-		<fdd:selfDocumentation>See <fddLink id="fdd000059">AVI</fddLink> and <fddLink id="fdd000063">MJPEG</fddLink>, especially the note in Description from a newsgroup writer pertaining to the difference between JPEG and MJPEG.
+		<fdd:disclosure>See <fddLink id="fdd000059">AVI</fddLink>, <fddLink id="fdd000442">AVI_OpenDML_1_02</fddLink>, and <fddLink id="fdd000017">JPEG</fddLink>.</fdd:disclosure>
+		<fdd:documentation>See <fddLink id="fdd000059">AVI</fddLink>, <fddLink id="fdd000442">AVI_OpenDML_1_02</fddLink>, and <fddLink id="fdd000017">JPEG</fddLink>.</fdd:documentation>
+		<fdd:adoption>AVI and AVI_OpenDML_1_2 are widely adopted for video production and filemaking; in 2000, the expert commentator <a href="http://www.jmcgowan.com/avicodecs.html">John McGowan</a> wrote, "Most PC video capture and editing systems capture video to AVI files using Motion JPEG video compression."</fdd:adoption>
+		<fdd:licensingAndPatents>See <fddLink id="fdd000059">AVI</fddLink> and <fddLink id="fdd000442">AVI_OpenDML_1_02</fddLink>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>See <fddLink id="fdd000059">AVI</fddLink>, <fddLink id="fdd000442">AVI_OpenDML_1_02</fddLink>, and <fddLink id="fdd000063">MJPEG</fddLink>.</fdd:transparency>
+		<fdd:selfDocumentation>See <fddLink id="fdd000059">AVI</fddLink> and <fddLink id="fdd000442">AVI_OpenDML_1_02</fddLink>
 		</fdd:selfDocumentation>
-		<fdd:externalDependencies>See <fddLink id="fdd000059">AVI</fddLink>.</fdd:externalDependencies>
-		<fdd:techProtection>See <fddLink id="fdd000059">AVI</fddLink>.</fdd:techProtection>
+		<fdd:externalDependencies>See <fddLink id="fdd000059">AVI</fddLink> and <fddLink id="fdd000442">AVI_OpenDML_1_02</fddLink>
+		</fdd:externalDependencies>
+		<fdd:techProtection>See <fddLink id="fdd000059">AVI</fddLink> and <fddLink id="fdd000442">AVI_OpenDML_1_02</fddLink>
+		</fdd:techProtection>
 	</fdd:sustainabilityFactors>
 	<fdd:qualityAndFunctionalityFactors>
 		<fdd:movingImageQF>
 			<fdd:normalVideo>Good support.</fdd:normalVideo>
-			<fdd:clarity>Moderate to very good, given that this is a format typically used for compression and that most AVI implementations do not support interlaced video. Outcome will depend on the type and extent of compression, and the encoder used.  High resolution work is limited in the Windows environment due to file size limits (2 GB with FAT 16 technology; theoretical 8 GB with later technologies).  Note that use of OpenDML extensions to AVI would permit MJPEG with interlaced video and other features that increase clarity.</fdd:clarity>
-			<fdd:beyondVideo>See <fddLink id="fdd000059">AVI</fddLink>
+			<fdd:clarity>Moderate to very good, depending on the compression quality level applied.</fdd:clarity>
+			<fdd:beyondVideo>See <fddLink id="fdd000059">AVI</fddLink> and <fddLink id="fdd000442">AVI_OpenDML_1_02</fddLink>
 			</fdd:beyondVideo>
 		</fdd:movingImageQF>
 	</fdd:qualityAndFunctionalityFactors>
@@ -98,16 +98,12 @@
 			</fdd:filenameExtension>
 			<fdd:internetMediaType>
 				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
-				<fdd:note>
-					<p>See <fddLink id="fdd000059">AVI</fddLink>
-					</p>
+				<fdd:note>See <fddLink id="fdd000059">AVI</fddLink> and <fddLink id="fdd000442">AVI_OpenDML_1_02</fddLink>
 				</fdd:note>
 			</fdd:internetMediaType>
 			<fdd:magicNumbers>
 				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
-				<fdd:note>
-					<p>See <fddLink id="fdd000059">AVI</fddLink>
-					</p>
+				<fdd:note>See <fddLink id="fdd000059">AVI</fddLink> and <fddLink id="fdd000442">AVI_OpenDML_1_02</fddLink>
 				</fdd:note>
 			</fdd:magicNumbers>
 			<fdd:other>
@@ -116,11 +112,19 @@
 					<fdd:sigValues>
 						<fdd:sigValue>MJPG</fdd:sigValue>
 					</fdd:sigValues>
-					<fdd:note>See, for example the <a href="http://www.iana.org/assignments/wave-avi-codec-registry/wave-avi-codec-registry.xml">archived version of the Microsoft registry of FOURCC and WAVE codes </a> mounted by IANA.</fdd:note>
+					<fdd:note>See the <a href="http://www.iana.org/assignments/wave-avi-codec-registry/wave-avi-codec-registry.xml">archived version of the Microsoft registry of FOURCC and WAVE codes </a> mounted by IANA.</fdd:note>
 				</fdd:values>
 			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>Avery Lee, writing in the rec.video.desktop newsgroup in 2001, commented that "MJPEG, or at least the MJPEG in AVIs having the MJPG fourcc, is restricted JPEG with a fixed -- and *omitted* -- Huffman table. The JPEG must be YCbCr colorspace, it must be 4:2:2, and it must use basic Huffman encoding, not arithmetic or progressive. . . . You can indeed extract the MJPEG frames and decode them with a regular JPEG decoder, but you have to prepend the DHT segment to them, or else the decoder won't have any idea how to decompress the data. The exact table necessary is given in the OpenDML spec.&quot;</p>
+		</fdd:general>
+		<fdd:history>
+			<p>OpenDML was initially developed in 1996-97 to support the carriage of <fddLink id="fdd000063">MJPEG</fddLink> (Motion JPEG), with frames are encoded as JPEG-DIB (Device-Independent Bit compression).  Subsequently, the &quot;OpenDML extensions,&quot; as they are called, have come into wide use for video codecs, in large part because they permit the creation of the large files needed to carry video data at medium or high resolution.</p>
+		</fdd:history>
+	</fdd:notes>
 	<fdd:usefulReferences>
 		<fdd:urls>
 			<fdd:url>
