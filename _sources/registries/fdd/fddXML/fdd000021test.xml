@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000021" titleName="Visio VSDX Drawing File Format" shortName="VSDX" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>office/business</fdd:value>
+			</fdd:gdfrDomain>
+			<fdd:gdfrDomain>
+				<fdd:value>cad/cam</fdd:value>
+			</fdd:gdfrDomain>
+			<fdd:gdfrDomain>
+				<fdd:value>other</fdd:value>
+				<fdd:comment>test1</fdd:comment>
+			</fdd:gdfrDomain>
+			<fdd:gdfrDomain>
+				<fdd:value>other</fdd:value>
+				<fdd:comment>test2</fdd:comment>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2015-11-11</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Visio VSDX Drawing File Format</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>markup languages</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The Visio VSDX Graphics File Format, developed and documented to a substantial degree by Microsoft, carries data that represents diagrams that employ vector graphics and supplementary information related to the creation, modification, and review of a collection of related diagrams.  Typical domains of usage include: flowcharts; database schema models; organization charts; plans for building wiring, furniture layout, etc. A VSDX document represents a collection of Drawing Pages, Masters, Shapes, Images, Comments, Data Connections, and recalculation information relating to dynamic data connections. Starting with Visio 2013, this format is the default format for the Visio products for creating diagrams.  The VSDX file can also be rendered as a Web Drawing through SharePoint (with Visio Services enabled) starting with SharePoint 2013 and also through an Office 365 plan that includes Visio Services.</p>
+			<p>The VSDX format is related to the OOXML family of formats, in that a VSDX file is a ZIP-based package that conforms to the Open Packaging Conventions as specified in ISO/IEC29500-2:2011 (see <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>), the further packaging restrictions for OOXML documents as specified in clause 9 of ISO/IEC29500-1:2011, and the <a href="https://msdn.microsoft.com/en-us/library/hh645006.aspx">MS-VSDX documentation</a>.</p>
+			<p>The conceptual structure of a minimal Visio Drawing includes:</p>
+			<ul>
+				<li>
+					<b>VisioDocument</b> - a collection of resources including a sequence of drawing pages</li>
+				<li>
+					<b>Masters</b> - a collection of page layouts shared by several pages, typically as framework or background to elements specific to each page</li>
+				<li>
+					<b>Pages</b> - graphical elements and layout for individual pages</li>
+				<li>
+					<b>Shapes</b> - individual graphical elements and their properties.  Shapes may be incorporated into pages or masters.  See <a href="#notes">Notes</a> below for more about properties for shapes.</li>
+				<li>
+					<b>Data connections</b> - specifying how data can be retrieved from external sources to affect various aspects of a drawing, including its visual appearance.</li>
+			</ul>
+			<p>The package structure for a VSDX file may have many parts, including:</p>
+			<ul>
+				<li>
+					<i>document.xml</i> -- part that holds properties of the drawing needed for rendering or editing, such as style sheets, colors, and fonts used in the drawing.</li>
+				<li>
+					<i>masters/masters.xml</i> -- list of master page layouts</li>
+				<li>
+					<i>masters/master1.xml</i>, <i>masters/master2.xml</i>, ... -- individual master page layouts</li>
+				<li>
+					<i>pages/pages.xml</i> -- list of drawing pages </li>
+				<li>
+					<i>pages/page1.xml</i>, <i>pages/page2.xml</i>, ... layouts and graphical elements for individual pages</li>
+				<li>
+					<i>data/connections.xml</i> -- specifications for any connections to remote data</li>
+				<li>
+					<i>data/recordsets.xml</i> -- each record set holds data retrieved most recently via a particular connection.  The data is arranged in rows and columns to allow a row of field values to be associated with a particular shape instance.</li>
+				<li>
+					<i>comments.xml</i> -- text for comments on the drawing</li>
+			</ul>
+			<p>The same markup and schema can be used to produce stencils and templates for use with Visio or other graphic applications that support VSDX.  A Visio drawing file uses the extension .vsdx.  Stencils, using the extension .vssx, are collections of shapes and icons considered useful for a particular type of diagram, such as flowcharts or room plans. Stencils can be loaded into the Visio interface for convenient use.  Templates, using the extension .vstx, are drawings intended for repeated use as the basis for a common type of diagram, for example, a map of counties in a state or the bracket for a sports tournament.  There is a market for third-party stencils and templates; some are sold and others are made freely available.  These three diagram types are not permitted to incorporate macros.  Three separate extensions are used for macro-enabled drawings:  .vsdm, .vssm, and .vstm.</p>
+		</fdd:description>
+		<fdd:shortDescription>Describes a collection of Drawing Pages, Masters, Shapes, Images, Comments, and Data Connections used to represent a set of related drawings.  Native format for Microsoft Visio products since Visio 2013.</fdd:shortDescription>
+		<fdd:productionPhase>Can be used in any production phase. Particularly used for creating documents (initial state) and for editing and review (middle-state). For final-state use, editable documents are often converted to an image format that is designed for final publication and not for convenient editing.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000363</fdd:id>
+					<fdd:shortName>OPC/OOXML_2012</fdd:shortName>
+					<fdd:titleName>Open Packaging Conventions (Office Open XML), ISO 29500-2:2008-2012</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:comment>VSD, a binary format used as the default drawing format by Visio prior up to and including Visio 2010.  Not described separately on this site at this time.  See <a href="#notes">Notes - History</a> below.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:comment>VDX, VSX, and VTX, a trio of XML-based formats introduced with Visio 2002 and superseded by VSDX with Visio 2013.  See <a href="#notes">Notes - History</a> below.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has modified version</fdd:typeOfRelationship>
+				<fdd:comment>Associated formats for templates using extension .vstx, and for stencils using extension .vssx, not described separately on this website. Templates and stencils are based on the same schema and namespaces as a .vsdx file. The difference is in intended use.  See <a href="#sign">File type signifiers</a> below.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:comment>Associated format for drawings, templates, and stencils or templates with embedded macros, using file extensions .vsdm, vssm and .vstm, not described separately at this website. The language used by Microsoft for macros, VBA, is fully documented by Microsoft.  Macros are embedded as parts in the OPC package.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse/>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>The VSDX format was developed as a proprietary format by Microsoft.   Microsoft provides a public, descriptive specification for a &apos;&apos;Web Drawing,&quot; which is a Visio file hosted in a SharePoint web &quot;part&quot; and for which SharePoint supports special but limited functionality.  For example, a Web Drawing can be updated by refreshing with updated date from an external source.  Formats supported by SharePoint Services are covered by the <a href="https://msdn.microsoft.com/en-us/library/gg134029.aspx">Microsoft Interoperability Program</a>.  The aspects of the file related to behavior on SharePoint are described fully in the public specification, but things that only have relevance in the editing interface of a Visio client are not fully described.  A full schema for VSDX is provided by Microsoft.</p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>
+				<a href="https://msdn.microsoft.com/en-us/library/hh645006.aspx">[MS-VSDX]: Visio Graphics Service VSDX File Format</a> is a description of the aspects of the VSDX format manipulable via SharePoint Services.  In this description, the definition for many XML complex types indicates that the type &quot;is unused and MUST be ignored&quot;.  This indication applies only to the context of a Web Drawing in SharePoint.  In the context of a Visio editor, these parts of the VSDX schema will come into play.  The XML Schema for the full format is provided as Appendix A.</p>
+			<p>Microsoft also provides <a href="https://msdn.microsoft.com/en-us/library/office/fp161226">information for Visio developers</a> and a <a href="https://msdn.microsoft.com/en-us/library/office/jj684209.aspx">Visio file format reference</a>.  This file format reference, designed to support use of the Visio Software Development Kit, incorporates less explanatory description than [MS-VSDX].</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>The VSDX format is the default format in Microsoft Visio 2013, Microsoft Visio 2016, and Microsoft SharePoint Server 2013.</p>
+			<p>According to <a href="http://libregraphicsworld.org/blog/entry/libreoffice-gets-visio-2013-support">a November 2012 blog post from libregraphics.org</a>, support for Visio documents in VSD file format was added to LibreOffice in 2011 and by late 2012, with the latest release of libvisio, VDX and VSDX files could also be opened.  As of March 2015, according to <a href="http://www.nouenoff.nl/downloads/LibreOffice_AOO_CompetitiveFeatureMatrix_20150318.pdf">Comparing LibreOffice and Apache OpenOffice</a> from http://www.nouenoff.nl/ (likely partisan), AOO did not support VSDX.</p>
+			<p>The market position of Visio and adoption of the VSDX format is reflected by the importance other graphics applications place on support for the Visio formats, including VSDX and its predecessors.  Since version 10 (released August 2014), <a href="https://en.wikipedia.org/wiki/ConceptDraw_PRO">ConceptDraw PRO</a> has supported round trip import and export of the VSDX format.  <a href="https://en.wikipedia.org/wiki/OmniGraffle">OmniGraffle Pro</a> can import and export VSDX files, although some features of Visio that support CAD-CAM are not relevant for the OmniGraffle application.  <a href="https://www.lucidchart.com/pages/tour/visio_viewer">LucidChart</a> is a browser-based application for creating or viewing diagrams that offers import and export of Visio drawings.</p>
+			<p>Several libraries exist to work programmatically with VSDX files:</p>
+			<ul>
+				<li>Microsoft released a <a href="https://www.microsoft.com/en-us/download/details.aspx?id=36825">Visio Software Development Kit</a> (SDK) in February 2013 to permit programmatic creation and modification of VSDX files.</li>
+				<li>
+					<a href="https://wiki.documentfoundation.org/DLP/Libraries/libvisio">libvisio</a> was developed for LibreOffice to parse all versions of Microsoft Visio documents.</li>
+				<li>
+					<a href="https://github.com/BBN-D/poi-visio">poi-visio</a> is a Java library that loads Visio OOXML (vsdx) files in read-only mode, with support for traversing the content of the document in a structured way and rendering pages to simplified PNG files, or other display formats supported by Java Abstract Window Toolkit (AWT). poi-visio is built using the Apache POI library which operates on Microsoft OOXML documents (docx, pptx, xlsx).</li>
+				<li>The <a href="http://mindfusion.eu/jdiagram.html">Diagramming for Java Swing</a> library from MindFusion supports import and limited export of drawings in VSDX format.</li>
+			</ul>
+			<p>Microsoft has made available <a href="https://www.microsoft.com/en-us/download/details.aspx?id=35811">Visio Viewer</a>. This viewer is implemented as an ActiveX control that loads and renders Visio drawings inside Internet Explorer.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>In 2009, Microsoft entered into an agreement with the European Union.  See <a href="">Microsoft Statement on European Commission Decision</a>.  Part of this agreement was &quot;a &apos;public undertaking&apos; that covers interoperability with Microsoft’s products—the way our high-share products work with non-Microsoft technologies. This applies to an important set of Microsoft’s products—our Windows, Windows Server, Office, Exchange, and SharePoint products.&quot;</p>
+			<p>The <a href="https://msdn.microsoft.com/en-us/library/gg134029.aspx">Microsoft Interoperability Program (MIP</a>) that covers the [MS-VSDX] specification does not guarantee a royalty-free license covering all relevant patents.  Microsoft indicates that use of the [MS_VSDX] specification may take advantage of its <a href="http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&amp;Sect2=HITOFF&amp;d=PALL&amp;p=1&amp;u=%2Fnetahtml%2FPTO%2Fsrchnum.htm&amp;r=1&amp;f=G&amp;l=50&amp;s1=8825722.PN.&amp;OS=PN/8825722&amp;RS=PN/8825722">U.S. Patent 8825722</a> &quot;Calculations of properties of objects/shapes across version of application.&quot;  However, Microsoft does promise not to assert claims against open source software developers that comply with certain conditions, including not distributing code commercially.  Microsoft also encourages use of its own programming tools and environments.  For VSDX, Microsoft makes available a <a href="https://www.microsoft.com/en-us/download/details.aspx?id=36825">Software Development Kit</a> that is compatible with its Visual Studio programming environment.  </p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>The structure and text of a VSDX file are all represented in XML and hence viewable without special tools, although XML-aware tools that can show the element hierarchy make viewing and interpretation more convenient.  The most commonly used parts, elements, and attributes have recognizable names.  However, interpreting the semantics of some elements and the correspondence of some elements and attributes to graphics functionality will require understanding of the schema, the textual specification, and the operational functionality of the Visio application.  The semantics of the data connections and record sets is particularly complex, requiring understanding of the syntax involved in connectivity mechanisms in use.  See <a href="#notes">Notes</a> below.</p>
+			<p>The transparency of any embedded image, audio, and video files depends on the formats of those files.</p>
+			<p>For transparency of the package containing the constituent parts of the DOCX file, see <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>See <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>.</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			<p>Depends on features used.  Visio documents can include links to externally stored data.  Dynamic graphical elements have visual properties that are bound to data in a data source, and the appearance of these elements changes as data in the data source refreshes.  Data bindings may break when VSDX documents are transferred to other contexts.  The format allows graphics to be displayed based on the data as last accessed.</p>
+			<p>VSDX diagrams may also depend on external third-party &quot;Solutions,&quot; typically program code developed in Visual Studio.</p>
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			<p>Promotional literature for Visio 2016 says, &quot;Visio 2016 now supports Information Rights Management (IRM) and lets you control document rights at the individual user level.&quot;  The compilers of this resource have not ascertained how this feature is implemented.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>Good support for panning, zooming, etc.</fdd:normalImage>
+			<fdd:clarity>Scalable.</fdd:clarity>
+			<fdd:colorMaint>
+				<p>A color value in a web drawing can be specified as either a 3-byte representation of an RGB value or an integer that points to an entry in a user-defined color table.  In the 3-byte representation, &quot;the most significant byte of color-value specifies the intensity of the color red. The second most significant byte of color-value specifies the intensity of the color green. The least significant byte of color-value specifies the intensity of the color blue.&quot;  There is no mention of ICC Profiles in the public specifications for VSDX.</p>
+			</fdd:colorMaint>
+			<fdd:graphics>Rich support for vector graphics.</fdd:graphics>
+			<fdd:multispectral>Not applicable</fdd:multispectral>
+			<fdd:beyondImage>
+				<p>Good support for co-authoring is an important feature of VSDX.  Support for attaching comments, and also for suggested visual changes in a separate Track Markup layer for each user.  Support for recording settings and user choices relating to Visio editing environment.  Incorporates information about interactive controls exposed to users.  May include information about macros and other extensions.  Application-specific (aka solution-specific) data can be stored in a <i>solutions.xml</i> file.</p>
+			</fdd:beyondImage>
+		</fdd:stillImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>vsdx</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Several closely related filetypes have different extensions: .vssx for Visio stencils (collections of graphical elements appropriate for certain tasks, such as flow-charts, floor plans, or database schema diagrams); .vstx for a drawing template; and .vsdm, .vssm, and .vstm for the same document categories but allowing embedded macros.  All are based on the same markup and the same XML schema.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.visio</fdd:sigValue>
+					<fdd:sigValue>application/vnd.visio2013</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="https://www.file-extensions.org/vsdx-file-extension">https://www.file-extensions.org/vsdx-file-extension</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.ms-visio.drawing</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From Apache TIKA.  See http://www.digipres.org/formats/sources/tika/formats/#application/vnd.ms-visio.drawing</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/924</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/924">http://www.nationalarchives.gov.uk/PRONOM/fmt/924</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>&quot;application/vnd.ms-visio.drawing.main+xml</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>This internal signifier is provided in the PRONOM entry for VSDX.  To locate it, the ZIP-based container must first be unzipped.  It is the value for ContentType for the main document part, typically named &quot;/visio/document.xml&quot;. This value is found in [Content_Types].xml at the top level of the OPC package for a VSDX file, in markup similar to <i>&lt;Override PartName=&quot;/visio/document.xml&quot; ContentType=&quot;application/vnd.ms-visio.drawing.main+xml&quot;/&gt;</i>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Properties of shapes:</b>  The key conceptual element of a diagram is a shape.  Every shape in Visio has a spreadsheet, known as a <i>ShapeSheet</i>, where information about the shape is stored. This spreadsheet contains properties such as height, width, angle, color, and other attributes that determine the shape&apos;s appearance and behavior.  <i>ShapeSheets</i> are also stored for other Visio objects, including documents, pages, styles, shapes, groups of shapes, etc.  Shapes may have associated user-defined data fields.</p>
+			<p>
+				<b>Data Connections:</b>  Among the sources from which data can be brought dynamically into Visio diagrams are: Excel workbooks; SQL Server tables and views; SharePoint lists; and database resources connected via OLEDB or ODBC (SQL) drivers.</p>
+			<p>
+				<b>Saving Visio drawings:</b>  In addition to allowing export in static image formats or PDF, Visio has a Save as Web Page feature, which was introduced in Visio 2002.  This provides users with a simple way of publishing Visio documents on the Web.  The resulting page is an HTML version of the drawing, including shape data and multiple drawing pages, if applicable.  Supporting files include the graphics files (GIFs and JPGs), script files, data (XML) files, and cascading style sheet (CSS) files.</p>
+			<p>
+				<b>Extensibility</b>: VSDX permits the use of capabilities supported by <fddLink id="fdd000395">MCE/OOXML_2012</fddLink>, Markup Compatibility and Extensibility in a way that permits current applications that support VSDX to handle markup extensions for features added in future versions of Visio.  See <a href="https://msdn.microsoft.com/en-us/library/hh631916.aspx">[MS-VSDX] 2.3.5 Markup Compatibility Schema</a>.  The compilers of this resource have not determined whether Microsoft has made use of MCE as of Visio 2016.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>Visio was originally developed by the Shapeware Corporation in 1992.  Shapeware was renamed <a href="https://en.wikipedia.org/wiki/Visio_Corporation">Visio Corporation</a> in 1995.  Microsoft acquired Visio Corporation in January 2000 and rebranded the Visio product the same year.</p>
+			<p>Visio 2003, 2007 and 2010 all used the same proprietary binary Visio Drawing (VSD) file format. The <a href="https://support.office.com/en-US/article/Save-a-Visio-file-as-an-earlier-version-7926E2FB-3648-4FBC-B121-9BAE2341DA25">Save a Visio file as an earlier version</a> help file for Visio 2013 describes the earlier version as &quot;Visio 2003-2010 Drawing (*.vsd).&quot;  The compilers of this resource have been unable to determine whether the VSD format used by earlier versions of Visio and for which a MIME type was <a href="http://www.iana.org/assignments/media-types/application/vnd.visio">registered by the Visio Corporation in 1997</a> was compatible with that used in Visio 2003 through 2010.  <a href="../contact_format.shtml">Comments welcome</a>.  Visio 2002 had introduced an XML-based drawing format (VDX) which allowed developers to modify the contents of a file outside Visio.  By Visio 2007, the VDX implementation had changed enough that files needed to be converted to a new VDX variant.  The <a href="https://msdn.microsoft.com/en-us/library/aa721904.aspx">Overview of DatadiagramML</a> for Office 2007 states, &quot;You can open a .vdx file created in Microsoft Visio 2002 in Microsoft Office Visio 2007. Visio will automatically convert the file to the newer format.&quot;  Visio 2010 introduced additional formats: the Visio Web Drawing (VDW), Visio Workflow Interchange (VWI) format. The VSDX format introduced with Visio 2013 encompasses the capabilities provided by these supplementary Visio 2010 formats as well as replacing both the binary VSD format and the earlier XML-based format VDX.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://msdn.microsoft.com/en-us/library/hh645006.aspx</link>
+					<tag>[MS-VSDX]  Visio Graphics Service VSDX File Format</tag>
+					<comment>This public documentation is a complete specification of a Web Drawing as supported through SharePoint.  The document does not cover in detail aspects of the specification that are relevant only to the Visio application.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://msdn.microsoft.com/en-us/library/hh645753.aspx</link>
+					<tag>[MS-VSDX] Appendix A: Full XML Schema</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://msdn.microsoft.com/en-us/library/office/jj684209.aspx</link>
+					<tag>Visio file format reference.  Visio 2013.</tag>
+					<comment>Contains a conceptual overview, schema map, definitions for elements and XML types in the schema, and examples.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://blogs.office.com/2012/09/10/vsdx-the-new-visio-file-format/</link>
+					<tag>VSDX: the new Visio file format.  September 2012</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://blogs.office.com/2013/01/29/10-tips-for-developers-working-with-the-visio-vsdx-file-format/</link>
+					<tag>10 tips for developers working with the Visio VSDX file format.  January 2013.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://msdn.microsoft.com/en-us/library/office/jj228622.aspx</link>
+					<tag>Introduction to the Visio file format (.vsdx).  Visio 2013</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://blogs.technet.microsoft.com/office_resource_kit/2012/10/25/what-it-pros-need-to-know-about-the-new-vsdx-file-format-in-visio-2013/</link>
+					<tag>What IT Pros need to know about the new VSDX file format in Visio 2013.  October 2012 blog post from Microsoft.</tag>
+					<comment>Announced compatibility pack so that Visio 2010 could read and write files in VSDX format.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://msdn.microsoft.com/en-us/library/office/fp161226</link>
+					<tag>Microsoft resources for Visio developers</tag>
+					<comment>Includes Software Development Kit and Visio File Format Reference.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.microsoft.com/en-us/download/details.aspx?id=36825</link>
+					<tag>Microsoft Visio 2013 Software Development Kit (SDK) </tag>
+					<comment>Contains documentation, samples, header files, libraries, and tools for developing custom solutions based on VSDX format.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://blog.bvisual.net/2012/07/25/visio-2013-file-formats/</link>
+					<tag>Visio 2013 File Formats.  July 2012 blog post by David J Parker.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.visguy.com/2012/07/27/new-file-formats-for-visio-2013/</link>
+					<tag>New File Formats for Visio 2013.  July 2012 blog post by Chris Roth, the &apos;Visio Guy.&apos;</tag>
+					<comment>Includes a look inside the ZIP-based package for a diagram. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://msdn.microsoft.com/en-us/library/hh658772.aspx</link>
+					<tag>[MS-VSDX]  Visio Graphics Service VSDX File Format.  1.3 Overview</tag>
+					<comment>Brief description of the parts found in a VSDX package file including connections to external data sources. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://support.office.com/en-us/article/Save-diagrams-to-SharePoint-95f38851-84ee-4cad-a931-3f86b3a554e0</link>
+					<tag>Save diagrams to SharePoint</tag>
+					<comment>Microsoft explanation of SharePoint support for drawing files created in Visio.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://books.google.com/books?id=oFfx0BtgQLgC</link>
+					<tag>Preview of &quot;Visio 2007 Bible&quot; by Bonnie Biafore from Google Books</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://pkgvisio.codeplex.com/documentation</link>
+					<tag>pkgVisio - Visio 2013 (beta) XML manipulation</tag>
+					<comment>Includes videos about a tool for manipulating VSDX files programmatically.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://libregraphicsworld.org/blog/entry/libreoffice-gets-visio-2013-support</link>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://libregraphicsworld.org/blog/entry/the-ultimate-quest-of-bringing-visio-support-to-libreoffice</link>
+					<tag>The ultimate quest of bringing Visio support to LibreOffice.  September, 2011</tag>
+					<comment>Eilidh McAdam and Fridrich Strba who implemented support for VSD documents (Microsoft Visio) in LibreOffice.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://fridrich.blogspot.ch/2012/12/libreoffice-visio-import-filter-20.html</link>
+					<tag>LibreOffice Visio Import Filter: 20 years of drawings opened in your favourite office suite </tag>
+					<comment>Blog post from December 2012 by libvisio developer, Fridrich Strba.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://wiki.documentfoundation.org/DLP/Libraries/libvisio</link>
+					<tag>libvisio, a library and set of tools for reading and converting MS Visio diagrams to ODF Drawing format..</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/BBN-D/poi-visio</link>
+					<tag>BBN-D/poi-visio
+-- Visio .vsdx parser based on POI</tag>
+					<comment>Built using the Apache POI library which operates on other Microsoft OOXML documents (docx, pptx, xlsx).</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://odfplugfest.org/2011-gouda/Strba-libvisio.pdf</link>
+					<tag>Presentation on libvisio from 2011 ODF Plugfest.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/ConceptDraw_PRO</link>
+					<tag>Wikipedia entry for ConceptDraw Pro software.</tag>
+					<comment>Application has supported roundtrip use of VSDX format since version 10, released August 2014.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.conceptdraw.com/products/working-with-ms-visio-files</link>
+					<tag>ConceptDraw:  Working with MS Visio Files</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/OmniGraffle</link>
+					<tag>Wikipedia entry for OmniGraffle software.</tag>
+					<comment>OmniGraffle can read and write VSDX files, but does not support full Visio functionality, e.g., for CAD-CAM.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://mindfusion.eu/blog/tag/vsdx-files/</link>
+					<tag>Diagramming for Java Swing, V4.1.  July 2014</tag>
+					<comment>This version of this Java diagramming library from MindFusion introduced the option to save Diagrams in VSDX.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.iana.org/assignments/media-types/application/vnd.visio</link>
+					<tag>Registration of MIME media type application/vnd.visio from 1997</tag>
+					<comment>This registration was for the earlier binary Visio formats.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://fileformats.archiveteam.org/wiki/Visio</link>
+					<tag>Just Solve the File Format Problem -- Visio</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Microsoft_Visio</link>
+					<tag>Wikipedia entry for Microsoft Visio</tag>
+					<comment>Provides history prior to Microsoft&apos;s acquisition of Visio.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/924</link>
+					<tag>PRONOM entry for Visio VSDX Drawing File Format</tag>
+					<comment> PUID for JPEG-LS is fmt/924.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://msdn.microsoft.com/en-us/library/aa721904.aspx</link>
+					<tag>Office 2007: Overview of DatadiagramML</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://msdn.microsoft.com/en-us/library/office/ff768582.aspx</link>
+					<tag>Office 2010: Overview of DatadiagramML</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.microsoft.com/en-us/download/details.aspx?id=35811</link>
+					<tag>Download page for Visio Viewer.</tag>
+					<comment>Implemented as an ActiveX control that loads and renders Visio drawings inside Internet Explorer.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Links related to the Microsoft Interoperability Program, a documentation program designed in connection with the 2009 Interoperability Undertaking between Microsoft and the European Commission.   Covers formats, services, and protocols associated with SharePoint.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/gg134029.aspx</link>
+							<tag>Microsoft Interoperability Program.</tag>
+							<comment/>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://news.microsoft.com/2009/12/16/microsoft-statement-on-european-commission-decision/</link>
+							<tag>Microsoft Statement on European Commission Decision.  December 2009.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://go.microsoft.com/fwlink/?LinkId=179741</link>
+							<tag>Persistent Microsoft link to Microsoft Statement on European Commission Decision.  December 2009.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/openspecifications/dn750984</link>
+							<tag>Microsoft Open Specifications Programs: Patent Promises and Patents</tag>
+							<comment>Includes an interactive table that enables identification of any Microsoft patents or patent applications that Microsoft believes to be associated with a published specification. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/openspecifications/dn646762</link>
+							<tag>Microsoft Interoperability Program (MIP): Patent License and Covenant Agreements</tag>
+							<comment>See Patent Pledges, including one to Open Source Developers.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000383" titleName="MBOX Email Format" shortName="MBOX" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+<fdd:FDD id="fdd000383" titleName="MBOX Email Format" shortName="MBOX" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-1.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>text</fdd:gdfrGenre>
@@ -16,9 +16,12 @@
 				<fdd:value>other</fdd:value>
 				<fdd:comment>email</fdd:comment>
 			</fdd:gdfrDomain>
+			<fdd:gdfrDomain>
+				<fdd:value>email</fdd:value>
+			</fdd:gdfrDomain>
 		</fdd:gdfrDomains>
 		<fdd:updates>
-			<fdd:date>2014-04-01</fdd:date>
+			<fdd:date>2016-11-17</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -26,7 +29,7 @@
 		<fdd:fullName>MBOX Email Format</fdd:fullName>
 		<fdd:description>
 			<p>MBOX (sometimes known as Berkeley format) is a generic term for a family of related file formats used for storing collections of electronic mail messages. MBOX formats store all of the messages of an entire folder (not an entire mailbox) in a single database file and new messages are appended to the end of the file. Each message is immediately prefaced by a separation line and terminated by an empty line. Only the the first message in an MBOX database file will only be prefaced by a separator line, while every other message will begin with two end-of-line sequences (one at the end of the message itself, and another to mark the end of the message within the MBOX database file stream) and a separator line (marking the new message).  The end of the database file is implicitly reached when no more message data or separator lines are found.</p>
-			<p>A message encoded in MBOX format begins with a &quot;From &quot; line, continues with a series of non-&quot;From &quot; lines, and ends with a blank line.  A &quot;From &quot; line means any line in the message or header that  begins with the five characters the five characters 'F', 'r', 'o', 'm', and ' ' (space). The "From " line structure is <i>From sender date moreinfo:</i>
+			<p>A message encoded in MBOX format begins with a &quot;From &quot; line, continues with a series of non-&quot;From &quot; lines, and ends with a blank line.  A &quot;From &quot; line means any line in the message or header that  begins with the five characters 'F', 'r', 'o', 'm', and ' ' (space). The "From " line structure is <i>From sender date moreinfo:</i>
 			</p>
 			<ul>
 				<li>
@@ -131,13 +134,22 @@ the two formats and numerous proprietary formats. Once in an MBOX or <fddLink id
 				</fdd:note>
 			</fdd:magicNumbers>
 			<fdd:other>
-				<fdd:tag>File signature</fdd:tag>
+				<fdd:tag>Pronom PUID</fdd:tag>
 				<fdd:values>
 					<fdd:sigValues>
 						<fdd:sigValue>fmt/720</fdd:sigValue>
 					</fdd:sigValues>
-					<fdd:note>
-						<a href="http://nationalarchives.gov.uk/PRONOM/fmt/720">PRONOM entry for MBOX family</a>. Identification based on file extension.</fdd:note>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/720">http://www.nationalarchives.gov.uk/PRONOM/fmt/720</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q285972</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q285972">https://www.wikidata.org/wiki/Q285972</a>
+					</fdd:note>
 				</fdd:values>
 			</fdd:other>
 		</fdd:signifiersGroup>
@@ -299,6 +311,13 @@ the two formats and numerous proprietary formats. Once in an MBOX or <fddLink id
 					<link>http://email.about.com/cs/standards/a/mbox_format.htm</link>
 					<tag>The mbox Format:
 How email clients store mail on your hard disk</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q285972</link>
+					<tag>WikiData entry for Q285972</tag>
+					<comment>Information in WikiData about MBOX family. WikiData Title ID: Q285972.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
