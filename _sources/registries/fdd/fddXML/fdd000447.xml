@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000447" titleName="Industry Foundation Classes (IFC), Clear Text Family" shortName="IFC-SPF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenreAndSubgenres>
+				<fdd:gdfrGenre>model</fdd:gdfrGenre>
+				<fdd:gdfrSubgenres>
+					<fdd:gdfrSubgenre>database</fdd:gdfrSubgenre>
+					<fdd:gdfrSubgenre>still-image</fdd:gdfrSubgenre>
+				</fdd:gdfrSubgenres>
+			</fdd:gdfrGenreAndSubgenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>cad/cam</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2016-12-14</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Industry Foundation Classes (IFC) for data sharing in the construction and facility management industries - clear text family</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>vector graphics</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>IFC (Industry Foundation Classes) is an openly documented standard for the exchange of data about a building or facility and its construction or maintenance, data structured as a <i>building information model</i> (BIM).  A BIM model may have details of building structures, elements, spaces, schedules, and many other aspects of a construction project.  IFC specifies a representation of the contents of a BIM database in a plain text form suitable for exchange.
+ This IFC variant is sometimes known as <i>IFC-SPF</i> and this name is used on this website when the distinction between the clear text and other variants of IFC is important.  See <a href="#notes">Notes</a> below for more about building information modeling.  To summarize, a building information model captures building information and manages it in a database, making it available for use and reuse at every other point in a building project.  Drawings and 3-D renderings are views into the database.  The conceptual schema for IFC is defined using the EXPRESS data specification language (<a href="http://www.iso.org/iso/catalogue_detail.htm?csnumber=38047">ISO 10303-11</a>).  The standard exchange file format for exchanging and sharing data according to the conceptual schema is using the &quot;clear&quot; text encoding of the exchange structure. Alternative exchange file formats can be used if they conform to the conceptual schema.  This description focuses on the version with clear text encoding, with occasional mention of alternative forms in use, which include an XML-based form and the use of ZIP for combining and compressing IFC-SPF files.</p>
+			<p>The IFC standard is maintained by the <a href="http://www.buildingsmart-tech.org/about-us/msg">Model Support Group (MSG) of buildingSMART International</a> (bSI).  See <a href="#notes">History Notes</a> below for information about chronological versions.  The most widely implemented version as of early 2017 is IFC2x3 (extension 3 to IFC2).  IFC4 was published by bSI in March 2013 and also approved as <a href="http://www.iso.org/iso/catalogue_detail.htm?csnumber=51622">ISO 16379:2013</a>.  See <a href="http://www.buildingsmart-tech.org/specifications/ifc-releases">Summary of IFC Releases</a> for online access to IFC specifications and an indication of plans for IFC5. As of early 2017, the latest specification is for the <a href="http://www.buildingsmart-tech.org/specifications/ifc-releases/ifc4-add2">IFC4 Add2 Release</a>, which incorporates changes in Addendum 1 and Addendum 2.  The plan is to submit this version to ISO as the source for the next edition of ISO 16739.</p>
+			<p>The <a href="http://www.buildingsmart-tech.org/ifc/IFC4/Add2/html/introduction.htm">introduction to the IFC4 specification</a> describes the schema architecture for the IFC data model. The architecture has four layers, with each subschema belonging in one of the layers:</p>
+			<ul>
+				<li>
+					<b>Domain layer</b>:  The domains are: Building Controls; HVAC; Electrical; Plumbing/Fire Control; Structural Elements; Structural Analysis; Architecture; Construction Management.</li>
+				<li>
+					<b>Interoperability layer</b>: Contains schemas for shared elements in categories: Building Services Elements; Component Elements; Building Elements; Management Elements; Facilities Elements.</li>
+				<li>
+					<b>Core layer</b>: This layer has a kernel schema and three schemas for the general areas of Control, Product, and Process.</li>
+				<li>
+					<b>Resource layer</b>: The schemas in this layer define elements and attributes that describe low-level features used throughout, such as date and time; measurements; quantities; costs; geometric constraints; external references, etc.</li>
+			</ul>
+			<p>An IFC file will typically incorporate elements from at least one schema from the three upper layers (in addition to the kernel schema) and from many of the schemas in the Resource layer.  Conceptually, an IFC file may contain 3D and 2D shapes, properties of components (including geospatial positions), connectivity among components, quantities, materials, costs, schedule details, and more.</p>
+			<p>Important to the implementation of IFC is the concept of a Model View Definition (MVD). An MVD is a subset of the IFC schema intended to support data exchange with a particular purpose.  An MVD may focus on a particular design domain (e.g. buildings as opposed to bridges) and/or a particular exchange purpose (for example, for review or reference as opposed to for active design collaboration).  In practice, CAD software is likely to support particular MVDs rather than the entire IFC standard and certification by BuildingSMART is based on MVDs.  See <a href="#notes">Notes</a> below for more detail on existing MVDs.</p>
+		</fdd:description>
+		<fdd:shortDescription>an open, plain text standard for building information models (BIM).
+It enables the exchange of information about building structures, elements, spaces and other objects in a BIM. The file content may include 3D and 2D shapes, properties and attributes, and connectivity among elements. Also supported are data structures to support project lifecycle management.
+</fdd:shortDescription>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000448</fdd:id>
+					<fdd:shortName>STEP_file</fdd:shortName>
+					<fdd:titleName>STEP-file, ISO 10303-21</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>IFC4, also published as ISO 16739:2013, and subsequently supplemented by Addendum 1 and Addendum 2.  Not described separately on this website at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>IFC2x3, the most widely supported version as of early 2017.  Not described separately on this website at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>IFC_V2x, <a href="http://www.iso.org/iso/catalogue_detail.htm?csnumber=38056">ISO/PAS 16739:2005</a>, not described separately on this website at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>Earlier versions not described separately on this website at this time:  IFC1.5.1, IFC2.0.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Equivalent to</fdd:typeOfRelationship>
+				<fdd:comment>ifcXML (based on STEPxml), not described separately on this website at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000449</fdd:id>
+					<fdd:shortName>EXPRESS</fdd:shortName>
+					<fdd:titleName>EXPRESS data modeling language, ISO 10303-11</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse/>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>Openly documented international standard.  Developed and maintained by the <a href="http://www.buildingsmart-tech.org/about-us/msg">Model Support Group</a> of <a href="http://buildingsmart.org/">buildingSMART International</a> (bSI), a worldwide alliance of organizations committed to interoperability for building information model data.</p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>The latest release of the specification for IFC is the <a href="http://www.buildingsmart-tech.org/specifications/ifc-releases/ifc4-add2">IFC4 Addendum 2 Release</a>, published in July 2016.  The specification is available in HTML for <a href="http://www.buildingsmart-tech.org/ifc/IFC4/Add2/html/">online access</a> or for <a href="http://www.buildingsmart-tech.org/downloads/ifc/ifc4-add2/ifc4-add2-html-documentation-101mb">download</a>.  Also published are the corresponding <a href="http://www.buildingsmart-tech.org/ifc/IFC4/Add2/IFC4_ADD2.exp">EXPRESS schema</a> and <a href="http://www.buildingsmart-tech.org/ifc/IFC4/Add2/IFC4_ADD2.xsd">XSD schema</a>.  The XSD schema is for the ifcXML format.</p>
+			<p>Documentation for earlier versions is available from buildingSMART at <a href="http://www.buildingsmart-tech.org/specifications/ifc-releases">Summary of IFC Releases</a>.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>Current support for IFC in most CAD software is based on IFC2x3.  Support for IFC is one of the columns in the tabular <a href="https://en.wikipedia.org/wiki/Comparison_of_computer-aided_design_editors">Comparison of computer-aided design editors on Wikipedia</a>.  BuildingSMART operates a software certification process and has published a list of <a href="http://www.buildingsmart-tech.org/certification/ifc-certification-2.0/ifc2x3-cv-v2.0-certification/participants">Participants in the official buildingSMART IFC2x3 certification process based on the MVD known as Coordination View Version 2.0</a>.  No equivalent certification process for IFC4 is described on the buildingSMART website as of early 2017, although the BuildingSMART  <a href="http://www.buildingsmart-tech.org/specifications">Specifications</a> page suggests that plans for IFC4 certification are in place.</p>
+			<p>AutoDesk supports IFC4 and earlier versions in Revit; see <a href="https://knowledge.autodesk.com/support/revit-products/learn-explore/caas/CloudHelp/cloudhelp/2016/ENU/Revit-DocumentPresent/files/GUID-6708CFD6-0AD7-461F-ADE8-6527423EC895-htm.html">About IFC and Revit</a> from Revit help.  In late 2015, IFC export was <a href="http://aecmag.com/technology-mainmenu-35/1027-news-autodesk-adds-ifc-export-to-inventor">added to AutoDesk Inventor</a>. AutoDesk has also released <a href="https://sourceforge.net/projects/ifcexporter/">IFC for Revit: ifcExporter</a> as open source.  <a href="http://www.autodesk.com/campaigns/interoperability">BIM Interoperability</a> from AutoDesk lists 14 AutoDesk 2016 products that support IFC.  A document called <a href="https://github.com/OpeningDesign/FreeMVD_WorkFlow/blob/master/BIM%20Specifications.md">BIM specifications</a> from the founders of OpeningDesign discusses details that need to be checked for fidelity of transfers using IFC4 and IFC support in FreeCAD.</p>
+			<p>
+				<a href="https://www.bricsys.com/bricscad/docs/en_INTL/V17/InsideBricsCADV17-en_INTL.pdf">BricsCAD BIM V17</a> is certified for IFC export at IFC2x3 Coordination View V2.0 level. Export to IFC2x2 or IFC2x3  to .ifc, .ifczip, and .ifcxml formats is supported by <a href="http://app-help.vectorworks.net/2016/eng/VW2016_Guide/IFC/IFC_Format_Interoperability.htm">Vectorworks 2016</a>. Vectorworks has also published a white paper, <a href="http://download2cf.nemetschek.net/www_misc/2010/Sharing-Your-Model-with-IFCv2.pdf">Sharing Your Model with IFC: An Introduction</a>. <a href="http://helpcenter.graphisoft.com/guides/archicad-17-guides/archicad-17-int-reference-guide/interoperability/file-handling-and-exchange/working-with-ifc/working-with-ifc-data/ifc-manager/">ArchiCAD</a> 2017 supports IFC2x3.  Bentley Architecture and related products support IFC2x3; see <a href="http://communities.bentley.com/products/building/w/building__wiki/ifc">Bentley Communities page on IFC</a>, which also highlights shortcomings of the IFC2x3 Extended Coordination View.  <a href="https://community.trimble.com/docs/DOC-10028-3d-model-files">Trimble Connect</a>, a collaboration platform supports IFC2x3. <a href="http://www.digitalproject3d.com/downloads/Digital_Project_v1r4_quick_start_guide.pdf">Digital Project: a Quick Start Guide</a> implies that the software supports IFC.</p>
+			<p>Free or inexpensive IFC viewers, analyzers, and checkers include: <a href="http://bimvision.eu/en/download/">BIMvision</a> (IFC2x3); <a href="http://www.ifcplusplus.com/download.php">IfcQuery</a> from IfcPlusPlus (IFC4); <a href="https://a360.autodesk.com/viewer/">A360 Viewer</a>, online viewer from AutoDesk (IFC4); <a href="https://www.solibri.com/products/solibri-model-viewer/">Solibri Model Viewer</a> (IFC2x3); <a href="http://www.teklabimsight.com/">BIMsight</a> from Tekla (IFC2x3); <a href="http://datacubist.com/">SimpleBIM</a> from Datacubist (IFC2x3); <a href="https://www.nist.gov/services-resources/software/ifc-file-analyzer">IFC File Analyzer</a> from NIST.</p>
+			<p>IFC open source software toolkits include: <a href="http://ifcopenshell.org/">ifcOpenShell</a>; <a href="https://sourceforge.net/p/ifcexporter/home/Home/">IFC for Autodesk Revit</a>; and more are listed at <a href="http://www.buildingsmart-tech.org/implementation/get-started/ifc-open-source">IFC open source and freeware summary</a> from buildingSMART.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No issues relating to use of IFC schemas or models.</fdd:licensingAndPatents>
+		<fdd:transparency>The clear text  IFC-SPF (.ifc) format is easily viewed using basic text editing tools.  However, entity names in the file consist of digits (preceded by &quot;#&quot;) rather than using human-readable tags and parent-child relationships between entities are not obvious. To understand the content, a viewer that can relate the file to the IFC schema or relevant model view definition (MVD, a commonly understood subset of the IFC schema) is more effective.  Effective viewing of 3D content requires an appropriate viewer.</fdd:transparency>
+		<fdd:selfDocumentation>The IFC specifications, particularly IFC4, incorporate many optional elements that could provide context for a design or project, but these elements largely relate to the project during its active stages and what information is relevant to those actively involved in the design or construction.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None beyond software that can interpret and render IFC files, with 3D rendering capability particularly important.</fdd:externalDependencies>
+		<fdd:techProtection>The IFC documentation does not mention encryption. However, in order to protect intellectual property, it is quite likely that IFC files are often transmitted in encrypted form, using generic encryption tools that can be applied to any file.  <a href="../contact_format.shtml">Comments welcome</a>.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>Good support for 2D drawings. Not suitable for raster images.</fdd:normalImage>
+			<fdd:clarity>Scalable</fdd:clarity>
+			<fdd:colorMaint>Colors in 3D design models can serve at least two functions:  realistic colors for surfaces and category-based coloring for element types (e.g., yellow for windows and red for wiring). Color management on the basis of ICC profiles is not applicable.  See <a href="#notes">Notes</a> for some discussion of interoperability problems wrt. colors in IFC.</fdd:colorMaint>
+			<fdd:graphics>Excellent support for vector graphics</fdd:graphics>
+			<fdd:multispectral>Not applicable.</fdd:multispectral>
+			<fdd:beyondImage>Support for 3D models as well as 2D drawings.  Support for geospatial positioning.</fdd:beyondImage>
+		</fdd:stillImageQF>
+		<fdd:textQF>
+			<fdd:normalText>A &quot;document&quot; in the IFC-SPF format is not a general text document. It is a plain text file using a defined special-purpose syntax.</fdd:normalText>
+			<fdd:beyondText>The function of a document in the IFC-SPF format language is to be a clear text exchange format for an instance of a data structure conforming to a specific IFC model. The intended area of application is the representation of building information model data for the purpose of exchange among computer systems.</fdd:beyondText>
+		</fdd:textQF>
+		<fdd:otherQF>
+			<fdd:factor>
+				<fdd:tag>Support for CAD/CAM/CAE</fdd:tag>
+				<fdd:note>The IFC format was designed specifically to support CAD/CAM/CAE data.  The scope section of the IFC4 specification begins, &quot;The Industry Foundation Classes, IFC, are an open international standard for Building Information Model (BIM) data that are exchanged and shared among software applications used by the various participants in the construction or facility management industry sector. The standard includes definitions that cover data required for buildings over their life cycle. This release, and upcoming releases, extend the scope to include data definitions for infrastructure assets over their life cycle as well.&quot;</fdd:note>
+			</fdd:factor>
+		</fdd:otherQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>ifc</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The extension for the &quot;clear&quot; text version of IFC described here, based on ISO 10303-21, is <i>.ifc</i>.  IFC permits two equivalent formats.  An XML representation uses extension <i>.ifcxml</i>; the extension <i>.ifczip</i> is used when IFC data, either in plain text or XML,  is compressed using <fddLink id="fdd000354">ZIP</fddLink>.  See <a href="http://www.buildingsmart-tech.org/specifications/ifc-overview">IFC Overview summary</a> from buildingSMART International.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/700">http://www.nationalarchives.gov.uk/PRONOM/fmt/700</a> for IFC4 (PUID fmt/700) and <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/699">http://www.nationalarchives.gov.uk/PRONOM/fmt/699</a> for IFC2x3 (PUID fmt/699).</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q979630">https://www.wikidata.org/wiki/Q979630</a> for Title ID for entire IFC family of file formats.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Building Information Modeling (BIM)</b>: A helpful description is in a <a href="http://www.laiserin.com/features/bim/autodesk_bim.pdf">2002 white paper from AutoDesk, entitled Building Information Modeling</a>, which states, &quot;Building
+information modeling applications start with the idea of capturing and managing information
+about the building, and then present that information back as conventional illustrations or in
+any other appropriate way. A building information model captures building information at
+the moment of creation, stores and manages it in a building information database, and
+makes it available for use and reuse at every other point in the project. Drawings become a
+view into the database that describes the building itself.&quot;  The paper emphasizes that drawings are not the only view into the database; &quot;presentations of the information—drawings,
+schedules, cost estimates, other conventional presentations of the building information—are
+all views into the same information model.&quot;</p>
+			<p>In 2005, a paper entitled <a href="http://www.laiserin.com/features/bim/newforma_bim.pdf">&quot;Building Information Modeling Two Years Later –
+Huge Potential, Some Success and Several Limitations&quot;</a> discussed progress toward the BIM vision, &quot;The International Alliance for Interoperability (IAI) pioneered an
+international technical effort across 19 countries to define a single building model as one
+authoritative semantic definition of building elements, their properties and interrelationships.
+This work has largely been successful with its IFC (Industry Foundation
+Class) Model now endorsed as a draft ISO (International Standards Organization)
+standard. However, in the absence of a single model from day one, software vendors
+aspiring to gain commercial advantage forged ahead with different competing BIM
+implementations.&quot;  IFC4 became a full ISO standard in 2013; buildingSMART does not have a certification process for compliance with IFC4 as of early 2017, but plans are in place.</p>
+			<p>
+				<b>Model View Definitions associated with IFC</b>: A Model View Definition (MVD) defines a subset of the IFC schema that is needed to satisfy one or many exchange requirements of the AEC (Architecture, Engineering, and Construction) industry. For an MVD, in addition to the IFC schema subset, a set of implementation instructions and validation rules, called MVD Concepts, are published. See <a href="http://www.buildingsmart-tech.org/specifications/ifc-view-definition">Model View Definition Summary</a>. Two MVDs have been developed for IFC4: <a href="http://www.buildingsmart-tech.org/specifications/ifc-view-definition/ifc4-reference-view/ifc4-rv-objective">IFC4 Reference View Objective</a> to support workflows that do not require modification of geometry; and <a href="http://www.buildingsmart-tech.org/specifications/ifc-view-definition/ifc4-design-transfer-view/ifc4-dtv-objectives">IFC4 Design Transfer View Objective</a>, which extends the Reference View to support workflows where building information models may be edited using design software platforms.  The principal MVD for IFC2x3 was known as the Coordination View, published originally in 2007 and updated in 2010.</p>
+			<p>The <a href="http://communities.bentley.com/products/building/w/building__wiki/ifc">Bentley position paper on IFC</a> points out that the IFC2x3 Coordination Views were not intended to support round-tripping of data between different CAD applications and that such round-tripping is an unreasonable expectation because of the importance of protecting proprietary models and application data.  It is likely that this statement could also be true in relation to the newer IFC4 MVDs.  For the IFC4 Reference View, it is explicit that round-tripping is not an objective.</p>
+			<p>
+				<b>Colors in IFC</b>: Colors can be specified in IFCusing the ifcColourSpecification entity, which derives its definition from the definition of colour_specification in ISO 10303-46:1994 p. 138.  &quot;A colour specification contains a colour definition which refers directly to a specific colour
+space.&quot;  The default color space is RGB, with the value range for each RGB component being a real number between 0 and 1 that represents the intensity of that component. Other color spaces can be declared using the <i>label</i> attribute of ifcColourSpecification.  An example in the IFC specification is <a href="https://en.wikipedia.org/wiki/RAL_colour_standard">RAL</a>, a color matching system used in Europe for paints and other coatings.  Another mechanism for specifying colors was introduced in IFC4 to handle indexed colors; each indexed color is specified via RGB.</p>
+			<p>Color representation in design models, and hence in IFC, is complex because coloring can support different functionalities, including classification of design elements or layers (e.g., highlighting doors and windows or distinguishing plumbing and wiring layers), surface representations for more realistic views of a design, and colors selected for the final product in an industry color classification such as RAL, mentioned above.  If the assumptions about coloring intent are different in different applications, there can be interoperability problems. A November 2015 <a href="https://forums.sketchup.com/t/how-to-export-to-ifc-and-retain-colors/17082">question at SketchUp Community</a> about a color interoperability problem yields the response, &quot;Solibri and BIMSight display the IFC model using a colour scheme of their own based on the classification of the parts. Material information or textures aren&apos;t included into the IFC.&quot;  Perhaps confirming this approach, <a href="https://www.solibri.com/products/solibri-model-viewer/help/">Solibri Model Viewer Help | Importing an IFC model</a> indicates that the application can change the color for any component type.   An October 2014 <a href="http://bimblog.bondbryan.com/archicad-18-join-the-ifc-and-cobie-flow-part-3-model-export/">BIM blog entry from Bond Bryan Architects</a> discusses some interoperability problems with color in exchanges between ArchiCAD and other CAD applications.  Resolving the problems required fixes in both the application generating the IFC file and the receiving application, which made different assumptions about color representation in models.</p>
+			<p>Two chapters of Common BIM Requirements 2012 from BuildingSMART Finland have guidelines for use of color: <a href="https://asiakas.kotisivukone.com/files/en.buildingsmart.kotisivukone.com/COBIM2012/cobim_8_visualization_v1.pdf">Use of models for visualization</a> and <a href="https://asiakas.kotisivukone.com/files/en.buildingsmart.kotisivukone.com/COBIM2012/cobim_4_mep_design_v1.pdf">MEP Design</a>.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>According to <a href="http://www.buildingsmart-tech.org/implementation/faq/fag-general-ifc-spec">General understanding of the IFC Specification FAQ</a>, there were five principal releases of the IFC between 1996 and 2005: IFC1.5.1, IFC2.0, IFC2x, IFC2x2 and IFC2x3.</p>
+			<p>Version 2x3 of IFC was submitted to ISO and published in 2008 by ISO as <a href="http://www.iso.org/iso/catalogue_detail.htm?csnumber=38056">ISO/PAS 16739:2005</a>.  <a href="http://www.iso.org/iso/home/standards_development/deliverables-all.htm?type=pas">PAS</a> stands for &quot;Publicly Available Standard;&quot; in ISO, this term is used for &quot;A normative document representing the consensus within a working group. ... After six years, a PAS shall either be converted into an International Standard or be withdrawn.&quot;   In March 2013, Version 4 of IFC was approved as a full international standard (ISO 16739:2013).</p>
+			<p>Since initial publication, IFC Version 4 has been revised through two addenda published by buildingSMART International in July 2015 and July 2016.  According to the <a href="http://www.buildingsmart-tech.org/specifications/ifc-releases/ifc4-add2">IFC4 Add2 Release</a> page, a new edition of ISO 16739 and certification for IFC4 will be based on the Add2 release.  Certification will use &quot;model view definitions&quot; specified as IFC4 Design Transfer View V1.1 and IFC4 Reference View V1.1.</p>
+			<p>As indicated in <a href="http://www.buildingsmart-tech.org/specifications/ifc-releases">Summary of IFC Releases</a>, IFC5 is expected to include full support for various infrastructure domains and more parametric capabilities.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.buildingsmart-tech.org/specifications/ifc-releases/ifc4-add2</link>
+					<tag>IFC4 Add2 Release</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.iso.org/iso/catalogue_detail.htm?csnumber=51622</link>
+					<tag>ISO 16739:2013, Industry Foundation Classes (IFC) for data sharing in the construction and facility management industries</tag>
+					<comment>Version 4 of IFC was approved as an international standard in 2013. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>EXPRESS schemas for IFC</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://raw.githubusercontent.com/stepcode/stepcode/master/data/ifc4/IFC4.exp</link>
+							<tag>EXPRESS schema for IFC 4</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://raw.githubusercontent.com/stepcode/stepcode/master/data/ifc2x3/IFC2X3_TC1.exp</link>
+							<tag>EXPRESS schema for IFC 2X3 TC1</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.buildingsmart-tech.org/specifications/ifc-releases</link>
+					<tag>Summary of IFC Releases</tag>
+					<comment>Provides access to earlier versions of the IFC documentation.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The international organization responsible for the development of IFC specifications is buildingSMART International Ltd. The organization has a website focused on the development and technical support of the IFC standards.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.buildingsmart-tech.org/</link>
+							<tag> Technical hub of buildingSMART International</tag>
+							<comment>The buildingsmart-tech.org is the website of two important sub-committees of buildingSMART International.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.buildingsmart-tech.org/specifications/ifc-overview</link>
+							<tag>IFC Overview summary</tag>
+							<comment>Mentions the .ifc, .ifcxml, and .ifczip extensions for the standard, XML, and ZIP variants of the format.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.buildingsmart-tech.org/implementation/faq/summary-for-faq</link>
+							<tag>List of FAQ sections for IFC from buildingSMART </tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.buildingsmart-tech.org/specifications/ifc-releases/ifc4-release/buildingSMART_IFC4_Whatisnew.pdf</link>
+							<tag>What&apos;s New in IFC? | Presentation on IFC4 – the new buildingSMART Standard</tag>
+							<comment>From March 2013.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://iug.buildingsmart.org/idms/methods-and-guides/Integrated_IDM-MVD_ProcessFormats_14.pdf/view/</link>
+							<tag>An Integrated Process for Delivering IFC Based Data Exchange</tag>
+							<comment>March 2012.  Describes a methodology of producing Information Delivery Manuals (IDM) and Model View Definitions (MVD).</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ifcwiki.org/index.php?title=IFC_Wiki</link>
+					<tag>IFCWiki | IFC - Industry Foundation Classes</tag>
+					<comment>Not an official site of buildingSMART International (bSI). However the wiki claims approval from bSI for an open knowledge base focused on IFC.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.steptools.com/sln/ifc/</link>
+					<tag>IFC Solutions from STEP Tools Inc.</tag>
+					<comment>Claims, &quot;Our technology stack is behind the STEP interfaces in the largest commercial BIM systems, as well as in-house enterprise applications.&quot;</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources related to extensions or refinements of IFC</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://ifcinfra.com/</link>
+							<tag>IFC Infrastructure Research Initiative</tag>
+							<comment>Active development of an extension to IFC focused on alignment of structures. Related particularly to roads, tunnels, railways, and bridges.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.buildingsmart-tech.org/infrastructure/projects</link>
+							<tag>buildingSMART for Infrastructure</tag>
+							<comment>Ongoing projects include: IFC Alignment; IFC-Bridge; and IFC-Road</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.iowadot.gov/bridge/3D/Presentations/23.pdf</link>
+							<tag>Integration of Parametric Geometry into IFC-Bridge</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources related to software that supports IFC.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.ifctoolsproject.com/</link>
+							<tag>IFC TOOLS Project from APSTEX</tag>
+							<comment>Java-based toolkit and applications.  APSTEX claims to be part of the official IFC4 certification team working with BuildingSMART, responsible for automated checking of IFC-files for IFC4 compliance.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://download2cf.nemetschek.net/www_misc/2010/Sharing-Your-Model-with-IFCv2.pdf</link>
+							<tag>Sharing Your Model with IFC: An Introduction (for Vectorworks Architect 2016)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.youtube.com/watch?v=9gVanbW4Xuc&amp;feature=youtu.be</link>
+							<tag>30 Year Commitment to Interoperability | 2016 presentation by AutoDesk</tag>
+							<comment>Mentions of IFC include release in 2011 of IFC2 for Revit as open source, and 2016 support for IFC_V4 into Revit.  Also added IFC support to AutoDesk Inventor.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.autodesk.com/campaigns/interoperability</link>
+							<tag>BIM interoperability, from AutoDesk</tag>
+							<comment>Lists AutoDesk products that support IFC.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.autodesk.com/solutions/bim/hub/improve-building-design-collaboration-openbim</link>
+							<tag>Improving Building Design Project Collaboration using openBIM® Data Exchange Standards</tag>
+							<comment>Undated. Probably between 2013 and 2015. Mentions release of Revit IFC open source code library in 2011, IFC Export in Revit, and certification.  </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.autodesk.com/solutions/bim/hub/interoperability-openbim-ifc</link>
+							<tag>Interoperability | Frequently Asked Questions from AutoDesk</tag>
+							<comment>Indicates that Revit has IFC4 capabilities.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://communities.bentley.com/products/building/w/building__wiki/ifc</link>
+							<tag>Bentley Communities | IFC Overview</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.digitalproject3d.com/downloads/Digital_Project_v1r4_quick_start_guide.pdf</link>
+							<tag>Digital Project Quick Start Guide</tag>
+							<comment>Digital Project was formerly part of Gehry Technologies.  Support for IFC is implied in this guide.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.solibri.com/support/bim-ifc/</link>
+							<tag>About BIM and IFC, from Solibri</tag>
+							<comment>Solibri Model Viewer, Solibri Model Checker, and ArchiCAD all support IFC2x3</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://download.graphisoft.com/ftp/techsupport/documentation/IFC/IFC%202x3%20Reference%20Guide%20AC16.pdf</link>
+							<tag>IFC 2x3 Reference Guide for ArchiCAD 16</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://helpcenter.graphisoft.com/guides/archicad-17-guides/archicad-17-int-reference-guide/interoperability/file-handling-and-exchange/working-with-ifc/working-with-ifc-data/ifc-manager/</link>
+							<tag>IFC Manager in ArchiCAD 17</tag>
+							<comment>Support is for IFC2x3.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://ifcopenshell.org/</link>
+							<tag>IfcOpenShell | open source ifc toolkit and geometry engine</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://teklastructures.support.tekla.com/2016i/en/int_ifc_general_info</link>
+							<tag>Tekla Structures 2016i | IFC</tag>
+							<comment>Tekla Structures supports IFC2x3 for import and export.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Sample IFC files</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://svn.code.sf.net/p/ifcopenshell/svn/trunk/test/input/</link>
+							<tag>Sample files from ifcopenshell</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The intent of the IFC format is to be a exchange format for Building Information Modeling) BIM data.  buildingSMART International describes itself as the home of OpenBIM.  The scope of its standardization and promotional activities is broader than IFC.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://buildingsmart.org/</link>
+							<comment>From the website: &quot;buildingSMART is the worldwide authority driving transformation of the built environment through creation &amp; adoption of open, international standards.&quot;</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://buildingsmart.org/standards/standards-library-tools-services/</link>
+							<tag>buildingSMART International | Standards Library, Tools &amp; Services</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Other resources on BIM and Open BIM, including national organizations.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.nationalbimstandard.org/</link>
+							<tag>National BIM Standard-United States (NBIMS-US)</tag>
+							<comment>Incorporates specification of IFC v2x3 (February 2006) by reference.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.en.buildingsmart.kotisivukone.com/3</link>
+							<tag>Common BIM Requirements 2012, from BuildingSMART Finland</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.upfrontezine.com/2016/10/qa-with-the-oda-president-neil-peterson.html</link>
+							<tag>Q&amp;A With ODA President Neil Peterson about TEIGHA BIM</tag>
+							<comment>October 2016.  TEIGHA BIM is based on reverse-engineering .rvt files.  Mentions demand for integrating IFC. </comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Papers about BIM from various dates, including promotional white papers and discussion papers that highlight challenges as well as the opportunities.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.laiserin.com/features/bim/autodesk_bim.pdf</link>
+							<tag>Building Information Modeling, 2002 white paper from AutoDesk.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.laiserin.com/features/bim/newforma_bim.pdf</link>
+							<tag>Building Information Modeling Two Years Later –
+Huge Potential, Some Success and Several Limitations</tag>
+							<comment>2005 paper by Ian Howell and Bob Batcheler</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.infocomm.org/cps/rde/xbcr/infocomm/Brochure_BIM.pdf</link>
+							<tag>Building
+Information Modeling</tag>
+							<comment>Study by InfoComm BIM Taskforce.  Undated, but probably from around 2008.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.structuremag.org/wp-content/uploads/2014/08/C-Technology-Burt-Dec091.pdf</link>
+							<tag> BIM Interoperability: The Promise and the Reality.  Bruce A. Burt.</tag>
+							<comment>Structure Magazine, December 2009, pp 19-21.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.gsa.gov/portal/content/105075</link>
+							<tag>3D-4D Building Information Modeling</tag>
+							<comment>Introduction to the National 3D-4D-BIM Program from the General Services Administration (GSA), through its Public Buildings Service (PBS).  As of December 2016, www.gsa.gov/bim redirects here.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.gsa.gov/portal/mediaId/226771/fileName/GSA_BIM_Guide_v0_60_Series01_Overview_05_14_07.action</link>
+							<tag>GSA BIM Guide Series 01, Version 0.6, May 2007</tag>
+							<comment>Useful introduction to BIM in the context of U.S. Govt. buildings.  Highlights opportunities and challenges. </comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Building_information_modeling</link>
+					<tag>Wikipedia article on Building Information Modeling (BIM)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.iso.org/iso/catalogue_detail.htm?csnumber=38047</link>
+					<tag>ISO 10303-11:2004. Industrial automation systems and integration -- Product data representation and exchange -- Part 11: Description methods: The EXPRESS language reference manual</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/EXPRESS_(data_modeling_language)</link>
+					<tag>Wikipedia article on the EXPRESS data modeling language</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.steptools.com/library/standard/</link>
+					<tag>The STEP Standard - ISO 10303</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=63141</link>
+					<tag>ISO 10303-21:2016.  Industrial automation systems and integration -- Product data representation and exchange -- Part 21: Implementation methods: Clear text encoding of the exchange structure</tag>
+					<comment>The specification for IFC, Version 4, includes an undated normative reference to ISO 10303-21, indicating that the latest version of STEP-21 applies.   However, this does not mean that features new in the 2016 edition are employed in IFC4.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/ISO_10303-21</link>
+					<tag>Wikipedia article on ISO 10303-21 (STEP-file)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/700</link>
+					<tag>PRONOM entry for Industry Foundation Classes, Version 4</tag>
+					<comment>PUID for IFC4 is fmt/700.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/699</link>
+					<tag>PRONOM entry for Industry Foundation Classes, Version 2x3</tag>
+					<comment>PUID for IFC2x3 is fmt/699.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q979630</link>
+					<tag>Wikidata entry for Industry Foundation Classes File Format Family</tag>
+					<comment>Wikidata Title ID: Q979630</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.iso.org/iso/catalogue_detail.htm?csnumber=38056</link>
+					<tag>ISO/PAS 16739:2005. Industry Foundation Classes, Release 2x, Platform Specification (IFC2x Platform)</tag>
+					<comment>Previous version of IFC, widely deployed.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Comparison_of_computer-aided_design_editors</link>
+					<tag>Wikipedia Comparison of Computer-Aided Design Editors</tag>
+					<comment>Includes a column for support for IFC.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Color representation in design models, and hence in IFC, is complex.  Resources linked below relate to color representation and interoperability problems</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.buildingsmart-tech.org/ifc/IFC4/Add2/html/link/ifccolourrgb.htm</link>
+							<tag>IFC4 entity specification for IfcColourRgb</tag>
+							<comment>Indicates that RGB is among the color specifications supported for ifcPresentationItem entities and was part of IFC2x3.  However, interoperability problems discussed in resources below suggest that many applications may not implement this fully in their IFC export or import functionality. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.en.buildingsmart.kotisivukone.com/3</link>
+							<tag>Common BIM Requirements 2012 from BuildingSMART Finland</tag>
+							<comment>Chapters 4 (MEP Design) and 8 (Use of models for visualization) have particular guidelines relating to the use of color.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://bimblog.bondbryan.com/archicad-18-join-the-ifc-and-cobie-flow-part-3-model-export/</link>
+							<tag>ARCHICAD 18: Join the IFC and COBie flow – Part 3 – Model export</tag>
+							<comment>Blog post from October 2014.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://datacubist.com/support/howto-export-colors-to-ifc.html</link>
+							<tag>SimpleBIM | Export Colors to IFC</tag>
+							<comment>Mentions &quot;legacy&quot; colors and indicates that the simplebim software has 3 options: export colors; export legacy colors; and export no colors.  The legacy colors appear to relate to an older version of the IFC Coordination View.  </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://teklastructures.support.tekla.com/190/en/int_color_of_exported_ifc_objects</link>
+							<tag>Tekla Structures | Color of the exported IFC objects</tag>
+							<comment>Indicates that colors relate to parts classification in exports from this CAD product.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://forums.sketchup.com/t/how-to-export-to-ifc-and-retain-colors/17082</link>
+							<tag>SketchUp Community | How to export to .IFC and retain colors</tag>
+							<comment>A question about problems with importing IFC files created in SketchUp in other CAD software.  Useful comment but no solution.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

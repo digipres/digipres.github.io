@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000446" titleName="DXF (AutoCAD Drawing Interchange Format) Family, ASCII variant" shortName="DXF_ASCII_Family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenres>
+				<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+				<fdd:gdfrGenre>model</fdd:gdfrGenre>
+			</fdd:gdfrGenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>family</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>cad/cam</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2016-12-07</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>AutoCAD Drawing Interchange File (DXF), ASCII Family</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>vector image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>DXF is an exchange format for content of AutoCAD Drawing Files (<fddLink id="fdd000445">DWG</fddLink>).  A DXF_ASCII file is an ASCII text file; a binary version of DXF has also been defined, but is less widely used and not described separately in this resource.  The DXF format specification is maintained and has been openly published by <a href="http://www.autodesk.com/">AutoDesk</a>.  The documentation was first released in 1982, and has been updated frequently as the AutoCAD product has been enhanced.  The DXF Reference documentation is available through AutoCAD Help and <a href="http://usa.autodesk.com/adsk/servlet/index?siteID=123112&amp;id=24240325">DXF Reference on the AutoDesk Developer Network</a> has links to documentation, mainly as PDF files, back to 1994 (Release 13).</p>
+			<p>As of November 2016, PRONOM has identified 19 chronological versions.  See <a href="#sign">File type signifiers</a> below.  The compilers of this resource have chosen to describe the DXF ASCII format variants in a single document for the format family.  The simple tagged structure of the format has not changed, but the set of codes that identify the entries in the file has been extended over time. See <a href="#notes">Notes</a> below, for more information about the chronological versions of the AutoCAD application and associated versions of the DXF format.</p>
+			<p>The structure of a DXF file is a sequence of &quot;groups,&quot; each of which occupies
+two lines in the plain text DXF file.  The first line of a group is a group code,
+which is an integer, usually a positive integer, with zero and small negative integers having special significance. The second
+line of the group is the group value, in a format which depends on the group code.  A simple, but unofficial, introduction to the DXF format, including a graphic of an annotated sample file is at <a href="http://www.scan2cad.com/dxf/file-specification/">DXF File Specification</a>, from Scan2CAD.  Each group code is associated with a data type (e.g., integer, text string, floating point) for its values.  See <a href="http://help.autodesk.com/view/ACD/2017/ENU/?guid=GUID-2553CF98-44F6-4828-82DD-FE3BC7448113">Group Code Value Types Reference (DXF)</a>.   For the semantics associated with each group code, see <a href="http://help.autodesk.com/view/ACD/2017/ENU/?guid=GUID-3F0380A5-1C15-464D-BC66-2C5F094BCFB9">DXF Group Codes in Numerical Order Reference</a>. In a few cases the semantics are relatively specific; for example, the value associated with group code 10 is the X-coordinate of a &quot;Primary point; this is the start point of a line or text entity, center of a circle, and so on.&quot; Group codes 20 and 30 are used for the Y- and Z-coordinates.  In other cases, a group code is associated with a generic function; for example, group codes 290-299 are used for boolean flags.</p>
+			<p>Groups (of two lines each) in a DXF file are organized into sections.  Each section starts with a group with code 0 and value &quot;SECTION&quot;, which is usually followed by a group with code 2 and a string value that identifies the section.  Sections end with a group with code 0 and value "ENDSEC".  Within sections there may be sub-sections (and sub-sub-sections) that are introduced by a group with code 0 and text value indicating the type of information following.  See an outline example of an OBJECTS section in a DXF file at <a href="http://help.autodesk.com/view/ACD/2017/ENU/?guid=GUID-1038FDE4-745D-469D-972E-1F977D674882">Object Group Codes in DXF Files</a>.</p>
+			<p>The sections defined for a DXF file are:</p>
+			<ul>
+				<li>
+					<b>Header:</b>  This section always comes first in the DXF file.  An important &quot;variable&quot; in the header is the code used to identify the DWG format version (see <a href="#sign">File type signifiers</a> below).  Other header variables include: default units and styles for the drawing; drawing size limits; coordinate systems to use for spatial positioning; a project name; creation and modification dates and times, etc.</li>
+				<li>
+					<b>Classes:</b> Holds information relating to application-defined or custom classes whose instances (objects) appear in other sections.</li>
+				<li>
+					<b>Tables:</b> Holds various tables that support functionality of a CAD application and/or rendering of the drawing content.  For example, styles for lines and text are stored in tables, as are named views and layers that can be used to control rendering or printing of the 2D or 3D content of the DWG file.</li>
+				<li>
+					<b>Blocks:</b> This section contains an entry for each block in the drawing.  A block is a named assembly of graphical entities, for example representing a particular component of a type used repeatedly in the design.</li>
+				<li>
+					<b>Entities (graphical objects):</b> These include simple graphical entity types such as LINE, CIRCLE, VERTEX and more complex types such as SHAPE, POLYLINE, 3DSOLID, SPLINE, etc.  Entity objects can include references to related objects, including child (&quot;owned&quot;) objects and parent (&quot;owner&quot;) objects.  References are through a system of &quot;handles,&quot; identifiers and references to those identifiers that follow particular syntactical conventions.  See Notes in the description for <fddLink id="fdd000445">DWG_Family</fddLink> for more about the functionality of these handles.</li>
+				<li>
+					<b>Objects (non-graphical):</b> These include dictionaries, settings, etc. that support the drawing and rendering functions in a CAD application.</li>
+				<li>
+					<b>Thumbnail Image:</b> An optional section used if a preview image has been saved for use in directory listings or similar application menus.</li>
+			</ul>
+			<p> See also the Description for <fddLink id="fdd000445">DWG_Family</fddLink>.</p>
+		</fdd:description>
+		<fdd:shortDescription>a plain text exchange format for AutoCAD Drawings. Maintained and published by AutoDesk, producer of AutoCAD.</fdd:shortDescription>
+		<fdd:productionPhase>Primarily a middle-state format used to transfer design details among parties engaged in designing, building, and maintaining buildings, aircraft, ships, etc., including architects, builders, engineers, and component suppliers.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Other</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000445</fdd:id>
+					<fdd:shortName>DWG_Family</fdd:shortName>
+					<fdd:titleName>DWG (AutoCAD Drawing) Format Family</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>See Notes in the description for <fddLink id="fdd000445">DWG_Family</fddLink> on the relationship between DXF and DWG formats.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:preference>Among preferred vector graphics formats, the Library of Congress has listed the AutoCAD Drawing Interchange Format (DXF).   See <a href="http://www.loc.gov/preservation/resources/rfs/stillimg.html">Recommended Formats Statement: Still Image Works</a>.  </fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>The DXF format is a proprietary, but openly documented, format developed and maintained by AutoDesk.  The documentation is published under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.</p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>The current specification for DXF is integrated into the Help system for AutoCAD and related AutoDesk products.  As of late 2016, this information is found by navigating through a cluster of web pages from one of two starting points: <a href="http://help.autodesk.com/view/ACD/2017/ENU/?guid=GUID-235B22E0-A567-4CF6-92D3-38A2306D73F3">About the DXF Format | AutoCAD 2017</a> and <a href="http://help.autodesk.com/view/ACD/2017/ENU/?guid=GUID-20172853-157D-4024-8E64-32F3BD64F883">About ASCII DXF Files | AutoCAD 2017</a>.  See <a href="http://usa.autodesk.com/adsk/servlet/index?siteID=123112&amp;id=24240325">DXF Reference on the AutoDesk Developer Network</a> for documentation, mainly as PDF documents, back to Release 13 in 1994.  Descriptions of two yet earlier versions, Releases 10 and 12, are available at <a href="http://www.martinreddy.net/gfx/3d-hi.html">3D Geometry Specifications</a>, a resource compiled in the 1990s by Martin Reddy.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>The DXF format has been very widely used for exchange of design data between CAD applications, the purpose for which it was developed.  The plain text representation has been popular, since it is easily used with generic programming tools.</p>
+			<p>However, it appears that in some CAD/CAM contexts, its use may be less common than in the past, because CAD applications now incorporate much more information and functionality than reproducing paper drawings and 2D renderings of 3D models.  For example, the <a href="https://en.wikipedia.org/wiki/AutoCAD_DXF">Wikipedia article for the DXF format</a> states, &quot;As AutoCAD has become more powerful, supporting more complex object types, DXF has become less useful. Certain object types, including ACIS solids and regions, are not documented. Other object types, including AutoCAD 2006&apos;s dynamic blocks, and all of the objects specific to the vertical market versions of AutoCAD, are partially documented, but not well enough to allow other developers to support them. For these reasons many CAD applications use the DWG format which can be licensed from Autodesk or non-natively from the Open Design Alliance.&quot; [Note: This paragraph may have been based on <a href="https://books.google.com/books?id=habcATPQWJ4C&amp;pg=PT64&amp;lpg=PT64">Integrating Advanced Computer-Aided Design, Manufacturing, and Numerical Control: Principles and Implementations (Xu, 2009), page 39</a>.  In addition to the growing importance of 3D solids in CAD in general, in the domain of architecture, the integration of building information modeling (BIM) data into CAD applications has become increasingly important.  The compilers of this resource have found no evidence that BIM data can be incorporated into a DXF file in a standard way; rather a separate file format family is used for such data, known as <a href="https://en.wikipedia.org/wiki/Industry_Foundation_Classes">Industry Foundation Classes (IFC)</a>.  See also <fddLink id="fdd000447">IFC-SPF</fddLink> for a description of the &quot;clear text&quot; variant of IFC.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>The UK&apos;s Archaeology Data Service has a <a href="http://guides.archaeologydataservice.ac.uk/g2gp/Cad_Toc">Guide to Good Practice</a>, last revised in 2011.  Section 3.2 for <a href="http://guides.archaeologydataservice.ac.uk/g2gp/Cad_3-2">CAD Data Formats</a> highlights problems with losing data in conversion from DWG to DXF and states, &quot;Given the problems of incompatibilities between different file formats, and even incompatibilities between the same file format from the same manufacturer, it is recommended that CAD files are saved in the latest possible version of .dwg and .dxf, and that this is fully documented.&quot;</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>No issues.</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>As a plain text format, the DXF format can be opened and viewed with very basic text editing tools.  However, because most of the data elements are indicated by numerical codes rather than human-readable element names and the documentation for some substructures is minimal, the semantics of the drawing content in a DXF file is not easy to understand.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>The DXF Reference documentation does not identify any data elements that constitute descriptive contextual information for the drawing except for a project name (variable $PROJECTNAME in the Header section).</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			<p>None beyond software that can read and interpret the DXF file format.</p>
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			<p>The DXF Reference documentation does not mention encryption.  However, in order to protect intellectual property, it is quite likely that DXF files are often transmitted in encrypted form, using generic encryption tools that can be applied to any file.</p>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>Good support.</fdd:normalImage>
+			<fdd:clarity>Scalable.</fdd:clarity>
+			<fdd:colorMaint>Color specification in <fddLink id="fdd000445">DWG</fddLink> and DXF is by indexed palettes or <a href="https://en.wikipedia.org/wiki/Color_depth#True_color_.2824-bit.29">True Color</a> (RGB color space, 24-bit depth).</fdd:colorMaint>
+			<fdd:graphics>Excellent support for vector graphics. More than 60 types of geometric objects are defined, as well as grouping of objects as Blocks or in Layers.</fdd:graphics>
+			<fdd:multispectral>Not applicable.</fdd:multispectral>
+			<fdd:beyondImage>
+				<p>Limited support for 3D models as well as 2D drawings.  Support for multiple viewports and geospatial positioning.</p>
+			</fdd:beyondImage>
+		</fdd:stillImageQF>
+		<fdd:otherQF>
+			<fdd:factor>
+				<fdd:tag>Support for CAD/CAM/CAE</fdd:tag>
+				<fdd:note>
+					<p>Excellent support for 2D drawings.   Support for some 3D model types.  AutoCAD&apos;s native method for 3D modeling is based on a polymesh construct that uses 3D FACEs.  <a href="https://en.wikipedia.org/wiki/ACIS">ACIS</a> solids can also be embedded in a DXF file.</p>
+					<p>According to <a href="https://en.wikipedia.org/wiki/Comparison_of_computer-aided_design_editors">Wikipedia&apos;s Comparison of Computer-aided Design Editors</a>, AutoCAD supports BIM (Building Information Modelling) and IFC (Industry Foundation Classes) for some &quot;verticals.&quot; However, it is unclear to the compilers of this resource whether BIM data beyond that presented in drawings would ever be stored in a DXF file.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+				</fdd:note>
+			</fdd:factor>
+		</fdd:otherQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>dxf</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>image/vnd.dxf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="http://www.iana.org/assignments/media-types/image/vnd.dxf">registration correspondence at IANA</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:other>
+				<fdd:tag>Indicator for profile, level, version, etc.</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>The name of the version of the AutoCAD &quot;drawing database&quot; version is embedded in the DXF header as the value of a &quot;variable&quot; with name $ACADVER. See <a href="#notes">Notes</a> below for a list of valid values for $ACADVER.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/63</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/63">http://www.nationalarchives.gov.uk/PRONOM/fmt/63</a>. The PUID fmt/63 is assigned to ASCII DXF (Generic).  As of November 2016, PRONOM had also assigned 19 PUIDs to different chronological versions of the DXF format, the most recent being <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/532">fmt/532</a> for the 2013/2014 version of the format.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q691652</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q691652">https://www.wikidata.org/wiki/Q691652</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>Although the plain text version of DXF is universally described as ASCII, use of UTF-8 is apparently permitted in recent versions. See <a href="https://pythonhosted.org/ezdxf/dxfinternals/fileencoding.html">DXF File Encoding</a>, which states, &quot;Starting with DXF version R2007 (AC1021) the drawing files are saved with UTF-8 encoding.&quot;  Length limits for strings may apply to counts of bytes, not characters.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>A chronology of AutoCAD software releases is at <a href="http://autodesk.blogs.com/between_the_lines/autocad-release-history.html">AutoCAD Release History</a>.  The DXF_ASCII format was introduced with AutoCad 1.0, released in December 1982. The <a href="https://en.wikipedia.org/wiki/AutoCAD_DXF">Wikipedia article for the DXF format</a> states, &quot;Versions of AutoCAD from Release 10 (October 1988) and up support both ASCII and binary forms of DXF.&quot;  AutoCAD version codes, which are also used to identify chronological versions of the DXF file format, are listed in the DXF Reference documentation as:</p>
+			<ul>
+				<li>AC1027 -- AutoCAD 2013-</li>
+				<li>AC1024 -- AutoCAD 2010-2012</li>
+				<li>AC1021 -- AutoCAD 2007-2009</li>
+				<li>AC1018 -- AutoCAD 2004-2006</li>
+				<li>AC1015 -- AutoCAD 2000-2003</li>
+				<li>AC1014 -- AutoCAD Release 14</li>
+				<li>AC1012 -- AutoCAD Release 13</li>
+				<li>AC1009 -- AutoCAD Releases 11 and 12</li>
+				<li>AC1006 -- AutoCAD Release 10</li>
+			</ul>
+			<p>The <a href="https://en.wikipedia.org/wiki/.dwg">Wikipedia article for the DWG format</a> lists codes back through AutoCAD 1.0.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The DXF format has been documented by AutoDesk since 1982.  This documentation has typically been re-published with new versions of AutoCAD. Several of the document versions are likely identical in substance.  In recent years, the DXF Reference documentation has been published as part of the online help for AutoCAD; there is not a single table of contents, but two key menu pages are given below.  AutoDesk also provides access to DXF documentation, mainly as PDFs back to Release 13 in 1994.  Descriptions of DXF associated with releases 10 and 12 are in a compilation of 3D Geometry specifications assembled by Martin Reddy in the 1990s.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://help.autodesk.com/view/ACD/2017/ENU/?guid=GUID-235B22E0-A567-4CF6-92D3-38A2306D73F3</link>
+							<tag>About the DXF Format | AutoCAD 2017</tag>
+							<comment>In Help system for AutoCAD 2017.    Published with Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://help.autodesk.com/view/ACD/2017/ENU/?guid=GUID-20172853-157D-4024-8E64-32F3BD64F883</link>
+							<tag>About ASCII DXF Files | AutoCAD 2017</tag>
+							<comment>In Help system for AutoCAD 2017.    Published with Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://usa.autodesk.com/adsk/servlet/index?siteID=123112&amp;id=24240325</link>
+							<tag>DXF Reference | Autodesk Developer Network</tag>
+							<comment>As of December 2016, this page provides links to DXF reference material between AutoCAD Release 13 (1994) and AutoCAD 2014.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://filemonger.com/specs/dxf/wotsit.org/dxf13/R13DXF/R13DXF.html</link>
+							<tag>HTML version of DXF reference for AutoCAD Release 13 (1995)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.martinreddy.net/gfx/3d/DXF12.spec</link>
+							<tag>Drawing Interchange and File Formats, AutoCAD Release 12.</tag>
+							<comment>Copyright (c) 1982-1990, 1992 Autodesk, Inc. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.martinreddy.net/gfx/3d/DXF10.spec</link>
+							<tag>Drawing Interchange and File Formats, Appendix C, AutoCAD Release 10 Reference Manual.</tag>
+							<comment>Includes DXF specification and a C program to read a DXF file.  Copyright (C) 1988 Autodesk, Inc.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.autodesk.com/techpubs/autocad/acadr14/dxf/ascii_dxf_file_format_al_u05_b.htm</link>
+					<tag>ASCII DXF File Format</tag>
+					<comment>A brief introduction to the structure of a DXF file.  From the documentation for Release 14 (1998).</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Some useful pages relating to &quot;group codes&quot; from the DXF Reference material online are listed below.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://help.autodesk.com/view/ACD/2017/ENU/?guid=GUID-3F0380A5-1C15-464D-BC66-2C5F094BCFB9</link>
+							<tag>DXF Group Codes in Numerical Order Reference</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://help.autodesk.com/view/ACD/2017/ENU/?guid=GUID-3610039E-27D1-4E23-B6D3-7E60B22BB5BD</link>
+							<tag>Common Group Codes for Entities (DXF)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://help.autodesk.com/view/ACD/2017/ENU/?guid=GUID-1038FDE4-745D-469D-972E-1F977D674882</link>
+							<tag>Object Group Codes in DXF Files (DXF)</tag>
+							<comment>Outline of a section that is important in almost any DXF file.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://help.autodesk.com/view/ACD/2017/ENU/?guid=GUID-ECB6F2FF-6680-4514-86A7-7AD5551E378D</link>
+					<tag>Object Name Property Reference, associated with double-click actions in AutoCAD</tag>
+					<comment>Shows the DXF and object name for many of the objects commonly found in a drawing. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The help files for AutoCAD &quot;verticals,&quot; including AutoCAD Architecture and AutoCAD Civil 3D, provide information on how objects defined in the vertical application and not in the regular AutoCAD application are treated on conversion to DXF.  Such objects are &quot;exploded&quot; into component objects that will be recognized by regular AutoCAD.  Users of the verticals are recommended to use the Export command rather than the Save As command when generating DXF files.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://knowledge.autodesk.com/support/autocad-civil-3d/learn-explore/caas/CloudHelp/cloudhelp/2016/ENU/Civil3D-UserGuide/files/GUID-8EC415A4-EF8E-4FDA-A54C-AA6E67CBC788-htm.html</link>
+							<tag>About Exporting a Drawing to a DXF File | AutoCAD Civil 3D</tag>
+							<comment>&quot;This process creates a new DXF format drawing with all Civil objects exploded to AutoCAD primitives.&quot;</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://knowledge.autodesk.com/support/autocad-architecture/learn-explore/caas/CloudHelp/cloudhelp/2017/ENU/AutoCAD-Architecture/files/GUID-E640D193-F6D9-497E-BEC2-D846D720B50B-htm.html</link>
+							<tag>To Export a Drawing to a DXF File | AutoCAD Architecture</tag>
+							<comment>&quot;Exporting AutoCAD Architecture drawings to a DXF format provides more consistent results than saving drawings as DXF files. Exporting creates a new DXF file with all AEC objects exploded.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://knowledge.autodesk.com/support/autocad-architecture/learn-explore/caas/CloudHelp/cloudhelp/2017/ENU/AutoCAD-Architecture/files/GUID-71EEE220-E7A9-428A-AFEE-568A0220ED42-htm.html</link>
+							<tag>About Sharing Drawings With AutoCAD Users.  From help for AutoCAD Architecture.</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/AutoCAD_DXF</link>
+					<tag>Wikipedia entry for DXF (AutoCAD Drawing Interchange Format)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://paulbourke.net/dataformats/dxf/dxf10.html</link>
+					<tag>DXF, Revision 10, Compiled by Paul Bourke, March 1988 </tag>
+					<comment>This detailed description is for an early version of the DXF format.  Comparison with more recent versions indicate the extent to which the number of &quot;group codes&quot; and associated variables/elements has grown as AutoCAD functionality has been enhanced. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Scan2CAD is a company that specializes in file conversions among CAD formats and applications.  The company provides some useful information about the DXF format, including comparisons with the DWG format.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.scan2cad.com/dxf/file-specification/</link>
+							<tag>The DXF File Specification</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.scan2cad.com/dxf/faq/</link>
+							<tag>Frequently Asked Questions: DXF File Format</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.slideshare.net/Scan2CAD/dxf-versus-dwg-a-comparison-of-vector-graphic-file-formats/1</link>
+							<tag>Slideshow: DXF versus DWG: A Comparison of Vector Graphic File Formats</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.scan2cad.com/dxf/slideshow-dxf-vs-dwg/</link>
+							<tag>Transcript of slideshow: DXF vs DWG</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.dpconline.org/docman/technology-watch-reports/896-dpctw13-02-pdf/file</link>
+					<tag>Preserving
+Computer-Aided
+Design (CAD), Alex Ball, 2013</tag>
+					<comment>A DPC Technology Watch Report.  Section 3.6 discusses AutoDesk formats.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://guides.archaeologydataservice.ac.uk/g2gp/Cad_Toc</link>
+					<tag>Archaeology Data Service | CAD: A Guide to Good Practice</tag>
+					<comment>As of early 2017, last revised in 2011.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Sample DXF files are available at various sites:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://cadkit.blogspot.com/p/sample-dxf-files.html</link>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.woodenclocks.co.uk/page73.html</link>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://justcad.com/downloads.html</link>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/63</link>
+					<tag>PRONOM entry for Drawing Interchange File Format (ASCII), Generic. </tag>
+					<comment>PUID for DXF_ASCII is fmt/63</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q691652</link>
+					<tag>Wikidata entry for Drawing Interchange Format File Format Family</tag>
+					<comment>Wikidata Title ID: Q691652</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
