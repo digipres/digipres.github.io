@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000445" titleName="DWG (AutoCAD Drawing) Format Family" shortName="DWG_Family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenres>
+				<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+				<fdd:gdfrGenre>model</fdd:gdfrGenre>
+			</fdd:gdfrGenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>family</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>cad/cam</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2016-11-09</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>AutoCAD Drawing file (DWG) Family</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>vector image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>DWG is the proprietary native file format for AutoCAD, one of the most popular computer-assisted design (CAD) packages.  The format is maintained by <a href="http://www.autodesk.com/">AutoDesk</a>.  DWG is a compact binary format that stores and describes the content of 2D and 3D design data and metadata.  AutoCAD 1.0 was released in 1982, but the origins of the DWG format are from the late 1970s, when it was the native format for a CAD package called Interact.  The format has been updated frequently as the AutoCAD product has been enhanced.</p>
+			<p>As of November 2016, PRONOM has identified 19 chronological versions, none of which is publicly documented by AutoDesk.  See <a href="#sign">File type signifiers</a> below.  The compilers of this resource have chosen to describe the DWG family of formats in a single document.  See <a href="#notes">Notes</a> below, for information about the chronological versions of the AutoCAD application and associated versions of the DWG format.</p>
+			<p>The syntactic structure of a DWG drawing file includes sections and section substructures.  The primary substance of a drawing is in a section with name AcDb:AcDbObjects.   This contains component graphical elements (known as entities) and other objects that support the editing and rendering of drawings.  Internal connections in the drawing file use identifiers for objects (including the graphical entities) known as &quot;handles.&quot;  Objects declare their own handles and may refer to other objects via handle references.  Handle references may indicate ownership or simply be pointers to other structures.  See <a href="#notes">Notes</a> below for more on handles in DWG files. Cyclic redundancy checksums (CRC) are used extensively for error detection.</p>
+			<p>A typical DWG file will include at least the following sections:</p>
+			<ul>
+				<li>
+					<b>Header:</b>  This section always comes first in the DWG file.  The first &quot;variable&quot; in the header is the code used to identify the DWG format version (see <a href="#sign">File type signifiers</a> below).  Other header variables include: default units and styles for the drawing; drawing size limits; coordinate systems to use for spatial positioning; a project name; creation and modification dates and times, etc.  The header also includes information needed to read and write the particular file: references to locations in the file where other sections begin; section lengths; flags to indicate how much of the file content is encrypted; and a stream of handle references to other structures.  A DWG file may contain structures that are no longer used; hence the best way to interpret a file is to start from the header and trace references from there until all references have been followed.  A duplicate of the header section is stored near the end of the DWG file.</li>
+				<li>
+					<b>Classes:</b> Holds information relating to application-defined or custom classes whose instances (objects) appear in other sections.</li>
+				<li>
+					<b>Object Data:</b>
+					<ul>
+						<li>
+							<b>Entities (graphical objects):</b> These include simple graphical entity types such as LINE, CIRCLE, VERTEX and more complex types such as SHAPE, POLYLINE, 3DFACE, 3DSOLID, SPLINE, etc.  Entity objects can include handle references for related objects, including child (&quot;owned&quot;) objects and parent (&quot;owner&quot;) objects.</li>
+						<li>
+							<b>Non-graphical objects:</b> These include dictionaries, settings, etc. that support the drawing and rendering functions in a CAD application.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Object Map (Handles):</b> A table which gives the location of each object in the file, listing all handle identifiers and the corresponding location in the file by an offset into the into the AcDb:AcDbObjects section.</li>
+			</ul>
+			<p>See <a href="#notes">Notes</a> below for more sections and object types that might occur in DWG files.</p>
+		</fdd:description>
+		<fdd:shortDescription>the proprietary native file format for AutoCAD, one of the most popular CAD packages, produced by AutoDesk.  A complex, compact binary format for which no official specification has been published.</fdd:shortDescription>
+		<fdd:productionPhase>Used primarily for creation of design drawings and models and as master format for deriving renderings in two or three dimensions.  In the domain of architecture, used for collaboration among architects and engineers designing, constructing, and maintaining buildings.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Other</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000446</fdd:id>
+					<fdd:shortName>DXF_ASCII_Family</fdd:shortName>
+					<fdd:titleName>DXF (AutoCAD Drawing Exchange Format) Family, ASCII variant</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Originally designed to be an ASCII equivalent to DWG. For many situations, the DXF format can still contain all the information in a source DWG file.  See <a href="#notes">Notes</a> below on relationship between DWG and DXF_ASCII.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Other</fdd:typeOfRelationship>
+				<fdd:comment>DWF (Design Web Format) and DWFX, proprietary formats from AutoDesk for publishing designs for review, not described separately on this website.  See <a href="#notes">Notes</a> below on related publishing formats from AutoDesk.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:preference>Among vector graphics formats, the Library of Congress has expressed a preference for the AutoCAD Drawing Interchange Format (<fddLink id="fdd000446">DXF</fddLink>).  Widely used proprietary formats are acceptable if needed to be a faithful representation of a work.  See <a href="http://www.loc.gov/preservation/resources/rfs/stillimg.html">Recommended Formats Statement: Still Image Works</a>.  </fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>The DWG format is a proprietary format developed and maintained by AutoDesk.  No specification has been published by AutoDesk.</p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>The conceptual and semantic aspects of the DWG drawing format are covered best in the documentation AutoDesk supplies for the <fddLink id="fdd000446">DXF Drawing Interchange Format</fddLink> in its help system [<a href="http://help.autodesk.com/view/ACD/2017/ENU/?guid=GUID-235B22E0-A567-4CF6-92D3-38A2306D73F3">About the DXF Format | AutoCAD 2017</a>].</p>
+			<p>The closest thing to a specification for the syntax of DWG files is the <a href="https://www.opendesign.com/files/guestdownloads/OpenDesign_Specification_for_.dwg_files.pdf">Open Design Specification for .dwg files</a>, derived by the Open Design Alliance (ODA) by reverse engineering.  As of November 2016, this document covers the DWG format from AutoCAD Release 13 through AutoCAD 2013 (AC1027).  The AC1027 version of DWG has been used from AutoCAD 2013 through AutoCAD 2017.  The ODA  is an organization of over 1,000 firms that support the development of the <a href="https://www.opendesign.com/products/teigha-drawings">Teigha</a> toolkit to allow members to read and write files in DWG and other formats.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>The DWG format is very widely used.  It is the native format for AutoCAD and other AutoDesk products.  According to <a href="http://inthefold.autodesk.com/in_the_fold/2015/01/autocad-takes-top-spot-in-2015-report-on-cad-products.html">a blog post at In The Fold</a>, AutoCAD scored top marks in a Winter 2015 rating for General-Purpose CAD.  <a href="https://chasmtech.wordpress.com/2015/04/28/is-bricscad-a-real-alternative-to-autocad/">Is BricsCAD A Real Alternative to AutoCAD?</a>, a blog post from April 28, 2015, indicates, &quot;Products competitive to AutoCAD have come and gone over the years. None appear to have the critical functionality and the supporting infrastructure to cause established AutoCAD users to risk the switch.&quot;  The post goes on to suggest that 100% DWG compatibility is the most important factor in considering alternative products.  CAD applications that use DWG as the native format include: products based on the <a href="https://www.intellicad.org/cad-development-platform-framework">IntelliCAD Technology Consortium</a> platform, such as <a href="https://www.intellicadms.com/">CMS Intellicad</a>; products based on the Open Design Alliance platform <a href="https://www.opendesign.com/products/teigha-kernel">Teigha</a>, such as <a href="http://www.caddiesoftware.com/index.php/purchase/international-sales/software/caddie-budget">Caddie</a>, <a href="https://www.bricsys.com/en_INTL/bricscad/">BricsCAD</a>, <a href="http://www.3ds.com/products-services/draftsight-cad-software/features/">DraftSight</a>, and <a href="http://nanocad.com/page/KeyFeatures">NanoCAD</a>; and <a href="http://www.cadkon.eu/en/01-02.html">CADKON+</a>.  See <a href="https://en.wikipedia.org/wiki/Comparison_of_computer-aided_design_editors">Wikipedia&apos;s Comparison of Computer-aided Design Editors</a> for information about support for DWG in many other CAD applications.</p>
+			<p>
+				<a href="http://www.autodesk.com/realdwg">RealDWG</a> is a software development kit (SDK) supported and used by AutoDesk and available for license from <a href="http://www.techsoft3d.com/">Tech Soft 3D</a>.  Source code for the Open Design Alliance&apos;s Teigha Kernel, Drawings, and other modules are available to ODA&apos;s founding and corporate subscribers. ODA&apos;s Teigha Drawings code is based on software libraries previously known as OpenDWG and DWGdirect.  Source code for the core IntelliCAD software is available to commercial members of the IntelliCAD Technology Consortium (ITC). However, the code used to read and write DWG files is the same for both consortia.  ITC is a member of ODA (see <a href="https://www.opendesign.com/member-showcase/2012/march/intellicad-technology-consortium">The ITC and the ODA: Complete opensource CAD solution</a>).  According to ITC President, David Lorenzo, &quot;The ITC has based IntelliCAD development on the ODA libraries since its inception, and we know they will deliver the core technology required for our open source CAD engine to support any new .dwg or .dgn file formats in the future.&quot;  The description of the Teigha or ITC code-bases as &quot;open source&quot; has been questioned, for example in the <a href="https://en.wikipedia.org/wiki/Talk:IntelliCAD#Open_Source.3F">Talk page on Wikipedia entry for IntelliCAD</a>.</p>
+			<p>Open-source projects that aim to read and write DWG files include: <a href="https://www.gnu.org/software/libredwg/">LibreDWG</a> (a C library to handle DWG files) and <a href="http://librecad.org/cms/home.html">LibreCAD</a> (an open-source 2D CAD application based on Qt, previously known as QCad then CADuntu). However, it appears that developing and supporting CAD applications may demand more effort and expertise than free open-source projects can maintain over the long term. In February 2016, a <a href="http://lists.gnu.org/archive/html/libredwg/2016-02/msg00000.html">message</a> in a discussion thread in the libredwg mail list with subject &quot;Looking for new maintainers&quot; includes the paragraph from one of the project leaders, &quot;Maybe it is a good time to discuss the future of this project. LibreCAD have implemented libdxfrw with DXF-rw (obviously) and DWG-r, apparently at a better stage than LibreDWG. Licenses were incompatible so they just hacked it themselves.&quot;  And, in May 2016, the <a href="http://blog.librecad.org/2016/05/valuable-asset-leaving-our-librecad-team/">LibreCAD blog</a> announced the departure from the team of "a very valuable asset." </p>
+			<p>There are a number of free or inexpensive applications that can be used to view DWG drawing files, including: the <a href="https://www.opendesign.com/news/open-design-alliance-announces-teigha-viewer">Teigha Viewer</a>; <a href="http://www.3ds.com/fileadmin/PRODUCTS/DRAFT_SIGHT/PDF/PDF_s/DraftSightenduserFAQ.pdf">DraftSight</a> a free CAD application; the <a href="http://www.solidworks.com/sw/products/edrawings-mobile.htm">eDrawings</a> app for iOS and Android; and several <a href="http://www.autodesk.com/products/dwg/viewers">viewers from AutoDesk</a>, including the online A360 viewer, DWG TrueView, and the AutoCAD 360 app for mobile devices.</p>
+			<p>Several archival organizations have listed DWG as preferred or acceptable for depositing or storing CAD drawings: <a href="https://wiki.harvard.edu/confluence/display/digitalpreservation/Formats+Supported+by+the+DRS#FormatsSupportedbytheDRS-CADFormats">Harvard Digital Repository Service</a>, <a href="http://www.bac-lac.gc.ca/eng/services/government-information-resources/guidelines/Pages/guidelines-file-formats-transferring-information-resources-enduring-value.aspx#u">Library and Archives Canada</a>, the <a href="http://data-archive.ac.uk/create-manage/format/formats-table">UK Data Archive</a>, <a href="http://archaeologydataservice.ac.uk/advice/FileFormatTable">UK Archaeology Data Service</a>, and <a href="http://naa.gov.au/Images/Preservation-File-Formats_tcm16-79398.pdf">National Archives of Australia</a>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>AutoDesk and partner Tech Soft 3D make available, via license, RealDWG, a Software Development Kit (SDK) for reading and writing DWG files.</p>
+			<p>As detailed in the <a href="https://en.wikipedia.org/wiki/.dwg#Autodesk_trademark">section on AutoDesk Trademark in the Wikipedia entry for .dwg</a>, AutoDesk has attempted to use trademark law to retain control of the format.  In 2006, AutoDesk sued the Open Design Alliance, &quot;alleging that its DWGdirect libraries infringed Autodesk&apos;s trademark for the word &apos;Autodesk&apos;, by writing the TrustedDWG watermark (including the word &apos;AutoCAD&apos;) into DWG files it created.&quot;  The issue was settled in 2007.</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>This proprietary binary format is not transparent. ODA&apos;s attempt at reverse-engineering, <a href="https://www.opendesign.com/files/guestdownloads/OpenDesign_Specification_for_.dwg_files.pdf">Open Design Specification for .dwg files</a>, demonstrates the degree to which developing code to interpret DWG files would be difficult.  The need to conserve space in the early days led to techniques to save bits that would obscure the structure.  Structure and semantics are conveyed through numeric &quot;group codes,&quot; not by human-readable tags.  New group codes can be introduced without documentation.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>Metadata may be embedded in a DWG file.  Sections in the DWG file that maybe used include Summary Info, Revision History, and AppInfo (information about the creating information).  The compilers of this resource have not ascertained how widely these capabilities are used. <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			<p>None beyond software that can interpret DWG files in general, and more specifically, the types of objects and entities included, some of which may be specific to the applications used in the creation of the file.</p>
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			<p>The DWG format supports encryption of much of the file&apos;s content.  Some DWG files may have been saved with a password using an internal mechanism, but this capability has been eliminated starting with AutoCAD 2016. AutoDesk now recommends the use of any encryption product that meets current industry standards and is updated as needed.</p>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>Good support.</fdd:normalImage>
+			<fdd:clarity>Scalable.</fdd:clarity>
+			<fdd:colorMaint>Color specification in DWG is by indexed palettes or <a href="https://en.wikipedia.org/wiki/Color_depth#True_color_.2824-bit.29">True Color</a> (RGB color space, 24-bit depth).  See <a href="http://help.autodesk.com/view/ACD/2017/ENU/?guid=GUID-14BC039D-238D-4D9E-921B-F4015F96CB54">About Setting the Color of Objects</a> from AutoCAD Help.</fdd:colorMaint>
+			<fdd:graphics>Excellent support for vector graphics. More than 60 types of geometric objects are defined, as well as grouping of objects as Blocks or in Layers.</fdd:graphics>
+			<fdd:multispectral>Not applicable.</fdd:multispectral>
+			<fdd:beyondImage>
+				<p>Support for 3D models as well as 2D drawings.  Support for multiple viewports and geospatial positioning.</p>
+			</fdd:beyondImage>
+		</fdd:stillImageQF>
+		<fdd:otherQF>
+			<fdd:factor>
+				<fdd:tag>Support for CAD/CAM/CAE</fdd:tag>
+				<fdd:note>
+					<p>Excellent support for 2D drawings.   Support for some 3D model types.  AutoCAD&apos;s native method for 3D modeling is based on a polymesh construct that uses 3D FACEs.  <a href="https://en.wikipedia.org/wiki/ACIS">ACIS</a> solids can also be embedded in a DWG file.  See <a href="#notes">Notes</a> below on 3D Objects in DWG files.</p>
+					<p>According to <a href="https://en.wikipedia.org/wiki/Comparison_of_computer-aided_design_editors">Wikipedia&apos;s Comparison of Computer-aided Design Editors</a>, AutoCAD supports BIM (Building Information Modelling) and IFC (Industry Foundation Classes) for some &quot;verticals.&quot; However, it is unclear to the compilers of this resource whether BIM data would ever be stored in a DWG file.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+				</fdd:note>
+			</fdd:factor>
+		</fdd:otherQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>dwg</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Closely related files use the same format structure:  .bak (for drawing backup), .dws (for drawing standards), .dwt (for drawing templates) and .sv$ (temporary automatic save) files are also DWG files.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>image/vnd.dwg</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="http://www.iana.org/assignments/media-types/image/vnd.dwg">registration correspondence at IANA</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 41 43 31 30</fdd:sigValue>
+					<fdd:sigValue>ASCII: AC10</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>These four bytes act as magic numbers for DWG files created by AutoCAD versions since 2.5 (released June 1986).  Versions 1.2-2.22 (AutoCAD releases April 1983-early 1986) have ASCII &quot;AC&quot; as the first two bytes.  AutoCAD 1.0 used &quot;MC0.0&quot; as the first five bytes of DWG files.  See <a href="#notes">History notes</a>.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Indicator for profile, level, version, etc.</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>The first six bytes of a DWG file indicate the version of the format.  See signifier row for magic numbers above, and <a href="#notes">History notes</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>As of November 2016, PRONOM had assigned 19 PUIDs to different chronological versions of the DWG format, the most recent being <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/531">fmt/531</a> for the version of the format used for AutoCAD 2013 through AutoCAD 2017 (the current version as of November 2016).</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q1053358</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q1053358">https://www.wikidata.org/wiki/Q1053358</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Additional sections and object types:</b> Additional features that may be present in DWG files include:</p>
+			<ul>
+				<li>
+					<b>SummaryInfo:</b> This optional section contains metadata.  Pre-defined properties include Title, Subject, Author, Keywords, Creation date/time, Modification date/time. The section can also contain other properties, represented as key/value pairs.  Other metadata sections include RevisionHistory, AppInfo (about the creating application), and Preview (a BMP or WMF thumbnail image to represent the DWG file in directory displays).</li>
+				<li>
+					<b>Blocks:</b> In AutoCAD, a &quot;block&quot; is a collection of objects that are combined into a single named object. Blocks are often created as independent drawing files and then inserted; libraries of blocks are made available by part suppliers.  Named blocks may not be recognized by all CAD software, even if the component objects are.</li>
+				<li>
+					<b>Layers:</b> In AutoCAD, layers provide a mechanism for organizing objects in a drawing by function or purpose. Layers can be turned on and off to reduce the visual complexity of a drawing and improve display performance. For example, a building plan might have layers for doors and for electrical wiring.</li>
+				<li>
+					<b>Image data:</b> Raster images can be stored in a DWG file along with clipping boundaries to use when embedded in the drawing.</li>
+				<li>
+					<b>Data storage:</b>  This section (aka AcDsPrototype_1b) was introduced for AutoCAD 2013.  Standard ACIS Binary (SAB) and Standard ACIS Text (SAT) data for REGIONs and 3DSOLIDs are stored in this section.  In other contexts these bytestreams may be independent files with extensions .sab and .sat.  ACIS is a solid modelling geometric engine incorporated into many CAD packages.  See <a href="https://en.wikipedia.org/wiki/ACIS">Wikipedia entry for ACIS</a>.  This feature may also be used to store arbitrary &quot;blobs&quot; (binary large objects) in a DWG file.  According to articles from Design Engineering in <a href="http://www.design-engineering.com/features/bricsys-wants-3d-modeler/">March 18, 2016</a> and <a href="http://www.design-engineering.com/evolving-dwg-1004025431-1004025431/">December 13, 2016</a>, BricsCAD from Bricsys packs all its data (including other 3D data and BIM data) into its DWG files. A more technical blog post by the same author, Ralph Grabowski, <a href="http://www.upfrontezine.com/2017/01/betting-on-dwg-for-an-entire-ecosystem.html">Betting on DWG for an Entire Ecosystem</a>, describes the Bricsys approach in more detail, making it clear that it involves use not only of extensibility in the DWG format but also the use of extensions to the AutoDesk APIs.  A 2012 <a href="https://www.opendesign.com/member-showcase/2012/december/bricsys">Member showcase featuring Bricsys</a> from the Open Design Alliance indicates that Bricsys uses ODA&apos;s TEIGHA libraries and contributes enhancements and bug fixes back to ODA. <a href="https://www.graebert.com/en/arescommander">ARES</a> CAD software from <a href="https://www.opendesign.com/Member-Showcase/Graebert">Graebert</a> is also DWG-based, also using TEIGHA libraries, and presumably takes advantage of this feature which introduces the potential for interoperability problems when software other than the application that created the DWG file is used to read or render it.  <a href="../contact_format.shtml">Comments welcome</a>.</li>
+			</ul>
+			<p>
+				<b>Error detection and correction:</b>  The DWG format makes extensive use of Cyclic Redundancy Checks (CRC) to support error detection.  The version with code AC1021 (introduced in AutoCAD 2007) also uses Reed-Solomon encoding to support error correction.  However, this mechanism was dropped in subsequent versions (AC1024, AC1027).</p>
+			<p>
+				<b>Handles in DWG files:</b> Objects in DWG files are referred to by object &quot;handles.&quot;  The syntax for these handle references comprises: a 4-bit code for handle type; a 4-bit counter for the length in bytes of the handle; followed by the handle itself.  The type codes distinguish between references that indicate an object directly and those that are expressed as an offset to another handle. The type codes for direct references divide handles into four categories:</p>
+			<ul>
+				<li>
+					<i>Soft ownership</i> reference: the owner does not need the owned object. The owned object cannot exist by itself.</li>
+				<li>
+					<i>Hard ownership</i> reference: the owner needs the owned object. The owned object cannot exist by itself.</li>
+				<li>
+					<i>Soft pointer </i>reference: the referencing object does not need the referenced object and vice versa.</li>
+				<li>
+					<i>Hard pointer</i> reference: the referencing object needs the referenced object, but both are owned by another object.</li>
+			</ul>
+			<p>Note: This use of the term &quot;handle&quot; is not related to the <a href="https://www.handle.net/">Handle System</a>, introduced in 1995 to manage persistent identifiers for digital objects.</p>
+			<p>
+				<b>3D objects in DWG files</b>:  AutoCAD was originally focused on a digital equivalent of drawings on paper but has steadily added 3D modeling features.  For example, a blog post from AutoDesk on <a href="http://autodesk.blogs.com/between_the_lines/2009/02/autocad-2010-and-3d.html">AutoCAD 2010 and 3D</a> highlights new features.  The post discusses AutoCAD 2010 features that support two technical forms of 3D representation: meshes and solids.  Both types of 3D model can be stored in a DWG file (starting at least from AC1024): Polymesh objects (also referred to as polyface meshes) are constructed from POLYLINE objects, which connect vertices; 3DSOLID and BODY objects hold 3D content in a form that allows solids to be hollowed out or surfaces to have thickness. The <a href="https://dxfgrabber.readthedocs.io/en/latest/">documentation for dxfgrabber</a> indicates that the content of 3DSOLID and BODY have typically been ACIS solid models in SAT (Standard ACIS Text) form, but that since AutoCAD 2013 (AC1027), AutoCAD has stored ACIS data as SAB (Standard ACIS binary).  The AutoDesk documentation does not mention ACIS by name, but indicates that the content of <a href="http://help.autodesk.com/view/ACD/2017/ENU/?guid=GUID-19AB1C40-0BE0-4F32-BCAB-04B37044A0D3">3DSOLID</a> is of type &quot;AcDbModelerGeometry&quot; with modeler format version (currently 1) and a number of lines of proprietary data.  Judging from the DXF documentation available online, the 3DSOLID object was introduced with Release 13 of AutoCAD around 1995. The reverse-engineered Open Design Specification for DWG describes these ACIS 3D objects in clause 19.4.39 and chapter 23, indicating that embedded SAB data is preceded by &quot;ACIS BinaryFile&quot; in ASCII and followed by &quot;End\x0E\x02of\x0E\x04ACIS\x0D\x04data&quot;.</p>
+			<p>
+				<b>Relationship of DXF and DWG:</b>  AutoCAD&apos;s Save Drawing As command offers the option of DWG and DXF formats.  The usual DXF file is a transparent ASCII text file, often recommended for interchange and preservation for this reason.  See <fddLink id="fdd000446">
+DXF_ASCII</fddLink>.  An equivalent binary DXF format is also defined; it is almost always described as &quot;DXF Binary&quot; or &quot;Binary DXF&quot;. DXF_Binary is not described separately on this website.</p>
+			<p>According to <a href="http://www.scan2cad.com/dxf/slideshow-dxf-vs-dwg/#whatisdxf">a slideshow comparison of DWG and DXF from Scan2CAD</a>, &quot;The DXF file format was created at the same time as DWG (1982) and by the same company – Autodesk.  The DXF file format was developed to provide an exact representation of the data in the AutoCAD’s native file format, DWG.&quot;  However, AutoCAD has added and enhanced many features, some of which include embedding data not easily incorporated into a text file.  For example, the current DWG format includes the ability to embed Standard ACIS Binary (SAB) data and arbitrary blobs in the AcDsPrototype_1b section.  The compilers of this resource have not been able to determine the degree to which the <i>full</i> semantic and functional content of <i>all</i> DWG files can be represented in DXF_ASCII files saved as DXF within AutoCAD.  <a href="../contact_format.shtml">Comments welcome</a>, particularly to identify content that may be held in a DWG file but would be either omitted or significantly changed when a DXF_ASCII file is written out.</p>
+			<p>Statements about potential differences between the content of a DWG drawing and a corresponding DXF representation include:</p>
+			<ul>
+				<li>The <a href="http://www.scan2cad.com/dxf/slideshow-dxf-vs-dwg/#whatisdxf">slideshow from Scan2CAD</a> cited above says, &quot;DWG and DXF stores different types of drawing information.&quot;  It states that &quot;DWG handles 3D geometry vs. DXF stores 2D vector images.&quot; and gives examples of information that DXF cannot handle, including &quot;photos.&quot;</li>
+				<li>However, <a href="https://knowledge.autodesk.com/search-result/caas/CloudHelp/cloudhelp/2017/ENU/AutoCAD-DXF/files/GUID-7D07C886-FD1D-4A0C-A7AB-B4D21F18E484-htm.html">About the DXF ENTITIES Section</a> in the DXF documentation clearly supports some 3D entities, including 3DFACE, and 3DSOLID.</li>
+				<li>
+					<a href="https://knowledge.autodesk.com/support/revit-products/learn-explore/caas/CloudHelp/cloudhelp/2016/ENU/Revit-DocumentPresent/files/GUID-CE5C1481-40BE-4503-A55C-25B0BC0F817B-htm.html">Help on Solids for DWG/DXF Export from the AutoDesk REVIT product</a> suggests that either DWG or DXF can contain data for ACIS solids.</li>
+				<li>
+					<a href="https://www.opencascade.com/content/dxf-import-export">Documentation for OpenCascade</a> makes it clear that DXF files can contain ACIS solid data in SAT (Standard ACIS Text) form.</li>
+			</ul>
+			<p>Conversion of DWG to DXF using tools that are not based on the <a href="http://usa.autodesk.com/adsk/servlet/index?siteID=123112&amp;id=770257">RealDWG SDK</a> used within AutoCAD may have different shortcomings. <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>A separate issue is numerical precision. Conversion of numeric values represented in floating-point binary to ASCII characters always has the potential for loss of accuracy.  This is mentioned in the DXF documentation from AutoDesk by the statement, &quot;Unlike ASCII DXF files, which entail a trade-off between size and floating-point
+accuracy, binary DXF files preserve the accuracy in the drawing database.&quot;  However, in many circumstances the difference will not be significant, as indicated in the <a href="http://help.autodesk.com/view/ACD/2017/ENU/?guid=GUID-0FC24222-2C6A-4068-8ECF-DB7DDCEE6656">help for options for the AutoCad Save As DXF command</a>, &quot;The default precision is usually adequate; however, you might need to increase this value for certain drawings or applications.&quot;</p>
+			<p>
+				<b>Related publishing formats from AutoDesk:</b> Two proprietary formats with limited functionality have been developed by AutoDesk for publishing designs.  DWF and DWFx are secure file formats developed to combine and publish rich 2D- and 3D-design data.  They are highly compressed file formats suitable for distributing a single drawing or multiple drawings and sheet sets over the Internet for review by people without a CAD application.  AutoDesk provides a free application, Autodesk Design Review, for this purpose.  DWFx is a relatively new version of the DWF file format, based on Microsoft&apos;s XML Paper Specification (XPS).  DWFX documents can be viewed and printed with the Microsoft XPS Viewer, distributed as part of the Windows operating system.  See <a href="https://knowledge.autodesk.com/support/autocad/learn-explore/caas/CloudHelp/cloudhelp/2017/ENU/AutoCAD-Core/files/GUID-DFC086F4-E98C-4FF7-A55E-67FC35007DE5-htm.html">About DWF and DWFx Files</a>.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>The precursor to AutoCAD was Interact, written by Mike Riddle for early microcomputers, starting in 1977, and released as a product in 1979 for a system based on a Marinchip 9900 CPU, which had hardware multiplication.  In 1981, Riddle and the principals of Marinchip Systems, John Walker and Dan Drake, joined about a dozen other people to found AutoDesk and rewrite the software for the IBM PC.  See <a href="http://www.retrothing.com/2007/05/mike_riddles_pr.html">Mike Riddle&apos;s Prehistoric AutoCAD</a> and <a href="http://www.digibarn.com/stories/mike-riddle/index.html">interviews in 2005 with Mike Riddle</a> from the Digibarn Computer Museum.  The highly compressed form of the DWG format has its origins in the early days of personal computers.</p>
+			<p>AutoDesk released AutoCad 1.0 in December 1982. A chronology of AutoCAD software releases is at <a href="http://autodesk.blogs.com/between_the_lines/autocad-release-history.html">AutoCAD Release History</a>; a section on DWG File History lists version codes for the DWG format.  See <a href="https://knowledge.autodesk.com/support/autocad/troubleshooting/caas/sfdcarticles/sfdcarticles/How-to-find-which-version-of-AutoCAD-was-used-to-create-save-a-DWG.html">How to find the format of a DWG or which version of AutoCAD was used to create/save a DWG</a> for an explanation of how DWG version codes and AutoCAD release identifiers are stored in DWG files in the initial bytes in the file (readable as ASCII or Hex characters even though the file content is mainly in a compact binary form).  New DWG versions have been introduced roughly every two or three years since 1990. The <a href="https://en.wikipedia.org/wiki/.dwg">Wikipedia article for the DWG format</a> also lists version codes back through version 1.0.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>DWG is a proprietary format with no official specification. A partial specification has been derived by the Open Design Alliance by reverse engineering. It focuses on the bit-level structure of the highly compressed and sometimes encrypted parts of the binary format. As of November 2016, this specification states that it covers the DWG file format from as used by AutoCAD release 13 (November 1994) up to and including version 2013 and has version number 5.3.  AutoDesk <a href="https://knowledge.autodesk.com/support/autocad-lt/troubleshooting/caas/sfdcarticles/sfdcarticles/AutoCAD-2017-File-format-compatibility-with-older-versions-of-AutoCAD.html">states</a> that AutoCAD 2017 still uses the same format version as AutoCAD 2013.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.opendesign.com/files/guestdownloads/OpenDesign_Specification_for_.dwg_files.pdf</link>
+							<tag>Open Design Specification for .dwg files [unofficial]</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The reverse-engineered specification for the DWG format (see immediately above) in many places says, &quot;See DXF documentation.&quot;  In addition, the DXF specification presents the conceptual and semantic structure of the format more clearly; the DWG &quot;specification&quot; focuses on the bit-level structure of the highly compressed and sometimes encrypted parts of the binary format.  The DXF format and specification document have been updated many times over the years.  Some of the document versions may be identical in substance.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://help.autodesk.com/view/ACD/2017/ENU/?guid=GUID-235B22E0-A567-4CF6-92D3-38A2306D73F3</link>
+							<tag>About the DXF Format | AutoCAD 2017</tag>
+							<comment>In Help system for AutoCAD 2017.    Published with Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://usa.autodesk.com/adsk/servlet/index?siteID=123112&amp;id=24240325</link>
+							<tag>DXF Reference | Autodesk Developer Network</tag>
+							<comment>Provides links to older versions of the DXF Reference, from AutoCad Release 13 (1994) through AutoCAD 2014. </comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.autodesk.com/products/dwg</link>
+					<tag>What is DWG?</tag>
+					<comment>From AutoDesk.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://help.autodesk.com/view/ACD/2017/ENU/</link>
+					<tag>AutoCAD Help for 2017</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/.dwg</link>
+					<tag>Wikipedia entry for DWG (AutoCAD Drawing) format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Comparison_of_computer-aided_design_editors</link>
+					<tag>Wikipedia entry for Comparison of Computer-aided Design Editors</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/List_of_CAx_companies</link>
+					<tag>Wikipedia List of CAx Companies</tag>
+					<comment>CAx includes CAD (computer-assisted design), CAM (computer-assisted manufacturing), CAE (computer-assisted engineering), etc.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Open_Design_Alliance</link>
+					<tag>Wikipedia entry for Open Design Alliance</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Scan2CAD is a company that specializes in file conversions among CAD formats and applications.  The company provides some useful information about the DWG format, including comparisons with the DXF format.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.scan2cad.com/dwg/file-spec/</link>
+							<tag>The DWG File Specification</tag>
+							<comment>An informal introduction to the DWG format.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.scan2cad.com/dwg/questions-answered/</link>
+							<tag>DWG File format | Questions answered</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.scan2cad.com/dwg/overview-of-file/</link>
+							<tag>Overview: The DWG File Format</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.slideshare.net/Scan2CAD/dxf-versus-dwg-a-comparison-of-vector-graphic-file-formats/1</link>
+							<tag>Slideshow: DXF versus DWG: A Comparison of Vector Graphic File Formats</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.scan2cad.com/dxf/slideshow-dxf-vs-dwg/</link>
+							<tag>Transcript of slideshow: DXF vs DWG</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.scan2cad.com/dwg/dwg-pros-cons/</link>
+							<tag>What Are the Pros and Cons of DWG? Everything You Need to Know</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.scan2cad.com/dxf/file-specification/</link>
+							<tag>The DXF File Specification</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.scan2cad.com/dxf/faq/</link>
+							<tag>Frequently Asked Questions: DXF File Format</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://dxfgrabber.readthedocs.io/en/latest/</link>
+					<tag>Documentation for dxfgrabber</tag>
+					<comment>This documentation for DXF incorporates details about recent versions that likely apply to DWG as well, details not found in the official DXF documentation.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://autodesk.blogs.com/between_the_lines/2009/02/autocad-2010-and-3d.html</link>
+					<tag>AutoCAD 2010 and 3D</tag>
+					<comment>Blog post from February 2009.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>AutoDesk has several pages related to compatibility of the DWG file format for versions of AutoCAD and how to identify which version of the format a .dwg file is in and which software version created the file.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://knowledge.autodesk.com/support/autocad-lt/troubleshooting/caas/sfdcarticles/sfdcarticles/AutoCAD-2017-File-format-compatibility-with-older-versions-of-AutoCAD.html</link>
+							<tag>AutoCAD 2017 File format compatibility with older versions of AutoCAD</tag>
+							<comment>Consulted in November 2016.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://knowledge.autodesk.com/support/autocad/troubleshooting/caas/sfdcarticles/sfdcarticles/AutoCAD-2013-DWG-file-format-change.html</link>
+							<tag>AutoCAD 2013 DWG file format change</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://knowledge.autodesk.com/support/autocad/troubleshooting/caas/sfdcarticles/sfdcarticles/How-to-find-which-version-of-AutoCAD-was-used-to-create-save-a-DWG.html</link>
+							<tag>How to find the format of a DWG or which version of AutoCAD was used to create/save a DWG</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://knowledge.autodesk.com/support/autocad/troubleshooting/caas/sfdcarticles/sfdcarticles/DWG-files-only-open-with-older-versions-of-AutoCAD.html</link>
+							<tag>[Workaround if] DWG files only open with older versions of AutoCAD</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://knowledge.autodesk.com/support/autocad/troubleshooting/caas/sfdcarticles/sfdcarticles/Error-AutoCAD-cannot-read-old-format-drawing.html</link>
+							<tag>[Explanation and workaround of] Error: &quot;AutoCAD cannot read old format drawing&quot;</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>AutoCAD Help file related to SaveAs command</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://help.autodesk.com/view/ACD/2017/ENU/?guid=GUID-0FC24222-2C6A-4068-8ECF-DB7DDCEE6656</link>
+							<tag>Save As Options Dialog from AutoCAD 2017 help</tag>
+							<comment>Includes an option to specify decimal places of accuracy when saving to DXF format.  &quot;The default precision is usually adequate; however, you might need to increase this value for certain drawings or applications.&quot;</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://help.autodesk.com/view/ACD/2017/ENU/?guid=GUID-ECB6F2FF-6680-4514-86A7-7AD5551E378D</link>
+							<tag>Object Name Property Reference, associated with double-click actions in AutoCAD</tag>
+							<comment>Shows the names for many of the graphical objects commonly found in a DWG drawing. </comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>AutoCAD Help files related to exporting to formats other than DWG.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://knowledge.autodesk.com/support/autocad/learn-explore/caas/CloudHelp/cloudhelp/2017/ENU/AutoCAD-Core/files/GUID-A72DB257-3410-4792-B548-6B9FC1DED72B-htm.html</link>
+							<tag>EXPORT (Command) | Saves the objects in a drawing to a different file format. </tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://knowledge.autodesk.com/support/autocad/learn-explore/caas/CloudHelp/cloudhelp/2017/ENU/AutoCAD-Core/files/GUID-DFC086F4-E98C-4FF7-A55E-67FC35007DE5-htm.html</link>
+							<tag>About DWF and DWFx Files</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://knowledge.autodesk.com/support/autocad/learn-explore/caas/CloudHelp/cloudhelp/2017/ENU/AutoCAD-Core/files/GUID-D4242737-58BB-47A5-9B0E-1E3DE7E7D647-htm.html</link>
+							<tag>About Importing and Exporting DXF Files</tag>
+							<comment>Includes mention of the DXB format. A DXB (drawing interchange binary) file is a specially coded binary version of a DXF file used for plotting, and can be used to flatten 3D wireframe drawings into 2D vectors. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://knowledge.autodesk.com/support/revit-products/learn-explore/caas/CloudHelp/cloudhelp/2016/ENU/Revit-DocumentPresent/files/GUID-CE5C1481-40BE-4503-A55C-25B0BC0F817B-htm.html</link>
+							<tag>Solids for DWG/DXF Export</tag>
+							<comment>Compares polymesh representation of solids with ACIS solids.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://knowledge.autodesk.com/support/autocad/learn-explore/caas/CloudHelp/cloudhelp/2017/ENU/AutoCAD-Core/files/GUID-AE2B5A3E-2068-4706-AE83-926C26C6EE9C-htm.html</link>
+							<tag>About Importing and Exporting FBX Files</tag>
+							<comment>The FBX file format is a framework for 3D data transfer that creates a high level of interoperability among Autodesk programs.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.autodesk.com/products/fbx/overview</link>
+							<tag>FBX Overview: Adaptable file format for 3D animation software</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://knowledge.autodesk.com/support/autocad/learn-explore/caas/CloudHelp/cloudhelp/2017/ENU/AutoCAD-Core/files/GUID-0ECCAE5E-8807-4F38-BDC7-627804012FDE-htm.html</link>
+							<tag>About Importing and Exporting IGES Files</tag>
+							<comment>This help file points out limitations, emphasizing that attempts to round-trip may not lead to an identical drawing.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources about applications storing, or not storing, 3D objects or BIM data in DWG files.  Although AutoDesk and ODA have described how 3D ACIS solid models may be stored, other 3D data or BIM/IFC data may not be understood by applications other than those they were created by.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/ACIS</link>
+							<tag>Wikipedia entry for the 3D ACIS Modeler</tag>
+							<comment>ACIS models can be stored as Standard ACIS Text (SAT) or Standard ACIS Binary (SAB), either as free-standing files or embedded in other CAD files.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://buildingsmart.org/faq/i-dont-see-anything-3d-ifc-exported-dwg-file/</link>
+							<tag>buildingSMART FAQ | I don’t see anything in 3D in my IFC exported from a DWG file</tag>
+							<comment>One example of potential interoperability issues with saving 3D content in DWG files</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.design-engineering.com/features/bricsys-wants-3d-modeler/</link>
+							<tag>Design Engineering | CAD Report: Bricsys Wants to be Your 3D Modeler (March 18, 2016)</tag>
+							<comment>States that BricsCAD puts all its data, including 3D and BIM/IFC data, into its DWG files.  The degree to which other CAD software can interpret this data is not known to the compilers of this reource.  .</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.design-engineering.com/evolving-dwg-1004025431-1004025431/</link>
+							<tag>Design Engineering | CAD Report: Evolving DWG (December 13, 2016)</tag>
+							<comment>More on Bricsys use of the DWG format.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.graebert.com/en/arescommander</link>
+							<tag>Graebert ARES Commander software</tag>
+							<comment>Uses DWG as native format and therefore probably stores 3D and BIM data in its DWG files.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://chasmtech.wordpress.com/2015/04/28/is-bricscad-a-real-alternative-to-autocad/</link>
+					<tag>Is BricsCAD A Real Alternative to AutoCAD? Blog post from April 28, 2015</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://opensource.com/alternatives/autocad</link>
+					<tag>Blog post on three open source alternatives to AutoCAD, July 2016</tag>
+					<comment>The focus seems to be on small-scale design and solid modeling. Several comments express scepticism over whether open source CAD tools will ever be adequate replacements for professionally used tools like AutoCAD. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.linuxtechi.com/autocad-alternative-tools-for-ubuntu-linuxmint-users/</link>
+					<tag>AutoCAD Alternative Tools for Ubuntu and Linux Mint Users, August 2016</tag>
+					<comment>Introduces five alternative CAD applications, some of which are open source.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.3ds.com/fileadmin/PRODUCTS-SERVICES/DRAFTSIGHT/PDF/DraftSight_FAQ.pdf</link>
+					<tag>DraftSight | Frequently Asked Questions</tag>
+					<comment>A professional-grade 2D CAD product based on the ODA/Teigha SDK.  A single-user license is free.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>DWG viewers are available from various vendors.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.autodesk.com/products/dwg/viewers</link>
+							<tag>DWG Viewers | View, edit, and share .dwg files</tag>
+							<comment>AutoDesk provides several free tools for viewing DWG files.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.opendesign.com/news/open-design-alliance-announces-teigha-viewer</link>
+							<tag>Announcement for Teigha Viewer. December 9, 2010</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.solidworks.com/sw/products/edrawings-mobile.htm</link>
+							<tag>eDrawings Goes Mobile</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Software libraries are available for building applications that can read and write DWG files.  For perfect compatibility, RealDWG can be licensed.  The Teigha toolkit is available to founding and corporate members of the Open Design Alliance.  There is also a free open source effort, LibreDWG.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://usa.autodesk.com/adsk/servlet/index?siteID=123112&amp;id=770257</link>
+							<tag>RealDWG | AutoDesk Developer Network</tag>
+							<comment>Allows C++ and .NET developers to read and write DXF and DWG files created with AutoCAD software.  The software library can be licensed from Tech Soft 3D.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.opendesign.com/about</link>
+							<tag>About the ODA and Teigha</tag>
+							<comment>Teigha was launched in 2010 as the new name for the ODA software development platform for CAD and other technical graphics applications.  The software is available to members of the alliance.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.opendesign.com/join</link>
+							<tag>Teigha Subscription Options</tag>
+							<comment>Source code is available to Founding and Corporate subscribers.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.gnu.org/software/libredwg/</link>
+							<tag>LibreDWG</tag>
+							<comment>A free C library to handle DWG files, in alpha development stage.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>General resources related to preservation of CAD designs.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.dpconline.org/docman/technology-watch-reports/896-dpctw13-02-pdf/file</link>
+							<tag>Preserving
+Computer-Aided
+Design (CAD), Alex Ball, 2013</tag>
+							<comment>A DPC Technology Watch Report.  Section 3.6 discusses AutoDesk formats.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://blogs.loc.gov/thesignal/2014/08/untangling-the-knot-of-cad-preservation/</link>
+							<tag>Untangling the Knot of CAD Preservation.  December 2014 blog post from the Library of Congress</tag>
+							<comment>Incorporates many links to other resources.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.cvaa.be/sites/default/files/projecten/bijlagen/bib_3896_facade_final.pdf</link>
+							<tag>Final Report for the MIT FACADE Project (October 2006 – August 2009)</tag>
+							<comment>Incorporated detailed study of collections of files for three different building designs for which different CAD software was used.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://cci.drexel.edu/media/1161/harvard-library-2d3d-formats-final-report-drexel-public-release.pdf</link>
+							<tag>2D and 3D Format Selection and Metadata Analysis.  June 2015 report for Harvard Library by team at Drexel University. </tag>
+							<comment>Includes analysis of several CAD formats, including DWG.  Analysis includes suggestions for mitigating preservation risks.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.artic.edu/aic/resources/resource/2729</link>
+							<tag>Art Institute of Chicago | Collecting, Archiving, and Exhibiting Digital Design Data (project report from 2003-4)</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Various archival organizations have included DWG as preferred or acceptable formats for deposit or preservation:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://data-archive.ac.uk/create-manage/format/formats-table</link>
+							<tag>UK Data Archive | File Formats table</tag>
+							<comment>Under Geospatial data, DWG is listed as acceptable for sharing, re-use, and preservation.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://archaeologydataservice.ac.uk/advice/FileFormatTable</link>
+							<tag>UK Archaeology Data Service | Guidelines for Depositors: Preferred and Accepted File Formats</tag>
+							<comment>Version 2.0 September 2014 (consulted in December 2016).</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://wiki.harvard.edu/confluence/display/digitalpreservation/Formats+Supported+by+the+DRS#FormatsSupportedbytheDRS-CADFormats</link>
+							<tag>Harvard Digital Repository Service | CAD Formats</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://naa.gov.au/Images/Preservation-File-Formats_tcm16-79398.pdf</link>
+							<tag>National Archives of Australia | Preservation File Formats</tag>
+							<comment>DWG is listed, but no open &quot;preservation&quot; format has been selected.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.bac-lac.gc.ca/eng/services/government-information-resources/guidelines/Pages/guidelines-file-formats-transferring-information-resources-enduring-value.aspx#u</link>
+							<tag>Library and Archives Canada | Guidelines on File Formats for Transferring Information Resources of Enduring Value </tag>
+							<comment>Refers to Open Design Alliance specification for &quot;AutoDesk&apos;s Drawing File&quot; (although link is bad as of December 2016).</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://knowledge.autodesk.com/support/autocad/downloads/caas/downloads/content/autocad-sample-files.html</link>
+					<tag>AutoCAD Sample Files (in DWG format)</tag>
+					<comment>From AutoCAD 2010 andAutoCAD 2011.  Also includes Design Web Format (DWF) files.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Some links about the pre-history of AutoCAD</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.retrothing.com/2007/05/mike_riddles_pr.html</link>
+							<tag>Mike Riddle&apos;s Prehistoric AutoCAD | from Retro Thing</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.digibarn.com/stories/mike-riddle/</link>
+							<tag>Mike Riddle &amp; the Story of Interact, AutoCAD, EasyCAD, FastCAD &amp; more (January 2005)</tag>
+							<comment>Interviews from January 2005. From the DigiBarn Computer Museum.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.michaelriddle.com/?page_id=2</link>
+							<tag>Michael Riddle&apos;s Thoughts: The World of Software Design</tag>
+							<comment>Michael Riddle&apos;s blog, inactive since October 2009.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The AutoDesk blog, Between The Lines, has maintained a release history online for many years.  This page includes the version codes that provide identification (magic numbers) for the different chronological versions of the DWG format.  The blog author has also compiled an album of images that illustrate the early Autodesk products on Flickr.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://autodesk.blogs.com/between_the_lines/autocad-release-history.html</link>
+							<tag>AutoCAD Release History</tag>
+							<comment>Current release history page.  Scroll down for DWG File History to find version codes.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20121214182442/http://autodesk.blogs.com/between_the_lines/autocad-release-history.html</link>
+							<tag>AutoCAD Release History (as of December 14, 2012, via Internet Archive)</tag>
+							<comment>Sample earlier version of the release history.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20150915181239/http://autodesk.blogs.com/AutoCAD%20Release%20History%202011.jpg</link>
+							<tag>Graphic of AutoCAD release timeline through 2011</tag>
+							<comment>Via Internet Archive.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.flickr.com/photos/btl/sets/72157600140924927/</link>
+							<tag>Autodesk History (album of images on Flickr)</tag>
+							<comment>Miscellaneous images used in the past for promotion and documentation of AutoCAD and other AutoDesk products.  Some images are of pages of textual documents.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.fourmilab.ch/autofile/</link>
+					<tag>The Autodesk File: Bits of History, Words of Experience. Edited by John Walker, Fourth Edition, 1994</tag>
+					<comment>John Walker was the first CEO of AutoDesk.  </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q1053358</link>
+					<tag>Wikidata entry for AutoCAD Drawing File Format Family</tag>
+					<comment>Wikidata Title ID: Q1053358</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000178" titleName="Digital Moving-Picture Exchange (DPX), Version 2.0" shortName="DPX_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+<fdd:FDD id="fdd000178" titleName="Digital Moving-Picture Exchange (DPX), Version 2.0" shortName="DPX_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-1.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>moving-image</fdd:gdfrGenre>
@@ -11,7 +11,7 @@
 		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2015-07-09</fdd:date>
+			<fdd:date>2016-12-13</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -22,7 +22,7 @@
 			<fdd:keyword>digital motion picture formats</fdd:keyword>
 		</fdd:keywords>
 		<fdd:description>
-			<p>File format for the exchange of resolution-independent, pixel-based (bitmapped) images, intended for very high quality moving image content for theatrical distribution; DPX masters provide the input for film recording (digital images back to film for projection) or D-Cinema digital projection systems.  Each DPX file represents a single image with a single component, e.g., luma, or multiple components, e.g., red, green, blue; or Cb, Y, Cr (chrominance-luminance data).  Many variations in multiple component data are supported.  DPX images may be produced by scanning film or by using a camera that produces a DPX output. </p>
+			<p>File format for the exchange of resolution-independent, pixel-based (bitmapped) images, intended for very high quality moving image content for theatrical distribution; DPX masters provide the input for film recording (digital images back to film for projection) or D-Cinema digital projection systems.  Each DPX file represents a single image with a single component, e.g., luma, or multiple components, e.g., red, green, blue; or Cb, Y, Cr (chroma-luma data).  Many variations in multiple component data are supported.  DPX images may be produced by scanning film or by using a camera that produces a DPX output. </p>
 			<p>DPX is intended to carry picture data; its developers assumed that sound would be carried in separate formats, e.g., WAVE files, and this is the general practice. Nevertheless, a few organizations scan an image area large enough to include optical soundtracks and at least one software application (<a href="http://imi.cas.sc.edu/mirc/">AEO Light</a>) can convert this image data to sound.</p>
 		</fdd:description>
 		<fdd:shortDescription>File format for the exchange of resolution-independent, pixel-based (bitmapped) images, intended for very high quality moving image content for theatrical distribution; DPX masters provide the input for film recording (digital images back to film for projection) or D-Cinema digital projection systems.  Each DPX file represents a single image with a single component, e.g., luma, or multiple components, e.g., red, green, blue; or Cb, Y, Cr (chrominance-luminance data).  DPX images may be produced by scanning film or by using a camera that produces a DPX output. Sound information is usually carried in a separate format although there are emerging options to carry sound data within the DPX file.</fdd:shortDescription>
@@ -101,6 +101,25 @@
 				</fdd:sigValues>
 				<fdd:note>If little-endian (least significant byte first), from the specification</fdd:note>
 			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/541</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/541">http://www.nationalarchives.gov.uk/PRONOM/fmt/541</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q527723</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>No versions declared. See <a href="https://www.wikidata.org/wiki/Q527723">https://www.wikidata.org/wiki/Q527723</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
@@ -129,6 +148,8 @@ C.7/C.8.&quot; Note that this also affects the specification in other places.</l
 				<li>Table 7 in SMPTE 268M:2003, previously reserved for User Defined Data, is significantly revised to include header fields and value pairs for ADX values.</li>
 			</ul>
 			<p>Finally, the <a href="https://www.smpte.org/sites/default/files/images/Standards%20Quarterly%20Outcome%20Report-March%202015.pdf">SMPTE Standards Quarterly Report</a> from March 2015 indicates that the latest revision of the DPX v. 2 standard, SMPTE ST 268:2014 was found to contain "significant errors ...[and] a corrected version is being put together." The authors of this website will wait until a stable version is released before conducting any analysis. </p>
+			<p>
+				<a href="http://www.digitizationguidelines.gov/guidelines/digitize-DPXembedding.html">Federal Agencies Digital Guidelines Initiative Audio-Visual Working Group</a> has drafting guidelines for embedding metadata in the DPX header. The draft guidelines outline FADGI implementations of the SMPTE Core fields as well as other elements <i>Strongly Recommended</i>, <i>Recommended</i> or <i>Optional</i> for FADGI use. The non-Core fields take advantage of existing header structures as well as define new metadata elements for the User Defined fields to document, among other things, digitization process history. The draft guidelines and supporting documents are now available for public comment through February 2017.</p>
 		</fdd:history>
 	</fdd:notes>
 	<fdd:formatSpecifications>
@@ -188,6 +209,20 @@ Software </tag>
 					<link>http://fileformats.archiveteam.org/wiki/DPX</link>
 					<tag>Archiveteam.org&apos;s entry for DPX</tag>
 					<comment>Includes links to sample files</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://apps.nationalarchives.gov.uk/pronom/fmt/541</link>
+					<tag>PRONOM entry for fmt/541</tag>
+					<comment>Information in PRONOM from UK National Archives about DPX version 2. PUID: fmt/541.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q527723</link>
+					<tag>WikiData entry for Q527723</tag>
+					<comment>Information in WikiData about DPX (no versions declared). WikiData Title ID: Q527723.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>

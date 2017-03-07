@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000448" titleName="STEP-file,  ISO 10303-21" shortName="STEP-file" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>text</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>cad/cam</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2017-01-03</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>STEP-file,  ISO 10303-21 -- Industrial automation systems and integration -- Product data representation and exchange --
+Part 21: Implementation methods: Clear text encoding of the exchange structure</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>markup languages</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>ISO 10303-21 specifies an exchange format, often known as a STEP-file, that allows product data conforming to a schema in the <fddLink id="fdd000449">EXPRESS</fddLink> data modeling language (ISO 10303-11) to be transferred among computer systems.  The content of a STEP-file is termed an &quot;exchange structure.&quot;  See <a href="#notes">Notes</a> below for more on the relationship between ISO 10303-21 (STEP-file) and ISO 10303-11 (EXPRESS).  This description covers the 1994-6, 2002, and 2016 versions of ISO 10303-21.</p>
+			<p>The plain text format for a STEP-file has the following characteristics:</p>
+			<ul>
+				<li>it consists of a sequence of records (lines of characters)</li>
+				<li>the character set for the exchange structure is defined as the code points U+0020 to U+007E and U+0080 to U+10FFFF of ISO 10646 (Unicode). The first range includes: digits, upper and lower case &quot;latin&quot; letters, and common special characters (roughly equivalent to ASCII).  The 2016 version of ISO 10303 extended the permitted &quot;alphabet&quot; to include &quot;high&quot; codepoints U+0080 to U+10FFFF, using UTF-8 encoding.  For compatibility with the 2002 version, high codepoint characters can be encoded/escaped within &quot;control directives&quot; (<i>/X2/</i>, <i>/X4/</i>, and <i>/X0/</i>)</li>
+				<li>the first characters in the first record are &quot;ISO-10303-21;&quot;</li>
+				<li>in STEP-files conforming to the 2002 version of ISO 10303-21, the last record contains &quot;END-ISO-10303-21;&quot; as a terminator.  A STEP-file conforming to the 2016 version may have one or more digital signatures following the &quot;END-ISO-10303-21;&quot; terminator</li>
+				<li>text between &quot;<i>/*</i>&quot; and &quot;<i>*/</i>&quot; is a comment</li>
+				<li>print control directives &quot;\N\&quot; or &quot;\F\&quot; can be included to indicate line-breaks or page-breaks respectively for use when printing the exchange structure.</li>
+			</ul>
+			<p>The STEP-file is divided into sections. Section labels are reserved terms (termed &quot;special tokens&quot; in the specification) and sections must be in the order shown below.  All sections end with a record &quot;ENDSEC;&quot;.  Many STEP-file instances have only two sections, the mandatory HEADER section and a single DATA section.</p>
+			<ul>
+				<li>
+					<b>HEADER;</b>  Mandatory, non-repeatable section.  Must contain one instance of each of the following entities: <i>file_description</i>, <i>file_name</i>, and <i>file_schema</i>, and they shall appear in that order. Optional entities include <i>schema_population</i>, <i>file_population</i>, <i>section_language</i>, and <i>section_context</i>.</li>
+				<li>
+					<b>ANCHOR;</b> Optional, non-repeatable section.  Introduced in 2016 version.  The anchor section defines external names for instances in the exchange structure so that they can be referenced. Anchors can be associated with entities, values, and other items in the exchange structure.  If an anchor name is associated with an item in the REFERENCE section, the anchor is associated with an item in a different exchange structure.</li>
+				<li>
+					<b>REFERENCE;</b> Optional, non-repeatable section.  Introduced in 2016 version.  Each entry in the reference section shall associate an entity instance name (e.g., #10) or value instance name (e.g., @70) with an entity or a value, which may be in an external file identified by a URI.  The declared references can be used in the DATA sections of the exchange structure.</li>
+				<li>
+					<b>DATA;</b> Optional, repeatable section.  The DATA sections contain the core content of the model instance.  If an exchange structure contains more than one DATA section, each &quot;DATA&quot; keyword shall be followed by a parenthesized list containing a name for this DATA section and a single schema name that governs the content of this section.  Following these parameters come a sequence of entity instances, with each entity having a unique name in the form of &quot;#&quot; followed by a sequence of digits.  The entities correspond to Entities and Types in the governing EXPRESS schema.  So-called &quot;user-defined&quot; entities (i.e., entities not derived directly from the EXPRESS schema) are permitted but discouraged in the 2016 version of ISO 10303-21, which recommends (in clause 11.3) the creation of an additional EXPRESS schema and a separate DATA section.</li>
+				<li>
+					<b>SIGNATURE;</b> Optional, repeatable section.  Introduced in 2016 version.  Holds a digital signature to permit verification that the file content before the SIGNATURE section has not been corrupted and to validate the credentials of the signer.  Follows the &quot;END-ISO-10303-21;&quot; terminator.</li>
+			</ul>
+			<p>Also described in ISO 10303-21 is a mechanism for a multi-file exchange structure to be compressed and packaged using ZIP.  The ZIP configuration must correspond to PKZIP 2.04g, which limits compression to the Deflate algorithm.  Such a ZIP file must have a file named <i>ISO10303.p21</i> which serves as the &quot;root&quot; of the archive and contains at least the Header of the STEP-file.  The special file name ISO-10303.p21 denotes the root of a multi-file exchange structure whether stored in a ZIP archive or a directory hierarchy.  This format description, apart from this paragraph, does not cover the ZIP-based variant specified in ISO 10303-21.</p>
+		</fdd:description>
+		<fdd:shortDescription>ISO 10303-21:2016.  A plain text exchange format that allows product data conforming to a schema in the EXPRESS data modeling language defined in ISO 10301-11 to be transferred from one computer system to another.</fdd:shortDescription>
+		<fdd:productionPhase>Typically used as a middle-state format for exchange between systems operated by different parties involved in building or manufacturing activities.  May also be used as an archival format for architectural or engineering designs.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000447</fdd:id>
+					<fdd:shortName>IFC-SPF</fdd:shortName>
+					<fdd:titleName>Industry Foundation Classes (IFC), Clear Text Family</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>The specification for IFC4, published in 2013, includes an undated normative reference to ISO 10303-21, indicating that the latest version of STEP-21 applies. </fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Equivalent to</fdd:typeOfRelationship>
+				<fdd:comment>STEP-XML, ISO 10303-28, Industrial automation systems and integration — Product data representation and exchange — Part 28: Implementation methods: XML representations of EXPRESS schemas and data, using XML schemas.  STEP-XML is not described separately at this site at this time. The equivalence of the clear text and XML exchange structures may not always be exact, since the lists of EXPRESS concepts not mapped to the exchange structure, although largely the same, are not identical for ISO 10303-21 (clause 12) and ISO 10303-28 (clause 6.2). <a href="../contact_format.shtml">Comments welcome</a>.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000449</fdd:id>
+					<fdd:shortName>EXPRESS</fdd:shortName>
+					<fdd:titleName>EXPRESS data modeling language, ISO 10303-11</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse/>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>International standard, developed and maintained by the ISO technical committee TC 184, <i>Automation systems and integration</i>, sub-committee <a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_tc_browse.htm?commid=54158&amp;published=on&amp;development=on">SC 4</a>, <i>Industrial data</i>.</p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>
+				<a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=63141">ISO 10303-21:2016</a>. Industrial automation systems and integration -- Product data representation and exchange -- Part 21: Implementation methods: Clear text encoding of the exchange structure.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>The primary use for STEP-files is as exchange structures for content complying with other parts of the STEP standard, ISO 10303, particularly for so-called <a href="http://www.steptools.com/stds/step/step_2.html">application protocols</a>, as defined in parts 2xx of ISO 10303.  Each protocol defines a data exchange standard for a defined family of products at a defined stage in its life cycle.  See <a href="http://www.steptools.com/stds/stepnc/faq/faq_04.html">FAQ:
+Questions about STEP application protocols</a> and <a href="https://en.wikipedia.org/wiki/ISO_10303#Coverage_of_STEP_Application_Protocols_.28AP.29">Coverage of STEP Application Protocols (AP)</a>.  The clear text STEP-file (ISO 10303-21) is more frequently used than the XML-based format specified in ISO 10303-28.  As of early 2017, it appears that the 1996 and 2002 versions of the STEP-file format are more widely used and supported than the new 2016 version. <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>The 2016 version of ISO 10303-21 introduces many new features.  The compilers of this resource have not been able to ascertain which applications or toolkits support the extensions or whether there are EXPRESS schemas in widespread use that require the new STEP-file version.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>In addition, other standards that have used <fddLink id="fdd000449">EXPRESS</fddLink> for data modeling expect the use of STEP-files for data exchange.  These include the standards for Industry Foundation Classes (<fddLink id="fdd000447">IFC-SPF</fddLink>, ISO 16739) and Parts Library (<a href="">PLIB</a>, <a href="http://www.iso.org/iso/catalogue_detail_ics.htm?csnumber=25103">ISO 13584</a>).  According to <a href="https://www.nist.gov/services-resources/software/step-file-analyzer">NIST description of its STEP File Analyzer software</a>, &quot;STEP is also used for the long-term archiving and retrieval of product data (<a href="http://www.lotar-international.org/">LOTAR</a>).&quot; LOTAR is developing, testing, publishing and maintaining standards for long-term archiving of digital data, such as 3D CAD and product data management (PDM) data.  Part 3 of the 2006 LOTAR standards refers to Part 21 of STEP (ISO 10303).  VDA 4958 -- Long term archiving (LTA) of digital product data which are not based on technical drawings: <a href="http://www.prostep.org/fileadmin/freie_downloads/Empfehlungen-Standards/VDA/VDA_4958-3_Langzeitarchivierung_1.0.pdf">Part 3: Data model</a> lists the STEP-file as one of two implementations available in Clause 7.2, page 64.</p>
+			<p>Software that supports viewing, editing, reading, and writing STEP-files in general includes: <a href="http://stepcode.org/docs/home/">STEPcode</a> is an open source collection of open source libraries, tools, and resources, with roots in the NIST STEP Class Library (SCL) which was developed between ~1987 and 1998; <a href="https://steptools.github.io/">STEP Tools Software</a>, which provides open source projects and libraries that are free for personal use; <a href="http://www.jsdai.net/">JSDAI</a> (Java Standard Data Access Interface) is a Java API that supports reading, writing and runtime manipulation of object oriented data defined by an EXPRESS based data model, including reading and writing STEP-files; <a href="https://cax-if.org/step_viewers.html">STEP viewers</a> as listed by PDES, Inc.; <a href="http://www.step3d.com/">STEP3D.com</a>, a free online viewer; <a href="https://www.nist.gov/services-resources/software/step-file-analyzer">STEP File Analyzer</a> from NIST; <a href="http://www.ida-step.net/components">IDA-STEP</a>, with components for viewing and editing including a free &quot;basic&quot; viewer.</p>
+			<p>Other products using or supporting STEP-files have a focus on a particular domain or particular STEP Application Protocols.  For example, the <a href="http://www.pcb-3d.com/knowledge-base/step-file-faq">STEP file FAQ</a> from PCB-3D lists software that can read or write STEP-files, with a focus on design and manufacture of electronics and printed circuit boards. See <a href="#notes">Notes</a> below for discussion of some Application Protocols (APs) supported in important industries. Software aimed at those industries is likely to support STEP-files, but often only for the particular APs.</p>
+			<p>CAD conversion tools that can handle STEP-files include: <a href="http://www.datakit.com/en/crosscad_ware.php">CrossCAD Ware</a> from Datakit and <a href="http://techsoft3d.com/products/hoops-toolkits/hoops-exchange/">HOOPS Exchange</a> from TechSoft 3D.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>No licensing or patent issues.</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>STEP-file is a plain text format.  Document files are easily viewed with basic text editing tools.  However, entity names in the file consist of digits (preceded by &quot;#&quot;) rather than using human-readable tags and parent-child relationships between entities are not obvious.  To understand the content, a viewer that can relate the STEP-file to its schema(s) is more effective.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>This format is designed to represent models specified in the EXPRESS language defined in ISO 10303-11 and a file will include the technical and structural metadata required to ingest the instance into a system that supports such models in general or instances of a specific model.  Such models may incorporate elements and structures for descriptive and contextual metadata.</fdd:selfDocumentation>
+		<fdd:externalDependencies>Software that can relate a STEP-file instance to its EXPRESS schema is essential for full validation and interpretation.</fdd:externalDependencies>
+		<fdd:techProtection>This format does not support encryption or digital rights management. Digital signatures can be included to verify content and validate the credentials of the signer.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:textQF>
+			<fdd:normalText>A &quot;document&quot; in the STEP-file format is not a general text document.  It is a plain text file using a defined special-purpose syntax.</fdd:normalText>
+			<fdd:beyondText>The function of a document in the STEP-file format language is to be a clear text exchange format for an instance of a data structure conforming to a given data model defined in the <fddLink id="fdd000449">EXPRESS</fddLink> data modeling language. The intended area of application is the representation of product manufacturing information for the purpose of exchange among computer systems.</fdd:beyondText>
+		</fdd:textQF>
+		<fdd:otherQF>
+			<fdd:factor>
+				<fdd:tag>Support for CAD/CAM/CAE</fdd:tag>
+				<fdd:note>This format has been specifically developed as an exchange format for structured data applicable to design, manufacturing, and engineering of products, where &quot;product&quot; is very broadly interpreted.  The EXPRESS data modeling language, which is used to define the schemas of which STEP-file documents are instances, is rich in data types and structures that can be used to support CAD/CAM/CAE. The STEP standard includes many parts that are &quot;application protocols&quot; for specialized areas of CAD/CAM/CAE, for example, AP 203 for Configuration Controlled Design.  Sample STEP-files are available at <a href="https://www.laserdesign.com/sample-files/type/stp/">LaserDesign Filetype: .stp</a> and <a href="https://github.com/stepcode/stepcode/wiki/Sample-step-files">Sample step files from StepCode</a>.</fdd:note>
+			</fdd:factor>
+		</fdd:otherQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>stp</fdd:sigValue>
+					<fdd:sigValue>step</fdd:sigValue>
+					<fdd:sigValue>p21</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>All three extensions listed in <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/698">http://www.nationalarchives.gov.uk/PRONOM/fmt/698</a>. Annex L of the STEP-file specification has the following recommendations for file extensions:  .stp and .step for files according to the ISO 10303 Application Protocols;  .p21 for general use including those described by ISO 10303, ISO 13584 and ISO 15926.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>ASCII: ISO-10303-21;</fdd:sigValue>
+					<fdd:sigValue>Hex: 49534F2D31303330332D32313B</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From PRONOM  [<a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/698">http://www.nationalarchives.gov.uk/PRONOM/fmt/698</a>]. </fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/698</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/698">http://www.nationalarchives.gov.uk/PRONOM/fmt/698</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q3509055</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q3509055">https://www.wikidata.org/wiki/Q3509055</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Relationship between ISO 10303-21 and ISO 10303-11</b>: The EXPRESS data modeling language (specified in ISO 10303-11) is used to define schemas, and constraints on the entities in those schemas, to represent the data model for the design and characteristics of a &quot;product.&quot;  A product might be a single component or an entire building structure.  Given an EXPRESS model for a product, ISO 10303-21 defines an encoding and file format (the plain text STEP-file) for an instance conforming to that model.  The instance is known as an &quot;exchange structure.&quot;</p>
+			<p>
+				<b>Conformance classes for STEP-file exchange structures</b>: Conformance levels and classes are described in clause 4.3 of the <a href="http://www.steptools.com/stds/step/IS_final_p21e3.html">STEP Part 21 specification from 2016</a>.  Syntactical conformance classes apply to instances and are indicated in the implementation_level attribute of the file_description entity in the Header section. Three conformance classes are defined:</p>
+			<ul>
+				<li>
+					<b>CC1</b> is compatible with implementations based on the 2002 version. Character set is extended from ASCII to UTF-8.  Digital signatures can be added and an Anchor section enables references into the data from outside, using UUIDs.  Implementations based on the 2002 specification can ignore these sections.</li>
+				<li>
+					<b>CC2</b> requires a pre-processor because it permits a Reference section with references to external resources and the use of ZIP to compress the exchange structure.</li>
+				<li>
+					<b>CC3</b> supports advanced features for intelligent manufacturing through inclusion of ECMAscript (aka JavaScript).  Also allows constants and values from the EXPRESS schema to be referred to in Data sections. Requires access to the schema for full use.</li>
+			</ul>
+			<p>
+				<b>STEP Application Protocols (APs)</b>:  Many parts of the STEP standard define &quot;application protocols&quot; for product data for a particular domain. Associated with APs are EXPRESS schemas. Software applications aimed at the particular domain may read and write STEP-files, but only those that correspond to the EXPRESS schemas associated with particular APs.  APs supported widely to date include: AP203, Configuration Controlled Design, developed by PDES, Inc. and primarily supported by the aerospace and defense industry -- see <a href="https://www.oasis-open.org/committees/download.php/11728/recprac8.pdf">1998 guidelines for AP203</a>; and AP214, maintained by ProSTEP iViP and SASIG and used primarily in the automotive industry.  Both the APs are used in the supply chains of several industry sectors and hence are supported by main CAD/CAM/CAE applications.  <a href="http://www.ap242.org/why-ap242">AP242</a>, Managed Model Based 3D Engineering, has been developed to combine and extend AP203 and AP214, and was published in 2014. <a href="http://www.datakit.com/en/step_protocols.php">The STEP protocols AP203 and AP214</a> from Datakit provides some useful history.  A <a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=66654">second edition of AP242</a> is under development and in early 2017 is in CD (committee draft) stage in ISO.  See <a href="http://www.asd-ssg.org/step-ap242-ed2">STEP AP 242 edition 2 project</a> website.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>The original Part 21 specification was issued in 1994, followed shortly by a technical corrigendum in 1996.  It permitted a single Data section.  The second edition, published in 2002, added support for multiple Data sections in a file and additional contextual metadata in the Header.  Files conforming to the 1996 edition also conform to the 2002 edition.</p>
+			<p>Changes in the 2002 edition included:</p>
+			<ul>
+				<li>New clauses 8.2.6, 8.2.7, and 8.2.8 to add <i>file_population</i>, <i>section_language</i>, and <i>section_context</i> to the Header section.</li>
+				<li>Extended clause 11.1 and Annex E to allow for multiple data sections.</li>
+			</ul>
+			<p>ISO 10303-21:2016 is the third edition of the standard.  All instances encoded following the 2002 version also conform to the 2016 version. Changes in the 2016 version include:</p>
+			<ul>
+				<li>Anchor and Reference sections allow entities and values to be defined in external files.  As expressed in a <a href="http://www.steptools.com/blog/20170101_newyear/">STEP Tools blog post for New Year&apos;s Day 2017</a>, this new feature of Part 21 opens &quot;new possibilities for links between engineering models just like links between web pages.&quot;</li>
+				<li>For multi-file instances, a schema_population entity identifies external exchange structure files to be integrated into the model and their associated schemas.</li>
+				<li>Strings may be in UTF-8 rather than ASCII.</li>
+				<li>The exchange structure can be compressed and stored in an archive using ZIP (limited to PKZIP 2.0g compatibility, i.e., using Deflate compression)</li>
+				<li>The exchange structure can be given one or more digital signatures to verify its contents and validate
+the credentials of the signer</li>
+				<li>The exchange structure can reference values and instances defined in its EXPRESS schema</li>
+				<li>The exchange structure can include ECMAScript</li>
+			</ul>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=63141</link>
+					<tag>ISO 10303-21:2016.  Industrial automation systems and integration -- Product data representation and exchange -- Part 21: Implementation methods: Clear text encoding of the exchange structure</tag>
+					<comment>Supersedes ISO 10303-21:2002.  All instances encoded following the 2002 version also conform to the 2016 version. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.steptools.com/library/standard/IS_final_p21e3.html</link>
+					<tag>2015 draft of Part 21 Edition 3.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>STEP Tools is a company that provides software products and services associated with STEP and related standards, including IFC.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.steptools.com/stds/step/</link>
+							<tag>The STEP Standard - ISO 10303</tag>
+							<comment> Background articles and related resources.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.steptools.com/stds/ifc/</link>
+							<tag>Industry Foundation Classes - ISO 16739</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.steptools.com/blog/</link>
+							<tag>STEP Tools Articles</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/ISO_10303-21</link>
+					<tag>Wikipedia entry for ISO 10303-21</tag>
+					<comment>Indicates that &quot;STEP-File&quot; is commonly used to describe this format.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Georgia Tech&apos;s Engineering Information Systems (EIS) Lab website has many resources related to STEP, including &quot;Using Standards-based Approaches for Electronics Product Design and Life Cycle Support,&quot; an extended lecture in 2002 based in part on course materials from Georgia Tech.  The website largely dates from 2004.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://eislab.gatech.edu/pubs/seminars-etc/2002-04-shinshu-peak/</link>
+							<tag>Using Standards-based Approaches for
+Electronics Product Design and Life Cycle Support</tag>
+							<comment>Outline for 2002 extended lecture, based in part on course materials from Georgia Tech.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://eislab.gatech.edu/pubs/seminars-etc/2002-04-shinshu-peak/1.2.2_ISO_STEP_Structure_Intro.ppt</link>
+							<tag>Overview of Product Information Interoperability | Using STEP (ISO 10303) | The Structure and Usage of the STEP Family of Standards</tag>
+							<comment>Slide presentation.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://eislab.gatech.edu/pubs/seminars-etc/2002-04-shinshu-peak/1.2.2.2_STEP_Fundamentals_Boeing_Briggs_2001_NASA_Workshop.ppt</link>
+							<tag>Fundamentals of STEP</tag>
+							<comment>Slide presentation from 2001, by David Briggs, Boeing.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://eislab.gatech.edu/pubs/conferences/2004-asme-detc-lubell/2004-asme-detc-lubell.pdf</link>
+							<tag>STEP, XML, and UML: Complementary Technologies</tag>
+							<comment>A 2004 article providing an overview of the emerging Part 28 of ISO 10303, defining an XML-based equivalent to STEP-file.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.pdesinc.org/ResourceIndex.html</link>
+					<tag>STEP Resources</tag>
+					<comment>From PDES, Inc.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://pdesinc.org/downloadable_files/STEPapplicationhandbook63006BF.pdf</link>
+					<tag>STEP Application Handbook, ISO 10303, Version 3</tag>
+					<comment>June 2006</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://stepcode.org/docs/home/</link>
+					<tag>STEPcode project</tag>
+					<comment>Open source libraries, tools, and resources, with roots in STEP Class Library (SCL) developed by NIST between ~1987 and 1998.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>STEP-file viewers</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.nist.gov/services-resources/software/step-file-analyzer</link>
+							<tag>STEP File Analyzer from NIST</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://ws680.nist.gov/publication/get_pdf.cfm?pub_id=920696</link>
+							<tag>STEP File Analyzer User&apos;s Guide (Version 3)</tag>
+							<comment>April 2016</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.step3d.com/</link>
+							<tag>STEP3D.com</tag>
+							<comment>Free online viewer for STEP files.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.ida-step.net/components/viewers/basic</link>
+							<tag>Viewer: Basic, free component of IDA-STEP v4</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.lotar-international.org/</link>
+					<tag>LOng Term Archiving and Retrieval - LOTAR</tag>
+					<comment>ISO 10303-21 is used in an example as the physical archival format.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.prostep.org/fileadmin/freie_downloads/Empfehlungen-Standards/VDA/VDA_4958-3_Langzeitarchivierung_1.0.pdf</link>
+					<tag>VDA 4958 -- Long term archiving (LTA) of digital product data which are not based on technical drawings: Part 3 Data Model</tag>
+					<comment>Clause 7.2 mentions ISO 10303-21 and ISO 10303-28 as available implementations compliant with the VDA recommendation.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources related to STEP AP203: Configuration Controlled Design and STEP AP214: Core data for automotive mechanical design processes.  Both APs have been very widely used and, as of 2014, have been superseded by STEP AP242: Managed model-based 3D engineering.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.iso.org/iso/catalogue_detail.htm?csnumber=44305</link>
+							<tag>ISO 10303-203:2011 -- Industrial automation systems and integration -- Product data representation and exchange -- Part 203: Application protocol: Configuration controlled 3D design of mechanical parts and assemblies</tag>
+							<comment>As of 2014, officially superseded by AP242.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.iso.org/iso/catalogue_detail.htm?csnumber=43669</link>
+							<tag>ISO 10303-214:2010 -- Industrial automation systems and integration -- Product data representation and exchange -- Part 214: Application protocol: Core data for automotive mechanical design processes</tag>
+							<comment>As of 2014, officially superseded by AP242.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.datakit.com/en/step_protocols.php</link>
+							<tag>The STEP Protocols AP203 and AP214</tag>
+							<comment>Undated description.  Prior to 2011.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources related to STEP AP242: Managed model-based 3D engineering.  Published by ISO in 2014, this AP superseded both AP203 and AP214.  As of January 2017, a second edition of AP242 is a Committee Draft at ISO.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.iso.org/iso/catalogue_detail.htm?csnumber=57620</link>
+							<tag>ISO 10303-242:2014 -- Industrial automation systems and integration -- Product data representation and exchange -- Part 242: Application protocol: Managed model-based 3D engineering</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.ap242.org/why-ap242</link>
+							<tag>AP 242 – Why the convergence [of AP203 and AP214, etc.]</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.ap242.org/edition-2/</link>
+							<tag>AP 242 Edition 2 | Introduction</tag>
+							<comment>Edition 2 of AP242 is an extension of AP 242 Edition 1 to the electrical design domain</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.asd-ssg.org/step-ap242-ed2</link>
+							<tag>STEP AP 242 edition 2 project</tag>
+							<comment>Planned timeline for publication is late 2018.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.asd-ssg.org/c/document_library/get_file?uuid=a0cef789-2f27-45f0-9979-201fced16e24&amp;groupId=11317</link>
+							<tag>White Paper: Development of STEP AP 242 ed2 “Managed Model Based 3D Engineering”</tag>
+							<comment>March 30, 2014.  Plan for the extension of AP242 beyond scope of AP242, edition 1. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.iso.org/iso/catalogue_detail.htm?csnumber=66654</link>
+							<tag>ISO/CD 10303-242 -- Industrial automation systems and integration -- Product data representation and exchange -- Part 242: Application protocol: Managed model-based 3D engineering</tag>
+							<comment>Edition 2 of AP242 is an ISO Committee Draft as of January 2017.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.datakit.com/en/step_ap242.php</link>
+							<tag>STEP AP242 protocol</tag>
+							<comment>From Datakit.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.iso.org/iso/catalogue_detail.htm?csnumber=33713</link>
+					<tag>ISO 10303-21:2002.  Industrial automation systems and integration -- Product data representation and exchange -- Part 21: Implementation methods: Clear text encoding of the exchange structure</tag>
+					<comment>Previous version of ISO 10303-21.  Published on January 15, 2002.  Replaced ISO 10303-21:1994, published December 15, 1994.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/stepcode/stepcode/blob/master/doc/iso-10303-21--2002.bnf</link>
+					<tag>BNF for STEP-file conforming to ISO 10303-21:2002</tag>
+					<comment>From STEPcode.  The only sections are HEADER and DATA.  Other sections were introduced in the 2016 version.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.iso.org/iso/catalogue_detail.htm?csnumber=40646</link>
+					<tag>ISO 10303-28:2007 -- Industrial automation systems and integration -- Product data representation and exchange -- Part 28: Implementation methods: XML representations of EXPRESS schemas and data, using XML schemas</tag>
+					<comment>Not &quot;upwardly compatible&quot; with ISO/TS 10303-28:2003.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://xml.coverpages.org/stepExpressXML.html</link>
+					<tag>STEP/EXPRESS and XML</tag>
+					<comment>2002 progress report on standardization leading to STEP-XML specification.  Most links are now bad.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/698</link>
+					<tag>PRONOM entry for Standard for the Exchange of Product model data (STEP)</tag>
+					<comment>PUID for STEP-file is fmt/698.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q3509055</link>
+					<tag>Wikidata entry for ISO 10303-21</tag>
+					<comment>Wikidata Title ID: Q3509055</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
