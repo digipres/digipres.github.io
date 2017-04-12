@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000461" titleName="SQLite, Version 3" shortName="SQLite_3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenreAndSubgenres>
+				<fdd:gdfrGenre>database</fdd:gdfrGenre>
+				<fdd:gdfrSubgenres>
+					<fdd:gdfrSubgenre>dataset</fdd:gdfrSubgenre>
+				</fdd:gdfrSubgenres>
+			</fdd:gdfrGenreAndSubgenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2017-03-28</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>SQLite, Version 3</fdd:fullName>
+		<fdd:description>
+			<p>SQLite, version 3, is the file format used as the publicly documented native format for the SQLite database engine since June 2004.  Software and associated documentation are available at <a href="https://www.sqlite.org/">https://www.sqlite.org/</a>.  The code, software, and accompanying documentation have been <a href="https://www.sqlite.org/copyright.html">dedicated to the public domain</a>.  SQLite is an embedded SQL database engine that <a href="https://www.sqlite.org/zeroconf.html">requires no configuration</a> and reads and writes directly to ordinary disk files. A complete SQL database with tables, indexes, triggers, and views, is contained in a single disk file.  The engine, and thus the file format, support a <a href="http://sqlite.org/fullsql.html">full-featured SQL implementation</a>.  The database file format, referred to here as &quot;SQLite_3&quot;, is cross-platform, transferable between 32-bit and 64-bit systems or between big-endian and little-endian architectures. These features make SQLite_3 a popular choice as an application file format. See <a href="#sustainability">Adoption</a> under Sustainability Factors below for examples of the many operating systems and software applications in which it is distributed or used.</p>
+			<p>SQLite is not directly comparable to client/server SQL database engines such as MySQL, Oracle, PostgreSQL, or SQL Server. They are designed to implement a shared repository of enterprise data; SQLite is designed to provide local data storage for individual applications.  See <a href="https://www.sqlite.org/whentouse.html">Appropriate Uses For SQLite</a> for more detail on when SQLite is appropriate and examples of when a client/server SQL database engine would be more appropriate.</p>
+			<p>The main SQLite_3 database file consists of one or more <i>pages</i>. All pages within the same database are the same size. The size of a page in bytes is a power of two between 512 and 65536 inclusive. The page size for a database file is indicated by the 2-byte integer located at an offset of 16 bytes from the beginning of the database file. The theoretical maximum size for an SQLite_3 database file is about 140 terabytes; typically, the file size limit of the underlying filesystem or hardware is the practical constraint. The smallest SQLite_3 database is a single 512-byte page.</p>
+			<p>Every page in an SQLite_3 database file is of a particular type:</p>
+			<ul>
+				<li>A <a href="https://en.wikipedia.org/wiki/B-tree">b-tree</a> page. The b-tree pages hold the main database content. Two kinds of b-trees are used by SQLite. The algorithm that <a href="https://en.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a> calls <i>B*-Tree</i> in &quot;The Art of Computer Programming&quot; (Volume 3, Sorting and Searching) stores all data in the leaves of the tree. SQLite calls this variety of b-tree a <i>table b-tree</i>.  A second b-tree variant storing only keys is used in SQLite_3 and called an <i>index b-tree</i>.  Page 1 is a table b-tree page. A 100-byte database file header is found on page 1.</li>
+				<li>A payload overflow page.  When the payload of a b-tree cell is too large for the b-tree page, the surplus is spilled onto overflow pages. Overflow pages form a linked list.</li>
+				<li>The lock-byte page.  The lock-byte page was needed to support Win95. It is not needed for modern operating systems, but is retained for backwards compatibility.</li>
+				<li>A freelist page.  A database file may contain pages that are not in active use, for example, after information is deleted from the database. The freelist is a linked list of freelist trunk pages, each of which contains page numbers for zero or more freelist leaf pages.  Unused pages are stored on the freelist and reused when required.  A database may be configured for <i>vacuuming</i> to reduce or eliminate the freelist.</li>
+				<li>A pointer map page.  These are extra pages inserted into the database to make the operation of vacuuming more efficient.</li>
+			</ul>
+			<p>Each ordinary SQL table in the database is represented by a table b-tree. Each entry in the table b-tree corresponds to a row of the SQL table. Row data is stored as records, each with a header that indicates the data type for each value in the row, followed by a sequence of values, usually one value for each column in the table.</p>
+			<p>The first 100 bytes of the database file act as a <a href="https://www.sqlite.org/fileformat.html#the_database_header">header</a>. Header fields include a magic number; page size in bytes; fields relating to the number of pages of various types; a code indicating the encoding used for text data (UTF-8, UTF-16le [little-endian], or UTF-16be [big-endian]); minor version number [3.x.x] for the SQLite engine used to write the database file; a code to indicate whether the database is running with write ahead logging (<a href="https://www.sqlite.org/wal.html">WAL</a>); and codes that indicate whether the database is configured for <a href="https://www.sqlite.org/fileformat.html#incremental_vacuum_settings">vacuuming</a>.</p>
+		</fdd:description>
+		<fdd:shortDescription> the cross-platform database file format used by versions 3.x of the SQLite database engine.  As of early 2017, this database engine is distributed as part of Linux, Mac OS, iOS, Android, and Windows  10.  It is used by Firefox, Chrome, and Safari browsers.</fdd:shortDescription>
+		<fdd:productionPhase>Primarily a middle-state format, typically in active use for recording transactions.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:comment>File formats used by SQLite version 1.0.x (initial release in August 2000) and version 2.x (initial release in September 2001), not described separately on this website at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000419</fdd:id>
+					<fdd:shortName>GeoPackage_1_0</fdd:shortName>
+					<fdd:titleName>GeoPackage Encoding Standard (OGC), version 1.0</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:preference>The Library of Congress Recommended Formats Statement (RFS) includes SQLite as a preferred format for <a href="https://www.loc.gov/preservation/resources/rfs/data.html">datasets</a>. The RFS does not specify a particular version of SQLite.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>Openly documented format used by the SQLite database engine.  Along with all code and documentation in SQLite, the format specification has been dedicated to the public domain by its authors.  Signed affidavits supporting this dedication are filed physically at <a href="http://www.hwaci.com/cgi-bin/license-step1">Hwaci</a>.</p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>The SQLite file format is specified at <a href="https://www.sqlite.org/fileformat.html">https://www.sqlite.org/fileformat.html</a>.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>SQLite describes itself as the <a href="https://www.sqlite.org/mostdeployed.html">Most Widely Deployed and Used Database Engine</a>.  This is primarily because the SQLite database engine is distributed as part of popular operating systems, browsers, and other applications, including: Mac OS X; Linux; Windows 10; Android; iOS; Chrome; Firefox, Safari; iTunes; Dropbox; TurboTax; Skype.  It is also distributed with PHP, Python, and Tcl/Tk programming languages.  SQLite also has a list of <a href="https://www.sqlite.org/famous.html">Well-Known Users of SQLite</a>.</p>
+			<p>Use of SQLite_3 as an application file format is increasing. The SQLite_3 format is the basis for the OGC&apos;s <fddLink id="fdd000419">GeoPackage</fddLink> format, originally published in 2014. Bentley Systems, a CAD/CAM software vendor, <a href="https://www.bentley.com/en/about-us/news/2013/march/27/navigator-mobile-app">announced in March 2013</a>, that their new iPad app &quot;uses the SQLite software library to deliver unmatched performance on virtually all mobile devices.&quot;   SQLite_3 is used in several Apple applications, including its Mail application.  Adobe Systems uses SQLite as its file format in Adobe Photoshop Lightroom. A format for mass spectrometry data based on SQLite, known as <a href="https://github.com/mzdb/mzdb-specs">mzDB</a>, is under development.</p>
+			<p>A command-line utility, SQLite3, is part of the SQLite distribution and can be used from most operating systems. Other utilities permit visual browsing or forensic analysis of SQLite files.  Such utilities include <a href="http://sqlitebrowser.org/">DB Browser for SQLite</a>, a visual, open source tool to create, browse, search,and edit SQLite_3 files and the SQLite Viewer module from <a href="https://belkasoft.com/ec">Belkasoft Evidence Center</a>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>All of the code and documentation in SQLite has been dedicated to the public domain by the authors. See <a href="https://www.sqlite.org/copyright.html">https://www.sqlite.org/copyright.html</a>.</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>If viewed with a text editor, the magic number and textual data, including SQL CREATE TABLE commands that define the database tables, will be visible.  However, the use of the b-tree structure and binary formats for numeric data and all pointers obscures much of the data and the relationship between data records and the tables they belong to.</p>
+			<p>Note: Because SQLite is distributed with several commonly used operating systems, individuals who are technically inclined and familiar with SQL and command-line utilities may have convenient tools to hand for viewing database contents.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>The database format incorporates technical and structural metadata needed to interpret and manipulate the data itself. For example, a database file will include the CREATE TABLE declarations that define tables and columns.  To the extent that meaningful names are used for tables and columns, the nature and context of the data may be recorded.  However, there is no explicit structure within the file for storing fuller descriptive and contextual metadata.  Nor is there a capability to embed in the file a metadata object conforming to a schema outside the SQLite specification.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>The public domain SQLite_3 database file format described here does not support encryption.  However, there is a proprietary <a href="http://www.hwaci.com/sw/sqlite/see.html">SQLite Encryption Extension (SEE)</a> that will encrypt the entire file and can read and write both encrypted and unencrypted files.  The SEE encrypts the entire database file, both data and metadata. To an outside observer, an encrypted SQLite database file appears to be white noise.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:normalDataset>SQLite has five classes for stored data values: NULL; INTEGER (1, 2,3, 4, or 8 bytes); REAL (8-byte floating point numbers); TEXT (length unlimited, UTF-8 or UTF-16 encodings); BLOB (binary large object).   SQLite does not support built-in date and time storage classes. However, TEXT, INTEGER, or REAL can be used to store date and time values.  See <a href="https://www.sqlite.org/datatype3.html">https://www.sqlite.org/datatype3.html</a> and <a href="http://www.sqlitetutorial.net/sqlite-data-types/">http://www.sqlitetutorial.net/sqlite-data-types/</a> for more detail.</fdd:normalDataset>
+			<fdd:accessSoftware>There is an API for the C programming language.  See <a href="https://www.sqlite.org/c3ref/intro.html">C-language Interface Specification for SQLite</a>. An <a href="https://www.sqlite.org/tclsqlite.html">interface for the Tcl scripting language</a> exists.  There is also a command line utility named <i>sqlite3</i>.  See <a href="https://www.sqlite.org/cli.html">Command Line Shell For SQLite</a>.</fdd:accessSoftware>
+			<fdd:dataDocumentation>There is no built-in mechanism for recording any descriptive or contextual metadata, including information about data quality or provenance.</fdd:dataDocumentation>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>db</fdd:sigValue>
+					<fdd:sigValue>sqlite</fdd:sigValue>
+					<fdd:sigValue>db3</fdd:sigValue>
+					<fdd:sigValue>sqlite3</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>There is no file extension defined for an SQLite_3 file in its specification.  The magic number (see immediately below) is the most reliable way to identify SQLite_3 files.  Listed here are a number of extensions commonly found.  Whether .db (or .db3) is used as opposed to the more specific .sqlite (or .sqlite3) will depend on the context. Since a user, recognizing what .sqlite meant, might be tempted to look under the hood and inadvertently change a file, .db, an extension used by several applications, is recommended by some developers.  Frequently, a completely different extension is used which conveys the nature of the actual data stored, e.g., .bookmarks or .index.  See <a href="http://stackoverflow.com/questions/808499/what-is-the-best-extension-name-sqlite-database-files">What is the best extension name for SQlite database files?</a> for various perspectives.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>ASCII: SQLite format 3</fdd:sigValue>
+					<fdd:sigValue>Hex: 53 51 4C 69 74 65 20 66 6F 72 6D 61 74 20 33 00</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note> The <a href="http://www.sqlite.org/draft/hlr30000.html">specification requirements for database files</a> include, &quot;The first 16 bytes of a well-formed database file shall contain the UTF-8 encoding of the string &apos;SQLite format 3&apos; followed by a single nul-terminator byte.&quot; See also <a href="https://www.filesignatures.net/index.php?page=search&amp;search=53514C69746520666F726D6174203300&amp;mode=SIG">filesignatures.net</a>.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/729</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/729">http://www.nationalarchives.gov.uk/PRONOM/fmt/729</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>SQLite, as a transactional database engine, implements transactions in a way that satisfy the characteristics known as &quot;ACID&quot; (Atomic, Consistent, Isolated, and Durable) even if the transaction is interrupted by a system crash or power failure.  Hence, although the main database file is complete, there may be subsidiary files found in the same directory.  As described in <a href="https://www.sqlite.org/atomiccommit.html">Atomic Commit In SQLite</a>, the SQLite engine supports two mechanisms to ensure that &quot;either all database changes within a single transaction occur or none of them occur.&quot;  By default, during a transaction, SQLite stores additional information in a second file called the <i>rollback journal</i>.  <a href="https://www.sqlite.org/atomiccommit.html">Atomic Commit In SQLite</a> provides a detailed explanation of this rollback procedure.  The rollback journal is always located in the same directory as the database file and has the same name as the database file except with the 8 characters &quot;-journal&quot; appended. The rollback journal is usually created when a transaction is first started and is usually deleted when a transaction commits or rolls back. Starting with version 3.7.0, SQLite has supported an alternative mechanism, using a write-ahead log (<a href="https://www.sqlite.org/wal.html">WAL</a>).  The write-ahead log is stored alonside the main database file, using the same name but with the suffix &quot;-wal&quot;. This mechanism allows to make records of the changes first in the journal and later to the database. From time to time, the information recorded to the WAL-file is transferred to the main file, this operation is called &quot;checkpoint.&quot;  If the application or host computer crashes before the transaction completes, then the rollback journal or write-ahead log contains the information needed to restore the main database file to a consistent state.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>The first official version of the SQLite database engine, version 1.0 was released in August 2000, by author D. Richard Hipp.  The objective was to have an SQL database engine that required no configuration or administration and was thus suitable for embedding in other applications.  See <a href="https://www.tutorialspoint.com/sqlite/sqlite_quick_guide.htm">https://www.tutorialspoint.com/sqlite/sqlite_quick_guide.htm</a>.  Releases of the software are listed at <a href="http://www.hwaci.com/sw/sqlite/chronology.html">History of SQLite Releases</a>.  Version 2.0 was released in September 2001 and version 3.0 in June 2004.</p>
+			<p>All releases of SQLite version 3 can read and write database files created by the first SQLite 3 release (version 3.0.0) .  The developers have committed to maintaining <a href="https://www.sqlite.org/onefile.html">stability, including backwards compatibility</a> of the database file format for all future releases of SQLite 3.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.sqlite.org/fileformat.html</link>
+					<tag>SQLite.org | Database File Format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.sqlite.org/whentouse.html</link>
+					<tag>Appropriate Uses For SQLite</tag>
+					<comment>Includes examples of situations when a client-server SQL database engine might be more appropriate.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.quora.com/Is-using-SQLite-as-an-application-file-format-worth-it</link>
+					<tag>Is using SQLite as an application file format worth it?</tag>
+					<comment>Responses recommend SQLite for saving internal data in applications.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.sqlite.org/version3.html</link>
+					<tag>SQLite Version 3 Overview</tag>
+					<comment>Written in 2004 as a guide to programmers transitioning from SQLite2 to SQLite3</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.tutorialspoint.com/sqlite/</link>
+					<tag>SQLite Tutorial from Tutorials Point.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.tutorialspoint.com/sqlite/sqlite_quick_guide.htm</link>
+					<tag>SQLite Quick Guide</tag>
+					<comment>Includes some history.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Forum discussions of file extensions used for SQLite_3 database files:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://stackoverflow.com/questions/808499/what-is-the-best-extension-name-sqlite-database-files</link>
+							<tag>Stack Overflow | What is the best extension name for SQlite database files?</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://sqlite.1065341.n5.nabble.com/Typical-suffixes-of-sqlite-database-files-td92062.html</link>
+							<tag>Typical suffixes of sqlite database files </tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.quora.com/What-is-the-difference-between-SQLite-and-Berkeley-DB</link>
+					<tag>What is the difference between SQLite and Berkeley DB?</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.forensicswiki.org/wiki/Mozilla_Firefox_3_History_File_Format</link>
+					<tag>Mozilla Firefox 3 History File Format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://cyberforensicator.com/2017/01/31/forensic-analysis-of-sqlite-databases/</link>
+					<tag>Forensic Analysis of SQLite Databases. January 31, 2017</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.filesignatures.net/index.php?page=search&amp;search=53514C69746520666F726D6174203300&amp;mode=SIG</link>
+					<tag>Entry for SQLite database file on filesignatures.net</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://sqlitebrowser.org/</link>
+					<tag>DB Browser for SQLite</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://alvinalexander.com/android/android-command-line-shell-show-sqlite-tables-adb-sqlite3</link>
+					<tag>Show SQLite tables from the Android command line shell (adb)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://tonylukasavage.com/blog/2013/04/08/inspecting-sqlite-databases-on-android-and-ios/</link>
+					<tag>Inspecting SQLite databases on Android and iOS</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.macworld.co.uk/how-to/mac-software/how-set-up-learn-sql-in-mac-os-x-3638150/</link>
+					<tag>How to set up and learn SQL on Mac</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://belkasoft.com/ec</link>
+					<tag>Belkasoft Evidence Center</tag>
+					<comment>This forensics application includes an SQLite Viewer as an optional module.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://fileformats.archiveteam.org/wiki/DB_(SQLite)</link>
+					<tag>DB (SQLite) page from Just Solve the File Format Problem.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/729</link>
+					<tag>PRONOM entry for fmt/729</tag>
+					<comment>Information in PRONOM from UK National Archives about SQLite_3.  PUID: fmt/729</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.ncbi.nlm.nih.gov/pubmed/25505153</link>
+					<tag>mzDB: a file format using multiple indexing strategies for the efficient analysis of large LC-MS/MS and SWATH-MS data sets.  By D. Bouyssié et al. March 2015.</tag>
+					<comment>Article describing an application file format based on SQLite for mass spectrometry data.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/mzdb/mzdb-specs</link>
+					<tag>Specifications of the mzDB file format.</tag>
+					<comment>As of early 2017, the version number assigned to the current version of mzDB was 0.7.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.sqlitetutorial.net/sqlite-sample-database/</link>
+					<tag>SQLite Sample Database | chinook.db</tag>
+					<comment>From SQLtutorial.net</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

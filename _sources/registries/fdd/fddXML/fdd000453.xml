@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000453" titleName="BITS (Book Interchange Tag Suite), version 2.0" shortName="BITS_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>text</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-bundle</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2017-03-12</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>BITS (Book Interchange Tag Suite), version 2.0 [based on JATS: Journal Article Tag Suite, version 1.1, NISO Z39.96:2015]</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>book formats</fdd:keyword>
+			<fdd:keyword>document formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The Book Interchange Tag Suite (BITS) version 2.0, published in February 2016, contains an XML model for books that is based on the Journal Article Tag Suite (JATS; ANSI/NISO Z39-96-2015) version 1.1 [see <fddLink id="fdd000451">JATS_1</fddLink>]. The intent of BITS is to provide a common format in which publishers and archives can exchange final book content, including book parts such as chapters.  The tag set is designed to support interchange, archiving, format-conversion, and publishing for scientific, technical, and medical books.  Although supported by the National Library of Medicine, the book model should be usable beyond life sciences publishing, just as the JATS journal article models have proved useful in physics, social sciences, linguistics, and poetry.  The tag suite supports markup for metadata and the narrative content of a book, metadata and narrative content for book components, and collection-level metadata for book sets and book series.  The BITS Book Interchange DTD is a superset customization of the ANSI/NISO JATS standard with added elements and attributes for describing the textual and graphical content of books and book components as well as a package for the interchange of parts of books.  The BITS specification is managed by the <a href="http://www.ncbi.nlm.nih.gov/">National Center for Biotechnology Information</a> (NCBI), a division of the <a href="http://www.nlm.nih.gov/">National Library of Medicine</a> (NLM).</p>
+			<p>There are two top-level elements in the BITS Book DTD:</p>
+			<ul>
+				<li>the Book element (<a href="https://jats.nlm.nih.gov/extensions/bits/tag-library/2.0/element/book.html">&lt;book&gt;</a>), to contain an entire document such as a textbook or a monograph.  This description focuses on the markup for a whole book.</li>
+				<li>and
+the Book Part Wrapper element (<a href="https://jats.nlm.nih.gov/extensions/bits/tag-library/2.0/element/book-part-wrapper.html">&lt;book-part-wrapper&gt;</a>), to contain a book part such as a &quot;chapter&quot; or &quot;module&quot; that needs to be handled as a discrete unit.  The elements permitted in a &lt;book-part-wrapper&gt; are very similar to those permitted in a &lt;book&gt;.</li>
+			</ul>
+			<p>When both the metadata and the text of a book are to be tagged in XML, a &lt;book&gt; may include the components listed below. None can be repeated except Collection Metadata, which is repeatable for a book that is part of more than one collection.  The elements permitted within &lt;book&gt; must be in the order listed.  Technically, all elements are optional.</p>
+			<ul>
+				<li>&lt;collection-meta&gt; -- bibliographic metadata describing a book set or series to which this book or book part belongs.</li>
+				<li>&lt;book-meta&gt; --  bibliographic metadata for the book, for example, the title of the book, the date of publication, the publisher, a copyright statement, etc. This is not the textual front matter that appears at the beginning of a book.</li>
+				<li>&lt;front-matter&gt; -- the front matter element (&lt;front-matter&gt;) contains any textual front material for a book, such as a Dedication, Foreword, or Preface.</li>
+				<li>&lt;book-body&gt; -- contains the narrative of the work, the main textual and graphic content of the book. The body of a book contains book parts (&lt;book-part&gt;), which may be called parts, sections, chapters, modules, lessons, or whatever divisions a publisher has named.  Book parts are recursive, so they may contain other book parts. For example, “Part 3” of a book could contain several chapters, each of which could have a foreword, the body of the chapter, one or more appendices, and a reference list.</li>
+				<li>&lt;book-back&gt; -- contains information that is ancillary to the main text, such as a glossary, appendix, or list of cited references. The back matter may also contain &lt;floats-group&gt;, a container element for all the “floating” objects such as tables, figures, and sidebars in a book. The back matter of book parts may also contain separate &lt;floats-group&gt; elements.</li>
+			</ul>
+			<p>BITS is based on experience with an <a href="">earlier series of NLM Book DTDs</a> written to describe and mark up volumes for the NCBI online libraries.  See <a href="https://www.ncbi.nlm.nih.gov/books/NBK51661/">NLM Literature Archive</a>.  However, the technical details are not based on those DTDs.</p>
+		</fdd:description>
+		<fdd:shortDescription>An XML-based specification for books. Based on Journal Article Tag Suite (JATS; ANSI/NISO Z39-96-2015) version 1.1.  Intended as a common format in which publishers and archives can exchange final book content, in particular for use by publshers who use JATS for article content. </fdd:shortDescription>
+		<fdd:productionPhase>The Book Interchange Tag Set is intended for exchanging works in their final published state, for archiving and re-use rather then representing any particular layout as originally published online or in print.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Modification of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000451</fdd:id>
+					<fdd:shortName>JATS_1</fdd:shortName>
+					<fdd:titleName>JATS, Journal Article Tag Suite, NISO Z39.96, Versions 1.x</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:comment>BITS, Book Interchange Tag Suite, version 1, not described separately on this website at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000076</fdd:id>
+					<fdd:shortName>XML_DTD</fdd:shortName>
+					<fdd:titleName>XML Document Type Definition (DTD)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>
+			<p>The Library of Congress is not aware of any electronic books in JATS format that have been added to the collections to date.  Note that for books, the preference is for hard-bound editions on archival paper, when available.</p>
+		</fdd:experience>
+		<fdd:preference>
+			<p>As of 2016, the Library of Congress Recommended Formats Statement (RFS) for <a href="https://www.loc.gov/preservation/resources/rfs/textmus.html#digital">Textual Works - Digital</a> lists the BITS format first in order of preference for books in digital form.</p>
+		</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Openly documented by NCBI/NLM and freely downloadable. All components of the BITS Book Interchange Tag Suite are in the public domain.</fdd:disclosure>
+		<fdd:documentation>
+			<p>The Tag Library for the most recent release of the BITS Tag Set is available at the following URI: <a href="https://jats.nlm.nih.gov/extensions/bits/tag-library/">https://jats.nlm.nih.gov/extensions/bits/tag-library/</a>.  The documentation for BITS, version 2 is at <a href="https://jats.nlm.nih.gov/extensions/bits/tag-library/2.0/">https://jats.nlm.nih.gov/extensions/bits/tag-library/2.0/</a>.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>BITS 2.0 is a relatively new format as of early 2017 and the compilers of this resource are unable to predict how rapidly or widely it will be adopted.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>The interest of NCBI/NLM in the development of a DTD for books was to have an XML-based format as the basis for publishers to contribute book content to its digital archive and be made available through <a href="https://www.ncbi.nlm.nih.gov/books/">Bookshelf</a>, the platform used by the National Library of Medicine to make freely accessible books and documents in life science and healthcare.  A participating publisher is expected to provide the full text of books in an XML format that conforms to an acceptable journal article DTD (Document Type Definition). This includes BITS and an <a href="https://dtd.nlm.nih.gov/book/">earlier series of NLM Book DTDs</a>.  <a href="https://www.ncbi.nlm.nih.gov/pmc/pmcdoc/tagging-guidelines/book/style.html">NCBI BookShelf Tagging Guidelines</a> provides guidelines for the use of BITS, version 2.0.</p>
+			<p>
+				<a href="http://www.portico.org/digital-preservation/">Portico</a> accepts books formatted in BITS and the earlier series of NLM Book DTD specifications into its preservation service.  In 2016, Portico received 322 files in BITS 1.0 format from two publishers.  In the same period, ten publishers submitted over 360,000 files in three chronological versions of the NLM Book DTD.</p>
+			<p>The Publications Office for the EU has <a href="http://publications.europa.eu/mdr/bits/index.html">selected BITS</a> (Book Interchange Tag Suite) as the basis for an XML mark-up model suitable for the production of its general publications.</p>
+			<p>Many national archives and institutional repositories include XML as a preferred format or in a list of formats for which there is a high confidence in ability to preserve and provide access when a schema is available, the character encoding is explicitly stated and an XSLT stylesheet for conversion to HTML exists.  BITS satisfies these requirements.  Examples: <a href="https://deepblue.lib.umich.edu/static/about/deepbluepreservation.html">Deep Blue Preservation and Format Support Policy</a> from the University of Michigan; <a href="http://www.arkivverket.no/eng/Public-Sector/Regulations/Transfer-of-electronic-records">National Archives of Norway</a>; and the <a href="https://libraries.flvc.org/documents/181844/502298/Recommended+Data+Formats/">Florida Digital Archive</a>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No licensing or patent issues. The tag sets are in the public domain.</fdd:licensingAndPatents>
+		<fdd:transparency>Rates highly for transparency. Text content for articles is in XML, and hence viewable in basic editors, web browsers, etc.
+		Elements have understandable tag-names, and document instances are in natural reading order.</fdd:transparency>
+		<fdd:selfDocumentation>The DTD includes a rich set of elements for metadata at the article and journal level.  The &lt;article&gt; element is expected to include the article content and full descriptive metadata.</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			None.
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			None.  
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:textQF>
+			<fdd:normalText>Excellent support.</fdd:normalText>
+			<fdd:structure>Documenting the logical structure of a book, including its relation to a book series, is an essential feature of BITS DTDs.</fdd:structure>
+			<fdd:layout>As stated in the <a href="https://jats.nlm.nih.gov/extensions/bits/tag-library/2.0/chapter/gen-intro.html">introduction</a> to the tag library, &quot;As was true for JATS, the intent of BITS is to support marking up the content of material so that it can be reused, repurposed, and made more discoverable. This purpose implies, as it does in JATS, that the ability to reproduce a particular book format is not a goal.&quot;</fdd:layout>
+			<fdd:mathDiag>MathML and TeX math can be embedded.  Integrity of rendering may be constrained by the capabilities of MathML and rendering tools.  Various ways to represent chemical structures can be used.</fdd:mathDiag>
+			<fdd:beyondText/>
+		</fdd:textQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>xml</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For textual content files. </fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>As for many XML-based formats, there is no guaranteed magic number or other internal signature to identify the format automatically.  See discussion in <a href="#notes">Notes</a> below.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Differences from other book markup schemes</b>:  As described in <a href="https://jats.nlm.nih.gov/extensions/bits/tag-library/2.0/chapter/gen-intro.html">The Roads Not Taken</a> in the general introduction to the BITS 2.0 Tag Library, there are some structures which have been modeled as elements in other public book DTDS and schemas that are not included explicitly in the BITS tag suite or are structured differently.  Examples selected for explanation are:</p>
+			<ul>
+				<li>Book Metadata — The book metadata is held in the element &lt;book-meta&gt; and not within &lt;front&gt;, although some of the metadata elements are usually displayed in the front of the book along with other front matter elements, such as a foreword or table of contents.</li>
+				<li>CCC Statement -- There is no element specifically for a Copyright Clearance Center statement. Such a statement may be tagged as a license paragraph (&lt;license-p&gt;) inside a license statement (&lt;license&gt;), which may include the price tagged as a &lt;price&gt;. The @license-type attribute may be set to &quot;CCC-statement.&quot;</li>
+				<li>Colophon -- No special structure exists. A colophon may be tagged as a paragraph, as a section within the body of the book, as a book part in the back matter of a book, or as a book part.</li>
+				<li>Contributor List -- There is no special structure for such lists; they can be tagged using ordinary structures (lists, definition lists, tables, paragraphs, etc.) within a &lt;front-matter-part&gt;, within the narrative front matter, or within the back matter. Such lists should be in addition to the contributor names listed in &lt;contrib&gt; in the metadata of a book or book part.</li>
+				<li>Frontispiece -- No special structure exists; the material should be tagged using ordinary structures within a &lt;front-matter-part&gt; as part of the narrative front matter. While the &lt;styled-content&gt; element &quot;could&quot; be used to capture the special formatting typical in a Frontispiece, this is discouraged. The typical purpose for tagging a Frontispiece in BITS is to make the information content discoverable, not to replicate the look and feel of the document.</li>
+				<li>Introduction -- There is no explicitly named &quot;Introduction&quot; element, because this name may be applied to a front-matter component, a section of the body, or an entire book part.</li>
+			</ul>
+			<p>
+				<b>Identifying BITS version and variant used in an article file</b>:  Although it will usually be obvious when looking at the beginning of a file conforming to this family of DTDs that it uses a particular chronological version of the tag suite and article model variant derived from the suite, there is no guaranteed magic number or other signature to identify the format automatically.  If the file was generated using the DTD (rather than the W3C XML Schema), it is likely to have the following string or something similar near the beginning of the file:</p>
+			<ul>
+				<li>&lt;!DOCTYPE article
+PUBLIC &quot;-//NLM//DTD BITS Book Interchange DTD v2.0 20151225//EN&quot;</li>
+			</ul>
+		</fdd:general>
+		<fdd:history>
+			<p>The BITS Book Tag Set is not based directly on the <a href="https://dtd.nlm.nih.gov/book/">NCBI/NLM Book (Bookshelf) Tag Set</a> that was part of the NCBI/NLM family of DTDs that preceded JATS.  <a href="https://jats.nlm.nih.gov/extensions/bits/tag-library/1.0/index.html">Book Interchange Tag Suite (BITS),
+version 1.0</a> was published in December 2013.  Book Interchange Tag Suite (BITS), version 2.0 was published in February 2016.</p>
+			<p>According to <a href="https://jats.nlm.nih.gov/extensions/bits/tag-library/2.0/chapter/version-2-0-chg.html">BITS 2.0 and JATS 1.1 Changes</a>, BITS went to a new version number with 2.0 because not all the changes from BITS 1.0 were backward compatible. Changes were made to Ruby Markup (inherited from changes to JATS between BITS versions); to question and answer markup based on user feedback about the inadequacies of the original BITS models; and to Index and Table of Contents structures to make future modifications less disruptive.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Schemas and DTDs in various languages and other documentation are provided via the
+BITS Book Tag Suite
+pages hosted by NCBI/NLM/NIH.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://jats.nlm.nih.gov/extensions/bits/tag-library/2.0/</link>
+							<tag>BITS Book Interchange Tag Suite, version 2.0</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://jats.nlm.nih.gov/extensions/bits/tag-library/1.0/</link>
+							<tag>BITS Book Interchange Tag Suite, version 1.0</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://jats.nlm.nih.gov/extensions/bits/versions.html</link>
+							<tag>BITS Book Interchange Tag Set | Versions</tag>
+							<comment>Provides access to HTML views of interactive tag libraries for all chronological versions of BITS.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link> ftp://ftp.ncbi.nlm.nih.gov/pub/jats/extensions/bits/</link>
+							<tag>FTP source for downloading BITS schemas</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://jats.nlm.nih.gov/</link>
+					<tag>Home page for NLM information about the JATS and BITS formats</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://jats.nlm.nih.gov/extensions/bits/tag-library/2.0/element/book.html</link>
+					<tag>Tag Library entry for &lt;book&gt; element</tag>
+					<comment>Includes summary of top-level elements in a marked up book.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://dtd.nlm.nih.gov/book/</link>
+					<tag>NCBI Book Tag Set</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.ncbi.nlm.nih.gov/books/NBK51661/</link>
+					<tag>NLM LitArch (NLM Literature Archive)</tag>
+					<comment>Brief description of the digital archive for books, documents, and articles in the fields of life science, medicine, and healthcare at the National Institutes of Health, managed by NCBI/NLM.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://publications.europa.eu/mdr/bits/index.html</link>
+					<tag>The Publications Office for the EU | BITS</tag>
+					<comment>Announces selection of a BITS-based schema for use in its publications.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000451">JATS_1</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

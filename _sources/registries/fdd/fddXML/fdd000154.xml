@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000154" titleName="JPEG 2000 Part 2 (Extensions) jpf (jpx) File Format" shortName="JPX_FF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+<fdd:FDD id="fdd000154" titleName="JPEG 2000 Part 2 (Extensions) jpf (jpx) File Format" shortName="JPX_FF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
@@ -109,7 +109,7 @@
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
 		<fdd:experience>None</fdd:experience>
-		<fdd:preference>None established</fdd:preference>
+		<fdd:preference> The Library of Congress Recommended Formats Statement (RFS) includes JPX as an accepted format for <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html">photographs in digital form</a> and <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html">other graphic images in digital form</a>.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>Open standard.  Developed by Joint Technical Committee ISOAEC JTC 1, Information technology, Subcommittee SC 29, Coding of audio, picture, multimedia and hypermedia information incollaboration with ITU-T.
@@ -196,6 +196,25 @@ Support for georeferencing is provided via the GML in JPEG 2000 for Geographic I
 					<fdd:note>Signifier for the encoded bitstream: 0=uncompressed bitmap; 1=for ITU-T T.4 "Group 3," One Dimensional, aka Modified Huffman (MH) encoding; 2=for ITU-T T.4 "Group 3," Two Dimensional, aka Modified READ (MR) encoding; 3=for ITU-T T.6 "Group 4," aka Modified Modified READ (MMR) encoding; 4=JBIG bi-level images; 5=JPEG encoding; 6=JPEG lossless encoding; 7=JPEG 2000 wavelet encoding (no specification part number indicated); 8=JBIG2 encoding; 9=JBIG images other than bi-level</fdd:note>
 				</fdd:values>
 			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/151</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/151">http://www.nationalarchives.gov.uk/PRONOM/fmt/151</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q27979400</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q27979400">https://www.wikidata.org/wiki/Q27979400</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
@@ -208,7 +227,8 @@ Support for georeferencing is provided via the GML in JPEG 2000 for Geographic I
 				<li>
 					<fddLink id="fdd000144">JPM_FF</fddLink>, JPEG 2000 Part 6 (Compound) jpm File Format</li>
 			</ul>
-			<p>The family is descended from <fddLink id="fdd000052">QuickTime</fddLink>.  This lineage is shared with <fddLink id="fdd000079">ISO_BMFF</fddLink> and its offshoots, which include <fddLink id="fdd000155">MP4_FF_2</fddLink>, <fddLink id="fdd000137">MP4_FF_AVCE</fddLink>, and <fddLink id="fdd000127">MJ2_FF</fddLink>, itself a wrapper for JPEG 2000 core-encoded images that represent sets of film or video frames.</p><p>From <i>Guide to the Practical Implementation of JPEG 2000</i>, cited in <a href="#useful">Useful references</a> below: "JP2 was designed to be inherently extensible. The extended file formats that are defined in later parts of the standard all incorporate a degree of backwards-compatibility with JP2: for each extended format it is possible to construct extended files that also conform to JP2. (A JP2 reader would ignore any extensions that it did not understand.) Thus, the definition of JP2 in Part 1 can also be considered an implicit definition of an architecture known informally as the &apos;JP family&apos; . . . .  A JP family file is a sequence of &apos;boxes&apos;. [These are called <i>atoms</i> in the QuickTime specification. -- <i>ed</i>]  A box consists of a 4-byte length field followed by a 4-byte type field followed by the content of the box. The content is defined for each box type and may include boxes. A box whose content consists only of boxes is called a superbox. There are two special values of the length field. A value of zero means that the box extends to the end of the file. A value of 1 means that the true length of the box follows the type field (before the content) in an 8-byte extended length field; this permits boxes up to (2<sup>64</sup> - 1) bytes in length. The length includes the whole box from the start of the length field to the end of the content."</p>
+			<p>The family is descended from <fddLink id="fdd000052">QuickTime</fddLink>.  This lineage is shared with <fddLink id="fdd000079">ISO_BMFF</fddLink> and its offshoots, which include <fddLink id="fdd000155">MP4_FF_2</fddLink>, <fddLink id="fdd000137">MP4_FF_AVCE</fddLink>, and <fddLink id="fdd000127">MJ2_FF</fddLink>, itself a wrapper for JPEG 2000 core-encoded images that represent sets of film or video frames.</p>
+			<p>From <i>Guide to the Practical Implementation of JPEG 2000</i>, cited in <a href="#useful">Useful references</a> below: "JP2 was designed to be inherently extensible. The extended file formats that are defined in later parts of the standard all incorporate a degree of backwards-compatibility with JP2: for each extended format it is possible to construct extended files that also conform to JP2. (A JP2 reader would ignore any extensions that it did not understand.) Thus, the definition of JP2 in Part 1 can also be considered an implicit definition of an architecture known informally as the &apos;JP family&apos; . . . .  A JP family file is a sequence of &apos;boxes&apos;. [These are called <i>atoms</i> in the QuickTime specification. -- <i>ed</i>]  A box consists of a 4-byte length field followed by a 4-byte type field followed by the content of the box. The content is defined for each box type and may include boxes. A box whose content consists only of boxes is called a superbox. There are two special values of the length field. A value of zero means that the box extends to the end of the file. A value of 1 means that the true length of the box follows the type field (before the content) in an 8-byte extended length field; this permits boxes up to (2<sup>64</sup> - 1) bytes in length. The length includes the whole box from the start of the length field to the end of the content."</p>
 		</fdd:general>
 	</fdd:notes>
 	<fdd:formatSpecifications>
@@ -235,6 +255,20 @@ Support for georeferencing is provided via the GML in JPEG 2000 for Geographic I
 				<fdd:urlReference>
 					<link>http://xml.coverpages.org/dig35.html</link>
 					<tag>DIG35 metadata information</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://apps.nationalarchives.gov.uk/pronom/fmt/151</link>
+					<tag>PRONOM entry for fmt/151</tag>
+					<comment>Information in PRONOM from UK National Archives about JPX. PUID: fmt/151.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q27979400</link>
+					<tag>WikiData entry for Q27979400</tag>
+					<comment>Information in WikiData about JPX. WikiData Title ID: Q27979400.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>

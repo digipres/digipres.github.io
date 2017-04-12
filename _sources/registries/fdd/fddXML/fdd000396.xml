@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000396" titleName="Markup Compatibility and Extensibility (Office Open XML), ISO 29500-3:2008-2015, ECMA-376, Editions 1-4" shortName="MCE/OOXML_2012" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000396" titleName="Markup Compatibility and Extensibility (Office Open XML), ISO 29500-3:2008-2015, ECMA-376, Editions 1-5" shortName="MCE/OOXML_2012" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>any</fdd:gdfrGenre>
@@ -16,7 +16,7 @@
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
 	<fdd:identificationAndDescription>
-		<fdd:fullName>Markup Compatibility and Extensibility (MCE), ISO 29500-3:2008-2015, also ECMA-376, Editions 1-4.</fdd:fullName>
+		<fdd:fullName>Markup Compatibility and Extensibility (MCE), ISO 29500-3:2008-2015, also ECMA-376, Editions 1-5.</fdd:fullName>
 		<fdd:keywords>
 			<fdd:keyword>document formats</fdd:keyword>
 			<fdd:keyword>markup languages</fdd:keyword>
@@ -37,6 +37,7 @@ the document can be declared. This allows producing applications to set minimum 
 				<li>Alternative representations of document content can be specified. This allows producing applications to include content alternatives for consuming applications with differing sets of understood namespaces and corresponding capabilities.</li>
 				<li>Application-defined extension elements enable producing applications to introduce features within particular elements defined by a markup specification. Consuming applications might retain application-defined extension elements even if they do not process them in any other way.</li>
 			</ul>
+			<p>In 2016 some guidelines for the use of MCE were published in <a href="http://www.iso.org/iso/catalogue_detail.htm?csnumber=62481">ISO/IEC TR 30114-1:2016 Information technology -- Extensions of Office Open XML file formats -- Part 1: Guidelines</a>.</p>
 		</fdd:description>
 		<fdd:shortDescription>An encoding format that defines a set of conventions for forward compatibility of markup specifications, applicable not only to Open Office XML specifications, but also to other markup specifications using XML. These conventions allow XML documents created by applications of later versions or extensions to be handled by applications of earlier versions. The MCE specification is part 3 of ISO/IEC 29500, Information technology -- Document description and processing languages -- Office Open XML File Formats (OOXML).</fdd:shortDescription>
 		<fdd:productionPhase>MCE encoding can be used in any production phase.  Original use was for Office Open XML office documents, which are certainly created (initial state), exchanged for editing and review (middle-state) and may be published (final-state) as files that employ elements and attributes from the Markup Compatibility and Extensibility namespace.</fdd:productionPhase>
@@ -156,7 +157,7 @@ languages -- Office Open XML File Formats -- Part 3: Markup Compatibility and Ex
 	<fdd:notes>
 		<fdd:general>
 			<p>The prefix used for the MCE namespace <i>http://schemas.openxmlformats.org/markup-compatibility/2006</i> is typically <i>mc:</i> or <i>mce:</i>. In XML, any prefix may be associated with any namespace through an <i>xmlns</i> declaration and so, other prefixes may be used.  Documents created by Microsoft Office applications may declare the MCE namespace and list namespaces used for new features in recent Office versions as <i>ignorable</i>, whether or not the new features and MCE elements or attributes are used in the document.</p>
-			<p>Here is a simple example, adapted from <a href="http://openxmldeveloper.org/blog/b/openxmldeveloper/archive/2012/09/21/markup-compatibility-and-extensibility.aspx">a blog post that demonstrates use of MCE to use a decorative font style not defined in ISO/IEC 29500</a>, of declaring a namespace as ignorable, with mce: used as prefix for MCE namespace:</p>
+			<p>Here is a simple example, adapted from <a href="http://ericwhite.com/blog/markup-compatibility-and-extensibility/">a blog post that demonstrates use of MCE to use a decorative font style not defined in ISO/IEC 29500</a>, of declaring a namespace as ignorable, with mce: used as prefix for MCE namespace:</p>
 			<ul>
 				<li>A new namespace is defined for the XML markup of a style introduced in a new version of Microsoft Word and declared to use w14: as prefix.</li>
 				<li> A new feature, for applying a glow style to text is encoded using the new namespace. For example: &lt;w14:glow w14:rad=&quot;228600&quot;&gt;...&lt;/w14:glow&gt;.</li>
@@ -187,12 +188,20 @@ languages -- Office Open XML File Formats -- Part 3: Markup Compatibility and Ex
 				<li>ISO/IEC 29500-3:2012</li>
 				<li>ECMA-376, Part 3, 4th edition (December 2012) [specification identical to ISO/IEC 29500-3:2012]</li>
 				<li>ISO/IEC 29500-3:2015</li>
+				<li>ECMA-376, Part 3, 5th edition (December 2015) [specification identical to ISO/IEC 29500-3:2015]</li>
 			</ul>
-			<p>The 2015 edition of the MCE specification was approved in September 2014 and will be published in 2015 as part of a new combined edition of ISO/IEC 29500.  The primary intent of the update was to improve the explanation and to emphasize the applicability of MCE  beyond OOXML to support interoperability.  This edition does not introduce new features but does remove some flexibility that had not been exploited in practice and was deemed unnecessary. In particular, an appropriate process for handling MCE on file import is described in more detail.</p>
+			<p>The primary intent of the 2015 edition of the MCE specification was to improve the explanation and to emphasize the applicability of MCE beyond OOXML to support interoperability.  This edition does not introduce new features but does remove some flexibility that had not been exploited in practice and was deemed unnecessary. In particular, an appropriate process for handling MCE on file import is described in more detail.</p>
 		</fdd:history>
 	</fdd:notes>
 	<fdd:formatSpecifications>
 		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ecma-international.org/publications/standards/Ecma-376.htm</link>
+					<tag>ECMA-376: Office Open XML File Formats</tag>
+					<comment>Provides access to all chronological published versions.  </comment>
+				</fdd:urlReference>
+			</fdd:url>
 			<fdd:url>
 				<fdd:urlGroup>
 					<fdd:intro>The latest published version of ISO/IEC 29500-3 is made available at no charge from ISO. The formal title is <i>Information technology -- Document description and processing
@@ -204,18 +213,16 @@ languages -- Office Open XML File Formats -- Part 3: Markup Compatibility and Ex
 							<tag>ISO/IEC Publicly Available Standards</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
+							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c065533_ISO_IEC_29500-3_2015.zip</link>
+							<tag>ISO/IEC 29500-3:2015, Markup Compatibility and Extensibility</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
 							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c061797_ISO_IEC_29500-3_2012.zip</link>
 							<tag>ISO/IEC 29500-3:2012, Markup Compatibility and Extensibility</tag>
+							<comment>Superseded but still available as of February 2017</comment>
 						</fdd:urlReference>
 					</fdd:urlList>
 				</fdd:urlGroup>
-			</fdd:url>
-			<fdd:url>
-				<fdd:urlReference>
-					<link>http://www.ecma-international.org/publications/standards/Ecma-376.htm</link>
-					<tag>ECMA-376: Office Open XML File Formats</tag>
-					<comment>Provides access to all chronological published versions.  </comment>
-				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
@@ -228,6 +235,13 @@ languages -- Office Open XML File Formats -- Part 3: Markup Compatibility and Ex
 	</fdd:formatSpecifications>
 	<fdd:usefulReferences>
 		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.iso.org/iso/catalogue_detail.htm?csnumber=62481</link>
+					<tag>ISO/IEC TR 30114-1:2016 Information technology -- Extensions of Office Open XML file formats -- Part 1: Guidelines</tag>
+					<comment>Clauses 4.2-4.4 are recommendations for the use of MCE.</comment>
+				</fdd:urlReference>
+			</fdd:url>
 			<fdd:url>
 				<fdd:urlGroup>
 					<fdd:intro>Microsoft provides various documentation pages related to MCE.</fdd:intro>

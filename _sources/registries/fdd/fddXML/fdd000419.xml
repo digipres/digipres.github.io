@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000419" titleName="GeoPackage Encoding Standard (OGC), version 1.0" shortName="GeoPackage_1_0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+<fdd:FDD id="fdd000419" titleName="GeoPackage Encoding Standard (OGC), version 1.0" shortName="GeoPackage_1_0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
@@ -37,7 +37,7 @@ usable on mobile devices with
 limited connectivity and bandwidth.  An important use case for designing GeoPackage was mobile device use.</p>
 			<p>A GeoPackage is a platform-independent SQLite database file that contains data and
 metadata tables with names and structures as defined in the standard, having specified definitions, integrity assertions, format limitations
-and content constraints.  A useful diagram of the tables defined is Figure 1 in the Introduction (page viii).  A more detailed <a href="http://www.geopackage.org/spec/#_geopackage_tables_detailed_diagram">diagram</a> is in Appendix B, clause B.11, as Figure 4.  Version 1.0 of the GeoPackage standard is based on version 3 of the SQLite file format.</p>
+and content constraints.  A useful diagram of the tables defined is Figure 1 in the Introduction (page viii).  A more detailed <a href="http://www.geopackage.org/spec/#_geopackage_tables_detailed_diagram">diagram</a> is in Appendix B, clause B.11, as Figure 4.  Version 1.0 of the GeoPackage standard is based on <fddLink id="fdd000461">version 3 of the SQLite file format</fddLink>.</p>
 			<p>A GeoPackage has two required tables:</p>
 			<ul>
 				<li>The <i>gpkg_spatial_ref_sys</i> table documents coordinate reference systems used for data in the package.  It must include a record for WGS-84.</li>
@@ -60,7 +60,11 @@ GeoPackage Encoding Standard, is referred to as an Extended GeoPackage.  Version
 		<fdd:relationships>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
-				<fdd:comment>SQLite database file, not described separately on this site.</fdd:comment>
+				<fdd:relatedTo>
+					<fdd:id>fdd000461</fdd:id>
+					<fdd:shortName>SQLite_3</fdd:shortName>
+					<fdd:titleName>SQLite, Version 3</fdd:titleName>
+				</fdd:relatedTo>
 			</fdd:relationship>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
@@ -165,6 +169,20 @@ references a projected CRS and the min/max x/y values are in the units specified
 id field (byte offset 68) of the SQLite database header.  Indicates version 1.0 of GeoPackage.  Defined in standard and <a href="http://www.sqlite.org/src/artifact?ci=trunk&amp;filename=magic.txt">SQLite magic.txt file</a>.</fdd:note>
 				</fdd:values>
 			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>No corresponding match as of April 2017.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>No corresponding match as of April 2017.</fdd:note>
+				</fdd:values>
+			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
@@ -173,7 +191,7 @@ id field (byte offset 68) of the SQLite database header.  Indicates version 1.0 
 GeoPackage.  The SQLite PRAGMA foreign_key_check SQL with no parameter value must
 return an empty result set indicating no invalid foreign key values.</p>
 			<p>The standard defines a StandardGeoPackageBinary subformat used to record feature table geometries with or without optional
-elevation (Z) and/or measure (M) values in SQL blobs.  This subformat is based on Well-Known Binary as defined in ISO/IEC 13249-3:2011 [<a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53698">Information Technology -- Database languages -- SQL multimedia and application packes -- Part 3: Spatial</a>] clause 5.1.46, with the addition of an explicit encoding for an empty point set, which is not defined in ISO 13249-3.</p>
+elevation (Z) and/or measure (M) values in SQL blobs.  This subformat is based on Well-Known Binary as defined in ISO/IEC 13249-3:2011 [<a href="https://www.iso.org/standard/53698.html">Information Technology -- Database languages -- SQL multimedia and application packages -- Part 3: Spatial</a>] clause 5.1.46, with the addition of an explicit encoding for an empty point set, which is not defined in ISO 13249-3.</p>
 			<p>Extensions documented in the specification include additional
 geometry types, additional SQL geometry functions, and WEBP as an additional tile image format.</p>
 		</fdd:general>
@@ -213,7 +231,7 @@ geometry types, additional SQL geometry functions, and WEBP as an additional til
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53698</link>
+					<link>https://www.iso.org/standard/53698.html</link>
 					<tag>ISO/IEC 13249-3:2011, Information technology -- Database languages -- SQL multimedia and application packages -- Part 3: Spatial</tag>
 					<comment>GeoPackage specification depends heavily on this ISO standard</comment>
 				</fdd:urlReference>

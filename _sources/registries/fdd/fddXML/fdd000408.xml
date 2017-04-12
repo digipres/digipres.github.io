@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000408" titleName="Expert Witness Disk Image, EnCase E01 Bitstream" shortName="EWF_E01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+<fdd:FDD id="fdd000408" titleName="Expert Witness Disk Image, EnCase E01 Bitstream" shortName="EWF_E01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>any</fdd:gdfrGenre>
@@ -65,7 +65,7 @@
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>Open documentation produced via reverse engineering by Joachim Metz.</fdd:disclosure>
 		<fdd:documentation>
-			<a href="https://53efc0a7187d0baa489ee347026b8278fe4020f6.googledrive.com/host/0B3fBvzttpiiSMTdoaVExWWNsRjg/Expert%20Witness%20Compression%20Format%20%28EWF%29.pdf">EWF specification: Expert Witness Compression Format specification</a>
+			<a href="https://github.com/libyal/libewf/blob/master/documentation/Expert%20Witness%20Compression%20Format%20%28EWF%29.asciidoc">EWF specification: Expert Witness Compression Format specification</a>
 		</fdd:documentation>
 		<fdd:adoption>In archives (as distinct from legal and law enforcement settings), where tools like <a href="http://www.bitcurator.net/">Bit Curator</a> and <a href="http://accessdata.com/product-download/digital-forensics/ftk-imager-version-3.2.0">FTK Imager</a> are in wide use, user comments suggest that EWF_E01 is one of the more frequently employed formats.</fdd:adoption>
 		<fdd:licensingAndPatents>Not investigated at this writing.</fdd:licensingAndPatents>
@@ -92,18 +92,26 @@
 				</fdd:sigValues>
 				<fdd:note>From Gary Kessler&apos;s <a href="http://www.garykessler.net/library/file_sigs.html">File Signatures Table</a>.</fdd:note>
 			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/803</fdd:sigValue>
+					</fdd:sigValues>
+				</fdd:values>
+			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
 		<fdd:general>
-			<p>Joachim Metz&apos;s <a href="https://53efc0a7187d0baa489ee347026b8278fe4020f6.googledrive.com/host/0B3fBvzttpiiSMTdoaVExWWNsRjg/Expert%20Witness%20Compression%20Format%20%28EWF%29.pdf">analysis</a> highlights the details of this format, including variation in the structure of .E01 headers, in part depending on the version of the EnCase tool used to create the file (pp. 5-13), note on the .E01 header when a file is created by FTK Imager (p. 14), and notes on variations in the <i>volume</i> section according to the creating application (pp. 18-20).</p>
+			<p>Joachim Metz&apos;s <a href="https://github.com/libyal/libewf/blob/master/documentation/Expert%20Witness%20Compression%20Format%20%28EWF%29.asciidoc">analysis</a> highlights the details of this format, including variation in the structure of .E01 headers, in part depending on the version of the EnCase tool used to create the file (pp. 5-13), note on the .E01 header when a file is created by FTK Imager (p. 14), and notes on variations in the <i>volume</i> section according to the creating application (pp. 18-20).</p>
 		</fdd:general>
 	</fdd:notes>
 	<fdd:formatSpecifications>
 		<fdd:urls>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://53efc0a7187d0baa489ee347026b8278fe4020f6.googledrive.com/host/0B3fBvzttpiiSMTdoaVExWWNsRjg/Expert%20Witness%20Compression%20Format%20%28EWF%29.pdf</link>
+					<link>https://github.com/libyal/libewf/blob/master/documentation/Expert%20Witness%20Compression%20Format%20%28EWF%29.asciidoc</link>
 					<tag>EWF specification:
 Expert Witness Compression Format specification</tag>
 					<comment>Joachim Metz&apos;s reverse-engineered documentation of EWF subtypes including EWF_E01.</comment>
@@ -125,6 +133,13 @@ Expert Witness Compression Format specification</tag>
 					<link>http://www.bitcurator.net/</link>
 					<tag>BitCurator Web site</tag>
 					<comment>Tool to support digital content management, including work with disk images and forensic analysis.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://apps.nationalarchives.gov.uk/pronom/fmt/803</link>
+					<tag>PRONOM entry for fmt/803</tag>
+					<comment>Information in PRONOM from UK National Archives about Encase Image File Format/Expert Witness Compression Format. PUID: fmt/803.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>

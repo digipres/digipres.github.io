@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000411" titleName="Expert Witness Disk Image, EnCase Lx01 Logical" shortName="EWF_Lx01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+<fdd:FDD id="fdd000411" titleName="Expert Witness Disk Image, EnCase Lx01 Logical" shortName="EWF_Lx01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>any</fdd:gdfrGenre>
@@ -23,7 +23,7 @@
 			<p>Second version of the EWF	<i>logical evidence file</i> image format from Guidance Software (EnCase brand), generally similar to the description offered in <fddLink id="fdd000406">EWF_Family</fddLink>. According to Joachim Metz, Guidance&apos;s official name for this format
 and its <fddLink id="fdd000410">EWF_Ex01</fddLink> counterpart is <i>EnCase Evidence File Format Version 2</i>. For this and the counterpart <fddLink id="fdd000410">EWF_Ex01</fddLink> format, Metz reports that the data is either compressed or uncompressed, although the &quot;no compression&quot; option seems not to be supported in applications.  If compressed, the choices are the open-source program BZip2 or LZ; unlike EnCase&apos;s first version formats, multiple levels of compression are no longer offered. Metz&apos;s note about LZ compression mentions deflate, RFC1950,
 and zlib.</p>
-			<p>EWF_Lx01 (and the counterpart <fddLink id="fdd000410">EWF_Ex01</fddLink>) files contain 20 sections.  The following list is based on <a href="https://53efc0a7187d0baa489ee347026b8278fe4020f6.googledrive.com/host/0B3fBvzttpiiSMTdoaVExWWNsRjg/Expert%20Witness%20Compression%20Format%202%20%28EWF2%29.pdf">Metz's analysis</a>, which provides section type values for all of the sections; Metz uses the section type value when referring to the two "unknown" sections.</p>
+			<p>EWF_Lx01 (and the counterpart <fddLink id="fdd000410">EWF_Ex01</fddLink>) files contain 20 sections.  The following list is based on <a href="https://github.com/libyal/libewf/blob/master/documentation/Expert%20Witness%20Compression%20Format%202%20%28EWF2%29.asciidoc">Metz's analysis</a>, which provides section type values for all of the sections; Metz uses the section type value when referring to the two "unknown" sections.</p>
 			<ul>
 				<li>Device information</li>
 				<li>Case data</li>
@@ -71,7 +71,7 @@ and zlib.</p>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>Open documentation produced via reverse engineering by Joachim Metz.</fdd:disclosure>
 		<fdd:documentation>
-			<a href="https://53efc0a7187d0baa489ee347026b8278fe4020f6.googledrive.com/host/0B3fBvzttpiiSMTdoaVExWWNsRjg/Expert%20Witness%20Compression%20Format%202%20%28EWF2%29.pdf">EWF 2 specification:
+			<a href="https://github.com/libyal/libewf/blob/master/documentation/Expert%20Witness%20Compression%20Format%202%20%28EWF2%29.asciidoc">EWF 2 specification:
 Expert Witness Compression Format version 2 specification</a>
 		</fdd:documentation>
 		<fdd:adoption>In archives (as distinct from legal and law enforcement settings), where tools like <a href="http://www.bitcurator.net/">Bit Curator</a> and <a href="http://accessdata.com/product-download/digital-forensics/ftk-imager-version-3.2.0">FTK Imager</a> are in wide use, user comments suggest that bitstream formats like <fddLink id="fdd000408">EWF_E01</fddLink> and AFF (description forthcoming) are more widely used than logical formats like EWF_Lx01.</fdd:adoption>
@@ -99,13 +99,19 @@ Expert Witness Compression Format version 2 specification</a>
 				</fdd:sigValues>
 				<fdd:note>From Gary Kessler&apos;s <a href="http://www.garykessler.net/library/file_sigs.html">File Signatures Table</a>.</fdd:note>
 			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>Not found.</fdd:sigValueNA>
+				</fdd:values>
+			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:formatSpecifications>
 		<fdd:urls>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://53efc0a7187d0baa489ee347026b8278fe4020f6.googledrive.com/host/0B3fBvzttpiiSMTdoaVExWWNsRjg/Expert%20Witness%20Compression%20Format%202%20(EWF2).pdf</link>
+					<link>https://github.com/libyal/libewf/blob/master/documentation/Expert%20Witness%20Compression%20Format%202%20%28EWF2%29.asciidoc</link>
 					<tag>EWF 2 specification:
 Expert Witness Compression Format version 2 specification</tag>
 					<comment>Joachim Metz&apos;s reverse-engineered documentation of EWF subtypes including EWF_Lx01.</comment>

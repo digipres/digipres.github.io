@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?altova_sps U:\edit_2013\fddCreation_20161111.sps?>
+<fdd:FDD id="fdd000460" titleName="RAR Archive File Format, Version 5" shortName="RAR5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd=".\fdd.xsd" xsi:schemaLocation=".\fdd.xsd fdd.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>aggregate</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-bundle</fdd:gdfrComposition>
+		<fdd:gdfrTransform>compression</fdd:gdfrTransform>
+		<fdd:updates>
+			<fdd:date>2017-03-28</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>RAR Archive File Format, Version 5</fdd:fullName>
+		<fdd:description>
+			<p>RAR5, or the <b>R</b>oshal <b>AR</b>chive format version 5 was <a href="http://www.ghacks.net/2013/04/29/winrar-5-0-introduces-the-new-rar-5-format-what-you-need-to-know/">released</a> in April 2013 and is supported by WinRAR 5.0 and later.  See <fddLink id="fdd000450">RAR_Family</fddLink> for details on the file structure. </p>
+			<p>There <a href="http://www.rarsoft.com/rarnew.htm">significant changes</a> in the format structure,  compression algorithm and encryption algorithm. </p>
+			<p>Format changes:	</p>
+			<ul>
+				<li>Time stamps are stored as Coordinated Universal Time (UTC) instead of former local time</li>
+				<li>File names and archive comments are stored in UTF-8 encoding format</li>
+				<li>Change to 256 bit length BLAKE2sp hash instead of 32 bit CRC32 checksum</li>
+				<li>Maximum path length is increased up to 2048 characters.</li>
+				<li>Maximum comment length for RAR archives is increased from 64 to 256 KB</li>
+				<li>Includes the optional "quick open information" to allow the archive contents to open faster in WinRAR.</li>
+			</ul>
+			<p>Compression algorithm changes:</p>
+			<ul>
+				<li>Maximum compression dictionary size is increased up to 1 GB in 64 bit WinRAR. 32 bit WinRAR version can use up to 256 MB dictionary when creating an archive. Both 32 bit and 64 bit versions can unpack archives with any dictionary size, including 1 GB</li>
+				<li>Increased default dictionary size to 32 MB resulting in a higher compression ratio and faster speed over RAR4 (which had 4 MB).</li>
+				<li>Includes Intel IA-32 executable and delta compression algorithms</li>
+				<li>Removes supports for specialized text, multimedia, and Itanium executables compression algorithms</li>
+			</ul>
+			<p>Encryption algorithm changes:</p>
+			<ul>
+				<li>Encryption algorithm is changed from AES-128 (in RAR4) to AES-256</li>
+				<li>Increased default dictionary size to 32 MB resulting in a higher compression ratio and faster speed over RAR4 (which had 4 MB).</li>
+				<li>Changes in special password verification values allow many wrong passwords to be detected without having unpack the entire file</li>
+			</ul>
+		</fdd:description>
+		<fdd:shortDescription>RAR is a proprietary archive file format that supports data compression, error recovery and file spanning. </fdd:shortDescription>
+		<fdd:productionPhase>See <fddLink id="fdd000450">RAR_Family</fddLink>
+		</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000450</fdd:id>
+					<fdd:shortName>RAR_Family</fdd:shortName>
+					<fdd:titleName>RAR Archive File Format Family</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>See <fddLink id="fdd000450">RAR_Family</fddLink>.</fdd:experience>
+		<fdd:preference>None</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Proprietary format with limited public information. </fdd:disclosure>
+		<fdd:documentation>The full specification is not publicly available but file structure information for RAR5 is available through the <a href="http://www.rarlab.com/technote.htm#filehead">RARLab</a> website.</fdd:documentation>
+		<fdd:adoption>See <fddLink id="fdd000450">RAR_Family</fddLink>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>See <fddLink id="fdd000450">RAR_Family</fddLink>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>See <fddLink id="fdd000450">RAR_Family</fddLink>
+		</fdd:transparency>
+		<fdd:selfDocumentation>See <fddLink id="fdd000450">RAR_Family</fddLink>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>See <fddLink id="fdd000450">RAR_Family</fddLink>
+		</fdd:externalDependencies>
+		<fdd:techProtection>See <fddLink id="fdd000450">RAR_Family</fddLink>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:otherQF>
+			<fdd:factor>
+				<fdd:tag>Bundling/compression</fdd:tag>
+				<fdd:note>See <fddLink id="fdd000450">RAR_Family</fddLink>
+				</fdd:note>
+			</fdd:factor>
+		</fdd:otherQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000450">RAR_Family</fddLink>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000450">RAR_Family</fddLink>
+				</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 52 61 72 21 1A 07 01 00</fdd:sigValue>
+					<fdd:sigValue>ASCII:  	Rar!</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://www.garykessler.net/library/file_sigs.html">Gary Kessler&apos;s File Signature Table</a> and <a href="http://www.rarlab.com/technote.htm#filehead">RAR 5.0 archive format tech note</a>.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/613</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/-fmt/613">http://www.nationalarchives.gov.uk/PRONOM/fmt/613</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000450">RAR_Family</fddLink>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>According to <a href="http://www.rarsoft.com/rarnew.htm">WinRAR version information</a>, "older software including older WinRAR versions is not able to decompress RAR 5.0 archives, so if you plan to send an archive to other people, it is necessary to take the compatibility issue into consideration. You can select "RAR" instead of "RAR5" option in archiving dialog to create RAR 4.x archives compatible with previous WinRAR versions."</p>
+		</fdd:general>
+		<fdd:history/>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.rarlab.com/technote.htm</link>
+					<tag>Format specification details from RARLab for RAR5 archive format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000450">RAR_Family</fddLink>
+					</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ghacks.net/2013/04/29/winrar-5-0-introduces-the-new-rar-5-format-what-you-need-to-know/</link>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.softpedia.com/get/Compression-tools/WinRAR.shtml</link>
+					<comment>Details on file size limits for RAR5</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://apps.nationalarchives.gov.uk/pronom/fmt/613</link>
+					<tag>PRONOM entry for fmt/613</tag>
+					<comment>Information in PRONOM from UK National Archives about RAR5. PUID: fmt/613.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

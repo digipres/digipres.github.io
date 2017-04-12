@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000108" titleName="ID3 Metadata for MP3, Version 2" shortName="ID3v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+<fdd:FDD id="fdd000108" titleName="ID3 Metadata for MP3, Version 2" shortName="ID3v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>sound</fdd:gdfrGenre>
@@ -26,10 +26,12 @@
 				<li>ID3v2.3:  ". . . expanded the frame identifier to four characters, and added a number of frames. A frame could contain multiple values, separated with a &#47; character."</li>
 				<li>ID3v2.4: ". . . the latest version of the standard, dated November 1, 2000. Notably, it allows textual data to be encoded in UTF-8, which was a common practice in earlier tags despite the standard. It uses a null byte to separate multiple values, and so &#47; can appear in text data again."</li>
 			</ul>
-			<p>Addenda to the ID3v2.3 and ID3v2.4 standards have been published:</p><ul>
+			<p>Addenda to the ID3v2.3 and ID3v2.4 standards have been published:</p>
+			<ul>
 				<li>The <a href="http://id3.org/id3v2-chapters-1.0">ID3 Chapter (CHAP) and Table of Contents (CTOC)</a> establishes a mechanism for podcasts, talking books, and the like that contain multiple tracks, stories, or other distinct audio entries in a single file, compatible with ID3v2.3 and ID3v2.4 tags. (2005)</li>
 				<li>The <a href="http://id3.org/id3v2-accessibility-1.0">ID3 Accessibility Addendum</a> makes ID3 metadata accessible to the visually impaired via a new Audiotext (ATXT) frame type, compatible with ID3v2.3 and ID3v2.4 tags. The addition of ATXT frames to an ID3 tag will allow compatible players to provide an audible description of the ID3 metadata. (2006)</li>
-			</ul></fdd:description>
+			</ul>
+		</fdd:description>
 		<fdd:shortDescription>Structured data chunk containing descriptive metadata about the file to which it is generally pre-pended (see File type signifiers), virtually always an MP3_FF (MP3 sound file). Referred to by its creators as an "informal standard" for a "container format," ID3v2 permits the identification of title, artist, date, genre, and more.</fdd:shortDescription>
 		<fdd:productionPhase>Generally used for final-state, end-user delivery. </fdd:productionPhase>
 		<fdd:relationships>
@@ -109,7 +111,8 @@
 	<fdd:notes>
 		<fdd:general>
 			<p>ID3v2 binary content is structured as "frames" just like <fddLink id="fdd000012">MP3_ENC</fddLink> (MP3 audio encoding).  Each frame can contain up to 16 MB; the entire chunk can be as much as 256 MB.  Version 2 supports Unicode, has an "unsynchronization scheme" to prevent incompatible players from attempting to play the ID3 chunk, and supports "enciphered" information.  See also sub-version information in <a href="#identification">Identification and description</a> above.</p>
-			<p>When <fddLink id="fdd000106">ID3</fddLink> metadata is placed in a <fddLink id="fdd000105">MP3_FF</fddLink> file, established conventions call for the use of the <i>ID3 marker</i> which consists of the string "3DI".  For <fddLink id="fdd000107">ID3v1</fddLink>, the marker is positioned 10 bytes preceding the metadata.  For ID3v2 data, the marker is positioned in the first 3 bytes of the file when the metadata is pre-pended and 10 bytes from the end of a file when it is post-pended.</p></fdd:general>
+			<p>When <fddLink id="fdd000106">ID3</fddLink> metadata is placed in a <fddLink id="fdd000105">MP3_FF</fddLink> file, established conventions call for the use of the <i>ID3 marker</i> which consists of the string "3DI".  For <fddLink id="fdd000107">ID3v1</fddLink>, the marker is positioned 10 bytes preceding the metadata.  For ID3v2 data, the marker is positioned in the first 3 bytes of the file when the metadata is pre-pended and 10 bytes from the end of a file when it is post-pended.</p>
+		</fdd:general>
 	</fdd:notes>
 	<fdd:formatSpecifications>
 		<fdd:urls>

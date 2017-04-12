@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?altova_sps U:\edit_2013\fddCreation_20161111.sps?>
+<fdd:FDD id="fdd000450" titleName="RAR Archive File Format Family" shortName="RAR_Family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd=".\fdd.xsd" xsi:schemaLocation=".\fdd.xsd fdd.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>aggregate</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>family</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-bundle</fdd:gdfrComposition>
+		<fdd:gdfrTransform>compression</fdd:gdfrTransform>
+		<fdd:updates>
+			<fdd:date>2017-03-28</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>RAR Archive File Format Family</fdd:fullName>
+		<fdd:description>
+			<p>RAR, or the <b>R</b>oshal <b>AR</b>chive format thanks to its namesake creator software developer Eugene Roshal, is a proprietary archive file format that supports data compression, error recovery and file spanning. There are at least six main versions of the RAR format although the early versions have little formal documentation.  Only selected versions currently are described at this site. </p>
+			<p>Similar in purpose to ZIP files, RAR files are data containers in which one or more files are stored in compressed form. RAR is a proprietary format under copyright, along with RAR's compression applications and libraries to Alexander Roshal, brother of Eugene Roshal. RAR files are the native format for  <a href="http://www.rarlab.com/">WinRAR</a> software and can only be created through this tool which is licensed to win.rar GmbH although there are several options to open RAR files. See <a href="#sustainability">External Dependencies</a> for details.</p>
+			<p>Structurally, a <a href="http://www.rarlab.com/technote.htm#filehead">RAR file</a> is comprised of variable length blocks of required and optional data starting with an introductory block: </p>
+			<ul>
+				<li>Self-extracting module (optional): Also known as SFX, this means any data preceding the file signature and the block size and contents are not defined. The maximum size for RAR5 is 1 MB but this value can be increased in the future.</li>
+				<li>RAR file signature: See <a href="#sign">File Signatures</a>. </li>
+				<li>Archive encryption header (optional): Present only in archives with encrypted headers. Every next header after this one is started from 16 byte AES-256 initialization vector followed by encrypted header data. Size of encrypted header data block is aligned to 16 byte boundary. Encryption version is declared in the tag of the same name with only AES-256 (value = 0) supported for RAR5.</li>
+				<li>Main archive header which, among other things, includes the optional Locator tag to quickly access the positions of different service blocks without scanning the entire archive.</li>
+			</ul>
+			<p>After the introductory block, at least one file header is required but can be as many as need for each file within the archive. File headers are followed by optional Service headers. </p>
+			<ul>
+				<li>File header: Includes among other data the Compression Record (stored as values 0 - 5 where 0 means no compression) and an optional Hash record for the standard CRC32 checksum. If another hash algorithm is used, it is stored in the extra area record.</li>
+				<li>Service headers: Optional headers that store supplementary information. </li>
+			</ul>
+			<p>Following the last File Header is the End of Archive Marker after which RAR does not read anything to permit third party tools to add extra information such as a digital signature to archive.</p>
+		</fdd:description>
+		<fdd:shortDescription>RAR is a proprietary archive file format that supports data compression, error recovery and file spanning. </fdd:shortDescription>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:shortName>RAR1.3</fdd:shortName>
+					<fdd:titleName>RAR Archive File Format, Version 1.3</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>No information available. Not described on this site at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:shortName>RAR1.5</fdd:shortName>
+					<fdd:titleName>RAR Archive File Format, Version 1.5</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Often described as the basis for subsequent versions but no detailed information available. Not described at this site at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000457</fdd:id>
+					<fdd:shortName>RAR2</fdd:shortName>
+					<fdd:titleName>RAR Archive File Format, Version 2</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000459</fdd:id>
+					<fdd:shortName>RAR3</fdd:shortName>
+					<fdd:titleName>RAR Archive File Format, Version 3</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000458</fdd:id>
+					<fdd:shortName>RAR4</fdd:shortName>
+					<fdd:titleName>RAR Archive File Format, Version 4</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>RAR4 is also known as RAR version 2.9. </fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000460</fdd:id>
+					<fdd:shortName>RAR5</fdd:shortName>
+					<fdd:titleName>RAR Archive File Format, Version 5</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>RAR files have appeared in various personal papers collections as a submission format for large PST email files.</fdd:experience>
+		<fdd:preference>None</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Proprietary format with limited public information. </fdd:disclosure>
+		<fdd:documentation>The full specification is not publicly available but file structure information for <fddLink id="fdd000460">RAR5</fddLink> is available through the <a href="http://www.rarlab.com/technote.htm#filehead">RARLab</a> website.</fdd:documentation>
+		<fdd:adoption>According to one <a href="http://www.remosoftware.com/info/differences-between-rar-and-rar5-compression">report</a>, RAR format has gained much popularity over these years as compared to its competitor archive formats like 7Z, zip, etc ... [because it has] better data compression rate than ZIP and uses a lossless compression.</fdd:adoption>
+		<fdd:licensingAndPatents>RAR is a proprietary file format created solely by the compression software <a href="http://www.rarlab.com/">WinRAR</a>. The decompression code is available for use in other programs and the license holder allows for its distribution, but with a license provision (detailed in the license.txt file from the <a href="http://www.rarlab.com/rar_add.htm">UnRAR source code</a>) that &quot;Unrar source may be used in any software to handle RAR archives without limitations free of charge, but cannot be used to re-create the RAR compression algorithm, which is proprietary. Distribution of modified Unrar source in separate form or as a part of other software is permitted, provided that it is clearly stated in the documentation and source comments that the code may not be used to develop a RAR (WinRAR) compatible archiver.&quot;</fdd:licensingAndPatents>
+		<fdd:transparency>Transparency is low because the compression algorithms are proprietary and not publicly available.</fdd:transparency>
+		<fdd:selfDocumentation>RAR files contain supporting metadata in headers to easily identify and organizing the compressed files within. </fdd:selfDocumentation>
+		<fdd:externalDependencies>RAR files can only be created by WinRAR software but can be opened in other tools (aside from WinRAR) including <a href="http://unarchiver.c3.cx/">The Unarchiver</a>, <a href="http://www.peazip.org/">PeaZip</a>, <a href="http://www.mediafreeware.com/">RAR Opener</a>, <a href="http://www.7-zip.org/">7-Zip</a> and many others. The now-defunct unrarLib tool only works with RAR files up to version 2. </fdd:externalDependencies>
+		<fdd:techProtection>RAR supports optional <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES encryption</a>, a type of block cipher which uses an algorithm that encrypts data on a per-block basis. There are various forms of the <a href="http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf">AES standard</a> and the implementation used by RAR has changed with different versions of the format. RAR5 (current version as of this writing in March 2017) uses AES-256, a change from AES-128 used in RAR4. </fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:otherQF>
+			<fdd:factor>
+				<fdd:tag>Bundling/compression</fdd:tag>
+				<fdd:note>Separate functionality factors for comparing formats that are used to bundle and or compress files have not been developed. From the perspective of digital preservation, consideration of the sustainability factors above is more important than the degree of compression</fdd:note>
+			</fdd:factor>
+		</fdd:otherQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>rar </fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For the data volume set</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>rev</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For the recovery volume set</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>r00</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>According to <a href="https://en.wikipedia.org/wiki/RAR_(file_format)">Wikipedia</a>, in early versions of the format, multi-volume files were split with the first file name .rar followed by .r01, .r02 etc. </fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/x-rar-compressed</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="https://www.file-extensions.org/rar-file-extension">File-Extensions.org</a>
+				</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.rar</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From PRONOM</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>
+					<a href="https://en.wikipedia.org/wiki/RAR_(file_format)">Wikipedia</a> states that RAR1.3 lacks a magic number. <a href="http://www.forensicswiki.org/wiki/RAR">Forensics Wiki</a> states that &quot;older versions of the RAR file format have a magic number of &quot;52 45 7E 5E&quot; but there is no documentation to support this. <a href="http://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>. See subtypes for details.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/264</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>For RAR2. See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/264">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/264</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/411</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>For RAR4. See <a href="http://www.nationalarchives.gov.uk/PRONOM/-fmt/411">http://www.nationalarchives.gov.uk/PRONOM/fmt/411</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/613</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>For RAR5. See <a href="http://www.nationalarchives.gov.uk/PRONOM/-fmt/613">http://www.nationalarchives.gov.uk/PRONOM/fmt/613</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q243303</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>No version distinctions. See <a href="https://www.wikidata.org/wiki/Q243303">https://www.wikidata.org/wiki/Q243303</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>According to the <a href="http://www.rarlab.com/rar_file.htm">RARLab</a> website, RAR has several advantages over ZIP files including &quot;more convenient multipart (multivolume) archives, tight compression including special solid, multimedia and text modes, strong AES-128 encryption, recovery records helping to repair an archive even in case of physical data damage, Unicode support to process non-English file names and a lot more.&quot; In addition, RAR archives usually provide a noticeably higher compression ratio than ZIP file format.</p>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.rarlab.com/technote.htm</link>
+					<tag>Ad hoc specification documentation from RARLab for RAR 5.0 archive format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.rarlab.com/rar/unrarsrc-5.4.5.tar.gz</link>
+					<tag>Source code for unRAR, includes details on format version differences within C++ (cpp) files.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf</link>
+					<tag>Specification for the
+ADVANCED ENCRYPTION STANDARD (AES), 2001, Federal Information
+Processing Standards Publication 197 </tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.forensicswiki.org/wiki/RAR</link>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://acritum.com/winrar/rar-format</link>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.unrarlib.org/faq.html</link>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/WinRAR</link>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ghacks.net/2013/04/29/winrar-5-0-introduces-the-new-rar-5-format-what-you-need-to-know/</link>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.softpedia.com/get/Compression-tools/WinRAR.shtml</link>
+					<comment>Details on file size limits for RAR5</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://apps.nationalarchives.gov.uk/pronom/x-fmt/264</link>
+					<tag>PRONOM entry for x-fmt/264</tag>
+					<comment>Information in PRONOM from UK National Archives about RAR2. PUID: x-fmt/264.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://apps.nationalarchives.gov.uk/pronom/fmt/411</link>
+					<tag>PRONOM entry for fmt/411</tag>
+					<comment>Information in PRONOM from UK National Archives about RAR4. PUID: fmt/411.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://apps.nationalarchives.gov.uk/pronom/fmt/613</link>
+					<tag>PRONOM entry for fmt/613</tag>
+					<comment>Information in PRONOM from UK National Archives about RAR5. PUID: fmt/613.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q243303</link>
+					<tag>Wikidata entry for Q243303</tag>
+					<comment>Information in Wikidata about RA. No version information. Wikidata Title ID: Q243303.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>ftp://ftp.rarlab.com/rar/</link>
+					<tag>Official download site with all past and current versions of RAR</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.remosoftware.com/info/differences-between-rar-and-rar5-compression</link>
+					<tag>Differences between RAR4 and RAR5 Compression</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

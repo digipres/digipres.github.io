@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000440" titleName="MAT-File Level 5 File Format" shortName="MAT-file_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.digitalpreservation.gov/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.digitalpreservation.gov/formats/schemas/fdd/v1 http://www.digitalpreservation.gov/formats/schemas/fdd/v1/fdd-v1-0.xsd">
+<fdd:FDD id="fdd000440" titleName="MAT-File Level 5 File Format" shortName="MAT-file_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
@@ -120,7 +120,7 @@ format.  Floating point numbers in IEEE 754 single- and double-precision are als
 	<fdd:notes>
 		<fdd:general>
 			<p>
-				<b>Headers for MAT-files: </b>  Although the bulk of the file is in binary form, the header of a Level 5 MAT-File can be read with a text editor.  This is also true of a version 7.3 file.  Headers from a file saved as <i>v6</i>, <i>v7</i>, and <i>v7.3</i> in MATLAB (2015a) are shown below preceded by the version in square brackets ([...]).  Note that the headers for v6 and v7 files have the same &quot;5.0&quot; identification. Both are Level 5 MAT-Files.</p>
+				<b>Headers for MAT-files: </b>  Although the bulk of the file is in binary form, the header of a Level 5 MAT-File can be read with a text editor.  This is also true of a version 7.3 file.  Headers from a file saved as <i>v6</i>, <i>v7</i>, and <i>v7.3</i> in MATLAB (2015a) are shown below preceded by the version in [].  Note that the headers for v6 and v7 files have the same &quot;5.0&quot; identification. Both are Level 5 MAT-Files.</p>
 			<ul>
 				<li>[v6] MATLAB 5.0 MAT-file, Platform: PCWIN64, Created on: Thu Dec 17 15:48:57 2015                                         IM</li>
 				<li>[v7] MATLAB 5.0 MAT-file, Platform: PCWIN64, Created on: Thu Dec 17 15:52:10 2015                                         IM</li>
@@ -128,7 +128,7 @@ format.  Floating point numbers in IEEE 754 single- and double-precision are als
 			</ul>
 			<p>Level 4 MAT-files have no magic number.  They have a 20-byte fixed-length header, beginning with a 4-digit integer that indicates how the data is stored.</p>
 			<p>
-				<b>Byte order in MAT-Files:</b>  The Level 5 specification describes MAT-files from a big-endian perspective. The associated
+				<b>Byte order in MAT-Files</b>The Level 5 specification describes MAT-files from a big-endian perspective. The associated
 figures also reflect MAT-files written by a big-endian system. In MAT-files written by a little-endian system, the order of bytes within each instance of a MAT-file data type is
 reversed.  The file header has an &quot;endian indicator&quot; as the last two bytes of the 128-byte header.  The indicator comprises the two characters,
 M
@@ -142,10 +142,11 @@ MI), the program reading the MAT-file must perform byte-swapping to interpret th
 				<b>Performance vs. transparency:</b> Although widely recommended for reasons of transparency, XML-based formats are not used in practice for sharing large-scale scientific data in active communities.  Scientists and researchers need a reliable format for exchanging large datasets for use in
 computational environments for scientific data analysis.  Important factors for choosing tools are ease of use, platform independence, device-independent plotting, graphical user interface.  Important factors for choosing formats include performance for loading and analysis.  In their 2011 paper, <a href="http://cdn.intechopen.com/pdfs-wm/21947.pdf">The Impact of the Data Archiving File Format on Scientific Computing and Performance of Image Processing Algorithms in MATLAB Using Large HDF5 and XML Multimodal and Hyperspectral Data Sets</a>, Kelly Bennett and James Robertson found that the HDF5 format (a binary format with many characteristics in common with a Level 5 MAT-File)
 provided faster load and process times than
-XML formats.  In most cases, the XML file is between 2.5 and 3 times as large as the comparable HDF5 file.  Using a benchmark set of analyses, they found the execution times for the HDF5 files were
-significantly less than for the XML files on both Linux and Windows. For their data, the mean time taken for the XML files was around 60% more than for HDF5, with the main contribution to this
+XML formats.  In most cases, the XML file is between 2.5 and 3 three
+times as large as the comparable HDF5 file.  Using a benchmark set of analyses, they found the execution times for the HDF5 files were
+significantly less than for the XML files onboth Linux and Windows. For their data, the mean time taken for the XML files was around 60% more than for HDF5, with the main contribution to this
 difference being the large load time and the
-preprocessing step required to convert an ASCII (or UNICODE) XML character string to a numeric array in
+preprocessing step required to convert an ASCII XML character string to a numeric array in
 MATLAB.</p>
 		</fdd:general>
 	</fdd:notes>

@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000451" titleName="JATS, Journal Article Tag Suite, NISO Z39.96, Versions 1.x" shortName="JATS_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>text</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-bundle</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2017-03-08</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>JATS: Journal Article Tag Suite, versions 1.0 and 1.1, NISO Z39.96:2012-2015</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>document formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>ANSI/NISO Z39.96 is a specification for Standardized Markup for Journal Articles, comonly known as JATS (Journal Article Tag Suite).  JATS is based on a tag suite and DTDs developed originally by the <a href="http://www.ncbi.nlm.nih.gov/">National Center for Biotechnology Information</a> (NCBI), a division of the <a href="http://www.nlm.nih.gov/">National Library of Medicine</a> (NLM).  See <fddLink id="fdd000174">NCBIArch_1</fddLink> for information on this predecessor format, often referred to as the &quot;NLM DTD.&quot;</p>
+			<p>Since 2009, JATS has been maintained under the auspices of NISO and given the number Z39.96; see <a href="http://www.niso.org/workrooms/journalmarkup">http://www.niso.org/workrooms/journalmarkup</a>.  The JATS Tag Suite has three subsets, one aimed as an interchange format for publishers to transmit final journal content for Archiving; one intended for Publishing; and a third intended to encourage Authoring using practices that support the Publishing and Archiving stages of an article&apos;s lifecycle.  See <a href="#notes">Notes</a> below for more detail on the three variants. This description focuses on the Archiving and Interchange subset, which is the most permissive and inclusive of the three.  The Tag Library for the latest version of this subset (version 1.1 as of March 2017) can be found at <a href="http://jats.nlm.nih.gov/archiving/">https://jats.nlm.nih.gov/archiving/</a>.  As stated on that page, &quot;the intent of the Journal Archiving and Interchange Tag Set is to preserve the intellectual content of journals independent of the form in which that content was originally delivered. This Tag Set enables an archive to capture structural and semantic components of existing material without modeling any particular sequence or textual format.&quot;</p>
+			<p>An article marked up in JATS has <a href="https://jats.nlm.nih.gov/publishing/tag-library/1.1/element/article.html">&lt;article&gt;</a> as its root element.  Within this element, the following elements are permitted:</p>
+			<ul>
+				<li>&lt;front&gt; -- a mandatory element that holds: metadata for the parent journal; metadata for the article, including details for volume, issue, pages, title, contributors, copyright, publication date, keywords, etc.</li>
+				<li>&lt;body&gt; -- A non-repeatable element to hold the main textual and graphic content of the article, usually consisting of paragraphs and sections, which may themselves contain figures, tables, sidebars (boxed text), etc., all marked up in XML.  [Note: A @specific-use attribute may be applied to the &lt;body&gt; element to indicate the situation when the &lt;body&gt; does not contain the typical tagged narrative content. For example, a &lt;body&gt; could take a @specific-use attribute to indicate that the &lt;body&gt; is an untagged &apos;bag of words&apos; for indexing purposes, contains undifferentiated OCR content, or is tagged as a single paragraph which is a text dump.]</li>
+				<li>&lt;back&gt; -- an optional element that might contain a list of references, glossary, or appendices</li>
+				<li>&lt;floats-group&gt; -- an optional container element for floating objects (figures, tables, text boxes, graphics, etc.) that occur within an article but outside of the narrative flow of the article. Used by some publishers and archives to hold all such floating elements that are referenced in the article body or back matter.  [Note: The element &lt;floats-group&gt; was significantly remodeled from early versions of this Tag Set. It is backward compatible with NLM DTD version 3.0 (<fddLink id="fdd000452">NCBIArch_3</fddLink>, but not with earlier versions.]</li>
+				<li>Optionally, either:<ul>
+						<li>a sequence of &lt;response&gt; elements -- a &lt;response&gt; element holds a commentary on the article itself.</li>
+						<li>or a sequence of &lt;sub-article&gt; elements-- a &lt;sub-article&gt; element holds a small article completely contained within the main article.</li>
+					</ul>
+				</li>
+			</ul>
+			<p>According to the <a href="https://jats.nlm.nih.gov/faq.html">JATS FAQ</a>, NISO JATS version 1.0 is a fully backward-compatible revision to version 3.0 of the NCBI/NLM Tag Suite and its three article models (for Archiving, Publishing, and Authoring) [see <fddLink id="fdd000452">NCBIArch_3</fddLink>.].  Version 1.1 of the JATS Tag Suite is a fully backward-compatible revision of JATS version 1.0.  See <a href="#notes">History Notes</a> below.</p>
+			<p>The JATS DTDs are designed to hold the entire contents of a published article marked up in XML, but can also be used for recording article metadata, accompanying article content in another format, typically <fddLink id="fdd000030">PDF</fddLink>.</p>
+		</fdd:description>
+		<fdd:shortDescription>NISO standard (Z39.96) for an XML-based specification for journal articles. Based on a DTD introduced in 2003 by the National Center for Biotechnology Information (NCBI), a division of the National Library of Medicine (NLM). Intended as a common format in which authors, publishers, and archives can exchange final journal content. </fdd:shortDescription>
+		<fdd:productionPhase>The Journal Archiving and Interchange Tag Set is generally used for exchanging works in their final state. Related Publishing and Authoring DTDs (built from the same tag set, but less permissive) are intended as  initial- or middle-state formats for authors and publishers.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000452</fdd:id>
+					<fdd:shortName>NCBIArch_3</fdd:shortName>
+					<fdd:titleName>NCBI/NLM Journal Archiving and Interchange DTD, version 3.0</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000175</fdd:id>
+					<fdd:shortName>NCBIArch_2</fdd:shortName>
+					<fdd:titleName>NCBI/NLM Journal Archiving and Interchange DTD, version 2.x</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000174</fdd:id>
+					<fdd:shortName>NCBIArch_1</fdd:shortName>
+					<fdd:titleName>NCBI/NLM Journal Archiving and Interchange DTD, version 1.x</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has modified version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000453</fdd:id>
+					<fdd:shortName>BITS_2</fdd:shortName>
+					<fdd:titleName>BITS (Book Interchange Tag Suite), version 2.0</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000076</fdd:id>
+					<fdd:shortName>XML_DTD</fdd:shortName>
+					<fdd:titleName>XML Document Type Definition (DTD)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>
+			<p>In January 2010, after a period of public comment, a regulation on <a href="https://www.copyright.gov/fedreg/2010/75fr3863.pdf">Mandatory Deposit of Published
+Electronic Works Available Only
+Online</a> was published in the Federal Register.  eDeposit for eSerials began in late 2010, after the first demands for <a href="https://www.copyright.gov/mandatory/index.html">mandatory deposit</a> for serials issued only in electronic form were issued in October.  Some publishers are depositing journal content in JATS format; often using JATS headers for article metadata with article content in PDF.</p>
+		</fdd:experience>
+		<fdd:preference>
+			<p>The information related to formats that would be accepted for eDeposit was added to the edition of <a href="https://www.copyright.gov/circs/circ07b.pdf">Circular 7B: Best Edition of Published Copyrighted Works for the Collections of the Library of Congress</a> published in August 2010 and still current as of February 2017.  Circular 7B, issued prior to the publication of JATS, lists the NLM journal archiving DTD (predecessor to JATS) as first in order of preference and permits JATS under the second option.</p>
+			<p>The Library of Congress Recommended Formats Statement (RFS) for <a href="https://www.loc.gov/preservation/resources/rfs/textmus.html#electronic">Textual Works - Electronic Serials</a>, as of 2016, lists the JATS format first in order of preference.  JATS and the predecessor NLM DTDs support metadata that satisfies the article-level metadata preferences expressed in RFS.</p>
+		</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Openly documented and freely downloadable. All components of the Journal Archiving and Interchange Tag Suite are in the public domain.</fdd:disclosure>
+		<fdd:documentation>
+			<p>The ANSI/NISO Z39.96 specification is available from <a href="http://www.niso.org/workrooms/journalmarkup">http://www.niso.org/workrooms/journalmarkup</a>.  Additional, non-normative documentation, including DTDs and schemas in W3C XML Schema and RNG, is available from <a href="https://jats.nlm.nih.gov/">https://jats.nlm.nih.gov/</a>.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>The interest of NCBI/NLM in the development of a DTD for scholarly articles was to have an XML-based article format as the basis for publishers to contribute journal content to <a href="https://www.ncbi.nlm.nih.gov/pmc/about/intro/">PubMed Central (PMC)</a>. A participating journal must provide PMC the full text of articles in an XML format that conforms to an acceptable journal article DTD (Document Type Definition). According to <a href="https://www.ncbi.nlm.nih.gov/pmc/pmcdoc/tagging-guidelines/article/genprac.html">PubMed Central: General Tagging Practice</a>, PMC will accept content tagged in any version of the NLM DTD or NISO JATS 1.0, using the Publishing variant.  Since 2005, <a href="http://www.portico.org/digital-preservation/">Portico</a> has worked with publishers and libraries to preserve e-journals through its E-Journal Preservation Service and been active in the development and maintenance of JATS.  Full text articles submitted to Portico in SGML or XML are transformed into JATS, using a normalized Portico profile; both the original and the Portico-specific forms are stored in the archive.  <a href="http://www.scielo.org/php/index.php?lang=en">SciELO</a> is a network operating since 1998 indexing and distributing open access journals online, initially from Brazil and now from 15 South American countries and South Africa.  In April 2014, SciELO <a href="http://blog.scielo.org/en/2014/04/04/why-xml/">announced</a> that it would be switching from using its own SGML DTD for Journals and Articles to an XML DTD based on JATS.  Another customized version of JATS is <a href="http://www.iso.org/schema/isosts/">ISO Standards Tag Set (ISOSTS)</a>, used by ISO for preparing many of its standards for publication.</p>
+			<p>Many national archives and institutional repositories include XML as a preferred format or in a list of formats for which there is a high confidence in ability to preserve and provide access when a schema is available, the character encoding is explicitly stated and an XSLT stylesheet for conversion to HTML exists.  JATS satisfies these requirements.  Examples: <a href="https://deepblue.lib.umich.edu/static/about/deepbluepreservation.html">Deep Blue Preservation and Format Support Policy</a> from the University of Michigan; <a href="http://www.arkivverket.no/eng/Public-Sector/Regulations/Transfer-of-electronic-records">National Archives of Norway</a>; and the <a href="https://libraries.flvc.org/documents/181844/502298/Recommended+Data+Formats/">Florida Digital Archive</a>.</p>
+			<p>A number of software tools exist for working with JATS, many free and open-source.  The Wikipedia entry for <a href="https://en.wikipedia.org/wiki/Journal_Article_Tag_Suite#Tools">Journal Article Tag Suite</a> and <a href="http://jatswiki.org/wiki/Tools">JATSwiki | Tools</a> list a variety of tools available for working with JATS files.  Included are tools for converting to JATS from various word-processing or editing environments and tools for converting JATS files to distribution formats (e.g. HTML, <fddLink id="fdd000308">EPUB</fddLink>, <fddLink id="fdd000030">PDF</fddLink>).  Examples include: <a href="http://www.inera.com/extyles-products/extyles-nlm">eXtyles NLM</a>, a commercial plugin for Microsoft Word to support preparation and export of articles in JATS format; <a href="https://github.com/wendellpiez/JATSKit">JATSkit</a>, a framework for use with the oXygen XML editor; <a href="https://github.com/mfenner/pandoc-jats">custom JATS writer for Pandoc</a>, an open source document conversion library; <a href="https://github.com/ncbi/JATSPreviewStylesheets">JATS Preview Stylesheets</a>; and NLM&apos;s <a href="https://www.ncbi.nlm.nih.gov/pmc/about/pubreader/">PubReader</a>, used in PubMed Central and also available as open source at <a href="http://github.com/NCBITools/PubReader">github/NCBITools/PubReader</a>.</p>
+			<p>Guidelines for practices that will facilitate interoperability and re-use have been developed, including <a href="https://www.ncbi.nlm.nih.gov/pmc/pmcdoc/tagging-guidelines/article/style.html">PubMed Central Tagging Guidelines</a> and <a href="http://jats4r.org/">JATS For Reuse</a>.  Both these resources provide examples and tools for checking against the guidelines.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No licensing or patent issues. The tag sets are in the public domain.</fdd:licensingAndPatents>
+		<fdd:transparency>Rates highly for transparency. Text content for articles is in XML, and hence viewable in basic editors, web browsers, etc.
+		Elements have understandable tag-names, and document instances are in natural reading order.</fdd:transparency>
+		<fdd:selfDocumentation>The DTD includes a rich set of elements for metadata at the article and journal level.  The &lt;article&gt; element is expected to include the article content and full descriptive metadata.</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			None.
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			None.  
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:textQF>
+			<fdd:normalText>Good support.</fdd:normalText>
+			<fdd:structure>The logical structure of a document is an essential feature of  JATS DTDs.</fdd:structure>
+			<fdd:layout>The intent is to &#8220;preserve the intellectual content of journals independent of the form in which that content was originally delivered&#8221;. </fdd:layout>
+			<fdd:mathDiag>MathML and TeX math can be embedded.  Integrity of rendering may be constrained by the capabilities of MathML and rendering tools.  Various ways to represent chemical structures can be used.</fdd:mathDiag>
+			<fdd:beyondText/>
+		</fdd:textQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>xml</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For textual content files. </fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>As for many XML-based formats, there is no guaranteed magic number or other internal signature to identify the format automatically.  See discussion in <a href="#notes">Notes</a> below.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>JATS subset variants</b>:  The Journal Article Tag Suite currently has three standard subsets to support different stages in the lifecycle of an article.  For convenience, the variants have informally been assigned colors, which are used in display themes for documentation.</p>
+			<ul>
+				<li>Journal Archiving and Interchange (green) is the most permissive of the Tag Sets. The Archiving and Interchange Tag Set defines elements and attributes that describe the content and metadata of journal articles, including research and non-research articles, letters, editorials, and book and product reviews. The Tag Set allows for descriptions of the full article content or just the article header metadata. It also allows for preservation of the sequence of content and generated text.  See <a href="https://jats.nlm.nih.gov/archiving/">https://jats.nlm.nih.gov/archiving/</a>.  The focus of this description is on this variant.</li>
+				<li>The Journal Publishing Tag Set (blue) is a moderately prescriptive set, optimized for the archives who wish to regularize and control their content, rather than accept the sequence and arrangement presented to them by any particular publisher. The Journal Publishing Tag Set is also intended for use by publishers for the initial XML tagging of journal material, usually as converted from an authoring form like Microsoft Word.  See <a href="https://jats.nlm.nih.gov/publishing/">https://jats.nlm.nih.gov/publishing/</a>.  In many cases, this variant will also be appropriate for archiving.</li>
+				<li>Article Authoring (pumpkin) is the most prescriptive of the Tag Sets. The Article Authoring Tag Set is optimized for authorship of new journal articles, where regularization and control of content is important, and where it is useful rather than harmful to have only one way to tag a structure. This Tag Set is more prescriptive than descriptive and includes many elements whose content must occur in a specified order.  Because it is for use before acceptance, this tag set does not incorporate journal metadata.  See <a href="https://jats.nlm.nih.gov/articleauthoring/">https://jats.nlm.nih.gov/articleauthoring/</a>.</li>
+			</ul>
+			<p>The table in <a href="http://jats.niso.org/1.1/Suite/tag-suite-components.html">ANSI/NISO Z39.96, Clause 7: Tag Suite Components</a> identifies which elements and attributes are permitted in each of the three variants.</p>
+			<p>
+				<b>Identifying JATS version and variant used in an article file</b>:  Although it will usually be obvious when looking at the beginning of a file conforming to this family of DTDs that it uses a particular chronological version of the tag suite and article model variant derived from the suite, there is no guaranteed magic number or other signature to identify the format automatically.  If the file was generated using the DTD (rather than the W3C XML Schema), it is likely to have the following string or something similar near the beginning of the file:</p>
+			<ul>
+				<li>&lt;!DOCTYPE article
+PUBLIC &quot;-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD v1.1 20151215//EN&quot;</li>
+			</ul>
+			<p>According to <a href="https://www.ncbi.nlm.nih.gov/pmc/pub/filespec-xml/">PubMed Central: Minimum XML Requirements</a>, PubMed Central validates submitted journal content data based on this PUBLIC ID in the DOCTYPE declaration in each source file.  However, in <a href="https://www.ncbi.nlm.nih.gov/pmc/pmcdoc/tagging-guidelines/article/genprac.html">PubMed Central: General Tagging Practice</a>, &quot;we strongly prefer the DOCTYPE declaration for associating DTDs and the @schemaLocation or @noNamespaceSchemaLocation attributes for W3C XML Schema association, but we will accept the &lt;?xml-model?&gt; processing instruction for DTD, W3C Schema, RELAX NG, and RELAX NG compact syntax,&quot; and provides rules for encoding such processing instructions.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>On April 19, 2006, the Library of Congress and the British Library jointly announced support and advocacy for the NLM Archival DTD, the predecessor of JATS.  To quote from the <a href="http://www.loc.gov/today/pr/2006/06-097.html">press release</a> the two institutions "will work with the National Library of Medicine to ensure the open and transparent evolution of the NLM DTD standard by encouraging early adoption by an internationally recognized standards body." Version 3 of the NLM DTD, published in November 2008, was developed with formal standardization in view. The idea was to make the Tag Sets as logical, internally consistent, and complete as possible going forward.</p>
+			<p>The transition to standardization through NISO as &quot;Standardized Markup for Journal Articles&quot; took some months, with the newly constituted NISO Working Group starting work in late 2009. The original plan had been to submit version 3.0 as a draft standard to NISO, but comments received on version 3.0 in the interim led the group to choose to update the Tag Suite and the three article models. It was decided that the Journal Article Tag Suite under NISO should start with a new numbering scheme as well as adopting the JATS acronym more formally. After release as a Draft Standard for Trial Use in March 2011, NISO Z39.96  (JATS) version 1.0 was published in 2012. According to the <a href="https://jats.nlm.nih.gov/archiving/tag-library/1.0/n-zad2.html">Version 1.0 Change Report</a>, changes between NLM version 3.0 and JATS version 1.0 included: (a) addition of a &lt;contrib-id&gt; to hold identifiers such as an <a href="http://support.orcid.org/knowledgebase/articles/116780-structure-of-the-orcid-identifier">ORCID</a> iD; (b) an element &lt;issn-l&gt; to hold a linking ISSN (ISSN-L) that connects ISSNs for a publication available on several media; more formal integration of the two commonly used models for tables, NISO JATS (XHTML-inspired) Tables and OASIS (CALS) Tables; and many other small or more technical enhancements.  These changes were all backward-compatible with version 3.0 of the NLM DTD, described at <fddLink id="fdd000452">NCBIArch_3</fddLink>.</p>
+			<p>JATS is maintained in a continuous fashion with the expectation of scheduled formal updates to the standard.  Following the initial publication of JATS version 1.0 in 2012, three Committee Drafts (1.1d1, 1.1d2, 1.1d3) were released for use prior to the formal 2015 update as JATS version 1.1.  JATS 1.1 added optional elements and attributes based on (a) user requests between August 2012 and 2015; (b) support for metadata requirements associated with industry initiatives (<a href="https://www.crossref.org/">CrossRef</a>, <a href="http://www.niso.org/workrooms/ali/">NISO Open Access Data, Access and License Indicators</a>, and <a href="https://www.force11.org/group/joint-declaration-data-citation-principles-final">Force11 Data Citation Principles</a>); (c) improved internationalization; (d) a new element &lt;code&gt; specifically for snippets of program code; and (e) sub-elements for an address.  Other new features were the option to embed MathML 3.0 or MathML 2.0 (but not both in the same article) and to add abstracts and keywords to figures, graphics, etc.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The public page for the NISO Standing Committee that maintains the ANSI/NISO Z39.96 standard, for the Journal Article Tag Suite (JATS)
+provides access to the normative documents for the standard. </fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.niso.org/workrooms/journalmarkup</link>
+							<tag>Standardized Markup for Journal Articles: Journal Article Tag Suite (JATS)</tag>
+							<comment>Provides current information about the JATS standard including links to the official standard in PDF and HTML formats.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.niso.org/apps/group_public/download.php/15933/z39_96-2015.pdf</link>
+							<tag>PDF of JATS: Journal Article Tag Suite, version 1.1 (ANSI/NISO Z39.96-2015)</tag>
+							<comment>November 2015</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://jats.niso.org/1.1/</link>
+							<tag>HTML view of JATS: Journal Article Tag Suite, version 1.1 (ANSI/NISO Z39.96-2015)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.niso.org/apps/group_public/download.php/10904/z39.96-2012.pdf</link>
+							<tag>PDF of JATS: Journal Article Tag Suite, version 1.0 (ANSI/NISO Z39.96-2012)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://jats.niso.org/1.0/</link>
+							<tag>HTML view of JATS: Journal Article Tag Suite, version 1.0 (ANSI/NISO Z39.96-2012)</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Schemas and DTDs in various languages and other non-normative documentation are provided via the
+JATS
+Journal Article Tag Suite
+pages hosted by NCBI/NLM/NIH.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://jats.nlm.nih.gov/</link>
+							<tag>Home page for NLM information about the JATS formats</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://jats.nlm.nih.gov/archiving/tag-library/</link>
+							<tag>Latest version of the Archiving variant derived from the JATS Tag Suite</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://jats.nlm.nih.gov/versions.html</link>
+							<tag>
+Journal Article Tag Suite
+| Versions</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://jats.nlm.nih.gov/archiving/versions.html</link>
+							<tag>Journal Archiving and Interchange Tag Set</tag>
+							<comment>Provides access to HTML views of interactive tag libraries for all chronological versions of the Archiving variant derived from the JATS Tag Suite</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://jats.nlm.nih.gov/publishing/tag-library/</link>
+							<tag>Latest version of the Publishing variant derived from the JATS Tag Suite</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://jats.nlm.nih.gov/publishing/versions.html</link>
+							<tag>Journal Publishing Tag Set</tag>
+							<comment>Provides access to HTML views of interactive tag libraries for all chronological versions of the Publishing variant derived from the JATS Tag Suite</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link> ftp://ftp.ncbi.nlm.nih.gov/pub/jats/</link>
+							<tag>FTP source for downloading JATS schemas</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://dx.doi.org/10.3998/3336451.0014.106</link>
+					<tag>&quot;NISO Z39.96, The Journal Article Tag Suite (JATS): What Happened to the NLM DTDs?&quot;</tag>
+					<comment>By Jeff Beck.  Journal of Electronic Publishing, Volume 14, Issue 1, Summer 2011.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://jats.nlm.nih.gov/about.html</link>
+					<tag>JATS and the NLM DTDs</tag>
+					<comment>History and current status of JATS.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://jats.nlm.nih.gov/faq.html</link>
+					<tag>Journal Article Tag Suite | Frequently Asked Questions</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://jats.nlm.nih.gov/archiving/tag-library/1.1/element/article.html</link>
+					<tag>Tag Library entry for &lt;article&gt; element</tag>
+					<comment>Includes summary of top-level elements in a marked up article.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://jats.nlm.nih.gov/archiving/tag-library/1.0/n-zad2.html</link>
+					<tag>Version 1.0 Change Report | changes from NLM DTD, version 3.0</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.mulberrytech.com/JATS/JATS-changes-for-1-1.pdf</link>
+					<tag>What’s New in JATS since 1.0? (April 2015)</tag>
+					<comment>Mulberry Technologies, Inc., </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://jatswiki.org/wiki/Main_Page</link>
+					<tag>Journal Article Tag Suite (JATS) Wiki</tag>
+					<comment>Provides useful information and links but does not appear to be actively maintained.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://jatswiki.org/wiki/Tools#JATS_Preview_Stylesheets</link>
+					<tag>JATS Preview Stylesheets</tag>
+					<comment>The JATS Preview Stylesheets are a series of .xsl, .xpl, .css, and .sch files that will create .html or .pdf versions of valid NISO Z39.96-2012 JATS 1.0 files.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>PubMed Central provides extensive guidance for publishers submitting articles, including JATS tagging guidelines and filenaming requirements.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.ncbi.nlm.nih.gov/pmc/pmcdoc/tagging-guidelines/article/style.html</link>
+							<tag>PubMed Central (PMC) Tagging Guidelines</tag>
+							<comment>Includes examples of articles in JATS 1.0 markup following PMC style.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.ncbi.nlm.nih.gov/pmc/pmcdoc/tagging-guidelines/article/genprac.html</link>
+							<tag>PubMed Central (PMC) | General Tagging Practice</tag>
+							<comment>As of March 2017, this page states, &quot;PMC will accept content tagged in any version of the NLM DTD or NISO JATS 1.0&quot; and indicates a number of ways in which the particular DTD or schema in use may be encoded in the article file.  </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.ncbi.nlm.nih.gov/pmc/pub/filespec-delivery/</link>
+							<tag>Article and Package Naming Delivery Specifications</tag>
+							<comment>Includes the requirement that the XML and PDF versions of the same article have identical names apart from the file extension.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.ncbi.nlm.nih.gov/books/NBK189779/</link>
+					<tag>Formatting JATS: as easy as 1-2-3 | by Tony Graham, 2013</tag>
+					<comment>From Journal Article Tag Suite Conference (JATS-Con) Proceedings 2013/2014.  About XSLT stylesheets for displaying articles marked up in JATS.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://blog.martinfenner.org/2013/12/12/from-markdown-to-jats-xml-in-one-step/</link>
+					<tag>From Markdown to JATS XML in One Step | blog post by Martin Fenner, December 12, 2013</tag>
+					<comment>Markdown is a popular plain text syntax for writing for the web, based on formatting conventions from email and Usenet.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>commonmark.org</link>
+					<tag>CommonMark: A strongly defined, highly compatible specification of Markdown.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.inera.com/workflows/case-studies</link>
+					<tag>Inera | Workflows and Solutions: Case Studies</tag>
+					<comment>Has links to case studies for use of JATS for ISO standards and in publishing workflows.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Journal_Article_Tag_Suite</link>
+					<tag>Wikipedia entry for Journal Article Tag Suite</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.copyright.gov/fedreg/2010/75fr3863.pdf</link>
+					<tag>Copyright Office, 37 CFR Part 202, Mandatory Deposit of Published
+Electronic Works Available Only
+Online</tag>
+					<comment>Federal Register /Vol. 75, No. 15 /Monday, January 25, 2010 /Rules and Regulations 3863</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.copyright.gov/circs/circ07b.pdf</link>
+					<tag>Best Edition of Published
+Copyrighted Works for the
+Collections of the Library
+of Congress</tag>
+					<comment>As of February 2017, the latest edition is marked as reviewed in September 2012.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
