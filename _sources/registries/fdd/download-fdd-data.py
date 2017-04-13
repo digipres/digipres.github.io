@@ -4,7 +4,7 @@ import urllib
 import os
 
 # Download TRiD XML sigs:
-url = "http://www.digitalpreservation.gov/formats/fddXML.zip"
+url = "http://www.loc.gov/preservation/digital/formats/fddXML.zip"
 urllib.urlretrieve(url,"fddXML.zip")
 
 # Unpack them:
