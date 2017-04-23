@@ -8,7 +8,6 @@ url = "https://www.loc.gov/preservation/digital/formats/fddXML.zip"
 urllib.urlretrieve(url,"fddXML.zip")
 print("Downloaded %s" % url )
 print(os.system("ls -l fddXML.zip"))
-print(os.system("head fddXML.zip"))
 
 # Unpack them:
 command = "unzip -o fddXML.zip"
