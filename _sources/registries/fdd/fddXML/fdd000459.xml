@@ -12,14 +12,14 @@
 		<fdd:updates>
 			<fdd:date>2017-03-28</fdd:date>
 		</fdd:updates>
-		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
 	<fdd:identificationAndDescription>
 		<fdd:fullName>RAR Archive File Format, Version 3</fdd:fullName>
 		<fdd:description>
 			<p>
-				<b>R</b>oshal <b>AR</b>chive format version 3 (RAR3) is said to be built off RAR1.5 but there is no publicly available information for RAR1.5 to compare it to. Comments welcome. See <fddLink id="fdd000450">RAR_Family</fddLink> for details on the file structure. </p>
-			<p>A key feature of RAR3 is the switch from proprietary, closed compression algorithms to PPMII and Lempel-Ziv (LZSS)] algorithms. Wikipedia states that "encryption now uses cipher block chaining (CBC) instead of Advanced Encryption Standard (AES)" but docuemntation from WinRAR declares AES for RAR4 and RAR5.</p>
+				<b>R</b>oshal <b>AR</b>chive format version 3 (RAR3) is said to be built off RAR1.5 but there is no publicly available information for RAR1.5 to compare it to. <a href="http://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>. Structurally, <a href="http://80.26.97.21/ele/gs/Utilidades/WinRAR/TechNote.txt">RAR3</a> is comprised of a marker block, archive header and file header(s). These can be augmented as needed with optional comment headers, extra information blocks and subblocks. RAR3 declares a new block type, authenticity information, that was not present in <fddLink id="fdd000457">RAR2</fddLink>. See <fddLink id="fdd000450">RAR_Family</fddLink> for details on the file structure. </p>
+			<p>A key feature of RAR3 is the switch from proprietary and not open compression algorithms to PPMII and Lempel-Ziv (LZSS) algorithms. <a href="https://en.wikipedia.org/wiki/RAR_(file_format)">Wikipedia</a> states that "encryption now uses cipher block chaining (CBC) instead of Advanced Encryption Standard (AES)" but documentation from WinRAR declares AES for RAR4 and RAR5.</p>
 		</fdd:description>
 		<fdd:shortDescription>
 		</fdd:shortDescription>
@@ -34,6 +34,22 @@
 					<fdd:titleName>RAR Archive File Format Family</fdd:titleName>
 				</fdd:relatedTo>
 			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000457</fdd:id>
+					<fdd:shortName>RAR2</fdd:shortName>
+					<fdd:titleName>RAR Archive File Format, Version 2</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has later version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000458</fdd:id>
+					<fdd:shortName>RAR4</fdd:shortName>
+					<fdd:titleName>RAR Archive File Format, Version 4</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
@@ -43,7 +59,8 @@
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>See <fddLink id="fdd000450">RAR_Family</fddLink>
 		</fdd:disclosure>
-		<fdd:documentation>See <fddLink id="fdd000450">RAR_Family</fddLink>.</fdd:documentation>
+		<fdd:documentation>See <fddLink id="fdd000450">RAR_Family</fddLink>
+		</fdd:documentation>
 		<fdd:adoption>See <fddLink id="fdd000450">RAR_Family</fddLink>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>See <fddLink id="fdd000450">RAR_Family</fddLink>
@@ -78,14 +95,17 @@
 				<fdd:note>See <fddLink id="fdd000450">RAR_Family</fddLink>
 				</fdd:note>
 			</fdd:internetMediaType>
-			<fdd:magicNumbers>
-				<fdd:sigValues>
-					<fdd:sigValue>Hex: 52 61 72 21 1A 07 00</fdd:sigValue>
-					<fdd:sigValue>ASCII: Rar!</fdd:sigValue>
-				</fdd:sigValues>
-				<fdd:note>
-					<a href="https://en.wikipedia.org/wiki/RAR_(file_format)">Wikipedia</a> states that this magic number is applicable for RAR1.5 - RAR4 although <a href="http://www.garykessler.net/library/file_sigs.html">Gary Kessler&apos;s File Signature Table</a> and <a href="http://www.rarlab.com/technote.htm#filehead">RAR 5.0 archive format tech note</a> only specifically list this magic number for RAR4, not earlier versions.</fdd:note>
-			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>File signature</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Hex: 52 61 72 21 1A 07 00</fdd:sigValue>
+						<fdd:sigValue>ASCII: Rar!</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>
+						<a href="https://en.wikipedia.org/wiki/RAR_(file_format)">Wikipedia</a> states that this magic number is applicable for RAR1.5 - RAR4 although <a href="http://www.garykessler.net/library/file_sigs.html">Gary Kessler&apos;s File Signature Table</a> and <a href="http://www.rarlab.com/technote.htm#rarsign">RAR 5.0 archive format tech note</a> only specifically list this magic number for RAR4, not earlier versions. <a href="http://acritum.com/winrar/rar-format">Acritum Software's</a> description of RAR version 3.93 (not described at this site) lists this value for all versions since RAR1.5.</fdd:note>
+				</fdd:values>
+			</fdd:other>
 			<fdd:other>
 				<fdd:tag>Pronom PUID</fdd:tag>
 				<fdd:values>
@@ -108,6 +128,12 @@
 	</fdd:notes>
 	<fdd:formatSpecifications>
 		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://80.26.97.21/ele/gs/Utilidades/WinRAR/TechNote.txt</link>
+					<tag>RAR version 3.00 - Technical information</tag>
+				</fdd:urlReference>
+			</fdd:url>
 			<fdd:url>
 				<fdd:urlGroup>
 					<fdd:intro>See <fddLink id="fdd000450">RAR_Family</fddLink>

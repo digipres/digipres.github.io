@@ -18,7 +18,7 @@
 		<fdd:fullName>RAR Archive File Format, Version 4</fdd:fullName>
 		<fdd:description>
 			<p>
-				<b>R</b>oshal <b>AR</b>chive format version 4 (RAR4) is sometimes also refered to as version 2.9. PRONOM fmt/411 uses the title version 2.9 but WinRAR 5.0 and RAR for Android refer to this format as RAR4.  <a href="http://www.ghacks.net/2013/04/29/winrar-5-0-introduces-the-new-rar-5-format-what-you-need-to-know/">released</a> in April 2013 and is supported by WinRAR 5.0 and later.  See <fddLink id="fdd000450">RAR_Family</fddLink> for details on the file structure. </p>
+				<b>R</b>oshal <b>AR</b>chive format version 4 (RAR4) is sometimes also referred to as version 2.9. <a href="http://apps.nationalarchives.gov.uk/pronom/fmt/411">PRONOM fmt/411</a> uses the title version 2.9 but <a href="http://www.rarlab.com/download.htm">WinRAR 5.0 and RAR for Android</a> refer to this format as RAR4. See <fddLink id="fdd000450">RAR_Family</fddLink> for details on the file structure.</p>
 			<p>Some of the key features of RAR4 include</p>
 			<ul>
 				<li>Default size of the RAR compression dictionary is 32MB</li>
@@ -40,6 +40,22 @@
 					<fdd:id>fdd000450</fdd:id>
 					<fdd:shortName>RAR_Family</fdd:shortName>
 					<fdd:titleName>RAR Archive File Format Family</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000459</fdd:id>
+					<fdd:shortName>RAR3</fdd:shortName>
+					<fdd:titleName>RAR Archive File Format, Version 3</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has later version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000460</fdd:id>
+					<fdd:shortName>RAR5</fdd:shortName>
+					<fdd:titleName>RAR Archive File Format, Version 5</fdd:titleName>
 				</fdd:relatedTo>
 			</fdd:relationship>
 		</fdd:relationships>
@@ -86,20 +102,24 @@
 				<fdd:note>See <fddLink id="fdd000450">RAR_Family</fddLink>
 				</fdd:note>
 			</fdd:internetMediaType>
-			<fdd:magicNumbers>
-				<fdd:sigValues>
-					<fdd:sigValue>Hex: 52 61 72 21 1A 07 00</fdd:sigValue>
-					<fdd:sigValue>ASCII: Rar!</fdd:sigValue>
-				</fdd:sigValues>
-				<fdd:note>From <a href="http://www.garykessler.net/library/file_sigs.html">Gary Kessler&apos;s File Signature Table</a> and <a href="http://www.rarlab.com/technote.htm#filehead">RAR 5.0 archive format tech note</a>.</fdd:note>
-			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>File signature</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Hex: 52 61 72 21 1A 07 00</fdd:sigValue>
+						<fdd:sigValue>ASCII: Rar!</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>
+						<a href="https://en.wikipedia.org/wiki/RAR_(file_format)">Wikipedia</a> states that this magic number is applicable for RAR1.5 - RAR4 although <a href="http://www.garykessler.net/library/file_sigs.html">Gary Kessler&apos;s File Signature Table</a> and <a href="http://www.rarlab.com/technote.htm#rarsign">RAR 5.0 archive format tech note</a> only specifically list this magic number for RAR4, not earlier versions. <a href="http://acritum.com/winrar/rar-format">Acritum Software's</a> description of RAR version 3.93 (not described at this site) lists this value for all versions since RAR1.5.</fdd:note>
+				</fdd:values>
+			</fdd:other>
 			<fdd:other>
 				<fdd:tag>Pronom PUID</fdd:tag>
 				<fdd:values>
 					<fdd:sigValues>
 						<fdd:sigValue>fmt/411</fdd:sigValue>
 					</fdd:sigValues>
-					<fdd:note>For RAR4 but labelled as RAR version 2.9. See <a href="http://www.nationalarchives.gov.uk/PRONOM/-fmt/411">http://www.nationalarchives.gov.uk/PRONOM/fmt/411</a>
+					<fdd:note>PRONOM labels this as RAR version 2.9 but other documentation including WinRAR 5.0 and RAR for Android refer to this version as RAR4. See <a href="http://www.nationalarchives.gov.uk/PRONOM/-fmt/411">http://www.nationalarchives.gov.uk/PRONOM/fmt/411</a>
 					</fdd:note>
 				</fdd:values>
 			</fdd:other>
@@ -118,6 +138,12 @@
 	</fdd:notes>
 	<fdd:formatSpecifications>
 		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.forensicswiki.org/w/images/5/5b/RARFileStructure.txt</link>
+					<tag>RAR version 4.11 - Technical information</tag>
+				</fdd:urlReference>
+			</fdd:url>
 			<fdd:url>
 				<fdd:urlGroup>
 					<fdd:intro>See <fddLink id="fdd000450">RAR_Family</fddLink>
@@ -138,7 +164,7 @@
 				<fdd:urlReference>
 					<link>http://apps.nationalarchives.gov.uk/pronom/fmt/411</link>
 					<tag>PRONOM entry for fmt/411</tag>
-					<comment>Information in PRONOM from UK National Archives about RAR4 (labelled as version 2.9). PUID: fmt/411.</comment>
+					<comment>Information in PRONOM from UK National Archives about RAR4 (labeled as version 2.9). PUID: fmt/411.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
