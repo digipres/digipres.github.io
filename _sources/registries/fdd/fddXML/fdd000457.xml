@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000459" titleName="RAR Archive File Format, Version 2" shortName="RAR2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000457" titleName="RAR Archive File Format, Version 2" shortName="RAR2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>aggregate</fdd:gdfrGenre>
@@ -18,7 +18,8 @@
 		<fdd:fullName>RAR Archive File Format, Version 2</fdd:fullName>
 		<fdd:description>
 			<p>
-				<b>R</b>oshal <b>AR</b>chive format version 2 (RAR2) is said to be built off RAR1.5 but there is no publicly available information for RAR1.5 to compare it to. Comments welcome. See <fddLink id="fdd000450">RAR_Family</fddLink> for details on the file structure. </p>
+				<b>R</b>oshal <b>AR</b>chive format version 2 (RAR2) is said to be built off RAR1.5 but there is no publicly available information for RAR1.5 to compare it to. <a href="http://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>. Structurally, <a href="http://libxad.cvs.sourceforge.net/viewvc/libxad/support/formats/RAR202.txt">RAR2</a> is comprised of a 
+marker block, archive header, file header(s) and recovery information. These can be augmented as needed with optional comment headers, extra information blocks and subblocks. See <fddLink id="fdd000450">RAR_Family</fddLink> for additional details on the file structure. </p>
 			<p>RAR2 is compatible with WinRAR 2.0 and Rar for MS-DOS 2.0. The now-defunct unrarLib tool only works with RAR files up to version 2.</p>
 			<p>RAR2 added functionality for multimedia compression for true color bitmap images and uncompressed audio and introduced the archives data recovery protection record. Maximum compression dictionary size is increased up to 1 MB. Later versions increased this dramatically with <fddLink id="fdd000460">RAR5</fddLink> bringing the size up to 1 GB.</p>
 		</fdd:description>
@@ -35,6 +36,14 @@
 					<fdd:titleName>RAR Archive File Format Family</fdd:titleName>
 				</fdd:relatedTo>
 			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has later version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000459</fdd:id>
+					<fdd:shortName>RAR3</fdd:shortName>
+					<fdd:titleName>RAR Archive File Format, Version 3</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
@@ -44,7 +53,8 @@
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>See <fddLink id="fdd000450">RAR_Family</fddLink>
 		</fdd:disclosure>
-		<fdd:documentation>See <fddLink id="fdd000450">RAR_Family</fddLink>.</fdd:documentation>
+		<fdd:documentation>See <fddLink id="fdd000450">RAR_Family</fddLink>
+		</fdd:documentation>
 		<fdd:adoption>See <fddLink id="fdd000450">RAR_Family</fddLink>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>See <fddLink id="fdd000450">RAR_Family</fddLink>
@@ -79,19 +89,25 @@
 				<fdd:note>See <fddLink id="fdd000450">RAR_Family</fddLink>
 				</fdd:note>
 			</fdd:internetMediaType>
-			<fdd:magicNumbers>
-				<fdd:sigValues>
-					<fdd:sigValue>Hex: 52 61 72 21 1A 07 00</fdd:sigValue>
-					<fdd:sigValue>ASCII: Rar!</fdd:sigValue>
-				</fdd:sigValues>
-				<fdd:note>
-					<a href="https://en.wikipedia.org/wiki/RAR_(file_format)">Wikipedia</a> states that this magic number is applicable for RAR1.5 - RAR4 although <a href="http://www.garykessler.net/library/file_sigs.html">Gary Kessler&apos;s File Signature Table</a> and <a href="http://www.rarlab.com/technote.htm#filehead">RAR 5.0 archive format tech note</a> only specifically list this magic number for RAR4, not earlier versions.</fdd:note>
-			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>File signature</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Hex: 52 61 72 21 1A 07 00</fdd:sigValue>
+						<fdd:sigValue>ASCII: Rar!</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>
+						<a href="https://en.wikipedia.org/wiki/RAR_(file_format)">Wikipedia</a> states that this magic number is applicable for RAR1.5 - RAR4 although <a href="http://www.garykessler.net/library/file_sigs.html">Gary Kessler&apos;s File Signature Table</a> and <a href="http://www.rarlab.com/technote.htm#rarsign">RAR 5.0 archive format tech note</a> only specifically list this magic number for RAR4, not earlier versions. <a href="http://acritum.com/winrar/rar-format">Acritum Software's</a> description of RAR version 3.93 (not described at this site) lists this value for all versions since RAR1.5.</fdd:note>
+				</fdd:values>
+			</fdd:other>
 			<fdd:other>
 				<fdd:tag>Pronom PUID</fdd:tag>
 				<fdd:values>
-					<fdd:sigValueNA>See note.</fdd:sigValueNA>
-					<fdd:note>No PUID as of March 2017.</fdd:note>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/264</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/264">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/264</a> for RAR2
+					</fdd:note>
 				</fdd:values>
 			</fdd:other>
 			<fdd:other>
@@ -110,6 +126,12 @@
 	<fdd:formatSpecifications>
 		<fdd:urls>
 			<fdd:url>
+				<fdd:urlReference>
+					<link>http://libxad.cvs.sourceforge.net/viewvc/libxad/support/formats/RAR202.txt</link>
+					<tag>RAR version 2.02 - Technical information</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
 				<fdd:urlGroup>
 					<fdd:intro>See <fddLink id="fdd000450">RAR_Family</fddLink>
 					</fdd:intro>
@@ -124,6 +146,13 @@
 					<fdd:intro>See <fddLink id="fdd000450">RAR_Family</fddLink>
 					</fdd:intro>
 				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://apps.nationalarchives.gov.uk/pronom/x-fmt/264</link>
+					<tag>PRONOM entry for x-fmt/264</tag>
+					<comment>Information in PRONOM from UK National Archives about RAR2. PUID: x-fmt/264.</comment>
+				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
 	</fdd:usefulReferences>
