@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000466" titleName="SAS Version 5 Transport File Format (XPORT)" shortName="SAS_xport_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>family</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2017-05-12</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>SAS Transport File Format (XPORT) Version 5</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>statistics software formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The SAS Transport File Format is an openly documented specification maintained by <a href="https://www.sas.com/en_us/company-information.html#history">SAS</a>, a commercial company with a variety of software products for statistics and business analytics, including the application now known as SAS/STAT, which originated in the late 1960s as SAS (an acronym for Statistical Analysis System) at North Carolina State University.  The transport format was originally developed in the late 1980s when the corporate entity was known as <a href="https://en.wikipedia.org/wiki/SAS_Institute">SAS Institute, Inc.</a> and the software as SAS, to support data transfers between statistical software systems, especially between SAS applications running on different operating systems.  SAS considers it non-proprietary. This description is for the original version, now termed Version 5, which was introduced in the late 1980s. This format is referred to in several ways, including XPORT and XPT.  In this description, &quot;SAS_xport_5&quot; will be used.  <fddLink id="fdd000467">Version 8</fddLink> was introduced in October 2012.  See <a href="http://support.sas.com/kb/46/944.html">Usage Note 46944: New SAS transport format and tools available</a>.  References on the Web to the SAS transport format without qualification as to version should probably be assumed to refer to Version 5.</p>
+			<p>See <fddLink id="fdd000464">SAS_xport_family</fddLink> for a summary of the structure that is common to both versions of the format.</p>
+			<p>SAS_xport_5 is subject to certain restrictions.  The list below is adapted from Appendix A1 in the Stata manual section entitled <a href="http://www.stata.com/manuals14/dimportsasxport.pdf">Import and export datasets in SAS XPORT format</a>:</p>
+			<ul>
+				<li>The dataset may contain only 9,999 variables. This is constrained by a limit of 4 decimal digits in the NAMESTR header.</li>
+				<li>The names of the variables and value labels may not be longer than eight characters and
+are case insensitive; for example,
+myvar,
+Myvar,
+MyVar, and
+MYVAR
+are equivalent.</li>
+				<li>Variable labels may not be longer than 40 characters.</li>
+				<li>The contents of a variable may be numeric or string:<ul>
+						<li>Numeric variables may be integer or floating point. Floating point variables may not have absolute values smaller than 5.398e–79 or greater than 9.046e+74.  The range and precision are controlled by the IBM Double Precision (8-byte) numeric format.  For more on how numeric formats are stored, see <a href="http://support.sas.com/documentation/cdl/en/lrcon/65287/HTML/default/viewer.htm#p0ji1unv6thm0dn1gp4t01a1u0g6.htm">Numeric Precision in SAS Software</a>
+						</li>
+						<li>String variable values may not exceed 200 characters.  String variables are padded with blank/space characters to the fixed length declared in the descriptor for the variable. Hence, when variables are read, it cannot be determined
+whether the original variable value had trailing blanks.</li>
+						<li>When data is missing, a missing data value is stored in the first byte of the data location for the variable. The variable value is padded with Hex 0x00 bytes to the declared length for the variable.</li>
+					</ul>
+				</li>
+				<li>Value labels are
+not
+written in the
+XPORT
+dataset.  Suppose that you have a variable
+<i>sex</i>
+in
+the data with values 0 and 1, and the values are labeled for <i>gender</i> (0=male, and 1=female).
+When the dataset is written in
+SAS XPORT
+Transport format, you can record that the variable
+label
+<i>gender</i>
+is associated with the
+<i>sex</i>
+variable, but you cannot record the association with
+the value labels <i>male</i> and <i>female</i>.
+Value-label  definitions are typically stored in a second
+XPORT
+dataset or in a text file
+containing
+SAS
+commands.</li>
+			</ul>
+		</fdd:description>
+		<fdd:shortDescription>Version 5 of an openly documented specification developed by SAS to support data transfers between systems.</fdd:shortDescription>
+		<fdd:productionPhase>See <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000464</fdd:id>
+					<fdd:shortName>SAS_xport_family</fdd:shortName>
+					<fdd:titleName>SAS Transport File Format Family (XPORT)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has later version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000467</fdd:id>
+					<fdd:shortName>SAS_xport_8</fdd:shortName>
+					<fdd:titleName>SAS Version 8 Transport File Format (XPORT)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>See <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:experience>
+		<fdd:preference>See <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Publicly documented format developed by <a href="https://www.sas.com/">SAS Institute, Inc.</a>  SAS considers it non-proprietary but controls the specification.</fdd:disclosure>
+		<fdd:documentation>Version 5 is documented in <a href="http://support.sas.com/techsup/technote/ts140.pdf">SAS Technical Paper TS-140: Record Layout of a SAS Transport Data Set</a>.</fdd:documentation>
+		<fdd:adoption>
+			<p>Since 1999 at the latest, the U.S. Food and Drug Administration has required
+the SAS_xport_5 format as the format for
+datasets submitted in electronic form with new drug and new device applications.  See <a href="https://www.fda.gov/downloads/drugs/guidancecomplianceregulatoryinformation/guidances/ucm072390.pdf">Guidance for Industry: Providing Regulatory Submissions in Electronic Format - General Considerations, 1999</a>. For more current information, see <a href="https://www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/ucm085361.htm">Electronic Regulatory Submissions and Review | Helpful Links</a>; <a href="https://www.fda.gov/downloads/ForIndustry/DataStandards/StudyDataStandards/UCM312964.pdf">FDA | Study Data Specifications, Version 2, July 18, 2012.</a>; and <a href="https://www.fda.gov/downloads/ForIndustry/DataStandards/StudyDataStandards/UCM340684.xlsx">FDA Data Standards Catalog v4.5.2 (04-13-2017) - Supported and Required Standards</a> from the FDA.  The Centers for Disease Control (CDC) also use the SAS transport format for distributing public data.  See, for example, <a href="https://www.cdc.gov/brfss/annual_data/annual_2014.html">2014 BRFSS Survey Data and Documentation</a>, and <a href="https://www.cdc.gov/nchs/tutorials/nhanes/preparing/download/intro.htm">NHANES Tutorial: Download Data Files</a>.</p>
+			<p>For other aspects of adoption of this format, including support for import by other statistical software, and acceptability for deposit by data archives, see <fddLink id="fdd000464">SAS_xport_family</fddLink>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>See <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:licensingAndPatents>
+		<fdd:transparency>See <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:transparency>
+		<fdd:selfDocumentation>See <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:selfDocumentation>
+		<fdd:externalDependencies>See <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:externalDependencies>
+		<fdd:techProtection>See <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:normalDataset>See <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:normalDataset>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>xpt</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The specification does not mandate a particular extension, but .xpt is most commonly used, particularly for Version 5.  Listed in <a href="http://www.garykessler.net/library/file_sigs.html">Gary Kessler&apos;s File Signatures</a>.  The FDA mandates the use of .xpt as the file extension for submitted datasets.  See <a href="https://www.fda.gov/downloads/ForIndustry/DataStandards/StudyDataStandards/UCM312964.pdf">FDA Study Data Specifications</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>ASCII: HEADER RECORD*******LIBRARY HEADER RECORD!!!!!!!</fdd:sigValue>
+					<fdd:sigValue>Hex: 48 45 41 44 45 52 20 52
+45 43 4F 52 44 2A 2A 2A 2A 2A 2A 2A 4C 49 42 52 41 52 59 20 48 45 41 44 45 52 20 52
+45 43 4F 52 44 21 21 21 21 21 21 21 </fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>See <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:general>
+		<fdd:history>See <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://support.sas.com/techsup/technote/ts140.pdf</link>
+					<tag>TS-140: Record Layout of a SAS
+Version 5 or 6 Data Set in SAS Transport (XPORT) Format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://support.sas.com/kb/46/944.html</link>
+					<tag>Usage Note 46944: New SAS transport format and tools available</tag>
+					<comment>From Oct 19, 2012</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://onbiostatistics.blogspot.com/2013/11/submit-clinical-trial-datasets-to-fda.html</link>
+					<tag>On Biostatistics and Clinical Trials | Submit the Clinical Trial Datasets to FDA: Using the right .xpt file format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.fda.gov/downloads/ForIndustry/DataStandards/StudyDataStandards/UCM312964.pdf</link>
+					<tag>FDA | Study Data Specifications, Version 2, July 18, 2012.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.fda.gov/downloads/ForIndustry/DataStandards/StudyDataStandards/UCM340684.xlsx</link>
+					<tag>FDA Data Standards Catalog v4.5.2 (04-13-2017) - Supported and Required Standards</tag>
+					<comment>Lists XPT (SAS Technical Support TS-140, which defines Version 5) as the required format for data for many categories of data and FDA centers.  </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://wwwn.cdc.gov/Nchs/Nhanes/Search/DataPage.aspx?Component=Laboratory&amp;CycleBeginYear=2013</link>
+					<tag>National Health and Nutrition Examination Survey | 2013-2014 Laboratory Data</tag>
+					<comment>Examples of datasets in SAS_xport_5 format</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.cdc.gov/brfss/annual_data/annual_2014.html</link>
+					<tag>CDC Behavioral Risk Factor Surveillance System | 2014 BRFSS Survey Data and Documentation</tag>
+					<comment>Examples of datasets in SAS_xport_5 format</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
