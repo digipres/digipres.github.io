@@ -72,7 +72,9 @@
 		<fdd:transparency>
 			<p>As a binary format representing a complex data structure, the ACCDB format can not be fully interpreted using basic tools such as a text editor.  For example, all numbers are in binary form.  However if the database has neither been encrypted/encoded nor compiled into the related ACCDE format, some textual content, such as table and column names, can be partially viewed in a text editor.</p>
 		</fdd:transparency>
-		<fdd:selfDocumentation>There is no built-in mechanism for recording any descriptive or contextual metadata in a consistent fashion.  Database administrators can set user-defined properties, but this feature is typically used for version control and other operational purposes.</fdd:selfDocumentation>
+		<fdd:selfDocumentation>
+			<p>The Microsoft Access application has some capability for descriptive or contextual metadata for the file as a whole using file/database properties, both a default &quot;summary&quot; set and a capability for &quot;custom&quot; properties. A custom property can have a single value of type text, number, date, or binary (Y/N). The Microsoft Access application provides a starter set of ~30 custom properties, including: Date completed, Department, Owner, Purpose.</p>
+			<p>The property names and values can be seen in a Hex dump of the .accdb file.  The compilers of this resource are not aware which, if any, of the non-Microsoft tools mentioned above under Adoption, retrieve or reveal these properties.  <a href="../contact_format.shtml">Comments welcome</a>.</p></fdd:selfDocumentation>
 		<fdd:externalDependencies>Active use of a database in ACCDB format usually requires software that can open the particular chronological version of the file format.  In some circumstances, a compatible ODBC driver is also required.</fdd:externalDependencies>
 		<fdd:techProtection>ACCDB files may be password-protected and/or encrypted. See, for example, <a href="http://www.databasejournal.com/features/msaccess/article.php/3752701/Secure-Microsoft-Access-Passwords-and-Encryption-in-Access-2007.htm">Secure Microsoft Access Passwords and Encryption in Access 2007</a> by Garry Robinson, and <a href="http://www.everythingaccess.com/tutorials.asp?ID=Jet-MDB-security---under-the-hood">Jet MDB security - under the hood</a> and <a href="http://www.everythingaccess.com/tutorials.asp?ID=Changing-the-encryption-type-in-Access-2007">Changing the encryption type in Access 2007</a> by Wayne Phillips from EverythingAccess.com.</fdd:techProtection>
 	</fdd:sustainabilityFactors>
@@ -82,7 +84,7 @@
 			<fdd:accessSoftware>
 				<p>ODBC is a primary means for querying an ACCDB database file from other applications or remote copies of Access or for extracting all the table definitions and data from an ACCDB file for migration to another platform.  Use of ODBC to access content in an ACCDB file requires a functioning version of Microsoft Access that can open the ACCDB file and a compatible ODBC driver.</p>
 			</fdd:accessSoftware>
-			<fdd:dataDocumentation>There is no built-in mechanism for recording any descriptive or contextual metadata, including information about data quality or provenance.</fdd:dataDocumentation>
+			<fdd:dataDocumentation>Individual user-defined properties can be applied to the file as a whole.  See Self-documentation above.</fdd:dataDocumentation>
 		</fdd:datasetQF>
 	</fdd:qualityAndFunctionalityFactors>
 	<fdd:fileTypeSignifiers>
