@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000471" titleName="Stata Data File Format (.dta), Version 118" shortName="Stata_dta_118" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2017-06-10</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Stata Data Format (.dta), Version 118</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>statistics software formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The Stata_dta format (with extension .dta) is a proprietary binary format designed for use as the native format for datasets with <a href="http://www.stata.com/">Stata</a>, a system for statistics and data analysis.  Stata 1.0 was released in 1985 for the IBM PC.  Stata is now available for Windows, Mac OS, and Unix.  Versions of the .dta format are numbered separately from the Stata application.  Version 118, described in this document, and given the name &quot;Stata_dta_118&quot; on this site, was introduced in April 2015 with Stata 14 and is also the default file format for Stata 15, which was released on June 6, 2017.   A newer version of Stata_dta (version 119) was introduced in Stata 15, but is only used for
+datasets with more than 32,767 variables, as supported by <a href="http://www.stata.com/help.cgi?statamp">Stata/MP</a>.  <a href="http://www.stata.com/help.cgi?dta#versions">Stata 15 help for dta</a> states, &quot;Stata itself can read older formats, but whenever it writes a dataset, it
+writes in 118 format.  If a dataset has more than 32,767 variables, Stata
+writes in 119 format.&quot;  See <a href="#notes">Notes</a> for more on the version history for Stata_dta and which version (sometimes called &quot;release&quot;) of the dataset format is associated with which version of the application.</p>
+			<p>Basic characteristics of Stata_dta_118 apply to all versions of the format. Numbers are represented as 1-, 2-, and 4-byte integers and 4- and
+8-byte floating-point numbers.  <a href="https://en.wikipedia.org/wiki/IEEE_754-1985">ANSI/IEEE Standard 754-1985</a> format is used for the binary floating point values, which is equivalent to <a href="https://en.wikipedia.org/wiki/IEEE_754-2008">IEEE Standard 754-2008</a> for the floating-point numbers used in .dta files.  Byte-ordering (big-endian or little-endian), which varies with operating system and processor hardware, is declared in the file header.  In Stata_dta_118, strings are encoded in UTF-8, whether in data, or in variable names, etc.  In earlier versions the encoding was ASCII.  Stata generally places a binary zero (hex 00, written as \0 in Stata documentation) at the end of strings.  However, structural details have changed significantly with some format versions, particularly between versions 115 and 117.  Most details in this description of Stata_dta_118 will be relevant to versions 117 and 119, not described separately at this time.</p>
+			<p>A Stata_dta_118 file has the following general structure:</p>
+			<ul>
+				<li>The entire file is wrapped in &lt;stata_dta&gt;...&lt;/stata_dta&gt;.  This &quot;marker&quot; pair contains 12 components, each surrounded by its own marker pair. All marker pairs must be present, even if empty, and appear in the order specified (see <a href="http://www.stata.com/help.cgi?dta#definition">dta | Dataset format definition</a>):</li>
+				<li>&lt;header&gt; ...&lt;/header&gt;, which contains the following sub-components:<ul>
+						<li>&lt;release&gt;118&lt;/release&gt;, the format version, expressed in ASCII, and thus easily identfied using a text editor.</li>
+						<li>&lt;byteorder&gt;<i>XXX</i>&lt;/byteorder&gt;, where &quot;XXX&quot; is &quot;MSF&quot; for big-endian or &quot;LSF&quot; for little-endian.</li>
+						<li>&lt;K&gt;<i>bb</i>&lt;/K&gt;, the number of variables as a 2-byte unsigned integer, consistent with the declared byte order.  Stata_dta format version 119 uses a 4-byte unsigned integer.</li>
+						<li>&lt;N&gt;<i>bbbbbbbb</i>&lt;/N&gt;, the number of observations stored in the dataset, using an 8-byte unsigned integer.  Stata_dta format version 117 used a 4-byte unsigned integer.</li>
+						<li>&lt;label&gt;...&lt;/label&gt;, up to 80 UTF-8 characters, preceded by a 2-byte unsigned integer that represents the number of UTF-8 characters.</li>
+						<li>&lt;timestamp&gt;...&lt;/timestamp&gt;, optional, using a prescribed pattern.</li>
+					</ul>
+				</li>
+				<li>&lt;map&gt;....&lt;/map&gt;, a list of 14 8-byte offsets from the start
+of the file, written according to byteorder.  The positions recorded are the offsets of the start of the primary components of a Stata_dta file.  The <i>map</i> facilitates navigation of the file contents.</li>
+				<li>Following the map component come 7 mandatory, but possibly empty components, including information about variables (types, names, and labels) and other key structural information.</li>
+				<li>Then comes the data itself, surrounded by &lt;data&gt;...&lt;/data&gt;.  Data is in observation order, i.e., all variable values for the first observation, followed by all values for the second observation, etc.</li>
+				<li>Two final components are for storing long strings and labels for coded values.</li>
+			</ul>
+			<p>See <a href="http://www.stata.com/help.cgi?dta#strings">Representation of strings</a> and <a href="http://www.stata.com/help.cgi?dta#numbers">Representation of numbers</a> for more details on these important aspects of the Stata_dta_118 format.</p>
+		</fdd:description>
+		<fdd:shortDescription>the native binary format designed for use with Stata, a system for statistics and data analysis.</fdd:shortDescription>
+		<fdd:productionPhase>Designed as an initial-state or middle-state format to support creation and statistical analysis of data and intermediate storage and exchange of statistical data among users of the Stata system for statistical analysis.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:comment>Several earlier versions not described separately at this site at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has later version</fdd:typeOfRelationship>
+				<fdd:comment>One later version, 119, not described separately on this site at this time.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress has no datasets in this family of formats in its collections.</fdd:experience>
+		<fdd:preference>The Library of Congress Recommended Formats Statement (RFS) does not list any version of the Stata .dta file format as preferred or acceptable for acquiring <a href="https://www.loc.gov/preservation/resources/rfs/data.html">datasets</a> for the its collections because the RFS expresses a preference for widely adopted character-based formats rather than application-specific native formats or binary formats for datasets.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Stata_dta is a family of proprietary formats developed and maintained by StataCorp LLC.  Versions of the format dating from 2003 are publicly documented.</fdd:disclosure>
+		<fdd:documentation>The current version of the Stata_dta format is specified at <a href="http://www.stata.com/help.cgi?dta">http://www.stata.com/help.cgi?dta</a>.  As of June 2017, this specification is for Stata_dta_118 and provides links to documentation for Stata_dta versions between 113 and 119, covering Stata 8 (2003) through Stata 15 (2017).</fdd:documentation>
+		<fdd:adoption>
+			<p>The Stata_dta_118 format is primarily used in association with Stata statistical software, which is widely used, particularly in academic settings.  See, for example, <a href="http://www.dpconline.org/blog/quanititative-file-formats-for-preservation">Quantitative File Formats for Preservation</a>, a post on the Digital Preservation Coalition blog, which indicates that the bulk of the datasets received by the Irish Social Science Data Archive are in SPSS, SAS, and Stata formats.</p>
+			<p>Stata_dta files can be imported into and/or exported from other statistics software, including <a href="https://www.ibm.com/support/knowledgecenter/en/SSLVMB_24.0.0/spss/base/savedatatypes.html">SPSS</a> and <a href="http://documentation.sas.com/?docsetId=acpcref&amp;docsetTarget=p1rfs22st3zy3xn1hz9b9qsz4sp2.htm&amp;docsetVersion=1.0&amp;locale=en">SAS</a>. <a href="https://cran.r-project.org/web/packages/readstata13/README.html">readstata13</a> is an R package to read and write Stata file formats into a R data.frame. Stata_dta versions 102 to 118 are supported.  <a href="http://www.stattransfer.com/stattransfer/formats.html#stata">Stat/Transfer</a>, a popular conversion utility for statistical data, can read and write Stata_dta files.</p>
+			<p>Stata_dta is a download format for several data archives, including the <a href="https://www.federalreserve.gov/econres/scfindex.htm">Survey of Consumer Finances</a> from the U.S. Federal Reserve.  <a href="">Current Population Survey Data for Social,
+Economic and Health Research</a> is available for download in Stata_dta format, as is the <a href="http://gss.norc.org/getthedata/Pages/Home.aspx">General Social Survey</a> from NORC at the University of Chicago.  See also <a href="http://www.stata.com/links/examples-and-datasets/">Stata examples and datasets</a>.  Survey Solutions, free software from the World Bank Group for collecting data from structured interviews or web surveys includes Stata_dta among its <a href="http://support.mysurvey.solutions/customer/en/portal/articles/2541274-data-export-files-">Data Export Files</a>.  As of June 2017, Survey Solutions is generating files compatible with Stata 14, i.e., Stata_dta_118.</p>
+			<p>The Stata_dta format is accepted by most statistical archives. ICPSR (Inter-university Consortium for Political and Social Research) <a href="http://www.icpsr.umich.edu/icpsrweb/content/deposit/guide/chapter6.html">accepts</a> and <a href="https://www.icpsr.umich.edu/icpsrweb/content/shared/ICPSR/faqs/what-kind-of-data-formats-does-archive.html">distributes</a> datasets in this format.  The UK Data Archive lists Stata_dta as acceptable in its <a href="http://www.data-archive.ac.uk/create-manage/format/formats-table">File Formats Table</a>.  Instructions from the GESIS archive in Germany on <a href="http://www.gesis.org/en/services/archiving-and-registering/data-archiving/preparing-data-for-submission/">Preparing Data for Submission</a> lists the Stata_dta among preferred formats.  The list of preferred and acceptable <a href="https://dans.knaw.nl/en/deposit/information-about-depositing-data/file-formats">File formats</a> for the DANS (Data Archive and Networked Services) lists the Stata_dta format as preferred. The Institution for Social and Policy Studies (<a href="http://isps.yale.edu/research/data/about#Best%20Practices%20and%20Tips">ISPS Data Archive</a>) accepts Stata_dta but prefers an ASCII file such as <fddLink id="fdd000323">CSV</fddLink>. The popular NESSTAR software suite for assembling a collection of datasets for online discovery and analysis does not appear to support the import of Stata_dta files in the <a href="http://www.nesstar.com/help/4.0/publisher/download_resources/Publisher_UserGuide_v4.0.pdf">NESSTAR Publisher</a> module. A list of recommended or acceptable formats that includes the Stata_dta format is from the <a href="http://rss.mines.edu/RSS-sustainable-data-formats">Colorado School of Mines</a>.  The Dataverse guidance on <a href="http://guides.dataverse.org/en/latest/user/tabulardataingest/stata.html">ingest of Stata files</a> says, &quot;Stata does the best job at documenting the internal format of their files, by far. ... Because of that, Stata is the best supported format for tabular data ingest.&quot;</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No issues.</fdd:licensingAndPatents>
+		<fdd:transparency>Stata_dta_118 is not transparent, since data values are stored in binary form.  However, the ASCII (XML-style) tags that contain the file&apos;s components are visible when the file is opened in a text editor.  See for example, <a href="http://www.stata-press.com/data/r14/odd1.dta">Stata sample file, odd1.dta</a>.  This file is in Stata_dta, version 117, but version 118 would be identical except for the &lt;release&gt; value.</fdd:transparency>
+		<fdd:selfDocumentation>Stata_dta_118 can contain names and optional labels for variables.  Labels that explain values for coded variables can also be included. Missing values are supported for numeric variables.  There does not seem to be any way to embed a description of the file as a whole apart from an 80-character label for the dataset.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None beyond software that can import data in this format.</fdd:externalDependencies>
+		<fdd:techProtection>Stata_dta_118 appears to have no internal capabilities for encryption or other technical protection.  However, a discussion thread from 2007 on <a href="https://www.stata.com/statalist/archive/2007-06/msg00509.html">encryption of individual variables for anonymizing data</a> implies that individual variable values may be encrypted for this purpose.  The compilers of this resource have not determined whether this approach is widely used.  <a href="../contact_format.shtml">Comments welcome</a>.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:normalDataset>The Stata_dta format is capable of representing all the data types used in Stata, a widely used software system for statistical analysis. </fdd:normalDataset>
+			<fdd:accessSoftware>See Adoption section above.</fdd:accessSoftware>
+			<fdd:dataDocumentation>See Self-documentation above.   For re-use or long-term preservation, additional discipline-specific metadata, such as a <a href="http://www.ddialliance.org/explore-documentation">Data Documentation Initiative (DDI)</a> record, is often used in archival contexts.</fdd:dataDocumentation>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>dta</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>ASCII: &lt;stata_dta&gt;&lt;header&gt;&lt;release&gt;118&lt;/release&gt;</fdd:sigValue>
+					<fdd:sigValue>Hex: 3C 73 74 61 74 61 5F 64 74 61 3E 3C 68 65 61 64 65 72 3E 3C 72 65 6C 65 61 73 65 3E 31 31 38 3C 2F 72 65 6C 65 61 73 65 3E</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From specification.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/1037</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/1037">http://www.nationalarchives.gov.uk/PRONOM/fmt/1037</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:history>
+			<p>Stata 1.0 was released in January 1985 for the IBM PC.  It was a product of CRC, based in California.  The first Unix version was released in 1998 and the first Macintosh version in 1992.  CRC moved to Texas in 1993, and became StataCorp.  See <a href="http://www.stata-journal.com/article.html?article=gn0017">A brief history of Stata on its 20th anniversary</a> in 2005.  See also <a href="http://www.stata.com/support/faqs/resources/history-of-stata/">History of Stata</a>.</p>
+			<p>Although the .dta format has remained somewhat similar over the years, significant changes have been made.  A recent version history follows:</p>
+			<ul>
+				<li>
+					<a href="http://www.stata.com/help.cgi?dta_113">dta version 113</a> -- Stata 8 (January 2003).  <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/1033">PUID: fmt/1033</a>.  In this version, the structure of the file was minimalist and less transparent than Stata_dta_118.  The format version was indicated by a single byte (using the lower case letter &quot;q&quot; for version 113).  See <a href="http://www.radyakin.org/transfer/saveto9/cs/index.htm">SaveTo9</a> for the association of letters with Stata software versions.  The second byte indicated endianness.</li>
+				<li>
+					<a href="http://www.stata.com/help.cgi?dta_114">dta version 114</a> -- Stata 10 (June 2005)  <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/1034">PUID: fmt/1034</a>.</li>
+				<li>
+					<a href="http://www.stata.com/help.cgi?dta_115">dta version 115</a> -- Stata 12 (July 2011)  Last version with minimalist explicit structure.  <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/1035">PUID: fmt/1035</a>.</li>
+				<li>
+					<a href="http://www.stata.com/help.cgi?dta_117">dta version 117</a> -- Stata 13 (June 2013).  Introduced an XML-style markup to wrap the components of the dataset file.  <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/1036">PUID: fmt/1036</a>.</li>
+				<li>dta version 118 -- Stata 14 (April 2015) and 15 (June 2017)  Specified at <a href="http://www.stata.com/help.cgi?dta">http://www.stata.com/help.cgi?dta</a> as of June 2017.</li>
+				<li>
+					<a href="http://www.stata.com/help.cgi?dta_119">dta version 119</a> -- Stata 15 (June 2017). Used for datasets with more than 32,767 variables.</li>
+			</ul>
+			<p>PRONOM lists signatures for several earlier versions of Stata_dta, determined by inference and observation:  <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/1032">version 111</a>; <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/1031">version 110</a>; <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/1030">version 105</a>; and <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/1029">version 104</a>.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.stata.com/help.cgi?dta</link>
+					<tag>Stata | Help for dta (for Stata 15 as of June 2017)</tag>
+					<comment>Description of the .dta file format.  As of June 2017, the current version of Stata is Stata 15.  The current version of the format was 118, which was introduced with Stata 14.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.stata.com/help.cgi?save</link>
+					<tag>Stata Help | save   (for Stata 15 as of June 2017)</tag>
+					<comment>Includes information about saveold command, which supports saving in Stata_dta formats compatible with Stata 13, 12, or 11 (i.e., .dta versions 117 or 115)  </comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Links to documentation for earlier versions of the Stata_dta file format.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.stata.com/help.cgi?dta_119</link>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.stata.com/help.cgi?dta_117</link>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.stata.com/help.cgi?dta_115</link>
+							<comment>Format 115 is identical to format 114 except for the version number.  Changing the version
+number from 114 to 115 prevented older Stata versions from reading datasets that
+might include new date formats.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.stata.com/help.cgi?dta_114</link>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.stata.com/help.cgi?dta_113</link>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources related to reading and writing .dta files in older versions of the Stata_dta format</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.stata.com/support/faqs/data-management/save-for-previous-version/</link>
+							<tag>How can I save a Stata dataset so that it can be read by a previous version of Stata?</tag>
+							<comment>From Stata FAQ.  Includes instructions for Stata 14 (probably applies to Stata 15 too) back to Stata 4.  </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.cpc.unc.edu/research/tools/data_analysis/statatutorial/misc/import_export</link>
+							<tag>Stata Tutorial | Importing and exporting data files</tag>
+							<comment>From the Carolina Population Center at the University of North Carolina.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www3.nd.edu/~rwilliam/stats/stataconversions.html</link>
+							<tag>Stata data files: Reading and writing to and from different file formats</tag>
+							<comment>By Richard Williams, University of Notre Dame.  Labelled DRAFT.  Lists and links to various utilities written by Sergiy Radyakin. Mentions Stata 14, hence likely from 2015.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.radyakin.org/transfer/saveto9/cs/index.htm</link>
+							<tag>Saveto9 | Utility by Sergiy Radyakin</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://stackoverflow.com/questions/23899009/read-stata-13-file-in-r</link>
+							<tag>Stack Overflow Q &amp; A | Read Stata 13 file in R</tag>
+							<comment>Problem relates to incompatibility in .dta format versions.  Various solutions are suggested.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://stackoverflow.com/questions/2536047/convert-stata-dta-file-to-csv-without-stata-software</link>
+							<tag>Stack Overflow Q &amp; A | Convert Stata .dta file to CSV without Stata software</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://support.mysurvey.solutions/customer/en/portal/articles/2784975-stata-export-file-format</link>
+							<tag>Survey Solutions Help | Stata export file format</tag>
+							<comment>Discusses Stata .dta format version incompatibilities</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/1037</link>
+					<tag>PRONOM entry for fmt/1037</tag>
+					<comment>Information in PRONOM from UK National Archives about Stata Data (DTA) Format 118.  PUID: fmt/1037</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
