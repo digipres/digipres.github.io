@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000462" titleName="Microsoft Access MDB File Format Family" shortName="MDB_family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenreAndSubgenres>
+				<fdd:gdfrGenre>database</fdd:gdfrGenre>
+				<fdd:gdfrSubgenres>
+					<fdd:gdfrSubgenre>dataset</fdd:gdfrSubgenre>
+				</fdd:gdfrSubgenres>
+			</fdd:gdfrGenreAndSubgenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>family</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2017-03-31</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Microsoft Access MDB File Format Family</fdd:fullName>
+		<fdd:description>
+			<p>The .mdb extension has been used for a series of proprietary file format versions, developed and used by Microsoft as a native format for its <a href="https://en.wikipedia.org/wiki/Microsoft_Access">Microsoft Access</a> desktop database management system, which was first released in 1992. Microsoft has provided no public specification for the MDB format, but has supported programming access via the Open Database Connectivity (<a href="https://en.wikipedia.org/wiki/Open_Database_Connectivity">ODBC</a>) standard and Visual Basic for Applications (<a href="https://en.wikipedia.org/wiki/Visual_Basic_for_Applications">VBA</a>).  Based on reverse engineering analysis, <a href="http://jabakobob.net/mdb/">The unofficial MDB Guide</a> provides an informal description of the MDB format, claiming to cover versions introduced since 1997.</p>
+			<p>Microsoft Access versions from Access 1.0 (1992) through Access 2003, used the .mdb extension for all database files.  However, the underlying MDB format changed significantly over the years.  With Access 2007, Microsoft introduced a new default file format, using the .accdb extension.  See <fddLink id="fdd000463">ACCDB_family</fddLink> and, for example, <a href="https://www.thoughtco.com/access-file-formats-accdb-vs-mdb-1019506">File Formats: ACCDB vs MDB | Access 2007 and Later Use the ACCDB File Format</a>.  Despite the advantages of the ACCDB format, there are still reasons to use MDB with Microsoft Access 2016.  See, for example, <a href="https://support.office.com/en-us/article/Which-Access-file-format-should-I-use-012d9ab3-d14c-479e-b617-be66f9070b41">Which Access file format should I use?</a> from Microsoft.</p>
+			<p>MDB file format versions are associated with versions of Microsoft&apos;s <a href="https://en.wikipedia.org/wiki/Microsoft_Jet_Database_Engine">Jet Database Engine</a> (Jet DB), used as the basis for Access and as part of other products.  See <a href="http://web.archive.org/web/20111115230803/http://support.microsoft.com/kb/178880">Identifying the Jet Database Engine Components</a> for details of the association of MDB versions with Jet DB versions through Access 97.</p>
+			<p>Versions of the MDB format that are usually listed as significantly different correspond to:</p>
+			<ul>
+				<li>Access 1.0 (November 1992) and 1.1. (May 1993).  Jet DB, versions 1.0 and 1.1.  No useful description has been identified by the compilers of this resource for the structure of this version of MDB file. <a href="../contact_format.shtml">Comments welcome</a>. Support for these format versions was dropped in Microsoft Access 2010.</li>
+				<li>Access 2.0. 1994.  Jet DB, versions 2.0 and 2.5.  Apart from a signature identified at PRONOM (<a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/66">PUID: x-fmt/66</a>), no useful description has been identified by the compilers of this resource for this MDB format version. <a href="../contact_format.shtml">Comments welcome</a>. Support for this format was dropped in Microsoft Access 2010.  As of early 2017, Microsoft still provides <a href="https://support.office.com/en-us/article/Import-an-Access-2-0-database-into-an-Access-2007-file-2e9d8851-101d-4407-a881-65d06bb12aa7">instructions online for importing an Access 2.0 database into versions of Access from 2000 through 2007</a>.</li>
+				<li>Access 95, aka Access 7.0. Jet DB, version 3.0.  Support for this format was dropped in Microsoft Access 2013. As of early 2017, Microsoft still provides <a href="https://support.office.com/en-us/article/Import-an-Access-95-database-into-an-Access-2007-file-65ae9f69-3c0e-4fea-8952-dcb4e90119b1">instructions online for importing an Access 95 database into Access 2007</a>.</li>
+				<li>Access 97.  Jet DB, version 3.5.  <a href="http://jabakobob.net/mdb/">The Unofficial MDB Guide</a> describes itself as &quot;Tech Specs for the JET format used by Access 1997-2010.&quot;  Several tools for viewing or manipulating MDB files indicate support for versions back to Access 97.  Support for this format was dropped in Microsoft Access 2013.</li>
+				<li>Access 2000.  Jet DB, version 4.0. Maximum size increased from 1GB to 2GB.</li>
+				<li>Access 2002-2003. Jet DB, version 4.0.  If used, new features, including PivotTable views, support for XML, and an updated version of SQL (ANSI SQL 92 vs. ANSI SQL 89) would result in files not compatible with Access 2000.</li>
+			</ul>
+			<p>More recent versions of Microsoft Access, through Access 2016 (the most recent version as of early 2017), can still create and save databases in the MDB format, providing a compatibility choice between Access 2000 and Access 2002-2003.  See <a href="#notes">Notes</a> below for more detail on releases and discussion on migrating old MDB databases to newer formats and different products.</p>
+			<p>A <a href="https://groups.google.com/forum/#!topic/pronom/_fz-eP0ge9o">PRONOM forum thread</a> in March 2013 discussed whether it was necessary to have separate PRONOM entries for Access 95 and 97 and for both Access 2000 and Access 2002-2003.  The PRONOM team decided to retain the four separate entries.  <a href="https://msdn.microsoft.com/en-us/library/office/aa139959.aspx">Developer Considerations When Choosing a File Format in Access 2002</a> explains compatibility issues between the format introduced in Access 2002 and its 2000 predecessor.</p>
+			<p>According to <a href="http://jabakobob.net/mdb/">The Unofficial MDB Guide</a> and <a href="https://github.com/brianb/mdbtools/blob/master/HACKING">Brian Bruns&apos;s HACKING file</a>, the structure for the MDB format since Access 97 has the following general structure.  The file consists of fixed-size pages (2048 bytes for Jet DB 3; 4096 bytes for Jet DB 4), with the first byte indicating the type of page.  The key page types are as follows:</p>
+			<ul>
+				<li>
+					<b>First page</b>: Contains database header information including identification of the Jet DB version with which the file is compatible, file security information, and a &quot;map&quot; of page usage.</li>
+				<li>
+					<b>Table definition page</b>: Each table has at least one definition page, specifying columns, data types, indexes, etc. Additional pages are used as needed.  Includes a map of pages that contain the row data for this table.</li>
+				<li>
+					<b>Data pages</b>: These pages contain the actual data, stored by row.  Long data values, such as memo fields, may be stored in subsidiary pages used specifically for long values.</li>
+			</ul>
+			<p>A Microsoft Access database may be split across files.  Splitting a database allows file size or table size limitations to be exceeded.  For details on limitations for MDB files, see <a href="http://webcheatsheet.com/SQL/access_specification.php">Microsoft Access Specifications and Limitations</a>.  Another reason to split a database is for multi-user environments that will benefit from having forms and code in a front-end MDB file on users&apos; desktops, with the data in one or more back-end MDB files on a networked server.  An MDB file may also be used as a front end to an ODBC-accessible database server, such as SQL Server or Oracle.</p>
+		</fdd:description>
+		<fdd:shortDescription>Microsoft Access versions from Access 1.0 (1992) through Access 2003, used the .mdb extensions for database files.  However, the underlying MDB format changed significantly over the years.  With Access 2007, the default file format changed and the .accdb extension was used.</fdd:shortDescription>
+		<fdd:productionPhase>Primarily a middle-state format, typically in active use for recording transactions.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>Various chronological versions, not described separately on this website at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000463</fdd:id>
+					<fdd:shortName>ACCDB_family</fdd:shortName>
+					<fdd:titleName>Microsoft Access ACCDB File Format Family</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Used as default native format for Microsoft Access from Access 2007 on.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>Some Library of Congress staff use Microsoft Access as part of their official duties.  Many projects using the software began while the default format for Microsoft Access was MDB.</fdd:experience>
+		<fdd:preference>The Library of Congress Recommended Formats Statement (RFS) does not list the Microsoft Access MDB file format as preferred or acceptable for acquiring  <a href="https://www.loc.gov/preservation/resources/rfs/data.html">datasets</a> for the its collections because the RFS expresses a preference for platform-independent, non-proprietary, publicly documented formats.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>Proprietary format developed and managed by Microsoft.</p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>No full specification is publicly available.  A description based on reverse engineering can be found at <a href="http://jabakobob.net/mdb/">http://jabakobob.net/mdb/</a>.  Additional information on the format structure is found in <a href="https://github.com/brianb/mdbtools/blob/master/HACKING">Brian Bruns&apos;s HACKING file</a>, which accompanies his mdbtools software utilities.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>Microsoft Access is a widely used desktop database management system for the Windows operating system.  According to <a href="https://idatalabs.com/tech/database-management-system">iDatalabs</a> in early 2017, it ranked third in market share for general-purpose database management systems, behind Microsoft&apos;s SQL Server and MySQL.  MDB was the default native format from 1992 through 2007.  New database applications based on Access are likely to use the ACCDB format but there is a substantial installed base of database applications that use the MDB format.  However, no other general-purpose database software uses MDB as a native format and Microsoft has been dropping support for the earlier versions of the MDB format in recent versions of Microsoft Access.</p>
+			<p>There is a flourishing market in products and services that will convert an old MDB file into another format. Extracting the data from an MDB file is relatively straightforward using a current copy of Access that can read the file and a compatible ODBC driver; many conversion tools use this approach.  Converting macros, forms, and user interfaces is considerably more complex. As of early 2017, it appears that migrating an Access 1.0 database is considered a major challenge; migrating an Access 2.0 database requires a functioning installation of Access 2000, 2002-2003, or 2007.  See <a href="#notes">Notes</a> below for more detail on migrating or converting old MDB files.</p>
+			<p>Applications for viewing or manipulating data in MDB databases in a Windows environment include: <a href="https://www.microsoft.com/en-us/download/details.aspx?id=50040">Microsoft Access Runtime</a>, a freely downloadable version of Access with capabilities for end users but not for database design or user customization; <a href="http://www.alexnolan.net/software/mdb_viewer_plus.htm">MDB Viewer Plus</a>; <a href="https://sourceforge.net/projects/mdbadmin/">MDB Admin</a>; and <a href="http://www.querytool.com/index.html">Advanced Query Tool</a>. Some tools and services focus on repair of MDB files, for example: <a href="https://www.cimaware.com/access-database-repair-accessfix">AccessFIX</a>; <a href="http://www.repair-access-file.com/software-detail-access-repair.php">Stellar Phoenix Access Database Repair</a>; <a href="http://mdb.filerestoreprogram.com/">MDB File Recovery Software</a>; and <a href="http://www.everythingaccess.com/accessdatabaserepair_info.asp">EverythingAccess: Database Repair Service.</a>
+			</p>
+			<p>Applications for working with MDB files exist for various platforms other than Windows.  Such utilities include <a href="http://support.woiapp.com/category/ms-access/">John Li&apos;s ACCDB and MDB Database Managers for Android, iOS, and Mac</a> and <a href="https://eggerapps.at/mdbviewer/docs/en/file-formats.html">MDB/ACCDB Viewer</a> for Mac from Egger Apps.</p>
+			<p>Software toolkits for working with MDB files exist for various programming languages and computing environments.  For Unix, <a href="https://github.com/brianb/mdbtools">MDB Tools</a> is a software library in C for programmatic access to MDB files and also provides command-line utilities for useful export or analysis tasks.  <a href="https://github.com/exponential-decay/MDBValidator">MDBValidator</a> is a program in python for characterizing an MDB file, including identifying its version.  <a href="http://jackcess.sourceforge.net/index.html">Jackcess</a> is a Java library for reading from and writing to MS Access databases.  <a href="http://ucanaccess.sourceforge.net/site.html">UCanAccess</a> is an open-source Java JDBC driver supporting reading and writing of Microsoft Access databases.  <a href="http://fsprojects.github.io/SQLProvider/index.html">SQLProvider</a> is a toolkit for .NET.  For its own computing environments, Microsoft provides Visual Basic for Applications (<a href="https://msdn.microsoft.com/en-us/library/dd361851.aspx">VBA</a>); <a href="https://msdn.microsoft.com/en-us/library/e80y5yhx.aspx">ADO.NET</a>; and Data Access Objects <a href="https://msdn.microsoft.com/en-us/library/aa266960.aspx">DAO</a>.  See <a href="https://blogs.msdn.microsoft.com/data/2006/12/05/data-access-api-of-the-day-part-i/">Data Access API of the Day</a>, a blog post from Microsoft on the history of APIs for its database products.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>The database formats used by Microsoft Access are not covered by Microsoft&apos;s <a href="https://msdn.microsoft.com/en-us/openspecifications/dn646765.aspx">Open Specification Promise</a> or <a href="https://msdn.microsoft.com/en-us/openspecifications/dn646766">Community Promise</a>.  Nor does Microsoft use a formal licensing program to cover patents that apply to the MDB format under its Interoperability Program (see <a href="https://msdn.microsoft.com/en-us/openspecifications/dn646762.aspx">Microsoft Interoperability Program (MIP) | Open Specifications Dev Center</a>, <a href="https://msdn.microsoft.com/en-us/library/gg134029.aspx">Microsoft Interoperability Program</a>).  The Language Specification for VBA (Visual Basic for Applications), often used for macros or other code stored within MDB files, is covered by the Community Promise.  See also <a href="http://go.microsoft.com/fwlink/?LinkId=179741">Microsoft Statement on European Commission Decision, December 16, 2009</a>.</p>
+			<p>Although none of Microsoft&apos;s official commitments to interoperability cover the MDB format, the compilers of this resource have found no indication that Microsoft has taken any actions to exploit any patents that it might claim cover the file format (as opposed to the Microsoft Access application).  [Note: To be active as of early 2017, a patent would have to have been applied for no earlier than 1997 or issued later than 2000.] <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>As a binary format representing a complex data structure, the MDB format can not be fully interpreted using basic tools such as a text editor.  For example, all numbers are in binary form.  However if the database has neither been encrypted nor compiled into the related MDE format, some textual content, such as table and column names, can be partially viewed in a text editor.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>The Microsoft Access application has some capability for descriptive or contextual metadata for the file as a whole using file/database properties, both a default &quot;summary&quot; set and a capability for &quot;custom&quot; properties. A custom property can have a single value of type text, number, date, or binary (Y/N). The Microsoft Access application provides a starter set of ~30 custom properties, including: Date completed, Department, Owner, Purpose.</p>
+			<p>The property names and values can be seen in a Hex dump of the .mdb file.  The compilers of this resource are not aware which, if any, of the non-Microsoft tools mentioned above under Adoption, retrieve or reveal these properties.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>Active use of a database in MDB format usually requires software that can open the particular chronological version of Access.  In some circumstances, a compatible ODBC driver is also required.</fdd:externalDependencies>
+		<fdd:techProtection>MDB files may be password-protected and/or encrypted.  If user-level security was applied, the file contains details of the levels and scope of access available to users and groups.  None of these security mechanisms are considered secure, individually or in combination. See, for example, <a href="http://stackoverflow.com/questions/862187/what-encryption-method-algorithm-is-used-for-password-protecting-ms-access-200">What encryption method (algorithm) is used for password protecting MS Access 2003 database?</a> from Stack Overflow and <a href="http://www.everythingaccess.com/tutorials.asp?ID=Jet-MDB-security---under-the-hood">Jet MDB security - under the hood</a> from EverythingAccess.com.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:normalDataset>MDB files can support a typical set of data types for desktop databases.  The list of data types supported appears to have been extended over time. See <a href="https://msdn.microsoft.com/en-us/library/ff193793.aspx">SQL Data Types</a> from Microsoft Access SQL Reference, for details on data types supported in ODBC.  See <a href="https://docs.microsoft.com/en-us/sql/odbc/microsoft/microsoft-access-data-types">Microsoft Access Data Types</a> for Microsoft Access data types, data types used to create tables, and ODBC SQL data types, with applicable mappings of terminology and limitations.  <a href="https://msdn.microsoft.com/en-us/library/office/ff822013.aspx">Comparison of Data Types</a> provides additional information on data type compatibility in different contexts.</fdd:normalDataset>
+			<fdd:accessSoftware>
+				<p>ODBC is a primary means for querying an MDB database file from other applications or remote copies of Access or for extracting all the table definitions and data from an MDB file for migration to another platform.  Use of ODBC to access content in an MDB file requires a functioning version of Microsoft Access that can open the MDB file and a compatible ODBC driver.</p>
+			</fdd:accessSoftware>
+			<fdd:dataDocumentation>Individual user-defined properties can be applied to the file as a whole.  See Self-documentation above.</fdd:dataDocumentation>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>mdb</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>No official registration at <a href="http://www.iana.org/assignments/media-types/media-types.xhtml#application">IANA</a>.  At <a href="https://msdn.microsoft.com/en-us/library/bb742440.aspx">MIME Types in IIS</a> from 1999, Microsoft lists <i>application/x-msaccess</i> and this appears in many other lists of MIME types, for example, <a href="http://www.freeformatter.com/mime-types-list.html">http://www.freeformatter.com/mime-types-list.html</a>. <a href="http://filext.com/file-extension/MDB">http://filext.com/file-extension/MDB</a> lists less commonly used MIME types.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>ASCII: ....Standard Jet DB</fdd:sigValue>
+					<fdd:sigValue>Hex: 00 01 00 00 53 74 61 6E 64 61 72 64 20 4A 65 74 20 44 42</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note> This applies to MDB files created with versions of Microsoft Access since Access 95.  From <a href="http://www.garykessler.net/library/file_sigs.html">Gary Kessler&apos;s file signatures page</a>. See also <a href="https://www.filesignatures.net/index.php?search=MDB&amp;mode=EXT">filesignatures.net</a>.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Indicator for profile, level, version, etc.</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>Starting with Access 95, the version of the Jet DB is indicated at offset 0x14 from the beginning of the MDB file. The Hex value of 00 indicates Access 95/97.  The Hex value of 01 indicates Access 2002 or Access 2002-2003.  See <a href="#notes">Notes on Microsoft Access Release History</a> below for more information.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/66</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>For MDB from Microsoft Access 2.0.  See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/66">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/66</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/238</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>For MDB from Microsoft Access 95.  See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/238">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/238</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/239</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>For MDB from Microsoft Access 97.  See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/239">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/239</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/240</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>For MDB from Microsoft Access 2000.  See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/240">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/240</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/241</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>For MDB from Microsoft Access 2002.  See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/241">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/241</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q1931564</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>No version distinctions.  See <a href="https://www.wikidata.org/wiki/Q1931564">https://www.wikidata.org/wiki/Q1931564</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Related file extensions</b>: In addition to the MDB format, Microsoft Access provides an alternate format for distributing a database application, using the .mde extension.  See <a href="http://www.databasedev.co.uk/microsoft-access-mde.html">Convert MDB to MDE File Format</a>, which states, &quot;The MDE file format is a special extension of the standard Microsoft Access MDB format, and is used to distribute an application. An MDE file compiles all of the modules, removes all editable source code and compacts the database. The resulting MDE file allows the database users to perform normal database operations, however it prohibits any changes from being made to the objects that support, or the code that runs the application.&quot;  Another associated extension is .mdn, used for an Access Blank Database Template.  For a complete list of extensions associated with Microsoft Access, see <a href="https://en.wikipedia.org/wiki/Microsoft_Access#File_extensions">Wikipedia entry for Microsoft Access</a>.</p>
+			<p>
+				<b>Migration of old MDB database files to later versions of Microsoft Access</b>: The definitions and contents of tables in a Microsoft Access database can typically be successfully migrated from one version of MDB to a later one, assuming the copy of Access is able to open the source database.  Macros, forms, etc., may require modification to function properly in the newer environment.   A selection of articles or posts offering advice or indicating possible issues follow:  <a href="https://books.google.com/books?id=nDgEAAAAMBAJ&amp;pg=PA82&amp;lpg=PA8">Review of Access 2.0 -- InfoWorld Aug 15, 1994</a> recommended use of the Convert Database function but provided the caveat that some &quot;database objects&quot; would probably need modification.  <a href="https://social.msdn.microsoft.com/Forums/office/en-US/bc90cd7f-1bae-4dc7-9a4d-8a906fff1879/looking-to-convert-access-10-mdb-databases-to-later-version?forum=accessdev">Looking to convert Access 1.0 MDB databases to later version? (from 2010)</a> is a useful thread relating to converting a very old version of MDB.  It was imported successfully into Access 2007.  Microsoft&apos;s <a href="https://support.office.com/en-us/article/Import-an-Access-95-database-into-an-Access-2007-file-65ae9f69-3c0e-4fea-8952-dcb4e90119b1">Import an Access 95 database into an Access 2007 file</a> states, &quot;To import forms and reports that contain VBA code (and also modules), first convert your Access 95 database to the Access 2002 - 2003 or Access 2000 file format by using Microsoft Office Access 2003, Access 2002, or Access 2000.&quot;  Running old versions of Access may require running old versions of Windows.  <a href="https://msdn.microsoft.com/en-us/library/office/aa139959.aspx">Developer Considerations When Choosing a File Format in Access 2002</a> discusses incompatibilities between Access 2000 and Access 2002. <a href="http://w3.unisa.edu.au/ists/new/staff/software/faq/accessdb.htm">How to convert Access Databases (.mdb) prior to upgrading to Access 2013</a> offers guidance for conversion from MDB to ACCDB.  Meanwhile, <a href="https://msdn.microsoft.com/library/office/dn602608.aspx#sectionSection2">Backward compatibility between Access 2010 and Access 2007</a> provides guidance related to saving files as MDB in newer versions of Access.</p>
+			<p>The conclusion of the compilers of this resource is that migration to a new version of Microsoft Access is not necessarily straightforward if the intention is to retain and preserve the full functionality of the database application.  However, it may prove convenient as a step in a preservation process if the intent is simply to capture the database structure and data content.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>
+				<b>Copying data from an MDB database file to another format</b>: No other software uses the MDB format as its native database format.  However, the underlying relational database model and ODBC, which supports remote use of SQL for creating and querying databases, provide a level of interoperability that can be exploited effectively in many situations, including migration of data in an MDB file to another format.   ODBC can be used to extract all the table definitions and data from an MDB file for migration to another platform.  It is important to note that use of ODBC requires a functioning version of Microsoft Access that can open the MDB file and a compatible ODBC driver.  This is not as simple as it sounds; it might require using an old operating system or installing different versions of ODBC drivers.  ODBC is the basis for many conversion tools or procedures in other database systems. See, for example, <a href="https://dev.mysql.com/doc/workbench/en/wb-migration-database-access.html">MySQL Workbench Manual: Microsoft Access Migration</a>. This is also the mechanism used by SIARD (Software Independent Archiving of Relational Databases) for making archival copies of databases, including from Microsoft Access databases, in the <fddLink id="fdd000426">SIARD</fddLink> format.</p>
+			<p>Software that claims to support export to other formats include: <a href="https://sourceforge.net/projects/mdbadmin/">MDB Admin</a> (application for Windows); <a href="https://eggerapps.at/mdbviewer/docs/en/file-formats.html">MDB/ACCDB Viewer</a> (application for Mac); and <a href="https://github.com/brianb/mdbtools">MDB Tools</a> (software library in C for Unix).</p>
+			<p>
+				<b>Related Microsoft utility</b>: <a href="https://www.microsoft.com/en-us/download/details.aspx?id=50040">Microsoft Access Runtime</a> is a freely downloadable version of Access that with capabilities for end users but not for database design or user customization.  This viewer can be used for queries and to run pre-defined reports on MDB files supported by the associated version of Access.  This means that the 2016 version can be used to look at MDB files back though those created by Access 2000.  It is primarily designed for distribution with applications developed based on Microsoft Access.</p>
+			<p>
+				<b>Relationship to ESRI Personal Geodatabase format</b>:  The format used by ESRI for its <a href="http://desktop.arcgis.com/en/arcmap/latest/manage-data/administer-file-gdbs/personal-geodatabases.htm">Personal Geodatabase</a> is based on MDB. However, in <a href="http://desktop.arcgis.com/en/arcmap/latest/manage-data/tables/understanding-how-to-use-microsoft-access-files-in-arcgis.htm">Understanding how to use Microsoft Access files in ArcGIS</a>, ESRI warns against editing a Personal Geodatabase in Access, because the database may be corrupted.  ESRI has been discouraging the use of Personal Geodatabases in favor of the File Geodatabase.  See, for example, <a href="http://desktop.arcgis.com/en/arcmap/latest/manage-data/geodatabases/types-of-geodatabases.htm">ArcMap Help | Types of geodatabases</a> and <a href="http://pro.arcgis.com/en/pro-app/tool-reference/tool-errors-and-warnings/001001-010000/tool-errors-and-warnings-01301-01325-001324.htm">Personal Geodatabases are not supported in 64-bit versions of ArcGIS</a>.  A sample Personal Geodatabase file encountered indicates that it is compatible with Access 2000 or Access 2002-2003 (Jet DB 2). For information on ESRI Geodatabases in general, see <fddLink id="fdd000293">ESRI Arc Geodatabase</fddLink>
+			</p>.</fdd:general>
+		<fdd:history>
+			<p>
+				<b>Microsoft Access Release History</b>: Microsoft Access 1.0 was released in November 1992.  After a minor release (1.1) in May 1993, Access 2.0 came out in 1994; it was advertised for sale by August 1994.  Starting with Office 95, new versions of Access were released with new versions of the Office Professional Suite and supported the VBA language for scripting.  The releases with MDB as default format were : Access 95 (aka Access 7.0); Access 97 (version 8.0); Access 2000 (version 9.0); Access 2002 (version 10.0); and Access 2003 (version 11.5). Access 2007 (version 12.0) introduced the ACCDB format as the default database format and used a new ACE database engine.  Some new features added in Access 2010 prevent the database from being saved in the MDB file format.</p>
+			<p>Because MDB files can still be used with later versions of Access, continued release history may be relevant.  Major releases were Access 2010 (version 14.0); Access 2013 (version 15.0); Access 2016 (version 16.0).  Office 2016 was released in September 2015.  Some plans for Office 365 subscribers, which uses frequent releases, include Access.  Between September 2015 and March 2017, only one of the changes listed in <a href="https://support.office.com/en-us/article/What-s-new-in-Access-2016-76454345-f85d-47af-ace1-98a456cb3496">What&apos;s new in Access 2016</a> would have had any effect on the associated file format.  <a href="https://support.office.com/en-us/article/Using-the-Large-Number-data-type-5b623f6e-641d-4e97-8bdf-b77bae076f70">Using the Large Number data type</a> indicates that this feature, adding support for storing larger integers, prevents use of versions of Access prior to Access 2016.</p>
+			<p>From a technical perspective, the format version for a database with the .mdb extension is identified by the version of the Jet Database Engine (Jet DB) with which it is compatible.  For versions of Access prior to Access 95, the version of the Jet DB corresponded to the version of Access.  See <a href="http://web.archive.org/web/20111115230803/http://support.microsoft.com/kb/178880">INFO: Identifying the Jet Database Engine Components</a> for details.   Access 95/97 used versions 3.x of the Jet DB with a page size of 2048 bytes.  Access 2000/2003 used versions 4.x of the Jet DB with a page size of 4096 bytes. Information on later versions can be found in <a href="http://jabakobob.net/mdb/first-page.html">The Unofficial MDB Guide: First Page</a> and the <a href="https://github.com/brianb/mdbtools/blob/master/HACKING">MDBtools HACKING page</a>.  Since Access 95 (at least), the Jet DB version can be found in the file header of an MDB file, at offset 0x14:</p>
+			<ul>
+				<li>0x00 (Hex: 00) -- Jet DB, version 3.x (Access 95/97)</li>
+				<li>0x01 -- Jet DB, version 4.x (Access 2000, 2002-2003)</li>
+			</ul>
+			<p>Versions of Microsoft Access since 2007 can still write databases in the MDB format.  Access 2010 through Access 2016 offer a choice of two MDB formats: Access 2000 and Access 2002-2003. The compilers of this resource used Access 2010 to create a minimal database in the Access 2000 format.  This MDB file had the same magic number and version indicator as indicated above.  PRONOM treats these as a single byte sequence in  <a href="http://www.nationalarchives.gov.uk/PRONOM/Format/proFormatSearch.aspx?status=detailReport&amp;id=352&amp;strPageToDisplay=signatures">Microsoft Access Database 2000 | Signatures</a>.  PRONOM provides a second byte sequence as a signature that indicates the version/build of Microsoft Access used to create the file. However, the MDB database created using Access 2010 did not include this second byte sequence. For this reason, the File Signifiers table above does not include the second byte sequence. <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>For the other Office applications, Microsoft has been careful to retain backwards compatibility and application functionality to open old files.  This is no longer the case for Access database files.  Support for the Access 1.0 and Access 2.0 formats was dropped with Access 2010.  Support for Access 95 and Access 97 formats was dropped with Access 2013.</p>
+			<p>
+				<b>Early history of ODBC support in Microsoft Access</b>:  <a href="https://en.wikipedia.org/wiki/Open_Database_Connectivity">ODBC</a> (Open Database Connectivity) is a standard application programming interface (API) for accessing database management systems (DBMS).  By the late 1980s, it was clear that SQL (Structured Query Language) was an important standard for databases.  Collaborative efforts involving several vendors, including Microsoft, developed a specification using the name SQL Connectivity (SQLC), published in 1989.   While some vendors focused on official standardization of the SQL Call Level Interface that was part of the SQLC proposal, Microsoft worked on the SQLC proposal for an API, and published it separately in December 1991.  After industry input and a change of name, ODBC 1.0 was released in September 1992.  Microsoft Access 1.0 came out soon after. <a href="https://books.google.com/books?id=qjsEAAAAMBAJ&amp;pg=PA68">InfoWorld, August 16, 1993, page 68</a> reviewed Access 1.1 and indicated that it introduced ODBC support for access to Oracle and Sybase together with improved ODBC performance for accessing data on Microsoft's own SQL Server.  This suggests that Access 1.0 had some support for ODBC, likely limited to its use with SQL Server.  <a href="https://books.google.com/books?id=qjsEAAAAMBAJ&amp;pg=PA17">Page 17</a> of the same issue of InfoWorld reported that Microsoft was shipping its first stand-alone ODBC drivers.  <a href="https://books.google.com/books?id=2zsEAAAAMBAJ&amp;pg=PA49">InfoWorld, Jan 25, 1993, page 49</a> had mentioned Microsoft&apos;s intention to be able to share information between Access and SQL Server and <a href="https://books.google.com/books?id=BTsEAAAAMBAJ&amp;pg=PA23">InfoWorld, Mar 7, 1994, page 23</a> indicated that the upcoming release 2.2 of ClearReports would have ODBC drivers for using Access as a data source.  This suggests that, at least by Access 1.1, it was possible to access data in an MDB file from other applications via ODBC.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://jabakobob.net/mdb/</link>
+					<tag>The Unofficial MDB Guide | Tech Specs for the JET format used by Access 1997-2010</tag>
+					<comment>Description based on reverse engineering.  Note that this does not cover the formats used between 1992 and 1997.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/brianb/mdbtools/blob/master/HACKING</link>
+					<tag>HACKING | This file documents the Microsoft MDB file format for Jet3 and Jet4 databases.</tag>
+					<comment>In a few details this is more up-to-date than the more complete Unoffical MDB Guide, cited above.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources related to migration and compatibility issues among chronological versions of Microsoft Access and the MDB format.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://social.msdn.microsoft.com/Forums/office/en-US/bc90cd7f-1bae-4dc7-9a4d-8a906fff1879/looking-to-convert-access-10-mdb-databases-to-later-version?forum=accessdev</link>
+							<tag>Looking to convert Access 1.0 MDB databases to later version?</tag>
+							<comment>A useful discussion thread, but some doubt as to whether the file that was successfully imported in Access 2007 actually was an Access 1.0 file.  Other suggestions included trying to open in Excel and OpenOffice Base and &quot;bootstrapping&quot; via functioning copies of Access 2.0, Access 97, etc.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://books.google.com/books?id=nDgEAAAAMBAJ&amp;pg=PA82&amp;lpg=PA82</link>
+							<tag>Review of Access 2.0 --  InfoWorld Aug 15, 1994</tag>
+							<comment>Indicates that Access 2.0 could use MDB files from Access 1.0 and 1.1, but recommended using the Convert Database feature to migrate, with the caveat that some &quot;database objects&quot; will probably need modification.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/office/aa139959.aspx</link>
+							<tag>Developer Considerations When Choosing a File Format in Access 2002</tag>
+							<comment>Explains the reasons for the two database file formats in Microsoft Access 2002, and describes the issues that developers should consider when choosing one file format over the other.  One format was new with Access 2002; the other was the format used by Access 2000.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/library/office/dn602608.aspx</link>
+							<tag>Backward compatibility between Access 2010 and Access 2007</tag>
+							<comment>Indicates that Access 2007 and Access 2010 introduced features that cannot be supported in the MDB format.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.thoughtco.com/access-file-formats-accdb-vs-mdb-1019506</link>
+					<tag>Access File Formats: ACCDB vs MDB | Access 2007 and Later Use the ACCDB File Format</tag>
+					<comment>First published on about.com which rebranded itself in late 2016 as several separate vertical channels. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.filesignatures.net/index.php?search=MDB&amp;mode=EXT</link>
+					<tag>Entry for MDB database file on filesignatures.net</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://fileformats.archiveteam.org/wiki/Access</link>
+					<tag>Access (Microsoft) page from Just Solve the File Format Problem.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/brianb/mdbtools</link>
+					<tag>MDB Tools - Read Access databases on *nix</tag>
+					<comment>A useful source for documentation of the MDB file format.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/exponential-decay/MDBValidator</link>
+					<tag>MDBValidator
+</tag>
+					<comment>Tool to read and output the statistics of a Microsoft Access Database, e.g. version, build number, password, page sizes and page types. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Microsoft_Jet_Database_Engine</link>
+					<tag>Wikipedia entry for Microsoft Jet Database Engine</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Microsoft_Access</link>
+					<tag>Wikipedia entry for Microsoft Access</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://theaccessweb.com/</link>
+					<tag>FAQ site for Microsoft Access developers</tag>
+					<comment>Formerly supported by Microsoft at mvps.org.  Downloads page includes sample databases (mainly for Access 97 and Access 2000).</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Records in PRONOM for different versions of the MDB file format.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.nationalarchives.gov.uk/PRONOM/x-fmt/66</link>
+							<tag>PRONOM entry for x-fmt/66</tag>
+							<comment>Information in PRONOM from UK National Archives about MDB format for Microsoft Access 2.0.  PUID: x-fmt/66</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.nationalarchives.gov.uk/PRONOM/x-fmt/238</link>
+							<tag>PRONOM entry for x-fmt/238</tag>
+							<comment>Information in PRONOM from UK National Archives about MDB format for Microsoft Access 95.  PUID: x-fmt/238</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.nationalarchives.gov.uk/PRONOM/x-fmt/239</link>
+							<tag>PRONOM entry for x-fmt/239</tag>
+							<comment>Information in PRONOM from UK National Archives about MDB format for Microsoft Access 97.  PUID: x-fmt/239</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.nationalarchives.gov.uk/PRONOM/x-fmt/240</link>
+							<tag>PRONOM entry for x-fmt/240</tag>
+							<comment>Information in PRONOM from UK National Archives about MDB format for Microsoft Access 2000.  PUID: x-fmt/240</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.nationalarchives.gov.uk/PRONOM/x-fmt/241</link>
+							<tag>PRONOM entry for x-fmt/241</tag>
+							<comment>Information in PRONOM from UK National Archives about MDB format for Microsoft Access 2002.  PUID: x-fmt/241</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://groups.google.com/forum/#!topic/pronom/_fz-eP0ge9o</link>
+							<tag>March/April 2013 discussion about possibly merging four MS Access (*.MDB) PRONOM entries into two</tag>
+							<comment>PRONOM staff decided to keep them separate.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://webcheatsheet.com/SQL/access_specification.php</link>
+					<tag>Microsoft Access Specifications and Limitations</tag>
+					<comment>Lists maximum sizes and numbers of various objects for Microsoft Access database versions..</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.fmsinc.com/microsoftaccess/databasesplitter/</link>
+					<tag>Split Database Architecture to Support Multiuser Environments, Improve Performance, and Simplify Maintainability</tag>
+					<comment>Both MDB and ACCDB can be split into multiple files.  Typical use of a split database is to separate user front end from &quot;back-end&quot; data storage.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://dev.mysql.com/doc/workbench/en/wb-migration-database-access.html</link>
+					<tag>MySQL | Microsoft Access Migration</tag>
+					<comment>Explains migration using ODBC drivers.  Only for Windows OS.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.kexi-project.org/wiki/wikiview/index.php@MDBDriver.html</link>
+					<tag>Kexi | MDB (MS Access file) Driver</tag>
+					<comment>Based on mdbtools software library.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.querytool.com/index.html</link>
+					<tag>Multi-database query tool, based on ODBC.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://fsprojects.github.io/SQLProvider/core/msaccess.html</link>
+					<tag>SQL Provider for MSAccess</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://jackcess.sourceforge.net/index.html</link>
+					<tag>Java library for reading from and writing to MS Access databases</tag>
+					<comment>As of April 2017, supporting Microsoft Access versions 2000-2013.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://ucanaccess.sourceforge.net/site.html</link>
+					<tag>UCanAccess | open-source Java JDBC driver implementation that allows Java developers and JDBC client programs to read/write Microsoft Access databases.</tag>
+					<comment>As of early 2017, supporting Access database formats from 2000, 2002/2003, 2007, 2010/2013/2016.  Access 97 format supported for read-only.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://blogs.kde.org/2009/09/23/forgotten-file-formats</link>
+					<tag>Post about lack of public documentation for Microsoft Access formats.</tag>
+					<comment>Also discusses lack of compatibility between versions.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Many tools exist for repairing corrupted MDB files, extracting data from MDB files and converting MDB files to other formats:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.cimaware.com/access-database-repair-accessfix</link>
+							<tag>AccessFIX: Access database repair software for accdb &amp; mdb files</tag>
+							<comment>As of early 2017, works with Microsoft Access 365, 2016, 2013, 2010, 2007, 2003, 2002 (XP), 2000, 97 and 95.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.everythingaccess.com/mdeconversion.asp</link>
+							<tag> EverythingAccess.com | MDE to MDB file conversion service
+and ACCDE to ACCDB file conversion service </tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.repair-access-file.com/software-detail-access-repair.php</link>
+							<tag>Stellar Phoenix Access Database Repair – ACCDB &amp; MDB File Recovery Software</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://mdb.filerestoreprogram.com/</link>
+							<tag>FileRestore | MDB File Recovery</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://sourceforge.net/projects/mdbadmin/</link>
+							<tag>MDB Admin | Open, visualize and edit MDB files without having Access installed</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://winworldpc.com/download/472C3685-18DA-11E4-99E5-7054D21A8599</link>
+							<tag>WinWorld | Downloading Microsoft Access 1.0</tag>
+							<comment>Example of availability of old versions of Microsoft Access.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Microsoft information about file formats used by Microsoft Access is limited to information about (a) support in different chronological versions of Microsoft Access and associated compatibility issues; and (b) support for programming applications based on versions of Access and their underlying database engines.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://web.archive.org/web/20111115230803/http://support.microsoft.com/kb/178880</link>
+							<tag>INFO: Identifying the Jet Database Engine Components</tag>
+							<comment>Link via Internet Archive.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://gallery.technet.microsoft.com/What-is-MDB-File-Format-50db290b</link>
+							<tag>What is MDB File Format and How To Recover Data from It?</tag>
+							<comment>Last updated 8/18/2016.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/office/aa139959.aspx</link>
+							<tag>Developer Considerations When Choosing a File Format in Access 2002</tag>
+							<comment>Explains the reasons for the two database file formats in Microsoft Access 2002, and describes the issues that developers should consider when choosing one file format over the other.  One format was new with Access 2002; the other was the format used by Access 2000.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/ms171893.aspx</link>
+							<tag>Connect to data in an Access database (Windows Forms)</tag>
+							<comment>Instructions for Visual Studio 2015</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://blogs.technet.microsoft.com/heyscriptingguy/2005/10/07/how-can-i-determine-which-version-of-access-was-used-to-create-a-database/</link>
+							<tag>How Can I Determine Which Version of Access was Used to Create a Database?</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://blogs.msdn.microsoft.com/data/2006/12/05/data-access-api-of-the-day-part-i/</link>
+							<tag>Data Access API of the Day, Part I</tag>
+							<comment>Short history of the evolution of Microsoft Data Access APIs</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The functionality of Microsoft Access as a relational database has been enhanced over the years, for example, through support for additional data types.  </fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/dn123881.aspx</link>
+							<tag>Microsoft Access SQL Reference</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/ff193793.aspx</link>
+							<tag>Microsoft Access SQL Reference | SQL Data Types</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/ff195814.aspx</link>
+							<tag>Microsoft Access SQL Reference | Equivalent ANSI SQL Data Types</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Microsoft does provide documentation for developing applications based on Microsoft Access.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/office/fp179695.aspx</link>
+							<tag>Access | SDK and API documentation, etc.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/dd361851.aspx</link>
+							<tag>[MS-VBAL]: VBA Language Specification</tag>
+							<comment>MDB files may contain scripts in VBA.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.avdf.com/nov96/acc_jet.html</link>
+					<tag>Jet Engine: History.  By Tony Goodhew.  November, 1996.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://idatalabs.com/tech/database-management-system</link>
+					<tag>Market Share of Database Management System products</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.neowin.net/forum/topic/1245042-do-you-think-microsoft-access-have-a-long-future-or-short-future-ahead/</link>
+					<tag>Discussion started with: Do you think Microsoft Access have a long future or short future ahead?</tag>
+					<comment>2015.  The overall judgment of contributors to the discussion is that Microsoft Access will continue viable, because of the installed base of database applications and its fitness for certain purposes.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

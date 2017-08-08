@@ -583,7 +583,6 @@ formats:
     - '*.cats'
     - '*.h'
     - '*.idc'
-    - '*.w'
     hasMagic: false
     interpreters:
     - tcc
@@ -1623,7 +1622,7 @@ formats:
     type: programming
   110:
     ace_mode: text
-    color: '#dbded5'
+    color: '#14253c'
     extensions:
     - '*.fan'
     hasMagic: false
@@ -1631,7 +1630,7 @@ formats:
     mimetypes: []
     name: Fantom
     supertype: null
-    tm_scope: none
+    tm_scope: source.fan
     type: programming
   111:
     ace_mode: text
@@ -1817,6 +1816,8 @@ formats:
     - '*.glslv'
     - '*.gshader'
     - '*.shader'
+    - '*.tesc'
+    - '*.tese'
     - '*.vert'
     - '*.vrx'
     - '*.vsh'
@@ -2075,6 +2076,7 @@ formats:
     - '*.me'
     - '*.ms'
     - '*.n'
+    - '*.nr'
     - '*.rno'
     - '*.roff'
     - '*.tmac'
@@ -2336,7 +2338,7 @@ formats:
   157:
     ace_mode: haskell
     codemirror_mode: haskell
-    color: '#29b544'
+    color: '#5e5086'
     extensions:
     - '*.hs'
     - '*.hsc'
@@ -2788,18 +2790,24 @@ formats:
     tm_scope: none
     type: programming
   187:
-    ace_mode: text
+    ace_mode: lisp
+    aliases:
+    - pcbnew
+    codemirror_mode: commonlisp
     extensions:
-    - '*.sch'
-    - '*.brd'
     - '*.kicad_pcb'
+    - '*.kicad_mod'
+    - '*.kicad_wks'
+    filenames:
+    - fp-lib-table
     hasMagic: false
     language_id: 187
-    mimetypes: []
-    name: KiCad
+    mimetypes:
+    - text/x-common-lisp
+    name: KiCad Layout
     supertype: null
-    tm_scope: none
-    type: programming
+    tm_scope: source.pcb.sexp
+    type: data
   188:
     ace_mode: html
     codemirror_mode: htmlmixed
@@ -3267,6 +3275,7 @@ formats:
     - Makefile.frag
     - Makefile.in
     - Makefile.inc
+    - Makefile.wat
     - makefile
     - makefile.sco
     - mkfile
@@ -4049,12 +4058,21 @@ formats:
     color: '#dad8d8'
     extensions:
     - '*.pls'
+    - '*.bdy'
+    - '*.ddl'
+    - '*.fnc'
     - '*.pck'
     - '*.pkb'
     - '*.pks'
     - '*.plb'
     - '*.plsql'
+    - '*.prc'
+    - '*.spc'
     - '*.sql'
+    - '*.tpb'
+    - '*.tps'
+    - '*.trg'
+    - '*.vw'
     hasMagic: false
     language_id: 273
     mimetypes:
@@ -4100,7 +4118,7 @@ formats:
     mimetypes: []
     name: Pan
     supertype: null
-    tm_scope: none
+    tm_scope: source.pan
     type: programming
   277:
     ace_mode: text
@@ -4195,6 +4213,8 @@ formats:
     - '*.pod'
     - '*.psgi'
     - '*.t'
+    filenames:
+    - cpanfile
     hasMagic: false
     interpreters:
     - perl
@@ -4229,7 +4249,7 @@ formats:
     language_id: 283
     mimetypes:
     - text/x-perl
-    name: Perl6
+    name: Perl 6
     supertype: null
     tm_scope: source.perl6fe
     type: programming
@@ -4290,6 +4310,8 @@ formats:
     extensions:
     - '*.pod'
     hasMagic: false
+    interpreters:
+    - perl
     language_id: 288
     mimetypes:
     - text/x-perl
@@ -4329,6 +4351,7 @@ formats:
     extensions:
     - '*.ps'
     - '*.eps'
+    - '*.pfa'
     hasMagic: false
     language_id: 291
     mimetypes: []
@@ -5170,6 +5193,7 @@ formats:
     color: '#1e4aec'
     extensions:
     - '*.scm'
+    - '*.sch'
     - '*.sld'
     - '*.sls'
     - '*.sps'
@@ -5242,7 +5266,12 @@ formats:
     - gradlew
     hasMagic: false
     interpreters:
+    - ash
     - bash
+    - dash
+    - ksh
+    - mksh
+    - pdksh
     - rc
     - sh
     - zsh
@@ -5278,7 +5307,7 @@ formats:
     mimetypes: []
     name: Shen
     supertype: null
-    tm_scope: none
+    tm_scope: source.shen
     type: programming
   349:
     ace_mode: text
@@ -6031,6 +6060,8 @@ formats:
     codemirror_mode: xml
     extensions:
     - '*.xml'
+    - '*.adml'
+    - '*.admx'
     - '*.ant'
     - '*.axml'
     - '*.builds'
@@ -6058,6 +6089,7 @@ formats:
     - '*.kml'
     - '*.launch'
     - '*.mdpolicy'
+    - '*.mjml'
     - '*.mm'
     - '*.mod'
     - '*.mxml'
@@ -6116,6 +6148,7 @@ formats:
     - '*.xml.dist'
     - '*.xproj'
     - '*.xsd'
+    - '*.xspec'
     - '*.xul'
     - '*.zcml'
     filenames:
@@ -6581,6 +6614,45 @@ formats:
     supertype: null
     tm_scope: source.ebnf
     type: data
+  431:
+    ace_mode: text
+    color: '#0e60e3'
+    extensions:
+    - '*.ring'
+    hasMagic: false
+    language_id: 431
+    mimetypes: []
+    name: Ring
+    supertype: null
+    tm_scope: source.ring
+    type: programming
+  140848857:
+    ace_mode: text
+    extensions:
+    - '*.brd'
+    hasMagic: false
+    language_id: 140848857
+    mimetypes: []
+    name: KiCad Board
+    supertype: null
+    tm_scope: source.pcb.board
+    type: data
+  147198098:
+    ace_mode: text
+    aliases:
+    - acfm
+    - adobe composite font metrics
+    - adobe multiple font metrics
+    - amfm
+    extensions:
+    - '*.afm'
+    hasMagic: false
+    language_id: 147198098
+    mimetypes: []
+    name: Adobe Font Metrics
+    supertype: null
+    tm_scope: source.afm
+    type: data
   173616037:
     ace_mode: text
     color: '#fffaa0'
@@ -6635,6 +6707,20 @@ formats:
     supertype: null
     tm_scope: source.gn
     type: data
+  342840477:
+    ace_mode: python
+    codemirror_mode: python
+    extensions:
+    - '*.eb'
+    group: Python
+    hasMagic: false
+    language_id: 342840477
+    mimetypes:
+    - text/x-python
+    name: Easybuild
+    supertype: null
+    tm_scope: source.python
+    type: data
   348895984:
     ace_mode: text
     color: '#7055b5'
@@ -6647,6 +6733,22 @@ formats:
     supertype: null
     tm_scope: source.p4
     type: programming
+  357046146:
+    ace_mode: soy_template
+    alias:
+    - soy
+    codemirror_mode: soy
+    extensions:
+    - '*.soy'
+    group: HTML
+    hasMagic: false
+    language_id: 357046146
+    mimetypes:
+    - text/x-soy
+    name: Closure Templates
+    supertype: null
+    tm_scope: text.html.soy
+    type: markup
   363378884:
     ace_mode: text
     aliases:
@@ -6675,6 +6777,33 @@ formats:
     supertype: null
     tm_scope: source.opentype
     type: data
+  404627610:
+    ace_mode: text
+    aliases:
+    - rs-274x
+    extensions:
+    - '*.gbr'
+    - '*.gbl'
+    - '*.gbo'
+    - '*.gbp'
+    - '*.gbs'
+    - '*.gko'
+    - '*.gpb'
+    - '*.gpt'
+    - '*.gtl'
+    - '*.gto'
+    - '*.gtp'
+    - '*.gts'
+    hasMagic: false
+    interpreters:
+    - gerbv
+    - gerbview
+    language_id: 404627610
+    mimetypes: []
+    name: Gerber Image
+    supertype: null
+    tm_scope: source.gerber
+    type: data
   406395330:
     ace_mode: text
     extensions:
@@ -6686,6 +6815,43 @@ formats:
     name: Jison Lex
     supertype: null
     tm_scope: source.jisonlex
+    type: programming
+  622447435:
+    ace_mode: text
+    aliases:
+    - eeschema schematic
+    extensions:
+    - '*.sch'
+    hasMagic: false
+    language_id: 622447435
+    mimetypes: []
+    name: KiCad Schematic
+    supertype: null
+    tm_scope: source.pcb.schematic
+    type: data
+  632765617:
+    ace_mode: text
+    aliases:
+    - tl
+    extensions:
+    - '*.tl'
+    hasMagic: false
+    language_id: 632765617
+    mimetypes: []
+    name: Type Language
+    supertype: null
+    tm_scope: source.tl
+    type: data
+  657332628:
+    ace_mode: text
+    extensions:
+    - '*.w'
+    hasMagic: false
+    language_id: 657332628
+    mimetypes: []
+    name: CWeb
+    supertype: null
+    tm_scope: none
     type: programming
   664257356:
     ace_mode: text
@@ -6708,6 +6874,18 @@ formats:
     name: Spline Font Database
     supertype: null
     tm_scope: text.sfd
+    type: data
+  781846279:
+    ace_mode: c_cpp
+    extensions:
+    - '*.xpm'
+    - '*.pm'
+    hasMagic: false
+    language_id: 781846279
+    mimetypes: []
+    name: XPM
+    supertype: null
+    tm_scope: source.c
     type: data
   792408528:
     ace_mode: text
@@ -6734,6 +6912,18 @@ formats:
     name: Meson
     supertype: null
     tm_scope: source.meson
+    type: programming
+  840372442:
+    ace_mode: text
+    color: '#C76F5B'
+    extensions:
+    - '*.pep'
+    hasMagic: false
+    language_id: 840372442
+    mimetypes: []
+    name: Pep8
+    supertype: null
+    tm_scope: source.pep8
     type: programming
   869538413:
     ace_mode: rust
@@ -6768,12 +6958,45 @@ formats:
     supertype: null
     tm_scope: text.marko
     type: markup
+  956556503:
+    ace_mode: lisp
+    aliases:
+    - wast
+    - wasm
+    codemirror_mode: commonlisp
+    color: '#04133b'
+    extensions:
+    - '*.wast'
+    - '*.wat'
+    hasMagic: false
+    language_id: 956556503
+    mimetypes:
+    - text/x-common-lisp
+    name: WebAssembly
+    supertype: null
+    tm_scope: source.webassembly
+    type: programming
+  998078858:
+    ace_mode: text
+    color: '#843179'
+    extensions:
+    - '*.ol'
+    - '*.iol'
+    hasMagic: false
+    interpreters:
+    - jolie
+    language_id: 998078858
+    mimetypes: []
+    name: Jolie
+    supertype: null
+    tm_scope: source.jolie
+    type: programming
 id: githublinguist
 stats:
   empty_names: 0
-  total_formats: 445
-  total_w_glob: 437
+  total_formats: 458
+  total_w_glob: 450
   total_w_magic: 0
-  total_w_mime: 193
+  total_w_mime: 197
   total_warnings: 0
 warnings: []

@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000469" titleName="SPSS System Data File Format Family (.sav)" shortName="SPSS_sav_family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2017-06-04</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>SPSS Statistics Data File Format Family (.sav), formerly known as SPSS System File Format.</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>statistics software formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The SPSS Statistics File Format is a proprietary binary format, developed and maintained as the native format for the <a href="https://en.wikipedia.org/wiki/SPSS">SPSS</a> statistical software application.  SPSS, which originally stood for &quot;Statistical Package for the Social Sciences,&quot; is a widely used statistical software system, first released in 1968.  SPSS has been owned by IBM since 2009 and is now known as <a href="https://www.ibm.com/us-en/marketplace/spss-statistics">IBM SPSS Statistics</a>.  When an SPSS Statistics data file is saved from SPSS, the file extension <i>.sav</i> is used.  There is no official public specification.  Unofficial documentation is available from the GNU PSPP project as <a href="https://www.gnu.org/software/pspp/pspp-dev/html_node/System-File-Format.html">Appendix B: System File Format</a>.</p>
+			<p>GNU PSPP Appendix B indicates that the .sav format can use a variety of character encodings and a variety of representations for integers and floating-point numbers. It states, &quot;System files may use most character encodings based on an 8-bit unit.&quot;  This includes <a href="https://en.wikipedia.org/wiki/ASCII">ASCII</a>, <a href="https://en.wikipedia.org/wiki/EBCDIC">EBCDIC</a>, and for more recent files, <a href="https://en.wikipedia.org/wiki/EBCDIC">UTF-8</a>.  Unicode has been supported for character data in the SPSS application since version 16 (released in late 2007).  The first 3 bytes of an SPSS_sav file indicate the character encoding by using the encoding to represent &quot;$FL&quot;.  Thus, hex &quot;24 46 4c&quot; indicates ASCII and hex &quot;5b c6 d3&quot; indicates EBCDIC.  Integer data may be <a href="https://betterexplained.com/articles/understanding-big-and-little-endian-byte-order/">big-endian or little-endian</a>. Floating-point data may nominally be in IEEE 754, IBM, or VAX encodings. The endianness for a SPSS_sav file can be determined from one or more of the numeric integer values in the file header record.  In some cases, more explicit indication of character encoding and numeric format can be confirmed through specific tagged &quot;records.&quot;  For record types and associated tags, see <i>File Organization</i> starting in the next paragraph.  The GNU PSPP documentation states, &quot;The best way to determine the specific character encoding in use is to consult the <i>character encoding record</i>, if present, and failing that the character_code in the <i>machine integer info record</i>, (which, despite the name given to the record by the GNU PSPP team, has indicators for character and floating point encodings, not just for integer encoding).</p>
+			<p>
+				<b>File organization</b>:  The information in an SPSS_sav file is divided into logical sections: a header, a sequence of tagged &quot;records&quot; comprising a &quot;dictionary&quot; for the file, followed by the data itself.  A  dictionary record consists of a numeric (32-bit integer) tag identifying the type of record, followed by a defined sequence of string or numeric values.   A list of sections follows:</p>
+			<ul>
+				<li>
+					<b>File header</b>: 176 bytes.  The first 4 bytes represent the string &quot;$FL2&quot; or &quot;$FL3&quot; in the character encoding used for the file.  The final &quot;3&quot; indicates that the data in the file is compressed using ZLIB.  See <a href="#notes">Notes</a> below for more on compression options for the SPSS_sav_family formats.  The next 60-byte string (in the particular character encoding) begins &quot;@(#) SPSS DATA FILE&quot; and also identifies the operating system and SPSS version that created the file.  The header continues with six numeric fields, including the number of variables per observation and a numeric code for compression, and ends with character data indicating creation date and time and a file label.  For details, see <a href="https://www.gnu.org/software/pspp/pspp-dev/html_node/File-Header-Record.html">B.2 File Header Record</a> from GNU PSPP Developers Guide.</li>
+				<li>
+					<b>Variable descriptor records</b>: One record with integer tag 2 for each variable.  The record consists of a fixed sequence of fields, identifying the type and name of the variable together with formatting information used by SPSS.  Each variable record may optionally include a variable label of up to 120 characters and up to three missing-value specifications.</li>
+				<li>
+					<b>Value labels</b>: Optional. Stored in pairs of records with integer tags 3 and 4.  The first record (tag 3) has a sequence of pairs of fields, each pair comprising a value and the associated value label.  The second record (tag 4) indicates which variables the set of values/labels applies to.  This provides efficient storage when many variables (e.g. survey responses) use the same set of response codes.</li>
+				<li>
+					<b>Documents</b>: One or more records with integer tag 6.  Optional documentation.  Comprises 80-character lines.</li>
+				<li>
+					<b>Extension records</b>: One or more records with integer tag 7.  Extension records provide information that can be safely ignored, but preserved, in many situations, allowing for files written by newer software to preserve backward compatibility with older or less capable readers. Extension records have integer subtype tags. Key subtypes for characterizing a file include:<ul>
+						<li>
+							<b>Machine integer info record</b>:  Subtype tag 3.  Eight numeric fields, including: floating point representation code (1 for IEEE 754, 2 for IBM 370, and 3 for DEC VAX E); endianness (1 for big-endian, 2 for little-endian); character_code (1 for EBCDIC, 2 for 7-bit ASCII, 1250 for windows-1250 code page, 1252 for windows-1252 code page, 28591 for ISO 8859-1, 65001 for UTF-8, etc.). </li>
+						<li>
+							<b>Character encoding record</b>: Subtype tag 20.  A single character string indicating the name of the character encoding, normally an official IANA character set name or alias.  See <a href="https://www.iana.org/assignments/character-sets/character-sets.xhtml">Character Sets</a> from IANA.</li>
+					</ul> Although extension records are optional, some features of recent versions of SPSS Statistics, such as allowing longer strings and user-defined attributes for the data file depend on extensions.</li>
+				<li>
+					<b>Dictionary terminator</b>: Single record with integer tag 999.  Separates dictionary from data observations.  Look for Hex E7 03 in a SPSS_sav_family file that uses little-endian integer representation.</li>
+				<li>
+					<b>Data observations</b>: Data is in observation order, i.e., all variable values for the first observation, followed by all values for the second observation, etc.  The format of the data record varies depending on the compression code in the file header record. The data portion of a .sav file can be uncompressed (code 0), compressed by bytecode (code 1), or compressed using ZLIB compression as defined in IETF&apos;s <a href="https://www.ietf.org/rfc/rfc1950.txt">RFC 1950</a> (code 2).  See <a href="#notes">Notes</a> below for more on compression options.</li>
+			</ul>
+			<p>SPSS has also defined a &quot;portable&quot; format (see <fddLink id="fdd000468">SPSS_por_ASCII</fddLink>) designed for transferring datasets between versions of SPSS on different platforms.  However, as early as 1999, experts on discussion forums were recommending the use of SPSS &quot;system&quot; (.sav) files for interchange instead of .por files.  See, for example, a <a href="https://groups.google.com/forum/#!msg/comp.soft-sys.stat.spss/QNDh135k8DQ/1EvDiWRdL2IJ;context-place=msg/comp.soft-sys.stat.spss/NG3jxxoE0dY/V33hlIbzC0wJ">comp.soft-sys.stat.spss discussion thread</a>, which suggests that SPSS_sav files had been platform-independent since SPSS version 6.0, which <a href="https://books.google.com/books?id=7R9dfakD130C&amp;pg=PA336&amp;lpg=PA336">PC Magazine, June 14, 1994</a> indicates was current in 1994.  SPSS documentation has also indicated that SPSS_sav files are platform independent.  For example, <a href="https://www.ibm.com/support/knowledgecenter/SSLVMB_21.0.0/com.ibm.spss.statistics.help/syn_export_overview.htm">Overview (EXPORT command)</a> from the manual for SPSS Statistics, version 21, states, &quot;In most cases, saving data in portable format is no longer necessary, since IBM SPSS Statistics data files should be platform/operating system independent.&quot;</p>
+			<p>The SPSS_sav format has been relatively stable but not static. Backwards and forwards compatibility have been aimed for where feasible, but not maintained completely. <a href="https://www.ibm.com/support/knowledgecenter/SSLVMB_24.0.0/spss/base/savedatatypes.html">Saving data: Data file types</a> from the SPSS Statistics 24 Help system makes several statements about incompatibility over time.</p>
+			<ul>
+				<li>Data files saved in IBM SPSS Statistics format cannot be read by versions of the software prior to version 7.5.</li>
+				<li>An option to save Version 7.0 .sav format is provided. Data files saved in version 7.0 format can be read by version 7.0 and earlier versions but do not include defined multiple response sets or Data Entry for Windows information.</li>
+				<li>Data files saved in Unicode encoding cannot be read by releases of IBM SPSS Statistics prior to version 16.0.</li>
+				<li>Only IBM SPSS Statistics version 21 or higher can open ZSAV files.  ZSAV files have the same features as SAV files, but they take up less disk space. ZSAV files are always encoded in UTF-8.</li>
+			</ul>
+			<p>The ZSAV format has a different file extension (.zsav) and a different 4th character in the file (for a magic number of &quot;$FL3&quot;).  The data section is compressed, but according to a 2013 discussion thread on the topic of  <a href="http://pspp-users.gnu.narkive.com/IToYTzIz/zsav-format-support-zcompressed-subcommand">ZSAV format support</a>, the header and dictionary are the same as for the .sav format.  See also <a href="https://www.gnu.org/software/pspp/pspp-dev/html_node/Data-Record.html">B.20 Data Record</a> from Appendix B of the GNU PSPP Developers Guide.  Hence the ZSAV format can be considered a member of the SPSS_sav_family.</p>
+		</fdd:description>
+		<fdd:shortDescription>a proprietary binary format developed by SPSS to store a dataset for use with the SPSS Statistics application.  No public specification exists.</fdd:shortDescription>
+		<fdd:productionPhase>Designed as an initial-state and middle-state format to support creation, management, and statistical analysis of data and for exchange of statistical data between compatible systems for statistical analysis.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>SPSS_sav files with specific character encodings, not described separately on this site at this time.  The most common encoding is ASCII, for which there is a PRONOM record at <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/638">http://www.nationalarchives.gov.uk/PRONOM/fmt/638</a>.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>SPSS_sav_family format using ZLIB compression to compress the data section, not described separately at this site at this time.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress has no datasets in this family of formats in its collections.</fdd:experience>
+		<fdd:preference>The Library of Congress Recommended Formats Statement (RFS) does not list the SPSS Statistics Data File Format as preferred or acceptable for acquiring  <a href="https://www.loc.gov/preservation/resources/rfs/data.html">datasets</a> for the its collections because the RFS expresses a preference for publicly documented, non-proprietary, character-based formats for datasets.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>A proprietary format with no official documentation. Developed and maintained as part of the <a href="https://en.wikipedia.org/wiki/SPSS">IBM SPSS Statistics</a> software application. </fdd:disclosure>
+		<fdd:documentation>Unofficial documentation is available at <a href="https://www.gnu.org/software/pspp/pspp-dev/html_node/System-File-Format.html">GNU PSPP Developers Guide | Appendix B: System File Format</a>.</fdd:documentation>
+		<fdd:adoption>
+			<p>SPSS is a software application, first released in 1968 and  widely used for statistical analysis.  The SPSS_sav format described here has been used since SPSS 7.5 (released 1996).  New features have been handled in &quot;extension&quot; records that can be ignored by older software versions that do not recognize the new features.</p>
+			<p>
+				<a href="https://www.gnu.org/software/pspp/">GNU PSPP</a> is open-source statistical analysis software designed to work with SPSS data files. In May 2017, the latest version is <a href="http://savannah.gnu.org/forum/forum.php?forum_id=8626">PSPP 0.10.2</a>, released in July 2016.  The software claims to work in Windows, Mac OS X, and various Unix variants.</p>
+			<p>Other important statistical software applications can import SPSS_sav files.  For example, modules exist for R to import SPSS_sav files; see <a href="https://cran.r-project.org/web/packages/rio/vignettes/rio.html">rio | Import, Export, and Convert Data Files</a> and <a href="http://haven.tidyverse.org/reference/read_spss.html">Read SPSS (SAV &amp; POR) files. Write SAV files</a> from tidyverse.org.  Starting with SAS 9.1.3 SP3 (2005), SAS has had the ability to import SPSS_sav files.  <a href="https://ideas.repec.org/c/boc/bocode/s456957.html">USESPSS </a> is a user-written Stata module, running only on Windows and without support, to import SPSS (*.sav) datasets.  <a href="http://www.stattransfer.com/stattransfer/formats.html#spss_data_files">Stat/Transfer</a>, a popular commercial utility for converting datasets from one format to another, can read and write SPSS_sav files.</p>
+			<p>
+				<a href="https://pythonhosted.org/savReaderWriter/generated_api_documentation.html#savreader">SavReader</a> is a Python API for reading SPSS_sav files and has a sibling SavWriter routine.  <a href="https://github.com/WizardMac/ReadStat">ReadStat</a> is a software library in the C programming language that supports reading and writing of SPSS_sav.  The open-source <a href="http://dataverse.org/">Dataverse</a> software from Harvard University&apos;s Institute of Quantitative Social Sciences imports <a href="http://guides.dataverse.org/en/latest/user/tabulardataingest/spss.html">SPSS data files (POR and SAV formats)</a> into its archive, but with the caveat, &quot;SPSS does not openly publish the specifications of their proprietary file formats. Our ability to read and parse their files is based on some documentation online from unofficial sources, and some reverse engineering. Because of that we cannot, unfortunately, guarantee to be able to process any SPSS file uploaded.&quot;  The java source code, including a reader for SPSS_sav files, is available at <a href="https://github.com/IQSS/dataverse">GitHub</a>.</p>
+			<p>The SPSS Portable format is accepted by most statistical archives. None of the lists consulted are specific as to character encodings accepted.  ICPSR (Inter-university Consortium for Political and Social Research) <a href="http://www.icpsr.umich.edu/icpsrweb/content/deposit/guide/chapter6.html">accepts</a> and <a href="https://www.icpsr.umich.edu/icpsrweb/content/shared/ICPSR/faqs/what-kind-of-data-formats-does-archive.html">distributes</a> datasets in this format.  The UK Data Archive lists SPSS_sav as acceptable in its <a href="http://www.data-archive.ac.uk/create-manage/format/formats-table">File Formats Table</a>.  Instructions from the GESIS archive in Germany on <a href="http://www.gesis.org/en/services/archiving-and-registering/data-archiving/preparing-data-for-submission/">Preparing Data for Submission</a> lists the SPSS_sav among preferred formats.  The list of preferred and acceptable <a href="https://dans.knaw.nl/en/deposit/information-about-depositing-data/file-formats">File formats</a> for the DANS (Data Archive and Networked Services)  lists the SPSS_sav format as preferred. The popular NESSTAR software suite for assembling a collection of datasets for online discovery and analysis supports the import of SPSS_sav files in the <a href="http://www.nesstar.com/help/4.0/publisher/download_resources/Publisher_UserGuide_v4.0.pdf">NESSTAR Publisher</a> module. Other lists of recommended formats that include the SPSS_sav format include the <a href="http://www.ed.ac.uk/files/atoms/files/recommended_file_formats-apr2015.pdf">Edinburgh DataShare</a> service and the <a href="http://rss.mines.edu/RSS-sustainable-data-formats">Colorado School of Mines</a>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>Although SPSS Inc. has not published a specification for the SPSS_sav format, there is no evidence that the company has considered exploiting any intellectual property in the basic format, the general form of which has been used since the 1980s, at least.</fdd:licensingAndPatents>
+		<fdd:transparency>The binary SPSS_sav format is not transparent.  Numeric data is stored in internal formats to preserve full precision.  The data may be and often is compressed.  Character fields in the header and dictionary sections are not compressed and can be identified with a text editor that understands the character encoding in use.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>SPSS_sav files contain names and optional labels for variables. Labels that explain values for coded variables may also be included. An unformatted textual description providing some context for the dataset as a whole can be included, as one or more Document records.  In addition, an extension record with subtype 17 can hold a set of attributes for the data file.  Each attribute consists of a name followed by a sequence of one or more string values.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None beyond software that can import data in this format.</fdd:externalDependencies>
+		<fdd:techProtection>According to <a href="http://www-01.ibm.com/support/docview.wss?uid=swg21475399">Can you password protect an IBM SPSS file?</a>, SPSS_sav appears to have capabilities for encryption and password protection starting with SPSS 21.0, released in August 2012. See <a href="https://www.gnu.org/software/pspp/pspp-dev/html_node/Encrypted-File-Wrappers.html">Appendix E: Encrypted File Wrappers</a> from the GNU PSPP Developers Guide.  The compilers of this resource are not aware how much this capability is used and whether a different file extension is usually used.  <a href="../contact_format.shtml">Comments welcome</a>.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:normalDataset>SPSS_sav is capable of representing all the data types used in SPSS, a widely used software system for statistical analysis.</fdd:normalDataset>
+			<fdd:accessSoftware>See <a href="https://www.ibm.com/developerworks/community/files/app?lang=en#/collection/9c63bfe8-ffb7-4594-915b-73b222feb1d1">IBM SPSS Statistics Programmab​ility SDKs</a> which expose the C-language api that is used by the Python, R, and .NET plugins and can be used directly by C applications.  See also <a href="https://www.ibm.com/developerworks/community/wikis/home?lang=en#!/wiki/We70df3195ec8_4f95_9773_42e448fa9029/page/Downloads%20for%20IBM%C2%AE%20SPSS%C2%AE%20Statistics">Downloads for IBM SPSS Statistics</a> and <a href="http://www-03.ibm.com/software/products/en/spss-stats-programmability">IBM SPSS Statistics Programmability Extension</a>.</fdd:accessSoftware>
+			<fdd:dataDocumentation>See Self-documentation above.   For re-use or long-term preservation, additional discipline-specific metadata, such as a <a href="http://www.ddialliance.org/explore-documentation">Data Documentation Initiative (DDI)</a> record, is often used in archival contexts.</fdd:dataDocumentation>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>sav</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/x-spss-sav</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>This value is used in the <a href="https://github.com/IQSS/dataverse">Dataverse</a> system. There is no registration at <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>The first three characters of the file represent the text &quot;$FL&quot; in the character encoding used for the file.  Thus, hex &quot;24 46 4C&quot; indicates ASCII and hex &quot;5B C6 D3&quot; indicates EBCDIC.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>No exact match for SPSS_sav_family.  See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/638">http://www.nationalarchives.gov.uk/PRONOM/fmt/638</a> for .sav file with ASCII encoding.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>zsav</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Used for subtype of file with data compressed with ZLIB.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>ASCII: $FL3</fdd:sigValue>
+					<fdd:sigValue>Hex: 24 46 4C 33</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>A file with the .zsav extension uses UTF-8 for its character encoding.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Data compression options</b>: Files in the SPSS_sav_family formats use one of three compression options:</p>
+			<ul>
+				<li>
+					<b>No compression</b>: Data is arranged as a series of 8-byte elements. Elements for an observation/case) follow the order order of the variable descriptor records. Numeric values are in 64-bit floating point; string values are padded on the right when necessary to fill out 8-byte units.</li>
+				<li>
+					<b>Bytecode compression</b>:  This form of compression relies on the fact that survey responses (a very common use case for social science data and hence for SPSS datasets) are often coded as small integers.  Using this technique, small integers (from −99 to 155) and system missing values are stored in one byte instead of the eight bytes that are used in an uncompressed file.  Compressed data elements are
+encoded
+in clusters of up to
+eight
+values.  Each cluster has 8 1-byte codes followed by zero to 8 uncompressed values.  Integer elements with values from -99 to 155 are coded as single bytes in the range 1-251.  Codes 252-255 have special meanings. Elements that cannot be compressed are coded 253 and their values are stored in order following the 8 code bytes.  Code 252 indicates the end of the data section; 254 indicates an 8-byte string value that is all spaces; 255 indicates that the value is the &quot;system missing value&quot; (typically the largest possible negative number in the floating point format).</li>
+				<li>
+					<b>ZLIB compression</b>: The data section has the form: 24-byte ZLIB data header; one or more variable-length blocks of ZLIB compressed data (see <a href="https://www.ietf.org/rfc/rfc1950.txt">RFC 1950</a>).; ZLIB data trailer, with a 24-byte fixed header plus an additional 24 bytes for each preceding ZLIB compressed data block. 
+This option was introduced with SPSS 21.0.  The file extension used is .zsav; and a different 4th character in the file is used (for a magic number of &quot;$FL3&quot;).  Character encoding in a .zsav file is always UTF-8.</li>
+			</ul>
+			<p>For more detail on the compression options, see <a href="https://www.gnu.org/software/pspp/pspp-dev/html_node/Data-Record.html">B.20 Data Record</a> from the GNU PSPP Developers Guide.</p>
+			<p>
+				<b>Format support in Social Science data archives</b>: A post on the Digital Preservation Coalition blog, <a href="http://www.dpconline.org/blog/quanititative-file-formats-for-preservation">Quantitative File Formats for Preservation</a>, from April 2017, had a useful snapshot of the state of format support in Social Science Archives.  Jenny O&apos;Neill, who manages the Irish Social Science Data Archive (ISSDA) and wrote the DPC blog post, states that file formats for preservation are more complex than formats for ingest and dissemination for current users and that there is not a consensus on preferred formats among archives.  She emphasizes that &quot;ISSDA’s own file format policy is based on our knowledge of what formats our Data Producers want to give us and those that our Data Consumers want to receive.&quot;  Hence, most data is submitted in the fully functional proprietary formats associated with one of the widely used statistical packages (e.g., SPSS, SAS, or STATA). Specifically, she states, &quot;Because we will be using NESSTAR to provide online access to data we recommend that data are provided in SPSS together with other formats including Stata and SAS. We additionally recommend that data is provided as a Tab-delimited file (.tab) with setup files for SPSS, Stata and SAS. But realistically, what we receive is SPSS, SAS and Stata.&quot;  She also states that the ISSDA archive does not have the manpower or technical expertise to convert datasets from these formats to a normalized archival format.</p>
+			<p>For long-term preservation purposes, a character-based format is often recommended.  For example, <a href="https://ppp.cessda.net/doc/D10.4_Data_Formats.pdf">Data Preservation in the Social Sciences: 
+Recommendations for a CESSDA Research Infrastructure 
+(D10.4)</a> from 2008, states, &quot;Our conclusion from these facts is that the only sure means of preservation for the long term
+is converting the binary files to
+plain text (CSV in
+ASCII or Unicode). Only plain text gives
+the digital archive full control over the data, without being dependent on external parties.&quot;  However, creating a package that combines plain text data with adequate metadata to support re-use requires considerable effort and expertise.</p>
+			<p>From 1997 to 2010, The UK National Archives selected government datasets for archiving in the National Digital Archive of Datasets (NDAD), based at the University of London Computer Centre. Selected datasets were transferred from government departments, along with supporting contextual information. NDAD converted the data from its original format to the simple open CSV format and compiled consistent metadata.  A 2006 article on <a href="http://pubs.ulcc.ac.uk/80/2/Government_Computing_magazine_v6.pdf">The work of the National Digital Archive of Datasets (NDAD)</a> stated that &quot;Every dataset we work on is different,
+with a new set of challenges.&quot;  In 2010, the NDAD project was discontinued, in favor of archiving U.K. Government datasets from websites.  Since 2013, regular <a href="http://webarchive.nationalarchives.gov.uk/*/http://data.gov.uk/">captures of http://data.gov.uk/</a> are made available for access to archived U.K. government datasets.  Meanwhile, <a href="http://www.data-archive.ac.uk/media/54770/cd081-quantitativedataingestprocessingprocedures_08_00w.pdf">Quantitative Data Ingest Processing Procedures</a>, from the UK Data Archive, which holds social and economic research data, illustrates the effort needed to prepare a dataset for a normalized archive.  ICPSR described a similar process in <a href="https://deepblue.lib.umich.edu/handle/2027.42/60440">ICPSR meets OAIS: applying the OAIS reference model
+to the social science archive context</a>.  This article states, &quot;ICPSR  considers  the  combination  of  raw  data  plus  setup  files  to  be  the
+optimal  archival  format  for  long-term  preservation  because  this  package  has  the  best
+chance of being readable into the future.&quot;  ICPSR has accepted data files in SAS Transport (<fddLink id="fdd000464">SAS_xport</fddLink>), SPSS Portable (see <fddLink id="fdd000468">SPSS_por_ASCII</fddLink>), and Stata (accompanied by codebooks and other metadata), and has tools in its &quot;data pipeline&quot; for generating ASCII data files from these formats, together with set up files that can be used to import these files back into SAS, SPSS, or Stata. Also created are metadata documents in the XML-based <a href="https://www.ddialliance.org/explore-documentation">DDI</a> format.</p>
+			<p>
+				<a href="http://www.icpsr.umich.edu/icpsrweb/content/deposit/guide/chapter6.html">ICPSR&apos;s Guide to Social Science Data Preparation and Archiving
+Phase 6: Depositing Data</a> states, &quot;If a dataset is to be archived, it must be organized in such a way that others can read it. Ideally, the dataset should be accessible using a standard statistical package, such as SAS, SPSS, or Stata. Three common approaches to data file preparation are: (1) provide the data in raw ASCII format, along with setup files to read them into standard statistical programs; (2) provide the data as a system file within a specific analysis program; or (3) provide the data in a portable file produced by a statistical program. Each of these alternatives has its advantages and disadvantages.&quot;</p>
+			<p>Advantages of the native SPSS_sav_family formats include that they incorporate all the data at full precision and are ready for use in SPSS, incorporating descriptions for variables and coded values, and other setup details that would be required separately to make raw ASCII data as <fddLink id="fdd000323">CSV </fddLink>(comma-separated values) or TSV (tab-separated values) usable in SPSS or other statistics software in the near term or understood in the long term.  Disadvantages are that the data is not transparent; numeric values are stored in binary form and the data is often compressed.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>See <a href="https://en.wikipedia.org/wiki/SPSS">Wikipedia entry for SPSS</a> and a brief <a href="http://www.unige.ch/ses/sococ/cl/bib/soft/spss.history.html">history of SPSS</a> for the history of the SPSS software application and corporate history.  In brief, the Statistical Package for the Social Sciences (SPSS) was first released in 1968. SPSS, Inc. was formed in 1975 and acquired by IBM in 2009. IBM SPSS Statistics 24, the current version as of May 2017, was released in March 2016.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>A description of the SPSS_sav_family formats is available in the Developers Guide for the open-source GNU PSPP application.  GNU PSPP is a program for statistical analysis of sampled data, intended as a replacement for the proprietary SPSS.  It claims to use syntax and data files which are compatible with those of SPSS.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.gnu.org/software/pspp/pspp-dev/html_node/System-File-Format.html</link>
+							<tag>SPSS System File Format | Appendix B of PSPP Developers Guide</tag>
+							<comment>As HTML.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.gnu.org/software/pspp/pspp-dev/pspp-dev.pdf</link>
+							<tag>PSPP Developers Guide</tag>
+							<comment>As PDF.  The description of the System File Format is in Appendix B.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.ibm.com/support/knowledgecenter/SSLVMB_24.0.0/spss/base/savedatatypes.html</link>
+					<tag>SPSS Statistics Help | Saving data: Data file types</tag>
+					<comment>Annotated list of file format types to which data can be saved in the SPSS Statistics application..</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/SPSS</link>
+					<tag>Wikipedia entry for SPSS</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://lists.gnu.org/archive/html/pspp-dev/2007-06/pdf_NIwRX_1mu.pdf</link>
+					<tag>Miscellaneous SPSS information including a useful summary of the .sav file format.</tag>
+					<comment>Apparently from 2007.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://hwiegman.home.xs4all.nl/fileformats/sav/spssdata.ps</link>
+					<tag>PostScript version of SPSS File Format description in the PDF listed above.  Was originally on the now defunct wotsit.org resource.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources from IBM SPSS Statistics sites related to reading, writing, and using SPSS_sav_family files.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www-304.ibm.com/support/docview.wss?uid=swg21480797</link>
+							<tag>Compatibility of SPSS files (.sav, .sps, .spv, .spo) between different versions</tag>
+							<comment>States that .sav files are designed to be both backward and forward compatible.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://developer.ibm.com/predictiveanalytics/2015/09/30/spss-statistics-data-files-can-be-smaller-and-faster-if-saved-as-uncompressed/</link>
+							<tag>SPSS Statistics data files can be smaller and faster if saved as uncompressed</tag>
+							<comment>Blog post with information about when bytecode compression is effective and when it might not be.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.ibm.com/developerworks/community/wikis/home?lang=en#!/wiki/We70df3195ec8_4f95_9773_42e448fa9029/page/Downloads%20for%20IBM%C2%AE%20SPSS%C2%AE%20Statistics</link>
+							<tag>Downloads for IBM SPSS Statistics</tag>
+							<comment>Plugins and other resources relating to SPSS Programmability.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.ibm.com/developerworks/community/files/app?lang=en#/collection/9c63bfe8-ffb7-4594-915b-73b222feb1d1</link>
+							<tag>IBM SPSS Statistics Programmab​ility SDKs | Download menu</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www-03.ibm.com/software/products/en/spss-stats-programmability</link>
+							<tag>IBM SPSS Statistics Programmability Extension</tag>
+							<comment>An add-on product for SPSS Statistics.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.stattransfer.com/stattransfer/formats.html#spss_data_files</link>
+					<tag>StatTransfer | Support for SPSS data files</tag>
+					<comment>Stat/Transfer can read and write SPSS native data files for Windows, Macintosh, and Unix platforms.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>SPSS_sav files can be read into the R statistical environment.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://cran.r-project.org/web/packages/rio/vignettes/rio.html</link>
+							<tag>Import, Export, and Convert Data Files</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://haven.tidyverse.org/</link>
+							<tag>Haven package for R</tag>
+							<comment>Haven enables R reading and writing various data formats used by other statistical packages, including SPSS_sav..</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/WizardMac/ReadStat</link>
+					<tag>ReadStat: Read (and write) data sets from SAS, Stata, and SPSS</tag>
+					<comment>A software library in the C programming language.  Supports SPSS_sav</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://ideas.repec.org/c/boc/bocode/s456957.html</link>
+					<tag>USESPSS: Stata module to import SPSS (*.sav) data</tag>
+					<comment>For Windows only.  User-written code, apparently with minimal support.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://pythonhosted.org/savReaderWriter/generated_api_documentation.html#savreader</link>
+					<tag>SavReader | Python API</tag>
+					<comment>Reads .sav and .zsav files.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://guides.dataverse.org/en/latest/user/tabulardataingest/spss.html</link>
+					<tag>Dataverse | SPSS data files (POR and SAV formats)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources related to ZLIB compression.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Zlib</link>
+							<tag>Wikipedia entry for ZLIB</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.ietf.org/rfc/rfc1950.txt</link>
+							<tag>RFC 1950: ZLIB Compressed Data Format Specification version 3.3</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://zlib.net/</link>
+							<tag>ZLIB.net Home page</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>For resources related to the history of SPSS, see description of the SPSS Portable File Format [<fddLink id="fdd000468">SPSS_por_ASCII</fddLink>].</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>For resources relating to preservation of statistical datasets in general, including lists of supported formats in data archives, see description of the SPSS Portable File Format [<fddLink id="fdd000468">SPSS_por_ASCII</fddLink>].</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

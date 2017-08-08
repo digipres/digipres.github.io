@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000467" titleName="SAS Version 8 Transport File Format (XPORT)" shortName="SAS_xport_8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>family</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2017-05-12</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>SAS Transport File Format (XPORT) Version 8</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>statistics software formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The SAS Transport File Format is an openly documented specification maintained by <a href="https://www.sas.com/en_us/company-information.html#history">SAS</a>, a commercial company with a variety of software products for statistics and business analytics, including the application now known as SAS/STAT, which originated in the late 1960s as SAS (an acronym for Statistical Analysis System) at North Carolina State University.  The transport format was originally developed in the late 1980s when the corporate entity was known as <a href="https://en.wikipedia.org/wiki/SAS_Institute">SAS Institute, Inc.</a> and the software as SAS, to support data transfers between statistical software systems, especially between SAS applications running on different operating systems.  SAS considers it non-proprietary.  This format is referred to in several ways, including XPORT. This description is for the second version, termed Version 8 (corresponding to the first version of SAS that supported this version of the transport format).  Version 8, named &quot;SAS_xport_8&quot; here, was introduced in October 2012.  See <a href="http://support.sas.com/kb/46/944.html">Usage Note 46944: New SAS transport format and tools available</a>.  References on the Web to the SAS transport format without qualification as to version should probably be assumed to refer to Version 5.</p>
+			<p>See <fddLink id="fdd000464">SAS_xport_family</fddLink> for a summary of the structure that is common to both versions of the format.  For SAS_xport_8, all header labels include the string &quot;V8&quot;.</p>
+			<p>Several restrictions in Version 5 [<fddLink id="fdd000466">SAS_xport_5</fddLink>] were lifted for this version:</p>
+			<ul>
+				<li>The constraint on the number of  variables of 4 decimal digits in the NAMESTR header was raised to 6 decimal digits.</li>
+				<li>Variable names can be up to 32 characters and are stored in their original case (upper or lower).  Variable names can contain any characters other than null (Hex 0x00). Version 5 only allows alphanumeric and underscore as characters in names.</li>
+				<li>The 40-characters limit on variable labels was lifted to 256 characters</li>
+				<li>The contents of a variable may be numeric or string:<ul>
+						<li>No change was made to the representation of numeric variables, which may be integer or floating point. Floating point variables may not have absolute values smaller than 5.398e–79 or greater than 9.046e+74.  The range and precision are controlled by the IBM Double Precision (8-byte) numeric format.  For more on how numeric formats are stored, see <a href="http://support.sas.com/documentation/cdl/en/lrcon/65287/HTML/default/viewer.htm#p0ji1unv6thm0dn1gp4t01a1u0g6.htm">Numeric Precision in SAS Software</a>
+						</li>
+						<li>The 200-byte limit on character variables was raised to 32,767 bytes.</li>
+						<li>When data is missing, a missing data value is stored in the first byte of the data location for the variable. The variable value is padded with Hex 0x00 bytes to the declared length for the variable.</li>
+					</ul>
+				</li>
+				<li>Value labels are
+not
+written in the
+XPORT
+dataset.  Suppose that you have a variable
+<i>sex</i>
+in
+the data with values 0 and 1, and the values are labeled for <i>gender</i> (0=male, and 1=female).
+When the dataset is written in
+SAS XPORT
+Transport format, you can record that the variable
+label
+<i>gender</i>
+is associated with the
+<i>sex</i>
+variable, but you cannot record the association with
+the value labels <i>male</i> and <i>female</i>.
+Value-label definitions may be stored in a second
+XPORT
+dataset or in a text file
+containing
+SAS
+commands.</li>
+			</ul>
+		</fdd:description>
+		<fdd:shortDescription>Version 8 of an openly documented specification developed by SAS to support data transfers between systems.</fdd:shortDescription>
+		<fdd:productionPhase>See <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000464</fdd:id>
+					<fdd:shortName>SAS_xport_family</fdd:shortName>
+					<fdd:titleName>SAS Transport File Format Family (XPORT)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000466</fdd:id>
+					<fdd:shortName>SAS_xport_5</fdd:shortName>
+					<fdd:titleName>SAS Version 5 Transport File Format (XPORT)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>See <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:experience>
+		<fdd:preference>See <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Publicly documented format developed by <a href="https://www.sas.com/">SAS Institute, Inc.</a>  SAS considers it non-proprietary but controls the specification.</fdd:disclosure>
+		<fdd:documentation>Version 8 is documented in <a href="http://support.sas.com/techsup/technote/ts140_2.pdf">Record Layout for a SAS Version 8 or 9 Data Set in SAS Transport Format</a>.</fdd:documentation>
+		<fdd:adoption>The compilers of this resource have not found evidence of use of Version 8 of the SAS Transport Format.  <a href="../contact_format.shtml">Comments welcome</a>.</fdd:adoption>
+		<fdd:licensingAndPatents>See <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:licensingAndPatents>
+		<fdd:transparency>See <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:transparency>
+		<fdd:selfDocumentation>See <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:selfDocumentation>
+		<fdd:externalDependencies>See <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:externalDependencies>
+		<fdd:techProtection>See <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:normalDataset>See <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:normalDataset>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>SAS advises use of a file extension other than <i>.xpt</i> for Version 8 transport files, suggesting <i>.v8xpt</i>, <i>.xpt8</i>, or <i>.2xpt</i>; see <a href="http://support.sas.com/documentation/cdl/en/movefile/69975/PDF/default/movefile.pdf">Moving and Accessing SAS
+9.4 Files, Third Edition</a>.  The compilers of this resource have not found evidence of use of these file extensions.  <a href="../contact_format.shtml">Comments welcome</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>ASCII: HEADER RECORD*******LIBV8 HEADER RECORD!!!!!!!</fdd:sigValue>
+					<fdd:sigValue>Hex: 48 45 41 44 45 52 20 52
+45 43 4F 52 44 2A 2A 2A 2A 2A 2A 2A 4C 49 42 56 38 20 48 45 41 44 45 52 20 52
+45 43 4F 52 44 21 21 21 21 21 21 21 </fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From specification.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>See <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:general>
+		<fdd:history>See <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://support.sas.com/techsup/technote/ts140_2.pdf</link>
+					<tag>TS-140-2: Record Layout of a SAS
+Version 8 or 9 Data Set in SAS Transport (XPORT) Format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://support.sas.com/kb/46/944.html</link>
+					<tag>Usage Note 46944: New SAS transport format and tools available</tag>
+					<comment>From Oct 19, 2012</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://documentation.sas.com/?docsetId=movefile&amp;docsetTarget=n1h21k9w9rnhz3n1lrk8s9eib2bt.htm&amp;docsetVersion=9.4&amp;locale=en</link>
+					<tag>Moving and Accessing SAS® 9.4 Files | SAS V8 Transport File Format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000464">SAS_xport_family</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

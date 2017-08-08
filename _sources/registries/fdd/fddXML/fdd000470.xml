@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000470" titleName="R Data Format Family (.rdata, .rda)" shortName="RData_family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>family</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2017-06-09</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>R Data Format Family (.rdata, .rda)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>statistics software formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The RData format (usually with extension .rdata or .rda) is a format designed for use with <a href="https://www.r-project.org/">R</a>, a system for statistical computation and related graphics, for storing a complete R workspace or selected &quot;objects&quot; from a workspace in a form that can be loaded back by R. The <i>save</i> function in R has options that result in significantly different variants of the format.  This description is for the family of formats created by <i>save</i> and closely related functions.  A workspace in R is a collection of typed &quot;objects&quot; and may include much more than the typical tabular data that might be considered a &quot;dataset,&quot; including, for example, results of intermediate calculations and scripts in the R programming language.  A workspace may also contain several datasets, which are termed &quot;data frames&quot; in R. See <a href="#notes">Notes</a> below for more on the object-oriented terminology used in R and its documentation, particularly in relation to the data that might be in an RData file.</p>
+			<p>The R system consists of a special-purpose object-oriented programming language designed for statistical analysis and visualization, together with a run-time environment for its use. The runtime environment has the ability to interpret individual commands and run programs in R code, stored as text.  The R software is released as open source under the GNU General Public License (GPL), version 2 and is in continuous active development under the auspices of the <a href="https://www.r-project.org/foundation/">R Foundation</a>.  R was originally developed at the Department of Statistics of the University of Auckland in New Zealand.  Since mid-1997 the software has been extended and modified by the &quot;R Core Team,&quot; a group of individuals that includes the original authors of R, and a predecessor language called S.   See <a href="https://cran.r-project.org/doc/FAQ/R-FAQ.html#What-is-R_003f">What is R?</a> and <a href="https://en.wikipedia.org/wiki/R_(programming_language)#History">Wikipedia entry on R (programming language)</a>. Implementations of the R system exist for many Unix variants, MacOS, and Windows.  The <a href="https://www.rdocumentation.org/packages/base/">R Base Package</a> has the ability to instal extension packages for additional analysis or data manipulation tasks.  The <a href="https://cran.r-project.org/">Comprehensive R Archive Network (CRAN)</a> is the official source for R software and, as of mid-2017, lists over 10,000 <a href="https://cran.r-project.org/web/packages/index.html">packages</a>.</p>
+			<p>
+				<b>RData format subtypes/options</b>:  Although the files usually use the same extension, there are several distinct variations that are commonly found, because the <i>save</i> function offers options.</p>
+			<p>The main options are:</p>
+			<ul>
+				<li>
+					<b>Between ASCII, binary, or XDR data representations</b>: These can be distinguished by the first few bytes of the file.  The top-level header consists of 4 bytes followed by hex &quot;0A&quot; (LF, linefeed).  This functions as a magic number.  A secondary header begins the actual serialization of objects and consists of a single byte (with ASCII value &quot;A&quot;, &quot;B&quot;, or &quot;X&quot; as legal options) followed by another hex &quot;0A&quot; (LF, linefeed). <ul>
+						<li>
+							<b>A -- ASCII representation</b>: Each item of information (number or text string) is written out on a separate line, terminated by hex &quot;0A&quot; (LF, linefeed).  This results in a file that can be opened in many text editors, but is much more cryptic than a <fddLink id="fdd000323">CSV</fddLink> file, for example.  A small file with annotated listing is available at a blog post on the <a href="http://yetanothermathprogrammingconsultant.blogspot.com/2016/02/r-rdata-file-format.html">The RData File Format</a>.  As usual, when internal binary floating point numbers are converted to character data, there is potential for loss of precision. Note that even when saved as ASCII, RData files must be treated as binary files, to ensure that they are transferred without conversion of end-of-line markers and of 8-bit characters.</li>
+						<li>
+							<b>B -- a deprecated binary representation</b>:  This was used for the word-order binary native to the local operating system.  Option X is now recommended instead, with the aim of platform-independence.</li>
+						<li>
+							<b>X -- big-endian (XDR) binary representation</b>:  The default representation for RData files.  Integers and floating point numbers in these files are compatible with the C programming language.   A hex dump of such files reveals any ASCII character data and names of objects.</li>
+					</ul>
+				</li>
+				<li>
+					<b>Whether or not compression is applied</b>: The default is for compression using Gzip.  Other compression algorithms are supported within the R system, and it is also possible to vary compression parameters.  The file that is compressed may use the XDR or ASCII representations (and presumably the deprecated local binary representation).  The Gzip-compressed file will have the <i>magic number</i> that identifies a Gzip file (usual file extension .gz).</li>
+			</ul>
+			<p>Based on <a href="https://svn.r-project.org/R/trunk/src/main/serialize.c">serialize.c</a>, the source code that writes the saved files, the content (typed objects and their component items) is serialized in the same order for all variants. The most commonly occurring variants in active use seem likely to be compressed XDR and compressed or uncompressed ASCII.  R documentation states, &quot;ASCII saves used to be useful for moving data between platforms but are now mainly of historical interest.&quot;  However, documention for the commercial <a href="http://www.stattransfer.com/">Stat/Transfer</a> data conversion utility on <a href="https://www.stattransfer.com/support/manual/RFiles.html">RData files</a> describes the ASCII form as more common and only supports the ASCII form as output.</p>
+			<p>
+				<b>RData file organization</b>: RData files are organized as a sequence of objects.  Each object has a type, coded as an integer, and each object type comprises certain sub-objects and items in a prescribed order.  A data frame object typically has a set of typed vectors, one vector per variable.  The general (if somewhat simplified) form for each vector will start with the code for its vector type (numeric, logical, character, etc.), followed by a text string object for its name, a count of elements/rows, and finally the element values.</p>
+			<p>New object types can be introduced by installing packages beyond the R Base Package and by code written specifically for analysis of a certain collection of data.  Hence, many RData files cannot be fully understood or used without access to R extension packages and/or their documentation.</p>
+		</fdd:description>
+		<fdd:shortDescription>a binary format designed for storing a complete R workspace or selected &quot;objects&quot; from a workspace in a form that can be loaded back into the R statistical software system. </fdd:shortDescription>
+		<fdd:productionPhase>Designed as an initial-state or middle-state format to support creation and statistical analysis of data and intermediate storage and exchange of statistical data among users of the R system for statistical analysis.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>Subtypes based on different options chosen when saving an RData file, not described separately on this site at this time.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress has no datasets in this family of formats in its collections.</fdd:experience>
+		<fdd:preference>The Library of Congress Recommended Formats Statement (RFS) does not list the RData file format as preferred or acceptable for acquiring <a href="https://www.loc.gov/preservation/resources/rfs/data.html">datasets</a> for the its collections because the RFS expresses a preference for widely adopted character-based formats rather than application specific native formats or binary formats for datasets.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>The entire R statistical system is released as open source under the GNU General Public License (GPL), version 2. There is extensive documentation for the software.  R is an official part of the <a href="http://www.fsf.org/">Free Software Foundation’s</a> GNU project.  <a href="">The R Foundation</a> exists to support the <a href="https://www.r-project.org/">R Project</a>, hold and administer copyright in the software and documentation, and provide a communications point for outside entities to interact with the development team.</fdd:disclosure>
+		<fdd:documentation>
+			<p>The “Comprehensive R Archive Network” (CRAN) is a collection of mirror sites which carry identical material, consisting of the R distribution(s), the contributed extensions, documentation for R, and binaries.  Documentation for the software is available at <a href="https://cran.r-project.org/manuals.html">The R Manuals</a> and <a href="https://www.rdocumentation.org/">Rdocumentation.org</a>.  The documentation for the &quot;serialization format&quot; used in RData files is in <a href="https://cran.r-project.org/doc/manuals/r-release/R-ints.html#Serialization-Formats">R Internals 1.8 Serialization Formats</a>.</p>
+			<p>One expert, in a <a href="http://yetanothermathprogrammingconsultant.blogspot.com/2016/02/r-rdata-file-format.html">February 2016 blog post</a>, described the format as &quot;largely undocumented, and as a result it is not much used as a way to exchange data with other software.&quot;  The blog post has a useful annotated listing showing the structure of a simple example.  Those not deeply familiar with the R system, its concepts and internal workings will likely find the documentation inadequate.  It is aimed at software developers rather than users or data archivists.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>The RData format is primarily used in association with the R statistical software, which has been increasing in popularity in recent years.  IBM, Oracle, and Microsoft have all worked with the open-source R Project and have products that integrate with R.  Most commercial statistical and mathematical software supports connections to or integration with R. See <a href="https://en.wikipedia.org/wiki/R_(programming_language)#Commercial_support_for_R">Wikipedia entry on R (programming language)</a>.  However, this does not necessarily mean that they use the RData file format.  Indeed a white paper from IBM, <a href="http://www-01.ibm.com/common/ssi/cgi-bin/ssialias?subtype=WH&amp;infotype=SA&amp;appname=SWGE_YT_YV_USEN&amp;htmlfid=YTW03350USEN&amp;attachment=YTW03350USEN.PDF&amp;cm_mc_uid=43330250585414957568001&amp;cm_mc_sid_50200000=1495756800">The power of IBM SPSS Statistics and R together</a>, emphasizes the superior data management of SPSS and focuses on R as providing advanced and innovative analysis tools.  In similar vein, <a href="http://blog.revolutionanalytics.com/2012/06/fda-r-ok.html">FDA: R OK for drug trials</a> explains that the Food and Drug Administration is happy for R to be used for analysis, but wants to receive data from clinical trials in the <fddLink id="fdd000464">SAS_xport_ASCII</fddLink> format.</p>
+			<p>A variety of utilities and software libraries exist to work with Rdata files.  <a href="https://cran.r-project.org/web/packages/rio/index.html">Rio: A Swiss-Army Knife for Data I/O</a> provides convenient import to R from many data formats.  <a href="http://search.cpan.org/~davor/Statistics-R-IO-0.05/lib/Statistics/R/IO.pm">Statistics::R::IO</a> is a Perl interface to serialized R data.  The <a href="https://www.stattransfer.com/support/manual/RFiles.html">Stat/Transfer</a> conversion utility can read ASCII or binary RData files and writes ASCII RData files. <a href="https://www.mtna.us/#/products/sledgehammer">SledgeHammer</a> can prepare scripts for importing datasets in other formats into an R workspace.  Support for ingesting RData files into <a href="http://guides.dataverse.org/en/latest/user/tabulardataingest/rdata.html">Dataverse</a> was added in version 3.5 and the Java code for importing RData data frames is available at <a href="https://github.com/IQSS/dataverse">GitHub</a>.</p>
+			<p>The RData format is not mentioned in the lists of formats accepted by most statistical archives.  However, the list of preferred and acceptable <a href="https://dans.knaw.nl/en/deposit/information-about-depositing-data/file-formats">File formats</a> for the DANS (Data Archive and Networked Services)  lists R as &quot;under examination&quot; as acceptable.  The <a href="http://www.ed.ac.uk/files/atoms/files/recommended_file_formats-apr2015.pdf">Edinburgh DataShare</a> service accepts ASCII RData files. <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>In a <a href="http://www.econometricsbysimulation.com/2014/03/it-is-time-for-rdata-files-to-become.html">blog post in March 2014</a>, Francis Smart argued that RData files should be a standard for data transfer because of the compression.  In a <a href="https://ironholds.org/blog/rdata-for-our-data/">response post</a>, Oliver Keyes provides counter-arguments based on the need for data to be accessible to a community beyond R users.  In 2016, Hadley Wickham and Wes McKinney, recognizing shortcomings of the RData format for interoperability, introduced <a href="https://blog.rstudio.org/2016/03/29/feather/">Feather</a> as a fast, lightweight, and easy-to-use binary file format for storing data frames. However, they stress that Feather is not designed for long-term data storage.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>The software and documentation, including the documentation for the RData format, are distributed under GNU General Public License, version 2 or 3.   See <a href="https://www.r-project.org/Licenses/">R Licenses</a>.</fdd:licensingAndPatents>
+		<fdd:transparency>The typical RData format is not transparent, because the default options applied when saving a workspace or selected objects are to use binary representation and compression.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>According to <a href="http://guides.dataverse.org/en/latest/user/tabulardataingest/rdata.html">Dataverse guidance on ingestion from RData files</a>, &quot;R lacks a standard mechanism for defining descriptive labels for the data frame variables.&quot;  There is also no mechanism in the base package for explaining codes used for R Factors (i.e. categorical values, perhaps from an enumerated list).  These are serious shortcomings for public re-use or long-term preservation, unless the RData file is accompanied by a structured metadata representation such as a DDI record.</p>
+			<p>The compilers of this resource are not aware of a convenient mechanism for embedding structured metadata within an RData file.  Some experts have recommended use of the <a href="https://www.rdocumentation.org/packages/base/topics/comment">R comment function</a> to add a comment to an object before saving it in an RData file in order to provide description or context for objects or the file as a whole.  Others have suggested using R attributes for <a href="https://www.r-bloggers.com/adding-metadata-to-variables/">adding metadata to variables</a>.  However, these suggestions are usually made in the context of personal reminders for the creator as to what was done; there appears to be no standard approach for adding such metadata within R.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None beyond software that can import data in this format.</fdd:externalDependencies>
+		<fdd:techProtection>Encryption appears not to be supported in the R Base Package, but is supported by a variety of R &quot;packages&quot; that can be installed and used from within R. <a href="../contact_format.shtml">Comments welcome</a>.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:normalDataset>RData is capable of representing all the data types used in R, a widely used software system for statistical analysis.  Character data can be represented in UTF-8, Latin-1, in addition to the encoding for the current locale.</fdd:normalDataset>
+			<fdd:accessSoftware>
+				<p>There are many extension packages for R that facilitate export of data from an R installation. In particular, they include: <a href="https://cran.r-project.org/web/packages/rio/vignettes/rio.html">rio: A Swiss-Army Knife for Data I/O</a>, an R package that simplifies data import from many formats and export to a few, including <fddLink id="fdd000323">CSV</fddLink>, <fddLink id="fdd000398">XSLX</fddLink>, and Stata&apos;s .dta format; and <a href="https://github.com/tidyverse/haven">Haven</a>, an R package that converts between R and formats used by SPSS, SAS, and Stata.  See Adoption, above, for other examples of software that can read or convert data from RData files.</p>
+				<p>
+					<a href="http://www.burns-stat.com/r-database-interfaces/">R database interfaces</a> lists various packages for R that establish connections based on ODBC to relational database management systems.  The compilers of this resource have not explored whether these connections allow data stored in R to be sent to the remote database, or only allow R to import data from the remote database. <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			</fdd:accessSoftware>
+			<fdd:dataDocumentation>See Self-documentation above.   For re-use or long-term preservation, additional discipline-specific metadata, such as a <a href="http://www.ddialliance.org/explore-documentation">Data Documentation Initiative (DDI)</a> record, is often used in archival contexts.</fdd:dataDocumentation>
+			<fdd:beyondDataset>An RData file can represent an entire R workspace, include R Objects beyond those that comprise a dataset, for example, scripts in the R programming language, results of intermediate calculations, and data not in active use. A workspace may also contain several datasets.</fdd:beyondDataset>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>rda</fdd:sigValue>
+					<fdd:sigValue>rdata</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>These extensions are conventional rather than mandatory.  The workspace stored in the working directory for R implementations is called &quot;.Rdata&quot; and is normally hidden following operating system conventions for filenames beginning with periods.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>Not found.</fdd:sigValueNA>
+				<fdd:note>None identified at <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA registry</a>.  </fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:note>By default, RData files are compressed with gzip and begin with the hex string &quot;1F 8B&quot;.  Uncompressed RData files begin with hex string &quot;RDX2&quot; if stored as big-endian XDR binary (the default) and &quot;RDA2&quot; if stored using the ASCII option.</fdd:note>
+			</fdd:magicNumbers>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Terminology associated with RData files and content</b>:  R is an object-oriented application and the content of an RData file is a sequence of <i>objects</i>.  The terminology used in R is different (probably deliberately) from that used in other statistics software.  The documentation does not mention datasets, tables, variables, fields, cases, or observations. Instead, the words tend to reflect mathematical or programming usage. For example, types (&quot;classes&quot;) of objects holding data values that might be found in a workspace include: a variety of <i>vector</i> types (numeric, logical, character) used to hold the data values for variables; <i>array</i> (multi-dimensional) and <i>matrix</i> (a 2-dimensional array); <i>list</i> and <i>data.frame</i> (a list subject to important constraints that allow it to represent tabular data).  A data frame is the most useful way to keep the main data for a set of observations organized, particularly for exchange or archiving.  See, for example, the <a href="http://guides.dataverse.org/en/latest/user/tabulardataingest/rdata.html">Dataverse guidance on ingesting data in RData format</a>, which requires use of a data frame and will only ingest the first data frame instance from a file.</p>
+			<p>Another issue of terminology relating to R and how it stores data relates to the fact there is no documentation for a &quot;file format&quot; for R.  The term used in R documentation is &quot;serialization,&quot; a term that can be applied to saving to a file or to a communications stream.</p>
+			<p>
+				<b>Compatibility issues</b>:  Although the default version has not changed since R 1.4.0, saved RData files are not necessarily backwards compatible. A newly saved RData file can be loaded into an earlier version of R unless use is made of later additions to the base system. For example, long vectors, were introduced in R 3.0.0 and are loadable only on 64-bit platforms. Documentation for the <a href="https://www.rdocumentation.org/packages/base/topics/save">save</a> function mentions other compatibility issues.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>According to the Wikipedia entry for <a href="">R (programming language)</a>, an initial version of R was released in 1995.  Since 1997, the software development has been by the &quot;R Development Core Team.&quot; See <a href="https://cran.r-project.org/doc/html/interface98-paper/paper_2.html">A Brief History</a> for this early history.  The team released a version 1.0.0 in 2000.  See <a href="http://blog.revolutionanalytics.com/2016/03/16-years-of-r-history.html">Over 16 years of R Project history</a> for a 2016 update on history.</p>
+			<p>The workspace format used in RData_family files used from R 0.99.0 to R 1.3.1 was version 1.  Release R 1.3.1 appears to have been released for Windows in September 2001.  The default format as from R 1.4.0 (released in December 2001) is version 2.  Version 2 introduced the option of compression using Gzip, Bzip2, or Xz.  Release R 2.1 (April 2005) introduced support for UTF-8 encoding for character data.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>There is no separate document providing a specification for the format of an RData file.  R has used the same &apos;version 2&apos; serialization format since R 1.4.0 in December 2001. It is described in section 1.8 of the <a href="https://cran.r-project.org/doc/manuals/r-release/R-ints.html">R Internals Manual</a>.  This section, and indeed, most of the R documentation, is not easy to understand without a deep understanding of R and its object-oriented internals.  For clarification, particularly of options supported within the format, some pages of documentation for associated R functions, such as <i>save</i>, are included here:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://cran.r-project.org/doc/manuals/r-release/R-ints.html#Serialization-Formats</link>
+							<tag>R Internals | 1.8 Serialization Formats</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.rdocumentation.org/packages/base/topics/save</link>
+							<tag>R Documentation | save:  Save R Objects</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.rdocumentation.org/packages/base/topics/readRDS</link>
+							<tag>R Documentation | saveRDS/readRDS:  Serialization Interface for Single Objects</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://svn.r-project.org/R/trunk/src/main/serialize.c</link>
+							<tag>R source code for serialization in C programming language </tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://cran.r-project.org/doc/FAQ/R-FAQ.html</link>
+					<tag>R FAQ</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.rdocumentation.org/packages/base/</link>
+					<tag>Documentation for all functions in the R Base Package</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.r-project.org/</link>
+					<tag>The R Project for Statistical Computing</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.r-project.org/foundation/</link>
+					<tag>The R Foundation</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/R_(programming_language)</link>
+					<tag>Wikipedia entry on R(programming language)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources about data frames in R.  A data frame in R corresponds closely to the familar tabular dataset, with a number of cases/observations for a fixed set of variables/fields.  Some software, particularly applications focusing on web-based interfaces for online analysis of tabular data, will only read the first data frame in an RData file.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.rdocumentation.org/packages/base/topics/data.frame</link>
+							<tag>R Documentation for data.frame function</tag>
+							<comment>This function creates a data frame, the fundamental data structure used by most of R&apos;s modeling software.  A data frame in R corresponds to the typical tabular dataset consisting of a set of observations/cases for a defined set of fields/variables.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.pitt.edu/~njc23/Lecture8.pdf</link>
+							<tag>Dataframes in R | Lecture in 2011 Biostatistics course</tag>
+							<comment>From University of Pittsburgh.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.datacamp.com/community/tutorials/15-easy-solutions-data-frame-problems-r</link>
+							<tag>15 Easy Solutions To Your Data Frame Problems In R</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://guides.dataverse.org/en/latest/user/tabulardataingest/rdata.html</link>
+							<tag>Dataverse | Guidance for ingest of files in RData format</tag>
+							<comment>Reads only the first data frame.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://onlinehelp.tableau.com/current/pro/desktop/en-us/examples_statfile.html#Rdata</link>
+							<tag>Tableau | R data file object and format support</tag>
+							<comment>Reads only the first object with one of the types/classes: 2-dimensional matrix; vector; factor; or data frame.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Documentation from rdocumentation.org and the R Internals Manual associated with saving (aka &quot;serializing&quot;) workspaces and objects from R systems into files.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://cran.r-project.org/doc/manuals/r-release/R-ints.html#Serialization-Formats</link>
+							<tag>R Internals Manual | 1.8 Serialization Formats</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.rdocumentation.org/packages/base/topics/save</link>
+							<tag>R Documentation for Save function | Save R Objects</tag>
+							<comment>Writes an external representation of R objects to the specified file.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.rdocumentation.org/packages/base/topics/serialize</link>
+							<tag>R Documentation for Serialize function | Simple Serialization Interface</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.rdocumentation.org/packages/base/topics/readRDS</link>
+							<tag>R Documentation for readRDS/saveRDS functions | Serialization Interface for Single Objects</tag>
+							<comment> The .rds file extension is most often used when single R objects are saved.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://stat.ethz.ch/R-manual/</link>
+					<tag>Home page for R documentation, hosted at Zurich, Department of Mathematics, Seminar for Statistics</tag>
+					<comment>This resource includes documentation for versions of R not yet released.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Various R-related blogs, blog posts, tips, and guidance.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://yetanothermathprogrammingconsultant.blogspot.com/2016/02/r-rdata-file-format.html</link>
+							<tag>R: The RData File Format  | blog post by Yet Another Math Programming Consultant</tag>
+							<comment>Describes RData format as &quot;largely undocumented.&quot;  Provides an explanation of a simple example dataset. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://thepracticalr.wordpress.com/2017/04/27/load-save-and-rda-files/</link>
+							<tag>The Practical R | Load, Save, and .rda files</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.r-tutor.com/r-introduction/data-frame</link>
+							<tag>R Tutorial | Data Frame</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.sthda.com/english/wiki/saving-data-into-r-data-format-rds-and-rdata</link>
+							<tag>Saving Data into R Data Format: RDS and RDATA </tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.r-bloggers.com/safe-loading-of-rdata-files-2/</link>
+							<tag>Safe Loading of RData Files</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://support.rstudio.com/hc/en-us/community/posts/200645708-Loading-data-files-rda</link>
+							<tag>R Studio | Loading data files - .rda (discussion thread)</tag>
+							<comment>About whether .rda and .rdata extensions are equivalent or should be treated as such.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.burns-stat.com/pages/Tutor/R_inferno.pdf</link>
+							<tag>The
+R Inferno, by Patrick Burns. 2011</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Different views on whether RData files are appropriate for data exchange.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.econometricsbysimulation.com/2014/03/it-is-time-for-rdata-files-to-become.html</link>
+							<tag>It is time for RData files to become the standard for Data Transfer | Blog post by Francis Smart from March 2014</tag>
+							<comment>Smart argues that efficient compression, open-source code, and R&apos;s ability to bundle related information into a single file, make it an ideal candidate for data exchange.  He does point out the need for a &quot;standard&quot; approach for embedding documentation.   </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://ironholds.org/blog/rdata-for-our-data/</link>
+							<tag>RData for our data? | Blog post by Oliver Keyes in response to post above.</tag>
+							<comment>Keyes argues that the RData format, while excellent for data exchange between colleagues who use R, it is not useful for sharing data with a wider community..</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://blog.rstudio.org/2016/03/29/feather/</link>
+							<tag>Feather: A Feather: Fast On-Disk Format for Data Frames for R and Python, powered by Apache Arrow</tag>
+							<comment>Recognizing shortcomings of RData for public sharing of data frames, the authors propose an alternative format for fast, platform-independent, interoperability of tabular data.  States, &quot;Feather is not designed for long-term data storage.&quot;</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/wesm/feather/blob/master/doc/FORMAT.md</link>
+							<tag>Feather file format</tag>
+							<comment>A very brief description.  The R package associated with the format was added to CRAN in November 2016.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://blog.revolutionanalytics.com/2012/06/fda-r-ok.html</link>
+					<tag>FDA: R OK for drug trials</tag>
+					<comment>R may be used for analysis.  Data must be submitted in SAS_xport format.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>APIs and interfaces</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.burns-stat.com/r-database-interfaces/</link>
+							<tag>R database interfaces</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

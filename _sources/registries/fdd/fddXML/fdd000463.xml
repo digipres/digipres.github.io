@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000463" titleName="Microsoft Access ACCDB File Format Family" shortName="ACCDB_family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenreAndSubgenres>
+				<fdd:gdfrGenre>database</fdd:gdfrGenre>
+				<fdd:gdfrSubgenres>
+					<fdd:gdfrSubgenre>dataset</fdd:gdfrSubgenre>
+				</fdd:gdfrSubgenres>
+			</fdd:gdfrGenreAndSubgenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>family</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2017-04-26</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Microsoft Access ACCDB File Format Family</fdd:fullName>
+		<fdd:description>
+			<p>The .accdb file format extension has been used for a proprietary file format, developed by Microsoft and used as the default format for Microsoft Access versions from Access 2007 through Access 2016 (current version as of May 2017).  See, for example, <a href="https://support.office.com/en-us/article/Introduction-to-the-Access-2007-file-format-8cf93630-0b68-4a40-a13c-7528b9f074b6">Introduction to the Access 2007 file format</a> from Microsoft and <a href="https://www.thoughtco.com/access-file-formats-accdb-vs-mdb-1019506">File Formats: ACCDB vs MDB | Access 2007 and Later Use the ACCDB File Format</a>.  The .mdb file format extension was used for all databases created by Access prior to Access 2007.  See <fddLink id="fdd000462">Microsoft Access MDB Format Family</fddLink>.  Despite the advantages of the ACCDB format, there are still reasons to use MDB with Microsoft Access 2016.  See, for example, <a href="https://support.office.com/en-us/article/Which-Access-file-format-should-I-use-012d9ab3-d14c-479e-b617-be66f9070b41">Which Access file format should I use?</a> from Microsoft.  Microsoft has provided no public specification for the ACCDB format, but supports programming access via the Open Database Connectivity (<a href="https://en.wikipedia.org/wiki/Open_Database_Connectivity">ODBC</a>) standard and Visual Basic for Applications (<a href="https://en.wikipedia.org/wiki/Visual_Basic_for_Applications">VBA</a>).  Other than the Microsoft Access application, <a href="https://docs.microsoft.com/en-us/sql/odbc/microsoft-open-database-connectivity-odbc">ODBC</a> is the primary means of access to data in an Access database from other software, including other database applications.</p>
+			<p>Although there was a reverse engineering effort to document the predecessor MDB format publicly, there appears to be no equivalent activity for the ACCDB format. A key difference between ACCDB and MDB is that with Access 2007, Microsoft introduced a new database engine (the Office Access Connectivity Engine, referred to also as ACE and Microsoft Access Database Engine) to replace the Jet database used for MDB files.  See <a href="https://en.wikipedia.org/wiki/Microsoft_Jet_Database_Engine">Wikipedia entry for Microsoft Jet Database Engine</a>.  Versions of the ACE engine released through May 2017, some of which can be downloaded at no charge from Microsoft, include <a href="https://www.microsoft.com/en-us/download/details.aspx?id=23734">ACE 12</a> (Access 2007); <a href="https://www.microsoft.com/en-us/download/details.aspx?id=13255">ACE 10</a> (Access 2010); ACE 15 (Access 2013); <a href="https://www.microsoft.com/en-us/download/details.aspx?id=54920">ACE 16</a> (Access 2016). Microsoft refers to the ACCDB format in the singular, but use of some features introduced into later versions of the Access application will result in database files that cannot be opened by earlier versions.  See, for example: <a href="https://msdn.microsoft.com/library/office/dn602608.aspx">Backward compatibility between Access 2010 and Access 2007</a>; and <a href="https://support.office.com/en-us/article/What-s-new-in-Access-2016-76454345-f85d-47af-ace1-98a456cb3496">What&apos;s new in Access 2016</a>.  For this reason, the compilers of this resource consider that ACCDB must have subtypes. A detailed analysis has not been attempted at this time, given the lack of public documentation; this description covers the family of ACCDB formats.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>A hex dump of a simple ACCDB file suggests that there are general similarities in structure to the latest versions of the predecessor <fddLink id="fdd000462">MDB Format Family</fddLink>.  Both file formats use fixed page sizes of 4096 bytes; this is confirmed by Wayne Phillips at <a href="http://www.everythingaccess.com/tutorials.asp?ID=Changing-the-encryption-type-in-Access-2007">Changing the Encryption Type in Access 2007</a> on EverythingAccess.com.  Another similarity between ACCDB and MDB is the form of the magic number, which includes the string &quot;Standard ACE DB&quot; for ACCDB. A version or compatibility code is in the same location in both formats.  The <a href="https://github.com/brianb/mdbtools/blob/master/HACKING">mdbtools | HACKING</a> file states &quot;Offset 0x14 contains the Jet version of this database&quot; and <a href="http://jabakobob.net/mdb/first-page.html">The unofficial MDB Guide</a> concurs.  The information in these sources, combined with <a href="https://en.wikipedia.org/wiki/Microsoft_Jet_Database_Engine">Wikipedia entry for Microsoft Jet Database Engine</a>, suggests that a value of 0x02 indicates ACE 12 (Access 2007) and 0x03 indicates ACE 14 (Access 2010). However, a minimal database created in Access 2010 and a similar one created in Access 2016 both have 0x02 in this location.  A minimal database created in Access 2016, but defining a column with the newly introduced &quot;large integer&quot; data type, had a value of 0x05.  In ACCDB files, this indicator appears to reflect compatibility of the file rather than the version of the ACE engine used to create it.</p>
+			<p>Since the introduction of Access 2016, Microsoft has been strongly encouraging use of subscription-based purchase of the Office applications and the cloud-based Office 365 service.  These applications are updated frequently and updates can introduce new features whose use means that a database cannot be used with a previous version of the application.  Of the changes listed in <a href="https://support.office.com/en-us/article/What-s-new-in-Access-2016-76454345-f85d-47af-ace1-98a456cb3496">What&apos;s New in Access 2016</a> as of May 2017, a new feature introduced in March 2017 would have this effect if used.  <a href="https://support.office.com/en-us/article/Using-the-Large-Number-data-type-5b623f6e-641d-4e97-8bdf-b77bae076f70">Using the Large Number data type</a> indicates that this feature, adding support for storing larger integers, prevents use of versions of Access prior to the current Access 2016.</p>
+			<p>A Microsoft Access database may be split across files.  Splitting a database allows the file size limit of 2 Gbytes to be exceeded.  For details on limitations for ACCDB files, see, for example, <a href="https://support.office.com/en-us/article/Access-2010-specifications-1e521481-7f9a-46f7-8ed9-ea9dff1fa854">Access 2010 specifications</a> and <a href="https://support.office.com/en-US/article/Access-2016-specifications-0cf3c66f-9cf2-4e32-9568-98c1025bb47c">Access 2016 specifications</a>.  Another reason to split a database is for multi-user environments that will benefit from having forms and code in a front-end DB file on users&apos; desktops, with the data in one or more back-end ACCDB files on a networked server.  An ACCDB file may also be used as a front end to an ODBC-accessible database server, such as SQL Server or Oracle.</p>
+		</fdd:description>
+		<fdd:shortDescription>Microsoft Access versions from Access 2007 have used the .accdb extension for database files by default.  </fdd:shortDescription>
+		<fdd:productionPhase>Primarily a middle-state format, typically in active use for recording transactions.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>Subtypes not described separately on this site.  An indicator at offset 0x14 appears to distinguish between subtypes.  <a href="../contact_format.shtml">Comments welcome</a>.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000462</fdd:id>
+					<fdd:shortName>MDB_family</fdd:shortName>
+					<fdd:titleName>Microsoft Access MDB File Format Family</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>The default database file format through Access 2003.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>Some Library of Congress staff use Microsoft Access as part of their official duties.</fdd:experience>
+		<fdd:preference>The Library of Congress Recommended Formats Statement (RFS) does not list the Microsoft Access ACCDB file format as preferred or acceptable for acquiring  <a href="https://www.loc.gov/preservation/resources/rfs/data.html">datasets</a> for the its collections because the RFS expresses a preference for platform-independent, non-proprietary, publicly documented formats.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>Proprietary format developed and managed by Microsoft.</p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>No specification is publicly available.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>Microsoft Access is a widely used desktop database management system for the Windows operating system.  According to <a href="https://idatalabs.com/tech/database-management-system">iDatalabs</a> in early 2017, it ranked third in market share for general-purpose database management systems, behind Microsoft&apos;s SQL Server and MySQL.  No other software uses ACCDB as a native format.</p>
+			<p>Applications for viewing or manipulating data in MDB databases in a Windows environment include: <a href="https://www.microsoft.com/en-us/download/details.aspx?id=50040">Microsoft Access Runtime</a>, a freely downloadable version of Access with capabilities for end users but not for database design or user customization; <a href="http://www.alexnolan.net/software/mdb_viewer_plus.htm">MDB Viewer Plus</a> and <a href="http://www.querytool.com/index.html">Advanced Query Tool</a>. Some tools and services focus on repair of Access database files, for example: <a href="https://www.cimaware.com/access-database-repair-accessfix">AccessFIX</a>; <a href="http://www.repair-access-file.com/software-detail-access-repair.php">Stellar Phoenix Access Database Repair</a>; and <a href="http://www.everythingaccess.com/accessdatabaserepair_info.asp">EverythingAccess: Database Repair Service.</a>
+			</p>
+			<p>Viewers for ACCDB files exist for some platforms other than Windows.  Such utilities include John Li&apos;s <a href="http://support.woiapp.com/category/ms-access/">ACCDB and MDB Database Managers for Android, iOS, and Mac.</a> and <a href="https://itunes.apple.com/us/app/accdb-mdb-database-pro/id959467315?mt=12">ACCDB MDB Database Pro</a> for Mac, and <a href="https://eggerapps.at/mdbviewer/docs/en/file-formats.html">MDB/ACCDB Viewer</a> for Mac from Egger Apps.</p>
+			<p>Software toolkits for working with ACCDB files exist for a limited set of programming languages and computing environments.  <a href="http://jackcess.sourceforge.net/index.html">Jackcess</a> is a Java library for reading from and writing to MS Access databases, claiming support through Access 2013.  <a href="http://ucanaccess.sourceforge.net/site.html">UCanAccess</a> is an open-source Java JDBC driver supporting reading and writing of Microsoft Access databases through ODBC.  <a href="http://fsprojects.github.io/SQLProvider/index.html">SQLProvider</a> is a toolkit for .NET.  For its own computing environments, Microsoft provides Visual Basic for Applications (<a href="https://msdn.microsoft.com/en-us/library/dd361851.aspx">VBA</a>); <a href="https://msdn.microsoft.com/en-us/library/e80y5yhx.aspx">ADO.NET</a>; and Data Access Objects <a href="https://msdn.microsoft.com/en-us/library/aa266960.aspx">DAO</a>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>The database formats used by Microsoft Access are not covered by Microsoft&apos;s <a href="https://msdn.microsoft.com/en-us/openspecifications/dn646765.aspx">Open Specification Promise</a> or <a href="https://msdn.microsoft.com/en-us/openspecifications/dn646766">Community Promise</a>.  Nor does Microsoft use a formal licensing program to cover patents that apply to the ACCDB format under its Interoperability Program (see <a href="https://msdn.microsoft.com/en-us/openspecifications/dn646762.aspx">Microsoft Interoperability Program (MIP) | Open Specifications Dev Center</a>, <a href="https://msdn.microsoft.com/en-us/library/gg134029.aspx">Microsoft Interoperability Program</a>).  The Language Specification for VBA (Visual Basic for Applications), often used for macros or other code stored within MDB files, is covered by the Community Promise.  See also <a href="http://go.microsoft.com/fwlink/?LinkId=179741">Microsoft Statement on European Commission Decision, December 16, 2009</a>.</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>As a binary format representing a complex data structure, the ACCDB format can not be fully interpreted using basic tools such as a text editor.  For example, all numbers are in binary form.  However if the database has neither been encrypted/encoded nor compiled into the related ACCDE format, some textual content, such as table and column names, can be partially viewed in a text editor.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>The Microsoft Access application has some capability for descriptive or contextual metadata for the file as a whole using file/database properties, both a default &quot;summary&quot; set and a capability for &quot;custom&quot; properties. A custom property can have a single value of type text, number, date, or binary (Y/N). The Microsoft Access application provides a starter set of ~30 custom properties, including: Date completed, Department, Owner, Purpose.</p>
+			<p>The property names and values can be seen in a Hex dump of the .accdb file.  The compilers of this resource are not aware which, if any, of the non-Microsoft tools mentioned above under Adoption, retrieve or reveal these properties.  <a href="../contact_format.shtml">Comments welcome</a>.</p></fdd:selfDocumentation>
+		<fdd:externalDependencies>Active use of a database in ACCDB format usually requires software that can open the particular chronological version of the file format.  In some circumstances, a compatible ODBC driver is also required.</fdd:externalDependencies>
+		<fdd:techProtection>ACCDB files may be password-protected and/or encrypted. See, for example, <a href="http://www.databasejournal.com/features/msaccess/article.php/3752701/Secure-Microsoft-Access-Passwords-and-Encryption-in-Access-2007.htm">Secure Microsoft Access Passwords and Encryption in Access 2007</a> by Garry Robinson, and <a href="http://www.everythingaccess.com/tutorials.asp?ID=Jet-MDB-security---under-the-hood">Jet MDB security - under the hood</a> and <a href="http://www.everythingaccess.com/tutorials.asp?ID=Changing-the-encryption-type-in-Access-2007">Changing the encryption type in Access 2007</a> by Wayne Phillips from EverythingAccess.com.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:normalDataset>ACCDB files can support a typical set of data types for desktop databases.  The list of data types supported appears to have been extended over time. See <a href="https://msdn.microsoft.com/en-us/library/ff193793.aspx">SQL Data Types</a> from Microsoft Access SQL Reference, for details on data types supported in ODBC.  See <a href="https://docs.microsoft.com/en-us/sql/odbc/microsoft/microsoft-access-data-types">Microsoft Access Data Types</a> for Microsoft Access data types, data types used to create tables, and ODBC SQL data types, with applicable mappings of terminology and limitations.  <a href="https://msdn.microsoft.com/en-us/library/office/ff822013.aspx">Comparison of Data Types</a> provides additional information on data type compatibility in different contexts.</fdd:normalDataset>
+			<fdd:accessSoftware>
+				<p>ODBC is a primary means for querying an ACCDB database file from other applications or remote copies of Access or for extracting all the table definitions and data from an ACCDB file for migration to another platform.  Use of ODBC to access content in an ACCDB file requires a functioning version of Microsoft Access that can open the ACCDB file and a compatible ODBC driver.</p>
+			</fdd:accessSoftware>
+			<fdd:dataDocumentation>Individual user-defined properties can be applied to the file as a whole.  See Self-documentation above.</fdd:dataDocumentation>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>accdb</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>ASCII: ....Standard ACE DB</fdd:sigValue>
+					<fdd:sigValue>Hex: 00 01 00 00 53 74 61 6E 64 61 72 64 20 41 43 45 20 44 42</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note> This applies to ACCDB files created with versions of Microsoft Access since Access 2007.  From <a href="http://www.garykessler.net/library/file_sigs.html">Gary Kessler&apos;s file signatures page</a>. See also <a href="https://www.filesignatures.net/index.php?search=ACCDB&amp;mode=EXT">filesignatures.net</a>.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Indicator for profile, level, version, etc.</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>An indicator of the version of the ACE DB needed to open the file is recorded at offset 0x14 from the beginning of the ACCDB file.  For example, the Hex value of 02 appears to indicate that the file can be opened in Access 2007, while the Hex value of 0x05 indicates that Access 2016 (perhaps only as updated in March 2017) is required.  <a href="../contact_format.shtml">Comments welcome</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>No corresponding match as of May 2017.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q29907905</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q29907905">https://www.wikidata.org/wiki/Q29907905</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Related File Extensions</b>: In addition to the main database file, with the <i>.accdb</i> extension, Access uses other extensions for related files.   See <a href="https://support.office.com/en-us/article/Introduction-to-the-Access-2007-file-format-8cf93630-0b68-4a40-a13c-7528b9f074b6#bmextensions">Introduction to the Access 2007 file format | File types</a>. The most significant related extensions are:</p>
+			<ul>
+				<li>
+					<b>.accde</b>:  used for a &quot;locked-down&quot; version of the original .accdb file. Any Visual Basic for Applications (VBA) code is included in the .accde file only in compiled form. Users working with .accde files cannot make design changes to forms or reports. See, for example, <a href="http://www.databasedev.co.uk/convert_to_accde_format.html">Converting an Access Database to ACCDE File Format</a>.  There is no convenient way to convert an ACCDE file back to a fully functional ACCDB database file, although a recovery service is offered by <a href="http://www.everythingaccess.com/mdeconversion.asp">EverythingAccess.com</a>.</li>
+				<li>
+					<b>.accdr</b>: By changing the extension of an ACCDB file to <i>.accdr</i>, the file will open in runtime mode in Windows.  Changing the extension back to <i>.accdb</i> restores full functionality for design activities.</li>
+				<li>
+					<b>.accdt</b>: Used for a template for an Access database (starting with Access 2007).  The template is a collection of structures used to define a database application including schemas for storing data, the data to be stored, layout descriptions for views of the data, actions controlling workflow, and metadata describing the database application as a whole.  In contrast to other Office applications, for which changing the extension of a document file to the template extension (e.g., changing .docx to .dotx) is sufficent to use that document as a template, templates for Access use a completely different format based on <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>.  This format is fully documented at <a href="https://msdn.microsoft.com/en-us/library/dd920385.aspx">[MS-ACCDT]: Access Template File Format</a>. For an informal introduction, see <a href="https://books.google.com/books?id=DDSi1knvVNcC&amp;pg=PA19&amp;lpg=PA19">How Access uses Templates</a> from <i>The Rational Guide to Microsoft Office Access 2007 Templates</i>.  Templates cannot include all features that may be in an ACCDB database; see <a href="https://books.google.com/books?id=rnPiKXCRciMC&amp;pg=PA846&amp;lpg=PA846">list of features not supported in ACCDT files</a> in <i>Access 2010 Programmer&apos;s Reference</i>.</li>
+			</ul>
+			<p>For a list of all extensions associated with Access, see <a href="https://en.wikipedia.org/wiki/Microsoft_Access#File_extensions">File Extensions in the Wikipedia entry for Microsoft Access</a>.</p>
+			<p>
+				<b>Relationship between Access and SharePoint</b>:  Microsoft publishes detailed technical specifications for Microsoft protocols that are implemented and used by SharePoint Products and Technologies to interoperate or communicate with other Microsoft products.  These include specifications for various protocols and supporting formats used to communicate beween SharePoint and Access, including:</p>
+			<ul>
+				<li>
+					<a href="https://msdn.microsoft.com/en-us/library/dd920385.aspx">[MS-ACCDT]: Access Template File Format</a>.  a database template used to create an instance of a database application. The database template data is contained in a ZIP package conforming to the <fddLink id="fdd000363">Open Packaging Conventions</fddLink>. Individual files stored in the ZIP package, known as parts, contain information about the structure and content of the resulting database application. The parts include definitions of the database objects, data to be populated, and properties of the resulting database application. Parts contain information stored using XML, text, and binary formats.  See <a href="https://books.google.com/books?id=rnPiKXCRciMC&amp;pg=PA850&amp;lpg=PA850">Access 2010 Programmer&apos;s Reference, page 850</a> for a diagram of parts in an ACCDT file. Since the specification was originally published in 2007, [MS-ACCDT] has had several minor updates and one associated with Access 2016 that is termed major.  However, the change in the February 2016 update appears to relate only to the section listing product versions to which the specification applies, which clearly changed to include Access 2016.</li>
+				<li>
+					<a href="https://msdn.microsoft.com/en-us/library/dd927584.aspx">[MS-AXL]: Access Application Transfer Protocol Structure</a>.  A persistence format for database objects within ACCDT packages. Since the specification was originally published in 2007, [MS-AXL] has had several minor updates and a major one associated with Access 2016.</li>
+			</ul>
+		</fdd:general>
+		<fdd:history>
+			<p>For history of the predecessor MDB format and Microsoft&apos;s support of ODBC in Access, see <fddLink id="fdd000462">Microsoft Access MDB Format Family</fddLink>. </p>
+			<p>
+				<b>Microsoft Access Release History since Introduction of ACCDB</b>: Access 2007 introduced the ACCDB file format as the default format and encouraged users to update existing databases to the new format.  Major releases since then, inconjunction with releases of the Office Suite for Windows were Access 2010 (version 14.0); Access 2013 (version 15.0); Access 2016 (version 16.0).  Office 2016 was released in September 2015.  Some plans for Office 365 subscribers, which uses frequent releases, include Access.  Between September 2015 and March 2017, only one of the changes listed in <a href="https://support.office.com/en-us/article/What-s-new-in-Access-2016-76454345-f85d-47af-ace1-98a456cb3496">What&apos;s new in Access 2016</a> would have had any effect on the associated file format.  However, judging from <a href="https://support.office.com/en-us/article/Using-the-Large-Number-data-type-5b623f6e-641d-4e97-8bdf-b77bae076f70">Using the Large Number data type</a>, this feature, adding support for storing larger integers prevents use of versions of Access prior to Access 2016.</p>
+			<p>For the other Office applications, Microsoft has been careful to retain backwards compatibility and application functionality to open old files.  This has not been the case for Access database files.  As of May 2017, Access 2016 should be able to read all ACCDB files; however, MDB files created earlier than Access 2000 and not upgraded/converted in an intermediate version cannot be opened in Access 2016.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.thoughtco.com/access-file-formats-accdb-vs-mdb-1019506</link>
+					<tag>Access File Formats: ACCDB vs MDB | Access 2007 and Later Use the ACCDB File Format</tag>
+					<comment>First published on about.com which rebranded itself in late 2016 as several separate vertical channels. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.fmsinc.com/microsoftaccess/2007/top-features.html</link>
+					<tag>Top 14 Features of Microsoft Access That Aren&apos;t Available in Access
+2003 or Earlier</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.everythingaccess.com/tutorials.asp?ID=The-lowdown-on-Access-2007</link>
+					<tag>The lowdown on Access 2007</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://allenbrowne.com/ser-53.html</link>
+					<tag>Microsoft Access Tips for Serious Users | Splash screen with version information</tag>
+					<comment>This page provides useful information about format support in various versions of Access and versions of the Jet/ACE database engines.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.filesignatures.net/index.php?search=ACCDB&amp;mode=EXT</link>
+					<tag>Entry for ACCDB database file on filesignatures.net</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://fileformats.archiveteam.org/wiki/Access</link>
+					<tag>Access (Microsoft) page from Just Solve the File Format Problem.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Microsoft_Jet_Database_Engine</link>
+					<tag>Wikipedia entry for Microsoft Jet Database Engine</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Microsoft_Access</link>
+					<tag>Wikipedia entry for Microsoft Access</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q29907905</link>
+					<tag>Wikidata entry for Q29907905</tag>
+					<comment> Information in Wikidata about ACCDB.  Wikidata Title ID: Q29907905</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Support files, blog posts, and discussion threads relating to compatibility issues for ACCDB files.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/library/office/dn602608.aspx</link>
+							<tag>Backward compatibility between Access 2010 and Access 2007</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://books.google.com/books?id=rnPiKXCRciMC&amp;pg=PA37&amp;lpg=PA37</link>
+							<tag>Access 2010 Programmer&apos;s Reference: Page 37</tag>
+							<comment>Discussion of new features in Access 2010 and compatibility considerations.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.microsofttraining.net/article-1802-how-make-access-2010-databases-compatible-with-access-2007.html</link>
+							<tag>How To Make Access 2010 Databases Compatible With Access 2007</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://allenbrowne.com/Access2007.html</link>
+							<tag>Microsoft Access Tips for Serious Users | Converting to Access 2007 or 2010</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.utteraccess.com/forum/index.php?showtopic=2031846</link>
+							<tag>Office Version Problems In Access 2016</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.utteraccess.com/forum/index.php?showtopic=2039884</link>
+							<tag>Access 2016/2010 Compatibility</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.altova.com/Access-Database-OLEDB-32bit-64bit.html</link>
+							<tag>Using 64-bit Applications with Microsoft Access Database Files</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://stackoverflow.com/questions/25137747/microsoft-office-cannot-find-the-input-table-or-query</link>
+							<tag>Migrating an access database from MDB to ACCDB version | Microsoft office cannot find the input table or query</tag>
+							<comment>From Stack Overflow in 2014</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.dur.ac.uk/cis/docs/guides/files/access/</link>
+					<tag>Microsoft Access sample files</tag>
+					<comment>Supplements to Database Introduction Guide from Durham University</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Examples of instructions for importing data from Microsoft Access database files into other database applications.  The usual mechanism is to employ ODBC.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://dev.mysql.com/doc/workbench/en/wb-migration-database-access.html</link>
+							<tag>MySQL | Microsoft Access Migration</tag>
+							<comment>Explains migration using ODBC drivers.  Only for Windows OS.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://support.esri.com/technical-article/000009382</link>
+							<tag>How To: Connect to Microsoft Access 2007 / 2010 (ACCDB) files in ArcGIS</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://desktop.arcgis.com/en/arcmap/latest/manage-data/tables/understanding-how-to-use-microsoft-access-files-in-arcgis.htm</link>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.querytool.com/index.html</link>
+					<tag>Multi-database query tool, based on ODBC.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://jackcess.sourceforge.net/index.html</link>
+					<tag>Java library for reading from and writing to MS Access databases</tag>
+					<comment>As of April 2017, supporting Microsoft Access versions 2000-2013.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://ucanaccess.sourceforge.net/site.html</link>
+					<tag>UCanAccess | an open-source Java JDBC driver implementation that allows Java developers and JDBC client programs to read/write Microsoft Access databases.</tag>
+					<comment>As of early 2017, supporting Access database formats from 2000, 2002/2003, 2007, 2010/2013/2016.  Access 97 format supported for read-only.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Several tools exist for repairing corrupted ACCDB files, extracting data from ACCDB files, and converting ACCDB files to other formats, including:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.cimaware.com/access-database-repair-accessfix</link>
+							<tag>AccessFIX: Access database repair software for accdb &amp; mdb files</tag>
+							<comment>As of early 2017, works with Microsoft Access 365, 2016, 2013, 2010, 2007, 2003, 2002 (XP), 2000, 97 and 95.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.everythingaccess.com/mdeconversion.asp</link>
+							<tag> EverythingAccess.com | MDE to MDB file conversion service
+and ACCDE to ACCDB file conversion service </tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.repair-access-file.com/software-detail-access-repair.php</link>
+							<tag>Stellar Phoenix Access Database Repair – ACCDB &amp; MDB File Recovery Software</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Microsoft information about file formats used by Microsoft Access is limited to information about (a) support in different chronological versions of Microsoft Access and associated compatibility issues; and (b) support for programming applications based on versions of Access and their underlying database engines.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://support.office.com/en-us/article/Introduction-to-the-Access-2007-file-format-8cf93630-0b68-4a40-a13c-7528b9f074b6</link>
+							<tag>Introduction to the Access 2007 file format</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/bb203849.aspx</link>
+							<tag>Transitioning Your Existing Access Applications to Access 2007</tag>
+							<comment>Information from December 2006.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/office/ff965871.aspx</link>
+							<tag>Data Programming with Microsoft Access 2010</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/dd920385.aspx</link>
+							<tag>[MS-ACCDT]: Access Template File Format</tag>
+							<comment>A format, based on OPC/OOXML, which is a collection of structures that define a database application including schemas for storing data, the data to be stored, layout descriptions for views of the data, actions controlling workflow, and metadata describing the database application as a whole.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/dd927584.aspx</link>
+							<tag>[MS-AXL]: Access Application Transfer Protocol Structure</tag>
+							<comment>XML-based specification that can be used to describe components of data applications that allow users to create, retrieve, update and delete relational data.  Used with ACCDT format.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/ms171893.aspx</link>
+							<tag>Connect to data in an Access database (Windows Forms)</tag>
+							<comment>Instructions for Visual Studio 2015</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://support.office.com/en-US/article/Convert-a-database-to-the-accdb-file-format-098DDD31-5F84-4E89-8F44-DB0CF7C11ACD</link>
+							<tag>Convert a database to the .accdb file format</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://support.office.com/en-US/article/Which-Access-file-format-should-I-use-012d9ab3-d14c-479e-b617-be66f9070b41</link>
+							<tag>Which Access file format should I use?</tag>
+							<comment>In April 2017, there are still reasons to use the MDB format rather than ACCDB.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://support.office.com/en-US/article/What-s-new-in-Access-2016-76454345-f85d-47af-ace1-98a456cb3496</link>
+							<tag>What&apos;s new in Access 2016</tag>
+							<comment>Access 2016 is updated regularly.  This page cumulates update information since release in September 2015.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://support.office.com/en-us/article/Using-the-Large-Number-data-type-5b623f6e-641d-4e97-8bdf-b77bae076f70#compatibility_considerations</link>
+							<tag>Using the Large Number data type | Backward Compatibility Considerations</tag>
+							<comment>This new data type was added to Access 2016 in March 2017.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://support.office.com/en-us/article/Reverse-engineer-an-existing-database-into-a-database-model-fb034862-acfc-45bc-88b2-f33d1e1f8614</link>
+							<tag>Visio | &quot;Reverse engineer&quot; an existing database into a database model</tag>
+							<comment>This add-in feature, available in some versions of Visio and based on ODBC, lets you create a database model (in Visio format) from an existing database.  The schema definition information that can be extracted from an Access database depends on the capabilities of the version of Access running and ODBC driver running..</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>ACCDT is a separate Microsoft Access Template format based on <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>.  ACCDT is specified at <a href="https://msdn.microsoft.com/en-us/library/dd920385.aspx">[MS-ACCDT]</a>.  Explanatory resources include:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://books.google.com/books?id=DDSi1knvVNcC&amp;pg=PA19&amp;lpg=PA19</link>
+							<tag>How Access Uses Templates</tag>
+							<comment>From The Rational Guide to Microsoft Office Access 2007 Templates by Zac Woodall.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://books.google.com/books?id=rnPiKXCRciMC&amp;pg=PA850&amp;lpg=PA850</link>
+							<tag>Diagram of Access Database Template File Format</tag>
+							<comment>From Access 2010 Programmer&apos;s Reference by Teresa Hennig et al.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://books.google.com/books?id=rnPiKXCRciMC&amp;pg=PA846&amp;lpg=PA846</link>
+							<tag>Features not Supported in ACCDT Files</tag>
+							<comment>From Access 2010 Programmer&apos;s Reference by Teresa Hennig et al.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.engram9.info/access-2007-vba/creating-accdt-files.html</link>
+							<tag>Creating Accdt Files | Engram 9 VBA Scripts </tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://msofficeuser.com/pages/access/submitting-access-database-templates-to-office-online</link>
+							<tag>MS Office User | Submitting Access Database Templates to Office Online</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Some data archives list ACCDB as an acceptable format, but most prefer datasets to be converted to an openly documented format, often stating a preference for tables in a plain text format, such as <fddLink id="fdd000323">CSV</fddLink>.  The following organizations mention ACCDB in format lists.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://history.sd.gov/archives/Data/digital/preservationrules.aspx</link>
+							<tag>South Dakota State Historical Society | Digital Preservation Rules</tag>
+							<comment>&quot;The State Archives prefers that producers who maintain data in propriety desktop database management systems like MS Access convert the files to open standards prior to donating the files to the archives.&quot;</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://guides.archaeologydataservice.ac.uk/g2gp/DbSht_2</link>
+							<tag>Archaeology Data Service | Digital Antiquity
+Guides to Good Practice | Section 2. Creating Databases and Spreadsheets</tag>
+							<comment>Accepts ACCDB, but states, &quot;The .accdb format is not recommended for long term storage.&quot;</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://data-archive.ac.uk/create-manage/format/formats-table</link>
+							<tag>UK Data Archive | File Formats Table</tag>
+							<comment>Lists ACCDB as an acceptable format.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://anrcs.ucanr.edu/isc/iti/Creating_a_Data_Management_Plan/Recommended_Archive_Formats/</link>
+							<tag>University of California, Division of Agriculture and Natural Resources | Recommended Archive Formats</tag>
+							<comment>Lists ACCDB as an acceptable format.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>These two sources have detailed information about the predecessor MDB format used by Microsoft Access through Access 2003.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://jabakobob.net/mdb/</link>
+							<tag>The Unofficial MDB Guide | Tech Specs for the JET format used by Access 1997-2010</tag>
+							<comment>Description based on reverse engineering.  Note that this does not cover the formats used between 1992 and 1997.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/brianb/mdbtools/blob/master/HACKING</link>
+							<tag>HACKING | This file documents the Microsoft MDB file format for Jet3 and Jet4 databases.</tag>
+							<comment>In a few details this is more up-to-date than the Unofficial MDB Guide, cited above.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000464" titleName="SAS Transport File Format (XPORT) Family " shortName="SAS_xport_family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>family</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2017-05-12</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>SAS Transport File Format Family (XPORT, XPT)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>statistics software formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The SAS Transport File Format is an openly documented specification maintained by <a href="https://www.sas.com/en_us/company-information.html#history">SAS</a>, a commercial company with a variety of software products for statistics and business analytics, including the application now known as SAS/STAT, which originated in the late 1960s as SAS (an acronym for Statistical Analysis System) at North Carolina State University.  The transport format was originally developed in the late 1980s when the corporate entity was known as <a href="https://en.wikipedia.org/wiki/SAS_Institute">SAS Institute, Inc.</a> and the software as SAS, to support data transfers between statistical software systems, especially between SAS applications running on different operating systems.  SAS considers it non-proprietary.  The format is referred to in several ways, including XPORT and XPT.  In this description, &quot;SAS_xport&quot; will be used.</p>
+			<p>There are two subtypes of SAS_xport files in use, Version 5 and Version 8, apparently numbered by association with versions of SAS software.  The original version, now considered Version 5, was used from 1989 and continues to be widely used.  Version 8 was introduced in October 2012.  See <a href="http://support.sas.com/kb/46/944.html">Usage Note 46944: New SAS transport format and tools available</a>.  Version 8 does not appear to be widely used for datasets shared publicly as of early 2017.  References on the Web to the SAS transport format without qualification as to version should probably be assumed to refer to Version 5.</p>
+			<p>Described here is the publicly documented transport format that can be created within the SAS system by using PROC COPY with the XPORT engine or by using the macro LOC2XPT.  SAS supports use of a second form of transport file using the CPORT procedure.  The XPORT and CPORT formats are not compatible.  See <a href="#notes">Notes</a> for more detail on usage of the CPORT form, which is not openly documented.</p>
+			<p>The SAS_xport format was designed primarily to support short-term transfer of datasets between statistical software systems and not for long-term archiving.  Its form reflects the origin of SAS on IBM mainframes.  A SAS_xport file nominally consists of records 80 bytes in length. Short records are padded with ASCII nulls (Hex 00) to 80 bytes.   Character data is stored in ASCII, regardless of the operating system.  Internal binary representations are used for numeric values rather than character-based representations because of the importance of retaining full precision through round-trip transfers. The specifications state that integers are stored using &quot;IBM-style integer format&quot;, and floating-point numbers are stored using the <a href="https://en.wikipedia.org/wiki/IBM_Floating_Point_Architecture#Double-precision_64-bit">IBM-style double format</a>.  SAS provides routines in the C programming language for converting between the IBM floating point representations and the IEEE standard floating point representations used in most computing environments. README text at <a href="https://github.com/selik/xport">Python reader for SAS XPORT data transport files</a>, states, &quot;The official SAS specification for XPORT is relatively straightforward. The hardest part is converting IBM-format floating point to IEEE-format, which the specification explains in detail.&quot;</p>
+			<p>The formats in the SAS_xport family begin with a number of &quot;header&quot; records in ASCII, packed with ASCII space characters (Hex 20):</p>
+			<ul>
+				<li>The primary file header consists of three 80-byte records.  The first record identifies the file as a SAS_xport file and distinguishes between the subtype versions.  See <a href="#sign">File type signifiers</a>, below. The second record identifies the version of SAS and the operating system used to create the file as well as the creation date.  The third record contains the last date of modification.</li>
+				<li>For each dataset in the file, there are four 80-byte records: a member header record, a descriptor (DSCRPTR) header record, a record identifying the version of SAS and operating system used to create the member and the date of creation, and a record with the date of last modification. <br/>
+					<br/>The specifications allow multiple datasets/members in a transport file.  However, the help file from Stata <a href="http://www.stata.com/manuals14/dimportsasxport.pdf">Import and export datasets in SAS XPORT format</a> indicates that this capability is seldom used.</li>
+				<li>For each member/dataset in the SAS_xport file there is a sequence of descriptor records for variables in a structure known as &quot;namestr&quot;. First comes an 80-byte header that indicates how many variables/fields/columns there are in the dataset, followed by the rest of the namestr structure, which is a stream of 140-byte chunks, one for each variable. Each chunk has the name, label, data type, and value size in bytes for a variable, together with other details used by SAS.  Also in the chunk is a numeric value indicating the position in an observation where the data value for this variable is stored. The chunks are streamed together with padding if needed at the end to yield a whole number of 80-byte records.</li>
+				<li>Long variable labels may be included in special label structures with their own headers and data streams.</li>
+				<li>The final header record is a single 80-byte record indicating the start of data observations.</li>
+			</ul>
+			<p>Following the observation header, data values are streamed in observation order (i.e., values for all variables for the first observation, followed by all values for the second observation, and so on).   If the SAS-defined missing data codes (see <a href="#notes">Notes</a> below) have been used, they will be handled appropriately.  However, <a href="http://www.icpsr.umich.edu/icpsrweb/content/deposit/guide/chapter6.html">Chapter 6 of ICPSR&apos;s Guide to Social Science Data Preparation and Archiving</a> warns that other codes used for missing data will be &quot;blanked out.&quot;  Padding with ASCII nulls is added if needed at the end of the observation data to yield a whole number of 80-byte records.  There is no special end-of-file indicator.</p>
+		</fdd:description>
+		<fdd:shortDescription>an openly documented specification developed by SAS to support data transfers between systems.</fdd:shortDescription>
+		<fdd:productionPhase>Designed as a middle-state format for exchange of statistical data between systems for statistical analysis.  Also used for publishing/sharing data for re-use.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000466</fdd:id>
+					<fdd:shortName>SAS_xport_5</fdd:shortName>
+					<fdd:titleName>SAS Version 5 Transport File Format (XPORT)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000467</fdd:id>
+					<fdd:shortName>SAS_xport_8</fdd:shortName>
+					<fdd:titleName>SAS Version 8 Transport File Format (XPORT)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress has no datasets in this format in its collections.</fdd:experience>
+		<fdd:preference>The Library of Congress Recommended Formats Statement (RFS) does not list either of the SAS Transport File Formats as preferred or acceptable for acquiring  <a href="https://www.loc.gov/preservation/resources/rfs/data.html">datasets</a> for the its collections because the RFS expresses a preference for platform-independent, character-based formats for datasets.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Publicly documented format developed by <a href="https://www.sas.com/">SAS Institute, Inc.</a>  SAS considers it non-proprietary but controls the specification.</fdd:disclosure>
+		<fdd:documentation>Version 5 is documented in <a href="http://support.sas.com/techsup/technote/ts140.pdf">SAS Technical Paper TS-140: Record Layout of a SAS Transport Data Set</a>.  Version 8 is documented in <a href="http://support.sas.com/techsup/technote/ts140_2.pdf">Record Layout for a SAS Version 8 or 9 Data Set in SAS Transport Format</a>.</fdd:documentation>
+		<fdd:adoption>
+			<p>SAS is a software application widely used for statistical analysis.  The compilers of this resource assume that the SAS_xport format is frequently used for its primary purpose, transferring datasets between versions of SAS on different operating systems.  Other major statistical software applications can import SAS_xport files.  See, for example, SPSS | <a href="https://www.ibm.com/support/knowledgecenter/en/SSLVMB_22.0.0/com.ibm.spss.statistics.help/spss/base/data_file_types.htm">Opening data files | Data file types</a>, R | <a href="http://finzi.psych.upenn.edu/R/library/SASxport/html/read.xport.html">Read a SAS XPORT format file</a>, MathWorks | <a href="https://www.mathworks.com/help/stats/xptread.html">Create table from data stored in SAS XPORT format file</a>, STATA | <a href="http://www.stata.com/manuals14/dimportsasxport.pdf">Import and export datasets in SAS XPORT format</a>, and Wolfram Language (for Mathematica, etc.) | <a href="https://reference.wolfram.com/language/ref/format/XPORT.html">Import fully supports the XPORT format</a>.</p>
+			<p>
+				<a href="http://www.stattransfer.com/stattransfer/formats.html#sas_transport">Stat/Transfer</a>, a popular commercial utility for converting datasets from one format to another, can read and write SAS_xport files.  A <a href="https://github.com/selik/xport">Python reader and writer for SAS XPORT data transport files</a> exists.  Its author has not updated it for version 8, but suggests that he might if demand exists.</p>
+			<p>Since 1999, at latest, the U.S. Food and Drug Administration has required
+the SAS_xport_5 format for
+datasets submitted in electronic form with new drug and new device applications.  See <a href="https://www.fda.gov/downloads/drugs/guidancecomplianceregulatoryinformation/guidances/ucm072390.pdf">Guidance for Industry: Providing Regulatory Submissions in Electronic Format - General Considerations, 1999</a>. For current information see <a href="https://www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/ucm085361.htm">Electronic Regulatory Submissions and Review | Helpful Links</a> from the FDA.  The Centers for Disease Control (CDC) also use the SAS transport format for distributing public data.  See, for example, <a href="https://www.cdc.gov/brfss/annual_data/annual_2014.html">2014 BRFSS Survey Data and Documentation</a>, and <a href="https://www.cdc.gov/nchs/tutorials/nhanes/preparing/download/intro.htm">NHANES Tutorial: Download Data Files</a>.</p>
+			<p>The SAS_xport format is accepted and/or distributed by some statistical archives.  ICPSR (Inter-university Consortium for Political and Social Research) <a href="http://www.icpsr.umich.edu/icpsrweb/content/deposit/guide/chapter6.html">accepts</a> and <a href="https://www.icpsr.umich.edu/icpsrweb/content/shared/ICPSR/faqs/what-kind-of-data-formats-does-archive.html">distributes</a> datasets in this format.  Instructions from the GESIS archive in Germany on <a href="http://www.gesis.org/en/services/archiving-and-registering/data-archiving/preparing-data-for-submission/">Preparing Data for Submission</a> lists the SAS Transport file as preferred (although with a different extension).  However, the popular NESSTAR software suite for assembling a collection of datasets for online discovery and analysis does not appear to support the import of SAS_xport files in the <a href="http://www.nesstar.com/help/4.0/publisher/download_resources/Publisher_UserGuide_v4.0.pdf">NESSTAR Publisher</a> module.  The list of preferred and acceptable <a href="https://dans.knaw.nl/en/deposit/information-about-depositing-data/file-formats">File formats</a> for the DANS (Data Archive and Networked Services) of the Netherlands mentions SAS among acceptable formats but not the .xpt format.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>SAS states that the SAS_xport format is non-proprietary.  See <a href="http://support.sas.com/kb/46/944.html">Usage Note 46944</a>.</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>Although textual content in an SAS_xport file, such as variable names and labels, is in ASCII and readable with a basic text editor, the fact that numeric content is in IBM-specific binary representation means that the primary content of a dataset can only be retrieved with software that can convert the numbers into a platform-independent form.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>The SAS_xport formats contain names and labels for variables.  However, there is no capability for embedding metadata that describes the context and provenance of the dataset as a whole. Another important element that is missing from SAS_xport files is a codebook explaining the meaning of coded values.  For re-use or long-term preservation, additional metadata, such as a <a href="http://www.ddialliance.org/explore-documentation">Data Documentation Initiative (DDI)</a> record, is essential.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None beyond software that can import data in this format.</fdd:externalDependencies>
+		<fdd:techProtection>The format has no capabilities for encryption or other technical protection.  However, files containing sensitive data will often be encrypted for transfer over public networks.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:normalDataset>SAS_xport is capable of representing all the data types used in SAS, a widely used software system for statistical analysis.  The format is designed to avoid loss of precision in round-trip transfers of numeric values. When <fddLink id="fdd000466">SAS_xport_5</fddLink> files are generated from recent versions of SAS, variable names and variable labels may need to be truncated.  <fddLink id="fdd000467">SAS_xport_8</fddLink> lifted a number of such constraints.</fdd:normalDataset>
+			<fdd:accessSoftware>As a transport format, SAS_xport is designed as the basis for import into SAS and other statistical analysis software applications.  See <a href="#sustainability">Adoption</a> in Sustainability Factors, above.</fdd:accessSoftware>
+			<fdd:dataDocumentation>There is no built-in mechanism for recording any descriptive or contextual metadata, including information about data quality or provenance.</fdd:dataDocumentation>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>xpt</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The specification does not mandate a particular extension, but .xpt is most commonly used, particularly for Version 5.  Listed in <a href="http://www.garykessler.net/library/file_sigs.html">Gary Kessler&apos;s File Signatures</a>.  SAS advises use of a file extension other than <i>.xpt</i> for Version 8 transport files, suggesting <i>.v8xpt</i>, <i>.xpt8</i>, or <i>.2xpt</i>; see <a href="http://support.sas.com/documentation/cdl/en/movefile/69975/PDF/default/movefile.pdf">Moving and Accessing SAS
+9.4 Files, Third Edition</a>.  The compilers of this resource have not found evidence of use of these file extensions.  <a href="../contact_format.shtml">Comments welcome</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/x-sas-xport</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>As indicated at <a href="https://reference.wolfram.com/language/ref/format/XPORT.html">Wolfram Language page for XPORT format</a>. There is no registration at <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>ASCII: HEADER RECORD*******LIB</fdd:sigValue>
+					<fdd:sigValue>Hex: 48 45 41 44 45 52 20 52
+45 43 4F 52 44 2A 2A 2A 2A 2A 2A 2A 4C 49 42</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Applies to both Version 5 and Version 8.  Subsequent characters distinguish the two versions.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>No exact match on PRONOM or any record for the SAS_xport formats as of May 2017.  See <a href="">Notes</a> below for information on PRONOM records for datasets in the SAS CPORT format.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Format support in Social Science data archives</b>: A post on the Digital Preservation Coalition blog, <a href="http://www.dpconline.org/blog/quanititative-file-formats-for-preservation">Quantitative File Formats for Preservation</a>, from April 2017, had a useful snapshot of the state of format support in Social Science Archives.  Jenny O&apos;Neill, who manages the Irish Social Science Data Archive (ISSDA) and wrote the DPC blog post, states that file formats for preservation are more complex than formats for ingest and dissemination for current users and that there is not a consensus on preferred formats among archives.  She emphasizes that &quot;ISSDA’s own file format policy is based on our knowledge of what formats our Data Producers want to give us and those that our Data Consumers want to receive.&quot;  Hence, most data is submitted in the fully functional proprietary formats associated with one of the widely used statistical packages (e.g., SPSS, SAS, or STATA). Specifically, she states, &quot;Because we will be using NESSTAR to provide online access to data we recommend that data are provided in SPSS together with other formats including Stata and SAS. We additionally recommend that data is provided as a Tab-delimited file (.tab) with setup files for SPSS, Stata and SAS. But realistically, what we receive is SPSS, SAS and Stata.&quot;  She also states that the ISSDA archive does not have the manpower or technical expertise to convert datasets from these formats to a normalized archival format.</p>
+			<p>For long-term preservation purposes, a character-based format is often recommended.  For example, <a href="https://ppp.cessda.net/doc/D10.4_Data_Formats.pdf">Data Preservation in the Social Sciences: 
+Recommendations for a CESSDA Research Infrastructure 
+(D10.4)</a> from 2008, states, &quot;Our conclusion from these facts is that the only sure means of preservation for the long term
+is converting the binary files to
+plain text (CSV in
+ASCII or Unicode). Only plain text gives
+the digital archive full control over the data, without being dependent on external parties.&quot;  However, creating a package that combines plain text data with adequate metadata to support re-use requies considerable effort and expertise.</p>
+			<p>From 1997 to 2010, The UK National Archives selected government datasets for archiving in the National Digital Archive of Datasets (NDAD), based at the University of London Computer Centre. Selected datasets were transferred from government departments, along with supporting contextual information. NDAD converted the data from its original format to the simple open CSV format and compiled consistent metadata.  A 2006 article on <a href="http://pubs.ulcc.ac.uk/80/2/Government_Computing_magazine_v6.pdf">The work of the National Digital Archive of Datasets (NDAD)</a> stated that &quot;Every dataset we work on is different,
+with a new set of challenges.&quot;  In 2010, the NDAD project was discontinued, in favor of archiving U.K. Government datasets from websites.  Since 2013, regular <a href="http://webarchive.nationalarchives.gov.uk/*/http://data.gov.uk/">captures of http://data.gov.uk/</a> are made available for access to archived U.K. government datasets.  Meanwhile, <a href="http://www.data-archive.ac.uk/media/54770/cd081-quantitativedataingestprocessingprocedures_08_00w.pdf">Quantitative Data Ingest Processing Procedures</a>, from the UK Data Archive, which holds social and economic research data, illustrates the effort needed to prepare a dataset for a normalized archive.  ICPSR described a similar process in <a href="https://deepblue.lib.umich.edu/handle/2027.42/60440">ICPSR meets OAIS: applying the OAIS reference model
+to the social science archive context</a>.  This article states, &quot;ICPSR  considers the combination of raw data plus setup files to be the
+optimal archival format for long-term preservation because this package has the best
+chance of being readable into the future.&quot;  ICPSR has accepted data files in SAS Transport (SAS_xport), SPSS portable, and Stata (accompanied by codebooks and other metadata), and has tools in its &quot;data pipeline&quot; for generating ASCII data files from these formats, together with set up files that can be used to import these files back into SAS, SPSS, or Stata. Also created are metadata documents in the XML-based DDI format.</p>
+			<p>
+				<a href="http://www.icpsr.umich.edu/icpsrweb/content/deposit/guide/chapter6.html">ICPSR&apos;s Guide to Social Science Data Preparation and Archiving
+Phase 6: Depositing Data</a> states, &quot;If a dataset is to be archived, it must be organized in such a way that others can read it. Ideally, the dataset should be accessible using a standard statistical package, such as SAS, SPSS, or Stata. Three common approaches to data file preparation are: (1) provide the data in raw ASCII format, along with setup files to read them into standard statistical programs; (2) provide the data as a system file within a specific analysis program; or (3) provide the data in a portable file produced by a statistical program. Each of these alternatives has its advantages and disadvantages.&quot;  ICPSR stresses, &quot;Writing an ASCII file can be time-consuming and prone to error, even when a software system has been used to store the data. For example, if SAS has been used to manage and analyze a dataset, the following steps are required: writing SAS statements to export the data in ASCII format, careful checking to make sure the conversion procedure worked properly, and creating documentation telling users where to find variables in the ASCII data file.&quot;  Export from SAS to the SAS_xport format, using XPORT or the macros supplied by SAS, is likely both more reliable and less time-consuming.</p>
+			<p>
+				<b>Potential loss of precision when converting numeric floating point values between representations</b>:  When a floating point (aka real) number is converted from one representation to another, there is the potential for a loss of precision if the number of digits in the target representation is fixed.  This is particularly significant for round-tripping data, when exact reproduction, not just close approximation, is essential.  For example, a floating point number in the IBM Double Precision format has 14 hexadecimal digits of precision; this is roughly equivalent to 17 decimal digits.  According to the Wikipedia entry on <a href="https://en.wikipedia.org/wiki/IBM_Floating_Point_Architecture#Double-precision_64-bit">IBM Floating Point Architecture</a>, it would be necessary to generate at least 18 significant decimal digits (as needed for character-based representation) in a conversion to be certain of converting back to the same value.  For this reason, the SAS_xport formats use the internal representation, which can be considered either binary or hexadecimal, for numeric data values.  For more on precision in numeric formats in SAS, see <a href="http://support.sas.com/documentation/cdl/en/lrcon/65287/HTML/default/viewer.htm#p0ji1unv6thm0dn1gp4t01a1u0g6.htm">Numeric Precision in SAS Software</a>.</p>
+			<p>
+				<b>Missing data treatment</b>: Conventions for handling missing numerical data vary among statistical software applications.  SAS uses a particular set of single-byte codes to denote missing data.  In SAS_xport files, the rest of the variable is packed with Hex 0x00 bytes.  Other codes may not be handled properly when SAS_xport files are generated.  The SAS missing data codes are the following single-byte characters:</p>
+			<ul>
+				<li>Hex 0x5f -- ASCII _ (underscore)</li>
+				<li>Hex 0x2e -- ASCII . (period)</li>
+				<li>Hex 0x41 - 0x5a -- ASCII A-Z (upper case)</li>
+			</ul>
+			<p>
+				<b>SAS XPORT and CPORT transport files</b>: SAS has two forms of transport file.  SAS_xport, described here is the publicly documented transport format produced by the XPORT engine and the COPY procedure (PROC COPY) or the LOC2XPT macro.  A second form of transport file is produced by the <a href="http://support.sas.com/documentation/cdl/en/proc/61895/HTML/default/viewer.htm#cport-overview.htm">CPORT</a> procedure, which is intended only for transfer between SAS versions running compatible versions of the CPORT and CIMPORT procedures.  Transport files that are created using PROC CPORT are not interchangeable with transport files that are created using the XPORT engine. The binary CPORT format is not openly documented.  The data values in files produced by PROC CPORT can be compressed and the files may be password-protected.</p>
+			<p>The PRONOM resource from the UK National Archives has two records with signatures for CPORT files for a specific SAS version (9.1) and two specific operating systems. See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/603">http://www.nationalarchives.gov.uk/PRONOM/fmt/603</a> for Windows and <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/604">http://www.nationalarchives.gov.uk/PRONOM/fmt/604</a> for Unix.  The CPORT files have the character string &quot;(End of Data)&quot; at the end of the file.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>The origins of SAS statistical software are in North Carolina State University around 1966, as a project for analysis of agricultural research.  In 1976, the SAS Institute, Inc. was established as a private company to maintain and develop the software as a well-supported product.  In the early 1980s, the software was re-written to run on mini-computers and then the IBM PC.  The need to transport datasets between different operating systems was recognized and &quot;SAS Technical Report P-195, Transporting SAS Files Between Host Systems&quot; was published in 1989.  Presentations on the topic of transferring data using the SAS_xport format were featured in SAS user group meetings in the early 1990s.  See, for example, <a href="http://www.lexjansen.com/nesug/nesug92/NESUG92052.pdf">Moving SAS Transport Files across Different Hardware Platforms: An Advanced Tutorial (1992)</a>, <a href="http://www.lexjansen.com/nesug/nesug93/NESUG93057.pdf">Portability and the SAS Transport file (1993)</a>, and <a href="http://www.sascommunity.org/sugi/SUGI92/Sugi-92-104%20Selby.pdf">Transporting Files between Host Operating Systems (1992)</a>.  This last paper also discusses transport between software versions, indicating that round-trips using files in the SAS_xport format were possible between releases 5.18 and 6.07. <a href="http://www.stat.ncsu.edu/research/sas/faq/trans.html">Moving SAS Data Sets: Transport files</a> from the NCSU Statistics Department is also helpful for understanding how the SAS_xport files were used in the 1990s.</p>
+			<p>The original SAS_xport format, which was introduced no later than late 1989, is now known as Version 5.  The second version was defined in 2012, at the time of the release of SAS 9.4.  New SAS macros for reading and writing the new version as well as the original version worked with SAS 8.x and Sas 9.x.  See <a href="http://support.sas.com/kb/46/944.html">Usage Note 46944: New SAS transport format and tools available</a>.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://support.sas.com/techsup/technote/ts140.pdf</link>
+					<tag>TS-140: Record Layout of a SAS
+Version 5 or 6 Data Set in SAS Transport (XPORT) Format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://support.sas.com/techsup/technote/ts140_2.pdf
+</link>
+					<tag>Record Layout for a SAS Version 8 or 9 Data Set in SAS Transport Format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://support.sas.com/kb/46/944.html</link>
+					<tag>Usage Note 46944: New SAS transport format and tools available</tag>
+					<comment>From Oct 19, 2012</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://support.sas.com/documentation/cdl/en/proc/61895/HTML/default/viewer.htm#a000085784.htm</link>
+					<tag>Concepts: COPY Procedure | Transporting SAS Data Sets between Hosts</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/ucm085361.htm</link>
+					<tag>Electronic Regulatory Submissions and Review | Helpful Links</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/selik/xport</link>
+					<tag>Python reader for SAS XPORT data transport files</tag>
+					<comment>Includes informative README text.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/selik/xport/issues/10</link>
+					<tag>Enable SAS Transport Format for SAS v8 and 9</tag>
+					<comment>Largely a copy of the SAS documentation for Version 8 of the transport file format, with comments highlighting issues that need addressing if the python library is to be extended to support version 8.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://support.sas.com/documentation/cdl/en/movefile/69975/PDF/default/movefile.pdf</link>
+					<tag>Moving and Accessing SAS®
+9.4 Files, Third Edition</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.fda.gov/downloads/drugs/guidancecomplianceregulatoryinformation/guidances/ucm072390.pdf</link>
+					<tag>Guidance for Industry: Providing Regulatory Submissions in Electronic Format - General Considerations, January 1999</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>SAS Transport files can be read and written by most other statistical packages.  Documentation for these import/export functions can add useful detail to the specification from SAS.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.stata.com/manuals14/dimportsasxport.pdf</link>
+							<tag>STATA | Import and export datasets in SAS XPORT format</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.mathworks.com/help/stats/xptread.html</link>
+							<tag>MathWorks | Create table from data stored in SAS XPORT format file</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://reference.wolfram.com/language/ref/format/XPORT.html</link>
+							<tag> Wolfram | Import fully supports the XPORT format.</tag>
+							<comment>For Mathematica and other Wolfram products.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources relating to preservation of statistical datasets in general</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.dpconline.org/blog/quanititative-file-formats-for-preservation</link>
+							<tag>Quantitative File Formats for Preservation, blog post, April 28, 2017.  Digital Preservation Coalition.</tag>
+							<comment>By Jenny O&apos;Neill, Data Manager at the library of University College, Dublin, which hosts the Irish Social Science Data Archive. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.icpsr.umich.edu/icpsrweb/content/deposit/guide/</link>
+							<tag>ICPSR | Guide to Social Science Data Preparation and Archiving:
+Introduction</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.icpsr.umich.edu/icpsrweb/content/deposit/guide/chapter6.html</link>
+							<tag>ICPSR | Guide to Social Science Data Preparation and Archiving |
+Phase 6: Depositing Data</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://deepblue.lib.umich.edu/handle/2027.42/60440</link>
+							<tag>ICPSR Meets OAIS: Applying the OAIS Reference Model to the Social Science Archive Context</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.icpsr.umich.edu/icpsrweb/content/deposit/guide/chapter6.html</link>
+							<tag>Guide to Social Science Data Preparation and Archiving
+Phase 6: Depositing Data</tag>
+							<comment>Includes section on file formats.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.icpsr.umich.edu/icpsrweb/content/shared/ICPSR/faqs/what-kind-of-data-formats-does-archive.html</link>
+							<tag>ICPSR | What kind of data formats does the archive distribute?</tag>
+							<comment>SAS_xport is among the formats distributed (for some datasets).</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://avointiede.fi/documents/10864/12232/Research_data_file_formats_final_report.pdf</link>
+							<tag>Research Data File Formats and Digital Preservation — Final Report</tag>
+							<comment>The Open Science and Research Initiative (ATT).  Finland. February 2017</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://digitalcurationexchange.org/node/2654</link>
+							<tag>Q. What file formats will I need to be familiar with?</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.data-archive.ac.uk/create-manage/format/formats-table</link>
+							<tag>UK Data Archive | File Formats Table</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://dans.knaw.nl/en/deposit/information-about-depositing-data/file-formats</link>
+							<tag>Data Archiving and Networked Services (Netherlands) | File formats</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.gesis.org/en/services/archiving-and-registering/data-archiving/preparing-data-for-submission/</link>
+							<tag>GESIS
+–
+Leibniz
+‐
+Institute
+for
+the
+Social
+Sciences | Preparing Data for Submission</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://pubs.ulcc.ac.uk/80/2/Government_Computing_magazine_v6.pdf</link>
+							<tag>The work of the National Digital Archive of Datasets (NDAD)</tag>
+							<comment>By Ed Pinsent. 2006.  The NDAD system was discontinued in 2010. Datasets published by the U.K. Government are now captured and preserved in the UK Government Web Archive </comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources relating to the alternative CPORT transport file format that can be produced from SAS.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://support.sas.com/kb/4/720.html</link>
+							<tag>Usage Note 4720: How the CPORT and CIMPORT procedures handle compression of datasets</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://v8doc.sas.com/sashtml/files/z0987199.htm</link>
+							<tag>Moving and Accessing SAS Files across Operating Environments | Transport Formats</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www2.sas.com/proceedings/sugi23/Begtutor/p56.pdf</link>
+							<tag>Tips and Techniques For Moving Between Operating Environments</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://studysas.blogspot.com/2011/07/transporting-sas-files-using-proc-copy.html</link>
+							<tag>Transporting SAS Files using Proc Copy and or Proc Cport/Proc Cimport</tag>
+							<comment>2011</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://v8doc.sas.com/sashtml/proc/z1stmt.htm</link>
+							<tag>PROC CPORT Statement</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www2.sas.com/proceedings/sugi26/p234-26.pdf</link>
+							<tag>Standards
+for Electronic Submissions
+to FDA. Undated, but between 1999 and 2001.</tag>
+							<comment>Includes a discussion of why the CPORT format is not appropriate for FDA submissions.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

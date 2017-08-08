@@ -1,273 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000435" titleName="OpenDocument Presentation Document Format (ODP), Version 1.2,  ISO 26300-1:2015" shortName="ODF_presentation_1_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000433" titleName="Lotus Notes Storage Facility" shortName="NSF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
-			<fdd:gdfrGenre>presentation</fdd:gdfrGenre>
+			<fdd:gdfrGenre>database</fdd:gdfrGenre>
 		</fdd:gdfrGenreSelection>
 		<fdd:formatCategories>
-			<fdd:category>file-format</fdd:category>
 			<fdd:category>encoding</fdd:category>
 		</fdd:formatCategories>
 		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
-		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
 		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
 		<fdd:gdfrDomains>
 			<fdd:gdfrDomain>
-				<fdd:value>office/business</fdd:value>
+				<fdd:value>other</fdd:value>
+				<fdd:comment>email</fdd:comment>
 			</fdd:gdfrDomain>
 		</fdd:gdfrDomains>
 		<fdd:updates>
-			<fdd:date>2015-12-30</fdd:date>
+			<fdd:date>2015-12-23</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Preliminary</fdd:draftStatus>
 	</fdd:properties>
 	<fdd:identificationAndDescription>
-		<fdd:fullName>OpenDocument Presentation Document Format (ODP), Version 1.2.  Part of OASIS Open Document Format for Office Applications, Version 1.2 and the equivalent ISO 26300-1:2015.</fdd:fullName>
-		<fdd:keywords>
-			<fdd:keyword>markup languages</fdd:keyword>
-		</fdd:keywords>
+		<fdd:fullName>Lotus Notes Storage Facility</fdd:fullName>
 		<fdd:description>
-			<p>The OpenDocument Presentation Document Format (ODP), Version 1.2 (given the short name <i>ODF_presentation_1_2</i> here) is a format for editable documents that are presentations based on sequences of &quot;slides.&quot;  Designed to be a native format for applications for assembling slide-show presentations,  the format is sometimes called ODP after its usual file extension.  The term ODP will be used here to refer to ODF_presentation_1_2 and other chronological versions of the OpenDocument Presentation format. It is one of several subtypes in the <fddLink id="fdd000247">ODF family</fddLink> for particular content categories.  This description relates to part 1 of the ODF 1.2 specification as published by OASIS and the equivalent ISO/IEC 26300-1:2015 specification.  The standard specifies markup for presentations using the ODF <i>presentation:</i>, <i>draw:</i>, and <i>text:</i> namespaces in particular. Other namespaces used in many presentations are <i>table:</i>, <i>anim:</i>, <i>smil:</i>.</p>
-			<p>The primary ODF markup used for presentations is actually in the <i>draw:</i> namespace, with the <i>&lt;draw:page&gt;</i> element as the usual container for a single slide.  The content.xml file’s &lt;office:presentation&gt; element typically holds a series of &lt;draw:page&gt; elements, each of which has a unique <i>draw:name</i> attribute, often in the form <i>page</i>n.  The <i>presentation:</i> namespace is used for presentation-specific elements, such as <i>&lt;presentation:notes&gt;</i>, <i>&lt;presentation:animations&gt;</i> and specifications for headers and footers on slides.</p>
-			<p>The ODF specification covers two physical forms for ODF documents, a flat form as a single XML file and a package form based on the <fddLink id="fdd000355">ZIP_6_2_0</fddLink> format.  This description focuses on the more commonly used ZIP-based package format for ODF presentation files, given the <i>.odp</i> file extension.  Files using the same markup specification and package but with an extension of <i>.otp</i> are for use as presentation document templates.</p>
-			<p>An ODF package can be recognized as a presentation document in several ways.  Externally, there are file extensions for two ways in which ODF presentation documents may be used in graphics applications, as noted above.  The primary internal indication is that the mandatory file named <i>mimetype</i> will contain one of the corresponding strings listed as <a href="#sign">File type signifiers</a> below.  An additional way to recognize an ODF presentation document is that  the &lt;office:body&gt; element, a child of the root &lt;office:document-content&gt; element in content.xml has the child element &lt;office:presentation&gt;.</p>
-			<p>The ZIP-based package for any ODF file contains, at a minimum, five files:  a one-line <i>mimetype</i> file containing a single text string; <i>content.xml</i>; <i>styles.xml</i>; <i>meta.xml</i>; and <i>settings.xml</i>.  The typical <i>content.xml</i> file for a minimal presentation document has the basic form:</p>
+			<p>The Notes Storage Facility (NSF) non-relational database file is used by IBM Lotus Notes and Domino software to store different kinds of data stored in <i>Notes</i> including email messages, chat and instant messages, documents, appointments and other calendar entries. A Note is similar in concept an object store because it normally contains both an application design and its associated data.</p>
+			<p>The mailbox database comprising Note types such as email messages, chat and instant messages, calendars entries and the list of To-Do as well as other archived data is stored in a single <i>username.nsf</i> file for each individual user. Contact Notes in the address book database are stored in the <i>names.nsf</i> file although contracts also can be saved into a readable format-vCard (VCF) or <fddLink id="fdd000323">Comma Separated Value (CSV)</fddLink> file. A third important component are Notebooks, also known as Personal Journals, comprises of personal documents and information that can define the priority documents of the custodian. This database of Notes gets saved into the <i>notebook.nsf</i> file.</p>
+			<p>Structurally, a NSF file contains a file header (made up of a signature and the database header size), followed by the database header comprised of, among other data points, the software version information (not NSF file format version), file size and database identifier (DBID) the value of which consists an NSF date and time. Replication information (DBREPLICAINFO) is an important part of the database header. IBM Domino servers and Lotus Notes clients identify NSF files by their Replication Identifier (the value which consists an NSF date and time in local time) and keep replicate files synchronized by bi-directionally exchanging data, metadata, and application logic and design. Replication history, including direction (<i>never, send, receive</i>), is also stored in the database header. See <a href="#Notes">General</a> for more information about replication.</p>
+			<p>The database header is followed by various data constructs including:</p>
 			<ul>
-				<li>&lt;office:document-content&gt;</li>
-				<li>&lt;office:automatic-styles&gt;</li>
-				<li>... styles created automatically based on direct user choices, e.g., for margins or default fill color for shapes, with references to fuller and named style specifications in <i>styles.xml</i> ...</li>
-				<li>&lt;/office:automatic-styles&gt;</li>
-				<li>&lt;office:body&gt;</li>
-				<li>&lt;office:presentation&gt;</li>
-				<li>&lt;draw:page draw:name=&quot;page1&quot;&gt; ... content for a slide.  The name shown here is conventional rather than required by the standard, which only requires uniqueness.</li>
-				<li>&lt;draw:page draw:name=&quot;page2&quot;&gt; ... </li>
-				<li>   ...   </li>
-				<li>&lt;/office:presentation&gt;</li>
-				<li>&lt;/office:body&gt;</li>
-				<li>&lt;/office:document-content&gt;</li>
-				<li>Note that several of these elements will usually have attributes omitted here. Additional elements in the office: namespace may be included within the office:presentation element to reflect application-specific defaults.</li>
+				<li>superblock
+(containing a header, data and footer)</li>
+				<li>bucket descriptor block (containing a header, data and footer)</li>
+				<li>bitmap</li>
+				<li>Record Relocation Vector (RRV) bucket</li>
+				<li>summary buckets, and</li>
+				<li>non-summary buckets.</li>
 			</ul>
-			<p>For details of the ZIP-based package for ODF_presentation_1_2, see <fddLink id="fdd000425">ODF_package_1_2</fddLink>.  The package specification defines the form for the package manifest, and options for digital signatures, encryption, etc.</p>
-			<p>See Notes in <fddLink id="fdd000247">ODF Family</fddLink> for more information about the flat XML-only variant of ODF files.  For a flat ODF presentation file, the root <i>&lt;office:document&gt;</i> element has an <i>office:mimetype</i> attribute with one of
-the values listed below as <a href="#sign">File signifiers</a>.</p>
-			<p>Apart from changes to the underlying package format, changes made to the markup for ODF presentations between ODF versions 1.1 and 1.2 were limited to a few enhancements.</p>
 		</fdd:description>
-		<fdd:shortDescription>An XML-based format for editable presentation documents, usually with file extension .odp.   Part of the OpenDocument Format (ODF) format family.  Documented in ODF 1.2 Part 1.  Component files are packaged using a constrained version of the ZIP format.</fdd:shortDescription>
-		<fdd:productionPhase>Can be used in any production phase: for creating documents (initial state); for editing and review (middle-state); and for final use or distribution.</fdd:productionPhase>
-		<fdd:relationships>
-			<fdd:relationship>
-				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
-				<fdd:relatedTo>
-					<fdd:id>fdd000247</fdd:id>
-					<fdd:shortName>ODF_Family</fdd:shortName>
-					<fdd:titleName>OpenDocument Format (ODF) Family, OASIS and ISO/IEC 26300</fdd:titleName>
-				</fdd:relatedTo>
-			</fdd:relationship>
-			<fdd:relationship>
-				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
-				<fdd:relatedTo>
-					<fdd:id>fdd000436</fdd:id>
-					<fdd:shortName>ODF_draw_1_2</fdd:shortName>
-					<fdd:titleName>OpenDocument Drawing Document Format (ODG), Version 1.2, ISO 26300:2015</fdd:titleName>
-				</fdd:relatedTo>
-				<fdd:comment>Presentations typically consist of sequences of &quot;drawings,&quot; with each slide represented by a drawing.</fdd:comment>
-			</fdd:relationship>
-			<fdd:relationship>
-				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
-				<fdd:comment>Other ODF document categories, such as charts and drawings embedded in individual slides.</fdd:comment>
-			</fdd:relationship>
-			<fdd:relationship>
-				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
-				<fdd:comment>Embedded images, sound, or video, in base64 encoding.  <fddLink id="fdd000153">PNG</fddLink> is recommended for bit-mapped images.</fdd:comment>
-			</fdd:relationship>
-			<fdd:relationship>
-				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
-				<fdd:relatedTo>
-					<fdd:id>fdd000425</fdd:id>
-					<fdd:shortName>ODF_package_1_2</fdd:shortName>
-					<fdd:titleName>OpenDocument Package Format, ODF 1.2, ISO 26300-3:2015</fdd:titleName>
-				</fdd:relatedTo>
-			</fdd:relationship>
-			<fdd:relationship>
-				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
-				<fdd:relatedTo>
-					<fdd:id>fdd000355</fdd:id>
-					<fdd:shortName>ZIP_6_2_0</fdd:shortName>
-					<fdd:titleName>ZIP File Format, Version 6.2.0 (PKWARE)</fdd:titleName>
-				</fdd:relatedTo>
-				<fdd:comment>Various features of the ZIP File Format are not permitted in ODF.</fdd:comment>
-			</fdd:relationship>
-			<fdd:relationship>
-				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
-				<fdd:comment>META-INF/manifest.xml file. This manifest file is mandatory in all ODF packages.</fdd:comment>
-			</fdd:relationship>
-			<fdd:relationship>
-				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
-				<fdd:comment>ODP 1.1, not described separately on this site.</fdd:comment>
-			</fdd:relationship>
-			<fdd:relationship>
-				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
-				<fdd:relatedTo>
-					<fdd:id>fdd000263</fdd:id>
-					<fdd:shortName>XML_1_0</fdd:shortName>
-					<fdd:titleName>XML (Extensible Markup Language) 1.0</fdd:titleName>
-				</fdd:relatedTo>
-				<fdd:comment> A normative RELAX NG schema is part of the specification for ODF 1.2, which includes the specification for chart documents.</fdd:comment>
-			</fdd:relationship>
-		</fdd:relationships>
+		<fdd:shortDescription>The Notes Storage Facility (NSF) database file is used by IBM Lotus Notes and Domino to store different kind of objects like e-mail, appointments, documents, forms and views. </fdd:shortDescription>
 	</fdd:identificationAndDescription>
-	<fdd:localUse>
-		<fdd:preference>As of December 2015, no format preference has been explicitly expressed by the Library of Congress in relation to acquisition of digital presentations for its collections.</fdd:preference>
-	</fdd:localUse>
+	<fdd:localUse/>
 	<fdd:sustainabilityFactors>
-		<fdd:disclosure>International open standard.  Developed and maintained by <a href="https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=office">OASIS Open Document Format for Office Applications (OpenDocument) TC</a> as part of the OpenDocument Format (ODF) 1.2 specification published by OASIS in 2011.  Also approved as part of the equivalent ISO/IEC 26300-1:2015 by ISO/IEC JTC1/SC34.</fdd:disclosure>
+		<fdd:disclosure>Open partial documentation produced by Joachim Metz.</fdd:disclosure>
 		<fdd:documentation>
-			<p>Specifications from OASIS: <a href="https://www.oasis-open.org/standards#opendocumentv1.2">Open Document Format for Office Applications (OpenDocument) Version 1.2</a>.  Markup specification for ODF 1.2 presentation documents are found primarily in chapters 9 and 10 of Part 1 of the specification.  The technical specification is through a <a href="http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-schema.rng">normative RNG schema for primary component files for ODF documents.</a>.</p>
-			<p>The identical specification is published as <a href="http://standards.iso.org/ittf/PubliclyAvailableStandards/c066376_ISO_IEC_26300-3_2015.zip">ISO/IEC 26300-1:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2 Part 1: OpenDocument Schema.</a>
-			</p>
-			<p>The ODF 1.2 specification is divided into three parts, with the bulk of the markup specification in Part 1: OpenDocument Schema.  The package specification has been moved into a separate Part 3: Packages.</p>
-			<p>See <fddLink id="fdd000247">ODF_Family</fddLink> for a listing of namespaces that can be incorporated into any ODF 1.1 or ODF 1.2 document and links to associated specifications.</p>
-		</fdd:documentation>
+			<a href="https://cdc84f0d93e389b7188b23c1a8338de01b3dfa5b.googledrive.com/host/0B3fBvzttpiiSbkI4d1pRQmdMNWc/Notes%20Storage%20Facility%20%28NSF%29%20database%20file%20format.pdf">Notes Storage Facility (NSF) non-relational database file format:
+Analysis of the NFS database file format</a> is a working document for the NSF specification but is not yet complete.</fdd:documentation>
 		<fdd:adoption>
-			<p>The major office suites using ODF as primary native format family include special applications for developing presentations and can read and write presentation documents as defined in ODF 1.2:</p>
-			<ul>
-				<li>LibreOffice uses ODF 1.2 as its native format, according to <a href="https://blog.documentfoundation.org/blog/2015/07/17/open-document-format-odf-1-2-published-as-international-standard-263002015-by-isoiec/">July 17, 2015 blog post</a> from The Document Foundation.  See <a href=" https://www.libreoffice.org/discover/impress/">LibreOffice Impress</a> and <a href="https://wiki.documentfoundation.org/images/a/ae/IG42-ImpressGuide.pdf">LibreOffice 4.2 Impress Guide</a>.</li>
-				<li>OpenOffice introduced support for ODF 1.2 in the beta version of 3.0 in 2008, according to <a href="http://www.openoffice.org/marketing/3.0/featurelistbeta.html">Release Notes for OpenOffice 3.0 beta</a>.  <a href="https://www.openoffice.org/product/impress.html">Apache OpenOffice Impress</a> uses ODP as its native format.</li>
-				<li>Calligra&apos;s presentation application is <a href="https://www.calligra.org/stage/">Stage</a>.  Calligra Stage uses ODP as the underlying file format.</li>
-			</ul>
-			<p>Microsoft Office has supported direct editing of ODF 1.2 presentation documents since Office 2013.  PowerPoint features not supported or only partially supported in the .odp format are listed in <a href="https://support.office.com/en-us/article/Supported-features-in-OpenDocument-presentation-odp-format-f6d5b015-a417-4096-bf61-a5c3f58d125f">Supported features in OpenDocument presentation (.odp) format</a>.  This list suggests that some types of animation and transition supported in PowerPoint and by PPTX can not be represented in ODP.   There are also a number of vector graphic capabilities and design settings available in PowerPoint, that cannot be used in an ODP file.  <a href="https://wiki.documentfoundation.org/Feature_Comparison:_LibreOffice_-_Microsoft_Office#Presentation_software:_LibreOffice_Impress_vs._Microsoft_PowerPoint">A feature comparison</a> from LibreOffice focuses on the application functionality rather than the format.  See Notes in the description of <fddLink id="fdd000399">PPTX Transitional (Office Open XML)</fddLink> for a discussion of issues relating to conversion between PPTX and ODP, both issues that have been found in practice, and potential issues based on functionality added recently.</p>
-			<p>See Adoption among the Sustainability Factors for <fddLink id="fdd000399">PPTX Transitional (Office Open XML)</fddLink> for discussion of the market for presentation software.  Additional <a href="#useful">useful references</a> below highlight the crowded market for presentation software, with a recent emphasis on creative ways to leave behind the traditional slide-by-slide flow.  Lists of alternatives to PowerPoint often have no mention of any application using ODP as native format.  Where LibreOffice is recommended, it is often as a largely compatible free alternative to PowerPoint.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
-			<p>See <fddLink id="fdd000247">ODF-Family</fddLink> for more detail on adoption of ODF in general, and particularly for mandates or recommendations for ODF when exchanging editable documents among government agencies and the individiduals or organizations they serve.</p>
+			<p>Highly adopted thanks to what <a href="https://en.wikipedia.org/wiki/IBM_Notes#Related_software">Wikipedia</a> calls a "long market history and large installed base." Its encryption capabilities make it a popular choice among federal agencies and corporate entities dealing with classified and sensitive material. Reports of repeated predictions of the decline or impending demise of IBM Notes and Domino have long circulated although new software releases continue. In November 2014, <a href="http://www.infoworld.com/article/2849359/email-software/ibm-watson-verse-email-gmail-inbox.html">IBM</a> announced a new web-based product for email services named <i>Verse</i> which may encourage existing Notes users migrate into Verse.</p>
+			<p>Email NSF files can be <a href="http://www-01.ibm.com/support/docview.wss?uid=swg21242327">exported to a variety of formats</a>. Starting with Release Notes 8.5.2, export to <fddLink id="fdd000388">EML</fddLink> was introduced. Options prior to that included "Adobe Acrobat (presumably a <fddLink id="fdd000030">PDF</fddLink> variant) or some other such file type" and export to ASCII Text or Microsoft RTF file "which exports the content of the message including the To, cc and bcc fields. The exported data can be used as an attachment."</p>
 		</fdd:adoption>
-		<fdd:licensingAndPatents>No concerns.  See <fddLink id="fdd000247">ODF_Family</fddLink>.</fdd:licensingAndPatents>
+		<fdd:licensingAndPatents>NSF files are intended for use only with IBM Lotus Notes and Domino software. Patents are unknown but are presumed to exist. Comments <a href="http://www.digitalpreservation.gov/formats/contact_format.shtml">welcome</a>.</fdd:licensingAndPatents>
 		<fdd:transparency>
-			<p>The structure and text of an ODP file are all represented in XML and hence viewable without special tools, although XML-aware tools that can show the element hierarchy make viewing and interpretation more convenient.  The most commonly used parts, elements, and attributes have recognizable names. Simple documents can be interpreted with very basic tools. However, interpreting the semantics of some elements and the correspondence of some elements and attributes to charting terminology or functionality will require not only understanding of the schema and the specification text, but familiarity with the associated terminology and functionality.</p>
+			<p>According the to IANA registration, NSF files are binary with <a href="https://www.iana.org/assignments/media-types/application/vnd.lotus-notes">base64</a> encoding preferred.</p>
+			<p>Encryption has a long history in Notes starting with Release 1.0 which introduced with mail and port encryption. The use of encryption was extended in Release 2.0 with document encryption and secret keys for field-level encryption. Database and database design encryption were added in Release 4.0, and Release 4.5 included document encryption with public keys. With email messages, only the plaintext Body field encrypted as cyphertext, not the Subject, Sender, and Date fields. Email messages can be encrypted before sending, after receipt or before saving. <a href="">Email message encryption is accomplished</a> through "a public and private key set to encrypt and decrypt data, as well as to validate digital signatures. The public and private key in a set are mathematically related to each other and  are unique to your User ID. Your public key is stored in your Notes certificate. Your certificate is stored in your User ID and the Domino Directory. Your private key is stored only in your User ID.&quot; Encrypted messages sent by other people use the public key from the intended recipients certificate located in the Domino Directory. When an encrypted messages is received, the private key in User ID decrypts the data.</p>
+			<p>IBM DeveloperWorks explains that <a href="http://www.ibm.com/developerworks/lotus/library/ls-Notes_Encryption/index.html#N101AF">full database encryption</a> (defined in the DBCREATE_ENCRYPT_ field) are labeled as <i>None, Simple, Medium, Strong</i> adding that "the stronger the encryption, the longer it takes to open the database. So long as you're not using disk compression, in most cases, the best option is medium encryption because of its balance between security strength and speedy access; however, if you're using disk compression, select simple encryption so that the disk compression works effectively." </p>
+			<p>Security information is stored in the Lotus Notes ID file, usually ending in a *.id extension. The security information along with the user password permits access to a server and personal encrypted information. </p>
+			<p>The length of the encryption key is limited appropriately to achieve a balance between encryption process time and security. Under current US export laws, IBM Notes supports only one version of the Notes PKI with 128-bit symmetric keys, 1024-bit public keys, and no workload reduction factor. See <a href="#Notes">History</a>for more background on encryption key lengths and their impact on Notes.</p>
 		</fdd:transparency>
-		<fdd:selfDocumentation>
-			<p>As for other members of the ODF 1.2 family, ODF_presentation_1_2 added support for metadata based on RDF (W3C&apos;s Resource Description Framework).  As well as using RDF for metadata for the document package as a whole, RDF can be attached to elements within the document&apos;s content.  The use of &quot;custom&quot; metadata as specified in ODF 1.1 is deprecated in ODF 1.2.</p>
-			<p>Pre-defined metadata elements for the document as a whole, stored in an <i>&lt;office:meta&gt;</i> element  include:</p>
-			<ul>
-				<li>From the Dublin core namespace, using the <i>dc:</i> prefix: Title, Creator (of most recent modification), Description, Subject, Date (last modified), Language</li>
-				<li>From the ODF specification, using the <i>meta:</i> prefix: Generator (creating software application), Keywords, Initial Creator, Creation Date and Time, Modification Date and Time, Print Date and Time, Document Template, Document Statistics (word count, page count, etc.),</li>
-			</ul>
-			<p>The pre-defined elements are all optional and repeatable.  However, applications are not required to update multiple occurrences in a specific way to reflect modifications to a document.</p>
-			<p>Also supported in both ODF 1.1 and ODF 1.2 is an XML structure for user-defined metadata, based on triplets of name, data type, and value.</p>
-		</fdd:selfDocumentation>
-		<fdd:externalDependencies>
-			<p>Depends on features used.  Presentation documents in ODF_presentation_1_2 format are often self-contained, but may include links to externally stored data.</p>
-		</fdd:externalDependencies>
-		<fdd:techProtection>Encryption is supported for files within an ODF 1.1 or ODF 1.2 package.  In addition, an ODF package file may be encrypted during interchange or as part of DRM controlling distribution.</fdd:techProtection>
+		<fdd:selfDocumentation>Metadata documenting important characteristics of the resource found in the NSF file and database.</fdd:selfDocumentation>
+		<fdd:externalDependencies>NSF files are intended for use only with IBM Lotus Notes and Domino software. </fdd:externalDependencies>
+		<fdd:techProtection>Maybe move encryption info here?</fdd:techProtection>
 	</fdd:sustainabilityFactors>
-	<fdd:qualityAndFunctionalityFactors>
-		<fdd:stillImageQF>
-			<fdd:normalImage>
-				<p>No specific set of factors for assessing quality and functionality of a presentation format has been developed.  This format description uses selected factors for assessing formats for images and text.</p>
-				<p>Graphics and text on a slide are structured to scale with monitor size.  Raster images can be incorporated in a slide and &quot;may have an arbitrary format&quot; but the ODF standard recommends use of  <fddLink id="fdd000153">PNG</fddLink>.</p>
-			</fdd:normalImage>
-			<fdd:clarity>Since slides are intended for display on monitors, support for very high spatial resolution or high-bit-depth is not needed.  For vector graphics and text effects, ODF 1.2 uses the notation #rrggbb and the RGB color model (assuming the sRGB colorspace).</fdd:clarity>
-			<fdd:colorMaint>There is no support for ICC profiles or other color management mechanisms intended to produce consistent color on different devices.  Accuracy of perceived color is not considered crucial for presentations.</fdd:colorMaint>
-			<fdd:graphics>Excellent support for typographic effects and vector graphics, using all the capabilities supported for <fddLink id="fdd000436">ODF_draw_1_2</fddLink>.</fdd:graphics>
-			<fdd:multispectral>Not relevant for a format aimed at presentations.</fdd:multispectral>
-			<fdd:beyondImage>
-				<p>Support for animations, slide transitions, and user interactions during presentations.  Selected elements borrowed from the <a href="http://www.w3.org/TR/2005/REC-SMIL2-20050107/">Synchronized Multimedia Integration Language (SMIL) 2.0</a> specification can be used to animate text on a slide.</p>
-			</fdd:beyondImage>
-		</fdd:stillImageQF>
-		<fdd:textQF>
-			<fdd:normalText>Editable document. Textual content is conveniently extractable for quotation and for indexing. Full support for Unicode.</fdd:normalText>
-			<fdd:structure>The ordering of slides and of textual lists on slides is indicated by order of elements.  Relationships between slides and embedded content are indicated by nesting of elements.</fdd:structure>
-			<fdd:layout>Excellent support for layout choices. Represents entire layout and formatting as intended by an author who used an application for which ODP is a native format. Differences in detail can occur on display if the original fonts used are not available in the system used for viewing.  Bi-directional and vertical display of text can be specified; see <a href="http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-part1.html#__RefHeading__1420402_253892949">Appendix E of the ODF 1.2 specification</a>.</fdd:layout>
-			<fdd:mathDiag>Equations can be represented using MathML, either as independent files or as drawing objects that can be embedded in slides.</fdd:mathDiag>
-			<fdd:beyondText>
-				<p>Selected elements borrowed from the <a href="http://www.w3.org/TR/2005/REC-SMIL2-20050107/">Synchronized Multimedia Integration Language (SMIL) 2.0</a> specification can be used to animate text on a slide.</p>
-			</fdd:beyondText>
-		</fdd:textQF>
-	</fdd:qualityAndFunctionalityFactors>
+	<fdd:qualityAndFunctionalityFactors/>
 	<fdd:fileTypeSignifiers>
 		<fdd:signifiersGroup>
 			<fdd:filenameExtension>
 				<fdd:sigValues>
-					<fdd:sigValue>odp</fdd:sigValue>
+					<fdd:sigValue>nsf</fdd:sigValue>
 				</fdd:sigValues>
-				<fdd:note>
-					<i>.odp</i> is the extension used for an ODF presentation file.</fdd:note>
 			</fdd:filenameExtension>
 			<fdd:internetMediaType>
 				<fdd:sigValues>
-					<fdd:sigValue>application/vnd.oasis.opendocument.presentation</fdd:sigValue>
+					<fdd:sigValue>application/vnd.lotus-notes</fdd:sigValue>
+					<fdd:sigValue>application/x-lotus-notes</fdd:sigValue>
 				</fdd:sigValues>
-				<fdd:note>The MIME types for ODF_presentation_1_2  are the same as for earlier versions</fdd:note>
+				<fdd:note>From https://www.iana.org/assignments/media-types/application/vnd.lotus-notes</fdd:note>
 			</fdd:internetMediaType>
 			<fdd:magicNumbers>
-				<fdd:sigValueNA>See note.</fdd:sigValueNA>
-				<fdd:note>Magic numbers that apply to ODF document category subtypes incorporate the magic number for  <fddLink id="fdd000354">ZIP_PK</fddLink>,  the string <i>mimetype</i> at position 30, and the MIME subtype string value at position 38.</fdd:note>
+				<fdd:sigValues>
+					<fdd:sigValue>1A 00 00 04 00 00</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://www.garykessler.net/library/file_sigs.html">Gary Kessler&apos;s File Signatures Table</a>. </fdd:note>
 			</fdd:magicNumbers>
 			<fdd:other>
-				<fdd:tag>Indicator for profile, level, version, etc.</fdd:tag>
+				<fdd:tag>Pronom PUID</fdd:tag>
 				<fdd:values>
 					<fdd:sigValues>
-						<fdd:sigValue>ASCII: office:version=&quot;1.2&quot;</fdd:sigValue>
+						<fdd:sigValue>x-fmt/336 (Lotus Notes Database Version 2)</fdd:sigValue>
 					</fdd:sigValues>
-					<fdd:note>The four root elements used in the primary files in an ODF package all require an attribute that records the ODF version.  This is the signifier that distinguishes ODF 1.2 packages from earlier versions.  Documents without this attribute are assumed to be from version 1.1 or earlier.</fdd:note>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/336">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/336</a>.</fdd:note>
 				</fdd:values>
 			</fdd:other>
-		</fdd:signifiersGroup>
-		<fdd:signifiersGroup>
-			<fdd:filenameExtension>
-				<fdd:sigValues>
-					<fdd:sigValue>otp</fdd:sigValue>
-				</fdd:sigValues>
-				<fdd:note>The extension <i>.otp</i> is used for a presentation document used as a template.</fdd:note>
-			</fdd:filenameExtension>
-			<fdd:internetMediaType>
-				<fdd:sigValues>
-					<fdd:sigValue>application/vnd.oasis.opendocument.presentation-template</fdd:sigValue>
-				</fdd:sigValues>
-			</fdd:internetMediaType>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/337 (Lotus Notes Database Version 3)</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/337">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/337</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/338 (Lotus Notes Database Version 4)</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/338">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/338</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>No entry as of March 2017</fdd:note>
+				</fdd:values>
+			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
 		<fdd:general>
-			<p> See <a href="http://books.evc-cit.info/odbook/ch07.html">OASIS OpenDocument Essentials: Chapter 7. Presentations</a> for examples of markup for transitions, animations, and interactions. Elements borrowed from the <a href="http://www.w3.org/TR/2005/REC-SMIL2-20050107/">Synchronized Multimedia Integration Language (SMIL) 2.0</a> specification can be used to animate text on a slide.</p>
-			<p>See Notes section in description for <fddLink id="fdd000399">PPTX Transitional (Office Open XML)</fddLink> for discussion of issues relating to conversion between PPTX and ODP.</p>
+			<p>Although compression is not used within NSF files themselves, attachments to NSF email messages (stored outside the NSF file) have three compression options: None, CX (Huffman encoding) or LZ1 (introduced in introduced in Notes 6).</p>
+			<p>Replication between two servers, or between a client and a server, can occur over a network or a point-to-point modem connection. Creation of a local replica of an NSF file on the hard disk of an IBM Notes client enables the user to fully use IBM Notes and Domino databases while working off-line. The client synchronizes any changes when client and server next connect. Local replicas are also sometimes maintained for use while connected to the network in order to reduce network latency.</p>
+			<p>Wikipedia: A key feature of IBM Notes is that many replicas of the same database can exist at the same time on different servers and clients, across dissimilar platforms; the same storage architecture is used for both client and server replicas. Originally, replication in Notes happened at document (i.e., record) level. With release of Notes 4 in 1996, replication was changed so that it now occurs at field level. A database is a Notes Storage Facility (.nsf) file, containing basic units of storage known as a "note". Every note has a UniqueID that is shared by all its replicas. Every replica also has a UniqueID that uniquely identifies it within any cluster of servers, a domain of servers, or even across domains belonging to many organizations that are all hosting replicas of the same database. Each note also stores its creation and modification dates, and one or more Items.</p>
 		</fdd:general>
 		<fdd:history>
-			<p>See <fddLink id="fdd000425">ODF_package_1_2</fddLink> for discussion of changes to ODF in general between versions 1.1 and 1.2.  Changes to the markup for presentations between versions 1.1 and 1.2 were primarily enhancements requested by implementers.  <a href="http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-part1.html#__RefHeading__1420418_253892949">Appendix G of the ODF 1.2 schema specification</a> suggests that a functional extension was support for tables in presentations.  No elements or attributes were added to the <i>presentation:</i> namespace.</p>
-			<p>See <fddLink id="fdd000247">ODF_family</fddLink> for more on the history ODF in general.</p>
+			<p>Notes and Domino began in the work of Ray Ozzie, Tim Halvorsen, and Len Kawell, first on PLATO Notes at the University of Illinois and later on DECNotes. Lotus founder Mitch Kapor saw the potential in Ozzie's collaboration project and the rest is history. The first release of Lotus Notes shipped in 1989. Lotus Development Corporation originally developed &quot;Lotus Notes&quot; in 1989. IBM bought the Lotus corporation in 1995 and it became known as the Lotus Development division of IBM. As of 2015 it forms part of the IBM Software and Systems Group under the name &quot;IBM Collaboration Solutions&quot;.</p>
+			<p>According to <a href="https://en.wikipedia.org/wiki/IBM_Notes#Security">Wikipedia</a>, &quot;IBM Notes was the first widely adopted software product to use public key cryptography for client–server and server–server authentication and for encryption of data. Until US laws regulating encryption were changed in 2000, IBM and Lotus were prohibited from exporting versions of Notes that supported symmetric encryption keys that were longer than 40 bits.&quot; The US export laws restrictions on key length for encryption contributed to the development of three major editions of Notes: North American (uses 64-bits long encryption keys), International (&quot;64-bit key for the International edition, the top 24 bits are encrypted using the U.S. Government's public key and stored in what is called the Workfactor Reduction Field [WRF]. Splitting the key in this manner results in a key that's 40 bits for the U.S. Government and 64 bits for everyone else.&quot;), and French (a less secure plain 40-bit encryption key). </p>
 		</fdd:history>
 	</fdd:notes>
 	<fdd:formatSpecifications>
 		<fdd:urls>
 			<fdd:url>
-				<fdd:urlGroup>
-					<fdd:intro>Specifications as published by OASIS</fdd:intro>
-					<fdd:urlList>
-						<fdd:urlReference>
-							<link>https://www.oasis-open.org/standards#opendocumentv1.2</link>
-							<tag>Open Document Format for Office Applications (OpenDocument) Specification v1.2</tag>
-							<comment>Provides links to all versions of specifications and supporting files for ODF 1.2.  The specification for the chart file and the chart: namespace is in Part 1: Schemas.  The specification for the ODF package is in ODF 1.2, Part 3: Packages (available as ODT, PDF, and HTML.</comment>
-						</fdd:urlReference>
-						<fdd:urlReference>
-							<link>http://docs.oasis-open.org/office/v1.2/os/OpenDocument-v1.2-os-schema.rng</link>
-							<tag>Normative RNG schema for mandatory manifest file for an ODF 1.2 package.</tag>
-						</fdd:urlReference>
-					</fdd:urlList>
-				</fdd:urlGroup>
-			</fdd:url>
-			<fdd:url>
-				<fdd:urlGroup>
-					<fdd:intro>Specifications as published by ISO/IEC</fdd:intro>
-					<fdd:urlList>
-						<fdd:urlReference>
-							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c066363_ISO_IEC_26300-1_2015.zip</link>
-							<tag>ISO/IEC 26300-1:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2, Part 1: Schema</tag>
-						</fdd:urlReference>
-						<fdd:urlReference>
-							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c066376_ISO_IEC_26300-3_2015.zip</link>
-							<tag>ISO/IEC 26300-1:2015, Information technology -- Open Document Format for Office Applications (OpenDocument) v1.2, Part 3: Packages</tag>
-						</fdd:urlReference>
-					</fdd:urlList>
-				</fdd:urlGroup>
+				<fdd:urlReference>
+					<link>https://cdc84f0d93e389b7188b23c1a8338de01b3dfa5b.googledrive.com/host/0B3fBvzttpiiSbkI4d1pRQmdMNWc/Notes%20Storage%20Facility%20%28NSF%29%20database%20file%20format.pdf</link>
+					<tag>Notes Storage Facility (NSF) database file format: Analysis of the NFS database file format by Joachim Metz</tag>
+					<comment>Working document for the NSF specification - not complete</comment>
+				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
 	</fdd:formatSpecifications>
@@ -275,135 +146,110 @@ the values listed below as <a href="#sign">File signifiers</a>.</p>
 		<fdd:urls>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://books.evc-cit.info/odbook/ch07.html</link>
-					<tag>OASIS OpenDocument Essentials.  Chapter 7. Presentations</tag>
-					<comment>Based on ODF 1.1.  Still applicable to ODF 1.2, since markup changes for presentations were enhancements rather than changes in basics.</comment>
+					<link>https://en.wikipedia.org/wiki/IBM_Notes </link>
+					<tag>Wikipedia page for IBM Notes</tag>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://apps.nationalarchives.gov.uk/pronom/fmt/293</link>
-					<tag>PRONOM entry for OpenDocument Presentation 1.2</tag>
-					<comment> PUID for OpenDocument Presentation 1.2 is fmt/293</comment>
-				</fdd:urlReference>
-			</fdd:url>
-			<fdd:url>
-				<fdd:urlReference>
-					<link>https://blog.documentfoundation.org/blog/2015/07/17/open-document-format-odf-1-2-published-as-international-standard-263002015-by-isoiec/</link>
-					<tag>Open Document Format (ODF) 1.2 published as International Standard 26300:2015 by ISO/IEC</tag>
-				</fdd:urlReference>
-			</fdd:url>
-			<fdd:url>
-				<fdd:urlGroup>
-					<fdd:intro>Documentation for LibreOffice and Apache OpenOffice, applications that use ODF 1.2 formats as their native formats, provides useful examples and background information.</fdd:intro>
-					<fdd:urlList>
-						<fdd:urlReference>
-							<link>https://www.libreoffice.org/discover/impress/</link>
-							<tag>LibreOffice: Discover /
-Impress
+					<link>http://www.librarian.net/navon/paper/Tutorial_at_ACM_SIGMOD_International_Conference_o.pdf?paperid=17136162</link>
+					<tag>A Database Perspective on
+Lotus Domino/Notes
+by C. MOHAN
 </tag>
-						</fdd:urlReference>
-						<fdd:urlReference>
-							<link>https://wiki.documentfoundation.org/images/e/ea/GS4206-GettingStartedWithImpress.pdf</link>
-							<tag>Getting Started with LibreOffice Impress</tag>
-						</fdd:urlReference>
-						<fdd:urlReference>
-							<link>https://wiki.documentfoundation.org/images/a/ae/IG42-ImpressGuide.pdf</link>
-							<tag>LibreOffice: Impress Guide -- Working with Presentations</tag>
-							<comment>Published 26 August 2014. Based on LibreOffice 4.2</comment>
-						</fdd:urlReference>
-						<fdd:urlReference>
-							<link>https://wiki.documentfoundation.org/Feature_Comparison:_LibreOffice_-_Microsoft_Office#Presentation_software:_LibreOffice_Impress_vs._Microsoft_PowerPoint</link>
-							<tag>Feature Comparison -- Presentation software: LibreOffice Impress vs. Microsoft PowerPoint</tag>
-						</fdd:urlReference>
-						<fdd:urlReference>
-							<link>http://www.openoffice.org/documentation/manuals/userguide3/0500IG3-ImpressGuideOOo3.pdf</link>
-							<tag>OpenOffice.org (version 3) Impress Guide</tag>
-						</fdd:urlReference>
-					</fdd:urlList>
-				</fdd:urlGroup>
-			</fdd:url>
-			<fdd:url>
-				<fdd:urlReference>
-					<link>http://www.nouenoff.nl/downloads/LibreOffice_AOO_CompetitiveFeatureMatrix_20150318.pdf</link>
-					<tag>Comparing LibreOffice and Apache OpenOffice</tag>
-					<comment>Includes timeline of releases and links to release notes as well as detailed comparison of features.</comment>
+					<comment>Description of NSF database characteristics</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
-				<fdd:urlGroup>
-					<fdd:intro>Documents for developers and help files from Microsoft on its support for ODF_presentation_1_2 in Office:</fdd:intro>
-					<fdd:urlList>
-						<fdd:urlReference>
-							<link>https://msdn.microsoft.com/en-us/library/hh695327.aspx</link>
-							<tag>[MS-OODF3]: Office Implementation Information for ODF 1.2 Standards Support</tag>
-							<comment>Applies to both Client and Server implementations of Microsoft Office 2013 and Microsoft Office 2016</comment>
-						</fdd:urlReference>
-						<fdd:urlReference>
-							<link>https://msdn.microsoft.com/en-us/library/dd922722.aspx</link>
-							<tag>[MS-OFFDI]: 4. Microsoft PowerPoint Persistence Formats</tag>
-							<comment>Lists OpenDocument Format as a persistence format for PowerPoint. Includes ODF 1.2.</comment>
-						</fdd:urlReference>
-						<fdd:urlReference>
-							<link>https://msdn.microsoft.com/en-us/library/dd943359.aspx</link>
-							<tag>[MS-OFFDI]: 4.4.2 Application and Versions (PowerPoint)</tag>
-							<comment>Indicates support for ODF 1.2 in PowerPoint 2013.  Also that if an ODP 1.1 presentation is opened in PowerPoint 2013, it will be saved in ODF 1.2 format.  This likely applies also to Excel 2016.</comment>
-						</fdd:urlReference>
-						<fdd:urlReference>
-							<link>https://support.office.com/en-us/article/Supported-features-in-OpenDocument-presentation-odp-format-f6d5b015-a417-4096-bf61-a5c3f58d125f</link>
-							<tag>Supported features in OpenDocument presentation (.odp) format.</tag>
-							<comment>Details for versions of PowerPoint since 2007 SP2.</comment>
-						</fdd:urlReference>
-						<fdd:urlReference>
-							<link>https://support.office.com/en-us/article/Use-PowerPoint-to-open-or-save-a-presentation-in-the-OpenDocument-Presentation-odp-format-94805e84-1b09-4c98-a8b5-0da2a52242a0</link>
-							<tag>Use PowerPoint to open or save a presentation in the OpenDocument Presentation (.odp) format</tag>
-							<comment>Related to PowerPoint 2007 SP2.</comment>
-						</fdd:urlReference>
-					</fdd:urlList>
-				</fdd:urlGroup>
+				<fdd:urlReference>
+					<link>http://www.forensicswiki.org/wiki/Notes_Storage_Facility_%28NSF%29</link>
+					<tag>Forensic Wiki Page on Notes Storage Facility (NSF)</tag>
+					<comment/>
+				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
-				<fdd:urlGroup>
-					<fdd:intro>Reviews and comparisons of presentation software.</fdd:intro>
-					<fdd:urlList>
-						<fdd:urlReference>
-							<link>http://www.jonobacon.org/2015/10/10/what-libreoffice-impress-needs-to-rock/</link>
-							<tag>What LibreOffice Impress Needs To Rock.  Blog post from October 2015</tag>
-						</fdd:urlReference>
-						<fdd:urlReference>
-							<link>http://slidedog.com/blog/best-powerpoint-alternatives-presentation-tools-2015/</link>
-							<tag>Best PowerPoint Alternatives and Presentation Tools of 2015</tag>
-						</fdd:urlReference>
-						<fdd:urlReference>
-							<link>http://ask.metafilter.com/259716/Apple-Keynote-or-OpenOffice-Impress-for-making-Powerpoints</link>
-							<tag>Apple Keynote or OpenOffice Impress for making Powerpoints?  Q&amp;A from April 2014.</tag>
-						</fdd:urlReference>
-						<fdd:urlReference>
-							<link>http://blog.bizzabo.com/30-conference-presentation-tools-to-help-speakers-wow-attendees</link>
-							<tag>30 Conference Presentation Tools To Help Speakers Wow Attendees.  Blog post from May 2015. </tag>
-						</fdd:urlReference>
-						<fdd:urlReference>
-							<link>http://www.techradar.com/us/news/software/business-software/the-best-presentation-software-for-businesses-1256592</link>
-							<tag>The best presentation software: top 5 PowerPoint alternatives.  Article from July 2014.</tag>
-							<comment>Does not mention Impress.</comment>
-						</fdd:urlReference>
-						<fdd:urlReference>
-							<link>http://www.powtoon.com/blog/best-free-presentation-software-and-powerpoint-alternative/</link>
-							<tag>Free Presentation Software &amp; Best PowerPoint Alternative.  Blog post from 2012.</tag>
-							<comment>Does not mention Impress.</comment>
-						</fdd:urlReference>
-						<fdd:urlReference>
-							<link>http://www.customshow.com/best-powerpoint-alternatives-presentation-programs/</link>
-							<tag>27 Presentation Software &amp; Powerpoint Alternatives For 2015.  From January 2015.</tag>
-							<comment>Does not mention Impress.</comment>
-						</fdd:urlReference>
-					</fdd:urlList>
-				</fdd:urlGroup>
+				<fdd:urlReference>
+					<link>http://www-12.lotus.com/ldd/doc/uafiles.nsf/70817c90542892178525695b0051105c/2e559b131d346a028525697c00652c2b/$FILE/InsideNotes.pdf</link>
+					<tag>Inside Notes – The architecture of Notes and the Domino Server by Lotus Development Corporation</tag>
+					<comment>Overview of Notes architecture and design</comment>
+				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
-				<fdd:urlGroup>
-					<fdd:intro>See also <fddLink id="fdd000247">ODF_Family</fddLink>.</fdd:intro>
-				</fdd:urlGroup>
+				<fdd:urlReference>
+					<link>http://www.notesdesign.com/ndhtml/ndtutor.htm</link>
+					<tag>What is IBM/Domino Notes by Graham Stalley</tag>
+					<comment>Details architecture and history of Domino and Notes systems</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ibm.com/developerworks/lotus/library/ls-Notes_Encryption/index.html</link>
+					<tag>Notes from Support: Notes Encryption - Locks for a Digital World by IBM Developer Works</tag>
+					<comment>Overview of encryption in general and its implementation in Notes</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.ibm.com/developerworks/lotus/library/ls-NDHistory/</link>
+					<tag>The History of Notes and Domino by IBM Developer Works</tag>
+					<comment>Overview history through Release 8</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nsftools.com/tips/NotesTips.htm</link>
+					<tag>NSF Tools: Notes Tips by Julian Robichaux</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.v-and-m.com/vmhomepage.nsf/Content/Notes+Mail+Encryption+Explained+?OpenDocument</link>
+					<tag>Notes Mail Encryption - Explained by John Vanderhoff</tag>
+					<comment>Details on encryption methods</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>www-01.ibm.com/support/docview.wss?uid=swg21242327</link>
+					<tag>Saving Notes Mail Documents as Standalone Files by IBM TechNote</tag>
+					<comment>Export options for NSF email files</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www-12.lotus.com/ldd/doc/domino_notes/Rnext/help6_client.nsf/f4b82fbb75e942a6852566ac0037f284/87ab00e37f82c40685256c1c00380635?OpenDocument</link>
+					<tag>How Notes uses public and private keys for encrypting and signing mail by IBM Developer Works</tag>
+					<comment>Encryption mechanisms for NSF email</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.infoworld.com/article/2849359/email-software/ibm-watson-verse-email-gmail-inbox.html</link>
+					<tag>25 years after Lotus Notes, IBM tries to reinvent email again by Serdar Yegulalp </tag>
+					<comment>InfoWorld Tech Watch
+article about Verse web-based email&apos;s impact on Notes</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/pronom/x-fmt/336</link>
+					<tag>PRONOM entry for x-fmt/336</tag>
+					<comment>Information in PRONOM from UK National Archives about NSF (Lotus Notes Database Version 2). PUID: x-fmt/336.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/pronom/x-fmt/337</link>
+					<tag>PRONOM entry for x-fmt/337</tag>
+					<comment>Information in PRONOM from UK National Archives about NSF (Lotus Notes Database Version 3). PUID: x-fmt/337.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/pronom/x-fmt/338</link>
+					<tag>PRONOM entry for x-fmt/338</tag>
+					<comment>Information in PRONOM from UK National Archives about NSF (Lotus Notes Database Version 4). PUID: x-fmt/334.</comment>
+				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
 	</fdd:usefulReferences>
