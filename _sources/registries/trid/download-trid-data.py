@@ -4,11 +4,11 @@ import urllib
 import os
 
 # Download TRiD XML sigs:
-url = "http://mark0.net/download/triddefs_xml.zip"
-urllib.urlretrieve(url,"triddefs_xml.zip")
+url = "http://mark0.net/download/triddefs_xml.rar"
+urllib.urlretrieve(url,"triddefs_xml.rar")
 
 # Unpack them:
-command = "unzip triddefs_xml.zip -d triddefs_xml"
+command = "unrar x -o+ triddefs_xml.rar triddefs_xml"
 os.system(command)
 
 # Ensure Git picks them up:
