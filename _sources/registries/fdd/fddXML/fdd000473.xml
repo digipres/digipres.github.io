@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000473" titleName="Rich Text Format (RTF) Family" shortName="RTF_family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>text</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>family</fdd:category>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2017-12-16</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Rich Text Format (RTF) Family</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>document formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The Rich Text Format (RTF) is a proprietary document file format developed and maintained through several versions by Microsoft Corporation through 2008 for cross-platform document interchange among Microsoft products.  In 1992, Microsoft published version 1.0 of the RTF specification, the first of many 1.x versions introduced to handle new features of Microsoft applications, particularly Microsoft Word.  However, Microsoft used earlier versions of RTF before that.  An early description of the RTF format was in the Microsoft Systems Journal (MSJ) issue of March 1987 in &quot;Rich Text Format Standard Makes Transferring Text Easier&quot; by Nancy Andrews. Between 1987 and 2008, Microsoft extended the RTF specification several times to add support for new features in Microsoft Word.  See <a href="#notes">Notes</a> below for a chronology of versions.  Version 1.9.1
+was published in March 2008 and is the last release, compatible with Word 2007.  The intent of RTF was to represent the full content of a Word .doc file, including not just formatted text, but also embedded images, comments, tracked changes, etc.  In <a href="https://support.microsoft.com/en-us/help/924944/information-about-the-rich-text-format-rtf-version-specifications-for">Information about the Rich Text Format (RTF) version specifications for various versions of Word</a>, Microsoft associates RTF version numbers with versions of Microsoft Word.  The specification was occasionally extended to support content representation associated with other applications, primarily Outlook and Exchange, in which messages can be encoded as HTML, RTF, or plain text.</p>
+			<p>The <a href="https://en.wikipedia.org/wiki/Rich_Text_Format">Wikipedia entry for Rich Text Format</a> states. &quot;The Rich Text Format was the standard file format for text-based documents in applications developed for Microsoft Windows.&quot;  The WinHelp format, used for Windows help files for many years before it was deprecated in 2006, employed RTF for textual content.  See <a href="https://en.wikipedia.org/wiki/WinHelp">Wikipedia entry for WinHelp</a> and <a href="http://mshelpwiki.helpmvp.com/mshelp/winhelp">MSHelpWiki: WinHelp</a>.  Microsoft has offered the option of storing mail messages in RTF in its mail applications; as of 2017, this option is still supported but discouraged.  WordPad, introduced by Microsoft as part of Windows 95, supports RTF natively.  RTF has been widely used by developers of applications for Windows for transferring formatted text between applications or for input of formatted text by users.  See, for example, <a href="https://msdn.microsoft.com/en-us/library/cc488002(v=vs.120).aspx">How to: Convert RTF to Plain Text (C# Programming Guide)</a>, which states, &quot;In the .NET Framework, you can use the RichTextBox control to create a word processor that supports RTF and enables a user to apply formatting to text in a WYSIWIG manner.&quot;  The <a href="http://commons.oreilly.com/wiki/index.php/Learning_Cocoa_with_Objective-C/Document-Based_Applications/Rich-Text_Handling#Supported_Text_Data_Types">Cocoa framework</a> used in Mac OS also uses RTF as the basis for support of user entry of formatted text.  Most word-processors and a wide variety of other non-Microsoft applications support import and export of formatted text using RTF.  See <a href="#sustainability">Adoption</a> (in Sustainability Factors) and <a href="#useful">Useful References</a> below.</p>
+			<p>Since the introduction of Word 2010, use of RTF as a file format by Microsoft has been declining.  According to a <a href="https://technet.microsoft.com/en-us/library/cc179199.aspx">2010 technical note from Microsoft</a>, &quot;The RTF file format is no longer enhanced to include new features and functionality. Features and functionality that are new to Word 2010 and future versions of Word are lost when they are saved in RTF.&quot;  Microsoft states in the specification for RTF 1.9.1, &quot;RTF allows documents to migrate forward and backward in time: old readers can read the most recent RTF and new readers can read old RTF ...  Files created with an earlier version of Word using RTF should be read without problem by newer versions of Word. Older versions of Word ignore control words and groups they don’t understand.&quot;  <a href="https://support.office.com/en-us/article/Save-a-document-in-Word-B7F55D8C-D714-4892-8FDE-853A82419027">The Save As operation in Word 2016</a> includes RTF an option, but states that saving a Microsoft Office Word document in RTF &quot;does not reliably preserve the formatting, layout, or other features of the document.&quot;  According to <a href="https://www.ctrl.blog/entry/word-document-formats-office-16tp">Document format support in the new Word apps and Word 2016</a> from the Ctrl Blog, RTF files cannot be read in Word Online or the Word apps for tablets.</p>
+			<p>RTF files are encoded using plain text, usually using 7-bit ASCII, with runs of text with non-ASCII characters requiring conversion to appropriate code values. An RTF file comprises a series of <i>control words</i>, <i>control symbols</i>, and <i>groups</i>.  A <i>control word</i> is a sequence of letters preceded by a backslash and terminated by a space, digit, or any non-alphabetic character.  <i>Control words</i> support the representation of the structure, formatting, and layout of document text.  For example, <i>\b</i> turns on bold and <i>\b0</i> turns off bold while <i>\hl</i> and <i>\footer</i> introduce the representation for a hyperlink and a page footer, respectively.  A <i>control symbol</i>
+ consists of a backslash followed by a single, nonalphabetic character. For example, <i>\~</i>
+represents a nonbreaking space.  A group
+is enclosed in braces ({ }) and consists of text together with control words or control symbols.  A group
+specifies the text affected by the group and the different attributes of that text. An RTF file is not necessarily divided into lines. ASCII line terminators (carriage return, line feed characters) may be used for readability.</p>
+			<p>An RTF file has a Header section, beginning with  <i>\rtf0</i> or <i>\rtf1</i>, followed by a Document section.  The digit (0 or 1) terminating the introductory control word of the Header represents the major version of the governing RTF specification and will usually be 1.  The next control word specifies the character set used in the file as one of <i>\ansi</i> (the default), <i>\mac</i>, <i>\pc</i>, or <i>\pca</i>.  From Word 97 onward, Word has had support for Unicode, although Word was not fully based on Unicode until Word 2002.  For versions 1.5 and later of RTF, use of Unicode has been facilitated by conversion to a specified ANSI code page when writing an RTF file.  The code page to use for conversion from the ANSI encoding in the RTF file to Unicode, is indicated in a control word <i>\ansicpgN</i>, e.g., <i>\ansicpg1252</i> for the code page commonly used for English and other Western European languages in Windows.  The rest of the Header comprises groups containing information about fonts, styles, and
+overall document-formatting properties.</p>
+			<p>The Document section begins with an optional group, identified by the <i>\info</i> control word, that introduces document properties (metadata).  Pre-defined properties include <i>title</i>, <i>author</i>, <i>keywords</i>, etc., as well as <i>time of creation</i>, <i>number of pages</i>, <i>number of words</i>, etc.  User-defined properties are also supported in the <i>\info</i> group.  Following the <i>\info</i> group are groups that apply to the document as a whole, such as settings and styles.  A typical document will then have a sequence of high-level groups that represent one or more sections in the document.  Each section may begin with a <i>\hdrftr</i> group holding details for the page header and footer for the section.  Nested within a section is a sequence of paragraphs (indicated by control words <i>\par</i> or <i>\pard</i>).  A table is considered a particular type of paragraph.  Nested within a regular paragraph will be a sequence of groups representing runs of character text with control words for associated formatting, font choice, etc.  A small example file is in <a href="#notes">Notes</a> below.  The ASCII text content in an RTF file is in reading order and simple to extract for indexing, as pointed out by Witten et al. in <a href="https://books.google.com/books?id=HiJNbEy5f70C">&quot;How to Build a Digital Library&quot;</a> on page 202.</p>
+			<p>As well as being used for document interchange among Microsoft applications, RTF is widely supported for import and/or export by other word-processing software, desktop publishing applications, and other applications that benefit from the import of formatted text.  However, such support may be based on a subset of <i>control words</i> or a chronological version other than the latest (version 1.9.1).  See <a href="#notes">Notes</a> below.</p>
+		</fdd:description>
+		<fdd:shortDescription>A proprietary plain text file format for documents developed and maintained by Microsoft Corporation through 2008 primarily for cross-platform document interchange among Microsoft products. Microsoft published several versions of the RTF specification between 1992 and 2008 to keep up with new features of Microsoft Word.</fdd:shortDescription>
+		<fdd:productionPhase>Although an RTF document can be created or edited directly in a text editor, the primary use of RTF is as a middle-state format for interchange between applications or as a final-state format.</fdd:productionPhase>
+		<fdd:relationships/>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress has acquired RTF files in collections of personal and organizational papers and via other deposits.  The total number of RTF files as of December 2017 is around 25,000 (in comparison with over 15 million PDF files).</fdd:experience>
+		<fdd:preference>The Library of Congress Recommended Formats Statement (RFS) for <a href="https://www.loc.gov/preservation/resources/rfs/textmus.html#digital">textual documents</a> includes Rich Text Format (RTF) as an acceptable digital format, but with low priority compared with XML-based formats and PDF/A.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>RTF is a proprietary format developed by Microsoft, primarily to allow formatted textual content to be exchanged among Microsoft applications.  Microsoft published many versions of the specification between 1992 and 2008 in order to handle features introduced with new versions of Microsoft Word.  The latest version was published in association with Word 2007.</p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>Version 1.9.1 of the RTF specification, the latest version, is <a href="https://www.microsoft.com/en-us/download/details.aspx?id=10725">available for download from Microsoft</a>.</p>
+			<p>Microsoft has not kept an archive of past versions.  Several entities have attempted to compile archives, in particular, <a href="http://www.snake.net/software/RTF/">Snake.net</a> and the developers of the <a href="http://latex2rtf.sourceforge.net/docs.html">latex2rtf</a> tool.  See <a href="#specs">Format Specifications</a> below for links to versions found in various online sources.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>As described above, RTF has been widely used for exchange of formatted text among Microsoft applications.  RTF has also been widely supported by non-Microsoft applications.  On his <a href="http://interglacial.com/rtf/">Interglacial site</a>, RTF expert Sean M. Burke says, &quot;RTF is a document language used for exchanging text between different word processors and text-processing applications.  RTF is much easier to generate than PDF or PostScript, and is more word-processor friendly than HTML.  RTF has been around for over twenty years, while hundreds of other binary formats have come and gone.&quot; 
+Similarly, a <a href="http://accessproject.colostate.edu/udl/modules/word/tut_rtf.php?display=pg_1">Tutorial on RTF</a>, created around 2010, points out, &quot;When posting documents to the Web, it is always important to supply alternative file formats. In addition to &apos;.doc,&apos; you should consider formats such as HTML, PDF, and RTF. Of the three, RTF is perhaps the simplest to create.&quot;</p>
+			<p>In addition to support for RTF files in Microsoft applications, most other word-processing and desk-top publishing applications can import and/or export RTF files, including: <a href="https://helpx.adobe.com/illustrator/using/importing-exporting-text.html">Adobe Illustrator</a> (import); Adobe InDesign <a href="https://helpx.adobe.com/indesign/using/adding-text-frames.html">(import</a> and with options to <a href="https://indesignsecrets.com/exporting-all-stories-text-rtf.php">export one story or all stories</a>; <a href="https://help.libreoffice.org/Common/About_Import_and_Export_Filters#Importing_and_Exporting_Text_Documents">LibreOffice</a> (import and export); and <a href="https://support.corel.com/hc/en-us/articles/217086007-What-file-formats-are-supported-by-WordPerfect">Corel&apos;s WordPerfect</a> (import and export).  <a href="https://www.lifewire.com/rtf-file-4135641">Lifewire | What is an RTF File?</a> lists several other word-processing applications that can open RTF files, including Google Docs, which can import and export RTF documents.  The degree of support may vary, depending on which chronological version of RTF the support is based on.  The version supported may not be obvious from product documentation.</p>
+			<p>Many applications whose main function takes advantage of formatted text support RTF for import or export.  Examples include: <a href="https://www.ibm.com/support/knowledgecenter/en/SSYQBZ_9.6.1/com.ibm.doors.requirements.doc/topics/t_importrichtext.html">IBM&apos;s Rational DOORS</a>, a requirements management tool; <a href="https://www.maplesoft.com/support/help/Maple/view.aspx?path=Formats/RTF">Maple</a> and <a href="http://reference.wolfram.com/language/ref/format/RTF.html">Mathematica</a> for mathematical analysis and computation; and <a href="https://CRAN.R-project.org/package=rtf">R</a> for statistical analysis.  See <a href="#useful">Useful References</a> below for more examples.</p>
+			<p>Conversion tools that support RTF for import or export include: <a href="https://helpx.adobe.com/reader/using/export-pdf.html">Adobe Reader DC</a>; <a href="https://www.gnu.org/software/unrtf/unrtf.html">UnRTF</a>; and <a href="https://products.aspose.com/words">Aspose.Words</a>, which has software toolkits for .NET and Java that support load and save operations for a number of textual formats, including RTF.   See <a href="#useful">Useful References</a> below for more examples.</p>
+			<p>Recommendations for use of RTF for submission and distribution of documents include: <a href="https://www.transportation.gov/dockets/how-file-docket-submissions">How to File Docket Submissions (U.S. Department of Transportation)</a> and <a href="https://www.gov.uk/government/publications/instructions-for-formatting-tender-submission-documentation">How to Format Tender Submissions for the [UK] Department for Transport</a> from 2012.  The Blurb self-publishing service asks for novels to be submitted in RTF; see <a href="https://support.blurb.com/hc/en-us/articles/213506003-Preparing-Your-Content">Preparing your Content</a>.</p>
+			<p>RTF is listed as acceptable for long-term archiving by some archives, including: <a href="https://wiki.archivematica.org/Format_policies">Archivematica</a>; <a href="https://libguides.mit.edu/c.php?g=176372&amp;p=1158986">DSpace@MIT</a>; and the <a href="https://deepblue.lib.umich.edu/static/about/deepbluepreservation.html">Deep Blue Repository</a> at the University of Michigan.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>Microsoft states in the latest RTF specification, &quot;RTF serves as both a standard of data transfer between word processing software, document formatting, and a means of migrating content from one operating system to another.&quot;  The compilers of this resource infer from this that, although there may be patents associated with features described in the RTF specification, Microsoft has encouraged the use of the specification to build tools that can read or write RTF files.  Microsoft does claim copyright, with all rights reserved, on the specification document, but has not objected to the copies of old versions archived by tool developers.</fdd:licensingAndPatents>
+		<fdd:transparency>Can be opened and viewed in text editors.  Due to the density of markup information in many RTF files and the unintuitive nature of many RTF control words, users viewing RTF files in a text editor will often not be able to identify the raw textual content.  However, the RTF structure does enable simple programmatic extraction of the underlying text in reading order.  RTF documents may include hex-encoded binary data, e.g., for images.</fdd:transparency>
+		<fdd:selfDocumentation>The optional <i>\info</i> group can hold document properties (metadata) in named elements used in Microsoft applications. User-defined properties can also be incorporated.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None.</fdd:externalDependencies>
+		<fdd:techProtection>The RTF specification provides no internal provision for encryption or other technical protection to prevent reading the file.  Password protection to prevent editing is supported through the control word <i>\passwordhash</i>, which introduces hex-encoded encrypted data representing the password needed to edit the given RTF document.  The compilers of this resource are unable to determine whether this feature has been widely used in practice or impedes use beyond a Windows context.  <a href="../contact_format.shtml">Comments welcome.</a>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:textQF>
+			<fdd:normalText> Document with markup that offers support for powerful word-processing functionality, particularly when used with Microsoft Word. Textual content is editable in an ASCII text editor and textual content is conveniently extractable for indexing.  Rendering or indexing of non-ASCII characters  requires intermediate processing. RTF does not use a UTF encoding.</fdd:normalText>
+			<fdd:structure>Paragraphs and sections are easily recognized, as are headers and footers. Support is available for higher-level constructs through styles (e.g., for headings), automatically generated tables of contents and indexes, structured templates, and mail merge.</fdd:structure>
+			<fdd:layout>Represents entire layout and formatting as intended by an author using Microsoft Word through Word 2007.  Features added to Word in later versions may not be supported.  Bi-directional and vertical display of text can be specified. Differences in detail can occur on display if the original fonts used are not available in the system used for viewing.</fdd:layout>
+			<fdd:mathDiag>The control words used to define the display of mathematical notation mirror elements in the Office Math Markup Language (OMML), which is a part of Office Open XML (see <fddLink id="fdd000397">DOCX/OOXML_2012</fddLink>).</fdd:mathDiag>
+			<fdd:beyondText>Can store information associated with the process of creating and reviewing documents, including tracked changes and other annotations.  RTF files may include forms designed to be filled in by a reader.</fdd:beyondText>
+		</fdd:textQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>rtf</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/rtf</fdd:sigValue>
+					<fdd:sigValue>text/rtf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://www.iana.org/assignments/media-types/application/rtf">https://www.iana.org/assignments/media-types/application/rtf</a> (2007) and <a href="https://www.iana.org/assignments/media-types/text/rtf">https://www.iana.org/assignments/media-types/text/rtf</a> (1993).</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>{\rtf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From specification.  Applies to all RTF versions.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Mac OS file type</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>RTF.</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>From RTF specification.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>Pronom does not have an entry and signature for the entire RTF family, but does have specific signatures for some chronological versions of RTF.  See below. </fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/969</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>RTF, unnumbered version, prior to 1.0 See <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/969">https://www.nationalarchives.gov.uk/PRONOM/fmt/969</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/45</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>RTF, versions 1.0-1.4.  See <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/45">https://www.nationalarchives.gov.uk/PRONOM/fmt/45</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/50</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>RTF, versions 1.5-1.6.  See <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/50">https://www.nationalarchives.gov.uk/PRONOM/fmt/50</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/52</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>RTF, version 1.7.  See <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/52">https://www.nationalarchives.gov.uk/PRONOM/fmt/52</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/53</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>RTF, version 1.8.  See <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/53">https://www.nationalarchives.gov.uk/PRONOM/fmt/53</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/355</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>RTF, version 1.9.  See <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/355">https://www.nationalarchives.gov.uk/PRONOM/fmt/355</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q467454</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q467454">https://www.wikidata.org/wiki/Q467454</a> for the Rich Text Format Family.   Wikidata also has entries for individual versions of RTF.  </fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Sample file:</b>  Immediately below is a short but complete sample RTF file as viewed in an ASCII text editor, with line breaks added for readability:</p>
+			<p>{\rtf1\ansi\ansicpg1252\uc1\deff1{\fonttbl
+<br/>{\f0\fswiss\fcharset0\fprq2 Arial;}
+<br/>{\f1\fswiss\fcharset0\fprq2 Verdana;}
+<br/>{\f2\froman\fcharset2\fprq2 Symbol;}}
+{\colortbl;\red255\green0\blue0;\red0\green255\blue0;\red0\green0\blue255;}
+{\stylesheet<br/>{\s0\itap0\nowidctlpar\f0\fs24 [Normal];}}
+<br/>{\*\generator TX_RTF32 14.0.520.501;}
+<br/>\sectd\pard\itap0\nowidctlpar\plain\f1\fs36
+<br/>{Hello RTF Wörld\par\f0\fs24\par
+<br/>with some symbols: &quot;&quot;{\f2\cf1\cb0\chcbpat3\i abc}&quot;&quot;\par\par
+<br/>and some \b bold\b0, \i italic\i0, \ul underlined\ul0  and \strike strikethrough\strike0  text\par\par
+<br/>some nested styles: {\b\cf1 bold}, {\i\cf2 italic}, {\ul\cf3 underlined}, normal\par\par
+<br/>and some combined styles: {\b bold+\i italic+\ul underlined} vs. normal.\par\par }}</p>
+			<p>The example above is a shortened version of one in a <a href="https://www.codeproject.com/Articles/27431/Writing-Your-Own-RTF-Converter?msg=3093850#xx3093850xx">message</a> attached to <a href="https://www.codeproject.com/Articles/27431/Writing-Your-Own-RTF-Converter">&quot;Writing Your Own RTF Converter&quot;</a>, an article by
+Jani Giannoudis.</p>
+			<p>
+				<b>Security concerns</b>:  <a href="http://www.soliddocuments.com/pdf/_the_rtf_file_format/65/1">Why Should I Use Rich Text Format (RTF)?</a> from Solid Documents, a document conversion provider, says, &quot;RTF does not spread viruses. Microsoft Word macro viruses can present big security problems on the Internet. If you send RTF files instead of DOC files by e-mail, you can ensure that harmful macros won&apos;t be inadvertently sent to others, but that most of your formatting will be preserved.  Since RTF does not use macros, it cannot hide macros that might contain viruses.&quot;  However, in recent years security issues have surfaced in handling of imported RTF files in Word and Outlook, based on the ability to embed binary objects in RTF files.  One exploit is described in &quot;<a href="https://phishme.com/rtf-malware-delivery/">Using RTF Files as a Delivery Vector for Malware</a>&quot; from December 2015.  An <a href="https://www.infoworld.com/article/2610934/microsoft-windows/microsoft-s-kb-2953095-word-security-hole-is-part-of-ongoing-embarrassment.html">InfoWorld article in 2014</a> also describes a vulnerability. Security updates to various Microsoft applications have addressed the vulnerabilities exposed in 2014 and 2015. See security updates <a href="https://docs.microsoft.com/en-us/security-updates/SecurityBulletins/2014/ms14-017">MS14-017</a> and <a href="https://docs.microsoft.com/en-us/security-updates/SecurityBulletins/2015/ms15-033">MS15-033</a>.  The compilers of this resource believe that Microsoft has released patches for all currently supported applications affected by known vulnerabilities associated with its handling of RTF files.  The compilers of this resource recognize that other applications may have similar vulnerabilities, but are not aware of actual exploits.  <a href="../contact_format.shtml">Comments welcome.</a>
+			</p>
+			<p>
+				<b>Other notes:</b> RTF support in non-Microsoft applications has not always been complete.  In <a href="https://diaryproducts.net/drupal/node/4">Microsoft RTF Specification Nightmare</a>, Hannes Schmidt argued that support in non-Microsoft applications was frequently incomplete, saying &quot;Have you ever seen a word processor other than Microsoft&apos;s own office suite member Word that can import an RTF (Rich Text Format) file properly? I have not. The reason for this lies in RTF&apos;s inherent complexity and its strong dependency on Microsoft&apos;s internal Word document implementation. The RTF format is basically a 7-bit-safe, serialized version of a Word document&apos;s in-memory representation plus some tweaks that ensure backward compatibility with older programs that read RTF files. For every version of Microsoft&apos;s office suite there is a corresponding RTF specification.&quot;</p>
+			<p> According to a comment on the 2004 blog post by Hannes Schmidt cited above, the RTF specification is &quot;quite a usefull[sic] source of info for the Word binary format.&quot;  However, since 2008, Microsoft has provided public documentation of the Word binary (.doc) format.  See, for example, <a href="../intro/specifications.shtml">Specifications for Digital Formats</a> on this site and <a href="https://msdn.microsoft.com/en-us/library/cc313118.aspx">Office File Formats</a> from Microsoft.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>An early description of RTF by Microsoft was in the Microsoft Systems Journal (MSJ) issue of March 1987 in &quot;Rich Text Format Standard Makes Transferring Text Easier&quot; by Nancy Andrews.  See <a href="https://www.microsoft.com/msj/backissues86.aspx">index of MSJ articles</a>.  Later RTF specifications refer to this March 1987 article as an RTF specification.  For specifications that have been located online by the compilers of this resource, see <a href="#specs">Format Specifications</a> below.  A chronology, annotated with a few important developments identified, follows:</p>
+			<ul>
+				<li>
+					<b>RTF Version 0</b> (March 1987).  No online copy located.<br/>First description.</li>
+				<li>
+					<b>RTF Version 1.0</b> (June 1992)</li>
+				<li>
+					<b>RTF Version 1.2</b> (undated)</li>
+				<li>
+					<b>RTF Version 1.3</b> (January 1994) for Word 95.</li>
+				<li>
+					<b>RTF Version 1.4</b> (1995) for Word 95.  No copy located; description at <a href="https://books.google.com/books/about/Rich_Text_Format_RTF_Specification_and_S.html?id=HopzAQAACAAJ">Google books</a>.</li>
+				<li>
+					<b>RTF Version 1.5</b> (April 1997) For Word 97. <br/> According to <a href="https://www.iana.org/assignments/media-types/application/rtf">https://www.iana.org/assignments/media-types/application/rtf</a>, &quot;Prior to version 1.5 textual content in RTF was 7-bit only. 1.5 changed this
+to allow unencoded 8-bit characters.&quot;  This change was facilitated by the new control word <i>\ansicpgN</i> and a set of control words beginning <i>\u</i> to introduce groups with Unicode characters.</li>
+				<li>
+					<b>RTF Version 1.6</b> (May 1999) for Word 2000.<br/>In Word 2000, Microsoft introduced nested tables, i.e. tables within cells of a table. </li>
+				<li>
+					<b>RTF Version 1.7</b> (August 2001) for Word 2002.</li>
+				<li>
+					<b>RTF Version 1.8</b> (April 2004) for Word 2003.</li>
+				<li>
+					<b>RTF Version 1.9.1</b> (March 2008) for Word 2007.</li>
+			</ul>
+			<p>With the introduction of the ECMA-376 <fddLink id="fdd000395">OOXML</fddLink> format in Word 2007, Microsoft issued compatibility fixes for Word 2002 and Word 2003, to allow those applications to read .docx files.  As a result, many RTF control words introduced for Word 2007 may be interpreted appropriately by earlier versions of Word, rather than ignored.</p>
+			<p>Since 2008, the RTF specification has been frozen.  Hence, for all versions of Word later than Word 2007, RTF files saved from Word are vulnerable to information loss.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Microsoft makes the latest version (version 1.9.1) of the RTF specification available to download but does not have a full archive of past specifications.  Copies of some earlier versions are available from other sources.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.microsoft.com/en-us/download/details.aspx?id=10725</link>
+							<tag>Rich Text Format (RTF) Specification, version 1.9.1.  March 2008 (Word 2007)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.microsoft.com/en-us/download/details.aspx?id=7105</link>
+							<tag>Rich Text Format (RTF) Specification, version 1.8.  April 2004 (Word 2003)</tag>
+							<comment>The download file for this specification is an executable.  Installation instructions indicate that it generates a .doc file.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://ysagnier.free.fr/formats/rtf/rtf-spec-1-8.pdf</link>
+							<tag>Rich Text Format (RTF) Specification, version 1.8.  April 2004 (Word 2003).  Also dated October 2003.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.snake.net/software/RTF/RTF-Spec-1.7.pdf</link>
+							<tag>Rich Text Format (RTF) Specification, Version 1.7.  August 2001 (Word 2002)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://msdn.microsoft.com/en-us/library/aa140277.aspx</link>
+							<tag>Rich Text Format (RTF) Specification, version 1.6, May 1999</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.snake.net/software/RTF/RTF-Spec-1.5.pdf</link>
+							<tag>Rich Text Format (RTF) Specification, Version 1.5.  April 1997 </tag>
+							<comment>As PDF.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.biblioscape.com/rtf15_spec.htm</link>
+							<tag>Rich Text Format (RTF) Specification, Version 1.5.  April 1997 </tag>
+							<comment>In HTML.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.snake.net/software/RTF/RTF-Spec-1.3.rtf</link>
+							<tag>Rich Text Format (RTF) Specification, Version 1.3.  January 1994.</tag>
+							<comment>In RTF format.  Not available as PDF.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.snake.net/software/RTF/Old/RTF-Spec-1.2.rtf</link>
+							<tag>Rich Text Format (RTF) Specification, Version 1.2.  ***Undated.***</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.snake.net/software/RTF/Old/RTF-Spec-1.0.rtf</link>
+							<tag>Rich Text Format (RTF) Specification, Version 1.0.  June 1992. (As RTF)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://latex2rtf.sourceforge.net/RTF-Spec-1.0.pdf</link>
+							<tag>Rich Text Format (RTF) Specification, Version 1.0.  June 1992. (As PDF)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.snake.net/software/RTF/Old/spec-brief.txt</link>
+							<tag>Undated early specification of RTF.</tag>
+							<comment>In plain ASCII text</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>In addition to the specifications above, from sources that have appear reliable, there is another plain text version, claiming Microsoft copyright, 1987-89.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://files.mpoli.fi/pub/software/TEXTS/COMPUTER/RTFSPEC.TXT</link>
+							<tag>Undated early specification of RTF in plain text.  [Copyright Microsoft Corporation, 1987-1989]</tag>
+							<comment>Includes statement, &quot;The RTF standard described in this chapter corresponds to version 1.&quot;</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:articleReference>
+					<articleRefDetail rel="au">Andrews, Nancy</articleRefDetail>.  &quot;<articleRefDetail rel="atitle">Rich Text Format Standard Makes Transferring Text Easier.</articleRefDetail>&quot; <articleRefDetail rel="jtitle">Microsoft Systems Journal</articleRefDetail>. Volume 2, Number 1. Pp. 63-67. <articleRefDetail rel="date">March 1987</articleRefDetail>.  This article provides a brief specification.</fdd:articleReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Rich_Text_Format</link>
+					<tag>Wikipedia entry for Rich Text Format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://support.microsoft.com/en-us/help/924944/information-about-the-rich-text-format-rtf-version-specifications-for</link>
+					<tag>Information about the Rich Text Format (RTF) version specifications for various versions of Word</tag>
+					<comment>When retrieved in December 2017, most related help file links at bottom of page were bad.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://technet.microsoft.com/en-us/library/cc179199.aspx</link>
+					<tag>Changes in Word 2010 (for IT pros)</tag>
+					<comment>States, &quot;The RTF file format is no longer enhanced to include new features and functionality.&quot;</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.snake.net/software/RTF/</link>
+					<tag>RTF-Tools -- RTF software and documentation</tag>
+					<comment>Has links to specifications for Versions 1.3, 1.5, and 1.7 of RTF.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://latex2rtf.sourceforge.net/docs.html</link>
+					<tag>latex2rtf: Documentation</tag>
+					<comment>A good source for older documents related to RTF.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.safaribooksonline.com/library/view/rtf-pocket-guide/9781449302047/ch01.html</link>
+					<tag>RTF Pocket Guide by Sean M. Burke.  Chapter 1. RTF Tutorial</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://interglacial.com/rtf/</link>
+					<tag>Rich Text Format section of Interglacial resource | Sean Burke</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://diaryproducts.net/for/geek/microsoft_rtf_specification_nightmare</link>
+					<tag>Microsoft RTF Specification Nightmare.  By Hannes Schmidt.  2004.</tag>
+					<comment>Argues that &quot;the tight coupling between Word internals and RTF&quot; is not appropriate for general use.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.soliddocuments.com/pdf/_the_rtf_file_format/65/1</link>
+					<tag>Why Should I Use Rich Text Format (RTF)?</tag>
+					<comment>Provides arguments for use of RTF for document interchange.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://accessproject.colostate.edu/udl/modules/word/tut_rtf.php?display=pg_1</link>
+					<tag>Tutorial on RTF, from the ACCESS Project, Department of Occupational Therapy,
+
+Colorado State University</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://fileformats.archiveteam.org/wiki/RTF</link>
+					<tag>RTF page from Let&apos;s Solve the File Formats Problem</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.fileformat.info/format/rtf/egff.htm</link>
+					<tag>Microsoft RTF File Format Summary | EGFF</tag>
+					<comment>Encyclopedia of Graphic File Formats, 2nd Edition, 1996</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.fileformat.info/format/rtf/internal.htm</link>
+					<tag>Details about Microsoft RTF | FileFormat.Info</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources related to recommendations or discussions for use of RTF for long-term archiving or in interchange workflows:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.gov.uk/government/publications/instructions-for-formatting-tender-submission-documentation</link>
+							<tag>How to format tender submissions for the Department for Transport [UK], 2012.</tag>
+							<comment>Retrieved December 16, 2017.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.transportation.gov/dockets/how-file-docket-submissions</link>
+							<tag>How to File Docket Submissions (U.S. Department of Transportation)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://support.blurb.com/hc/en-us/articles/213506003-Preparing-Your-Content</link>
+							<tag>Preparing your Content | Blurb self-publishing service</tag>
+							<comment>Asks for content to be submitted in RTF.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://wiki.archivematica.org/Format_policies</link>
+							<tag>Format Policies | Archivematica</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://libguides.mit.edu/c.php?g=176372&amp;p=1158986</link>
+							<tag>Format Policies | DSpace@MIT</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://deepblue.lib.umich.edu/static/about/deepbluepreservation.html</link>
+							<tag>Deep Blue Preservation and Format Support Policy</tag>
+							<comment>At the University of Michigan.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources related to support for RTF for import, export, or use in applications:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://mshelpwiki.helpmvp.com/mshelp/winhelp</link>
+							<tag>MSHelpWiki: WinHelp</tag>
+							<comment>Describes use of RTF in WinHelp files and the deprecation of this format for Windows help files in 2006 with Windows Vista.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.ibm.com/support/knowledgecenter/en/SSYQBZ_9.6.1/com.ibm.doors.requirements.doc/topics/t_importrichtext.html</link>
+							<tag>Rational DOORS (IBM | Importing rich text format files </tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.maplesoft.com/support/help/Maple/view.aspx?path=Formats/RTF</link>
+							<tag>Maple | RTF (.rtf) File Format</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://reference.wolfram.com/language/ref/format/RTF.html</link>
+							<tag>Wolfram (Mathematica) | RTF (.rtf) File Format</tag>
+							<comment>Supports RTF 1.3</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://commons.oreilly.com/wiki/index.php/Learning_Cocoa_with_Objective-C/Document-Based_Applications/Rich-Text_Handling#Supported_Text_Data_Types</link>
+							<tag>Learning Cocoa with Objective-C/Document-Based Applications/Rich-Text Handling</tag>
+							<comment>The exchange of formatted text within the Cocoa framework of the MacOS is based on RTF. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/TextAttributes/TextAttributes.html</link>
+							<tag>Text Attribute Programming Topics | from documentation by Apple of its Cocoa API for MacOS</tag>
+							<comment>Introduction to programming guide for text-related attributes maintained by the Cocoa text system.  A subset of RTF is used for rich text objects in Cocoa.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.k15t.com/blog/2015/04/markdown-vs-rich-formatting-who-will-win-the-ultimate-text-processing-competition</link>
+							<tag>Markdown vs. Rich Formatting - Who Will Win the Ultimate Text Processing Competition?</tag>
+							<comment>Blog post from 2015.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Tools that facilitate conversion or manipulation of RTF files.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://products.aspose.com/total</link>
+							<tag>Aspose | Complete Set of File Format Manipulation APIs</tag>
+							<comment>Commercial family of products, including Aspose.Words, which has toolkits for .NET, Java, and Android that support load and save operations for many document formats, including RTF.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.gnu.org/software/unrtf/unrtf.html</link>
+							<tag>UnRTF | part of GNU project (last update January 2015)</tag>
+							<comment>UnRTF is a command-line program written in C which converts files from RTF to other formats, including HTML, LaTeX, text, and troff mm-macros.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://document.online-convert.com/convert-to-rtf</link>
+							<tag>Online RTF converter</tag>
+							<comment>Free online conversion for documents to the RTF format.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.rdocumentation.org/packages/connect3/versions/0.1.0/topics/write.rtf</link>
+							<tag>write.rtf | function for converting LaTeX reports created in the R statistics software package to Rich Text Format (RTF) files.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://CRAN.R-project.org/package=rtf</link>
+							<tag>rtf:
+|
+A set of R functions to output Rich Text Format (RTF) files with high resolution tables and graphics.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://latex2rtf.sourceforge.net/</link>
+							<tag>latex2rtf: | translator program to convert LaTeX formatted text files to RTF</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.jafsoft.com/asctortf/</link>
+							<tag>AscToRTF: Intelligently convert text to RTF</tag>
+							<comment>Inexpensive downloadable software for Windows, with API counterpart.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/silvermine/php-rtflex</link>
+							<tag>A pure PHP lexer/tokenizer for RTF files</tag>
+							<comment>Open source software.  Extracts plain text from an RTF file.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/emacsattic/rtf/blob/master/rtf-reader.el</link>
+							<tag>rtf-reader.el - reader for the Rich Text Format (RTF) 2003</tag>
+							<comment>Intended as a reader for RTF version 1.5.  The file has useful comments about the structure of RTF.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://search.cpan.org/~sburke/RTF-Writer-1.11/lib/RTF/Writer.pod</link>
+							<tag>RTF::Writer - for generating documents in Rich Text Format</tag>
+							<comment>By Sean M. Burke</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.codeproject.com/Articles/27431/Writing-Your-Own-RTF-Converter</link>
+							<tag>Writing Your Own RTF Converter.  Last updated, Aug 2013</tag>
+							<comment>An article by Jani Giannoudis on how to write a custom RTF parser and converter.  Compatible with RTF 1.9.1.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.gemboxsoftware.com/document/help/html/Supported_File_Formats.htm</link>
+							<tag>Supported File Formats | GemBox</tag>
+							<comment>GemBox.Document is a .NET component that enables developers to read, write, convert and print document files (DOCX, DOC, PDF, HTML, XPS, RTF and TXT) from .NET applications.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Sample RTF files are available from several sources.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.jafsoft.com/examples/rtf/rtf_examples.html</link>
+							<tag>Examples of text to RTF conversion</tag>
+							<comment>Examples demonstrate JafSoft&apos;s AscToRTF converter.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://jeroen.github.io/files/sample.rtf</link>
+							<tag>Test rtf-file for RTF2XML tool.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://thewalter.net/stef/software/rtfx/sample.rtf</link>
+							<tag>Sample file for testing rtfx: An RTF to XML converter</tag>
+							<comment>Rtfx converts RTF files into a generic XML format</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources indicating that RTF is not supported in Microsoft&apos;s cloud-based Word applications or Word apps for tablets.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://answers.microsoft.com/en-us/msoffice/forum/msoffice_word-mso_other/how-to-open-rtf-file-in-word-online/0b21d042-d38b-43d9-94b9-34133cfd1ac9?auth=1</link>
+							<tag>Q: How to open RTF file in Word online? </tag>
+							<comment>Answer indicates that the Office 365 Word app does not open RTF files.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.ctrl.blog/entry/word-document-formats-office-16tp</link>
+							<tag>Document format support in the new Word apps and Word 2016</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources related to security issues with RTF related to Microsoft applications handling of embedded binary objects.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://phishme.com/rtf-malware-delivery/</link>
+							<tag>Using RTF Files as a Delivery Vector for Malware.  December 9, 2015</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://phishme.com/macro-documents-with-xor-encoded-payloads/</link>
+							<tag>Macro documents with XOR Encoded Payloads.  November 9, 2015</tag>
+							<comment>Describes an exploit based on use of RTF.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://nakedsecurity.sophos.com/2015/09/08/anatomy-of-a-malicious-email-recent-word-hole/</link>
+							<tag>Anatomy of a malicious email – crooks exploiting recent Word hole.  September 8, 2015</tag>
+							<comment>Explanation of how RTF can be used to carry malware.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.infoworld.com/article/2610934/microsoft-windows/microsoft-s-kb-2953095-word-security-hole-is-part-of-ongoing-embarrassment.html#disqus_thread</link>
+							<tag>Microsoft&apos;s KB 2953095 Word security hole is part of ongoing embarrassment</tag>
+							<comment>Article on security flaw associated with opening RTF files in Microsoft applications.  Affected software included Word 2003, Word 2007, Word 2010, and Word 2013 for Windows and Word 2011 for Mac. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://docs.microsoft.com/en-us/security-updates/SecurityAdvisories/2014/2953095</link>
+							<tag>Microsoft Security Advisory 2953095 (March 24, 2014) | Vulnerability in Microsoft Word Could Allow Remote Code Execution</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://docs.microsoft.com/en-us/security-updates/SecurityBulletins/2014/ms14-017#word-rtf-memory-corruption-vulnerability---cve-2014-1761</link>
+							<tag>Microsoft Security Bulletin MS14-017 (Published April 8, 2014)</tag>
+							<comment>Recommended fix: &quot;Disable opening RTF content in Microsoft Word&quot;</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://docs.microsoft.com/en-us/security-updates/SecurityBulletins/2014/ms14-017#word-rtf-memory-corruption-vulnerability---cve-2014-1761</link>
+							<tag>Microsoft Security Bulletin MS14-017 - Critical.  Last updated October 11, 2017.</tag>
+							<comment>Describes vulnerability and patches issued in April 2014.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://docs.microsoft.com/en-us/security-updates/SecurityBulletins/2015/ms15-033</link>
+							<tag>Microsoft Security Bulletin MS15-033 - Critical.  Last updated October 11, 2017.</tag>
+							<comment>Describes vulnerability and patches issued in April 2015.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>PRONOM provides records for chronological versions of the RTF format, but not a record for the RTF family as a whole.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/969</link>
+							<tag>PRONOM entry for fmt/969</tag>
+							<comment>RTF, v. 0.  PUID: fmt/969</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/45</link>
+							<tag>PRONOM entry for fmt/45</tag>
+							<comment>RTF, v. 1.0-1.4  PUID: fmt/45</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/50</link>
+							<tag>PRONOM entry for fmt/50</tag>
+							<comment>RTF, v. 1.5-1.6  PUID: fmt/50</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/52</link>
+							<tag>PRONOM entry for fmt/52</tag>
+							<comment>RTF, v. 1.7  PUID: fmt/52</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/53</link>
+							<tag>PRONOM entry for fmt/53</tag>
+							<comment>RTF, v. 1.8  PUID: fmt/53</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/355</link>
+							<tag>PRONOM entry for fmt/355</tag>
+							<comment>RTF, v. 1.9  PUID: fmt/355</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q467454</link>
+					<tag>Wikidata entry for Q467454</tag>
+					<comment>Information in Wikidata about RTF family.  Wikidata Title ID: Q467454.  Links to entries for chronological versions.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:bookReference>
+					<bookRefDetail rel="au">Witten, Ian H.</bookRefDetail>, <bookRefDetail rel="au">David Bainbridge</bookRefDetail>, and <bookRefDetail rel="au">David M. Nichols</bookRefDetail>. <bookRefDetail rel="btitle">How to Build a Digital Library</bookRefDetail>. Morgan Kaufmann. <bookRefDetail rel="date">2009</bookRefDetail>.  Includes chapter on advantages of RTF in the context of a digital library.  Snippet preview at <a href="https://books.google.com/books?id=HiJNbEy5f70C">https://books.google.com/books?id=HiJNbEy5f70C</a>.</fdd:bookReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:usefulReferences>
+</fdd:FDD>
