@@ -18,14 +18,14 @@
 			</fdd:gdfrDomain>
 		</fdd:gdfrDomains>
 		<fdd:updates>
-			<fdd:date>2015-12-23</fdd:date>
+			<fdd:date>2018-04-05</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Preliminary</fdd:draftStatus>
 	</fdd:properties>
 	<fdd:identificationAndDescription>
 		<fdd:fullName>Lotus Notes Storage Facility</fdd:fullName>
 		<fdd:description>
-			<p>The Notes Storage Facility (NSF) non-relational database file is used by IBM Lotus Notes and Domino software to store different kinds of data stored in <i>Notes</i> including email messages, chat and instant messages, documents, appointments and other calendar entries. A Note is similar in concept an object store because it normally contains both an application design and its associated data.</p>
+			<p>The Notes Storage Facility (NSF) non-relational database file is used by IBM Lotus Notes and Domino software to store different kinds of data stored in <i>Notes</i> including email messages, chat and instant messages, documents, appointments and other calendar entries. A Note is similar in concept an object store because it normally contains both an application design and its associated data. This format description covers all versions of NSF. </p>
 			<p>The mailbox database comprising Note types such as email messages, chat and instant messages, calendars entries and the list of To-Do as well as other archived data is stored in a single <i>username.nsf</i> file for each individual user. Contact Notes in the address book database are stored in the <i>names.nsf</i> file although contracts also can be saved into a readable format-vCard (VCF) or <fddLink id="fdd000323">Comma Separated Value (CSV)</fddLink> file. A third important component are Notebooks, also known as Personal Journals, comprises of personal documents and information that can define the priority documents of the custodian. This database of Notes gets saved into the <i>notebook.nsf</i> file.</p>
 			<p>Structurally, a NSF file contains a file header (made up of a signature and the database header size), followed by the database header comprised of, among other data points, the software version information (not NSF file format version), file size and database identifier (DBID) the value of which consists an NSF date and time. Replication information (DBREPLICAINFO) is an important part of the database header. IBM Domino servers and Lotus Notes clients identify NSF files by their Replication Identifier (the value which consists an NSF date and time in local time) and keep replicate files synchronized by bi-directionally exchanging data, metadata, and application logic and design. Replication history, including direction (<i>never, send, receive</i>), is also stored in the database header. See <a href="#Notes">General</a> for more information about replication.</p>
 			<p>The database header is followed by various data constructs including:</p>
@@ -45,7 +45,7 @@
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>Open partial documentation produced by Joachim Metz.</fdd:disclosure>
 		<fdd:documentation>
-			<a href="https://cdc84f0d93e389b7188b23c1a8338de01b3dfa5b.googledrive.com/host/0B3fBvzttpiiSbkI4d1pRQmdMNWc/Notes%20Storage%20Facility%20%28NSF%29%20database%20file%20format.pdf">Notes Storage Facility (NSF) non-relational database file format:
+			<a href="http://www.notesdesign.com/ndfiles/Notes%20Storage%20Facility%20(NSF)%20database%20file%20format.pdf">Notes Storage Facility (NSF) non-relational database file format:
 Analysis of the NFS database file format</a> is a working document for the NSF specification but is not yet complete.</fdd:documentation>
 		<fdd:adoption>
 			<p>Highly adopted thanks to what <a href="https://en.wikipedia.org/wiki/IBM_Notes#Related_software">Wikipedia</a> calls a "long market history and large installed base." Its encryption capabilities make it a popular choice among federal agencies and corporate entities dealing with classified and sensitive material. Reports of repeated predictions of the decline or impending demise of IBM Notes and Domino have long circulated although new software releases continue. In November 2014, <a href="http://www.infoworld.com/article/2849359/email-software/ibm-watson-verse-email-gmail-inbox.html">IBM</a> announced a new web-based product for email services named <i>Verse</i> which may encourage existing Notes users migrate into Verse.</p>
@@ -61,7 +61,12 @@ Analysis of the NFS database file format</a> is a working document for the NSF s
 		</fdd:transparency>
 		<fdd:selfDocumentation>Metadata documenting important characteristics of the resource found in the NSF file and database.</fdd:selfDocumentation>
 		<fdd:externalDependencies>NSF files are intended for use only with IBM Lotus Notes and Domino software. </fdd:externalDependencies>
-		<fdd:techProtection>Maybe move encryption info here?</fdd:techProtection>
+		<fdd:techProtection>
+			<p>Encryption has a long history in Notes starting with Release 1.0 which introduced with mail and port encryption. The use of encryption was extended in Release 2.0 with document encryption and secret keys for field-level encryption. Database and database design encryption were added in Release 4.0, and Release 4.5 included document encryption with public keys. With email messages, only the plaintext Body field encrypted as cyphertext, not the Subject, Sender, and Date fields. Email messages can be encrypted before sending, after receipt or before saving. <a href="">Email message encryption is accomplished</a> through "a public and private key set to encrypt and decrypt data, as well as to validate digital signatures. The public and private key in a set are mathematically related to each other and  are unique to your User ID. Your public key is stored in your Notes certificate. Your certificate is stored in your User ID and the Domino Directory. Your private key is stored only in your User ID.&quot; Encrypted messages sent by other people use the public key from the intended recipients certificate located in the Domino Directory. When an encrypted messages is received, the private key in User ID decrypts the data.</p>
+			<p>IBM DeveloperWorks explains that <a href="http://www.ibm.com/developerworks/lotus/library/ls-Notes_Encryption/index.html#N101AF">full database encryption</a> (defined in the DBCREATE_ENCRYPT_ field) are labeled as <i>None, Simple, Medium, Strong</i> adding that "the stronger the encryption, the longer it takes to open the database. So long as you're not using disk compression, in most cases, the best option is medium encryption because of its balance between security strength and speedy access; however, if you're using disk compression, select simple encryption so that the disk compression works effectively." </p>
+			<p>Security information is stored in the Lotus Notes ID file, usually ending in a *.id extension. The security information along with the user password permits access to a server and personal encrypted information. </p>
+			<p>The length of the encryption key is limited appropriately to achieve a balance between encryption process time and security. Under current US export laws, IBM Notes supports only one version of the Notes PKI with 128-bit symmetric keys, 1024-bit public keys, and no workload reduction factor. See <a href="#Notes">History</a>for more background on encryption key lengths and their impact on Notes.</p>
+		</fdd:techProtection>
 	</fdd:sustainabilityFactors>
 	<fdd:qualityAndFunctionalityFactors/>
 	<fdd:fileTypeSignifiers>
@@ -70,13 +75,16 @@ Analysis of the NFS database file format</a> is a working document for the NSF s
 				<fdd:sigValues>
 					<fdd:sigValue>nsf</fdd:sigValue>
 				</fdd:sigValues>
+				<fdd:note>Pronom and Wikidata list specific format extensions for different versions (ns2, ns3 and ns4) but the authors of this resource could not find sources for this information. <a href="http://loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+				</fdd:note>
 			</fdd:filenameExtension>
 			<fdd:internetMediaType>
 				<fdd:sigValues>
 					<fdd:sigValue>application/vnd.lotus-notes</fdd:sigValue>
 					<fdd:sigValue>application/x-lotus-notes</fdd:sigValue>
 				</fdd:sigValues>
-				<fdd:note>From https://www.iana.org/assignments/media-types/application/vnd.lotus-notes</fdd:note>
+				<fdd:note>From <a href="https://www.iana.org/assignments/media-types/application/vnd.lotus-notes">https://www.iana.org/assignments/media-types/application/vnd.lotus-notes</a>
+				</fdd:note>
 			</fdd:internetMediaType>
 			<fdd:magicNumbers>
 				<fdd:sigValues>
@@ -114,8 +122,31 @@ Analysis of the NFS database file format</a> is a working document for the NSF s
 			<fdd:other>
 				<fdd:tag>Wikidata Title ID</fdd:tag>
 				<fdd:values>
-					<fdd:sigValueNA>See note.</fdd:sigValueNA>
-					<fdd:note>No entry as of March 2017</fdd:note>
+					<fdd:sigValues>
+						<fdd:sigValue>Q46119878 (Lotus Notes Database file format, version 2)</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q46119878">https://www.wikidata.org/wiki/Q46119878</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q46120116 (Lotus Notes Database file format, version 3)</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q46120116">https://www.wikidata.org/wiki/Q46120116</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q46120375 (Lotus Notes Database file format, version 4)</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q46120375">https://www.wikidata.org/wiki/Q46120375</a>
+					</fdd:note>
 				</fdd:values>
 			</fdd:other>
 		</fdd:signifiersGroup>
@@ -135,7 +166,7 @@ Analysis of the NFS database file format</a> is a working document for the NSF s
 		<fdd:urls>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://cdc84f0d93e389b7188b23c1a8338de01b3dfa5b.googledrive.com/host/0B3fBvzttpiiSbkI4d1pRQmdMNWc/Notes%20Storage%20Facility%20%28NSF%29%20database%20file%20format.pdf</link>
+					<link>http://www.notesdesign.com/ndfiles/Notes%20Storage%20Facility%20(NSF)%20database%20file%20format.pdf</link>
 					<tag>Notes Storage Facility (NSF) database file format: Analysis of the NFS database file format by Joachim Metz</tag>
 					<comment>Working document for the NSF specification - not complete</comment>
 				</fdd:urlReference>
@@ -232,23 +263,44 @@ article about Verse web-based email&apos;s impact on Notes</comment>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.nationalarchives.gov.uk/pronom/x-fmt/336</link>
+					<link>http://apps.nationalarchives.gov.uk/pronom/x-fmt/336</link>
 					<tag>PRONOM entry for x-fmt/336</tag>
 					<comment>Information in PRONOM from UK National Archives about NSF (Lotus Notes Database Version 2). PUID: x-fmt/336.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.nationalarchives.gov.uk/pronom/x-fmt/337</link>
+					<link>http://apps.nationalarchives.gov.uk/pronom/x-fmt/337</link>
 					<tag>PRONOM entry for x-fmt/337</tag>
 					<comment>Information in PRONOM from UK National Archives about NSF (Lotus Notes Database Version 3). PUID: x-fmt/337.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.nationalarchives.gov.uk/pronom/x-fmt/338</link>
+					<link>http://apps.nationalarchives.gov.uk/pronom/x-fmt/338</link>
 					<tag>PRONOM entry for x-fmt/338</tag>
 					<comment>Information in PRONOM from UK National Archives about NSF (Lotus Notes Database Version 4). PUID: x-fmt/334.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q46119878</link>
+					<tag>Wikidata entry for Q46119878</tag>
+					<comment>Information in Wikidata about NSF version 2. Wikidata Title ID: Q46119878.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q46120116</link>
+					<tag>Wikidata entry for Q46120116</tag>
+					<comment>Information in Wikidata about NSF version 3. Wikidata Title ID: Q46120116.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q46120375</link>
+					<tag>Wikidata entry for Q46120375</tag>
+					<comment>Information in Wikidata about NSF version 4. Wikidata Title ID: Q46120375.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
