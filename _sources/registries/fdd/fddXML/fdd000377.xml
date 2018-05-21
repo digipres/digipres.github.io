@@ -13,8 +13,7 @@
 		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
 		<fdd:gdfrDomains>
 			<fdd:gdfrDomain>
-				<fdd:value>other</fdd:value>
-				<fdd:comment>email</fdd:comment>
+				<fdd:value>email</fdd:value>
 			</fdd:gdfrDomain>
 		</fdd:gdfrDomains>
 		<fdd:updates>
@@ -59,14 +58,14 @@
 		<fdd:adoption>
 			<p>The Outlook .pst files are used for POP3, IMAP, and HTTP accounts and are supported by several Microsoft client applications, including Microsoft Exchange Client, Windows Messaging, and Microsoft Office Outlook. </p>
 			<p>PST_ANSI was implemented in Office Outlook versions 97-2002. Outlook 2003, Outlook 2007, and Outlook 2010 can read, write, and create both ANSI and Unicode PST files.  By 2010 (when the specification was made public by Microsoft), PST_ANSI was considered a legacy format with a recommendation that it not be used to create new PST files. The default format was declared to be <fddLink id="fdd000378">PST_Unicode</fddLink>.</p>
-			<p>At least two open-source software libraries have been developed to examine and manipulate PST files: <a href="http://code.google.com/p/libpff/">libpff</a>, a library (in C, with python bindings partially implemented as of late 2013) to access PST and related formats; <a href="http://pstsdk.codeplex.com/">PST File Format SDK</a>, a cross-platform C++ library for reading PST files, developed under Microsoft auspices through a 2009-2010 project.</p>
+			<p>At least two open-source software libraries have been developed to examine and manipulate PST files: <a href="https://github.com/libyal/libpff">libpff</a>, a library (in C, with python bindings partially implemented as of late 2013) to access PST and related formats; <a href="http://pstsdk.codeplex.com/">PST File Format SDK</a>, a cross-platform C++ library for reading PST files, developed under Microsoft auspices through a 2009-2010 project.</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>
 			<p>Covered by the <a href="https://msdn.microsoft.com/en-us/openspecifications/dn646764#Principles">Microsoft Open Specification Promise</a>, whereby Microsoft "irrevocably promises" not to assert any claims against those making, using, and selling implementations of any specification covered by the promise (so long as those accepting the promise refrain from suing Microsoft for patent infringement in relation to Microsoft's implementation of the covered specification).</p>
 		</fdd:licensingAndPatents>
 		<fdd:transparency>
 			<p>Depends upon algorithms and tools to read; will require sophistication to build tools. Text in messages may be encrypted and even when not encrypted cannot be rendered by a simple text viewer.  Even Microsoft in its <a href="http://msdn.microsoft.com/en-us/library/gg615595.aspx">Understanding the Outlook MS-PST Binary File Format</a> admits that "understanding and working with binary file formats in general, and the MS-PST file format in particular, can be a challenge. Fortunately, the <a href="http://pstsdk.codeplex.com/">PST File Format SDK</a> exists to make this easier."</p>
-			<p>Joachim Metz in <a href="#useful">Personal Folder File (PFF) Forensics:
+			<p>Joachim Metz in <a href="https://github.com/libyal/documentation/blob/master/PFF%20Forensics%20-%20analyzing%20the%20horrible%20reference%20file%20format.pdf">Personal Folder File (PFF) Forensics:
 Analyzing the Horrible Reference File Format</a> says &quot;the actual data of an item within a PFF is scattered over different data structures...the bad news for forensic analysis is that PFF obfuscates the information in the data structures which makes a basic text string search impossible.&quot;</p>
 		</fdd:transparency>
 		<fdd:selfDocumentation>
@@ -74,7 +73,7 @@ Analyzing the Horrible Reference File Format</a> says &quot;the actual data of a
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>None</fdd:externalDependencies>
 		<fdd:techProtection>
-			<p>PST files may have encoding applied to data blocks (although not to header and BTree "pages") to provide data obfuscation.  A field in the file header indicates one of three levels/types for "encryption", defined in the specification as None; Compressible encryption; and High encryption.  Although the term "encryption" is used in these definitions, the specification documents two keyless cipher algorithms used to encode the data blocks in the PST. The specification (in section 4) indicates that these algorithms "can be conveniently decoded once the exact encoding algorithm is understood."  The compilers of this description are unable to confirm whether the open-source software libraries are able to decode "encrypted" PST files fully. Comments welcome.</p>
+			<p>PST files may have encoding applied to data blocks (although not to header and BTree "pages") to provide data obfuscation.  A field in the file header indicates one of three levels/types for "encryption", defined in the specification as None; Compressible encryption; and High encryption.  Although the term "encryption" is used in these definitions, the specification documents two keyless cipher algorithms used to encode the data blocks in the PST. The specification (in section 4) indicates that these algorithms "can be conveniently decoded once the exact encoding algorithm is understood."  The compilers of this description are unable to confirm whether the open-source software libraries are able to decode "encrypted" PST files fully. <a href="http://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
 			<p>Another form of protection is password protection which is available as an option in PST files. However, the <a href="#specs">Microsoft specification</a> admits that the password functionality in PST is not very robust, calling it &quot;a superficial mechanism&quot; that  &quot;does not provide any security benefit to preventing the PST data to be read by unauthorized parties.&quot; In essence, if a password is used, a CRC-32 hash of the password text is stored in the PidTagPstPassword property. If this property exists and is non-zero, implementations are expected to prompt the end user for a password, compute the CRC-32 hash of the user password, and verify it against the value stored in PidTagPstPassword. However, a password stored as a CRC-32 hash of the original password string is relatively weak and provides little functional security.</p>
 		</fdd:techProtection>
 	</fdd:sustainabilityFactors>
@@ -259,7 +258,7 @@ Analyzing the Horrible Reference File Format</a> says &quot;the actual data of a
 			<fdd:url>
 				<fdd:urlReference>
 					<link>https://github.com/libyal/libpff</link>
-					<tag>Githib libpff library from Joachim Metz</tag>
+					<tag>GitHub libpff library from Joachim Metz</tag>
 					<comment>libpff is a library to access the Personal Folder File (PFF) and the Offline Folder File (OFF) format</comment>
 				</fdd:urlReference>
 			</fdd:url>
@@ -275,11 +274,11 @@ Analyzing the Horrible Reference File Format</a> says &quot;the actual data of a
 					<fdd:intro>The libpff package contains a cross-platform shared library, access tools as well as commentary and analysis on the Personal Folder File (PFF) and the Offline Folder File (OFF) formats.</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
-							<link>http://code.google.com/p/libpff/</link>
+							<link>https://github.com/libyal/libpff</link>
 							<tag>libpff project home page</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://googledrive.com/host/0B3fBvzttpiiScU9qcG5ScEZKZE0/PFF%20Forensics%20-%20analyzing%20the%20horrible%20reference%20file%20format.pdf</link>
+							<link>https://github.com/libyal/documentation/blob/master/PFF%20Forensics%20-%20analyzing%20the%20horrible%20reference%20file%20format.pdf</link>
 							<tag>Personal Folder File (PFF) forensics:
 Analyzing the horrible reference file format. Author: Joachim Metz
 </tag>
@@ -288,7 +287,7 @@ Analyzing the horrible reference file format. Author: Joachim Metz
 </comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://googledrive.com/host/0B3fBvzttpiiScU9qcG5ScEZKZE0/Personal%20Folder%20File%20%28PFF%29%20format.pdf</link>
+							<link>https://github.com/libyal/libpff/tree/master/documentation</link>
 							<tag>Personal Folder File (PFF) file format specification: Analysis of the PFF format. Authored by Joachim Metz</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>

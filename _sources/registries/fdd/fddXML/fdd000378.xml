@@ -13,8 +13,7 @@
 		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
 		<fdd:gdfrDomains>
 			<fdd:gdfrDomain>
-				<fdd:value>other</fdd:value>
-				<fdd:comment>email</fdd:comment>
+				<fdd:value>email</fdd:value>
 			</fdd:gdfrDomain>
 		</fdd:gdfrDomains>
 		<fdd:updates>
@@ -54,7 +53,7 @@
 			<p>The Outlook .pst files are used for POP3, IMAP, and HTTP accounts and are supported by several Microsoft client applications, including Microsoft Exchange Client, Windows Messaging, and Microsoft Office Outlook. </p>
 			<p>Outlook 2003, Outlook 2007, Outlook 2010 and Outlook 2013 can read, write, and create both ANSI and Unicode PST files.  By 2010 (when the specification was made public by Microsoft), <fddLink id="fdd000377">PST_ANSI</fddLink> was considered a legacy format with a recommendation that it not be used to create new PST files. The default format was declared to be PST_Unicode.</p>
 			<p>PST_Unicode files are not compatible with Microsoft Outlook 97-2002 which read <fddLink id="fdd000377">PST_ANSI </fddLink> files only.</p>
-			<p>At least two open-source software libraries have been developed to examine and manipulate PST files: <a href="http://code.google.com/p/libpff/">libpff</a>, a library (in C, with python bindings partially implemented as of late 2013) to access PST and related formats; <a href="http://pstsdk.codeplex.com/">PST File Format SDK</a>, a cross-platform C++ library for reading PST files, developed under Microsoft auspices through a 2009-2010 project.</p>
+			<p>At least two open-source software libraries have been developed to examine and manipulate PST files: <a href="https://github.com/libyal/libpff">libpff</a>, a library (in C, with python bindings partially implemented as of late 2013) to access PST and related formats; <a href="http://pstsdk.codeplex.com/">PST File Format SDK</a>, a cross-platform C++ library for reading PST files, developed under Microsoft auspices through a 2009-2010 project.</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>See <fddLink id="fdd000377">PST_ANSI</fddLink>
 		</fdd:licensingAndPatents>
@@ -104,8 +103,7 @@
 						<fdd:sigValue>Hex: 53 4D 15 00
 </fdd:sigValue>
 					</fdd:sigValues>
-					<fdd:note>Offset 8 bytes from start of file.  In conjunction with the magic number at the beginning of the file, this identifies that the file is a PST file using the PST_Unicode version.  The 0x17 value is much more frequently found. According to Metz in <a href="https://googledrive.com/host/0B3fBvzttpiiScU9qcG5ScEZKZE0/Personal%20Folder%20File%20%28PFF%29%20format.pdf">Personal Folder File (PFF) file format specification
-Analysis of the PFF format</a>, the 0x15 value is believed to indicate the same format as 0x17 value (i.e. PST_Unicode) and was found in an 64-bit PST file created by the software Visual Recovery for Exchange Server but it is not common.</fdd:note>
+					<fdd:note>Offset 8 bytes from start of file.  In conjunction with the magic number at the beginning of the file, this identifies that the file is a PST file using the PST_Unicode version.  The 0x17 value is much more frequently found. According to Metz in <a href="https://github.com/libyal/libpff/tree/master/documentation">Personal Folder File (PFF) file format specification: Analysis of the PFF format</a>, the 0x15 value is believed to indicate the same format as 0x17 value (i.e. PST_Unicode) and was found in an 64-bit PST file created by the software Visual Recovery for Exchange Server but it is not common.</fdd:note>
 				</fdd:values>
 			</fdd:other>
 			<fdd:other>
