@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000486" titleName="Reflectance Transformation Imaging (RTI) File Format" shortName="RTI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenreAndSubgenres>
+				<fdd:gdfrGenre>model</fdd:gdfrGenre>
+				<fdd:gdfrSubgenres>
+					<fdd:gdfrSubgenre>still-image</fdd:gdfrSubgenre>
+				</fdd:gdfrSubgenres>
+			</fdd:gdfrGenreAndSubgenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2018-06-09</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Reflectance Transformation Imaging (RTI) File Format</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>3D model formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The RTI image file format is a file format used for output from a process of Reflectance Transformation Imaging, a method of computational photography.   The format was developed under an IMLS National Leadership grant (<a href="https://www.imls.gov/grants/awarded/lg-25-06-0107-06">LG-25-06-0107-06</a>) to the University of Southern California (USC) and Cultural Heritage Imaging (<a href="http://culturalheritageimaging.org/">CHI</a>). The project was titled &quot;<a href="http://culturalheritageimaging.org/What_We_Do/Projects/imls_2006/index.html">Developing Advanced Technologies for the Imaging of Cultural
+Heritage Objects</a>.&quot;  The Visual Computing Lab of ISTI-CNR [<a href="http://vcg.isti.cnr.it/">VCL ISTI-CNR</a>] in Pisa, Italy was a sub-contractor responsible for developing the RTI file format and an associated viewer. The RTI file format was designed as a more general successor format to <fddLink id="fdd000487">PTM</fddLink>, which was named for its first application (polynomial texture mapping).</p>
+			<p>RTI and PTM image files are both created from multiple digital photographs of a subject shot from a stationary camera position. In each photograph, light is projected from a different known, or knowable, direction.  See <a href="#notes">Notes</a> below for two popular methods for generating a controlled set of captures.  The result is a series of images of the same subject with varying highlights and shadows.  Lighting information from the images is mathematically manipulated to fit a model of the surface to the data in the images.  A primary objective is to enable a user to (virtually) re-light the RTI or PTM image interactively and examine its surface on a screen.  In addition, the image files can be used to create enhanced visualizations.  The <fddLink id="fdd000487">PTM</fddLink> format (with file extension .ptm) is based on fitting a binomial quadratic equation to the light data for each pixel.  The RTI format (with file extension .rti) indicates support for a variety of additional fitting methods, currently including Spherical Harmonics (SH), Hemi-Spherical Harmonics (HSH), and Adaptive Basis PTM.  All these methods derive a per-pixel reflectance model represented by a set of coefficients that define the fitted function that takes into account the direction of the lighting.  The stated concept motivating the RTI specification is that it can be &quot;universal&quot; and support any similar basis for encoding the &quot;reflectance properties of the depicted surface.&quot; However, as of early 2018, <a href="http://culturalheritageimaging.org/What_We_Offer/Downloads/Process/index.html">RTI Builder</a> appears only to support PTM and HSH.  The curious or mathematically inclined will find comparisons of PTM and HSH and links related to the underlying mathematics for HSH in <a href="#notes">Notes</a> and <a href="#useful">Useful References</a>, below.</p>
+			<p>The specification for the RTI File format, available from the <a href="http://forums.culturalheritageimaging.org/index.php?/topic/389-where-can-i-find-the-file-format-specifications-for-rti-and-ptm/">CHI Forum</a>, is titled &quot;RTI Format - Draft 0.9.&quot; The authors are listed as Massimiliano Corsini and Prabath Gunawardane of the Visual Computing Lab of ISTI-CNR [<a href="http://vcg.isti.cnr.it/">VCL ISTI-CNR</a>] in Pisa, Italy. It is dated December 2008, with an update in December 2010 by Carla Schroer of CHI.  An RTI file has three main components:</p>
+			<ul>
+				<li>
+					<b>Header</b>: This component is in plain text lines, terminated with CR LF (0x0D 0x0a).  Comment lines, beginning with #, may precede the primary content of the header.  The primary content of the header consists of three lines with numeric values that function as structural metadata that will permit an application to interpret the Data component appropriately. A sample header is <p>#HSH1.2<br/>3<br/>1908 3148 3<br/>4 2 1</p>
+					<ul>
+						<li>First in the example is a single comment indicating the fitting model (HSH) and version (1.2).</li>
+						<li>Line 1 contains a single integer, a code indicating the fitting model used for the RTI image (RTI_Type).  The specification lists four values: 1 (PTM); 2 (SH); 3 (HSH); and 4 (Adaptive Basis).</li>
+						<li>Line 2 contains three integers defining: image width in pixels; image height in pixels; and number of color channels (e.g., 3 for RGB, 1 for grayscale).  This last item is called <i>color_dimensions</i>.</li>
+						<li>Line 3 contains three integers, defining: number of coefficients (<i>basis_terms</i>) in the fitting function (e.g., 6 for PTM, 9 for a second order HSH); code indicating whether coefficients are calculated for a single composite luminance value (1) or independently for each color channel (2); data element size in bytes, typically 1, 2, or 4.</li>
+					</ul>
+					<p>If RTI_Type is &quot;Adaptive Basis,&quot; there will be additional lines, one per color channel.  The compilers of this resource have not encountered explicit use of this feature.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+				</li>
+				<li>
+					<b>Data</b>:  All image data is stored in little-endian binary format as a contiguous block without separators.  The main data is preceded by floating point values for scale and bias for each coefficient (basis term).  Assuming a value of N for <i>basis_terms</i>, there will be N scale values followed by N bias values.  The actual value for a coefficient is calculated from the stored coefficient by <i>Cactual = Cstored*scale + bias</i>.  This technique is commonly used in graphics applications to optimize computational precision for pixel data given a constrained size for data elements, and is also used in the <fddLink id="fdd000487">PTM</fddLink> format.  The pixel data is stored in row order, with <i>basis_terms</i>*<i>color-dimensions</i> elements for each pixel.</li>
+				<li>
+					<b>Metadata</b>:  The last component is a single XMP packet.  The specification suggests element sets for basic and extended metadata, but also has a note indicating that the metadata section of the specification needs to be modified to take into account the entities/properties of the <a href="http://www.cidoc-crm.org/">CIDOC Conceptual Reference Model</a>.&quot;</li>
+			</ul>
+			<p>Specialized viewing applications, such as <a href="http://culturalheritageimaging.org/What_We_Offer/Downloads/View/index.html">RTIViewer</a> or the <a href="http://ruth.usc.edu/ISFStandaloneViewer/">ISF Standalone Viewer</a> (developed for the <a href="http://www.inscriptifact.com/">InscriptiFact</a> project at USC), offer the capability to change the virtual light source or rotate the virtual object, revealing more detail than possible using traditional photography.</p>
+		</fdd:description>
+		<fdd:shortDescription>an openly documented image file format published by Cultural Heritage Imaging (CHI).  A special characteristic of the RTI file format is that with a special viewer, the image can be adjusted on screen by a user to show an object lit from varying directions. This makes the formats very useful for studying objects that are relatively flat, but with an uneven surface.  Examples of objects for which interactive viewing using RTI images has been valuable include coins, stone arrow-heads. The images are sometimes described as 2D+.</fdd:shortDescription>
+		<fdd:productionPhase>An RTI image file is created from multiple still images as a file designed for the end user to view interactively with the capability to adjust the virtual lighting source, and to apply filters that permit more detailed visualization and non-destructive analysis than working with the original object.  Not intended as an archival format.  Cultural Heritage Imaging, a non-profit organization providing support and training for various computational photography techniques, states &quot;Photogrammetry is archive friendly. Strictly speaking, all of the 3D information required to build a scaled, virtual, textured 3D representation is contained in the 2D photos present in a well-designed photogrammetric capture set.&quot;  They recommend retaining the images in the capture set together with information about the capture configuration. This statement and approach applies equally well to Polynomial Texture Mapping or Reflectance Transformation Imaging.  In all cases, as software improves and computational power available increases, even better images or models should be derivable from the same source images.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000487</fdd:id>
+					<fdd:shortName>PTM</fdd:shortName>
+					<fdd:titleName>Polynomial Texture Map (PTM) File Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>No direct experience.</fdd:experience>
+		<fdd:preference>The Library of Congress has not yet expressed any format preference for digital models used as designs or surrogates for 3-dimensional objects.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>A specification for the RTI format has been developed under the auspices of <a href="http://culturalheritageimaging.org/">Cultural Heritage Imaging</a> (CHI), a non-profit corporation that describes itself as &quot;dedicated to advancing the state of the art of digital capture and documentation of the world’s cultural, historic, and artistic treasures.&quot;  This specification was originally written by members of <a href="http://vcg.isti.cnr.it/">Visual Computing Lab (VCL) of CNR-ISTI</a>.  VCL developed an viewer for RTI files with support from CHI and the University of Southern California from a 2006 grant from the US Institute of Museum and Library Services (IMLS) National Leadership Grant Program (Award Number <a href="https://www.imls.gov/grants/awarded/lg-25-06-0107-06">LG-25-06-010706</a>).</fdd:disclosure>
+		<fdd:documentation>
+			<p>A link to a draft specification (last updated in 2010) for the RTI Format is posted in the CHI forum under <a href="http://forums.culturalheritageimaging.org/index.php?/topic/389-where-can-i-fi">Where can I find the file format specifications for RTI and PTM?</a>.  The link to <a href="http://forums.culturalheritageimaging.org/index.php?app=core&amp;module=attach&amp;section=attach&amp;attach_id=81">RTI Format - Draft 0.9</a> will yield a request to sign in or register.  Registration is free.</p>
+			<p>An explanatory note in the posting says that it is &quot;marked &apos;draft&apos; because it contemplates a .xmp structure embedded in the file structure, and that part was still under discussion when this document was created.  The format for the RTI data is final, and this is what is used by the RTIViewer and other viewers that support this format.&quot;</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>The RTI format is supported by the same organizations and tools that support the <fddLink id="fdd000487">PTM</fddLink> format.  The widely used RTIBuilder software produces PTM format files if the PTM fitter is used and RTI format files if the HSH fitter is used. The format is used in the same cultural heritage domains as PTM, especially those for which the HSH fitting model has demonstrated a particular advantage.</p>
+			<p>Examples of domains for which HSH has advantages include: </p>
+			<ul>
+				<li>
+					<b>Digital surrogates for coins</b>, because HSH handles shiny surfaces and <a href="https://en.wikipedia.org/wiki/Specular_highlight">specular highlights</a> (bright spots of light appearing on shiny objects) better than PTM, which yields matte images.  See <a href="https://mwf2014.museumsandtheweb.com/paper/storytelling-of-a-coin-collection-by-means-of-rti-images-the-case-of-the-simoneschi-collection-in-palazzo-blu/">Storytelling of a Coin Collection by Means of RTI Images: the Case of the Simoneschi Collection in Palazzo Blu</a>.</li>
+				<li>
+					<b>Palimpsests and other illegible documents</b>, because HSH enables use of the light spectrum outside the visible range.  See <a href="http://jubilees.stmarytx.edu/">Jubilees Palimpsest Project</a>.</li>
+				<li>
+					<b>Conservation of Paintings</b>, because a third order HSH has been shown experimentally as producing more reproducible results than PTM.  See <a href="https://www.researchgate.net/publication/261171443_Measuring_Changes_in_Cultural_Heritage_Objects_with_Reflectance_Transform_Imaging">Measuring Changes in Cultural Heritage Objects with Reflectance Transform Imaging (2013)</a> and <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4168503/">A New Quantitative Method for the Non-Invasive Documentation of Morphological Damage in Paintings Using RTI Surface Normals (2014)</a>
+				</li>
+			</ul>
+			<p>In the abstract for his 2016 tutorial on <a href="http://dh2016.adho.org/abstracts/113">Reflectance Transformation Imaging (RTI) for Cultural Heritage Artefacts</a>, Konstantinos Papadopoulos stated, &quot;The method has been extensively used on a wide range of cultural objects, such as inscriptions, manuscripts, rock art, paintings, numismatics and any possible material including metal, stone, leather, paper, wax, bone, and clay.&quot; Resources that provide examples of the variety of cultural heritage applications of RTI, include: videos and lists of presentations from <a href="https://www.metmuseum.org/about-the-met/conservation-and-scientific-research/projects/rti-symposium">Illumination of Material Culture: A Symposium on Computational Photography and Reflectance Transformation Imaging (RTI)&quot;</a>, a two-day symposium hosted by the Metropolitan Museum of Art in March 2017; and <a href="http://cosch.info/documents/10179/155305/COSCH_TS_CDE_RTI_a+review.pdf/547ddd0a-37f4-46f0-a7c7-8c91d77cb701">Highlight-Reflectance Transformation Imaging (H-RTI) for Heritage Applications (2016)</a> from the Colour and Space in Cultural Heritage (COSCH) project (2012-16)</p>
+			<p>An important development leading to widespread adoption of the RTI imaging method and file format in cultural heritage institutions is the introduction of open-source tools to deliver effective interactive viewing of re-lighting, etc. over the web.  For more on webRTI, see <a href="#notes">Notes</a>, below.</p>
+			<p>See also Adoption for <fddLink id="fdd000487">PTM</fddLink>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No concerns.  Although CHI does not have a copyright statement on the specification, it encourages use of the format.  Software for building and viewing RTI images is available from CHI as open source under the GNU public license (version 3).  See <a href="https://culturalheritageimaging.wordpress.com/2016/04/29/why-create-and-use-open-source-software-reflections-from-an-imaging-nonprofit/">Why Create and Use Open Source Software? Reflections from an imaging nonprofit</a>, a blog post by Carla Schroer of CHI from April 2016.</fdd:licensingAndPatents>
+		<fdd:transparency>The simple format is relatively transparent, with easily recognized divisions between the ASCII Header, the binary Data block, and an optional XMP metadata block.  The ASCII Header contains information needed to parse the data block into its numerical elements. A simple program could present the numerical data elements in human-readable form.</fdd:transparency>
+		<fdd:selfDocumentation>The RTI file format is designed to include an XMP packet with metadata at the end of the file.  CHI has developed a suite of tools known as the Digital Lab Notebook (<a href="http://culturalheritageimaging.org/What_We_Offer/Downloads/DLN/index.html">DLN</a>).  To quote from CHI, &quot;Digital Lab Notebook (DLN) is a term coined by CHI for a digital record of the means and circumstances used to generate a digital representation of an imaging subject. The downloadable DLN tools listed below simplify the collection of scientific, standards-based metadata.&quot;  The DLN:CaptureContext tool helps the user record and group metadata related to the locations, institutions, imaging subjects, image rights, people, and equipment associated with a photographic data acquisition session.  See also <a href="http://culturalheritageimaging.org/What_We_Do/Publications/archiving2017/archiving2017-capturecontext-paper.pdf">A Context Metadata Collection and Management Tool for Computational Photography Projects</a>.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None beyond software that can import and render this format.  Not supported by regular raster image viewers or editors.  Requires a specialized viewer.</fdd:externalDependencies>
+		<fdd:techProtection>The RTI file format has no internal support for encryption or other means of technical protection.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>The RTI image format is not intended as a simple two-dimensional raster image.  However, it is raster-based and can support panning and zooming.   Simple 2D images can be derived for printing, to display in browsers, or to render or manipulate with widely used raster image tools.</fdd:normalImage>
+			<fdd:clarity>Good</fdd:clarity>
+			<fdd:colorMaint>No support for ICC color profiles.</fdd:colorMaint>
+			<fdd:graphics>No support for vector graphics.</fdd:graphics>
+			<fdd:multispectral>Some imaging applications using RTI have experimented with use of light outside the visible spectrum.  See, for example, the <a href="http://jubilees.stmarytx.edu/">Jubilees Palimpsest Project</a>.</fdd:multispectral>
+			<fdd:beyondImage>RTI images are intended to capture surface properties and support viewer control with varying virtual light sources.  Characteristics that can be captured include approximately correct diffuse lighting for small-scale features and global effects like self-shadowing.  The images are sometimes described as 2D+.</fdd:beyondImage>
+		</fdd:stillImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>rti</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Used conventionally for files in this format.  Another file format using the same extension is mentioned in several databases of file extensions: Real Tracker Instrument file.  See, for example, <a href="https://www.file-extensions.org/rti-file-extension">.rti from file-extensions.org</a>.  According to <a href="http://fileformats.archiveteam.org/wiki/Real_Tracker_module">http://fileformats.archiveteam.org/wiki/Real_Tracker_module</a>, the Real Tracker application was an MS-DOS application and its website disappeared in 1999.  <a href="../contact_format.shtml">Comments welcome</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>Not found.</fdd:sigValueNA>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>The header for an RTI file provides no opportunity for a magic number.  The file may optionally start with a comment beginning with the # character.  Files beginning with &quot;#HSH&quot; have been observed. <a href="../contact_format.shtml">Comments welcome</a>. </fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>As of June 2018, PRONOM has no record for the RTI format.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>RTI image capture methods</b>:  An RTI file is created from a sequence of digital images of the subject with a specific set of lighting angles. Two commonly used methods to produce the image sequence are described below.  Either method allows specialized software, such as <a href="http://culturalheritageimaging.org/What_We_Offer/Downloads/Process/index.html">RTIBuilder</a>, to construct an RTI file.</p>
+			<ul>
+				<li>
+					<b>Highlight Method</b>; 
+An image-capture technique for Reflectance Transformation Image (RTI), in which you include an image of at least two reflective spheres in each shot. The reflection of the light source on the spheres enables the processing software to calculate the lighting angle for that image. This light source information is used during the generation of an RTI or algorithmic rendering image.
+The highlight method allows great flexibility in subject size and location.
+It involves manually moving a light source to different angles relative to an object (at a constant distance), and using a shiny reflective ball to determine the lighting angle.  While this non-automated technique doesn&apos;t require much in the way of special equipment, it can be slow and often requires two people to perform.  For an in-depth discussion, see the <a href="http://culturalheritageimaging.org/What_We_Offer/Downloads/RTI_Hlt_Capture_Guide_v2_0.pdf">RTI Guide to Highlight Image Capture</a>.  For examples of application in different contexts and for different types of object, see <a href="http://cosch.info/documents/10179/155305/COSCH_TS_CDE_RTI_a+review.pdf/547ddd0a-37f4-46f0-a7c7-8c91d77cb701">Highlight-Reflectance Transformation Imaging (H-RTI) for Heritage Applications (2016)</a> from the Colour and Space in Cultural Heritage (COSCH) project.</li>
+				<li>
+					<b>Light Array or Dome Method</b>:
+An apparatus (typically dome-shaped) that has a set of lights at fixed positions. Control software flashes each light in a fixed sequence in order to produce the image sequence needed to produce an RTI file. 
+Because each light is at a known position, the software can associate each image with the lighting angle used for it. The technique referred to as Dome-RTI involves putting the object of interest under a dome with multiple light sources on the inside, and a camera looking down through a hole at the object. An electronic controller turns lights on and off in sequence, and fires the camera shutter in sync with the lights. Because this can be fully automated, and because the lighting angles are always the same, obtaining the required set of images can be faster and easier than with the Highlight-RTI technique.  See <a href="https://hackaday.io/project/11951-affordable-reflectance-transformation-imaging-dome">Affordable Reflectance Transformation Imaging Dome</a> for instructions and specifications for a particular kit using the Dome-RTI approach.</li>
+			</ul>
+			<p>
+				<b>Common objective for HSH and PTM image fitting models:</b>
+The PTM and HSH models are two examples of Reflectance Transformation Imaging fitting methods, in which the distribution of light reflected from an object surface is modeled as functions of angles of lighting and viewing and of spectrum as captured by a device such as a camera.  The term <i>bidirectional reflectance distribution function</i> (<a href="https://en.wikipedia.org/wiki/Bidirectional_reflectance_distribution_function">BRDF</a>) is used to describe the way light from a single light source reflects off an opaque surface and is observed by a viewer or camera.  The motivation behind both PTM and HSM was to provide a compact representation of an approximation to the actual BRDF for an object surface that would support real-time interpolation to simulate relighting the object surface from different points.  In both cases, the model can be used to generate synthetic computer graphics or to build a digital reproduction of a real object surface from a set of images captured using methods such as those described above.  PTM and HSH are both widely used in cultural heritage contexts.</p>
+			<p>
+				<b>Comparisons of HSH and PTM image fitting models/algorithms</b>: Comparisons located by the compilers of this resource are primarily based on use of <a href="http://culturalheritageimaging.org/What_We_Offer/Downloads/Process/index.html">RTIBuilder software from CHI</a>.  See <a href="http://culturalheritageimaging.org/What_We_Offer/Downloads/rtibuilder/RTI_hlt_Processing_Guide_v14_beta.pdf">Reflectance Transformation Imaging: Guide to Highlight Image Processing Version 1.4 (manual for RTIBuilder version 2.0.2)</a>.  RTIBuilder offers two &quot;fitters&quot; (PTM and HSH) and provides output in the PTM (.ptm) file format for the former and in the RTI (.rti) file format for the latter.  RTIBuilder offers a choice of LRGB and RGB for the PTM fitter; see the description <fddLink id="fdd000487">PTM</fddLink> for a discussion of these variants, which both use 6 coefficients for the fitted polynomials.  RTIBuilder options for the HSH fitter are for polynomials of order 1, 2, and 3, with 4, 9, and 16 coefficients respectively.  More coefficients provide more accuracy in fitting the surface geometry, but require more space for storage and more computational power for building and for viewing.</p>
+			<p>In <a href="http://forums.culturalheritageimaging.org/topic/190-hsh-or-ptm-how-to-choose-the-best-fitter/">HSH or PTM - How to choose the best fitter</a> from the Cultural Heritage Imaging Forums, Carla Schroer of CHI stated in 2012, &quot;we have found that the HSH approach is superior in terms of rendering more sculptural objects that have self shadowing - where in the ptm in specular enhancement mode you might get just a black area where there is a lot of shadowing, an HSH will have better data. Also HSH does a better job of rendering shiny material as shiny. PTMs are always matte. Sometimes a matte surface is easier to see what you are looking for - so like most things it is a trade-off. Finally, I will note that HSH files are generally bigger than lrgb ptms. PTMs use 6 coefiicients of a bi-quadratic polynomial to describe the surface normal. Tom Malzbender wanted a compact format for this. In HSH, this number is determined by the &quot;order&quot; that you choose when you create it. a first order HSH uses 4, a 2nd order 9 and a third order 16. So this affects the file size of the result, but it&apos;s also why the HSH can render shiny surfaces more accurately.&quot; Later in the thread, she says of HSH, &quot;its main disadvantage is that we don&apos;t have all the rendering modes in the viewer implemented for it.&quot;  The RTIViewer software available for download in early 2018 still has fewer rendering modes for RTI files based on HSH.</p>
+			<p>
+				<a href="http://rtimage.us/?page_id=18">RTI Files</a> from Reflectance Transformation Imaging For Lithics echoes Schroer&apos;s assessment, &quot;There are two kinds of RTI data files. *.ptm files are a fitting of a binomial quadratic equation to the light curve, while *.rti use a 2nd or 3rd order Legendre polynomial for the fit. *.rti files are a better fit, but there are more visualization modes available with *.ptm files.&quot;</p>
+			<p>In <a href="https://www.researchgate.net/publication/261171443_Measuring_Changes_in_Cultural_Heritage_Objects_with_Reflectance_Transform_Imaging">Measuring Changes in Cultural Heritage Objects with Reflectance Transform Imaging (2013)</a>, Marcello Manfredi et al, states, &quot;There are two main ways to describe the reflectance function:
+using polynomial texture map (PTM) and using
+Hemispherical Harmonics (HSH). The HSH approach is
+superior in term of 3D rendering because PTM uses only 6
+coefficients of a biquadratic polynomial to describe the surface
+normal while a third order HSH uses 16 coefficients.&quot;  Their experience led them to state, &quot;The aim of this research was the development of a reliable RTI
+imaging method for monitoring changes in cultural heritage
+objects. RTI provides detailed information on the geometry of
+the object surface. We showed that RTI can be reproducible
+and quantified to the level where it can be used as practical
+method for measuring change in objects. We found that
+computing surface normals with HSH is more reproducible
+than using the older PTM method, and is therefore more
+sensitive to changes.&quot;</p>
+			<p>In <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4168503/">A New Quantitative Method for the Non-Invasive Documentation of Morphological Damage in Paintings Using RTI Surface Normals (2014)</a>, Manfredi et al. propose and demonstrate an RTI method for the non-invasive detection of color changes and morphological changes (cracks, holes, bends, etc.) in paintings, arguing that the HSH approach is superior to PTM for this application.</p>
+			<p>
+				<b>Links to the mathematics underlying the HSH fitting approach</b>:  The HSH methodology for rendering surfaces was first published as <a href="http://www.cs.ucf.edu/~ceh/Publications/Papers/Rendering/EGSR04GautronEtAl.pdf">A Novel Hemispherical Basis for Accurate and Efficient Rendering</a> in 2004 by Pascal Gautron et al.  As part of work under a grant to CHI in 2007-2009, PhD students Prabath Gunawardane and Oliver Wang working with James Davis at University of California, Santa Cruz took the HSH method and developed a software module to fit the HSH model to image data from an RTI capture.  There is no publication based on that particular activity (although the source code is available from CHI on request).  The CHI Forum had a thread in 2014 with topic <a href="http://forums.culturalheritageimaging.org/topic/306-scientific-method-hsh-vs-ptm">Scientific Method HSH vs. PTM</a> in 2014.  It included the question, &quot;Do you have any papers regarding the hsh?&quot;  There were several expert responses with useful information, but no citation to a paper.  The compilers of this resource have also found no official documentation for the underlying model and fitting algorithm employed in the HSH fitter in RTIBuilder.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>The compilers of this resource have identified some articles that include useful discussion of the mathematics of surface modelling and the HSH fitting method, including explanatory diagrams.  Lindsay MacDonald&apos;s 2014 article, <a href="http://doc.gold.ac.uk/aisb50/AISB50-S20/aisb50-S20-macdonald-paper.pdf">Colour and Directionality in Surface Reflectance</a>, has a discussion of PTM and HSH, with a straightforward summary of the formulae for the coefficients used for HSH of order 1, 2 , and 3.  <a href="https://link.springer.com/content/pdf/10.1007%2F978-3-319-15979-9_5.pdf">Representation of Cultural Objects by Image Sets with Directional Illumination (2015)</a>, also by MacDonald, has a fuller discussion.  Another author providing helpful explanations of reflectance modeling in general and HSH in particular is Shireen Elhabian.  See her article <a href="https://www.researchgate.net/publication/221121831_On_the_use_of_hemispherical_harmonics_for_modeling_images_of_objects_under_unknown_distant_illumination">On the Use of Hemispherical Harmonics for Modeling Images of Objects under Unknown Distant Illumination (2011)</a> and a discussion of her research interests in <a href="http://www.sci.utah.edu/~shireen/appearance_modeling.html">Appearance Modeling</a>.  Many resources that discuss the issues of surface rendering and introduce the terminology are available online, for example <a href="http://www.scratchapixel.com/lessons/3d-basic-rendering/phong-shader-BRDF">The Phong Model and the concepts of Illumination Models and BRDF</a> from Scratchapixel.</p>
+			<p>
+				<b>WebRTI</b>:  An important contribution to the adoption of RTI is the development of <a href="http://vcg.isti.cnr.it/rti/webviewer.php">WebRTIViewer</a>, a viewer requiring <fddLink id="fdd000481">HTML5</fddLink> and building on Web-GL, for high resolution RTI images based on PTM or HSH fitting models.  For the web visualization, an RTI image must be preprocessed with the command line tool webGLRTIMaker, which creates a tiled multi-resolution format to mount on a web server.  The tools also work with high-resolution images in widely used raster formats (<fddLink id="fdd000017">JPEG</fddLink>, <fddLink id="fdd000153">PNG</fddLink>, and <fddLink id="fdd000022">TIFF</fddLink>).</p>
+			<p>The compilers of this resource have been unable to locate a specification document for the multi-resolution format produced by WebGLRTIMaker.  <a href="../contact_format.shtml">Comments welcome</a>.  The <a href="https://github.com/jcupitt/webRTIviewer/blob/master/webGLRTIMaker-src">webGLRTIMaker source code</a> is available on github.  An <a href="https://github.com/jcupitt/webRTIViewer/tree/master/webViewer/webrti">example with the webRTIviewer source code</a> has a number of separate JPEG images for 15 tiles of the same pixel dimensions (1_1.jpg, 1_2.jpg, 1_3.jpg, 2_1.jpg, etc.) and a file named info.xml that holds structural metadata, including indication of tile arrangement and positions.  In <a href="https://mwf2014.museumsandtheweb.com/paper/storytelling-of-a-coin-collection-by-means-of-rti-images-the-case-of-the-simoneschi-collection-in-palazzo-blu/">Storytelling of a Coin Collection by Means of RTI Images: the Case of the Simoneschi Collection in Palazzo Blu</a>, Gianpaolo Palma, the main developer of webRTIviewer, states that webGLRTImaker &quot;subdivides the RTI image in nine layers, one layer for each HSH coefficient, where the i-th layer contains the i-th coefficient of the three RGB colour channels. Then for each layer it creates a multiresolution quad-tree and produces a tile for each node of the tree. Finally, it saves each tile in a different JPG image. With this format to visualize a specific pixel, we need to load the nine JPG images that contain its HSH coefficients. The main advantage is the out-of-core loading of the node of the quad-tree making immediately available the interaction with the coin without awaiting the complete loading of the data. This means that at the beginning the user interacts with a low-resolution version of the coin, which is progressively refined as soon as the higher resolution data are loaded. The loading of the tiles at the different resolutions is guided by the zoom and pan operation of the user.&quot;</p>
+		</fdd:general>
+		<fdd:history>
+			<p>The widely used &quot;dome&quot; technique for constructing RTI images was developed by Tom Malzbender and Dan Gelb, research scientists at Hewlett-Packard Labs.  A paper describing the first tools and methods, using was presented at SigGraph 2001: <a href="http://www.hpl.hp.com/research/ptm/papers/ptm.pdf">Polynomial Texture Maps</a>. See also <a href="http://www.hpl.hp.com/research/ptm/index.html">Polynomial Texture Mapping (PTM)</a>.  In March 2017, Malzbender spoke at a symposium organized by CHI and the Metropolitan Museum of Art, &quot;Illumination of Material Culture: A Symposium on Computational Photography and Reflectance Transformation Imaging (RTI)&quot;.  His talk gave a brief history of RTI and presented some new possibilities.  See video of <a href="https://www.metmuseum.org/about-the-met/conservation-and-scientific-research/projects/rti-symposium/day-2-pm">Day 2: Afternoon Session</a> at time 44.09.</p>
+			<p>The first distributed draft of the RTI format was dated August 27, 2008 as an output of the 2006 IMLS grant (Award Number <a href="https://www.imls.gov/grants/awarded/lg-25-06-0107-06">LG-25-06-010706</a>).  Draft 0.9 was published in December 18, 2008 and updated in minor ways in December 2010 by CHI.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://forums.culturalheritageimaging.org/index.php?/topic/389-where-can-i-find-the-file-format-specifications-for-rti-and-ptm/</link>
+					<tag>Where can I find the file format specifications for RTI and PTM?</tag>
+					<comment>Links to specifications for PTM and RTI formats.  Registration is needed to download the RTI specification.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://culturalheritageimaging.org/Technologies/RTI/index.html</link>
+					<tag>Reflectance Transformation Imaging (RTI)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.hpl.hp.com/research/ptm/</link>
+					<tag>Polynomial Texture Mapping (PTM) at HP Labs</tag>
+					<comment>Many of the links on this cluster of pages, which discuss Reflectance Transformation Imaging in general as well the Polynomial Texture Mapping application in particular, are now broken.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The West Semitic Research Project at the University of Southern California has used RTI techniques and formats and has offered training programs in capture and processing.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://wsrp.usc.edu/projects/index.shtml</link>
+							<tag>A Training Program for Scholars, Conservators and Researchers in the Use of Reflectance Transformation Imaging (RTI) for Documenting Ancient Texts and Artifacts Including the Loan of Imaging Equipment</tag>
+							<comment>Has links to documentation and demonstration videos</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://wsrp.usc.edu/projects/manuals.shtml</link>
+							<tag>Manuals and links associated with RTI training program</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://wsrp.usc.edu/projects/videos.shtml</link>
+							<tag>Instructional Videos on RTI</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>CHI resources related to metadata for RTI images.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://culturalheritageimaging.org/What_We_Do/Publications/mets-crm-doerr/</link>
+							<tag>METS and the CIDOC CRM—A Comparison (2011), by Martin Doerr</tag>
+							<comment>The paper investigates ways in which the two standards can be used in combination. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://culturalheritageimaging.org/What_We_Do/Publications/archiving2017/archiving2017-capturecontext-paper.pdf</link>
+							<tag>A Context Metadata Collection and Management Tool for Computational Photography Projects  (2017)</tag>
+							<comment>Paper presented at Archiving 2017 (May 15-18, 2017, Riga, Latvia)</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://culturalheritageimaging.org/What_We_Do/Projects/neh-startup/advanced-metadata-white-paper.pdf</link>
+							<tag>Data Sustainability and Advanced Metadata Management for Scientific Imaging (April 15, 2016)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://culturalheritageimaging.org/What_We_Offer/Downloads/DLN/index.html</link>
+							<tag>Digital Lab Notebook (DLN) Software Tools</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://vimeo.com/267312874</link>
+							<tag>Digital Lab Notebook (DLN) : What’s It All About? (April 2018)</tag>
+							<comment>Presentation describes DLN:CaptureContext and DLN:Inspector tools.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Listed below are some resources describing the mathematics underlying the Hemi-Spherical Harmonics (HSH) fitting model.  </fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://graphics.stanford.edu/courses/cs448-05-winter/papers/nicodemus-brdf-nist.pdf</link>
+							<tag>Geometrical Considerations and Nomenclature for Reflectance, 
+U.S. Dept. of  Commerce, National Bureau of Standards,  October 1977.</tag>
+							<comment>Widely cited 1977 article from the National Bureau of Standards that describes some of the underlying mathematics for RTI.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.cs.ucf.edu/~ceh/Publications/Papers/Rendering/EGSR04GautronEtAl.pdf</link>
+							<tag>A Novel Hemispherical Basis for Accurate and Efficient Rendering (2004, paper) </tag>
+							<comment>By Pascal Gautron et al. Eurographics 2004, Conference on Rendering Techniques.  Authoritative and full of heavy mathematics.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://cgg.mff.cuni.cz/~jaroslav/papers/egsr2004/gautron-egsr2004-hemispherical.ppt</link>
+							<tag>A Novel Hemispherical Basis for Accurate and Efficient Rendering (2004, presentation) </tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://forums.culturalheritageimaging.org/topic/306-scientific-method-hsh-vs-ptm/</link>
+							<tag>Scientific Method HSH vs. PTM | CHI Forum discussion from 2014</tag>
+							<comment>The original post in this thread asks &quot;Do you have any papers regarding the hsh?&quot;  None of the responses provide a direct answer.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.researchgate.net/publication/221121831_On_the_use_of_hemispherical_harmonics_for_modeling_images_of_objects_under_unknown_distant_illumination</link>
+							<tag>On the use of hemispherical harmonics for modeling images of objects under unknown distant illumination (2011)</tag>
+							<comment>By Shireen Y. Elhabian et al.  18th IEEE International Conference on Image Processing.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.sci.utah.edu/~shireen/appearance_modeling.html</link>
+							<tag>
+Appearance Modeling, explanation by Shireen Irabian</tag>
+							<comment>Note that many mathematical expressions on this page rely on MathJax, a JavaScript library for displaying mathematics in text in web pages.  In some browser configurations this mathematical notation may not display properly.. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://doc.gold.ac.uk/aisb50/AISB50-S20/aisb50-S20-macdonald-paper.pdf</link>
+							<tag>Colour and Directionality in Surface Reflectance (2014)</tag>
+							<comment>By Lindsay W. MacDonald.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://link.springer.com/content/pdf/10.1007%2F978-3-319-15979-9_5.pdf</link>
+							<tag>Representation of Cultural Objects by Image Sets with Directional Illumination (2015)</tag>
+							<comment>By Lindsay W. MacDonald.  Computational Color Imaging: 5th International Workshop (CCIW 2015), Saint Etienne, France, March 24-26, 2015.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://compphotolab.northwestern.edu/project/nearlightps/</link>
+							<tag>Near Light Correction for Image Relighting and 3D Shape Recovery (2015)</tag>
+							<comment>By Xiang Huang et al.  The relighting approach used in most RTI viewers is based on a mathematical assumption of distant lighting, although the original images were generated with lighting near the object of interest.  This article proposes an adjustment to a near-light model and supplies Matlab source code.  </comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources offering comparisons between PTM and RTI.  In most cases, the comparisons are not so much comparing the two file formats as comparing the usual PTM fitting functions with the HSM fitting method.  RTI Builder uses the PTM file format for the former and the RTI file format for the latter.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://forums.culturalheritageimaging.org/topic/190-hsh-or-ptm-how-to-choose-the-best-fitter/</link>
+							<tag>HSH or PTM - How to choose the best fitter | CHI forum discussion from 2012</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.researchgate.net/publication/261171443_Measuring_Changes_in_Cultural_Heritage_Objects_with_Reflectance_Transform_Imaging</link>
+							<tag>Measuring Changes in Cultural Heritage Objects with Reflectance Transform Imaging (2013)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4168503/</link>
+							<tag>A New Quantitative Method for the Non-Invasive Documentation of Morphological Damage in Paintings Using RTI Surface Normals (2014)</tag>
+							<comment>By Marcello Manfredi et al.  Sensors (Basel). 2014 Jul; 14(7): 12271–12284.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The Jubilees Palimpsest Project at St. Mary&apos;s University in San Antonio, Texas applies advanced imaging technology, including &quot;Spectral RTI&quot;, to recover text from illegible documents.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://jubilees.stmarytx.edu/</link>
+							<tag>The Jubilees Palimpsest Project
+| Pioneering the Recovery of Illegible Text from Ancient Manuscripts Through New Tools in Digital Archaeology.</tag>
+							<comment>Hosted at St. Mary’s University, San Antonio, TX.  Combines multispectral imaging with RTI for imaging of palimpsests.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://jubilees.stmarytx.edu/Hanneken(2016)NewTechnologyImaging.html</link>
+							<tag>New Technology for Imaging Unreadable Manuscripts and Other Artifacts: 
+Integrated Spectral Reflectance Transformation Imaging (Spectral RTI)</tag>
+							<comment>By Todd Hanneken.  Chapter 9 in &quot;Ancient Worlds in a Digital Culture,&quot; Edited by Claire Clivaz, Paul Dilley, and David Hamidović. Digital Biblical Studies 1. Leiden: Brill (2016), 180–195.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://content.historicengland.org.uk/images-books/publications/multi-light-imaging-heritage-applications/Multi-light_Imaging_FINAL_low-res.pdf</link>
+					<tag>Multi-light Imaging for Heritage Applications.  Historic England, 2013</tag>
+					<comment>Historic England is the new name for the organization formerly known as English Heritage.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The RTI technique has been used for creating 3D digital models of stone (lithic) artifacts by archaeologists and anthropologists.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://rtimage.us/</link>
+							<tag>Reflectance Transformation Imaging for Lithics.  Dr. Leszek M. Pawlowicz</tag>
+							<comment>Includes samples of RTI and PTM files.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.sciencedirect.com/science/article/pii/S0305440314004269</link>
+							<tag>Applications of Reflectance Transformation Imaging (RTI) to the study of bone surface modifications (2015)</tag>
+							<comment>By Sarah E. Newman. Journal of Archaeological Science, Volume 53, January 2015, Pages 536-549</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://mwf2014.museumsandtheweb.com/paper/storytelling-of-a-coin-collection-by-means-of-rti-images-the-case-of-the-simoneschi-collection-in-palazzo-blu/</link>
+					<tag>Storytelling of a Coin Collection by Means of RTI Images: the Case of the Simoneschi Collection in Palazzo Blu</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://cosch.info/documents/10179/155305/COSCH_TS_CDE_RTI_a+review.pdf/547ddd0a-37f4-46f0-a7c7-8c91d77cb701</link>
+					<tag>Highlight-Reflectance Transformation Imaging (H-RTI) for Heritage Applications (2016)</tag>
+					<comment>From Colour and Space in Cultural Heritage (COSCH) project (2012-2016).  Has list of teams actively working with the highlight method for RTI capture in 2016.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Additional resources that offer practical guidance on building RTI domes and describe capture sessions.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://hackaday.io/project/11951-affordable-reflectance-transformation-imaging-dome</link>
+							<tag>Affordable Reflectance Transformation Imaging Dome.  By Leszek Pawlowicz</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://petapixel.com/2016/04/21/shoot-super-detailed-macro-photographs-rti-camera-rig/</link>
+							<tag>Using Reflectance Transformation Imaging to Shoot Ultra-Detailed Macro (2016)</tag>
+							<comment>By Ted Kinsman.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://dhblog.maynoothuniversity.ie/aholland/rti/</link>
+							<tag>RTI Recording Session: 11 November 2015 | student blog post</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also Useful References for the Polynomial Texture Map (<fddLink id="fdd000487">PTM</fddLink>) format.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
