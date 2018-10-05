@@ -43,19 +43,28 @@ Any number of additional HDUs may follow the primary array; these additional HDU
 			<p>For more detail on the form of HDUs, see <a href="#notes">Notes</a>, below.</p>
 			<p>FITS is maintained by the International Astronomical Union (IAU) FITS Working Group.  Version 3 of the specification document incorporates incremental changes made in earlier years, was approved in 2008, and published formally in 2010.  Note that the &quot;once FITS, forever FITS&quot; maxim has led the working group to avoid explicit identification of a version within a FITS file; thus versioning is not considered &quot;strong.&quot;</p>
 		</fdd:description>
-		<fdd:shortDescription>A data interchange and archiving format maintained under the auspices of the International Astronomical Union and endorsed by NASA, has been used by astronomers for over 30 years.  Version 3 of the specification document was agreed on in 2008 and published formally in 2010.  FITS is designed to store, transmit, and manipulate scientific images and tabular data  Although frequently used for individual images, the format was designed to facilitate the unambiguous transmission of a collection of n-dimensional regularly spaced data arrays.</fdd:shortDescription>
+		<fdd:shortDescription>A data interchange and archiving format maintained under the auspices of the International Astronomical Union and endorsed by NASA, has been used by astronomers for over 30 years.  Version 3 of the specification document was agreed on in 2008 and published formally in 2010.  Version 4 was issued in 2018.  FITS is designed to store, transmit, and manipulate scientific images and tabular data  Although frequently used for individual images, the format was designed to facilitate the unambiguous transmission of a collection of n-dimensional regularly spaced data arrays.</fdd:shortDescription>
 		<fdd:productionPhase>Used for interchange between observatories (middle phase) and archiving (final phase).</fdd:productionPhase>
-		<fdd:relationships/>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:comment>Several earlier versions, starting from 1993, not described separately on this website.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has later version</fdd:typeOfRelationship>
+				<fdd:comment>FITS 4.0 was adopted in July 2016, and formally released after editing for language in August 2018.  Not described separately on this website.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
 		<fdd:experience>None</fdd:experience>
-		<fdd:preference>The Library of Congress has not collected astronomical images  in formats intended for analysis.  For derived images converted to a visible colorspace and intended for display or printing, the Library prefers the <fddLink id="fdd000023">TIFF_UNC</fddLink> or <fddLink id="fdd000074">TIFF_LZW</fddLink> formats for raster images.</fdd:preference>
+		<fdd:preference>The Library of Congress has not collected astronomical images in formats intended for analysis.  For derived images converted to a visible colorspace and intended for display or printing, the Library prefers the <fddLink id="fdd000023">TIFF_UNC</fddLink> or <fddLink id="fdd000074">TIFF_LZW</fddLink> formats for raster images.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>Openly documented, non-proprietary data format, developed and maintained under the auspices of the International Astronomical Union (IAU), by the IAU FITS Working Group.</fdd:disclosure>
-		<fdd:documentation>Available from <a href="">http://fits.gsfc.nasa.gov/fits_standard.html</a> through the FITS Support Office hosted at NASA&apos;s Goddard Space Flight Center.</fdd:documentation>
+		<fdd:documentation>Available from <a href="http://fits.gsfc.nasa.gov/fits_standard.html">http://fits.gsfc.nasa.gov/fits_standard.html</a> through the FITS Support Office hosted at NASA&apos;s Goddard Space Flight Center.</fdd:documentation>
 		<fdd:adoption>
-			<p>The FITS file format is a well-established format for exchange and archiving of astronomical data.  It is supported by the International Astronomical Union, NASA, and other national and international bodies engaged in astronomy and related fields.  Data from major international programs, such as the <a href="http://hla.stsci.edu/">Hubble Telescope </a>, the <a href="http://www.sdss3.org/dr9/software/fitsfiles.php">Sloan Digital Sky Survey</a>, and the orbiting <a href="http://cxc.harvard.edu/cda/">Chandra X-ray Observatory</a> are released in the FITS format.  So are records from land-based observatories, such as the National Optical Astronomy Observatory (<a href="http://www.noao.edu/">NOAO</a>), the National Radio Astronomy Observatory (<a href="http://www.nrao.edu/">NRAO</a>), and the <a href="http://www2.keck.hawaii.edu/koa/public/koa.php">Keck Observatory</a>.  In Europe, the land-based European Southern Observatory (<a href="http://www.eso.org/">ESO</a>) and recent missions of the European Space Agency (<a href="http://www.esa.int/ESA">ESA</a>) release their data in the format.</p>
+			<p>The FITS file format is a well-established format for exchange and archiving of astronomical data.  It is supported by the International Astronomical Union, NASA, and other national and international bodies engaged in astronomy and related fields.  Data from major international programs, such as the <a href="http://hla.stsci.edu/">Hubble Telescope</a>, the <a href="http://www.sdss3.org/dr9/software/fitsfiles.php">Sloan Digital Sky Survey</a>, and the orbiting <a href="http://cxc.harvard.edu/cda/">Chandra X-ray Observatory</a> are released in the FITS format.  So are records from land-based observatories, such as the National Optical Astronomy Observatory (<a href="http://www.noao.edu/">NOAO</a>), the National Radio Astronomy Observatory (<a href="http://www.nrao.edu/">NRAO</a>), and the <a href="http://www2.keck.hawaii.edu/koa/public/koa.php">Keck Observatory</a>.  In Europe, the land-based European Southern Observatory (<a href="http://www.eso.org/">ESO</a>) and recent missions of the European Space Agency (<a href="http://www.esa.int/ESA">ESA</a>) release their data in the format.</p>
 			<p>Software libraries for reading and writing FITS files exists in many programming languages.  See <a href="http://fits.gsfc.nasa.gov/fits_libraries.html">http://fits.gsfc.nasa.gov/fits_libraries.html</a>.  An important example is <a href="http://heasarc.gsfc.nasa.gov/docs/software/fitsio/fitsio.html">CFITSIO</a>, a library of subroutines in C and Fortran maintained by NASA&apos;s High Energy Astrophysics Science Archive Research Center (<a href="http://heasarc.gsfc.nasa.gov/">HEASARC</a>).  Many other tools build on this library.  The <a href="http://www.gdal.org/frmt_various.html">GDAL</a> (Geospatial Data Abstraction Library) uses the CFITSIO library to support conversion among raster image formats, including FITS.</p>
 			<p>Image viewers and format converters that support FITS are listed at <a href="http://fits.gsfc.nasa.gov/fits_viewer.html">http://fits.gsfc.nasa.gov/fits_viewer.html</a>.  Utilities also exist to convert FITS images to image formats for publication and display.  Examples are <a href="http://www.spacetelescope.org/projects/fits_liberator/">FITS Liberator</a> and <a href="http://www.astromatic.net/software/stiff">STIFF</a>.</p>
 			<p>In March 2010, the Vatican Library <a href="http://www.vaticanlibrary.va/home.php?pag=newsletter_art_00086&amp;ling=eng&amp;BC=11">announced</a> that historical scans of ancient books and manuscripts in the Vatican&apos;s collections would be stored in the FITS format.  A December 2011 <a href="http://www.esa.int/Our_Activities/Technology/Star_images_helping_to_save_Vatican_books">press release from the European Space Agency</a> similarly reported the Vatican Library&apos;s plan to take advantage of the long-lived format developed for astronomy.</p>
@@ -69,7 +78,7 @@ Any number of additional HDUs may follow the primary array; these additional HDU
 	<fdd:qualityAndFunctionalityFactors>
 		<fdd:stillImageQF>
 			<fdd:normalImage>
-				<p>The FITS format is primarily for use with astronomy images and/or data; it is not a format for raster images in general.  Many FITS files have no image data, containing, for example a catalog of celestial objects.  A useful description of FITS for an audience interested in the applicability of FITS for storing scanned images of cultural heritage materials, such as manuscripts, was given by Lucio Chiappetti at the 2012 European Week of Astronomy and Space Science [<a href="http://www.vaticanlibrary.va/moduli/Chiappetti_EWASS2012.pdf">http://www.vaticanlibrary.va/moduli/Chiappetti_EWASS2012.pdf</a>] at a <a href="http://www.ifsi-roma.inaf.it/ewass2012/?page_id=671">special session</a> on long-term preservation of digital cultural resources.</p>
+				<p>The FITS format is primarily for use with astronomy images and/or data; it is not a format for raster images in general.  Many FITS files have no image data, containing, for example a catalog of celestial objects.  A useful description of FITS for an audience interested in the applicability of FITS for storing scanned images of cultural heritage materials, such as manuscripts, was given by Lucio Chiappetti at the 2012 European Week of Astronomy and Space Science [<a href="http://www.vaticanlibrary.va/moduli/Chiappetti_EWASS2012.pdf">http://www.vaticanlibrary.va/moduli/Chiappetti_EWASS2012.pdf</a>] at a <a href="https://web.archive.org/web/20160314061740/http://www.ifsi-roma.inaf.it/ewass2012/?page_id=671">special session</a> on long-term preservation of digital cultural resources.</p>
 				<p>Astronomy images in the FITS format are typically not &quot;normal&quot; images in one important sense; they are ready for analysis, not ready for human viewing.  In particular, the treatment of color, or rather the equivalent of color extended outside the visible spectrum, is very different from that in the raster image formats used for digital photography, such as TIFF.  In the most natural &quot;sky&quot; images, the X,Y dimensions are celestial coordinates and the Z dimension is related to intensity (e.g., flux, or number of photons).  In FITS there is no default colorspace or standard way to identify that one of the conventional colorspaces (such as sRGB) has been used.  See <a href="#notes">Notes</a> below for a discussion on <i>false color</i> for astronomy images.  Utilities exist to convert FITS images  into <fddLink id="fdd000022">TIFF_6</fddLink>, <fddLink id="fdd000328">BigTIFF</fddLink>, or other image formats for publication and display.  Examples are <a href="http://www.spacetelescope.org/projects/fits_liberator/">FITS Liberator</a> and <a href="http://www.astromatic.net/software/stiff">STIFF</a>.   A list of <a href="http://fits.gsfc.nasa.gov/fits_viewer.html">FITS Image Viewers and Format Converters</a> is made available by the FITS Support Office.  In addition, the simplest FITS image files can be imported into a few general graphics applications (such as ImageMagick, GIMP, or Graphic Converter) and support panning, zooming, image manipulation, etc. in the same way as other raster image formats.</p>
 			</fdd:normalImage>
 			<fdd:clarity>FITS can be used to store the source sensor data or derived data at the fullest resolution available.</fdd:clarity>
@@ -120,7 +129,7 @@ Primary HDU.  </fdd:note>
 					<fdd:sigValue>HEX: 53 49 4d 50 4c 45</fdd:sigValue>
 					<fdd:sigValue>ASCII: SIMPLE</fdd:sigValue>
 				</fdd:sigValues>
-				<fdd:note>From <a href="http://www.astro.keele.ac.uk/oldusers/rno/Computing/File_magic.html">File magic numbers</a> at http://www.astro.keele.ac.uk/oldusers/rno/Computing/File_magic.html. This magic number is technically less appropriate than the longer pattern registered with IANA (see below), since it would also identify files marked &quot;SIMPLE=F&quot;, a convention sometimes used for files deviating deliberately from the standard and used locally for intenal purposes.</fdd:note>
+				<fdd:note>From <a href="https://web.archive.org/web/20160711184859/http://www.astro.keele.ac.uk:80/oldusers/rno/Computing/File_magic.html">File magic numbers</a> originally at http://www.astro.keele.ac.uk/oldusers/rno/Computing/File_magic.html (now linked via Internet Archive). This magic number is technically less appropriate than the longer pattern registered with IANA (see below), since it would also identify files marked &quot;SIMPLE=F&quot;, a convention sometimes used for files deviating deliberately from the standard and used locally for internal purposes.</fdd:note>
 			</fdd:magicNumbers>
 			<fdd:magicNumbers>
 				<fdd:sigValues>
@@ -129,6 +138,24 @@ Primary HDU.  </fdd:note>
 				</fdd:sigValues>
 				<fdd:note>As registered with IANA in <a href="http://www.ietf.org/rfc/rfc4047.txt">RFC 4047</a>.  The <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/383">PRONOM entry for FITS</a> uses a longer signature based on more header records.</fdd:note>
 			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/383</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/383">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/383</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q1428303</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q1428303">https://www.wikidata.org/wiki/Q1428303</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
@@ -146,7 +173,8 @@ The data unit, if present, immediately follows the last 2880-byte block in the h
 				<b>Application-specific conventions and extensibility:</b> User communities, for example for sub-disciplines, have developed generic and application-specific <a href="http://fits.gsfc.nasa.gov/fits_registry.html">conventions that refine the FITS standard</a> for increased interoperability in specific contexts or for specific categories of astronomical data.  The standard also defines a mechanism for adding conforming extensions to the file structure.</p>
 		</fdd:general>
 		<fdd:history>
-			<p>The FITS data format was developed in the late 1970s for interchange of astronomical image data between observatories. In 1981, the FITS specification was published in <a href="http://articles.adsabs.harvard.edu/cgi-bin/nph-iarticle_query?1981A%26AS...44..363W&amp;defaultprint=YES&amp;page_ind=0&amp;filetype=.pdf">Astronomy and Astrophysics  Supplement, Vol. 44, pp. 363-370</a>.  By then, FITS had become the de facto standard interchange format for astronomy data.  In the 1990s several versions of the specification were published by NOST (NASA  Office of Science and Technology): NOST 100-1.0 (June 1993); NOST 100-1.1 (September 29 1995); NOST 100-1.2 (April 1998); and NOST 100-2.0 (March 1999).  FITS Version 2.1b was published in December 2005.  Version 3.0, current as of September 2012, was approved in July 2008, and formally published in 2010.  All versions since 1993 are available at <a href="http://fits.gsfc.nasa.gov/fits_standard.html">http://fits.gsfc.nasa.gov/fits_standard.html</a>.</p>
+			<p>The FITS data format was developed in the late 1970s for interchange of astronomical image data between observatories. In 1981, the FITS specification was published in <a href="http://articles.adsabs.harvard.edu/cgi-bin/nph-iarticle_query?1981A%26AS...44..363W&amp;defaultprint=YES&amp;page_ind=0&amp;filetype=.pdf">Astronomy and Astrophysics  Supplement, Vol. 44, pp. 363-370</a>.  By then, FITS had become the de facto standard interchange format for astronomy data.  In the 1990s several versions of the specification were published by NOST (NASA  Office of Science and Technology): NOST 100-1.0 (June 1993); NOST 100-1.1 (September 29 1995); NOST 100-1.2 (April 1998); and NOST 100-2.0 (March 1999).  FITS Version 2.1b was published in December 2005.  Version 3.0 was approved in July 2008, and formally published in 2010.  Version 4.0 was adopted in July 2016, and formally released in August 2018 after editing for language, not substance. All versions since 1993 are available at <a href="http://fits.gsfc.nasa.gov/fits_standard.html">http://fits.gsfc.nasa.gov/fits_standard.html</a>.</p>
+			<p>The description of the specification for FITS Version 4.0 at <a href="https://fits.gsfc.nasa.gov/fits_standard.html">https://fits.gsfc.nasa.gov/fits_standard.html</a> indicates, &quot;The main difference from the previous Version 3 of the document is that a number of FITS conventions are now officially recognized, including conventions for representing Time world coordinates, and conventions for compressing FITS images and tables. A complete list of all the changes can be found in appendices H.3 and H.4 of the document.&quot;</p>
 			<p>See <a href="http://fits.gsfc.nasa.gov/fits_overview.html">http://fits.gsfc.nasa.gov/fits_overview.html</a> for more details of the early history.</p>
 		</fdd:history>
 	</fdd:notes>
@@ -284,20 +312,13 @@ The data unit, if present, immediately follows the last 2880-byte block in the h
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
-				<fdd:urlReference>
-					<link>http://www.nationalarchives.gov.uk/PRONOM/x-fmt/383</link>
-					<tag>FITS file format entry at PRONOM </tag>
-					<comment>PUID is x-fmt/383 
-</comment>
-				</fdd:urlReference>
-			</fdd:url>
-			<fdd:url>
 				<fdd:urlGroup>
 					<fdd:intro>A special session was organized by the Vatican Library (Biblioteca Apostolica Vaticana) at the 2012 European Week of Astronomy and Space Science. The focus was the scanning of precious cultural heritage materials, such as manuscripts held by the Vatican Library, and the potential of FITS as a master format for the scanned images.  The session agenda page and selected papers are listed below:</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
-							<link>http://www.ifsi-roma.inaf.it/ewass2012/?page_id=671</link>
+							<link>https://web.archive.org/web/20160314061740/http://www.ifsi-roma.inaf.it/ewass2012/?page_id=671</link>
 							<tag>Special Session 12: Long-term preservation ... from the stars?  File format assessment and technical issues in preservation projects for cultural resources.</tag>
+							<comment>Now via the Internet Archive.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>http://www.vaticanlibrary.va/moduli/Chiappetti_EWASS2012.pdf</link>
@@ -328,13 +349,23 @@ The data unit, if present, immediately follows the last 2880-byte block in the h
 </tag>
 							<comment>From FileFormat.Info, via Internet Archive&apos;s Wayback Machine.  Included because FileFormat.info has not been updated recently (as of November 2012) and was not functioning for a period.</comment>
 						</fdd:urlReference>
-						<fdd:urlReference>
-							<link>http://netghost.narod.ru/gff/graphics/summary/fits.htm</link>
-							<tag>EGFF: FITS</tag>
-							<comment>Copy made available from a site in Russia.</comment>
-						</fdd:urlReference>
 					</fdd:urlList>
 				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/x-fmt/383</link>
+					<tag>PRONOM entry for x-fmt/383</tag>
+					<comment>Information in PRONOM from UK National Archives about FITS.  PUID: x-fmt/383 
+</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q1428303</link>
+					<tag>Wikidata entry for Q1428303</tag>
+					<comment> Information in Wikidata about FITS. No version information. Wikidata Title ID: Q1428303</comment>
+				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
 		<fdd:citations>
