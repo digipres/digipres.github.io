@@ -15,7 +15,7 @@
 		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2010-09-09</fdd:date>
+			<fdd:date>2019-01-04</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Partial</fdd:draftStatus>
 	</fdd:properties>
@@ -27,7 +27,7 @@
 		</fdd:keywords>
 		<fdd:description>
 			<p>PDF (Portable Document Format), developed by Adobe Systems Incorporated, is described by Adobe as a general document representation language. PDF represents formatted, page-oriented documents. These documents may be structured or simple. They may contain text, images, graphics, and other multimedia content, such as video and audio. There is support for annotations, metadata, hypertext links, and bookmarks. </p>
-			<p> Version 1.4 was the basis for the first versions of ISO standards PDF/X and PDF/A.</p>
+			<p> Version 1.4 was the basis for the first versions of ISO standards <fddLink id="fdd000124">PDF/X</fddLink> and <fddLink id="fdd000318">PDF/A</fddLink>.</p>
 		</fdd:description>
 		<fdd:shortDescription> Version 1.4 of page-oriented document description language from Adobe Systems Incorporated.</fdd:shortDescription>
 		<fdd:productionPhase>In general, a final-state format for delivery to end users.  PDF/X, based on PDF 1.4 is a middle-state format for submission of images to printers (prepress).</fdd:productionPhase>
@@ -37,7 +37,7 @@
 				<fdd:relatedTo>
 					<fdd:id>fdd000030</fdd:id>
 					<fdd:shortName>PDF</fdd:shortName>
-					<fdd:titleName>Portable Document Format</fdd:titleName>
+					<fdd:titleName>Portable Document Format Family</fdd:titleName>
 				</fdd:relatedTo>
 			</fdd:relationship>
 			<fdd:relationship>
@@ -77,13 +77,20 @@
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
-		<fdd:experience>See <fddLink id="fdd000030">PDF</fddLink>.</fdd:experience>
+		<fdd:experience>
+			<p>The Library of Congress creates PDFs as service formats for some content it creates or makes available, including for some digitized historical materials, primarily to support convenient downloading and printing.  Some of this content is in version PDF 1.4.  Examples (as of early 2019) include text transcriptions made for books and pamphlets digitized for American Memory in the late 1990s: <a href="http://hdl.loc.gov/loc.rbc/rbpe.24403600">a broadside</a> and <a href="http://hdl.loc.gov/loc.gdc/lhbtn.04108">a travel book from 1862</a>.</p>
+			<p>The <a href="http://www.loc.gov/ndnp/">National Digital Newspaper Program</a>, which produces <a href="http://chroniclingamerica.loc.gov/">Chronicling America</a> requires awardees to deliver a PDF per page, using <a href="http://www.loc.gov/ndnp/guidelines/archive/PDFSpecs-2-3.pdf">detailed guidelines</a>.  These guidelines require XMP metadata following specific conventions and require that &quot;The PDF will be compatible with Acrobat 5.0 or later.&quot;  Hence the earliest version of PDF accepted is PDF 1.4; in practice, as of early 2019, all the awardees and LC itself appear to be using PDF 1.4.  These PDFs are each for a single image, with OCR text available for searching.  Example: <a href="http://chroniclingamerica.loc.gov/lccn/sn83045462/1930-07-20/ed-1/seq-72.pdf">newspaper page from July 1930</a>.</p>
+		</fdd:experience>
 		<fdd:preference>See <fddLink id="fdd000030">PDF</fddLink>.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
-		<fdd:disclosure>See <fddLink id="fdd000030">PDF</fddLink>.</fdd:disclosure>
-		<fdd:documentation>See <fddLink id="fdd000030">PDF</fddLink>. Version 1.4 spec is at <a href="http://wwwimages.adobe.com/www.adobe.com/content/dam/Adobe/en/devnet/pdf/pdfs/pdf_reference_archives/PDFReference.pdf">http://wwwimages.adobe.com/www.adobe.com/content/dam/Adobe/en/devnet/pdf/pdfs/pdf_reference_archives/PDFReference.pdf</a>.</fdd:documentation>
-		<fdd:adoption>TBD</fdd:adoption>
+		<fdd:disclosure>Fully documented by Adobe Systems.  Incorporated as a normative reference into ISO standards for <fddLink id="fdd000125">PDF/A-1</fddLink> and <fddLink id="fdd000124">PDF/X-1</fddLink>.  See also <fddLink id="fdd000030">PDF</fddLink>.</fdd:disclosure>
+		<fdd:documentation>
+			<a href="https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/pdf_reference_archives/PDFReference.pdf">PDF Reference, Third Edition.  Adobe Portable Document Format, Version 1.4</a>.  See also <fddLink id="fdd000030">PDF</fddLink>.</fdd:documentation>
+		<fdd:adoption>
+			<p>PDF 1.4 is widely used as the basis for the first version of <fddLink id="fdd000124">PDF/X</fddLink> (for prepress graphics exchange) and for <fddLink id="fdd000125">PDF/A-1</fddLink>.</p>
+			<p>In early 2019, the LibreOffice Export to PDF command produces a PDF 1.4 file.  Also in early 2019, the printer/copier/scanners (MFDs) used by the Library of Congress can scan multipage documents direct to PDF 1.4 files.  No other PDF option is supported by the MFDs.</p>
+		</fdd:adoption>
 		<fdd:licensingAndPatents>See <fddLink id="fdd000030">PDF</fddLink>.</fdd:licensingAndPatents>
 		<fdd:transparency>See <fddLink id="fdd000030">PDF</fddLink>.</fdd:transparency>
 		<fdd:selfDocumentation>Version 1.4 can include XMP metadata packages.  XMP is Adobe's framework for including arbitrary blocks of metadata, using a representation in <a href="http://www.w3.org/RDF/">RDF</a>.
@@ -108,9 +115,44 @@
 				</fdd:sigValues>
 				<fdd:note>See <fddLink id="fdd000030">PDF</fddLink>.</fdd:note>
 			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/pdf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Media type <a href="https://tools.ietf.org/html/rfc8118">registered with IANA</a>. See also  <fddLink id="fdd000030">PDF</fddLink>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 25 50 44 46 2D 31 2E 34</fdd:sigValue>
+					<fdd:sigValue>ASCII: %PDF-1.4</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From PRONOM.  However, the magic number value in the header (%PDF-1.4) declaring the PDF version with which the file complies can be overridden elsewhere in the file.  See <a href="#notes">Note</a> below for more detail.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/18</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/18">http://www.nationalarchives.gov.uk/PRONOM/fmt/18</a> for PDF 1.4.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q26085326</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q26085326">https://www.wikidata.org/wiki/Q26085326</a> for PDF 1.4.</fdd:note>
+				</fdd:values>
+			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Identification of chronological versions of PDF</b> can be given in two places in a PDF file.  All PDF files should have a version identified in the header with the 5 characters <i>%PDF–</i> followed by a version number.  For PDF files conforming to <a href="https://www.iso.org/standard/51502.html">ISO 32000-1:2008</a> or earlier specifications (i.e. prior to <a href="https://www.iso.org/standard/63534.html">ISO 32000-2:2017</a>), the version number has the form 1.N, where N is a digit between 0 and 7.  For example, PDF 1.4 is identified by <i>%PDF–1.4</i>.  However, beginning with PDF 1.4, a conforming PDF writer may use the Version entry in the document Catalog to override the version specified in the header. The location of the Catalog within the file is indicated in the Root entry of the file trailer/footer.  This override feature was introduced to facilitate the incremental updating of a PDF by simply adding to the end of the file.  As a result, it is necessary to locate the Catalog within the file to get the correct version number.  Unless the PDF is &quot;linearized,&quot; in which case the Catalog is up front, this will require reading the trailer and then using the reference there to locate the Catalog, which will typically be compressed. This has practical implications because format identification tools, including DROID, typically look for particular characters at the beginning of a file (i.e., in the header), to permit identification with minimal effort.  DROID can look for characters at the end of the file, but is not able to follow an indirect reference or decompress file contents.  When the version number is not the same in the header and the Catalog, there is potential for format identification errors.</p>
+		</fdd:general>
 		<fdd:history>PDF 1.4 was published in November 2001, and corresponds to Acrobat version 5.  PDF 1.4 was incorporated into the first versions of the PDF/X and PDF/A ISO standards.</fdd:history>
 	</fdd:notes>
 	<fdd:formatSpecifications>
@@ -124,15 +166,27 @@
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://wwwimages.adobe.com/www.adobe.com/content/dam/Adobe/en/devnet/pdf/pdfs/pdf_reference_archives/PDFReference.pdf</link>
-					<tag>PDF Reference, Fourth Edition, Version 1.4.</tag>
+					<link>https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/pdf_reference_archives/PDFReference.pdf</link>
+					<tag>PDF Reference, Third Edition, Version 1.4. (November 2001)</tag>
 					<comment>Adobe Systems Incorporated.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://wwwimages.adobe.com/www.adobe.com/content/dam/Adobe/en/devnet/pdf/pdfs/pdf_reference_archives/PDFReference13.pdf</link>
-					<tag>PDF Reference, Fourth Edition, Version 1.3.</tag>
+					<link>https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdf_reference_archive/PDF14errata.txt</link>
+					<tag>Errata for PDF Reference, Third Edition (last modified June 2003)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdf_reference_archive/PDF14Deltas.pdf</link>
+					<tag>Portable Document Format: Changes from Version 1.3 to 1.4 (Technical Note #5409, June 2001)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.printtechnologies.org/globalassets/standards/pdfs/pdfrefman_v1-3.pdf</link>
+					<tag>PDF Reference, Second Edition, Version 1.3. (July 2000)</tag>
 					<comment>Adobe Systems Incorporated.</comment>
 				</fdd:urlReference>
 			</fdd:url>
@@ -140,7 +194,7 @@
 		<fdd:citations>
 			<fdd:citation>
 				<fdd:bookReference>
-					<bookRefDetail rel="aucorp">Adobe Systems Incorporated</bookRefDetail>.  <bookRefDetail rel="btitle">PDF Reference, Third Edition, Version 1.4.</bookRefDetail>  Addison-Wesley, <bookRefDetail rel="date">2001</bookRefDetail>. ISBN: <bookRefDetail rel="isbn">0-201-75839-3</bookRefDetail>.  Also available online as <a href="http://wwwimages.adobe.com/www.adobe.com/content/dam/Adobe/en/devnet/pdf/pdfs/pdf_reference_archives/PDFReference.pdf">http://wwwimages.adobe.com/www.adobe.com/content/dam/Adobe/en/devnet/pdf/pdfs/pdf_reference_archives/PDFReference.pdf</a>.</fdd:bookReference>
+					<bookRefDetail rel="aucorp">Adobe Systems Incorporated</bookRefDetail>.  <bookRefDetail rel="btitle">PDF Reference, Third Edition, Version 1.4.</bookRefDetail>  Addison-Wesley, <bookRefDetail rel="date">2001</bookRefDetail>. ISBN: <bookRefDetail rel="isbn">0-201-75839-3</bookRefDetail>.  Also available online as <a href="https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/pdf_reference_archives/PDFReference.pdf">https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/pdf_reference_archives/PDFReference.pdf</a>.</fdd:bookReference>
 			</fdd:citation>
 		</fdd:citations>
 	</fdd:formatSpecifications>
@@ -154,19 +208,39 @@
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
+					<link>https://www.prepressure.com/pdf/basics/version</link>
+					<tag>PDF versions | The scope of each PDF version</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
 					<link>http://jhove.sourceforge.net/pdf-hul.html</link>
 					<tag>JHOVE PDF-hul Module</tag>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.ietf.org/rfc/rfc3778.txt</link>
+					<link>http://www.ietf.org/rfc/rfc8118.txt</link>
 					<tag>The application/pdf Media Type</tag>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/18</link>
+					<tag>PRONOM entry for fmt/18</tag>
+					<comment>Information in PRONOM on PDF 1.4.  PUID: fmt/18.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q26085326</link>
+					<tag>Wikidata entry for Q26085326</tag>
+					<comment>Information in WikiData about PDF 1.4. WikiData Title ID: Q26085326</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
 				<fdd:urlGroup>
-					<fdd:intro>See <fddLink id="fdd000030">PDF</fddLink>.</fdd:intro>
+					<fdd:intro>See also <fddLink id="fdd000030">PDF</fddLink>.</fdd:intro>
 				</fdd:urlGroup>
 			</fdd:url>
 		</fdd:urls>
