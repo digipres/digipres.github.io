@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000490" titleName="Extensible 3D (X3D) File Format Family" shortName="X3D_family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>model</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>family</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2018-11-21</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Extensible 3D (X3D) File Format family. ISO/IEC 19776. Information technology — Computer graphics, image processing and environmental data representation — Extensible (X3D) encodings</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>3D model formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>Extensible 3D (X3D) is a <a href="http://www.web3d.org/standards">family of co-ordinated royalty-free open standards</a> for file formats that can store representations of interactive 3D objects and scenes, with an associated run-time architecture for communicating the scenes and objects.  X3D evolved from the Virtual Reality Modeling Language (VRML) and, like VRML, is designed to support a virtual environment, but also to be applicable in many other 3D contexts.</p>
+			<p>According to the <a href="http://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/introduction.html">introduction</a> to <a href="http://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/Architecture.html">ISO/IEC/19557-1</a>, the specification of the architecture and functionality of X3D, &quot;X3D is a software standard for defining interactive web- and broadcast-based 3D content integrated with multimedia. X3D is intended for use on a variety of hardware devices and in a broad range of application areas such as engineering and scientific visualization, multimedia presentations, entertainment and educational titles, web pages, and shared virtual worlds. X3D is also intended to be a universal interchange format for integrated 3D graphics and multimedia.&quot;  Development, testing, and maintenance of the family of X3D standards is undertaken by members of the not-for-profit <a href="http://www.web3d.org/">Web3D Consortium</a>, with standardization under the auspices of <a href="https://www.iso.org/committee/45252.html">JTC1/SC24</a>.  The Web3D Consortium provides two useful diagrams of the family of standards: firstly, a <a href="http://x3dgraphics.com/examples/X3dForWebAuthors/Chapter01-TechnicalOverview/X3dSpecificationsHoneycombDiagram.png">&quot;honeycomb&quot; diagram of the current standards related to X3D</a>; and secondly, a newer <a href="http://www.web3d.org/specifications/X3dSpecificationRelationships.png">diagram of relationships between X3D graphics specifications</a> that serves as a roadmap, showing newer developments and indicating future plans.</p>
+			<p>With the aim of supporting a wide variety of application areas, the architecture supports many functionalities and features.  See <a href="#notes">Notes</a> below for a list of features from the standard&apos;s introduction.  Not all application areas need all features.  For example, digitized 3D models of museum artifacts typically do not need geospatial location and orientation in a global coordinate system as would be essential in a model of a city used by planners. To address this complexity, the X3D architecture is described in 35 chapters for conceptual &quot;components&quot;.   Examples of components are Shape, Appearance, Texturing, Lighting, Time, Geometry3D, Geospatial, Navigation, Scripting.  Profiles appropriate for different application areas or markets are specified in annexes; profile annexes list components that must be supported and other constraints.  Components act as modular collections of &quot;node types&quot; that make it easier for software to gradually implement a range of X3D capabilities.  Some components are specialized, such as the CAD Geometry component; others are essential to every application, such as the Shape component, which defines node types for associating geometry with visible properties.  Nodes contain fields; a field may be a value, a set of values, or a child node.  For example, each Shape node has a Geometry node and an Appearance node.  The Appearance node can include one of a set of child nodes; the possible children include nodes for Material, Texture, LineProperties, FillProperties, Shaders, etc.  Nodes are the basic building blocks for the physical encodings of an X3D file.  For example, in the XML encoding, nodes are represented as elements (see <a href="http://www.gearvrf.org/blog/2017_4_17_x3d/">X3D example in XML encoding</a>).  X3D uses a "scene graph" to assemble all the nodes that make up the virtual environment being modeled. The scene graph is a tree structure that collects all aspects of a 3D scene in a hierarchical fashion, properly organizing geometry, appearance, animation, and event routing.</p>
+			<p>A number of design objectives have guided the development of X3D:</p>
+			<ul>
+				<li>
+					<b>Separate the runtime architecture from the data encoding.</b>  X3D functionality is defined in ISO/IEC 19775, which comprises two parts; <a href="https://www.iso.org/standard/60760.html">Part 1</a> defines the X3D format architecture and <a href="https://www.iso.org/standard/60500.html">Part 2</a> defines a protocol, known as the Scene Authoring Interface (SAI) for manipulating an X3D instance and supporting user interactions with a 3D object or scene.</li>
+				<li>
+					<b>Support a variety of encoding formats, including the Extensible Markup Language (XML).</b>  Each part of ISO/IEC 19776 specifies an encoding of the X3D architecture defined in ISO/IEC 19775. Three different encodings for X3D (XML, Classic VRML, and Compressed Binary) are defined in <a href="https://www.iso.org/standard/60502.html">ISO/IEC 19776-1</a>, <a href="https://www.iso.org/standard/60503.html">ISO/IEC 19776-2</a>, and <a href="https://www.iso.org/standard/60504.html">ISO/IEC 19776-3</a>, respectively. According to <a href="http://www.web3d.org/x3d/what-x3d">What is X3D?</a> from the Web3D Consortium, the three encodings specified are functionally equivalent.  Two additional encodings are under development: a <fddLink id="fdd000381">JSON</fddLink> encoding and a second compressed format.  See <a href="#notes">Notes</a> below.</li>
+				<li>
+					<b>Add new graphical, behavioral and interactive objects.</b>  In comparison to VRML, for example, X3D introduced geo-referencing, support for shape geometry defined by <a href="https://en.wikipedia.org/wiki/Non-uniform_rational_B-spline">Non-uniform rational B-splines</a> (NURBs), and a new standard for humanoid animation.  <a href="https://www.iso.org/standard/33912.html">ISO/IEC 19774</a> defines an abstract representation (H-ANIM) for modeling three dimensional human figures and animations that can be applied to them, for example, for use as &quot;avatars.&quot;  Such figures can be incorporated into X3D models but the H-ANIM standard is more general in its applicability.</li>
+				<li>
+					<b>Provide alternative application programmer interfaces (APIs) into the 3D scene.</b> ISO/IEC 19777 is a multi-part standard, with each part defining a &quot;binding&quot; for a particular programming language to the SAI protocol.  As of November 2018, two language bindings have been approved as ISO/IEC standards, <a href="https://www.iso.org/standard/33915.html">ISO/IEC 19777-1</a> for <a href="https://www.ecma-international.org/publications/standards/Ecma-262.htm">ECMAScript</a> (aka JavaScript) and <a href="https://www.iso.org/standard/38020.html">ISO/IEC 19777-2</a> for the <a href="https://en.wikipedia.org/wiki/Java_(programming_language)">Java programming language</a>.</li>
+				<li>
+					<b>Define subsets of the specification (&quot;Profiles&quot;) that meet different market needs</b>.  The <a href="http://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/Architecture.html">standard</a> includes annexes defining 7 profiles aimed at different application areas:  Interchange;
+Interactive;
+MPEG-4 interactive;
+Immersive;
+Full;
+CADInterchange;
+and MedicalInterchange.  Profiles define the model components and nodes that must be supported and the level of support for each component (see next item). Profiles may impose additional requirements: for example, limiting the total number of points and faces in a scene.</li>
+				<li>
+					<b>Allow for the specification to be implemented at varying levels of service</b>.  The specification for each component (e.g., Shape, Lighting, Texturing) includes a definition of 1-4 levels of support, in terms of which nodes associated with the component must be supported.  For example, the Appearance node described in the Shape Component may have child nodes for Material, Texture, Fill Properties, LineProperties, TwoSidedMaterial, etc.  Only level 4 requires support for all these node types.  Level 3 does not require support for TwoSidedMaterial.</li>
+			</ul>
+			<p>Given the variety of encoding formats, language bindings for different APIs, profiled subsets, and levels of service, the format has a large array of possible subtypes. This format description is for the family of X3D formats as a whole, making no attempt to distinguish among the profiles.</p>
+		</fdd:description>
+		<fdd:shortDescription>a family of royalty-free open standards for file formats that can store representations of interactive 3D objects and scenes.  X3D functionality is defined in ISO/IEC 19775, while three different encodings for X3D (XML, Classic VRML, and Compressed Binary) are defined in ISO/IEC 19776.</fdd:shortDescription>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>XML encoding, not described separately on this site at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>Classic VRML encoding, not described separately on this site at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>Compressed Binary encoding, not described separately on this site at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:comment>VRML (Virtual Reality Modeling Language), not described separately on this site at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has extension</fdd:typeOfRelationship>
+				<fdd:comment>H3D (Haptic 3D), not described separately on this site at this time.  See <a href="http://www.h3dapi.org/uploads/api/Trunk/doc/H3DAPI/html/group__H3DNodes.html">H3D specific Node classes</a> and <a href="https://www.3dsystems.com/scanners-haptics/application-gallery">Haptic Applications Gallery</a>.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>No direct experience as of late 2018.</fdd:experience>
+		<fdd:preference>The Library of Congress has not yet expressed any format preference for digital models used as designs or surrogates for 3-dimensional objects.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Extensible 3D (X3D) is a royalty-free, platform-independent, open-standard file format. <a href="http://www.web3d.org/standards">Standards and specifications associated with X3D</a> are developed, maintained, and openly published by the not-for-profit Web3D Consortium and its members.  After acceptance in the consortium, standards are submitted to <a href="https://www.iso.org/committee/45252.html">ISO/IEC JTC1/SC24</a> for approval as International Standards.  See <a href="http://www.web3d.org/standards/adoption-process">Web3D Consortium&apos;s Adoption Process for standards</a>.</fdd:disclosure>
+		<fdd:documentation>The specifications associated with X3D fall under three ISO/IEC standards.  ISO/IEC 19775 defines the underlying achitecture for X3D in <a href="http://www.web3d.org/documents/specifications/19775-1/V3.3/index.html">Part 1</a> and the interface protocol for supporting interactions with a model in <a href="http://www.web3d.org/documents/specifications/19775-2/V3.3/index.html">Part 2</a>.  ISO/IEC 19776 has three parts, each for a different encoding for a model as defined in ISO/IEC 19775-1.  The encodings specified are: XML (<a href="http://www.web3d.org/documents/specifications/19776-1/V3.3/index.html">ISO/IEC 19776-1</a>); Classic VRML (<a href="http://www.web3d.org/documents/specifications/19776-2/V3.3/index.html">ISO/IEC 19776-2</a>); and Compressed Binary (<a href="http://www.web3d.org/documents/specifications/19776-3/V3.3/index.html">ISO/IEC 19776-3</a>).  In addition, ISO/IEC 19777 specifies bindings for programming languages <a href="http://www.web3d.org/documents/specifications/19777-1/V3.3/index.html">ECMAScript (aka Javascript)</a> and <a href="http://www.web3d.org/documents/specifications/19777-2/V3.0/index.html">Java</a>.  See <a href="#specs">Format Specifications</a> below for additional links to the associated specifications.</fdd:documentation>
+		<fdd:adoption>
+			<p>The Web3D Consortium website provides several sources of information intended to illustrate support and adoption of X3D and VRML in <a href="http://www.web3d.org/x3d/content/examples/X3dResources.html">X3D Resources</a>, a page of links to resources of all types; not all linked resources are current.  A page on <a href="http://www.web3d.org/event/ieee-vr-2018">Web3D participation at March 2018 IEEE VR conference</a> has slideshows that introduce many current examples of adoption in application areas and support in software tools and frameworks for import, export, editing, and rendering. In particular, see <a href="http://www.web3d.org/sites/default/files/attachment/node/2235/edit/IEEEVR2018_VirginiaTechWeb3dQuickstart1.reduced.pdf">Web3D Quickstart 1</a> and <a href="http://www.web3d.org/sites/default/files/attachment/node/2235/edit/IEEEVR2018_VirginiaTechWeb3dQuickstart2.reduced.pdf">Web3D Quickstart 2</a>.  <a href="https://www.youtube.com/user/Web3DMaster/playlists">Playlists on Youtube</a> also demonstrate the variety of application areas.</p>
+			<p>X3D models can be embedded in a web page using <a href="https://www.x3dom.org/">X3DOM</a> or the <a href="http://create3000.de/x_ite/getting-started/">X-ITE X3D Browser</a>.  Other X3D players include: <a href="http://www.bitmanagement.de/en/products/interactive-3d-clients/bs-contact">BS Contact</a> (commercial); <a href="https://www.octagavs.com/">Octaga</a> (commercial with free limited version for non-commercial use); <a href="https://www.instantreality.org/">InstantPlayer</a> (freely downloadable); <a href="http://www.h3dapi.org/">H3DViewer</a> (freely downloadable).  Open source viewer projects include <a href="http://freewrl.sourceforge.net/download.html">FreeWRL</a> and <a href="https://savage.nps.edu/Savage/developers.html#Xj3D">Xj3D viewer</a>.</p>
+			<p>Examples of tools for creating or editing X3D files include: <a href="https://savage.nps.edu/X3D-Edit/">X3D-Edit</a>; <a href="https://alternativeto.net/software/meshlab/">MeshLab</a>; <a href="http://create3000.de/">Titania X3D Editor</a>. <a href="https://www.autodesk.com/products/maya/overview">Maya</a> (computer animation software, a product of <a href="https://www.autodesk.com/">Autodesk</a>) has a help file for an add-on <a href="https://help.autodesk.com/view/MAYAUL/2019/ENU/?guid=__developer_Polygon_API_Poly_exporter_plug_ins_html">polyX3DExporter</a> that will export polygonal meshes into X3D.  According to <a href="https://castle-engine.io/creating_data_blender.php">Exporting from Blender</a>, Blender versions prior to 2.8 had direct support for X3D; see also <a href="https://developer.blender.org/T59727">X3D IMPORT EXPORT Missing in 2.8 beta</a>. The developers of the Castle Game Engine have developed an alternative X3D exporter for Blender and provided guidance in <a href="https://github.com/castle-engine/castle-engine/wiki/Blender">Exporting from Blender to X3D</a>.</p>
+			<p>X3D is used in a wide variety of application areas.  Samsung uses X3D for content in its virtual reality headsets; see <a href="http://www.web3d.org/sites/default/files/attachment/node/2184/edit/SamsungSIGGRAPH2017Web3dBOF.v1.pdf">Moving Web 3d
+Content into GearVR</a>. <a href="http://www.h3dapi.org/modules/mediawiki/index.php/MedX3D">MedX3D</a> is a specialized application for 3D visualization of information from CT or MRI scans using the Volume Rendering component of X3D. X3D is supported for 3D Printing by <a href="https://www.netfabb.com/case-studies/shapeways-inc">Netfabb</a> (acquired in 2015 by Autodesk) and in the <a href="https://3dprint.nih.gov">3DPrintExchange</a> from the National Institutes of Health (NIH).  X3D has a <a href="http://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/components/geodata.html">geospatial component</a> and the format can be imported into and exported from the <a href="https://www.cityserver3d.de/en/features/details/">CityServer3D</a> framework, which incorporates a geospatial database with applications for developing landscape models.  However, <a href="https://www.researchgate.net/publication/300490594_A_case_study_on_3D_geospatial_applications_in_the_web_using_state-of-the-art_WebGL_frameworks">A Case Study on 3D Geospatial Applications in the Web using State-of-the-art WebGL Frameworks</a>, an article from 2015, identifies challenges in dealing with the data volume and numerical precision required for geospatial applications using X3D through <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API">WebGL</a> (as supported directly in modern browsers).  The <a href="https://castle-engine.io/">Castle Game Engine</a> is an open source application for building interactive games that uses X3D as its main underlying format.</p>
+			<p>The U.S. National Archives (NARA) has identified X3D as a preferred format for transfer of computer-aided design (CAD) models.  It refers to version 3.2 of X3D, but is not specific about the preferred encoding.  See <a href="https://www.archives.gov/records-mgmt/policy/transfer-guidance-tables.html">Appendix A: Tables of File Formats</a> from <a href="https://www.archives.gov/records-mgmt/policy/transfer-guidance.html">NARA Transfer Guidance</a>.  The Ecole Polytechnique Fédérale de Lausanne (EPFL) includes X3D in a <a href="https://researchdata.epfl.ch/wp-content/uploads/2018/05/EPFL_recommended_file_formats.pdf">list of preferred formats</a> for reuse and preservation of CAD, listing all three encodings.  <a href="https://wiki.harvard.edu/confluence/display/digitalpreservation/Formats+Supported+by+the+DRS">Harvard University&apos;s Digital Repository Service</a> lists X3D as a preferred format for 3D CAD Drawings, preferring the XML encoding and has compiled an <a href="https://wiki.harvard.edu/confluence/display/digitalpreservation/CAD+Formats">assessment of several CAD Formats</a>, including an assessment of X3D. The UK&apos;s <a href="https://www.gov.uk/government/publications/implementation-of-the-trade-mark-directive-2015/implementation-of-the-eu-trade-mark-directive-2015">Implementation of the EU Trade Mark Directive 2015</a> lists X3D as one of the formats in which a trademark can be represented.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>Implementation of all standards produced by the Web3D Consortium, including X3D, is royalty-free.  See <a href="http://www.web3d.org/x3d/what-x3d">What is X3D?</a>.</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>Simple X3D models in the XML and Classic VRML encodings are highly transparent.  The model instances are text files, typically using UTF-8 for character encoding, and hence easily viewed and manipulated using text editors.  Files that are compressed using the lossless Gzip compression would need to be decompressed to reveal the underlying textual file.  These encodings use human-readable strings as names for element tags and associated fields/attributes.</p>
+			<p>X3D files in the Compressed Binary encoding (CBE) use a complex technique for compressing XML.  The files require sophisticated tools for decompression.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>Simple paired name/value information can be provided in the XML encoding as in HTML, using &lt;meta&gt; tags within the document&apos;s &lt;head&gt;.  In addition, an X3D metadata node can be used to provide information about any node in an X3D scene graph, and is placed as a child of the node that it describes.  Basic metadata nodes defined in the architecture include MetadataBoolean, MetadataDouble, MetadataFloat, MetadataInteger, MetadataString.  These nodes can contain an array (multiple values) of values of the data type indicated. In addition, the architecture supports a MetadataSet node that can group basic metadata nodes to create a more complex metadata structure.  For details, see <a href="https://x3dgraphics.com/examples/X3dForWebAuthors/Chapter15Metadata/Chapter15MetadataInformation.html">X3D Metadata Information</a>, Chapter 15 from <a href="http://x3dgraphics.com/">X3D for Web Authors</a>.  The compilers of this resource have not been able to determine whether the capability for embedding metadata deep in the model is widely used either in general or in particular domains.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None beyond software capable of reading and writing X3D files, with support for the encoding used and the nodes included in the X3D instance. </fdd:externalDependencies>
+		<fdd:techProtection>
+			<p>
+				<a href="http://www.web3d.org/x3d/content/examples/Basic/Security/X3dSecurityReadMe.html">X3D Security Examples README</a> from the Web3D Consortium shows the process for applying a digital signature to an X3D file in the XML encoding (having the .x3d extension), using <a href="http://www.w3.org/TR/xmldsig-core/">XML Signature Syntax and Processing</a> to embed the signature.  There is no example of incorporating encrypted model content into a .x3d file. The <a href="http://www.web3d.org/documents/specifications/19776-1/V3.3/index.html">XML DTD for the XML encoding for X3D V 3.3</a> allows ds:Signature elements inside the root X3D element.  The DTD declares a namespace for &quot;xenc&quot; (intended to support embedded encrypted data) but does not seem to allow its use.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>The specification and documentation for the Classic VRML encoding make no mention of encryption.</p>
+			<p>The <a href="http://www.web3d.org/documents/specifications/19776-3/V3.3/index.html">Normative References for the Compressed Binary encoding of X3D V 3.3</a> include the W3C specifications for XML Encryption and XML Signature, suggesting that this X3D encoding may support the use of encryption for the X3D model content.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:gisQF>
+			<fdd:normalGIS>The X3D architecture has a Geospatial component, which describes how to associate real world locations to elements in the X3D world as well as specifying nodes particularly tuned for geospatial applications.  It supports a limited set of <a href="http://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/components/geodata.html#Spatialreferenceframes">coordinate reference systems</a>. <a href="https://www.researchgate.net/publication/300490594_A_case_study_on_3D_geospatial_applications_in_the_web_using_state-of-the-art_WebGL_frameworks">A Case Study on 3D Geospatial Applications in the Web using State-of-the-art WebGL Frameworks</a>, an article from 2015 described challenges with using the <a href="https://www.x3dom.org/">X3DOM</a> framework for five geospatial use cases.</fdd:normalGIS>
+		</fdd:gisQF>
+		<fdd:otherQF>
+			<fdd:factor>
+				<fdd:tag>3D Model Geometry</fdd:tag>
+				<fdd:note>
+					<p>The X3D format supports geometry definition using shape primitives (e.g., sphere, cylinder, cone), polygonal meshes, and non-uniform rational basis splines (<a href="https://en.wikipedia.org/wiki/Non-uniform_rational_B-spline">NURBS</a>).  According to a 2008 report from NCSA (<a href="https://www.archives.gov/files/applied-research/ncsa/8-an-overview-of-3d-data-content-file-formats-and-viewers.pdf">An Overview of 3D Data Content, File Formats and Viewers</a>), X3D does not support constructive solid geometry (<a href="https://en.wikipedia.org/wiki/Constructive_solid_geometry">CSG</a>) directly.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+				</fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>3D Model Appearance</fdd:tag>
+				<fdd:note>X3D supports many mechanisms for using nodes or fields to control appearance of objects in an X3D scene, including material attributes, texture mapping, fill properties, and programmable shading.  A commonly used appearance feature is a texture map based on an image in <fddLink id="fdd000017">JPEG</fddLink> or <fddLink id="fdd000153">PNG</fddLink> format.   [Note: X3D browsers are required to support JPEG and PNG and recommended to support GIF.  See <a href="http://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/components/texturing.html#ImageTexture">18.4.1 Image texture</a> in the X3D specification.]  Textures can also be movie clips, with fields for specifying behaviors, such as looping, pausing, and changing speed.  Multiple textures may be applied to a single geometry node and blended according to a predefined set of operations.  Material attributes available include ambient intensity, diffuse color, specular color, shininess, emissive color, and transparency.  Fill properties include codes for patterns such as hatching and stripes; some codes correspond to surface textures, such as marble, sand, and fabric.</fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>3D Model Scene</fdd:tag>
+				<fdd:note>
+					<p>X3D uses a scene graph to model the many graphics nodes that make up a virtual environment. The scene graph is a tree structure that collects all aspects of a 3D scene in a hierarchical fashion that properly organizes geometry, appearance, animation, and event routing.</p>
+					<p>An X3D instance can incorporate a lighting component specifying characteristics and positions of light sources in the scene, as well as how lights affect the rendered image.  Support is available for spotlights and for fog.</p>
+				</fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>3D Model Animation</fdd:tag>
+				<fdd:note>
+					<p>Figures using the Humanoid Animation (<a href="http://www.web3d.org/documents/specifications/19774/V1.0/index.html">H-ANIM</a>) standard for modeling 3D human figures and animations that can be applied to them can be incorporated into X3D models.  For example, such models can be used as avatars in a virtual environment.</p>
+				</fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>3D Model Functionality, Beyond Normal</fdd:tag>
+				<fdd:note>The X3D specification has rich support for virtual reality, including an <a href="http://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/immersive.html">Immersive Profile</a>.  Consider immersive virtual reality spaces, such as the <a href="https://tu-freiberg.de/fakult1/inf/professuren/virtuelle-realitaet-und-multimedia/forschung/x-site-cave">X-SITE CAVE</a> (Cave automatic virtual environment); Virginia Tech&apos;s <a href="https://www.arc.vt.edu/visionarium/">Visionarium</a>; and specialized collaborative environments, such as <a href="https://www.navfac.navy.mil/content/dam/navfac/Asset%20Management/PDFs/ips/SPIDERS%203D%20FACT%20SHEET_13JAN14.pdf">Spiders3D</a>.</fdd:note>
+			</fdd:factor>
+		</fdd:otherQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>x3d</fdd:sigValue>
+					<fdd:sigValue>x3dv</fdd:sigValue>
+					<fdd:sigValue>x3db</fdd:sigValue>
+					<fdd:sigValue>x3dz</fdd:sigValue>
+					<fdd:sigValue>x3dvz</fdd:sigValue>
+					<fdd:sigValue>x3dbz</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Each extension is used for a specific combination of encoding and compression. .x3d is for the XML encoding, .x3dv for the Classic VRML encoding, and .x3db for the Compressed Binary encoding.  If compression using Gzip is applied, the extension with a final &quot;z&quot; is used.  See <a href="http://www.web3d.org/wiki/index.php/X3D_MIME-Type">http://www.web3d.org/wiki/index.php/X3D_MIME-Type</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>model/x3d+xml</fdd:sigValue>
+					<fdd:sigValue>model/x3d-vrml</fdd:sigValue>
+					<fdd:sigValue>model/x3d+fastinfoset</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Media Types for the three different encodings for X3D as <a href="https://www.iana.org/assignments/media-types/media-types.xhtml#model">listed by IANA</a>.  As listed in the left-hand column, they are for the XML, Classic VRML, and Compressed Binary encodings, respectively.  See also <a href="http://www.web3d.org/wiki/index.php/X3D_MIME-Type">X3D MIME-Type</a> on Web3D&apos;s Public X3D Wiki, which lists the same values as the IANA registry.  Note: There are inconsistencies among the Media Types listed at several other resources.  See <a href="#notes">Notes</a> below for details.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/579</fdd:sigValue>
+						<fdd:sigValue>fmt/580</fdd:sigValue>
+						<fdd:sigValue>fmt/581</fdd:sigValue>
+						<fdd:sigValue>fmt/582</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>These four PRONOM records are for versions <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/579">3.0</a>, <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/580">3.1</a>, <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/581">3.2</a>, <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/582">3.3</a> of the XML encoding for X3D</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q930428</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="">https://www.wikidata.org/wiki/Q930428</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Features and functionalities supported by X3D</b>.  With the aim of supporting a wide variety of application areas, the architecture supports many functionalities and features, including, as described in the <a href="http://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/introduction.html">Introduction</a> to Part 1 of the X3D standard:</p>
+			<ul>
+				<li>
+					<b>3D graphics</b>: polygonal geometry, parametric geometry, hierarchical transformations, lighting, materials and multi-pass/multi-stage texture mapping</li>
+				<li>
+					<b>2D graphics</b>: text, 2D vector and planar shapes displayed within the 3D transformation hierarchy)</li>
+				<li>
+					<b>Animation</b>:
+timers and interpolators to drive continuous animations; humanoid animation and morphing</li>
+				<li>
+					<b>Spatialized audio and video</b>: audiovisual sources mapped onto geometry in the scene</li>
+				<li>
+					<b>User interaction</b>: mouse-based picking and dragging; keyboard input</li>
+				<li>
+					<b>Navigation</b>: cameras; user movement within the 3D scene; collision, proximity and visibility detection</li>
+				<li>
+					<b>Scripting</b>: ability to dynamically change the scene via programming and scripting languages</li>
+				<li>
+					<b>Networking</b>: ability to compose a single X3D scene out of assets located on a network; hyperlinking of objects to other scenes or assets located on the World Wide Web</li>
+				<li>
+					<b>Physical simulation</b>: humanoid animation; geospatial datasets; integration with <a href="https://en.wikipedia.org/wiki/Distributed_Interactive_Simulation">Distributed Interactive Simulation</a> (DIS) protocols</li>
+				<li>
+					<b>Geospatial positioning</b>: ability to accurately position X3D scene objects geospatially</li>
+				<li>
+					<b>CAD geometry</b>: ability to represent CAD models mapped from CAD systems</li>
+				<li>
+					<b>Layering</b>: ability to organize X3D scenes into rendering groups so that objects in each layer can overlay objects in underlying layers</li>
+				<li>
+					<b>Support for programmable shaders</b>: ability to replace the X3D lighting model with custom shader programs</li>
+				<li>
+					<b>Particle systems</b>: ability to generate systems of particles that can represent fire, smoke, and other such effects</li>
+			</ul>
+			<p>A number of the features above, such as scripting, are key to support for virtual reality devices, games, and immersive immersive environments, but not typically used for digital reproductions of physical artefacts or for 3D printing.  See, for example, <a href="http://www.web3d.org/sites/default/files/attachment/node/2184/edit/SamsungSIGGRAPH2017Web3dBOF.v1.pdf">Moving Web 3dContent into GearVR</a>, about use of X3D to create content for Samsung&apos;s GearVR device.  Other features listed support specialized domains, such as computer-assisted design (CAD) and models of real scenes on the earth&apos;s surface that must be accurately positioned and oriented.</p>
+			<p>
+				<b>File format encodings for X3D</b>:  As of late 2018, three file format encodings have been approved as parts of ISO/IEC 19776:</p>
+			<ul>
+				<li>
+					<b>XML</b>.  <a href="https://www.iso.org/standard/60502.html">ISO/IEC 19776-1</a>. This encoding was a key motivation for the move from VRML to X3D. The use of XML, a markup standard for which many tools exist, both open source and commercial, was seen as essential to the wider adoption and support for the model architecture of VRML.  The encoding specifies markup using a DTD that was equivalent to the earlier VRML encoding.</li>
+				<li>
+					<b>Classic VRML</b>.  <a href="https://www.iso.org/standard/60503.html">ISO/IEC 19776-2</a>.  This format encoding extends the syntax of VRML to support new functionality and modularity introduced in X3D.  VRML markup uses curly brackets as the syntax for grouping and nesting nodes. This syntax is similar in structure to the C programming language.</li>
+				<li>
+					<b>Compressed Binary Encoding (CBE)</b>:  <a href="https://www.iso.org/standard/60504.html">ISO/IEC 19776-3</a>.  This encoding uses the ISO <a href="https://en.wikipedia.org/wiki/Fast_Infoset">Fast Infoset</a> (FI) standard designed specifically to compress XML information losslessly, reducing file size and enhancing performance.  The CBE maintains equivalent expressive power with the other X3D scene encodings.</li>
+			</ul>
+			<p>Other encodings are under development, including:</p>
+			<ul>
+				<li>
+					<b>JSON</b>:  The specification for a <a href="http://www.web3d.org/wiki/index.php/X3D_JSON_Encoding">JSON encoding</a> is available to Web3D members and being tested.  The JSON encoding resembles the Classic VRML structure with slight differences in syntax.  JSON versions are available for the examples in <a href="https://x3dgraphics.com/examples/X3dForWebAuthors/index.html">X3D for Web Authors XML3D Examples Archive</a>.  See also <a href="https://github.com/coderextreme/X3DJSON">X3D JSON validation and conversion</a> and <a href="https://github.com/coderextreme/X3DJSONLD">X3D JSON loader</a> projects on github.</li>
+				<li>
+					<b>Efficient Binary Encoding (EBE)</b>:  The <a href="http://www.web3d.org/wiki/index.php/X3D_Binary_Compression_Capabilities_and_Plans">proposed EBE encoding</a> combines Efficient XML Interchange (<a href="https://www.w3.org/TR/exi/">EXI</a>) compact representation for XML with streaming and geometry compression based on <a href="https://x3dom.org/src/">Shape Resource Containers (SRC)</a> as developed by Fraunhofer IGD.  See <a href="http://www.web3d.org/sites/default/files/page/X3D%20Compressed%20Binary%20Encoding%20Activity/X3dEfficientBinaryEncodingQuicklookSummary2015August23.pdf">EBE Progress Summary</a> from August 2015 and <a href="https://www.w3.org/TR/exi-for-json/">EXI for JSON</a>.</li>
+			</ul>
+			<p>
+				<b>X3D Internet Media Types</b>:  Internet Media Types listed under <a href="#sign">File Signifiers</a> above are those listed in the IANA registry. The same values are listed at the bottom of <a href="http://www.web3d.org/wiki/index.php/X3D_MIME-Type">X3D MIME-Type</a> on the Web3D Consortium Wiki.  However, the media types in the version 3.3 specifications for two of the encodings (Classic VRML and Compressed Binary) and those listed at the X3D entries at <a href="https://en.wikipedia.org/wiki/X3D">Wikipedia</a> and <a href="http://fileformats.archiveteam.org/wiki/X3D">fileformats.archiveteam.org</a> do not match the official IANA registry.  The differences are as follows: section 4.4 in the <a href="http://www.web3d.org/documents/specifications/19776-2/V3.3/index.html">specification for the Classic VRML encoding</a> &quot;model/x3d+vrml&quot; whereas the IANA registry lists &quot;model/x3d-vrml&quot;;  section 4.5 in the <a href="http://www.web3d.org/documents/specifications/19776-3/V3.3/index.html">specification for the Compressed Binary encoding</a> lists &quot;model/x3d+binary&quot;, while the IANA registry shows &quot;model/x3d+fastinfoset&quot;.  The compilers of this resource would welcome <a href="../contact_format.shtml">comments</a> by any expert who can clarify which media types are used in practice.</p>
+			<p>
+				<b>3D Model Characteristics</b>:  The quality and functionality factors used above are based on an analysis from 2008 in <a href="https://www.archives.gov/files/applied-research/ncsa/8-an-overview-of-3d-data-content-file-formats-and-viewers.pdf">An Overview of 3D Data Content, File Formats and Viewers</a>, a technical report (ISDA08-002) from the National Center for Supercomputing Applications (NCSA).  According to this analysis, the key aspects of a 3D model are: geometry, appearance, scene, and animation. For brief descriptions of these factors, see the table for 3D model formats under <a href="./fdd_explanation.shtml#factors">Quality and functionality factors</a>.  The descriptions there are drawn from the 2008 report and from <a href="https://all3dp.com/3d-file-format-3d-files-3d-printer-3d-cad-vrml-stl-obj/">8 Most Common 3D File Formats of 2018</a> (an article from C|net), which uses the same factors to distinguish formats.  X3D (considered with VRML) is covered in the C|net article and compared with an overlapping set of 3D file formats in Table 3 in the 2008 NCSA report.</p>
+			<p>
+				<b>Characteristics for the Market for 3D Technology</b>: As described in <a href="https://www.computer.org/csdl/mags/co/2005/08/r8023.pdf">Making 3D Technology Universal</a>, a 2005 article in Computer Magazine by David Geer, most computer-aided design (CAD) applications tended to use proprietary formats.  Several attempts to develop general-purpose 3D applications and formats for use on the web had failed in the marketplace.  These included Adobe&apos;s Atmosphere, Microsoft&apos;s Chromeffects, and Shockwave&apos;s .w3d formats.   Neil Trevett,
+vice president for embedded content at
+graphics-chip maker Nvidia, offered reasons beyond technical shortcomings, &quot;because 3D is a
+market with so many niches that it is
+difficult for a single approach to appeal
+to enough users to succeed;  and
+because the technologies weren’t controlled by an open standards body.&quot;</p>
+			<p>Both the  <a href="https://www.archives.gov/files/applied-research/ncsa/8-an-overview-of-3d-data-content-file-formats-and-viewers.pdf">NCSA technical report from 2008</a> and the <a href="https://all3dp.com/3d-file-format-3d-files-3d-printer-3d-cad-vrml-stl-obj/">C|net article from 2018</a> cited above mention the large number of 3D formats, well over 100.  See also the lists of <a href="https://en.wikipedia.org/wiki/List_of_file_formats#3D_graphics">3D graphics formats</a> and <a href="https://en.wikipedia.org/wiki/List_of_file_formats#Computer-aided_design_(CAD)">Computer-aided design formats</a> from Wikipedia.  Many of these are proprietary.  Among &quot;neutral&quot; formats, some are specialized for particular tasks. For example, STL (Stereo Lithography format) is a lightweight format with no support for appearance, scene, or animation, but is the most widely used format for 3D printing.  Others, such as <fddLink id="fdd000448">STEP</fddLink>, are intended to capture all details essential for interchange and archiving of architectural and engineering designs, including parts specifications and tolerances.  In the context of video-games, such details are irrelevant.  As a response to this challenge, X3D specifies profiles for some particular application domains, including: <a href="http://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/CADInterchange.html">CAD Interchange profile</a>; <a href="http://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/MedInterchange.html">Medical Interchange profile</a>; and an <a href="http://www.web3d.org/documents/specifications/19775-1/V3.3/Part01/immersive.html">Immersive profile</a> compatible with the functionality supported by VRML.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>X3D evolved from the Virtual Reality Modeling Language (VRML).  VRML was initially proposed in 1994 and demonstrated in 1995.  After some modifications, it was standardized as ISO/IEC 14772-1 in 1997.  Since then, VRML has been essentially static.  In December 1998, the VRML Consortium, founded in 1997, <a href="https://web.archive.org/web/19981212022036/http://www.vrml.org/">expanded its charter and renamed itself</a> as the <a href="http://www.web3d.org/">Web3D Consortium</a>.  X3D, an enhanced successor to VRML, was developed by the Web3D Consortium, starting in 2001, leading to ISO standardization of <a href="https://www.iso.org/standard/33913.html">first edition of ISO/IEC 19775</a> in 2004, under the auspices of ISO/IEC <a href="https://www.iso.org/committee/45252.html">JTC1/SC24</a>.  The 2004 edition of X3D was called version 3.0, continuing the numbering from the sequence used for VRML.  As of 2018, the current version of X3D is 3.3.</p>
+			<p>According to <a href="http://www.web3d.org/specifications/X3dSpecificationRelationships.png">the diagram of X3D Specification Relationships</a>, several new components of the X3D environment exist but not yet as international standards.  These include a new binary encoding using Efficient XML Interchange (EXI) compression and a new text-based encoding using JSON.  Several new language bindings are also in development, for C, C++, C#, and Python.  There are <a href="http://www.web3d.org/x3d4">plans for a major upgrade</a>, to version 4.  See also <a href="http://www.web3d.org/strategy">X3D Strategy</a>.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The Web3D Consortium provides index pages for convenient access to HTML presentations of the formats it maintains, together with links for downloading individual standards as a <fddLink id="fdd000354">ZIP </fddLink> file. </fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.web3d.org/standards</link>
+							<tag>Web3D Consortium | Recommended Standards for Extensible 3D (X3D) Graphics and Humanoid Animation (H-Anim) Standards</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.web3d.org/standards/all</link>
+							<tag>Web3D Consortium | All Standards</tag>
+							<comment>Includes past versions and drafts.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The published ISO standards associated with the X3D file format are also available for convenient download from the ISO page for publicly available standards.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://standards.iso.org/ittf/PubliclyAvailableStandards/index.html</link>
+							<tag>Publicly Available Standards | from ISO</tag>
+							<comment>Links for downloading individual standards follow</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://standards.iso.org/ittf/PubliclyAvailableStandards/c060760_ISO_IEC_19775-1_2013.zip</link>
+							<tag>ISO/IEC 19775-1:2013 Information technology -- Computer graphics, image processing and environmental data representation -- Extensible 3D (X3D) -- Part 1: Architecture and base components</tag>
+							<comment>The best part of the standard for identifying the 3D characteristics and functionality that the format can support.  A key concept is the &quot;scene graph,&quot; which comprises a hierarchy of nodes that represent all facets of a 3D scene and its component objects. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://standards.iso.org/ittf/PubliclyAvailableStandards/c060500_ISO_IEC_19775-2_2015.zip</link>
+							<tag>ISO/IEC 19775-2:2015 Information technology -- Computer graphics, image processing and environmental data representation -- Extensible 3D (X3D) -- Part 2: Scene access interface (SAI)</tag>
+							<comment>This interface is a protocol for manipulating the X3D scene graph.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://standards.iso.org/ittf/PubliclyAvailableStandards/c060502_ISO_IEC_19776-1_2015.zip</link>
+							<tag>ISO/IEC 19776-1:2015  Information technology -- Computer graphics, image processing and environmental data representation -- Extensible 3D (X3D) encodings -- Part 1: Extensible Markup Language (XML) encoding</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://standards.iso.org/ittf/PubliclyAvailableStandards/c060503_ISO_IEC_19776-2_2015.zip</link>
+							<tag>ISO/IEC 19776-2:2015  Information technology -- Computer graphics, image processing and environmental data representation -- Extensible 3D (X3D) encodings -- Part 2: Classic VRML encoding     JTC1/SC24</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://standards.iso.org/ittf/PubliclyAvailableStandards/c060504_ISO_IEC_19776-3_2015.zip</link>
+							<tag>ISO/IEC 19776-3:2015 Information technology -- Computer graphics, image processing and environmental data representation -- Extensible 3D (X3D) encodings -- Part 3: Compressed binary encoding</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://standards.iso.org/ittf/PubliclyAvailableStandards/c033915_ISO_IEC_19777-1_2006.zip</link>
+							<tag>ISO/IEC 19777-1:2006  Information technology -- Computer graphics and image processing -- Extensible 3D (X3D) language bindings -- Part 1: ECMAScript</tag>
+							<comment>ECMAScript is also known as JavaScript.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://standards.iso.org/ittf/PubliclyAvailableStandards/c038020_ISO_IEC_19777-2_2006.zip</link>
+							<tag>ISO/IEC 19777-2:2006  Information technology -- Computer graphics and image processing -- Extensible 3D (X3D) language bindings -- Part 2: Java</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>ISO catalog records for the individual published standards are at:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.iso.org/standard/60760.html</link>
+							<tag>ISO/IEC 19775-1:2013 Information technology -- Computer graphics, image processing and environmental data representation -- Extensible 3D (X3D) -- Part 1: Architecture and base components</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.iso.org/standard/60500.html</link>
+							<tag>ISO/IEC 19775-2:2015  Information technology -- Computer graphics, image processing and environmental data representation -- Extensible 3D (X3D) -- Part 2: Scene access interface (SAI)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.iso.org/standard/60502.html</link>
+							<tag>ISO/IEC 19776-1:2015 Information technology -- Computer graphics, image processing and environmental data representation -- Extensible 3D (X3D) encodings -- Part 1: Extensible Markup Language (XML) encoding</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.iso.org/standard/60503.html</link>
+							<tag>ISO/IEC 19776-2:2015  Information technology -- Computer graphics, image processing and environmental data representation -- Extensible 3D (X3D) encodings -- Part 2: Classic VRML encoding</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.iso.org/standard/60504.html</link>
+							<tag>ISO/IEC 19776-3:2015  Information technology -- Computer graphics, image processing and environmental data representation -- Extensible 3D (X3D) encodings -- Part 3: Compressed binary encoding</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.iso.org/standard/33915.html</link>
+							<tag>ISO/IEC 19777-1:2006  Information technology -- Computer graphics and image processing -- Extensible 3D (X3D) language bindings -- Part 1: ECMAScript</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.iso.org/standard/38020.html</link>
+							<tag>ISO/IEC 19777-2:2006  Information technology -- Computer graphics and image processing -- Extensible 3D (X3D) language bindings -- Part 2: Java</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The Web3D Consortium provides extensive information about X3D beyond the specifications listed above under <a href="#specs">Format Specifications</a>.  A selection of useful pages are listed below.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.web3d.org/</link>
+							<tag>Web3D Consortium Home Page</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.web3d.org/x3d/what-x3d</link>
+							<tag>Web 3D Consortium | What is X3D?</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.web3d.org/specifications/X3dSpecificationRelationships.png</link>
+							<tag>Diagram of relationships between X3D graphics standards</tag>
+							<comment>Includes new standards proposed, but not yet approved by ISO/IEC JTC1/SC24</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.web3d.org/event/ieee-vr-2018</link>
+							<tag>Web3D page about 2018 IEEE Conference on Virtual Reality and 3D User Interfaces</tag>
+							<comment>Includes materials for Web3D &quot;Quickstart&quot; tutorial session.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.web3d.org/x3d/content/examples/X3dResources.html</link>
+							<tag>Web3D Consortium | X3D Resources</tag>
+							<comment>Menu of links to tools and applications for creating, rendering, or interacting with X3D models.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://x3dgraphics.com/examples/X3dForWebAuthors/index.html</link>
+							<tag>X3D for Web Authors (X3D4WA) Examples Archive</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.x3dgraphics.com/X3dStandardOverview.IeeeSignalProcessing.GovernmentAuthor.November2007.pdf</link>
+							<tag>[Standards in a Nutshell] X3D: Extensible 3D Graphics Standard (November 2007)</tag>
+							<comment>In IEEE Signal Processing Magazine. November 2007 (pp: 130-135). By Leonard Daly and Don Brutzman.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.web3d.org/wiki/index.php/Main_Page</link>
+							<tag>Web3D Consortium | Public X3D Wiki</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.web3d.org/specifications/x3d-3.3.xsd</link>
+							<tag>Schema in the XML Schema language for the XML encoding of X3D.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.web3d.org/specifications/x3d-3.3.dtd</link>
+							<tag>Document Type Definition (DTD) for the XML encoding of X3D.</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Entries for X3D in resources covering file formats:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/X3D</link>
+							<tag>Wikipedia entry for X3D</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://fileformats.archiveteam.org/wiki/X3D</link>
+							<tag>X3D page from Let&apos;s Solve the File Format Problem!</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://edutechwiki.unige.ch/en/X3DV</link>
+							<tag>Entry for X3D on Edutech wiki</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Tools for providing interactive access to X3D models via web browsers without special plug-ins or stand-alone applications.  In early 2019, these tools were tagged with &quot;Special mention&quot; on the Web3D Consortium <a href="http://www.web3d.org/x3d/content/examples/X3dResources.html">X3D Resources</a> page.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.x3dom.org/</link>
+							<tag>X3DOM: Instant 3D the HTML Way</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.x3dom.org/examples/</link>
+							<tag>Examples and Demos using X3DOM</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://examples.x3dom.org/example/x3dom_objectAndText.xhtml</link>
+							<tag>Example of object displayed over HTML text using X3DOM mechanism</tag>
+							<comment>Simple example of X3D model embedded in XHTML page that will work with browsers that support OpenGL.  Uses X3DOM.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://create3000.de/x_ite/getting-started/</link>
+							<tag>X-ITE X3D Browser</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://create3000.de/users-guide/tutorials/</link>
+							<tag>X-ITE tutorials for Titania editor with examples </tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.web3d.org/x3d/content/examples/HelloWorldX_ITE.html</link>
+							<tag>HelloWorld.x3d example displayed through X-ITE X3D Browser within HTML5 page</tag>
+							<comment>Simple example of X3D model embedded in HTML5 page. As of November 2018, X_ITE runs in fresh installs of Google Chrome, Chromium, Firefox, Microsoft Edge, Opera, and Safari. X_ITE uses functions from JavaScript 6.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>X3D is supported by a number of 3D players.  The first link below is to a comparison table that indicates whether  various components/profiles/encodings are supported.  Other links are for player websites that suggest active support or development.  Most provide some indication of components, etc. that they support.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.web3d.org/wiki/index.php/Player_support_for_X3D_components</link>
+							<tag>Player support for X3D components | from Web3D Consortium</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.bitmanagement.de/en/products/interactive-3d-clients/bs-contact</link>
+							<tag>BS Contact | from Bitmanagement Software GmbH. (for Windows, Linux, Mac, mobile)</tag>
+							<comment>Commercial player with several extended versions, e.g., BS Contact Geo and BS Contact Stereo.  SDK also available.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.octagavs.com/</link>
+							<tag>Octaga Player (for Windows)</tag>
+							<comment>Commercial, with free limited version for non-commercial use.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.h3dapi.org/</link>
+							<tag>H3DViewer and H3DAPI  (for Windows, Linux, Mac OSX)</tag>
+							<comment>Open source.  Also supports H3D extension to X3D.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.instantreality.org/</link>
+							<tag>InstantPlayer (for Windows, Linux, Mac OSX)</tag>
+							<comment>Follow the &quot;dev&quot; link for documentation.  Free download of player.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://freewrl.sourceforge.net/download.html</link>
+							<tag>FreeWRL (open source viewer for Windows, Linux, OSX and Android)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://savage.nps.edu/Savage/developers.html#Xj3D</link>
+							<tag>Xj3D (open-source Java viewer and application codebase)</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Tools for creating or editing X3D models include:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://savage.nps.edu/X3D-Edit/</link>
+							<tag>X3D-Edit</tag>
+							<comment>Authoring tool for creating, editing, import/export, validation, and viewing of X3D scenes. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.mathworks.com/help/sl3d/x3d-extensible-3d-graphics.html</link>
+							<tag>X3D Support in Simulink 3D Animation</tag>
+							<comment>Support is for XML and Classic VRML encodings and the Immersive profile</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://alternativeto.net/software/meshlab/</link>
+							<tag>Information about MeshLab (from AlternativeTo)</tag>
+							<comment>Lists formats that can be imported and exported by Meshlab, a widely used open source software for processing and editing 3D triangular meshes. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://help.autodesk.com/view/MAYAUL/2019/ENU/?guid=__developer_Polygon_API_Poly_exporter_plug_ins_html</link>
+							<tag>MAYA computer animation software</tag>
+							<comment>A product of Autodesk.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources that illustrate a variety of applications that employ the X3D format.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.web3d.org/sites/default/files/attachment/node/2235/edit/IEEEVR2018_VirginiaTechWeb3dQuickstart2.reduced.pdf</link>
+							<tag>Web3D Quickstart 2 | slideshow from March 2018 by Nicholas Polys (as Web3D Consortium President)</tag>
+							<comment>Provides many examples of tools and applications.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.web3d.org/sites/default/files/attachment/node/2184/edit/SamsungSIGGRAPH2017Web3dBOF.v1.pdf</link>
+							<tag>Moving Web 3d
+Content into GearVR | presentation from August 2017</tag>
+							<comment>Describes current support for X3D in software for GearVR headsets. Includes graphs that indicate that the Samsung GearVR was the market leader in virtual reality headsets in 2016.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.gearvrf.org/blog/2017_4_17_x3d/</link>
+							<tag>GVRf and the X3D file format | for Samsung GearVR Framework | tutorial blog post from April 2017</tag>
+							<comment>Has simple example of X3D file and how to use it in GearVR, using the GVRf development environment in Android Studio.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.h3dapi.org/modules/mediawiki/index.php/MedX3D</link>
+							<tag>MedX3D | implementation of Volume Rendering component of X3D</tag>
+							<comment>For visual rendering of volume data, such as medical data from CT/MRI-scans.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://3dprint.nih.gov/create/tools-info</link>
+							<tag>NIH 3DPrintExchange</tag>
+							<comment>The NIH 3D Print Exchange provides models in formats that are readily compatible with 3D printers, and offers a unique set of tools to create and share 3D-printable models related to biomedical science. X3D is used in the interactive 3D viewer.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://help.autodesk.com/view/NETF/2019/ENU/?guid=GUID-096C44F2-0C79-4E5F-8DDF-10F4CD380F56</link>
+							<tag>File format support in NetFabb 2019</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://castle-engine.io/features.php#section_data</link>
+							<tag>3D and 2D formats supported in the CastleGame engine for building interactive games</tag>
+							<comment>X3D is the main format for scenes in this software.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.cityserver3d.de/en/features/details/</link>
+							<tag>CityServer3D platform | Features</tag>
+							<comment>Lists formats supported for import and export, including X3D.  CityServer3D is a platform to support city planning, developed by Fraunhofer IGD.  </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://ieeevr.org/2018/</link>
+							<tag>IEEE Virtual Reality conference (2018)</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources that list X3D as a preferred format for certain categories of content:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.archives.gov/records-mgmt/policy/transfer-guidance-tables.html</link>
+							<tag>U.S. National Archives (NARA) Records Management Regulations, Policy, and Guidance: Appendix A.  Tables of File Formats</tag>
+							<comment>As of January 2019, lists X3D as a preferred format for computer-aided design (CAD)</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.naa.gov.au/information-management/managing-information-and-records/preserving/long-term-file-formats.aspx</link>
+							<tag>National Archives of Australia: Long-term File Formats</tag>
+							<comment>As of January 2019, lists X3D as a format for computer-aided design to be assessed.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://wiki.harvard.edu/confluence/display/digitalpreservation/Formats+Supported+by+the+DRS</link>
+							<tag>Harvard University Libraries | Formats Supported by the DRS (Digital Repository Service)</tag>
+							<comment>As of January 2019, lists X3D as a preferred format for 3D CAD Drawings, with the XML encoding preferred over Classic VRML and CB encodings</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://wiki.harvard.edu/confluence/display/digitalpreservation/CAD+Formats</link>
+							<tag>Harvard University Libraries | Format Assessments: CAD Formats</tag>
+							<comment>Includes an assessment of X3D.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.gov.uk/government/publications/implementation-of-the-trade-mark-directive-2015/implementation-of-the-eu-trade-mark-directive-2015</link>
+							<tag>UK Implementation of the EU Trade Mark Directive 2015</tag>
+							<comment>Lists X3D among formats that can be used in trademark registration applications.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Some resources that discuss the market for formats for 3D models or compare such formats:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.computer.org/csdl/mags/co/2005/08/r8023.pdf</link>
+							<tag>Making 3D Technology Universal (2005)</tag>
+							<comment>By David Geer.  Discusses the challenges to designing a 3D model format that works well for all domains and contexts.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.archives.gov/files/applied-research/ncsa/8-an-overview-of-3d-data-content-file-formats-and-viewers.pdf</link>
+							<tag>An Overview of 3D Data Content, File Formats and Viewers (2008)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://all3dp.com/3d-file-format-3d-files-3d-printer-3d-cad-vrml-stl-obj/</link>
+							<tag>8 Most Common 3D File Formats of 2018 | All3DP Magazine</tag>
+							<comment>Includes VRML/X3D.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources related to new X3D encodings under development:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.web3d.org/wiki/index.php/X3D_JSON_Encoding</link>
+							<tag>X3D JSON Encoding: Working Group Notes</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.web3d.org/specifications/java/references/BrutzmanWalmsleyCarlsonJsonEncodingForX3dJuly2016.pdf</link>
+							<tag>A JSON Encoding for X3D (July 2016) | by Roy Walmsley, Don Brutzman, and John Carlson.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.w3.org/TR/exi/</link>
+							<tag>Efficient XML Interchange (EXI) Format 1.0 (Second Edition).  February 2014</tag>
+							<comment>W3C Recommendation 11 February 2014</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.w3.org/TR/exi-for-json/</link>
+							<tag>EXI for JSON (EXI4JSON).  July 2018. [W3C Working Group Note 26]</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.web3d.org/wiki/index.php/X3D_Binary_Compression_Capabilities_and_Plans</link>
+							<tag>X3D Binary Compression Capabilities and Plans</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.web3d.org/sites/default/files/page/X3D%20Compressed%20Binary%20Encoding%20Activity/X3dEfficientBinaryEncodingQuicklookSummary2015August23.pdf</link>
+							<tag>X3D Efficient Binary Encoding: Progress Summary (August 2015)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://x3dom.org/src/files/Web3d2014_SRC.pdf</link>
+							<tag>SRC - A Streamable Format for Generalized Web-based 3D Data Transmission (2014)</tag>
+							<comment>From Fraunhofer IGD.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The X3D format is a successor format to the Virtual Reality Modeling Language (VRML).  Links to specifications for versions of VRML and other resources related to VRML are provided below:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/VRML</link>
+							<tag>Wikipedia entry for VRML (Virtual Reality Modeling Language)</tag>
+							<comment>Predecessor of X3D</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.martinreddy.net/gfx/3d/VRML.spec</link>
+							<tag>VRML Version 1.0 Specification (May 1995)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.graphics.stanford.edu/courses/cs248-98-fall/Assignments/Assignment3/VRML2_Specification/spec/index.html</link>
+							<tag>2.0 specification (August 1996)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.iso.org/standard/25508.html</link>
+							<tag>ISO catalog record for ISO/IEC 14772-1:1997 Information technology -- Computer graphics and image processing -- The Virtual Reality Modeling Language -- Part 1: Functional specification and UTF-8 encoding</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://standards.iso.org/ittf/PubliclyAvailableStandards/c025508_ISO_IEC_14772-1_1997.zip</link>
+							<tag>ISO/IEC 14772-1:1997  Information technology -- Computer graphics and image processing -- The Virtual Reality Modeling Language -- Part 1: Functional specification and UTF-8 encoding</tag>
+							<comment>Downloadable copy of ISO/IEC 14772-1:1997</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/19981212022036/http://www.vrml.org/</link>
+							<tag>Home page for VRML.org announcing change to Web3D.org (harvested by Internet Archive in December 1998)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.mitra.biz/press/199609_netscapeworld.htm</link>
+							<tag>VRML 2.0 Update: What are the issues, and where do we go from here? by Adrian Scott (September 1996)</tag>
+							<comment>Originally published in Netscape World.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.siggraph.org//~rhyne/carto/3D/3D-geovrml.html</link>
+							<tag>A Commentary on GeoVRML: A Tool for 3D Representation of GeoReferenced Data on the Web (1999)</tag>
+							<comment>Provides useful context for transition of the VRML Consortium to the Web3D Consortium.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.xml.com/pub/a/2003/08/06/x3d.html</link>
+							<tag>Extensible 3D: XML Meets VRML | from XML.com (August 6, 2003)</tag>
+							<comment>Provides good background on practical shortcomings of VRML that X3D was intended to address.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://people.cs.vt.edu/~npolys/X3DforInfoViz.htm</link>
+							<tag>Information Visualization with VRML and X3D - 2003 | by Nicholas Polys</tag>
+							<comment>Explains technology concepts in the VRML/X3D context in 2003.  Polys is a co-author of the X3D standard.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The UK National Archives has records in PRONOM for chronological versions of the XML encoding for X3D.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/579</link>
+							<tag>PRONOM entry for fmt/579 -- X3D 3.0 (XML encoding)</tag>
+							<comment> Information in PRONOM from UK National Archives about X3D 3.0 (XML encoding). PUID: fmt/579</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/580</link>
+							<tag>PRONOM entry for fmt/580 -- X3D 3.1 (XML encoding)</tag>
+							<comment> Information in PRONOM from UK National Archives about X3D 3.1 (XML encoding). PUID: fmt/579</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/581</link>
+							<tag>PRONOM entry for fmt/581 -- X3D 3.2 (XML encoding)</tag>
+							<comment> Information in PRONOM from UK National Archives about X3D 3.2 (XML encoding). PUID: fmt/581</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/582</link>
+							<tag>PRONOM entry for fmt/582 -- X3D 3.3 (XML encoding)</tag>
+							<comment> Information in PRONOM from UK National Archives about X3D 3.3 (XML encoding). PUID: fmt/582</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q930428</link>
+					<tag>Wikidata entry for Q930428</tag>
+					<comment> Information in Wikidata about X3D, XML-based 3D vector document format.  Wikidata Title ID: Q930428</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>IANA registrations of Internet Media (aka MIME) Types for X3D encodings</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.iana.org/assignments/media-types/model/x3d+xml</link>
+							<comment>For X3D, XML encoding</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.iana.org/assignments/media-types/model/x3d-vrml</link>
+							<comment>For X3D, Classic VRML encoding.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.iana.org/assignments/media-types/model/x3d+fastinfoset</link>
+							<comment>For X3D, Compressed Binary encoding.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

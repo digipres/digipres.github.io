@@ -16,9 +16,9 @@
 		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
 		<fdd:updates>
-			<fdd:date>2010-09-09</fdd:date>
+			<fdd:date>2019-03-01</fdd:date>
 		</fdd:updates>
-		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
 	</fdd:properties>
 	<fdd:identificationAndDescription>
 		<fdd:fullName>PDF (Portable Document Format), version 1.7, ExtensionLevel 3</fdd:fullName>
@@ -80,7 +80,7 @@
 			<p>ISO 32000-1:2008. Document management -- Portable document format -- Part 1: PDF 1.7.  An equivalent document is PDF Reference, Sixth Edition, Version 1.7. November 2006.  At <a href="http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/pdf_reference_1-7.pdf">http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/pdf_reference_1-7.pdf</a>
 			</p>
 		</fdd:documentation>
-		<fdd:adoption>TBD</fdd:adoption>
+		<fdd:adoption>The compilers of this resource have not been able to determine whether this extension to PDF 1.7 (ISO 32000-1) has been used extensively in practice.  This extension introduced an approved method for incorporating geospatial data into a PDF.  However, many geospatial PDFs do not declare ExtensionLevel 3 as prescribed in the published extension.  <a href="../contact_format.shtml">Comments welcome</a>.</fdd:adoption>
 		<fdd:licensingAndPatents>See <fddLink id="fdd000277">PDF_1_7</fddLink>.</fdd:licensingAndPatents>
 		<fdd:transparency>See <fddLink id="fdd000030">PDF</fddLink>.</fdd:transparency>
 		<fdd:selfDocumentation>Version 1.4 and later of PDF can include XMP metadata packages.  XMP is Adobe's framework for including arbitrary blocks of metadata, using a representation in RDF.</fdd:selfDocumentation>
@@ -104,9 +104,40 @@
 				</fdd:sigValues>
 				<fdd:note>See <fddLink id="fdd000030">PDF</fddLink>.</fdd:note>
 			</fdd:filenameExtension>
+			<fdd:other>
+				<fdd:tag>Indicator for profile, level, version, etc.</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>
+						<p>Extensions to the PDF format used in a document are identified in the <i>catalog dictionary</i>, located by means of the Root entry in the trailer of the PDF file.  The use of ExtensionLevel 3 to PDF 1.7 would be indicated by a catalog dictionary containing the following segment:</p>
+						<p>%PDF 1.7<br/>&lt;&lt;/Type /Catalog<br/>
+    /Extensions<br/>
+&lt;&lt;/ADBE<br/>
+               &lt;&lt;/BaseVersion /1.7/ExtensionLevel 3&gt;&gt;<br/>
+           &gt;&gt;<br/>
+&gt;&gt;
+</p>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+					<fdd:note>PRONOM does not have separate PUIDs for Adobe&apos;s published extensions to <fddLink id="fdd000277">PDF 1.7</fddLink>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+					<fdd:note>Wikidata does not have separate Title IDs for Adobe&apos;s published extensions to <fddLink id="fdd000277">PDF 1.7</fddLink>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
+		<fdd:general>For information about the mechanism for extending the PDF standard, see 7.12.2 Developer Extensions Dictionary and Annex E in <a href="http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/PDF32000_2008.pdf">ISO 32000-1:2018</a>.</fdd:general>
 		<fdd:history>PDF 1.7 was released in November 2006 in association with version 8 of Acrobat and Adobe Reader.  In January 2007, Adobe announced the intention to pursue standardization through TC 171/SC 2 of ISO.  This process led to publication as ISO 32000-1 in July 2008.  With the release of Acrobat 9.0 in June 2008, Adobe published the specification of ExtensionLevel 3.</fdd:history>
 	</fdd:notes>
 	<fdd:formatSpecifications>
@@ -120,7 +151,7 @@
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlGroup>
-					<fdd:intro>Adobe Systems Incorporated provides access both to its original PDF Reference 1.7 and the variant document that was approved as ISO 32000-1:2008.  The latter was re-organized and re-formatted in line with ISO guidelines.  The number of functional differences are assumed to be small, since Adobe describes the specifications as &quot;matching.&quot;</fdd:intro>
+					<fdd:intro>Adobe Systems Incorporated provides access both to its original PDF Reference for Version 1.7 and the variant document that was approved as ISO 32000-1:2008.  The latter was re-organized and re-formatted in line with ISO guidelines.  The number of functional differences are assumed to be small, since Adobe describes the specifications as &quot;matching.&quot;</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
 							<link>http://www.adobe.com/content/dam/Adobe/en/devnet/acrobat/pdfs/PDF32000_2008.pdf</link>
@@ -145,7 +176,7 @@
 		<fdd:citations>
 			<fdd:citation>
 				<fdd:specReference>
-					<specRefDetail rel="snum">ISO 32000-1</specRefDetail>:<specRefDetail rel="date">2008</specRefDetail>. <specRefDetail rel="stitle">Document management -- Portable document format -- Part 1: PDF 1.7</specRefDetail>.  <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=51502">Available for purchase from ISO</a>
+					<specRefDetail rel="snum">ISO 32000-1</specRefDetail>:<specRefDetail rel="date">2008</specRefDetail>. <specRefDetail rel="stitle">Document management -- Portable document format -- Part 1: PDF 1.7</specRefDetail>.  <a href="https://www.iso.org/standard/51502.html">Available for purchase from ISO</a>
 				</fdd:specReference>
 			</fdd:citation>
 		</fdd:citations>
@@ -154,9 +185,20 @@
 		<fdd:urls>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://en.wikipedia.org/wiki/Portable_Document_Format</link>
-					<tag>Portable Document Format</tag>
+					<link>https://en.wikipedia.org/wiki/PDF</link>
+					<tag>Wikipedia entry for PDF</tag>
 				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/History_of_the_Portable_Document_Format_(PDF)</link>
+					<tag>Wikipedia entry for History of the Portable Document Format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000277">PDF_1_7</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
 			</fdd:url>
 		</fdd:urls>
 	</fdd:usefulReferences>
