@@ -1,56 +1,72 @@
-<?xml version="1.0" encoding="utf-8"?>
-<PRONOM-Report xmlns="http://pronom.nationalarchives.gov.uk">
-  <report_format_detail>
-    <FileFormat>
-      <FormatID>378</FormatID>
-      <FormatName>WordStar for MS-DOS Document</FormatName>
-      <FormatVersion>4.0</FormatVersion>
-      <FormatAliases>
-      </FormatAliases>
-      <FormatFamilies>
-      </FormatFamilies>
-      <FormatTypes>Word Processor</FormatTypes>
-      <FormatDisclosure>
-      </FormatDisclosure>
-      <FormatDescription>WordStar is a Word Processor application originally published by MicroPro. WS4 files currently cannot by identified though a PRONOM identification signature. 
+<html>
+    <head>
+        <title>Runtime Error</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
 
-On the surface it's a plain text file, however the format 'shifts' the last byte of each word. Effectively it is 'flipping' the first bit of the ASCII character from 0 to 1. so a lower case 'r' (hex value 0x72) becomes 'ò' (hex value 0xF2); lower case 'd' (hex 0x64) becomes 'ä' (hex 0xE4) and so on. 
+    <body bgcolor="white">
 
-It should be possible to write a simple decoder application for WS4 files, however note that the conjecture above is based on observation of a limited pool of files, and there may be additional subtleties yet to be encountered and understood. Please contact the PRONOM team if you have any further information about this format.</FormatDescription>
-      <BinaryFileFormat>Text</BinaryFileFormat>
-      <ByteOrders>
-      </ByteOrders>
-      <ReleaseDate>
-      </ReleaseDate>
-      <WithdrawnDate>
-      </WithdrawnDate>
-      <ProvenanceSourceID>1</ProvenanceSourceID>
-      <ProvenanceName>Digital Preservation Department / The National Archives</ProvenanceName>
-      <ProvenanceSourceDate>02 Aug 2005</ProvenanceSourceDate>
-      <ProvenanceDescription>
-      </ProvenanceDescription>
-      <LastUpdatedDate>02 Aug 2005</LastUpdatedDate>
-      <FormatNote>
-      </FormatNote>
-      <FormatRisk>
-      </FormatRisk>
-      <TechnicalEnvironment>
-      </TechnicalEnvironment>
-      <FileFormatIdentifier>
-        <Identifier>x-fmt/260</Identifier>
-        <IdentifierType>PUID</IdentifierType>
-      </FileFormatIdentifier>
-      <ExternalSignature>
-        <ExternalSignatureID>365</ExternalSignatureID>
-        <Signature>ws</Signature>
-        <SignatureType>File extension</SignatureType>
-      </ExternalSignature>
-      <ExternalSignature>
-        <ExternalSignatureID>530</ExternalSignatureID>
-        <Signature>ws4</Signature>
-        <SignatureType>File extension</SignatureType>
-      </ExternalSignature>
-    </FileFormat>
-    <SearchCriteria>Criteria</SearchCriteria>
-  </report_format_detail>
-</PRONOM-Report>
+            <span><H1>Server Error in '/pronom' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Runtime Error</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An application error occurred on the server. The current custom error settings for this application prevent the details of the application error from being viewed remotely (for security reasons). It could, however, be viewed by browsers running on the local server machine.
+            <br><br>
+
+            <b>Details:</b> To enable the details of this specific error message to be viewable on remote machines, please create a &lt;customErrors&gt; tag within a &quot;web.config&quot; configuration file located in the root directory of the current web application. This &lt;customErrors&gt; tag should then have its &quot;mode&quot; attribute set to &quot;Off&quot;.<br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+&lt;!-- Web.Config Configuration File --&gt;
+
+&lt;configuration&gt;
+    &lt;system.web&gt;
+        &lt;customErrors mode=&quot;Off&quot;/&gt;
+    &lt;/system.web&gt;
+&lt;/configuration&gt;</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b>Notes:</b> The current error page you are seeing can be replaced by a custom error page by modifying the &quot;defaultRedirect&quot; attribute of the application's &lt;customErrors&gt; configuration tag to point to a custom error page URL.<br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+&lt;!-- Web.Config Configuration File --&gt;
+
+&lt;configuration&gt;
+    &lt;system.web&gt;
+        &lt;customErrors mode=&quot;RemoteOnly&quot; defaultRedirect=&quot;mycustompage.htm&quot;/&gt;
+    &lt;/system.web&gt;
+&lt;/configuration&gt;</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+    </body>
+</html>
