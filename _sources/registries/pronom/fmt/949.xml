@@ -1,72 +1,90 @@
-<html>
-    <head>
-        <title>Runtime Error</title>
-        <style>
-         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
-         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
-         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
-         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
-         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
-         pre {font-family:"Lucida Console";font-size: .9em}
-         .marker {font-weight: bold; color: black;text-decoration: none;}
-         .version {color: gray;}
-         .error {margin-bottom: 10px;}
-         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
-        </style>
-    </head>
+<?xml version="1.0" encoding="utf-8"?>
+<PRONOM-Report xmlns="http://pronom.nationalarchives.gov.uk">
+  <report_format_detail>
+    <FileFormat>
+      <FormatID>1754</FormatID>
+      <FormatName>WordPerfect</FormatName>
+      <FormatVersion>4.0/4.1/4.2</FormatVersion>
+      <FormatAliases>
+      </FormatAliases>
+      <FormatFamilies>
+      </FormatFamilies>
+      <FormatTypes>Word Processor</FormatTypes>
+      <FormatDisclosure>
+      </FormatDisclosure>
+      <FormatDescription>WordPerfect is a Word Processing application currently owned by Corel Corporation. The original version of WordPerfect 4.0 was released in 1984. 4.1 followed in 1985 and 4.2 
+in 1986, with versions released on various platforms up to 1988 when version 5.0 was originally released for DOS.
 
-    <body bgcolor="white">
+Only the technical specification for version 4.2 is currently known to have been made public, originally via the PC Developer's Toolkit diskette, and this can be found 
+preserved here: http://www.columbia.edu/~em36/wpdos/wp42ff.txt.
 
-            <span><H1>Server Error in '/pronom' Application.<hr width=100% size=1 color=silver></H1>
+The file format for the WP4.2 version contains only the document body with special function codes, and the format lacks a header or mandatory elements that can be used by 
+PRONOM for automatic identification. Each function code represents a text function, such as bold or underline, so with reference to the specification it should be possible to 
+parse the file to understand the intended layout. It may be the case that the file format for 4.0 and 4.1 is functionally identical or very similar to version 4.2.
 
-            <h2> <i>Runtime Error</i> </h2></span>
+A free C++ library called libwpd is available: http://libwpd.sourceforge.net/ and it includes the ability to parse WP4.2 files. This library is known to have been implemented 
+in LibreOffice, Koffice, and AbiWord among others, so these applications can be used to open and render WordPerfect 4.2 files, and potentially WP4.0 and WP4.1.
 
-            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
-
-            <b> Description: </b>An application error occurred on the server. The current custom error settings for this application prevent the details of the application error from being viewed remotely (for security reasons). It could, however, be viewed by browsers running on the local server machine.
-            <br><br>
-
-            <b>Details:</b> To enable the details of this specific error message to be viewable on remote machines, please create a &lt;customErrors&gt; tag within a &quot;web.config&quot; configuration file located in the root directory of the current web application. This &lt;customErrors&gt; tag should then have its &quot;mode&quot; attribute set to &quot;Off&quot;.<br><br>
-
-            <table width=100% bgcolor="#ffffcc">
-               <tr>
-                  <td>
-                      <code><pre>
-
-&lt;!-- Web.Config Configuration File --&gt;
-
-&lt;configuration&gt;
-    &lt;system.web&gt;
-        &lt;customErrors mode=&quot;Off&quot;/&gt;
-    &lt;/system.web&gt;
-&lt;/configuration&gt;</pre></code>
-
-                  </td>
-               </tr>
-            </table>
-
-            <br>
-
-            <b>Notes:</b> The current error page you are seeing can be replaced by a custom error page by modifying the &quot;defaultRedirect&quot; attribute of the application's &lt;customErrors&gt; configuration tag to point to a custom error page URL.<br><br>
-
-            <table width=100% bgcolor="#ffffcc">
-               <tr>
-                  <td>
-                      <code><pre>
-
-&lt;!-- Web.Config Configuration File --&gt;
-
-&lt;configuration&gt;
-    &lt;system.web&gt;
-        &lt;customErrors mode=&quot;RemoteOnly&quot; defaultRedirect=&quot;mycustompage.htm&quot;/&gt;
-    &lt;/system.web&gt;
-&lt;/configuration&gt;</pre></code>
-
-                  </td>
-               </tr>
-            </table>
-
-            <br>
-
-    </body>
-</html>
+Due to the age of the format, WP4.x files may lack a format extension, however .wp4 and .wpd are known to be associated with the format.</FormatDescription>
+      <BinaryFileFormat>
+      </BinaryFileFormat>
+      <ByteOrders>
+      </ByteOrders>
+      <ReleaseDate>
+      </ReleaseDate>
+      <WithdrawnDate>
+      </WithdrawnDate>
+      <ProvenanceSourceID>1</ProvenanceSourceID>
+      <ProvenanceName>Digital Preservation Department / The National Archives</ProvenanceName>
+      <ProvenanceSourceDate>21 Jul 2016</ProvenanceSourceDate>
+      <ProvenanceDescription>
+      </ProvenanceDescription>
+      <LastUpdatedDate>21 Jul 2016</LastUpdatedDate>
+      <FormatNote>
+      </FormatNote>
+      <FormatRisk>
+      </FormatRisk>
+      <TechnicalEnvironment>
+      </TechnicalEnvironment>
+      <FileFormatIdentifier>
+        <Identifier>application/vnd.wordperfect</Identifier>
+        <IdentifierType>MIME</IdentifierType>
+      </FileFormatIdentifier>
+      <FileFormatIdentifier>
+        <Identifier>fmt/949</Identifier>
+        <IdentifierType>PUID</IdentifierType>
+      </FileFormatIdentifier>
+      <Developers>
+        <DeveloperID>35</DeveloperID>
+        <DeveloperName>
+        </DeveloperName>
+        <OrganisationName>Corel Corporation</OrganisationName>
+        <DeveloperCompoundName>Corel Corporation</DeveloperCompoundName>
+      </Developers>
+      <Support>
+        <SupportID>35</SupportID>
+        <SupportName>
+        </SupportName>
+        <OrganisationName>Corel Corporation</OrganisationName>
+        <SupportCompoundName>Corel Corporation</SupportCompoundName>
+      </Support>
+      <ExternalSignature>
+        <ExternalSignatureID>1911</ExternalSignatureID>
+        <Signature>wp4</Signature>
+        <SignatureType>File extension</SignatureType>
+      </ExternalSignature>
+      <ExternalSignature>
+        <ExternalSignatureID>1912</ExternalSignatureID>
+        <Signature>wpd</Signature>
+        <SignatureType>File extension</SignatureType>
+      </ExternalSignature>
+      <RelatedFormat>
+        <RelationshipType>Is previous version of</RelationshipType>
+        <RelatedFormatID>736</RelatedFormatID>
+        <RelatedFormatName>WordPerfect for MS-DOS Document</RelatedFormatName>
+        <RelatedFormatVersion>5.0</RelatedFormatVersion>
+      </RelatedFormat>
+    </FileFormat>
+    <SearchCriteria>Criteria</SearchCriteria>
+  </report_format_detail>
+</PRONOM-Report>
