@@ -13,7 +13,7 @@
 		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
 		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2016-12-15</fdd:date>
+			<fdd:date>2019-03-29</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -25,13 +25,14 @@
 			<fdd:keyword>document formats</fdd:keyword>
 		</fdd:keywords>
 		<fdd:description>
-			<p>A PDF compliant with the ISO 14289-1 (aka PDF/UA) specification is a constrained form of Adobe PDF (as defined in ISO 32000-1) intended to ensure accessibility and support for assistive technology used by a person with a disability.  The UA acronym stands for Universal Accessibility; however, this phrase does not occur in ISO 14289-1.</p>
+			<p>A PDF compliant with the <a href="https://www.iso.org/standard/64599.html">ISO 14289-1</a> (aka PDF/UA-1) specification is a constrained form of Adobe <fddLink id="fdd000277">PDF 1.7</fddLink> (as defined in ISO 32000-1) intended to ensure accessibility and support for assistive technology, such as <a href="https://www.loc.gov/nls/resources/blindness-and-vision-impairment/devices-aids/assistive-technology-products-information-access/">screen readers</a>.  The UA acronym stands for Universal Accessibility; however, this phrase does not occur in ISO 14289-1.</p>
 			<p>Requirements for PDF/UA compliance are consistent with the <a href="http://www.w3.org/TR/WCAG20/">Web Content Accessibility Guidelines (WCAG) 2.0</a>, a W3C Recommendation from 11 December 2008.  Among the constraints on a PDF for PDF/UA compliance are the following:</p>
 			<ul>
-				<li>All real content shall be tagged. Artifacts shall not be tagged.</li>
+				<li>All &quot;real content&quot; shall be tagged. Artifacts shall be marked as such and shall not be tagged in the structure tree.  The real content of a document comprises objects representing the intent of the document’s author.
+ In contrast, artifacts are objects without semantic significance, often generated in the course of pagination or layout.</li>
 				<li>Content shall be marked in the structure tree with semantically appropriate tags in a logical reading order.  The standard imposes detailed usage requirements for headings, tables, and lists to support navigation through assistive technology.</li>
-				<li>All structure types in use shall be standard or mapped to standard.</li>
-				<li>Graphics objects (images) that are real content shall be given a Figure tag that includes alternative or replacement text; captions accompanying figures should be tagged as captions.</li>
+				<li>All structure types in use shall be <i>standard</i> (as defined in ISO 32000-1:2008, 14.8.4) or mapped to standard structure types, using a <i>role map</i> in the structure tree root (as defined in ISO 32000-1:2008, 14.7.3).</li>
+				<li>Graphics objects (images) that are real content shall be given a Figure tag that includes alternative or replacement text; captions accompanying figures should be tagged as Captions.</li>
 				<li>Information shall not be conveyed by contrast, colour, format or layout, unless the content is tagged to reflect all intended meaning.</li>
 				<li>All information conveyed with sound should also be available without sound.</li>
 				<li>Fonts must be embedded.</li>
@@ -64,30 +65,31 @@
 					<fdd:shortName>PDF/A-2a</fdd:shortName>
 					<fdd:titleName>PDF for Long-term Preservation, Use of ISO 32000-1 (PDF 1.7), Level A Conformance</fdd:titleName>
 				</fdd:relatedTo>
-				<fdd:comment>In an October 2010 presentation on PDF/UA, members of the PDF/UA Working Group stated that PDF/UA &quot;implies eligibility for PDF/A Conformance Level &apos;a&apos;.&quot;  However, the published PDF/UA standard does not prohibit encryption, which PDF/A does.</fdd:comment>
+				<fdd:comment>In an October 2010 presentation on PDF/UA, members of the PDF/UA Working Group stated that PDF/UA &quot;implies eligibility for PDF/A Conformance Level &apos;a&apos;.&quot;  However, the PDF/UA-1 standard does not prohibit encryption, which PDF/A does.</fdd:comment>
 			</fdd:relationship>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
-		<fdd:experience>None.</fdd:experience>
-		<fdd:preference>Since an unencrypted PDF document compliant with PDF/UA may also comply with requirements for PDF/A, files that conform to PDF/UA in addition to PDF/A are considered a preferred format for page-oriented content by the Library of Congress.  See <fddLink id="fdd000318">PDF/A</fddLink>.
-<p>The Library of Congress Recommended Formats Statement (RFS) includes PDF/UA as a preferred format for <a href="https://www.loc.gov/preservation/resources/rfs/textmus.html">textual works in digital form</a>, <a href="https://www.loc.gov/preservation/resources/rfs/textmus.html">electronic serials</a>, <a href="https://www.loc.gov/preservation/resources/rfs/textmus.html">digital musical compositions</a>, and
-<a href="https://www.loc.gov/preservation/resources/rfs/audio.htm">accompanying image/text files for digital audio</a>. The RFS also includes PDF/UA as an acceptable format for <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html">other graphic images - digital</a>. </p>
+		<fdd:experience>The Library of Congress provides staff with guidance for creating accessible PDF documents using word-processing software installed on their computers.  The guidance refers to the <a href="https://www.w3.org/TR/WCAG20/">W3C WCAG 2.0 accessibility guidelines</a> and to Section 508 standards (the standard of web accessibility required for websites developed by U.S. government agencies).  For more on Section 508, see Adoption in <a href="#sustainability">Sustainability Factors</a> and <a href="#useful">Useful References</a> below.</fdd:experience>
+		<fdd:preference>Since an unencrypted PDF document compliant with PDF/UA may also comply with requirements for PDF/A, files that conform to PDF/UA in addition to PDF/A are considered a preferred format for page-oriented content by the Library of Congress.  See <fddLink id="fdd000318">PDF/A_family</fddLink>.
+<p>The Library of Congress Recommended Formats Statement (RFS) includes PDF/UA as a preferred format for <a href="https://www.loc.gov/preservation/resources/rfs/textmus.html#digital">textual works in digital form</a>, <a href="https://www.loc.gov/preservation/resources/rfs/textmus.html#electronic">electronic serials</a>, and <a href="https://www.loc.gov/preservation/resources/rfs/textmus.html#digmus">digital musical compositions</a>. The RFS also includes PDF/UA as an acceptable format for <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html#ogdigital">other graphic images - digital</a>.</p>
 		</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>
-			<p>Open standard, published by ISO in July 2012.  Developed by the working group ISO/TC 171 SC2, Document Imaging Applications, Application Issues, for which <a href="http://www.aiim.org/">AIIM</a> (The Association for Information and Image Management) acts as secretariat.</p>
+			<p>Open standard, published by ISO in July 2012.  Developed by working group WG9 of  <a href="https://www.iso.org/committee/53674.html">ISO/TC 171 SC2</a>, Document Imaging Applications, Application Issues. See <fddLink id="fdd000318">PDF/A_family</fddLink> for information about the secretariat for ISO/TC 171 SC2.</p>
 		</fdd:disclosure>
 		<fdd:documentation>
 			<p>
-				<a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=64599">ISO 14289-1:2014. 	Document management applications -- Electronic document file format enhancement for accessibility -- Part 1: Use of ISO 32000-1 (PDF/UA-1)</a>. The standard cannot be used without <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=51502">ISO 32000-1. Document management -- Portable document format -- Part 1: PDF 1.7</a>, which it uses as a normative reference.
-		Also required for understanding of the standard is <a href="http://www.w3.org/TR/WCAG20/">Web Content Accessibility Guidelines (WCAG) 2.0</a>, a W3C Recommendation from 11 December 2008. </p>
+				<a href="https://www.iso.org/standard/51502.html">ISO 32000-1:2008</a>
+				<a href="https://www.iso.org/standard/64599.html">ISO 14289-1:2014</a>. 	Document management applications -- Electronic document file format enhancement for accessibility -- Part 1: Use of ISO 32000-1 (PDF/UA-1). The standard cannot be used without <a href="https://www.iso.org/standard/51502.html">ISO 32000-1:2008</a>. Document management -- Portable document format -- Part 1: PDF 1.7, which it uses as a normative reference.
+		Also required for understanding of the standard is <a href="https://www.w3.org/TR/WCAG20/">Web Content Accessibility Guidelines (WCAG) 2.0</a>, a W3C Recommendation from 11 December 2008. </p>
 		</fdd:documentation>
 		<fdd:adoption>
-			<p>As of July 2012, PDF/UA is a new standard.  Several developers of PDF Readers have committed to providing support, including Adobe, and the open-source <a href="http://www.nvaccess.org/">NVDA</a> Non-Visual Desktop Access screen reader.</p>
-			<p>The extent to which current authoring tools support the creation of PDF/UA documents is unclear as of July 2012.  Authoring tools such as word-processors will have to be upgraded (through new versions or add-on modules) to guide users to create compliant documents.  In May 2012, an <a href="http://blogs.adobe.com/accessibility/2012/05/wcag-2-0-and-pdfua.html">Adobe statement</a> stated, &quot;Adobe fully supports PDF/UA and intends to use and promote it in our PDF authoring tools.&quot;</p>
-			<p>In practice, few PDFs created from scanned pages will comply with PDF/UA requirements, because text derived by optical character recognition must be corrected and tagged according to the document&apos;s logical structure.</p>
+			<p> In May 2012, an <a href="http://blogs.adobe.com/accessibility/2012/05/wcag-2-0-and-pdfua.html">Adobe statement</a> stated, &quot;Adobe fully supports PDF/UA and intends to use and promote it in our PDF authoring tools.&quot;  As of March 2019, Adobe offers a page describing <a href="https://www.adobe.com/accessibility/products.html">accessibility by product</a>; the compilers of this resource were only able to identify direct support for creation of PDF/UA files and checking for compliance with the standard in <a href="https://helpx.adobe.com/acrobat/using/create-verify-pdf-accessibility.html">Acrobat Pro</a>.  For other products, such as <a href="https://www.adobe.com/accessibility/products/indesign.html">InDesign</a>, Adobe provides guidance for creating accessible documents within the product, before exporting a PDF, and suggests using Acrobat Pro for the final compliance steps for exported PDFs.</p>
+			<p>Some software vendors specialize in tools to generate accessible documents, including files complying with PDF/UA, including: <a href="https://www.axes4.com/">axes4</a>; <a href="https://commonlook.com/accessibility-software/">CommonLook</a>; and <a href="https://www.crawfordtech.com/products/document-accessibility">Crawford Technologies</a>.  Other vendors that support generation of PDF/UA files can be found in <a href="http://duff-johnson.com/articles/software-supporting-pdfua/">Software Supporting PDF/UA</a>.</p>
+			<p>Compliance with PDF/UA is sometimes found in requirements applying to governments providing information to the public, often in conjunction with compliance with the more generally applicable WCAG guidelines.  For example, accessibility standards for government agencies in the Executive Branch of the U.S. Government, as revised in 2018, are specified in <a href="https://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-ict-refresh/final-rule/text-of-the-standards-and-guidelines#appendix-a">Section 508 of the Rehabilitation Act: Application and Scoping Requirements</a>.  The Section 508 requirements state that, &quot;Electronic content shall conform to Level A and Level AA Success Criteria and Conformance Requirements in WCAG 2.0,&quot; and require that authoring tools acquired for use within agencies that support export of PDF files must also support export of files compliant with PDF/UA.  The website that provides support to agencies for achieving compliance with Section 508 includes the page <a href="https://www.section508.gov/create/pdfs">Create Accessible PDFs</a>, which links to an associated <a href="https://www.section508.gov/sites/default/files/PDF%20Printable%20Accessibility%20Checklist-AED%20COP.docx">PDF Testing and Remediation Guide</a>.  This guide emphasizes that, &quot;Before converting a Microsoft Office document into a PDF, it is important to first verify the document is as accessible as possible.&quot;</p>
+			<p>PDF/UA was designed with assistive technology in mind, such as the screen readers, <a href="https://www.freedomscientific.com/products/software/jaws/">Job Access With Speech (JAWS)</a>, <a href="https://yourdolphin.com/products/individuals/supernova-magnifier-screen-reader">SuperNova</a>, and the open-source <a href="https://www.nvaccess.org/about-nvda/">NVDA</a> Non-Visual Desktop Access.  However, in a 2018 blog post entitled <a href="https://accessible-digital-documents.com/blog/pdf-accessibility-reading-order/">PDF accessibility and reading order</a>, Ted Page points out that the PDF/UA constraint with respect to reading order is inadequate for the popular <a href="https://www.verywellfamily.com/read-and-write-gold-2162318">Read&amp;Write Gold</a> software (now simply Read&amp;Write).</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>See <fddLink id="fdd000030">PDF</fddLink>.</fdd:licensingAndPatents>
 		<fdd:transparency>
@@ -111,7 +113,7 @@
 				<p>PDF is designed to represent the layout of page-oriented documents.  However, accessibility requirements may result in a PDF/UA document that is not an exact match in layout to a source document to which it corresponds.</p>
 			</fdd:layout>
 			<fdd:mathDiag>
-				<p>TBD.  An image representing a formula must be supplemented with text.</p>
+				<p>An image representing a formula must be supplemented with text.</p>
 			</fdd:mathDiag>
 			<fdd:beyondText>
 				<p>PDF/UA is designed to be usable through assistive technology.  A PDF/UA document should include a document outline that matches the reading order and level of navigational targets, such as headings.  Bookmarks and annotations can be embedded.</p>
@@ -132,7 +134,7 @@
 			</fdd:internetMediaType>
 			<fdd:magicNumbers>
 				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
-				<fdd:note>See <fddLink id="fdd000318">PDF/A</fddLink>.</fdd:note>
+				<fdd:note>See <fddLink id="fdd000030">PDF</fddLink>.</fdd:note>
 			</fdd:magicNumbers>
 			<fdd:other>
 				<fdd:tag>Indicator for profile, level, version, etc.</fdd:tag>
@@ -154,42 +156,43 @@
 					<fdd:sigValues>
 						<fdd:sigValue>See note</fdd:sigValue>
 					</fdd:sigValues>
-					<fdd:note>No PUID as of Feb 2017.</fdd:note>
+					<fdd:note>Pronom has no entry for PDF/UA as of March 2019.</fdd:note>
 				</fdd:values>
 			</fdd:other>
 			<fdd:other>
 				<fdd:tag>Wikidata Title ID</fdd:tag>
 				<fdd:values>
 					<fdd:sigValues>
-						<fdd:sigValue>See note</fdd:sigValue>
+						<fdd:sigValue>Q1606111</fdd:sigValue>
 					</fdd:sigValues>
-					<fdd:note>Q1606111 refers to PDF/UA.
-					</fdd:note>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q1606111">https://www.wikidata.org/wiki/Q1606111</a>.		</fdd:note>
 				</fdd:values>
 			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
 		<fdd:general>
-			<p>The creation of PDF/UA files will impose requirements on authors to create well-structured documents using tags that indicate the logical structure of a document, not only its style.  For example, headings must be tagged as such with explicit indication of the heading level (e.g. H1, H2), rather than implied using font characteristics.  Retrospective conversion of existing PDFs or existing word-processing documents to PDF/UA compliance will not be straightforward or easy to automate.</p>
+			<p>The creation of PDF/UA files imposes requirements on authors to create well-structured documents using tags that indicate the logical structure of a document, not only its style.  For example, headings must be tagged as such with explicit indication of the heading level (e.g. H1, H2), rather than implied using font characteristics.  Retrospective conversion of existing PDFs or existing word-processing documents to PDF/UA compliance is not straightforward or easy to automate.  See <a href="https://www.karlencommunications.com/PDFsurvey.html">PDF and the User Experience Survey</a> from Karlen Communications, in particular the <a href="https://www.karlencommunications.com/adobe/PDF-RemediatorsSurveyResults2017.pdf">PDF Remediators Survey Results 2017</a>.</p>
+			<p>In practice, few PDFs created from scanned historical documents will comply with PDF/UA requirements, because text derived by optical character recognition must be corrected and tagged according to the document&apos;s logical structure.</p>
 		</fdd:general>
 		<fdd:history>
-			<p>A <a href="http://pdf.editme.com/pdfua">working group on PDF/UA</a> was formed by AIIM and Adobe in 2004. The acceptance of PDF as ISO 32000 in 2008 and the publication by WC3 of the second version of its Web Content Accessibility Guidelines led the group to rewrite much of the document, with explicit references to those documents.  In 2009, PDF/UA was accepted as a standardization work item by ISO.   PDF/UA was approved and published as ISO 14289-1 in 2012.</p>
+			<p>A <a href="https://web.archive.org/web/20060614111259/http://pdf.editme.com/pdfua">working group on PDF/UA</a> (link from 2006 via Internet Archive) was formed by AIIM and Adobe in 2004. The acceptance of PDF as ISO 32000 in 2008 and the publication by WC3 of the second version of its Web Content Accessibility Guidelines led the group to rewrite much of the document, with explicit references to those documents.  In 2009, PDF/UA was accepted as a standardization work item by ISO.   PDF/UA was approved and published as ISO 14289-1 in 2012.</p>
 			<p>A new edition, described as a minor update, was published in December 2014.  According to <a href="http://www.pdfa.org/news/pdfua-12014-now-published/">an announcement of PDF/UA-1:2014</a>,  the final text of ISO 14289-1:2014 was converted to conform to PDF/UA and &quot;ISO will use the PDF/UA-conforming ISO standard as a basis for enhancing its own document production processes towards PDF/UA conformance.&quot;</p>
+			<p>A new version of PDF/UA, based on PDF 2.0 is in preparation as of March 2019.</p>
 		</fdd:history>
 	</fdd:notes>
 	<fdd:formatSpecifications>
 		<fdd:urls>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=64599</link>
+					<link>https://www.iso.org/standard/64599.html</link>
 					<tag>ISO 14289-1:2014. Document management applications -- Electronic document file format enhancement for accessibility - Part 1: Use of ISO 32000-1 (PDF/UA)</tag>
 					<comment>A minor update to ISO 14289-1:2012.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=51502</link>
+					<link>https://www.iso.org/standard/51502.html</link>
 					<tag>ISO 32000-1. Document management -- Portable document format -- Part 1: PDF 1.7</tag>
 				</fdd:urlReference>
 			</fdd:url>
@@ -199,55 +202,70 @@
 		<fdd:urls>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.w3.org/TR/WCAG20/</link>
-					<tag>Web Content Accessibility Guidelines (WCAG) 2.0</tag>
-					<comment>W3C Recommendation, 11 December 2008.  PDF/UA is intended to be consistent with these guidelines.</comment>
-				</fdd:urlReference>
-			</fdd:url>
-			<fdd:url>
-				<fdd:urlReference>
-					<link>http://www.w3.org/WAI/intro/wcag.php</link>
+					<link>https://www.w3.org/WAI/standards-guidelines/wcag/</link>
 					<tag>Web Content Accessibility Guidelines (WCAG) Overview
 </tag>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://pdf.editme.com/pdfua</link>
+					<link>https://www.w3.org/TR/WCAG20/</link>
+					<tag>Web Content Accessibility Guidelines (WCAG) 2.0</tag>
+					<comment>W3C Recommendation, 11 December 2008.  PDF/UA is intended to be consistent with these guidelines.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20121225140119/http://pdf.editme.com/pdfua</link>
 					<tag>PDF/UA Working Group website at AIIM.</tag>
+					<comment>AIIM (Association for Intelligent Information Management) was the host organization for the PDF/UA activity from 2004 through 2016. Link from 2012 via Internet Archive.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.aiim.org/Research-and-Publications/standards/committees/PDFUA/WCAG20-Mapping</link>
+					<link>https://www.aiim.org/Global/AIIM_Widgets/Community_Widgets/Achieving_WCAG</link>
 					<tag>Achieving WCAG 2.0 with PDF/UA</tag>
-					<comment>From AIIM.  Published in August 2012.</comment>
+					<comment>Published by AIIM in August 2012.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.aiim.org/Research-and-Publications/standards/committees/PDFUA/Technical-Implementation-Guide</link>
+					<link>https://www.aiim.org/Global/AIIM_Widgets/Community_Widgets/Technical-Implementation-Guide</link>
 					<tag>PDF/UA-1 Technical Implementation Guide: Understanding ISO 14289-1 (PDF/UA-1)</tag>
 					<comment>From AIIM.  Illuminates and provides examples for the terse PDF/UA-1 standard.  Designed for reading alongside the standard. </comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://blogs.adobe.com/accessibility/2012/05/wcag-2-0-and-pdfua.html</link>
-					<tag>WCAG 2.0 and PDF/UA</tag>
-					<comment>May 2012 posting on Adobe Accessibility blog.</comment>
-				</fdd:urlReference>
-			</fdd:url>
-			<fdd:url>
-				<fdd:urlReference>
-					<link>http://blogs.adobe.com/accessibility/category/pdf</link>
-					<tag>Adobe blog postings related to accessibility and PDF.</tag>
+					<link>http://www.appligent.com/files/section508-pdf-center-documentation/ET04_PDFUA_The_Standard_for_Accessible_PDF.pdf</link>
+					<tag>Introducing ISO 14289, PDF/UA (Universal Accessibility)</tag>
+					<comment>Presentation from October, 2010</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
 					<link>http://www.w3.org/WAI/GL/WCAG20-TECHS/pdf.html</link>
-					<tag>PDF Techniques for WCAG 2.0</tag>
+					<tag>PDF Techniques for WCAG 2.0 (2012)</tag>
+					<comment>Part of W3C&apos;s Techniques for WCAG 2.0 (https://www.w3.org/WAI/GL/WCAG20-TECHS/)</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.commonlook.com/WCAG-20-and-PDF-UA-Your-Questions-Answered</link>
+					<tag>WCAG 2.0 and PDF/UA - Your Questions Answered
+</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://blogs.adobe.com/accessibility/2012/05/wcag-2-0-and-pdfua.html</link>
+					<tag>Adobe Accessibility blog | WCAG 2.0 and PDF/UA (May 2012)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://blogs.adobe.com/accessibility/category/pdf</link>
+					<tag>Adobe Accessibility blog | postings related to accessibility and PDF.</tag>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
@@ -264,31 +282,92 @@
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
-				<fdd:urlReference>
-					<link>http://www.commonlook.com/WCAG-20-and-PDF-UA-Your-Questions-Answered</link>
-					<tag>WCAG 2.0 and PDF/UA - Your Questions Answered
+				<fdd:urlGroup>
+					<fdd:intro>A set of  rules, commonly referred to as the <a href="https://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards">Section 508 standards</a>, apply to U. S. government agencies in the Executive Branch.   Section 508 Standards apply to electronic and information technology procured by the federal government (including computer hardware and software, websites, phone systems, and copiers) and to electronic content, particularly to content that is public facing.  The Communications Act guidelines cover telephones, cell phones, pagers, computers with modems, switching equipment and other telecommunications equipment.  Both standards are maintained under the auspices of the <a href="https://www.access-board.gov/">U.S. Access Board</a>, a federal agency that promotes equality for people with disabilities.  The initial Section 508 standards were published in 2000.  Over a period of several years, from 2010 through 2017, the board developed new guidelines and oversaw an extensive process of public review of intermediate drafts, a process often referred to as the ICT Refresh.  The revised standards have been in force since January 2018.  Some related resources include:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-ict-refresh/final-rule/text-of-the-standards-and-guidelines</link>
+							<tag>Section 508 of the Rehabilitation Act: Application and Scoping Requirements.</tag>
+							<comment>As revised in January 2017 to be in force from January 18, 2018.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Section_508_Amendment_to_the_Rehabilitation_Act_of_1973</link>
+							<tag>Wikipedia entry for Section 508 Amendment to the Rehabilitation Act of 1973</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-ict-refresh/background</link>
+							<tag>About the ICT Refresh | Background</tag>
+							<comment>Includes chronology for Section 508 standards.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.section508.gov/create/pdfs</link>
+							<tag>Section508.gov | Create Accessible PDFs</tag>
+							<comment>The Section508.gov website provides guidance to government agencies on how to achieve compliance.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.the508compliantpdf.com/resources/</link>
+							<tag>Resources for creating Section 508 compliant PDFs (2015)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20160410051902/http://commonlook.com/2012-01-pdfua-testimony-us-access-board/</link>
+							<tag>2012 Testimony by NetCentric President to the US Access Board concerning the Refresh to Section 508
 </tag>
+							<comment>Documents progress with standardization of PDF/UA.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Members of the PDF Association have played an active role in the standardization through ISO of PDF and specific subtypes of PDF, including PDF/UA.  See &quot;History of PDF/UA&quot; on the <a href="https://www.pdfa.org/community/pdf-ua-technical-working-group/">PDF/UA Technical Working Group</a> page.  Resources produced by this group (or by its predecessor, known as the PDF/UA Competence Center) include:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.pdfa.org/wp-content/until2016_uploads/2013/08/PDFUA-in-a-Nutshell-PDFUA.pdf</link>
+							<tag>PDF/UA  in a Nutshell (2013)</tag>
+							<comment>Indicates that few software applications incorporated support for PDF/UA compliant files in 2013.  Has tables listing support for individual requirements in PDF/UA-1 in commonly used applications.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.pdfa.org/news/pdfua-12014-now-published/</link>
+							<tag>PDF/UA-1:2014 now published</tag>
+							<comment>Blog post from December 22, 2014.  Lists the most substantive changes in the minor update.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.pdfa.org/community/pdf-ua-technical-working-group/</link>
+							<tag>PDF Association | PDF/UA Technical Working Group</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.pdfa.org/community/pdf-ua-marketing-working-group/</link>
+							<tag>PDF Association | PDF/UA Marketing Working Group</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.karlencommunications.com/PDFsurvey.html</link>
+					<tag>PDF and the User Experience Survey</tag>
+					<comment>Results of surveys related to accessibility in PDFs, including from people who remediate PDFs as part of their work.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.commonlook.com/2012-01-pdfua-testimony-us-access-board</link>
-					<tag>Testimony by NetCentric President to the US Access Board concerning the Refresh to Section 508
-</tag>
+					<link>https://accessible-digital-documents.com/blog/pdf-accessibility-reading-order/</link>
+					<tag>PDF accessibility and reading order | blog post from January 2018</tag>
+					<comment>Points out that the reading order requirement in the PDF/UA-1 spec is not adequate for all assistive technology.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.commonlook.com/HTML-vs-Word-vs-PDF-accessibility-strengths-and-weaknesses</link>
-					<tag>Accessibility comparison -- HTML vs. OOXML (MS Word) vs. PDF vs. PDF/UA</tag>
-					<comment>From CommonLook, tools for accessibility from NetCentric Technologies.</comment>
+					<link>https://commonlook.com/best-pdf-validator-is-free-for-everyone/</link>
+					<tag>CommonLook | The World’s Best PDF Validator Is Now Free for Everyone (2019)</tag>
+					<comment>January 2019 announcement. Tests against Section 508, WCAG 2.0 AA, PDF/UA, and HHS standards.  Available only for Windows.  </comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.pdfa.org/news/pdfua-12014-now-published/</link>
-					<tag>PDF/UA-1:2014 now published</tag>
-					<comment>Blog post from December 22, 2014.  Lists the most substantive changes in the minor update.</comment>
+					<link>https://www.wikidata.org/wiki/Q1606111</link>
+					<tag>Wikidata entry for Q1606111</tag>
+					<comment>Information in WikiData about ISO 14289–1: Use of ISO 32000-1 (PDF/UA-1)  Wikidata Title ID: Q1606111</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
