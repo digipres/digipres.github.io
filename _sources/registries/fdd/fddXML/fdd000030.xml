@@ -96,7 +96,12 @@ high performance in interactive viewing.</p>
 			</fdd:relationship>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
-				<fdd:comment>PDF, Version 2.0 (ISO 32000-2:2017).  Not described separately on this resource at this time.</fdd:comment>
+				<fdd:relatedTo>
+					<fdd:id>fdd000474</fdd:id>
+					<fdd:shortName>PDF_2_0</fdd:shortName>
+					<fdd:titleName>PDF 2.0, ISO 32000-2</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>PDF, Version 2.0 (ISO 32000-2:2017).</fdd:comment>
 			</fdd:relationship>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
@@ -199,6 +204,7 @@ high performance in interactive viewing.</p>
 			<p>Extremely widely adopted as a platform-independent format for disseminating page-oriented documents.  For some general observations on trends, see the slides in <a href="https://www.pdfa.org/wp-content/uploads/2018/06/1330_Johnson.pdf">PDF statistics –
 the universe of electronic
 documents</a>, from a talk by Duff Johnson at PDF Europe Days in May 2018.</p>
+			<p>One area in which PDF is particularly widely used is for prepress workflows.  See <a href="https://www.callassoftware.com/en/blog/how-pdf-changed-prepress-production-dramatically-in-the-last-25-years">How PDF changed prepress production dramatically in the last 25 years</a>, a blog post from October 2018.</p>
 			<p>Adobe Reader software for viewing PDF files is freely distributed and bundled with most personal computers.
 </p>
 		</fdd:adoption>
@@ -309,7 +315,7 @@ Implementations."</p>
 				<b>Maximum size for PDFs</b>: This topic has been discussed in a number of online forums.  At one Adobe forum <a href="https://forums.adobe.com/thread/1041350">https://forums.adobe.com/thread/1041350</a> (consulted in September 2012), a very high theoretical page-count limit is described: &quot;There&apos;s no explicit page number limit but there is a limit on indirect objects of 8,388,607 in a 32-bit PDF rendering application--Acrobat and Adobe Reader are both 32-bit code--and because each page consumes at least one indirect object, every PDF file created by or opened by Acrobat must have less pages than that. If you were to create a native x64 PDF application you could add more pages, but the resulting files wouldn&apos;t open at all in 32-bit apps.&quot;  This forum entry goes on to say, &quot;Architecturally there is only one limit in the PDF standard: the overall file size must be below ~10GB as the cross-reference tables which define the PDF structure use 10 bits.&quot;</p>
 			<p>The preceding paragraph offers a generous view of the potential size for a PDF.  Many commentators argue that the limit for practicality is lower than those stated above.  What matters is whether you can open a given PDF in any reasonable application, including Acrobat and Adobe Reader, mentioned above.  Online forums also include reports like these examples: &quot;It seems that the iPad has a limit of 30MB for displaying PDF files,&quot; and &quot;users of GoodReader have reported flawless performance with files over 1 gig in size.&quot;  The practical limits imposed by applications might also include limits set by indexers if the PDF includes searchable text.</p>
 			<p>
-				<b>Self-identification of chronological versions of PDF</b>: Identification of chronological versions of PDF can be given in two places in a PDF file.  All PDF files should have a version identified in the header with the 5 characters <i>%PDF–</i> followed by a version number of the form 1.N, where N is a digit between 0 and 7.  For example, PDF 1.7 would be identified as <i>%PDF–1.7</i>. However, beginning with PDF 1.4, a conforming PDF writer may use the Version entry in the document Catalog to override the version specified in the header. The location of the Catalog within the file is indicated in the Root entry of the file trailer/footer.  This override feature was introduced to facilitate the incremental updating of a PDF by simply adding to the end of the file.  As a result, it is necessary to locate the Catalog within the file to get the correct version number.  Unless the PDF is &quot;linearized,&quot; in which case the Catalog is up front, this will require reading the trailer and then using the reference there to locate the Catalog, which will typically be compressed. This has practical implications because format identification tools, including DROID, typically look for particular characters at the beginning of a file (i.e., in the header), to permit identification with minimal effort.  DROID can look for characters at the end of the file, but is not able to follow an indirect reference or decompress file contents.  When the version number is not the same in the header and the Catalog, there is potential for format identification errors.</p>
+				<b>Self-identification of chronological versions of PDF</b>: Identification of chronological versions of PDF can be given in two places in a PDF file.  All PDF files should have a version identified in the header with the 5 characters <i>%PDF–</i> followed by a version number of the form 1.N, where N is a digit between 0 and 7 or a version number of 2.0.  For example, PDF 1.7 would be identified as <i>%PDF–1.7</i>. However, beginning with PDF 1.4, a conforming PDF writer may use the Version entry in the document Catalog to override the version specified in the header. The location of the Catalog within the file is indicated in the Root entry of the file trailer/footer.  This override feature was introduced to facilitate the incremental updating of a PDF by simply adding to the end of the file.  As a result, it is necessary to locate the Catalog within the file to get the correct version number.  Unless the PDF is &quot;linearized,&quot; in which case the Catalog is up front, this will require reading the trailer and then using the reference there to locate the Catalog, which will typically be compressed. This has practical implications because format identification tools, including DROID, typically look for particular characters at the beginning of a file (i.e., in the header), to permit identification with minimal effort.  DROID can look for characters at the end of the file, but is not able to follow an indirect reference or decompress file contents.  When the version number is not the same in the header and the Catalog, there is potential for format identification errors.</p>
 			<p>
 				<b>Compression of &quot;stream objects&quot; in PDF files</b>:  Stream objects in a PDF file are often compressed.  A number of compression schemes are supported for PDF files, indicated by Filter values defined in the specification.  Filter names correspond to the decoding/decompression that must be applied to recover the original data.  Filters can be combined into pipelines.  The Filters listed below are permitted in generic PDF files.  However, some filters are not permitted in the &quot;subset standards for PDF,&quot; such as PDF/A, PDF/X, and PDF/E.</p>
 			<ul>
@@ -336,7 +342,7 @@ JPX but not JPX baseline, is permitted in a PDF.</li>
 		<fdd:history>
 			<p>Adapted from PDF Reference, Third Edition:  The origins of PDF and the Adobe Acrobat product family date to early 1990.  At that time, the PostScript page description language was rapidly becoming the worldwide standard for the production of the printed page. PDF builds on the PostScript page description language by layering a document structure and interactive navigation features on PostScript's underlying imaging model, providing a convenient, efficient mechanism enabling documents to be reliably viewed and printed anywhere.</p>
 			<p>See <a href="https://en.wikipedia.org/wiki/History_of_the_Portable_Document_Format_(PDF)">Wikipedia entry on History of the Portable Document Format (PDF)</a> and descriptions for chronological versions for later history.</p>
-			<p>In October 2009, ISO authorized a new project to develop the PDF 2.0 standard, which was published as <a href="https://www.iso.org/standard/63534.html">ISO 32000-2:2017</a>.</p>
+			<p>In October 2009, ISO authorized a new project to develop the PDF 2.0 standard, which was published as <a href="https://www.iso.org/standard/63534.html">ISO 32000-2:2017</a>.  See <fddLink id="fdd000474">PDF-2-0</fddLink>.</p>
 		</fdd:history>
 	</fdd:notes>
 	<fdd:formatSpecifications>
@@ -457,6 +463,12 @@ JPX but not JPX baseline, is permitted in a PDF.</li>
 				<fdd:urlReference>
 					<link>https://www.pdfa.org/wp-content/uploads/2018/06/1330_Johnson.pdf</link>
 					<tag>PDF statistics – the universe of electronic documents | slides from PDF Europe Days (May 2018)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.callassoftware.com/en/blog/how-pdf-changed-prepress-production-dramatically-in-the-last-25-years</link>
+					<tag>How PDF changed prepress production dramatically in the last 25 years | blog post (October 2018)</tag>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
