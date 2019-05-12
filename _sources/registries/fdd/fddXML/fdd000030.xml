@@ -338,6 +338,26 @@ Enumerated colour space 19 (CIEJab) is not supported. However, enumerated colour
 JPX but not JPX baseline, is permitted in a PDF.</li>
 			</ul>
 			<p>The Crypt filter (introduced in PDF 1.5) can be used to specify the encryption algorithm that has been applied to a datastream.  Many of the encryption algorithms supported in earlier chronological versions of PDF are now deprecated.</p>
+			<p>
+				<b>Tagged PDF</b>:  The concept of a tagged PDF was introduced in PDF 1.4.   In addition to the content tree that is part of any PDF, a tagged PDF also has a structure tree.  Tags provide a logical structure that governs how the document content is presented through assistive technology.  Each tag identifies the associated content element, for example paragraph &lt;P&gt;, heading level three &lt;H3&gt;, list item &lt;LI&gt;, image &lt;Figure&gt;, or table data cell &lt;TD&gt;. The order of the tags defines the reading order.  <a href="https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdf_reference_archive/PDFReference.pdf">PDF Reference (third edition)</a>, which specifies PDF 1.4, indicates that <i>Tagged PDF</i> is a stylized use of PDF that uses a set of standard structure types and attributes that allow page  content  (text, graphics, and images) to be extracted and reused for other purposes. Tagged PDFs follow a set of rules for representing text in the page content so that characters, words, and
+text order can be determined reliably for use by tools that perform operations such as:</p>
+			<ul>
+				<li>Simple extraction of text and graphics for pasting into other applications</li>
+				<li>Automatic reflow of text and associated graphics to fit a page of a different size than was assumed for the original layout</li>
+				<li>Processing text for such purposes as searching, indexing, and spell-checking</li>
+				<li>Conversion to other common file formats  (such as HTML, XML, and RTF) with document structure and basic styling information preserved</li>
+				<li>Making content accessible to the visually impaired</li>
+			</ul>
+			<p>Many PDF files are created by &quot;printing to PDF&quot; or other methods that to not create tag structures.  In general, the logical structure of a document is only represented in a PDF file if the creator or a process during creation takes steps to incorporate structural tagging.  See <a href="https://web.archive.org/web/20181118125409/http://www.planetpdf.com/enterprise/article.asp?ContentID=6067">What is Tagged PDF?</a> from 2004, in which Duff Johnson said, &quot;Tags may be generated automatically for any PDF file using Acrobat 6.0 Professional, but unless the document is very simple indeed, automated tagging alone is unlikely to produce satisfactory results, and is certainly not a quick-fix for compliance with Section 508.&quot; Some applications for which the native format is inherently structured appropriately have specialized exports that can create tagged PDFs that represent that structure. For example, according to the description of <a href="https://www.adobe.com/accessibility/products/framemaker/pdf-export.html#category1 ">exporting to accessible PDF</a> from Framemaker (desktop publishing software), &quot;Tagged Adobe PDF provides the following capabilities:</p>
+			<ul>
+				<li>Ensures that information is in the correct reading order on a page.</li>
+				<li>Includes paragraph attributes used to correctly reflow the document contents into different-sized devices, such as eBook reading devices.</li>
+				<li>Ensures the reliable translation of text into Unicode. This approach recognizes ligatures and hyphens, so that a Windows screen reader can correctly read all characters and words.</li>
+				<li>Recognizes alternative text descriptions for graphics in anchored frames.</li>
+				<li>Enables the document to be exported more reliably to Rich Text Format (RTF) and XML from Acrobat 7.0 for reuse in other documents.
+</li>
+			</ul>
+			<p>The <a href="https://www.adobe.com/accessibility/products/indesign.html">guidance on accessibility using Adobe InDesign</a> encourages users to &quot;apply accessibility features within your InDesign document, rather than having to make major changes in Adobe Acrobat software. PDF tags, alt tags, and the content order you assign stay with the document as you revise it.&quot;</p>
 		</fdd:general>
 		<fdd:history>
 			<p>Adapted from PDF Reference, Third Edition:  The origins of PDF and the Adobe Acrobat product family date to early 1990.  At that time, the PostScript page description language was rapidly becoming the worldwide standard for the production of the printed page. PDF builds on the PostScript page description language by layering a document structure and interactive navigation features on PostScript's underlying imaging model, providing a convenient, efficient mechanism enabling documents to be reliably viewed and printed anywhere.</p>
