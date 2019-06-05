@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000502" titleName="Music Encoding Initiative (MEI) Format Family" shortName="MEI_family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>text</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>family</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>other</fdd:value>
+				<fdd:comment>music notation</fdd:comment>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2019-05-17</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Music Encoding Initiative (MEI) Format Family</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>structured music formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The <a href="https://music-encoding.org/">Music Encoding Initiative (MEI)</a> is an open-source effort to define a system for encoding musical documents in a machine-readable structure. MEI brings together specialists from various music research communities, including technologists, librarians, historians, and theorists in a common effort to define best practices for representing a broad range of musical documents and structures.  MEI is designed by the scholarly community for scholarly uses.  This does not preclude other uses, but means that the primary use of MEI is in the assembly of scholarly editions and collections of music converted to digital form from print or manuscript.</p>
+			<p>The origin of MEI was based on requirements for music librarianship and cataloging.  However, the scope has widened to cover not only full scores of Common Western Music Notation (CWMN), but also other repertoires like <a href="https://en.wikipedia.org/wiki/Mensural_notation">Mensural Notation</a> and <a href="https://en.wikipedia.org/wiki/Neume">Neumes</a>.  Describing variations between editions and tracking editorial interventions became important use cases of MEI. As a result, MEI has developed into a multi-faceted framework, which can be customized to support a wide range of different use cases, while still maintaining compatibility with data designed for other purposes. Its modular approach allows support of new musical repertoires and features without increasing complexity for other users. Integration with other formats like the Functional Requirements for Bibliographic Records (<a href="https://www.oclc.org/research/activities/frbr.html">FRBR</a>) model, the Metadata Encoding and Transmission Standard <a href="http://www.loc.gov/standards/mets/">METS</a>, or the Text Encoding Initiative (<a href="https://tei-c.org/">TEI</a>) is part of the design of MEI.</p>
+			<p>Strengths and special features of MEI as a music notation format include:</p>
+			<ul>
+				<li>Wide range of notation, not just CWMN</li>
+				<li>Coordination of notation with digital images and audio</li>
+				<li>Support for optical music recognition (OMR)</li>
+				<li>Support for encoding scribal/editorial intervention</li>
+				<li>Ability to capture source variants and describe their differences</li>
+			</ul>
+			<p>The MEI format is formalized in the MEI schema, a core set of rules for recording physical and intellectual characteristics of music notation documents expressed as an eXtensible Markup Language (XML) schema using the Relax NG (RNG) schema language.  The schema is complemented by the <a href="https://music-encoding.org/guidelines/v4/content/">MEI Guidelines</a>, which provide detailed explanations of the components of the MEI model and suggestions for best practice.</p>
+			<p>The model underlying MEI recognizes four distinct aspects of music notation: logical; gestural; visual; and analytical. The <i>logical</i> domain includes the musical content or structure including pitches, time values, articulations, dynamics, and all other elements—defined as the symbols that communicate the composer’s intentions. The <i>gestural</i> domain relates to a performed interpretation of the logical domain (i.e., it encodes information that may be added by a performer such as explicit realizations of &quot;swing&quot; or rubato). The <i>visual</i> domain describes the contributions of an editor, engraver, or typesetter, and encodes information about the physical appearance of the score, such as symbol locations, page layout, or font. Finally, the <i>analytical</i> domain covers commentary and analysis of the music document in any of the three previous domains.  As stated in <a href="https://www.researchgate.net/publication/327418036_Meico_A_Converter_Framework_for_Bridging_the_Gap_between_Digital_Music_Editions_and_its_Applications">Meico: A Converter Framework for Bridging the Gap between
+Digital Music Editions and its Applications (2018)</a> by Axel Berndt et al, &quot;The attempt to meet the requirements of all four domains makes
+MEI a very extensive and complex format so that even the most
+recent MEI schema definition (v3.0.0) does not cover it entirely.
+In addition, digital music editions do not have to address all four
+domains. Many music editions focus on the visual domain. In this
+case, the MEI encoding describes sheet music documents but not
+necessarily provides a complete or unambiguous encoding of the
+logical domain.&quot; </p>
+			<p>The history of MEI development began with a research project around 1999 at the University of Virginia.  See <a href="#notes">Notes/History</a> below for more detail on the early history. Key chronological versions of MEI have been:</p>
+			<ul>
+				<li>
+					<b>MEI v2.1.1 (2013)</b>: See <a href="https://github.com/music-encoding/music-encoding/releases/download/MEI2013_v2.1.1/MEI_Guidelines_2013_v2.1.1.pdf">MEI Guidelines Release 2013</a>.</li>
+				<li>
+					<b>MEI 3.0.0 (2016)</b>: association of MEI elements with external code lists, such as Standard Music Font Layout (SMuFL);  expanded metadata capabilities, such as the inclusion of non-MEI metadata formats;  improved representation of typographic details; description of MEI components using Scalable Vector Graphics (SVG); revision of the MEI Guidelines and Data Dictionary (formerly known as the &quot;Tag Library&quot;).  See <a href="https://music-encoding.org/docs/MEI_Guidelines_v3.0.0.pdf">MEI Guidelines, v3.0.0.</a>.</li>
+				<li>
+					<b>MEI 4.0.0 (2018)</b>: The Neume Module was redesigned for MEI 4.0.0.  MEI 4.0.0 greatly facilitates the description of source material. Most of the new elements are modeled after respective elements in TEI, but some are specific to MEI. The FRBR implementation of MEI has been lightly revised in v 4.0.0.  A significant change to MEI is the removal of the @subtype attribute. Since the combination of @type and @subtype allowed only two levels of type classification, it has been decided that @type should allow multiple values. This allows as many levels of typing as necessary.  In MEI 4.0.0, a larger number of attributes are now available on all elements. This list now includes @class, @follows, @next, @precedes, @prev, @resp, and @type.</li>
+			</ul>
+			<p>At a minimum, a valid MEI-encoded file contains two structures within the parent &lt;mei&gt; element: the &lt;meiHead&gt; and &lt;music&gt; elements. The &lt;meiHead&gt; structure contains metadata elements that describe the work, including information about authorship, encoding standards, and provenance. The &lt;music&gt; structure contains information regarding the encoded music itself. The music notation is represented using XML tags, arranged in a hierarchical relationship.</p>
+			<p>The MEI Schema may be customized to express and validate different types of music documents.  The approach used for customizing MEI schemas is based on the &quot;One Document Does-it-all&quot; (ODDs) approach developed by the TEI Consortium. See <a href="#notes">Note</a> below on TEI and its approach to schema customization.  MEI is distributed with the following pre-prepared customizations:</p>
+			<ul>
+				<li>
+					<b>mei-all</b>: The full MEI Schema. This is the most permissive version of MEI.</li>
+				<li>
+					<b>mei-CMN</b>: Validates MEI files that express common Western music notation.  See <a href="https://music-encoding.org/guidelines/v4/content/cmn.html">Repertoire: Common Music Notation</a> from MEI Guidelines.  The guidelines state, &quot;Arguably, the most important element of the CMN module is the measure element.&quot; It is a structural unit inside section elements and contains &apos;events&apos; such as notes, chords and rests as well as &apos;control events&apos; such as slurs and indications of dynamics.</li>
+				<li>
+					<b>mei-Mensural</b>: <a href="https://en.wikipedia.org/wiki/Mensural_notation">Mensural notation</a> was used from the late 13th century to about 1600, preceding the development of Common Music Notation (CMN).  Originally, all notes were written in solid, filled-in form (&quot;black notation&quot;).  In the mid-15th century, scribes began to use hollow note shapes (&quot;white notation&quot;), reserving black shapes only for the smallest note values.  This customization validates MEI files that express white Mensural notation.  It will raise validation errors if elements like <i>measure</i> exist in the MEI encoding.  See <a href="https://music-encoding.org/guidelines/v4/content/mensural.html">Repertoire: Mensural Notation</a>.</li>
+				<li>
+					<b>mei-Neumes:</b> Validates MEI files that express <a href="https://en.wikipedia.org/wiki/Neume">Neume</a> notation.  See also <a href="https://music-encoding.org/guidelines/v4/content/neumes.html">https://music-encoding.org/guidelines/v4/content/neumes.html</a>.</li>
+			</ul>
+			<p>Customization is possible at the level of individual elements, but MEI also has modules that can be included or excluded through the ODDs customization process.  Examples, with relevant links to the MEI Guidelines, include: <i>tablature</i> (see <a href="https://music-encoding.org/guidelines/v4/content/tablature.html">Repertoire: String Tablature</a>); <i>facsimile</i>, for incorporating scanned images (see <a href="https://music-encoding.org/guidelines/v4/content/facsimilesrecordings.html#facsimileElements">Elements of the Facsimile Module</a>); <i>midi</i> (see <a href="https://music-encoding.org/guidelines/v4/content/integration.html#midiGuidelines">Musical Instrument Digital Interface (MIDI)</a>); <i>lyrics</i> (see <a href="https://music-encoding.org/guidelines/v4/content/lyricsperfdir.html">Lyrics and Performance Directions</a>); <i>edittrans</i> (see <a href="https://music-encoding.org/guidelines/v4/content/scholarlyediting.html#editTrans">Editorial Markup</a>); and <i>critapp</i> (see <a href="https://music-encoding.org/guidelines/v4/content/scholarlyediting.html#critApp">Critical Apparatus</a>).</p>
+		</fdd:description>
+		<fdd:shortDescription>an XML-based format produced through an open-source effort to define a system for encoding musical documents in a machine-readable structure.  The MEI format is formalized in the MEI schema, a core set of rules for recording physical and intellectual characteristics of music notation documents. The schemas for formats in the family are defined in the RELAX NG schema language.</fdd:shortDescription>
+		<fdd:productionPhase>When used for creating music notation documents, MEI is primarily based on existing examples of musical notation that have been transcribed and/or scanned as images.  Since the format supports very rich metadata about both the original source and the conversion and encoding processes used, it can also serve as a final-state archival format.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>Various chronological versions, not described separately on this website at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000263</fdd:id>
+					<fdd:shortName>XML_1_0</fdd:shortName>
+					<fdd:titleName>XML (Extensible Markup Language) 1.0</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:comment>
+					<a href="https://en.wikipedia.org/wiki/RELAX_NG">Relax NG</a> XML Schema language.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:preference>For works acquired for its collections, the Library of Congress Recommended Formats Statement, as of May 2019, indicates that MEI is a preferred format for <a href="https://www.loc.gov/preservation/resources/rfs/textmus.html#digmus">Digital Musical Compositions (score based representations)</a>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>The <a href="https://music-encoding.org/">Music Encoding Initiative</a> began as a research project at the University of Virginia.  Since 2014, the MEI family of formats has been developed and maintained through an open-source effort hosted at the Akademie der Wissenschaften und Literatur in Mainz, Germany.  See <a href="https://music-encoding.org/community/mei-by-laws.html">MEI By-laws</a> and <a href="https://music-encoding.org/community/mei-board.html">MEI Board</a>.  </fdd:disclosure>
+		<fdd:documentation>
+			<p>The latest version of the MEI schemas in the RELAX NG schema language are at <a href="https://music-encoding.org/resources/schemas.html">https://music-encoding.org/resources/schemas.html</a>.  Some earlier versions of the RNG schemas can be found at <a href="https://music-encoding.org/archive/">https://music-encoding.org/archive/</a>.  RNG schemas and source code in a meta-schema language developed by the TEI Consortium, known as the “One Document Does-it-all” (ODD) format, are also available in combined packages for versions since 2010 from <a href="https://github.com/music-encoding/music-encoding/releases/">https://github.com/music-encoding/music-encoding/releases/</a>.  </p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>According to the <a href="https://en.wikipedia.org/wiki/Music_Encoding_Initiative">Wikipedia entry for MEI</a>, &quot;MEI is often used for music metadata catalogs, critical editing (particularly of early music), and OMR-based data collection and interchange.&quot;  OMR is <a href="https://en.wikipedia.org/wiki/Optical_music_recognition">Optical Music Recognition</a>.  According to the <a href="http://wiki.dpconline.org/images/2/24/MusicXML_Format_Assessment_v1.pdf">MusicXML Format Preservation Assessment</a> from the British Library Digital Preservation Team, &quot;MEI has carved out a useful role for itself  within the music research and scholarly music editing communities.&quot;  The MEI website maintains a list of <a href="https://music-encoding.org/community/projects-users.html">projects employing MEI</a> and a <a href="https://music-encoding.org/resources/bibliography.html">bibliography of articles about use of MEI</a>.</p>
+			<p>Tools for working with MEI files are available at <a href="https://github.com/music-encoding/encoding-tools">https://github.com/music-encoding/encoding-tools</a>.  Included are <a href="https://en.wikipedia.org/wiki/XSLT">XSLT</a> stylesheets for: upgrading from one version of MEI to another;  converting MEI to other formats (e.g., <fddLink id="fdd000358">MusicXML</fddLink>, <a href="https://www.loc.gov/marc/marcdocz.html">MARC</a>, <a href="http://www.loc.gov/standards/mods/">MODS</a>, etc.); and converting other formats to MEI (e.g., MusicXML, MARC). In May 2019, a list of <a href="https://music-encoding.org/resources/tools.html">Tools</a> on the MEI website listed seven community-developed tools.  For example, <a href="https://github.com/music-encoding/sibmei/releases">SibMEI</a> is a plugin for generating MEI files from the popular Sibelius scorewriter software and <a href="https://github.com/DDMAL/libmei/">LibMEI</a> is a C++ library for reading and writing MEI files.  Tools for rendering/displaying MEI include: <a href="https://github.com/rettinghaus/MEILER">MEILER</a> and <a href="https://www.verovio.org/index.xhtml">Verovio</a>. </p>
+			<p>In <a href="https://www.researchgate.net/publication/327418036_Meico_A_Converter_Framework_for_Bridging_the_Gap_between_Digital_Music_Editions_and_its_Applications">Meico: A Converter Framework for Bridging the Gap between
+Digital Music Editions and its Applications (2018)</a>, Alex Berndt et al, introduced a <a href="https://github.com/cemfi/meico">converter framework for MEI</a>.  This framework takes advantage of other free and open-source tools.</p>
+			<p>Some scholarly projects take advantage of commonalities between TEI and MEI.  An example is <a href="http://ems.digitalscholarship.utsc.utoronto.ca/content/about-project">Early Modern Songscapes</a>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>The schemas, documentation, and tools are licensed for free use under the <a href="https://opensource.org/licenses/ECL-2.0/">Educational Community License, Version 2.0</a>.</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>Transparent to a human reader or with a text editor.  Comprised entirely of XML with element names consisting of familar terms related to the presentation of music, such as &lt;score&gt;, &lt;keysig&gt;, and &lt;staff&gt; and related to the semantics of the music itself, such as &lt;measure&gt;, &lt;chord&gt;, and &lt;note&gt;. MEI markup can be viewed and edited by a wide-range of generic tools for XML.  However, like many other XML-based formats, MEI files are typically large and verbose and require domain-specific expertise to interpret.  See <a href="http://wiki.dpconline.org/images/0/0e/XML_Assessment_v1.3.pdf">XML Format Preservation Assessment</a> from the British Library Preservation Team.  MEI encoding makes extensive use of attributes rather than using child elements. See <a href="https://www.w3schools.com/xml/xml_dtd_el_vs_attr.asp">XML Elements vs. Attributes</a> and Appendix E of <a href="http://xml.coverpages.org/SchwartzXMLMusicThesis.pdf">Transforming XML into Music Notation</a> for arguments in favor of each alternative.  The latter compares MEI and MusicXML.</p>
+			<p>MEI documents may depend for the full rendering intended by creators on associated image, audio, or video files.  MEI does not limit the formats for media files that can be used.  Transparency depends on the particular formats used.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>The &lt;meihead&gt; element has a rich set of child elements to describe the file, encoding details, the relationship of the electronic text to its source or sources, and a full bibliographic description of the underlying work.  An optional FRBR module can be used to describe relationships between the underlying work and expressions of the work.  An MEI file can also incorporate metadata in other XML schemas in &lt;extmeta&gt; elements.  See <a href="https://music-encoding.org/guidelines/v4/content/metadata.html">Metadata in MEI</a> for details.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None beyond software or stylesheets that can render MEI files for display or editing.  However, the number of software applications that render MEI is small.  See Adoption above.</fdd:externalDependencies>
+		<fdd:techProtection>The MEI Guidelines make no mention of encryption or other technical protection.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:textQF>
+			<fdd:normalText>Although not strictly a format for text, formats for notated music share distinctions in functionality that are common with text. An MEI instance can be used to display a score that can be viewed and printed.  MEI supports markup of textual sections such as <i>preface</i>, <i>dedication</i>, and <i>abstract</i> in a way that supports indexing for search.  Words in lyrics can potentially be searched individually by generic text-indexing software, although hyphenation and spacing may be problematic, depending upon project-specific choices.  See, for example, <a href="http://ems.digitalscholarship.utsc.utoronto.ca/islandora/object/ems%3A73#/">http://ems.digitalscholarship.utsc.utoronto.ca/islandora/object/ems%3A73#/</a> and its <a href="https://raw.githubusercontent.com/EarlyModernSongscapes/songscapes/master/data/mei/Come_my_Lucasta_heer's_the_Grove-L638_1.mei">corresponding MEI file</a>.  In this example, the lyrics presented at the bottom of the web display are derived from an <a href="https://raw.githubusercontent.com/EarlyModernSongscapes/songscapes/master/data/tei/Come_my_Lucasta_heer's_the_Grove-L638_1.xml">associated TEI file</a>; that file provides a better encoding for indexing.</fdd:normalText>
+			<fdd:structure>MEI represents the semantic structure of a score: key; measures (bars); notes with pitch and duration; musical parts for different instruments; lyrics/words, etc.  MEI can also represent the structure of textual content such as front matter and the structure of editorial commentary connected to music elements.</fdd:structure>
+			<fdd:layout>MEI is typically used for the preparation of a digital musical text based on an existing music document.  Projects choosing to use MEI, typically make project-specific decisions about the way they want to be able to present documents in their collections. Music may be transcribed manually and marked up so that it can be &quot;engraved&quot; to an image format, often to a vector graphics format such as <fddLink id="fdd000020">SVG</fddLink>.  Another available option is to incorporate facsimile images of each page.  Markup from the <i>facsimile</i> module uses a child <i>surface</i> element for each page, with attributes specifying dimensions and a label for the page.  A <i>surface</i> element has at least one child <i>graphic</i> element, allowing for images at different resolutions.  A <i>surface</i> element may have child <i>zone</i> elements; coordinates for a <i>zone</i>define a space relative to the coordinate space of its parent surface.  A <i>zone</i> can contain descriptive metadata or be related to a particular element in the musical content, e.g., a particular <i>note</i> element.  MEI does not limit the formats that can be used for images, which are referred to by URL rather than embedded in the MEI file, but the guidelines provide a <a href="https://music-encoding.org/guidelines/v4/content/textencoding.html#figTableImages">list of image formats</a>, that are described as &quot;widely used at the present time, and are likely to remain supported by more than one vendor’s software.&quot;</fdd:layout>
+			<fdd:beyondText>In contrast to simply representing text documents, MEI is designed to represent the semantics of music notation and characteristics for display and performance.   The <i>linkAlign</i> module makes it possible to align recorded media (audio, video) with elements in the encoded music notation. This allows for synchronization between the music notation and audio or video files.  The multimedia files  are referred to by URL and not embedded in the MEI file.</fdd:beyondText>
+		</fdd:textQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>mei</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>This extension is used in <a href="https://github.com/music-encoding/sample-encodings">MEI-provided sample encodings</a> and documented in <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/965">PRONOM entry for MEI</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>Not found.</fdd:sigValueNA>
+				<fdd:note>In 2013, there was a discussion on the MEI-L mailing list about what to use for file extension or Internet media type (MIME type).  See, for example, <a href="https://lists.uni-paderborn.de/pipermail/mei-l/2013/001030.html">message from August 15, 2013</a>.  No resolution was reached and no Internet media type has been registered.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>PRONOM recognizes as MEI instances files that begin with <i>&lt;?xml version=&quot;1.0&quot;</i> followed, after up to 512 bytes, by the namespace declaration string <i>xmlns=&quot;http://www.music-encoding.org/ns/mei&quot;</i>.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Indicator for profile, level, version, etc.</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>An optional attribute <i>meiversion</i> can be applied to the  <i>meihead</i> element. See <a href="https://music-encoding.org/guidelines/v4/content/metadata.html">https://music-encoding.org/guidelines/v4/content/metadata.html</a>.  See <a href="https://raw.githubusercontent.com/EarlyModernSongscapes/songscapes/master/data/mei/Come_my_Lucasta_heer's_the_Grove-L638_1.mei">example</a> from Early Music Songscapes project.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>XML namespace declaration</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>The MEI namespace is <i>http://www.music-encoding.org/ns/mei</i>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/965</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>As of May 2019, PRONOM does not distinguish between different versions of MEI.  See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/965">http://www.nationalarchives.gov.uk/PRONOM/fmt/965</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q50308939</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q50308939">https://www.wikidata.org/wiki/Q50308939</a>.  Applies to all versions of MEI.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>MEI objectives</b>:  On <a href="https://music-encoding.org/about/">https://music-encoding.org/about/</a>, the goals of MEI are expressed in &quot;The Music Encoding Initiative strives to create a semantically rich model for music notation that:</p>
+			<ul>
+				<li>accommodates the encoding of common Western music, but is not limited to common music notation;</li>
+				<li>is designed by the scholarly community for scholarly uses, but does not exclude other uses;</li>
+				<li>provides for the common functions of traditional facsimile, critical, and performance editions;</li>
+				<li>has a modular structure that permits use dependent on the goals of scholars;</li>
+				<li>is based on open standards and is platform-independent;</li>
+				<li>and permits the development of comprehensive and permanent international archives of notated music as a basis for editions, analysis, performances, and other forms of research.&quot;</li>
+			</ul>
+			<p>
+				<b>MEI and the Text Encoding Initiative</b>: The Music Encoding Initiative has been strongly influenced by the Text Encoding Initiative (TEI).  In particular, the basis for customizing MEI schemas, adopted in 2011, is the &quot;One Document Does-it-all&quot; approach  developed by the TEI Consortium. Files that control customization are known as ODDs. See <a href="http://ismir2011.ismir.net/papers/OS3-1.pdf">The Music Encoding Initiative as a Document-Encoding Framework (2011)</a> for an introduction to the use of ODDs for MEI.</p>
+			<p>The TEI consortium collectively develops and maintains a standard for the representation of texts in digital form. Its chief deliverable is a set of Guidelines which specify encoding methods for machine-readable texts, chiefly in the humanities, social sciences and linguistics. Since 1994, the TEI Guidelines have been widely used by libraries, museums, publishers, and individual scholars to present texts for online research, teaching, and preservation.  The TEI Consortium is a nonprofit membership organization composed of academic institutions, research projects, and individual scholars from around the world.  Major versions of the TEI Guidelines have been numbered P<i>n</i>.  P5 was introduced in late 2007 and is still current in 2019, with many extensions in intervening releases.  For more information on P5, see <a href="https://tei-c.org/guidelines/p5/">TEI: P5 Guidelines</a>.</p>
+			<p>From the start, the TEI was intended to be used as a set of building blocks for creating a schema suitable for a particular project. See <a href="https://tei-c.org/guidelines/customization/getting-started-with-p5-odds/">TEI: Getting Started with P5 ODDs</a>, which describes how to produce a customization of the TEI P5 schema. There is no single DTD or schema which is the TEI; users choose from the available modules (see <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/ST.html#STMA">1.1 TEI Modules</a> in the TEI P5 Guidelines). The three basic modules, <i>core</i>, <i>header</i> and <i>textstructure</i> are almost invariably included. The slideshow <a href="http://projects.oucs.ox.ac.uk/teiweb/Talks/Forli/2004/contents.pdf">An Overview of TEI Tagging or Anyone for Pizza?</a> from 2004 describes a previous mechanism for TEI customization, used with P3 and P4.  Although the precise technical details are no longer used, the general concept of the &quot;pizza model&quot; is still helpful as an explanation.</p>
+			<p>A brief introductory video on TEI is at <a href="https://youtu.be/NsrV_htpvlI">https://youtu.be/NsrV_htpvlI</a>.  The most recent documentation on customization of TEI is at <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/USE.html#CFVL">Clause 23.4.2 Validation Constraint</a> and <a href="https://tei-c.org/release/doc/tei-p5-doc/en/html/USE.html#IM">23.5 Implementation of an ODD System</a> in the TEI P5 Guidelines.</p>
+			<p>TEI customization is effected using the <a href="https://roma2.tei-c.org/">TEI Roma processor</a>.  The compilers of this resource have not located a MEI-specific version of Roma and assume that MEI projects start their customization by uploading the ODD file for one of the existing MEI customizations. The customization help at <a href="https://tei-c.org/guidelines/customization/customizing-the-tei-with-roma/">TEI: Customizing the TEI with Roma</a> indicates that completely new elements can be added.  The compilers of this resource have been unable to determine whether MEI projects take advantage of this flexibility.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>
+				<b>Comparisons of Music Notation Formats</b>: The following resources include discussions of music notation formats and include MEI in a comparison. <a href="http://xml.coverpages.org/SchwartzXMLMusicThesis.pdf">Transforming XML into Music Notation (2003)</a> has an appendix that highlights some technical differences between MEI and MusicXML.  The archived <a href="https://www.w3.org/community/music-notation/wiki/Agenda_Discussion">Agenda Discussion </a> from the W3C Music Notation Community Group documents a 2015 discussion soon after the group&apos;s formation.  The discussion included compiling strengths and weaknesses of MEI as compared to MusicXML.  <a href="https://commons.wikimedia.org/wiki/Commons:Village_pump/Proposals/Archive/2018/11#RfC:_Musical_notation_files">RfC: Musical notation files (2018)</a>  summarizes a 2018 discussion on which music notation formats, if any, should be supported in Wikimedia.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>The origin of MEI is as an XML DTD developed by Perry Roland at the University of Virginia in 1999.  In 2006, the University of Virginia Library provided support for a 2-year pilot project to demonstrate the capability of MEI to represent a sample of music scores and to ensure that the semantic information encoded in MEI could be rendered as music notation.  This was followed by collaborative projects with funding from the National Endowment for the Humanities (NEH) and the German Deutsche Forschungsgemeinschaft (DFG). The grants supported workshops attended by an international groups of digital technologists and scholars representing musicology, music theory, and librarianship.  The first of these workshops (in July 2009) marked the beginning of MEI development as an international community-driven effort.  In 2010, MEI 2010-05 was released.  According to <a href="https://music-encoding.org/downloads/MEI_TagLibrary_2010-05.pdf">MEI Tag Library, 2010-05 Release</a>, this version appears also to have been known as 1.9b.  A paper presented in 2011, <a href="http://ismir2011.ismir.net/papers/OS3-1.pdf">The Music Encoding Initiative as a Document-Encoding Framework</a> indicates, &quot;Recent changes in the Music Encoding Initiative (MEI) have transformed it into an extensible platform from which new notation encoding schemes can be produced.&quot;  The paper discusses the move to use the ODDs framework developed by TEI for schema customization.  Version 2.0.0 of MEI was released in 2012, followed by versions 2.1.0, 2.1.1, and 2.1.2 in 2013 and 2014.  Versions 3.0.0 and 4.0.0 were released in 2016 and 2018, respectively.  For more detail on the history of MEI, see <a href="https://music-encoding.org/about/">An introduction to MEI</a>, which has a section on the history of MEI, and <a href="https://music-encoding.org/downloads/MEIat15_handout.pdf">MEI at 15</a>, a presentation from 2015.</p>
+			<p> The current governance structures for MEI were introduced in 2014.  Since then, the MEI website has been hosted at the Akademie der Wissenschaften und Literatur in Mainz, Germany.</p>
+			<p>Developments to the MEI framework and guidelines are produced by the MEI Technical Team which prepares new releases of MEI by reviewing and implementing revisions and features requested by the community.  See <a href="https://music-encoding.org/community/technical-team.html">https://music-encoding.org/community/technical-team.html</a>.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://music-encoding.org/resources/schemas.html</link>
+					<tag>Schemas in RELAX NG for the most recent version of MEI.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://music-encoding.org/archive/</link>
+					<tag>Archive of Music Encoding Conferences and Previous Versions of MEI</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/music-encoding/music-encoding/releases/</link>
+					<tag>An archive of MEI source code for version 2.0 (2012) and later</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://music-encoding.org/guidelines/</link>
+					<tag>MEI Guidelines (latest version)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://music-encoding.org/</link>
+					<tag>Music Encoding Initiative website</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Selected resources on the MEI website.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://music-encoding.org/downloads/MEI_TagLibrary_2010-05.pdf</link>
+							<tag>Tag Library for MEI version 1.9b (Release 2010-05)</tag>
+							<comment>The earliest documentation still available on the MEI website.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://music-encoding.org/downloads/MEIat15_handout.pdf</link>
+							<tag>MEI at 15 (June 2015) | by Perry Roland</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://music-encoding.org/resources/tools.html</link>
+							<tag>Descriptions of official MEI tools and community-developed tools for working with MEI documents</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Music_Encoding_Initiative</link>
+					<tag>Wikipedia entry for Music Encoding Initiative</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/music-encoding/sample-encodings</link>
+					<tag>Sample Encodings for MEI </tag>
+					<comment>Includes samples for various chronological versions.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Neume</link>
+					<tag>Wikipedia entry for Neume (music notation)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Mensural_notation</link>
+					<tag>Wikipedia entry for Mensural Notation</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://blowthyhorn.com/blog/wp-content/uploads/2015/07/white_mensural_notation.pdf</link>
+					<tag>Intro to White Mensural Notation by Jadwiga Krzyzanowska (2013)</tag>
+					<comment>Real name of pseudonymous author is Monique Rio.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources related to TEI and its ODDs approach to building customized schemas.  Also resources related to the adoption of the ODDs approach for MEI around 2011.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://tei-c.org/Guidelines/Customization/</link>
+							<tag>TEI Guidelines: Customization</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://roma2.tei-c.org/</link>
+							<tag>TEI Roma: generating customizations for the TEI</tag>
+							<comment>Online service for customizing TEI schemas.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.slideshare.net/rviglianti/making-mei-feel-odd</link>
+							<tag>Making MEI feel ODD | presentation by Raffaele Viglianti (November 2010)</tag>
+							<comment>Describes how MEI uses the &quot;One-Document-Does-it-all&quot; mechanism to customize MEI schemas.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://ismir2011.ismir.net/papers/OS3-1.pdf</link>
+							<tag>The Music Encoding Initiative as a Document-Encoding Framework | by Andrew Hankinson, Perry Roland, Ichiro Fujinaga (2011) </tag>
+							<comment>Presented at 12th International Society for Music Information Retrieval Conference (ISMIR 2011).</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://lists.uni-paderborn.de/pipermail/mei-l/2013/001030.html</link>
+					<tag>[MEI-L] File extensions</tag>
+					<comment>Message in unresolved discussion about file extensions and mime types for MEI</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources related to Early Music Songscapes project.  This project takes advantage of commonalities between MEI and TEI.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://songscapes.org/</link>
+							<tag>Early Music Songscapes</tag>
+							<comment>As of May 2019, resolves to http://ems.digitalscholarship.utsc.utoronto.ca/</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/EarlyModernSongscapes/songscapes</link>
+							<tag>Early Music Songscapes repository</tag>
+							<comment>TEI and MEI files in the resource.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://journal.code4lib.org/articles/14532</link>
+							<tag>Visualizing Fedora-managed TEI and MEI documents within Islandora | Code4Lib Journal, Issue 44, 2019-05-06</tag>
+							<comment>y Raffaele Viglianti, Marcus Emmanuel Barnes, Natkeeran Ledchumykanthan, Kirsta Stapelfeldt.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.researchgate.net/publication/327418036_Meico_A_Converter_Framework_for_Bridging_the_Gap_between_Digital_Music_Editions_and_its_Applications</link>
+					<tag>Meico: A Converter Framework for Bridging the Gap between
+Digital Music Editions and its Applications | by Axel Berndt et al.</tag>
+					<comment>Center of Music and Film Informatics,
+University of Music Detmold,
+Detmold, Germany</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources that offer comparisons between MEI, MusicXML, and other music notations.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.w3.org/community/music-notation/wiki/Agenda_Discussion</link>
+							<tag>W3C Music Notation Community Group | Agenda Discussion (2015)</tag>
+							<comment>Discussion was soon after the formation of the group.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://commons.wikimedia.org/wiki/Commons:Village_pump/Proposals/Archive/2018/11#RfC:_Musical_notation_files</link>
+							<tag>Wikimedia | RfC: Musical notation files  (November/December 2018)</tag>
+							<comment>Active discussion of which music notation formats, if any, might be supported in Wikimedia.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://xml.coverpages.org/SchwartzXMLMusicThesis.pdf</link>
+							<tag>Transforming XML into Music Notation | by Baron Schwartz (2003)</tag>
+							<comment>Thesis for B.S. in Computer Science, University of Virginia.  Argues that using attributes (as in MEI) rather than elements (as in MusicXML) makes it easier to use XSLT to display notation.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/965</link>
+					<tag>PRONOM entry for fmt/965</tag>
+					<comment>Information in PRONOM from UK National Archives about the Music Encoding Initiative format. Applies to all versions of MEI. PUID: fmt/965.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q50308939</link>
+					<tag>Wikidata entry for Q50308939</tag>
+					<comment>Information in WikiData about Music Encoding Initiative file format. Applies to all versions of MEI.  WikiData Title ID: Q50308939</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
