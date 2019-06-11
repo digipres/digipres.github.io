@@ -27,10 +27,10 @@
 		</fdd:keywords>
 		<fdd:description>
 			<p>PDF (Portable Document Format), developed by Adobe Systems Incorporated, is described by Adobe as a general document representation language. PDF represents formatted, page-oriented documents. These documents may be structured or simple. They may contain text, images, graphics, and other multimedia content, such as video and audio. There is support for annotations, metadata, hypertext links, and bookmarks. </p>
-			<p> Version 1.4 was the basis for the first versions of ISO standards <fddLink id="fdd000124">PDF/X</fddLink> and <fddLink id="fdd000318">PDF/A</fddLink>.</p>
+			<p>Version 1.4 of PDF was the basis for versions of the <fddLink id="fdd000124">PDF/X</fddLink> family of standards published by ISO in 2003 and for the first version of the ISO standard <fddLink id="fdd000318">PDF/A</fddLink> (ISO 19005-1), published in 2005.</p>
 		</fdd:description>
-		<fdd:shortDescription> Version 1.4 of page-oriented document description language from Adobe Systems Incorporated.</fdd:shortDescription>
-		<fdd:productionPhase>In general, a final-state format for delivery to end users.  PDF/X, based on PDF 1.4 is a middle-state format for submission of images to printers (prepress).</fdd:productionPhase>
+		<fdd:shortDescription> Version 1.4 of page-oriented document format from Adobe Systems Incorporated.</fdd:shortDescription>
+		<fdd:productionPhase>In general, a final-state format for delivery to end users.   Some versions of the PDF/X family of standards, which are primarily middle-state formats for submission of files to publications or commercial printing services, are based on PDF 1.4.</fdd:productionPhase>
 		<fdd:relationships>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
@@ -75,11 +75,11 @@
 		<fdd:preference>See <fddLink id="fdd000030">PDF_family</fddLink>.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
-		<fdd:disclosure>Fully documented by Adobe Systems.  Incorporated as a normative reference into ISO standards for <fddLink id="fdd000125">PDF/A-1</fddLink> and <fddLink id="fdd000124">PDF/X-1</fddLink>.  See also <fddLink id="fdd000030">PDF_family</fddLink>.</fdd:disclosure>
+		<fdd:disclosure>Fully documented by Adobe Systems.  Incorporated as a normative reference into ISO standards for <fddLink id="fdd000125">PDF/A-1</fddLink> and some versions of the <fddLink id="fdd000124">PDF/X_family</fddLink>.  See also <fddLink id="fdd000030">PDF_family</fddLink>.</fdd:disclosure>
 		<fdd:documentation>
 			<a href="https://www.adobe.com/content/dam/acom/en/devnet/pdf/pdfs/pdf_reference_archives/PDFReference.pdf">PDF Reference, Third Edition.  Adobe Portable Document Format, Version 1.4</a>.  See also <fddLink id="fdd000030">PDF_family</fddLink>.</fdd:documentation>
 		<fdd:adoption>
-			<p>PDF 1.4 is widely used as the basis for the first version of <fddLink id="fdd000124">PDF/X</fddLink> (for prepress graphics exchange) and for <fddLink id="fdd000125">PDF/A-1</fddLink>.</p>
+			<p>PDF 1.4 is widely used as the basis for the first version of the PDF/A format (<fddLink id="fdd000125">PDF/A-1</fddLink>). It is also used for versions of the <fddLink id="fdd000124">PDF/X</fddLink> family of standards for prepress graphics exchange published in 2003.</p>
 			<p>In early 2019, the LibreOffice Export to PDF command produces a PDF 1.4 file.  Also in early 2019, the printer/copier/scanners (MFDs) used by the Library of Congress can scan multipage documents direct to PDF 1.4 files.  No other PDF option is supported by the MFDs.</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>See <fddLink id="fdd000030">PDF_family</fddLink>.</fdd:licensingAndPatents>
@@ -143,7 +143,7 @@
 			<p>
 				<b>Identification of chronological versions of PDF</b> can be given in two places in a PDF file.  All PDF files should have a version identified in the header with the 5 characters <i>%PDF–</i> followed by a version number.  For PDF files conforming to <a href="https://www.iso.org/standard/51502.html">ISO 32000-1:2008</a> or earlier specifications (i.e. prior to <a href="https://www.iso.org/standard/63534.html">ISO 32000-2:2017</a>), the version number has the form 1.N, where N is a digit between 0 and 7.  For example, PDF 1.4 is identified by <i>%PDF–1.4</i>.  However, beginning with PDF 1.4, a conforming PDF writer may use the Version entry in the document Catalog to override the version specified in the header. The location of the Catalog within the file is indicated in the Root entry of the file trailer/footer.  This override feature was introduced to facilitate the incremental updating of a PDF by simply adding to the end of the file.  As a result, it is necessary to locate the Catalog within the file to get the correct version number.  Unless the PDF is &quot;linearized,&quot; in which case the Catalog is up front, this will require reading the trailer and then using the reference there to locate the Catalog, which will typically be compressed. This has practical implications because format identification tools, including DROID, typically look for particular characters at the beginning of a file (i.e., in the header), to permit identification with minimal effort.  DROID can look for characters at the end of the file, but is not able to follow an indirect reference or decompress file contents.  When the version number is not the same in the header and the Catalog, there is potential for format identification errors.</p>
 		</fdd:general>
-		<fdd:history>PDF 1.4 was published in November 2001, and corresponds to Acrobat version 5.  PDF 1.4 was incorporated into the first versions of the PDF/X and PDF/A ISO standards.</fdd:history>
+		<fdd:history>PDF 1.4 was published in November 2001, and corresponds to Acrobat version 5.  PDF 1.4 was incorporated into versions of the <fddLink id="fdd000124">PDF/X</fddLink> and <fddLink id="fdd000318">PDF/A</fddLink> families of ISO standards.</fdd:history>
 	</fdd:notes>
 	<fdd:formatSpecifications>
 		<fdd:urls>
