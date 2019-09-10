@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000501" titleName="Polygon File Format (PLY) Family" shortName="PLY_family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>model</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2019-08-28</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Polygon File Format (PLY) Family. Also known as Stanford Triangle Format.</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>3D model formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The PLY file format is a simple format for describing an object as a polygonal model.  The format originated at the <a href="http://graphics.stanford.edu/data/3Dscanrep/">Stanford Computer Graphics Laboratory</a> in the 1990s, where it was used for models derived from a 3D laser triangulation scanner.  For this reason, the PLY format is sometimes referrred to as the Stanford Triangle Format or Stanford PLY.  The goal stated in the introduction to <a href="http://gamma.cs.unc.edu/POWERPLANT/papers/ply.pdf">The PLY Polygon File Format</a> specification, written by Greg Turk in 1994, was to provide a format that was simple and easy to implement but general enough to be useful for a wide range of models.  A PLY file describes only a single object.</p>
+			<p>The file format has two subtypes: an ASCII representation and a binary equivalent for more compact storage and more rapid saving and loading.  Both subtypes start with an ASCII header, using carriage return (CR) as line separator that defines the elements and associated properties stored in the file.  The first line of the header holds the ASCII characters &quot;ply&quot; followed by CR and serves as a magic number.  The second line of the header declares the subtype used for the numeric data that follows the header, using one of the values <i>format ascii 1.0</i>, <i>format binary_little_endian 1.0</i>, or <i>format binary_big_endian 1.0</i>.  Subsequent lines in the header declare the structure of the numeric data that follows the header, identifying elements and properties associated with each element.  The core set of elements that any software for processing PLY files is expected to recognize are <i>vertex</i> and <i>face</i>. A vertex is a point; defined by its coordinates in three dimensions (properties <i>x</i>, <i>y</i>, and <i>z</i>).  The properties of a <i>face</i> indicate how many vertices the face comprises (3 for a triangle) and specify those vertices.  For a simple example and links to more, see <a href="http://people.math.sc.edu/Burkardt/data/ply/ply.html">PLY Files</a>.  The <a href="http://gamma.cs.unc.edu/POWERPLANT/papers/ply.pdf">PLY format specification</a> allows for user-defined elements and properties.  To encourage interoperability, the specification supplies a second list of elements and properties that are described as &quot;often used.&quot;  These include basic support for color and characteristics of surface materials, such as reflectivity, by use of additional properties for the <i>vertex</i> element and a new <i>material</i> element.</p>
+			<p>The PLY format can also be used to store a point cloud, a collection of vertex elements without specification of faces that connect them.  See, for example, description of <a href="https://courses.cs.washington.edu/courses/cse558/01sp/software/scanalyze/">Scanalyze</a> software with a point cloud example and <a href="https://www.mathworks.com/help/vision/ug/the-ply-format.html">The PLY Format</a> from MathWorks.</p>
+			<p>A third list of elements and properties in <a href="http://gamma.cs.unc.edu/POWERPLANT/papers/ply.pdf">The PLY Polygon File Format</a> specification is for &quot;suggested extensions.&quot;  The compilers of this resource have not been able to determine whether elements and properties from this third list are used widely or the degree to which elements and properties not on any of the three lists are in use. The table of &quot;common elements&quot; at <a href="https://www.mathworks.com/help/vision/ug/the-ply-format.html">The PLY Format</a>, from MathWorks, lists all the elements in the second list, but only four from the third list. Because project-specific elements and properties can be used, the full detail of some PLY files may not be recognized and imported by all software claiming to handle the PLY format. For example, the basic mesh geometry may be rendered correctly, but information about textures may be lost. <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:description>
+		<fdd:shortDescription>a simple and widely used format for describing a 3D object as a polygonal model, for example, using a triangular mesh.  The format originated at the Stanford Computer Graphics Laboratory around 1994 and is also known as the Stanford Triangle Format. The format has been widely used in connection with scanning of 3D artifacts.</fdd:shortDescription>
+		<fdd:productionPhase>The PLY format is frequently used as an initial-state format as output from a 3D scanner or other process used to generate a point cloud or polygon mesh model of the surface of a physical artifact. The PLY model will often be input to 3D modeling software to add features not supported in the PLY format.  For simple objects, PLY can be a middle-state format, e.g., as input to a 3D printing process. Models are often shared for re-use in the PLY format.</fdd:productionPhase>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>No direct experience as of late 2019.</fdd:experience>
+		<fdd:preference>The Library of Congress has not yet expressed any format preference for digital models used as designs or surrogates for 3-dimensional objects.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>The PLY Polygon File Format is openly documented but not maintained through a formal governance structure.</p>
+			<p>The format was developed in the mid 1990s at the <a href="https://graphics.stanford.edu/">Stanford Computer Graphics Laboratory</a> under the direction of Marc Levoy.  A specification document was written in 1994 by Greg Turk, who was at Stanford as a post-doctoral student and has since been on the faculty of the University of North Carolina and Georgia Tech.  Copies of the specification include &quot;Copyright (c) 1994 The Board of Trustees of The Leland Stanford Junior University.  All rights reserved.  Permission to use, copy, modify and distribute this software and its documentation for any purpose is hereby granted without fee, provided that the above copyright notice and this permission notice appear in all copies of this software and that you do not sell the software.&quot;</p>
+		</fdd:disclosure>
+		<fdd:documentation>The most complete specification identified by the compilers of this resource is at <a href="http://gamma.cs.unc.edu/POWERPLANT/papers/ply.pdf">http://gamma.cs.unc.edu/POWERPLANT/papers/ply.pdf</a>.  See <a href="#specs">Format Specifications</a> below for links to additional copies.</fdd:documentation>
+		<fdd:adoption>
+			<p>The PLY Polygon File Format has been in steady use since its introduction in the mid 1990s, primarily for 3D models derived by scanning physical artifacts.  As of 2019, with 3D models in wide use for video games, online product information, 3D printing, and in archaeology, medicine and other professional disciplines, the simple, openly documented formats developed over 20 years ago, such as PLY, OBJ, and STL are supported in new contexts.  For example, recent versions of the Windows and Mac operating systems come with basic tools that can render 3D files in a small number of formats, including the PLY format.  Windows 10 includes Paint 3D, which can open files in PLY, STL, OBJ, 3MF, FBX, and GLB (the binary variant of <fddLink id="fdd000500">glTF_2_0</fddLink>) formats.  The version of Preview shipped with versions of Mac OS since 10.11 (El Capitan) has also been able to render 3D models in a number of formats; in 2019, Preview in Mac OS 10.14 (Mojave) supports PLY, OBJ, STL, USD (Universal Scene Description), ABC (Alembic), and possibly more.</p>
+			<p>Many tools for generating 3D models from physical artifacts can output PLY files.  See, for example, <a href="https://all3dp.com/1/best-photogrammetry-software/">Best Photogrammetry Software</a> and <a href="https://www.allthat3d.com/best-3d-scanners/">10 Best 3D Scanners in 2019</a> from All3DP.</p>
+			<p>Cultural heritage institutions and archaeologists have used the PLY format when scanning 3D artifacts in order to generate models that can be displayed online and viewed from all directions.  For example, <a href="https://www.si.edu/content/MCIImagingStudio/papers/scanning_paper_2.pdf">Reconstruction of a Nineteenth Century Plaster Piece Mold and Recreation of a Casting</a>, published in 2009, describes use of the format by the Smithsonian Institution&apos;s Museum Conservation Institute.  PLY continues to be used at the Smithsonian Institution.  It is supported in the <a href="https://github.com/Smithsonian/dpo-meshsmith">MeshSmith</a> tool developed by the Smithsonian&apos;s <a href="https://dpo.si.edu/3d-digitization-program">3D Digitization Program Office</a>. MeshSmith is integrated into the <a href="https://smithsonian.github.io/dpo-cook/">Cook</a> system (in development as of Fall 2019), which provides a simplified interface to manage 3D processing pipelines using about a dozen of the most widely used 3D processing tools.  The <a href="http://guides.archaeologydataservice.ac.uk/g2gp/3d_2-3">UK Archaeology Data Service</a> lists the PLY format in a table of &quot;common&quot; formats, and describes it as &quot;suitable for preservation.&quot;  A tool that can be used to render PLY files on the web is <a href="http://vcg.isti.cnr.it/3dhop/documentation/3DHOP_Models_Preparation.pdf">3D Heritage Online Presenter (3DHOP)</a> from the Visual Computing Lab of ISTI-CNR in Pisa, Italy.  See <a href="#useful">Useful References</a> below for more about 3DHOP.</p>
+			<p>SketchFab is a popular service for publishing 3D models and offers features aimed at <a href="https://sketchfab.com/museums">museums</a>.  See, for example, <a href="https://sketchfab.com/3d-models/the-gresham-ship-stoney-cove-feb-2013-cc229d9fc4bf432981c1364b9da69034">The Gresham Ship</a>.  PLY is supported for uploading models to SketchFab. However, it is not one of the preferred formats listed at <a href="https://help.sketchfab.com/hc/en-us/articles/202508396-Supported-3D-File-Formats">Supported 3D File Formats</a>.</p>
+			<p>3D modeling applications and conversion tools that can import, export, or convert PLY files include: <a href="https://en.wikipedia.org/wiki/MeshLab">MeshLab</a>, a widely used software system for manipulating 3D mesh models, maintained by the Visual Computing Lab of ISTI-CNR; <a href="https://docs.blender.org/manual/en/latest/files/import_export.html">Blender</a>, a popular free and open-source 3D creation suite supported by the <a href="https://www.blender.org/foundation/">Blender Foundation</a>, an independent non-profit public benefit corporation, established in the Netherlands; <a href="https://reference.wolfram.com/language/ref/format/PLY.html">Mathematica</a>; <a href="https://www.mathworks.com/help/vision/ug/the-ply-format.html">MathWorks</a>; <a href="https://www.rhino3d.com/">Rhinoceros</a>; <a href="https://products.aspose.com/3d/java">Aspose.3D for Java</a>; <a href="http://www.assimp.org/">Assimp (Open Asset Import Library)</a>; and <a href="http://www.quick3d.com/features.html">quick3D</a>.  Examples of software libraries and tool that have been developed specifically to read and write files in the PLY format include: <a href="http://w3.impa.br/~diego/software/rply/">RPly</a>, an open-source library in the C language; and <a href="https://github.com/ddiakopoulos/tinyply">Tinyply</a>, an open-source library in the C++ language; <a href="https://www.okino.com/conv/imp_ply.htm">PLY File Importer from Okino Computer Graphics</a> (with a corresponding PLY File Exporter); and <a href="https://www.cc.gatech.edu/projects/large_models/ply.html">PLY tools from Georgia Tech</a>.</p>
+			<p>The PLY format is often mentioned in association with 3D printing.  For example, <a href="https://blog.medit.com/medit/the-battle-of-file-formats-stl-vs-obj-vs-ply">The Battle of File Formats: STL vs OBJ vs PLY</a>, a blog post from a site dealing with applications in dentistry, identifies PLY as one of three formats commonly used for 3D printing in that domain.   Also in the medical field, <a href="https://www.3dsystems.com/anatomical-models/on-demand">On-Demand Anatomical Models</a> describes a service from 3DSystems for 3D printing based on uploading an STL, OBJ, or PLY file.  <a href="https://www.goprint3d.co.uk/blog/file-formats-used-3d-printing/">What File Formats are used in 3D Printing?</a>, a blog post from 2016 states, &quot;PLY (Polygon File Format) files are generated by 3D scanners ... When 3D printing, you convert a PLY file into the format accepted by the 3D printer.&quot;  3D scanners that can generate PLY files include: <a href="http://www.nextengine.com/products/scanner/specs">NextEngine</a>; and <a href="https://www.3dsystems.com/shop/sense/techspecs">Sense</a>.  The post <a href="https://all3dp.com/3d-printing-file-formats/">4 Most Common 3D Printer File Formats in 2019</a> from All3DP does not include PLY.  However, some 3D printers are packaged with software that directly accepts models in the PLY format, e.g., the <a href="https://www.tiertime.com/x5/">X5</a> and other 3D printers from Tiertime.  In addition to applications listed above, free applications from mainstream software companies that can be used to prepare models for a 3D printer and that support the PLY format include: <a href="https://developer.microsoft.com/en-us/windows/hardware/3d-print/3d-builder-users-guide">3D Builder</a> from Microsoft; and <a href="https://help.autodesk.com/view/MSHMXR/2019/ENU/?guid=GUID-D11FDE6E-0279-4909-9B9C-1E115506ED9B">Meshmixer</a> from AutoDesk.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>There are no concerns about patents or licensing associated with the PLY format.</fdd:licensingAndPatents>
+		<fdd:transparency>The ASCII variant of the PLY format is in plain text, and thus easy to view with basic editing tools.  The structure is simple and it is straightforward to build tools for reading and rendering based on the elements and properties listed in the header.  The binary variants have an ASCII header that describes the simple structure and data types in use to enable straightforward development of software to read and write compliant files.</fdd:transparency>
+		<fdd:selfDocumentation>The mandatory header describes the technical details needed to render the file.  The format provides no support for any other structured metadata. Comments can be included to provide informal descriptive and contextual metadata and information about provenance.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>None</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:otherQF>
+			<fdd:factor>
+				<fdd:tag>3D Model Geometry</fdd:tag>
+				<fdd:note>A typical PLY object definition is simply a list of (x,y,z) triples for vertices and a list of faces that are described by indices into the list of vertices. Most PLY files include this core information, although some represent point clouds and do not have faces.  Faces are often triangles, but can be polygons with more sides.  The PLY specification at <a href="http://gamma.cs.unc.edu/POWERPLANT/papers/ply.pdf">http://gamma.cs.unc.edu/POWERPLANT/papers/ply.pdf</a> indicates that vertex properties for normal components are &quot;often used.&quot;  Normal components can facilitate the representation of smoothed surfaces for polygonal meshes.  See <a href="https://en.wikipedia.org/wiki/Normal_(geometry)">Wikipedia entry for Normal(geometry)</a>.</fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>3D Model Appearance</fdd:tag>
+				<fdd:note>The PLY format can be used to define coloring, but the core element list in the specification does not include capabilities for defining material characteristics, shading, or use of images to define surface appearance.  Appearance characteristics can be added by defining new elements, that will be ignored by applications that do not recognize the element names.  The PLY specification at <a href="http://gamma.cs.unc.edu/POWERPLANT/papers/ply.pdf">http://gamma.cs.unc.edu/POWERPLANT/papers/ply.pdf</a> indicates that vertex properties for colors (R,G,B, and alpha), and simple material characteristics are &quot;often used.&quot;  These elements for material characteristics allow basic properties for color and reflectivity.</fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>3D Model Scene</fdd:tag>
+				<fdd:note>A PLY file can define only a single object, not a scene with several objects.  The PLY format cannot incorporate control of lighting or pre-determined viewing positions.</fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>3D Model Animation</fdd:tag>
+				<fdd:note>The PLY format does not support pre-determined animation sequences or skeleton structures (assemblies of bones and joints).  A 3D viewer that can render models in the PLY format will allow rotation and zooming.</fdd:note>
+			</fdd:factor>
+		</fdd:otherQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>ply</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>This file extension is found in practice, and listed in many file format resources.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>There is no media type registered with IANA.  text/plain is appropriate for the ASCII variant and application/octet-stream for the binary variants.  In practice many PLY files are stored and shared as ZIP or TAR files.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>ply[CR]</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>&quot;ply&quot; followed by the carriage return character is mandatory content for the first line of the header of a PLY file according to the specification.  The PRONOM record allows for other line separators and combines the first two lines of the header as the internal signature for a PLY file.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/831</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.nationalarchives.gov.uk/pronom/fmt/831">https://www.nationalarchives.gov.uk/pronom/fmt/831</a>.  Covers ASCII and binary variants.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q3077345</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q3077345">https://www.wikidata.org/wiki/Q3077345</a>.  Covers ASCII and binary variants.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>3D Model Characteristics</b>:  The quality and functionality factors used above are based on an analysis from 2008 in <a href="https://www.archives.gov/files/applied-research/ncsa/8-an-overview-of-3d-data-content-file-formats-and-viewers.pdf">An Overview of 3D Data Content, File Formats and Viewers</a>, a technical report (ISDA08-002) from the National Center for Supercomputing Applications (NCSA).  According to this analysis, the key aspects of a 3D model are: geometry, appearance, scene, and animation. For brief descriptions of these factors, see the table for 3D model formats under <a href="./fdd_explanation.shtml#factors">Quality and functionality factors</a>.  The descriptions there are drawn from the 2008 report and from <a href="https://all3dp.com/3d-file-format-3d-files-3d-printer-3d-cad-vrml-stl-obj/">8 Most Common 3D File Formats of 2019</a> (an article from C|net), which uses the same factors to distinguish formats.</p>
+			<p>All 3D formats support some method for representing the geometry (the shape) of an object; support for other aspects is optional depending on the primary use of the format.  Table 3 in the 2008 report, <a href="https://www.archives.gov/files/applied-research/ncsa/8-an-overview-of-3d-data-content-file-formats-and-viewers.pdf">An Overview of 3D Data Content, File Formats and Viewers</a>, compares nine popular 3D formats in use in 2008 based on these four aspects of 3D models.  This table includes PLY.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>The PLY format was developed in the mid-1990s by Greg Turk and others in the Stanford Computer Graphics Laboratory under the direction of Marc Levoy.  Greg Turk has been a faculty member at the University of North Carolina and Georgia Tech where he continued to work with the format.  See <a href="http://gamma.cs.unc.edu/POWERPLANT/#utilities">PLY Model Utilities from UNC</a> and <a href="https://www.cc.gatech.edu/projects/large_models/ply.html">PLY File Format page at Georgia Tech</a>.  The compilers of this resource have been unable to locate an update to the PLY format specification that is clearly later than <a href="http://gamma.cs.unc.edu/POWERPLANT/papers/ply.pdf">http://gamma.cs.unc.edu/POWERPLANT/papers/ply.pdf</a>.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The original public documentation for the PLY Polygon File Format appears to have been that written by Greg Turk in 1994, when he was at the Stanford Computer Graphics Laboratory.  Permission to copy the documentation was granted explicitly and copies can be found at several locations. The documents linked below appear to have identical content.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20161204152348/http://www.dcs.ed.ac.uk/teaching/cs4/www/graphics/Web/ply.html</link>
+							<tag> The PLY Polygon File Format
+| by Greg Turk (1994)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://paulbourke.net/dataformats/ply/</link>
+							<tag>PLY - Polygon File Format | from Paul Bourke&apos;s dataformats site</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The copy of Greg Turk&apos;s specification linked below has additional content at the end.  The added content includes three lists of elements for the PLY format: core; often used; and suggested extensions.  The document includes a copyright date of 1994, but the useful lists of elements may have been added later.  Because of this useful added content, references to the PLY specification in the narrative of this format description are to this version.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://gamma.cs.unc.edu/POWERPLANT/papers/ply.pdf</link>
+							<tag>The PLY Polygon File Format | by Greg Turk</tag>
+							<comment>Copy at the University of North Carolina, Chapel Hill.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Another copy of the PLY specification by Greg Turk has been made available by John Burkardt at the University of South Florida and the University of South Carolina.  This copy gives a copyright date of 1998, but is missing content found at the end of the copies listed above.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://people.math.sc.edu/Burkardt/data/ply/ply.txt</link>
+							<tag>The PLY Polygon File Format | from John Burkardt page at the University of South Carolina</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/PLY_(file_format)</link>
+					<tag>Wikipedia entry for PLY (file format)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://medium.com/@elope139/reading-ply-files-that-are-in-binary-format-cab3a37276a2</link>
+					<tag>Reading PLY files that are in binary format | by Eric Lopez (2018)</tag>
+					<comment>From medium.com</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.mathworks.com/help/vision/ug/the-ply-format.html</link>
+					<tag>The PLY Format | from MathWorks</tag>
+					<comment>This documentation for PLY is designed for programmers using MathWorks.  It discusses the use of PLY to represent point clouds.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>3DHOP, the 3D Heritage Online Presenter from the <a href="http://vcg.isti.cnr.it/">Visual Computing Lab of ISTI-CNR</a> in Pisa, Italy uses PLY as a primary format. </fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.researchgate.net/publication/282599235_3DHOP_3D_Heritage_Online_Presenter</link>
+							<tag>3DHOP: 3D Heritage Online Presenter |  article by Marco Potenziani et al (2015)</tag>
+							<comment>Computers &amp; Graphics 52 · August 2015</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://vcg.isti.cnr.it/3dhop/howto.php</link>
+							<tag>3DHOP (3D Heritage Online Presenter) | from the Visual Computing Lab of ISTI-CNR in Pisa, Italy</tag>
+							<comment>3DHOP is designed to allow the creation of interactive multimedia Web presentations based on 3D digital models in a simple way.  Supports .PLY format.  The recommended workflow for preparation focuses on use of PLY format.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://vcg.isti.cnr.it/Publications/2018/PCS18a/169-178.pdf</link>
+							<tag>Developing and Maintaining a Web 3D Viewer for the CH Community: an Evaluation of the 3DHOP Framework | by Marco Potenziani et al (2018)</tag>
+							<comment>From EUROGRAPHICS Workshop on Graphics and Cultural Heritage (2018)</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources that list software applications that can read or write PLY files.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://fileinfo.com/extension/ply</link>
+							<tag>FileInfo.com page for .PLY File Extension</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://graphics.stanford.edu/data/3Dscanrep/</link>
+							<tag>The Stanford 3D Scanning Repository</tag>
+							<comment>Some links to software tools from this page are outdated.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Institutions that have made use of the PLY format for research or teaching, and which have sample models available, include Stanford, Georgia Tech, the University of North Carolina, and the University of South Carolina.  These links also provide access to tools for reading and writing files in the PLY format; however, some links to tools are outdated as of 2019.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://graphics.stanford.edu/data/</link>
+							<tag>Stanford Computer Graphics Laboratory data archives </tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.cc.gatech.edu/projects/large_models/</link>
+							<tag>Large Geometric Models Archive | Georgia Tech</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://gamma.cs.unc.edu/POWERPLANT/</link>
+							<tag>Power Plant Model | from GAMMA research group at University of North Carolina (2001)</tag>
+							<comment>Has complete archive of model files for a power plant.  Files in the binary big-endian variant of PLY format.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://people.math.sc.edu/Burkardt/data/ply/ply.html</link>
+							<tag>PLY, an ASCII Polygon Format | file examples</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Selected tools for reading and writing PLY files</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://w3.impa.br/~diego/software/rply/</link>
+							<tag>RPly, ANSI C Library for PLY file format input and output</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/ddiakopoulos/tinyply</link>
+							<tag>Tinyply, C++ public domain implementation of the PLY mesh file format</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.okino.com/conv/exp_ply.htm</link>
+							<tag>PLY (Stanford) File Exporter | by Okino Computer Graphics</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/johannesgerer/jburkardt-m/blob/master/ply_io/ply_io.html</link>
+							<tag>PLY_IO - Read or Write a PLY File | for Matlab</tag>
+							<comment>From github site described as &quot;An official Git Mirror of John Burkardt&apos;s great collection of MATLAB Software&quot;</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/johannesgerer/jburkardt-c/blob/master/ply_io/ply_io.html</link>
+							<tag>PLY_IO - Read or Write a PLY File | for C</tag>
+							<comment>From github site described as &quot;An official Git Mirror of John Burkardt&apos;s great collection of C Software&quot;</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Selected tools designed to support conversion or manipulation of 3D models and which can import PLY files</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.blender.org/features/pipeline/</link>
+							<tag>Blender</tag>
+							<comment>A free open-source 3D creation suite</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.meshlab.net/</link>
+							<tag>MeshLab | from Visual Computing Lab of ISTI-CNR</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://assimp-docs.readthedocs.io/en/latest/about/intoduction.html</link>
+							<tag>Open Asset Import Library (assimp)</tag>
+							<comment>A library to load and process geometric scenes from various data formats.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://products.aspose.com/3d/java</link>
+							<tag>Aspose.3D for Java</tag>
+							<comment>Standalone gameware and CAD API to manipulate 3D files.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.si.edu/content/MCIImagingStudio/papers/scanning_paper_2.pdf</link>
+					<tag>Reconstruction of a Nineteenth Century Plaster Piece Mold and Recreation of a Casting | Museum Conservation Institute, Smithsonian Institution (2009)</tag>
+					<comment>Describes use of model in PLY format.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://3d.si.edu/content/3d-scanning-smithsonian</link>
+					<tag>3D Scanning at the Smithsonian</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://dpo.si.edu/3d-digitization-program</link>
+					<tag>3D Digitization Program | Smithsonian</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://blog.medit.com/medit/the-battle-of-file-formats-stl-vs-obj-vs-ply</link>
+					<tag>The Battle of File Formats: STL vs OBJ vs PLY</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://guides.archaeologydataservice.ac.uk/g2gp/3d_2-3</link>
+					<tag>Archaeology Data Service: Guides to Good Practice, section 2.3 Creating 3D Data | File formats </tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/831</link>
+					<tag>PRONOM entry for fmt/831</tag>
+					<comment>Information in PRONOM on Polygon File Format (PLY) format.  Covers ASCII and binary variants. PUID: fmt/831.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q3077345</link>
+					<tag>Wikidata entry for Q3077345</tag>
+					<comment>Information in WikiData about Polygon File Format (PLY) format. Covers ASCII and binary variants. WikiData Title ID: Q3077345</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
