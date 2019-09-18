@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000506" titleName="STL (STereoLithography) File Format, ASCII" shortName="STL_ASCII" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>model</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2019-09-15</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>STL (STereoLithography) File Format, ASCII</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>3D model formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The ASCII representation of the <fddLink id="fdd000504">STL (STereoLithography) file format</fddLink> is a simple, openly documented, plain-text format for describing the surface of an object as a triangular mesh.  Since its introduction in the late 1980s, STL has become a de facto standard for <a href="https://en.wikipedia.org/wiki/Rapid_prototyping">rapid prototyping</a> and <a href="https://en.wikipedia.org/wiki/3D_printing">3D printing</a>.</p>
+			<p>See the format description for <fddLink id="fdd000504">STL_family</fddLink> for general background and context for the STL format.  This document focuses on details applicable only to the ASCII variant of STL.</p>
+			<p>An STL_ASCII file consists of records that are lines beginning with keywords.  The file begins with a <i>solid</i> record, (which can include a name for the object), and ends with an <i>endsolid</i> record.  Between this outer pair of records, each triangular facet is represented by a sequence of records, beginning with a <i>facet</i> record and ending with an <i>endfacet</i> record. The <i>facet</i> record may include a unit-length normal vector preceded by the <i>normal</i> keyword.  The three vertices of the triangle are delimited by <i>outer loop</i> and <i>endloop</i> records. Each vertex is described on a <i>vertex</i> record that lists its (X,Y,Z) coordinates. See the <a href="https://en.wikipedia.org/wiki/STL_(file_format)#ASCII_STL">Wikipedia article for the STL file format</a> for a diagram showing the syntax for a facet.   The article also states, &quot;The structure of the format suggests that other possibilities exist (e.g., facets with more than one &quot;loop&quot;, or loops with more than three vertices). In practice, however, all facets are simple triangles.&quot;</p>
+			<p>For another description of the format and many example files, see <a href="http://people.math.sc.edu/Burkardt/data/stla/stla.html">STLA Files: ASCII stereolithography files</a> from John Burkardt.  Many other descriptions of the ASCII variant of the STL format, usually illustrated with an example of the ASCII syntax, can be found, including: <a href="https://www.fabbers.com/tech/STL_Format#Sct_ASCII">StL ASCII Format</a> from Marshall Burns; and <a href="http://paulbourke.net/dataformats/stl/">STL format</a> from Paul Bourke.</p>
+			<p>
+				<a href="https://www.fabbers.com/tech/STL_Format#Sct_ASCII">StL ASCII Format</a> from fabbers.com states, &quot;The ASCII format is primarily intended for testing new CAD interfaces. The large size of its files makes it impractical for general use.&quot;  A use of the ASCII variant of STL for instruction is shown in <a href="http://www.georgehart.com/sunysb/325/06-TriangulatedSurfaces.ppt">Triangulated Surfaces and STL Format</a>, slides from a lecture by George Hart from a course on <a href="http://www.georgehart.com/sunysb/325/">Computers and Sculpture</a>.  See <fddLink id="fdd000504">STL_family</fddLink> for information on shortcomings of the STL format that apply to both variants of the STL file format.</p>
+		</fdd:description>
+		<fdd:shortDescription>an openly documented plain-text format for describing an object as a triangular mesh, i.e., as a representation of a 3-dimensional surface geometry in triangular facets.  Each facet is described by a perpendicular (normal) direction and three points representing the vertices (corners) of the , triangle.  The STL format was developed for stereolithography, a form of 3D printing, in the late 1980s.  The ASCII variant is used primarily for testing and demonstrations.</fdd:shortDescription>
+		<fdd:productionPhase>See <fddLink id="fdd000504">STL_family</fddLink>.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000504</fdd:id>
+					<fdd:shortName>STL_family</fdd:shortName>
+					<fdd:titleName>STL (STereoLithography) File Format Family</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000505</fdd:id>
+					<fdd:shortName>STL_binary</fdd:shortName>
+					<fdd:titleName>STL (STereoLithography) File Format, Binary</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>See <fddLink id="fdd000504">STL_family</fddLink>.</fdd:experience>
+		<fdd:preference>See <fddLink id="fdd000504">STL_family</fddLink>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>The STL file format was openly documented by its originator, Charles Hull of 3D Systems, Inc.  Although STL can be considered proprietary, 3D Systems has encouraged its use.  The format has not been maintained through a formal governance structure.</p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p> Originally documented in <i>StereoLithography Interface Specification</i> in 1988 by 3D Systems, Inc.   The compilers of this resource have been unable to locate a copy of the original specification and have relied on other descriptions of the format.  Listed below (see <a href="#useful">Useful References</a>) are a number of sources with information about the format.   <a href="../contact_format.shtml">Comments welcome</a>. </p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>See <fddLink id="fdd000504">STL_family</fddLink> for information on adoption of the STL format including both variants.</p>
+			<p>The <a href="http://guides.archaeologydataservice.ac.uk/g2gp/3d_2-3">UK Archaeology Data Service</a> lists the STL format in a table of &quot;common&quot; formats, and describes the ASCII variant as &quot;suitable for preservation.&quot;</p>
+			<p>Because many STL files would be unmanageably large in the ASCII variant of the format, most use of STL is in <fddLink id="fdd000505">STL_binary</fddLink>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>There are no concerns about patents or licensing associated with the STL format.</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>The ASCII variant of the STL format is in plain text, and thus easy to view with basic editing tools.  The structure is simple and it is straightforward to build tools for reading and rendering based on the small set of keywords.</p>
+			<p>Unfortunately, as shown in <a href="https://doi.org/10.1016/S0895-7177(03)90079-3">Analysis of STL files</a> by M. Szilvśi-Nagy and Gy. Mátyási in 2003, the surface tessellation performed in CAD modelling software &quot;frequently ends with errors in the [STL] data structure as gaps and holes leading to open loops in the cross-sections that cannot be manufactured as layers.&quot;  Although an STL_ASCII file may be easy to read or manipulate as plain text, that does not mean that it can be used for 3D printing without using a software tool to check the file and repair it if needed. There are many tools that offer to repair STL files; see <a href="https://all3dp.com/1/stl-repair-stl-file-online-checker-fix-3d-model/">18 Best STL Repair Software Tools in 2019</a>.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>The format provides no support for descriptive metadata beyond an optional name for the object.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>None</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:otherQF>
+			<fdd:factor>
+				<fdd:tag>3D Model Geometry</fdd:tag>
+				<fdd:note>See <fddLink id="fdd000504">STL_family</fddLink>..</fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>3D Model Appearance</fdd:tag>
+				<fdd:note>The STL_ASCII format does not support colors or any other appearance characteristics.  Hence it is useful primarily for displaying or printing objects in a single color.  See also <fddLink id="fdd000504">STL_family</fddLink>.</fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>3D Model Scene</fdd:tag>
+				<fdd:note>See <fddLink id="fdd000504">STL_family</fddLink>.</fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>3D Model Animation</fdd:tag>
+				<fdd:note>See <fddLink id="fdd000504">STL_family</fddLink>.</fdd:note>
+			</fdd:factor>
+		</fdd:otherQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>stl</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>This file extension is found in practice, and listed in many file format resources.  Used for both ASCII and binary versions of STL.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>model/stl</fdd:sigValue>
+					<fdd:sigValue>application/sla</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>model/stl was registered as an Internet media type in March 2018 with IANA on behalf of the <a href="https://www.dicomstandard.org/current/">Digital Imaging and Communications in Medicine (DICOM) Standards Committee</a> in preparation of <a href="https://www.dicomstandard.org/News/ftsup/docs/sups/sup205.pdf">Supplement 205: DICOM Encapsulation of STL Models for 3D Manufacturing</a>.  See <a href="https://www.iana.org/assignments/media-types/model/stl">https://www.iana.org/assignments/media-types/model/stl</a>. Prior to that, application/sla had been used by <a href="https://reference.wolfram.com/language/ref/format/STL.html">Wolfram</a> for Mathematica and other products.  Both media types apply to both ASCII and binary versions of STL.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>&lt;optional blank&gt;solid</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See also the PRONOM record identified below.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/108</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/108">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/108</a>.  Provides a complex internal signature that looks for a number of keywords: <i>solid</i>; <i>facet</i>; <i>normal</i>; <i>outer loop</i>; and <i>vertex</i>. For ASCII variant only.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q1238229</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q1238229">https://www.wikidata.org/wiki/Q1238229</a>.  Covers ASCII and binary variants of STL.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>See <fddLink id="fdd000504">STL_family</fddLink>.</fdd:general>
+		<fdd:history>See <fddLink id="fdd000504">STL_family</fddLink>.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:specReference>StereoLithography Interface Specification, 3D Systems, Inc., October 1989</fdd:specReference>
+			</fdd:citation>
+			<fdd:citation>
+				<fdd:docGroup>
+					<fdd:intro>The compilers of this resource have not been able to locate a copy of the original specification from 3D Systems, Inc.  See <a href="#useful">Useful References</a>, immediately below, for sources with documentation for the format, often by example. </fdd:intro>
+				</fdd:docGroup>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The STL ASCII format is described, by example or by syntax description, in a number of resources.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://people.math.sc.edu/Burkardt/data/stla/stla.html</link>
+							<tag>STLA Files:
+ASCII stereolithography files </tag>
+							<comment>Brief description, sample files, and software utilities for processing STL files</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://paulbourke.net/dataformats/stl/</link>
+							<tag>STL format
+| By Paul Bourke, 
+October 1999 </tag>
+							<comment>from Paul Bourke&apos;s dataformats site</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.fabbers.com/tech/STL_Format#Sct_ASCII</link>
+							<tag>
+The StL Format: StL ASCII Format | by Marshall Burns</tag>
+							<comment>Reprinted from Section 6.5 of
+Automated Fabrication by Marshall Burns, Ph.D.
+Used with permission.  Describes rules that data in STL files must follow to be valid.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/STL_(file_format)#ASCII_STL</link>
+							<tag>Wikipedia entry for STL (file format): ASCII STL</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.georgehart.com/sunysb/325/06-TriangulatedSurfaces.ppt</link>
+					<tag>Triangulated Surfaces and STL Format | lecture slides from course on Computers and Sculpture</tag>
+					<comment>By George W. Hart, a sculptor of constructive geometric forms.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://doi.org/10.1016/S0895-7177(03)90079-3</link>
+					<tag>Analysis of STL files (2003) | by M. Szilvśi-Nagy and Gy. Mátyási</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/x-fmt/108</link>
+					<tag>PRONOM entry for x-fmt/108</tag>
+					<comment>Information in PRONOM on STL ASCII  format.   PUID: x-fmt/108.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q1238229</link>
+					<tag>Wikidata entry for Q1238229</tag>
+					<comment>Information in WikiData about STL format. Covers ASCII and binary variants. WikiData Title ID: Q1238229</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000504">STL_family</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
