@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000507" titleName="Wavefront OBJ File Format" shortName="OBJ" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>model</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2019-09-19</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Wavefront OBJ File Format</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>3D model formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The Wavefront OBJ format is a format for defining the 3D geometry for the surface of one or more objects.  The format was first used by Wavefront Technologies around 1990 and a <a href="http://www.cs.utah.edu/~boulos/cs3505/obj_spec.pdf">specification</a> was published to encourage interoperability.  The introduction to the specification stated, &quot;Object files define the geometry and other properties for objects in
+Wavefront’s Advanced Visualizer.  Object files can also be used to
+transfer geometric data back and forth between the Advanced
+Visualizer and other applications.&quot;  Since the mid 1990s, the ASCII-based format has been treated as a vendor-neutral format, referred to as &apos;Wavefront OBJ,&quot; &quot;Alias/Wavefront OBJ,&quot; or simply &quot;OBJ.&quot;  In 2019, the format remains widely used, particularly for 3D printing of objects in multiple colors.  Note: Colors and textures are not defined in the OBJ file itself, but in an associated Wavefront Material Template Library (<fddLink id="fdd000508">MTL</fddLink>) file and invoked in the OBJ file.  See <a href="#factors">3D Model Appearance</a> factor below.</p>
+			<p>The OBJ file format supports definition of the geometry for object surfaces using polygonal meshes or using freeform curves and surfaces.  From a logical perspective, the central concept in an OBJ model is the &quot;element.&quot;  The specification lists the following as elements: point (<i>p</i>), line (<i>l</i>), face (<i>f</i>), curve (<i>curv</i>), 2D curve (<i>curv2</i>), and surface (<i>surf</i>).  Elements are constructed from vertices; the vertices must be listed first in the file, so that the elements can refer to them by number, using the order in which they occur in the file.  Elements can optionally be organized into groups for convenience or to guide rendering applications.</p>
+			<p>An OBJ file has a simple physical structure, consisting of lines that start with keywords.  Following each keyword, appropriate options and values are specified.  Lines beginning with # are comments.  Long lines can be broken up, using a backslash (\) character at the end of lines to be continued.  According to the <a href="https://www.fileformat.info/format/wavefrontobj/egff.htm">Wavefront OBJ File Format Summary</a> in the Encyclopedia of Graphics File Formats, 2nd Edition, &quot;The most commonly encountered OBJ files contain only polygonal faces. To describe a polygon, the file first describes each point [vertex] with the &quot;v&quot; keyword, then describes the face with the &quot;f&quot; keyword. The line of a face command contains the enumerations of the points in the face, as <i>1-based indices</i> into the list of points, in the order they occurred in the file.&quot;  [Note:  A 1-based index means that the count of vertices begins at 1, rather than 0.] The description of <a href="https://people.cs.clemson.edu/~dhouse/courses/405/docs/brief-obj-file-format.html">Alias/WaveFront Object (.obj) File Format</a> provided by Donald H. House for a course in computer graphics is a useful introduction to the keywords used for polygonal meshes; these keywords are supported by most applications that claim to support the OBJ format.  Not all 3D software applications can handle freeform surfaces, which are defined using mathematical equations.  Of those that can, support may be limited to the non-uniform rational basis spline (<a href="https://en.wikipedia.org/wiki/Non-uniform_rational_B-spline">NURBS</a>) model, although the OBJ specification allows for a variety of models.</p>
+			<p>Here is a simple example of an OBJ file, for a cube, taken from the specification</p>
+			<p>v 0.000000 2.000000 2.000000<br/>v 0.000000 0.000000 2.000000<br/>v 2.000000 0.000000 2.000000<br/>v 2.000000 2.000000 2.000000<br/>v 0.000000 2.000000 0.000000<br/>v 0.000000 0.000000 0.000000<br/>v 2.000000 0.000000 0.000000<br/>v 2.000000 2.000000 0.000000<br/>f 1 2 3 4<br/>f 8 7 6 5<br/>f 4 3 7 8<br/>f 5 1 4 8<br/>f 5 6 2 1<br/>f 2 6 7 3</p>
+			<p>Many more examples can be found at <a href="http://people.math.sc.edu/Burkardt/data/obj/obj.html">John Burkardt&apos;s page on the OBJ format</a>, for example, for a <a href="http://people.math.sc.edu/Burkardt/data/obj/minicooper.obj">Mini Cooper</a>.</p>
+			<p>Vertices for a polygonal model in an OBJ file can have three types of vertex data.  See <a href="https://en.wikipedia.org/wiki/Vertex_(computer_graphics)">Wikipedia entry for Vertex (computer graphics)</a>.</p>
+			<ul>
+				<li>
+					<b>v</b>: Defines the position of the vertex in three dimensions (x,y,z).  Three floating point numbers.  Required.</li>
+				<li>
+					<b>vn</b>: <a href="https://en.wikipedia.org/wiki/Vertex_normal">Vertex normal</a>, a directional vector associated with a vertex, used to facilitate smooth shading.  Three floating point numbers.  Optional.</li>
+				<li>
+					<b>vt</b>: Texture coordinates, also known as <a href="https://en.wikipedia.org/wiki/UV_coordinates">UV coordinates</a>.  Typically two floating point numbers (u, v).  These coordinates are used during rendering to determine how to paint the three-dimensional surface with pixels from a 2D texture map, e.g. an image in a format such as PNG.  Optional.</li>
+			</ul>
+			<p>For information on the keywords and options associated with freeform surface elements, see the <a href="http://www.cs.utah.edu/~boulos/cs3505/obj_spec.pdf">specification</a> and <a href="#useful">Useful References</a> below.</p>
+			<p>OBJ files that contain only face elements and the associated vertex data are widely supported by 3D software applications, for import and for export.  Nevertheless, there can be interoperability problems associated with applying colors and textures using an associated <fddLink id="fdd000508">MTL</fddLink> file.  An OBJ file refers to the MTL file in an <i>mtllib</i> declaration and definitions for objects (polygonal or freeform) within the OBJ file can refer to a particular named material definition with a <i>usemtl</i> statement.  Some applications simply do not support the MTL files.  The original Advanced Visualizer application required the MTL file to be in the same directory as the OBJ file and any texture map files also to be in the same directory.  Some applications accept paths to files in other directories and others export the component files in separate directories and users have to move them before they can be successfully employed.  Another potential source of interoperability problems with MTL files is the use of keywords not defined in the original MTL specification for proprietary use or to support new approaches for 3D rendering.  For more details, see <fddLink id="fdd000508">MTL</fddLink>.</p>
+		</fdd:description>
+		<fdd:shortDescription>an ASCII-based format for defining the 3D geometry for the surface of one or more objects.  First used by Wavefront Technologies around 1990. Soon after, a specification was published to encourage interoperability.  In 2019, it is the preferred format for multi-color 3D printing.</fdd:shortDescription>
+		<fdd:productionPhase>The OBJ format can be an initial-state format, created by a 3D scanning process.  It often serves as a middle-state format, created as output from software that supports 3D design.  An OBJ model will often be input to a 3D printing process or to more advanced 3D modeling software to include in a 3D scene or animation.  Models are often shared for re-use in the OBJ format.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May have component</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000508</fdd:id>
+					<fdd:shortName>MTL</fdd:shortName>
+					<fdd:titleName>Wavefront Material Template Library (MTL) File Format</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>An associated MTL file can define colors and texture for applying to the surface of the objects whose surface geometry is defined in the OBJ file.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The OBJ format has been used in a pilot workflow for 3D capture of artifacts from the Kislak Collection.</fdd:experience>
+		<fdd:preference>The Library of Congress has not yet expressed any format preference for digital models used as designs or surrogates for 3-dimensional objects.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>The OBJ format was developed by Wavefront Technologies around 1990 and the format was openly documented before 1995 as Appendix B1 of a manual for version 3 of the Advanced Visualizer software sold by Wavefront.  This appendix has been made available in several places on the Internet and the <a href="https://en.wikipedia.org/wiki/Wavefront_.obj_file">Wikipedia entry for Wavefront .obj file</a> states, &quot;The file format is open and has been adopted by other 3D graphics application vendors.&quot;  The originators were indeed happy to share the specification and the format is indeed supported in almost all CAD software.  However, from a legal standpoint, the specification is probably proprietary to Autodesk; see <a href="#notes">Notes on History</a> and <a href="#useful">Useful References</a> below for details on the chain of mergers and acquisitions.</p>
+			<p>Note that a binary equivalent, with a .mod extension, is mentioned in the introduction to the specification but was not documented.</p>
+		</fdd:disclosure>
+		<fdd:documentation>A <a href="http://www.cs.utah.edu/~boulos/cs3505/obj_spec.pdf">specification for the Wavefront OBJ format</a> was published in Appendix B1 of a manual for <a href="https://en.wikipedia.org/wiki/The_Advanced_Visualizer">The Advanced Visualizer</a> in the early 1990s. See  <a href="#specs">Format Specifications</a> below for additional copies of the same appendix.</fdd:documentation>
+		<fdd:adoption>
+			<p>The Wavefront OBJ format is widely used for 3D printing.  See, for example, question 40 in <a href="https://all3dp.com/3d-printing-3d-printer-guide-101-questions/">3D Printing Guide: Basics</a> and <a href="https://all3dp.com/3d-file-format-3d-files-3d-printer-3d-cad-vrml-stl-obj/#Top">Most Common 3D File Formats</a> from All3DP; and <a href="https://guides.auraria.edu/c.php?g=567257&amp;p=3907431">Working in 3D: Designing and Saving for 3D Printing</a>, a guide from Auraria Library.  According to <a href="https://all3dp.com/1/obj-file-format-3d-printing-cad/">OBJ File Format – Simply Explained for CAD and 3D Printing</a> from All3DP, OBJ has wide export and import support among CAD software and in recent years, has become &quot;the de facto file format for multi-color 3D printing because the otherwise standard 3D printing format <fddLink id="fdd000504">STL</fddLink> does not support color and texture information.&quot;</p>
+			<p>Most CAD/CAM and 3D design applications can import and export polygonal meshes in the OBJ format.  The compilers of this resource have not determined which widely used 3D software applications can work with freeform surfaces.  See the <a href="#factors">3D Model Geometry</a> factor below for more detail.</p>
+			<p>As of 2019, with 3D models in wide use for video games, online product information, 3D printing, and in archaeology, medicine, and other professional disciplines, the simple, openly documented formats developed over 20 years ago, such as <fddLink id="fdd000504">STL</fddLink>, OBJ, and <fddLink id="fdd000501">PLY</fddLink> are supported in new contexts.  For example, recent versions of the Windows and Mac operating systems come with basic tools that can render 3D files in a small number of formats, including the OBJ format.  Windows 10 includes Paint 3D, which can open files in PLY, STL, OBJ, 3MF, FBX, and GLB (the binary variant of <fddLink id="fdd000500">glTF_2_0</fddLink>) formats.  In April 2017, Microsoft <a href="https://techcommunity.microsoft.com/t5/OneDrive-for-Business/Announcing-New-File-Viewers-Available-for-OneDrive-For-Business/m-p/60040">announced</a> support for 3D formats (3MF, FBX, OBJ, PLY, STL) in OneDrive for Business.  The version of Preview shipped with versions of Mac OS since 10.11 (El Capitan) has also been able to render 3D models in a number of formats.  For example, Preview in Mac OS 10.14 (Mojave) supports PLY, OBJ, STL, USD (Universal Scene Description), ABC (Alembic), and possibly more.</p>
+			<p>3D modeling applications and conversion tools that can import, export, or convert OBJ files include: <a href="https://en.wikipedia.org/wiki/MeshLab">MeshLab</a>, a widely used open-source software system for manipulating 3D mesh models, maintained by the Visual Computing Lab of ISTI-CNR; <a href="https://docs.blender.org/manual/en/latest/files/import_export.html">Blender</a>, another popular free and open-source 3D creation suite, supported by the <a href="https://www.blender.org/foundation/">Blender Foundation</a>, an independent non-profit public benefit corporation, established in the Netherlands; <a href="https://reference.wolfram.com/language/ref/format/OBJ.html">Mathematica</a>; <a href="https://www.rhino3d.com/formats">Rhino</a>; <a href="https://products.aspose.com/3d/java">Aspose.3D for Java</a>; <a href="https://assimp-docs.readthedocs.io/en/latest/about/intoduction.html">Assimp (Open Asset Import Library)</a>; <a href="http://www.quick3d.com/features.html">quick3D</a> and <a href="https://www.techsoft3d.com/products/hoops/exchange/">HOOPS Exchange SDK</a>.  Products from Autodesk that support the OBJ format include: <a href="https://knowledge.autodesk.com/support/alias-products/learn-explore/caas/CloudHelp/cloudhelp/2019/ENU/Alias-ImportingExporting/files/GUID-A1CC091A-A9C8-45DB-A3EA-2DAFE7E1A59D-htm.html">Alias</a>; <a href="https://knowledge.autodesk.com/support/maya/learn-explore/caas/CloudHelp/cloudhelp/2019/ENU/Maya-ManagingScenes/files/GUID-69BC066D-D4D8-4B12-900C-CF42E798A5D6-htm.html">Maya (import)</a>; <a href="https://knowledge.autodesk.com/support/maya/learn-explore/caas/CloudHelp/cloudhelp/2019/ENU/Maya-ManagingScenes/files/GUID-864BD203-C437-4481-8BFC-3A6C1D2C824C-htm.html">Maya (export)</a>; <a href="https://help.autodesk.com/view/MAYALT/2019/ENU/?guid=GUID-3A6190CA-E296-4A10-9287-5AEE156DBA9D">Maya LT</a>; and <a href="https://knowledge.autodesk.com/support/3ds-max/learn-explore/caas/CloudHelp/cloudhelp/2020/ENU/3DSMax-Data-Exchange/files/GUID-87B0A138-8348-4DCB-87EE-585841A27318-htm.html">3DS Max</a>.</p>
+			<p>Recently, GIS applications have begun to integrate 3D support.  Models in the OBJ format can be used in Esri&apos;s <a href="https://doc.arcgis.com/en/cityengine/latest/help/help-import-obj.htm">City Engine</a> and via some extensions to ArcGIS Pro: <a href="https://www.esriuk.com/en-gb/arcgis/products/arcgis-data-interoperability/supported-formats">ArcGIS Data Interoperability</a> and <a href="https://pro.arcgis.com/en/pro-app/tool-reference/3d-analyst/import-3d-files.htm">3D Analyst</a>.  The Feature Manipulation Engine (<a href="https://www.safe.com/integrate/obj/">FME</a>), which is widely used with GIS products, offers support for importing or converting the OBJ format.</p>
+			<p>Examples of software tools that have been developed specifically to read and write files in the OBJ format include: <a href="https://github.com/pywavefront/PyWavefront">PyWavefront</a> in Python; <a href="https://threejs.org/examples/jsm/loaders/OBJLoader.js">OBJloader.js</a> in javascript, part of <a href="https://threejs.org/">threejs</a> toolkit; and <a href="https://github.com/dwmkerr/file-format-wavefront">file-format-wavefront</a> for .NET.</p>
+			<p>Cultural heritage institutions and archaeologists have used the Wavefront OBJ format when scanning 3D artifacts from their sites or collections.  However, many museums also use 3D formats that offer more advanced features.  For example, the British Museum offers <a href="https://sketchfab.com/3d-models/a-queen-from-the-lewis-chessmen-af096aa7ca934f84b6d64c89a8e312d4">a queen from the Lewis chessmen</a> for download from SketchFab in STL and OBJ, but also in glTF.  <a href="https://sketchfab.com/museums">SketchFab</a> is used by many museums for making 3D models available.  Wavefront OBJ is supported for uploading models to SketchFab and is one of the preferred formats listed at <a href="https://help.sketchfab.com/hc/en-us/articles/202508396-Supported-3D-File-Formats">Supported 3D File Formats</a>.  The <a href="http://guides.archaeologydataservice.ac.uk/g2gp/3d_2-3">UK Archaeology Data Service</a> lists the Wavefront OBJ format in a table of &quot;common&quot; formats, and describes it as &quot;suitable for preservation.&quot;</p>
+			<p>Digital Imaging and Remote Sensing Image Generation (DIRSIG) is a specialized system that can be used to test image system designs, to create test imagery for evaluating image exploitation algorithms and for creating data for training image analysts.  DIRSIG software has been developed over the course of over two decades for use by NSF, NASA, DoD and Intelligence community contractors and by universities doing research for these organizations.  In addition to a custom format, the software will read the Alias/Wavefront OBJ file format directly. Other geometry formats must be exported to the Alias OBJ format for importation into a DIRSIG scene. DIRSIG support is only for meshes with faces with three or four vertices.  See <a href="http://www.dirsig.org/docs/new/obj.html#_feature_support_in_dirsig">Alias/Wavefront OBJ File Format |Feature Support in DIRSIG</a>.</p>
+			<p>
+				<a href="https://www.dicomstandard.org/wgs/wg-17/">Working Group 17</a> for the Digital Imaging and Communications in Medicine (DICOM) standard has proposed that the OBJ and MTL formats are the next 3D model format, following <fddLink id="fdd000504">STL</fddLink>, to be supported for encapsulation in a DICOM wrapper.  See slides on <a href="http://dicom.nema.org/Dicom/News/March2019/docs/sups/sup208-slides.pdf">Supplement 208: Extension of DICOM Encapsulation of 3D Manufacturing Models</a> from March 2019.</p>
+			<p>Faced with interoperability problems in getting some 3D software to import the OBJ and MTL files together and yield an appropriate rendering, some users may choose a workflow that avoids the OBJ format.  For more on sources of interoperability problems, see <fddLink id="fdd000508">MTL</fddLink>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>There was no formal statement by Wavefront Technologies or by any of its succeeding corporate entities that the OBJ format may be used without a license.  However, the original publication included the informal statement, &quot;The .obj appendix is for those who want to use the .obj format to translate geometric data from other software applications to Wavefront products. It also provides information for Advanced Visualizer users who want detailed information on the Wavefront .obj file format.&quot;  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>The OBJ format is in plain text, and thus easy to view with basic editing tools.   Use of freeform curves and surfaces rather than polygonal facets will yield statements that may be hard to interpret without an understanding of the mathematics that enables efficient representation and rendering of free-form surface patches.  See <a href="#useful">Useful References</a> below.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>There is no support for embedding structured metadata in an OBJ file.  Comments, indicated by lines with a leading # character, can be included anywhere in the file.</fdd:selfDocumentation>
+		<fdd:externalDependencies>For full rendering with color and textures as intended, an OBJ file may need one or more associated Material Template Library (<fddLink id="fdd000508">MTL</fddLink>) files and supplementary texture files.</fdd:externalDependencies>
+		<fdd:techProtection>The OBJ format has no internal capabilities for encryption or other technical protection.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:otherQF>
+			<fdd:factor>
+				<fdd:tag>3D Model Geometry</fdd:tag>
+				<fdd:note>
+					<p>The OBJ file format can encode surface geometry of a 3D model, using a polygonal mesh and/or freeform geometry using any of a number of techniques to define curved surface patches: basis matrix; Bezier;
+B-spline; Cardinal spline; or Taylor expansion.  See section on <i>Freeform curve and surface types</i> at page 65 of the <a href="http://www.cs.utah.edu/~boulos/cs3505/obj_spec.pdf">specification</a> for more detail.  See also <a href="#useful">Useful References</a> below for some links to explanations of the underlying mathematics.</p>
+					<p>The compilers of this resource have been unable to determine how widely the more complex freeform modeling options are in use in OBJ files and how widely the techniques are supported in CAD software.  The <a href="https://en.wikipedia.org/wiki/Wavefront_.obj_file">Wikipedia entry for Wavefront .obj files</a> states, &quot;The most common elements are geometric vertices, texture coordinates, vertex normals and polygonal faces.&quot;  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+					<p>
+						<a href="https://all3dp.com/1/obj-file-format-3d-printing-cad/">OBJ File Format – Simply Explained for CAD and 3D Printing</a> from All3DP states that in general, the most common freeform surface technique in use is NURBS (Non-Uniform Rational B-Spline), a particular variant of B-spline that the OBJ format does support.  <a href="https://knowledge.autodesk.com/support/alias-products/learn-explore/caas/CloudHelp/cloudhelp/2019/ENU/Alias-ImportingExporting/files/GUID-A1CC091A-A9C8-45DB-A3EA-2DAFE7E1A59D-htm.html">Alias</a> from Autodesk does appear to handle freeform surfaces.  However, the help for <a href="https://knowledge.autodesk.com/support/3ds-max/learn-explore/caas/CloudHelp/cloudhelp/2020/ENU/3DSMax-Data-Exchange/files/GUID-87B0A138-8348-4DCB-87EE-585841A27318-htm.html">3DS Max</a>, also from Autodesk only mentions the use of meshes on import.  <a href="https://docs.blender.org/manual/en/latest/addons/io_scene_obj.html">Blender</a> appears to have partial support for curved surfaces defined by NURBS, but converts them to meshes on output. Another example of limited freeform curve support is in <a href="https://nurbs-python.readthedocs.io/en/latest/file_formats.html">NURBS-Python (geomdl)</a>, a cross-platform, object-oriented B-Spline and NURBS library written in Python, which can output OBJ files.</p>
+				</fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>3D Model Appearance</fdd:tag>
+				<fdd:note>Appearance characteristics such as color and texture can be defined in companion Material Template Library (<fddLink id="fdd000508">MTL</fddLink>) files.  The MTL file is a &quot;library&quot; that can contain one or more named material definitions, each of which can specify color, texture, and reflection characteristics. An OBJ file refers to the MTL file in an <i>mtllib</i> declaration and definitions for objects (polygonal or freeform) within the OBJ file can refer to a particular named material definition with a <i>usemtl</i> statement.</fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>3D Model Scene</fdd:tag>
+				<fdd:note> An OBJ file can define several objects, but not a scene incorporating lighting positions or pre-determined viewing positions.</fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>3D Model Animation</fdd:tag>
+				<fdd:note>The OBJ format does not support pre-determined animation sequences or skeleton structures (assemblies of bones and joints).  A 3D viewer that can render models in the OBJ format will allow rotation and zooming.</fdd:note>
+			</fdd:factor>
+		</fdd:otherQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>obj</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Defined in specification.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>If needed, <i>text/plain</i> would be appropriate.  See <a href="https://stackoverflow.com/questions/18641754/mime-type-of-wavefronts-obj-and-mtl">MIME Type of Wavefront&apos;s OBJ and MTL</a> on Stack Overflow for a discussion of other options.  A 2019 slideshow on <a href="http://dicom.nema.org/Dicom/News/March2019/docs/sups/sup208-slides.pdf">Extension of DICOM Encapsulation of 3D Manufacturing Models</a> suggests that DICOM (Digital Imaging and Communications in Medicine) plans to register <i>model/obj</i>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/1210</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/pronom/fmt/1210">http://www.nationalarchives.gov.uk/pronom/fmt/1210</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q2119595</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q2119595">https://www.wikidata.org/wiki/Q2119595</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>3D Model Characteristics</b>:  The quality and functionality factors used above are based on an analysis from 2008 in <a href="https://www.archives.gov/files/applied-research/ncsa/8-an-overview-of-3d-data-content-file-formats-and-viewers.pdf">An Overview of 3D Data Content, File Formats and Viewers</a>, a technical report (ISDA08-002) from the National Center for Supercomputing Applications (NCSA).  According to this analysis, the key aspects of a 3D model are: geometry, appearance, scene, and animation. For brief descriptions of these factors, see the table for 3D model formats under <a href="./fdd_explanation.shtml#factors">Quality and functionality factors</a>.  The descriptions there are drawn from the 2008 report and from <a href="https://all3dp.com/3d-file-format-3d-files-3d-printer-3d-cad-vrml-stl-obj/">2019 Most Common 3D File Formats</a> (an article from All3DP), which includes the OBJ format and uses the same factors to distinguish the capabilities of formats.</p>
+			<p>All 3D formats support some method for representing the geometry (the shape) of an object; support for other aspects is optional depending on the primary use of the format.  Table 3 in the 2008 report, <a href="https://www.archives.gov/files/applied-research/ncsa/8-an-overview-of-3d-data-content-file-formats-and-viewers.pdf">An Overview of 3D Data Content, File Formats and Viewers</a>, compares nine popular 3D formats in use in 2008, including OBJ, based on these four aspects of 3D models.</p>
+			<p>
+				<b>Potential interoperability issues:</b>  The <a href="https://en.wikipedia.org/wiki/Wavefront_.obj_file">Wikipedia entry for the Wavefront .obj file</a> notes that &quot;OBJ files, due to their list structure, are able to reference vertices, normals, etc. either by their absolute position (1 represents the first defined vertex, N representing the Nth defined vertex), or by their relative position (-1 represents the latest defined vertex). However, not all software supports the latter approach, and conversely some software inherently writes only the latter form (due to the convenience of appending elements without needing to recalculate vertex offsets, etc.), leading to occasional incompatibilities.&quot;</p>
+			<p>Documentation for the <a href="https://www.okino.com/conv/imp_wave.htm">Wavefront OBJ Importer</a> by Okino indicates that before the introduction of the MTL format, an earlier method for applying a texture map to a surface object was via a <i>usemap</i> statement in the OBJ file.  The Okino importer would create equivalent MTL-style definitions for any texture maps referenced in this way.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>Another source of potential interoperability issues is in associated <fddLink id="fdd000508">MTL</fddLink> files.  Some extensions to the MTL format have been introduced by software vendors or open source projects based on developments in computer graphics techniques for rendering surfaces.  For example, in 2015, Exocortex proposed <a href="http://exocortex.com/blog/extending_wavefront_mtl_to_support_pbr">Extending Wavefront MTL for Physically-Based Rendering</a> through adding new statements, e.g., for defining roughness and clearcoat thickness.  See <fddLink id="fdd000508">MTL</fddLink> for more details.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>The OBJ format was developed by Wavefront Technologies for the Visualizer products that it developed in the late 1980s and early 1990s.  The compilers of this resource have not been able to determine an exact date for the first use of the format.  The <a href="https://web.archive.org/web/20040418025613/http://www.aliaswavefront.com/eng/about/history/19831989.shtml#1988">company history</a> reveals that in 1988, Wavefront released its first desktop product, known as Personal Visualizer, for the Silicon Graphics (SGI) workstation. In 1989, came the Data Visualizer, intended for industrial design applications. Since a <a href="https://www.worldcat.org/title/programmers-project-guide-for-the-advanced-visualizer-interim-publication/oclc/24278625">Programmer&apos;s Project Guide for the Advanced Visualizer</a> was published by Wavefront Technologies in 1990, <a href="https://en.wikipedia.org/wiki/The_Advanced_Visualizer">The Advanced Visualizer (TAV)</a> software came out soon after.  The origin of the specification that is widely found is Appendix B of a manual for Advanced Visualizer 3.0; and includes an implication that the OBJ format had been used in the previous version, but not documented.  This specification indicated that &quot;The curve and surface extensions to the .obj file format were developed in conjunction with <a href="https://en.wikipedia.org/wiki/Mental_Images">mental images GmbH.</a> Berlin, Germany, as part of a joint development project to incorporate free-form surfaces into Wavefront’s Advanced Visualizer.&quot;   By 1995, the <a href="https://www.worldcat.org/title/advanced-visualizer-users-guide-version-42/oclc/249102607">Advanced Visualizer User&apos;s Guide, Version 4.2</a> was published.  By 1998, a <a href="https://www.cc.gatech.edu/scivis/userguide/resources/software/advvis.html">user guide for scientific visualization</a> on workstations at Georgia Tech indicated that version 4.3 of the Advanced Visualizer was installed, soon to be replaced by the first version of the successor product, Maya, which also used the OBJ format.</p>
+			<p>On February 7, 1995, Silicon Graphics had announced that it would purchase Wavefront Technologies and Alias Research.  SGI merged the two companies to create Alias|Wavefront, later simply Alias.  In 2004, SGI sold Alias to a private equity firm, Accel-KKR, with the support of Alias management.  See <a href="https://web.archive.org/web/20040703165346/http://www.aliaswavefront.com/eng/about/history/">Alias | About: History</a>.  In 2006, Alias was acquired by Autodesk.  See <a href="https://en.wikipedia.org/wiki/Accel-KKR">Wikipedia entry for Accel-KKR</a> and a <a href="http://investors.autodesk.com/news-releases/news-release-details/autodesk-completes-acquisition-alias">news release</a> from Autodesk.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The following URLs link to copies of the specification for the OBJ format that was distributed by Wavefront Technologies as Appendix B1 of a manual for version 3.0 of their Advanced Visualizer software.  No copy is more authoritative than the others.  The original date for this document is around 1992.  See <a href="#notes">Notes on History</a> above.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.cs.utah.edu/~boulos/cs3505/obj_spec.pdf</link>
+							<tag>Copy of Appendix B1 of Advanced Visualizer manual | from Wavefront Technologies around 1992</tag>
+							<comment>Text as distributed with version 3 of Wavefront&apos;s Advanced Visualizer software.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://paulbourke.net/dataformats/obj/</link>
+							<tag>Object Files (.obj) | from Paul Bourke&apos;s dataformats site.</tag>
+							<comment>Appears to be a plain-text version of Appendix B1 from the manual for Wavefront&apos;s Advanced Visualizer software.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.martinreddy.net/gfx/3d/OBJ.spec</link>
+							<tag>Wavefront Object Files | from Martin Reddy&apos;s Graphics File Formats site</tag>
+							<comment>Another plain-text version of Appendix B1 from the manual for Wavefront&amp;apos;s Advanced Visualizer software.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://coefs.uncc.edu/arwillis/programming-and-documentation/object-files-obj/</link>
+							<tag>Object Files (.obj) | from Andrew Willis, The William States Lee College of Engineering</tag>
+							<comment>Another copy of Appendix B1 from the manual for Wavefront&apos;s Advanced Visualizer software</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Wavefront_.obj_file</link>
+					<tag>Wikipedia entry for Wavefront .obj file</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Informal descriptions of the format</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.fileformat.info/format/wavefrontobj/egff.htm</link>
+							<tag>Wavefront OBJ File Format Summary | from Encyclopedia of Graphics File Formats, 2nd ed. 1996</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://people.cs.clemson.edu/~dhouse/courses/405/docs/brief-obj-file-format.html</link>
+							<tag>Alias/WaveFront Object (.obj) File Format</tag>
+							<comment>This useful description covers only the keywords associated with polygonal mesh geometry</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://all3dp.com/1/obj-file-format-3d-printing-cad/</link>
+							<tag>OBJ File Format – Simply Explained for CAD and 3D Printing | from All3DP</tag>
+							<comment>Includes comparison with STL, FBX, and Collada formats.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://wiki.fileformat.com/3d/obj/</link>
+							<tag>File Format Developer Guide | OBJ</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://knowledge.autodesk.com/support/alias-products/learn-explore/caas/CloudHelp/cloudhelp/2019/ENU/Alias-ImportingExporting/files/GUID-A1CC091A-A9C8-45DB-A3EA-2DAFE7E1A59D-htm.html</link>
+							<tag>Autodesk Alias Products | OBJ format</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.dirsig.org/docs/new/obj.html</link>
+							<tag>Alias/Wavefront OBJ File Format</tag>
+							<comment>Outlines how to use the Alias/Wavefront OBJ file format to import attributed geometry into DIRSIG</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://all3dp.com/3d-printing-file-formats/</link>
+					<tag>4 Most Common 3D Printer File Formats in 2019</tag>
+					<comment>Compares formats for 3D printing: STL, OBJ, AMF, and 3MF.  With detailed pros and cons, </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources with sample OBJ files</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://people.math.sc.edu/Burkardt/data/obj/obj.html</link>
+							<tag>OBJ Files:
+A 3D Object Format | example files</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.laserdesign.com/sample-files/type/obj/</link>
+							<tag>Sample files: OBJ | from LaserDesign</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://free3d.com/3d-models/obj</link>
+							<tag>Free 3D Models in OBJ format | from Free3D</tag>
+							<comment>Shows that OBJ is widely used as a format in which to share models.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Selected tools designed to support conversion or manipulation of 3D models and which can import or export OBJ files</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.blender.org/features/pipeline/</link>
+							<tag>Blender | File Formats</tag>
+							<comment>A free open-source 3D creation suite</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://docs.blender.org/manual/en/latest/addons/io_scene_obj.html</link>
+							<tag>Wavefront OBJ</tag>
+							<comment>Implies that OBJ files can be imported and exported.  On export, NURBS surfaces are converted to polygonal meshes.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.meshlab.net/</link>
+							<tag>MeshLab | from Visual Computing Lab of ISTI-CNR</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://assimp-docs.readthedocs.io/en/latest/about/intoduction.html</link>
+							<tag>Open Asset Import Library (assimp)</tag>
+							<comment>A library to load and process geometric scenes from various data formats.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://products.aspose.com/3d/java</link>
+							<tag>Aspose.3D for Java</tag>
+							<comment>Describes itself as a standalone gameware and CAD API to manipulate 3D files.  Can import Wavefront OBJ files.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.techsoft3d.com/products/hoops/exchange/</link>
+							<tag>HOOPS Exchange SDK</tag>
+							<comment>Describes itself as a CAD Data Translation Toolkit.  Supports OBJ for import and export.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.okino.com/conv/imp_wave.htm</link>
+							<tag>Okino: Wavefront OBJ Importer</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://nurbs-python.readthedocs.io/en/latest/file_formats.html</link>
+							<tag>NURBS-Python | Supported File Formats</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.safe.com/integrate/obj/</link>
+							<tag>Integrate Wavefront OBJ Using FME (Feature Manipulation Engine) | from Safe Software</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://vtkplotter.embl.es/index.html</link>
+							<tag>vtkplotter | Python module for scientific visualization, analysis and animation of 3D objects and point clouds.</tag>
+							<comment>Can import meshes from VTK format, STL, Wavefront OBJ, 3DS, PCD (PointCloud), volumetric TIFF stacks, 2D images PNG, JPEG.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Utilities designed specifically to read or write Wavefront OBJ files</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://github.com/pywavefront/PyWavefront</link>
+							<tag>PyWavefront | python program to read OBJ files</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/dwmkerr/file-format-wavefront</link>
+							<tag>file-format-wavefront
+| on github</tag>
+							<comment>A .NET library to load data from Wavefront *.obj files and associated .mtl files</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://threejs.org/examples/jsm/loaders/OBJLoader.js</link>
+							<tag>OBJ Loader (Javascript code) | from Three.js Javascript library</tag>
+							<comment>three.js, a 3D library that tries to make it as easy as possible to get 3D content on a webpage, recommends use of glTF but provides loaders for other popular formats, including OBJ.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The use of freeform curves and surfaces in 3D software for generating, viewing, or rendering, depends on sophisticated mathematical techniques.  Full implementation of the OBJ format can require use of techniques described in the resources below.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/B%C3%A9zier_curve</link>
+							<tag>Wikipedia entry for Bézier curve</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/B%C3%A9zier_surface</link>
+							<tag>Wikipedia entry for Bézier surface</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.cs.bham.ac.uk/~slb/courses/Graphics/g95.html</link>
+							<tag>Bezier and B-spline Surfaces | by Susan Laflin (1999)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://docs.microsoft.com/en-us/windows/win32/gdiplus/-gdiplus-bezier-splines-about</link>
+							<tag>About Bezier Splines | from Help for Windows GDI+, an API for C/C++ programmers</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/B-spline</link>
+							<tag>Wikipedia entry for B-spline</tag>
+							<comment>The Non-Uniform Rational B-Spline (aka NURBS) is an important variant of B-spline for 3D Modeling.   </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Non-uniform_rational_B-spline</link>
+							<tag>Wikipedia entry for Non-Uniform Rational Basis Spline (NURBS)</tag>
+							<comment>The OBJ format supports use of NURBS to model surface patches.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://docs.microsoft.com/en-us/windows/win32/gdiplus/-gdiplus-cardinal-splines-about</link>
+							<tag>About Cardinal Splines | from Help for Windows GDI+, an API for C/C++ programmers</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The resources listed below relate to the history of the corporations that have owned or contributed to the OBJ format, starting with Wavefront Technologies, which merged with Alias, and ending with Autodesk.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Wavefront_Technologies</link>
+							<tag>Wikipedia entry for Wavefront Technologies</tag>
+							<comment>The company that first defined the OBJ format.  After a series of mergers and acquisitions, the associated software products and, presumably, the OBJ specification are owned by Autodesk in 2019.e transferred the success</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Alias_Systems_Corporation</link>
+							<tag>Wikipedia entry for Alias Systems Corporation </tag>
+							<comment>This company was formed in 1995 when Alias Research and Wavefront were both acquired by Silicon Graphics (SGI).  In 2004, SGI sold Alias to Accel-KKR a private equity firm.merged </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/The_Advanced_Visualizer</link>
+							<tag>Wikipedia entry for The Advanced Visualizer (TAV)</tag>
+							<comment>Software for which Wavefront Technologies developed the OBJ format.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20040630210601/http://www.aliaswavefront.com/eng/about/history/2004.shtml</link>
+							<tag>About Alias | History</tag>
+							<comment>Includes announcement of 2004 sale of Alias to Accel-KKR</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Accel-KKR</link>
+							<tag>Wikipedia entry for Accel-KKR</tag>
+							<comment>Alias was part of this private equity firm&apos;s portfolio until January 2006, when it was acquired by Autodesk.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.accel-kkr.com/portfolio/alias/</link>
+							<tag>Accel KKR | Portfolio: Accel</tag>
+							<comment>Alias was part of the Accel KKR portfolio of companies through 2005.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://investors.autodesk.com/news-releases/news-release-details/autodesk-completes-acquisition-alias</link>
+							<tag>Autodesk Completes Acquisition of Alias (January 2006)</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The resources below illustrate the continued popularity of the OBJ format.  Some identify pros and cons in comparison with other 3D model formats.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://all3dp.com/3d-file-format-3d-files-3d-printer-3d-cad-vrml-stl-obj/#Top</link>
+							<tag>Most Common 3D File Formats | from All3DP</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://all3dp.com/3d-printing-3d-printer-guide-101-questions/</link>
+							<tag>The Ultimate Guide to 3D Printing – 101 Questions Answered | from All3DP</tag>
+							<comment>See question 40.  Highlights STL, OBJ, PLY, and 3MF as the most common formats for 3D printing.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.threekit.com/blog/should-you-use-the-obj-3d-file-format</link>
+							<tag>Should you use the OBJ 3D file format?</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://guides.auraria.edu/c.php?g=567257&amp;p=3907431</link>
+							<tag>Working in 3D: Designing and Saving for 3D Printing | from Auraria Library guidance</tag>
+							<comment>Recommends use of STL or OBJ.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://support.office.com/en-us/article/file-types-supported-for-previewing-files-in-onedrive-sharepoint-and-teams-e054cd0f-8ef2-4ccb-937e-26e37419c5e4</link>
+							<tag>File types supported for previewing files in OneDrive, SharePoint, and Teams | from Microsoft</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://techcommunity.microsoft.com/t5/OneDrive-for-Business/Announcing-New-File-Viewers-Available-for-OneDrive-For-Business/m-p/60040</link>
+							<tag>Announcing New File Viewers Available for OneDrive For Business (April 2017)</tag>
+							<comment>Added support for 3D formats (3MF, FBX, OBJ, PLY, STL).</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The resources below relate to support for OBJ in various Autodesk products</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://knowledge.autodesk.com/support/3ds-max/learn-explore/caas/CloudHelp/cloudhelp/2020/ENU/3DSMax-Data-Exchange/files/GUID-87B0A138-8348-4DCB-87EE-585841A27318-htm.html</link>
+							<tag>3DS Max | Wavefront (OBJ) Files</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://knowledge.autodesk.com/support/3ds-max/learn-explore/caas/CloudHelp/cloudhelp/2020/ENU/3DSMax-Data-Exchange/files/GUID-7A9535E6-235D-459B-B32D-5A9E5E4EBF28-htm.html</link>
+							<tag>3DS Max | OBJ Import Options Dialog</tag>
+							<comment>States that the OBJ/MTL export/import plug-in is provided by software from GuruWare. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://knowledge.autodesk.com/support/3ds-max/learn-explore/caas/CloudHelp/cloudhelp/2020/ENU/3DSMax-Data-Exchange/files/GUID-437051A1-983B-4B6A-80C4-D2FA43B7393D-htm.html</link>
+							<tag>3DS Max | Wavefront Object (OBJ) Export Options Dialog</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://knowledge.autodesk.com/support/alias-products/learn-explore/caas/CloudHelp/cloudhelp/2019/ENU/Alias-ImportingExporting/files/GUID-A1CC091A-A9C8-45DB-A3EA-2DAFE7E1A59D-htm.html</link>
+							<tag>Alias | OBJ format</tag>
+							<comment>Suggests that Alias can import and export models with freeform surfaces, e.g., those defined by NURBS models.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>OBJ models can be imported into some products from ESRI, that are beginning to integrate 3D models with geospatial data.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://doc.arcgis.com/en/cityengine/latest/help/help-import-obj.htm</link>
+							<tag>CityEngine | Import OBJ (Wavefront)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://doc.arcgis.com/en/cityengine/latest/help/help-export-obj.htm</link>
+							<tag>CityEngine | Export OBJ (Wavefront)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.esriuk.com/en-gb/arcgis/products/arcgis-data-interoperability/supported-formats</link>
+							<tag>ArcGIS Data Interoperability</tag>
+							<comment>With this ArcGIS Pro extension, Wavefront OBJ as supported by &quot;direct read&quot; and for import and export.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://pro.arcgis.com/en/pro-app/tool-reference/3d-analyst/import-3d-files.htm</link>
+							<tag>ArcGIS 3D Analyst Toolbox | Import 3D Files</tag>
+							<comment>This extension to ArcGIS PRO includes support for importing Wavefront OBJ files into a 3D Scene.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://support.esri.com/en/technical-article/000016699</link>
+							<tag>How To: Use 3D shapes as marker symbols in an ArcGIS Pro scene view</tag>
+							<comment>ArcGIS Pro supports COLLADA (.dae), 3ds Max (.3ds), OpenFlight (.flt), and Wavefront (.obj) models for custom 3D symbols.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Working Group 17 for the Digital Imaging and Communications in Medicine (DICOM) standard is responsible for expanding the standard as a wrapper for 3D content.  Based on a survey of use of 3D formats in medicine, support for encapsulating STL was added in DICOM 2018b.  <fddLink id="fdd000490">X3D</fddLink>/VRML, OBJ, and 3MF are also widely used and the working group expects to add support for encapsulating 3D models in more of these formats.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.dicomstandard.org/wgs/wg-17/</link>
+							<tag>DICOM Working Group 17</tag>
+							<comment>Expansion of DICOM to support encapsulation of additional formats is planned.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://dicom.nema.org/Dicom/News/March2019/docs/sups/sup208-slides.pdf</link>
+							<tag>Overview of Supplement 208: Extension of DICOM Encapsulation of 3D Manufacturing Models | Slides from March 2019</tag>
+							<comment>Indicates that consideration of DICOM encapsulation of OBJ and MTL formats is well advanced.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/pronom/fmt/1210</link>
+					<tag>PRONOM entry for fmt/1210</tag>
+					<comment>Information in PRONOM on Wavefront OBJ File.   PUID: fmt/1210.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q2119595</link>
+					<tag>Wikidata entry for Q2119595</tag>
+					<comment>Information in WikiData about Wavefront OBJ format.  WikiData Title ID: Q2119595</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
