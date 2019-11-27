@@ -44,7 +44,8 @@ languages -- Office Open XML File Formats (OOXML)</i>.  This description focuses
 				<li>
 					<a href="http://officeopenxml.com/anatomyofOOXML-xlsx.php">Anatomy of a SpreadsheetML File</a> by Daniel Dick of Reuters.</li>
 				<li>
-					<a href="https://msdn.microsoft.com/EN-US/library/office/gg278316.aspx">Structure of a SpreadsheetML document</a> from Open XML SDK documentation.  Includes <a href="https://msdn.microsoft.com/EN-US/library/office/gg278316.aspx#TypWBScenario">diagram showing typical spreadsheet document parts</a>.</li>
+					<a href="https://docs.microsoft.com/en-us/office/open-xml/structure-of-a-spreadsheetml-document
+">Structure of a SpreadsheetML document</a> from Open XML SDK documentation.  Includes <a href="https://docs.microsoft.com/en-us/office/open-xml/structure-of-a-spreadsheetml-document#typical-workbook-scenario">diagram showing typical spreadsheet document parts</a>.</li>
 			</ul>
 		</fdd:description>
 		<fdd:shortDescription>A format for spreadsheet documents in the Open Office XML (ISO 29500) format family, developed originally by Microsoft and used as the default format used by Microsoft Excel 2007 and later versions.  Specified in parts 1 and 4 of ISO/IEC 29500, Information technology -- Document description and processing languages -- Office Open XML File Formats (OOXML).</fdd:shortDescription>
@@ -93,7 +94,12 @@ languages -- Office Open XML File Formats (OOXML)</i>.  This description focuses
 			</fdd:relationship>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
-				<fdd:comment>A hybrid variant, XLSB, not described separately on this site.  XLSB uses the OPC package structure, but stores the spreadsheet data in binary form.  This variant was introduced for performance (and space-saving) reasons for very large spreadsheets, particularly in relation to loading.  It is not part of the ISO-29500 or ECMA 376 standard and largely unsupported except in Microsoft Excel.  Although important when the XLSX format was first introduced, more powerful processors and multi-threaded applications may mean that its use will decline. <a href="../contact_format.shtml">Comments welcome</a>.</fdd:comment>
+				<fdd:relatedTo>
+					<fdd:id>fdd000512</fdd:id>
+					<fdd:shortName>MS-XLSB</fdd:shortName>
+					<fdd:titleName>Microsoft Excel Binary (XLSB) Format (option in Excel 2007 and later)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>XLSB uses the OPC package structure, but stores the spreadsheet data in binary form.  This variant was introduced for performance on loading, saving, and transmitting and to save space for very large spreadsheets. Saving time for loading is frequently seen as particularly valuable.  It is not part of the ISO-29500 or ECMA 376 standard and largely unsupported except in Microsoft Excel and related Microsoft products.</fdd:comment>
 			</fdd:relationship>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
@@ -107,7 +113,7 @@ languages -- Office Open XML File Formats (OOXML)</i>.  This description focuses
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
 		<fdd:experience>Used by Library of Congress staff.</fdd:experience>
-		<fdd:preference>For works acquired for its collections, the list of <a href="http://www.loc.gov/preservation/resources/rfs/data.html">Library of Congress Recommended Formats Statement for Datasets/Databases</a>, as of June 2016, includes XLSX (.xlsx) as a preferred format for datasets. The binary (.xls) format is also listed as a preferred format.</fdd:preference>
+		<fdd:preference>For works acquired for its collections, the list of <a href="http://www.loc.gov/preservation/resources/rfs/data.html">Library of Congress Recommended Formats Statement for Datasets/Databases</a>, as of November 2019, includes XLSX (.xlsx) as an acceptable format for datasets. The binary (.xls) format is also listed as acceptable.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>International open standard.  Maintained by ISO/IEC JTC1 SC34/WG4.  Originated by Microsoft Corporation and first standardized through ECMA International in 2006.  Approval as ISO/IEC 29500 was in 2008.</fdd:disclosure>
@@ -122,18 +128,18 @@ languages -- Office Open XML File Formats -- Part 4: Transitional Migration Feat
 		<fdd:adoption>
 			<p>Very widely used.  XLSX was originally developed by Microsoft as an XML-based format to replace the proprietary binary format that uses the .xls file extension. Since Word 2007, XLSX has been the default format for the Save operation.  Although the market share for the Microsoft Office productivity suite is declining, in the enterprise arena, it was still 90% in 2012, according to Gartner, as <a href="http://money.cnn.com/2013/11/13/technology/enterprise/microsoft-office-google-docs/">
 reported by CNN Money</a> in Nov 2013.</p>
-			<p>Microsoft Excel (and hence the XLSX format) is extremely widely used in corporate settings.  Recent versions have introduced increasingly powerful capabilities for drawing data dynamically from other sources, and performing sophisticated analyses.  See, for example, <a href="http://sqlmag.com/blog/excel-next-killer-bi-app">Is Excel the Next Killer BI (Business Intelligence) App?</a>, a June 2014 post in the SQL Server BI blog.  The software supports add-ins and APIs for data import and there is an associated industry of consultants and data suppliers.  For example, <a href="https://research.stlouisfed.org/fred-addin/">the Federal Reserve Bank of St. Louis Economic Data (FRED) add-in</a> supports dynamic extraction of macroeconomic data. Most of the new application features introduced in Excel 2010 and 2013 are designed  to support new options for data extraction and more powerful analyses.  In the context of large-scale corporate management and the financial sector, the dominance of Excel and of the XLSX format for spreadsheets look likely to continue.</p>
+			<p>Microsoft Excel (and hence the XLSX format) is extremely widely used in corporate settings.  Recent versions have introduced increasingly powerful capabilities for drawing data dynamically from other sources, and performing sophisticated analyses.  See, for example, <a href="https://web.archive.org/web/20141108221549/http://sqlmag.com/blog/excel-next-killer-bi-app">Is Excel the Next Killer BI (Business Intelligence) App?</a>, a June 2014 post in the SQL Server BI blog.  The software supports add-ins and APIs for data import and there is an associated industry of consultants and data suppliers.  For example, <a href="https://research.stlouisfed.org/fred-addin/">the Federal Reserve Bank of St. Louis Economic Data (FRED) add-in</a> supports dynamic extraction of macroeconomic data. Most of the new application features introduced in Excel 2010 and 2013 are designed  to support new options for data extraction and more powerful analyses.  In the context of large-scale corporate management and the financial sector, the dominance of Excel and of the XLSX format for spreadsheets look likely to continue.</p>
 			<p>As of late 2014, competition has been active between Google and Microsoft for the market for office suites on mobile devices. Both players now support direct editing of the XLSX format for spreadsheets through free apps.  A <a href="https://googledrive.blogspot.com/2014/06/newdocssheetsslides.html">Google Drive blog post from June 25, 2014</a> announced that Google Apps for Android could now edit Office files natively, without format conversion and that the same capability is available online when using the Chrome browser.  The first free Microsoft apps for the iPad had only supported viewing of OOXML files; creation or editing required an Office 365 subscription.  However, in November 2014, Microsoft announced that updated Office apps for iPad would support creating and editing of OOXML files. Versions for Android followed in January 2015.  See <a href="https://products.office.com/en/office-system-requirements#Mobile-devices-section">System requirements for Office: Mobile devices</a> and <a href="https://en.wikipedia.org/wiki/Microsoft_Office_mobile_apps">Wikipedia article on Microsoft Office Mobile Apps</a>.</p>
-			<p>Wikipedia&apos;s <a href="http://en.wikipedia.org/wiki/Office_Open_XML#Application_support">Office Open XML: Application Support</a> and <a href="http://en.wikipedia.org/wiki/List_of_software_that_supports_Office_Open_XML">List of software that supports Office Open XML</a> document support in a wide variety of word-processing applications and file conversion software, including the open source LibreOffice (Read and Write support) and Apache OpenOffice (Read support).   In June 2014, Microsoft released its <a href="https://msdn.microsoft.com/en-us/library/office/bb448854.aspx">Open XML SDK</a> (first released for use in 2007), as open source.</p>
+			<p>Wikipedia&apos;s <a href="http://en.wikipedia.org/wiki/Office_Open_XML#Application_support">Office Open XML: Application Support</a> and <a href="http://en.wikipedia.org/wiki/List_of_software_that_supports_Office_Open_XML">List of software that supports Office Open XML</a> document support in a wide variety of word-processing applications and file conversion software, including the open source LibreOffice (Read and Write support) and Apache OpenOffice (Read support).   In June 2014, Microsoft released its <a href="https://docs.microsoft.com/en-us/office/open-xml/open-xml-sdk">Open XML SDK</a> (first released for use in 2007), as open source.</p>
 			<p>The corpus of existing documents on the web is still dominated by the binary .xls format. A Google search in November 2014 of the U.S. web by filetype yielded: .xls, 7,800,000; .xlsx, 1,570,000; .ods, 53,700.  A comparison between .xls and .xlsx for files newly indexed in the past year showed roughly equal numbers of .xls and .xlsx files: .xls, 20,000; .xlsx, 18,000.  The compilers of this resource acknowledge that searches of the web are not a reliable measure of adoption for spreadsheet file formats at the initial (creation) phase of a content lifecycle.  Most spreadsheets are private and those that are made available on the web are likely to be converted to the format considered most likely to be usable by the intended audience.</p>
-			<p>XLSX and its predecessor binary .xls format appear relatively frequently on lists of acceptable formats for archiving of data.  In this context, the assumption is usually that the data per se is stored in a worksheet as a rectangular grid with columns representing variables/measurements and rows representing columns.  Note that recommended practice for archiving datasets always calls for a &quot;codebook&quot; or other documentation that explains both the scope and context for the data&apos;s collection and descriptions for each variable, but does not expect such metadata to be in the same file as the data. For example, see recommendations from the <a href="http://www.loc.gov/preservation/resources/rfs/data.html">Library of Congress</a>, <a href="http://data-archive.ac.uk/create-manage/format/formats-table">UK Data Archive</a>, <a href="https://www.archives.gov/records-mgmt/policy/transfer-guidance-tables.html#structuredata">U.S. National Archives (NARA)</a>, <a href="https://dmptool.org/dm_guidance#formats">University of California Curation Center</a>, and the <a href="http://datadryad.org/pages/filetypes">Dryad Digital Repository</a>.</p>
-			<p>The compilers of this resource are not aware of any spreadsheet applications other than Excel 2013 (or equivalent Excel Online or Excel App) that can create the Strict variant of XLSX (as defined in Part 1 of the ISO/IEC 29500 standard).  Tests in February 2017 indicated that Google Sheets and Libre Office both created new documents in the Transitional variant described in this document, as indicated by the namespace declarations, even when the document includes no elements or attributes not present in the Strict versions of the schemas.  This corresponds to the default behavior of Microsoft Excel.</p>
+			<p>XLSX and its predecessor binary .xls format appear relatively frequently on lists of acceptable formats for archiving of data.  In this context, the assumption is usually that the data per se is stored in a worksheet as a rectangular grid with columns representing variables/measurements and rows representing columns.  Note that recommended practice for archiving datasets always calls for a &quot;codebook&quot; or other documentation that explains both the scope and context for the data&apos;s collection and descriptions for each variable, but does not expect such metadata to be in the same file as the data. For example, see recommendations from the <a href="http://www.loc.gov/preservation/resources/rfs/data.html">Library of Congress</a>, <a href="http://data-archive.ac.uk/create-manage/format/formats-table">UK Data Archive</a>, <a href="https://www.archives.gov/records-mgmt/policy/transfer-guidance-tables.html#structuredata">U.S. National Archives (NARA)</a>, <a href="https://dmptool.org/general_guidance#file-formats">DMPtool</a> from the University of California Curation Center, and the <a href="https://datadryad.org/docs/QuickstartGuideToDataSharing.pdf">Dryad Digital Repository</a>.</p>
+			<p>The compilers of this resource are not aware of any spreadsheet applications other than Excel 2013 or later (or equivalent Excel Online or Excel App) that can create the Strict variant of XLSX (as defined in Part 1 of the ISO/IEC 29500 standard).  Tests in February 2017 indicated that Google Sheets and Libre Office both created new documents in the Transitional variant described in this document, as indicated by the namespace declarations, even when the document includes no elements or attributes not present in the Strict versions of the schemas.  This corresponds to the default behavior of Microsoft Excel.</p>
 			<p>
 				<a href="../contact_format.shtml">Comments welcome</a>.</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>
-			<p>The specification originated from Microsoft Corporation. Current and future versions of ISO/IEC 29500 and ECMA-376 are covered by Microsoft&apos;s <a href="https://msdn.microsoft.com/en-us/openspecifications/dn646765">Open Specification Promise</a>, whereby Microsoft &quot;irrevocably promises&quot; not to assert any claims against those making, using, and selling conforming implementations of any specification covered by the promise (so long as those accepting the promise refrain from suing Microsoft for patent infringement in relation to Microsoft&apos;s implementation of the covered specification).</p>
-			<p>Features introduced into XLSXX through the MCE mechanism may be subject to patent protection.  However, Microsoft&apos;s <a href="https://msdn.microsoft.com/en-us/openspecifications/dn646764">interoperability principles</a> indicate &quot;Microsoft will also make available a list of any of its patents that cover any extensions, and will make available patent licenses on reasonable and non-discriminatory terms.&quot;</p>
+			<p>The specification originated from Microsoft Corporation. Current and future versions of ISO/IEC 29500 and ECMA-376 are covered by Microsoft&apos;s <a href="https://docs.microsoft.com/en-us/openspecs/dev_center/ms-devcentlp/1c24c7c8-28b0-4ce1-a47d-95fe1ff504bc">Open Specification Promise</a>, whereby Microsoft &quot;irrevocably promises&quot; not to assert any claims against those making, using, and selling conforming implementations of any specification covered by the promise (so long as those accepting the promise refrain from suing Microsoft for patent infringement in relation to Microsoft&apos;s implementation of the covered specification).</p>
+			<p>Features introduced into XLSX through the MCE mechanism may be subject to patent protection.  However, Microsoft&apos;s <a href="https://docs.microsoft.com/en-us/openspecs/dev_center/ms-devcentlp/d84cac00-b312-44ee-9156-23bde6477c3d#patent-pledges">interoperability principles</a> indicate &quot;Microsoft will also make available a list of any of its patents that cover any extensions, and will make available patent licenses on reasonable and non-discriminatory terms.&quot;</p>
 		</fdd:licensingAndPatents>
 		<fdd:transparency>
 			<p>The structure and text of an XLSX file are all represented in XML and hence viewable without special tools.  XML-aware tools that can show and parse the element hierarchy make viewing and interpretation more convenient.  The most commonly used parts, elements, and attributes have names that will be quickly recognizable to a human reader.  For example, the element <i>&lt;c&gt;</i> defines the content of a cell, the element <i>&lt;f&gt;</i> holds a formula, and <i>&lt;v&gt;</i> holds a value. The syntax of formulas is relatively intuitive and built-in functions have meaningful names.  Both are documented in subclause §18.17 of ISO/IEC 29500-1. Simple documents can be interpreted with very basic tools.  However, interpreting the semantics of many elements and the correspondence of elements and attributes to spreadsheet application functionality will require understanding of both the schema and the textual specification.  The specification provides a primer and valuable examples, for example of the use of Styles to control cell formatting and of Pivot Tables.  Additionally, not all normative constraints for XLSX can be represented fully in the W3C XML Schema Language (<fddLink id="fdd000077">XML_Schema_1_0</fddLink>).</p>
@@ -325,7 +331,7 @@ If an XLSX worksheet consists simply of data values where rows represent observa
 				<li>Import of data from a Microsoft Access database into Calc requires installation of Microsoft Access.</li>
 				<li>In Calc, relationships between tables must use the VLOOKUP function.</li>
 			</ul>
-			<p>When considering tools for conversion from OOXML to ODF, it is important to understand which version of ODF is the target.  Significant extensions to the standard have been made since ODF 1.1, but ODF 1.1 is the only version that has completed the ISO/IEC standardization process as of August 2014, with some amendments and corrections.  ODF 1.2 was approved as an ISO standard in 2015.  Office 2013 and 2016 for Windows support export to ODF 1.2, but without change tracking.  ODF 1.3 is already in the works, and LibreOffice offers the option to Save As &quot;1.2 Extended.&quot;  See <a href="http://en.wikipedia.org/wiki/OpenDocument">Wikipedia entry for Open Document Format</a> and <a href="https://wiki.documentfoundation.org/Development/ODF_Implementer_Notes#ODF_Extensions">ODF Implementer Notes from LibreOffice Development wiki</a>.  The compilers of this resource believe that some of the amendments and features added in new versions of ODF are expected to improve the fidelity of conversion when supported in conversion tools but have no direct experience.  New editions of ISO/IEC 29500 were published in 2011, 2012, and 2016; however, the changes were primarily corrections and clarifications to reflect XLSX documents as produced in practice.  Of more relevance in relation to fidelity of conversion is whether a document includes any of the few new features introduced in recent versions of Excel and marked up in the Markup Compatibility and Extensibility namespace (<fddLink id="fdd000395">MCE/OOXML_2012</fddLink>).  Microsoft has documented these extensions in <a href="https://msdn.microsoft.com/en-us/library/dd922181.aspx">[MS-XLSX]: Excel (.xlsx) Extensions to the Office Open XML SpreadsheetML File Format</a>.  Among the application features that depend on such extensions are: Power Query, Power View, Data Models (a new approach for integrating data from multiple tables, effectively building a relational database inside an Excel workbook), Slicers (a new device for configuring Pivot Tables), and Timelines (a special filter type for Pivot Tables).</p>
+			<p>When considering tools for conversion from OOXML to ODF, it is important to understand which version of ODF is the target.  Significant extensions to the standard have been made since ODF 1.1, but ODF 1.1 is the only version that has completed the ISO/IEC standardization process as of August 2014, with some amendments and corrections.  ODF 1.2 was approved as an ISO standard in 2015.  Office 2013 and 2016 for Windows support export to ODF 1.2, but without change tracking.  ODF 1.3 is already in the works, and LibreOffice offers the option to Save As &quot;1.2 Extended.&quot;  See <a href="http://en.wikipedia.org/wiki/OpenDocument">Wikipedia entry for Open Document Format</a> and <a href="https://wiki.documentfoundation.org/Development/ODF_Implementer_Notes#ODF_Extensions">ODF Implementer Notes from LibreOffice Development wiki</a>.  The compilers of this resource believe that some of the amendments and features added in new versions of ODF are expected to improve the fidelity of conversion when supported in conversion tools but have no direct experience.  New editions of ISO/IEC 29500 were published in 2011, 2012, and 2016; however, the changes were primarily corrections and clarifications to reflect XLSX documents as produced in practice.  Of more relevance in relation to fidelity of conversion is whether a document includes any of the few new features introduced in recent versions of Excel and marked up in the Markup Compatibility and Extensibility namespace (<fddLink id="fdd000395">MCE/OOXML_2012</fddLink>).  Microsoft has documented these extensions in <a href="https://docs.microsoft.com/en-us/openspecs/office_standards/ms-xlsx/">[MS-XLSX]: Excel (.xlsx) Extensions to the Office Open XML SpreadsheetML File Format</a>.  Among the application features that depend on such extensions are: Power Query, Power View, Data Models (a new approach for integrating data from multiple tables, effectively building a relational database inside an Excel workbook), Slicers (a new device for configuring Pivot Tables), and Timelines (a special filter type for Pivot Tables).</p>
 			<p>In June 2014, Google announced direct editing of XLSX files in the updated Google Sheets app on Android devices or online if using the Chrome browser with an extension Google supplies; the compilers of this resource have found no good information yet on the degree to which files edited in these versions of Google Sheets can be opened satisfactorily in Excel.  Other spreadsheet applications, including LibreOffice, Apple&apos;s Numbers app, and Google Sheets when using browsers other than Chrome can both import and export/download XLSX files, but round-tripping without loss should not be expected.  Apache Open Office can import XLSX files, but some loss should be expected.</p>
 		</fdd:general>
 		<fdd:history>
@@ -388,57 +394,44 @@ languages -- Office Open XML File Formats -- Part 4: Transitional Migration Feat
 	<fdd:usefulReferences>
 		<fdd:urls>
 			<fdd:url>
-				<fdd:urlReference>
-					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/214</link>
-					<tag>PRONOM entry for fmt/214</tag>
-					<comment>Information in PRONOM from UK National Archives about XLSX.   PUID: fmt/214</comment>
-				</fdd:urlReference>
-			</fdd:url>
-			<fdd:url>
-				<fdd:urlReference>
-					<link>http://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</link>
-					<tag>IANA registration for MIME media type for XLSX (spreadsheetML) files.</tag>
-				</fdd:urlReference>
-			</fdd:url>
-			<fdd:url>
 				<fdd:urlGroup>
 					<fdd:intro>Microsoft provides various documentation pages related to XLSX.  Much of this documentation is aimed at programmers writing applications that manipulate WordprocessingML markup directly, perhaps using the Open XML SDK.</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
-							<link>https://msdn.microsoft.com/en-us/library/office/bb448854.aspx</link>
+							<link>https://docs.microsoft.com/en-us/office/open-xml/open-xml-sdk</link>
 							<tag>Welcome to the Open XML SDK 2.5 for Office</tag>
 							<comment>In June 2014, the Open XML SDK was made available as open source.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://msdn.microsoft.com/en-us/library/office/gg278316.aspx</link>
+							<link>https://docs.microsoft.com/en-us/office/open-xml/structure-of-a-spreadsheetml-document</link>
 							<tag>Structure of a SpreadsheetML document (Open XML SDK)</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://msdn.microsoft.com/en-us/library/office/gg278328.aspx</link>
+							<link>https://docs.microsoft.com/en-us/office/open-xml/working-with-spreadsheetml-documents</link>
 							<tag>Working with SpreadsheetML Documents (Open XML SDK)</tag>
 							<comment>Introduces basic topics for working with SpreadsheetML (.xlsx) files through program code.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://msdn.microsoft.com/en-us/library/office/gg278310.aspx</link>
+							<link>https://docs.microsoft.com/en-us/office/open-xml/working-with-formulas</link>
 							<tag>Working with formulas (Open XML SDK)</tag>
 							<comment>Discussion of formula support in SpreadsheetML.  SpreadsheetML formulas support the following types: array, error, logical, number, and text.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://msdn.microsoft.com/en-us/library/office/documentformat.openxml.spreadsheet.aspx</link>
+							<link>https://docs.microsoft.com/en-us/dotnet/api/documentformat.openxml.spreadsheet</link>
 							<tag>DocumentFormat.OpenXml.Spreadsheet namespace</tag>
 							<comment>Detailed documentation for the classes in OpenXML SDK, elements, attributes, etc. </comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://msdn.microsoft.com/en-us/library/dd922181.aspx</link>
+							<link>https://docs.microsoft.com/en-us/openspecs/office_standards/ms-xlsx/2c5dee00-eff2-4b22-92b6-0738acd4475e</link>
 							<tag>[MS-XLSX]: Excel (.xlsx) Extensions to the Office Open XML SpreadsheetML File Format</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://msdn.microsoft.com/en-us/library/dd907480.aspx</link>
+							<link>https://docs.microsoft.com/en-us/openspecs/office_standards/ms-xlsx/5d1b6d44-6fc1-4ecd-8fef-0b27406cc2bf</link>
 							<tag>[MS-XLSX] 2.3.3. Functions</tag>
 							<comment>Functions added to those defined in ISO/IEC 29500-1, §18.17.  Uses a so-called &quot;future-function&quot; list.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://msdn.microsoft.com/en-us/library/dd906358.aspx</link>
+							<link>https://docs.microsoft.com/en-us/openspecs/office_standards/ms-xlsx/3d025add-118d-4413-9856-ab65712ec1b0</link>
 							<tag>[MS-XLSX] 2.2.2. Formulas</tag>
 							<comment>Includes a more detailed ABNF grammar for formulas than in ISO/IEC 29500-1, §18.17, including a complete list of functions defined in the standard and &quot;future&quot; functions added to Excel since the standard was published. </comment>
 						</fdd:urlReference>
@@ -448,7 +441,7 @@ languages -- Office Open XML File Formats -- Part 4: Transitional Migration Feat
 							<comment>From Microsoft support site for users.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://blogs.office.com/2012/08/13/new-file-format-options-in-the-new-office/</link>
+							<link>https://www.microsoft.com/en-us/microsoft-365/blog/2012/08/13/new-file-format-options-in-the-new-office/</link>
 							<tag>New file format options in the new Office [Office 2013]</tag>
 							<comment>Announces support for writing files in XLSX Strict and ODF 1.2 formats.   Excel 2013 claims to provide complete support for Open Formula. </comment>
 						</fdd:urlReference>
@@ -510,12 +503,12 @@ by Joel Spolsky</tag>
 							<comment>One of the topics of the 1992 meeting with Bill Gates described by this former software developer for Microsoft was date issues that is reported as resulting from a characteristic of the date system in Lotus 1-2-3</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://support.microsoft.com/en-us/help/214330/differences-between-the-1900-and-the-1904-date-system-in-excel</link>
+							<link>https://docs.microsoft.com/en-us/office/troubleshoot/excel/1900-and-1904-date-system</link>
 							<tag>Differences between the 1900 and the 1904 date system in Excel</tag>
 							<comment>From Microsoft online user support site.  This resource suggests that the need for the 1904 system also related to constraints in early Macintosh computers.  Note that starting with the 2011 version, Office for Mac no longer defaults to the 1904 date system for new workbooks as stated in this support page.  The only problems for users related to having two date systems occur when dates are copied from a spreadsheet using one date system to one using the other system.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://www.systematix.co.uk/microsoft-excel-time-resolution-accuracy/</link>
+							<link>https://www.systematix.co.uk/tips-tricks/microsoft-excel-time-resolution</link>
 							<tag>Microsoft Excel Time Resolution | Systematix</tag>
 							<comment>Summer 2016 post exploring whether Excel&apos;s precision for time calculations would be adequate for Olympic events.</comment>
 						</fdd:urlReference>
@@ -556,7 +549,7 @@ by Joel Spolsky</tag>
 							<tag>Library of Congress Recommended Formats Statement | VI. Datasets/Databases</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>http://data-archive.ac.uk/create-manage/format/formats-table</link>
+							<link>https://www.ukdataservice.ac.uk/manage-data/format/recommended-formats</link>
 							<tag>Guidance on file formats accepted by the UK Data Archive for deposited data.</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
@@ -564,13 +557,13 @@ by Joel Spolsky</tag>
 							<tag>NARA 2014-04: Appendix A,  Revised Format Guidance for the Transfer of Permanent Electronic Records – Tables of File Formats </tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://dmptool.org/dm_guidance#formats</link>
+							<link>https://dmptool.org/general_guidance#file-formats</link>
 							<tag>Data Management General Guidance: File Formats</tag>
 							<comment>From DMPTool.org, a service of the University of California Curation Center of the California Digital Library</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>http://datadryad.org/pages/filetypes</link>
-							<tag>Dryad Digital Repository: File types guidance</tag>
+							<link>https://datadryad.org/docs/QuickstartGuideToDataSharing.pdf</link>
+							<tag>Dryad Digital Repository: Quickstart Guide to Data Sharing</tag>
 						</fdd:urlReference>
 					</fdd:urlList>
 				</fdd:urlGroup>
@@ -594,7 +587,7 @@ by Joel Spolsky</tag>
 							<comment>Dates from 2010.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>http://broadcast.oreilly.com/2008/10/trying-to-figure-out-where-ope.html</link>
+							<link>https://web.archive.org/web/20160304213230/http://broadcast.oreilly.com/2008/10/trying-to-figure-out-where-ope.html</link>
 							<tag>Trying to figure out where Open Formula fits in.  Blog post by Rick Jelliffe from 2008</tag>
 						</fdd:urlReference>
 					</fdd:urlList>
@@ -610,12 +603,12 @@ by Joel Spolsky</tag>
 							<comment>As specified by IEEE 754 and IEC 60559.  IEEE 754-2008 and  ISO/IEC/IEEE 60559:2011 are identical standards for floating-point arithmetic.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>http://www.practicalstats.com/xlsstats/excelstats.html</link>
+							<link>https://web.archive.org/web/20161018145519/http://www.practicalstats.com/xlsstats/excelstats.html</link>
 							<tag>Is Microsoft Excel an Adequate Statistics Package?.</tag>
-							<comment>From Practical Stats.  Relates to Excel versions earlier than Excel 2010.  Has many references to articles on the topic.</comment>
+							<comment>From Practical Stats.  Relates to Excel versions earlier than Excel 2010.  Has many references to articles on the topic.  Link now via Internet Archive.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://www.jstatsoft.org/v34/i04</link>
+							<link>https://www.jstatsoft.org/article/view/v034i04</link>
 							<tag>On the Numerical Accuracy of Spreadsheets. Journal of Statistical Software, Vol. 34, Issue 4, April 2010</tag>
 							<comment>Based on Excel 2007 and other spreadsheet applications available in 2008.  Concludes, &quot;there is no safe choice among the spreadsheets here assessed.&quot;</comment>
 						</fdd:urlReference>
@@ -627,22 +620,22 @@ by Joel Spolsky</tag>
 					<fdd:intro>Documentation provided by Microsoft for related file formats not within the scope of ISO/IEC 29500 but supported by Microsoft Excel.</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
-							<link>https://msdn.microsoft.com/en-us/library/cc313094.aspx</link>
+							<link>https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-ovba/</link>
 							<tag>[MS-OVBA]: Office VBA File Format Structure</tag>
 							<comment>Format used to store macros written in the Visual Basic for Applications (VBA) Language used for macros in Microsoft Office applications.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://msdn.microsoft.com/en-us/library/dd925808.aspx</link>
+							<link>https://docs.microsoft.com/en-us/openspecs/office_standards/ms-offmacro/</link>
 							<tag>[MS-OFFMACRO]: Office Macro-Enabled File Format</tag>
 							<comment>Office Macro-Enabled File Format for WordprocessingML, SpreadsheetML, and PresentationML file formats that are either not present in or modified from corresponding non-macro-enabled file formats as specified in Edition 1 of ECMA-376. Applicable to Excel 2007.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://msdn.microsoft.com/en-us/library/dd947889.aspx</link>
+							<link>https://docs.microsoft.com/en-us/openspecs/office_standards/ms-offmacro2/</link>
 							<tag>[MS-OFFMACRO2]: Office Macro-Enabled File Format Version 2</tag>
 							<comment>Modified version of OFFMACRO for use with ISO/IEC 29500 and applicable to Office 2010 and Office 2013.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://msdn.microsoft.com/en-us/library/cc313133.aspx</link>
+							<link>https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-xlsb/acc8aa92-1f02-4167-99f5-84f9f676b95a</link>
 							<tag>[MS-XLSB]: Excel (.xlsb) Binary File Format</tag>
 							<comment>XLSB uses the OPC package structure, but stores the spreadsheet data in binary form.</comment>
 						</fdd:urlReference>
@@ -650,8 +643,21 @@ by Joel Spolsky</tag>
 				</fdd:urlGroup>
 			</fdd:url>
 			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</link>
+					<tag>IANA registration for MIME media type for XLSX (spreadsheetML) files.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/214</link>
+					<tag>PRONOM entry for fmt/214</tag>
+					<comment>Information in PRONOM from UK National Archives about XLSX.   PUID: fmt/214</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
 				<fdd:urlGroup>
-					<fdd:intro>The Wikidata resource <a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Informatics/File_formats">https://www.wikidata.org/wiki/Wikidata:WikiProject_Informatics/File_formats</a> is used to compile information about file formats and documentation in a highly structured machine-readable form.  Each format listed at <a href="Wikidata:WikiProject Informatics/File formats/Lists/File formats">Wikidata:WikiProject Informatics/File formats/Lists/File formats</a> has a format identifier known as a Title ID.  This Wikidata resource has given format identifiers to the chronological versions for XLSX and also based on whether or not Microsoft extensions are included.  As of February 2017, the Title IDs that correspond to this format description are:</fdd:intro>
+					<fdd:intro>The Wikidata resource <a href="https://www.wikidata.org/wiki/Wikidata:WikiProject_Informatics/File_formats">https://www.wikidata.org/wiki/Wikidata:WikiProject_Informatics/File_formats</a> is used to compile information about file formats and documentation in a highly structured machine-readable form.  Each format listed at Wikidata:WikiProject Informatics/File formats/Lists/File formats has a format identifier known as a Title ID.  This Wikidata resource has given format identifiers to the chronological versions for XLSX and also based on whether or not Microsoft extensions are included.  As of February 2017, the Title IDs that correspond to this format description are:</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
 							<link>https://www.wikidata.org/wiki/Q26207808</link>

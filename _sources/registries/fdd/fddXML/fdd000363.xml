@@ -32,7 +32,7 @@
 			<p>This description focuses on the OPC format as specified in part 2 of <i>ISO/IEC 29500:2012, Information technology -- Document description and processing
 languages -- Office Open XML File Formats (OOXML)</i>.  However, since this specification has very few changes since the format was first standardized as ECMA-376, Part 2 in 2006, the description can be read as applying to all versions published by ECMA International and by ISO/IEC through 2012.  See <a href="#notes">Notes</a> below for more detail on the chronological versions and minor differences.  In this format description, the names OPC and OPC/OOXML_2012 should be considered equivalent.</p>
 			<p>An OPC package is a container that holds a collection of parts. The purpose of the package is to aggregate constituent
-components of a document (or other type of content) into a single object. The OPC specification describes an abstract model and a single physical format based on the ZIP File Format [<fddLink id="fdd000355">ZIP_6_2_0</fddLink>].  As shown in a diagram on page 1 of <a href="http://download.microsoft.com/download/d/6/f/d6f2864a-f4f2-44cd-b080-797339b7433f/OfficeXMLMarkupExplained_en.docx">Open XML: The Markup Explained</a> by Wouter van Vugt, the Open Packaging Conventions builds on the core technologies of XML, Unicode, and ZIP.  The OPC specification incorporates schemas for expressing relationships among parts, for identifying the content types for parts, and for storing digital signatures for parts.  There is also a schema for describing the package as a whole through &quot;core properties,&quot; which uses selected Dublin Core metadata elements in addition to some OPC-specific elements.  In order to support efficient characterization of an OPC container without extracting all its parts, the content type of each part must be expressed in the form of a MIME type (Internet Media type) either individually or by use of a default type based on the file extension, in a special <i>stream</i> called [Content_Types.xml].  Another requirement is that all parts of the package must be discoverable by following relationships.  A file called <i>_rels/.rels</i> will define a relationship to the main part (perhaps a document) and each part can have an associated .rels file with relationships to any embedded or associated files.</p>
+components of a document (or other type of content) into a single object. The OPC specification describes an abstract model and a single physical format based on the ZIP File Format [<fddLink id="fdd000355">ZIP_6_2_0</fddLink>].  As shown in a diagram on page 1 of <a href="https://openlibra.com/en/book/open-xml-the-markup-explained">Open XML: The Markup Explained</a> by Wouter van Vugt, the Open Packaging Conventions builds on the core technologies of XML, Unicode, and ZIP.  The OPC specification incorporates schemas for expressing relationships among parts, for identifying the content types for parts, and for storing digital signatures for parts.  There is also a schema for describing the package as a whole through &quot;core properties,&quot; which uses selected Dublin Core metadata elements in addition to some OPC-specific elements.  In order to support efficient characterization of an OPC container without extracting all its parts, the content type of each part must be expressed in the form of a MIME type (Internet Media type) either individually or by use of a default type based on the file extension, in a special <i>stream</i> called [Content_Types.xml].  Another requirement is that all parts of the package must be discoverable by following relationships.  A file called <i>_rels/.rels</i> will define a relationship to the main part (perhaps a document) and each part can have an associated .rels file with relationships to any embedded or associated files.</p>
 			<p>OPC is based on version 6.2.0 of the ZIP File Format as defined in APPNOTE.TXT, Version 6.2.0 (<fddLink id="fdd000355">ZIP_6_2_0</fddLink>). Compression in OPC is restricted to the &quot;deflate&quot; algorithm; encryption mechanisms as defined in APPNOTE.TXT are not permitted.  The digital signature mechanism defined in APPNOTE.TXT is not permitted, but OPC/OOXML_2012 provides an alternate mechanism for optional digital signatures for parts in an OPC package.</p>
 		</fdd:description>
 		<fdd:shortDescription>A bundling format designed to contain a collection of files (termed &quot;parts&quot;) that represent a single logical whole.  The OPC specification is part 2 of ISO/IEC 29500, Information technology -- Document description and processing languages -- Office Open XML File Formats (OOXML).</fdd:shortDescription>
@@ -153,12 +153,13 @@ Conventions.</i>  Latest version (2012 as of February 2017) is available from <a
 			<p>All editions of the OOXML standards as published by ECMA are available from <a href="http://www.ecma-international.org/publications/standards/Ecma-376.htm">ECMA-376: Office Open XML File Formats</a>.  See <a href="#notes">Notes</a> below for a chronology.</p>
 		</fdd:documentation>
 		<fdd:adoption>
-			<p>OPC/OOXML_2012 was originally developed by Microsoft as a container format for documents produced by its Office products.  Since Office 2007, the default formats for word-processing, presentations, and spreadsheets (.docx, .pptx, .xslx, respectively) have been OPC packages.  In addition OPC is the basis from some other Microsoft package formats, including Microsoft&apos;s <a href="http://en.wikipedia.org/wiki/XML_Paper_Specification">XML Paper Specification</a> (.xps), later modified and standardized as Open XML Paper Specification <a href="http://www.ecma-international.org/publications/standards/Ecma-388.htm">ECMA-388</a> (using .oxps as extension) and the Visio <fddLink id="fdd000021">VSDX</fddLink> format (using .vsdx as an extension). The current .dwfx format for AutoCAD Design Web Format files designed for distributing fixed versions of design drawings and supplemental materials for review is based on OPC and compatible with XPS.  Another use of OPC is as the package format for SMPTE&apos;s <i>Media Package for Storage Distribution and Playback of Multimedia File Sets and Internet Resources</i> (<a href="http://standards.smpte.org/content/978-1-61482-646-0/st-2053-2011/SEC1.abstract">ST 2053:2011</a>). The compilers of this resource have been unable to determine how the SMPTE package is being used.  <a href="../contact_format.shtml">Comments welcome</a>. See <a href="http://en.wikipedia.org/wiki/Open_Packaging_Conventions">Open Packaging Conventions page on Wikipedia</a> for a fuller list of formats based on OPC.</p>
-			<p>Windows includes two different libraries for handling OPC containers: a COM-based API and a managed .NET-based API.  In addition, an open source platform-independent library, <a href="http://libopc.codeplex.com">libopc</a>, using the C programming language, has been released.  Libopc comes with command line tools <i>opc_dump</i> and <i>opc_extract</i> which will, respectively,
-dump the structure of an OPC container and extract parts from an OPC container.  Libopc also handles MCE (Markup Compatibility and Extensibility), another part of the OOXML standard that may be employed to support extensions to XML-based formats using the OPC container as a basis.  In addition, most ZIP tools will unpack an OPC container if the file extension is changed to <i>.zip</i>.</p>
+			<p>OPC/OOXML_2012 was originally developed by Microsoft as a container format for documents produced by its Office products.  Since Office 2007, the default formats for word-processing, presentations, and spreadsheets (.docx, .pptx, .xslx, respectively) have been OPC packages.  In addition OPC is the basis from some other Microsoft package formats, including Microsoft&apos;s <a href="http://en.wikipedia.org/wiki/XML_Paper_Specification">XML Paper Specification</a> (.xps), later modified and standardized as Open XML Paper Specification <a href="http://www.ecma-international.org/publications/standards/Ecma-388.htm">ECMA-388</a> (using .oxps as extension) and the Visio <fddLink id="fdd000021">VSDX</fddLink> format (using .vsdx as an extension). The current .dwfx format for AutoCAD Design Web Format files designed for distributing fixed versions of design drawings and supplemental materials for review is based on OPC and compatible with XPS.  Another use of OPC is as the package format for SMPTE&apos;s <i>Media Package for Storage Distribution and Playback of Multimedia File Sets and Internet Resources</i> (<a href="https://ieeexplore.ieee.org/document/7290858">ST 2053:2011</a>). The compilers of this resource have been unable to determine how the SMPTE package is being used.  <a href="../contact_format.shtml">Comments welcome</a>. See <a href="http://en.wikipedia.org/wiki/Open_Packaging_Conventions">Open Packaging Conventions page on Wikipedia</a> for a fuller list of formats based on OPC.</p>
+			<p>Windows includes two different libraries for handling OPC containers: a COM-based API and a managed .NET-based API.  In addition, most ZIP tools will unpack an OPC container if the file extension is changed to <i>.zip</i>.</p>
+			<p>An open source platform-independent library, <a href="http://www.ericwhite.com/blog/libopc-open-packaging-convention/">libopc</a>, using the C programming language, was <a href="https://blogs.msdn.microsoft.com/dmahugh/2011/04/19/libopc-version-0-0-1-released/">released in 2011</a>.  Libopc comes with command line tools <i>opc_dump</i> and <i>opc_extract</i> which will, respectively,
+dump the structure of an OPC container and extract parts from an OPC container.  Libopc also handles MCE (Markup Compatibility and Extensibility), another part of the OOXML standard that may be employed to support extensions to XML-based formats using the OPC container as a basis.  Source code for libopc is available at <a href="https://github.com/freuter/libopc">Github</a>.  See <a href="#useful">Useful References</a> below for more information about libopc.</p>
 			<p>In June 2014, Microsoft released the <a href="https://github.com/OfficeDev/Open-XML-SDK">Open XML SDK as open source</a>.  Among other capabilities, this SDK provides the ability to open OPC packages, extract parts, and construct new OPC packages.</p>
 		</fdd:adoption>
-		<fdd:licensingAndPatents>The specification originated from Microsoft Corporation.  OPC/OOXML_2012 and future versions of ISO/IEC 29500-2 and ECMA-376 are covered by Microsoft&apos;s <a href="http://msdn.microsoft.com/en-us/openspecifications/dn646765">Open Specification Promise</a>, whereby Microsoft &quot;irrevocably promises&quot; not to assert any claims against those making, using, and selling conforming implementations of any specification covered by the promise (so long as those accepting the promise refrain from suing Microsoft for patent infringement in relation to Microsoft&apos;s implementation of the covered specification).</fdd:licensingAndPatents>
+		<fdd:licensingAndPatents>The specification originated from Microsoft Corporation.  OPC/OOXML_2012 and future versions of ISO/IEC 29500-2 and ECMA-376 are covered by Microsoft&apos;s <a href="https://docs.microsoft.com/en-us/openspecs/dev_center/ms-devcentlp/1c24c7c8-28b0-4ce1-a47d-95fe1ff504bc">Open Specification Promise</a>, whereby Microsoft &quot;irrevocably promises&quot; not to assert any claims against those making, using, and selling conforming implementations of any specification covered by the promise (so long as those accepting the promise refrain from suing Microsoft for patent infringement in relation to Microsoft&apos;s implementation of the covered specification).</fdd:licensingAndPatents>
 		<fdd:transparency>
 			<p>As a container, transparency corresponds to that of <fddLink id="fdd000354">ZIP_PK</fddLink>.  It depends upon algorithms and tools to interpret and extract contents.  It would require sophistication to build tools from scratch, but many tools exist.  The parts/files that represent the structure of the OPC package are all in XML and thus both human readable and easily machine processable.  Transparency ultimately depends on the files contained in the package.</p>
 		</fdd:transparency>
@@ -215,7 +216,7 @@ dump the structure of an OPC container and extract parts from an OPC container. 
 			<p>The XML 1.0 specification allows use of Document Type Definitions (DTDs), which can enable internal entity expansion, a process which has been exploited to generate
 Denial of Service attacks. As
 mitigation for this potential threat, DTD declarations are not permitted in the XML markup in an OPC package. </p>
-			<p>A SMPTE Media Package, as specified in <a href="http://standards.smpte.org/content/978-1-61482-646-0/st-2053-2011/SEC1.abstract">SMPTE ST 2053:2011</a>, is a container based on OPC. Designed to take advantage of dynamic content delivery in a multiplatform, online environment, the Media Package specification defines XML-based files for the management and playback of media essence files, and other types of files that may be useful for the description or presentation of the essence files. To quote from the specification, &quot;Media Packages are useful for storage and electronic distribution of multiple files in a single container where multiple files are required to provide, for example, multiple resolutions, bitrates, codecs, content protection systems, languages, versions, episodes, collections, albums, metadata, and interactive presentation applications.&quot;  Essences may be stored in the container or referred to by URIs for download when needed.  The Media Package specification supplements the OPC specification by defining: a mandatory Table of Contents file/part, and optional parts for Presentations, TrackContainers, MediaPackage Metadata, and DRMLicense data.  XML schemas to support the specification are incorporated in the standard.  A SMPTE Media Package may also hold Media Applications, &quot;a broad term intended to include a variety of presentation control programs ranging from simple play lists, declarative data, and markup languages; to procedural language programs that are interpreted by players or virtual machines, or compiled to binary to run on specific processors.&quot;  Examples of Media Applications cited are Flash, Silverlight, Java, and HTML.</p>
+			<p>A SMPTE Media Package, as specified in <a href="https://ieeexplore.ieee.org/document/7290858">SMPTE ST 2053:2011</a>, is a container based on OPC. Designed to take advantage of dynamic content delivery in a multiplatform, online environment, the Media Package specification defines XML-based files for the management and playback of media essence files, and other types of files that may be useful for the description or presentation of the essence files. To quote from the specification, &quot;Media Packages are useful for storage and electronic distribution of multiple files in a single container where multiple files are required to provide, for example, multiple resolutions, bitrates, codecs, content protection systems, languages, versions, episodes, collections, albums, metadata, and interactive presentation applications.&quot;  Essences may be stored in the container or referred to by URIs for download when needed.  The Media Package specification supplements the OPC specification by defining: a mandatory Table of Contents file/part, and optional parts for Presentations, TrackContainers, MediaPackage Metadata, and DRMLicense data.  XML schemas to support the specification are incorporated in the standard.  A SMPTE Media Package may also hold Media Applications, &quot;a broad term intended to include a variety of presentation control programs ranging from simple play lists, declarative data, and markup languages; to procedural language programs that are interpreted by players or virtual machines, or compiled to binary to run on specific processors.&quot;  Examples of Media Applications cited are Flash, Silverlight, Java, and HTML.</p>
 		</fdd:general>
 		<fdd:history>
 			<p>Since the original OPC specification was published as ECMA-376, Part 2 in 2006, there has been no change in the OPC format that interferes with backward compatibility.  Editions of ISO/IEC 29500-2 and ECMA 376 through 2012 define the same package format; changes to OPC have been limited to clarifications and corrections.  The chronology of editions specifying OPC/OOXML_2012 is:</p>
@@ -272,18 +273,24 @@ Conventions</i>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
-				<fdd:urlReference>
-					<link>http://openxmldeveloper.org/blog/b/openxmldeveloper/archive/2012/08/09/libopc-open-packaging-convention.aspx</link>
-					<tag>libopc: Open Packaging Convention</tag>
-					<comment>Blog post by Florian Reuter</comment>
-				</fdd:urlReference>
-			</fdd:url>
-			<fdd:url>
-				<fdd:urlReference>
-					<link>http://download.microsoft.com/download/d/6/f/d6f2864a-f4f2-44cd-b080-797339b7433f/OfficeXMLMarkupExplained_en.docx</link>
-					<tag>Open XML: The Markup Explained</tag>
-					<comment>By Wouter van Vugt</comment>
-				</fdd:urlReference>
+				<fdd:urlGroup>
+					<fdd:intro>Several sources for <i>Open XML: The Markup Explained</i>, by
+Wouter van Vugt </fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://openlibra.com/en/book/open-xml-the-markup-explained</link>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://openxmldeveloper.org/blog/b/openxmldeveloper/archive/2007/08/13/1970.aspx</link>
+							<tag>Open XML: The Markup Explained</tag>
+							<comment>By Wouter van Vugt</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://openxmldeveloper.org/cfs-file.ashx/__key/communityserver-components-postattachments/00-00-00-19-70/Open-XML-Explained.pdf</link>
+							<tag>Direct link to PDF of Open XML: The Markup Explained</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
@@ -301,7 +308,7 @@ Conventions</i>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://msdn.microsoft.com/en-us/magazine/cc163372.aspx</link>
+					<link>https://docs.microsoft.com/en-us/archive/msdn-magazine/2007/august/opc-a-new-standard-for-packaging-your-data</link>
 					<tag>OPC: A New Standard For Packaging Your Data</tag>
 					<comment>By Jack Davis
 and Andrey Shur. August 2007</comment>
@@ -309,42 +316,70 @@ and Andrey Shur. August 2007</comment>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://blogs.office.com/2012/08/13/new-file-format-options-in-the-new-office/</link>
-					<tag>New file format options in the new Office</tag>
-					<comment>Originally posted in the Office Next blog, posting by Jim Thatcher on August 13, 2012.  Has useful table of formats supported for reading and writing in versions of Office since Office 2003.</comment>
+					<link>https://www.microsoft.com/en-us/microsoft-365/blog/2012/08/13/new-file-format-options-in-the-new-office/</link>
+					<tag>New file format options in the new Office (Office 2013)</tag>
+					<comment>Originally posted in the Office Next blog by Jim Thatcher on August 13, 2012.  Has useful table of formats supported for reading and writing in versions of Office since Office 2003.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
-				<fdd:urlReference>
-					<link>http://office.microsoft.com/en-us/training/overview-RZ010243529.aspx?section=1</link>
-					<tag>Office Open XML I: Exploring the Office Open XML Formats</tag>
-					<comment>Tutorial.</comment>
-				</fdd:urlReference>
+				<fdd:urlGroup>
+					<fdd:intro>Resources related to the libopc open source library for reading and writing OPC packages, described as &quot;a standard conformant, cross-platform, open source, standard C-based implementation of Part II (OPC) and Part III (MCE) of the ISO/IEC 29500 specification (OOXML).&quot;  Originally released by Florian Reuter in April 2011, and updated in June 2011, libopc has not been actively maintained, but has been integrated into other software.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://blogs.msdn.microsoft.com/dmahugh/2011/04/19/libopc-version-0-0-1-released/</link>
+							<tag>libOPC version 0.0.1 released (April 2011) | post on Microsoft&apos;s Interoperability blog</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.ericwhite.com/blog/libopc-0-0-2-released/</link>
+							<tag>libOPC 0.0.2 released | blog post by John Haug of Microsoft</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.youtube.com/watch?v=jK-hKLeCWwc</link>
+							<tag>Video: What libopc is (June 2011)</tag>
+							<comment>About features in libopc version 0.0.2</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.ericwhite.com/blog/libopc-open-packaging-convention/</link>
+							<tag>libopc: Open Packaging Convention (2012) | blog post by Florian Reuter</tag>
+							<comment>Introduces libopc, open source software for reading and writing OPC packages</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://archive.codeplex.com/?p=libopc</link>
+							<tag>Archive of original site for libopc code release</tag>
+							<comment>The codeplex service was closed and content archived in 2017.  As of 2019, this URL raises security warnings in some browsers.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/freuter/libopc</link>
+							<tag>Open source libopc library on github</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/miyako/4d-plugin-opc</link>
+							<tag>Plugin to read and write DOCX, XLSX, PPTX files | for 4D software development platform.</tag>
+							<comment>Example of software incorporating libopc library.  4D is a development platform that produces application code that runs natively on macOS and Windows.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
 			</fdd:url>
 			<fdd:url>
-				<fdd:urlReference>
-					<link>http://libopc.codeplex.com/</link>
-					<tag>Home page for open source libOPC library</tag>
-				</fdd:urlReference>
-			</fdd:url>
-			<fdd:url>
-				<fdd:urlReference>
-					<link>https://github.com/OfficeDev/Open-XML-SDK</link>
-					<tag>Open source Open XML SDK
+				<fdd:urlGroup>
+					<fdd:intro>Resources related to the Open XML SDK, released by Microsoft as open source in June 2014.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://docs.microsoft.com/en-us/office/open-xml/open-xml-sdk</link>
+							<tag>Welcome to the Open XML SDK 2.5 for Office</tag>
+							<comment>Documentation from Microsoft for the Open XML SDK.  Actively maintained.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/OfficeDev/Open-XML-SDK</link>
+							<tag>Open source Open XML SDK
 on github</tag>
-					<comment>Released as open source in June 2014.</comment>
-				</fdd:urlReference>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://msdn.microsoft.com/en-us/library/office/bb448854.aspx</link>
-					<tag>Open XML SDK 2.5</tag>
-					<comment>Documentation from Microsoft for the Open XML SDK as released as open source.</comment>
-				</fdd:urlReference>
-			</fdd:url>
-			<fdd:url>
-				<fdd:urlReference>
-					<link>http://standards.smpte.org/content/978-1-61482-646-0/st-2053-2011/SEC1.abstract</link>
+					<link>https://ieeexplore.ieee.org/document/7290858</link>
 					<tag>ST 2053:2011:
 Media Package for Storage, Distribution and Playback of Multimedia File Sets and Internet Resources </tag>
 					<comment>Refines OPC for more specific use.</comment>
@@ -352,7 +387,7 @@ Media Package for Storage, Distribution and Playback of Multimedia File Sets and
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://msdn.microsoft.com/en-us/library/office/jj228622.aspx</link>
+					<link>https://docs.microsoft.com/en-us/office/client-developer/visio/introduction-to-the-visio-file-formatvsdx</link>
 					<tag>Introduction to the Visio 2013 file format (.vsdx)</tag>
 				</fdd:urlReference>
 			</fdd:url>
