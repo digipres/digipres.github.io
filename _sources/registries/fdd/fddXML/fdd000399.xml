@@ -52,9 +52,9 @@ languages -- Office Open XML File Formats (OOXML)</i>.  This description focuses
 				<li>
 					<a href="http://officeopenxml.com/anatomyofOOXML-pptx.php">PresentationML Package Structure</a> by Daniel Dick of Reuters.</li>
 				<li>
-					<a href="https://msdn.microsoft.com/en-us/library/office/gg278335.aspx">Structure of a PresentationML document</a> from Open XML SDK documentation.  Includes <a href="https://msdn.microsoft.com/en-us/library/office/gg278335.aspx#TypWBScenario">diagram showing typical elements of a presentation file</a>.</li>
+					<a href="https://docs.microsoft.com/en-us/office/open-xml/structure-of-a-presentationml-document
+">Structure of a PresentationML document</a> from Open XML SDK documentation.  Includes <a href="https://docs.microsoft.com/en-us/office/open-xml/structure-of-a-presentationml-document#typical-presentation-scenario">diagram showing typical elements of a presentation file</a>.</li>
 			</ul>
-			<p/>
 		</fdd:description>
 		<fdd:shortDescription>A format for presentations in the Open Office XML (ISO 29500) format family, developed originally by Microsoft and used as the default format used by Microsoft PowerPoint 2007 and later versions.  Specified in parts 1 and 4 of ISO/IEC 29500, Information technology -- Document description and processing languages -- Office Open XML File Formats (OOXML).</fdd:shortDescription>
 		<fdd:productionPhase>Can be used in any production phase: for creating presentations (initial state): for editing and review (middle-state); and for final use or distribution.</fdd:productionPhase>
@@ -121,14 +121,15 @@ languages -- Office Open XML File Formats -- Part 4: Transitional Migration Feat
 			<p>Very widely used.  PPTX was originally developed by Microsoft as an XML-based format to replace the proprietary binary format that uses the .ppt file extension.</p>
 			<p>PowerPoint is the overwhelming market leader among applications used for generating presentations. A share of 95 percent is widely quoted (and re-quoted), but it is not clear where that figure originated.  See <a href="http://powerpointinfo.blogspot.com/2012/02/powerpoint-usage-statistics-and-market.html">PowerPoint usage statistics and market share</a>, a post from February 2012.  Since 2012, the share may have dropped slightly. Review articles often recommend <a href="https://www.apple.com/keynote/">Keynote</a> (a slideware application from Apple) and <a href="https://prezi.com/">Prezi</a> (a cloud-based system that uses a non-linear approach with a large canvas over which the presenter can pan and zoom, rather than a sequence of slides). See, for example, <a href="http://web.archive.org/web/20151213145653/http://www.hendersoncreative.com/blog/presentation-software/">Picking the Perfect Presentation Software for You</a>, April, 2014 and <a href="http://www.technologysphinx.com/best-free-alternatives-powerpoint/">Best Free Alternatives to PowerPoint</a>, July 2014.  Such articles usually emphasize the ubiquity of support for PowerPoint and the fact that it is the safe choice from a technical perspective.</p>
 			<p>The corpus of existing documents is still dominated by the binary .ppt format.  A Google search in October 2014 of the U.S. web by filetype yielded: .ppt, 11,600,000; .pptx, 3,450,000; .key, 691,000; .odp, 195,000.</p>
-			<p>In June 2014, <a href="https://googledrive.blogspot.com/2014/06/newdocssheetsslides.html">
+			<p>In June 2014, <a href="https://drive.googleblog.com/2014/06/newdocssheetsslides.html">
 Google announced direct editing of PPTX files in the new Google Slides app</a> for Android devices or online if using the Chrome browser with an extension Google supplies; the compilers of this resource have found no good information yet on the degree to which files edited in these versions of Google Slides can be opened satisfactorily in PowerPoint.  Other slideware applications, including Apache Open Office, LibreOffice, Keynote, and Google Slides when using browsers other than Chrome can import PPTX files, but some loss should be expected (see <a href="#notes">Notes</a> below for features that may not transfer to the OpenDocument Presentation format).  The Prezi application allows users to upload a PowerPoint file and place slides onto the presentation&apos;s canvas.</p>
 			<p>
 				<a href="../contact_format.shtml">Comments welcome</a>.</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>
-			<p>The specification originated from Microsoft Corporation. Current and future versions of ISO/IEC 29500 and ECMA-376 are covered by Microsoft&apos;s <a href="https://msdn.microsoft.com/en-us/openspecifications/dn646765">Open Specification Promise</a>, whereby Microsoft &quot;irrevocably promises&quot; not to assert any claims against those making, using, and selling conforming implementations of any specification covered by the promise (so long as those accepting the promise refrain from suing Microsoft for patent infringement in relation to Microsoft&apos;s implementation of the covered specification).</p>
-			<p>Features introduced into PPTX through the MCE mechanism may be subject to patent protection.  However, Microsoft&apos;s <a href="https://msdn.microsoft.com/en-us/openspecifications/dn646764">interoperability principles</a> indicate &quot;Microsoft will also make available a list of any of its patents that cover any extensions, and will make available patent licenses on reasonable and non-discriminatory terms.&quot;</p>
+			<p>The specification originated from Microsoft Corporation. Current and future versions of ISO/IEC 29500 and ECMA-376 are covered by Microsoft&apos;s <a href="https://docs.microsoft.com/en-us/openspecs/dev_center/ms-devcentlp/1c24c7c8-28b0-4ce1-a47d-95fe1ff504bc">Open Specification Promise</a>, whereby Microsoft &quot;irrevocably promises&quot; not to assert any claims against those making, using, and selling conforming implementations of any specification covered by the promise (so long as those accepting the promise refrain from suing Microsoft for patent infringement in relation to Microsoft&apos;s implementation of the covered specification).</p>
+			<p>Features introduced into PPTX through the MCE mechanism may be subject to patent protection.  However, Microsoft&apos;s <a href="https://docs.microsoft.com/en-us/openspecs/dev_center/ms-devcentlp/d84cac00-b312-44ee-9156-23bde6477c3d#patent-pledges
+">interoperability principles</a> indicate &quot;Microsoft will also make available a list of any of its patents that cover any extensions, and will make available patent licenses on reasonable and non-discriminatory terms.&quot;</p>
 		</fdd:licensingAndPatents>
 		<fdd:transparency>
 			<p>The structure and text of a PPTX file are all represented in XML and hence viewable without special tools, although XML-aware tools that can show the element hierarchy make viewing and interpretation more convenient.  The most commonly used parts, elements, and attributes have recognizable names.  Simple documents can be interpreted with very basic tools.  However, interpreting the semantics of some elements and the correspondence of some elements and attributes to presentation software functionality will require understanding of both the schema and the textual specification.  The specification provides valuable examples, for example of animation effects, and not all normative constraints for PPTX can be represented fully in the W3C XML Schema Language (<fddLink id="fdd000077">XML_Schema_1_0</fddLink>).</p>
@@ -138,7 +139,7 @@ Google announced direct editing of PPTX files in the new Google Slides app</a> f
 		<fdd:selfDocumentation>
 			<p>The property file /docProps/core.xml is mandatory for OPC packages, although all elements in this Core Properties part are optional.  For more on self-documentation of the package containing the constituent parts of the PPTX file, see <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>.</p>
 			<p>A single optional part with a pre-defined set of extended properties for the package is permitted.  Microsoft uses the part name /docProps/app.xml for this and it is always present in PPTX files created by Microsoft.  The extended properties (each optional and non-repeatable) are primarily administrative and are not related to the intellectual or bibliographic nature of the document.  Elements include: name of creating application; version of creating application; various size metrics (pages, words, etc.); template used; document security level; and a list of embedded hyperlinks.  Libre Office and Google Docs use the same part name for the extended properties part, but the part typically records many fewer properties.  Both applications identify themselves as the creating application for non-empty documents.</p>
-			<p>The nature of the OPC package would permit the addition of a part that included rich XML-based metadata, preferably in a well-known schema, and was listed in the relationships file associated with the Core Properties part with an appropriate relationship type.  However, no part of ISO/IEC 29500:2012 predefines such a relationship.  Embedding such a part in an OPC package could be done without affecting the primary document content.   An example of embedding an ONIX metadata record in an OOXML file is given in <a href="http://www.iso.org/iso/catalogue_detail.htm?csnumber=62481">ISO/IEC TR 30114-1:2016  Information technology — Extensions of Office Open XML file formats — Part 1: Guidelines</a>, in Clause 5.4 <i>Embedding foreign Open Packaging Convention (OPC) parts</i>.</p>
+			<p>The nature of the OPC package would permit the addition of a part that included rich XML-based metadata, preferably in a well-known schema, and was listed in the relationships file associated with the Core Properties part with an appropriate relationship type.  However, no part of ISO/IEC 29500:2012 predefines such a relationship.  Embedding such a part in an OPC package could be done without affecting the primary document content.   An example of embedding an ONIX metadata record in an OOXML file is given in <a href="https://www.iso.org/standard/62481.html">ISO/IEC TR 30114-1:2016  Information technology — Extensions of Office Open XML file formats — Part 1: Guidelines</a>, in Clause 5.4 <i>Embedding foreign Open Packaging Convention (OPC) parts</i>.</p>
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>
 			<p>None beyond XML-aware software.</p>
@@ -315,7 +316,7 @@ Google announced direct editing of PPTX files in the new Google Slides app</a> f
 			<p>A slide as it appears in a presentation results from a hierarchy of components, each stored as a separate part: (1) the master slide upon which the slide is based; (2) the layout that is applied to the slide; and (3) the actual slide content.  The master slide is a template that specifies properties such as the font styles for the title, body, and footer, placeholder positions for text and objects, bullet styles, and background. The slide layout is a second layer of design which may augment or override what is specified in the master slide and may apply to more than one slide. Finally, the slide itself specifies content and formatting not already specified by the master slide and slide layout. Properties and content defined in a slide layout will override similar properties and content specified in the master slide, and properties and content specified in the slide will override similar properties and content defined in the layout.  [The description above is an adaptation of <a href="http://officeopenxml.com/prSlide.php">a description at officeopenxml.com</a>, a useful resource developed by Daniel Dick.]</p>
 			<p>The XML in a PPTX file will typically draw on several schemas and use more than one namespace.  PresentationML uses a single namespace, often using the prefix <i>p:</i>.  DrawingML has more than one namespace.  The DrawingML Main namespace will be used in all PPTX files, often using the prefix <i>a:</i>, since it is used to specify layouts. This namespace also defines constructs for drawing, coloring, positioning, and connecting shapes, embedding audio, etc., specifying the animation for building a graphic, and styling text within graphical layouts. Occurring when relevant, the DrawingML Chart namespace, often using the prefix <i>c:</i>, is used to specify a visualization of numeric data.  Elements in this namespace define where data should be drawn from, a cache for the data, and how the data should be presented graphically (chart type, axes, etc.).  The ChartDrawing namespace is used to anchor and display a DrawingML object within a chart.  Yet another DrawingML namespace is used to specify diagrams such as organizational charts.  A Transitional PPTX file may also use the VML Main namespace (often using the prefix <i>v:</i>) and subsidiary VML namespaces.</p>
 			<p>The deprecated VML (Vector Markup Language), as used in Transitional OOXML files, is fully defined in ISO/IEC 29500-4.  Its inclusion is for backwards compatibility purposes and the standard discourages use by new applications when writing OOXML files.</p>
-			<p>Audio, video, and images in binary formats are frequently incorporated into presentations.  ISO/IEC 29500 does not mandate or prohibit any particular formats for such files but, for interoperability, recommends audio/mpeg (see <fddLink id="fdd000338">MPEG_layer_2_audio</fddLink> and <fddLink id="fdd000105">MP3_FF</fddLink> ), image/jpeg (see <fddLink id="fdd000018">JFIF_1_02, JPEG File Interchange Format</fddLink>), image/png (see <fddLink id="fdd000153">PNG</fddLink>), and video/mpeg (see <fddLink id="fdd000335">MPEG-2_family</fddLink>).  Microsoft documents <a href="http://technet.microsoft.com/en-us/library/dd797428.aspx#section3">support in PowerPoint for several additional formats</a>.  The compilers of this resource have no information as to the range of audiovisual formats found in PPTX files in practice.  <a href="../contact_format.shtml">Comments welcome</a>.  PPTX allows such files to be stored in the package or externally.  If stored externally, they can be referred to relative to the location of the PPTX package or by URI (or IRI).</p>
+			<p>Audio, video, and images in binary formats are frequently incorporated into presentations.  ISO/IEC 29500 does not mandate or prohibit any particular formats for such files but, for interoperability, recommends audio/mpeg (see <fddLink id="fdd000338">MPEG_layer_2_audio</fddLink> and <fddLink id="fdd000105">MP3_FF</fddLink> ), image/jpeg (see <fddLink id="fdd000018">JFIF_1_02, JPEG File Interchange Format</fddLink>), image/png (see <fddLink id="fdd000153">PNG</fddLink>), and video/mpeg (see <fddLink id="fdd000335">MPEG-2_family</fddLink>).  Microsoft documents <a href="https://docs.microsoft.com/en-us/deployoffice/compat/office-file-format-reference#file-formats-that-are-supported-in-powerpoint">support in PowerPoint for several additional formats</a>.  The compilers of this resource have no information as to the range of audiovisual formats found in PPTX files in practice.  <a href="../contact_format.shtml">Comments welcome</a>.  PPTX allows such files to be stored in the package or externally.  If stored externally, they can be referred to relative to the location of the PPTX package or by URI (or IRI).</p>
 			<p>
 				<b>Relationship between PPTX and binary .ppt format</b>: Conversion from the binary .ppt format to PPTX using the Save As operation in PowerPoint is designed to have 100 percent fidelity.  For PowerPoint 2007, the formats should be equivalent.  Features added since PowerPoint 2007 will usually not be supported in the binary format; when converting from PPTX to .ppt, later versions of PowerPoint will attempt to &quot;down-convert&quot; to supported features and will present a compatibility check that indicates which features will be converted or lost.</p>
 			<p>
@@ -329,7 +330,7 @@ Google announced direct editing of PPTX files in the new Google Slides app</a> f
 				<li>Embedded vector graphics, including SmartArt. Although many graphics will convert adequately, differences between DrawingML and SVG (used in ODP) can result in significant problems.</li>
 				<li>Comments.  Differences in the structure for representing comments prevent conversion.</li>
 			</ul>
-			<p>Note that newer versions of ODP have been introduced into Apache Open Office or LibreOffice, and ODF 1.2 was approved by ISO in 2015.  Use of the newer versions may mitigate some of these conversion problems.  When converting from PPTX to ODP, it is important to be aware of which version of ODP is being used as the target format.  PowerPoint 2013 uses OASIS ODF 1.2 for ODP export. Microsoft documents how it handles features that do not correspond when the Save As .odp feature is used in <a href="https://support.office.com/en-us/article/Supported-features-in-OpenDocument-presentation-odp-format-f6d5b015-a417-4096-bf61-a5c3f58d125f">Supported Features in OpenDocument Presentation (.odp) Format</a>.  Also of relevance in relation to fidelity of conversion is whether a document includes any of the new features introduced in versions of PowerPoint since 2007 and marked up using the Markup Compatibility and Extensibility namespace (<fddLink id="fdd000395">MCE/OOXML_2012</fddLink>).  Microsoft has documented these extensions in <a href="https://msdn.microsoft.com/en-us/library/dd773240.aspx">[MS-PPTX]: PowerPoint (.pptx) Extensions to the Office Open XML File Format</a> and <a href="https://msdn.microsoft.com/en-us/library/dd905216.aspx">[MS-ODRAWXML]: Office Drawing Extensions to Office Open XML Structure</a>.  Among features added since Office 2007 are new transition types and chart styles, &quot;bookmarks&quot; for controlling embedded audio and/or video, support for InkML (to represent hand-drawn objects), and the ability to store original raster
+			<p>Note that newer versions of ODP have been introduced into Apache Open Office or LibreOffice, and ODF 1.2 was approved by ISO in 2015.  Use of the newer versions may mitigate some of these conversion problems.  When converting from PPTX to ODP, it is important to be aware of which version of ODP is being used as the target format.  PowerPoint 2013 uses OASIS ODF 1.2 for ODP export. Microsoft documented how PowerPoint 2013 handled features that do not correspond when the Save As .odp feature is used in <a href="https://web.archive.org/web/20170501074530/https://support.office.com/en-us/article/Supported-features-in-OpenDocument-presentation-odp-format-f6d5b015-a417-4096-bf61-a5c3f58d125f">Supported Features in OpenDocument Presentation (.odp) Format</a>.  Also of relevance in relation to fidelity of conversion is whether a document includes any of the new features introduced in versions of PowerPoint since 2007 and marked up using the Markup Compatibility and Extensibility namespace (<fddLink id="fdd000395">MCE/OOXML_2012</fddLink>).  Microsoft has documented these extensions in <a href="https://docs.microsoft.com/en-us/openspecs/office_standards/ms-pptx/">[MS-PPTX]: PowerPoint (.pptx) Extensions to the Office Open XML File Format</a> and <a href="https://docs.microsoft.com/en-us/openspecs/office_standards/ms-odrawxml/">[MS-ODRAWXML]: Office Drawing Extensions to Office Open XML Structure</a>.  Among features added since Office 2007 are new transition types and chart styles, &quot;bookmarks&quot; for controlling embedded audio and/or video, support for InkML (to represent hand-drawn objects), and the ability to store original raster
 images and processing parameters for corrections and effects applied.</p>
 		</fdd:general>
 		<fdd:history>
@@ -422,54 +423,61 @@ languages -- Office Open XML File Formats -- Part 4: Transitional Migration Feat
 					<fdd:intro>Microsoft provides various documentation pages related to PPTX.  Much of this documentation is aimed at programmers writing applications that manipulate PresentationML and DrawingML markup directly, perhaps using the Open XML SDK.</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
-							<link>https://msdn.microsoft.com/en-us/library/office/bb448854.aspx</link>
+							<link>https://docs.microsoft.com/en-us/office/open-xml/open-xml-sdk</link>
 							<tag>Welcome to the Open XML SDK 2.5 for Office</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://msdn.microsoft.com/EN-US/library/office/gg278335.aspx</link>
+							<link>https://docs.microsoft.com/en-us/office/open-xml/structure-of-a-presentationml-document</link>
 							<tag>Structure of a PresentationML document (Open XML SDK)</tag>
 							<comment>Has a useful diagram at the bottom of the page.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://msdn.microsoft.com/EN-US/library/office/gg278318.aspx</link>
+							<link>https://docs.microsoft.com/en-us/office/open-xml/working-with-presentationml-documents</link>
 							<tag>Working with PresentationML Documents (Open XML SDK)</tag>
 							<comment>Introduces basic topics for working with PresentationML (.pptx) files through program code.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://blogs.msdn.microsoft.com/brian_jones/2006/04/11/intro-to-presentationml-part-1-core-architecture-and-the-presentation-part/</link>
+							<link>https://docs.microsoft.com/en-us/archive/blogs/brian_jones/intro-to-presentationml-part-1-core-architecture-and-the-presentation-part</link>
 							<tag>Intro to PresentationML  - Core architecture and the &quot;presentation&quot; part</tag>
 							<comment>Blog post from 2006.  Called Part 1, but no more parts appear in this blog.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>http://openxmldeveloper.org/resources/workshop/m/presentations/1931.aspx</link>
+							<link>https://web.archive.org/web/20150423083850/http://openxmldeveloper.org/resources/workshop/m/presentations/1931.aspx</link>
 							<tag>Module 08: PresentationML</tag>
-							<comment>Tutorial presentation on PresentationML.  Covers basic architecture, the shape tree, tables, slide masters, slide layouts, notes, comments, transitions, and animations.</comment>
+							<comment>Tutorial presentation on PresentationML.  Covers basic architecture, the shape tree, tables, slide masters, slide layouts, notes, comments, transitions, and animations. Originally at openxmldeveloper.org; now via Internet Archive.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>http://blogs.office.com/2012/08/13/new-file-format-options-in-the-new-office/</link>
+							<link>https://www.microsoft.com/en-us/microsoft-365/blog/2012/08/13/new-file-format-options-in-the-new-office/</link>
 							<tag>New file format options in the new Office [Office 2013]</tag>
 							<comment>Announces support for writing files in PPTX Strict and ODF 1.2 formats.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://support.office.com/en-us/article/Supported-features-in-OpenDocument-presentation-odp-format-f6d5b015-a417-4096-bf61-a5c3f58d125f</link>
+							<link>https://web.archive.org/web/20170501074530/https://support.office.com/en-us/article/Supported-features-in-OpenDocument-presentation-odp-format-f6d5b015-a417-4096-bf61-a5c3f58d125f
+</link>
 							<tag>Supported features in OpenDocument presentation (.odp) format</tag>
+							<comment>Link now via Internet Archive.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>https://support.office.com/en-us/article/Save-your-presentation-in-a-different-file-format-db4f9823-85a0-4fff-a9f1-691e751767dd</link>
 							<tag>Save your presentation in a different file format.</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://technet.microsoft.com/en-us/library/dd797428.aspx</link>
-							<tag>File format reference for Word 2013, PowerPoint 2013, and Excel 2013</tag>
+							<link>https://docs.microsoft.com/en-us/deployoffice/compat/office-file-format-reference#file-formats-that-are-supported-in-powerpoint</link>
+							<tag>File format reference for Word, Excel, and PowerPoint (latest version)</tag>
 							<comment>Documents file formats that can be used in the Save As operation or for embedded images, audio, and video.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://msdn.microsoft.com/en-us/library/dd926741.aspx</link>
+							<link>https://docs.microsoft.com/en-us/deployoffice/compat/office-file-format-reference</link>
+							<tag>File format reference for recent versions of Office</tag>
+							<comment>Documents file formats that can be used in the Save As operation or for embedded images, audio, and video.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://docs.microsoft.com/en-us/openspecs/office_standards/ms-pptx/</link>
 							<tag>[MS-PPTX]: PowerPoint (.pptx) Extensions to the Office Open XML File Format</tag>
 							<comment>Extensions to PresentationML for features added since Office 2007</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://msdn.microsoft.com/en-us/library/dd905216.aspx</link>
+							<link>https://docs.microsoft.com/en-us/openspecs/office_standards/ms-odrawxml/06cff208-c6e1-4db7-bb68-665135e5f0de</link>
 							<tag>[MS-ODRAWXML]: Office Drawing Extensions to Office Open XML Structure</tag>
 							<comment>Extensions to DrawingML for features added since Office 2007</comment>
 						</fdd:urlReference>
