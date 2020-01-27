@@ -13,9 +13,9 @@
 		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
 		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2019-09-19</fdd:date>
+			<fdd:date>2020-01-23</fdd:date>
 		</fdd:updates>
-		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
 	<fdd:identificationAndDescription>
 		<fdd:fullName>Wavefront OBJ File Format</fdd:fullName>
@@ -26,7 +26,7 @@
 			<p>The Wavefront OBJ format is a format for defining the 3D geometry for the surface of one or more objects.  The format was first used by Wavefront Technologies around 1990 and a <a href="http://www.cs.utah.edu/~boulos/cs3505/obj_spec.pdf">specification</a> was published to encourage interoperability.  The introduction to the specification stated, &quot;Object files define the geometry and other properties for objects in
 Wavefront’s Advanced Visualizer.  Object files can also be used to
 transfer geometric data back and forth between the Advanced
-Visualizer and other applications.&quot;  Since the mid 1990s, the ASCII-based format has been treated as a vendor-neutral format, referred to as &apos;Wavefront OBJ,&quot; &quot;Alias/Wavefront OBJ,&quot; or simply &quot;OBJ.&quot;  In 2019, the format remains widely used, particularly for 3D printing of objects in multiple colors.  Note: Colors and textures are not defined in the OBJ file itself, but in an associated Wavefront Material Template Library (<fddLink id="fdd000508">MTL</fddLink>) file and invoked in the OBJ file.  See <a href="#factors">3D Model Appearance</a> factor below.</p>
+Visualizer and other applications.&quot;  Since the mid 1990s, the ASCII-based format has been treated as a vendor-neutral format, referred to as &apos;Wavefront OBJ,&quot; &quot;Alias/Wavefront OBJ,&quot; or simply &quot;OBJ.&quot;  In 2020, the format remains widely used, particularly for 3D printing of objects in multiple colors.  Note: The original specification for the OBJ file employs an associated Wavefront Material Template Library (<fddLink id="fdd000508">MTL</fddLink>) file to define both colors and textures.  Textures and colors specified by name in an MTL file are invoked in the OBJ file.  See <a href="#factors">3D Model Appearance</a> factor below.</p>
 			<p>The OBJ file format supports definition of the geometry for object surfaces using polygonal meshes or using freeform curves and surfaces.  From a logical perspective, the central concept in an OBJ model is the &quot;element.&quot;  The specification lists the following as elements: point (<i>p</i>), line (<i>l</i>), face (<i>f</i>), curve (<i>curv</i>), 2D curve (<i>curv2</i>), and surface (<i>surf</i>).  Elements are constructed from vertices; the vertices must be listed first in the file, so that the elements can refer to them by number, using the order in which they occur in the file.  Elements can optionally be organized into groups for convenience or to guide rendering applications.</p>
 			<p>An OBJ file has a simple physical structure, consisting of lines that start with keywords.  Following each keyword, appropriate options and values are specified.  Lines beginning with # are comments.  Long lines can be broken up, using a backslash (\) character at the end of lines to be continued.  According to the <a href="https://www.fileformat.info/format/wavefrontobj/egff.htm">Wavefront OBJ File Format Summary</a> in the Encyclopedia of Graphics File Formats, 2nd Edition, &quot;The most commonly encountered OBJ files contain only polygonal faces. To describe a polygon, the file first describes each point [vertex] with the &quot;v&quot; keyword, then describes the face with the &quot;f&quot; keyword. The line of a face command contains the enumerations of the points in the face, as <i>1-based indices</i> into the list of points, in the order they occurred in the file.&quot;  [Note:  A 1-based index means that the count of vertices begins at 1, rather than 0.] The description of <a href="https://people.cs.clemson.edu/~dhouse/courses/405/docs/brief-obj-file-format.html">Alias/WaveFront Object (.obj) File Format</a> provided by Donald H. House for a course in computer graphics is a useful introduction to the keywords used for polygonal meshes; these keywords are supported by most applications that claim to support the OBJ format.  Not all 3D software applications can handle freeform surfaces, which are defined using mathematical equations.  Of those that can, support may be limited to the non-uniform rational basis spline (<a href="https://en.wikipedia.org/wiki/Non-uniform_rational_B-spline">NURBS</a>) model, although the OBJ specification allows for a variety of models.</p>
 			<p>Here is a simple example of an OBJ file, for a cube, taken from the specification</p>
@@ -43,8 +43,9 @@ Visualizer and other applications.&quot;  Since the mid 1990s, the ASCII-based f
 			</ul>
 			<p>For information on the keywords and options associated with freeform surface elements, see the <a href="http://www.cs.utah.edu/~boulos/cs3505/obj_spec.pdf">specification</a> and <a href="#useful">Useful References</a> below.</p>
 			<p>OBJ files that contain only face elements and the associated vertex data are widely supported by 3D software applications, for import and for export.  Nevertheless, there can be interoperability problems associated with applying colors and textures using an associated <fddLink id="fdd000508">MTL</fddLink> file.  An OBJ file refers to the MTL file in an <i>mtllib</i> declaration and definitions for objects (polygonal or freeform) within the OBJ file can refer to a particular named material definition with a <i>usemtl</i> statement.  Some applications simply do not support the MTL files.  The original Advanced Visualizer application required the MTL file to be in the same directory as the OBJ file and any texture map files also to be in the same directory.  Some applications accept paths to files in other directories and others export the component files in separate directories and users have to move them before they can be successfully employed.  Another potential source of interoperability problems with MTL files is the use of keywords not defined in the original MTL specification for proprietary use or to support new approaches for 3D rendering.  For more details, see <fddLink id="fdd000508">MTL</fddLink>.</p>
+			<p>A convention for representing colors in an OBJ model without using an MTL file is supported by several applications.  This convention supports a technique, known as <i>per-vertex</i> coloring, in which a color is associated with each vertex and pixels on a mesh face are colored by interpolation based on distance from the face vertices.  This approach is of particular value for certain applications.  When 3D models are derived by scanning (e.g., for a pathology specimen) or photogrammetry (e.g. for a 3D cultural heritage artifact), it is feasible to generate a single file which includes accurate color information.  Another situation where this approach is valuable is for models that use basic colors to identify parts of a design model, or convey other information using artificial colors, for example, for an anatomical model. Having a single file can simplify workflows and storage for situations where texture maps are not needed. For more detail on the convention and its support in applications, see <a href="#notes">Note</a> on per-vertex coloring below.</p>
 		</fdd:description>
-		<fdd:shortDescription>an ASCII-based format for defining the 3D geometry for the surface of one or more objects.  First used by Wavefront Technologies around 1990. Soon after, a specification was published to encourage interoperability.  In 2019, it is the preferred format for multi-color 3D printing.</fdd:shortDescription>
+		<fdd:shortDescription>an ASCII-based format for defining the 3D geometry for the surface of one or more objects.  First used by Wavefront Technologies around 1990. Soon after, a specification was published to encourage interoperability.  In 2020, it is the preferred format for multi-color 3D printing.</fdd:shortDescription>
 		<fdd:productionPhase>The OBJ format can be an initial-state format, created by a 3D scanning process.  It often serves as a middle-state format, created as output from software that supports 3D design.  An OBJ model will often be input to a 3D printing process or to more advanced 3D modeling software to include in a 3D scene or animation.  Models are often shared for re-use in the OBJ format.</fdd:productionPhase>
 		<fdd:relationships>
 			<fdd:relationship>
@@ -77,8 +78,7 @@ Visualizer and other applications.&quot;  Since the mid 1990s, the ASCII-based f
 			<p>Examples of software tools that have been developed specifically to read and write files in the OBJ format include: <a href="https://github.com/pywavefront/PyWavefront">PyWavefront</a> in Python; <a href="https://threejs.org/examples/jsm/loaders/OBJLoader.js">OBJloader.js</a> in javascript, part of <a href="https://threejs.org/">threejs</a> toolkit; and <a href="https://github.com/dwmkerr/file-format-wavefront">file-format-wavefront</a> for .NET.</p>
 			<p>Cultural heritage institutions and archaeologists have used the Wavefront OBJ format when scanning 3D artifacts from their sites or collections.  However, many museums also use 3D formats that offer more advanced features.  For example, the British Museum offers <a href="https://sketchfab.com/3d-models/a-queen-from-the-lewis-chessmen-af096aa7ca934f84b6d64c89a8e312d4">a queen from the Lewis chessmen</a> for download from SketchFab in STL and OBJ, but also in glTF.  <a href="https://sketchfab.com/museums">SketchFab</a> is used by many museums for making 3D models available.  Wavefront OBJ is supported for uploading models to SketchFab and is one of the preferred formats listed at <a href="https://help.sketchfab.com/hc/en-us/articles/202508396-Supported-3D-File-Formats">Supported 3D File Formats</a>.  The <a href="http://guides.archaeologydataservice.ac.uk/g2gp/3d_2-3">UK Archaeology Data Service</a> lists the Wavefront OBJ format in a table of &quot;common&quot; formats, and describes it as &quot;suitable for preservation.&quot;</p>
 			<p>Digital Imaging and Remote Sensing Image Generation (DIRSIG) is a specialized system that can be used to test image system designs, to create test imagery for evaluating image exploitation algorithms and for creating data for training image analysts.  DIRSIG software has been developed over the course of over two decades for use by NSF, NASA, DoD and Intelligence community contractors and by universities doing research for these organizations.  In addition to a custom format, the software will read the Alias/Wavefront OBJ file format directly. Other geometry formats must be exported to the Alias OBJ format for importation into a DIRSIG scene. DIRSIG support is only for meshes with faces with three or four vertices.  See <a href="http://www.dirsig.org/docs/new/obj.html#_feature_support_in_dirsig">Alias/Wavefront OBJ File Format |Feature Support in DIRSIG</a>.  Another specialized system that uses OBJ and MTL files is the Channel Annotation Package (CHAP), a research tool for &quot;functional annotation of novel ion channel structures that provides information on the biophysical properties of the ion permeation pathway by utilising molecular dynamics simulations.&quot; See <a href="https://www.channotation.org/docs/contents_objmtl_file/">Contents of the OBJ and MTL Output Files</a>.</p>
-			<p>
-				<a href="https://www.dicomstandard.org/wgs/wg-17/">Working Group 17</a> for the Digital Imaging and Communications in Medicine (DICOM) standard has proposed that the OBJ and MTL formats are the next 3D model format, following <fddLink id="fdd000504">STL</fddLink>, to be supported for encapsulation in a DICOM wrapper.  See slides on <a href="http://dicom.nema.org/Dicom/News/March2019/docs/sups/sup208-slides.pdf">Supplement 208: Extension of DICOM Encapsulation of 3D Manufacturing Models</a> from March 2019.</p>
+			<p>A recent development is the approval in early 2020 by <a href="https://www.dicomstandard.org/wgs/wg-17/">Working Group 17</a> for the Digital Imaging and Communications in Medicine (DICOM) standard, of <a href="https://dicomstandard.org/News/ftsup/docs/sups/sup208.pdf">Supplement 208</a>: DICOM Encapsulation of OBJ Models for 3D Manufacturing and Virtual Reality.  See <a href="https://www.dicomstandard.org/News/current/docs/sups/sup208-slides.pdf">slides in Supplement 208</a> from 2019, and <a href="https://dicomstandard.org/News/ftsup/index.html">DICOM Supplement Overview</a>.</p>
 			<p>Faced with interoperability problems in getting some 3D software to import the OBJ and MTL files together and yield an appropriate rendering, some users may choose a workflow that avoids the OBJ format.  For more on sources of interoperability problems, see <fddLink id="fdd000508">MTL</fddLink>.</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>
@@ -100,12 +100,15 @@ Visualizer and other applications.&quot;  Since the mid 1990s, the ASCII-based f
 B-spline; Cardinal spline; or Taylor expansion.  See section on <i>Freeform curve and surface types</i> at page 65 of the <a href="http://www.cs.utah.edu/~boulos/cs3505/obj_spec.pdf">specification</a> for more detail.  See also <a href="#useful">Useful References</a> below for some links to explanations of the underlying mathematics.</p>
 					<p>The compilers of this resource have been unable to determine how widely the more complex freeform modeling options are in use in OBJ files and how widely the techniques are supported in CAD software.  The <a href="https://en.wikipedia.org/wiki/Wavefront_.obj_file">Wikipedia entry for Wavefront .obj files</a> states, &quot;The most common elements are geometric vertices, texture coordinates, vertex normals and polygonal faces.&quot;  <a href="../contact_format.shtml">Comments welcome</a>.</p>
 					<p>
-						<a href="https://all3dp.com/1/obj-file-format-3d-printing-cad/">OBJ File Format – Simply Explained for CAD and 3D Printing</a> from All3DP states that in general, the most common freeform surface technique in use is NURBS (Non-Uniform Rational B-Spline), a particular variant of B-spline that the OBJ format does support.  <a href="https://knowledge.autodesk.com/support/alias-products/learn-explore/caas/CloudHelp/cloudhelp/2019/ENU/Alias-ImportingExporting/files/GUID-A1CC091A-A9C8-45DB-A3EA-2DAFE7E1A59D-htm.html">Alias</a> from Autodesk does appear to handle freeform surfaces.  However, the help for <a href="https://knowledge.autodesk.com/support/3ds-max/learn-explore/caas/CloudHelp/cloudhelp/2020/ENU/3DSMax-Data-Exchange/files/GUID-87B0A138-8348-4DCB-87EE-585841A27318-htm.html">3DS Max</a>, also from Autodesk only mentions the use of meshes on import.  <a href="https://docs.blender.org/manual/en/latest/addons/io_scene_obj.html">Blender</a> appears to have partial support for curved surfaces defined by NURBS, but converts them to meshes on output. Another example of limited freeform curve support is in <a href="https://nurbs-python.readthedocs.io/en/latest/file_formats.html">NURBS-Python (geomdl)</a>, a cross-platform, object-oriented B-Spline and NURBS library written in Python, which can output OBJ files.</p>
+						<a href="https://all3dp.com/1/obj-file-format-3d-printing-cad/">OBJ File Format – Simply Explained for CAD and 3D Printing</a> from All3DP states that in general, the most common freeform surface technique in use is NURBS (Non-Uniform Rational B-Spline), a particular variant of B-spline that the OBJ format does support.  <a href="https://knowledge.autodesk.com/support/alias-products/learn-explore/caas/CloudHelp/cloudhelp/2019/ENU/Alias-ImportingExporting/files/GUID-A1CC091A-A9C8-45DB-A3EA-2DAFE7E1A59D-htm.html">Alias</a> from Autodesk does appear to handle freeform surfaces.  However, the help for <a href="https://knowledge.autodesk.com/support/3ds-max/learn-explore/caas/CloudHelp/cloudhelp/2020/ENU/3DSMax-Data-Exchange/files/GUID-87B0A138-8348-4DCB-87EE-585841A27318-htm.html">3DS Max</a>, also from Autodesk only mentions the use of meshes on import.  <a href="https://docs.blender.org/manual/en/dev/addons/import_export/io_scene_obj.html">Blender</a> appears to have partial support for curved surfaces defined by NURBS, but converts them to meshes on output. Another example of limited freeform curve support is in <a href="https://nurbs-python.readthedocs.io/en/latest/file_formats.html">NURBS-Python (geomdl)</a>, a cross-platform, object-oriented B-Spline and NURBS library written in Python, which can output OBJ files.</p>
 				</fdd:note>
 			</fdd:factor>
 			<fdd:factor>
 				<fdd:tag>3D Model Appearance</fdd:tag>
-				<fdd:note>Appearance characteristics such as color and texture can be defined in companion Material Template Library (<fddLink id="fdd000508">MTL</fddLink>) files.  The MTL file is a &quot;library&quot; that can contain one or more named material definitions, each of which can specify color, texture, and reflection characteristics. An OBJ file refers to the MTL file in an <i>mtllib</i> declaration and definitions for objects (polygonal or freeform) within the OBJ file can refer to a particular named material definition with a <i>usemtl</i> statement.</fdd:note>
+				<fdd:note>
+					<p>Appearance characteristics such as color and texture can be defined in companion Material Template Library (<fddLink id="fdd000508">MTL</fddLink>) files.  The MTL file is a &quot;library&quot; that can contain one or more named material definitions, each of which can specify color, texture, and reflection characteristics. An OBJ file refers to the MTL file in an <i>mtllib</i> declaration and definitions for objects (polygonal or freeform) within the OBJ file can refer to a particular named material definition with a <i>usemtl</i> statement.</p>
+					<p>The original specification for OBJ had no support for per-vertex color information.  However, a convention has emerged, as described in the <a href="https://en.wikipedia.org/wiki/Wavefront_.obj_file#Geometric_vertex">Geometric vertex section in the Wikipedia entry for the OBJ file format</a>.  For more detail on the convention and its support in applications, see <a href="#notes">Note</a> on per-vertex coloring below.</p>
+				</fdd:note>
 			</fdd:factor>
 			<fdd:factor>
 				<fdd:tag>3D Model Scene</fdd:tag>
@@ -158,6 +161,10 @@ B-spline; Cardinal spline; or Taylor expansion.  See section on <i>Freeform curv
 				<b>Potential interoperability issues:</b>  The <a href="https://en.wikipedia.org/wiki/Wavefront_.obj_file">Wikipedia entry for the Wavefront .obj file</a> notes that &quot;OBJ files, due to their list structure, are able to reference vertices, normals, etc. either by their absolute position (1 represents the first defined vertex, N representing the Nth defined vertex), or by their relative position (-1 represents the latest defined vertex). However, not all software supports the latter approach, and conversely some software inherently writes only the latter form (due to the convenience of appending elements without needing to recalculate vertex offsets, etc.), leading to occasional incompatibilities.&quot;</p>
 			<p>Documentation for the <a href="https://www.okino.com/conv/imp_wave.htm">Wavefront OBJ Importer</a> by Okino indicates that before the introduction of the MTL format, an earlier method for applying a texture map to a surface object was via a <i>usemap</i> statement in the OBJ file.  The Okino importer would create equivalent MTL-style definitions for any texture maps referenced in this way.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
 			<p>Another source of potential interoperability issues is in associated <fddLink id="fdd000508">MTL</fddLink> files.  Some extensions to the MTL format have been introduced by software vendors or open source projects based on developments in computer graphics techniques for rendering surfaces.  For example, in 2015, Exocortex proposed <a href="http://exocortex.com/blog/extending_wavefront_mtl_to_support_pbr">Extending Wavefront MTL for Physically-Based Rendering</a> through adding new statements, e.g., for defining roughness and clearcoat thickness.  See <fddLink id="fdd000508">MTL</fddLink> for more details.</p>
+			<p>
+				<b>Per-vertex coloring in OBJ format:</b>  The per-vertex coloring technique, which is supported in many 3D modeling applications, associates a color (usually based on RGB) with each vertex and renders colors for the pixels on a mesh face by interpolation based on distance from the face vertices. See <a href="http://meshlabstuff.blogspot.com/2009/03/on-storage-of-color-in-meshes.html">On the storage of Color in meshes</a> and <a href="https://gamedev.stackexchange.com/questions/139059/what-is-a-vertex-color">What is a vertex color?</a>.</p>
+			<p>The <a href="https://en.wikipedia.org/wiki/Wavefront_.obj_file#Geometric_vertex">Geometric vertex section in the Wikipedia entry for the OBJ file format</a> describes a convention for storing colors for vertices in an OBJ model, listing color values immediately following the vertex coordinates.  Three colors, in RGB order, are expressed as values in the range 0 to 1.  For example, “v 1220.094482 -572.500000 177.713943 0.984314 0.000060 0.000050” demonstrates a vertex with color information near true red.  Note that this convention allows coloring (but not texturing) of a 3D model without the need for an associated MTL file.  There are advantages and disadvantages of using per-vertex colors depending on context and intended use.  In one context, <a href="http://www.alkemi-games.com/a-game-of-tricks-ii-vertex-color/">A game of Tricks II – Vertex Color</a> explains how vertex colors can improve performance in video games.  For a discussion of the complex choice between using per-vertex colors and texture mapping in the context of a cultural heritage artifact, see the tutorial video <a href="https://www.youtube.com/watch?v=HKipe2mv-NA">MeshLab Basics: Color encoding</a>.  Having the entire model in a single file can simplify workflows and storage organization, but consideration must be given to the importance of geometric precision and color accuracy, and effects on file size and computational efficiency for rendering and manipulation in the intended use.  One example from the medical field where per-vertex coloring can be advantageous is for 3D scanning of a pathology specimen; the scanning operation can capture surface color information.  Per-vertex coloring can also be useful for applying discrete colors or identifiers via color information on an anatomical model or a model for an assemply of parts.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>Support for this convention for per-vertex coloring in the OBJ file format is provided by several applications, including Meshlab (see video on <a href="https://www.youtube.com/watch?v=HKipe2mv-NA">MeshLab Basics: Color encoding</a>), <a href="https://docs.unity3d.com/Packages/com.unity.probuilder@4.0/manual/Object_Export.html?q=obj%20export#Obj">Unity ProBuilder</a>, <a href="https://help.sketchfab.com/hc/en-us/articles/210765623-Vertex-Colors">Sketchfab</a>, the Open Asset Import Library (Assimp), and the <a href="https://github.com/mrdoob/three.js/issues/2083">threejs</a> library.  See <a href="https://blender.stackexchange.com/questions/90890/how-to-display-and-use-vertex-color-from-obj-model">How to display and use Vertex Color from OBJ model</a> for an informative discussion and evidence of support in Assimp.  Versions of Adobe Photoshop since 2018 have been found to recognize colors on importing OBJ files using this convention for per-vertex colors.  The Preview app on Mac OS also recognizes and renders the colors appropriately.  See <a href="#useful">Useful References</a> below for links to resources about per-vertex coloring, also termed &quot;color per vertex&quot; (CPV).  Note that the convention described here is not the only mechanism that has been implemented to encode per-vertex colors in an OBJ file, but it is the most widely supported. <a href="../contact_format.shtml">Comments welcome</a>.</p>
 		</fdd:general>
 		<fdd:history>
 			<p>The OBJ format was developed by Wavefront Technologies for the Visualizer products that it developed in the late 1980s and early 1990s.  The compilers of this resource have not been able to determine an exact date for the first use of the format.  The <a href="https://web.archive.org/web/20040418025613/http://www.aliaswavefront.com/eng/about/history/19831989.shtml#1988">company history</a> reveals that in 1988, Wavefront released its first desktop product, known as Personal Visualizer, for the Silicon Graphics (SGI) workstation. In 1989, came the Data Visualizer, intended for industrial design applications. Since a <a href="https://www.worldcat.org/title/programmers-project-guide-for-the-advanced-visualizer-interim-publication/oclc/24278625">Programmer&apos;s Project Guide for the Advanced Visualizer</a> was published by Wavefront Technologies in 1990, <a href="https://en.wikipedia.org/wiki/The_Advanced_Visualizer">The Advanced Visualizer (TAV)</a> software came out soon after.  The origin of the specification that is widely found is Appendix B of a manual for Advanced Visualizer 3.0; and includes an implication that the OBJ format had been used in the previous version, but not documented.  This specification indicated that &quot;The curve and surface extensions to the .obj file format were developed in conjunction with <a href="https://en.wikipedia.org/wiki/Mental_Images">mental images GmbH.</a> Berlin, Germany, as part of a joint development project to incorporate free-form surfaces into Wavefront’s Advanced Visualizer.&quot;   By 1995, the <a href="https://www.worldcat.org/title/advanced-visualizer-users-guide-version-42/oclc/249102607">Advanced Visualizer User&apos;s Guide, Version 4.2</a> was published.  By 1998, a <a href="https://www.cc.gatech.edu/scivis/userguide/resources/software/advvis.html">user guide for scientific visualization</a> on workstations at Georgia Tech indicated that version 4.3 of the Advanced Visualizer was installed, soon to be replaced by the first version of the successor product, Maya, which also used the OBJ format.</p>
@@ -240,7 +247,7 @@ B-spline; Cardinal spline; or Taylor expansion.  See section on <i>Freeform curv
 			<fdd:url>
 				<fdd:urlReference>
 					<link>https://all3dp.com/3d-printing-file-formats/</link>
-					<tag>4 Most Common 3D Printer File Formats in 2019</tag>
+					<tag>Most Common 3D Printer File Formats (2020)</tag>
 					<comment>Compares formats for 3D printing: STL, OBJ, AMF, and 3MF.  With detailed pros and cons, </comment>
 				</fdd:urlReference>
 			</fdd:url>
@@ -275,9 +282,9 @@ A 3D Object Format | example files</tag>
 							<comment>A free open-source 3D creation suite</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://docs.blender.org/manual/en/latest/addons/io_scene_obj.html</link>
-							<tag>Wavefront OBJ</tag>
-							<comment>Implies that OBJ files can be imported and exported.  On export, NURBS surfaces are converted to polygonal meshes.</comment>
+							<link>https://docs.blender.org/manual/en/dev/addons/import_export/io_scene_obj.html</link>
+							<tag>Wavefront OBJ | in Blender application</tag>
+							<comment>Implies that OBJ files can be imported and exported.  On export, NURBS surfaces are converted to polygonal meshes.  As of early 2020, Blender does not recognize per-vertex colors on import of OBJ objects employing the convention (described in Notes above) for storing per-vertex colors immediately following vertex coordinates.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>http://www.meshlab.net/</link>
@@ -518,7 +525,69 @@ A 3D Object Format | example files</tag>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlGroup>
-					<fdd:intro>Working Group 17 for the Digital Imaging and Communications in Medicine (DICOM) standard is responsible for expanding the standard as a wrapper for 3D content.  Based on a survey of use of 3D formats in medicine, support for encapsulating STL was added in DICOM 2018b.  <fddLink id="fdd000490">X3D</fddLink>/VRML, OBJ, and 3MF are also widely used and the working group expects to add support for encapsulating 3D models in more of these formats.</fdd:intro>
+					<fdd:intro>The resources listed below discuss the use of per-vertex coloring in contrast to other techniques for specification of colors for 3D models.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://meshlabstuff.blogspot.com/2009/03/on-storage-of-color-in-meshes.html</link>
+							<tag>On the Storage of Color in Meshes (2009) | from Meshlab Stuff blog</tag>
+							<comment>Describes different ways to store coloring specification for a mesh.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://gamedev.stackexchange.com/questions/139059/what-is-a-vertex-color</link>
+							<tag>What is a vertex color? (2017) | Q&amp;A from Game Development Stack Exchange</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.neilblevins.com/cg_education/shading_pipeline_overview/shading_pipeline_overview_6.htm</link>
+							<tag>How Do I Shade / Texture Stuff?: Shading Workflow Overview -- Pattern Storage And Texture Baking | from Computer Graphics Educaton by Neil Blevins</tag>
+							<comment>Gives brief explanations, with advantages and disadvantages, of 7 different methods for applying colors/textures/patterns.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.alkemi-games.com/a-game-of-tricks-ii-vertex-color/</link>
+							<tag>A game of Tricks II – Vertex Color | from alkemi-games.com</tag>
+							<comment>Discusses performance advantage of per-vertex coloring in video games.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The resources below relate to the convention extending the OBJ format to allow specification of coloring within an OBJ model on a per vertex basis.  The convention is supported by several widely used 3D applications and software libraries.  See <a href="#notes">Note</a> on per-vertex coloring above.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://gamedev.stackexchange.com/questions/21303/how-can-i-include-vertex-color-information-in-obj-files/66270#66270</link>
+							<tag>Answer to: How can I include vertex color information in .OBJ files? | from Game Development Stack Exchange</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.youtube.com/watch?v=HKipe2mv-NA&amp;list=PL8B1E816EAE236B4D</link>
+							<tag>MeshLab Basics: Color encoding</tag>
+							<comment>Video tutorial introducing color encoding in Meshlab, including per-vertex coloring.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://blender.stackexchange.com/questions/90890/how-to-display-and-use-vertex-color-from-obj-model</link>
+							<tag>How to display and use Vertex Color from OBJ model | from Blender Stack Exchange</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/mrdoob/three.js/issues/2083</link>
+							<tag>OBJ Vertex Coloring Parsing Problem | Issue related to threejs software library</tag>
+							<comment>Thread about adding support for per-vertex color in OBJ format to threejs.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://docs.unity3d.com/Packages/com.unity.probuilder@4.0/manual/Object_Export.html?q=obj%20export#Obj</link>
+							<tag>Export: OBJ-specific options | Help for Unity ProBuilder</tag>
+							<comment>Includes option to write vertex colors when exporting OBJ files.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://help.sketchfab.com/hc/en-us/articles/210765623-Vertex-Colors
+</link>
+							<tag>Uploading 3D Models: Vertex Colors | from Sketchfab</tag>
+							<comment>Indicates that Sketchfab can recognize vertex colors in OBJ files on import.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Working Group 17 for the Digital Imaging and Communications in Medicine (DICOM) standard is responsible for expanding the standard as a wrapper for 3D content.  Based on a survey of use of 3D formats in medicine, support for encapsulating STL was added in DICOM 2018b.  Support for encapsulating OBJ was added in DICOM 2020a. <fddLink id="fdd000490">X3D</fddLink>/VRML and 3MF are also widely used and the working group expects to add support for encapsulating 3D models in more of these formats.</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
 							<link>https://www.dicomstandard.org/wgs/wg-17/</link>
@@ -526,9 +595,17 @@ A 3D Object Format | example files</tag>
 							<comment>Expansion of DICOM to support encapsulation of additional formats is planned.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>http://dicom.nema.org/Dicom/News/March2019/docs/sups/sup208-slides.pdf</link>
-							<tag>Overview of Supplement 208: Extension of DICOM Encapsulation of 3D Manufacturing Models | Slides from March 2019</tag>
-							<comment>Indicates that consideration of DICOM encapsulation of OBJ and MTL formats is well advanced.</comment>
+							<link>https://www.dclunie.com/dicom-status/status.html</link>
+							<tag>DICOM Standard Status (updated with every change)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.dicomstandard.org/News/current/docs/sups/sup208-slides.pdf</link>
+							<tag>Overview: Encapsulation of OBJ Models for 3D Manufacturing and Virtual Reality | slides (2019)</tag>
+							<comment>Prepared to accompany ballot to add encapsulation of OBJ and MTL formats to DICOM standard.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://dicomstandard.org/News/ftsup/docs/sups/sup208.pdf</link>
+							<tag>Supplement 208: DICOM Encapsulation of OBJ Models for 3D Manufacturing and Virtual Reality</tag>
 						</fdd:urlReference>
 					</fdd:urlList>
 				</fdd:urlGroup>
