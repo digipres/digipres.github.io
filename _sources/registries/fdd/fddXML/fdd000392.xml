@@ -16,7 +16,7 @@
 		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
 		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2019-12-16</fdd:date>
+			<fdd:date>2020-01-28</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -25,12 +25,20 @@
 		<fdd:description>
 			<p>The Microsoft Compound File Binary (CFB) file format is used for storing storage objects and stream objects in a hierarchical structure within a single file.  See <fddLink id="fdd000380">CFB_3</fddLink> for a full description of the file system structure.</p>
 			<p>There are two active versions of CFB, <fddLink id="fdd000380">version 3</fddLink> and version 4. One major distinction between the versions is that the sector size for version 3 is of 512 bytes and the sector size for version 4 is 4096 bytes.</p>
-			<p>The minimum size of a compound file three sectors: one header, one FAT sector and one directory sector.</p>
+			<p>The minimum size of a compound file is three sectors: one header, one FAT sector and one directory sector.</p>
 			<ul>
-				<li>4096-byte sector compound files can have 64-bit file and user-defined datastream sizes, up to slightly less than 16 terabytes.
-
-</li>
+				<li>4096-byte sector compound files can have 64-bit file and user-defined datastream sizes, up to slightly less than 16 terabytes.</li>
 				<li>The maximum number of directory entries (storage objects and stream objects) is roughly 4 billion. This corresponds to a maximum directory sector chain length of slightly less than 512 GB for a 4096-byte sector compound file.</li>
+			</ul>
+			<p>A file in the CFB format begins with a 512-byte header.  The first sector of a compound file with 4096-byte sectors is padded with zeroes.  Values given below are as they occur in the physical file, for example when viewed using a Hex dump utility.</p>
+			<ul>
+				<li>Header Signature for the CFB format with 8-byte Hex value D0CF11E0A1B11AE1.  <a href="https://www.garykessler.net/library/file_sigs.html">Gary Kessler</a> notes that the beginning of this string looks like &quot;DOCFILE&quot;</li>
+				<li>16 bytes of zeroes</li>
+				<li>2-byte Hex value 3E00 indicating CFB minor version 3E. The specification states that the minor version <i>should</i> always be indicated as 3e.</li>
+				<li>2-byte Hex value 0400 indicating CFB major version 4.</li>
+				<li>2-byte Hex value FEFF indicating little-endian byte order for all integer values.  This byte order applies to all CFB files.</li>
+				<li>2-byte Hex value 0C00 (indicating the sector size of 4096 bytes used for major version 4)</li>
+				<li>480 bytes for remainder of the 512-byte header</li>
 			</ul>
 		</fdd:description>
 		<fdd:shortDescription>The Microsoft Compound File Binary File Format (CFB) file format is used for storing storage objects and stream objects in a hierarchical structure within a single file. </fdd:shortDescription>
@@ -83,14 +91,19 @@
 				<fdd:note>See <fddLink id="fdd000380">CFB_3</fddLink>
 				</fdd:note>
 			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: D0 CF 11 E0 A1 B1 1A E1</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Documented in the CFB specification, in <a href="https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-cfb/05060311-bfce-4b12-874d-71fd4ce63aea">2.2 Compound File Header</a>.  Applies to all files in CFB format; see <a href="https://www.garykessler.net/library/file_sigs.html">GCK&apos;S File Signatures Table</a> entry for Compound Binary File format (aka OLECF).</fdd:note>
+			</fdd:magicNumbers>
 			<fdd:other>
 				<fdd:tag>File signature</fdd:tag>
 				<fdd:values>
 					<fdd:sigValues>
-						<fdd:sigValue>Hex: D0 CF 11 E0 A1 B1 1A E1</fdd:sigValue>
-						<fdd:sigValue>Hex:  0x0004 (version 4)</fdd:sigValue>
+						<fdd:sigValue>Hex: 3E 00 04 00 FE FF 0C 00 </fdd:sigValue>
 					</fdd:sigValues>
-					<fdd:note>From <a href="https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-cfb/05060311-bfce-4b12-874d-71fd4ce63aea">specification</a>. This specification applies to the all Microsoft content types that share the general CFB structure.</fdd:note>
+					<fdd:note>At byte offset 24 from beginning of file.  Documented in specification at  <a href="https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-cfb/05060311-bfce-4b12-874d-71fd4ce63aea">2.2 Compound File Header</a>.  This sequence indicates CFB (Compound File Binary format) major version 4, minor version 3e.  The specification states that the minor version <i>should</i> always be indicated as 3e.</fdd:note>
 				</fdd:values>
 			</fdd:other>
 		</fdd:signifiersGroup>

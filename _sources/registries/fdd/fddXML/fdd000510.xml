@@ -39,7 +39,7 @@
 						<li>Header Signature for the CFB format with 8-byte Hex value D0CF11E0A1B11AE1.  <a href="https://www.garykessler.net/library/file_sigs.html">Gary Kessler </a>notes that the beginning of this string looks like &quot;DOCFILE&quot;</li>
 						<li>16 bytes of zeroes</li>
 						<li>2-byte Hex value 3E00 indicating CFB minor version 3E</li>
-						<li>2-byte Hex value 0300 indicating CFB major version 3 or value 00004 indicating CFB major version 4.  [Note:  All XLS files created recently by compilers of this resource have been based on CFB major version 3. <a href="../contact_format.shtml">Comments welcome</a>.]</li>
+						<li>2-byte Hex value 0300 indicating CFB major version 3 or value 0400 indicating CFB major version 4.  [Note:  All XLS files created recently by compilers of this resource (in versions of Excel for MacOS and Windows) and examined with a Hex dump utility have been based on CFB major version 3. <a href="../contact_format.shtml">Comments welcome</a>.]</li>
 						<li>2-byte Hex value FEFF indicating little-endian byte order for all integer values.  This byte order applies to all CFB files.</li>
 						<li>2-byte Hex value 0900 (indicating the sector size of 512 bytes used for major version 3) or 0C00 (indicating the sector size of 4096 bytes used for major version 4)</li>
 						<li>480 bytes for remainder of the 512-byte header, which fills the first sector for a CFB of major version 3</li>
@@ -103,7 +103,7 @@
 		</fdd:licensingAndPatents>
 		<fdd:transparency>The XLS formats (all BIFF versions) are not easily interpreted with basic tools.  This is due to techniques used to keep files small and fast to load, such as the use of numeric codes to identify record types, and having the length of each record declared in the file, rather than using fixed-length records or recognizable delimiters for records.</fdd:transparency>
 		<fdd:selfDocumentation>
-			<p>Options for storing document-level metadata in an XLS file are described in a subsidiary specification, <a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-oshared/">[MS-OSHARED]</a>. An XLS file should include a Summary Information property set, which can include the following optional descriptive properties: Title, Author, Subject (description), Keywords, Comments.  See <a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-oshared/87667163-ea1e-4d67-9eec-47cad74e8030">2.3.3.2.1.1 PIDSI</a>.  An XLS file may contain an additional property set (known as Document Summary Information) with a fixed set of properties, including Manager and Company names.  User-defined or custom properties are also allowed.  See also <a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-oshared/9673a168-c715-44eb-8825-02cfa2b4627d">2.3.3 Property Set Storage</a>.</p>
+			<p>Options for storing document-level metadata in an XLS file are described in a subsidiary specification, <a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-oshared/d93502fa-5b8f-4f47-a3fe-5574046f4b8d">[MS-OSHARED]</a>. An XLS file should include a Summary Information property set, which can include the following optional descriptive properties: Title, Author, Subject (description), Keywords, Comments.  See <a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-oshared/87667163-ea1e-4d67-9eec-47cad74e8030">2.3.3.2.1.1 PIDSI</a>.  An XLS file may contain an additional property set (known as Document Summary Information) with a fixed set of properties, including Manager and Company names.  User-defined or custom properties are also allowed.  See also <a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-oshared/9673a168-c715-44eb-8825-02cfa2b4627d">2.3.3 Property Set Storage</a>.</p>
 			<p>The [MS-XLS] specification offers no support for embedding metadata in an externally defined schema.</p>
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>An XLS workbook may pull in data from external data sources, for example, by querying a remote database.</fdd:externalDependencies>
@@ -237,7 +237,7 @@ for BIFF8.</p>
 					<fdd:intro>Subsidiary specifications describe data types and data structures that are used in common by documentation for Microsoft Office 97, Microsoft Office XP, Microsoft Office 2003, and the 2007 Microsoft Office system.</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
-							<link>https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-oshared/</link>
+							<link>https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-oshared/d93502fa-5b8f-4f47-a3fe-5574046f4b8d</link>
 							<tag>[MS-OSHARED]: Office Common Data Types and Objects Structures</tag>
 							<comment>Includes property sets that can store document-level properties (metadata).</comment>
 						</fdd:urlReference>
