@@ -27,7 +27,7 @@
 			<fdd:keyword>vector graphics formats</fdd:keyword>
 		</fdd:keywords>
 		<fdd:description>
-			<p>The Office Open XML-based presentation format using .pptx as a file extension has been the default format produced for new documents by versions of Microsoft PowerPoint since PowerPoint 2007.  The format was designed to incorporate the full semantics and functionality of the binary .ppt format produced by earlier versions of PowerPoint.   For convenience, this format description uses PPTX to identify the corresponding format.  The primary content of a PPTX file is marked up in PresentationML and DrawingML, which are specified in parts 1 and 4 of <i>ISO/IEC 29500, Information technology -- Document description and processing
+			<p>The Office Open XML-based presentation format using .pptx as a file extension has been the default format produced for new documents by versions of Microsoft PowerPoint since PowerPoint 2007.  The format was designed to incorporate the full semantics and functionality of the binary .ppt format (<fddLink id="fdd000511">MS-PPT</fddLink>) produced by earlier versions of PowerPoint.   For convenience, this format description uses PPTX to identify the corresponding format.  The primary content of a PPTX file is marked up in PresentationML and DrawingML, which are specified in parts 1 and 4 of <i>ISO/IEC 29500, Information technology -- Document description and processing
 languages -- Office Open XML File Formats (OOXML)</i>.  This description focuses on the specification in <i>ISO/IEC 29500:2012</i> and represents the format variant known as &quot;Transitional.&quot;  Although editions of ISO 29500 were published in 2008, 2011, 2012, and 2016, the specification has had very few changes other than clarifications and corrections to match actual usage in documents since PresentationML and DrawingML were first standardized in ECMA-376, Part 1 in 2006. This description can be read as applying to all versions published by ECMA International and by ISO/IEC through 2016.  See <a href="#notes">Notes</a> below for more detail on the chronological versions and minor differences.</p>
 			<p>The conceptual structure of a slide-based presentation includes:</p>
 			<ul>
@@ -91,6 +91,15 @@ languages -- Office Open XML File Formats (OOXML)</i>.  This description focuses
 					<fdd:titleName>PPTX Strict (Office Open XML), ISO 29500-1: 2008-2016</fdd:titleName>
 				</fdd:relatedTo>
 				<fdd:comment>The Strict variant of PPTX disallows legacy markup as specified in Part 4 of ISO/IEC 29500.  Hence the Strict variant has less support for backwards compatibility when converting documents from older formats.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000511</fdd:id>
+					<fdd:shortName>MS-PPT</fdd:shortName>
+					<fdd:titleName>Microsoft Office PowerPoint 97-2003 Binary File Format (.ppt)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>The MS-PPT binary format is not XML-based.  It uses the Microsoft Compound File Binary File Format (<fddLink id="fdd000380">CFB</fddLink>) as a wrapper for primarily binary content.</fdd:comment>
 			</fdd:relationship>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
@@ -330,7 +339,7 @@ Google announced direct editing of PPTX files in the new Google Slides app</a> f
 				<li>Embedded vector graphics, including SmartArt. Although many graphics will convert adequately, differences between DrawingML and SVG (used in ODP) can result in significant problems.</li>
 				<li>Comments.  Differences in the structure for representing comments prevent conversion.</li>
 			</ul>
-			<p>Note that newer versions of ODP have been introduced into Apache Open Office or LibreOffice, and ODF 1.2 was approved by ISO in 2015.  Use of the newer versions may mitigate some of these conversion problems.  When converting from PPTX to ODP, it is important to be aware of which version of ODP is being used as the target format.  PowerPoint 2013 uses OASIS ODF 1.2 for ODP export. Microsoft documented how PowerPoint 2013 handled features that do not correspond when the Save As .odp feature is used in <a href="https://web.archive.org/web/20170501074530/https://support.office.com/en-us/article/Supported-features-in-OpenDocument-presentation-odp-format-f6d5b015-a417-4096-bf61-a5c3f58d125f">Supported Features in OpenDocument Presentation (.odp) Format</a>.  Also of relevance in relation to fidelity of conversion is whether a document includes any of the new features introduced in versions of PowerPoint since 2007 and marked up using the Markup Compatibility and Extensibility namespace (<fddLink id="fdd000395">MCE/OOXML_2012</fddLink>).  Microsoft has documented these extensions in <a href="https://docs.microsoft.com/en-us/openspecs/office_standards/ms-pptx/">[MS-PPTX]: PowerPoint (.pptx) Extensions to the Office Open XML File Format</a> and <a href="https://docs.microsoft.com/en-us/openspecs/office_standards/ms-odrawxml/">[MS-ODRAWXML]: Office Drawing Extensions to Office Open XML Structure</a>.  Among features added since Office 2007 are new transition types and chart styles, &quot;bookmarks&quot; for controlling embedded audio and/or video, support for InkML (to represent hand-drawn objects), and the ability to store original raster
+			<p>Note that newer versions of ODP have been introduced into Apache Open Office or LibreOffice, and ODF 1.2 was approved by ISO in 2015.  Use of the newer versions may mitigate some of these conversion problems.  When converting from PPTX to ODP, it is important to be aware of which version of ODP is being used as the target format.  PowerPoint 2013 uses OASIS ODF 1.2 for ODP export. Microsoft documented how PowerPoint handles features that do not correspond when the Save As .odp operation is used; see <a href="https://support.office.com/en-us/article/use-powerpoint-to-open-or-save-a-presentation-in-the-opendocument-presentation-odp-format-94805e84-1b09-4c98-a8b5-0da2a52242a0">Use PowerPoint to open or save a presentation in the OpenDocument Presentation (.odp) format</a>.  Also of relevance in relation to fidelity of conversion is whether a document includes any of the new features introduced in versions of PowerPoint since 2007 and marked up using the Markup Compatibility and Extensibility namespace (<fddLink id="fdd000395">MCE/OOXML_2012</fddLink>).  Microsoft has documented these extensions in <a href="https://docs.microsoft.com/en-us/openspecs/office_standards/ms-pptx/">[MS-PPTX]: PowerPoint (.pptx) Extensions to the Office Open XML File Format</a> and <a href="https://docs.microsoft.com/en-us/openspecs/office_standards/ms-odrawxml/">[MS-ODRAWXML]: Office Drawing Extensions to Office Open XML Structure</a>.  Among features added since Office 2007 are new transition types and chart styles, &quot;bookmarks&quot; for controlling embedded audio and/or video, support for InkML (to represent hand-drawn objects), and the ability to store original raster
 images and processing parameters for corrections and effects applied.</p>
 		</fdd:general>
 		<fdd:history>
@@ -452,10 +461,9 @@ languages -- Office Open XML File Formats -- Part 4: Transitional Migration Feat
 							<comment>Announces support for writing files in PPTX Strict and ODF 1.2 formats.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://web.archive.org/web/20170501074530/https://support.office.com/en-us/article/Supported-features-in-OpenDocument-presentation-odp-format-f6d5b015-a417-4096-bf61-a5c3f58d125f
-</link>
-							<tag>Supported features in OpenDocument presentation (.odp) format</tag>
-							<comment>Link now via Internet Archive.</comment>
+							<link>https://support.office.com/en-us/article/use-powerpoint-to-open-or-save-a-presentation-in-the-opendocument-presentation-odp-format-94805e84-1b09-4c98-a8b5-0da2a52242a0</link>
+							<tag>Use PowerPoint to open or save a presentation in the OpenDocument Presentation (.odp) format</tag>
+							<comment>Includes table of &quot;Supported Features in .ODP Format.&quot;</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>https://support.office.com/en-us/article/Save-your-presentation-in-a-different-file-format-db4f9823-85a0-4fff-a9f1-691e751767dd</link>
