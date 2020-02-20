@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000508" titleName="Wavefront Material Template Library (MTL) File Format" shortName="MTL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<?altova_sps .\fddCreation.sps?>
+<fdd:FDD id="fdd000508" titleName="Wavefront Material Template Library (MTL) File Format" shortName="MTL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd=".\fdd.xsd" xsi:schemaLocation=".\fdd.xsd fdd.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>model</fdd:gdfrGenre>
@@ -15,7 +16,7 @@
 		<fdd:updates>
 			<fdd:date>2019-10-04</fdd:date>
 		</fdd:updates>
-		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
 	<fdd:identificationAndDescription>
 		<fdd:fullName>Wavefront Material Template Library (MTL) File Format</fdd:fullName>
@@ -53,7 +54,7 @@ from 0 to 1000, with a high value resulting in a tight, concentrated highlight.<
 					<i>map_Kd</i>: specifies a <b>color texture file</b> to be applied to the diffuse reflectivity of the material.  During rendering, map_Kd values are multiplied by the Kd values to derive the RGB components.</li>
 			</ul>
 			<p>The keywords in the MTL example above are very commonly used. The <a href="http://paulbourke.net/dataformats/mtl/">MTL specification</a>, as published in 1995, includes a substantial number of options that are typically not supported in today&apos;s software.  Some look to have been specific to Advanced Visualizer and not to have been widely used for exchange between different 3D modeling applications or for 3D printing.  See <a href="#notes">Notes</a> below for more detail on features in the MTL specification that are unlikely to be supported as of 2019.</p>
-			<p>Another potential source of interoperability problems with MTL files is the addition of new keywords for proprietary use or to support new approaches for 3D rendering.  In 2015, additional keywords were <a href="http://exocortex.com/blog/extending_wavefront_mtl_to_support_pbr">proposed  by Exocortex</a> to support the &quot;physically based rendering&quot; approach being adopted for more realistic rendering of surfaces for 3D objects in games and for special effects in movies.  The compilers of this resource have been unable to determine the degree to which the new keywords proposed are supported in 3D software applications.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>Another potential source of interoperability problems with MTL files is the addition of new keywords for proprietary use or to support new approaches for 3D rendering.  In 2015, additional keywords were <a href="http://exocortex.com/blog/extending_wavefront_mtl_to_support_pbr">proposed by Exocortex</a> to support the &quot;physically based rendering&quot; approach being adopted for more realistic rendering of surfaces for 3D objects in games and for special effects in movies.  The compilers of this resource have been unable to determine the degree to which the new keywords proposed are supported in 3D software applications.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
 			<p>Despite shortcomings, the OBJ format and its companion MTL format are widely used for 3D printing and for interchange of 3D models between software applications.  See <a href="#sustainability">Adoption</a> in Sustainability Factors below.</p>
 		</fdd:description>
 		<fdd:shortDescription>an ASCII-based format for a companion file that defines color and other appearance properties for named &quot;materials&quot; to be applied to surfaces defined in a Wavefront OBJ file for a 3D model.  Originally developed by Wavefront Technologies in early 1990s.  Widely used for 3D printing and interchange of 3D models between software applications.</fdd:shortDescription>
@@ -120,11 +121,13 @@ Material Definitions for OBJ Files</a> by John Burkardt, lines starting with # r
 				<fdd:sigValues>
 					<fdd:sigValue>mtl</fdd:sigValue>
 				</fdd:sigValues>
-				<fdd:note>Defined in specification.</fdd:note>
+				<fdd:note>Defined in specification.  See also <a href="https://www.iana.org/assignments/media-types/model/mtl">IANA registration from 2020</a>.</fdd:note>
 			</fdd:filenameExtension>
 			<fdd:internetMediaType>
-				<fdd:sigValueNA>See note.</fdd:sigValueNA>
-				<fdd:note>If needed, text/plain would be appropriate.</fdd:note>
+				<fdd:sigValues>
+					<fdd:sigValue>model/mtl</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://www.iana.org/assignments/media-types/model/mtl">IANA registration from 2020</a>.</fdd:note>
 			</fdd:internetMediaType>
 			<fdd:magicNumbers>
 				<fdd:sigValues>
@@ -275,16 +278,14 @@ A 3D Object Format | sample files</tag>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://en.wikipedia.org/wiki/Phong_reflection_model
-</link>
+					<link>https://en.wikipedia.org/wiki/Phong_reflection_model</link>
 					<tag>Wikipedia entry for Phong reflection model</tag>
 					<comment>This model is used as the basis for color and illumination statements in the original MTL format</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://exocortex.com/blog/extending_wavefront_mtl_to_support_pbr
-</link>
+					<link>http://exocortex.com/blog/extending_wavefront_mtl_to_support_pbr</link>
 					<tag>Extending Wavefront MTL for Physically-Based Rendering (2015)</tag>
 					<comment>Proposal from Exocortex to extend MTL format.</comment>
 				</fdd:urlReference>
