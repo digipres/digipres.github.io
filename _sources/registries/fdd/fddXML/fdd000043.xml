@@ -27,18 +27,27 @@
 			<p>According to <a href="https://helpx.adobe.com/illustrator/using/saving-artwork.html#save_in_svg_format">Adobe
 Illustrator Help -- Saving artwork: Save in SVG format</a>, SVG Tiny does not support gradients, transparency, clipping, masks, symbols, patterns, underline text, strike through text, vertical text, or SVG filter effects.</p>
 			<p>SVG Tiny 1.2 may include animation via internal markup closely related to the <a href="https://www.w3.org/TR/2005/REC-SMIL2-20051213/">Synchronized Multimedia Integration Language (SMIL) 2.1 Specification</a>. The supported animation features incorporated and extended the general-purpose XML animation capabilities described in SMIL 2.1.  See <a href="https://www.w3.org/TR/SVGMobile12/single-page.html#animate-RelationshipToSMILAnimation">16.2.2 Relationship to SMIL 2.1 Animation</a>.</p>
-			<p>Examples of features introduced in SVG Tiny 1.2 are listed below, annotated as to how the functionality is expected to be integrated into future versions of SVG.</p>
+			<p>Examples of features introduced in SVG Tiny 1.2 are listed below, annotated as to whether or how the functionality was expected to be integrated into future versions of SVG based on <a href="https://www.w3.org/Graphics/SVG/WG/wiki/SVG2_Requirements_Input#Features_from_SVG_Tiny_1.2">SVG2 Requirements Input: Features from SVG Tiny 1.2</a>.</p>
 			<ul>
-				<li>Elements designed to refer to external resources: <a href="https://www.w3.org/TR/SVGMobile12/single-page.html#multimedia-AudioElement">audio</a>, <a href="https://www.w3.org/TR/SVGMobile12/single-page.html#multimedia-VideoElement">video</a>, and <a href="https://www.w3.org/TR/SVGMobile12/single-page.html#multimedia-AnimationElement">animation</a>.  [Note: SVG 2 will retain audio and video elements. SVG 2 will add the features of the SVG Tiny 1.2 animation element but not the element itself.]</li>
-				<li>A <a href="https://www.w3.org/TR/SVGMobile12/single-page.html#painting-NonScalingStroke">vector-effect property</a>.  Although SVG graphics, are designed for zooming, there are situations when it is useful for the outline of an object to retain its original width, for example for roads on a map.  A single vector effect (<i>non-scaling-stroke</i>) was defined to support this functionality.  [Note: The property will be incorporated into SVG 2, with additional effects defined.]</li>
-				<li>A <a href="https://www.w3.org/TR/SVGMobile12/single-page.html#painting-SolidColorElement">solidColor</a> element.  Convenient for repeated use of the same colors.  [Note: This feature will be incorporated into SVG 2]</li>
-				<li>A <a href="https://www.w3.org/TR/SVGMobile12/single-page.html#text-TextAreaElement">textArea</a> element.  Allowed wrapping of text content within a given rectangular region.  [Note: A more general replacement, compatible with CSS, will be incorporated into SVG 2.]</li>
+				<li>Elements designed to refer to external resources: <a href="https://www.w3.org/TR/SVGMobile12/single-page.html#multimedia-AudioElement">audio</a>, <a href="https://www.w3.org/TR/SVGMobile12/single-page.html#multimedia-VideoElement">video</a>, and <a href="https://www.w3.org/TR/SVGMobile12/single-page.html#multimedia-AnimationElement">animation</a>.  [Note: SVG 2 was expected to retain audio and video elements and to add the features of the SVG Tiny 1.2 animation element but not the element itself.]</li>
+				<li>A <a href="https://www.w3.org/TR/SVGMobile12/single-page.html#painting-NonScalingStroke">vector-effect property</a>.  Although SVG graphics, are designed for zooming, there are situations when it is useful for the outline of an object to retain its original width, for example for roads on a map.  A single vector effect (<i>non-scaling-stroke</i>) was defined to support this functionality.  [Note: The property will be incorporated into SVG 2, possibly with additional effects defined.]</li>
+				<li>A <a href="https://www.w3.org/TR/SVGMobile12/single-page.html#painting-SolidColorElement">solidcolor</a> element.  Convenient for repeated use of the same colors.  [Note: This feature will be incorporated into SVG 2]</li>
+				<li>A <a href="https://www.w3.org/TR/SVGMobile12/single-page.html#text-TextAreaElement">textArea</a> element.  Allowed wrapping of text content within a given rectangular region.  [Note: A more general text-wrapping replacement, compatible with CSS, will be incorporated into SVG 2.]</li>
 			</ul>
 			<p>SVG Tiny 1.2 can be validated using a normative RelaxNG schema.  This is in contrast to SVG 1.1, for which an XML DTD was provided.</p>
+			<p>See <fddLink id="fdd000515">SVG_family</fddLink> for more detail on the structure of SVG files.</p>
 		</fdd:description>
 		<fdd:shortDescription>SVG 1.2 Tiny is a profile of SVG intended for implementation on a range of devices, including cellphones and PDAs.  SVG is a language for describing two-dimensional vector graphics in XML.  Released in 2008, SVG 1.2 Tiny is considered a deprecated branch of the SVG standard as of early 2020.  Future development of SVG for mobile devices will be integrated into SVG 2.0.</fdd:shortDescription>
 		<fdd:productionPhase>Generally a final-state (end-user delivery) format. </fdd:productionPhase>
 		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000515</fdd:id>
+					<fdd:shortName>SVG_family</fdd:shortName>
+					<fdd:titleName>Scalable Vector Graphics (SVG) File Format Family</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
 				<fdd:relatedTo>
@@ -76,7 +85,7 @@ Illustrator Help -- Saving artwork: Save in SVG format</a>, SVG Tiny does not su
 		<fdd:documentation>
 			<a href="http://www.w3.org/TR/SVGMobile12/">Scalable Vector Graphics (SVG) Tiny 1.2 Specification</a>, published as a W3C Recommendation on 22 December 2008.  SVG document instances must conform to the <a href="http://www.w3.org/TR/SVGMobile12/schema.html">RelaxNG Schema for SVG Tiny 1.2</a> in Appendix N.</fdd:documentation>
 		<fdd:adoption>
-			<p>See <fddLink id="fdd000020">SVG_1_1</fddLink>.</p>
+			<p>See <fddLink id="fdd000515">SVG_family</fddLink> for information on adoption of SVG in general.</p>
 			<p>In 2013, <a href="http://benfrain.com/tips-for-using-svgs-in-web-projects/">Ben Frain reported</a>, &quot;Furthermore, whilst ‘Tiny 1.2′ is widely supported on mobile devices (including iOS) good ol’ Microsoft don’t support it. Even IE10 on Surface does NOT support SVG Tiny 1.2 profile.&quot;</p>
 			<p>According to the <a href="https://svgwg.org/svg2-draft/single-page.html">Editor&apos;s Draft of the SVG 2 specification</a> as of March 2020, the SVG Working Group considers version Tiny 1.2 to be a deprecated branch of the SVG standard.</p>
 		</fdd:adoption>
@@ -90,12 +99,15 @@ Illustrator Help -- Saving artwork: Save in SVG format</a>, SVG Tiny does not su
 	</fdd:sustainabilityFactors>
 	<fdd:qualityAndFunctionalityFactors>
 		<fdd:stillImageQF>
-			<fdd:normalImage>Good support.</fdd:normalImage>
-			<fdd:clarity>Scalable.  Optional settings for rendering hints: <i>crispEdges</i> and <i>geometricPrecision</i>.</fdd:clarity>
+			<fdd:normalImage>
+				<p>Good support. See <fddLink id="fdd000515">SVG_family</fddLink>
+				</p>
+			</fdd:normalImage>
+			<fdd:clarity>
+				<p>See <fddLink id="fdd000515">SVG_family</fddLink>.</p>
+			</fdd:clarity>
 			<fdd:colorMaint>For SVG Tiny 1.2, colors are specified in the sRGB color space.  ICC Profiles do not appear to be supported in this profile of SVG.</fdd:colorMaint>
 			<fdd:graphics>Rich support for capabilities found in &quot;draw&quot; and &quot;paint&quot; programs.</fdd:graphics>
-			<fdd:multispectral>Not applicable.</fdd:multispectral>
-			<fdd:beyondImage>Support for animations; embedded audio and video; text in alternate languages for labels; interactivity such as localized zooming and panning; external links, etc.</fdd:beyondImage>
 		</fdd:stillImageQF>
 	</fdd:qualityAndFunctionalityFactors>
 	<fdd:fileTypeSignifiers>
@@ -139,6 +151,7 @@ Illustrator Help -- Saving artwork: Save in SVG format</a>, SVG Tiny does not su
 				<b>Sample SVG Tiny 1.2 file.</b>  Notice <i>version</i> and <i>baseProfile</i> attributes.</p>
 			<p>&lt;?xml version=&quot;1.0&quot;?&gt;<br/>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.2&quot; baseProfile=&quot;tiny&quot;
 viewBox=&quot;0 0 30 30&quot;&gt;<br/>&lt;desc&gt;Example SVG file&lt;/desc&gt;<br/>&lt;rect x=&quot;10&quot; y=&quot;10&quot; width=&quot;10&quot; height=&quot;10&quot; fill=&quot;red&quot;/&gt;<br/>&lt;/svg&gt;</p>
+			<p>See also <fddLink id="fdd000515">SVG_family</fddLink>.</p>
 		</fdd:general>
 		<fdd:history>
 			<p>
@@ -160,6 +173,12 @@ Advances such as DOM Level 3, which introduces namespace support and value norma
 					<link>http://www.w3.org/TR/SVGMobile12/</link>
 					<tag>Scalable Vector Graphics (SVG) Tiny 1.2 Specification, W3C Recommendation 22 December 2008</tag>
 					<comment>A form of SVG suited to displaying vector graphics on small devices.  </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.w3.org/TR/SVGMobile/relaxng/</link>
+					<tag>SVG Tiny 1.2 schema directory (RelaxNG)</tag>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
