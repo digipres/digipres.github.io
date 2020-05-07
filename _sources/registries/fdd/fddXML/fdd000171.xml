@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000171" titleName="OEBPS (Open Ebook Forum Publication Structure) 1.2" shortName="OEBPS_1_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<?altova_sps .\fddCreation.sps?>
+<fdd:FDD id="fdd000171" titleName="OEBPS (Open Ebook Forum Publication Structure) 1.2" shortName="OEBPS_1_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd=".\fdd.xsd" xsi:schemaLocation=".\fdd.xsd fdd.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>text</fdd:gdfrGenre>
@@ -13,9 +14,9 @@
 		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
 		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2012-02-28</fdd:date>
+			<fdd:date>2020-05-06</fdd:date>
 		</fdd:updates>
-		<fdd:draftStatus>Partial</fdd:draftStatus>
+		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
 	<fdd:identificationAndDescription>
 		<fdd:fullName>OEBPS, Open eBook Forum Publication Structure 1.2</fdd:fullName>
@@ -24,11 +25,11 @@
 			<fdd:keyword>digital book formats</fdd:keyword>
 		</fdd:keywords>
 		<fdd:description>
-			<p>Open eBook Publication Structure (OEBPS) is an XML-based specification for the content, structure, and presentation of electronic books. OEBPS was developed by the Open eBook Forum, a group of organizations involved in electronic publishing and now known as the International Digital Publishing Forum (<a href="http://www.idpf.org/">IDPF</a>).</p>
+			<p>Open eBook Publication Structure (OEBPS) is an XML-based specification for the content, structure, and presentation of electronic books. OEBPS was developed by the Open eBook Forum, a group of organizations involved in electronic publishing and later known as the International Digital Publishing Forum (<a href="http://www.idpf.org/">IDPF</a>).</p>
 			<p>The format comprises a set of files, including a mandatory package file, which incorporates a <i>manifest</i> listing all the other component files and a <i>spine</i>, which indicates logical reading order.  In addition to text in XML, a reader for OEB publications must be able to render still images in JPEG and PNG formats.  Content components in other formats may be included, but <i>fallback</i> content must be provided in one of the core OEB formats.</p>
 			<p>OEBPS 1.2 was a tightly constrained update to the prior version (OEBPS 1.0.1). It provided new functionality in the area of presentation control, including, among other things, improvements in the markup vocabulary (now a pure subset of XHTML 1.1), and greatly expanded CSS support. Further details regarding the changes made in 1.2 from 1.0.1 are found in the specification document.  Sustainability factors are unchanged from the earlier version.</p>
 		</fdd:description>
-		<fdd:shortDescription>An XML-based specification for the content, structure, and presentation of electronic books, a predecessor to the EPUB format. OEBPS was developed by the Open eBook Forum, a group of organizations involved in electronic publishing and now known as the International Digital Publishing Forum (IDPF).</fdd:shortDescription>
+		<fdd:shortDescription>An XML-based specification for the content, structure, and presentation of electronic books, a predecessor to the EPUB format. OEBPS was developed by the Open eBook Forum, a group of organizations involved in electronic publishing and later known as the International Digital Publishing Forum (IDPF).</fdd:shortDescription>
 		<fdd:productionPhase>This bundle of files was used primarily as a middle-state format, with dissemination to end-users managed through publishers or aggregators who provided ebooks in forms appropriate for different ebook viewers/players.  Its successor wrapper, <fddLink id="fdd000278">EPUB_2</fddLink>, is more likely to reach end-users as a final-state format, as well as serving as a middle-state format.</fdd:productionPhase>
 		<fdd:relationships>
 			<fdd:relationship>
@@ -46,7 +47,7 @@
 					<fdd:shortName>EPUB_2</fdd:shortName>
 					<fdd:titleName>Electronic Publication, Version 2</fdd:titleName>
 				</fdd:relatedTo>
-				<fdd:comment>OEBPS_1_2 is an optional, but deprecated form for content within EPUB_2.</fdd:comment>
+				<fdd:comment>OEBPS_1_2 is an optional, but deprecated form for content within EPUB_2.  EPUB_2 still uses the MIME media type <i>application/oebps-package+xml</i> for its Package Document based on XHTML.  See examples in <a href="http://www.idpf.org/doc_library/epub/OCF_2.0.1_draft.doc">Open Container Format (OCF) 2.0.1 v1.0.1</a>.</fdd:comment>
 			</fdd:relationship>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
@@ -75,30 +76,18 @@
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
-		<fdd:experience>No use of this version of the OEBF standard.  OEBPS 1.0.1 is incorporated into the standard for the Digital Talking Book standard maintained by the National Library Service for the Blind and Physically Handicapped (NLS), which is part of LC.</fdd:experience>
-		<fdd:preference>As an XML-based format using a publicly documented schema that represents the logical structure of a publication, OEBPS_1_2 satisfies most of the desired characteristics for formats for textual works.  However, as of 2012, the successor format, <fddLink id="fdd000278">EPUB_2</fddLink> would be preferred.</fdd:preference>
+		<fdd:experience>No use was made of this version of OEBPS.  OEBPS 1.0.1 was incorporated into the standard for the Digital Talking Book developed and used by the National Library Service for the Blind and Print Disabled (NLS), which is part of LC.  See <fddLink id="fdd000256">DTB (Digital Talking Book), NLS extension for AMR-WB+ Speech Codec</fddLink> and <a href="https://www.loc.gov/nls/about/organization/standards-guidelines/contract-specifications/packaging-of-electronic-braille-files/">Packaging of Electronic Braille Files</a>.</fdd:experience>
+		<fdd:preference>As an XML-based format using a publicly documented schema that represents the logical structure of a publication, OEBPS_1_2 satisfies most of the desired characteristics for formats for textual works.  However, the successor formats, <fddLink id="fdd000278">EPUB 2</fddLink> and <fddLink id="fdd000308">EPUB 3</fddLink> would be preferred.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
-		<fdd:disclosure>
-			Open standard
-		</fdd:disclosure>
-		<fdd:documentation>Originally an Open eBook Forum Specification.  In 2005, the Open eBook Forum became the <a href="http://idpf.org/">International Digital Publishing Forum</a>.<br/>.  As of early 2012, the documentation for OEBPS version 1.2 is not online through IDPF.  The <a href="http://web.archive.org/web/20101212174711/http://idpf.org/oebps/oebps1.2/index.htm">Open eBook Publication Structure Specification Version 1.2 documentation</a> is available from the Internet Archive&apos;s Wayback machine.</fdd:documentation>
+		<fdd:disclosure>Openly published specification, originally developed by the Open eBook Forum.  In 2005, the Open eBook Forum became the <a href="http://idpf.org/">International Digital Publishing Forum</a>.</fdd:disclosure>
+		<fdd:documentation>As of early 2012, the documentation for OEBPS version 1.2 was no longer online through IDPF.  The <a href="http://web.archive.org/web/20101212174711/http://idpf.org/oebps/oebps1.2/index.htm">Open eBook Publication Structure Specification Version 1.2 documentation</a> is available from the Internet Archive&apos;s Wayback machine.</fdd:documentation>
 		<fdd:adoption>Use largely superseded by <fddLink id="fdd000278">EPUB_2</fddLink>.</fdd:adoption>
-		<fdd:licensingAndPatents>
-			None
-		</fdd:licensingAndPatents>
-		<fdd:transparency>
-			Text content must be in XML, which rates highly for transparency.
-		</fdd:transparency>
-		<fdd:selfDocumentation>
-			The Package file can include Dublin Core metadata.
-		</fdd:selfDocumentation>
-		<fdd:externalDependencies>
-			None.
-		</fdd:externalDependencies>
-		<fdd:techProtection>
-			None in relation to publication structure and component files in the core OEB formats (XML, CSS, JPEG, PNG).  
-		</fdd:techProtection>
+		<fdd:licensingAndPatents>No concerns</fdd:licensingAndPatents>
+		<fdd:transparency>Text content must be in XML, which rates highly for transparency.</fdd:transparency>
+		<fdd:selfDocumentation>The Package file can include Dublin Core metadata.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None.</fdd:externalDependencies>
+		<fdd:techProtection>None in relation to publication structure and component files in the core OEB formats (XML, CSS, JPEG, PNG).</fdd:techProtection>
 	</fdd:sustainabilityFactors>
 	<fdd:qualityAndFunctionalityFactors>
 		<fdd:textQF>
@@ -161,9 +150,29 @@
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://idpf.org/epub</link>
-					<tag>EPUB Specifications</tag>
+					<link>http://idpf.org/epub-older-versions</link>
+					<tag>EPUB Specifications for versions, 2.0.1 and 3.0.1</tag>
 				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>The <i>Cover Pages</i>, hosted by OASIS, has many useful resources related to OEBPS, including copies of specifications.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://xml.coverpages.org/openEbook.html</link>
+							<tag>Technology Reports: Open Ebook Initiative</tag>
+							<comment>Extensive description of the initiative, with many useful links and references.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://xml.coverpages.org/OeBF-v12-PDF.pdf</link>
+							<tag>Open eBook Publication Structure 1.2 | Open eBook Forum Recommended Specification August 27, 2002</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://xml.coverpages.org/OEBPS-101-2001-07-02.pdf</link>
+							<tag>Open eBook Publication Structure 1.0.1 | Open eBook Forum Recommended Specification July 2, 2001</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
 			</fdd:url>
 		</fdd:urls>
 	</fdd:usefulReferences>

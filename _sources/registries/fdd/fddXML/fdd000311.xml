@@ -29,7 +29,7 @@
 				<li>The nature of the contents of an OCF Container was clarified to explicitly disallow bundling of renditions of different publications in the same container.</li>
 				<li>Support for fixed-layout publications, formerly specified in <a href="http://idpf.org/epub/fxl/">EPUB 3 Fixed-Layout Documents (2012)</a>, was merged into the EPUB 3.0.1 specifications. Fixed-layout metadata properties were now defined in <a href="http://idpf.org/epub/301/spec/epub-publications.html#sec-package-metadata-fxl">EPUB Publications 3.0.1: 4.4.2 Fixed-Layout Properties</a>. Support in EPUB 3 Reading Systems for fixed layout was made mandatory.</li>
 				<li>All EPUB Content Documents linked to from EPUB Content Documents listed in the <i>spine</i> element were now required to be listed in the <i>spine</i>.  All EPUB Content Documents linked to from the EPUB Navigation Document were also now required to be listed in the <i>spine</i>, regardless of whether the Navigation Document is included in the <i>spine</i>.</li>
-				<li>A new <i>collection</i> element provided a framework for developing specialized behaviors and rendering in EPUB 3. It provided an extension point on which functionality could be built.  It was being used, for example, to allow an index split across multiple XHTML Content Documents to be identified and rejoined (e.g., for machine processing and presentation).</li>
+				<li>A new <i>collection</i> element provided a framework for developing specialized behaviors and rendering in EPUB 3. It provided an extension point on which functionality could be built.  It was being used, for example, to allow an index split across multiple XHTML Content Documents to be identified and rejoined (e.g., for machine processing and presentation).  See <a href="https://idpf.github.io/epub-guides/collection-as-package/#h.hr8zmn9jm2eh">What is a Collection</a>.</li>
 				<li>The use of semantic markup based on <a href="http://www.w3.org/TR/2013/REC-rdfa-core-20130822/">RDFa Core 1.1 - Second Edition</a> or <a href="http://www.w3.org/TR/2012/WD-microdata-20121025/">HTML Microdata (W3C Working Draft 25 October 2012)</a> was now allowed in XHTML Content Documents.  Vocabularies, such as those defined at schema.org, could now be used to support machine processing to enrich content.  See <a href="http://webdatacommons.org/structureddata/">Web Data Commons -- Microdata, RDFa, JSON-LD, and Microformat Dataset Series</a>.</li>
 				<li>Several lists of permitted values were moved to external documents to allow updating without requiring a new edition of the standard. The list of reserved prefixes that can be used in Content Documents, was moved to <a href="http://www.idpf.org/epub/vocab/structure/pfx">EPUB Content Document Reserved Prefixes</a>.  The vocabulary of properties that could be used in the <i>rel</i> attribute of the <i>link</i> element was moved to the <a href="http://idpf.org/epub/vocab/package/link/">EPUB Link Relationships Vocabulary</a>.  The list of reserved prefixes that can be used in package metadata, such as for MARC and ONIX bibliographic data, was moved to <a href="https://idpf.github.io/epub-prefixes/packages/">EPUB Publications Reserved Prefixes</a>.</li>
 			</ul>
@@ -108,7 +108,7 @@
 				<fdd:tag>Indicator for profile, level, version, etc.</fdd:tag>
 				<fdd:values>
 					<fdd:sigValueNA>See note.</fdd:sigValueNA>
-					<fdd:note>The version of EPUB, in this case &quot;3.0.1&quot;, is identified in the <i>version</i> attribute of the root &lt;package&gt; element in the .opf file, which can often be found in a directory called &quot;OEBPS&quot; when the contents of the .epub file is &quot;unzipped&quot;, i.e., extracted from the ZIP archive into its component files.  Note that this naming scheme, although conventional, is not required for EPUB 3.0.1.  The official way to find the .opf file is through the mandatory META-INF/container.xml file.</fdd:note>
+					<fdd:note>The version of EPUB, in this case &quot;3.0&quot;, is identified in the <i>version</i> attribute of the root &lt;package&gt; element in the .opf file, which can often be found in a directory called &quot;OEBPS&quot; when the contents of the .epub file is &quot;unzipped&quot;, i.e., extracted from the ZIP archive into its component files.  Note that this naming scheme, although conventional, is not required for EPUB 3.  The official way to find the .opf file is through the mandatory META-INF/container.xml file.</fdd:note>
 				</fdd:values>
 			</fdd:other>
 			<fdd:other>
@@ -210,6 +210,12 @@
 					<link>https://idpf.github.io/epub-vocabs/structure/</link>
 					<tag>EPUB 3 Structural Semantics Vocabulary</tag>
 					<comment>This vocabulary defines a set of properties relating to the description of structural semantics of written works.  Supports navigation, particularly for accessibility.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://idpf.github.io/epub-guides/collection-as-package/</link>
+					<tag>Using collection Elements as Embedded Package Documents (2014)| Informational Document,  27 November 2014</tag>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
