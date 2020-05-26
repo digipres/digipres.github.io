@@ -161,14 +161,14 @@
 		<fdd:documentation>
 			<p>
 				<i>ISO/IEC 29500, Information technology -- Document description and processing
-languages -- Office Open XML File Formats -- Parts 1-4.</i>  Latest version (2016 as of February 2017) is available from <a href="http://standards.iso.org/ittf/PubliclyAvailableStandards/">ISO/IEC Publicly Available Standards</a>.</p>
+languages -- Office Open XML File Formats -- Parts 1-4.</i>  Latest version (2016 as of May 2020) is available from <a href="http://standards.iso.org/ittf/PubliclyAvailableStandards/">ISO/IEC Publicly Available Standards</a>.</p>
 			<p>All editions of the OOXML standards as published by ECMA are available from <a href="http://www.ecma-international.org/publications/standards/Ecma-376.htm">ECMA-376: Office Open XML File Formats</a>.  See <a href="#notes">Notes</a> below for a chronology.</p>
 			<p>Annex L of Part 1 is a Primer (informative rather than normative) that introduces key features of the constituent markup languages, including WordprocessingML, SpreadsheetML, and PresentationML, relating elements and attributes to intended functionality through examples.</p>
 		</fdd:documentation>
 		<fdd:adoption>
 			<p>Widely adopted.  See individual subtypes for more detail.</p>
-			<p>In addition to end user applications that support OOXML, some open-source software libraries are available.  <a href="https://github.com/freuter/libopc">libOPC</a> provides support for reading and writing the OPC packages and also support for processing markup using the Markup Compatibility and Extensibility (MCE) mechanisms defined in the standard.  In June 2014, Microsoft released its <a href="https://msdn.microsoft.com/en-us/library/office/bb448854.aspx">Open XML SDK</a> (first released for use in 2007), as open source.  <a href="https://poi.apache.org/">Apache POI - the Java API for Microsoft Documents</a> provides some open source support for OOXML documents, but admits that not all features are handled, with XSLX support being &quot;most developed.&quot;</p>
-			<p>As applications have introduced support for OOXML, some developers have run into interoperability problems.  Many of these have been forwarded as defect reports to the working group maintaining ISO/IEC 29500 and resolved through clarifications or small corrections in new editions of the OOXML standard or statements by Microsoft as to variations from the standard in Word, Excel, and PowerPoint in <a href="https://msdn.microsoft.com/en-us/library/ee908652.aspx">[MS-OI29500]</a> (Office Implementation Information for ISO/IEC 29500 Standards Support) and <a href="https://msdn.microsoft.com/en-us/library/ee908654.aspx">[MS-OE376]</a> (Office Implementation Information for ECMA-376 Standards Support).</p>
+			<p>In addition to end user applications that support OOXML, some open-source software libraries are available.  <a href="https://github.com/freuter/libopc">libOPC</a> provides support for reading and writing the OPC packages and also support for processing markup using the Markup Compatibility and Extensibility (MCE) mechanisms defined in the standard.  In June 2014, Microsoft released its <a href="https://docs.microsoft.com/en-us/office/open-xml/open-xml-sdk">Open XML SDK</a> (first released for use in 2007), as open source.  <a href="https://poi.apache.org/">Apache POI - the Java API for Microsoft Documents</a> provides some open source support for OOXML documents, but admits that not all features are handled, with XSLX support being &quot;most developed.&quot;</p>
+			<p>As applications have introduced support for OOXML, some developers have run into interoperability problems.  Many of these have been forwarded as defect reports to the working group maintaining ISO/IEC 29500 and resolved through clarifications or small corrections in new editions of the OOXML standard or statements by Microsoft as to variations from the standard in Word, Excel, and PowerPoint in <a href="https://docs.microsoft.com/en-us/openspecs/office_standards/ms-oi29500/">[MS-OI29500]</a> (Office Implementation Information for ISO/IEC 29500 Standards Support) and <a href="https://docs.microsoft.com/en-us/openspecs/office_standards/ms-oe376/">[MS-OE376]</a> (Office Implementation Information for ECMA-376 Standards Support).</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>
 			<p>The specification originated from Microsoft Corporation.  Current and future versions of ISO/IEC 29500 and ECMA-376 are covered by Microsoft&apos;s <a href="https://docs.microsoft.com/en-us/openspecs/dev_center/ms-devcentlp/1c24c7c8-28b0-4ce1-a47d-95fe1ff504bc
@@ -262,16 +262,16 @@ languages -- Office Open XML File Formats -- Parts 1-4.</i>  Latest version (201
 				<b>Macro-enabled variants:</b>  The macro-enabled variants of the OOXML formats are straightforward extensions of the primary formats without macros.  They use <fddLink id="fdd000363">OPC/OOXML_2012</fddLink> as a package, simply adding a few parts that contain the macros and associated data.  Macros for Office are written in Visual Basic for Applications (VBA).  Note that macros do not work in Office for Mac 2008. In Office for Mac 2011 (the latest version as of 2014), macros are supported.  However, not all macros originally written for a Windows version of Office will run on a Mac without modification to take account of differences between the implementations of VBA for the Windows and Mac (OS X) versions of Office, for example those that use ActiveX or other Windows-specific features.  The additional parts for macros are defined in three supplementary documents:</p>
 			<ul>
 				<li>
-					<a href="http://msdn.microsoft.com/en-us/library/cc313094.aspx">[MS-OVBA]</a> specifies the format for a file that holds the macro code for a VBA (Visual Basic for Applications) Project.  All the macros for a workbook are included in a single file/part.</li>
+					<a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-ovba/">[MS-OVBA]</a> specifies the format for a file that holds the macro code for a VBA (Visual Basic for Applications) Project.  All the macros for a workbook are included in a single file/part.</li>
 				<li>
-					<a href="http://msdn.microsoft.com/en-us/library/dd925808.aspx">[MS-OFFMACRO]</a>, applicable to Office 2007, specifies the structure that connects the VBA Project part to the workbook, including an optional part for VBA Supplemental Data, and two parts that support use of older macros from Excel 4.0 (Macro Sheets and International Macro Sheets).</li>
+					<a href="https://docs.microsoft.com/en-us/openspecs/office_standards/ms-offmacro/">[MS-OFFMACRO]</a>, applicable to Office 2007, specifies the structure that connects the VBA Project part to the workbook, including an optional part for VBA Supplemental Data, and two parts that support use of older macros from Excel 4.0 (Macro Sheets and International Macro Sheets).</li>
 				<li>
-					<a href="http://msdn.microsoft.com/en-us/library/dd947889.aspx">[MS-OFFMACRO2]</a> performs the same function as [MS-OFFMACRO], but is applicable to Office 2010 and Office 2013.  The two specifications are almost identical except for the standards they reference and one small new feature added to VBA with version 7.0.</li>
+					<a href="https://docs.microsoft.com/en-us/openspecs/office_standards/ms-offmacro2/">[MS-OFFMACRO2]</a> performs the same function as [MS-OFFMACRO], but is applicable to Office 2010 and Office 2013.  The two specifications are almost identical except for the standards they reference and one small new feature added to VBA with version 7.0.</li>
 			</ul>
 			<p>Note that the VBA Editor used to develop macros and distributed as part of desktop Office applications for Windows (but hidden from users by default), offers the ability to export VBA macro code as a .BAS file (which is a regular text file).  Microsoft applications offer a Save As option to drop the macro-related parts from a macro-enabled file and create a regular document. This is commonly done to archive a snapshot of a document or spreadsheet in which macros are used to update the file, perhaps based on external data.  Apache Open Office and LibreOffice offer options as to how to handle macros on import of .xlsm files.  Neither application can run all VBA macros as-is, although, according to <a href="https://help.libreoffice.org/Common/Using_Microsoft_Office_and">Using Microsoft Office and LibreOffice</a> in late 2014, &quot;recent versions of LibreOffice can run some Visual Basic scripts&quot; if the feature is enabled.</p>
 		</fdd:general>
 		<fdd:history>
-			<p>The first XML-based formats for Word and Excel were included in the release of Office 2003; these were flat XML files. These are <a href="http://msdn.microsoft.com/en-us/library/aa214923.aspx">partially documented</a> on the Microsoft Development Network (MSDN) site.  These formats were precursors to OOXML, with both similarities and significant differences.</p>
+			<p>The first XML-based formats for Word and Excel were included in the release of Office 2003; these were flat XML files. These were <a href="https://docs.microsoft.com/en-us/previous-versions/office/developer/office-2003/aa214923(v=office.11)">partially documented</a> on the Microsoft Development Network (MSDN) site.  These formats were precursors to OOXML, with both similarities and significant differences.</p>
 			<p>The original OOXML specification was published as ECMA-376 in 2006.  The primary difference between that version and the version published as ISO/IEC 29500:2008 was the split between the Strict variants of DOCX, XLSX, and PPTX (as specified in Part 1) and the Transitional variants (as defined in Part 4 in conjunction with Part 1).   All versions since ISO/IEC 29500:2008 specify essentially the same format.  The editions published by ISO/IEC in 2011 and 2012 consisted primarily of clarifications and corrections. In particular, modifications to Part 4 (Transitional Migration Features) have been intended to ensure that the specification corresponds to the corpus of existing documents and that interoperability between existing applications was improved rather than disrupted.  See individual subtypes, particularly <fddLink id="fdd000397">DOCX/OOXML_2012</fddLink>, <fddLink id="fdd000398">XLSX/OOXML_2012</fddLink>, and <fddLink id="fdd000399">PPTX/OOXML_2012</fddLink> for more detail for the three primary OOXML document types.  The chronology of editions specifying the OOXML family of formats is:</p>
 			<ul>
 				<li>ECMA-376, 1st edition (December 2006)</li>
@@ -288,7 +288,7 @@ languages -- Office Open XML File Formats -- Parts 1-4.</i>  Latest version (201
 				<li>ECMA-376, Part 1, 5th edition (October 2016) [specification identical to ISO/IEC 29500-1:2016]; ECMA-376, Part 4, 5th edition (October 2016) [specification identical to ISO/IEC 29500-4:2016]</li>
 			</ul>
 			<p>A new edition of Part 3 of the specification, for Markup Compatibility and Extensibility, was published in early 2015.  The intent of the update was to clarify the text and to emphasize the applicability of MCE beyond OOXML to support interoperability.  The new edition does not introduce new features but does remove some flexibility that had not been exploited in practice and is deemed unnecessary. Most importantly, it makes the process for handling MCE on file import much clearer.</p>
-			<p>Another chronology of relevance to digital archivists is the support for OOXML formats in different versions of the Office software. See <a href="https://interopevents.com/uploads/1477126591368-Office%20File%20Formats.pdf">Office File Formats Overview</a> from October 2016 for a Microsoft summary of the chronology.  Files created by the Microsoft Office applications have a /docProps/app.xml part that contains properties for the document as a whole, including &lt;Application&gt; and &lt;AppVersion&gt;.  Values for AppVersion are numeric, representing internal version numbers used by Microsoft during development.  The integral part of the AppVersion values in files created by versions of Microsoft Office are: 12 = Windows Office 2007 or Office for Mac 2008; 14 = Windows Office 2010 or Mac Office 2011; 15 = Windows Office 2013 and Office for Mac 2016; 16 = Windows Office 2016.</p>
+			<p>Another chronology of relevance to digital archivists is the support for OOXML formats in different versions of the Office software. See <a href="https://interopevents.blob.core.windows.net/events/2016/beijing/docs/1477126735376-Office%20File%20Formats.pdf">Office File Formats Overview</a> from 2016 for a Microsoft summary of the chronology.  Files created by the Microsoft Office applications have a /docProps/app.xml part that contains properties for the document as a whole, including &lt;Application&gt; and &lt;AppVersion&gt;.  Values for AppVersion are numeric, representing internal version numbers used by Microsoft during development.  The integral part of the AppVersion values in files created by versions of Microsoft Office are: 12 = Windows Office 2007 or Office for Mac 2008; 14 = Windows Office 2010 or Mac Office 2011; 15 = Windows Office 2013 and Office for Mac 2016; 16 = Windows Office 2016.</p>
 			<ul>
 				<li>
 					<b>Office 2007:</b> Read, Transitional only.  Write (as default), Transitional only.  Based on ECMA-376, Edition 1.  Also introduced read/write support for ODF 1.1.</li>
@@ -304,7 +304,7 @@ languages -- Office Open XML File Formats -- Parts 1-4.</i>  Latest version (201
 					<b>Office for Mac 2016:</b> Read, Transitional and Strict.  Write, Transitional.  Based on ISO/IEC 29500:2012.  As of early 2017, there was not a desktop Office for Mac that can write Strict.</li>
 			</ul>
 			<p>Note that although versions of Office dated 2016 were released for both Windows and the Mac OS, they do not declare the same AppVersion value.  The Windows and Mac versions of Office do not have identical codebases.  Tests of the most recent iPad version of Excel in December 2014 and February 2017 revealed &quot;Microsoft Macintosh Excel&quot; for the value for Application and &quot;15.0300&quot; as the value for Appversion. Thus, it appears that the iPad versions of Office apps are related to Office for Mac.  The compilers of this resource have not had the opportunity to check AppVersions in files created using Office 365 or Android apps.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
-			<p>With Office 2016, Microsoft is strongly encouraging subscription-based access and frequent updates.  Format support may be adjusted in updates.  For example, Office for Mac 2016 (first released in mid-2015), introduced support for export to ODF in the June 2016 update.</p>
+			<p>Starting with Office 2016, Microsoft has strongly encouraged subscription-based access and frequent updates.  Format support may be adjusted in updates.  For example, Office for Mac 2016 (first released in mid-2015), introduced support for export to ODF in the June 2016 update.</p>
 		</fdd:history>
 	</fdd:notes>
 	<fdd:formatSpecifications>
@@ -353,45 +353,13 @@ languages -- Office Open XML File Formats </i>
 					</fdd:urlList>
 				</fdd:urlGroup>
 			</fdd:url>
-			<fdd:url>
-				<fdd:urlGroup>
-					<fdd:intro>Previous versions of ISO/IEC 29500, although not listed under <a href="http://standards.iso.org/ittf/PubliclyAvailableStandards/">ISO/IEC Publicly Available Standards/</a> can be found at their earlier URLs:</fdd:intro>
-					<fdd:urlList>
-						<fdd:urlReference>
-							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c061750_ISO_IEC_29500-1_2012.zip</link>
-							<tag>ISO/IEC 29500-1:2012, Fundamentals and Markup Language Reference</tag>
-							<comment>Superseded but still accessible as of February 2017</comment>
-						</fdd:urlReference>
-						<fdd:urlReference>
-							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c061750_ISO_IEC_29500-1_2012_Electronic_inserts.zip</link>
-							<tag>Schemas in W3C XML Schema language and in RELAX NG for the Strict variant of DOCX.</tag>
-							<comment>Superseded but still accessible as of February 2017.</comment>
-						</fdd:urlReference>
-						<fdd:urlReference>
-							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c061797_ISO_IEC_29500-3_2012.zip</link>
-							<tag>ISO/IEC 29500-3:2012, Markup Compatibility and Extensibility</tag>
-							<comment>Superseded but still accessible as of February 2017</comment>
-						</fdd:urlReference>
-						<fdd:urlReference>
-							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c061798_ISO_IEC_29500-4_2012.zip</link>
-							<tag>ISO/IEC 29500-4:2012, Transitional Migration Features</tag>
-							<comment>Superseded but still accessible as of February 2017</comment>
-						</fdd:urlReference>
-						<fdd:urlReference>
-							<link>http://standards.iso.org/ittf/PubliclyAvailableStandards/c061798_ISO_IEC_29500-4_2012_Electronic_inserts.zip</link>
-							<tag>Schemas in W3C XML Schema language and in RELAX NG for the Transitional variant of DOCX.</tag>
-							<comment>Superseded, but still accessible as of February 2017.</comment>
-						</fdd:urlReference>
-					</fdd:urlList>
-				</fdd:urlGroup>
-			</fdd:url>
 		</fdd:urls>
 	</fdd:formatSpecifications>
 	<fdd:usefulReferences>
 		<fdd:urls>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://en.wikipedia.org/wiki/Office_Open_XML</link>
+					<link>https://en.wikipedia.org/wiki/Office_Open_XML</link>
 					<tag>Wikipedia entry for Office Open XML</tag>
 				</fdd:urlReference>
 			</fdd:url>
@@ -404,14 +372,14 @@ languages -- Office Open XML File Formats </i>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.ecma-international.org/news/TC45_current_work/OpenXML%20White%20Paper.pdf</link>
+					<link>https://www.ecma-international.org/news/TC45_current_work/OpenXML%20White%20Paper.pdf</link>
 					<tag>Office Open XML Overview</tag>
 					<comment>Published by ECMA TC45 in 2006 when OOXML was submitted to ECMA for ballot by members.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://en.wikipedia.org/wiki/List_of_software_that_supports_Office_Open_XML</link>
+					<link>https://en.wikipedia.org/wiki/List_of_software_that_supports_Office_Open_XML</link>
 					<tag>Wikipedia list of software supporting Office Open XML</tag>
 					<comment>Not necessarily kept up-to-date.  In September 2014, several links had been detected by Wikipedia&apos;s automated link-checking tool as &quot;dead links.&quot;</comment>
 				</fdd:urlReference>
@@ -427,7 +395,7 @@ languages -- Office Open XML File Formats </i>
 					<fdd:intro>Microsoft provides many pages related to OOXML in blogs, tutorials, and reference materials.  Much of this documentation is aimed at programmers writing applications that manipulate OOXML markup directly, perhaps using the Open XML SDK.</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
-							<link>http://msdn.microsoft.com/en-us/library/office/bb448854.aspx</link>
+							<link>https://docs.microsoft.com/en-us/office/open-xml/open-xml-sdk</link>
 							<tag>Welcome to the Open XML SDK 2.5 for Office</tag>
 							<comment>In June 2014, the Open XML SDK was made available as open source.</comment>
 						</fdd:urlReference>
@@ -447,7 +415,7 @@ languages -- Office Open XML File Formats </i>
 						<fdd:urlReference>
 							<link>https://web.archive.org/web/20130809013944/http://openxmldeveloper.org/discussions/formats/default.aspx</link>
 							<tag>Formats:  Discussions about working with different Open XML Formats (snapshot from 2013)</tag>
-							<comment>Via Internet Archive</comment>
+							<comment>Link via Internet Archive</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>https://www.microsoft.com/en-us/microsoft-365/blog/2012/08/13/new-file-format-options-in-the-new-office/</link>
@@ -455,7 +423,7 @@ languages -- Office Open XML File Formats </i>
 							<comment>Announces support for writing files in DOCX Strict and ODF 1.2 formats.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>http://msdn.microsoft.com/en-us/library/aa338205%28v=office.12%29.aspx</link>
+							<link>https://docs.microsoft.com/en-us/previous-versions/office/developer/office-2007/aa338205(v=office.12)</link>
 							<tag>Introducing the Office (2007) Open XML File Formats</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
@@ -463,17 +431,17 @@ languages -- Office Open XML File Formats </i>
 							<tag>Open XML Formats and file name extensions</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>http://msdn.microsoft.com/en-us/library/gg548604.aspx</link>
+							<link>https://docs.microsoft.com/en-us/openspecs/office_standards/ms-offstandlp/</link>
 							<tag>Word, Excel, and PowerPoint Standards Support</tag>
 							<comment>Includes full technical specifications for extensions Microsoft has introduced using the techniques specified in ISO/IEC 29500, Part 3, Markup Compatibility and Extensibility.  See descriptions for individual subtypes for more detail.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://msdn.microsoft.com/en-us/library/ee908652.aspx</link>
+							<link>https://docs.microsoft.com/en-us/openspecs/office_standards/ms-oi29500/</link>
 							<tag>[MS-OI29500]: Office Implementation Information for ISO/IEC 29500 Standards Support</tag>
 							<comment>Documents variations from ISO/IEC 29500:2012 in Office 2010, Office 2013 and Office 2016</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://msdn.microsoft.com/en-us/library/ee908654.aspx</link>
+							<link>https://docs.microsoft.com/en-us/openspecs/office_standards/ms-oe376/</link>
 							<tag>[MS-OE376]: Office Implementation Information for ECMA-376 Standards Support</tag>
 							<comment>Documents variations from ECMA-376, Edition 1 in Office 2007 and Office 2010.</comment>
 						</fdd:urlReference>
@@ -518,15 +486,15 @@ languages -- Office Open XML File Formats </i>
 					<fdd:intro>Although not fully defined within ISO/IEC 29500, variants of the XLSX, DOCX, and PPTX formats can be macro-enabled, to support automated dynamic functionality not supported by the markup defined in the standard.  Microsoft Office supports the use of VBA (Visual Basic for Applications) as a macro language and has documented markup extensions used to wrap macros in macro-enabled document packages.</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
-							<link>http://msdn.microsoft.com/en-us/library/dd925808.aspx</link>
+							<link>https://docs.microsoft.com/en-us/openspecs/office_standards/ms-offmacro/</link>
 							<tag>[MS-OFFMACRO]: Office Macro-Enabled File Format</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>http://msdn.microsoft.com/en-us/library/dd947889.aspx</link>
+							<link>https://docs.microsoft.com/en-us/openspecs/office_standards/ms-offmacro2/</link>
 							<tag>[MS-OFFMACRO2]: Office Macro-Enabled File Format Version 2</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>http://msdn.microsoft.com/en-us/library/cc313094.aspx</link>
+							<link>https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-ovba/</link>
 							<tag>[MS-OVBA]: Office VBA File Format Structure</tag>
 							<comment>Specifies the Office VBA File Format Structure, a persistence format for embedding macros within a host document</comment>
 						</fdd:urlReference>
@@ -561,16 +529,16 @@ languages -- Office Open XML File Formats </i>
 							<tag>Apache Open Office Help: Choosing options for loading and saving documents</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>http://www.pcmag.com/article2/0,2817,2387068,00.asp</link>
-							<tag>Save and Restore Your Macros</tag>
-							<comment>From 10 Essential Microsoft Word 2010 Tips for Advanced Users, PC Magazine, June 16, 2011. The same Alt-F11 technique works for desktop versions of other Microsoft Office applications. </comment>
+							<link>https://web.archive.org/web/20170515233509/http://www.pcmag.com/feature/265721/10-essential-microsoft-word-2010-tips-for-advanced-users/8</link>
+							<tag>Save and Restore Your Macros (2011)</tag>
+							<comment>Tip from 10 Essential Microsoft Word 2010 Tips for Advanced Users, PC Magazine, June 16, 2011. The same Alt-F11 technique works for desktop versions of other Microsoft Office applications.  Link via Internet Archive. </comment>
 						</fdd:urlReference>
 					</fdd:urlList>
 				</fdd:urlGroup>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://msdn.microsoft.com/en-us/library/aa214923.aspx</link>
+					<link>https://docs.microsoft.com/en-us/previous-versions/office/developer/office-2003/aa214923(v=office.11)</link>
 					<tag>Welcome to the Microsoft Office Word 2003 XML Software Development Kit (SDK) [Word 2003 XML Reference]</tag>
 					<comment>Documentation for working with the flat XML format used in Office 2003, a precursor to OOXML.</comment>
 				</fdd:urlReference>
@@ -580,8 +548,7 @@ languages -- Office Open XML File Formats </i>
 					<fdd:intro>Microsoft commitments to interoperability include a set of interoperability principles, a promise of open specifications for certain high-volume products, and a program of documentation and &quot;Interop&quot; events.</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
-							<link>https://docs.microsoft.com/en-us/openspecs/dev_center/ms-devcentlp/d84cac00-b312-44ee-9156-23bde6477c3d#patent-pledges
-</link>
+							<link>https://docs.microsoft.com/en-us/openspecs/dev_center/ms-devcentlp/d84cac00-b312-44ee-9156-23bde6477c3d#patent-pledges</link>
 							<tag>Microsoft Interoperability Program and Principles</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
@@ -589,7 +556,7 @@ languages -- Office Open XML File Formats </i>
 							<tag>Microsoft Open Specification Promise</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://interopevents.com/uploads/1477127699476-Introducing%20Microsoft&apos;s%20Commitment%20to%20Interoperabilty.pdf</link>
+							<link>https://interopevents.blob.core.windows.net/events/2016/beijing/docs/1477127699476-Introducing%20Microsoft&apos;s%20Commitment%20to%20Interoperabilty.pdf</link>
 							<tag>Introducing Microsoft&apos;s Commitment to Interoperability (presentation from late 2016)</tag>
 							<comment>Explains to an audience of potential developers at DevDays Asia meeting how Microsoft provides open specifications of its high-volume products and supports developers.</comment>
 						</fdd:urlReference>
