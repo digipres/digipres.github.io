@@ -30,11 +30,11 @@
 			<fdd:keyword>geospatial data formats</fdd:keyword>
 		</fdd:keywords>
 		<fdd:description>
-			<p>The GeoPackage Encoding Standard from the Open Geospatial Consortium specifies GeoPackages for exchange and GeoPackage SQLite Extensions that permit direct use, without
+			<p>GeoPackage 1.0 was the first release of the GeoPackage Encoding Standard from the Open Geospatial Consortium, published in 2014.  Specifications in the family of GeoPackage formats (see <fddLink id="fdd000520">GeoPackage_family</fddLink>) specify GeoPackages for exchange and GeoPackage SQLite Extensions that permit direct use, without
 intermediate format translations, of vector geospatial features and/or tile matrix sets of earth images and raster maps at various
 scales. GeoPackages are designed to be interoperable across enterprise and personal computing environments and
 usable on mobile devices with
-limited connectivity and bandwidth.  An important use case for designing GeoPackage was mobile device use.</p>
+limited connectivity and bandwidth.  An important use case for designing GeoPackage 1.0 was for use on mobile devices.</p>
 			<p>A GeoPackage is a platform-independent SQLite database file that contains data and
 metadata tables with names and structures as defined in the standard, having specified definitions, integrity assertions, format limitations
 and content constraints.  A useful diagram of the tables defined is Figure 1 in the Introduction (page viii).  A more detailed <a href="http://www.geopackage.org/spec101/index.html#_geopackage_tables_detailed_diagram">diagram</a> is in Appendix B, clause B.11, as Figure 4.  Version 1.0 of the GeoPackage standard is based on <fddLink id="fdd000461">version 3 of the SQLite file format</fddLink>.  This format is a binary format and uses b-trees to store table data.  B-trees support rapid access to data within tables, and are a basic technique used for organizing data for sorting and searching.  The SQLite database file format specification cites the particular b-tree algorithms used.  The algorithms are described in Donald Knuth&apos;s <i>The Art of Computer Programming</i> [<a href="http://lccn.loc.gov/97002147">LCCN: 97002147</a>], Volume 3, pages 471-479.</p>
@@ -61,6 +61,14 @@ GeoPackage Encoding Standard, is referred to as an Extended GeoPackage.  Version
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
 				<fdd:relatedTo>
+					<fdd:id>fdd000520</fdd:id>
+					<fdd:shortName>GeoPackage_family</fdd:shortName>
+					<fdd:titleName>GeoPackage Encoding Standard (OGC) Format Family</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
 					<fdd:id>fdd000461</fdd:id>
 					<fdd:shortName>SQLite_3</fdd:shortName>
 					<fdd:titleName>SQLite, Version 3</fdd:titleName>
@@ -77,7 +85,8 @@ GeoPackage Encoding Standard, is referred to as an Extended GeoPackage.  Version
 			<p>The GeoPackage specifications can be downloaded from <a href="http://www.opengeospatial.org/standards/geopackage">OGC: GeoPackage Encoding Standard</a>. The original version, with corrigendum, can be consulted online at <a href="http://www.geopackage.org/spec101/index.html">http://www.geopackage.org/spec101/index.html</a> as OGC GeoPackage Encoding Standard with corrigendum.</p>
 		</fdd:documentation>
 		<fdd:adoption>
-			<p>Version 1.0 of the GeoPackage standard was published in February 2014, with a corrigendum added in April 2015.  The format was rapidly adopted in whole or in part by several GIS software tools, as listed below.  Version 1.1 was published in August 2015 and by October 2016, the version described here was <a href="https://web.archive.org/web/20161007210536/http://www.opengeospatial.org/standards/geopackage">marked as deprecated on the OGC website</a>.  For recent information on support for GeoPackage in software, see <a href="http://www.geopackage.org/implementations.html">GeoPackage Implementations</a> and for providers distributing data in GeoPackage format, see  <a href="http://www.geopackage.org/data.html">GeoPackage Data</a>.</p>
+			<p>For adoption of the GeoPackage format in general, see <fddLink id="fdd000520">GeoPackage_family</fddLink>.</p>
+			<p>Version 1.0 of the GeoPackage standard was published in February 2014, with a corrigendum added in April 2015.  The format was rapidly adopted in whole or in part by several GIS software tools, as listed below.  Version 1.1 was published on the OGC website in September or October 2016.  At the same time, the version described here was <a href="https://web.archive.org/web/20161007210536/http://www.opengeospatial.org/standards/geopackage">marked as deprecated on the OGC website</a>.  For recent information on support for GeoPackage in software, see <a href="http://www.geopackage.org/implementations.html">GeoPackage Implementations</a> and for providers distributing data in GeoPackage format, see  <a href="http://www.geopackage.org/data.html">GeoPackage Data</a>.</p>
 			<p>Listed here are some of the software tools that supported version 1.0 early:</p>
 			<ul>
 				<li>GDAL, a driver library used by other GIS products, introduced support for feature data in geopackages in its version 1.11 (first available in a development version in February 2014). Raster support was added to the development version of GDAL 2.0 in December 2014.</li>
@@ -158,7 +167,7 @@ references a projected CRS and the min/max x/y values are in the units specified
 			</fdd:filenameExtension>
 			<fdd:internetMediaType>
 				<fdd:sigValueNA>See note.</fdd:sigValueNA>
-				<fdd:note>No internet media type has been registered for this version of the GeoPackage format.</fdd:note>
+				<fdd:note>No internet media type was registered for this version of the GeoPackage format.</fdd:note>
 			</fdd:internetMediaType>
 			<fdd:magicNumbers>
 				<fdd:sigValues>
@@ -196,7 +205,7 @@ id field (byte offset 68) of the SQLite database header.  Indicates version 1.0 
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
 		<fdd:general>
-			<p>The standard requires that a Geopackage satisfy two integrity checks that are optional for SQLite database files in general, but supported by SQLite PRAGMA software. The SQLite PRAGMA integrity_check SQL command must return <i>ok</i> for a
+			<p>The GeoPackage 1.0 standard requires that a Geopackage satisfy two integrity checks that are optional for SQLite database files in general, but supported by SQLite PRAGMA software. The SQLite PRAGMA integrity_check SQL command must return <i>ok</i> for a
 GeoPackage.  The SQLite PRAGMA foreign_key_check SQL with no parameter value must
 return an empty result set indicating no invalid foreign key values.</p>
 			<p>The standard defines a StandardGeoPackageBinary subformat used to record feature table geometries with or without optional
@@ -206,7 +215,8 @@ geometry types, additional SQL geometry functions, and WebP as an additional til
 		</fdd:general>
 		<fdd:history>
 			<p>Some history and influences on the format development are described by Even Rouault (a GDAL developer) in a <a href="http://erouault.blogspot.com/2014/12/gdal-geopackage-raster-support.html">blog post</a>.</p>
-			<p>Version 1.0 of the OGC GeoPackage Encoding Standard was approved on January 19, 2014 and published on February 12, 2014.  A corrigendum was published in April 2015. Version 1.1 was published in August 2015.  By October 2016, Versions 1.0 and 1.0.1 had been marked as deprecated.</p>
+			<p>Version 1.0 of the OGC GeoPackage Encoding Standard was approved on January 19, 2014 and published on February 12, 2014.  A corrigendum was published in April 2015.  By October 2016, version 1.1 had been published on the OGC website and versions 1.0 and 1.0.1 had been marked as deprecated.</p>
+			<p>For later history of GeoPackage format see <fddLink id="fdd000520">GeoPackage_family</fddLink>.</p>
 		</fdd:history>
 	</fdd:notes>
 	<fdd:formatSpecifications>
@@ -276,6 +286,21 @@ ISO/IEC 13249 SQL/MM</tag>
 					<link>https://web.archive.org/web/20180315111013/http://www.ogcnetwork.net:80/geopackage</link>
 					<tag>Geopackage page on OGC Network site (dated January 16, 2013). Link via Internet Archive.</tag>
 				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Captures of OGC web page for GeoPackage standard relating to publication of GeoPackage 1.1 and deprecation of GeoPackage 1.0.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20160913223143/http://www.opengeospatial.org:80/standards/geopackage</link>
+							<tag>Last capture of OGC page for GeoPackage standard before publication on OGC website of GeoPackage 1.1 and deprecation of GeoPackage 1.0 (archived by Internet Archive on September 13, 2016)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20161007210536/http://www.opengeospatial.org/standards/geopackage</link>
+							<tag>First capture of OGC page for GeoPackage standard after publication of GeoPackage 1.1 and deprecation of GeoPackage 1.0 (archived by Internet Archive on October 7, 2016)</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
