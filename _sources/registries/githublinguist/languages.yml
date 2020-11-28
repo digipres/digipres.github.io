@@ -2095,8 +2095,10 @@ HTML+EEX:
   group: HTML
   aliases:
   - eex
+  - leex
   extensions:
   - ".eex"
+  - ".html.leex"
   ace_mode: text
   codemirror_mode: htmlmixed
   codemirror_mime_type: text/html
@@ -2497,6 +2499,7 @@ JSON with Comments:
   - ".jscsrc"
   - ".jshintrc"
   - ".jslintrc"
+  - devcontainer.json
   - jsconfig.json
   - language-configuration.json
   - tsconfig.json
@@ -2818,11 +2821,23 @@ LabVIEW:
   type: programming
   extensions:
   - ".lvproj"
+  - ".lvlib"
   tm_scope: text.xml
   ace_mode: xml
   codemirror_mode: xml
   codemirror_mime_type: text/xml
   language_id: 194
+Lark:
+  type: data
+  group: EBNF
+  color: "#0b130f"
+  extensions:
+  - ".lark"
+  tm_scope: source.lark
+  ace_mode: text
+  codemirror_mode: ebnf
+  codemirror_mime_type: text/x-ebnf
+  language_id: 758480799
 Lasso:
   type: programming
   color: "#999999"
@@ -3491,6 +3506,16 @@ NSIS:
   codemirror_mode: nsis
   codemirror_mime_type: text/x-nsis
   language_id: 242
+NWScript:
+  type: programming
+  color: "#111522"
+  extensions:
+  - ".nss"
+  tm_scope: source.c.nwscript
+  ace_mode: c_cpp
+  codemirror_mode: clike
+  codemirror_mime_type: text/x-csrc
+  language_id: 731233819
 Nearley:
   type: programming
   ace_mode: text
@@ -4138,7 +4163,7 @@ Pod:
 Pod 6:
   type: prose
   ace_mode: perl
-  tm_scope: source.perl6fe
+  tm_scope: source.raku
   wrap: true
   extensions:
   - ".pod"
@@ -4590,7 +4615,7 @@ Raku:
   aliases:
   - perl6
   - perl-6
-  tm_scope: source.perl6fe
+  tm_scope: source.raku
   ace_mode: perl
   codemirror_mode: perl
   codemirror_mime_type: text/x-perl
@@ -4612,6 +4637,18 @@ Raw token data:
   tm_scope: none
   ace_mode: text
   language_id: 318
+ReScript:
+  type: programming
+  color: "#ed5051"
+  ace_mode: rust
+  codemirror_mode: rust
+  codemirror_mime_type: text/x-rustsrc
+  extensions:
+  - ".res"
+  interpreters:
+  - ocaml
+  tm_scope: source.rescript
+  language_id: 501875647
 Readline Config:
   type: data
   group: INI
@@ -4633,8 +4670,6 @@ Reason:
   extensions:
   - ".re"
   - ".rei"
-  interpreters:
-  - ocaml
   tm_scope: source.reason
   language_id: 869538413
 Rebol:
@@ -5630,6 +5665,7 @@ Text:
   - README.1ST
   - README.me
   - README.mysql
+  - README.nss
   - click.me
   - delete.me
   - go.mod
@@ -6162,6 +6198,7 @@ XML:
   - ".psc1"
   - ".pt"
   - ".rdf"
+  - ".res"
   - ".resx"
   - ".rss"
   - ".sch"

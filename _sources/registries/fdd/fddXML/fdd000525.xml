@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000525" titleName="High Efficiency Image File (HEIF) Format, MPEG-H Part 12" shortName="HEIF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-wrapper</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:updates>
+			<fdd:date>2020-10-28</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ISO/IEC 23008-12 Information technology — High efficiency coding and media delivery in heterogeneous environments —
+Part 12: Image File Format (formal name); High Efficiency Image File Format -- HEIF (common name)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>raster image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The High Efficiency Image File Format (HEIF) is an international standard defined by MPEG-H Part 12 (ISO/IEC 23008-12), first published by ISO in 2017. The Scope section of ISO/IEC 23008-12:2017 states that the formats defined in the document enable the interchange, editing, and display of images, as well as the carriage of metadata associated with those images.
+The format defines an interoperable storage format for a single image, a collection of images, and sequences of images and also defines normative structures used to contain metadata, how to link that metadata to the images, and how metadata of certain forms is carried.  HEIF is a special case of the ISO Base Media File Format (<fddLink id="fdd000079">ISO_BMFF</fddLink>, ISO/IEC 14496-12). The recommended pronunciation of HEIF was clarified in the 2020 corrigendum to ISO/IEC 23008-12, which adds the following to the Introduction, &quot;HEIF is suggested to be pronounced &quot;heaff&quot; (like heath with an ff ending).&quot;  Equivalently, other sources suggest it rhymes with &quot;beef.&quot;</p>
+			<p>Nokia provides a useful introduction to HEIF at <a href="https://nokiatech.github.io/heif/technical.html">HEIF: Technical information</a>, which states, &quot;In ISO_BMFF, a continuous or timed media or metadata stream forms a track, whereas static media or metadata is stored as items.  Building on this structure, HEIF has the following basic design:</p>
+			<ul>
+				<li>Still images are stored as items. Typically image items are independently coded, and do not depend on any other item in their decoding. If predictively coded image items with coding dependencies are present, this is clearly signalled. Any number of image items can be included in the same file.</li>
+				<li>Image sequences are stored as tracks. An image sequence track can be indicated to be displayed either as a timed sequence or in a non-timed manner, such as a gallery of images. An image sequence track may be used instead of image items when there is coding dependency between images.&quot;</li>
+			</ul>
+			<p>Nokia has provided another useful summary at <a href="https://github.com/nokiatech/heif">https://github.com/nokiatech/heif</a> from which the following is adapted: HEIF is a media container format. It is not an image or video encoder per se. Hence, the quality of the visual media depends highly on the proper usage of encoders. The initial standard supports image bitstreams encoded in HEVC (including its SHVC and MV-HEVC extensions), <fddLink id="fdd000081">AVC</fddLink>, or <fddLink id="fdd000017">JPEG</fddLink>. This can be extended to support future encodings. HEIF has features not present in other image file formats. Some of these features are:</p>
+			<ul>
+				<li>Encapsulation of images coded using HEVC, SHVC, MV_HEVC, AVC, and JPEG</li>
+				<li>Encapsulation of image sequences coded using HEVC, SHVC, MV-HEVC, and AVC</li>
+				<li>Support for computational photography use cases</li>
+				<li>Support for both lossy and lossless image data storage</li>
+				<li>A way to distribute still images, image collections and related metadata.</li>
+			</ul>
+			<p>The original 2017 specification for HEIF has a clause 9, entitled &quot;Extensions to the ISO base media file format.&quot;  In the <fddLink id="fdd000079">ISO_BMFF</fddLink> format, all data is encapsulated in typed boxes.  Boxes defined for HEIF in addition to those in ISO_BMFF include the following box types:</p>
+			<ul>
+				<li>
+					<i>iprp</i>: the ItemPropertiesBox enables the association of any item with an ordered set of item properties.  Each property association may be marked as either essential or non-essential. A reader shall not process an item that is associated with a property that is not recognized or not supported by the reader and that is marked as essential to the item. A reader may ignore an associated item property that is marked non-essential to the item.  Examples of properties are width and height (spatial extents); decoder configuration and initialization; pixel aspect ratio; color information (e.g., ICC profile or colour_type codes as defined for <fddLink id="fdd000524">JPEG_XR</fddLink>); bit depth; and number of color channels.</li>
+				<li>
+					<i>grp1</i>: the GroupsListBox provides a mechanism for grouping items or tracks</li>
+			</ul>
+			<p>Additionally, enhancements to ISO_BMFF box types support image sequences.  They include:</p>
+			<ul>
+				<li>Support for repeating edits, using an enhancement to the <i>EditListBox</i>.</li>
+				<li>Support for sample-to-item sample grouping, so that samples of a track can be linked to one or more metadata items using an enhancement to the <i>MetaBox</i>.</li>
+			</ul>
+			<p>The extensions described above were moved from the HEIF spec (ISO/IEC 23008-12) to the ISO_BMFF spec (ISO/IEC 14496-12) in 2020.</p>
+			<p>Excellent resources describing the features and structures of the HEIF format in an informal but technical way are videos of sessions at Apple&apos;s WWDC 2017 developer conference: <a href="https://developer.apple.com/videos/play/wwdc2017/503">Introducing HEIF and HEVC</a>; <a href="https://developer.apple.com/videos/play/wwdc2017/513">High Efficiency Image File Format</a>; <a href="https://developer.apple.com/videos/play/wwdc2017/511">Working with HEIF and HEVC</a> (HEIF section begins at 20:00).</p>
+			<p>A summary of the requirements Apple laid out for picking an image format to use as a successor to the ubiquitous <fddLink id="fdd000017">JPEG</fddLink> encoding (typically wrapped in a <fddLink id="fdd000018">JFIF</fddLink> or <fddLink id="fdd000147">JPEG_EXIF</fddLink> container) is to be found <a href="https://developer.apple.com/videos/play/wwdc2017-513/?time=178">3 minutes into the High Efficiency Image File Format</a> video.  The bullet points below are adapted slightly from the transcript.  Note that some of the points are specific to the advantages of HEVC compression.  However, many are related to the structured HEIF container format, which Apple engineers believed would address their requirements.</p>
+			<ul>
+				<li>The new format needs to support all the features available in JPEG, but at the same time provide better performance. It needs to be friendly to professional photography tools, the web and the cloud. The new format also needs to be flexible and extensible to cope with the ever-changing photography ecosystem. Here is a list of features Apple considered paramount.</li>
+				<li>The compression needs to be state-of-the-art, both on the lossy and lossless front. It needs to be competitive with natural images, but also when compressing text or graphics.  The format needs to be friendly to hardware accelerated code and decode operations on modern CPUs, GPUs and ESPs.  Performance and power is very high in the list of requirements.</li>
+				<li>It needs to support high bit depth and wide color gamut which is the new frontier for images captured on consumer devices. It needs to be able to compress 4:4:4 color sampling and also describe HDR [High Dynamic Range] content, including HDR metadata, transfer function and color space definitions.</li>
+				<li>Auxiliary images, for example for alpha [channel for transparency] or depth [i.e. depth plane data], need to have a commonly defined place in image files.  New editing tools will be able to utilize auxiliary data for new presentation and editing experiences.</li>
+				<li>In recent years, new ways to present and display animated images have been developed.  Apple Live Photo is one example.  Apple Live Photo includes animated content together with static images. The new common format needs to store animated information efficiently, ideally using temporal compression techniques, and be able to instruct players about the presentation intent for example, a looping sequence.</li>
+				<li>The new format needs also to support multiple images in the same file. For example, multi-exposure stacks or stereo images. This is to aid the development and implementation of new computational photography algorithms.</li>
+				<li>Multiple representations of the same image matching the same file are of great importance. For example, multi-resolution, including progressively increasing level of details or the ability to represent the same image encoded with different codecs.</li>
+				<li>Tiles are an important tool the new format must implement, allowing for scalable operations on images of any size.</li>
+				<li>The new format needs support for rich metadata associated to each image in the file. And also support for time metadata for example, for a sequence of images.  There is also desire for a new format to be able to include other metadata types for example, audio or text.</li>
+				<li>Last but not least, the new format should be flexible and extensible enough to provide a solid foundation for the future.</li>
+			</ul>
+			<p>Demonstrations of advantages of tiling and advanced editing using an auxiliary depth plane image can be seen in the <a href="https://developer.apple.com/videos/play/wwdc2017-511/?time=1353">Working with HEIF and HEVC</a> video, from 22:30 through 26:30.</p>
+		</fdd:description>
+		<fdd:shortDescription>image and animation file format defined by MPEG-H Part 12 (ISO/IEC 23008-12), initially in 2017.  Adopted for in-camera use by Apple with iOS 11 and MacOS High Sierra in 2017 and in 2020 by Canon for EOS-1D X Mark III and later for the EOS R5 and EOS R6.  Playback supported in Android since Android 8.0.</fdd:shortDescription>
+		<fdd:productionPhase>May be applied in initial-state picture creation in cameras or used for middle- and final-state archiving or end-user delivery.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000079</fdd:id>
+					<fdd:shortName>ISO_BMFF</fdd:shortName>
+					<fdd:titleName>ISO Base Media File Format</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment/>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000081</fdd:id>
+					<fdd:shortName>MPEG-4_AVC</fdd:shortName>
+					<fdd:titleName>MPEG-4, Advanced Video Coding (Part 10) (H.264)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000017</fdd:id>
+					<fdd:shortName>JPEG</fdd:shortName>
+					<fdd:titleName>JPEG Image Encoding Family</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:comment>Images using the compression encoding known as High Efficiency Video Coding (HEVC), not yet separately described on this website.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000526</fdd:id>
+					<fdd:shortName>HEIF_HEIC</fdd:shortName>
+					<fdd:titleName>High Efficiency Image File Format, HEIC/HEIX brands</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:comment>MIAF (Multi-Image Application Format), defined in ISO/IEC 23000-22. Not described separately on this website.  See <a href="https://nokiatech.github.io/heif/technical.html">https://nokiatech.github.io/heif/technical.html</a>.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress has a handful of images in the HEIC format (a subtype of the HEIF format) in its digital storage system.  These are likely to have been acquired in the course of archiving websites.</fdd:experience>
+		<fdd:preference>Neither HEIF nor any of its subtypes are listed in the Library of Congress <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html#photodigital">Recommended Formats Statement (RFS) for Still Image</a> content in its collections.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>International standard, fully disclosed. Developed and maintained under the auspices of the Motion Picture Experts Group (MPEG), which functioned as ISO/IEC JTC1/SC 29/WG11.  After re-organization of SC 29 in 2020, maintenance of the HEIF standard will be by a new working group, perhaps WG3 (MPEG Systems).</fdd:disclosure>
+		<fdd:documentation>MPEG-H Part 12.  See <a href="https://standards.iso.org/ittf/PubliclyAvailableStandards/c066067_ISO_IEC_23008-12_2017.zip">ISO/IEC 23008-12:2017</a> from the ITTF list of publicly available standards for full text and <a href="https://www.iso.org/standard/66067.html">ISO/IEC 23008-12:2017 catalog record and preview</a> for the initial specification.  Support for HEVC, AVC, and JPEG encodings were defined in the initial 2017 specification.  See <a href="#specs">Format specifications</a> and <a href="#notes">Notes on history</a> below for more details, particularly with respect to amendments and corrigenda.</fdd:documentation>
+		<fdd:adoption>
+			<p>The HEIF file format has been adopted as an in-camera format for a number of cameras and mobile devices.  In June 2017, Apple announced the adoption of HEIF at its WWDC 2017 developer conference.  Built-in support for the format was introduced for capture on new iOS 11 phones.  Qualcomm announced its first system on a chip (SOC) supporting HEIF in late 2018.  See <a href="https://www.cnet.com/news/qualcomm-snapdragon-855-chip-gives-android-phones-iphone-photo-packing-ability/">With Snapdragon 855 chip, Android phones get iPhone&apos;s photo-packing ability</a>.  In January 2020, Qualcomm introduced the lower-end SOC, <a href="https://www.qualcomm.com/media/documents/files/qualcomm-snapdragon-662-mobile-platform-product-brief.pdf">Snapdragon 662</a>, which also supports HEIF.  Samsung introduced support for HEIF capture in its Galaxy S10 phones in 2019.  See <a href="https://r2.community.samsung.com/t5/Galaxy-S/Here-s-how-to-make-Galaxy-S10-camera-photos-take-less-storage/td-p/1304386">Here’s how to make Galaxy S10 camera photos take less storage space</a>. Canon&apos;s <a href="https://www.usa.canon.com/internet/portal/us/home/explore/product-showcases/cameras-and-lenses/1dx-mark-iii">EOS-1D X Mark III</a> camera, introduced in January 2020, has the option of using HEIF internally as do the EOS <a href="https://www.canon.co.uk/cameras/eos-r5/specifications/">R5</a> and <a href="https://www.canon.co.uk/cameras/eos-r5/specifications/">R6</a> cameras, introduced later in 2020.</p>
+			<p>Support in operating systems began in 2017 with Apple&apos;s iOS 11 and Mac OS High Sierra.  As of 2020, opening a .heic image taken on an iPhone in Preview or importing to the Photos app works as for JPEG, PNG, etc., and the Finder shows thumbnails.  Inserting a .heic image into a Microsoft Word document works, with the image being silently converted to JPEG in the process. Support is available in Windows 10, but not without an explicit choice to add codecs. See <a href="https://www.technipages.com/windows-10-add-support-for-heic-to-photos-app">Windows 10: Add Support for HEIC to Photos App</a>.  In <a href="https://www.irfanview.com/faq.htm#PAGE6">Frequently Asked Questions about IrfanView</a>, the answer to &quot;How to load  HEIC files in IrfanView? &quot; offers equivalent advice.  <a href="https://medium.com/@hritikchaudhary/heif-heic-support-for-linux-ubuntu-quick-guide-9a70f4d29352">HEIF (.HEIC) Image Support for Linux/Ubuntu [quick guide]</a> describes a mechanism for handling HEIF/HEIC files in Linux/Ubuntu, using the <a href="https://packages.debian.org/unstable/graphics/heif-gdk-pixbuf">heif-gdk-pixbuf</a> package.</p>
+			<p>Software libraries available include: <a href="https://github.com/nokiatech/heif#building-source">HEIF parsers/readers/writers from Nokia</a>; <a href="https://github.com/strukturag/libheif">libheif</a>, a decoder and encoder library for HEIF (with HEVC encoding, aka H.265) and AVIF (AV1 Image File Format, with AVC encoding, aka H.264); <a href="https://www.libde265.org/">libde265</a>, used by libheif. <a href="http://snisurset.net/code/abydos/supported.html">Abydos</a> and <a href="https://github.com/jakar/qt-heif-image-plugin">qt-heif-image-plugin</a> incorporate the libheif library.</p>
+			<p>
+				<a href="https://www.copytrans.net/copytransheic/">CopyTrans HEIC
+for Windows</a> (free for personal use) lets you view and print HEIC images, conver from HEIC to JPEG and insert HEIC images into MS Office documents. <a href="https://imazing.com/heic/download">iMazing HEIC Converter</a> will convert HEIC files to JPEG and PNG, available for Mac and Windows.  See <a href="https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format">Wikipedia entry for High Efficiency Image File Format</a> for a list of image editing applications with support for HEIF.  Adobe Photoshop is not on the list; it appears from a long-running (3 years or so) discussion on Adobe&apos;s Photoshop community forum on the topic of <a href="https://feedback.photoshop.com/conversations/photoshop/photoshop-heic-support/5f5f45d14b561a3d42613193">Photoshop: HEIC Support</a>, that the Mac version supports HEIC for import, although not for export.  The compilers of this resource suspect that lack of support for .heic files in Windows in general, and in Photoshop for Windows in particular, is likely related to the licensing issues associated with HEVC compression codecs mentioned immediately below. <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>Since the HEIF container format is a special case of ISO_BMFF, see <fddLink id="fdd000079">ISO_BMFF</fddLink> for information on its patent situation.</p>
+			<p>There are patents associated with implementations of encodings used within the container, including the encodings for which ISO/IEC 23008-12 includes support specifications in annexes.  There are portfolio licenses available for HEVC (H.265) and AVC (H.264).  See <a href="https://www.mpegla.com/programs/avc-h-264/">AVC/H.264 Patent Portfolio License</a> and <a href="https://www.mpegla.com/programs/hevc/patent-list/">HEVC Patent Portfolio License</a>.  See also <fddLink id="fdd000081">MP4_FF_2</fddLink>.</p>
+			<p>However, not all holders of relevant patents join these pools.   For example, Nokia, which claims patents associated with H.264, aka Advance Video Coding (AVC), is not listed as a licensor in the patent pool linked in the previous paragraph.  Nokia has deposited a number of patent statements with ISO related to ISO/IEC 23008-12 stating that it is prepared to grant a license to an unrestricted number of applicants on a worldwide non-discriminatory basis and on reasonable terms and conditions to make, use and sell implementations of the document.  Note that, in 2020, Nokia is suing Lenovo for infringement of 20 patents in several countries.  See, for example, <a href="https://www.reuters.com/article/nokia-patent-lenovo/nokia-seeks-to-block-lenovo-sales-in-germany-over-patent-licensing-idUSL4N2HB3MB">Nokia seeks to block Lenovo sales in Germany over patent licensing (October 20, 2020)</a> from Reuters.  Lenovo is claiming that the terms are not reasonable.</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>Depends upon complex algorithms and tools to read; will require sophistication to build tools.</fdd:transparency>
+		<fdd:selfDocumentation>The HEIF specification supports the carriage of metadata written in various metadata schematic languages, including Exif, XMP, and MPEG-7 in XML form. Metadata can be applied to individual image items or to image sequences.  See Annex A. Note that HEIF-compliant readers do not need to support these metadata formats.  Also supported are a mechanism for recording integrity checks and timed metadata tracks for image sequences.</fdd:selfDocumentation>
+		<fdd:externalDependencies>The HEIF format inherits from <fddLink id="fdd000079">ISO_BMFF</fddLink> the capability for media data (e.g., tracks and image items) to be stored outside the primary file and referred to by URL.  The compilers of this resource have not determined whether this capability is used for HEIF files in practice.  <a href="../contact_format.shtml">Comments welcome</a>.</fdd:externalDependencies>
+		<fdd:techProtection>Content protection is allowed in the HEIF specification, following the ISO_BMFF capability, implemented in the Item Protection Box, with box type <i>ipro</i>.  One possible approach is using the ISO Common Encryption standard defined in <a href="https://www.iso.org/standard/68042.html">ISO/IEC 23001-7:2016
+Information technology — MPEG systems technologies — Part 7: Common encryption in ISO base media file format files</a>.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>HEIF is a container format for raster images.  Image quality depends on encoding.  The container is designed to support images with large dimensions and high bit depth.</fdd:normalImage>
+			<fdd:colorMaint>The HEIF format inherits the ability to incorporate ICC colour profiles from the ISO_BMFF format. Specifically, the box with type code <i>colr</i> uses the syntax of the ColourInformationBox defined in ISO/IEC 14496-12 (subclause 12.1.5.2). The syntax supports ICC profiles distinguishing two classes of profile, stating that, &quot;an ICC profile may be a restricted one, under the code &apos;rICC&apos;, which permits simpler processing. That profile shall be of either the Monochrome or Three‐Component Matrix‐Based class of input profiles, as defined by ISO 15076‐1. If the profile is of another class, then the &apos;prof&apos; indicator must be used.&quot; See <a href="http://www.color.org/specification/ICC1v43_2010-12.pdf">ICC.1:2010 (Profile version 4.3.0.0)</a>, which is equivalent to <a href="https://www.iso.org/standard/54754.html">ISO 15076‐1</a>.</fdd:colorMaint>
+			<fdd:multispectral>The intent of the developers of the HEIF format did not include support for <a href="https://en.wikipedia.org/wiki/Multispectral_image">multispectral images</a> and there is no specific support for incorporating collections of aligned images in individual frequency bands, as for example, in the <fddLink id="fdd000317">FITS</fddLink> format. However, the number of channels per pixel does not appear to be limited by the HEIF file format. The number of channels will usually be constrained by a specific encoding format or profile. Some experiments with satellite imagery (captured using visible and non-visible frequencies) have been performed, but experiments such as those described at <a href="https://www.researchgate.net/publication/341454495_Lossy_Compression_of_Multispectral_Satellite_Images_with_Application_to_Crop_Thematic_Mapping_A_HEVC_Comparative_Study">Lossy Compression of Multispectral Satellite Images with Application to Crop Thematic Mapping: A HEVC Comparative Study (May 2020)</a> have focused on the compression efficiency for individual images in particular frequency bands. This particular paper compared compression efficiency using HEVC and JPEG 2000, finding HEVC superior. The compilers of this resource are not aware of any adoption of the HEIF file format for storing multispectral images. <a href="../contact_format.shtml">Comments welcome.</a>
+			</fdd:multispectral>
+			<fdd:beyondImage>The container format supports image sequences and unsequenced image collections as well as single still image items. Inherits capabilities from ISO_BMFF to incorporate timed text or subtitles for image sequences.  <a href="https://www.iso.org/standard/75394.html">ISO/IEC 14496-30:2018</a> specifies how to incorporate timed text into ISO_BMFF, specifically <a href="https://www.w3.org/TR/ttml1/">Timed Text Markup Language 1 (TTML1)</a> and <a href="https://www.w3.org/TR/webvtt1/">WebVTT: The Web Video Text Tracks Format</a>, both from W3C.</fdd:beyondImage>
+		</fdd:stillImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>The file extension and Internet Media Type used for a file in the HEIF format will often depend on the encoding used for image compression.  See examples below.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/1101</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/1101">https://www.nationalarchives.gov.uk/PRONOM/fmt/1101</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q24907733</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q24907733">https://www.wikidata.org/wiki/Q24907733</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>heif</fdd:sigValue>
+					<fdd:sigValue>heifs</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>.heif and .heifs are specified in Annex C of ISO/IEC
+23008-12 for use as the extension for a file in the HEIF format with any compression encoding. .heif is used for one or more single images.  .heifs is the extension used for a sequence of images.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>image/heif</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://www.iana.org/assignments/media-types/image/heif">IANA registration</a>.</fdd:note>
+			</fdd:internetMediaType>
+		</fdd:signifiersGroup>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>heic</fdd:sigValue>
+					<fdd:sigValue>heics</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>.heic is used for HEIF file containing one or more HEVC coded
+image items.  This is the format introduced by Apple in 2017 as an in-camera format for iOS devices.  .heics is used for image sequences.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>image/heic</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://www.iana.org/assignments/media-types/image/heic">IANA registration</a>.</fdd:note>
+			</fdd:internetMediaType>
+		</fdd:signifiersGroup>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>hif</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Used by Canon for its HEIF format which uses HEVC compression. Added to Annexes C and D of ISO/IEC
+23008-12 in a corrigendum in 2020; appears to apply to single images or image sequences.  The compilers of this resource have not determined whether the compression encoding is significantly different from that used by Apple in its HEIC format.  <a href="../contact_format.shtml">Comments welcome</a>.</fdd:note>
+			</fdd:filenameExtension>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>HEIF, HEIC, HEVC, and more -- relationships and distinctions</b>: The relationships among these three acronyms is confusing.  According to the Introduction to ISO/IEC 23008-12, the file format specified in the document is referred to as the High Efficiency Image File Format (HEIF).  ISO/IEC 23008-12 specifies both structural brands that can be used with any codec and brands specific to High Efficiency Video Coding (HEVC). HEVC is specified in ISO/IEC 23008-2 and the equivalent ITU-T Rec. H.265.  Two HEVC-specific brands for single image items (<i>heic</i> and <i>heix</i>) are described in Annex B of ISO/IEC 23008-12; these brands are for encapsulating image items encoded using HEVC.  An image item typically corresponds to a single photograph, but may include derivatives or auxiliary images.  Brand <i>heic</i> is to be used when the encoding for the image item conforms to the Main profile or the Main Still Picture profile of HEVC.  This is the most widely used of the HEVC-specific brands.  Brand <i>heix</i> is to be used when the encoding for the image item conforms to the Main 10 profile or any of the format range extensions profiles of HEVC.  Corresponding brands for image sequences, <i>hevc</i> and <i>hevx</i>, are also defined in Annex B. Further brands are defined for layered images encoded in HEVC: <i>heim</i>, <i>heis</i>, <i>hevm</i>, and <i>hevs</i>. Some brands have associated file extensions and internet media types registered through IANA. However, many brands are considered subtypes of another.  For example, the <a href="https://www.iana.org/assignments/media-types/image/heic">IANA registration for image/heic</a> indicates that image/heic is appropriate for a HEIF file conforming to the requirements for the &apos;heic&apos;, &apos;heix&apos;, &apos;heim&apos;, or &apos;heis&apos; brand.   When the requirements of the HEVC-specific brands defined in Annex B are obeyed, the file format can be referred to as the HEVC Image File Format.  For an Apple-specific attempt to explain the confusing acronyms, see <a href="https://tidbits.com/2020/06/26/what-the-heic-apples-highly-compressed-image-format-still-confuses/">What the HEIC? Apple’s Highly Compressed Image Format Still Confuses (June 2020)</a>.</p>
+			<p>
+				<b>Subtype of HEIF</b>: The MIAF (Multi-Image Application Format), defined in <a href="https://www.iso.org/standard/74417.html">ISO/IEC 23000-22</a>, builds on the HEIF specification, defining additional constraints aimed at furthering interoperability. The additional constraints limit the encodings to specified HEVC and AVC encoding profiles and levels and require specific metadata, including EXIF. MIAF Profiles include:  MIAF HEVC Basic profile; MIAF HEVC Advanced profile; MIAF HEVC Extended profile; and MIAF AVC Basic profile.  See <a href="https://nokiatech.github.io/heif/technical.html#miaf">Technical information summary from Nokia</a> for an informal summary.</p>
+			<p>
+				<b>Considerations for archival use and forensic analysis</b>: two analyses based on images found in practice appear to have useful information for those charged with long-term preservation of digital photographs.</p>
+			<p>First, <a href="https://journal.code4lib.org/articles/13746">Assessing the Potential Use of High Efficiency Video Coding (HEVC) and High Efficiency Image File Format (HEIF) in Archival Still Images</a>, a 2018 analysis by Michael Bennett, evaluates HEVC’s attributes as both a mathematically lossless and as a visually lossless standard and compares HEVC to the <fddLink id="fdd000143">JPEG 2000</fddLink> specification which has gained steady adoption among cultural heritage institutions over time. Basic techniques for successfully encapsulating HEVC bitstreams in the new HEIF wrapper format are also examined in detail.  The study which focused on detailed analysis of five very different image examples, yielded inconclusive findings with respect to the HEVC/HEIF’s tangible advantages as an archival still image format.  Surprisingly, the compression possible using available tools for HEVC/HEIF and JPEG 2000, was greater for JPEG 2000 for visually lossless (42db PSNR) compressed images created from the same source TIFF files.  The author found that comparisons were visually intriguing, offering glimpses into the unique underlying compression techniques that each specification employs.  He also highlighted shortcomings in current software tools for applying HEVC compression in relation to profiles and options that the specification allows and argued for further analysis as more (and more mature) software becomes available.</p>
+			<p>Second, <a href="https://www.napier.ac.uk/~/media/worktribe/output-2653821/forensic-considerations-for-the-high-efficiency-image-file-format-heif.pdf">Forensic Considerations for the High Efficiency Image File Format (HEIF)</a>, a 2020 analysis by Sean McKeown and Gordon Russell of Napier University in Edinburgh, states &quot;HEIF is a complex container format, much different from traditional still picture formats, this leaves forensics practitioners exposed to risks of potentially mishandling evidence. This paper describes the forensically relevant features of the HEIF format, including those which could be used to hide data, or cause issues in an investigation, while also providing commentary on the state of software support for the format. Finally, suggestions for current best-practice are provided, before discussing the requirements of a forensically robust HEIF analysis tool.&quot;  This article provides very useful examples and analysis of software support at the time of writing.  It highlights the fact that the HEIF format does not have a convenient file signature, stating, &quot;Instead,  the <i>ftyp</i> box must be located and the brands matched with appropriate HEIF brands, which contained  the  &apos;heic&apos; brand for all of our test images, though this may not always be the case in reality. The &apos;pict&apos; type in <i>hdlr</i> is also a good indication.&quot;  The authors see particular challenges for forensic investigation in relation to HEIF&apos;s support for &quot;hidden&quot; images as well as image sequences. Also, many familiar tools can only preview the  image identified as &quot;primary&quot;.  For example, Exiftool can only extract metadata for the primary image.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>The ISO Base Media File Format (ISO_BMFF), on which HEIF is based, was first defined in 2001, published as ISO/IEC 14496-12 and ISO/IEC 15444-12 as a shared part of MP4 and JPEG 2000. Work on developing ISO/IEC 23008-12, the specification for HEIF began around 2013.  A committee draft (CD) was presented at the <a href="https://mpeg.chiariglione.org/meetings/107">107th MPEG meeting</a> in San Jose, Califormia in January 2014.  By MPEG 112, held in Warsaw in June 2015, according to the <a href="https://mpeg.chiariglione.org/sites/default/files/files/meetings/docs/w15328.docx">press release</a> issued after the meeting, the specification for HEIF was considered technically complete. The first published edition of ISO/IEC 23008-12 was released in late 2017.  Apple and Nokia had been heavily involved in the development process. For resources related to the development phase of HEIF and early adoption, see <a href="#useful">Useful References</a> below.</p>
+			<p>A corrigendum to ISO/IEC 23008-12 was published in 2020; see <a href="https://standards.iso.org/ittf/PubliclyAvailableStandards/c080239_ISO_IEC_23008-12_2017_Cor_1_2020(E).zip">ISO/IEC 23008-12:2017. Technical corrigendum 1 (2020)</a> to download text or the corresponding <a href="https://www.iso.org/standard/80239.html">ISO/IEC catalog record</a> which provides the entire text as a preview.  As well as minor clarifications and corrections, this corrigendum removes Clause 9, (entitled Extensions to the ISO Base Media File Format), replacing it with a reference to the updated version of ISO/IEC 14496-12 to which the clause content has been moved.  The 2020 corrigendum also added .hif as a permitted file extension.  See also <a href="https://www.iso.org/standard/79153.html">ISO/IEC 23008-12:2017. Amendment 2 (2020)</a>: Support for predictive image coding, bursts, bracketing and other improvements.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://standards.iso.org/ittf/PubliclyAvailableStandards/c066067_ISO_IEC_23008-12_2017.zip</link>
+					<tag>ISO/IEC 23008-12:2017
+Information technology — High efficiency coding and media delivery in heterogeneous environments — Part 12: Image File Format</tag>
+					<comment>Initial ISO publication of HEIF specification.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://standards.iso.org/ittf/PubliclyAvailableStandards/c080239_ISO_IEC_23008-12_2017_Cor_1_2020(E).zip</link>
+					<tag>ISO/IEC 23008-12:2017.  Technical corrigendum 1 (2020)</tag>
+					<comment>Mainly editorial corrections.  Clause 9 (Extensions to the ISO base media file format) was removed and its content  moved into ISO/IEC 14496-12:2015 as Amendment 2 in 2018. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.iso.org/standard/66067.html</link>
+					<tag>ISO/IEC 23008-12:2017
+Information technology — High efficiency coding and media delivery in heterogeneous environments — Part 12: Image File Format</tag>
+					<comment>ISO catalog record and preview.  In October 2020, indicates that further amendments are under development.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.iso.org/standard/79153.html</link>
+					<tag>ISO/IEC 23008-12:2017/Amd 2
+Information technology — High efficiency coding and media delivery in heterogeneous environments — Part 12: Image File Format — Amendment 2: Support for predictive image coding, bursts, bracketing and other improvements. (2020)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format</link>
+					<tag>Wikipedia entry for High Efficiency Image File Format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Some resources related to HEIF are available on the old MPEG website.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://mpeg.chiariglione.org/standards/mpeg-h</link>
+							<tag>MPEG-H
+| ISO/IEC:23008
+High Efficiency Coding and Media Delivery in Heterogeneous Environments</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://mpeg.chiariglione.org/standards/mpeg-h/image-file-format</link>
+							<tag>MPEG-H | Part 12: Image File Format</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources related to HEIF from Nokia</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://nokiatech.github.io/heif/technical.html</link>
+							<tag>HEIF Technical information | from Nokia</tag>
+							<comment>Based on a 2015 white paper prepared for MPEG meeting in Geneva, in October 2015.  Includes information on MIAF (Multi-Image Application Format).</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://phenix.int-evry.fr/jct/doc_end_user/current_document.php?id=10265</link>
+							<tag>Overview of the High Efficiency Image File Format (2015) | by Miska Hannuksela et al. from Nokia</tag>
+							<comment>Preview document JCTVC-V0072 for MPEG 113rd October 2015 meeting in Geneva. Basis for Nokia page above.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://nokiatech.github.io/heif/examples.html</link>
+							<tag>Examples of HEIF images</tag>
+							<comment>Examples of single images, image collections, image bursts, image sequences, stereo pair, etc.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.nokia.com/ozo/heif/</link>
+							<tag>Nokia HEIF Solution</tag>
+							<comment>Product description for read/write engine for HEIF images</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources related to HEVC (High Efficiency Video Coding), also known as H.265 and MPEG-H Part 2.  Text for all editions is available via <a href="http://handle.itu.int/11.1002/1000/14107">http://handle.itu.int/11.1002/1000/14107</a> or <a href="https://www.itu.int/rec/T-REC-H.265">https://www.itu.int/rec/T-REC-H.265</a>. Initially published in 2013.  As of October 2020, the most recent edition is Edition 7, published November 2019.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding</link>
+							<tag>Wikipedia entry for High Efficiency Video Coding</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.itu.int/rec/T-REC-H.265</link>
+							<tag>ITU Recommendation H.265 : High efficiency video coding</tag>
+							<comment>Lists all editions.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://handle.itu.int/11.1002/1000/11885</link>
+							<tag>ITU-T H.265 </tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://x265.org/</link>
+							<tag>x265 HEVC Encoder / H.265 Video Codec</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Apple held several sessions on HEIF and HEVC at its 2017 developers conference, WWDC 2017.  These are excellent resources on the special features of the HEIF file format and HEVC encoding and the reasons behind Apple&apos;s choice to adopt them for built-in image support across its iOS and Mac OS product line.  Note that each video is supported by a transcript with built-in links to the corresponding spot in the video.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://developer.apple.com/videos/play/wwdc2017/503/</link>
+							<tag>Introducing HEIF and HEVC (June 2017) | Video (30 mins) from Apple Developers Conference WWDC 2017</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://developer.apple.com/videos/play/wwdc2017/513</link>
+							<tag>High Efficiency Image File Format (2017) | Video (30 mins) from Apple Developers Conference WWDC 2017</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://developer.apple.com/videos/play/wwdc2017/511</link>
+							<tag>Working with HEIF and HEVC (2017) | Video (60 mins) from Apple Developers Conference WWDC 2017</tag>
+							<comment>Details for developers on API modifications in toolkits.  HEIF section begins at 20 mins.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Other resources related to adoption of HEIF</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://tidbits.com/2017/06/30/hevc-and-heif-will-make-video-and-photos-more-efficient/</link>
+							<tag>HEVC and HEIF Will Make Video and Photos More Efficient (June 2017) | from TidBITS</tag>
+							<comment>States &quot;These two new formats will be used by iOS 11 and macOS 10.13 High Sierra when Apple releases them later this year.&quot;</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.howtogeek.com/345314/what-is-the-heif-or-heic-image-format/</link>
+							<tag>What is the HEIF (or HEIC) Image Format? (March 2018) | from How-to Geek</tag>
+							<comment>States that HEIF is used by Apple’s iPhone and is also coming to Google’s Android P.  Mentons .heic as often used as file extension </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.usa.canon.com/internet/portal/us/home/explore/product-showcases/cameras-and-lenses/1dx-mark-iii</link>
+							<tag>Canon EOS-1D X Mark III</tag>
+							<comment>This new Canon camera, introduced in January 2020 supports HEIF as an in-camera filetype.  Uses .hif as extension</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://downloads.canon.com/nw/camera/products/eos/1d-x-mark-iii/resources/Canon_EOS_1DX_Mark_III_Still_White_Paper.pdf</link>
+							<tag>Canon EOS-1D X Mark III White Paper (January 2020)</tag>
+							<comment>By staff of Canon U.S.A., Inc.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.cameralabs.com/jpeg-vs-heif-canon-hif-comparison/</link>
+							<tag>JPEG vs HEIF: Canon commits to HIF (january 2020) | from Gordon Laing of Camera Labs</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://developer.android.com/guide/topics/media/media-formats#image-formats</link>
+							<tag>Android Studio | Supported media formats: Image support</tag>
+							<comment>States that versions of Android since 8.0 can decode HEIF, giving .heif and .heic as extensions.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.cnet.com/news/qualcomm-snapdragon-855-chip-gives-android-phones-iphone-photo-packing-ability/</link>
+							<tag>With Snapdragon 855 chip, Android phones get iPhone&apos;s photo-packing ability (December 5, 2018) | from CNet</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.qualcomm.com/media/documents/files/qualcomm-snapdragon-662-mobile-platform-product-brief.pdf</link>
+							<tag>Qualcomm Snapdragon 662 Mobile Platform</tag>
+							<comment>Chip used in some lower-end Android mobile devices.  Supports HEIF for camera capture.  Released in January 2020.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://tidbits.com/2020/06/26/what-the-heic-apples-highly-compressed-image-format-still-confuses/</link>
+					<tag>What the HEIC? Apple’s Highly Compressed Image Format Still Confuses (June 2020) | from TidBITS</tag>
+					<comment>TidBITS focuses on Apple technology.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://academic.microsoft.com/topic/2777257954/</link>
+					<tag>High Efficiency Image File Format | from Microsoft Academic</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://trepo.tuni.fi/bitstream/handle/123456789/24147/heikkila.pdf?sequence=3</link>
+					<tag>High Efficiency Image File Format implementation | Thesis by Lasse Heikkilä</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://journal.code4lib.org/articles/13746</link>
+					<tag>Assessing the Potential Use of High Efficiency Video Coding (HEVC) and High Efficiency Image File Format (HEIF) in Archival Still Images (2018) | by Michael Bennett</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.napier.ac.uk/~/media/worktribe/output-2653821/forensic-considerations-for-the-high-efficiency-image-file-format-heif.pdf</link>
+					<tag>Forensic Considerations for the High Efficiency Image File Format (HEIF)  (2020) | by Sean McKeown and Gordon Russell</tag>
+					<comment>Published in IEEE International Conference on Cyber Incident Response, Coordination, Containment &amp; Control (Cyber Incident 2020).  DOI: 10.1109/CyberSecurity49315.2020.9138890 </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://academic.microsoft.com/topic/2777257954/publication/search?q=High%20Efficiency%20Image%20File%20Format&amp;qe=And(Composite(F.FId%253D2777257954)%252CTy%253D%270%27)&amp;f=&amp;orderBy=0</link>
+					<tag>High Efficiency Image File Format | topic in Microsoft Academic bibliography resource.</tag>
+					<comment>Links to a number of articles and other documents about HEIF and its use.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources related to development of HEIF.  Work on the HEIF specification appears to have begun in MPEG in 2013, with the development of requirements for still image coding using HEVC. By January 2014, the standard number ISO/IEC 23008-12 was in use.  Publication was in late 2017.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://mpeg.chiariglione.org/sites/default/files/files/standards/parts/docs/w13823-v2-w13823.zip</link>
+							<tag>Requirements for still image coding using HEVC (July 2013)</tag>
+							<comment>From 105th MPEG meeting, held in Vienna, July/August 2013.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://mpeg.chiariglione.org/standards/mpeg-4/mp4-file-format/wd-carriage-still-image-and-image-sequences</link>
+							<tag>WD of carriage of still image and image sequences (November 2013)</tag>
+							<comment>This early draft, from 106th MPEG meeting, focuses on image sequences.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://mpeg.chiariglione.org/meetings/107</link>
+							<tag>Web page for 107th MPEG meeting (January 2014, San José)</tag>
+							<comment>Lists Committee Draft (CD) for ISO/IEC 23008-12</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://mpeg.chiariglione.org/standards/mpeg-h/image-file-format/text-isoiec-cd-23008-12-image-file-format</link>
+							<tag>Text of ISO/IEC CD 23008-12 Image File Format (2014)</tag>
+							<comment>From 107th MPEG meeting, held in San José, January 2014.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://mpeg.chiariglione.org/sites/default/files/files/meetings/docs/w15328.docx</link>
+							<tag>Press release for 112th MPEG meeting (June 2015)</tag>
+							<comment>Declares HEIF (ISO/IEC 23008-12) as technically complete. </comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.nationalarchives.gov.uk/PRONOM/fmt/1101</link>
+					<tag>PRONOM entry for fmt/1101</tag>
+					<comment>Information in PRONOM from UK National Archives about the High Efficiency Image File Format (HEIF).  PUID: fmt/1101</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q24907733</link>
+					<tag>Wikidata entry for Q24907733</tag>
+					<comment>Information in Wikidata about HEIF. Wikidata Title ID: Q24907733</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000079">ISO_BMFF</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
