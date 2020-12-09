@@ -24,7 +24,7 @@
 		<fdd:updates>
 			<fdd:date>2019-12-17</fdd:date>
 		</fdd:updates>
-		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
 	<fdd:identificationAndDescription>
 		<fdd:fullName>Microsoft Office Excel 97-2003 Binary File Format (.xls). Also known as BIFF8.</fdd:fullName>
@@ -36,7 +36,7 @@
  An XLS file must contain a single Workbook stream which has a single Globals Substream with at least one sheet substream, which could be a Worksheet Substream, Chart Sheet Substream, Macro Sheet Substream, or Dialog Sheet Substream.  These streams and substreams employ BIFF8 encoding for component binary records.  A substream has a BoF (beginning of file) record that includes an indicator for the BIFF version.  Hence the mandatory Workbook Globals Substream can be used to recognize the BIFF version. An XLS file in BIFF8 (or BIFF5) encoding begins as follows, with all values given as they occur in the physical file, for example when viewed using a Hex dump utility:</p>
 			<ul>
 				<li>CFB header:<ul>
-						<li>Header Signature for the CFB format with 8-byte Hex value D0CF11E0A1B11AE1.  <a href="https://www.garykessler.net/library/file_sigs.html">Gary Kessler </a>notes that the beginning of this string looks like &quot;DOCFILE&quot;</li>
+						<li>Header Signature for the CFB format with 8-byte Hex value D0CF11E0A1B11AE1.  <a href="https://www.garykessler.net/library/file_sigs.html">Gary Kessler</a> notes that the beginning of this string looks like &quot;DOCFILE&quot;</li>
 						<li>16 bytes of zeroes</li>
 						<li>2-byte Hex value 3E00 indicating CFB minor version 3E</li>
 						<li>2-byte Hex value 0300 indicating CFB major version 3 or value 0400 indicating CFB major version 4.  [Note:  All XLS files created recently by compilers of this resource (in versions of Excel for MacOS and Windows) and examined with a Hex dump utility have been based on CFB major version 3. <a href="../contact_format.shtml">Comments welcome</a>.]</li>
@@ -81,17 +81,17 @@
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
-		<fdd:experience>Library staff creating spreadsheets as part of their duties typically use the <fddLink id="fdd000398">XLSX</fddLink> format.</fdd:experience>
+		<fdd:experience>Library staff creating spreadsheets as part of their duties typically use the <fddLink id="fdd000398">XLSX</fddLink> format.  As of late 2020, the Library of Congress has over 389,000 files with the .xls extension in its digital collections, with a total size of over 226 gigabytes.  The corresponding figures for the .xlsx extension are over 685,000 files with a total size of over 722 gigabytes.  These files come from several different sources. Some may be datasets acquired individually or as supplements to published articles. Other sources are archived websites and files acquired by the Manuscript Division in collections of &quot;papers&quot; from individuals or organizations. </fdd:experience>
 		<fdd:preference>For works acquired for its collections, the list of <a href="http://www.loc.gov/preservation/resources/rfs/data.html">Library of Congress Recommended Formats Statement for Datasets</a> includes XLS (.xls) as a preferred format for datasets.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>The Microsoft Excel Binary XLS file format is proprietary but openly documented and covered by Microsoft&apos;s <a href="https://docs.microsoft.com/en-us/openspecs/dev_center/ms-devcentlp/1c24c7c8-28b0-4ce1-a47d-95fe1ff504bc">Open Specification Promise</a>.</fdd:disclosure>
 		<fdd:documentation>The specification is available at <a href="https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-xls/">[MS-XLS]: Excel (.xls) Binary File Format</a>.  This document is updated quite frequently; changes are documented.</fdd:documentation>
 		<fdd:adoption>
-			<p>Very widely used.  <a href="https://personal.utdallas.edu/~liebowit/book/sheets/sheet.html">The Market for Spreadsheets</a>, an extract from Chapter 8 of <i>Winners, Losers, and Microsoft: Competition and Antitrust in High Technology (2001)</i> by Stan J. Liebowitz found that the market share of Excel in sales of spreadsheet software grew steadily in the decade between 1988 and 1997.  Excel&apos;s dollar share overtook that of Lotus 1-2-3 in 1993, and by 1997, was 90%.  Thus, when the BIFF8 version of the XLS format was introduced, Excel dominated the spreadsheet software market.  Excel continues to be the market leader for professional spreadsheet use.  See, for example, <a href="">Is Excel the best spreadsheet software available?</a>, a 2018 question and answers from Quora.  Most new spreadsheets created using Excel will be in the default <fddLink id="fdd000398">XLSX/OOXML</fddLink> format, but a number of heavy spreadsheet users choose to use the XLS or XLSB formats for faster loading and saving.</p>
+			<p>Very widely used.  <a href="https://personal.utdallas.edu/~liebowit/book/sheets/sheet.html">The Market for Spreadsheets</a>, an extract from Chapter 8 of <i>Winners, Losers, and Microsoft: Competition and Antitrust in High Technology (2001)</i> by Stan J. Liebowitz found that the market share of Excel in sales of spreadsheet software grew steadily in the decade between 1988 and 1997.  Excel&apos;s dollar share overtook that of Lotus 1-2-3 in 1993, and by 1997, was 90%.  Thus, when the BIFF8 version of the XLS format was introduced, Excel dominated the spreadsheet software market.  Excel continues to be the market leader for professional spreadsheet use.  See, for example, <a href="https://www.quora.com/Is-Excel-the-best-spreadsheet-software-available">Is Excel the best spreadsheet software available?</a>, a 2018 question with answers from Quora.  Most new spreadsheets created using Excel will be in the default <fddLink id="fdd000398">XLSX/OOXML</fddLink> format, but a number of heavy spreadsheet users choose to use the XLS or XLSB formats for faster loading and saving.</p>
 			<p>The corpus of existing spreadsheet documents on the open web has roughly equal numbers of the binary XLS format and the XML-based XLSX format. A Google search in December 2019 of the U.S. web by filetype yielded: .xls, 8,450,000; .xlsx, 7,630,000; .ods, 154,000.  The compilers of this resource acknowledge that searches of the web are not a reliable measure of adoption for spreadsheet file formats at the initial (creation) phase of a content lifecycle.  Most spreadsheets are private and those that are made available on the web are likely to be converted to the format considered most likely to be usable by the intended audience.</p>
 			<p>All mainstream spreadsheet applications can import files in the BIFF8 version of the XLS format.  This includes: <a href="https://www.libreoffice.org/discover/calc/">LibreOffice Calc</a>, <a href="https://www.openoffice.org/product/calc.html">Apache OpenOffice Calc</a>, Quattro Pro (now part of <a href="https://www.wordperfect.com/static/wpo/product_content/wordperfect/x9/wpox9-family-comparison-chart-en.pdf">Corel WordPerfect Office</a>), <a href="https://www.google.com/sheets/about/">Google Sheets</a>, and Apple&apos;s <a href="https://www.apple.com/numbers/">Numbers</a>. See also <a href="https://en.wikipedia.org/wiki/Comparison_of_spreadsheet_software#Supported_file_formats">table of supported formats in spreadsheet software</a> from Wikipedia.</p>
-			<p>The binary XLS format, particularly BIFF8, appears relatively frequently on lists of acceptable formats for archiving of data.  For example, see recommendations from the <a href="http://www.loc.gov/preservation/resources/rfs/data.html">Library of Congress</a>, the <a href="https://www.ukdataservice.ac.uk/manage-data/format/recommended-formats.aspx">UK Data Service</a>, the <a href="https://www.naa.gov.au/information-management/storing-and-preserving-information/preserving-information/preserving-digital-information/long-term-file-formats">National Archives of Australia</a>, and the <a href="https://www.archives.gov/records-mgmt/policy/transfer-guidance-tables.html#structuredata">U.S. National Archives (NARA)</a>. In this context, the assumption is usually that the data per se is stored in a worksheet as a rectangular grid with columns representing variables/measurements and rows representing columns.  Note that recommended practice for archiving datasets always calls for a &quot;codebook&quot; or other documentation that explains both the scope and context for the data&apos;s collection and descriptions for each variable, but does not expect such metadata to be in the same file as the data. For example, see guidance from the <a href="https://www.ukdataservice.ac.uk/manage-data">UK Data Archive</a>, <a href="https://dmptool.org/general_guidance#file-formats">DMPtool</a> from the University of California Curation Center, and the <a href="https://datadryad.org/docs/QuickstartGuideToDataSharing.pdf">Dryad Digital Repository</a>.</p>
+			<p>The binary XLS format, particularly BIFF8, appears relatively frequently on lists of acceptable formats for archiving of data.  For example, see recommendations from the <a href="http://www.loc.gov/preservation/resources/rfs/data.html">Library of Congress</a>, the <a href="https://www.ukdataservice.ac.uk/manage-data/format/recommended-formats.aspx">UK Data Service</a>, the <a href="https://www.naa.gov.au/information-management/storing-and-preserving-information/preserving-information/preserving-digital-information/born-digital-file-format-standards">National Archives of Australia</a>, and the <a href="https://www.archives.gov/records-mgmt/policy/transfer-guidance-tables.html#structuredata">U.S. National Archives (NARA)</a>. In this context, the assumption is usually that the data per se is stored in a worksheet as a rectangular grid with columns representing variables/measurements and rows representing columns.  Note that recommended practice for archiving datasets always calls for a &quot;codebook&quot; or other documentation that explains both the scope and context for the data&apos;s collection and descriptions for each variable, but does not expect such metadata to be in the same file as the data. For example, see guidance from the <a href="https://www.ukdataservice.ac.uk/manage-data">UK Data Archive</a>, <a href="https://dmptool.org/general_guidance#file-formats">DMPtool</a> from the University of California Curation Center, and the <a href="https://datadryad.org/docs/QuickstartGuideToDataSharing.pdf">Dryad Digital Repository</a>.</p>
 			<p>The <a href="http://fileformats.archiveteam.org/wiki/XLS">XLS page at fileformats.archiveteam.org</a> lists some open-source software libraries available for manipulating files in the binary file format used as the native format by Microsoft Excel 97, 2000, 2002, and Office Excel 2003. <a href="http://decalage.info/file_formats_security/office">Weaponized MS Office 97-2003 legacy/binary formats (doc, xls, ppt, ...)</a> also lists software libraries.  Python &quot;packages&quot; for working with .xls files are listed at <a href="http://www.python-excel.org/">Working with Excel Files in Python</a>. The compilers of this resource have not determined the extent to which any of the software listed  in these resources is actively maintained.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
 			<p>
 				<a href="https://www.gaia-gis.it/fossil/freexl/index">FreeXL</a> is an open source library to extract valid data from within an Excel (.xls) spreadsheet; this software completely ignores user-interface details. See <a href="http://www.gaia-gis.it/gaia-sins/freexl-1.0.5-doxy-doc/html/OtherTools.html">FreeXL: Other tools and libraries</a> for a list of software supporting the XLS format that was compiled by the author of FreeXLS.</p>
@@ -237,7 +237,7 @@ for BIFF8.</p>
 					<fdd:intro>Subsidiary specifications describe data types and data structures that are used in common by documentation for Microsoft Office 97, Microsoft Office XP, Microsoft Office 2003, and the 2007 Microsoft Office system.</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
-							<link>https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-oshared/d93502fa-5b8f-4f47-a3fe-5574046f4b8d</link>
+							<link>https://docs.microsoft.com/en-us/openspecs/office_file_formats/ms-oshared/</link>
 							<tag>[MS-OSHARED]: Office Common Data Types and Objects Structures</tag>
 							<comment>Includes property sets that can store document-level properties (metadata).</comment>
 						</fdd:urlReference>
@@ -287,10 +287,21 @@ Microsoft Excel File Format (2008)</tag>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
-				<fdd:urlReference>
-					<link>http://www.gaia-gis.it/gaia-sins/freexl-1.0.5-doxy-doc/html/Format.html</link>
-					<tag>About the .xls binary format | FreeXL</tag>
-				</fdd:urlReference>
+				<fdd:urlGroup>
+					<fdd:intro>The documentation for FreeXL has a useful description of the XLS format and its variants.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.gaia-gis.it/gaia-sins/freexl-1.0.6-doxy-doc/html/Format.html</link>
+							<tag>About the .xls binary format | FreeXL</tag>
+							<comment>Version of FreeXL current as of late 2020.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20200123133556/http://www.gaia-gis.it/gaia-sins/freexl-1.0.5-doxy-doc/html/Format.html</link>
+							<tag>FreeXL  1.0.5 | About the .xls binary format</tag>
+							<comment>Link via Internet Archive.  The URL for this content changes with new editions of FreeXL.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
@@ -341,6 +352,12 @@ Microsoft Excel File Format (2008)</tag>
 				<fdd:urlReference>
 					<link>https://en.wikipedia.org/wiki/Comparison_of_spreadsheet_software#Supported_file_formats</link>
 					<tag>Wikipedia table of formats supported by spreadsheet software applications</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.quora.com/Is-Excel-the-best-spreadsheet-software-available</link>
+					<tag>Is Excel the best spreadsheet software available? (2018)</tag>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
