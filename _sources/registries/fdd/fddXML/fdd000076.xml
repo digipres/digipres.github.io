@@ -4,12 +4,15 @@
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>text</fdd:gdfrGenre>
 		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
 		<fdd:gdfrForm>text</fdd:gdfrForm>
 		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
 		<fdd:updates>
-			<fdd:date>2008-03-18</fdd:date>
+			<fdd:date>2021-04-30</fdd:date>
 		</fdd:updates>
-		<fdd:draftStatus>Partial</fdd:draftStatus>
+		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
 	<fdd:identificationAndDescription>
 		<fdd:fullName>XML Document Type Definition (DTD)</fdd:fullName>
@@ -17,7 +20,26 @@
 			<fdd:keyword>generic digital formats</fdd:keyword>
 			<fdd:keyword>markup languages</fdd:keyword>
 		</fdd:keywords>
-		<fdd:description>An XML Document Type Definition is a formal expression (in XML) of the structural constraints for a class of XML documents. The DTD language constructs are element and attribute-list declarations. Element declarations name the elements allowed within a document of this type, and specify whether and how declared elements and runs of character data may be contained within each element. Attribute-list declarations name the permitted attributes for each declared element, including the type of each attribute value, if not an explicit set of valid value(s).  A DTD is associated with an XML document via a Document Type Declaration, which is a tag that appears near the start of the XML document. The declaration establishes that the document is an instance of the type defined by the referenced DTD.</fdd:description>
+		<fdd:description>
+			<p>An <fddLink id="fdd000075">XML</fddLink> Document Type Definition is a formal expression (in XML) of the structural constraints for a class of XML documents. The DTD language constructs are element and attribute-list declarations. Element declarations name the elements allowed within a document of this type, and specify whether and how declared elements and runs of character data may be contained within each element. Attribute-list declarations name the permitted attributes for each declared element, including the type of each attribute value, if not an explicit set of valid value(s). A DTD is associated with an XML document via a Document Type Declaration, which is a tag that appears near the start of the XML document. The declaration establishes that the document is an instance of the type defined by the referenced DTD. These declarations within an XML document can be either internal or external. Internal DTD declarations are stated at the beginning of the XML document and must be wrapped in the <![CDATA[<!DOCTYPE>]]> definition. An internal declaration example from the <a href="https://www.w3schools.com/xml/xml_dtd_intro.asp">W3schools DTD tutorial</a> is as follows:</p>
+			<p><![CDATA[<?xml version="1.0"?>]]></p>
+			<p><![CDATA[<!DOCTYPE note []]></p>
+			<p><![CDATA[<!ELEMENT note (to,from,heading,body)>]]></p>
+			<p><![CDATA[<!ELEMENT from (#PCDATA)>]]></p>
+			<p><![CDATA[<!ELEMENT heading (#PCDATA)>]]></p>
+			<p><![CDATA[<!ELEMENT body (#PCDATA)>]]></p>
+			<p><![CDATA[]>]]></p>
+			<p><![CDATA[<note>]]></p>
+			<p><![CDATA[<to>Tove</to>]]></p>
+			<p><![CDATA[<from>Jani</from>]]></p>
+			<p><![CDATA[<heading>Reminder</heading>]]></p>
+			<p><![CDATA[<body>Don't forget me this weekend</body>]]></p>
+			<p><![CDATA[</note>]]></p>
+			<p>DTDs can also be declared in an external file at the beginning of the XML document. Similar to internal declarations, they must be wrapped in the <![CDATA[<!DOCTYPE>]]> definition. An example of an external DTD declaration is as follows:</p>
+			<p><![CDATA[<?xml version="1.0"?>]]></p>
+			<p><![CDATA[<!DOCTYPE note SYSTEM "note.dtd">]]></p>
+			<p>The DTD file that is referenced in the external declaration is structured as the internal declaration example above with defined elements for the note, to, from, heading, and body fields.</p>
+		</fdd:description>
 		<fdd:shortDescription>A formal expression (in XML) of the structural constraints for a class of XML documents, consisting of element and attribute-list declarations.</fdd:shortDescription>
 		<fdd:relationships>
 			<fdd:relationship>
@@ -31,14 +53,15 @@
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
-		<fdd:experience>LC has developed and/or used various SGML and XML DTDs since the mid 1990s. Examples include: the <a href="http://memory.loc.gov/ammem/techdocs/amdtd.html">American Memory (AMMEM) SGML DTD</a> used for converted textual materials; the <a href="http://www.loc.gov/ead/">EAD Document Type Definition (DTD)</a>, a standard for encoding archival finding aids (originally SGML, now in an XML version); and the <a href="http://dtd.nlm.nih.gov/">NCBI/NLM Journal Archiving and Interchange DTD</a>. </fdd:experience>
+		<fdd:experience>LC has developed and/or used various XML DTDs since the mid 1990s. Examples include: the <a href="http://www.loc.gov/ead/">EAD Document Type Definition (DTD)</a>, a standard for encoding archival finding aids (now in an XML version) and the <a href="http://dtd.nlm.nih.gov/">NCBI/NLM Journal Archiving and Interchange DTD</a>. The <a href="https://www.govinfo.gov/content/pkg/FR-2020-11-12/pdf/2020-23101.pdf">Mandatory Deposit of Electronic-Only Books documentation</a> includes the NLM DTD.</fdd:experience>
+		<fdd:preference>According to the Recommended Formats Statement, for both preferred and acceptable formats for <a href="https://www.loc.gov/preservation/resources/rfs/text.html">Textual Works - Digital</a>, <fddLink id="fdd000075">XML</fddLink>-based formats should include or make accessible DTDs and schemas. Widely used DTDs such as TEI and DocBook are listed as preferred for XML-based formats, while <fddLink id="fdd000465">SGML Document Type Definition</fddLink> associated DTDs are acceptable. Additionally, for <a href="https://www.loc.gov/preservation/resources/rfs/text.html">Textual Works- Electronic Serials</a>, <fddLink id="fdd000075">XML</fddLink>-based formats should include or make accessible DTDs, schemas, and associated stylesheets.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>The language for expressing DTDs is defined within the specification of <fddLink id="fdd000075">XML</fddLink>.</fdd:disclosure>
 		<fdd:documentation>
 			<a href="http://www.w3.org/TR/REC-xml/">Extensible Markup Language (XML) 1.0</a>
 		</fdd:documentation>
-		<fdd:adoption>Widely adopted for specification of document-centric XML document types and use in publishing.  The various versions of HTML are defined through DTDs.  See list of <a href="http://www.utoronto.ca/webdocs/HTMLdocs/HTML_Spec/html.html ">HTML and XHTML Document Type Definitions</a> at University of Toronto.  Examples of other DTDs in widespread use within particular communities include News Industry Text Format (<fddLink id="fdd000014">NITF</fddLink>), <fddLink id="fdd000053">DTB (Digital Talking Book)</fddLink>, and the <fddLink id="fdd000174">NCBI/NLM Journal Archiving and Interchange DTD</fddLink>.
+		<fdd:adoption>Widely adopted for specification of document-centric XML document types and use in publishing.  The various versions of HTML are defined through DTDs.  See list of <a href="http://www.utoronto.ca/webdocs/HTMLdocs/HTML_Spec/html.html ">HTML and XHTML Document Type Definitions</a> at University of Toronto.  Examples of other DTDs in widespread use within particular communities include News Industry Text Format (<fddLink id="fdd000014">NITF</fddLink>), <fddLink id="fdd000053">DTB (Digital Talking Book)</fddLink>, and the <fddLink id="fdd000174">NCBI/NLM Journal Archiving and Interchange DTD</fddLink>. <a href="https://www.w3schools.com/xml/xml_dtd_intro.asp">w3 schools</a>, a widely used site for web development skill building, provides tutorials for learning about DTDs.
 		 </fdd:adoption>
 		<fdd:licensingAndPatents>None</fdd:licensingAndPatents>
 		<fdd:transparency>See <fddLink id="fdd000075">XML</fddLink>.</fdd:transparency>
@@ -64,6 +87,7 @@
 				<fdd:sigValues>
 					<fdd:sigValue>dtd</fdd:sigValue>
 				</fdd:sigValues>
+				<fdd:note>See <a href="https://tools.ietf.org/html/rfc3023">RFC 3023</a> for further details.</fdd:note>
 			</fdd:filenameExtension>
 			<fdd:internetMediaType>
 				<fdd:sigValues>
@@ -93,8 +117,8 @@
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
-		<fdd:general>As of March 2008, several document types formerly specified only as DTDs now also have specifications in the XML Schema or Relax NG languages.</fdd:general>
-		<fdd:history>Derived from SGML Document Type Definition specification language.</fdd:history>
+		<fdd:general>From <a href="https://en.wikipedia.org/wiki/Document_type_definition">Wikipedia</a>, "As of 2009, newer XML namespace-aware schema languages (such as W3C XML Schema and ISO RELAX NG) have largely superseded DTDs. A namespace-aware version of DTDs is being developed as Part 9 of ISO DSDL. DTDs persist in applications that need special publishing characters, such as the XML and HTML Character Entity References, which derive from larger sets defined as part of the ISO SGML standard effort."</fdd:general>
+		<fdd:history>Derived from <fddLink id="fdd000465">SGML Document Type Definition</fddLink> specification language.</fdd:history>
 	</fdd:notes>
 	<fdd:formatSpecifications>
 		<fdd:urls>
@@ -126,6 +150,19 @@
 					<link>https://www.wikidata.org/wiki/Q212327</link>
 					<tag>Wikidata entry for Q212327</tag>
 					<comment>Information in Wikidata about DTD. Wikidata Title ID: Q212327.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.w3schools.com/xml/xml_dtd_intro.asp</link>
+					<tag>DTD Tutorial</tag>
+					<comment>W3 Schools Web Development Tutorial.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Document_type_definition</link>
+					<tag>Wikipedia entry for Document type definition.</tag>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
