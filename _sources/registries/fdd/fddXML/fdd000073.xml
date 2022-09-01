@@ -28,7 +28,7 @@ described in ISO 12234-2:2001. The TIFF/EP_1 header is exactly the same as the T
 TIFF/EP format and revision number is identified in the TIFF/EPStandardID tag-field (Tag 37398); this tag is mandatory for a TIFF/EP file. ISO 12234-2 (TIFF/EP_1) introduced several new TIFF tags; which will be ignored by a baseline TIFF viewer.  See <a href="../content/tiff_tags.shtml">Tags for TIFF and Related Specifications</a> for more on TIFF tags.</p>
 			<p>Differences from EXIF are more substantial.  In particular, values for a few metadata items are stored using different tags and a different method for including a thumbnail in a TIFF file is specified.</p>
 			<p>Although TIFF/EP_1 was not adopted by most camera manufacturers per se, it did serve as the basis for Adobe&apos;s <fddLink id="fdd000188">DNG</fddLink> and some manufacturers' raw formats.</p>
-			<p>TIFF/EP_1 readers must handle images stored in uncompressed form, or using JPEG baseline DCT-based lossy compression as specified in <a href="http://partners.adobe.com/public/developer/en/tiff/TIFFphotoshop.pdf">Adobe Photoshop: TIFF Technical Notes (March 22, 2002)</a>.  Other compression schemes are permitted but readers are not required to handle them.  TIFF Tag 259, mandatory in TIFF/EP, indicates the Compression method: 1 for uncompressed; 7 for JPEG baseline DCT-based lossy compression.  If an image compression method is used in TIFF/EP, an uncompressed Baseline TIFF-readable &quot;thumbnail&quot; image (with a reduced-resolution) should also be stored in the 0th IFD, to allow the images to be viewed and identified using a Baseline TIFF 6.0 reader.</p>
+			<p>TIFF/EP_1 readers must handle images stored in uncompressed form, or using JPEG baseline DCT-based lossy compression as specified in <a href="https://web.archive.org/web/20110613222125/http://partners.adobe.com/public/developer/en/tiff/TIFFphotoshop.pdf">Adobe Photoshop: TIFF Technical Notes (March 22, 2002)</a>. Available via Internet Archive.  Other compression schemes are permitted but readers are not required to handle them.  TIFF Tag 259, mandatory in TIFF/EP, indicates the Compression method: 1 for uncompressed; 7 for JPEG baseline DCT-based lossy compression.  If an image compression method is used in TIFF/EP, an uncompressed Baseline TIFF-readable &quot;thumbnail&quot; image (with a reduced-resolution) should also be stored in the 0th IFD, to allow the images to be viewed and identified using a Baseline TIFF 6.0 reader.</p>
 		</fdd:description>
 		<fdd:shortDescription>A subtype of TIFF 6.0 that contains the TIFF/EP format identifier and conforms to certain restrictions on TIFF and EXIF tags, as described in ISO 12234-2:2001.  TIFF/EP_1 was intended as suitable as a raw camera image format and to be as compatible as possible with TIFF 6.0.</fdd:shortDescription>
 		<fdd:productionPhase>Intended as a standard raw image format for digital cameras.</fdd:productionPhase>
@@ -86,7 +86,7 @@ TIFF/EP format and revision number is identified in the TIFF/EPStandardID tag-fi
 required to interpret the digital code values of a color image. See also <fddLink id="fdd000022">TIFF_6</fddLink>.</fdd:colorMaint>
 			<fdd:graphics>No support for typography or vector graphics</fdd:graphics>
 			<fdd:multispectral>TIFF/EP_1 is not intended for multispectral use.  All TIFF/EP
-readers shall handle greyscale, RGB and YCbCr data.</fdd:multispectral>
+readers shall handle grayscale, RGB and YCbCr data.</fdd:multispectral>
 			<fdd:beyondImage>Image data may optionally be stored using a single image component having a color filter array (CFA) area
 pattern of the image data derived from a single-chip color CCD image sensor.  However, TIFF/EP readers are not required to
 handle this raw type of image data.  The tags used to describe a CCD’s CFA pattern in TIFF/EP_1 are: SamplesPerPixel,
@@ -122,13 +122,9 @@ PlanarConfiguration, CFARepeatPatternDim, CFAPattern and SensingMethod.</fdd:bey
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
 		<fdd:general>
-			<p>TIFF/EP_1 uses the TIFF/JPEG specification as described in <a href="http://partners.adobe.com/public/developer/en/tiff/TIFFphotoshop.pdf">Adobe Photoshop: TIFF Technical Notes (March 22, 2002)</a>. This method differs from
-the JPEG method described in the original TIFF 6.0 specification. In the method used within TIFF/EP_1, each image segment
-(tile or strip) contains a complete JPEG data stream that is valid according to the ISO JPEG standard
+			<p>TIFF/EP_1 uses the TIFF/JPEG specification as described in <a href="https://web.archive.org/web/20051124205552/http://partners.adobe.com/public/developer/en/tiff/TIFFphotoshop.pdf">Adobe Photoshop: TIFF Technical Notes (March 22, 2002)</a>. Available via Internet Archive. This method differs from the JPEG method described in the original TIFF 6.0 specification. In the method used within TIFF/EP_1, each image segment (tile or strip) contains a complete JPEG data stream that is valid according to the ISO JPEG standard
 (ISO/IEC 10918-1).</p>
-			<p>In TIFF/EP_1 files, the 0th IFD should be an image that can be read by a baseline TIFF 6.0 reader. Since JPEG
-compression is not required for baseline TIFF 6.0 readers, if the full-resolution image is stored using
-compression, the TIFF/EP_1 file should include an uncompressed thumbnail (reduced-resolution) image stored in the 0th IFD.  The thumbnail should be stored in strips,
+			<p>In TIFF/EP_1 files, the 0th IFD should be an image that can be read by a baseline TIFF 6.0 reader. Since JPEG compression is not required for baseline TIFF 6.0 readers, if the full-resolution image is stored using compression, the TIFF/EP_1 file should include an uncompressed thumbnail (reduced-resolution) image stored in the 0th IFD.  The thumbnail should be stored in strips,
 rather than in tiles, in order to be fully compatible with TIFF 6.0 baseline readers.</p>
 			<p>The Adobe DNG version 1.1 specification claims compatibility with the (then draft) specification of TIFF/EP_1.  DNG permits all TIFF/EP tags and uses explicitly some of the tags introduced in TIFF/EP, particularly in relation to support for CFA (Colour Filter Array) photometric interpretation.  The DNG specification recommends (a) that the first IFD contain a low-resolution thumbnail and (b) the use of SubIFD trees, both as described in the TIFF/EP_1 specification.  See <fddLink id="fdd000188">DNG_1_1</fddLink> for more on the relationship of DNG to TIFF/EP_1.</p>
 		</fdd:general>
@@ -153,20 +149,20 @@ rather than in tiles, in order to be fully compatible with TIFF 6.0 baseline rea
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://partners.adobe.com/public/developer/en/tiff/TIFFphotoshop.pdf</link>
+					<link>https://web.archive.org/web/20051124205552/http://partners.adobe.com/public/developer/en/tiff/TIFFphotoshop.pdf</link>
 					<tag>Adobe Photoshop: TIFF Technical Notes</tag>
-					<comment>March 22, 2002</comment>
+					<comment>March 22, 2002. Available via Internet Archive.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://en.wikipedia.org/wiki/Tag_Image_File_Format_/_Electronic_Photography</link>
+					<link>https://en.wikipedia.org/wiki/Tag_Image_File_Format_/_Electronic_Photography</link>
 					<tag>TIFF/EP on Wikipedia</tag>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/154</link>
+					<link>https://www.nationalarchives.gov.uk/PRONOM/fmt/154</link>
 					<tag>TIFF/EP at PRONOM</tag>
 					<comment>Pronom Identifier (PUID) is fmt/154.</comment>
 				</fdd:urlReference>
@@ -181,7 +177,7 @@ rather than in tiles, in order to be fully compatible with TIFF 6.0 baseline rea
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://en.wikipedia.org/wiki/Raw_image_format</link>
+					<link>https://en.wikipedia.org/wiki/Raw_image_format</link>
 					<tag>Raw image format on Wikipedia</tag>
 					<comment>Useful summary of elements in a raw image format, in which category the page includes the TIFF/EP format, from a digital camera</comment>
 				</fdd:urlReference>

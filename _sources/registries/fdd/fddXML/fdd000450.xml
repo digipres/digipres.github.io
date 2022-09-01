@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000450" titleName="RAR Archive File Format Family" shortName="RAR_Family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<?altova_sps U:\edit_2013\fddCreation_20220126.sps?>
+<fdd:FDD id="fdd000450" titleName="RAR Archive File Format Family" shortName="RAR_Family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd=".\fdd.xsd" xsi:schemaLocation=".\fdd.xsd fdd.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>aggregate</fdd:gdfrGenre>
@@ -104,12 +105,10 @@ an archive header block. The  <b>archive block</b> is the most complex because i
 		<fdd:techProtection>RAR supports optional <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard">AES encryption</a>, a type of block cipher which uses an algorithm that encrypts data on a per-block basis. There are various forms of the <a href="http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf">AES standard</a> and the implementation used by RAR has changed with different versions of the format. RAR5 (current version as of this writing in March 2017) uses AES-256, a change from AES-128 used in RAR4. </fdd:techProtection>
 	</fdd:sustainabilityFactors>
 	<fdd:qualityAndFunctionalityFactors>
-		<fdd:otherQF>
-			<fdd:factor>
-				<fdd:tag>Bundling/compression</fdd:tag>
-				<fdd:note>Separate functionality factors for comparing formats that are used to bundle and or compress files have not been developed. From the perspective of digital preservation, consideration of the sustainability factors above is more important than the degree of compression</fdd:note>
-			</fdd:factor>
-		</fdd:otherQF>
+		<fdd:aggregateQF>
+			<fdd:compress>RAR uses proprietary compression algorithms and the compression ratio is stored in the Compression Record tag in the file header.</fdd:compress>
+			<fdd:error>RAR used optional CRC-32 hash values until RAR5 when the method switched to 56 bit length BLAKE2sp hash. In addition, RAR archives have an optional recovery record structure in the archive header.</fdd:error>
+		</fdd:aggregateQF>
 	</fdd:qualityAndFunctionalityFactors>
 	<fdd:fileTypeSignifiers>
 		<fdd:signifiersGroup>

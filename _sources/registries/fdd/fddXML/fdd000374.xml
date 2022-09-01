@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000374" titleName="Matroska File Format with V210 Video Encoding" shortName="Matroska_V210" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000374" titleName="Matroska File Format with V210 Video Encoding" shortName="Matroska_V210" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>moving-image</fdd:gdfrGenre>
@@ -12,7 +12,7 @@
 		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2013-02-01</fdd:date>
+			<fdd:date>2022-03-29</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Partial</fdd:draftStatus>
 	</fdd:properties>
@@ -22,7 +22,15 @@
 			<fdd:keyword>video formats</fdd:keyword>
 		</fdd:keywords>
 		<fdd:description>
-			<p>Matroska file format wrapping V210 uncompressed video essence, typically multiplexed with soundtrack audio.</p>
+			<p>
+				<a href="https://www.matroska.org/technical/basics.html">Matroska</a> file containing a  <fddLink id="fdd000353">V210</fddLink> video essence.</p>
+			<p>Supported encodings are declared via the unique <i>Codec ID</i> in the <a href="https://www.matroska.org/technical/codec_specs.html">Matroska Codec Mappings</a>. For V210 files, the information is the following. Note that the Microsoft defined FOURCC code for V210 files is V210 (from the <a href="https://www.fourcc.org/v210/">FOURCC</a> page.</p>
+			<ul>
+				<li>Codec ID: V_MS/VFW/FOURCC</li>
+				<li>Codec Name: Microsoft (TM) Video Codec Manager (VCM)</li>
+				<li>Description: The private data contains the VCM structure BITMAPINFOHEADER including the extra private bytes, as defined by <a href="https://docs.microsoft.com/en-us/windows/win32/api/wingdi/ns-wingdi-bitmapinfoheader?redirectedfrom=MSDN">Microsoft</a>. The data are stored in little-endian format (like on IA32 machines). </li>
+				<li>Initialization: Private Data contains the VCM structure BITMAPINFOHEADER including the extra private bytes, as defined by Microsoft in <a href="Private Data contains the VCM structure BITMAPINFOHEADER including the extra private bytes, as defined by Microsoft in https://msdn.microsoft.com/en-us/library/windows/desktop/dd183376(v=vs.85).aspx.">https://msdn.microsoft.com/en-us/library/windows/desktop/dd183376(v=vs.85).aspx</a>.</li>
+			</ul>
 		</fdd:description>
 		<fdd:shortDescription>Matroska file format wrapping V210 uncompressed video essence, typically multiplexed with soundtrack audio.</fdd:shortDescription>
 		<fdd:productionPhase>Generally employed in post-production or editing (middle phase) and in limited modes of dissemination (final phase).</fdd:productionPhase>
@@ -52,7 +60,7 @@
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
 		<fdd:experience>No extensive experience.</fdd:experience>
-		<fdd:preference>None. For preservation reformatting, the Library of Congress&apos; Packard Campus for Audio-Visual Conservation has chosen <fddLink id="fdd000206">MXF_OP1a_JP2_LL</fddLink> (lossless JPEG 2000 wrapped in MXF operational pattern 1a).</fdd:preference>
+		<fdd:preference>None.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>See <fddLink id="fdd000342">Matroska</fddLink> and <fddLink id="fdd000353">V210</fddLink>.</fdd:disclosure>
@@ -91,12 +99,42 @@
 					<fdd:sigValues>
 						<fdd:sigValue>V210</fdd:sigValue>
 					</fdd:sigValues>
-					<fdd:note>The encoding is identified using the codecID &quot;V_MS/VFW/FOURCC&quot; (Video for Windows/FOURCC) plus what Matroska calls private codec data containing the FOURCC code.</fdd:note>
+					<fdd:note>The encoding is identified using the codecID &quot;V_MS/VFW/FOURCC&quot; (Video for Windows/FOURCC) plus what Matroska calls private codec data containing the FOURCC code. From the <a href="https://www.fourcc.org/v210/">FOURCC</a> page. </fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000342">Matroska</fddLink>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000342">Matroska</fddLink>.</fdd:note>
 				</fdd:values>
 			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes/>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000342">Matroska</fddLink>
+					</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000353">V210</fddLink>
+					</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
 	<fdd:usefulReferences>
 		<fdd:urls>
 			<fdd:url>

@@ -110,15 +110,15 @@ Document, not described here at this time.</fdd:comment>
 		<fdd:documentation>The central specification is <i>SMPTE ST 377-1:2011, Material Exchange  Format (MXF) -- File Format Specification</i>. For a full list of citations, see <a href="#specs">Format specifications</a> below.
 </fdd:documentation>
 		<fdd:adoption>
-			<p>At this writing (January 2012), there is ever-increasing interest and adoption of MXF.  One key advocate is the <a href="http://www.amwa.tv">Advanced Media Workflow Association</a> (AMWA, the former AAF Association), whose members have (and continue to) oversee the development of a number of <a href="http://www.amwa.tv/projects/application_specifications.shtml">Application Specifications</a>. MXF is used by several commercial production systems, including the SONY MSW-2000 series of IMX video recorders.  Panasonic P2 digital video cameras can output MXF OP-Atom files with DVC Pro encodings (see <fddLink id="fdd000173">DV-DIF</fddLink>). Avid editing equipment supports certain variants of MXF. MXF is also part of the ensemble of specifications associated with the Digital Cinema Initiative; see <fddLink id="fdd000200">DCP</fddLink>. The SAMMA device used to reformat videotapes outputs <fddLink id="fdd000206">MXF_OP1a_JP2_LL</fddLink>.</p>
+			<p>At this writing (January 2012), there is ever-increasing interest and adoption of MXF.  One key advocate is the <a href="https://www.amwa.tv/">Advanced Media Workflow Association</a> (AMWA, the former AAF Association), whose members have (and continue to) oversee the development of a number of <a href="https://www.amwa.tv/specifications">Application Specifications</a>. MXF is used by several commercial production systems, including the SONY MSW-2000 series of IMX video recorders.  Panasonic P2 digital video cameras can output MXF OP-Atom files with DVC Pro encodings (see <fddLink id="fdd000173">DV-DIF</fddLink>). Avid editing equipment supports certain variants of MXF. MXF is also part of the ensemble of specifications associated with the Digital Cinema Initiative; see <fddLink id="fdd000200">DCP</fddLink>. The SAMMA device used to reformat videotapes outputs <fddLink id="fdd000206">MXF_OP1a_JP2_LL</fddLink>.</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>None.</fdd:licensingAndPatents>
 		<fdd:transparency>Wrapper is relatively transparent although the structure of an MXF file can be complex.  Required metadata is in KLV form.  The overall transparency of instances of the file will depend upon the essence encoding. All video codecs depend upon algorithms and tools to read and will require sophistication to build tools.</fdd:transparency>
 		<fdd:selfDocumentation>
 			<p>Extensive metadata is required by or may optionally be placed in MXF files. <i>System</i> or <i>structural metadata</i> is about the structure of the file, e.g., the relationship of parts, whether the essence is stored as little or big endian, index tables that provide information on the essence (display size, compression algorithm, the time line of a media clip, etc.), size of a sector, where a new partition starts, etc.  <i>User</i> or <i>descriptive metadata</i> provides details on production, such as the title and responsible organization, location of the shot or shots, participants, and other annotating information.  A "framework" of descriptive metadata schemes is defined in SMPTE ST 380, <i>Material Exchange Format (MXF) &#8212; Descriptive Metadata Scheme-1</i>, commonly called <i>DMS-1</i> and sometimes referred to as a "dialect" for descriptive metadata.  SMPTE committee leader Mike Cox reports that DMS-1 is "intended for archive use as an interchange layer between archives" (private communication).</p>
 			<p>A SONY technical paper (no longer available on the Web in August 2007) stated that "MXF follows the AAF concept by distinguishing between 'material', i.e. metadata from the production stage and 'file' data, i.e. metadata on the final product. Within these material and file packages, all data are stored in 'tracks'. The system metadata are kept in tracks of the timeline picture and sound tracks, whereas the user metadata are retained in shot, scene or production tracks. Not all of the metadata, however, need to be included. Most of them are optional, and producers can choose to create 'simple' MXF files first, and add additional information later."</p>
-			<p>MXF metadata is encoded using <i>KLV</i> (Key-Length-Value), as specified by SMPTE 336M-2001, and employs other data elements also specified by SMPTE, e.g., SMPTE Universal Labels (ANSI/SMPTE ST 298) and the SMPTE Metadata Dictionary (RP 210 in various versions available from <a href="http://www.smpte-ra.org/mdd/">SMPTE Metadata Registries
-And Related Items</a>). Applications may be developed to input and output metadata from and to XML; SMPTE EG 42 includes a sample XML schema as Annex C. See also European Broadcasting Union (EBU) <a href="http://tech.ebu.ch/docs/r/r121.pdf">Recommendation R121-2007</a>, <i>Material Exchange Format - Basic User Metadata Implementation</i>.   Meanwhile &quot;text-stream&quot; metadata (generally to support user-specific needs) can be placed in Generic Stream Partitions (SMPTE ST 410:2008).</p>
+			<p>MXF metadata is encoded using <i>KLV</i> (Key-Length-Value), as specified by SMPTE 336M-2001, and employs other data elements also specified by SMPTE, e.g., SMPTE Universal Labels (ANSI/SMPTE ST 298) and the SMPTE Metadata Dictionary (RP 210 in various versions available from <a href="https://web.archive.org/web/20120626022726/http://www.smpte-ra.org/mdd/">SMPTE Metadata Registries
+And Related Items (link available through Internet Archive)</a>). Applications may be developed to input and output metadata from and to XML; SMPTE EG 42 includes a sample XML schema as Annex C. See also European Broadcasting Union (EBU) <a href="https://tech.ebu.ch/docs/r/r121.pdf">Recommendation R121-2007</a>, <i>Material Exchange Format - Basic User Metadata Implementation</i>.   Meanwhile &quot;text-stream&quot; metadata (generally to support user-specific needs) can be placed in Generic Stream Partitions (SMPTE ST 410:2008).</p>
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>None</fdd:externalDependencies>
 		<fdd:techProtection>Technical protection is required within the <i>D-Cinema</i> format, which employs MXF among other elements.  The compiler of this description has not investigated the degree to which such protections are implemented &quot;within&quot; the MXF structure or to what degree they are implemented in associated elements. <a href="../contact_format.shtml">Comments welcome</a>
@@ -143,20 +143,20 @@ And Related Items</a>). Applications may be developed to input and output metada
 				<fdd:sigValues>
 					<fdd:sigValue>mxf</fdd:sigValue>
 				</fdd:sigValues>
-				<fdd:note>From IETF <a href="http://www.ietf.org/rfc/rfc4539.txt">RFC 4539</a> (May 2006)</fdd:note>
+				<fdd:note>From IETF <a href="https://www.ietf.org/rfc/rfc4539.txt">RFC 4539</a> (May 2006)</fdd:note>
 			</fdd:filenameExtension>
 			<fdd:internetMediaType>
 				<fdd:sigValues>
 					<fdd:sigValue>application/mxf</fdd:sigValue>
 				</fdd:sigValues>
-				<fdd:note>From IETF <a href="http://www.ietf.org/rfc/rfc4539.txt">RFC 4539</a> (May 2006)</fdd:note>
+				<fdd:note>From IETF <a href="https://www.ietf.org/rfc/rfc4539.txt">RFC 4539</a> (May 2006)</fdd:note>
 			</fdd:internetMediaType>
 			<fdd:magicNumbers>
 				<fdd:sigValues>
 					<fdd:sigValue>Hex: 06 0E 2B 34 02 05 01 01 0D 01 02 01 01 02</fdd:sigValue>
 					<fdd:sigValue>ASCII: ..+4</fdd:sigValue>
 				</fdd:sigValues>
-				<fdd:note>From the <a href="http://filext.com/">File Extension Source</a>; see also information regarding MXF header partition pack key.</fdd:note>
+				<fdd:note>From the <a href="https://filext.com/">File Extension Source</a>; see also information regarding MXF header partition pack key.</fdd:note>
 			</fdd:magicNumbers>
 			<fdd:other>
 				<fdd:tag>Header partition pack key (MXF)</fdd:tag>
@@ -192,7 +192,7 @@ And Related Items</a>). Applications may be developed to input and output metada
 			<p>MXF and <fddLink id="fdd000004">AAF_1_1</fddLink> (Advanced Authoring Format, version 1.1) are presented here in a "subtype/supertype" relationship, but <a href="../contact_format.shtml">comments</a> from specialists are welcome. The two formats share a common data model. They use identical approaches to describe and organize clips of essence into <i>tracks</i> (AAF term is <i>slots</i>) which are in turn collected into different <i>packages</i> (AAF term is <i>Mobs</i> or Metadata objects) to be sequenced. The way in which data is physically written onto a disk, tape or other storage medium is different; AAF uses Microsoft's Structured Storage specification while MXF wraps essences in the Generic Container, which is system-independent. </p>
 			<p>The underlying MXF and AAF data model is the same to ensure interoperability, although SMPTE EG42:2004 states that "MXF has extended the AAF object model to introduce descriptive metadata tracks that can be used to describe the content of the essence container," (p. 5) and "Note that not all AAF implementations will support the encoding and decoding of MXF descriptive metadata." (p. 9) </p>
 			<p>A background paper from Linux Media Arts (no longer available online as of February 2009) stated that "MXF is an object subset of AAF . . . . MXF was designed for less complex (less vertically rich) metadata applications, such as news editing and video streaming from servers. Because of its flatter metadata structure, it is better suited to be used as a metadata wrapper within a video signal or a TCP/IP stream. . . . For post-production, one of the most important points about MXF video and metadata is that MXF will seamlessly interoperate with AAF-based post-production environments. The less extensive MXF metadata can be accepted in full by AAF-based workstations, and AAF metadata can be flattened out to become the sleeker MXF metadata.  Thanks to the zero-divergence policy of the AAF and MXF proponents, the formats are fully interoperable with one another. All MXF metadata is understood by AAF, but if some AAF-specific metadata is not defined within the MXF standard, the non-MXF compliant metadata will be filtered and flattened out when being encoded as MXF." </p>
-			<p>Regarding timecode, one implementation has been articulated by the European Broadcasting Union (EBU) as <a href="http://tech.ebu.ch/docs/r/r122.pdf">Recommendation R122-2010</a>, <i>Material Exchange Format - Timecode Implementation</i>.  This recommendation defines an encoding of source timecode into MXF files. For MXF encoders, the placement of source timecode in the MXF header metadata for all currently defined operational patterns is defined. The placement of source timecode in frame-wrapped and, for EBU recommended essence formats, in clip-wrapped essence containers is also defined. </p>
+			<p>Regarding timecode, one implementation has been articulated by the European Broadcasting Union (EBU) as <a href="https://tech.ebu.ch/docs/r/r122.pdf">Recommendation R122-2010</a>, <i>Material Exchange Format - Timecode Implementation</i>.  This recommendation defines an encoding of source timecode into MXF files. For MXF encoders, the placement of source timecode in the MXF header metadata for all currently defined operational patterns is defined. The placement of source timecode in frame-wrapped and, for EBU recommended essence formats, in clip-wrapped essence containers is also defined. </p>
 		</fdd:general>
 		<fdd:history>
 			<p>MXF and <fddLink id="fdd000004">AAF_1_1</fddLink> seem to have developed during the same period, i.e., approximately 1998-2004, with many of the same players participating.  The <i>MXF</i> page at the Pro-MPEG Forum Web site (not available in August 2007) reported this about MXF: "The Professional-MPEG Forum formed in 1998 to support open standards for emerging new professional television applications. For new workflows and improved material sharing, both the SMPTE and the EBU in Europe recognised the need for an open and standardized file format. Although there were several file formats in use, until recently none offered the advanced functionality required by sophisticated material management systems.  The Professional-MPEG Forum accepted the challenge and assembled a team of specialists not only from the manufacturing industry but also consisting of end-users. The work started in 1999, first by establishing the user requirements and then setting about implementation in the Material eXchange Format (MXF).  After 5 years of Pro-MPEG Forum celebrated the successful standardization through SMPTE of the MXF at NAB2004."</p>
@@ -319,13 +319,13 @@ And Related Items</a>). Applications may be developed to input and output metada
 				<fdd:specReference>SMPTE RDD 9-2009. MXF Interoperability Specification of Sony MPEG Long GOP Products</fdd:specReference>
 			</fdd:citation>
 			<fdd:citation>
-				<fdd:specReference>SMPTE metadata registry spreadsheet <a href="http://www.smpte-ra.org/mdd/">menu</a> (http://www.smpte-ra.org/mdd/).  This is not MXF-specific; the documents linked from this site pertain to the SMPTE Metadata Dictionary as specified in RP210-12-2010 and to the SMPTE Labels Registry as specified in RP 224v11:2010</fdd:specReference>
+				<fdd:specReference>SMPTE metadata registry spreadsheet <a href="https://web.archive.org/web/20120626022726/http://www.smpte-ra.org/mdd/">menu</a> (http://www.smpte-ra.org/mdd/ available through Internet Archive).  This is not MXF-specific; the documents linked from this site pertain to the SMPTE Metadata Dictionary as specified in RP210-12-2010 and to the SMPTE Labels Registry as specified in RP 224v11:2010</fdd:specReference>
 			</fdd:citation>
 			<fdd:citation>
-				<fdd:specReference>EBU Recommendation R121-2007, Material Exchange Format - Basic User Metadata Implementation. (<a href="http://tech.ebu.ch/docs/r/r121.pdf">http://tech.ebu.ch/docs/r/r121.pdf</a>)</fdd:specReference>
+				<fdd:specReference>EBU Recommendation R121-2007, Material Exchange Format - Basic User Metadata Implementation. (<a href="https://tech.ebu.ch/docs/r/r121.pdf">https://tech.ebu.ch/docs/r/r121.pdf</a>)</fdd:specReference>
 			</fdd:citation>
 			<fdd:citation>
-				<fdd:specReference>EBU Recommendation R122-2010, Material Exchange Format - Timecode Implementation, version 2.0. (<a href="http://tech.ebu.ch/docs/r/r122.pdf">http://tech.ebu.ch/docs/r/r122.pdf</a>)</fdd:specReference>
+				<fdd:specReference>EBU Recommendation R122-2010, Material Exchange Format - Timecode Implementation, version 2.0. (<a href="https://tech.ebu.ch/docs/r/r122.pdf">https://tech.ebu.ch/docs/r/r122.pdf</a>)</fdd:specReference>
 			</fdd:citation>
 		</fdd:citations>
 	</fdd:formatSpecifications>
@@ -333,14 +333,14 @@ And Related Items</a>). Applications may be developed to input and output metada
 		<fdd:urls>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.ietf.org/rfc/rfc4539.txt</link>
+					<link>https://www.ietf.org/rfc/rfc4539.txt</link>
 					<tag>RFC 4539</tag>
 					<comment>IETF Media Type Registration for MXF, May 2006.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.amwa.tv/projects/application_specifications.shtml</link>
+					<link>https://www.amwa.tv/specifications</link>
 					<tag>AMWA Application Specifications for MXF</tag>
 				</fdd:urlReference>
 			</fdd:url>
@@ -353,20 +353,20 @@ And Related Items</a>). Applications may be developed to input and output metada
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.mog-solutions.com/</link>
-					<tag>MOG Solutions</tag>
+					<link>https://web.archive.org/web/20081118225237/http://www.mog-solutions.com/</link>
+					<tag>MOG Solutions (link available through Internet Archive)</tag>
 					<comment>Vendor of MXF tools.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.media-matters.net/docs/resources/Wrapper-Container%20File%20Formats/General/IBCSonyXMLDictionary.pdf</link>
-					<tag>XML Based Dictionaries for MXF/AAF Applications</tag>
+					<link>https://web.archive.org/web/20110725090839/http://www.media-matters.net/docs/resources/Wrapper-Container%20File%20Formats/General/IBCSonyXMLDictionary.pdf</link>
+					<tag>XML Based Dictionaries for MXF/AAF Applications (link available through Internet Archive)</tag>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.ebu.ch/en/technical/trev/trev_291-devlin.pdf</link>
+					<link>https://web.archive.org/web/20090419042112/http://www.ebu.ch/en/technical/trev/trev_291-devlin.pdf</link>
 					<tag>MXF--the Material Exchange Format</tag>
 					<comment>By Bruce Devlin of Snell &#38; Wilcox for the EBU Technical Review, July 2002.</comment>
 				</fdd:urlReference>

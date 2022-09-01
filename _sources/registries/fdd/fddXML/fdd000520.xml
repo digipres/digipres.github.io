@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000520" titleName="GeoPackage Encoding Standard (OGC) Format Family" shortName="GeoPackage_family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000520" titleName="GeoPackage Encoding Standard (OGC) Format Family" shortName="GeoPackage_family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
@@ -33,11 +33,7 @@
 			<p>A GeoPackage is a platform-independent SQLite database file that contains data and
 metadata tables with names and structures having definitions, integrity assertions, format limitations
 and content constraints as described in the OGC GeoPackage Encoding Standard from the Open Geospatial Consortium. The first version of this standard was published in February 2014.  All versions of the GeoPackage Encoding Standard are based on <fddLink id="fdd000461">version 3 of the SQLite file format</fddLink>. As described in <a href="https://www.ogc.org/blog/3148">#GeoPackageDay 2020 - what is GeoPackage? (February 2020)</a>, in addition to interoperability, GeoPackage was devised with three main goals in mind: to be a convenient, efficient container for geospatial information; to enable operations in all computing environments, including those with Disconnected, Degraded, Intermittent, or Limited (DDIL) network connectivity; and to be extensible, allowing it to evolve to meet future operational needs.</p>
-			<p>The GeoPackage Encoding Standard specifies GeoPackages for exchange and GeoPackage SQLite Extensions that permit direct use, without
-intermediate format translations, of vector geospatial features and/or tile matrix sets of earth images and raster maps at various
-scales. GeoPackages are designed to be interoperable across enterprise and personal computing environments and
-usable on mobile devices with
-limited connectivity and bandwidth.  An important use case for the design of GeoPackage was for mobile device use, leading to an emphasis on compactness and computatonal efficiency. The SQLite database file format is a binary format and uses b-trees to store table data.  B-trees support rapid access to data within tables, and are a basic technique used for organizing data for sorting and searching.  The specification cites the particular b-tree algorithms used.  The algorithms are described in Donald Knuth&apos;s <i>The Art of Computer Programming</i> [<a href="http://lccn.loc.gov/97002147">LCCN: 97002147</a>], Volume 3, pages 471-479.</p>
+			<p>The GeoPackage Encoding Standard specifies GeoPackages for exchange and GeoPackage SQLite Extensions that permit direct use, without intermediate format translations, of vector geospatial features and/or tile matrix sets of earth images and raster maps at various scales. GeoPackages are designed to be interoperable across enterprise and personal computing environments and usable on mobile devices with limited connectivity and bandwidth.  An important use case for the design of GeoPackage was for mobile device use, leading to an emphasis on compactness and computational efficiency. The SQLite database file format is a binary format and uses b-trees to store table data.  B-trees support rapid access to data within tables, and are a basic technique used for organizing data for sorting and searching.  The specification cites the particular b-tree algorithms used.  The algorithms are described in Donald Knuth's <i>The Art of Computer Programming</i> [<a href="http://lccn.loc.gov/97002147">LCCN: 97002147</a>], Volume 3, pages 471-479.</p>
 			<p>A useful diagram of the database tables in a GeoPackage is <a href="https://www.geopackage.org/spec/#geopackage_tables_figure">Figure 1</a> in the Introduction to the standard.  A more detailed <a href="https://www.geopackage.org/spec121/#_geopackage_tables_detailed_diagram">diagram</a> is in Appendix B, clause B.11, as Figure 4. </p>
 			<p>A GeoPackage has two required tables:</p>
 			<ul>
@@ -103,14 +99,22 @@ to provide the support necessary to implement the hierarchical metadata models a
 				<fdd:typeOfRelationship>Has extension</fdd:typeOfRelationship>
 				<fdd:comment>Extensions documented in separate specifications and not described separately on this website.  See extensions listed at <a href="https://www.ogc.org/standards/geopackage">https://www.ogc.org/standards/geopackage</a>.</fdd:comment>
 			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000548</fdd:id>
+					<fdd:shortName>WKT</fdd:shortName>
+					<fdd:titleName>Well-known Text</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
 		<fdd:experience>None directly.</fdd:experience>
-		<fdd:preference>The Library of Congress Recommended Formats Statement (RFS) designates GeoPackage as a &quot;preferred&quot; format for GIS Vector and Raster Combined content for <a href="https://www.loc.gov/preservation/resources/rfs/geo-carto.html">GIS, Geospatial and Non-GIS Cartographic</a> collections.  The RFS does not specify a version of GeoPackage.</fdd:preference>
+		<fdd:preference>The Library of Congress Recommended Formats Statement (RFS) designates GeoPackage as a &quot;preferred&quot; format for GIS Vector Data, GIS Vector and Raster Combined data, as well as GIS Raster and Georeferenced Images for <a href="https://www.loc.gov/preservation/resources/rfs/geo-carto.html">GIS, Geospatial and Non-GIS Cartographic</a> collection materials.  The RFS does not specify a version of GeoPackage.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
-		<fdd:disclosure>Open standard, documented in freely available specifications.  Developed and maintained by the Geopackage Standards Working Group (SWG) of the Open Geospatial Consortium (<a href="https://www.ogc.org/">OGC</a>).  See <a href="https://portal.opengeospatial.org/files/?artifact_id=59613&amp;version=1">Charter</a> for the GeoPackage SWG.  Information about the development work is available on the Geopackage.org website (<a href="https://www.geopackage.org/">https://www.geopackage.org/</a>), which provides access to the current working version as well as earlier versions approved by the OGC.</fdd:disclosure>
+		<fdd:disclosure>Open standard, documented in freely available specifications.  Developed and maintained by the Geopackage Standards Working Group (SWG) of the Open Geospatial Consortium (<a href="https://www.ogc.org/">OGC</a>).  See <a href="https://portal.opengeospatial.org/files/?artifact_id=59613">Charter</a> for the GeoPackage SWG.  Information about the development work is available on the Geopackage.org website (<a href="https://www.geopackage.org/">https://www.geopackage.org/</a>), which provides access to the current working version as well as earlier versions approved by the OGC.</fdd:disclosure>
 		<fdd:documentation>
 			<p>The GeoPackage specifications can be downloaded from two locations:</p>
 			<ul>
@@ -275,7 +279,7 @@ geometry types, additional SQL geometry functions, and WebP as an additional til
 		<fdd:urls>
 			<fdd:url>
 				<fdd:urlGroup>
-					<fdd:intro>Adopted versions of the GeoPackage Encoding Standard are accessible from <a href="https://www.ogc.org/standards/geopackage">https://www.ogc.org/standards/geopackage</a>.  If corrigenda have been approved, the version listed below is the corrected document.  The links to ndividual specifications are to PDF files.</fdd:intro>
+					<fdd:intro>Adopted versions of the GeoPackage Encoding Standard are accessible from <a href="https://www.ogc.org/standards/geopackage">https://www.ogc.org/standards/geopackage</a>.  If corrigenda have been approved, the version listed below is the corrected document.  The links to individual specifications are to PDF files.</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
 							<link>http://www.opengeospatial.org/standards/geopackage</link>

@@ -27,7 +27,7 @@
 		</fdd:keywords>
 		<fdd:description>
 			<p>The XPS (XML Paper Specification) format, developed by Microsoft, serves as a fixed-page document format, a spool file format, and a page description language (PDL) for printers.  The XPS format was designed as a &quot;paginated representation of electronic paper that is based on XML,&quot;  developed to be an important component of printer support in <a href="https://en.wikipedia.org/wiki/Windows_Vista">Windows Vista</a> (released for distribution in January 2007) but also to be a platform-independent format that could be viewed and printed
-without the application used to create it. In September 2007, Microsoft submitted a re-organized version of its XPS specification to Ecma International for approval as an international standard.  See <a href="https://www.ecma-international.org/activities/XML%20Paper%20Specification/XPS%20Standard.pdf">XML Paper Specification: Working draft 1.0.1</a>.  After a few further modifications, <a href="https://www.ecma-international.org/publications/standards/Ecma-388.htm">ECMA-388: Open XML Paper Specification (OpenXPS)</a> was published in June 2009.  See <fddLink id="fdd000513">OpenXPS</fddLink>.</p>
+without the application used to create it. In September 2007, Microsoft submitted a re-organized version of its XPS specification to Ecma International for approval as an international standard.  See <a href="https://www.ecma-international.org/wp-content/uploads/XPS-Standard.pdf">XML Paper Specification: Working draft 1.0.1</a>.  After a few further modifications, <a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-388/">ECMA-388: Open XML Paper Specification (OpenXPS)</a> was published in June 2009.  See <fddLink id="fdd000513">OpenXPS</fddLink>.</p>
 			<p>The XPS document format represents a set of related pages with fixed layout, which are organized as
 one or more documents to be printed together.  A file in this format
 must include everything necessary to fully render its content on a display device or physical medium (for
@@ -46,9 +46,9 @@ individual pages.   See <a href="#notes">Notes</a> below for details of the form
 				<br/>&lt;Path Fill=&quot;#FFFFA500&quot; RenderTransform=&quot;1, 0, 0, 1, 60, 120&quot; Data=&quot;F0 M 0, 0 L 150, 0 150, 150 0, 150Z&quot; /&gt;<br/>
 				<i># finally, the static resource with Key &quot;b0&quot; (i.e., the photograph) is used to fill a specified rectangle</i>
 				<br/>&lt;Path Fill=&quot;{StaticResource b0}&quot; RenderTransform=&quot;1, 0, 0, 1, 40, 140&quot; Data=&quot;F0 M 0, 0 L 150, 0 150, 150 0, 150Z&quot; /&gt;<br/>&lt;/Canvas&gt;<br/>&lt;/FixedPage&gt;</p>
-			<p>The logical form of an XPS document is a hierarchy of &quot;parts&quot; in an Open Packaging Conventions (OPC) package, using Version 6.2.0 of the <fddLink id="fdd000355">ZIP</fddLink> format as physical container.  The normative reference in the XPS specification for OPC is to <a href="http://www.ecma-international.org/publications/files/ECMA-ST/Office%20Open%20XML%201st%20edition%20Part%202%20(PDF).zip">ECMA-376, Edition 1: Part 2, Open
+			<p>The logical form of an XPS document is a hierarchy of &quot;parts&quot; in an Open Packaging Conventions (OPC) package, using Version 6.2.0 of the <fddLink id="fdd000355">ZIP</fddLink> format as physical container.  The normative reference in the XPS specification for OPC is to <a href="https://web.archive.org/web/20200721010354/http://www.ecma-international.org/publications/files/ECMA-ST/Office%20Open%20XML%201st%20edition%20Part%202%20(PDF).zip">ECMA-376, Edition 1: Part 2, Open
 Packaging Conventions</a> (December 2006), but an XPS file will also conform to the successor <fddLink id="fdd000363">OPC/OOXML</fddLink> as described on this website. </p>
-			<p>The parts in an XPS file represent a fixed payload, which has at its root a FixedDocumentSequence part, allowing one or more documents to be stored in the same XPS package, each in a FixedDocument part. A FixedDocument part is an easily indexed root for all pages within the document, identifying a sequence of FixedPage parts and an optional DocumentStructure part (which can support an outline, table of contents, and internal links).  In addition to the markup illustrated above, a FixedPage part can also incorporate chunks of text and graphics stored in a separate StoryFragments part.  The hierarchy of parts is shown in one form as <a href="https://docs.microsoft.com/en-us/archive/msdn-magazine/2006/january/images/cc163664.fig01.gif">Figure 1: Logical Hierarchy of an XPS Document</a>, a diagram in <a href="https://docs.microsoft.com/en-us/archive/msdn-magazine/2006/january/introducing-apis-for-creating-xml-paper-specification-documents">A First Look at APIs For Creating XML Paper Specification Documents</a>.  Figure 2 on page 10 of the <a href="https://www.ecma-international.org/activities/XML%20Paper%20Specification/TC46%20XPS%20White%20Paper.pdf">Ecma OpenXPS Whitepaper (TC46)</a> shows a more complete set of possible parts in the package for an XPS document.</p>
+			<p>The parts in an XPS file represent a fixed payload, which has at its root a FixedDocumentSequence part, allowing one or more documents to be stored in the same XPS package, each in a FixedDocument part. A FixedDocument part is an easily indexed root for all pages within the document, identifying a sequence of FixedPage parts and an optional DocumentStructure part (which can support an outline, table of contents, and internal links).  In addition to the markup illustrated above, a FixedPage part can also incorporate chunks of text and graphics stored in a separate StoryFragments part.  The hierarchy of parts is shown in one form as <a href="https://docs.microsoft.com/en-us/archive/msdn-magazine/2006/january/images/cc163664.fig01.gif">Figure 1: Logical Hierarchy of an XPS Document</a>, a diagram in <a href="https://docs.microsoft.com/en-us/archive/msdn-magazine/2006/january/introducing-apis-for-creating-xml-paper-specification-documents">A First Look at APIs For Creating XML Paper Specification Documents</a>.  Figure 2 on page 10 of the <a href="https://www.ecma-international.org/wp-content/uploads/TC46-XPS-White-Paper.pdf">Ecma OpenXPS Whitepaper (TC46)</a> shows a more complete set of possible parts in the package for an XPS document.</p>
 			<p>In the OPC package, the relationships between parts are defined through links from source parts to named target parts using a URI syntax for the names.  There are no constraints in the XPS specification or schemas on the naming of parts beyond those relating to characters allowed by the OPC specification.  However, the section <i>2.2 Part Naming Recommendations</i> in the XPS specification recommends a well-defined, human-readable naming convention for parts, so that the package is easier to browse when unzipped and specific parts are more easily located. Following this convention, the parts in an example XPS file containing two documents might be named as follows:</p>
 			<p>/FixedDocSeq.fdseq
 <br/>/Documents/1/FixedDocument.fdoc
@@ -78,8 +78,7 @@ FixedPage parts.</p>
 		<fdd:relationships>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
-				<fdd:comment>XPS is a subtype of <a href="http://www.ecma-international.org/publications/files/ECMA-ST/Office%20Open%20XML%201st%20edition%20Part%202%20(PDF).zip">ECMA-376, Edition 1: Part 2, Open
-Packaging Conventions</a> (December 2006), which is a predecessor to OPC/OOXML as described on this website.  Edition 1 of <a href="http://www.ecma-international.org/publications/standards/Ecma-376.htm">ECMA-376</a> has not been described separately on this website.  See <a href="#notes">Notes</a> below for information on the version of OPC that is the basis for MS-XPS and minor differences between that version and <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>. </fdd:comment>
+				<fdd:comment>XPS is a subtype of <a href="https://web.archive.org/web/20200721010354/http://www.ecma-international.org/publications/files/ECMA-ST/Office%20Open%20XML%201st%20edition%20Part%202%20(PDF).zip">ECMA-376, Edition 1: Part 2, Open Packaging Conventions</a> (December 2006), which is a predecessor to OPC/OOXML as described on this website.  Edition 1 of <a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-376/">ECMA-376</a> has not been described separately on this website.  See <a href="#notes">Notes</a> below for information on the version of OPC that is the basis for MS-XPS and minor differences between that version and <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>. </fdd:comment>
 			</fdd:relationship>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
@@ -88,7 +87,7 @@ Packaging Conventions</a> (December 2006), which is a predecessor to OPC/OOXML a
 					<fdd:shortName>ZIP_6_2_0</fdd:shortName>
 					<fdd:titleName>ZIP File Format, Version 6.2.0 (PKWARE)</fdd:titleName>
 				</fdd:relatedTo>
-				<fdd:comment>Various features of the ZIP File Format are not permitted in OPC and thus not in XPS.  Details on the use of ZIP in OPC are in section 9 and Annex C of <a href="http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-376,%20Fourth%20Edition,%20Part%202%20-%20Open%20Packaging%20Conventions.zip">ECMA-376, Edition 1: Part 2, Open Packaging Conventions</a>.</fdd:comment>
+				<fdd:comment>Various features of the ZIP File Format are not permitted in OPC and thus not in XPS.  Details on the use of ZIP in OPC are in section 9 and Annex C of <a href="https://web.archive.org/web/20191226123431/http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-376,%20Fourth%20Edition,%20Part%202%20-%20Open%20Packaging%20Conventions.zip">ECMA-376, Edition 1: Part 2, Open Packaging Conventions</a>.</fdd:comment>
 			</fdd:relationship>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
@@ -97,7 +96,7 @@ Packaging Conventions</a> (December 2006), which is a predecessor to OPC/OOXML a
 					<fdd:shortName>MCE/OOXML_2012</fdd:shortName>
 					<fdd:titleName>Markup Compatibility and Extensibility (Office Open XML)</fdd:titleName>
 				</fdd:relatedTo>
-				<fdd:comment>Formally, an XPS document may employ markup from the Markup Compatibility and Extensibility (MCE) schema defined in ECMA-376 1st edition Part 5 (December 2006). Edition 1 of <a href="http://www.ecma-international.org/publications/standards/Ecma-376.htm">ECMA-376</a> has not been described separately on this website. Between 2006 and 2015, there was no change in the MCE format significant to the XPS format.  All editions of ECMA-376 and ISO/IEC 29500-3 through 2015 use the same namespace for MCE: <i>http://schemas.openxmlformats.org/markup-compatibility/2006</i>.</fdd:comment>
+				<fdd:comment>Formally, an XPS document may employ markup from the Markup Compatibility and Extensibility (MCE) schema defined in ECMA-376 1st edition Part 5 (December 2006). Edition 1 of <a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-376/">ECMA-376</a> has not been described separately on this website. Between 2006 and 2015, there was no change in the MCE format significant to the XPS format.  All editions of ECMA-376 and ISO/IEC 29500-3 through 2015 use the same namespace for MCE: <i>http://schemas.openxmlformats.org/markup-compatibility/2006</i>.</fdd:comment>
 			</fdd:relationship>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Has later version</fdd:typeOfRelationship>
@@ -160,12 +159,11 @@ of content protection, other than obfuscation of embedded fonts, which is requir
 	<fdd:qualityAndFunctionalityFactors>
 		<fdd:stillImageQF>
 			<fdd:normalImage>An XPS file may consist of a single image or have images positioned on fixed pages.  Formats permitted are: JPEG in <fddLink id="fdd000018">JFIF</fddLink> or <fddLink id="fdd000147">EXIF</fddLink> containers; <fddLink id="fdd000153">PNG</fddLink>; <fddLink id="fdd000022">TIFF</fddLink> (compressed and uncompressed); and Windows Media Photo (<fddLink id="fdd000243">WMP</fddLink>), later known as HD Photo and JPEG XR.  See specific formats for additional detail on image quality factors.</fdd:normalImage>
-			<fdd:clarity>High-quality color for printing, includng the printing of photographs, was an important objective for XPS.  Excellent support for high spatial resolution and high bit-depth for colors, depending on the image format used.  See <a href="https://web.archive.org/web/20051027034803/http://www.microsoft.com/whdc/xps/vista_print.mspx">XPS and Color Printing Enhancements in Windows Vista (September 2005)</a>.</fdd:clarity>
+			<fdd:clarity>High-quality color for printing, including the printing of photographs, was an important objective for XPS.  Excellent support for high spatial resolution and high bit-depth for colors, depending on the image format used.  See <a href="https://web.archive.org/web/20051027034803/http://www.microsoft.com/whdc/xps/vista_print.mspx">XPS and Color Printing Enhancements in Windows Vista (September 2005)</a>.</fdd:clarity>
 			<fdd:colorMaint>XPS producers and consumers must support sRGB,
 scRGB, and CMYK color data and provide color management
-using ICC Version 2.1.0 profiles.  See <a href="http://www.color.org/icc34.pdf">ICC Profile Format Specification, Version 3.4 (August 15, 1997)</a>, which is a normative reference for the XPS 1.0 specification.</fdd:colorMaint>
-			<fdd:graphics>XPS has rich support for 2D vector graphics, using markup defined in the XPS specification, which is compatible with the markup used for graphics to be rendered on the screen in the <a href="https://docs.microsoft.com/en-us/dotnet/framework/wpf/">Windows Presentation Foundation</a>, also introduced with Windows Vista.  Drawing operations supported include line, horizontal line, vertical line, cubic Bézier curve,
-quadratic Bézier curve, smooth cubic Bézier curve, and elliptical arc.  A region can be filled with a solid color, a raster image, a drawing, or color gradients (linear or radial).</fdd:graphics>
+using ICC Version 2.1.0 profiles.  See <a href="https://www.color.org/icc34.pdf">ICC Profile Format Specification, Version 3.4 (August 15, 1997)</a>, which is a normative reference for the XPS 1.0 specification.</fdd:colorMaint>
+			<fdd:graphics>XPS has rich support for 2D vector graphics, using markup defined in the XPS specification, which is compatible with the markup used for graphics to be rendered on the screen in the <a href="https://docs.microsoft.com/en-us/dotnet/desktop/wpf/?view=netdesktop-5.0">Windows Presentation Foundation</a>, also introduced with Windows Vista.  Drawing operations supported include line, horizontal line, vertical line, cubic Bézier curve, quadratic Bézier curve, smooth cubic Bézier curve, and elliptical arc.  A region can be filled with a solid color, a raster image, a drawing, or color gradients (linear or radial).</fdd:graphics>
 		</fdd:stillImageQF>
 		<fdd:textQF>
 			<fdd:normalText>
@@ -245,7 +243,7 @@ code unit and has a single corresponding glyph representation in a font.  A mapp
 			<p>
 				<b>XPS enhancements for color printing and graphics in Windows Vista</b>:  XPS was designed to address increasing demand for color laser printing and color fidelity and increasing use of advanced graphics and color in documents.  XPS introduced 16-bits-per-channel color printing, twice the existing standard at the time, and integrated support for the wide color gamut <a href="https://en.wikipedia.org/wiki/ScRGB">scRGB</a> color space.  XPS printing provided more faithful rendering of graphics attributes such as gradients and transparency though native support of these attributes in the XPS spool file format.  For vector graphics, XPS specifies markup for graphics primitives compatible with the Windows Presentation Foundation markup introduced for screen display in Windows Vista (e.g., Path, Brush, and Glyphs).</p>
 			<p>
-				<b>Version of OPC on which OpenXPS is based:</b> OpenXPS and Microsoft&apos;s XPS formats are subtypes of the Open Packaging Conventions (OPC) as specified in <a href="http://www.ecma-international.org/publications/files/ECMA-ST/Office%20Open%20XML%201st%20edition%20Part%202%20(PDF).zip">ECMA-376, Part 2, 1st edition (December 2006)</a>. The only significant difference between this and later versions of OPC, including ISO/IEC 29500-2 versions through <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>, is an expansion of characters permitted in names for parts in a package.  In contrast to <i>ECMA-376, Part 2, 1st edition</i>, later editions permit part names in the package to be IRIs (Internationalized Resource Identifiers) as defined in <a href="http://www.ietf.org/rfc/rfc3987.txt">RFC 3987</a>, not simply URIs as defined in <a href="http://www.ietf.org/rfc/rfc3986.txt">RFC 3986</a>.  Since this was an extension to OPC rather than a restriction, XPS files are also subtypes of <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>.  [Note: Editions of OPC published since 2008 as ISO/IEC 29500-2 and ECMA-376 Part 2 describe the same format, with textual changes representing corrections and clarifications.  The same namespaces and package-wide relationships defined in ECMA-376 Part 2 are valid in ISO/IEC 29500-2: 2012, the most recent published version of this part of ISO/IEC 29500 as of late 2019.]</p>
+				<b>Version of OPC on which OpenXPS is based:</b> OpenXPS and Microsoft&apos;s XPS formats are subtypes of the Open Packaging Conventions (OPC) as specified in <a href="https://web.archive.org/web/20200721010354/http://www.ecma-international.org/publications/files/ECMA-ST/Office%20Open%20XML%201st%20edition%20Part%202%20(PDF).zip">ECMA-376, Part 2, 1st edition (December 2006)</a>. The only significant difference between this and later versions of OPC, including ISO/IEC 29500-2 versions through <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>, is an expansion of characters permitted in names for parts in a package.  In contrast to <i>ECMA-376, Part 2, 1st edition</i>, later editions permit part names in the package to be IRIs (Internationalized Resource Identifiers) as defined in <a href="https://www.ietf.org/rfc/rfc3987.txt">RFC 3987</a>, not simply URIs as defined in <a href="https://www.ietf.org/rfc/rfc3986.txt">RFC 3986</a>.  Since this was an extension to OPC rather than a restriction, XPS files are also subtypes of <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>.  [Note: Editions of OPC published since 2008 as ISO/IEC 29500-2 and ECMA-376 Part 2 describe the same format, with textual changes representing corrections and clarifications.  The same namespaces and package-wide relationships defined in ECMA-376 Part 2 are valid in ISO/IEC 29500-2: 2012, the most recent published version of this part of ISO/IEC 29500 as of late 2019.]</p>
 			<p>
 				<b>Formats allowed for embedded resources: </b>  The raster image formats that can be embedded in an XPS document were selected for their wide support: JPEG in <fddLink id="fdd000018">JFIF</fddLink> or <fddLink id="fdd000147">EXIF</fddLink> containers; <fddLink id="fdd000153">PNG</fddLink>; <fddLink id="fdd000022">TIFF</fddLink> (compressed and uncompressed); and Windows Media Photo (<fddLink id="fdd000243">WMP</fddLink>), later known as HD Photo and JPEG XR.</p>
 			<p>Fonts are stored in font parts. All fonts used in XPS documents must adhere to the OpenType font format. As normative references, the XPS specification cites <a href="https://docs.microsoft.com/en-us/typography/opentype/otspec140/">version 1.4 of Microsoft&apos;s OpenType Specification</a> and Microsoft&apos;s <a href="https://web.archive.org/web/20011115000607/http://www.microsoft.com/typography/otspec/otff.htm">OpenType Font File specification from 2001</a>.  The OpenType specification incorporates TrueType and CFF font formats. To support portability,
@@ -259,12 +257,12 @@ TrueType collections.</p>
 		<fdd:history>
 			<p>XPS was deployed for public use in January 2007 as part of Windows Vista.  Many of the components of Vista had been made available to developers, using the codename Longhorn, over the previous few years.  At the Windows Hardware Engineering Conference (WinHEC) in May 2004, Microsoft introduced the &quot;Longhorn NextGen Printing Architecture.&quot;  See <a href="https://web.archive.org/web/20040615190449/http://www.microsoft.com/whdc/device/print/default.mspx">Printing - Architecture and Driver Support</a> from WHDC in June 2004. By <a href="https://web.archive.org/web/20050508224729/http://www.microsoft.com/whdc/device/print/default.mspx">early 2005</a> the printing architecture was known as Metro and a preliminary specification (version 0.7) was available for the document format specification. By <a href="https://web.archive.org/web/20051017154325/http://www.microsoft.com/whdc/device/print/default.mspx">October 2005</a>, Metro had been renamed as XPS (XML Paper Specification).</p>
 			<p>Microsoft encouraged the use of XPS by others, making a preliminary specification for XPS available under the codename Metro (as version 0.7) for download by developers in May 2005.  <a href="https://web.archive.org/web/20051026083438/http://download.microsoft.com/download/D/A/A/DAA7245D-E01D-46A4-AB70-3A95ED3F6934/DocTechnologiesFS.doc">Metro Document Technologies: Fact Sheet
-(April 25, 2005)</a> indicated that Microsoft planned to offer a royalty-free license for Metro when the specification and documentation were final.  By October 2005, version 0.75 of the specification was available under a royalty-free license.  The <a href="https://web.archive.org/web/20061214130003/http://www.microsoft.com/whdc/xps/downloads.mspx">XPS page as of December 2006</a> made version 1.0 of the specification available.  This openness was in keeping with a general move by Microsoft at the time towards platform-independent interoperability for its most widely used products. For example, in December 2005, a Technical Committee of the Ecma International standards organization (<a href="https://www.ecma-international.org/memento/tc45.htm">TC45</a>) was established to review documentation for the proposed Office Open XML (OOXML) specification submitted by Microsoft.  OOXML was approved as an international standard (<a href="http://www.ecma-international.org/publications/standards/Ecma-376.htm">ECMA-376</a>, 1st edition) in December 2006.  The container format used by XPS is the Open Packaging Conventions (OPC) format, published as <a href="http://www.ecma-international.org/publications/files/ECMA-ST/Office%20Open%20XML%201st%20edition%20Part%202%20(PDF).zip">Part 2 of ECMA 376, 1st edition</a>.</p>
-			<p>Windows Vista included a redesigned print architecture, built around Windows Presentation Foundation (WPF). See <a href="https://docs.microsoft.com/en-us/dotnet/framework/wpf/advanced/printing-overview">WPF: Printing Overview</a>. Through the use of XPS, the new print architecture provided high-fidelity color printing through improved use of color management, removed limitations of the previous print subsystem, and added support for printing advanced effects such as gradients, transparency layers, etc. 
-The print subsystem in Windows Vista implemented a new print path based on XPS.  The <a href="https://docs.microsoft.com/en-us/dotnet/framework/wpf/advanced/printing-overview#xps-print-path">XPS Print Path</a> used XPS files as the print spooler format and implemented high quality 16-bit color printing.  Applications using WPF for the user interface display (which included Office 2007 applications) could print directly to the XPS print path without the need for image or colorspace conversion.  The Microsoft XPS Document Writer was introduced as a &quot;print-to-file converter&quot; (a virtual printer) that allowed users to create XPS Document files.</p>
-			<p>When Microsoft announced the Metro format in April 2005, as pointed out in <a href="https://www.cnet.com/news/microsoft-gunning-for-adobes-pdf-format/">Microsoft gunning for Adobe&apos;s PDF format?</a> from C|Net, some analysts were quick to see the format as intended to be a &quot;PDF killer.&quot;  However, unlike PDF, Microsoft was not trying to create a multimedia format or a format that allowed users to fill in a form. It was trying to address increased expectations of efficiency, quality, and fidelity associated with printing by (a) using the same methodology and compatible markup for sending data to a printer that it uses for displaying data on screen and (b) using the same format for spooling to the printer as for the viewable document.  For more on these topics and informal introductions to the format, see <a href="https://web.archive.org/web/20060108215031/http://msdn.microsoft.com/msdnmag/issues/06/01/XMLPaperSpecification/default.aspx">A First Look at APIs For Creating XML Paper Specification Documents</a> from MSDN Magazine (January 2006), a <a href="https://channel9.msdn.com/blogs/scobleizer/jerry-dunietz-xml-paper-specification">video interview about XPS with Jerry Dunietz</a> from August 2005 and <a href="https://web.archive.org/web/20060319194408/http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/XPSWorkflow.doc">Document Workflow Advances in Windows Vista (January 2006)</a>.</p>
+(April 25, 2005)</a> indicated that Microsoft planned to offer a royalty-free license for Metro when the specification and documentation were final.  By October 2005, version 0.75 of the specification was available under a royalty-free license.  The <a href="https://web.archive.org/web/20061214130003/http://www.microsoft.com/whdc/xps/downloads.mspx">XPS page as of December 2006</a> made version 1.0 of the specification available.  This openness was in keeping with a general move by Microsoft at the time towards platform-independent interoperability for its most widely used products. For example, in December 2005, a Technical Committee of the Ecma International standards organization (<a href="https://www.ecma-international.org/technical-committees/tc45/">TC45</a>) was established to review documentation for the proposed Office Open XML (OOXML) specification submitted by Microsoft.  OOXML was approved as an international standard (<a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-376/">ECMA-376</a>, 1st edition) in December 2006.  The container format used by XPS is the Open Packaging Conventions (OPC) format, published as <a href="https://web.archive.org/web/20200721010354/http://www.ecma-international.org/publications/files/ECMA-ST/Office%20Open%20XML%201st%20edition%20Part%202%20(PDF).zip">Part 2 of ECMA 376, 1st edition</a>.</p>
+			<p>Windows Vista included a redesigned print architecture, built around Windows Presentation Foundation (WPF). See <a href="https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/printing-overview?view=netframeworkdesktop-4.8">WPF: Printing Overview</a>. Through the use of XPS, the new print architecture provided high-fidelity color printing through improved use of color management, removed limitations of the previous print subsystem, and added support for printing advanced effects such as gradients, transparency layers, etc. 
+The print subsystem in Windows Vista implemented a new print path based on XPS.  The <a href="https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/printing-overview?view=netframeworkdesktop-4.8#xps-print-path">XPS Print Path</a> used XPS files as the print spooler format and implemented high quality 16-bit color printing.  Applications using WPF for the user interface display (which included Office 2007 applications) could print directly to the XPS print path without the need for image or colorspace conversion.  The Microsoft XPS Document Writer was introduced as a &quot;print-to-file converter&quot; (a virtual printer) that allowed users to create XPS Document files.</p>
+			<p>When Microsoft announced the Metro format in April 2005, as pointed out in <a href="https://www.cnet.com/tech/services-and-software/microsoft-gunning-for-adobes-pdf-format/">Microsoft gunning for Adobe&apos;s PDF format?</a> from C|Net, some analysts were quick to see the format as intended to be a &quot;PDF killer.&quot;  However, unlike PDF, Microsoft was not trying to create a multimedia format or a format that allowed users to fill in a form. It was trying to address increased expectations of efficiency, quality, and fidelity associated with printing by (a) using the same methodology and compatible markup for sending data to a printer that it uses for displaying data on screen and (b) using the same format for spooling to the printer as for the viewable document.  For more on these topics and informal introductions to the format, see <a href="https://web.archive.org/web/20060108215031/http://msdn.microsoft.com/msdnmag/issues/06/01/XMLPaperSpecification/default.aspx">A First Look at APIs For Creating XML Paper Specification Documents</a> from MSDN Magazine (January 2006), a <a href="https://channel9.msdn.com/blogs/scobleizer/jerry-dunietz-xml-paper-specification">video interview about XPS with Jerry Dunietz</a> from August 2005 and <a href="https://web.archive.org/web/20060319194408/http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/XPSWorkflow.doc">Document Workflow Advances in Windows Vista (January 2006)</a>.</p>
 			<p>When XPS was released for public use with <a href="https://en.wikipedia.org/wiki/Windows_Vista">Windows Vista</a> in January 2007, it was also the basis for printer support in <a href="https://en.wikipedia.org/wiki/.NET_Framework_version_history#.NET_Framework_3.0">.NET Framework 3.0</a> and <a href="https://en.wikipedia.org/wiki/Microsoft_Office_2007">Microsoft Office 2007</a>.  See the May 2007 <a href="https://docs.microsoft.com/en-us/archive/blogs/adrianford/intro">Intro</a> from a Microsoft blog on <i>XPS et cetera</i>.</p>
-			<p>In September 2007, Microsoft submitted a version of the XPS specification to Ecma International as an initial draft for a neutral international standard. This version and several intermediate drafts are available at <a href="https://www.ecma-international.org/memento/tc46-availabledocs.htm">TC46 - Open XML Paper Specification (OpenXPS): Documents</a>.  The OpenXPS standard, <a href="https://www.ecma-international.org/publications/standards/Ecma-388.htm">ECMA-388</a>, was officially adopted by the Ecma General Assembly in June 2009.</p>
+			<p>In September 2007, Microsoft submitted a version of the XPS specification to Ecma International as an initial draft for a neutral international standard. This version and several intermediate drafts are available at <a href="https://www.ecma-international.org/technical-committees/tc46/">TC46 - Open XML Paper Specification (OpenXPS): Documents</a>.  The OpenXPS standard, <a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-388/">ECMA-388</a>, was officially adopted by the Ecma General Assembly in June 2009.</p>
 		</fdd:history>
 	</fdd:notes>
 	<fdd:formatSpecifications>
@@ -289,19 +287,17 @@ The print subsystem in Windows Vista implemented a new print path based on XPS. 
 			<fdd:url>
 				<fdd:urlGroup>
 					<fdd:intro>XPS is based on the Open Packaging Conventions (OPC) and Markup
-Compatibility and Extensibility (MCE) parts of the OOXML standard, which were published in December 2006 as parts of <a href="http://www.ecma-international.org/publications/standards/Ecma-376.htm">ECMA-376</a> and in 2008, with minor changes, as parts of ISO/IEC 29500.  Formally, XPS is based on the first ECMA-376 editions of OPC (Part 2) and MCE (Part 5).  The descriptions of <fddLink id="fdd000363">OPC</fddLink> and <fddLink id="fdd000396">MCE</fddLink> on this website are based on the 2012 editions of ISO/IEC 29500.  Links below are to the specification versions that are cited in Version 1.0 of the Microsoft specification for XPS.</fdd:intro>
+Compatibility and Extensibility (MCE) parts of the OOXML standard, which were published in December 2006 as parts of <a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-376/">ECMA-376</a> and in 2008, with minor changes, as parts of ISO/IEC 29500.  Formally, XPS is based on the first ECMA-376 editions of OPC (Part 2) and MCE (Part 5).  The descriptions of <fddLink id="fdd000363">OPC</fddLink> and <fddLink id="fdd000396">MCE</fddLink> on this website are based on the 2012 editions of ISO/IEC 29500.  Links below are to the specification versions that are cited in Version 1.0 of the Microsoft specification for XPS.</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
-							<link>http://www.ecma-international.org/publications/files/ECMA-ST/Office%20Open%20XML%201st%20edition%20Part%202%20(PDF).zip</link>
-							<tag>ECMA-376, 1st edition, Office Open XML File Formats (December 2006), Part 2, Open
-Packaging Conventions</tag>
-							<comment>PDF with 2 annexes in ZIP file.</comment>
+							<link>https://web.archive.org/web/20200721010354/http://www.ecma-international.org/publications/files/ECMA-ST/Office%20Open%20XML%201st%20edition%20Part%202%20(PDF).zip</link>
+							<tag>ECMA-376, 1st edition, Office Open XML File Formats (December 2006), Part 2, Open Packaging Conventions</tag>
+							<comment>PDF with 2 annexes in ZIP file. Available via Internet Archive.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>http://www.ecma-international.org/publications/files/ECMA-ST/Office%20Open%20XML%201st%20edition%20Part%205%20(PDF).zip</link>
-							<tag>ECMA-376, 1st edition, Office Open XML File Formats (December 2006), Part 5, Markup
-Compatibility and Extensibility</tag>
-							<comment>PDF in ZIP file</comment>
+							<link>https://web.archive.org/web/20200917212702/http://www.ecma-international.org/publications/files/ECMA-ST/Office%20Open%20XML%201st%20edition%20Part%205%20%28PDF%29.zip</link>
+							<tag>ECMA-376, 1st edition, Office Open XML File Formats (December 2006), Part 5, Markup Compatibility and Extensibility</tag>
+							<comment>PDF in ZIP file. Available via Internet Archive.</comment>
 						</fdd:urlReference>
 					</fdd:urlList>
 				</fdd:urlGroup>
@@ -335,7 +331,7 @@ Compatibility and Extensibility</tag>
 						<fdd:urlReference>
 							<link>https://web.archive.org/web/20060319194408/http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/XPSWorkflow.doc</link>
 							<tag>Document Workflow Advances in Windows Vista (January 2006) | from Microsoft WHDC</tag>
-							<comment>Includes helpful diagrams.</comment>
+							<comment>Includes helpful diagrams. Available via Internet Archive.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>https://web.archive.org/web/20060108215031/http://msdn.microsoft.com/msdnmag/issues/06/01/XMLPaperSpecification/default.aspx</link>
@@ -343,7 +339,7 @@ Compatibility and Extensibility</tag>
 							<comment>The article as presented online in January 2006.  Includes a description of the structure of an XPS document file and an example of the markup for a fixed page.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://www.ecma-international.org/activities/XML%20Paper%20Specification/TC46%20XPS%20White%20Paper.pdf</link>
+							<link>https://www.ecma-international.org/wp-content/uploads/TC46-XPS-White-Paper.pdf</link>
 							<tag>Ecma OpenXPS White Paper (June 2009) | from Ecma Technical Committee TC46</tag>
 							<comment>Although this describes the international standard known as OpenXPS and published as ECMA-388, most of what is covered is relevant for XPS, including a section entitled Rationale for an Electronic Paper Format and a diagram of an example XPS document.</comment>
 						</fdd:urlReference>
@@ -376,30 +372,32 @@ Compatibility and Extensibility</tag>
 						<fdd:urlReference>
 							<link>https://web.archive.org/web/20061007080306/http://www.microsoft.com/whdc/xps/default.mspx</link>
 							<tag>XPS (2006) | from Microsoft&apos;s Windows Hardware Development Central (WHDC)</tag>
-							<comment>States, &quot;Microsoft has integrated XPS-based technologies into the 2007 Microsoft Office system and the Microsoft Windows Vista operating system, but XPS itself is platform independent, openly published, and available royalty-free.&quot;</comment>
+							<comment>States, &quot;Microsoft has integrated XPS-based technologies into the 2007 Microsoft Office system and the Microsoft Windows Vista operating system, but XPS itself is platform independent, openly published, and available royalty-free.&quot; Available via Internet Archive.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>https://web.archive.org/web/20080305082458/http:/www.microsoft.com/whdc/xps/xpsspec.mspx</link>
 							<tag>XML Paper Specification Version 1.0 (2006) | From Microsoft WHDC</tag>
-							<comment>Available for download as a .exe file</comment>
+							<comment>Available for download as a .exe file. Via Internet Archive.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>https://web.archive.org/web/20080305050816/http:/www.microsoft.com/whdc/xps/xpscommunitypromise.mspx</link>
 							<tag>Community Promise for XPS (2007) | from Microsoft WHDC</tag>
+							<comment>Available via Internet Archive.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>https://web.archive.org/web/20061106063225/http:/www.microsoft.com/whdc/xps/xpslicense.mspx</link>
 							<tag>XML Paper Specification Licensing Overview (2006) | from Microsoft WHDC</tag>
+							<comment>Available via Internet Archive.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>https://web.archive.org/web/20070314061209/http://www.microsoft.com/whdc/xps/xpspatentlic.mspx</link>
 							<tag>XML Paper Specification Patent License (2006) | from Microsoft WHDC</tag>
-							<comment>States, &quot;Microsoft hereby grants you a royalty-free license under Microsoft&apos;s Necessary Claims to make, use, sell, offer to sell, import, and otherwise distribute Licensed Implementations solely for the purpose of reading or writing XPS Documents, or rendering XPS Documents as allowed by the XML Paper Specification.&quot;</comment>
+							<comment>States, &quot;Microsoft hereby grants you a royalty-free license under Microsoft&apos;s Necessary Claims to make, use, sell, offer to sell, import, and otherwise distribute Licensed Implementations solely for the purpose of reading or writing XPS Documents, or rendering XPS Documents as allowed by the XML Paper Specification.&quot; Available via Internet Archive.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>https://web.archive.org/web/20060627035414/http:/www.microsoft.com/whdc/xps/xpscopyright.mspx</link>
 							<tag>XML Paper Specification Copyright License (2006)</tag>
-							<comment>States that &quot;Permission to copy, display and distribute the contents of this document (the &quot;Specification&quot;), in any medium for any purpose without fee or royalty is hereby granted,&quot; provided that the copyright statement was retained in any copies.</comment>
+							<comment>States that &quot;Permission to copy, display and distribute the contents of this document (the &quot;Specification&quot;), in any medium for any purpose without fee or royalty is hereby granted,&quot; provided that the copyright statement was retained in any copies. Available via Internet Archive.</comment>
 						</fdd:urlReference>
 					</fdd:urlList>
 				</fdd:urlGroup>
@@ -427,7 +425,7 @@ Compatibility and Extensibility</tag>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://www.ecma-international.org/memento/tc46-availabledocs.htm</link>
+					<link>https://www.ecma-international.org/technical-committees/tc46/</link>
 					<tag>TC46 - Open XML Paper Specification (OpenXPS): Documents.</tag>
 					<comment>Documents associated with development of the successor OpenXPS format.</comment>
 				</fdd:urlReference>
@@ -437,7 +435,7 @@ Compatibility and Extensibility</tag>
 					<fdd:intro>Miscellaneous resources about XPS from the period between initial announcement  (as Metro) until submission to Ecma International for standardization.</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
-							<link>https://www.cnet.com/news/microsoft-gunning-for-adobes-pdf-format/</link>
+							<link>https://www.cnet.com/tech/services-and-software/microsoft-gunning-for-adobes-pdf-format/</link>
 							<tag>Microsoft gunning for Adobe&apos;s PDF format? (May 2005) | from C|Net</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
@@ -449,7 +447,7 @@ Compatibility and Extensibility</tag>
 							<tag>With XPS as PDF killer, Microsoft opens second front on Adobe (2007) | from ComputerWorld</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>http://whattheythink.com/news/31367-global-graphics-demonstrates-its-wide-range-xps/</link>
+							<link>https://whattheythink.com/news/31367-global-graphics-demonstrates-its-wide-range-xps/</link>
 							<tag>Global Graphics Demonstrates its Wide Range of XPS Printing Solutions Using the Company&apos;s Next Generation RIP and eDocument Platform (May 2007)</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
@@ -486,7 +484,7 @@ Compatibility and Extensibility</tag>
 							<tag>What Is an XPS File and Why Does Windows Want Me to Print to One? (2017) | from How-To Geek</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>http://www.rawinfopages.com/tips/2015/10/print-to-pdf-in-windows-10-and-forget-xps/</link>
+							<link>https://www.rawinfopages.com/tips/2015/10/print-to-pdf-in-windows-10-and-forget-xps/</link>
 							<tag>Print to PDF in Windows 10 and forget XPS (2015) | from Raw Computing</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
@@ -511,7 +509,7 @@ Compatibility and Extensibility</tag>
 						<fdd:urlReference>
 							<link>https://web.archive.org/web/20190112024614/https://docs.microsoft.com/en-us/previous-versions/windows/hardware/design/dn641615(v=vs.85)</link>
 							<tag>XML Paper Specification: Overview | via Internet Archive</tag>
-							<comment>Included because the resource immediately above is no longer supported and may be removed. </comment>
+							<comment>Included because the resource immediately above is no longer supported and may be removed. Available via Internet Archive.</comment>
 						</fdd:urlReference>
 					</fdd:urlList>
 				</fdd:urlGroup>
@@ -621,10 +619,12 @@ Compatibility and Extensibility</tag>
 						<fdd:urlReference>
 							<link>https://web.archive.org/web/20051022233658/http://www.microsoft.com/whdc/xps/default.mspx</link>
 							<tag> Hub for information about XPS (XML Paper Specification). (October 2005) | from Microsoft WHDC</tag>
+							<comment>Available via Internet Archive.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>https://web.archive.org/web/20051027034803/http://www.microsoft.com/whdc/xps/vista_print.mspx</link>
 							<tag>XPS and Color Printing Enhancements in Windows Vista (September 2005) | from Microsoft WHDC</tag>
+							<comment>Available via Internet Archive.</comment>
 						</fdd:urlReference>
 					</fdd:urlList>
 				</fdd:urlGroup>
@@ -636,6 +636,7 @@ Compatibility and Extensibility</tag>
 						<fdd:urlReference>
 							<link>https://web.archive.org/web/20011115000607/http://www.microsoft.com/typography/otspec/otff.htm</link>
 							<tag>The OpenType Font File (2001)</tag>
+							<comment>Available via Internet Archive.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>https://docs.microsoft.com/en-us/typography/opentype/otspec140/</link>

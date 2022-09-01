@@ -4,13 +4,14 @@ from BeautifulSoup import BeautifulSoup
 import urllib
 import urllib2
 import urlparse
+from urllib.request import urlretrieve
 import re
 import os
 import os.path
 
 def downloadSigFiles():
     # Get the release notes:
-    urllib.urlretrieve("http://www.nationalarchives.gov.uk/aboutapps/pronom/release-notes.xml","release-notes.xml");
+    urlretrieve("http://www.nationalarchives.gov.uk/aboutapps/pronom/release-notes.xml","release-notes.xml");
     # Now the actual files:
     url = "http://www.nationalarchives.gov.uk/aboutapps/pronom/droid-signature-files.htm"
     html_page = urllib2.urlopen( url )

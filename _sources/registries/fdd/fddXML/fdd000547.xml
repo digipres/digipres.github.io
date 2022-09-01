@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000547" titleName="KML Zipped" shortName="KMZ" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2022-08-04</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>KML (formerly Keyhole Markup Language) Zipped</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>geospatial data formats</fdd:keyword>
+			<fdd:keyword>aggregate formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>KMZ is the <fddLink id="fdd000354">ZIP</fddLink>-compressed <fddLink id="fdd000340">KML (formerly Keyhole Markup Language)</fddLink> file that stores map locations viewable in various geographic information systems (GIS) applications, such as Google Earth, Blue Marble Geographics’ Global Mapper, and/or ESRI ArcGIS Pro. It contains one or more placemarks that may include a custom name and the latitudinal and longitudinal coordinates of the location. KMZ files may also include <a href="https://www.khronos.org/collada/">COLLADA 3D models</a>, overlays, sound files, textures, and images referenced by the KML file. The structure of KMZ files are defined by the Open Geospatial Consortium as part of the <a href="http://portal.opengeospatial.org/files/?artifact_id=27810">KML specification</a> in Annex C. See <fddLink id="fdd000340">KML</fddLink> for more details about KML files and structure.</p>
+			<p>KMZ files consist of a main KML file and zero or more supporting files that are packaged using a ZIP-compression utility into one unit, called an archive. KMZ files may then be stored, shared by email, or hosted on a web server. A <a href="https://developers.google.com/kml/documentation/kmzarchives?csw=1">NetworkLink</a> can fetch a KMZ file from a web server. When the KMZ file is unzipped, the main KML file and its supporting files are separated into their original formats and directory structure, with their original filenames and extensions.</p>
+			<p>In addition to being an archive format (also known on this site as an <a href="https://www.loc.gov/preservation/digital/formats/content/aggregate.shtml">Aggregate</a> format), the ZIP format is also compressed, so an archive can include only a single large KML file. Depending on the content of the KML file, this process typically results in <a href="https://developers.google.com/kml/documentation/kmzarchives?csw=1">10:1 compression</a>. For example, 10 kilobyte KML file can be served with a 1 kilobyte KMZ file.</p>
+			<p>A KMZ file contains a single root KML document, typically a file named &quot;doc.kml&quot; at the root directory level but the first .kml file entry in the KMZ file is the actual one selected in Google Earth regardless of its name.  Files for referenced overlays, images, icons, etc., including network-linked KML files, can be included. Referenced files are typically in subdirectories.  To be compatible with all geobrowsers, the <fddLink id="fdd000354">ZIP</fddLink> file should use no compression or DEFLATE compression (i.e. be compatible with the 1993 PKWARE 2.0 version of the ZIP specification, as <a href="http://www.iana.org/assignments/media-types/application/zip">registered with IANA</a>).</p>
+			<p>A single KMZ file may not be complete because KMZ supports dynamic incorporation of remote KML data not included in the file. This feature is useful to reduce bandwidth during real-time use. </p>
+		</fdd:description>
+		<fdd:shortDescription>KMZ is the Zip-compressed form of KML which is used to support display of geographic data in a 3D earth browser or 2D online maps.</fdd:shortDescription>
+		<fdd:productionPhase>Final phase format. KMZ files are used to deliver compressed KML data and supporting files. KMZ files should be created when the doc.kml file is larger than 10 Kbytes, or if the doc.kml files reference other files (images, sound files, models, textures).</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000340</fdd:id>
+					<fdd:shortName>KML_2_2</fdd:shortName>
+					<fdd:titleName>KML, Version 2.2</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>KMZ may contain any version of KML. It is not restricted to KML version 2.2.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000354</fdd:id>
+					<fdd:shortName>ZIP_PK</fdd:shortName>
+					<fdd:titleName>ZIP File Format (PKWARE)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>To be compatible with all geobrowsers, the KML file should use no compression or DEFLATE compression (i.e. be compatible with the 1993 PKWARE 2.0 version of the ZIP specification).</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress has, as of August 2022, about 15,000 KMZ files in its collections.</fdd:experience>
+		<fdd:preference>See the Recommended Formats Statement for the Library of Congress format preferences for  <a href="https://www.loc.gov/preservation/resources/rfs/geo-carto.html">Geographic Information System (GIS) - Vector images</a>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>An openly documented format adopted as an implementation standard, by the <a href="https://www.ogc.org/">Open Geospatial Consortium (OGC)</a>, an international voluntary consensus standards organization. </fdd:disclosure>
+		<fdd:documentation>The KML format is defined via OGC in <a href="http://docs.opengeospatial.org/is/12-007r2/12-007r2.html">OGC 12-007r2</a>. KMZ is defined in <a href="http://docs.opengeospatial.org/is/12-007r2/12-007r2.html#1275">Annex C: KMZ Files (normative)</a>. See <fddLink id="fdd000340">KML</fddLink>.</fdd:documentation>
+		<fdd:adoption>
+			<p>Google designed KMZ files to reduce the space taken up by KML files, allow for supporting files, and to make them easier to distribute and share with multiple users. See <fddLink id="fdd000340">KML</fddLink>.</p>
+			<p>Common uses for KMZ files include sharing placemarks or tours with users via email or when publishing on a webpage.  Various programs may create KMZ files, but <a href="https://www.google.com/earth/versions/">Google Earth Pro</a> primarily creates the files.</p>
+			<p>Users can open KMZ files with various mapping applications for Windows, macOS, Linux, Android, and iOS. The Google Earth Pro desktop application is a common choice for opening KMZ files. 
+Files can also be opened in Google Maps by saving the KMZ file to an online location and then typing the URL in the Google Maps search box. </p>
+			<p>Since KMZ files are ZIP-compressed KML files, they can also be opened by changing the .kmz file extension to .zip, then decompressing them with a ZIP utility. The resulting KML file can then be opened with a GIS application.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No known license or patent concerns for generation and use of the format.  <a href="../contact_format.shtml">Comments welcome</a>.</fdd:licensingAndPatents>
+		<fdd:transparency> See <fddLink id="fdd000340">KML</fddLink>.</fdd:transparency>
+		<fdd:selfDocumentation>See <fddLink id="fdd000340">KML</fddLink>.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None.</fdd:externalDependencies>
+		<fdd:techProtection>See <fddLink id="fdd000340">KML</fddLink>.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:gisQF>
+			<fdd:normalGIS>
+				<p>KMZ files, zipped KML files with a .kmz extension, contain a single root KML document (notionally &quot;doc.kml&quot;) and optionally any overlays, images, icons, and COLLADA 3D models referenced in the KML including network-linked KML files.
+KML documents and their related images (if any) may be compressed using the ZIP format into KMZ archives.  KML documents and KMZ archives may be shared by e‑mail, hosted locally for sharing within a private internet, or hosted on a web server.
+</p>
+			</fdd:normalGIS>
+			<fdd:metadataGIS>KML has very limited support for metadata as recommended by ISO 19115 or FGDC. The coordinate reference system in use is implicit, in that KML uses a single CRS. See <fddLink id="fdd000340">KML</fddLink>.</fdd:metadataGIS>
+			<fdd:grids>Not designed to support grid-based analysis. See <fddLink id="fdd000340">KML</fddLink>.</fdd:grids>
+			<fdd:beyondGIS>Many features of KML that support web-based visualization aspects are beyond the normal functionality of geospatial data formats. These include support for styling, embedding HTML for captions, incorporating textured 3D models, etc. Support for incorporating remote KML data is also a special feature. See <fddLink id="fdd000340">KML</fddLink>.</fdd:beyondGIS>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>kmz</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="https://www.iana.org/assignments/media-types/application/vnd.google-earth.kmz">registration at IANA</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.google-earth.kmz</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://www.iana.org/assignments/media-types/application/vnd.google-earth.kmz">registration at IANA</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000354">ZIP_PK</fddLink>
+				</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Microsoft FOURCC</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>GKmz</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.iana.org/assignments/media-types/application/vnd.google-earth.kmz">registration at IANA</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/724</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/724">http://www.nationalarchives.gov.uk/PRONOM/fmt/724</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q28921959</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q28921959">https://www.wikidata.org/wiki/Q28921959</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>KML/KMZ became an international standard of the Open Geospatial Consortium in 2008. The longitude and latitude components (decimal degrees) are as defined by the World Geodetic System of 1984 (WGS84). The vertical component (altitude) is measured in meters from the WGS84 EGM96 Geoid vertical datum.</fdd:general>
+		<fdd:history>The <a href="https://www.iana.org/assignments/media-types/application/vnd.google-earth.kmz">IANA mediatype application for KMZ</a> states that &quot;KML is an acronym for Keyhole Markup Langage, which stems from the time before 
+the Keyhole Corporation was acquried by Google, and their Keyhole application 
+redesigned and rebranded as Google Earth.&quot; See also <fddLink id="fdd000340">KML</fddLink>.  </fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000340">KML</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000354">ZIP_PK</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.opengeospatial.org/standards/kml</link>
+					<tag>OGC KML specifications</tag>
+					<comment>At Open Geospatial Consortium (OGC). </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://docs.opengeospatial.org/is/12-007r2/12-007r2.html</link>
+					<tag>OGC KML 2.3. KMZ defined in Annex C.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://developers.google.com/kml/documentation/kmzarchives?csw=1</link>
+					<tag>Google Developer KMZ Files</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.google.com/earth/outreach/learn/packaging-content-in-a-kmz-file/</link>
+					<tag>Google Earth Outreach: Packaging Content in a KMZ File</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.usna.edu/Users/oceano/pguth/md_help/html/kml_overview.htm</link>
+					<tag>USNA KML Overview</tag>
+					<comment>Discusses KMZ vs KML</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.khronos.org/collada/</link>
+					<tag>COLLADA 3D models </tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.google.com/earth/versions/</link>
+					<tag>Google Earth Pro (and other versions)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.iana.org/assignments/media-types/application/vnd.google-earth.kmz</link>
+					<tag>IANA mediatype registration for KMZ. last updated 2006-11-28</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/724</link>
+					<tag>PRONOM entry for KMZ</tag>
+					<comment>PUID is fmt/724</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q28921959</link>
+					<tag>Wikidata entry for Q28921959</tag>
+					<comment>Information in Wikidata about KMZ. Wikidata Title ID: Q28921959</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

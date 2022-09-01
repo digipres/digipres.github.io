@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000347" titleName="Matroska File Format with MP3 Audio Encoding" shortName="Matroska_MP3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000347" titleName="Matroska File Format with MP3 Audio Encoding" shortName="Matroska_MP3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>moving-image</fdd:gdfrGenre>
@@ -8,6 +8,9 @@
 			<fdd:category>file-format</fdd:category>
 			<fdd:category>encoding</fdd:category>
 		</fdd:formatCategories>
+		<fdd:updates>
+			<fdd:date>2022-03-29</fdd:date>
+		</fdd:updates>
 		<fdd:draftStatus>Partial</fdd:draftStatus>
 	</fdd:properties>
 	<fdd:identificationAndDescription>
@@ -16,8 +19,15 @@
 			<fdd:keyword>audio formats</fdd:keyword>
 		</fdd:keywords>
 		<fdd:description>
-			<p>Matroska file containing an audio essence encoded as MP3.</p>
-			<p>On the <a href="http://matroska.org/technical/guides/faq/index.html">Matroska FAQ</a> page (consulted November 13, 2013), the developers suggest reasons for wrapping MP3 encoding in Matroska.  For example, they state that lyrics or transcriptions can be embedded in the audio file, that one may use chapters to separate parts of a track or a live album, adding that in some cases (MP3, AC3, DTS) &quot;the Matroska file may also be smaller than the original with much better/cleaner seeking support.&quot;  Regarding sources for captions or subtitles, the FAQ mentions the example of srt subtitle files, a format associated with the SubRip software application.</p>
+			<p>
+				<a href="https://www.matroska.org/technical/basics.html">Matroska</a> file containing an audio essence encoded as <fddLink id="fdd000012">MP3</fddLink>.</p>
+			<p>Supported encodings are declared via the unique <i>Codec ID</i> in the <a href="https://www.matroska.org/technical/codec_specs.html">Matroska Codec Mappings</a>. For MP3 files, the information is the following:</p>
+			<ul>
+				<li>Codec ID: A_MPEG/L3</li>
+				<li>Codec Name: MPEG Audio 1, 2, 2.5 Layer III</li>
+				<li>Description: The data contain everything needed for playback in the MPEG Audio header of each frame. Corresponding ACM wFormatTag : 0x0055</li>
+				<li>Initialization: none</li>
+			</ul>
 		</fdd:description>
 		<fdd:shortDescription>Matroska file containing an audio essence encoded as MP3.</fdd:shortDescription>
 		<fdd:productionPhase>	Generally a final-state (end-user delivery) format.</fdd:productionPhase>
@@ -48,15 +58,16 @@
 		<fdd:experience>None</fdd:experience>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
-		<fdd:disclosure>Both Mastroska and MP3 are open standards. Matroska is an offshoot of the <a href="http://en.wikipedia.org/wiki/Multimedia_Container_Format">Multimedia Container Format</a> project. MP3 was developed by the Moving Picture Experts Group (MPEG), Coding of audio, picture, multimedia and hypermedia information.</fdd:disclosure>
+		<fdd:disclosure>Both Matroska and MP3 are open standards. See <fddLink id="fdd000342">Matroska</fddLink> and <fddLink id="fdd000012">MP3</fddLink> for more details.</fdd:disclosure>
 		<fdd:documentation>
-			<p>The Matroska specification is published online at <a href="http://www.matroska.org/technical/specs/index.html">http://www.matroska.org/technical/specs/index.html</a>. </p>
+			<p>The "source" of the Matroska specification is an <a href="https://github.com/Matroska-Org/foundation-source/blob/master/spectool/specdata.xml">XML</a> file hosted on Matroska.org's GitHub repository (although that table has not been updated since 2018). This table is also used to generate the semantic data used in libmatroska and libmatroska2.</p>
+			<p>Specification information is published concurrently in two locations: The <a href="https://www.matroska.org/technical/basics.html">Matroska</a> website and the Internet Engineering Task Force (IETF) <a href="https://datatracker.ietf.org/doc/draft-ietf-cellar-matroska/">Matroska Media Container Format Specifications</a> datatracker. Since 2018, the in-process specification for version 4 of the Matroska Media Container Format has been published as a sequence of Internet Drafts, available at <a href="https://datatracker.ietf.org/doc/draft-ietf-cellar-matroska/">Matroska Media Container Format Specifications</a> datatracker. An <a href="https://www.matroska.org/files/matroska_file_format_alexander_noe.pdf">early version</a> of the specification dated January 11, 2009 authored by Alexander Noé is available on the Matroska site but it is not clear which versions are covered in this document. </p>
 			<p>For MP3: (1) MPEG-1: ISO/IEC 11172-3. Information technology -- Coding of moving pictures and associated audio for digital storage media at up to about 1,5 Mbit/s -- Part 3: Audio. (2) MPEG-2: ISO/IEC 13818-3. Information technology -- Generic coding of moving pictures and associated audio information -- Part 3: Audio.
 
 </p>
 			<p>These MPEG specifications describe the syntax and semantics for three classes of compression methods known as Layers I, II, and III. MP3 is Layer III. See list of ISO documents in Format specifications below; see also <fddLink id="fdd000035">MPEG-1</fddLink> and <fddLink id="fdd000335">MPEG-2</fddLink>.</p>
 		</fdd:documentation>
-		<fdd:adoption>Adoption is not known to the authors of this website. <a href="http://www.digitalpreservation.gov/formats/contact_format.shtml">Comments Welcome</a>
+		<fdd:adoption>Adoption is not known to the authors of this website. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments Welcome</a>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>See <fddLink id="fdd000342">Matroska</fddLink> and <fddLink id="fdd000012">MP3</fddLink>
 		</fdd:licensingAndPatents>
@@ -74,42 +85,62 @@
 		<fdd:signifiersGroup>
 			<fdd:filenameExtension>
 				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
-				<fdd:note>See <fddLink id="fdd000342">Matroska</fddLink>.</fdd:note>
+				<fdd:note>See <fddLink id="fdd000342">Matroska</fddLink>
+				</fdd:note>
 			</fdd:filenameExtension>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>A_MPEG/L3</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Codec ID value defined in Matroska specification</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000342">Matroska</fddLink>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000342">Matroska</fddLink>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:formatSpecifications>
 		<fdd:urls>
 			<fdd:url>
-				<fdd:urlReference>
-					<link>http://matroska.org/technical/specs/index.html </link>
-					<tag>Matroska Specification </tag>
-				</fdd:urlReference>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000342">Matroska</fddLink>
+					</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000012">MP3</fddLink>
+					</fdd:intro>
+				</fdd:urlGroup>
 			</fdd:url>
 		</fdd:urls>
-		<fdd:citations>
-			<fdd:citation>
-				<fdd:specReference> ISO/IEC 11172-3:1993. Information technology -- Coding of moving pictures and associated audio for digital storage media at up to about 1,5 Mbit/s -- Part 3: Audio. Describes syntax and semantics for three classes of compression methods known as Layers I, II, and III.</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference> ISO/IEC 11172-3:1993/Cor 1:1996</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference> ISO/IEC 13818-3 (Second edition, 1998). Information technology -- Coding of moving pictures and associated audio information -- Part 3: Audio. Describes syntax and semantics for three classes of compression methods known as Layers I, II, and III.</fdd:specReference>
-			</fdd:citation>
-		</fdd:citations>
 	</fdd:formatSpecifications>
 	<fdd:usefulReferences>
 		<fdd:urls>
 			<fdd:url>
-				<fdd:urlReference>
-					<link>http://matroska.org/technical/guides/faq/index.html</link>
-					<tag>Matroska FAQ</tag>
-				</fdd:urlReference>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000342">Matroska</fddLink>
+					</fdd:intro>
+				</fdd:urlGroup>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlGroup>
-					<fdd:intro>See also <fddLink id="fdd000342">Matroska</fddLink> and <fddLink id="fdd000012">MP3</fddLink>.</fdd:intro>
+					<fdd:intro>See <fddLink id="fdd000012">MP3</fddLink>
+					</fdd:intro>
 				</fdd:urlGroup>
 			</fdd:url>
 		</fdd:urls>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000345" titleName="Matroska File Format with MPEG-2 Video Encoding (H.262)" shortName="Matroska_MPEG-2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000345" titleName="Matroska File Format with MPEG-2 Video Encoding (H.262)" shortName="Matroska_MPEG-2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>moving-image</fdd:gdfrGenre>
@@ -9,7 +9,7 @@
 			<fdd:category>encoding</fdd:category>
 		</fdd:formatCategories>
 		<fdd:updates>
-			<fdd:date>2012-05-29</fdd:date>
+			<fdd:date>2022-03-29</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Partial</fdd:draftStatus>
 	</fdd:properties>
@@ -20,7 +20,17 @@
 			<fdd:keyword>MPEG-2</fdd:keyword>
 			<fdd:keyword>H.262</fdd:keyword>
 		</fdd:keywords>
-		<fdd:description>Matroska file containing video essence encoded as MPEG-2 Video Encoding (H.262).</fdd:description>
+		<fdd:description>
+			<p>
+				<a href="https://www.matroska.org/technical/basics.html">Matroska</a> file containing a video essence encoded as <fddLink id="fdd000028">MPEG-2</fddLink>.</p>
+			<p>Supported encodings are declared via the unique <i>Codec ID</i> in the <a href="https://www.matroska.org/technical/codec_specs.html">Matroska Codec Mappings</a>. For H.262 files, the information is the following:</p>
+			<ul>
+				<li>Codec ID: V_MPEG2</li>
+				<li>Codec Name: MPEG 2</li>
+				<li>Description: The Matroska video stream will contain a demuxed Elementary Stream (ES), where block boundaries are still to be defined. Its RECOMMENDED to use MPEG2MKV.exe for creating those files, and to compare the results with self-made implementations</li>
+				<li>Initialization: none</li>
+			</ul>
+		</fdd:description>
 		<fdd:shortDescription>Matroska file containing video essence encoded as MPEG-2 Video Encoding (H.262).</fdd:shortDescription>
 		<fdd:productionPhase>Generally a final-state (end-user delivery) format.</fdd:productionPhase>
 		<fdd:relationships>
@@ -50,9 +60,13 @@
 		<fdd:experience>None</fdd:experience>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
-		<fdd:disclosure>Both Mastroska and MPEG-2 are openly documented. Matroska is an open-source specification that is an offshoot of the <a href="http://en.wikipedia.org/wiki/Multimedia_Container_Format">Multimedia Container Format</a> project. MPEG-2 is a standard developed by the ISO technical program called the Motion Pictures Expert Group (MPEG) in a joint partnership with ITU-T, who published the &quot;common text&quot; as H. 262.</fdd:disclosure>
-		<fdd:documentation>The Matroska specification is published online at <a href="http://www.matroska.org/technical/specs/index.html">http://www.matroska.org/technical/specs/index.html</a>. MPEG-2&apos;s specification is ISO/IEC 13818 and its first approvals were in 1994. Ten parts have been published; parts 1, 2, 3, and 7 are central. Part 2 concerns the coding and specifies profiles and levels</fdd:documentation>
-		<fdd:adoption>Adoption in heritage repositories is not known to the authors of this website. <a href="http://www.digitalpreservation.gov/formats/contact_format.shtml">Comments Welcome</a>
+		<fdd:disclosure>Both Matroska and MPEG-2 are openly documented. See <fddLink id="fdd000342">Matroska</fddLink> and <fddLink id="fdd000028">MPEG-2</fddLink> for more details.</fdd:disclosure>
+		<fdd:documentation>
+			<p>The "source" of the Matroska specification is an <a href="https://github.com/Matroska-Org/foundation-source/blob/master/spectool/specdata.xml">XML</a> file hosted on Matroska.org's GitHub repository (although that table has not been updated since 2018). This table is also used to generate the semantic data used in libmatroska and libmatroska2.</p>
+			<p>Specification information is published concurrently in two locations: The <a href="https://www.matroska.org/technical/basics.html">Matroska</a> website and the Internet Engineering Task Force (IETF) <a href="https://datatracker.ietf.org/doc/draft-ietf-cellar-matroska/">Matroska Media Container Format Specifications</a> datatracker. Since 2018, the in-process specification for version 4 of the Matroska Media Container Format has been published as a sequence of Internet Drafts, available at <a href="https://datatracker.ietf.org/doc/draft-ietf-cellar-matroska/">Matroska Media Container Format Specifications</a> datatracker. An <a href="https://www.matroska.org/files/matroska_file_format_alexander_noe.pdf">early version</a> of the specification dated January 11, 2009 authored by Alexander Noé is available on the Matroska site but it is not clear which versions are covered in this document. </p>
+			<p>MPEG-2&apos;s specification is ISO/IEC 13818 and its first approvals were in 1994. Ten parts have been published; parts 1, 2, 3, and 7 are central. Part 2 concerns the coding and specifies profiles and levels. </p>
+		</fdd:documentation>
+		<fdd:adoption>Adoption in heritage repositories is not known to the authors of this website. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments Welcome</a>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>See <fddLink id="fdd000342">Matroska</fddLink> and <fddLink id="fdd000028">MPEG-2</fddLink>
 		</fdd:licensingAndPatents>
@@ -68,137 +82,66 @@
 	<fdd:qualityAndFunctionalityFactors/>
 	<fdd:fileTypeSignifiers>
 		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000342">Matroska</fddLink>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>V_MPEG2</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Codec ID value defined in Matroska specification</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000342">Matroska</fddLink>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000342">Matroska</fddLink>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:formatSpecifications>
 		<fdd:urls>
 			<fdd:url>
-				<fdd:urlReference>
-					<link>http://matroska.org/technical/specs/index.html </link>
-					<tag>Matroska Specification </tag>
-				</fdd:urlReference>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000342">Matroska</fddLink>
+					</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000028">MPEG-2</fddLink>
+					</fdd:intro>
+				</fdd:urlGroup>
 			</fdd:url>
 		</fdd:urls>
-		<fdd:citations>
-			<fdd:citation>
-				<fdd:specReference> ISO/IEC 13818-1:2007 Information technology -- Generic coding of moving pictures and associated audio information: Systems. <i>Two primary purposes: 1). a syntax for transporting packets of audio and video bitstreams over digital channels and storage media, 2). a syntax for synchronizing video and audio streams.</i>
-					<footNote id="1"/>
-				</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference>ISO/IEC 13818-1:2007/Amd 3:2009/Cor 1:2011</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference> ISO/IEC 13818-1:2007/Cor 1:2008</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference> ISO/IEC 13818-1:2000/Amd 1:2003 Carriage of metadata over ISO/IEC 13818-1 streams </fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference> ISO/IEC 13818-1:2000/Amd 2:2004 Support of IPMP on MPEG-2 systems </fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference>ISO/IEC FDIS 13818-2 Information technology -- Generic coding of moving pictures and associated audio information: Video. <i>Jointly developed with the ITU-T, where it is known as recommendation H.262.  Describes syntax (header and bitstream elements) and semantics (algorithms telling what to do with the bits).</i>
-				</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference> ISO/IEC 13818-2:2000/Cor 1:2002 </fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference> ISO/IEC 13818-2:2000/Amd 1:2001 Content description data </fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference>ISO/IEC 13818-4:2004 Information technology -- Generic coding of moving pictures and associated audio information -- Part 4: Conformance testing. <i>Conformance testing. Defines the meaning of MPEG conformance for all three parts (Systems, Video, and Audio), and provides two sets of test guidelines for determining compliance in bitstreams and decoders.</i>
-				</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference>ISO/IEC 13818-4:2004/Amd 2:2005/Cor 1:2007</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference>ISO/IEC 13818-4:2004/Cor 1:2007</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference>ISO/IEC 13818-4:2004/Amd 2:2005/Cor 2:2009</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference>ISO/IEC 13818-4:2004/Cor 2:2011</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference>ISO/IEC 13818-4:2004/Amd 1:2005</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference>ISO/IEC 13818-4:2004/Amd 2:2005</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference>ISO/IEC 13818-4:2004/Amd 3:2009</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference>ISO/IEC TR 13818-5:2005 Information technology -- Generic coding of moving pictures and associated audio information -- Part 5: Software simulation.  <i>Contains an example ANSI C language software encoder and compliant decoder for video and audio.</i>
-				</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference> ISO/IEC 13818-6:1998 Information technology -- Generic coding of moving pictures and associated audio information -- Part 6: Extensions for DSM-CC. <i>Extensions for Digital Storage Medium Command and Control (DSM-CC).  Provides a syntax for controlling VCR-style playback and random-access of bitstreams encoded onto digital storage mediums such as compact disc.</i>
-				</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference> ISO/IEC 13818-6:1998/Amd 1:2000/Cor 1:2002</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference> ISO/IEC 13818-6:1998/Cor 1:1999</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference> ISO/IEC 13818-6:1998/Cor 2:2002</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference> ISO/IEC 13818-6:1998/Amd 1:2000 Additions to support data broadcasting</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference> ISO/IEC 13818-6:1998/Amd 2:2000 Additions to support synchronized download services, opportunistic data services and resource announcement in broadcast and interactive services</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference> ISO/IEC 13818-6:1998/Amd 3:2001 Transport buffer model in support of synchronized user-to-network download protocol</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference> ISO/IEC 13818-7:2003/Amd 1:2004 Embedding of bandwidth extension</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference> ISO/IEC 13818-7:2006/Cor 1:2009</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference> ISO/IEC 13818-7:2006/Cor 2:2010</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference>ISO/IEC 13818-7:2006/Amd 1:2007</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference> Part 8.  10-bit video extension. Withdrawn.</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference> ISO/IEC 13818-9:1996 Information technology -- Generic coding of moving pictures and associated audio information -- Part 9: Extension for real time interface for systems decoders. <i>Real-Time Interface (RTI) for systems decoders defines a syntax for video on demand control signals between set-top boxes and head-end servers.</i>
-				</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference> ISO/IEC 13818-10:1999 Information technology -- Generic coding of moving pictures and associated audio information -- Part 10: Conformance extensions for Digital Storage Media Command and Control (DSM-CC). <i>Related to part 6.</i>
-				</fdd:specReference>
-			</fdd:citation>
-			<fdd:citation>
-				<fdd:specReference> ISO/IEC 13818-11:2004 Information technology -- Generic coding of moving pictures and associated audio information -- Part 11: IPMP on MPEG-2 systems</fdd:specReference>
-			</fdd:citation>
-		</fdd:citations>
 	</fdd:formatSpecifications>
 	<fdd:usefulReferences>
 		<fdd:urls>
 			<fdd:url>
 				<fdd:urlGroup>
-					<fdd:intro>See <fddLink id="fdd000342">Matroska</fddLink> and <fddLink id="fdd000028">MPEG-2</fddLink>
+					<fdd:intro>See <fddLink id="fdd000342">Matroska</fddLink>
+					</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000028">MPEG-2</fddLink>
 					</fdd:intro>
 				</fdd:urlGroup>
 			</fdd:url>
 		</fdd:urls>
 	</fdd:usefulReferences>
-	<fdd:footNotes>
-		<fdd:footNote id="1">
-			<fdd:text> The italicized blurbs in the specifications section are derived from the Berkeley Multimedia Research Center. The Internet Archive&apos;s saved copy of the relevant page is at: <a href="http://web.archive.org/web/20090621154148/http://bmrc.berkeley.edu/frame/research/mpeg/mpeg2faq.html">MPEG-2 FAQ</a>.</fdd:text>
-		</fdd:footNote>
-	</fdd:footNotes>
 </fdd:FDD>

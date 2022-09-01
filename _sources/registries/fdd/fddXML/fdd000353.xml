@@ -22,8 +22,8 @@
 			<fdd:keyword>uncompressed video formats</fdd:keyword>
 		</fdd:keywords>
 		<fdd:description>
-			<p>A digital, color-difference component video picture format identified by the FOURCC code V210.  Associated with Apple's Quicktime technology, V210 employs 4:2:2 chroma subsampling with each sample represented by 10 bits of data.  This format's structure consists of twelve 10-bit unsigned components packed into four 32-bit little-endian words, with 8 zero bits as padding.  The Apple developer site provides <a href="https://developer.apple.com/library/mac/technotes/tn2162/_index.html#//apple_ref/doc/uid/DTS40013070-CH1-TNTAG8-V210__4_2_2_COMPRESSION_TYPE">additional information</a> and a helpful diagram.</p>
-			<p>V210 encoding (like all uncompressed formats identified by FOURCC codes) allows for variation in features like picture size, aspect ratio (square or non-square pixels), component levels (i.e., levels for Y, Cb, and Cr in either video range or wide range), and a given instance may contain video from interlaced or progressive sources.  (See comment about interlacing and field order in the <a href="#notes">Notes</a> below.) In order for an application to play the video back correctly or, say, to hand it off for successful inclusion in a video production side by side with other footage, all of these facts ought to be declared in metadata embedded in the file wrapper or associated with the file. The need for such metadata (and a way to compensate if it is missing) is suggested by the "Appendix: Backwards Compatibility" section of an <a href="https://developer.apple.com/library/mac/technotes/tn2162/_index.html">Apple developer page</a> that provides "best assumptions" to support playback for certain video types (not including V210) when the metadata is absent.</p>
+			<p>A digital, color-difference component video picture format identified by the FOURCC code V210.  Associated with Apple's Quicktime technology, V210 employs 4:2:2 chroma subsampling with each sample represented by 10 bits of data.  This format's structure consists of twelve 10-bit unsigned components packed into four 32-bit little-endian words, with 8 zero bits as padding.  The Apple developer site provides <a href="https://developer.apple.com/library/archive/technotes/tn2162/_index.html#//apple_ref/doc/uid/DTS40013070-CH1-TNTAG8-V210__4_2_2_COMPRESSION_TYPE">additional information</a> and a helpful diagram.</p>
+			<p>V210 encoding (like all uncompressed formats identified by FOURCC codes) allows for variation in features like picture size, aspect ratio (square or non-square pixels), component levels (i.e., levels for Y, Cb, and Cr in either video range or wide range), and a given instance may contain video from interlaced or progressive sources.  (See comment about interlacing and field order in the <a href="#notes">Notes</a> below.) In order for an application to play the video back correctly or, say, to hand it off for successful inclusion in a video production side by side with other footage, all of these facts ought to be declared in metadata embedded in the file wrapper or associated with the file. The need for such metadata (and a way to compensate if it is missing) is suggested by the "Appendix: Backwards Compatibility" section of an <a href="https://developer.apple.com/library/archive/technotes/tn2162/_index.html">Apple developer page</a> that provides "best assumptions" to support playback for certain video types (not including V210) when the metadata is absent.</p>
 			<p>Specialists in the video community debate the pros and cons of 10-bit sampling and the V210 structure.  Sampling at 10-bits can reduce picture artifacting as compared to 8-bit although, as stated in the <a href="#notes">Notes</a> below, some commentators argue that this benefit is limited to certain types or classes of original (source) video.  Most specialists agree that 10-bit sampling has value when digitizing analog sources.  It is also the case that the padding bits required by the V210 structure can be seen as inefficient.  One expert commentator called V210 "a very poorly compressing codec."  For efficient handling when transcoding from V210, for example, the ffmpeg tool decodes the packed data to a planar form (AV_PIX_FMT_yuv422p10le), discarding the padding bits with no loss.  (When outputting as V210, ffmpeg inserts the padding as needed.)</p>
 		</fdd:description>
 		<fdd:shortDescription>A digital, color-difference component video picture format identified by the FOURCC code V210.  Associated with Apple's Quicktime technology, V210 employs 4:2:2 chroma subsampling with each sample represented by 10 bits of data.  This format's structure consists of twelve 10-bit unsigned components packed into four 32-bit little-endian words, with 8 zero bits as padding.</fdd:shortDescription>
@@ -81,7 +81,7 @@
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>V210 structure is described at an open Web site managed by Apple, referenced by a number of other organizational sites, including FOURCC.org.</fdd:disclosure>
-		<fdd:documentation>Described in a <a href="https://developer.apple.com/library/mac/technotes/tn2162/_index.html#//apple_ref/doc/uid/DTS40013070-CH1-TNTAG8-V210__4_2_2_COMPRESSION_TYPE">segment</a> of the Apple developer page titled <i>Uncompressed Y´CbCr Video in QuickTime Files</i>. See also SMPTE ST 377:2011, annex G, including amendment 2 (to be published in 2013).</fdd:documentation>
+		<fdd:documentation>Described in a <a href="https://developer.apple.com/library/archive/technotes/tn2162/_index.html#//apple_ref/doc/uid/DTS40013070-CH1-TNTAG8-V210__4_2_2_COMPRESSION_TYPE">segment</a> of the Apple developer page titled <i>Uncompressed Y´CbCr Video in QuickTime Files</i>. See also SMPTE ST 377:2011, annex G, including amendment 2 (to be published in 2013).</fdd:documentation>
 		<fdd:adoption>Widely adopted.</fdd:adoption>
 		<fdd:licensingAndPatents>None.</fdd:licensingAndPatents>
 		<fdd:transparency>Relatively transparent; requires tools to write and read.</fdd:transparency>
@@ -104,7 +104,7 @@
 					<fdd:sigValues>
 						<fdd:sigValue>V210</fdd:sigValue>
 					</fdd:sigValues>
-					<fdd:note>From the <a href="http://www.fourcc.org/yuv.php#V210">FOURCC YUV page</a>.  This identifier will be found in files like <fddLink id="fdd000240">AVI_V210</fddLink>.  The Apple <a href="https://developer.apple.com/library/mac/technotes/tn2162/_index.html#//apple_ref/doc/uid/DTS40013070-CH1-TNTAG8-V210__4_2_2_COMPRESSION_TYPE">developer page</a> that describes this format also provides this Apple codec name: Component Y&apos;CbCr 10-bit 4:2:2.</fdd:note>
+					<fdd:note>From the <a href="https://www.fourcc.org/pixel-format/yuv-v210/">FOURCC YUV page</a>.  This identifier will be found in files like <fddLink id="fdd000240">AVI_V210</fddLink>.  The Apple <a href="https://developer.apple.com/library/archive/technotes/tn2162/_index.html#//apple_ref/doc/uid/DTS40013070-CH1-TNTAG8-V210__4_2_2_COMPRESSION_TYPE">developer page</a> that describes this format also provides this Apple codec name: Component Y&apos;CbCr 10-bit 4:2:2.</fdd:note>
 				</fdd:values>
 			</fdd:other>
 			<fdd:other>
@@ -113,7 +113,7 @@
 					<fdd:sigValues>
 						<fdd:sigValue>kCVPixelFormatType_422YpCbCr10</fdd:sigValue>
 					</fdd:sigValues>
-					<fdd:note>From an <a href="https://developer.apple.com/library/mac/#documentation/QuartzCore/Reference/CVPixelFormatDescriptionRef/Reference/reference.html">Apple developer page</a>, using the term <i>Apple Core Video pixel format description</i>. The compiler of this resource is uncertain as to whether this identifier is found in file headers or elsewhere in the file; <a href="../contact_format.shtml">Comments welcome</a>.  It may appear in applications that handle the picture data.</fdd:note>
+					<fdd:note>From an <a href="https://developer.apple.com/documentation/corevideo/cvpixelformatdescription">Apple developer page</a>, using the term <i>Apple Core Video pixel format description</i>. The compiler of this resource is uncertain as to whether this identifier is found in file headers or elsewhere in the file; <a href="../contact_format.shtml">Comments welcome</a>.  It may appear in applications that handle the picture data.</fdd:note>
 				</fdd:values>
 			</fdd:other>
 			<fdd:other>
@@ -123,7 +123,7 @@
 						<fdd:sigValue>Registry: 06.0E.2B.34.04.01.01.0A</fdd:sigValue>
 						<fdd:sigValue>Item: 04.01.02.01.01.02.02.01</fdd:sigValue>
 					</fdd:sigValues>
-					<fdd:note>SMPTE Universal Label, as found in ST 377-1:2009, also in <a href="http://www.smpte-ra.org/mdd/">SMPTE Labels Registry</a> as specified in RP224v12-2012. This identifier will be found in files like <fddLink id="fdd000371">MXF_GC_UNC_V210</fddLink>.
+					<fdd:note>SMPTE Universal Label, as found in ST 377-1:2009, also in <a href="https://web.archive.org/web/20120626022726/http://www.smpte-ra.org/mdd/">SMPTE Labels Registry (link available through Internet Archive)</a> as specified in RP224v12-2012. This identifier will be found in files like <fddLink id="fdd000371">MXF_GC_UNC_V210</fddLink>.
 </fdd:note>
 				</fdd:values>
 			</fdd:other>
@@ -157,21 +157,21 @@
 		<fdd:urls>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://developer.apple.com/library/mac/technotes/tn2162/_index.html#//apple_ref/doc/uid/DTS40013070-CH1-TNTAG8-V210__4_2_2_COMPRESSION_TYPE</link>
+					<link>https://developer.apple.com/library/archive/technotes/tn2162/_index.html#//apple_ref/doc/uid/DTS40013070-CH1-TNTAG8-V210__4_2_2_COMPRESSION_TYPE</link>
 					<tag>V210 segment within Uncompressed Y´CbCr Video in QuickTime Files</tag>
 					<comment>Complete description of V210 byte pattern.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://msdn.microsoft.com/en-us/library/windows/desktop/bb970578%28v=vs.85%29.aspx</link>
+					<link>https://docs.microsoft.com/en-us/windows/win32/medfound/10-bit-and-16-bit-yuv-video-formats</link>
 					<tag>10-bit and 16-bit YUV Video Formats (Windows)</tag>
 					<comment>Includes description of what must be V210, inexplicably named as Y210. Comments welcome.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.fourcc.org/yuv.php#V210</link>
+					<link>https://www.fourcc.org/pixel-format/yuv-v210/</link>
 					<tag>YUV pixel formats</tag>
 					<comment>FOURCC.org page segment on V210.</comment>
 				</fdd:urlReference>

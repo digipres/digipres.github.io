@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000315" titleName="PDF, Version 1.7, ExtensionLevel 3, Geospatial Encoding (Adobe)" shortName="PDF_1_7_geospatial" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000315" titleName="PDF, Version 1.7, ExtensionLevel 3, Geospatial Encoding (Adobe)" shortName="PDF_1_7_geospatial" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenreAndSubgenres>
@@ -55,6 +55,14 @@
 				</fdd:relatedTo>
 				<fdd:comment>This georegistration encoding is one of two permitted in GeoPDF files.</fdd:comment>
 			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000548</fdd:id>
+					<fdd:shortName>WKT</fdd:shortName>
+					<fdd:titleName>Well-known Text</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
@@ -96,7 +104,8 @@
 			<p>For encoding geographic coordinate systems in the measure dictionary, either of two mechanisms may be used.  In either case, the objective is to specify unambiguously the geodetic datum, geoid/ellipsoid/spheroid, coordinate system, and any map projection in use for the image or data. </p>
 			<ul>
 				<li>EPSG (European Petroleum Survey Group) codes.  These are assigned by the Surveying and Positioning Committee of the International Association of Oil &amp; Gas producers (<a href="https://www.iogp.org/">IOGP</a>), formerly known as the European Petroleum Survey Group, and made available as the EPSG Geodetic Parameter Dataset at <a href="http://www.epsg-registry.org/">http://www.epsg-registry.org/</a>. From <a href="http://www.epsg.org/Portals/0/373-07-1.pdf">Using the EPSG Geodetic Parameter Dataset</a>: "The EPSG Dataset is a repository of parameters required to: define a <i>coordinate reference system</i> (CRS), which ensures that coordinates describe position unambiguously; and define transformations and conversions that allow coordinates to be changed from one CRS to another CRS.&quot;  As an example, 4269 is the EPSG code for the coordinate reference system usually referred to as &quot;NAD83&quot;.</li>
-				<li>WKT (well known text) has been specified by the Open Geospatial Consortium (OGC) in Clause 7 of the <a href="https://www.ogc.org/standards/ct">OpenGIS Coordinate Transformation (CT) Service Standard (2001)</a>.  WKT values are structured, human-readable, textual strings, that describe the elements of a coordinate reference system.  WKT has also been documented in an appendix to <a href="http://portal.opengeospatial.org/files/?artifact_id=25355">OGC 06-103r4</a>: OpenGIS Implementation Specification for Geographic Information - Simple feature access - Part 1: Common Architecture.  Essentially the same document was published as <a href="https://www.iso.org/standard/40114.html">ISO 19125-1:2004</a>.  WKT is employed in many GIS systems.  The WKT equivalent of EPSG code 4269 is:<p>GEOGCS["GCS_North_American_1983",<br/>
+				<li>
+					<fddLink id="fdd000548">WKT (Well-known Text)</fddLink> has been specified by the Open Geospatial Consortium (OGC) in Clause 7 of the <a href="https://www.ogc.org/standards/ct">OpenGIS Coordinate Transformation (CT) Service Standard (2001)</a>.  WKT values are structured, human-readable, textual strings, that describe the elements of a coordinate reference system.  WKT has also been documented in an appendix to <a href="http://portal.opengeospatial.org/files/?artifact_id=25355">OGC 06-103r4</a>: OpenGIS Implementation Specification for Geographic Information - Simple feature access - Part 1: Common Architecture.  Essentially the same document was published as <a href="https://www.iso.org/standard/40114.html">ISO 19125-1:2004</a>.  WKT is employed in many GIS systems.  The WKT equivalent of EPSG code 4269 is:<p>GEOGCS["GCS_North_American_1983",<br/>
  DATUM["D_North_American_1983",<br/>
   SPHEROID["GRS_1980",6378137.0,298.257222101]],<br/>
 PRIMEM["Greenwich",0.0],<br/>
