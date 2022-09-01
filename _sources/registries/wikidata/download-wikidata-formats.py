@@ -24,7 +24,7 @@ where
                 }
     }
   }
-  service wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE], <<lang>>". }
+  service wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE], en". }
 }
 order by ?uri
 '''
@@ -36,8 +36,14 @@ format_data = []
 
 for r in data['results']['bindings']:
     if any(x in r for x in ['puid','extension','mimetype']):
+        # Print a sample
+        if len(format_data) == 0:
+            print("Printing one record to show the general form:")
+            print(r)
+        #
         item = {
-            'id': r['uriLabel']['value'],
+            'id': r['uri']['value'],
+            'name': r['uriLabel']['value'],
         }
         for x in ['puid','extension','mimetype', 'offset', 'sig']:
             if x in r:
