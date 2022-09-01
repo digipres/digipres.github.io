@@ -39,13 +39,13 @@ for r in data['results']['bindings']:
         item = {
             'id': r['uriLabel']['value'],
         }
-        for x in ['puid','extension','mimetype']:
+        for x in ['puid','extension','mimetype', 'offset', 'sig']:
             if x in r:
                 item[x] = r[x]['value']
             else:
                 item[x] = None
     
-        print(item)
+        #print(item)
         format_data.append(item);
 
 with open('wikidata.json','w') as f:
