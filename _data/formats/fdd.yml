@@ -169,7 +169,7 @@ formats:
     - application/vnd.visio2013
     - application/vnd.ms-visio.drawing
     name: Visio VSDX Drawing File Format
-    source: fdd000021test.xml
+    source: fdd000021.xml
     supertype: null
   fdd000022:
     extensions:
@@ -327,7 +327,8 @@ formats:
   fdd000036:
     extensions: []
     hasMagic: false
-    mimetypes: []
+    mimetypes:
+    - audio/aac
     name: Advanced Audio Coding (MPEG-2)
     source: fdd000036.xml
     supertype: null
@@ -924,7 +925,8 @@ formats:
     extensions:
     - '*.aac'
     hasMagic: false
-    mimetypes: []
+    mimetypes:
+    - audio/aac
     name: Advanced Audio Coding (MPEG-2), Audio Data Interchange Format
     source: fdd000112.xml
     supertype: null
@@ -932,7 +934,8 @@ formats:
     extensions:
     - '*.aac'
     hasMagic: false
-    mimetypes: []
+    mimetypes:
+    - audio/mp4
     name: Advanced Audio Coding (MPEG-4)
     source: fdd000114.xml
     supertype: null
@@ -1425,7 +1428,7 @@ formats:
     mimetypes:
     - image/x-dpx
     name: Digital Moving-Picture Exchange (DPX), Version 2.0
-    source: fdd00test1.xml
+    source: fdd000178.xml
     supertype: null
   fdd000179:
     extensions:
@@ -2625,8 +2628,9 @@ formats:
   fdd000341:
     extensions: []
     hasMagic: false
-    mimetypes: []
-    name: FF Video Codec 1
+    mimetypes:
+    - video/FFV1
+    name: FF Video Codec 1, Version 0, 1 and 3
     source: fdd000341.xml
     supertype: null
   fdd000342:
@@ -2666,7 +2670,7 @@ formats:
     supertype: null
   fdd000346:
     extensions: []
-    hasMagic: false
+    hasMagic: true
     mimetypes: []
     name: Matroska File Format with LPCM Audio Encoding
     source: fdd000346.xml
@@ -3466,7 +3470,8 @@ formats:
     - '*.step'
     - '*.p21'
     hasMagic: true
-    mimetypes: []
+    mimetypes:
+    - model/step
     name: STEP-file,  ISO 10303-21
     source: fdd000448.xml
     supertype: null
@@ -4060,7 +4065,7 @@ formats:
   fdd000518:
     extensions:
     - '*.webm'
-    hasMagic: true
+    hasMagic: false
     mimetypes:
     - video/webm
     - audio/webm
@@ -4216,12 +4221,112 @@ formats:
     name: QuickTime Video, Apple ProRes RAW Codec Family
     source: fdd000534.xml
     supertype: null
+  fdd000536:
+    extensions:
+    - '*.Not applicable.'
+    hasMagic: false
+    mimetypes:
+    - image/jxl
+    name: JPEG XL Image Encoding
+    source: fdd000536.xml
+    supertype: null
+  fdd000537:
+    extensions: []
+    hasMagic: false
+    mimetypes: []
+    name: HyperCard Stack File Format
+    source: fdd000537.xml
+    supertype: null
+  fdd000538:
+    extensions:
+    - '*.jxl'
+    hasMagic: true
+    mimetypes:
+    - image/jxl
+    name: JPEG XL File Format
+    source: fdd000538.xml
+    supertype: null
+  fdd000539:
+    extensions:
+    - '*..7z'
+    - '*..s7z'
+    hasMagic: true
+    mimetypes:
+    - application/x-7z-compressed
+    name: 7z File Format
+    source: fdd000539.xml
+    supertype: null
+  fdd000542:
+    extensions: []
+    hasMagic: true
+    mimetypes: []
+    name: Matroska File Format with Advanced Audio Codec (AAC) Audio Encoding
+    source: fdd000542.xml
+    supertype: null
+  fdd000545:
+    extensions:
+    - '*.Not applicable.'
+    hasMagic: true
+    mimetypes:
+    - 'See Note. '
+    - image/jxs
+    - image/jxsc
+    - image/jxsi
+    - image/jxss
+    - video/jxsv
+    name: JPEG XS Encoding
+    source: fdd000545.xml
+    supertype: null
+  fdd000546:
+    extensions:
+    - '*.jxs'
+    hasMagic: true
+    mimetypes:
+    - image/jxs
+    name: JPEG XS File Format
+    source: fdd000546.xml
+    supertype: null
+  fdd000547:
+    extensions:
+    - '*.kmz'
+    hasMagic: true
+    mimetypes:
+    - application/vnd.google-earth.kmz
+    name: KML Zipped
+    source: fdd000547.xml
+    supertype: null
+  fdd000548:
+    extensions:
+    - '*.wkt'
+    hasMagic: false
+    mimetypes:
+    - text/plain
+    name: Well-known Text
+    source: fdd000548.xml
+    supertype: null
+  fdd000552:
+    extensions:
+    - '*.ws, ws2, ws3, ws4, ws5, ws6, ws7, wsd'
+    hasMagic: true
+    mimetypes: []
+    name: WordStar File Format Family
+    source: fdd000552.xml
+    supertype: null
 id: fdd
 stats:
   empty_names: 0
-  total_formats: 472
-  total_w_glob: 301
-  total_w_magic: 325
-  total_w_mime: 172
-  total_warnings: 0
-warnings: []
+  total_formats: 482
+  total_w_glob: 309
+  total_w_magic: 332
+  total_w_mime: 184
+  total_warnings: 6
+warnings:
+- Could not parse MIME type 'see note. ' for entry fdd000545
+- 'Error when parsing XML: xmlns:fdd: ''.\fdd.xsd'' is not a valid URI, line 3, column
+  166 (<string>, line 3)'
+- 'Error when parsing XML: xmlns:fdd: ''.\fdd.xsd'' is not a valid URI, line 3, column
+  167 (<string>, line 3)'
+- Glob '*..7z' for entry fdd000539 does not appear to be a valid filename specification.
+- Glob '*..s7z' for entry fdd000539 does not appear to be a valid filename specification.
+- Glob '*.ws, ws2, ws3, ws4, ws5, ws6, ws7, wsd' for entry fdd000552 does not appear
+  to be a valid filename specification.
