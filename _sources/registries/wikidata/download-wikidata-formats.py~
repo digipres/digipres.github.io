@@ -1,6 +1,7 @@
 # 
 import json
 import requests
+import re
 
 url = 'https://query.wikidata.org/sparql'
 query = '''
@@ -42,7 +43,8 @@ for r in data['results']['bindings']:
             print(r)
         #
         item = {
-            'id': r['uriLabel']['value'],
+            'id': r['uri']['value'],
+            'source': re.findall(r"Q\d+", r['uri']['value'])[0],
             'name': r['uriLabel']['value'],
         }
         for x in ['puid','extension','mimetype', 'offset', 'sig']:
