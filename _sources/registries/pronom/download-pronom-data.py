@@ -9,6 +9,9 @@ import os
 import os.path
 
 def downloadSigFiles():
+    # Lists to store all sig file names:
+    binsigs = []
+    contsigs = []
     # Get the release notes:
     urlretrieve("http://www.nationalarchives.gov.uk/aboutapps/pronom/release-notes.xml","release-notes.xml");
     # Now the actual files:
@@ -23,17 +26,27 @@ def downloadSigFiles():
         # Switch folders based on the name:
         if "DROID" in name:
             out = "binsigs/"+name
+            binsigs.append(name)
         elif "container" in name:
             out = "contsigs/"+name
+            contsigs.append(name)
         else:
             out = name
         # Download if we don't have it already:
         if not os.path.isfile(out):
             urlretrieve(xurl,out)
 
+    # Now update main files with latest versions:
+    def extract_number(f):
+        s = re.findall("\d+",f)
+        return (int(s[0]) if s else -1,f)
 
-def getMostRecentSigFiles():
-    pass
+    latest_binsig = max(binsigs, key=extract_number)
+    latest_contsig = max(contsigs, key=extract_number)
+    print(latest_binsig, latest_contsig)
+    os.system(f"mv binsigs/{latest_binsig} droid-signature-file.xml") 
+    os.system(f"mv contsigs/{latest_contsig} container-signature.xml") 
+
 
 def getUrlForPuid(puid):
     return "http://www.nationalarchives.gov.uk/PRONOM/%s.xml" % puid
