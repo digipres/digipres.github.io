@@ -21,6 +21,10 @@ cd githublinguist
 python download-githublinguist-data.py
 cd -
 
+cd wikidata
+python download-wikidata-formats.py
+cd -
+
 cd ../../..
 python digipres.github.io/_sources/registries/mediawikis/scan-wikis.py
 cd -
