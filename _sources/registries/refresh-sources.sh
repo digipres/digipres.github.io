@@ -1,3 +1,6 @@
+#!/bin/sh
+set -e
+
 cd fdd
 python download-fdd-data.py
 cd -

@@ -1,10 +1,9 @@
 from __future__ import with_statement
 from __future__ import print_function
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 import urllib
-import urllib2
-import urlparse
-from urllib.request import urlretrieve
+from urllib.parse import urlparse, urljoin, urlsplit
+from urllib.request import urlretrieve, urlopen
 import re
 import os
 import os.path
@@ -14,11 +13,11 @@ def downloadSigFiles():
     urlretrieve("http://www.nationalarchives.gov.uk/aboutapps/pronom/release-notes.xml","release-notes.xml");
     # Now the actual files:
     url = "http://www.nationalarchives.gov.uk/aboutapps/pronom/droid-signature-files.htm"
-    html_page = urllib2.urlopen( url )
+    html_page = urlopen( url )
     soup = BeautifulSoup(html_page)
     for link in soup.findAll('a', attrs={'href': re.compile("\.xml$")}):
-        xurl = urlparse.urljoin(url,link.get('href'))
-        path = urlparse.urlsplit(xurl).path
+        xurl = urljoin(url,link.get('href'))
+        path = urlsplit(xurl).path
         name = os.path.split(path)[1]
         print(xurl, name)
         # Switch folders based on the name:
@@ -30,7 +29,7 @@ def downloadSigFiles():
             out = name
         # Download if we don't have it already:
         if not os.path.isfile(out):
-            urllib.urlretrieve(xurl,out)
+            urlretrieve(xurl,out)
 
 
 def getMostRecentSigFiles():
@@ -58,7 +57,7 @@ def downloadPronomRecords():
     for puid in sorted(puids):
         print("Downloading %s..." % puid)
         # Download it:
-        urllib.urlretrieve(getUrlForPuid(puid),"%s.xml" % puid)
+        urlretrieve(getUrlForPuid(puid),"%s.xml" % puid)
 
 downloadSigFiles()
 downloadPronomRecords()

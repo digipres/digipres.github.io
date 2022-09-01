@@ -20,10 +20,6 @@ import collections
 import datetime
 import yaml
 
-reload(sys)
-sys.setdefaultencoding("utf-8")
-
-sys.path.append("pywikibot")
 import pywikibot as pywikibot
 
 def RecentChangesPageGenerator(start=None, end=None, reverse=False,
