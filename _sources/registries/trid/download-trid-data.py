@@ -8,7 +8,7 @@ url = "http://mark0.net/download/triddefs_xml.7z"
 urlretrieve(url,"triddefs_xml.7z")
 
 # Unpack them:
-command = "7zz x -otriddefs_xml -y triddefs_xml.7z"
+command = "7z x -otriddefs_xml -y triddefs_xml.7z"
 os.system(command)
 
 # Ensure Git picks them up:
