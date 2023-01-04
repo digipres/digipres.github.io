@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000510" titleName="Microsoft Office Excel 97-2003 Binary File Format (.xls, BIFF8)" shortName="MS-XLS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000510" titleName="Microsoft Office Excel 97-2003 Binary File Format (.xls, BIFF8)" shortName="MS-XLS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenreAndSubgenres>
@@ -36,7 +36,7 @@
  An XLS file must contain a single Workbook stream which has a single Globals Substream with at least one sheet substream, which could be a Worksheet Substream, Chart Sheet Substream, Macro Sheet Substream, or Dialog Sheet Substream.  These streams and substreams employ BIFF8 encoding for component binary records.  A substream has a BoF (beginning of file) record that includes an indicator for the BIFF version.  Hence the mandatory Workbook Globals Substream can be used to recognize the BIFF version. An XLS file in BIFF8 (or BIFF5) encoding begins as follows, with all values given as they occur in the physical file, for example when viewed using a Hex dump utility:</p>
 			<ul>
 				<li>CFB header:<ul>
-						<li>Header Signature for the CFB format with 8-byte Hex value D0CF11E0A1B11AE1.  <a href="https://www.garykessler.net/library/file_sigs.html">Gary Kessler</a> notes that the beginning of this string looks like &quot;DOCFILE&quot;</li>
+						<li>Header Signature for the CFB format with 8-byte Hex value D0CF11E0A1B11AE1.  <a href="https://web.archive.org/web/20221112073316/https://www.garykessler.net/library/file_sigs.html">Gary Kessler</a> notes that the beginning of this string looks like &quot;DOCFILE&quot;</li>
 						<li>16 bytes of zeroes</li>
 						<li>2-byte Hex value 3E00 indicating CFB minor version 3E</li>
 						<li>2-byte Hex value 0300 indicating CFB major version 3 or value 0400 indicating CFB major version 4.  [Note:  All XLS files created recently by compilers of this resource (in versions of Excel for MacOS and Windows) and examined with a Hex dump utility have been based on CFB major version 3. <a href="../contact_format.shtml">Comments welcome</a>.]</li>
@@ -144,7 +144,7 @@
 				<fdd:sigValues>
 					<fdd:sigValue>Hex: D0 CF 11 E0 A1 B1 1A E1</fdd:sigValue>
 				</fdd:sigValues>
-				<fdd:note>Documented in the CFB specification, in <a href="https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-cfb/05060311-bfce-4b12-874d-71fd4ce63aea">2.2 Compound File Header</a>.  Applies to all files in CFB format; see <a href="https://www.garykessler.net/library/file_sigs.html">GCK&apos;S File Signatures Table</a> entry for Compound Binary File format (aka OLECF).</fdd:note>
+				<fdd:note>Documented in the CFB specification, in <a href="https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-cfb/05060311-bfce-4b12-874d-71fd4ce63aea">2.2 Compound File Header</a>.  Applies to all files in CFB format; see <a href="https://web.archive.org/web/20221112073316/https://www.garykessler.net/library/file_sigs.html">GCK&apos;S File Signatures Table</a> entry for Compound Binary File format (aka OLECF).</fdd:note>
 			</fdd:magicNumbers>
 			<fdd:other>
 				<fdd:tag>File signature</fdd:tag>
