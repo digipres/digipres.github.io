@@ -11,7 +11,7 @@
 		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2022-08-31</fdd:date>
+			<fdd:date>2023-01-10</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Preliminary</fdd:draftStatus>
 	</fdd:properties>
@@ -91,7 +91,7 @@
 		</fdd:documentation>
 		<fdd:adoption>
 			<p>Adoption of JPEG XL appears limited at this time. Few active web browsers support JPEG XL file display with a currently monitored list found on <a href="https://github.com/libjxl/libjxl/blob/main/doc/software_support.md">Github</a>. This list includes various types of JPEG XL Software Support and its stated purpose is to, "point end-users to software that can read/write jxl and keep track of the adoption status of jxl."</p>
-			<p>An unofficial list of image viewers and image libraries that can open and render jpeg xl files are:</p>
+			<p>An unofficial list of image viewers and image libraries that can open and render JPEG XL files are:</p>
 			<ul>
 				<li>ImageMagick</li>
 				<li>
@@ -116,7 +116,7 @@
 				<a href="https://jpegxl.io/#tutorials">jpegxl.io tutorials</a> also provides a list of software tools that support JPEG XL images. This list consists of tutorials for software or browser configurations necessary to render JPEG XL images. Some browsers included in this tutorial include:</p>
 			<ul>
 				<li>
-					<a href="https://jpegxl.io/tutorials/chrome/">Chrome</a>
+					<a href="https://jpegxl.io/tutorials/chrome/">Chrome</a> Chrome developers and Google engineers announced the removal of JPEG XL browser support in October 2022. (See History in the <a href="#notes">Notes</a> below)
 				</li>
 				<li>
 					<a href="https://jpegxl.io/tutorials/edge/">Edge</a>
@@ -222,6 +222,13 @@
 			<p>In January 2021, Part 1 (codestream) was FDIS submitted while Part 2 (file format) was FDIS submitted with a Draft Amendment to Part 1 in April 2021. See this <a href="https://docs.google.com/presentation/d/1LlmUR0Uoh4dgT3DjanLjhlXrk_5W2nJBDqDAMbhe8v8/edit#slide=id.gae1d3c10a0_0_0">JPEG-XL slide deck</a> for a broader history of JPEG XL and next steps for the file format.</p>
 			<p>Part 2 was published in October 2021</p>
 			<p>Part 1 was published in March 2022.</p>
+			<p>While Google Chrome was previously listed as a web browser that supports JPEG XL, in October 2022, Google Chrome developers announced their decision to remove support for the JPEG XL encoding and the related file format. Google Chrome initially offered JPEG-XL support via a feature flag (chrome://flags/#enable-jxl) since Chrome 91. With the upcoming Chrome 110 release, Google announced that they will be deprecating the format. Per Chromium’s <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=1178058#c84">bug tracker for JPEG XL decoding support</a>, Google cited these reasons for not pursuing support for JPEG XL:</p>
+			<ul>
+				<li>&quot;Experimental flags and code should not remain indefinitely</li>
+				<li>There is not enough interest from the entire ecosystem to continue experimenting with JPEG XL</li>
+				<li>The new image format does not bring sufficient incremental benefits over existing formats to warrant enabling it by default</li>
+				<li>By removing the flag and the code in M110, it reduces the maintenance burden and allows us to focus on improving existing formats in Chrome&quot;</li>
+			</ul>
 		</fdd:history>
 	</fdd:notes>
 	<fdd:formatSpecifications>
@@ -239,7 +246,7 @@ Information technology — JPEG XL Image Coding System — Part 1: Core coding s
 					<link>https://www.iso.org/standard/81554.html</link>
 					<tag>ISO/IEC FDIS 18181-1/DAmd 1
 Information technology — JPEG XL Image Coding System — Part 1: Core coding system — Amendment 1: Profiles and levels for JPEG XL image coding system</tag>
-					<comment>Status: Under development. Stated publication date is May 2022.</comment>
+					<comment>Status: Published June 2022.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
@@ -247,7 +254,7 @@ Information technology — JPEG XL Image Coding System — Part 1: Core coding s
 					<link>https://www.iso.org/standard/80618.html</link>
 					<tag>ISO/IEC WD 18181-3
 Information technology — JPEG XL Image Coding System — Part 3: Conformance testing</tag>
-					<comment>Status: Under development.</comment>
+					<comment>Status: Published October 2022.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
@@ -255,7 +262,23 @@ Information technology — JPEG XL Image Coding System — Part 3: Conformance t
 					<link>https://www.iso.org/standard/80619.html</link>
 					<tag>ISO/IEC DIS 18181-4
 Information technology — JPEG XL Image Coding System — Part 4: Reference software</tag>
-					<comment>Status: Under development.</comment>
+					<comment>Status: Published August 2022.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.iso.org/standard/85066.html</link>
+					<tag>ISO/IEC WD 18181-1
+Information technology — JPEG XL image coding system — Part 1: Core coding system</tag>
+					<comment>Will replace Part 1: Edition 1. Status: Under development.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.iso.org/standard/85066.html</link>
+					<tag>ISO/IEC WD 18181-1
+Information technology — JPEG XL image coding system — Part 1: Core coding system</tag>
+					<comment>Will replace Part 1 Amendment 1: Edition 1. Status: Under development.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
@@ -395,6 +418,18 @@ Information technology — JPEG XL Image Coding System — Part 4: Reference sof
 							<link>https://jpegxl.io/#tutorials</link>
 							<tag>JPEG XL SUPPORT
 Articles and Tutorials.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://bugs.chromium.org/p/chromium/issues/detail?id=1178058#c84</link>
+							<tag>Issue 1178058: JPEG XL decoding support (image/jxl) in blink (tracking bug) </tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.phoronix.com/news/Chrome-Deprecating-JPEG-XL</link>
+							<tag>Google Chrome Is Already Preparing To Deprecate JPEG-XL</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.phoronix.com/news/Chrome-Dropping-JPEG-XL-Reasons</link>
+							<tag>Google Outlines Why They Are Removing JPEG-XL Support From Chrome</tag>
 						</fdd:urlReference>
 					</fdd:urlList>
 				</fdd:urlGroup>
