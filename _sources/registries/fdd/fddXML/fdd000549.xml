@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000549" titleName="Well-known Binary" shortName="WKB" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2023-01-13</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Well-known Binary</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>geospatial data formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The well-known binary (WKB) representation for geometry is defined by the <a href="https://www.ogc.org/">Open Geospatial Consortium</a> (OGC) and the standard is published jointly by the International Organization for Standardization (ISO). The equivalent standards documents are <a href="https://portal.ogc.org/files/?artifact_id=25355">OGC 06-103r4</a> (PDF download and also available through the OGC <a href="https://www.ogc.org/standards/sfa">Simple Feature Access</a> site) and <a href="https://www.iso.org/standard/60343.html">ISO/IEC 13249-3:2016</a>. At a high level, <a href="https://libgeos.org/specifications/wkb/">WKB can be described</a> as &quot;a scheme for writing a simple features geometry into a platform-independent array of bytes, usually for transport between systems or between programs.&quot; WKB provides a portable representation of a geometric object as a contiguous stream of bytes, with each byte comprising eight bits. These binary streams can also be referred to as <a href="https://docs.oracle.com/cd/E17952_01/mysql-8.0-en/blob.html">BLOB (binary large object)</a> values.  See <a href="#notes">Notes</a> for definitions for geospatial terms. </p>
+			<p>WKB is the binary equivalent to <fddLink id="fdd000548">well-known text (WKT)</fddLink> and, as with well-known text, note that this site uses the hyphen and lower case for the title <i>well-known binary</i> because this is documented in OGC 06-103r4, although other resources may use different variations.  </p>
+			<p>
+				<b>Structure of WKB</b>
+			</p>
+			<p>WKB is well-defined with the basic building block being the byte stream for a point, which consists of two double values, with pre-defined byte streams for other geometries. According to <a href="http://www.skyline.co.il/legacy/TerraExplorer/v6.6.0/APIReferenceGuide/Well-Known_Text_and_Well-Known_Binary_WKT_and_WKB.htm">Well Known Text and Well Known Binary (WKT and WKB)</a> from TerraExplorer, &quot;the first byte in the stream identifies how the binary values are represented, either: NDR (Network Data Representation) or XDR (eXtended Data Representation). The difference between the two encodings is byte order. NDR is little endian, which means that an unsigned integer – a 32 bit data type that encodes a nonnegative integer - stores the least significant byte first, while a double – a 64 bit double precision data type that encodes a double precision number using the IEEE 54 double precision format - stores the sign bit as the last byte. XDR is big endian, so the byte order is reversed. The next component in the stream indicates the geometry type. Values from 1 through 7 indicate Point, LineString, Polygon, MultiPoint, MultiLineString, MultiPolygon, and GeometryCollection. If a geometry consists of multiple geometries, additional bytes indicate the number of geometries. The next byte component indicates the number of points in the first shape, followed by the X,Y coordinates of each of the points. For each additional shape, a byte indicates the number of points, followed by bytes defining each point’s coordinate values.&quot; <a href="https://portal.ogc.org/files/?artifact_id=25355">OGC 06-103r4</a> Table 7 lists the integer codes for geometric types which extends beyond the original seven values: MultiCurve, MultiSurface, Curve, Surface, PolyhedralSurface, and TIN. (See <a href="#notes">Notes</a> for information about Extended WKB which includes these values.) Also included in Table 7 are three values reserved for future use: CircularString, CompoundCurve, CurvePolygon.</p>
+			<p>
+				<a href="https://docs.oracle.com/cd/E17952_01/mysql-8.0-en/gis-data-formats.html#gis-wkb-format">Table 11.2</a> in the MySQL 8.0 Reference Manual provide an example of WKB Components broken down by component, size and value:</p>
+			<ul>
+				<li>component: Byte order; size: 1 byte; value:	01 (little endian)</li>
+				<li>component: WKB type; size: 4 bytes; value: 01000000 (geometry type = point) </li>
+				<li>component: X coordinate; size: 8 bytes; value: 000000000000F03F</li>
+				<li>component: Y coordinate; size: 8 bytes; value: 000000000000F0BF</li>
+			</ul>
+			<p>
+				<b>Uses of WKB</b>
+			</p>
+			<p>WKB permits geometry values to be exchanged between a client application and an SQL (<a href="https://www.w3schools.com/sql/sql_intro.asp">Standard Query Language</a>) database in <a href="https://en.wikipedia.org/wiki/Binary_number">binary</a> form. <a href="https://link.springer.com/content/pdf/10.1007/978-1-4302-1830-2.pdf">Alastair Aitchison</a> in Beginning Spatial
+with SQL Server 2008 (p. 92-93) describes potential advantages of WKB which include: "Creating objects from WKB is faster than using static methods based on either of the
+text-based (<fddLink id="fdd000296">Geography Markup Language [GML]</fddLink> or <fddLink id="fdd000548">WKT</fddLink>) formats. Each x and y (or latitude and longitude) coordinate
+value in WKB is stored on 8-byte binary boundaries, as they are in SQL Server’s own
+internal storage representation. The WKB static methods can therefore efficiently process
+and create the associated instance from WKB, whereas in WKT or GML, the parser must read in the whole text representation first. [In addition,] since it is a binary format, WKB maintains the precision of floating-point coordinate values calculated from binary operations, without the rounding errors introduced in a text-based format." Aitchison goes on to state that the main potential disadvantage is that because binary values cannot be easily understood by a human reader, "it can therefore be hard to detect errors in a WKB representation that could have been easily spotted from examining the equivalent WKT or GML representation." </p>
+		</fdd:description>
+		<fdd:shortDescription>Well-known binary (WKB) provides a portable representation of a geometric object as a contiguous stream of bytes. It is most suitable in situations where spatial data must be passed directly between different computer systems, since the speed and precision of this format are beneficial, and the lack of human readability is not significant.</fdd:shortDescription>
+		<fdd:productionPhase>Middle State. WKB is used to transfer and store geometry objects in and across databases. </fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Equivalent to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000548</fdd:id>
+					<fdd:shortName>WKT</fdd:shortName>
+					<fdd:titleName>Well-known Text</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has modified version</fdd:typeOfRelationship>
+				<fdd:comment>EWKB (Extended Well-known Binary). Not described separately at this time. See <a href="#notes">Notes</a> for more information. </fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress has a small number of WKB files in its collections.</fdd:experience>
+		<fdd:preference>See the Recommended Formats Statement for the Library of Congress format preferences for  <a href="https://www.loc.gov/preservation/resources/rfs/geo-carto.html">Geographic Information System (GIS) - Vector images</a>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>An open standard, <a href="https://portal.ogc.org/files/?artifact_id=25355">OGC 06-103r4</a>, developed by the Open Geospatial Consortium (OGC), an international voluntary consensus standards organization whose members maintain the Geography Markup Language standard. This standard is published conjointly by the International Organization for Standardization as ISO/IEC 13249-3:2016.</p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>
+				<a href="https://www.iso.org/standard/60343.html">ISO/IEC 13249-3:2016 Information technology — Database languages — SQL multimedia and application packages — Part 3: Spatial</a> is available for purchase. The equivalent standard from OGC, <a href="https://portal.ogc.org/files/?artifact_id=25355">OGC 06-103r4</a> (PDF download), is freely available online. </p>
+			<p>WKB representation of geometry was originally defined by the Open Geospatial Consortium (OGC), described in their <a href="https://www.ogc.org/standards/sfa">Simple Feature Access</a>.</p>
+		</fdd:documentation>
+		<fdd:adoption>WKB is supported in a number of applications including <a href="https://libgeos.org/">GEOS</a>, <a href="https://postgis.net/docs/using_postgis_dbmanagement.html#OpenGISWKBWKT">PostGIS</a>, <a href="https://www.oracle.com/database/spatial/">Oracle Spatial Database</a>, <a href="https://www.cadcorp.com/support/data-format-support/">Cadcorp</a>, <a href="https://gdal.org/">OGR/GDAL</a> and <a href="https://docs.safe.com/fme/html/FME_Desktop_Documentation/FME_ReadersWriters/wkb/quick_facts_wkb.htm">FME</a> among others. <a href="https://openlayers.org/">OpenLayers</a> library includes a <a href="https://openlayers.org/en/latest/examples/wkb.html">sample WKB file</a> for testing.</fdd:adoption>
+		<fdd:licensingAndPatents>No known license or patent concerns for generation and use of the format.  <a href="../contact_format.shtml">Comments welcome</a>.</fdd:licensingAndPatents>
+		<fdd:transparency>WKB is binary so it requires translation for human readability.</fdd:transparency>
+		<fdd:selfDocumentation>WKB is standardized in <a href="https://portal.ogc.org/files/?artifact_id=25355">OGC 06-103r4</a> which provides notation, descriptions for how geometric objects are represented, encoding, and formatting.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None beyond availability of supporting software.</fdd:externalDependencies>
+		<fdd:techProtection>None.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:gisQF>
+			<fdd:normalGIS>
+				<p>WKB format is an industry-standard format for expressing spatial information defined by the OGC. It can describe geographic coordinate reference systems, as well as describe the operation methods and parameters used to convert or transform coordinates between two different coordinate reference systems. </p>
+			</fdd:normalGIS>
+			<fdd:metadataGIS>WKB has very limited support for metadata as recommended by <a href="https://www.iso.org/standard/53798.html">ISO 19115</a> or <a href="https://www.fgdc.gov/metadata/iso-standards">FGDC</a>. </fdd:metadataGIS>
+			<fdd:grids>Not designed to support grid-based analysis.</fdd:grids>
+			<fdd:beyondGIS>None.</fdd:beyondGIS>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>wkb</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The &apos;wkb&apos; file extension is not defined in the OGC or ISO specification documents but is commonly used. See <a href="https://datatypes.net/open-wkb-files">DataTypes.net: WKB </a>. <a href="../contact_format.shtml">Comments welcome.</a>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>No PRONOM entry as of January 2023.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>No entry as of January 2023.
+</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>A few definitions for geospatial terms may be helpful for clarity.</p>
+			<ul>
+				<li>
+					<a href="https://en.wikipedia.org/wiki/Simple_Features">Simple features</a> "is a set of standards that specify a common storage and access model of geographic feature made of mostly two-dimensional geometries (point, line, polygon, multi-point, multi-line, etc.) used by geographic information systems." </li>
+				<li>
+					<a href="https://docs.oracle.com/cd/E17952_01/mysql-8.0-en/spatial-types.html">Geographic feature</a> is anything in the world that has a location. A feature can be:
+An entity. For example, a mountain, a pond, a city;
+
+A space. For example, town district, the tropics;
+A definable location. For example, a crossroad, as a particular place where two streets intersect.</li>
+				<li>
+					<a href="https://docs.oracle.com/cd/E17952_01/mysql-8.0-en/spatial-types.html">Geometry</a> is a point or an aggregate of points representing anything in the world that has a location. </li>
+				<li>Geometric object is the spatial representation of an object such as a feature or a significant part of a feature. More formally, <a href="https://portal.ogc.org/files/?artifact_id=25355">OGC 06-103r4</a> states that &quot;a geometric object is defined as a spatial object comprising a geometric primitive (points, curves, surfaces, and solids that can broken down into smaller objects), a collection of geometric primitives, or a geometric complex treated as a single entity.&quot;</li>
+			</ul>
+			<p>This document covers what <a href="https://libgeos.org/specifications/wkb/">Geos Well-Known Binary (WKB)</a> refers to as <i>Standard WKB</i> but this resource also refers to <i>Extended WKB</i>, a subset of Standard WKB &quot;which allows applications to optionally add extra dimensions, and optionally embed a spatial reference identifier (SRID).&quot;  The Geos Well-Known Binary (WKB) page goes on to state: &quot;The original WKB specification made no allowances for adding extra dimensions, like Z and M, that are common in GIS applications. It also had no space for embedding a spatial reference identifier (SRID), which made it unusable as a database import/export format. The “Extended WKB” variant is a superset of the standard WKB, which allows applications to optionally add extra dimensions, and optionally embed an SRID. The presence of extra dimensions is indicated by adding flag bits to the existing wkbType that appears in all WKB geometries.&quot; <a href="https://portal.ogc.org/files/?artifact_id=25355">OGC 06-103r4</a> does not use the term <i>Extended WKB</i>. 	<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://portal.ogc.org/files/?artifact_id=25355</link>
+					<tag>OpenGIS
+ Implementation Standard for Geographic
+information - Simple feature access - Part 1: Common
+architecture </tag>
+					<comment>File download</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.ogc.org/standards/sfa</link>
+					<tag>Open Geospatial Consortium: Simple Feature Access - Part 1: Common Architecture</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.iso.org/standard/60343.html</link>
+					<tag>SO/IEC 13249-3:2016
+Information technology — Database languages — SQL multimedia and application packages — Part 3: Spatial</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Open Geospatial Consortium</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.ogc.org/</link>
+							<tag>Open Geospatial Consortium homepage</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.skyline.co.il/legacy/TerraExplorer/v6.6.0/APIReferenceGuide/Well-Known_Text_and_Well-Known_Binary_WKT_and_WKB.htm</link>
+					<tag>TerraExplorer: Well-Known Text and Well-Known Binary (WKT and WKB)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.ibm.com/docs/en/db2/11.5?topic=systems-coordinate-syntax</link>
+					<tag>IBM Documentation Db2 Warehouse: Coordinate systems syntax</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.ibm.com/docs/en/db2-warehouse?topic=formats-well-known-binary-wkb-format</link>
+					<tag>IBM Documentation Db2 Warehouse: Well-known Binary (WKB) format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.iso.org/standard/63555.html</link>
+					<tag>ISO/IEC 9075-1:2016
+Information technology — Database languages — SQL — Part 1: Framework (SQL/Framework)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.iso.org/standard/53798.html</link>
+					<tag>ISO 19115-1:2014
+Geographic information — Metadata — Part 1: Fundamentals</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.fgdc.gov/metadata/iso-standards</link>
+					<tag>FDGC ISO Geospatial Metadata Standard</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.cadcorp.com/support/data-format-support/</link>
+					<tag>Cadcorp file format support</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://gdal.org/</link>
+					<tag>OGR/GDAL</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://docs.safe.com/fme/html/FME_Desktop_Documentation/FME_ReadersWriters/WKB/wkb.htm</link>
+					<tag>FME format support for WKB</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://postgis.net/docs/using_postgis_dbmanagement.html#OpenGISWKBWKT</link>
+					<tag>PostGIS format support</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://datatypes.net/open-wkb-files</link>
+					<tag>DataTypes.net: WKB file format description</tag>
+					<comment>includes &quot;.wkb&quot; file extension</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://libgeos.org/specifications/wkb/</link>
+					<tag>Geos Well-Known Binary (WKB)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://docs.oracle.com/cd/E17952_01/mysql-8.0-en/blob.html</link>
+					<tag>MySQL 8.0 Reference Manual: 11.3.4 The BLOB and TEXT Types</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://docs.oracle.com/cd/E17952_01/mysql-8.0-en/spatial-types.html</link>
+					<tag>MySQL 8.0 Reference Manual: 11.4 Spatial Data Types</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.w3schools.com/sql/sql_intro.asp</link>
+					<tag>W3Schools Introduction to SQL</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://link.springer.com/content/pdf/10.1007/978-1-4302-1830-2.pdf</link>
+					<tag>Beginning Spatial
+with SQL Server 2008. Alastair Aitchison. 2009.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Simple_Features</link>
+					<tag>Wikipedia entry on Simple Features</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://docs.oracle.com/cd/E17952_01/mysql-8.0-en/spatial-types.html</link>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
