@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000441" titleName="OpenDocument Database Front End Document Format (ODB), Version 1.2,  ISO 26300-1:2015" shortName="ODF_dbfront_1_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000441" titleName="OpenDocument Database Front End Document Format (ODB), Version 1.2,  ISO 26300-1:2015" shortName="ODF_dbfront_1_2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>database</fdd:gdfrGenre>
@@ -50,9 +50,9 @@
 
 LibreOffice Base can be used to create small embedded databases when used with Java-based HSQLDB as its storage engine (The LibreOfice Base default database). This makes LibreOffice Base appear as if it were a database manager and the database, but it is not. LibreOffice Base is just the front end allowing us to tie into the actual database.&quot;  According to <a href="https://wiki.documentfoundation.org/images/e/e8/BH40-BaseHandbook.pdf">LibreOffice Base Handbook: Accessing external databases</a>, external databases supported by that software include: dBase, MySQL, Oracle (using JDBC), PostgreSQL, and other databases accessible using ODBC and JDBC query processors.  The external databases supported by any application that supports ODF_dbfront_1_2 will be application-dependent.</p>
 			<p>The ODF specification covers two physical forms for ODF documents, a flat form as a single XML file and a package form based on the <fddLink id="fdd000355">ZIP_6_2_0</fddLink> format.  This description focuses on the more commonly used ZIP-based package format for ODF database front end files, given the <i>.odb</i> file extension.</p>
-			<p>An ODF package can be recognized as a database front end document in several ways.  Externally, there is the .odb file extension.  The primary internal indication is that the mandatory file named <i>mimetype</i> will contain the string &quot;application/vnd.oasis.opendocument.database&quot;.  An additional way to recognize an ODF database front end document is that  the <i>&lt;office:body&gt;</i> element, a child of the root <i>&lt;office:document-content&gt;</i> element in <i>content.xml</i> has the child element <i>&lt;office:database&gt;</i>.</p>
+			<p>An ODF package can be recognized as a database front end document in several ways.  Externally, there is the .odb file extension.  The primary internal indication is that the mandatory file named <i>mimetype</i> will contain the string &quot;application/vnd.oasis.opendocument.base&quot;.  An additional way to recognize an ODF database front end document is that  the <i>&lt;office:body&gt;</i> element, a child of the root <i>&lt;office:document-content&gt;</i> element in <i>content.xml</i> has the child element <i>&lt;office:database&gt;</i>.</p>
 			<p>See Notes in <fddLink id="fdd000247">ODF Family</fddLink> for more information about the flat XML-only variant of ODF files.  For a flat ODF database front end file, the root <i>&lt;office:document&gt;</i> element has an <i>office:mimetype</i> attribute with the value indicated above.</p>
-			<p>For details of the ZIP-based package for ODF_dbfront_1_2, see <fddLink id="fdd000425">ODF_package_1_2</fddLink>.  The typical files for a minimal database front end document include:  <i>mimetype</i> (one-line file containing only the string &quot;application/vnd.oasis.opendocument.database&quot;; 
+			<p>For details of the ZIP-based package for ODF_dbfront_1_2, see <fddLink id="fdd000425">ODF_package_1_2</fddLink>.  The typical files for a minimal database front end document include:  <i>mimetype</i> (one-line file containing only the string &quot;application/vnd.oasis.opendocument.base&quot;; 
 <i>./META-INF/manifest.xml</i> (package manifest); <i>content.xml</i> (database front end content); <i>styles.xml</i> (display formatting).  The package specification defines the form for the package manifest, and options for digital signatures, encryption, etc.</p>
 		</fdd:description>
 		<fdd:shortDescription>An XML-based format for a database front end that is editable.  File extension .odb is used for a free-standing database front end document.   May be embedded within other document formats in the OpenDocument Format (ODF) family.  Documented in ODF 1.2 Part 1.  </fdd:shortDescription>
@@ -123,7 +123,7 @@ LibreOffice Base can be used to create small embedded databases when used with J
 		<fdd:adoption>
 			<p>The compilers of this resource have found no specific evidence of widespread adoption of this category of ODF file.  It is likely used primarily by individuals or organizations that have chosen to use an ODF-based office suite of software, such as <a href="https://www.libreoffice.org/">Libre Office</a>.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
 			<p>Database applications will usually be chosen for features, functionality, or compatibility/familiarity -- and not for the underlying format.  For example, <a href="https://lifehacker.com/battle-of-the-office-suites-microsoft-office-and-libre-1147940828">Battle of the Office Suites: Microsoft Office and LibreOffice Compared</a> points out that &quot;LibreOffice is compatible with a lot more systems, including Windows, OS X, and Linux,&quot; while Microsoft Access is limited to Windows.  The same article states, &quot;Base has fantastic integration with MySQL, PostgreSQL, and Thunderbird, whereas Access integrates better with Outlook and Paradox.&quot;</p>
-			<p>See <fddLink id="fdd000247">ODF-Family</fddLink> for more detail on adoption of ODF in general, and particularly for mandates or recommendations for ODF when exchanging editable documents among government agencies and the individiduals or organizations they serve.</p>
+			<p>See <fddLink id="fdd000247">ODF-Family</fddLink> for more detail on adoption of ODF in general, and particularly for mandates or recommendations for ODF when exchanging editable documents among government agencies and the individuals or organizations they serve.</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>No concerns.  See <fddLink id="fdd000247">ODF_Family</fddLink>.</fdd:licensingAndPatents>
 		<fdd:transparency>
@@ -164,8 +164,15 @@ LibreOffice Base can be used to create small embedded databases when used with J
 			</fdd:filenameExtension>
 			<fdd:internetMediaType>
 				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.oasis.opendocument.base</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Registered in 2022. See <a href="https://www.iana.org/assignments/media-types/application/vnd.oasis.opendocument.base">https://www.iana.org/assignments/media-types/application/vnd.oasis.opendocument.base</a>. Note that this IANA registration deprecates the previous value: application/vnd.oasis.opendocument.database. See also <a href="https://issues.oasis-open.org/browse/OFFICE-3745">Public Comment: ODF 1.2 Part 1: what is the mime type of database documents?</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
 					<fdd:sigValue>application/vnd.oasis.opendocument.database</fdd:sigValue>
 				</fdd:sigValues>
+				<fdd:note>Deprecated value but may be found in older implementations. See <a href="">https://www.iana.org/assignments/media-types/application/vnd.oasis.opendocument.database</a>.</fdd:note>
 			</fdd:internetMediaType>
 			<fdd:magicNumbers>
 				<fdd:sigValueNA>See note.</fdd:sigValueNA>
@@ -178,6 +185,26 @@ LibreOffice Base can be used to create small embedded databases when used with J
 						<fdd:sigValue>ASCII: office:version=&quot;1.2&quot;</fdd:sigValue>
 					</fdd:sigValues>
 					<fdd:note>The four root elements used in the primary files in an ODF package all require an attribute that records the ODF version.  This is the signifier that distinguishes ODF 1.2 packages from earlier versions.  Documents without this attribute are assumed to be from version 1.1 or earlier.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/424</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/424">http://www.nationalarchives.gov.uk/PRONOM/fmt/424</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q27225813</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q27225813">https://www.wikidata.org/wiki/Q27225813</a>
+					</fdd:note>
 				</fdd:values>
 			</fdd:other>
 		</fdd:signifiersGroup>
@@ -311,6 +338,26 @@ Overview Page</tag>
 				<fdd:urlReference>
 					<link>https://www.infinitecampus.com/policies/digital-repository-services-terms-of-service/acceptable-file-upload-types</link>
 					<tag>Infinite Campus: Acceptable file upload types</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.iana.org/assignments/media-types/application/vnd.oasis.opendocument.base</link>
+					<tag>IANA registration for application/vnd.oasis.opendocument.base. Published 2022.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/424</link>
+					<tag>Pronom entry for fmt/424</tag>
+					<comment>Information in PRONOM from UK National Archives about OpenDocument Database Format 1.2. PUID: fmt/424.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q27225813</link>
+					<tag>Wikidata entry for Q27225813</tag>
+					<comment>Information in Wikidata about OpenDocument Database, version 1.2. Wikidata Title ID: Q27225813.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
