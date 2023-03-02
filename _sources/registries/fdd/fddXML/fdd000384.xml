@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000384" titleName="MBOXO Email Format" shortName="MBOXO" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000384" titleName="MBOXO Email Format" shortName="MBOXO" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>text</fdd:gdfrGenre>
@@ -17,18 +17,23 @@
 			</fdd:gdfrDomain>
 		</fdd:gdfrDomains>
 		<fdd:updates>
-			<fdd:date>2014-02-28</fdd:date>
+			<fdd:date>2023-03-01</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
 	<fdd:identificationAndDescription>
 		<fdd:fullName>MBOXO Email Format</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>email formats</fdd:keyword>
+			<fdd:keyword>text formats</fdd:keyword>
+		</fdd:keywords>
 		<fdd:description>
 			<p>MBOXO is one of the <fddLink id="fdd000383">MBOX</fddLink> family of related file formats used for holding collections of electronic mail messages. See <fddLink id="fdd000383">MBOX</fddLink> for a description of the syntax.</p>
 			<p>Since all MBOX messages are concatenated into one text file, MBOXO (and <fddLink id="fdd000385">MBOXRD</fddLink>) formatted messages locate the message start by scanning for “From ” lines. If a "From " string occurs at the beginning of a line in either the header or the body of a message, the e-mail message must be modified before the message is stored in an MBOX mailbox file or the line will be taken as the start of the new message. MBOXO files prepends one greater-than sign (“>”)  to any line of the message, in either the header or the body, that begins with the five characters &apos;F&apos;, &apos;r&apos;, &apos;o&apos;, &apos;m&apos;, and &apos; &apos; (“>From ”).</p>
-			<p>According to <a href="http://homepage.ntlworld.com/jonathan.deboynepollard/FGA/mail-mbox-formats.html"> Jonathan de Boyne Pollard</a>, messages appended to an MBOXO mailbox are irrevocably corrupted by prepending the “>” before the word "From" because it is impossible to determine if the “>” was already present as a character in the original message. If a line already contained ">From " at the beginning (such as in a quotation), it is unchanged when written. </p>
+			<p>According to <a href="https://web.archive.org/web/20161023162432/jdebp.eu/FGA/mail-mbox-formats.html">Jonathan de Boyne Pollard</a> (link available through Internet Archive), messages appended to an MBOXO mailbox are irrevocably corrupted by prepending the “>” before the word "From" because it is impossible to determine if the “>” was already present as a character in the original message. If a line already contained ">From " at the beginning (such as in a quotation), it is unchanged when written. </p>
 		</fdd:description>
 		<fdd:shortDescription>MBOXO is one of the MBOX family of related file formats used for holding collections of email messages within a single file. MBOXO files add a greater-than sign (“>”) before the &quot;From &quot; at the start of a line (“>From ”).</fdd:shortDescription>
+		<fdd:productionPhase>Used for content in initial (by message authors), middle (by archives) or final state (by message recipients/other end users). </fdd:productionPhase>
 		<fdd:relationships>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
@@ -40,7 +45,12 @@
 			</fdd:relationship>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
-	<fdd:localUse/>
+	<fdd:localUse>
+		<fdd:experience>See <fddLink id="fdd000383">MBOX</fddLink>
+		</fdd:experience>
+		<fdd:preference>See <fddLink id="fdd000383">MBOX</fddLink>
+		</fdd:preference>
+	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>See <fddLink id="fdd000383">MBOX</fddLink>
 		</fdd:disclosure>
@@ -79,6 +89,24 @@
 				<fdd:note>See <fddLink id="fdd000383">MBOX</fddLink>
 				</fdd:note>
 			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/720</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/720">http://www.nationalarchives.gov.uk/PRONOM/fmt/720</a>. Note that PRONOM does not specify variants of MBOX. </fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q527723</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q527723">https://www.wikidata.org/wiki/Q527723</a>. Note that Wikidata does not specify variants of MBOX.</fdd:note>
+				</fdd:values>
+			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
@@ -100,7 +128,7 @@
 		<fdd:urls>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://tobold.org/chapter/cmail/027</link>
+					<link>https://groups.google.com/g/comp.mail.headers/c/Q6GXtTBBJys/m/J3SVqCTVdRwJ</link>
 					<tag>Interesting comments by Tim Goodwin about MBOXO and MBOXRD message delimiters</tag>
 				</fdd:urlReference>
 			</fdd:url>
