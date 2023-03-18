@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 
-<ContainerSignatureMapping schemaVersion="1.0" signatureVersion="32">
+<ContainerSignatureMapping schemaVersion="1.0" signatureVersion="33">
   <ContainerSignatures>
     <ContainerSignature Id="1000" ContainerType="OLE2">
       <Description>Microsoft Word 6.0/95 OLE2</Description>
@@ -317,6 +317,26 @@
         </File> </Files>
     </ContainerSignature>
 
+    <ContainerSignature Id="1200" ContainerType="ZIP">
+      <Description>Microsoft Word OOXML Strict</Description>
+      <Files>
+        <File>
+          <Path>word/document.xml</Path>
+          <BinarySignatures>
+            <InternalSignatureCollection>
+              <InternalSignature ID="1200">
+                <ByteSequence Reference="BOFoffset">
+                  <SubSequence Position="1" SubSeqMinOffset="0" SubSeqMaxOffset="2048">
+                    <Sequence>'xmlns:w="http://purl.oclc.org/ooxml/wordprocessingml/main"'</Sequence>
+                  </SubSequence>
+                </ByteSequence>
+              </InternalSignature>
+            </InternalSignatureCollection>
+          </BinarySignatures>
+        </File>
+      </Files>
+    </ContainerSignature>
+    
     <ContainerSignature Id="2000" ContainerType="OLE2">
       <Description>Microsoft Excel 5.0/95 OLE2</Description>
       <Files>
@@ -599,6 +619,26 @@
                   <SubSequence Position="3" SubSeqMinOffset="0"
                     SubSeqMaxOffset="32">
                     <Sequence>60 00 00 00 E1 00 02 00 B0 04</Sequence>
+                  </SubSequence>
+                </ByteSequence>
+              </InternalSignature>
+            </InternalSignatureCollection>
+          </BinarySignatures>
+        </File>
+      </Files>
+    </ContainerSignature>
+    
+    <ContainerSignature Id="2200" ContainerType="ZIP">
+      <Description>Microsoft Excel OOXML Strict</Description>
+      <Files>
+        <File>
+          <Path>xl/workbook.xml</Path>
+          <BinarySignatures>
+            <InternalSignatureCollection>
+              <InternalSignature ID="2200">
+                <ByteSequence Reference="BOFoffset">
+                  <SubSequence Position="1" SubSeqMinOffset="0" SubSeqMaxOffset="2048">
+                    <Sequence>'xmlns="http://purl.oclc.org/ooxml/spreadsheetml/main"'</Sequence>
                   </SubSequence>
                 </ByteSequence>
               </InternalSignature>
@@ -920,6 +960,27 @@
         </File>
     </Files>
 </ContainerSignature>
+
+    <ContainerSignature Id="3200" ContainerType="ZIP">
+      <Description>Microsoft PowerPoint OOXML Strict</Description>
+      <Files>
+        <File>
+          <Path>ppt/presentation.xml</Path>
+          <BinarySignatures>
+            <InternalSignatureCollection>
+              <InternalSignature ID="3200">
+                <ByteSequence Reference="BOFoffset">
+                  <SubSequence Position="1" SubSeqMinOffset="0" SubSeqMaxOffset="2048">
+                    <Sequence>'xmlns:p="http://purl.oclc.org/ooxml/presentationml/main"'</Sequence>
+					
+                  </SubSequence>
+                </ByteSequence>
+              </InternalSignature>
+            </InternalSignatureCollection>
+          </BinarySignatures>
+        </File>
+      </Files>
+    </ContainerSignature>
 
         <ContainerSignature Id="4000" ContainerType="OLE2">
       <Description>Microsoft Project 4.0 OLE2</Description>
@@ -6495,6 +6556,25 @@
                 </File>
             </Files>
         </ContainerSignature>
+		<ContainerSignature Id="80000" ContainerType="ZIP">
+            <Description>Web Archive Collection Zipped</Description>
+            <Files>
+				<File>
+                    <Path>datapackage.json</Path>
+                    <BinarySignatures>
+                        <InternalSignatureCollection>                    
+	                        <InternalSignature ID="300">
+	                            <ByteSequence Reference="BOFoffset">
+	                                <SubSequence Position="1" SubSeqMinOffset="0" SubSeqMaxOffset="4096">
+	                                    <Sequence>'wacz_version'</Sequence>
+	                                </SubSequence>
+	                            </ByteSequence>
+	                        </InternalSignature>
+	                    </InternalSignatureCollection>
+                    </BinarySignatures>
+                </File>             
+            </Files>
+        </ContainerSignature>
   </ContainerSignatures>
 
 
@@ -6523,6 +6603,8 @@
     <FileFormatMapping signatureId="1105" Puid="fmt/755"/>
     <!--  Microsoft Word 97 OLE2 Password Protected (OLE2)-->
     <FileFormatMapping signatureId="1110" Puid="fmt/754"/>
+        <!-- Microsoft Word OOXML Strict (ZIP)-->
+    <FileFormatMapping signatureId="1200" Puid="fmt/1827"/>
 
     <!--  Microsoft Excel 5.0/95 (OLE2)-->
     <FileFormatMapping signatureId="2000" Puid="fmt/59"/>
@@ -6548,6 +6630,8 @@
     <FileFormatMapping signatureId="2100" Puid="fmt/628"/>
     <!--  Microsoft Excel 97-2003 Template (OLE2)-->
     <FileFormatMapping signatureId="2110" Puid="x-fmt/17"/>
+    <!-- Microsoft Excel OOXML Strict (ZIP)-->
+    <FileFormatMapping signatureId="2200" Puid="fmt/1828"/>
 
     <!-- Microsoft PowerPoint 2000 (OLE2)-->
     <FileFormatMapping signatureId="3000" Puid="fmt/126"/>
@@ -6577,6 +6661,8 @@
     <FileFormatMapping signatureId="3120" Puid="fmt/125"/>
     <!--  Microsoft PowerPoint 4.0 (OLE2)-->
     <FileFormatMapping signatureId="3130" Puid="x-fmt/88"/>
+    <!-- Microsoft PowerPoint OOXML Strict (ZIP)-->
+    <FileFormatMapping signatureId="3200" Puid="fmt/1829"/>
 
     <!-- Microsoft Project 4.0 (OLE2)-->
     <FileFormatMapping signatureId="4000" Puid="x-fmt/243"/>
@@ -7116,6 +7202,9 @@
 
     <!--  EndNote Compressed Library v20+ (ZIP)-->
     <FileFormatMapping signatureId="70020" Puid="fmt/1685"/>
+	
+	<!--  WACZ Container File (ZIP)-->
+    <FileFormatMapping signatureId="80000" Puid="fmt/1840"/>
 
   </FileFormatMappings>
 
