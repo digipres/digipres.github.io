@@ -2,12 +2,9 @@
 <fdd:FDD id="fdd000147" titleName="JPEG Encoded File with Exif Metadata" shortName="JPEG_EXIF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
-			<fdd:gdfrGenreAndSubgenres>
+			<fdd:gdfrGenres>
 				<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
-				<fdd:gdfrSubgenres>
-					<fdd:gdfrSubgenre>sound</fdd:gdfrSubgenre>
-				</fdd:gdfrSubgenres>
-			</fdd:gdfrGenreAndSubgenres>
+			</fdd:gdfrGenres>
 		</fdd:gdfrGenreSelection>
 		<fdd:formatCategories>
 			<fdd:category>file-format</fdd:category>
@@ -16,7 +13,7 @@
 		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2022-05-10</fdd:date>
+			<fdd:date>2023-11-03</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -49,23 +46,31 @@
 					<fdd:shortName>EXIF_2_2</fdd:shortName>
 					<fdd:titleName>Exif Exchangeable Image File Format, Version 2.2</fdd:titleName>
 				</fdd:relatedTo>
-				<fdd:comment>Specification defines metadata elements for use in JPEG-EXIF.</fdd:comment>
+				<fdd:comment>Specification defines metadata elements for use in JPEG_EXIF.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000618</fdd:id>
+					<fdd:shortName>EXIF_Family</fdd:shortName>
+					<fdd:titleName>Exchangeable Image File Format (Exif) Family</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Specification defines metadata elements for use in JPEG_EXIF.</fdd:comment>
 			</fdd:relationship>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
-		<fdd:experience>Prints and Photographs Division holds a modest number of digital-camera generated photographs in JPEG_EXIF.</fdd:experience>
-		<fdd:preference>General preference for still images is for uncompressed; rich metadata always welcome. Thus, for digital-camera photographs, <fddLink id="fdd000145">TIFF_UNC_EXIF</fddLink> would be preferred (<fddLink id="fdd000024">TIFF_UNC</fddLink> acceptable); <fddLink id="fdd000147">JPEG_EXIF</fddLink> is acceptable and preferred to <fddLink id="fdd000018">JFIF</fddLink> (also acceptable).</fdd:preference>
+		<fdd:experience>Prints and Photographs Division holds a modest number of digital-camera generated photographs in JPEG_EXIF. Specific Exif versions are unknown.</fdd:experience>
+		<fdd:preference>See the Library of Congress Recommended Formats Statement for format preferences for <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html">still image works</a>. The RFS does not mandate or suggest the use of Exif data.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
-		<fdd:disclosure>Fully disclosed, non-proprietary standard.  JPEG is an ISO/IEC standard; Exif is from JEITA (Japan Electronics and Information Technology Industries Association).
+		<fdd:disclosure>Fully disclosed, non-proprietary standard.  See <fddLink id="fdd000017">JPEG</fddLink> and <fddLink id="fdd000618">EXIF_Family</fddLink>
 		</fdd:disclosure>
-		<fdd:documentation>See <fddLink id="fdd000017">JPEG</fddLink> and <fddLink id="fdd000146">EXIF_2_2</fddLink>
+		<fdd:documentation>See <fddLink id="fdd000017">JPEG</fddLink> and <fddLink id="fdd000618">EXIF_Family</fddLink>
 		</fdd:documentation>
 		<fdd:adoption>Very widely adopted in digital cameras and supported by a number of image software applications. JPEG_EXIF may be more widely adopted than TIFF_UNC_EXIF.
 		</fdd:adoption>
-		<fdd:licensingAndPatents>See <fddLink id="fdd000017">JPEG</fddLink> and <fddLink id="fdd000146">EXIF_2_2</fddLink>
-		</fdd:licensingAndPatents>
+		<fdd:licensingAndPatents>See <fddLink id="fdd000017">JPEG</fddLink> and <fddLink id="fdd000618">EXIF_Family</fddLink>.</fdd:licensingAndPatents>
 		<fdd:transparency>See <fddLink id="fdd000149">JPEG_DCT_BL</fddLink>.
 		</fdd:transparency>
 		<fdd:selfDocumentation>Good support.  The Exif IFD (Image File Directory) attribute set defined in the specification includes tags pertaining to the Exif version, color space, camera manufacturer, date and time, and an extensive set pertaining to "picture-taking conditions." (pp. 24-25) Also from the specification: "Related attribute information for . . . compressed . . . files is stored in the tag information format defined in TIFF Rev. 6.0. Information specific to the camera system and not defined in TIFF is stored in private tags registered for Exif. . . . The reason for using the TIFF Rev. 6.0 tag format in the compressed [JPEG] file APP1 segment is to facilitate exchange of attribute data between Exif compressed [JPEG] and uncompressed [TIFF] files." (p. 2)</fdd:selfDocumentation>
@@ -96,7 +101,9 @@
 				<fdd:sigValues>
 					<fdd:sigValue>jpg</fdd:sigValue>
 				</fdd:sigValues>
-				<fdd:note>Based on examination of files in Library of Congress collections</fdd:note>
+				<fdd:note>
+				
+From <a href="">Exif Specification version 3</a> and previous versions. While the container formats may accept other extensions, such as "jpeg", the Exif specification declares only &quot;jpg&quot; for compressed images.</fdd:note>
 			</fdd:filenameExtension>
 			<fdd:internetMediaType>
 				<fdd:sigValueNA>See note.</fdd:sigValueNA>
@@ -109,6 +116,46 @@
 				</fdd:sigValues>
 				<fdd:note>The 0xFF 0xD8 part of the string is universal to all JPEG encoded bitstreams; the remainder of the string is wrapper specific.  The ASCII rendering is from Gary Kessler's <a href="https://web.archive.org/web/20221112073316/https://www.garykessler.net/library/file_sigs.html">File Signatures Table</a>.  See also <a href="#notes">Notes</a> in this description for a discussion of the point of conflict with JFIF file wrappers.</fdd:note>
 			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/398</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>	Exchangeable Image File Format (Compressed) Version 2.0. Short name: 	Exif Compressed Image (2.0) See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/398">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/398</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/390</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Exchangeable Image File Format (Compressed) Version 2.1. Short name: 	Exif Compressed Image (2.1). See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/390">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/390</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/391</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Exchangeable Image File Format (Compressed) Version 2.2. Short name: 	Exif Compressed Image (2.2). See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/391">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/391</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/645</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Exchangeable Image File Format (Compressed), Version 2.21. See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/645">https://www.nationalarchives.gov.uk/PRONOM/fmt/645</a>.
+				</fdd:note>
+				</fdd:values>
+			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
@@ -125,13 +172,13 @@ Therefore a JPEG file cannot legally be both Exif and JFIF at the same time!&apo
 			<fdd:url>
 				<fdd:urlReference>
 					<link>https://web.archive.org/web/20131230103425/http://exif.org/specifications.html</link>
-					<tag>Specifications for EXIF 2.1 and 2.2 from former EXIF.org site</tag>
+					<tag>Specifications for Exid 2.1 and 2.2 from former exif.org site</tag>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
 					<link>https://www.jeita.or.jp/cgi-bin/standard_e/list.cgi?cateid=1&amp;subcateid=4</link>
-					<tag>English language page for JEITA EXIF standards</tag>
+					<tag>English language page for JEITA Exif standards</tag>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
@@ -146,6 +193,11 @@ Therefore a JPEG file cannot legally be both Exif and JFIF at the same time!&apo
 	<fdd:usefulReferences>
 		<fdd:urls>
 			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000618">EXIF_Family</fddLink>, <fddLink id="fdd000146">EXIF_2_2</fddLink> and <fddLink id="fdd000017">JPEG</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
 				<fdd:urlReference>
 					<link>https://www.media.mit.edu/pia/Research/deepview/exif.html</link>
 					<tag>Description of Exif file format</tag>
@@ -156,12 +208,35 @@ Therefore a JPEG file cannot legally be both Exif and JFIF at the same time!&apo
 				<fdd:urlReference>
 					<link>http://sylvana.net/jpegcrop/exifpatch.html</link>
 					<tag>Exif Patch</tag>
-					<comment>Pertains to impact on EXIF data when Independent JPEG Group (IJG) based software is used to edit files; notes from 2001 and 2002.</comment>
+					<comment>Pertains to impact on Exif data when Independent JPEG Group (IJG) based software is used to edit files; notes from 2001 and 2002.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlGroup>
-					<fdd:intro>See also <fddLink id="fdd000017">JPEG</fddLink> and <fddLink id="fdd000146">EXIF_2_2</fddLink>.</fdd:intro>
+					<fdd:intro>See also <fddLink id="fdd000017">JPEG</fddLink>,  <fddLink id="fdd000146">EXIF_2_2</fddLink> and <fddLink id="fdd000618">EXIF_Family</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Pronom entries:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>http://www.nationalarchives.gov.uk/PRONOM/x-fmt/398</link>
+							<tag>PRONOM entry for x-fmt/398, Exchangeable Image File Format (Compressed) Version 2.1. Short name: 	Exif Compressed Image (2.1)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.nationalarchives.gov.uk/PRONOM/x-fmt/390</link>
+							<tag>PRONOM entry for x-fmt/390. Exchangeable Image File Format (Compressed) Version 2.1. Short name: 	Exif Compressed Image (2.1). </tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.nationalarchives.gov.uk/PRONOM/x-fmt/391</link>
+							<tag>PRONOM entry for x-fmt/391, Exchangeable Image File Format (Compressed) Version 2.2. Short name: 	Exif Compressed Image (2.2).</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.nationalarchives.gov.uk/PRONOM/fmt/645</link>
+							<tag>PRONOM entry for fmt/645, Exchangeable Image File Format (Compressed), Version 2.21.</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
 				</fdd:urlGroup>
 			</fdd:url>
 		</fdd:urls>

@@ -22,6 +22,9 @@
 	</fdd:properties>
 	<fdd:identificationAndDescription>
 		<fdd:fullName>Microsoft Compound File Binary File Format, Version 3</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>binary formats</fdd:keyword>
+		</fdd:keywords>
 		<fdd:description>
 			<p>Microsoft Compound File Binary (CFB) file format is also known as the Object Linking and Embedding (OLE) or Component Object Model (COM) structured storage compound file implementation binary file format.  CFB implements a simplified file system through a hierarchical collection of storage objects and stream objects. A storage object is comparable to a file system directory in that just as a directory can contain other directories and files, a storage object can contain other storage objects and stream objects. A parent storage object can also track the locations and sizes of the child storage object and stream objects nested beneath it. A stream object is comparable to a file in that a stream contains user-defined data stored as a consecutive sequence of bytes. A compound file consists of the root storage object with optional child storage objects and stream objects in a nested hierarchy.</p>
 			<p>The purpose of structured storage is to reduce the performance penalties and overhead associated with storing separate objects in a flat file. Structured storage solves performance problems by eliminating the need to totally rewrite a file whenever a new object is added, or an existing object increases in size. The new data is written to the next available free location in the file, and the storage object updates an internal structure that maintains the locations of its storage objects and stream objects. At the same time, structured storage enables end users to interact and manage a compound file as if it were a single file rather than a nested hierarchy of separate objects. </p>
@@ -39,14 +42,14 @@
 			<p>A file in version 3 of the CFB format begins as follows with a 512-byte header:</p>
 			<ul>
 				<li>Header Signature for the CFB format with 8-byte Hex value D0CF11E0A1B11AE1.  <a href="https://web.archive.org/web/20221112073316/https://www.garykessler.net/library/file_sigs.html">Gary Kessler</a> notes that the beginning of this string looks like &quot;DOCFILE&quot;</li>
-				<li>16 bytes of zeroes</li>
+				<li>16 bytes of zeros</li>
 				<li>2-byte Hex value 3E00 indicating CFB minor version 3E. The specification states that the minor version <i>should</i> always be indicated as 3e.</li>
 				<li>2-byte Hex value 0300 indicating CFB major version 3.</li>
-				<li>2-byte Hex value FEFF indicating little-endian byte order for all integer values.  This byte order applies to all CFB files.</li>
+				<li>2-byte Hex value FFFE indicating little-endian byte order for all integer values.  This byte order applies to all CFB files.</li>
 				<li>2-byte Hex value 0900 (indicating the sector size of 512 bytes used for major version 3)</li>
 				<li>480 bytes for remainder of the 512-byte header, which fills the first sector for a CFB of major version 3</li>
 			</ul>
-			<p>The structured storage profile of CFB formed the basis for the <fddLink id="fdd000004">AAF</fddLink> specification and for the Microsoft Office Binary Formats that were the default formats for Word, Powerpoint, and Excel from products released in 1997 through 2004 (<fddLink id="fdd000509">MS-DOC</fddLink>, <fddLink id="fdd000511">MS-PPT</fddLink>, and <fddLink id="fdd000510">MS-XLS</fddLink>).</p>
+			<p>The structured storage profile of CFB formed the basis for the <fddLink id="fdd000004">AAF</fddLink> specification and for the Microsoft Office Binary Formats that were the default formats for Word, PowerPoint, and Excel from products released in 1997 through 2004 (<fddLink id="fdd000509">MS-DOC</fddLink>, <fddLink id="fdd000511">MS-PPT</fddLink>, and <fddLink id="fdd000510">MS-XLS</fddLink>).</p>
 		</fdd:description>
 		<fdd:shortDescription>The Microsoft Compound File Binary File Format (CFB) file format is used for storing storage objects and stream objects in a hierarchical structure within a single file. </fdd:shortDescription>
 		<fdd:productionPhase/>
@@ -72,7 +75,7 @@
 				<fdd:relatedTo>
 					<fdd:id>fdd000511</fdd:id>
 					<fdd:shortName>MS-PPT</fdd:shortName>
-					<fdd:titleName>Microsoft Office Powerpoint 97-2003 Binary File Format (.ppt)</fdd:titleName>
+					<fdd:titleName>Microsoft Office PowerPoint 97-2003 Binary File Format (.ppt)</fdd:titleName>
 				</fdd:relatedTo>
 			</fdd:relationship>
 			<fdd:relationship>
@@ -102,9 +105,21 @@
 					<p>Early versions of the AAF format detailed use of the structured storage systems outlined in CFB to store the objects on disk.</p>
 				</fdd:comment>
 			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000621</fdd:id>
+					<fdd:shortName>WPD</fdd:shortName>
+					<fdd:titleName>WordPerfect Document Family</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>According to <a href="https://justsolve.archiveteam.org/wiki/WordPerfect">WPD</a> from Archiveteam.org, WordPerfect version 7 can also store documents known as &quot;WordPerfect Compound File&quot; using the Microsoft OLE Compound file format with the same WPD extensions. OLE embedded objects are stored inside a storage called PerfectOffice_OBJECT, whereas the real document part is now stored as stream PerfectOffice_MAIN. In principal the format of this internal document part is the same like in previous versions, but one difference is that the minor version number is raised from 1 to 2.</fdd:comment>
+			</fdd:relationship>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
-	<fdd:localUse/>
+	<fdd:localUse>
+		<fdd:experience>See various subtypes for holdings information.</fdd:experience>
+		<fdd:preference>See the <a href="https://www.loc.gov/preservation/resources/rfs/index.html">Recommended Formats Statement</a> for the Library of Congress format preferences.</fdd:preference>
+	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>Fully documented. Proprietary file format developed by Microsoft.</fdd:disclosure>
 		<fdd:documentation>

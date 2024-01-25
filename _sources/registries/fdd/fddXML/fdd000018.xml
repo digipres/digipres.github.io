@@ -7,12 +7,12 @@
 		<fdd:formatCategories>
 			<fdd:category>file-format</fdd:category>
 		</fdd:formatCategories>
-		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrComposition>container-wrapper</fdd:gdfrComposition>
 		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
 		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2022-04-28</fdd:date>
+			<fdd:date>2023-11-17</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -31,6 +31,14 @@
 			<p>May be used in initial-state picture creation; often used for middle- and final-state archiving or end-user delivery.</p>
 		</fdd:productionPhase>
 		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000619</fdd:id>
+					<fdd:shortName>JFIF_Family</fdd:shortName>
+					<fdd:titleName>JPEG File Interchange Format Family</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
 				<fdd:relatedTo>
@@ -83,16 +91,11 @@
 					<fdd:titleName>JPEG Lossless Compression (ISO/IEC 14495)</fdd:titleName>
 				</fdd:relatedTo>
 			</fdd:relationship>
-			<fdd:relationship>
-				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
-				<fdd:comment>JFIF File Interchange Format, Versions 1.00 and 1.01, not described at this website at this time</fdd:comment>
-			</fdd:relationship>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
-		<fdd:experience>See <fddLink id="fdd000017">JPEG</fddLink>
-		</fdd:experience>
-		<fdd:preference>See <fddLink id="fdd000017">JPEG</fddLink>. The Library of Congress Recommended Formats Statement (RFS) includes JPEG/JFIF as a preferred format for <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html">photographs in digital form</a>, <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html">other graphic images in digital form</a> and <a href="https://www.loc.gov/preservation/resources/rfs/design3D.html">2D and 3D Computer Aided Design raster images</a>.</fdd:preference>
+		<fdd:experience>See <fddLink id="fdd000017">JPEG</fddLink>.</fdd:experience>
+		<fdd:preference>See <fddLink id="fdd000017">JPEG</fddLink>. The Library of Congress Recommended Formats Statement (RFS) includes JPEG/JFIF as a preferred format for <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html">photographs in digital form</a>, <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html">other graphic images in digital form</a> and <a href="https://www.loc.gov/preservation/resources/rfs/design3D.html">2D and 3D Computer Aided Design raster images</a>. The RFS does not specify a version of JFIF.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>Fully disclosed. Originally developed by Eric Hamilton of C-Cube Microsystems and disseminated by Joint Photographic Experts Group (&quot;jpeg.org&quot;), the technical committee behind the ISO/IEC and ITU-T JPEG specifications. Published as an international standard in 2011 by ITU as Rec. T.871 and, in 2013, by ISO/IEC as ISO/IEC 10918-5.</fdd:disclosure>
@@ -100,9 +103,8 @@
 		Essentially the same specification is available as <a href="https://www.itu.int/rec/T-REC-T.871-201105-I/en">ITU Recommendation T.871 (05/11)</a> and <a href="https://www.iso.org/standard/54989.html">ISO/IEC 10918-5:2013</a>.</fdd:documentation>
 		<fdd:adoption>Very widely adopted, surpassing the use of either "raw" JPEG bitstreams or the <fddLink id="fdd000019">SPIFF</fddLink> file format specified in ISO/IEC 10918, part 3.</fdd:adoption>
 		<fdd:licensingAndPatents>None on the file format; see <fddLink id="fdd000017">JPEG</fddLink> for patent claims on JPEG encoding.</fdd:licensingAndPatents>
-		<fdd:transparency>Transparent.
-		</fdd:transparency>
-		<fdd:selfDocumentation>Limited, but some technical metadata is provided by the application segment APP0, and some can be derived in other ways. For detail, see <a href="https://web.archive.org/web/20160327034217/http://fclaweb.fcla.edu/uploads/Lydia%20Motyka/FDA_documentation/Action_Plans/jfif.pdf">Action Plan Background: JFIF 1.02</a> (pp. 3-4) from the Florida Center for Library Automation (FCLA), now known as the Florida Academic Library Services Cooperative.</fdd:selfDocumentation>
+		<fdd:transparency>JFIF structure is transparent but JPEG encoding may depend upon algorithms and tools to read; will require sophistication to build tools. See also <fddLink id="fdd000017">JPEG</fddLink>.      </fdd:transparency>
+		<fdd:selfDocumentation>Limited, but some technical metadata is provided by the application segment APP0, and some can be derived in other ways. For detail, see <a href="https://web.archive.org/web/20160327034217/http://fclaweb.fcla.edu/uploads/Lydia%20Motyka/FDA_documentation/Action_Plans/jfif.pdf">Action Plan Background: JFIF 1.02</a> (pp. 3-4 - link from Internet Archive) from the Florida Center for Library Automation (FCLA), now known as the Florida Academic Library Services Cooperative.</fdd:selfDocumentation>
 		<fdd:externalDependencies>
 			None.
 		</fdd:externalDependencies>

@@ -12,7 +12,7 @@
 		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
 		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2022-04-06</fdd:date>
+			<fdd:date>2023-06-21</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -25,6 +25,7 @@
 		<fdd:description>
 			<p>A tag-based file format for storing and interchanging raster images.  TIFF serves as a wrapper for different bitstream encodings for bit-mapped (raster) images.  The different encodings may represent different compression schemes and different schemes for color representation (photometric interpretation).  See also <a href="#notes">Notes</a>.</p>
 			<p>The most recent version of TIFF is 6.0, published in 1992.  Since TIFF images conforming to earlier versions are valid TIFF 6.0 files, the information in this description is also pertinent to earlier versions of the TIFF standard.  Many TIFF files with uncompressed image data are still being created as TIFF 5.0 files.</p>
+			<p>One limiting factor for TIFF is file size. As described in <a href="https://www.microimages.com/documentation/TechGuides/74bigTIFF.pdf">Use and Export BigTIFF Files</a>, "in the standard TIFF format, [the] offset is specified by a 32-bit integer (4 bytes). The largest offset that can be specified is thus 232 bytes, or 4 GB." The post <a href="https://www.artwork.com/raster/bigtiff.htm">BigTIFF - Exceeding the 4 GB Limit</a> from 2018 adds that "most desktop computers had about 2-4 MBytes of RAM at that time so a 4 GB limit seemed to have plenty of head room." But this 4 GB maximum file size limit is a hindrance when dealing with detailed, complex or large images. In 2004, <fddLink id="fdd000328">BigTIFF</fddLink> was founded which changed the offset value as a 64-bit integer (8 bytes) which extends the theoretical maximum file size to 18,000 PB (petabytes).</p>
 		</fdd:description>
 		<fdd:shortDescription>A tag-based file format for storing and interchanging raster images. TIFF serves as a wrapper for different bitstream encodings for bit-mapped (raster) images. The different encodings may represent different compression schemes and different schemes for color representation (photometric interpretation).</fdd:shortDescription>
 		<fdd:productionPhase>Most often an initial-state or middle-state format; may serve as final-state format.</fdd:productionPhase>
@@ -127,7 +128,7 @@
 		<fdd:adoption>
 			<p>Particular subtypes are very widely deployed as master formats for scanned images.  Not supported by all browsers in native format but, as of early 2004, new PC configurations tend to include a viewer.</p>
 			<p>The format is widely supported by image-manipulation applications (Adobe Photoshop and many others), by desktop publishing and page layout applications (QuarkXPress, Adobe InDesign, and others), and by scanning, faxing, word processing, optical character recognition, and other applications. </p>
-			<p>Particular TIFF subtypes are data formats given High confidence status for preservation in the <a href="https://web.archive.org/web/20160914160338/http://fclaweb.fcla.edu/node/795">FLVC table of formats for its digital archive</a>. Library and Archives Canada has adopted TIFF as a <a href="https://www.bac-lac.gc.ca/eng/services/government-information-resources/guidelines/Pages/guidelines-file-formats-transferring-information-resources-enduring-value.aspx#m">recommended format</a> for still images.</p>
+			<p>Particular TIFF subtypes are data formats given High confidence status for preservation in the <a href="https://web.archive.org/web/20160914160338/http://fclaweb.fcla.edu/node/795">FLVC table of formats for its digital archive</a>. Library and Archives Canada has adopted TIFF as a <a href="https://www.bac-lac.gc.ca/eng/services/government-information-resources/guidelines/Documents/file-formats-irev.pdf">recommended format</a> for still images.</p>
 			<p>EXIF metadata (see <fddLink id="fdd000145">TIFF_UNC_EXIF</fddLink> and <fddLink id="fdd000073">TIFF/EP</fddLink>), a desirable form of self-documentation, is very often provided by digital cameras. </p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>Not exploited for the TIFF wrapper format. The only widely used compression scheme for the embedded image data that has been subject to patent claims in recent years is <fddLink id="fdd000135">LZW</fddLink> (Lempel-Ziv-Welch) compression, i.e., in <fddLink id="fdd000074">TIFF_LZW</fddLink>. The LZW patent is generally reported as having expired in 2003 (U.S.) and 2004 (Europe and Japan).</fdd:licensingAndPatents>
@@ -141,7 +142,7 @@
 	</fdd:sustainabilityFactors>
 	<fdd:qualityAndFunctionalityFactors>
 		<fdd:stillImageQF>
-			<fdd:normalImage>Good support.</fdd:normalImage>
+			<fdd:normalImage>Good support. Except for file size limit of 4 GB which may be restrictive for complex uses. See <fddLink id="fdd000328">BigTIFF</fddLink>.</fdd:normalImage>
 			<fdd:clarity>Excellent support for images with very high spatial resolution. The standard is flexible as to color space and bit depth.  In practice, 8-bit grayscale and 24-bit RGB color are common; some activities create files with greater than 8 bits per channel (color or grayscale).</fdd:clarity>
 			<fdd:colorMaint>
 				<p>The TIFF tag for the ICC profile (tag 34675, <i>InterColourProfile</i>) for a capture device has been added as a &quot;private&quot; extension in the <fddLink id="fdd000072">TIFF/IT</fddLink> and <fddLink id="fdd000073">TIFF/EP</fddLink> standards.<footNote id="1"/> Extended tags of this kind may be used in any TIFF_6 file, although they may not be recognized by all readers. ICC <a href="https://www.color.org/icc1V42.pdf">Profile version 4.2.0.0</a> (Specification ICC.1:2004-10, page 69) provides guidance for embedding ICC profiles in TIFF files: "as a single TIFF field or Image File Directory (IFD)." Meanwhile, Adobe Photoshop software appears to provide an alternate means to embed an ICC profile in a TIFF file; the compilers of this Web site seek explanatory <a href="../contact_format.shtml">comments</a> from readers: how proprietary or interoperable is PhotoShop embedding of ICC profiles?</p>
@@ -184,8 +185,7 @@
 				<fdd:sigValues>
 					<fdd:sigValue>Hex: 49 49 2A 00</fdd:sigValue>
 				</fdd:sigValues>
-				<fdd:note>For little endian byte order; from the <a href="http://jhove.sourceforge.net/tiff-hul.html">JHOVE page</a> for TIFF.<br/>
-				</fdd:note>
+				<fdd:note>For little endian byte order; from the <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/353">PRONOM PUID fmt/353</a> for TIFF.</fdd:note>
 			</fdd:magicNumbers>
 			<fdd:magicNumbers>
 				<fdd:sigValues>
@@ -196,11 +196,27 @@
 			</fdd:magicNumbers>
 			<fdd:magicNumbers>
 				<fdd:sigValues>
+					<fdd:sigValue>Hex: 49 49 42 00</fdd:sigValue>
+					<fdd:sigValue>ASCII: II</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For little endian byte order; from the <a href="https://www.rfc-editor.org/rfc/rfc2302.txt">IETF</a> (RFC2302).</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
 					<fdd:sigValue>Hex: 4D 4D 00 2A</fdd:sigValue>
 					<fdd:sigValue>ASCII: MM</fdd:sigValue>
 				</fdd:sigValues>
-				<fdd:note>For big endian byte order; from the <a href="http://jhove.sourceforge.net/tiff-hul.html">JHOVE page</a> for TIFF and <a href="http://paulbourke.net/dataformats/tiff/">http://paulbourke.net/dataformats/tiff/</a>.</fdd:note>
+				<fdd:note>For big endian byte order; from the <a href="https://www.rfc-editor.org/rfc/rfc2302.txt">IETF</a> (RFC2302).</fdd:note>
 			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Microsoft FOURCC</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>TIFF</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>From the <a href="https://www.rfc-editor.org/rfc/rfc2302.txt">IETF</a> (RFC2302).</fdd:note>
+				</fdd:values>
+			</fdd:other>
 			<fdd:other>
 				<fdd:tag>Pronom PUID</fdd:tag>
 				<fdd:values>
@@ -275,7 +291,7 @@ TIFF Technical Notes, March 22, 2002.</tag>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.npes.org/pdf/TIFF-v6.pdf</link>
+					<link>https://printtechnologies.org/pdf/TIFF-v6.pdf</link>
 					<tag>Specification of TIFF, version 6 from NPES.</tag>
 				</fdd:urlReference>
 			</fdd:url>
@@ -333,6 +349,19 @@ TIFF Technical Notes, March 22, 2002.</tag>
 						</fdd:urlReference>
 					</fdd:urlList>
 				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.artwork.com/raster/bigtiff.htm</link>
+					<tag>BigTIFF - Exceeding the 4GB Limit, November 2018</tag>
+					<comment>From Artwork Conversion Software, Inc.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.microimages.com/documentation/TechGuides/74bigTIFF.pdf</link>
+					<tag>Use and Export BigTIFF Files</tag>
+				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
@@ -417,7 +446,7 @@ TIFF Technical Notes, March 22, 2002.</tag>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://www.bac-lac.gc.ca/eng/services/government-information-resources/guidelines/Pages/guidelines-file-formats-transferring-information-resources-enduring-value.aspx</link>
+					<link>hhttps://www.bac-lac.gc.ca/eng/services/government-information-resources/guidelines/Documents/file-formats-irev.pdf</link>
 					<tag>Library and Archives Canada Guidelines on File Formats for Transferring Information Resources of Enduring Value, as of October 2014.</tag>
 				</fdd:urlReference>
 			</fdd:url>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000430" titleName="CPIM Instant Message Format" shortName="CPIM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000430" titleName="CPIM Instant Message Format" shortName="CPIM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>text</fdd:gdfrGenre>
@@ -18,12 +18,16 @@
 			</fdd:gdfrDomain>
 		</fdd:gdfrDomains>
 		<fdd:updates>
-			<fdd:date>2015-09-01</fdd:date>
+			<fdd:date>2023-07-20</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Preliminary</fdd:draftStatus>
 	</fdd:properties>
 	<fdd:identificationAndDescription>
 		<fdd:fullName>CPIM Instant Message Format</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>chat format</fdd:keyword>
+			<fdd:keyword>instant messaging format</fdd:keyword>
+		</fdd:keywords>
 		<fdd:description>
 			<p>CPIM, short for Common Presence and Instant Messaging, is the common data message format that must be used by any CPIM-compliant message transfer protocol including instant messaging.  Standardized through <a href="https://www.ietf.org/rfc/rfc3862.txt">RFC 3862</a>, the design of the CPIM format is intended to enable security to be applied, while itself remaining agnostic about the specific security mechanisms that may be appropriate for a given application.  This content format is intended to be used to exchange possibly-secured messages between different instant messaging protocols. Very strict adherence to the message format (including whitespace usage) may be needed to achieve interoperability.</p>
 			<p>A Message/CPIM object is a two-part entity, where the first part contains the message metadata and the second part is the message content. The two parts are separated from the enclosing MIME header fields and also from each other by blank lines. The end of the message body is defined by the framing mechanism of the protocol used. Unlike <fddLink id="fdd000431">SMS</fddLink>, CPIM messages do not have a character limit.</p>
@@ -42,7 +46,10 @@
 			</fdd:relationship>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
-	<fdd:localUse/>
+	<fdd:localUse>
+		<fdd:experience>None</fdd:experience>
+		<fdd:preference>The Library of Congress has not yet specified a format preference for instant messages.  </fdd:preference>
+	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>Fully documented.</fdd:disclosure>
 		<fdd:documentation>CPIM is documented through a set of related documents in the IETF Standards Track, specifically <a href="https://www.ietf.org/rfc/rfc3862.txt">RFC 3862</a> and <a href="https://www.ietf.org/rfc/rfc5438.txt">RFC 5438</a> which extends the header fields. See  <a href="#specs">Format Specifications</a> for details.</fdd:documentation>
@@ -65,6 +72,23 @@ for signatures and encryption.&quot;</fdd:techProtection>
 				</fdd:sigValues>
 				<fdd:note>Defined in <a href="https://www.ietf.org/rfc/rfc3862.txt">RFC 3862</a>. Other MIME headers may be used as appropriate for the message transfer environment.</fdd:note>
 			</fdd:internetMediaType>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>No PRONOM entry as of July 2023</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q47320843</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q47320843">https://www.wikidata.org/wiki/Q47320843</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
@@ -143,6 +167,13 @@ for signatures and encryption.&quot;</fdd:techProtection>
 					<link>http://fileformats.archiveteam.org/wiki/E-Mail,_newsgroups,_and_forums</link>
 					<tag>Archive Team E-Mail, newsgroups, and forums</tag>
 					<comment>Useful list of IM clients</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q47320843</link>
+					<tag>Wikidata entry for Q47320843</tag>
+					<comment>Information in Wikidata about CPIM. Wikidata Title ID: Q47320843.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>

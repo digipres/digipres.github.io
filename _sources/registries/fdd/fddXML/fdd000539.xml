@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000539" titleName="7z File Format" shortName="7z" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+<fdd:FDD id="fdd000539" titleName="7z File Format" shortName="7z" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>aggregate</fdd:gdfrGenre>
@@ -11,7 +11,7 @@
 		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
 		<fdd:updates>
-			<fdd:date>2022-01-21</fdd:date>
+			<fdd:date>2023-09-06</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -55,7 +55,7 @@
 				<li>mcu-switch: if there are non-ASCII symbols then 7-Zip uses UTF-8 encoding.</li>
 				<li>mcl-switch: 7-Zip uses local code page.</li>
 			</ul>
-			<p>The file structure for 7z files begins with a “Signature Header”. The header can contain information about the version number where version numbers consist of two bytes. A major version consists of the bytes &quot;0x00&quot; and a minor version has the bytes &quot;0x04&quot;. As explained in the <a href="https://github.com/jljusten/LZMA-SDK/blob/master/DOC/7zFormat.txt">LZMA 7z file format specification</a>, the data block is placed after the signature header known as &quot;Packed Streams.&quot; The signature header should consist of 32 bytes with the first six bytes of any given 7z file consisting of the same bytes as follows, <![CDATA[{'7', 'z', 0xBC, 0xAF, 0x27, 0x1C}]]>. &quot;Packed Streams&quot; is optional as the data block may be empty. From <a href="https://github.com/jljusten/LZMA-SDK/blob/master/DOC/7zFormat.txt">LZMA's GitHub</a>, 7z files use little endian encoding where the least significant bytes are stored first. The majority of the file structure is a sequence of "Property IDs" which dictate the type of information contained within the 7z file. The py7zr documentation lists all of the associated IDs for each type of property including:</p>
+			<p>The file structure for 7z files begins with a “signature header”. The header can contain information about the version number where version numbers consist of two bytes. A major version consists of the bytes "0x00" and a minor version has the bytes "0x04". As explained in the <a href="https://github.com/jljusten/LZMA-SDK/blob/master/DOC/7zFormat.txt">LZMA 7z file format specification</a>, the data block is placed after the signature header known as &quot;Packed Streams.&quot; The signature header should consist of 32 bytes with the first six bytes of any given 7z file consisting of the same bytes as follows, <![CDATA[{'7', 'z', 0xBC, 0xAF, 0x27, 0x1C}]]>. &quot;Packed Streams&quot; is optional as the data block may be empty. From <a href="https://github.com/jljusten/LZMA-SDK/blob/master/DOC/7zFormat.txt">LZMA's GitHub</a>, 7z files use little endian encoding where the least significant bytes are stored first. The majority of the file structure is a sequence of "Property IDs" which dictate the type of information contained within the 7z file. The py7zr documentation lists all of the associated IDs for each type of property including:</p>
 			<ul>
 				<li>Header</li>
 				<li>Fileinfo</li>
@@ -82,7 +82,7 @@
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
 		<fdd:experience>The Library has over 2,000 7z files inventoried on long-term storage. 7z files have frequently been used as the delivery format for large collections of e-resource content.</fdd:experience>
-		<fdd:preference>None.</fdd:preference>
+		<fdd:preference>The Library of Congress Recommended Formats Statement (RFS) lists 7z as an Acceptable format for <a href="https://www.loc.gov/preservation/resources/rfs/data.html">Datasets</a>.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>The file format specification is partially documented in the LZMA’s <a href="https://github.com/jljusten/LZMA-SDK">GitHub</a>, openly available since 2015. The specification is found in a plain text document in <a href="https://github.com/jljusten/LZMA-SDK/blob/master/DOC/7zFormat.txt">GitHub</a>. It should be noted that the GitHub space is described as the "Unofficial" Git mirror of LZMA releases. An additional unofficial specification for the 7z python library is also publicly available at <a href="https://py7zr.readthedocs.io/en/latest/archive_format.html">Py7zr</a>.</fdd:disclosure>
@@ -116,14 +116,15 @@
 		<fdd:externalDependencies>7z files can be created using the <a href="https://www.7-zip.org/">7-Zip</a> graphic interface as well as via command line operations using both UNIX and LINUX systems. Examples of documentation for command line operations to create 7z files can be found at <a href="https://7ziphelp.com/7zip-command-line">7ziphelp</a>, which provides tutorials on using different 7-Zip application functions. No external dependencies beyond available software to extract and decompress a compressed 7z files.</fdd:externalDependencies>
 		<fdd:techProtection>
 			<p>7z files can also utilize <a href="https://www.nist.gov/publications/advanced-encryption-standard-aes">AES (Advanced Encryption Standard)</a> encryption. The bit key is generated from a passphrase supplied by users that is based on the SHA-256 hash function. As stated in its definitive <a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf">standard</a>, the encryption uses a cypher that converts the data to an unintelligible form called ciphertext while the decryption converts the data back to its original format, or plaintext. The AES encryption method is able to use cryptographic keys of 128, 192, and 256 bits. The 7z format also supports file naming encryption.</p>
-			<p>DThere are a variety of documentation sources such as <a href="https://www.uvic.ca/systems/support/informationsecurity/fileencryption/encryptfile7zip.php">the University of Victory University Systems</a> provide information for users on how to use the 7-Zip program to encrypt 7z archive files.</p>
+			<p>There are a variety of documentation sources such as <a href="https://www.uvic.ca/systems/support/informationsecurity/fileencryption/encryptfile7zip.php">the University of Victory University Systems</a> provide information for users on how to use the 7-Zip program to encrypt 7z archive files.</p>
 		</fdd:techProtection>
 	</fdd:sustainabilityFactors>
 	<fdd:qualityAndFunctionalityFactors>
 		<fdd:aggregateQF>
 			<fdd:compress>The 7z file format supports <a href="https://en.wikipedia.org/wiki/Solid_compression">solid compression</a>, where several files of a similar type are compressed within a single stream to avoid redundancies. Solid compression is also supported with <fddLink id="fdd000450">RAR</fddLink> and <fddLink id="fdd000531">tar</fddLink> archive file formats. The 7z file format uses a variety of compression methods including: LZMA, LZMA2, Bzip2, PPMd and DEFLATE
 						</fdd:compress>
-			<fdd:beyondAGG>The 7-Zip archive program allows the 7z file format to support multi-part archives such as 7z.0001, 7z.0002, etc. These multi-part files can also be reassembled using the &quot;Combine Files&quot; menu option in 7-Zip. </fdd:beyondAGG>
+			<fdd:error>7z files store CRC-32 checksums in the &quot;Next Header CRC&quot; a component of the &quot;Signature Header&quot; of the file. 7z files consist of data blocks known as packed streams where each packed stream has a CRC-32 checksum, which may checked upon extraction. Uncompressed data in 7z files known as the &quot;Coders Information&quot; also contains CRC-32 checksums in the header section. <a href="https://www.7-zip.org/recover.html">7-zip.org</a> provides step-by-step documentation on how to recover corrupted 7z archive files.</fdd:error>
+			<fdd:beyondAGG>The 7-Zip archive program allows the 7z file format to support multi-part archives such as 7z.0001, 7z.0002, etc. These multi-part files can also be reassembled using the &quot;Combine Files&quot; menu option in 7-Zip. Multi-part 7z files can also be unpacked in the command line using the 7z UNIX and LINUX systems. <b>All</b> segments of the multi-part archive must be in the same folder or server space to run command line operations to unpackage the files.</fdd:beyondAGG>
 		</fdd:aggregateQF>
 	</fdd:qualityAndFunctionalityFactors>
 	<fdd:fileTypeSignifiers>
@@ -139,7 +140,7 @@
 				<fdd:sigValues>
 					<fdd:sigValue>application/x-7z-compressed</fdd:sigValue>
 				</fdd:sigValues>
-				<fdd:note>There is no registration at IANA for an Internet Media Type for the 7z file format. Particularly of note is the presence of the &quot;x&quot; in the mediatypa. Per <a href="https://www.rfc-editor.org/rfc/rfc6838">RFC's Meda Type Specifications and Registration Procedures</a>, &quot;names with &quot;x&quot; as the first facet may be used for types that are intended exclusively for use in private, local environments. These mediatypes cannot be registered and are strictly intended for use with the parties exchanging them.&quot; See RFC Section 3.4 for more information. See <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">developer.mozilla.org</a> or the <a href="https://en.wikipedia.org/wiki/7z">Wikipedia entry for 7z</a>.
+				<fdd:note>There is no registration at IANA for an Internet Media Type for the 7z file format. Particularly of note is the presence of the &quot;x&quot; in the mediatype. Per <a href="https://www.rfc-editor.org/rfc/rfc6838">RFC's Meda Type Specifications and Registration Procedures</a>, &quot;names with &quot;x&quot; as the first facet may be used for types that are intended exclusively for use in private, local environments. These mediatypes cannot be registered and are strictly intended for use with the parties exchanging them.&quot; See RFC Section 3.4 for more information. See <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">developer.mozilla.org</a> or the <a href="https://en.wikipedia.org/wiki/7z">Wikipedia entry for 7z</a>.
 				</fdd:note>
 			</fdd:internetMediaType>
 			<fdd:magicNumbers>
@@ -170,7 +171,7 @@
 					<fdd:sigValues>
 						<fdd:sigValue>fmt/484</fdd:sigValue>
 					</fdd:sigValues>
-					<fdd:note>For 7Zip file format, see <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/484">https://www.nationalarchives.gov.uk/PRONOM/fmt/484. Outline record only.</a>
+					<fdd:note>For 7zip file format, see <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/484">https://www.nationalarchives.gov.uk/PRONOM/fmt/484. Outline record only.</a>
 					</fdd:note>
 				</fdd:values>
 			</fdd:other>
@@ -189,7 +190,7 @@
 					<fdd:sigValues>
 						<fdd:sigValue>Q27492089</fdd:sigValue>
 					</fdd:sigValues>
-					<fdd:note>For 7Z format description, technical specification of the 7z file format. See <a href="https://www.wikidata.org/wiki/Q27492089">https://www.wikidata.org/wiki/Q27492089</a>.</fdd:note>
+					<fdd:note>For 7z format description, technical specification of the 7z file format. See <a href="https://www.wikidata.org/wiki/Q27492089">https://www.wikidata.org/wiki/Q27492089</a>.</fdd:note>
 				</fdd:values>
 			</fdd:other>
 		</fdd:signifiersGroup>
@@ -283,6 +284,10 @@
 						<fdd:urlReference>
 							<link>https://www.7-zip.org/license.txt</link>
 							<tag>7-Zip. License for use and distribution.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.7-zip.org/recover.html</link>
+							<tag>7-Zip. How to recover corrupted 7z archive.</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>https://peazip.github.io/peazip-compression-benchmark.html</link>

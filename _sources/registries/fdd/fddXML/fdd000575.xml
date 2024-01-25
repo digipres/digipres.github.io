@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000575" titleName="Apache Parquet" shortName="Apache Parquet" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2023-09-06</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Apache Parquet File Format</fdd:fullName>
+		<fdd:description>
+			<p>Apache Parquet is a free and open-source columnar storage format in the <a href="https://en.wikipedia.org/wiki/Apache_Hadoop">Apache Hadoop</a> ecosystem which main goals include:</p>
+			<ul>
+				<li>Compatibility with a most data processing frameworks around the Hadoop system</li>
+				<li>Provide efficient data compression and encoding schemes</li>
+				<li>Handle complex data in bulk</li>
+			</ul>
+			<p>Apache developed the Hadoop ecosystem in 2006 with the primary goal of processing large amounts of data across a network of computer. The main storage component of the Hadoop ecosystem is the <a href="https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html">Hadoop Distributed File System (HDFS)</a>, which stores (or copies) data across multiple systems in blocks. Another major component of the Hadoop framework include Hadoop MapReduce, a programming model to process large amounts of data.</p>
+			<p>The basis of <a href="https://en.wikipedia.org/wiki/Column-oriented_DBMS">columnar-storage</a> is storing data or records column by column rather than millions of records row by row. The structural organization provides benefits for analytical processing. Per <a href="https://blog.twitter.com/engineering/en_us/a/2013/announcing-parquet-10-columnar-storage-for-hadoop">Twitter</a> (one of the developers of the Apache Parquet format), the benefits of columnar data include, 1) &quot;Since all the values in a given column have the same type, generic compression tends to work better and type-specific compression can be applied.&quot; 2) &quot;a query engine can skip loading columns whose values it doesn’t need to answer a query, and use vectorized operators on the values it does load.&quot;</p>
+			<p>The components of Apache Parquet files include row groups, column chunks, and pages as documented on <a href="https://parquet.apache.org/docs/file-format/">Apache Parquet's own site</a> as well as in Apache’s <a href="https://github.com/apache/parquet-format">GitHub specification glossary</a>. The file format is indicated by a 4-byte magic number, PAR1, before the first row group. Row groups are the horizontal partitioning of the data into rows. Column chunks are just a chunk of the data for a particular column. They are guaranteed to be contiguous in the file. Pages are divided column chunks and are &quot;conceptually an indivisible unit (based on compression and encoding).&quot; Based on the file’s hierarchical structure, a file consists of one or more row groups which contain one column chunk per column. Column chunks contain one or more pages. This hierarchy is illustrated in Apache Parquet’s GitHub and in Apache Parquet's <a href="https://parquet.apache.org/docs/file-format/metadata/">documentation</a>.</p>
+			<p>Apache Parquet’s encoding and effective compression also aid in its ability to handle bulk data. Apache Parquet uses <a href="https://blog.twitter.com/engineering/en_us/a/2013/announcing-parquet-10-columnar-storage-for-hadoop">three different forms of encoding</a>; dictionary, bit-packing, and RLE encoding.</p>
+			<ul>
+				<li>Dictionary - "The ability to efficiently encode columns in which the number of unique values is fairly small (tens of thousands) can lead to a significant compression and processing speed boost."</li>
+				<li>Bit-packing - Based on the fact that small integers do not need 32 or 64 bits to represent them so multiple values are packed in to spaces normally occupied by single values.</li>
+				<li>RLE (run-length encoding) - multiple occurrences of the same value in a row is turned into a pair of numbers. One number represents the actual value, the other represents the number of times its repeated.</li>
+			</ul>
+			<p>Apache Parquet's encoding types have particular impacts on data storage because these encoding types represent integers with specific values for ranges of storage capacity. These encoding types include:</p>
+			<ul>
+				<li>Boolean: 1 bit boolean</li>
+				<li>INT32: 32 bit signed ints</li>
+				<li>INT64: 64 bit signed ints</li>
+				<li>INT96: 96 bit signed ints</li>
+				<li>Float: IEEE 32-bit floating point values</li>
+				<li>Double: IEEE 64-bit floating point values</li>
+				<li>Byte_Array: arbitrarily long byte arrays.</li>
+			</ul>
+			<p>Apache Parquet supports many compression algorithms. The supported compression documentation in Apache Parquet’s specification hosted on <a href="https://github.com/apache/parquet-format/blob/master/Compression.md">GitHub</a>, also includes the related specifications and definitions of each compression algorithm, &quot;which are maintained externally by their respective authors or maintainers.&quot; The supported compression algorithms include: <a href="https://github.com/google/snappy">Snappy</a>, <a href="https://www.rfc-editor.org/rfc/rfc1952">GZIP</a>, <a href="http://www.oberhumer.com/opensource/lzo/">LZO</a>, <a href="https://www.rfc-editor.org/rfc/rfc7932">Brotli</a>, <a href="https://www.rfc-editor.org/rfc/rfc8478">ZTSD</a>, and <a href="https://github.com/lz4/lz4/blob/dev/doc/lz4_Block_format.md">LZ4_RAW</a>.</p>
+		</fdd:description>
+		<fdd:shortDescription>A free open-source columnar storage format that was designed to handle bulk complex data and provide efficient data compression.</fdd:shortDescription>
+		<fdd:productionPhase>May be used at any stage in the lifecycle of a dataset.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has extension</fdd:typeOfRelationship>
+				<fdd:comment>GeoParquet, not separately described at this time. See <a href="#notes">Notes</a>.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>As of this writing in July 2023, the Library of Congress does not have Apache Parquet files in its collections.</fdd:experience>
+		<fdd:preference>See the Recommended Formats Statement for the Library of Congress format preferences for <a href="https://www.loc.gov/preservation/resources/rfs/data.html">Datasets</a>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully documented, open format. </fdd:disclosure>
+		<fdd:documentation>Apache Parquet is fully documented on <a href="https://parquet.apache.org/docs/">https://parquet.apache.org/</a> and the specification is hosted on the <a href="https://github.com/apache/parquet-format#readme">apache/parquet-format GitHub repository</a>.</fdd:documentation>
+		<fdd:adoption>
+			<p>
+				<a href="https://www.uber.com/blog/cost-efficiency-big-data/">Uber’s</a> data lake platform uses Apache Hudi which supports Apache Parquet tabular formats. Uber’s data platform also leverages Apache Give, Presto, and Spark which are integrated with the Apache Parquet format. Uber has leveraged Parquet's encryption capabilities to develop a high-throughput tool to encrypt data 20 times faster than previous processes. Uber has developed schema-controlled column encryption, which reduces concerns about system reliability. See <a href="#techProtection">Technical Protection Considerations</a>.</p>
+			<p>The Environmental Protection Agency (EPA) compiles large amounts of data to monitor emissions and other industrial activities. The EPA has several datasets using life cycle impact assessment (LCIA) methods to access the Federal LCA Commons Elementary Flow List (FEDEFL). The EPA's (LCIA) method and accompanying tools generate these large datasets which are made accessible via Apache Parquet files. Sample datasets can be found in the <a href="https://doi.org/10.23719/1522414">FEDEFL Inventory Method V1</a> and <a href="https://doi.org/10.23719/1522413">TRACIv2.1 for FEDEFLv1</a> reports. The EPA also uses its Continuous Emission Monitoring Systems (CEMS) to track power plant compliance with the EPA's emissions standards, generating large amounts of data for hourly measurements of CO2, and SO2 emissions per power plant. This data is stored in Apache Parquet files, which is being integrated with <a href="https://github.com/catalyst-cooperative/pudl-examples/blob/main/notebooks/03-pudl-parquet.ipynb">Jupyter notebooks</a> for processing and analysis.</p>
+			<p>Apache Parquet is also integrated with many other Apache data systems such as Impala, Hive, Pig, and MapReduce.</p>
+			<p>Apache Parquet also has considerable integration with GIS data through its extended format, GeoParquet. See <a href="#notes">Notes</a>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>Apache Parquet is licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 license</a>, which is a free and open-source software allowing users to modify and distribute the software without any concern for royalties.</fdd:licensingAndPatents>
+		<fdd:transparency>Depends on complexity of the data structure. Some tools exist to view or read Apache Parquet files but documentation varies. <a href="http://www.digitalpreservation.gov/formats/contact_format.shtml">Comments welcome</a>.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>Good. There are three types of metadata found in Apache Parquet files; file metadata, page header metadata, and column metadata. The Apache <a href="https://parquet.apache.org/docs/file-format/metadata/">documentation</a> illustrates the metadata structure within the Apache Parquet format and is structured as follows:</p>
+			<ul>
+				<li>
+					<b>File Metadata</b> - Version, schema, number of rows, row groups. Branches into row group, column chunk, schema element, key value blocks.</li>
+				<li>
+					<b>Column Metadata</b> - Encodings, path in schema, codec, number of values, total uncompressed size, compressed size, dictionary page offset.</li>
+				<li>
+					<b>Page Header</b> - Uncompressed page size, compressed page size, index page header, dictionary page header. Branches off to data page header, index page header, dictionary page header blocks.</li>
+			</ul>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None but there may be particular requirements for applications with the Hadoop system. <a href="http://www.digitalpreservation.gov/formats/contact_format.shtml">Comments welcome</a>. </fdd:externalDependencies>
+		<fdd:techProtection>
+			<p>Apache Parquet has a <a href="https://github.com/apache/parquet-format/blob/master/Encryption.md">modular encryption feature</a> that enables the encryption of sensitive file data and metadata while still allowing columnar project, encoding, compression, and other regular Apache Parquet functionality. Some of the stated goals of this encryption include:</p>
+			<ul>
+				<li>Protect Parquet data and metadata by encryption while enabling selective parsing</li>
+				<li>Enable different encryption keys for different columns</li>
+				<li>Allow for partial encryption where only columns with sensitive data are encrypted</li>
+				<li>Work with supported compression and encoding mechanisms</li>
+			</ul>
+			<p>Apache Parquet encryption algorithms are based on (Advanced Encryption Standard) AES ciphers with two implementations, a GCM mode of AES and a combination of the GCM and CTR modes. Apache Parquet encryption is not limited to a single key management service, generation method, or authorization service. For each column or footer key, a file writer can create a byte array known as "key_metadata" that file readers can recover. Apache Parquet's <a href="https://github.com/apache/parquet-format/blob/master/Encryption.md">GitHub</a> provides a detailed visualization of an encrypted file format structure.</p>
+			<p>A CRC-32 checksum is generated for Apache Parquet files to determine authenticity and integrity of the data during transfer or delivery. As stated in the <a href="https://github.com/apache/parquet-format/blob/master/src/main/thrift/parquet.thrift">Apache Thrift definition</a>, the CRC is computed on the serialization binary representation of the page, which occurs after any compression or encryption is applied. All page types can have a CRC checksum including data pages and dictionary pages.</p>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:normalDataset>Columnar storage format beneficial for processing, especially in large quantities. Contains three types of metadata; file, column, and page header that provides additional information about encodings, number of row, and number of values.</fdd:normalDataset>
+			<fdd:accessSoftware>
+				<p>Apache Parquet is implemented with Apache Thrift which is a software framework for cross-language services development. Apache Parquet can work with a variety of programming languages including:</p>
+				<ul>
+					<li>C++</li>
+					<li>Python</li>
+					<li>Java</li>
+					<li>PHP</li>
+					<li>Perl</li>
+					<li>Runy</li>
+				</ul>
+				<p>The Apache Parquet format with Java API documentation can be found <a href="https://www.javadoc.io/doc/org.apache.parquet/parquet-column/1.10.0/index.html">here</a>.</p>
+				<p>Cloudera also provides <a href="https://docs.cloudera.com/documentation/enterprise/5-5-x/topics/cdh_ig_parquet.html">documentation</a> of Apache Parquet's support and use with additional Apache frameworks such as Hive, Drill, Impala, Crunch, and others.</p>
+				<p>The first version of Apache Parquet, released in 2013 also supported Hadoop 1 and Hadoop 2 APIs.</p>
+			</fdd:accessSoftware>
+			<fdd:dataDocumentation>Unknown. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</fdd:dataDocumentation>
+			<fdd:beyondDataset>None.</fdd:beyondDataset>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>parquet</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Unofficial extension for Apache Parquet files. See <a href="https://www.jumpingrivers.com/blog/parquet-file-format-big-data-r/">Understanding the Parquet file format</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>As of January 2023, there is no Media Type type for Apache Parquet. This is documented in <a href="https://issues.apache.org/jira/browse/PARQUET-1889">Apache Parquet’s JIRA tracking</a>. application/vnd.apache.parquet has been suggested but not confirmed with IANA as of July 2023.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>PAR1</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>4-byte magic number at the beginning of each parquet file as well as the conclusion of the corresponding file metadata. Per <a href="https://parquet.apache.org/docs/file-format/">Apache.org's documentation</a> and <a href="https://github.com/apache/parquet-format/blob/master/README.md">Apache’s GitHub hosted specification</a>.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>PRONOM has no corresponding entry as of July 2023.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q28915683</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q28915683">https://www.wikidata.org/wiki/Q28915683</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>Apache Parquet has a format extension, GeoParquet, which defines how geospatial vector data should be stored including points, lines, and polygons. GeoParquet also defines how geometries are represented and what metadata is required. Per <a href="https://github.com/opengeospatial/geoparquet/">GeoParquet's GitHub</a>, the key goals of GeoParquet's development are:</p>
+			<ul>
+				<li>Establish a  geospatial format for workflows that excel with columnar data</li>
+				<li>Development a connection between columnar data formats and geospatial data</li>
+				<li>Enable interoperability among cloud data warehouses</li>
+				<li>Continue parallel development between Apache Arrow and geospatial data integration</li>
+			</ul>
+			<p>GeoParquet supports multiple geometry columns, compression, multiple spatial reference systems, data partitioning, and both planar and spherical coordinates. More in-depth explanation of the features on <a href="https://github.com/opengeospatial/geoparquet/">GitHub</a>. GeoParquet files include metadata at two additional levels, file metadata indicates what version of the specification and column metadata that contains data for each geometry column. A GeoParquet file must include a &quot;geo&quot; key in the file metadata. This key has to be a UTF-8 string and must validates against the <a href="https://geoparquet.org/releases/v1.0.0-rc.1/schema.json">GeoParquet metadata schema</a>. A tabular representation of the file and column metadata of a GeoParquet file can be found in the <a href="https://geoparquet.org/releases/v1.0.0-rc.1/">v1.0.0-rc.1 specification</a>, the latest GeoParquet specification.</p>
+			<p>There are a multitude of tools and libraries that support GeoParquet. A full list can be found at <a href="https://geoparquet.org/">geoparquet.org</a>, but some of those tools include:</p>
+			<ul>
+				<li>
+					<a href="https://geopandas.org/en/stable/docs/user_guide/io.html#apache-parquet-and-feather-file-formats">GeoPandas</a>
+				</li>
+				<li>
+					<a href="https://www.scribblemaps.com/">Scribble Maps</a>
+				</li>
+				<li>
+					<a href="https://developers.arcgis.com/geoanalytics/">ArcGIS GeoAnalytics Engine</a>
+				</li>
+				<li>
+					<a href="https://github.com/paleolimbot/geoarrow">geoarrow library</a>
+				</li>
+				<li>
+					<a href="https://carto.com/">CARTO</a>
+				</li>
+				<li>
+					<a href="https://github.com/geoparquet/bigquery-converter">BigQuery Converter</a>
+				</li>
+				<li>
+					<a href="https://github.com/JuliaGeo/GeoParquet.jl">GeoParquet.jl Library</a>
+				</li>
+			</ul>
+			<p>The <a href="https://developers.arcgis.com/geoanalytics/data/data-sources/geoparquet/">ArcGIS GeoAnalystics Engine documents</a> the python syntax for loading and saving GeoParquet files as well as references for reading and writing GeoParquet files with Apache Spark. Based on the ArcGIS GeoAnalytics Engine documentation, the latest version of the GeoParquet schema is not supported at this time.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>The Apache Parquet format was developed collaboratively by Twitter and Cloudera with the <a href="https://blog.twitter.com/engineering/en_us/a/2013/announcing-parquet-10-columnar-storage-for-hadoop">first version</a> released in July 2013. Version 1.0.0 was released with the following features:</p>
+			<ul>
+				<li>Apache Hadoop Map-Reduce Input and Output formats</li>
+				<li>Apache Pig Loaders and Storers</li>
+				<li>Apache Hive SerDes</li>
+				<li>Cascading Schemes</li>
+				<li>Impala support</li>
+				<li>Self-tuning dictionary encoding</li>
+				<li>Dynamic Bit-Packing / RLE encoding</li>
+				<li>Ability to work directly with Avro records</li>
+				<li>Ability to work directly with Thrift records</li>
+				<li>Support for both Hadoop 1 and Hadoop 2 APIs</li>
+			</ul>
+			<p>Apache’s most recent parquet release was 1.12.3 in May 2022.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://parquet.apache.org/docs/</link>
+					<tag>Apache Parquet specification on Apache.org</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/apache/parquet-format</link>
+					<tag>Apache Parquet specification on Apache working group repository on GitHub.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Apache Parquet.org User Manuals</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://parquet.apache.org/docs/</link>
+							<tag>Documentation.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://parquet.apache.org/docs/file-format/</link>
+							<tag>File Format.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://parquet.apache.org/docs/learning-resources/</link>
+							<tag>Resources.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.apache.org/licenses/LICENSE-2.0</link>
+							<tag>Apache License, Version 2.0.</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>GitHub</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://github.com/catalyst-cooperative/pudl-examples/blob/main/notebooks/03-pudl-parquet.ipynb</link>
+							<tag>An Introduction to Working with EPA CEMS data</tag>
+							<comment>Parquet Jupyter notebook setup on Catalyst Cooperative hosted on GitHub.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/apache/parquet-format/blob/master/Encryption.md</link>
+							<tag>Parquet Modular Encryption.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/apache/parquet-format/blob/master/src/main/thrift/parquet.thrift</link>
+							<tag>Apache Thrift Definition for Apache Parquet.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/apache/parquet-format/pull/126</link>
+							<tag>PARQUET-1539: Clarify CRC checksum in page header.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/apache/hadoop</link>
+							<tag>Apache Hadoop on GitHub.</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Wikipedia Sources</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Apache_Parquet</link>
+							<tag>Wikipedia entry for Apache Parquet.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Apache_Hadoop</link>
+							<tag>Wikipedia entry for Apache Hadoop.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Column-oriented_DBMS</link>
+							<tag>Wikipedia entry for Column-oriented DBMS.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Dictionary_coder</link>
+							<tag>Wikipedia entry for Dictionary coder.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Apache_License</link>
+							<tag>Wikipedia entry for Apache License.</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Apache Parquet Supported Compression</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://github.com/google/snappy</link>
+							<tag>Snappy Compression GitHub.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.rfc-editor.org/rfc/rfc1952</link>
+							<tag>GZIP file format specification version 4.3.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>http://www.oberhumer.com/opensource/lzo/</link>
+							<tag>LZO Compression</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.rfc-editor.org/rfc/rfc8478</link>
+							<tag>Zstandard Compression and the application/zstd Media Type.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.rfc-editor.org/rfc/rfc7932</link>
+							<tag>Brotli Compressed Data Format.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/lz4/lz4/blob/dev/doc/lz4_Block_format.md</link>
+							<tag>LZ4 Block Format Description on GitHub.</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>GeoParquet Resources</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://developers.arcgis.com/geoanalytics/data/data-sources/parquet/</link>
+							<tag>Parquet. From ArcGIS GeoAnalytics Engine documentation.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://developers.arcgis.com/geoanalytics/data/data-sources/geoparquet/</link>
+							<tag>GeoParquet. </tag>
+							<comment>From ArcGIS GeoAnalytics Engine documentation.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/opengeospatial/geoparquet/</link>
+							<tag>GeoParquet GitHub.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://geoparquet.org/</link>
+							<tag>GeoParquet.org</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://geoparquet.org/releases/v1.0.0-rc.1/</link>
+							<tag>GeoParquet Specification v1.0.0-rc.1.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://geopandas.org/en/stable/docs/user_guide/io.html#apache-parquet-and-feather-file-formats</link>
+							<tag>GeoPandas. Apache Parquet and Feather file formats.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.scribblemaps.com/</link>
+							<tag>Scribble Maps.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://carto.com/</link>
+							<tag>Carto.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/JuliaGeo/GeoParquet.jl</link>
+							<tag>GeoParquet.jl.</tag>
+							<comment>Hosted on GitHub. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/paleolimbot/geoarrow</link>
+							<tag>Geoarrow.</tag>
+							<comment>Hosted on GitHub. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/geoparquet/bigquery-converter</link>
+							<tag>Big Query Converter.</tag>
+							<comment>Hosted on GitHub. </comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>General</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.uber.com/blog/cost-efficiency-big-data/</link>
+							<tag>Cost Efficiency @ Scale in Big Data File Format.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.uber.com/blog/one-stone-three-birds-finer-grained-encryption-apache-parquet/</link>
+							<tag>One Stone, Three Birds: Finer-Grained Encryption @ Apache Parquet™</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://docs.cloudera.com/documentation/enterprise/5-5-x/topics/cdh_ig_parquet.html</link>
+							<tag>Using the Parquet File Format with Impala, Hive, Pig, and MapReduce.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.jumpingrivers.com/blog/parquet-file-format-big-data-r/</link>
+							<tag>Understanding the Parquet file format.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://blog.twitter.com/engineering/en_us/a/2013/announcing-parquet-10-columnar-storage-for-hadoop</link>
+							<tag>Announcing Parquet 1.0: Columnar Storage for Hadoop.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20130504133255/http://blog.cloudera.com/blog/2013/03/introducing-parquet-columnar-storage-for-apache-hadoop/</link>
+							<tag>Introducing Parquet: Efficient Columnar Storage for Apache Hadoop.</tag>
+							<comment>Link via Internet Archive. </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.kaggle.com/code/residentmario/notes-on-apache-parquet</link>
+							<tag>Notes on Apache Parquet.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.youtube.com/watch?v=Qfp6Uv1UrA0</link>
+							<tag>Parquet Format at Twitter.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.javadoc.io/doc/org.apache.parquet/parquet-column/1.10.0/index.html</link>
+							<tag>Apache Parquet Column 1.10.0 API.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://issues.apache.org/jira/browse/PARQUET-1889</link>
+							<tag>Register a MIME type for the Parquet format.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://issues.apache.org/jira/projects/PARQUET/issues/PARQUET-632?filter=allopenissues</link>
+							<tag>Apache Parquet JIRA Issues.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html</link>
+							<tag>HDFS Architecture Guide.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.youtube.com/watch?v=aReuLtY0YMI</link>
+							<tag>Hadoop In 5 Minutes | What Is Hadoop? | Introduction To Hadoop | Hadoop Explained |Simplilearn.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://gpdb.docs.pivotal.io/6-1/pxf/hdfs_parquet.html</link>
+							<tag>Reading and Writing HDFS Parquet Data.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://nightlies.apache.org/flink/flink-docs-release-1.13/docs/connectors/table/formats/parquet/</link>
+							<tag>Parquet Format.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://medium.com/@Ratnark/apache-parquet-and-encryption-572ffd99f12d</link>
+							<tag>Apache Parquet and Encryption.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://doi.org/10.23719/1522414</link>
+							<tag>FEDEFL Inventory Methods v1.0.0 </tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://doi.org/10.23719/1522413</link>
+							<tag>TRACIv2.1 for FEDEFLv1 </tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.wikidata.org/wiki/Q28915683</link>
+							<tag>Wikidata entry for Q28915683.</tag>
+							<comment>Wikidata entry for the  Apache Parquet format.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

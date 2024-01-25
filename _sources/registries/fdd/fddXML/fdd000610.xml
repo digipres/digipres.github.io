@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000610" titleName="KryoFlux Stream File" shortName="Stream" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>any</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2024-01-18</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>KryoFlux Stream File</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>container formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The KryoFlux Stream (Stream) file format is a proprietary, <a href="https://github.com/archivistsguidetokryoflux/archivists-guide-to-kryoflux/blob/master/2%20PART%20TWO%20In-Depth/KryoFlux-Stream-Files.md">publicly but incompletely documented</a> format for each of the sectors found on a floppy disk.  <a href="https://www.kryoflux.com/download/kryoflux_stream_protocol_rev1.1.pdf">Stream files were not conceived</a> of as a standalone file format per se, as they are an exact copy of the byte Stream Protocol between the KryoFlux device and the host system when communicating over a USB link which is then saved by the host system when the disk is imaged. They are <a href="http://www.softpres.org/kryoflux:stream">hardware-specific</a> to KryoFlux devices.</p>
+			<p>The <a href="http://www.kryoflux.com/download/kryoflux_manual.pdf">KryoFlux manual</a> defines Stream files, on page 28, as:</p>
+			<p>"pure, unanalyzed raw data. Be warned that writing of raw data can be neither verified, nor can [Disk Took Console] give any feedback if the data read was good in the first place. In other words: garbage in, garbage out. Since data on floppy disks is digital data stored on a basically analogue carrier, creating 1:1 perfect clones for preservation and archival is not a trivial task. Unlike controlled clones (using a preservation container that has been verified for authenticity and integrity as the result of an analysis based on a well-known format – like IPF), KryoFlux will create a clone based on entropy analysis. A major challenge in the replication process is that the data can be read from the disk differently than it was written."</p>
+			<p>Stream files are not meant for long-term preservation due to their <a href="http://www.softpres.org/kryoflux:stream">hardware specificity</a>. The combination of their proprietary format and large file size poses challenges. However, an <a href="https://github.com/archivistsguidetokryoflux/archivists-guide-to-kryoflux/blob/master/2%20PART%20TWO%20In-Depth/KryoFlux-Stream-Files.md">exception exists</a> for copy-protected disks. Additionally, the <a href="https://github.com/archivistsguidetokryoflux/archivists-guide-to-kryoflux">page 39 of the Archivist’s Guide to KryoFlux</a> states that decisions around the use of Stream files for long-term preservation should be made institutionally. They share example situations when storing Stream files for preservation were made by different institutions.  Preserving these accurately requires the use of Stream files due to their non-standard coding and formatting. Unlike traditional file systems, Stream files cannot be mounted or viewed directly; interpretation <a href="https://campuspress.yale.edu/borndigital/2020/01/06/emulating-amnesia">requires</a> the use of KryoFlux software.</p>
+			<p>In comparison to a disk image file, a Stream file created from a whole disk will create a file of significantly larger size. From the <a href="https://github.com/archivistsguidetokryoflux/archivists-guide-to-kryoflux/blob/master/2%20PART%20TWO%20In-Depth/KryoFlux-Stream-Files.md">Archivist's Guide to KryoFlux</a>:                                                 
+            </p>
+			<p>"a set of stream files for a 1.44 megabyte (MB) floppy disk may be around 20-25 MB. While such a footprint is much smaller many other file types created in contemporary digital environments, it is considerably larger than the maximum capacity of a floppy disk."</p>
+			<p>Stream files are many .raw files that represent segments of data. Meaningful information in these files begins with an Out Of Band (OOB) header, followed by the type and the data itself. Anything before the initial header can be disregarded. The encoding details of Stream files can be found on <a href="http://www.softpres.org/kryoflux:stream">Software Preservation Society Stream Protocol</a>.
+            </p>
+			<p>In a Stream file, <a href="https://www.kryoflux.com/download/kryoflux_stream_protocol_rev1.1.pdf">data is organized</a> into variable-length blocks, each starting with a Block Header specifying interpretation. Two block types exist:</p>
+			<ul>
+				<li>In Stream Buffer (ISB) blocks convey timing values of sampled flux reversals.</li>
+				<li>Out Of Stream Buffer (OOB) blocks aid in interpretation and verification, transmitting critical information like Index Signals timing or KryoFlux hardware information.</li>
+			</ul>
+			<p>Further information is available in the Device Behavior section of the <a href="https://www.kryoflux.com/download/kryoflux_stream_protocol_rev1.1.pdf">specification</a> on page 11.</p>
+		</fdd:description>
+		<fdd:shortDescription>The KryoFlux Stream (Stream) file format is a proprietary, publicly documented format (but with incomplete documentation) for each of the sectors found on a floppy disk. Stream files were not conceived of as a standalone file format per se, as they are an exact copy of the byte Stream Protocol between the KryoFlux device and the host system when communicating over a USB link which is then saved by the host system when the disk is imaged. They are hardware-specific to KryoFlux devices.</fdd:shortDescription>
+		<fdd:productionPhase>Middle-state and archival. </fdd:productionPhase>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None</fdd:experience>
+		<fdd:preference>The Library of Congress has not yet expressed any format preference for extracted floppy disk data.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Partially documented. The Stream file format technical information is referenced within documentation of the KryoFlux software, however it is unclear if a full technical disclosure is available. <a href="../contact_format.shtml">Comments welcome</a>.
+        </fdd:disclosure>
+		<fdd:documentation>
+			<p>“                <a href="http://www.softpres.org/kryoflux:stream">Stream Protocol</a>”, published by the Software Preservation Society.  This webpage:</p>
+			<p>"describes and documents the Stream files produced by the KryoFlux device. It is a technical document, describing a binary Stream, but some effort has been made to make it more accessible to a wider audience, including references to further information."</p>
+			<p>“                <a href="https://www.kryoflux.com/download/kryoflux_stream_protocol_rev1.1.pdf">KryoFlux Stream File Documentation</a>”, by Jean Louis-Guerin. Revision 1.1. 01/12/2013.  This document is listed on the official KryoFlux <a href="https://kryoflux.com/?page=download">webpage</a> as “Stream Protocol Documentation,” however, the document itself states that the information is the author’s opinion based on references. <a href="../contact_format.shtml">Comments welcome</a>.
+            </p>
+			<p/>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>Adopted by many companies and institutions including <a href="https://bitcuratorconsortium.org/all-together-now-introducing-the-kryoflux-user-guide/">BitCurator</a>,                <a href="https://bitcuratorconsortium.org/all-together-now-introducing-the-kryoflux-user-guide/">Duke University</a>,                <a href="https://bitcuratorconsortium.org/all-together-now-introducing-the-kryoflux-user-guide/">The University of Texas</a>,                <a href="https://bitcuratorconsortium.org/all-together-now-introducing-the-kryoflux-user-guide/">Yale</a>, the <a href="https://nypl.github.io/digarch/tools/kryoflux.html">New York Public Library</a>,                <a href="https://blogs.princeton.edu/techsvs/2017/10/03/digital-archives-workstation-update-kryoflux-fred-and-bitcurator-walk-into-a-bar/">Princeton</a>, and the <a href="https://bitcuratorconsortium.org/all-together-now-introducing-the-kryoflux-user-guide/">University of California, Los Angeles</a> (UCLA). Use of Stream files is limited by the institutions who also utilize KryoFlux software.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>KryoFlux software is licensed with strict restrictions. However, the Stream file format is not licensed. The license agreement specifies that: "The software product and accompanying documentation (the program’s object code, source code and documentation, explicitly excluding the file format definitions (e.g. but not limited to IPF, STREAM, DRAFT) included within, are collectively referred to as the “Technology”) is a technology and does not imply any restrictions, warranty,  [sic], obligation or any other link or association with what it may contain (the data ingested or encapsulated by the Technology is referred to as the “Content”)."</p>
+			<p>See the <a href="https://www.kryoflux.com/download/LICENCE.txt">official license</a> for more information.</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>Very opaque. Requires the use of the KryoFlux to create. Requires KryoFlux, or similar tool, to read.</fdd:transparency>
+		<fdd:selfDocumentation>Very few details on self-documentation are available. <a href="../contact_format.shtml">Comments welcome</a>.
+        </fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			<p>Disc mounting software is required to read this format. KryoFlux hardware and software with their rights and licenses are required to write this format.</p>
+			<p>KryoFlux, and other emulator tools, can convert Stream files into other formats.  </p>
+		</fdd:externalDependencies>
+		<fdd:techProtection>None.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>raw</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>
+					<p>Source: Wikidata entries:</p>
+					<ul>
+						<li>KryoFlux: <a href="https://www.wikidata.org/wiki/Q59608340">https://www.wikidata.org/wiki/Q59608340</a>
+						</li>
+						<li>KryoFlux Stream: <a href="https://www.wikidata.org/wiki/Q29000561">https://www.wikidata.org/wiki/Q29000561</a>
+						</li>
+					</ul>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>4B72796F466C7578204469736B53797374656D2C2076657273696F6E3D322E30306E</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>KryoFlux 2. See: <a href="https://www.nationalarchives.gov.uk/pronom/fmt/655">https://www.nationalarchives.gov.uk/pronom/fmt/655</a>. According to the <a href="http://fileformats.archiveteam.org/wiki/KryoFlux">ArchiveTeam wiki</a>, "The ASCII string "KryoFlux DiskSystem" often appears at offset 54." <a href="../contact_format.shtml">Comments welcome</a>.
+
+				</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>4B72796F466C7578204469736B53797374656D2C2076657273696F6E3D322E323073</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>KryoFlux 2.2. See:<a href="https://www.nationalarchives.gov.uk/pronom/fmt/656">https://www.nationalarchives.gov.uk/pronom/fmt/656</a>. According to the <a href="http://fileformats.archiveteam.org/wiki/KryoFlux">ArchiveTeam wiki</a>, "The ASCII string "KryoFlux DiskSystem" often appears at offset 54." <a href="../contact_format.shtml">Comments welcome</a>.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/655</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>KryoFlux 2. See: <a href="https://www.nationalarchives.gov.uk/pronom/fmt/655">https://www.nationalarchives.gov.uk/pronom/fmt/655</a>.
+                    </fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/656</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>KryoFlux 2.2. See: <a href="https://www.nationalarchives.gov.uk/pronom/fmt/656">https://www.nationalarchives.gov.uk/pronom/fmt/656</a>.
+                    </fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q59608283</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>KryoFlux. See: <a href="https://www.wikidata.org/wiki/Q59608283">https://www.wikidata.org/wiki/Q59608283</a>.
+                    </fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q59608340</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Version 2.2 of the KryoFlux file format. See: <a href="https://www.wikidata.org/wiki/Q59608340">https://www.wikidata.org/wiki/Q59608340</a>.
+                    </fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q29000561</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>KryoFlux Stream See: <a href="https://www.wikidata.org/wiki/Q29000561">https://www.wikidata.org/wiki/Q29000561</a>.
+                    </fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>The <a href="http://www.softpres.org/glossary:kryoflux">Software Preservation Society’s KyroFlux page</a> states that the software:</p>
+			<p>“allows you to check data against integrity information implied by the sector formats. It allows imaging of disks to stream [sic] files and to a more emulator-friendly image formats at the same time. So for a dual format Amiga/Atari ST disk, KryoFlux can produce stream files, a .ADF and a .ST all on-the-fly while dumping the disk. It also allows use of stream files, dumped previously, as a ‘virtual floppy’ in order to produce sector dumps at a later time.”</p>
+			<p>The <a href="https://www.kryoflux.com/download/kryoflux_stream_protocol_rev1.1.pdf">specification</a>states that:</p>
+			<p>“The most important information to retrieve from a Stream File is: </p>
+			<i>Timing of Flux Reversals: All data flux reversals detected by the KryoFlux device are stored in ISB Blocks.</i>
+			<i>Timing of Index Signals: All index signals detected by the KryoFlux device are transmitted in special OOB blocks: the Index Blocks.</i>
+			<p>The provided Index information allows to compute the precise Index Time (time between to index signals) as well as to find the Index Position in reference to the current data flux reversals."</p>
+		</fdd:general>
+		<fdd:history>
+			<p>This format was created within the KryoFlux forensic floppy disk controller software. KryoFlux was <a href="https://kryoflux.com/">developed</a> by The Software Preservation Society and was <a href="http://www.softpres.org/news:2009-11-06">released</a> in 2009.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.kryoflux.com/download/kryoflux_stream_protocol_rev1.1.pdf</link>
+					<tag>KryoFlux Stream File Documentation</tag>
+					<comment>by Jean Louis-Guerin. Revision 1.1. 01/12/2013.  This document is listed on the official KryoFlux webpage as “Stream Protocol Documentation,” however, the document itself states that the information is the author’s opinion based on references. Comments welcome.
+                    </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.softpres.org/kryoflux:stream</link>
+					<tag>Stream Protocol</tag>
+					<comment>Technical document published by the Software Preservation Society, creators of KryoFlux.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.kryoflux.com/</link>
+					<tag>KryoFlux Official Website.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.kryoflux.com/download/kryoflux_manual.pdf</link>
+					<tag>KryoFlux Official Manual.</tag>
+					<comment>[PDF]</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://forum.kryoflux.com/viewforum.php?f=3</link>
+					<tag>KryoFlux Support Forum.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.kryoflux.com/download/LICENCE.txt</link>
+					<tag>KryoFlux Official License.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/archivistsguidetokryoflux/archivists-guide-to-kryoflux</link>
+					<tag>Archivist's Guide to KryoFlux.</tag>
+					<comment>Particularly, Section 2.3: KryoFlux Stream Files.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.softpres.org/glossary:kryoflux</link>
+					<tag>"KryoFlux". Software Preservation Society.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://goughlui.com/2013/04/22/project-kryoflux-part-5-making-use-of-the-images/</link>
+					<tag>Lui, Gough. “Project KryoFlux – Part 5: Making use of the Images”. April 22. 2013.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Cochrane, Euan (github username: euanc). DiskFormatID. Tool for automatically identifying floppy disc formats from KryoFlux Stream files.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://github.com/euanc/DiskFormatID</link>
+							<tag>Tool on GitHub.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://digitalcontinuity.org/post/144268258748/floppy-disk-format-identifer-tool</link>
+							<tag>“Floppy Disk Format Identifer Tool”. Blog post about the tool. May 13, 2016.</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://campuspress.yale.edu/borndigital/2020/01/06/emulating-amnesia/</link>
+					<tag>Prael, Alice and Gates, Ethan. “Emulating Amnesia”. January 6, 2020.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Adoption of Stream:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://bitcuratorconsortium.org/all-together-now-introducing-the-kryoflux-user-guide/</link>
+							<tag>Waugh, Dorothy et al. “All Together Now: Introducing the KryoFlux User Guide”. BitCurator Consortium. April 28, 2017.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://nypl.github.io/digarch/tools/kryoflux.html</link>
+							<tag>“KryoFlux”. New York Public Library Digital Archives.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://blogs.princeton.edu/techsvs/2017/10/03/digital-archives-workstation-update-kryoflux-fred-and-bitcurator-walk-into-a-bar/</link>
+							<tag>“Digital Archives Workstation Update: KryoFlux, FRED, and BitCurator Walk into a Bar…”. Princeton University Library Special Collections Technical Services. October 3, 2017.</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Wikidata references:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.wikidata.org/wiki/Q59608340</link>
+							<tag>KryoFlux.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.wikidata.org/wiki/Q29000561</link>
+							<tag>KryoFlux Stream.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.wikidata.org/wiki/Q59608340</link>
+							<tag>KryoFlux File Format v 2.2.</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>PRONOM references:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.nationalarchives.gov.uk/pronom/fmt/655</link>
+							<tag>KryoFlux 2.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.nationalarchives.gov.uk/pronom/fmt/656</link>
+							<tag>KryoFlux 2.2</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

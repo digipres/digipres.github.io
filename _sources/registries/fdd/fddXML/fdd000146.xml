@@ -16,7 +16,7 @@
 		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
 		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2023-03-21</fdd:date>
+			<fdd:date>2023-11-03</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -25,9 +25,10 @@
 		<fdd:keywords>
 			<fdd:keyword>raster image formats</fdd:keyword>
 			<fdd:keyword>metadata formats</fdd:keyword>
+			<fdd:keyword>audio formats</fdd:keyword>
 		</fdd:keywords>
 		<fdd:description>
-			<p>The Exif specifications define a pair of file types, mainly intended for recording technical details associated with digital photography.  The two types employ different image encodings based on existing image formats and the resulting files can be read by many image software applications.  The Exif metadata shared by the two file types represents an extension to each of the underlying types.</p>
+			<p>The Exchangeable Image File Format (Exif) specifications define a pair of file types, mainly intended for recording technical details associated with digital photography.  The two types employ different image encodings based on existing image formats and the resulting files can be read by many image software applications.  The Exif metadata shared by the two file types represents an extension to each of the underlying types.</p>
 			<p>Uncompressed files are recorded in TIFF Rev. 6.0 (<fddLink id="fdd000022">TIFF_6</fddLink>) format, with an extended set of tags; see <a href="../content/tiff_tags.shtml">Tags for TIFF and Related Specifications</a>. Compressed Exif files are recorded as baseline JPEG (ISO/IEC 10918-1) with metadata-containing application marker segments (APP1 and APP2) inserted.</p>
 			<p>The extended metadata defined by Exif is subsumed within the <fddLink id="fdd000073">TIFF/EP</fddLink> specification; thus TIFF/EP can be seen as a successor-replacement to <fddLink id="fdd000145">TIFF_UNC_EXIF</fddLink>.</p>
 			<p>Exif 2.2, also termed Exif Print, introduced tags to record camera settings, including scene type (portrait, landscape, night scene, etc.), that can be used to guide automatic adjustments before printing in order to best match the photographer&apos;s intent.  The key difference between Exif 2.21 and Exif 2.2 is support for the Adobe RGB color space without embedding a color profile.  In version Exif 2.2, the default color space is sRGB.</p>
@@ -37,12 +38,12 @@
 		<fdd:productionPhase>Generally applied by cameras in initial-state picture creation; may also be used for middle- and final-state archiving or end-user delivery. </fdd:productionPhase>
 		<fdd:relationships>
 			<fdd:relationship>
-				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
-				<fdd:comment>Exif Versions 2.0 and 2.1, not documented here</fdd:comment>
-			</fdd:relationship>
-			<fdd:relationship>
-				<fdd:typeOfRelationship>Has later version</fdd:typeOfRelationship>
-				<fdd:comment>Exif Version 2.3, not documented here at this time.</fdd:comment>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000618</fdd:id>
+					<fdd:shortName>EXIF_Family</fdd:shortName>
+					<fdd:titleName>Exchangeable Image File Format (Exif) Family</fdd:titleName>
+				</fdd:relatedTo>
 			</fdd:relationship>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
@@ -65,8 +66,8 @@
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
-		<fdd:experience>Prints and Photographs Division holds a modest number of digital-camera generated photographs in <fddLink id="fdd000147">JPEG_EXIF</fddLink>.</fdd:experience>
-		<fdd:preference>See the Library of Congress Recommended Formats Statement for format preferences for <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html">still image works</a>.</fdd:preference>
+		<fdd:experience>The Prints and Photographs Division and the Manuscript Division have collections containing digital-camera generated photographs in <fddLink id="fdd000147">JPEG_EXIF</fddLink> as well as <fddLink id="fdd000147">TIFF_UNC_EXIF</fddLink>. Specific Exif versions are unknown.</fdd:experience>
+		<fdd:preference>See the Library of Congress Recommended Formats Statement for format preferences for <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html">still image works</a> and <a href="https://www.loc.gov/preservation/resources/rfs/audio.html">audio works</a>. The RFS does not mandate or suggest the use of Exif data.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>Fully documented; developed under the auspices of JEITA (Japan Electronics and Information Technology Industries Association).
@@ -130,9 +131,20 @@ Since 2009, JEITA and CIPA (Camera and Imaging Products Association) have jointl
 				<fdd:tag>Pronom PUID</fdd:tag>
 				<fdd:values>
 					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/396</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Exchangeable Image File Format (Audio), Version 2.2. Short name 	Exif Audio (2.2). See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/396">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/396</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
 						<fdd:sigValue>x-fmt/387</fdd:sigValue>
 					</fdd:sigValues>
-					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/387">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/387</a> for uncompressed data.</fdd:note>
+					<fdd:note>Exchangeable Image File Format (Uncompressed), Version 2.2. 	Exif Uncompressed Image (2.2) - TIFF. See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/387">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/387</a>.
+					</fdd:note>
 				</fdd:values>
 			</fdd:other>
 			<fdd:other>
@@ -141,7 +153,8 @@ Since 2009, JEITA and CIPA (Camera and Imaging Products Association) have jointl
 					<fdd:sigValues>
 						<fdd:sigValue>x-fmt/391</fdd:sigValue>
 					</fdd:sigValues>
-					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/391">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/391</a> for compressed data.</fdd:note>
+					<fdd:note>Exchangeable Image File Format (Compressed) Version 2.2. Short name: 	Exif Compressed Image (2.2) - JPEG. See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/391">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/391</a>.
+					</fdd:note>
 				</fdd:values>
 			</fdd:other>
 			<fdd:other>
@@ -164,21 +177,10 @@ Since 2009, JEITA and CIPA (Camera and Imaging Products Association) have jointl
 				<li>YCbCr uncompressed data: TIFF Rev. 6.0 Extensions YCbCr Images,</li>
 				<li>JPEG compressed data: JPEG Baseline ADCT." (page 8)</li>
 			</ul>
-			<p>&quot;The combination of pixel composition and pixel sampling for image data shall be RGB 4:4:4 and either Y:Cb:Cr =4:2:2 or Y:Cb:Cr = 4:2:0. The pixel composition of image data shall also be 8 bits each. This specification is appliedsimilarly to thumbnails. As sampling points on the elements making up pixels, the Y and Cb,Cr sampling points may be either co-sited or centered. . . . In the case of Y:Cb:Cr = 4:2:2, spatial co-siting is recommended for the sake of improved image quality on TV systems. For Y:Cb:Cr = 4:2:0, spatial centering is recommended as per the TIFF default and is most common format of the personal computer applications." (page 5)</p>
+			<p>"The combination of pixel composition and pixel sampling for image data shall be RGB 4:4:4 and either Y:Cb:Cr =4:2:2 or Y:Cb:Cr = 4:2:0. The pixel composition of image data shall also be 8 bits each. This specification is applied similarly to thumbnails. As sampling points on the elements making up pixels, the Y and Cb,Cr sampling points may be either co-sited or centered. . . . In the case of Y:Cb:Cr = 4:2:2, spatial co-siting is recommended for the sake of improved image quality on TV systems. For Y:Cb:Cr = 4:2:0, spatial centering is recommended as per the TIFF default and is most common format of the personal computer applications." (page 5)</p>
 		</fdd:general>
 		<fdd:history>
-			<p>Timeline for Exif development:</p>
-			<ul>
-				<li>Version 1.0.  Published October 1995.</li>
-				<li>Version 1.1.  Published May 1997</li>
-				<li>Version 2.0.  Published November 1997.</li>
-				<li>Version 2.1.  Published December 1998.</li>
-				<li>Version 2.2. Published April 2002.</li>
-				<li>Version 2.21.  Published September 2003 as a set of changes.  Promoted as &quot;Exif Print.&quot;</li>
-				<li>Unified Version 2.21.  Published September 2009.</li>
-				<li>Version 2.3.  Published April 2010.</li>
-				<li>Version 2.3 (Revised 2012).  Published December 2012 (with two explanations corrected).</li>
-			</ul>
+			<p>Exif Version 2.2 was published in April 2002. See <fddLink id="fdd000618">EXIF_Family</fddLink> for a full version publication timeline.</p>
 			<p>About JEITA: "The Japan Electronics and Information Technology Industries Association (JEITA) was formed on November 1, 2000, through the merger of the Electronic Industries Association of Japan (EIAJ) and Japan Electronic Industries Development Association (JEIDA). JEITA is a new industry organization in Japan with activities covering both the electronics and information technology (IT) fields." (<a href="http://www.jeita.or.jp/english/about/what/">http://www.jeita.or.jp/english/about/what/</a>).</p>
 			<p>About CIPA: The Camera and Imaging Products Association (CIPA) was established in 2002 as a successor organization to the Japan Camera Industry Association (JCIA).  JCIA participated in the original development of Exif.  CIPA &quot;is an industry association consisting of companies engaged in the development, production, or distribution of digital cameras, imaging-related products, and software&quot; (<a href="http://www.cipa.jp/guide/documents/e/en0203.pdf">http://www.cipa.jp/guide/documents/e/en0203.pdf</a>).</p>
 		</fdd:history>
@@ -195,6 +197,11 @@ Since 2009, JEITA and CIPA (Camera and Imaging Products Association) have jointl
 	</fdd:formatSpecifications>
 	<fdd:usefulReferences>
 		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000147">JPEG_EXIF</fddLink>, <fddLink id="fdd000145">TIFF_UNC_EXIF</fddLink> and <fddLink id="fdd000618">EXIF_Family</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
 					<link>https://web.archive.org/web/20201029210729/http://www.cipa.jp/std/std-sec_e.html</link>
@@ -256,7 +263,7 @@ Since 2009, JEITA and CIPA (Camera and Imaging Products Association) have jointl
 						<fdd:urlReference>
 							<link>https://exiv2.org/metadata.html</link>
 							<tag>Metadata reference tables (including Exif tags)</tag>
-							<comment>From documentation for Exiv software library.</comment>
+							<comment>From documentation for Exif software library.</comment>
 						</fdd:urlReference>
 					</fdd:urlList>
 				</fdd:urlGroup>

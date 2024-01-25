@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000589" titleName="Macintosh Binary Transfer Format Family" shortName="MacBinary" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>other</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:updates>
+			<fdd:date>2023-05-25</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Macintosh Binary Transfer Format Family</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>mac formats</fdd:keyword>
+			<fdd:keyword>transfer formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>
+				<a href="https://web.archive.org/web/20050305044255/http://www.lazerware.com:80/formats/macbinary/macbinary_iii.html">Macintosh Binary Transfer Format (MacBinary)</a> as defined by <a href="http://www.mac.org/utilities/macbinary/">MAC.org</a>, as well as researcher <a href="http://www.paulbourke.net/dataformats/ascii/">Paul Bourke</a>, is "a binary (non-text) format that encodes Macintosh files so that they can be safely stored or transferred through non-Macintosh systems."</p>
+			<p>As stated on <a href="http://justsolve.archiveteam.org/wiki/MacBinary">ArchiveTeam.org MacBinary</a>, "Several different versions of this format have been released to accommodate changes in the Mac filesystem. (There was a MacBinary II, MacBinary III, and a proposed but little-used MacBinary II+.) Since the release of OS X, different archivers have been used and MacBinary has gone out of common use."</p>
+			<p>
+				<b>MacBinary Format Structure:</b>
+			</p>
+			<p>Prior to Mac OS X, Mac computers stored files in two separate forks, a data fork that stores unstructured data and a resource fork that stores structured data. <a href="https://uits.iu.edu/">Indiana University's IT Services</a> article, <a href="https://kb.iu.edu/d/aeiw">ARCHIVED: What is MacBinary, and How Can I Decode It?</a>, last modified January 2018, "MacBinary was developed as a means of preserving that file structure without sacrificing portability." It combines all the data and forks into a single document that is suitable for transport via FTP (File Transfer Protocol), the web, and email. It can also be stored on computers with different operating systems.</p>
+			<p>The <a href="https://web.archive.org/web/20050305044255/http://www.lazerware.com:80/formats/macbinary/macbinary_iii.html">MacBinary Standard Proposal</a> defines the structure:</p>
+			<ul>
+				<li>128-byte Header<ul>
+						<li>Contains all information for reproducing the document's directory entry on receiving Macintosh.</li>
+						<li>Contains the lengths of the data and resource forks.</li>
+					</ul>
+				</li>
+				<li>Data Fork<ul>
+						<li>Optional, can be padded with nulls to a multiple of 128 bytes.</li>
+					</ul>
+				</li>
+				<li>Resource Fork<ul>
+						<li>Can be padded with nulls to a multiple of 128 bytes.</li>
+					</ul>
+				</li>
+			</ul>
+			<p>
+				<a href="https://en.wikipedia.org/wiki/MacBinary">MacBinary files</a> use the .bin or .macbin extension.</p>
+			<p>
+				<b>Uses of MacBinary</b>
+			</p>
+			<p>According to Michael Cox in <a href="https://itstillworks.com/how-to-open-a-macbinary-file.html">How to Open a MacBinary File</a>, "The MacBinary format was used to encode older, pre-Mac OS X files that used a file structure unique to Apple. Using this format, users could move and store Mac files on Windows computers or Web servers."</p>
+			<p>According to <a href="https://www.file-extensions.org/">File-Extensions.org</a>, <a href="https://www.file-extensions.org/macbin-file-extension">MacBinary</a> is "an archive format developed for Apple Macintosh computers. It is used to transport data between Mac computers and other systems like Unix and Windows that are not supported by <a href="https://en.wikipedia.org/wiki/Hierarchical_File_System_(Apple)">Mac Hierarchical File System (HFS) system."</a>
+			</p>
+		</fdd:description>
+		<fdd:shortDescription>Macintosh Binary Transfer Format (MacBinary) is a binary format that encodes Macintosh files so that they can be safely stored or transferred through non-Macintosh systems.</fdd:shortDescription>
+		<fdd:productionPhase>Middle to final state as a storage and transfer format.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:shortName>BinHex</fdd:shortName>
+					<fdd:titleName>Binary-To-Hexadecimal</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Not described separately on this website at this time. 
+Per <a href="https://en.wikipedia.org/wiki/BinHex">BinHex Wikipedia</a>, "originally short for binary-to-hexadecimal, is a binary-to-text encoding system that was used on the classic Mac OS for sending binary files through e-mail...BinHex produces ASCII text, as opposed to MacBinary's binary files," In the article, <a href="https://kb.iu.edu/d/aeiw">ARCHIVED: What is MacBinary, and How Can I Decode It?</a>, describes BinHex as taking up more space than MacBinary.  
+				</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress has MacBinary files in its collections, especially in the Manuscript Division. See the <a href="https://blogs.loc.gov/thesignal/2020/11/an-archivists-perspective-on-legacy-files/">An Archivist’s Perspective on Legacy Files</a> blog post by Chad Conrady (published Nov 16, 2020) for more context.</fdd:experience>
+		<fdd:preference>The Library of Congress has not yet expressed any format preference for transfer formats.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>Open standard. According to Christopher Allen, MacBinary Working Group team member and one of the standard's authors, as described in article, <a href="http://www.lifewithalacrity.com/2012/08/tools-for-ignition-hypercards-25th-anniversary.html">Tools for Ignition &amp; HyperCard's 25th Anniversary</a>, August 2012, he "participated in his first open standard, called MacBinary, a way of encoding early Mac applications so that they could be transferred online."</p>
+			<p>
+				<a href="https://www.macdisk.com/macbinen.php">MacDisk.com</a> states "The MacBinary de facto standard allows to keep together both forks of Macintosh files on telecommunications lines or on servers which don't know anything about forks."</p>
+			<p>
+				<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml"> Comments welcome</a>.</p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<a href="https://web.archive.org/web/20050305044255/http://www.lazerware.com:80/formats/macbinary/macbinary_iii.html">Macintosh Binary Transfer Format ("MacBinary III") Standard Proposal | December 1996</a> (link via Internet Archive)</fdd:documentation>
+		<fdd:adoption>
+			<p>JSummers34 in the article, <a href="https://entropymine.wordpress.com/2019/02/13/detecting-macbinary-format/">Detecting MacBinary Format</a>, February 2019, "MacBinary is ancient history...For a while, it was widely used, and a lot of MacBinary file still exist in old collections."</p>
+			<p>According to <a href="https://en.wikipedia.org/wiki/MacBinary">Wikipedia.org's MacBinary</a> page, MacBinary's "dual-fork nature of the HFS system was not used on Mac OS X, and MacBinary has largely disappeared."</p>
+			<p>
+				<a href="https://www.file-extensions.org/macbin-file-extension">MacBinary File-Extension.org</a> states, "MacBinary format is obsolete and no longer supported file format."</p>
+			<p>
+				<a href="https://smallbusiness.chron.com/">Chron.com's</a> article, <a href="https://smallbusiness.chron.com/extract-macintosh-bin-files-45530.html">How to Extract Macintosh Bin File</a>, describes Mac OS X and MacBinary stating, "Mac OS X relies on the ZIP format, which supersedes MacBinary."</p>
+			<p>
+				<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml"> Comments welcome</a>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>Little to no information found regarding patents or licensing.</p>
+			<p>
+				<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml"> Comments welcome</a>.</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>
+				<a href="https://macgui.com/index.php">MacGUI.com</a> in the news article, <a href="https://macgui.com/news/article.php?t=528">Working with BinHex and MacBinary Encoding</a>, December 2020, states, MacBinary is an "8-bit encoding format."</p>
+			<p>
+				<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml"> Comments welcome</a>.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>Per <a href="https://en.wikipedia.org/wiki/MacBinary">Wikipedia.org's MacBinary</a> page, MacBinary "combines the two forks of a classic Mac OS file into a single file, along with HFS's extended metadata."</p>
+			<ul>
+				<li>
+					<a href="https://en.wikipedia.org/wiki/Hierarchical_File_System_(Apple)">Hierarchical File System (Apple)</a>, <a href="https://en.wikipedia.org/wiki/Main_Page">Wikipedia.org</a>, metadata is stored in a file record, including CNID, size of file, timestamps, first file extents of data/resource forks, and pointers to file's first data/resource extent records.<ul>
+						<li>Can also store 16-byte fields that store attributes about the file, such as creator code and type code.</li>
+					</ul>
+				</li>
+			</ul>
+			<p>
+				<a href="http://justsolve.archiveteam.org/wiki/MacBinary">ArchiveTeam.org MacBinary</a>, MacBinary "format for encoding Macintosh files for transmission including directory metadata and both the data and resource forks."</p>
+			<p>The article, <a href="https://entropymine.wordpress.com/2019/02/13/detecting-macbinary-format/">Detecting MacBinary Format</a>, February 2019, states that the MacBinary format include: "the full Mac-style filename, metadata including the type/creator codes, timestamps, and a few other Macintoshy things, the data fork, and the resource fork."</p>
+			<p>
+				<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			<p>	None beyond availability of supporting software/hardware. MacBinary format was used to encode older, pre-Mac OS X files.</p>
+			<p>
+				<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml"> Comments welcome</a>.</p>
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			<p>Little to no information found regarding technical protection.</p>
+			<p>
+				<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>bin</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>MacBinary Wikipedia. See <a href="https://en.wikipedia.org/wiki/MacBinary">(https://en.wikipedia.org/wiki/MacBinary)</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>macbin</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>MacBinary Wikipedia. See <a href="https://en.wikipedia.org/wiki/MacBinary">(https://en.wikipedia.org/wiki/MacBinary)</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/macbinary</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>MacBinary Wikipedia. See <a href="https://en.wikipedia.org/wiki/MacBinary">(https://en.wikipedia.org/wiki/MacBinary)</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/x-macbinary</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>MacBinary Wikipedia. See <a href="https://en.wikipedia.org/wiki/MacBinary">(https://en.wikipedia.org/wiki/MacBinary)</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>00{73}00{7}00{16}000000000000000000000000000000000000000000000081</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>MacBinary II. BOF; Offset: 0; Byte Sequence: 00x00 repeated in 73 bytes and then 7 bytes and then in 16 bytes 00x 000000000000000000000000000000000000000000000081. From <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/1762">https://www.nationalarchives.gov.uk/PRONOM/fmt/1762</a>
+				</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>	00{73}00{7}00{19}6D42494E{16}82</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>MacBinary III. BOF; Offset: 0; Byte Sequence: 00x00 repeated in 73 bytes and then 7 bytes followed by &apos;mBIN&apos; and then in 16 bytes 00x82. From <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/1763">https://www.nationalarchives.gov.uk/PRONOM/fmt/1763</a>
+				</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/1761</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>MacBinary I. See <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/1761">(https://www.nationalarchives.gov.uk/PRONOM/fmt/1761)</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/1762</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>MacBinary II. See <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/1762">(https://www.nationalarchives.gov.uk/PRONOM/fmt/1762)</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/1763</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>MacBinary III. See <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/1763">(https://www.nationalarchives.gov.uk/PRONOM/fmt/1763)</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q1882400</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>MacBinary file format family (Q1882400). See <a href="https://www.wikidata.org/wiki/Q1882400">(https://www.wikidata.org/wiki/Q1882400)</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q114078771</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>MacBinary I (Q114078771). See <a href="https://www.wikidata.org/wiki/Q114078771">(https://www.wikidata.org/wiki/Q114078771)</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q114078864</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>MacBinary II (Q114078864). See <a href="https://www.wikidata.org/wiki/Q114078864">(https://www.wikidata.org/wiki/Q114078864)</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q114079055</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>MacBinary III (Q114079055). See <a href="https://www.wikidata.org/wiki/Q114079055">(https://www.wikidata.org/wiki/Q114079055)</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>MacBinary Versions:</b>
+			</p>
+			<ul>
+				<li>
+					<a href="https://web.archive.org/web/20050305044255/http://www.lazerware.com:80/formats/macbinary/macbinary_iii.html">MacBinary III</a> (link via Internet Archive):<ul>
+						<li>very similar to MacBinary II, details additional information in the file header and format.</li>
+						<li>
+							<a href="http://macintoshsisters.freeservers.com/faqs/faq8.html">Macintosh Sisters' FAQ's</a> states, "MacBinary III is an update to the c1987 format that supports the icon badge routing information finder flags that are part of Mac OS 8.5.</li>
+					</ul>
+				</li>
+				<li>
+					<a href="https://files.stairways.com/other/macbinaryiiplus-spec-info.txt">MacBinary II+</a>:<ul>
+						<li>
+							<a href="https://files.stairways.com/other/macbinaryiiplus-spec-info.txt">Preliminary Specification</a>, "Extension to the MacBinary II Standard...Implemented by MacBinary II+."</li>
+						<li>MacintoshRespository.org, <a href="https://www.macintoshrepository.org/1793-macbinary-ii-">What is MacBinary II+?</a>, states, "MacBinary II+ is a System 7 drag &amp; drop converter for MacBinary files. Simply drop a MacBinary file on it and it will be decoded, drop any other file or folder on it and it will be encoded."</li>
+						<li>
+							<a href="http://justsolve.archiveteam.org/wiki/MacBinary">ArchiveTeam.org MacBinary</a>, mentions this version, stating "a proposed but little-used MacBinary II+."</li>
+						<li>
+							<a href="https://en.wikipedia.org/wiki/MacBinary">MacBinary Wikipedia</a> states, MacBinary II+ is "a proposed enhancement to MacBinary to incorporate a directory tree, never widely adopted."</li>
+					</ul>
+				</li>
+				<li>
+					<a href="https://web.archive.org/web/20050404132623/http://www.lazerware.com:80/formats/macbinary/macbinary_ii.html">MacBinary II</a> (link via Internet Archive):<ul>
+						<li>very similar to MacBinary, details additional information in the file header and format.</li>
+						<li>Per Standard, "The original MacBinary format was amended to include the sending of the FCMT (Get Info comment) after the resource fork was sent, if the length for such comment, given in offset 99, is not zero."</li>
+					</ul>
+				</li>
+				<li>
+					<a href="https://web.archive.org/web/19991103230427/http://www.lazerware.com:80/formats/macbinary/macbinary.html">MacBinary</a> (link via Internet Archive):<ul>
+						<li>proposal standard format for arbitrary Macintosh document binary transfer via a telecommunications link.</li>
+						<li>Per Standard, "Intended for use both between Macintoshes running terminal programs which adhere to the standard, and for use in uploading arbitrary Macintosh documents to remote systems."</li>
+					</ul>
+				</li>
+			</ul>
+			<p>
+				<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
+			<p>
+				<b>MacBinary not compression format:</b>
+			</p>
+			<p>According to user Spiff on the Stack Exchange Forum, <a href="https://superuser.com/questions/1267849/compress-folder-into-macbinary-bin-format">Compress Folder into MacBinary (.bin) Format</a>, November 2017, "MacBinary is not some kind of compressed archive format for a whole directory full of files. It's just a way to take both forks and the Finder metadata of a single old-school Mac file and turn it into a monolithic file that can traverse non-Mac systems that didn't have the concepts of multiple file streams and extensible metadata back in the dark ages of the 1980's and 90's."</p>
+			<p>Scott Granneman in <a href="https://granneman.com/tech/background/compressionfileformats">Common Compression File Format</a>, states "BIN is Mac OS-only, &amp; stands for MacBinary. Does very little compression, and creates binary files instead of text files. Leaves Mac-specific data intact &amp; therefore keeping the 'resource fork' together with the 'data fork'."</p>
+			<p>On the blog website of Peter Hose, in <a href="https://boredzo.org/blog/archives/2006-01-15/compression-and-archive-formats-a-description">Part1: A Brief History of Compression and Archiving</a>, January 2006, he states, "MacBinary was another archive format, developed separately, that served that purpose, but did not offer compression."</p>
+			<p>
+				<a href="https://fileinfo.com/filetypes/encoded">FileInfo.com</a> lists MacBinary as an 'Encoded File,' defined as "files that store data in an encoded format. These include encrypted files, uncompressed archives, and binary-encoded text files."</p>
+			<p>
+				<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>
+				<a href="https://macgui.com/index.php">MacGUI.com</a> in the news article, <a href="https://macgui.com/news/article.php?t=528">Working with BinHex and MacBinary Encoding</a>, December 2020, states "MacBinary was an entirely new, 8-bit encoding format which debuted in April 1985...The first application to implement it was Yves Lempereur's <a href="https://www.macintoshrepository.org/886-binhex-5-0">BinHex 5</a>, also released in April 1985."</p>
+			<p>As described on <a href="https://en.wikipedia.org/wiki/MacBinary">Wikipedia.org's MacBinary</a> page, MacBinary, <a href="https://web.archive.org/web/19991103230427/http://www.lazerware.com:80/formats/macbinary/macbinary.html">Macintosh Binary Transfer Format ("MacBinary") Standard Proposal</a> (link via Internet Archive), was first released in 1985, followed by MacBinary II, <a href="https://web.archive.org/web/20050404132623/http://www.lazerware.com:80/formats/macbinary/macbinary_ii.html">Macintosh Binary Transfer Format ("MacBinary II") Standard Proposal</a> (link via Internet Archive), in 1987, MacBinary (II+), <a href="https://files.stairways.com/other/macbinaryiiplus-spec-info.txt">Macintosh Binary Transfer Format (MacBinary II+) Priliminary Specification</a> was released in 1993, and following the release of Mac OS 8, MacBinary III, <a href="https://web.archive.org/web/20050305044255/http://www.lazerware.com:80/formats/macbinary/macbinary_iii.html">Macintosh Binary Transfer Format ("MacBinary III") Standard Proposal</a> (link via Internet Archive), was released in 1996.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20050305044255/http://www.lazerware.com:80/formats/macbinary/macbinary_iii.html</link>
+					<tag>Macintosh Binary Transfer Format ("MacBinary III") Standard Proposal | December 1996 (link via Internet Archive)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://files.stairways.com/other/macbinaryiiplus-spec-info.txt</link>
+					<tag>Macintosh Binary Transfer Format ("MacBinary II+") Priliminary Specification | February 1993</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20050404132623/http://www.lazerware.com:80/formats/macbinary/macbinary_ii.html</link>
+					<tag>Macintosh Binary Transfer Format ("MacBinary II") Standard Proposal | 21 June 1987 (link via Internet Archive)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/19991103230427/http://www.lazerware.com:80/formats/macbinary/macbinary.html</link>
+					<tag>Macintosh Binary Transfer Format ("MacBinary") Standard Proposal | 13 March 1985 (link via Internet Archive)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Macintosh Binary Transfer Format</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20050305044255/http://www.lazerware.com:80/formats/macbinary/macbinary_iii.html</link>
+							<tag>Macintosh Binary Transfer Format ("MacBinary III") Standard Proposal | December 1996 (link via Internet Archive)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://files.stairways.com/other/macbinaryiiplus-spec-info.txt</link>
+							<tag>Macintosh Binary Transfer Format ("MacBinary II+") Priliminary Specification | February 1993 (link via Internet Archive)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20050404132623/http://www.lazerware.com:80/formats/macbinary/macbinary_ii.html</link>
+							<tag>Macintosh Binary Transfer Format ("MacBinary II") Standard Proposal | 21 June 1987 (link via Internet Archive)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/19991103230427/http://www.lazerware.com:80/formats/macbinary/macbinary.html</link>
+							<tag>Macintosh Binary Transfer Format ("MacBinary") Standard Proposal | 13 March 1985 (link via Internet Archive)</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.mac.org/utilities/macbinary/</link>
+					<tag>MAC.org - MacBinary II</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.paulbourke.net/dataformats/ascii/</link>
+					<tag>Paul Bourke.net - MacBinary format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://justsolve.archiveteam.org/wiki/MacBinary</link>
+					<tag>ArchiveTeam.org - MacBinary</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://entropymine.wordpress.com/2019/02/13/detecting-macbinary-format/</link>
+					<tag>Entropymine.Wordress.com - Detecting MacBinary format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://kb.iu.edu/d/aeiw</link>
+					<tag>KB.Iu.edu - ARCHIVED: What is MacBinary, and How Can I Decode It?</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/MacBinary</link>
+					<tag>ItStillWorks.com - How to Open a MacBinary File</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.lifewithalacrity.com/2012/08/tools-for-ignition-hypercards-25th-anniversary.html</link>
+					<tag>LifeWithAlacrity.com - Tools for Ignition &amp; HyperCard's 25th Anniversary</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.macdisk.com/macbinen.php</link>
+					<tag>MacDisk.com - MacBinary Files</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://smallbusiness.chron.com/extract-macintosh-bin-files-45530.html</link>
+					<tag>Chron.com - How to Extract Macintosh Bin Files</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://macgui.com/news/article.php?t=528</link>
+					<tag>MacGUI.com - Working with BinHex and MacBinary Encoding</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Wikipedia.org</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/MacBinary</link>
+							<tag>MacBinary</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Hierarchical_File_System_(Apple)</link>
+							<tag>Hierarchical File System (Apple)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/BinHex</link>
+							<tag>BinHex</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>NationalArchives.gov.uk</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.nationalarchives.gov.uk/PRONOM/fmt/1761</link>
+							<tag>MacBinary I</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.nationalarchives.gov.uk/PRONOM/fmt/1762</link>
+							<tag>MacBinary II</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.nationalarchives.gov.uk/PRONOM/fmt/1763</link>
+							<tag>MacBinary III</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.file-extensions.org/macbin-file-extension</link>
+					<tag>File-Extensions.org - MacBin file extension</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>FileInfo.com</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://fileinfo.com/extension/bin</link>
+							<tag>Bin File Extension</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://fileinfo.com/extension/macbin</link>
+							<tag>MACBIN File Extension</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://filext.com/file-extension/BIN</link>
+					<tag>FilExt.com - Opening a Bin File</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/mietek/theunarchiver/wiki/MacBinarySpecs</link>
+					<tag>GitHub.com - MacBinarySpecs</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://web.archive.org/web/20050403214802/http://www.lazerware.com/formats/macbinary.html</link>
+					<tag>Laserwar.com - MacBinary</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://superuser.com/questions/1267849/compress-folder-into-macbinary-bin-formao</link>
+					<tag>SuperUser.com - Compress Folder into MacBinary (.bin) Format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://granneman.com/tech/background/compressionfileformats</link>
+					<tag>Grenneman.com - Common Compression File Formats</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://boredzo.org/blog/archives/2006-01-15/compression-and-archive-formats-a-description</link>
+					<tag>BoredZo.org - Compression and Archive Formats: A Description</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.macintoshrepository.org/886-binhex-5-0</link>
+					<tag>MacintoshRepository.org - BinHex 5.0</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://ccat.sas.upenn.edu/gopher/other/special/help/Macintosh/Macintosh%20Communication%20FAQ</link>
+					<tag>UPenn.edu - Macintosh Communication FAQ</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Wikidata.org</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.wikidata.org/wiki/Q1882400</link>
+							<tag>MacBinary file format family (Q1882400)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.wikidata.org/wiki/Q114078771</link>
+							<tag>MacBinary I (Q114078771)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.wikidata.org/wiki/Q114078864</link>
+							<tag>MacBinary II (Q114078864)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.wikidata.org/wiki/Q114079055</link>
+							<tag>MacBinary III (Q114079055)</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

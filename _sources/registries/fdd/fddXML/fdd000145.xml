@@ -2,12 +2,9 @@
 <fdd:FDD id="fdd000145" titleName="TIFF Uncompressed File with Exif Metadata" shortName="TIFF_UNC_EXIF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
-			<fdd:gdfrGenreAndSubgenres>
+			<fdd:gdfrGenres>
 				<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
-				<fdd:gdfrSubgenres>
-					<fdd:gdfrSubgenre>sound</fdd:gdfrSubgenre>
-				</fdd:gdfrSubgenres>
-			</fdd:gdfrGenreAndSubgenres>
+			</fdd:gdfrGenres>
 		</fdd:gdfrGenreSelection>
 		<fdd:formatCategories>
 			<fdd:category>file-format</fdd:category>
@@ -18,7 +15,7 @@
 		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
 		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2023-03-21</fdd:date>
+			<fdd:date>2023-11-03</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -52,24 +49,33 @@
 				</fdd:relatedTo>
 				<fdd:comment>Version 2.2 specifies the metadata elements and syntax.</fdd:comment>
 			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000618</fdd:id>
+					<fdd:shortName>EXIF_Family</fdd:shortName>
+					<fdd:titleName>Exchangeable Image File Format (Exif) Family</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Specification defines metadata elements for use in TIFF-EXIF.</fdd:comment>
+			</fdd:relationship>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
-		<fdd:experience>None.</fdd:experience>
-		<fdd:preference>See the Library of Congress Recommended Formats Statement for format preferences for <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html">still image works</a>.</fdd:preference>
+		<fdd:experience>The Prints and Photographs Division and the Manuscript Division have collections containing digital-camera generated photographs in <fddLink id="fdd000147">TIFF_UNC_EXIF</fddLink>. Specific Exif versions are unknown.</fdd:experience>
+		<fdd:preference>See the Library of Congress Recommended Formats Statement for format preferences for <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html">still image works</a>. The RFS does not mandate or suggest the use of Exif data.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
-		<fdd:disclosure>Fully disclosed; see <fddLink id="fdd000022">TIFF_6</fddLink> and <fddLink id="fdd000146">EXIF_2_2.</fddLink>
+		<fdd:disclosure>Fully disclosed; see <fddLink id="fdd000022">TIFF_6</fddLink> and <fddLink id="fdd000618">EXIF_Family</fddLink>
 		</fdd:disclosure>
-		<fdd:documentation>See <fddLink id="fdd000022">TIFF_6</fddLink> and <fddLink id="fdd000146">EXIF_2_2.</fddLink>
+		<fdd:documentation>See <fddLink id="fdd000022">TIFF_6</fddLink> and <fddLink id="fdd000618">EXIF_Family</fddLink>
 		</fdd:documentation>
 		<fdd:adoption>Adoption level not known to the compilers of this document; <fddLink id="fdd000147">JPEG_EXIF</fddLink> appears to be more widely adopted than TIFF_UNC_EXIF.
 </fdd:adoption>
-		<fdd:licensingAndPatents>See <fddLink id="fdd000022">TIFF_6</fddLink> and <fddLink id="fdd000146">EXIF_2_2</fddLink>.
+		<fdd:licensingAndPatents>See <fddLink id="fdd000022">TIFF_6</fddLink> and <fddLink id="fdd000618">EXIF_Family</fddLink>.
 		</fdd:licensingAndPatents>
 		<fdd:transparency>See <fddLink id="fdd000023">TIFF_UNC</fddLink>.
 		</fdd:transparency>
-		<fdd:selfDocumentation>Includes the tag sets or IFDs (Image File Directory) specified in both <fddLink id="fdd000022">TIFF_6</fddLink> and <fddLink id="fdd000146">EXIF_2_2</fddLink>.
+		<fdd:selfDocumentation>Includes the tag sets or IFDs (Image File Directory) specified in both <fddLink id="fdd000022">TIFF_6</fddLink> and <fddLink id="fdd000618">EXIF_Family</fddLink>.
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>None.
 		</fdd:externalDependencies>
@@ -96,7 +102,7 @@
 		<fdd:signifiersGroup>
 			<fdd:filenameExtension>
 				<fdd:sigValues>
-					<fdd:sigValue>TIF</fdd:sigValue>
+					<fdd:sigValue>tif</fdd:sigValue>
 				</fdd:sigValues>
 				<fdd:note>From EXIF version 2.2 standard.  For comparison see <fddLink id="fdd000022">TIFF_6</fddLink>
 				</fdd:note>
@@ -118,8 +124,31 @@
 			<fdd:other>
 				<fdd:tag>Pronom PUID</fdd:tag>
 				<fdd:values>
-					<fdd:sigValueNA>See note.</fdd:sigValueNA>
-					<fdd:note>PRONOM has no corresponding entry as of March 2023.</fdd:note>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/399</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Exchangeable Image File Format (Uncompressed), Version 2.0. 	Exif Uncompressed Image (2.0). See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/399">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/399</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/388</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Exchangeable Image File Format (Uncompressed), Version 2.1. 	Exif Uncompressed Image (2.1). See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/388">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/388</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/387</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Exchangeable Image File Format (Uncompressed), Version 2.2. 	Exif Uncompressed Image (2.2). See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/387">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/387</a>.
+					</fdd:note>
 				</fdd:values>
 			</fdd:other>
 			<fdd:other>
@@ -143,7 +172,7 @@
 			<p>The extended metadata defined by Exif is subsumed within the <fddLink id="fdd000073">TIFF/EP</fddLink> specification; thus TIFF/EP can be seen as a successor-replacement to <fddLink id="fdd000145">TIFF_UNC_EXIF</fddLink>
 			</p>
 		</fdd:general>
-		<fdd:history>See <fddLink id="fdd000146">EXIF_2_2</fddLink>.</fdd:history>
+		<fdd:history>See <fddLink id="fdd000618">EXIF_Family</fddLink> and <fddLink id="fdd000146">EXIF_2_2</fddLink>.</fdd:history>
 	</fdd:notes>
 	<fdd:formatSpecifications>
 		<fdd:urls>
@@ -166,7 +195,7 @@
 		<fdd:urls>
 			<fdd:url>
 				<fdd:urlGroup>
-					<fdd:intro>See <fddLink id="fdd000146">EXIF_2_2</fddLink> and <fddLink id="fdd000022">TIFF_6</fddLink>.</fdd:intro>
+					<fdd:intro>See <fddLink id="fdd000618">EXIF_Family</fddLink>, <fddLink id="fdd000146">EXIF_2_2</fddLink> and <fddLink id="fdd000022">TIFF_6</fddLink>.</fdd:intro>
 				</fdd:urlGroup>
 			</fdd:url>
 		</fdd:urls>

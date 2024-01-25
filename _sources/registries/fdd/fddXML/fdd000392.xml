@@ -22,6 +22,9 @@
 	</fdd:properties>
 	<fdd:identificationAndDescription>
 		<fdd:fullName>Microsoft Compound File Binary File Format, Version 4</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>binary formats</fdd:keyword>
+		</fdd:keywords>
 		<fdd:description>
 			<p>The Microsoft Compound File Binary (CFB) file format is used for storing storage objects and stream objects in a hierarchical structure within a single file.  See <fddLink id="fdd000380">CFB_3</fddLink> for a full description of the file system structure.</p>
 			<p>There are two active versions of CFB, <fddLink id="fdd000380">version 3</fddLink> and version 4. One major distinction between the versions is that the sector size for version 3 is of 512 bytes and the sector size for version 4 is 4096 bytes.</p>
@@ -30,13 +33,13 @@
 				<li>4096-byte sector compound files can have 64-bit file and user-defined datastream sizes, up to slightly less than 16 terabytes.</li>
 				<li>The maximum number of directory entries (storage objects and stream objects) is roughly 4 billion. This corresponds to a maximum directory sector chain length of slightly less than 512 GB for a 4096-byte sector compound file.</li>
 			</ul>
-			<p>A file in the CFB format begins with a 512-byte header.  The first sector of a compound file with 4096-byte sectors is padded with zeroes.  Values given below are as they occur in the physical file, for example when viewed using a Hex dump utility.</p>
+			<p>A file in the CFB format begins with a 512-byte header.  The first sector of a compound file with 4096-byte sectors is padded with zeros.  Values given below are as they occur in the physical file, for example when viewed using a Hex dump utility.</p>
 			<ul>
 				<li>Header Signature for the CFB format with 8-byte Hex value D0CF11E0A1B11AE1.  <a href="https://web.archive.org/web/20221112073316/https://www.garykessler.net/library/file_sigs.html">Gary Kessler</a> notes that the beginning of this string looks like &quot;DOCFILE&quot;</li>
-				<li>16 bytes of zeroes</li>
+				<li>16 bytes of zeros</li>
 				<li>2-byte Hex value 3E00 indicating CFB minor version 3E. The specification states that the minor version <i>should</i> always be indicated as 3e.</li>
 				<li>2-byte Hex value 0400 indicating CFB major version 4.</li>
-				<li>2-byte Hex value FEFF indicating little-endian byte order for all integer values.  This byte order applies to all CFB files.</li>
+				<li>2-byte Hex value FFFE indicating little-endian byte order for all integer values.  This byte order applies to all CFB files.</li>
 				<li>2-byte Hex value 0C00 (indicating the sector size of 4096 bytes used for major version 4)</li>
 				<li>480 bytes for remainder of the 512-byte header</li>
 			</ul>
@@ -62,9 +65,21 @@
 					<p>Early versions of the AAF format detailed use of the structured storage systems outlined in CFB to store the objects on disk.</p>
 				</fdd:comment>
 			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000621</fdd:id>
+					<fdd:shortName>WPD</fdd:shortName>
+					<fdd:titleName>WordPerfect Document Family</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>According to <a href="https://justsolve.archiveteam.org/wiki/WordPerfect">WPD</a> from Archiveteam.org, WordPerfect version 7 can also store documents known as &quot;WordPerfect Compound File&quot; using the Microsoft OLE Compound file format with the same WPD extensions. OLE embedded objects are stored inside a storage called PerfectOffice_OBJECT, whereas the real document part is now stored as stream PerfectOffice_MAIN. In principal the format of this internal document part is the same like in previous versions, but one difference is that the minor version number is raised from 1 to 2.</fdd:comment>
+			</fdd:relationship>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
-	<fdd:localUse/>
+	<fdd:localUse>
+		<fdd:experience>See various subtypes for holdings information.</fdd:experience>
+		<fdd:preference>See the <a href="https://www.loc.gov/preservation/resources/rfs/index.html">Recommended Formats Statement</a> for the Library of Congress format preferences.</fdd:preference>
+	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>See <fddLink id="fdd000380">CFB_3</fddLink>
 		</fdd:disclosure>

@@ -1,0 +1,778 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000583" titleName="OpenEXR" shortName="EXR" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>moving-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:updates>
+			<fdd:date>2023-05-12</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>OpenEXR</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>image formats</fdd:keyword>
+			<fdd:keyword>raster image formats</fdd:keyword>
+			<fdd:keyword>moving image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>EXR files are images saved in the OpenEXR (also known as EXR) raster image file format. As
+stated on <a href="https://openexr.com/en/latest/index.html">OpenEXR.com</a>, "OpenEXR provides the specification (referenced throughout this
+document) and reference implementation of the EXR file format, the professional-grade image
+storage format of the motion picture industry. The purpose of EXR format is to accurately and
+efficiently represent high-dynamic-range scene-linear image data and associated metadata, with
+strong support for multi-part, multi-channel use cases."</p>
+			<p>EXR was originally a proprietary format developed by <a href="https://www.ilm.com/">Industrial Light &amp; Magic (ILM)</a> in 1999
+but became a project of the <a href="https://www.aswf.io/">Academy Software Foundation (ASWF)</a> in 2019. As stated by the
+<a href="https://www.aswf.io/news/aswf-deep-dive-openexr-origin-story-part-1/">ASWF news article, ASWF Deep Dive: Open EXR Origin Story: Part 1</a>,"Released to the public
+in 2003, it is one of the earliest open-source software projects specific to VFX and set the
+industry on a new course." According to <a href="https://openexr.com/en/latest/about.html">OpenEXR.com</a>, "<a href="https://www.wetafx.co.nz/">Weta Digital</a>, <a href="https://disneyanimation.com/">Walt Disney Animation
+Studios</a>, <a href="https://www.imageworks.com/">Sony Pictures Imageworks</a>, <a href="https://www.pixar.com/">Pixar Animation Studios</a>, <a href="https://www.dreamworks.com/">DreamWorks</a>, and other studios,
+companies, and individuals have made contributions to the code base."</p>
+			<p>
+				<a href="https://en.wikipedia.org/wiki/OpenEXR">OpenEXR Wikipedia</a>, the "format has been updated several times, adding support for tiles,
+mipmaps, new compression methods, and other features." OpenEXR Version 3.1.7, released
+March 28, 2023, is the most current version released, see <a href="https://github.com/AcademySoftwareFoundation/openexr/blob/main/CHANGES.md">OpenEXR GitHub Release Notes</a> for
+future releases and updates.</p>
+			<p>
+				<b>New Features in OpenEXR v3.1:</b>
+			</p>
+			<p>As described on <a href="https://openexr.com/en/latest/about.html">OpenEXR.com</a>, OpenEXR v3.1 introduces a new library, OpenEXRCore, "a
+significant re-thinking of how OpenEXR manages file I/O and provides access to image
+data...The 3.1 release of the OpenEXRCore library simply offers new functionality for specialty
+applications seeking the highest possible performance...The 3.1 release represents a technology
+preview for upcoming releases. The initial release is incremental; the existing API and 
+underlying behavior has not changed."</p>
+			<p>
+				<b>OpenEXR Technical Features:</b>
+			</p>
+			<ul>
+				<li>High Dynamic Range
+					<ul>
+						<li>16-bit or 32-bit floating-point numbers.</li>
+					</ul>
+				</li>
+				<li>Good Color Resolution
+					<ul>
+						<li>1024 steps per <a href="https://en.wikipedia.org/wiki/F-number">f-stop</a>, compared to 20-70 steps for most 8-bit files.</li>
+					</ul>
+				</li>
+				<li>Compatible with Graphics Hardware
+					<ul>
+						<li>Fully compatible with 16-bit frame-buffer data format, without data loss.</li>
+						<li>Supports Lossless and Lossy compression, new schemes added in future.</li>
+					</ul>
+				</li>
+				<li>Arbitrary Image Channels
+					<ul>
+						<li>Contain an arbitrary number and combination of image channels, such as red,
+green, blue, and alpha, depth, or surface normal directions.</li>
+					</ul>
+				</li>
+				<li>Scan Line and Tiled Images, Multi-Resolution Images
+					<ul>
+						<li>How pixels are stored.
+							<ul>
+								<li>Scan Line - image pixels are stored in horizontal rows, cannot contain
+multi-resolution images.</li>
+								<li>Tiles - image subdivided into an array of smaller rectangles.</li>
+								<li>Multi-Resolution - "mipmaps" or "ripmaps," stores multiple versions of a
+tiled image, each with different resolution, commonly used as texture
+maps in 3D rendering programs.</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>Ability to Store Additional Data
+					<ul>
+						<li>Extra attributes or data added, such as camera position, color timing information.</li>
+					</ul>
+				</li>
+				<li>Easy-to-Use C + + and C Programming Interfaces
+					<ul>
+						<li>Implemented in the open source OpenEXR library.</li>
+					</ul>
+				</li>
+				<li>Fast Multi-Threaded File Reading and Writing
+					<ul>
+						<li>One thread performs low-level file input/output, multiple other threads
+simultaneously encode/decode individual pieces.</li>
+					</ul>
+				</li>
+				<li>Portability
+					<ul>
+						<li>Hardware and operating system independent, uses only language features and
+libraries that comply with C and C++ ISO standards.</li>
+					</ul>
+				</li>
+				<li>Multi-View
+					<ul>
+						<li>Same scene from multiple different points of view.</li>
+					</ul>
+				</li>
+				<li>Deep Data
+					<ul>
+						<li>Deep Images - each pixel has an arbitrarily long list of data, allowing more
+accurate composition of objects.</li>
+					</ul>
+				</li>
+				<li>Multi-Part
+					<ul>
+						<li>Storing multiple images in one OpenEXR file, storing channel layers separately.</li>
+					</ul>
+				</li>
+			</ul>
+			<p>
+				<b>OpenEXR File Structure:</b>
+			</p>
+			<ul>
+				<li>Header
+					<ul>
+						<li>List of attributes describing the pixels.</li>
+						<li>For program versatility, certain attributes are required for all OpenEXR File
+Headers, including: displayWindow, dataWindow, pixelAspectRatio, channels,
+compression, lineOrder, screenWindowWidth, screenWindowCenter, and
+tileDescription.</li>
+						<li>multi-view OpenEXR files, multi-part and/or deep data OpenEXR files, all files
+which contain deep data (deepscanline or deeptile) EACH have their own list of
+attributes that are required. See <a href="https://openexr.com/en/latest/TechnicalIntroduction.html">OpenEXR Overview of the OpenEXR File Format
+File Structure</a> for complete list of required attributes.</li>
+					</ul>
+				</li>
+				<li>Pixels
+					<ul>
+						<li>A set of pixel data in particular format (scanlines, tiles, or deep data) or data type
+is called a chunk, and the structure is defined by the type of pixel data stored in it.</li>
+					</ul>
+				</li>
+			</ul>
+			<p>
+				<a href="https://openexr.com/en/latest/TechnicalIntroduction.html">OpenEXR.com</a> states "Every OpenEXR image contains one or more Image Channels. Each
+channel has a name, a data type, and 'x' and 'y' sampling rates."</p>
+			<p>Predefined Channel Names include, 'R,' 'G,' 'B,' and 'A' (alpha).</p>
+			<p>Currently, OpenEXR supports three Data Types:</p>
+			<ul>
+				<li>HALF - 16-bit floating-point numbers, for regular image data.</li>
+				<li>FLOAT - 32-bit IEEE-754 floating point numbers, used when range/precision of 16-bit
+is not sufficient.</li>
+				<li>UINT - 32-bit unsigned integers, for discrete per-pixel data such as object identifiers.</li>
+			</ul>
+			<p>
+				<b>OpenEXR Data Compression:</b>
+			</p>
+			<p>OpenEXR offers different data compression methods, having various speeds and tradeoffs.
+<a href="https://openexr.com/en/latest/TechnicalIntroduction.html">OpenEXR.com</a> describes the different compression methods as:</p>
+			<ul>
+				<li>PIZ (lossless) - wavelet transform is applied, results are Huffman-encoded, works best for
+scanline-based files.</li>
+				<li>ZIPS (lossless) - operates one scan line at a time, uses open source zlib library for
+compression.</li>
+				<li>ZIP (lossless) - operates in blocks of 16 scan lines, uses open source zlib library for
+compression, decompression is faster than compression. "Multi-resolution files are often
+used as texture maps for 3D renderers. For this application, fast read access is usually
+more important than fast writes, or maximum compression."</li>
+				<li>RLE (lossless) - a fast method that works well for images with large flat areas.</li>
+				<li>PXR24 (lossy) - reduces 32-bit floating point data to 24 bits by rounding, works well for
+depth buffers and similar images where range values are very large but full 32-bit is not
+necessary, not supported in deep files.</li>
+				<li>B44 (lossy) - HALF channels are split to reduce data to 44 percent uncompressed size,
+UINT or FLOAT channels are not compressed, advantageous for systems that support
+real-time playback of image sequences, not supported in deep files.</li>
+				<li>B44A (lossy) - similar to B44, blocks of same value pixels are packed into 3 bytes, used
+for large uniform areas, not supported in deep files.</li>
+			</ul>
+			<p>
+				<a href="https://en.wikipedia.org/wiki/OpenEXR">OpenEXR Wikipedia</a> other compression options, listed below:</p>
+			<ul>
+				<li>DWAA (JPEG-like lossy) - compresses pixels in blocks of 32 scanlines.</li>
+				<li>DWAB (JPEG-like lossy) - compresses pixels in blocks of 256 scanlines.
+					<ul>
+						<li>
+							<a href="https://rendertoken.com/">RenderToken.com's</a> user guide article, <a href="https://know.rendertoken.com/getting-started/how-to-get-started/recommended-dwa-compression">Linear EXR Workflows and
+Recommended DWA Compression</a>, states "Bundling more lines together lets
+DWAB compress more efficiently and increases performance when the entire
+image is read at once, as most programs do. Meanwhile, DWAA&#39;s smaller bundles
+make it more efficient for reading just a few scanlines at a time."</li>
+					</ul>
+				</li>
+			</ul>
+			<p>
+				<b>Using OpenEXR:</b>
+			</p>
+			<p>OpenEXR.com states, "OpenEXR is widely used in host application software where accuracy is
+critical, such as photorealistic rendering, texture access, image compositing, <a href="https://en.wikipedia.org/wiki/Deep_image_compositing">deep composition</a>,
+and <a href="https://en.wikipedia.org/wiki/Digital_intermediate">DI</a>."</p>
+		</fdd:description>
+		<fdd:shortDescription>OpenEXR (EXR) are image files saved in the OpenEXR format, a high-dynamic-range, multi-channel raster file format, used primarily for professional-grade image storage in the motion picture industry.</fdd:shortDescription>
+		<fdd:productionPhase>Across all production phases. Initial state for image creation, but middle and final state for image
+processing and storage.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000560</fdd:id>
+					<fdd:shortName>ABC</fdd:shortName>
+					<fdd:titleName>Alembic (ABC)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>As stated on <a href="https://github.com/alembic/alembic">GitHub Alembic ReadMe.md</a>, OpenEXR (for Imath) is a required
+dependency to build Alembic (ABC).</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress has a small number of EXR files in its collections.</fdd:experience>
+		<fdd:preference>See the Recommended Formats Statement for the Library of Congress format preferences for <a href="https://www.loc.gov/preservation/resources/rfs/moving.html">moving image works</a>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Open standard. As stated on ASWF's news article <a href="https://www.aswf.io/news/aswf-deep-dive-openexr-origin-story-part-3/">ASWF Deep Dive: OpenEXR Origin
+Story: Part 3</a>, April 2021, OpenEXR's Technical Steering Committee (TSC) "is dedicated
+to maintaining OpenEXR as an open standard image format for entertainment content
+creation.</fdd:disclosure>
+		<fdd:documentation>
+			<p>
+				<a href="https://openexr.com/en/latest/">OpenEXR.com</a> provides the specification and reference
+implementation of the EXR file format.</p>
+			<ul>
+				<li>Technical Introduction to OpenEXR
+					<br/>
+					<a href="https://openexr.com/en/latest/TechnicalIntroduction.html">(https://openexr.com/en/latest/TechnicalIntroduction.html)</a>
+				</li>
+				<li>The OpenEXR API: <a href="https://openexr.com/en/latest/API.html#the-openexr-api">(https://openexr.com/en/latest/API.html#the-openexr-api)</a>
+				</li>
+				<li>OpenEXR File Layout: <a href="https://openexr.com/en/latest/OpenEXRFileLayout.html">(https://openexr.com/en/latest/OpenEXRFileLayout.html)</a>
+				</li>
+			</ul>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>As stated on the <a href="https://github.com/AcademySoftwareFoundation/openexr">OpenEXR GitHub Repository page</a>, "the
+goal of the OpenEXR Project is to keep the EXR format reliable and modern and to
+maintain its place as the preferred image format for entertainment content creation."</p>
+			<p>"The <a href="https://openexr.com/en/latest/index.html">OpenEXR project</a> includes <a href="https://imath.readthedocs.io/en/latest/">Imath</a>, a basic, light-weight, and efficient C++
+representation of 2D and 3D vectors and matrices and other simple but useful
+mathematical objects, functions, and data types common in computer graphics
+applications...Imath also includes optional <a href="https://realpython.com/python-bindings-overview/">python bindings</a> for all types and functions."</p>
+			<p>According to <a href="https://fileinfo.com/extension/exr">FileInfo.com</a>, "Computer graphics professionals, such as visual effects
+artists and animators, commonly use the OpenEXR format because of its compositing
+features and accurate HDR scene-linear image data representation." EXR files can be
+opened with various applications, including <a href="https://docs.blender.org/manual/en/latest/files/media/image_formats.html">Blender</a>, <a href="https://affinity.help/photo/en-US.lproj/index.html?page=pages/HDR/openexr.html?title=32-bit%20OpenEXR%20support">Serif Affinity Photo</a>, and <a href="https://www.adobe.com/">Adobe
+Creative Cloud</a> programs (plugin needed), <a href="https://exchange.adobe.com/apps/cc/20897/exr-io">Photoshop</a>, <a href="https://community.adobe.com/t5/premiere-pro-discussions/import-an-exr-image-sequence-into-premiere-pro-windows-11/td-p/12691454">Premiere Pro</a>, and <a href="https://community.adobe.com/t5/after-effects-discussions/ae2020-how-to-use-new-openexr-import/m-p/10817155">After Effects</a>.</p>
+			<p>
+				<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>Per <a href="https://openexr.com/en/latest/license.html">OpenEXR.com License</a>, "OpenEXR is licensed under the BSD-3 Clause license.
+Contributions to the library should abide by that license unless otherwise approved by the
+OCIO ISC and ASWF Governing Board."</p>
+			<p>See OpenEXR <a href="https://github.com/AcademySoftwareFoundation/openexr/blob/main/LICENSE.md">LICENSE.md</a> on <a href="https://github.com/">GitHub</a>.</p>
+			<p>
+				<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>Depends upon algorithms and tools to read; will require sophistication to build tools.</p>
+			<ul>
+				<li>
+					<a href="https://openexr.com/en/latest/index.html">OpenEXR.com</a>, <a href="https://openexr.com/en/latest/ReadingAndWritingImageFiles.html">Reading and Writing Image Files with the OpenEXR Library</a>
+					<ul>
+						<li>How to write C + + code that reads and writes OpenEXR image files.</li>
+					</ul>
+				</li>
+				<li>
+					<a href="https://openexr.com/en/latest/index.html">OpenEXR.com</a>, <a href="https://openexr.com/en/latest/OpenEXRCoreAPI.html">Reading and Writing Image Files with the C-Language API</a>
+					<ul>
+						<li>OpenEXRCore Library offers new functionality for specialty applications.</li>
+					</ul>
+				</li>
+				<li>
+					<a href="https://openexr.com/en/latest/index.html">OpenEXR.com</a>, <a href="https://openexr.com/en/latest/install.html">Install</a>
+					<ul>
+						<li>OpenEXR Library available for download and installation via <a href="https://pkgs.org/download/openexr">Package
+Managers</a>, including <a href="https://packages.fedoraproject.org/pkgs/openexr/openexr/">Fedora</a>, <a href="https://packages.gentoo.org/packages/media-libs/openexr">Gentoo</a>, and <a href="https://packages.ubuntu.com/source/kinetic/openexr">Ubuntu</a>.</li>
+					</ul>
+				</li>
+			</ul>
+			<p>
+				<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>OpenEXR supports the inclusion of metadata. <a href="https://openexr.com/en/latest/index.html#openexr">OpenEXR.com</a> states, "The purpose of EXR format is to accurately and efficiently represent high-dynamic-range scene-linear image data and associated metadata."</p>
+			<p>According to Learn.Foundary.com in the <a href="https://learn.foundry.com/katana/Content/ug/rendering_scene/openexr_header_metadata.html">Katana User Guide, OpenEXR Header Metadata</a>, Users "can add arbitrary metadata to OpenEXR headers. The metadata must be set at the attribute level."</p>
+			<p>See Description for more information on OpenEXR's header and attributes. </p>
+			<p>
+				<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			<p>None. As stated on <a href="https://openexr.com/en/latest/TechnicalIntroduction.html">OpenEXR.com</a>, "The OpenEXR file format is hardware and operating system independent. While implementing the C and C++ programming interfaces, an effort was made to use only language features and library functions that comply with the C and C++ ISO standards."</p>
+			<p>
+				<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			<p>Per <a href="https://openexr.com/en/latest/license.html">OpenEXR.com</a>, "OpenEXR is licensed under the BSD-3-Clause license. Contributions to the library should abide by that license unless otherwise approved by the OCIO TSC and ASWF Governing Board."</p>
+			<p>OpenEXR's <a href="https://github.com/AcademySoftwareFoundation/openexr/blob/main/CONTRIBUTING.md#Legal-Requirements">Contributing to OpenEXR (GitHub - Contributing.md)</a>, provides the <a href="https://github.com/AcademySoftwareFoundation/openexr/blob/main/CONTRIBUTING.md#contributor-license-agreements">Contributor License Agreement</a>, which discusses intellectual property rights when working or contributing to OpenEXR development. </p>
+			<p>
+				<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>
+				<p>Good support. OpenEXR supports image zooming and panning.</p>
+				<p>
+					<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
+			</fdd:normalImage>
+			<fdd:clarity>
+				<p>Good support. <a href="https://openexr.com/en/latest/TechnicalIntroduction.html">OpenEXR.com</a> states, "A unique combination of features makes OpenEXR a good fit for high-quality image processing and storage applications...With 16-bit floating-point numbers, color resolution is 1024 steps per f-stop...Even after significant processing (for example, extensive color correction) images tend to show no noticeable color banding."</p>
+				<p>
+					<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
+			</fdd:clarity>
+			<fdd:colorMaint>
+				<p>As stated on <a href="https://ninedegreesbelow.com/">NineDegreesBelow.com</a>, <a href="https://ninedegreesbelow.com/photography/embedded-color-space-information.html">What is Embedded Color Profile Information?</a>, updated February 2015, "OpenEXR file format allows for color information to be specified by chromaticities, from which an ICC profile can be constructed. But the only way to actually embed an ICC profile is by way of using a kind of private extension of the officially supported OpenEXR metadata fields. The OpenEXR developers have long resisted supporting proper ICC profile color management despite repeated requests from developers who write software that reads and writes OpenEXR files."</p>
+				<p>
+					<a href="https://openexr.com/en/latest/TechnicalIntroduction.html">OpenEXR.com</a> library defines chromaticities attribute, which "specifies the CIE x,y red, green, blue, and white; that is, for the RGB triples (1, 0, 0), (0, 1, 0), (0, 0, 1), and (1, 1, 1). The x,y coordinates of all possible RGB triples can be derived from the chromaticities attribute...The chromaticities attribute is optional, and many programs that write OpenEXR omit it. If a file doesn't have a chromaticities attribute, display software should assume that the file's primaries and the white point match <a href="https://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.709-3-199802-S!!PDF-E.pdf">Rec. ITU-R BT.709-3</a>."</p>
+				<p>
+					<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
+			</fdd:colorMaint>
+			<fdd:graphics>
+				<p>Little to no information found on OpenEXR's support for graphic effects or typography.</p>
+				<p>
+					<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
+			</fdd:graphics>
+			<fdd:multispectral>
+				<p>Some support. The Journal of Computer Graphics Techniques paper, <a href="https://jcgt.org/published/0010/03/01/paper.pdf">An OpenEXR Layout for Spectral Images</a>, 2021, discusses the proposal of a standardized layout for spectral data stored in OpenEXR images.
+				</p>
+				<p>Little to no information found on the OpenEXR.com website for support of multispectral bands.</p>
+				<p>
+					<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
+			</fdd:multispectral>
+			<fdd:beyondImage>
+				<p>None.</p>
+				<p>
+					<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
+			</fdd:beyondImage>
+		</fdd:stillImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>exr</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>OpenEXR Wikipedia. See <a href="https://en.wikipedia.org/wiki/OpenEXR">(https://en.wikipedia.org/wiki/OpenEXR)</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>image/x-exr</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>OpenEXR Wikipedia. See <a href="https://en.wikipedia.org/wiki/OpenEXR">(https://en.wikipedia.org/wiki/OpenEXR)</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>image/x-exr; version="2"</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>MIME Type per OpenEXR 2 Digipres.org. See <a href="https://developers.google.com/speed/webp/docs/riff_container#naming">https://developers.google.com/speed/webp/docs/riff_container#naming</a>.<br/>
+					Super-Type: image/x-exr. See <a href="https://developers.google.com/speed/webp/docs/riff_container#naming">https://developers.google.com/speed/webp/docs/riff_container#naming</a>. 
+				</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>0x76 0x2f 0x31 0x0</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>
+					<a href="https://openexr.com/en/latest/OpenEXRFileLayout.html#components-one-and-two-magic-number-and-version-field">OpenEXR.com</a> states, "The magic number, of type int, is always 20000630 (decimal). It allows file readers to distinguish OpenEXR files from other files, since the first four bytes of an OpenEXR file are always 0x76, 0x2f, 0x31 and 0x01."</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/1001</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>OpenEXR 2. See <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/1001">(https://www.nationalarchives.gov.uk/PRONOM/fmt/1001)</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q1341482</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>OpenEXR, file format for high-dynamic-range images. See <a href="https://www.wikidata.org/wiki/Q1341482">(https://www.wikidata.org/wiki/Q1341482)</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q61077827</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>OpenEXR, free software library. See <a href="https://www.wikidata.org/wiki/Q61077827">https://www.wikidata.org/wiki/Q61077827</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:history>
+			<p>OpenEXR was originally a proprietary format developed by Industrial Light &amp; Magic (ILM) in 1999 and released to the public in 2003. As stated on DigitalCinemaColorist.com' blog, <a href="https://digitalcinemacolorist.com/color-news/2015/6/17/demystify-openexr-aces">Demystify - OpenEXR &amp; Aces</a>, June 2015, "ILM developed the OpenEXR format in response to the demand for higher color accuracy and control in effects. OpenEXR is an open format, not tied to any one manufacturer or company and it is remarkable in several ways...The first movies to employ OpenEXR were Harry Potter and the Sorcerer's Stone, Men in Black II, Gangs of New York, and Signs."</p>
+			<p>OpenEXR became an Academy Software Foundation (ASWF) project in 2019, where <a href="https://www.aswf.io/news/aswf-deep-dive-openexr-origin-story-part-3/">OpenEXR's Technical Steering Committee (TSC)</a> is "dedicated to maintaining OpenEXR as an open standard image format for entertainment content creation."</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>OpenEXR.com (<a href="https://openexr.com/en/latest/">https://openexr.com/en/latest/</a>) - EXR file format specification and reference implementation:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://openexr.com/en/latest/TechnicalIntroduction.html</link>
+							<tag>Technical Introduction to OpenEXR</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://openexr.com/en/latest/API.html#the-openexr-api</link>
+							<tag>The OpenEXR API</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://openexr.com/en/latest/OpenEXRFileLayout.html</link>
+							<tag>OpenEXR File Layout</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://openexr.com/en/latest/news.html </link>
+							<tag>News - OpenEXR Releases</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/AcademySoftwareFoundation/openexr</link>
+							<tag>OpenEXR Project - GitHuB.com</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/AcademySoftwareFoundation/openexr/blob/main/CHANGES.md</link>
+							<tag>OpenEXR Release Notes - GitHub.com</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>OpenEXR website</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://openexr.com/en/latest/index.html</link>
+							<tag>OpenEXR</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://openexr.com/en/latest/about.html#about-openexr</link>
+							<tag>About OpenEXR</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://openexr.com/en/latest/TechnicalIntroduction.html#overview-of-the-openexr-file-format</link>
+							<tag>Overview of the OpenEXR File Format</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://openexr.com/en/latest/TechnicalIntroduction.html</link>
+							<tag>Technical Introduction to OpenEXR</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://openexr.com/en/latest/OpenEXRFileLayout.html</link>
+							<tag>OpenEXR File Layout</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://openexr.com/en/latest/API.html#the-openexr-api</link>
+							<tag>The OpenEXR API</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://openexr.com/en/latest/ReadingAndWritingImageFiles.html</link>
+							<tag>Reading and Writing Image Files with the OpenEXR Library</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://openexr.com/en/latest/ReadingAndWritingImageFiles.html</link>
+							<tag>Reading and Writing Image Files with the C-language API</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://openexr.com/en/latest/OpenEXRFileLayout.html#components-one-and-two-magic-number-and-version-field</link>
+							<tag>Components One and Two: Magic Number and Version Field</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://openexr.com/en/latest/install.html</link>
+							<tag>Install</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://openexr.com/en/latest/news.html</link>
+							<tag>News</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://openexr.com/en/latest/license.html</link>
+							<tag>License</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Academy Software Foundation (ASWF)</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.aswf.io/</link>
+							<tag>www.aswf.io</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.aswf.io/news/aswf-deep-dive-openexr-origin-story-part-1/</link>
+							<tag>ASWF Deep Dive: OpenEXR Origin Story: Part 1</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.aswf.io/news/aswf-deep-dive-openexr-origin-story-part-2/</link>
+							<tag>ASWF Deep Dive: OpenEXR Origin Story: Part 2</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.aswf.io/news/aswf-deep-dive-openexr-origin-story-part-3/</link>
+							<tag>ASWF Deep Dive: OpenEXR Origin Story: Part 3</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Industrial Light &amp; Magic</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.ilm.com</link>
+							<tag>www.ilm.com</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.ilm.com/openexr-joins-academy-software-foundation-projects/</link>
+							<tag>OpenEXR Joins Academy Software Foundation Projects</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wetafx.co.nz/</link>
+					<tag>WetaFX</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://disneyanimation.com/</link>
+					<tag>Walt Disney Animation Studios</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.imageworks.com/</link>
+					<tag>Sony Pictures</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.pixar.com/</link>
+					<tag>Pixar</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.dreamworks.com/</link>
+					<tag>Dreamworks</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Wikipedia.org</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/OpenEXR</link>
+							<tag>OpenEXR</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/F-number</link>
+							<tag>f-number</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Deep_image_compositing</link>
+							<tag>Deep Image Compositing</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Digital_intermediate</link>
+							<tag>Digital Intermediate</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>GitHub.com</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://github.com/AcademySoftwareFoundation/openexr</link>
+							<tag>OpenEXR</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/AcademySoftwareFoundation/openexr/blob/main/CHANGES.md</link>
+							<tag>OpenEXR Release Notes</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/AcademySoftwareFoundation/openexr/blob/main/LICENSE.md</link>
+							<tag>OpenEXR License</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/AcademySoftwareFoundation/openexr/blob/main/CONTRIBUTING.md#Legal-Requirements</link>
+							<tag>Contributing to OpenEXR</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/alembic/alembic</link>
+							<tag>Alembic</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://know.rendertoken.com/getting-started/how-to-get-started/recommended-dwa-compression</link>
+					<tag>RenderToken.com - Linear EXR workflows and recommended DWA compression</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://imath.readthedocs.io/en/latest/</link>
+					<tag>Imath</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://realpython.com/python-bindings-overview/</link>
+					<tag>RealPython.com - Python Bindings: Calling C or C++ From Python</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://fileinfo.com/extension/exr</link>
+					<tag>FileInfo.com - EXR File Extension</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://docs.blender.org/manual/en/latest/files/media/image_formats.html</link>
+					<tag>Blender Docs - Supported Graphics Formats</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://affinity.help/photo/en-US.lproj/index.html?page=pages/HDR/openexr.html?title=32-bit%20OpenEXR%20support</link>
+					<tag>Affinity.help - 32-Bit OpenEXR Support</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Adobe.com</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://exchange.adobe.com/apps/cc/20897/exr-io</link>
+							<tag>EXR-IO Photoshop Plugin</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://community.adobe.com/t5/premiere-pro-discussions/import-an-exr-image-sequence-into-premiere-pro-windows-11/td-p/12691454</link>
+							<tag>Import an EXR image sequence into Premiere Pro/Windows 11?</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://community.adobe.com/t5/after-effects-discussions/ae2020-how-to-use-new-openexr-import/m-p/10817155</link>
+							<tag>AE2020 How to use new OpenEXR import</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://pkgs.org/download/openexr</link>
+					<tag>Pkgs.org - OpenEXR Download for Linux (apk, deb, eopkg, pkg, rpm, tgz, txz, xbps, xz, zst)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://packages.fedoraproject.org/pkgs/openexr/openexr/</link>
+					<tag>FedoraPackages.org - OpenEXR</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://packages.gentoo.org/packages/media-libs/openexr</link>
+					<tag>Gentoo.org - OpenEXR</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://packages.ubuntu.com/source/kinetic/openexr</link>
+					<tag>Ubuntu.com - Source Package: OpenEXR</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://learn.foundry.com/katana/Content/ug/rendering_scene/openexr_header_metadata.html</link>
+					<tag>Foundary.com - OpenEXR Header Metadata</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://ninedegreesbelow.com/photography/embedded-color-space-information.html</link>
+					<tag>NineDegreesBelow.com - What is embedded color profile information?</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.709-3-199802-S!!PDF-E.pdf</link>
+					<tag>ITU.int - Rec. ITU-R BT.709-3, Parameter Values for the HDTV Standards for Production and International Programme Exchange</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.online-convert.com/file-format/exr</link>
+					<tag>Online-Convert.com - What is a EXR file</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://jcgt.org/published/0010/03/01/paper.pdf</link>
+					<tag>JCGT.org - An OpenEXR Layout for Spectral Images</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://digitalcinemacolorist.com/color-news/2015/6/17/demystify-openexr-aces</link>
+					<tag>DigitalCinemaColorist.com - Demystify - OpenEXR &amp; Aces</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.digipres.org/formats/sources/pronom/formats/#fmt/1001</link>
+					<tag>Digipres.org - OpenEXR</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.nationalarchives.gov.uk/PRONOM/fmt/1001</link>
+					<tag>The National Archives - Pronom PUID: OpenEXR 2</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Wikidata.org</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.wikidata.org/wiki/Q1341482</link>
+							<tag>OpenEXR (Q1341482)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.wikidata.org/wiki/Q61077827</link>
+							<tag>OpenEXR (Q61077827) Free software library</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

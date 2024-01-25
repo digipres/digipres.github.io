@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000613" titleName="HFE (HxC Floppy Emulator) File Format" shortName="HFE" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>any</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2024-01-18</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>HFE (HxC Floppy Emulator) File Format</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>container formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The HFE (HxC Floppy Emulator) File Format is designed for use with the SD HxC Floppy Emulator hardware, which is based on the PIC18F family of microcontrollers. This format serves as an optimized floppy image format, encompassing both the floppy disk image and crucial metadata. The metadata, stored in the file's header (the initial 512 bytes), includes information such as the number of tracks, the valid "side" of the disk, track encoding method, bitrate, rotations per minute, floppy interface mode, floppy write protection mode, and other encoding flags.</p>
+			<p>The HFE file format comprises three essential components: the header, the track offset Look-Up Table (LUT), and the track data. The file header spans 512 bytes, the track offset LUT can be up to 1024 bytes, and the track data has an open size. The header encapsulates vital details about the file, defining its structure and encoding.</p>
+			<p>As stated in the <a href="https://hxc2001.com/download/floppy_drive_emulator/SDCard_HxC_Floppy_Emulator_HFE_file_format.pdf">specification</a>, a track data is essentially a table containing the bitstream of a track from the floppy disk. This track data can employ various encoding methods, including Modified Frequency Modulation (MFM), Frequency Modulation (FM), Group Coded Recording (GCR), or custom encoding. Each track is divided into blocks of 512 bytes, with each block containing a portion of both Side 0 and Side 1 tracks, and these blocks alternate in the track data.</p>
+		</fdd:description>
+		<fdd:shortDescription>The HxC Floppy Emulator (HFE) file format is designed for use with the SD HxC Floppy Emulator hardware, which is based on the PIC18F family of microcontrollers. This format serves as an optimized floppy image format, encompassing both the floppy disk image and crucial metadata. </fdd:shortDescription>
+		<fdd:productionPhase>Middle-state. End-state, as it is also used for archival purposes.</fdd:productionPhase>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress includes HFE files in its collections, especially in the Manuscripts and Music Divisions as well as other personal papers repositories.</fdd:experience>
+		<fdd:preference>The Library of Congress has not yet expressed any format preference for forensic or disk image files.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>Detailed documentation for HFE is uneven with some versions having more information available than others. Users on forums <a href="https://stardot.org.uk/forums/viewtopic.php?p=278965">express dissatisfaction</a> with the brevity of the specifications. <a href="https://github.com/keirf/FlashFloppy/issues/408">Suggestions are made</a> to refer to the implementations for a better understanding, particularly within <a href="https://github.com/keirf/FlashFloppy/blob/master/src/image/hfe.c">FlashFloppy</a>.</p>
+			<p>As per 2023 private communications with format developer Jean-François Del Nero, the status of version information to date is: v1: private documentation exists but is not publicly available and there are no plans to make it publicly available; v1.1: public documentation exists but is brief and not detailed; v2: no public or private documentation exists; v3: no public or private documentation exists and version is experimental</p>
+			<p>Source code for multiple versions are available on <a href="https://github.com/jfdelnero/HxCFloppyEmulator/tree/main/libhxcfe/sources/loaders/hfe_loader">Jean-François Del Nero's HxCFloppyEmulator GitHub repo</a>.
+            </p>
+			<p>
+				<a href="../contact_format.shtml">Comments welcome</a>.
+            </p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>“                <a href="https://hxc2001.com/download/floppy_drive_emulator/SDCard_HxC_Floppy_Emulator_HFE_file_format.pdf">SDCard HxC Floppy Emulator HFE File format</a>”. Rev.1.1. 06/20/2012.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>HxC software boasts "<a href="https://hxc2001.com/floppy_drive_emulator/">tens of thousands</a>" of installations according to its official website. While specific statistics on the file format are not provided, it is known that this file format is utilized by various applications beyond the HxC Floppy Emulator Project.</p>
+			<p>Notably, the file format is employed by <a href="https://www.gotekemulator.com/">GoTek</a>, a floppy emulator hardware, as well as <a href="https://github.com/keirf/flashfloppy">FlashFloppy</a>, which serves as floppy emulator software specifically designed for GoTek. Additionally, it finds application in <a href="https://github.com/TomHarte/CLK">Clock Signal</a> (CLK), an emulator catering to 8-bit and 16-bit computers; <a href="https://github.com/scarybeasts/beebjit">beebjit</a>, an emulator tailored for the BBC 8-bit microcomputer; and <a href="https://github.com/stardot/b-em/pull/123">B-em</a>, as indicated by a pull request highlighting the addition of HFE support. This establishes the widespread and diverse usage of the file format across different emulation platforms and hardware.</p>
+			<p>
+				<a href="../contact_format.shtml">Comments welcome</a>.
+            </p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>Open-source with no related patents. <a href="../contact_format.shtml">Comments welcome</a>.
+        </fdd:licensingAndPatents>
+		<fdd:transparency>Limited transparency.  HFE is dependent upon floppy emulator hardware and requires algorithms and tools to read.  </fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>The HFE file format comprises three essential components: the header, the track offset Look-Up Table (LUT), and the track data. The file header spans 512 bytes, the track offset LUT can be up to 1024 bytes, and the track data has an open size. The header encapsulates vital details about the file, defining its structure and encoding.</p>
+			<p>As stated in the <a href="https://hxc2001.com/download/floppy_drive_emulator/SDCard_HxC_Floppy_Emulator_HFE_file_format.pdf">specification</a>, a track data is essentially a table containing the bitstream of a track from the floppy disk. This track data can employ various encoding methods, including Modified Frequency Modulation (MFM), Frequency Modulation (FM), Group Coded Recording (GCR), or custom encoding. Each track is divided into blocks of 512 bytes, with each block containing a portion of both Side 0 and Side 1 tracks, and these blocks alternate in the track data.</p>
+			<p>HFE self-identifies with Magic Numbers.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>Is read by floppy disk emulator software.</fdd:externalDependencies>
+		<fdd:techProtection>No encryption.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>hfe</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See: <a href="https://hxc2001.com/download/floppy_drive_emulator/SDCard_HxC_Floppy_Emulator_HFE_file_format.pdf">specification</a> and <a href="https://github.com/jfdelnero/HxCFloppyEmulator/tree/main/libhxcfe/sources/loaders/hfe_loader">source code</a>.
+                </fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>ASCII: HXCPICFE</fdd:sigValue>
+					<fdd:sigValue>Hex: 4858435049434645</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See: <a href="https://hxc2001.com/download/floppy_drive_emulator/SDCard_HxC_Floppy_Emulator_HFE_file_format.pdf">specification</a>. This is the official magic numbers string for Version 1.1 (potentially Version 1.0). <a href="../contact_format.shtml">Comments welcome</a>.
+                </fdd:note>
+			</fdd:magicNumbers>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>ASCII: HXCHFEV3</fdd:sigValue>
+					<fdd:sigValue>Hex: 4858434846455633</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From Wikidata (v3): <a href="https://www.wikidata.org/wiki/Q105857317">https://www.wikidata.org/wiki/Q105857317</a>
+				</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>PRONOM has no corresponding entry as of January 2023.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q105857177</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>HxC Floppy Emulator stream image: <a href="https://www.wikidata.org/wiki/Q105857177">https://www.wikidata.org/wiki/Q105857177</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q105857311</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>HxC Floppy Emulator disk image: <a href="https://www.wikidata.org/wiki/Q105857311">https://www.wikidata.org/wiki/Q105857311</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q105857317</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>HxC Floppy Emulator disk image (v3):  <a href="https://www.wikidata.org/wiki/Q105857317">https://www.wikidata.org/wiki/Q105857317</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:history>
+			<p>HFE was <a href="https://hxc2001.com/floppy_drive_emulator/">developed</a> by Jean-Francois Del Nero in 2006 to load legacy video games from Atari ST and Amiga machines, which required floppy disks. The project grew organically from user requests and now supports “<a href="https://hxc2001.com/floppy_drive_emulator/">hundreds of machines and floppy formats</a>”.
+            </p>
+			<p>Del-Nero’s purpose in HFE’s <a href="https://hxc2001.com/floppy_drive_emulator/">development</a> was to “completely replace the floppy disk drive by an electronic device”.  The <a href="https://hxc2001.com/floppy_drive_emulator/">hardware is available</a> as an SD Card, a USB drive, and what it describes as "advanced firmware."</p>
+			<p>The <a href="https://hxc2001.com/floppy_drive_emulator/">official website</a> also includes firmware schematics and emulator software.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://hxc2001.com/download/floppy_drive_emulator/SDCard_HxC_Floppy_Emulator_HFE_file_format.pdf</link>
+					<tag>SDCard HxC Floppy Emulator HFE File format</tag>
+					<comment>Rev.1.1. 06/20/2012.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://hxc2001.com/floppy_drive_emulator/</link>
+					<tag>The Universal Floppy Disk Drive Emulators.</tag>
+					<comment>Official website.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/jfdelnero/HxCFloppyEmulator</link>
+					<tag>HxC Floppy Emulator toolkit (official).</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://torlus.com/floppy/forum/</link>
+					<tag>HxC Floppy Drive Emulator Support Forum.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://hxc2001.com/download/floppy_drive_emulator/USB_HFE_hxc_floppy_emulator_firmware_release_notes.txt</link>
+					<tag>USB_HFE_hxc_floppy_emulator_firmware release notes.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://hxc2001.com/vrac/HS/</link>
+					<tag>HFE sample files for HFE Version 3.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/jfdelnero/HxCFloppyEmulator/tree/main/libhxcfe/sources/loaders/hfe_loader</link>
+					<tag>HFE source code.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://torlus.com/floppy/forum/viewtopic.php?p=24756</link>
+					<tag>"Understanding the visual floppy display" forum post.</tag>
+					<comment>Excellent introduction to the topic.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://hxc2001.com/download/floppy_drive_emulator/SDCard_HxC_Floppy_Emulator_HXCSDFE_CFG_file.pdf</link>
+					<tag>SDCard HxC Floppy Emulator HXCSDFE.CFG File format.</tag>
+					<comment>Affinity format.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://stardot.org.uk/forums/viewtopic.php?p=278965&amp;sid</link>
+					<tag>Forum discussion regarding brevity of available specifications.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.gotekemulator.com/</link>
+					<tag>GoTek USB Floppy Emulator.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/keirf/flashfloppy</link>
+					<tag>FlashFloppy GitHub.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/TomHarte/CLK</link>
+					<tag>Clock Signal (CLK) GitHub.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/scarybeasts/beebjit</link>
+					<tag>beebjit GitHub.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/stardot/b-em/pull/123</link>
+					<tag>B-em pull request highlighting HFE support.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Wikidata references:</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.wikidata.org/wiki/Q105857177</link>
+							<tag>HxC Floppy Emulator stream image.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.wikidata.org/wiki/Q105857311</link>
+							<tag>HxC Floppy Emulator disk image.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.wikidata.org/wiki/Q105857317</link>
+							<tag>HxC Floppy Emulator disk image (v3).</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

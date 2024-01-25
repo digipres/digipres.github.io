@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000557" titleName="3D Manufacturing Format (3MF)" shortName="3MF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>model</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2023-04-17</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>3D Manufacturing Format (3MF)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>3D formats</fdd:keyword>
+			<fdd:keyword>design formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>
+				<a href="https://github.com/3MFConsortium/spec_core/blob/master/3MF%20Core%20Specification.md">3D Manufacturing Format (3MF)</a> describes the set of XML conventions and other technologies to describe the content and appearance of one or more 3D models. The <a href="https://3mf.io/">3MF Consortium</a> provides a specification that defines the formal requirements of 3MF that producers and consumers must satisfy to achieve interoperability between independently created software and hardware, which is a primary goal of the specification.</p>
+			<p>The 3MF format requirements are an extension of the packaging requirements described in the <a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000363.shtml">Open Packaging Conventions (OPC)</a> specification. That specification describes packaging and physical format conventions for the use of XML (specifically <fddLink id="fdd000263">XML 1.0</fddLink>), Unicode, <fddLink id="fdd000354">ZIP</fddLink>, and other technologies and specifications to organize the content and resources that make up any 3D model. They are an integral part of the 3MF specification.</p>
+			<p>The 3MF Consortium offers a free to use open-source implementation of this specification to allow an easy adoption of the format in applications handling 3D content.</p>
+			<p>
+				<b>Structure of 3MF</b>
+			</p>
+			<p>3MF defines a payload that contains a 3D object/model definition and its supporting files, called the <i>3D payload</i>. An OPC package that holds a 3D payload and follows the rules of the 3MF Specification is referred to as a <i>3MF Document</i>. There can be more than one 3D payload in a 3MF Document, but only one primary 3D payload. The 3D Model contains definitions of one or more objects to be fabricated by 3D manufacturing process. </p>
+			<ul>
+				<li>Model Element: the object(s) to be created via 3D manufacturing processes as a single operation. It might include a single object, multiple homogeneous objects, multiple heterogeneous objects, an object fully enclosed in another object, or multiple objects in an interlocked and inseparable assembly. The model element is the root element of the 3D Model, it can have zero or more child metadata elements, but must have the additional child elements resources and build.       <ul>
+						<li>Resources – provides definitions that can be drawn from to define a 3D object.</li>
+						<li>Build – provides set of items that should actually be manufactured as part of the job. </li>
+					</ul>
+				</li>
+				<li>Metadata Element: stored under the Model element. Producers should provide additional information about the document with well-known names and values per the specification, including: Title, Designer, Description, Copyright, License Terms, Rating, Creation Date, Modification Date, and Application. </li>
+				<li>Resources Element: objects, properties, and materials of the 3D object definition. Resources may rely on other resources for its complete definition, for example an object my refer to a material to fully describe a 3D object. </li>
+				<li>Build Element: contains one or more items to manufacture as part of processing the job.  </li>
+				<li>Item Element: identifies one object resource to be output by the 3D manufacturing device.  </li>
+				<li>Object Element: object resources describing reusable objects that may be output or composed into more complex assemblies. Contains attributes for the property group and specific property member that are to be applied to the entire object, except where if it overridden by a descendant element. 
+					<ul>
+						<li>Object elements include: Meshes, Vertices, Triangles, and Components. </li>
+					</ul>
+				</li>
+				<li>BaseMaterials Element: a material group acting as a container form the base materials. The base material defines the specific material used for manufacturing certain objects in a model. An sRGB color MUST be specified as per the World Wide Web Consortium.</li>
+			</ul>
+			<p>
+				<b>Uses of 3MF</b>
+			</p>
+			<p>As stated on the 3MF Consortium’s website, 3MF is a 3D printing format that allows design applications to send full-fidelity 3D models to a mix of other applications, platforms, services and printers. The 3MF specification allows companies to focus on innovation, rather than on basic interoperability issues, and it is engineered to avoid the problems associated with other 3D file formats.</p>
+			<p>According to the <a href="https://github.com/3MFConsortium/spec_core/blob/master/3MF%20Core%20Specification.md#preface">3MF specification’s Preface</a>, 3MF describes a 3D model and containing format call the 3MF Document. It can be used as a stand-alone file format or as a payload in a print pipeline. This file format includes the fundamental information to generate a physical object through additive manufacturing or basic subtractive manufacturing techniques, such as textures to reproduce the exact desired appearance of a color. It also includes optional components to generate a physical object, including the ability to specify print job control instructions.</p>
+			<p>The 3MF core specification has been designed as narrow as possible in anticipation of the specification evolving, allowing third parties to extend the markup. As described in the core specification, <a href="https://github.com/3MFConsortium/spec_core/blob/master/3MF%20Core%20Specification.md#231-support-for-versioning-and-extensibility">Support for Versioning and Extensibility</a>, extensions are critical and add advanced features to the 3MF format. Producers and consumers can use an a la carte model to state explicitly which extensions are used and supported. Vendors may also define private extensions that are not ratified by the 3MF Consortium.</p>
+			<p>Sana Kazibash wrote in the article, <a href="https://www.engineering.com/story/a-look-into-3mf-and-its-new-volumetric-design-extension">A Look into 3MF and Its New Volumetric Design Extension</a> in January 2022, “So, how does the 3MF specification work? It starts out with a mandatory core specification for defining the outer surface of the object. The user subsequently selects a combination of optional extensions: slice, material, color, beam lattice, volumetric design and security.” </p>
+		</fdd:description>
+		<fdd:shortDescription>3MF is a 3D printing format that allows design applications to send full-fidelity 3D models to a mix of other applications, platforms, services and printers.</fdd:shortDescription>
+		<fdd:productionPhase>Initial State to Middle State to Final State as a data exchange format. The 3MF Document format is intended both for producers (initial state), which emit content in the <a href="https://github.com/3MFConsortium/spec_core/blob/master/3MF%20Core%20Specification.md#chapter-1-3mf-document-format">3MF Document</a>, and consumers (final state), which access and transform into 3D objects the contents of the 3MF Document. An editor (middle state) is an entity that acts as both a producer and a consumer of content in the 3MF Document format.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000354</fdd:id>
+					<fdd:shortName>ZIP</fdd:shortName>
+					<fdd:titleName>ZIP File Format (PKWARE)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000263</fdd:id>
+					<fdd:shortName>XML</fdd:shortName>
+					<fdd:titleName>XML (Extensible Markup Language) 1.0</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Extension of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000363</fdd:id>
+					<fdd:shortName>OPC</fdd:shortName>
+					<fdd:titleName>Open Packaging Conventions (Office Open XML)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000017</fdd:id>
+					<fdd:shortName>JPEG</fdd:shortName>
+					<fdd:titleName>JPEG Image Encoding Family</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000153</fdd:id>
+					<fdd:shortName>PNG</fdd:shortName>
+					<fdd:titleName>PNG, Portable Network Graphics</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None.</fdd:experience>
+		<fdd:preference>The Library of Congress Recommended Formats Statement (RFS) lists 3MF as a acceptable format for <a href="https://www.loc.gov/preservation/resources/rfs/design3D.html">2D and 3D Computer Aided Design - vector formats</a>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>Open standard. Developed by the 3MF Consortium at <a href="https://3mf.io/">https://3mf.io/</a>. 3MF Consortium’s website states “3MF is an <a href="https://3mf.io/features/2022/01/the-benefits-of-3mf-over-other-3d-printing-file-formats/">open standard</a> that is supported by all major 3D printing software and hardware providers.”</p>
+			<p>3MF Consortium’s website has links to the <a href="https://3mf.io/3mf-specification/">full specification for the 3MF format</a>, and implementation information for developers can be found on the <a href="https://github.com/3MFConsortium">3MF GitHub repository.</a>
+			</p>
+			<p>The <a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000354.shtml">ZIP archive</a> must follow the <a href="https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT">ZIP File Format Specification</a> by PKWARE Inc. (<a href="https://github.com/3MFConsortium/spec_core/blob/master/3MF%20Core%20Specification.md#11-package">https://github.com/3MFConsortium/spec_core/blob/master/3MF%20Core%20Specification.md#11-package</a>)</p>
+			<p>The <a href="https://github.com/3MFConsortium/spec_core/blob/master/3MF%20Core%20Specification.md#about-this-specification">format requirements</a> are an extension of the packaging requirements described in the <a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000363.shtml">Open Packaging Conventions (OPC)</a> specification. That specification describes packaging and physical format conventions for the use of XML, Unicode, ZIP, and other technologies and specifications to organize the content and resources that make up any model. They are an integral part of the 3MF specification.</p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>
+				<a href="https://3mf.io/3mf-specification/">3MF Consortium – Specification</a> (<a href="https://3mf.io/3mf-specification/">https://3mf.io/specification/</a>) </p>
+			<p>
+				<a href="https://github.com/3MFConsortium/spec_core/blob/master/3MF%20Core%20Specification.md#-3d-manufacturing-format">3D Manufacturing Format - Core Specification &amp; Reference Guide</a> (<a href="https://github.com/3MFConsortium/spec_core/blob/master/3MF%20Core%20Specification.md#-3d-manufacturing-format">https://github.com/3MFConsortium/spec_core/blob/master/3MF%20Core%20Specification.md)</a>
+			</p>
+			<p>The <a href="https://3mf.io/3mf-specification/">3MF specification</a> released the latest 3MF Version 1.3.0 as of October 7, 2021 and includes 7 extensions designed to better handle complex geometries, including core and production, material and property, bean lattice, security, and volumetric design. </p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>Adoption of the 3MF specification is growing as seen with the 3MF Consortium’s membership growth totaling 20 member companies, including <a href="https://www.autodesk.com/products/fusion-360/blog/3mf-next-generation-file-format-additive-manufacturing/">Autodesk</a>, <a href="https://learn.microsoft.com/en-us/windows/uwp/devices-sensors/generate-3mf">Microsoft</a>, <a href="https://community.sw.siemens.com/s/article/3mf-import-export">Siemens</a>, and <a href="https://www.daz3d.com/hexagon-3d-modeling-free">Hexagon</a>. <a href="https://3mf.io/announcement/2021/11/3mf-launches-volumetric-extention-work/">3MF Consortium announced</a> in November 2021 that, “3MF has now been implemented in nearly 50 products across 38 companies.” See full list and descriptions at <a href="https://3mf.io/membership/">3MF Members.</a>
+			</p>
+			<p>According to Ile Kauppila in <a href="https://all3dp.com/1/3mf-file-format-all-you-need-to-know/">3MF File Format – All You Need to Know</a>, November 2019, “Due to the high number of large-scale additive manufacturing players in the 3MF Consortium, 3MF has been adopted by nearly all major CAD tools, 3D printer manufacturers, and others suppliers across the ecosystems ensuring interoperability across products. This high adoption rate helps manufacturers more easily implement 3MF.”</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No known license or patent concerns for generation and use of the format. </fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>As stated in the <a href="https://3mf.io/3mf-specification/">3MF specification</a>, 3MF is a file format that is human readable, using common structures (OPC, ZIP, and XML0 for easier development. 3MF is also unambiguous, having clear language and conformance tests to ensure files are consistent from digital to physical. </p>
+			<p>Pooria Sohi describes 3MF file format in the blog <a href="https://www.autodesk.com/products/fusion-360/blog/3mf-next-generation-file-format-additive-manufacturing/">Why 3MF Is the Next Generation File Format for Additive Manufacturing</a>, January 2022, as “human-readable,” meaning users can open the file in text editor and quickly understand what’s going on. Data is very digestible, from the code that states coordinate information to the data that shows when the machine needs to pause or switch a tool.” </p>
+			<p>Understanding <a href="https://github.com/3MFConsortium/spec_core/blob/master/3MF%20Core%20Specification.md#about-this-specification">3MF specification</a> requires working knowledge of the Extensible Markup Language (XML) and XML Namespace specifications. Full understanding might also require domain knowledge of common terms and procedures within the 3D manufacturing sector. </p>
+			<p>The <a href="https://github.com/3MFConsortium/spec_core/blob/master/3MF%20Core%20Specification.md#about-this-specification">3MF Consortium</a> offers <a href="https://github.com/3MFConsortium/lib3mf">a free to use open source implementation</a> of this specification. <a href="https://github.com/3MFConsortium/lib3mf">lib3mf</a> is a C++ implementation of the 3D Manufacturing Format file standard. It provides 3MF reading and writing capabilities, as well as conversion and validation tools for input and output data. lib3mf runs on Windows, Linux and MacOS and offers a clean and easy-to-use API in various programming languages to speed up the development and keep integration costs at a minimum. As 3MF shall become a universal 3D Printing standard, its quick adoption is very important. This library shall lower all barriers of adoption to any possible user, let it be software providers, hardware providers, service providers or middleware tools.</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>
+				<a href="https://github.com/3MFConsortium/spec_core/blob/master/3MF%20Core%20Specification.md#chapter-6-3mf-document-package-features">3MF Documents</a> take advantage of parts defined by the Open Packaging Conventions to provide additional information about the content in the package. The 3MF Document format relies on the Core Properties part, defined in the Open Packaging Conventions specification, to provide metadata about the creation time, modification time, author, search keywords, and other document-centric metadata. See the Open Packaging Conventions specification for additional details. </p>
+			<p>3MF specification, 3.4.1 Metadata states producers of 3MF Documents SHOULD provide additional information about the document in the form of metadata under the root model element. Metadata associated with the model MAY contain a set of well-known values.</p>
+			<p>Metadata in 3MF Documents without a namespace name MUST be restricted to names and values defined by this specification. If a name value is not defined in this specification, it MUST be prefixed with the namespace name of an XML namespace declaration on the model element that is not drawn from the default namespace. The well-known metadata names and values defined by this specification can be found here: <a href="https://github.com/3MFConsortium/spec_core/blob/master/3MF%20Core%20Specification.md#341-metadata">Table 3-1. Metadata values</a>
+			</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None.</fdd:externalDependencies>
+		<fdd:techProtection>
+			<p>
+				<a href="https://www.iana.org/assignments/media-types/model/3mf">IANA Regulations Security Considerations</a>: 3MF files can be very large, particularly after decompression, which could fill a filesystem and cause a denial of service or system failure. This media type does not employ any sort of active or executable content, nor does it provide direct control of device settings or safety interlocks. Neither privacy nor integrity protection is provided by the media type itself; if these protections are needed they must be implemented externally. Authentication, access control, and privacy/integrity are normally handled by the Internet Printing Protocol, Hyper-Text Transport Protocol, and Transport Layer Security. </p>
+			<p>3MF files utilize a ZIP container to embed multiple types of files. The security considerations for the deflate compression format used in ZIP files are described in section 6 of "DEFLATE Compressed Data Format Specification version 1.3" [RFC1951]. </p>
+			<p>The security considerations for embedded XML content are described in section 10 of "XML Media Types" [RFC7303]. Each XML namespace utilized may raise additional security considerations.  </p>
+			<p>The security considerations for embedded PNG image content are described in section 8.5 of "PNG: Portable Network Graphics" [RFC2083]. </p>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:otherQF>
+			<fdd:factor>
+				<fdd:tag>3D Model Geometry</fdd:tag>
+				<fdd:note>
+					<p>3MF format describes 3D shapes using triangular meshes. <a href="https://github.com/3MFConsortium/spec_core/blob/master/3MF%20Core%20Specification.md#41-meshes">3MF core specification</a> defines the mesh element as the root of the triangular mesh of an object volume and contains vertices and a set of triangles. There are requirements that meshes comply with, depending on the mesh type, including manifold edges, consistent triangle orientation, outward facing normals, minimal self-intersections, and non-degeneracy. The vertices element, containing all the vertex elements, represent the corners of each triangle in the mesh. Vertex elements represent a point in 3-dimensional space that is referenced by a triangle in the mesh. A triangle element represents a single face of the mesh. Vertices (v1, v2, v3) order must be specified in counter-clockwise </p>
+					<p>3MF Consortium added the <a href="https://github.com/3MFConsortium/spec_beamlattice/blob/master/3MF%20Beam%20Lattice%20Extension.md#-3mf-beam-lattice-extension">Beam Lattice Specification Extension</a> to its 3MF Core Specification. The central idea is to enrich geometry with beam lattice elements that can represent small-scale lattices as well as larger truss structures, which both are inefficiently handled with mesh representation. In this extension specification all lattice beams are required to have a circular cross section to reduce <a href="https://formlabs.com/asia/blog/isotropy-in-SLA-3D-printing/">anisotropy</a> issues. The extension contains two schemas, beam lattice elements and ball elements. The extension defines a new beamlattice element, a child element of the mesh element from the core 3MF specification and are intended to be subject to same conditions of the underlying mesh. </p>
+					<p>In early 2022, 3MF Consortium announced the new <a href="https://github.com/3MFConsortium/spec_volumetric/blob/master/3MF%20Volumetric%20Extension.md">Volumetric Design Extension</a> to the 3MF core specification. It is currently available in Version 0.6 and the Consortium has opened a call for public feedback to the specification before it reaches 1.0. Volumetric Modeling is based on volumetric description, it relies on a mathematical, field-based description of the whole volume of the object, enabling the printer to reproduce the model’s geometry more precisely. </p>
+				</fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>3D Model Appearance</fdd:tag>
+				<fdd:note>
+					<p>The 3MF core specification describes the <a href="https://github.com/3MFConsortium/spec_core/blob/master/3MF%20Core%20Specification.md#chapter-1-3mf-document-format">3MF Document Format</a> that represents a 3D model which includes the necessary information for a consumer to generate a physical object through <a href="https://3dprinting.com/what-is-3d-printing/">additive manufacturing or basic subtractive manufacturing techniques</a>. This information includes resources such as textures to reproduce the exact desired appearance, such as color, or internal structures in the terms of materials. </p>
+					<p>The <a href="https://github.com/3MFConsortium/spec_core/blob/master/3MF%20Core%20Specification.md#51-base-material">3MF core specification states the base element</a> specifies the material name conveying design intent for the purpose of aiding users in mapping to print materials. The base material defines the specific material used in manufacturing certain objects in a model. Printer-specific information is placed in the Print Ticket which includes a mapping from base materials to actual printer materials. Producers should not assume that display colors are part of the final printed object, when specifying color design intent for the printed part, a producer must specify color properties in the material and property extension or another corresponding extension. 3MF uses sRGB as specified by the <a href="https://www.w3.org/TR/css-color-3/#SRGB">World Wide Web Consortium</a> whenever 3MF uses colors expressed as #RRGGBB hexadecimal. </p>
+					<p>3MF Consortium added the <a href="https://github.com/3MFConsortium/spec_materials">Materials and Properties Extension</a> to its 3MF Core Specification. The specification standardizes how colors should be blended and how materials should be represented, so that the part can be realistically viewed and the printer the correct information to output what is intended. The extension defines the composition of 3D documents and the appearance of each model within the document. The new resource groups described in the specification will determine different ways of representing material properties of a part. Resources may be referenced by attributes defined in the core specification.</p>
+				</fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>3D Model Scene</fdd:tag>
+				<fdd:note>
+					<p>The 3MF core specification, <a href="https://github.com/3MFConsortium/spec_core/blob/master/3MF%20Core%20Specification.md#chapter-3-3d-models">3D Models</a>, describes the model as the object(s) to be created via 3D manufacturing processes as a single operation. This could include a single object, multiple homogeneous objects, multiple heterogeneous objects, an object fully enclosed in another object, or multiple objects interlocked and inseparable. Coordinates, unit resolution, relative direction, measurements, and 3D matrices are specified and/or applied to the model element. </p>
+					<p>The 3MF core specification does not mention light or camera information. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>. </p>
+					<p>3MF Consortium added the <a href="https://github.com/3MFConsortium/spec_materials">Materials and Properties Extension</a> to its 3MF Core Specification. <a href="https://github.com/3MFConsortium/spec_materials/blob/master/3MF%20Materials%20Extension.md#chapter-7-display-properties-overview">Chapter 7</a> of the specification describes Display Properties of the 3MF format. These properties contain extra information about the material and how describe it so that it can be realistically and consistently rendered on the screen, i.e.. shiny and reflective metal materials. This section also describes Physically Based Rendering (PBR), an approach to real-time rendering of materials that delivers physically plausible surface reflections in a variety of lighting conditions. The specification mentions two material categories: Non-metal (plastics or ceramics – less reflective, scatter light) and Metals (very reflective, absorb light). Five types of Display Properties: Specular, Metallic, Specular with Texture, Metallic with Texture, and Translucent. </p>
+				</fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>3D Model Animation</fdd:tag>
+				<fdd:note>
+					<p>No information about Animation found. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
+					<p>3MF core specification describes the use of <a href="https://github.com/3MFConsortium/spec_core/blob/master/3MF%20Core%20Specification.md#33-3d-matrices">3D Matrices (4x4)</a>, which are used to when objects need to be transformed for rotation, scaling, or translation purposes. Transforms are applied to the shapes defined by objects. </p>
+				</fdd:note>
+			</fdd:factor>
+		</fdd:otherQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>3mf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://www.iana.org/assignments/media-types/model/3mf ">https://www.iana.org/assignments/media-types/model/3mf</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.ms-package.3dmanufacturing-3dmodel+xml </fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://github.com/3MFConsortium/spec_core/releases/download/1.2.3/3MF_Core_Specification_v1_2_3.pdf  ">https://github.com/3MFConsortium/spec_core/releases/download/1.2.3/3MF_Core_Specification_v1_2_3.pdf  </a>. Content Type 3D Model</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/vnd.ms-printing.printticket+xml </fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://github.com/3MFConsortium/spec_core/releases/download/1.2.3/3MF_Core_Specification_v1_2_3.pdf">https://github.com/3MFConsortium/spec_core/releases/download/1.2.3/3MF_Core_Specification_v1_2_3.pdf</a>. Content Type PrintTicket</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/829</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/829">http://www.nationalarchives.gov.uk/PRONOM/fmt/829</a>. </fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q15029253</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>3D Manufacturing Format – file format. See <a href="https://www.wikidata.org/wiki/Q15029253 ">https://www.wikidata.org/wiki/Q15029253 </a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q27863093</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>3D Manufacturing Format Core Specification &amp; Reference Guide – technical specification. See <a href="https://www.wikidata.org/wiki/Q27863093">https://www.wikidata.org/wiki/Q27863093</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<a href="https://github.com/3MFConsortium/spec_production/blob/master/3MF%20Production%20Extension.md#-3mf-production-extension">3MF Production Extension, Specification &amp; Reference Guide</a>
+			</p>
+			<p>
+				<a href="https://github.com/3MFConsortium/spec_production/blob/master/3MF%20Production%20Extension.md#chapter-1-overview-of-additions">Chapter 1. Overview of Additions</a> - Note: "Unique identifier" MUST be any of the four UUID variants described in IETF RFC 4122, which includes Microsoft GUIDs as well as time-based UUIDs. </p>
+			<p>
+				<a href="https://github.com/3MFConsortium/spec_production/blob/master/3MF%20Production%20Extension.md#chapter-4-identifying-build-components">Chapter 4. Identifying Build Components</a>
+			</p>
+			<p>Components of 3MF containers need to be uniquely identifiable in order to ensure tracking of builds and parts through build processes. Within a given 3MF container, build items can be uniquely identified by providing a UUID for each item. Individual objects (models) in a build can be uniquely identified with a UUID on each object element. Individual component-based parts can be identified using a UUID attribute on component elements.</p>
+			<p>
+				<a href="https://github.com/3MFConsortium/spec_securecontent/blob/master/3MF%20Secure%20Content.md#3mf-secure-content-extension">3MF Secure Content Extension, Specification &amp; eference Guide</a>
+			</p>
+			<p>
+				<a href="https://github.com/3MFConsortium/spec_securecontent/blob/master/3MF%20Secure%20Content.md#chapter-2-key-store">Chapter 2. Key Store</a>-<b>UUID</b>- The Key Store universal unique ID that allows the Key Store to be identified over time and across physical and across applications and printers. When an editor modifies the Key Store, it MUST produce a new uuid to unequivocally identify the new keystore element content. <b>Note:</b> "Unique identifier" MUST be any of the four UUID variants described in IETF RFC 4122, which includes Microsoft GUIDs as well as time-based UUIDs.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>Per <a href="https://www.businesswire.com/portal/site/home/">Business Wire</a> Press Release – <a href="https://www.businesswire.com/news/home/20150430007060/en/3MF-Consortium-Launches-to-Advance-3D-Printing-Technology">3MF Consortium Launches to Advance 3D Printing Technology</a> – April 30, 2015 </p>
+			<p>Launched in 2015, the 3MF Consortium is a Joint Development Foundation project with the goal to define a 3D printing format that will allow design applications to send full-fidelity 3D models to a mix of other applications, platforms, services and printers. The 3MF (for 3D Manufacturing Format) specification eliminates the widespread issues with currently available file formats. Members of the 3MF Consortium are: Autodesk Inc.; Dassault Systèmes S.A.; FIT AG/netfabb GmbH; HP; Microsoft Corporation; Shapeways, Inc.; and SLM Solutions Group AG. The starting point for the Consortium's development of the 3MF specification was Microsoft's donation of its 3D file format work-in-progress. The Joint Development Foundation is an independent non-profit organization that provides the corporate and legal infrastructure to enable groups to establish and operate standards and source code development collaborations. </p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://3mf.io/</link>
+					<tag>3MF Consortium, a Joint Development Foundation project.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://3mf.io/3mf-specification/</link>
+					<tag>Specification – 3MF Consortium</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/3MFConsortium/spec_core/blob/master/3MF%20Core%20Specification.md</link>
+					<tag>3D Manufacturing Format Core Specification &amp; Reference Guide (GitHub)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/3MFConsortium/spec_materials/blob/master/3MF%20Materials%20Extension.md</link>
+					<tag>3MF Materials and Properties Extension</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/3MFConsortium/spec_production/blob/master/3MF%20Production%20Extension.md</link>
+					<tag>3MF Production Extension</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/3MFConsortium/spec_beamlattice/blob/master/3MF%20Beam%20Lattice%20Extension.md</link>
+					<tag>3MF Beam Lattice Extension</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/3MFConsortium/spec_slice/blob/master/3MF%20Slice%20Extension.md</link>
+					<tag>3MF Slice Extension</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/3MFConsortium/spec_securecontent/blob/master/3MF%20Secure%20Content.md</link>
+					<tag>3MF Secure Content Extension</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/3MFConsortium/spec_volumetric</link>
+					<tag>Volumetric Extension</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>3MF Consortium  https://3mf.io/</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://3mf.io/specification/</link>
+							<tag>3MF Specification</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://3mf.io/resources/faq/ </link>
+							<tag>3MF FAQ</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://3mf.io/blog/2022/04/microsoft-is-sunsetting-the-3mf-service/</link>
+							<tag>Microsoft is Sunsetting the 3MF Service</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>GitHub 3MF Consortium  https://github.com/3MFConsortium</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link> https://github.com/3MFConsortium/lib3mf </link>
+							<tag>3MFConsortium/lib3mf</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Wikipedia</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link> https://en.wikipedia.org/wiki/3D_Manufacturing_Format  </link>
+							<tag>3D Manufacturing Format</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link> https://en.wikipedia.org/wiki/BSD_licenses </link>
+							<tag>BSD license</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Permissive_software_license  </link>
+							<tag>Permissive Software License</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>WayBack Machine</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link> https://web.archive.org/web/20191209133517/https://3mf.io/what-is-3mf/  </link>
+							<tag>What is 3mf?</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link> https://web.archive.org/web/20191010054235/https://3mf.io/about-us/</link>
+							<tag>About Us</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20191010054240/http://www.3mf.io/adoption/ </link>
+							<tag>Adoption</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link> https://all3dp.com/1/3mf-file-format-all-you-need-to-know/  </link>
+					<tag>3MF File Format – All You Need to Know</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link> https://3dprinting.com/what-is-3d-printing/  </link>
+					<tag>What is 3D Printing?</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link> https://www.utgjiu.ro/rev_ing/pdf/2018-2/23_C.IANCU%20-%20ABOUT%203D%20PRINTING%20FILE%20FORMATS.pdf  </link>
+					<tag>About 3D Printing File Formats, Prof.PhD Cătălin Iancu </tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/829</link>
+					<tag>Details for: 3MF 3D Manufacturing Format </tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

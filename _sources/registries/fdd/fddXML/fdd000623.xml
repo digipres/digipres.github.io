@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000623" titleName="MySQL Table Definition Format" shortName="MySQL_Table" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenreAndSubgenres>
+				<fdd:gdfrGenre>database</fdd:gdfrGenre>
+				<fdd:gdfrSubgenres>
+					<fdd:gdfrSubgenre>dataset</fdd:gdfrSubgenre>
+				</fdd:gdfrSubgenres>
+			</fdd:gdfrGenreAndSubgenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2023-07-24</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>MySQL Table Definition Format</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>database formats</fdd:keyword>
+			<fdd:keyword>dataset formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The MySQL Table Definition Format (FRM) is an internal systems file which stores the metadata used to form table definition (column names and other relationship metadata) of a MySQL or MariaDB database. MySQL and MariaDB are both <a href="https://www.w3schools.com/mysql/mysql_rdbms.asp">relational database management systems (RDBMS)</a>. An FRM file is always used in tandem with either a MySQL Database Data File (MYI) or MyISAM Indexes File (MYD) file, which store the contents of the database. Earlier versions of MySQL and MariaDB would automatically create an FRM file based on the <a href="https://web.archive.org/web/20221007195420/http://dev.mysql.com/doc/internals/en/frm-file-format.html">table names</a>. There is no restriction to how many tables a database can hold.</p>
+			<p>Both MySQL and MariaDB have removed FRM files from their current versions. MySQL deprecated FRM in <a href="https://dev.mysql.com/doc/refman/8.0/en/data-dictionary-file-removal.html">version 8.0</a> and MariaDB deprecated it in <a href="https://mariadb.com/kb/en/mariadb-11-0-0-release-notes/">version 11.0</a>. The file type was not replaced with a different file type. Instead, both MySQL and MariaDB retain the data previously saved in an FRM file directly within the software.</p>
+			<p>
+FRM in the filename extension is <a href="https://www.percona.com/blog/understanding-the-maximum-number-of-columns-in-a-mysql-table/">short for "FoRM."</a> This is a legacy terminology from a predecessor to MySQL called UNIREG (ca. 1979), which used the term "form" instead of "table" to represent database structure.
+			</p>
+			<p>
+				<a href="https://dev.mysql.com/doc/refman/8.0/en/history.html">MySQL was created by MySQL AB</a>, a Swedish company founded by David Axmark, Allan Larsson and Michael "Monty" Widenius. It was named after Widenius’ daughter My. MySQL is a proprietary software owned by Oracle. Widenius left MySQL in 2010 and created a new RDBMS named MariaDB (named for his second daughter Maria). MariaDB utilizes the same file types as MySQL, operates on the same logic, and is open source. Generally, statements about the MySQL Table Definition Format may be applied to both MySQL and MariaDB systems.</p>
+			<p>
+				<a href="https://dev.mysql.com/doc/refman/8.0/en/data-dictionary-file-removal.html">MySQL versions 5.7 and earlier</a> automatically generated table-based FRM files whenever a new table was created. These files will always be in binary.</p>
+			<p>MySQL users can prompt a 'CREATE VIEW' database action, which will create <a href="fdd000627.shtml">a plain text file with the FRM extension</a>. These files are not the same as the MySQL Table Definition Format. See <a href="fdd000627.shtml">MySQL View Definition Format</a> for more information.
+			</p>
+			<p>MySQL has the option to use different storage engines (e.g. MyISAM or InnoDB), but FRM files are generated regardless of the chosen storage engine. See "Relationship to other formats" for more details about additional files that are stored alongside FRM files as they differ based on the chosen storage engine.</p>
+		</fdd:description>
+		<fdd:shortDescription>The MySQL Table Definition Format (FRM) is a deprecated, internal systems file used to define the table structure within a MySQL database.</fdd:shortDescription>
+		<fdd:productionPhase>This is a production file. It can be used to fully restore a MySQL database only if other files (MySQL Database Data File [MYI] or MyISAM Indexes File [MYD] file) are present and a matching version of MySQL is running. For example, if the files were created using MySQL 5.5, the files could only be restored into a MySQL 5.5 version database. This is not a file used for making a preservation copy or an official export from the MySQL database.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May have component</fdd:typeOfRelationship>
+				<fdd:comment>MySQL Database Data File (.myd) was the default data storage engine for the MySQL RDBMS versions prior to 5.5. Not described separately at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May have component</fdd:typeOfRelationship>
+				<fdd:comment>MyISAM Indexes File (.myi, PRONOM ID: fmt/1197) was the default index storage engine for the MySQL RDBMS versions prior to 5.5.5 MyISAM was the default MySQL storage engine. Not described separately at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May have component</fdd:typeOfRelationship>
+				<fdd:comment>MySQL InnoDB Table File (.ibd) was a file created by the InnoDB database engine that stores table-specific tablespace and index data. InnoDB is the default storage engine for MySQL and MariaDB versions later than version 5.5.5. InnoDB was available as a plug-in starting in version 5.1. Not described separately at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May have component</fdd:typeOfRelationship>
+				<fdd:comment>MySQL Partition definition file (.par) was a file created by the InnoDB database engine that defined table partitions. Removed in MySQL 5.7. Not described separately at this time.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress, as of August 2023, has over 20,000 FRM files in its collections, covering both MySQL Table Definition Format and <fddLink id="fdd000627">MySQL View Definition Format</fddLink>. 
+		</fdd:experience>
+		<fdd:preference>See the Library of Congress <a href="https://www.loc.gov/preservation/resources/rfs/data.html">Recommended Formats Statement</a> for preferences for dataset formats.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>As a deprecated method of recordkeeping during production, documentation is limited and only available in legacy materials. MySQL has removed some of this information from its legacy documentation.
+			</p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>
+				<a href="https://web.archive.org/web/20221007195420/http://dev.mysql.com/doc/internals/en/frm-file-format.html">Official documentation "MySQL .frm File Format"</a> (link via Internet Archive). 
+			</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>
+This file, although now deprecated, is part of the widely used MySQL and MariaDB RDBMS. MySQL is the <a href="https://db-engines.com/en/ranking">second-most popular database</a> in the world according to DB-Engines with <a href="https://db-engines.com/en/ranking">MariaDB ranking as #12</a>. Many large organizations use MySQL, including Facebook, Twitter, Booking.com, and Verizon.
+			</p>
+			<p>
+				<a href="https://db-engines.com/en/system/MySQL">Dozens of programming languages integrate</a> with MySQL, including Ada, C, C#, C++, D, Delphi, Eiffel, Erlang, Haskell, Java, JavaScript, (Node.js), Objective-C, OCaml, Perl, PHP, Python, Ruby, Scheme, and Tcl.
+			</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>None associated with the basic format. No license is required in creating, modifying, or exporting FRM files.
+			</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>A matching version of MySQL must be used to load and transform FRM files. 
+			</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>This file is itself self-documentation for the MySQL database format. The MySQL Table Definition Format file preserves the table and the relationship between data within the database, but none of the data itself.</p>
+			<p>The file <a href="https://web.archive.org/web/20221007195420/http://dev.mysql.com/doc/internals/en/frm-file-format.html">stores the version</a> it was created in. The version history can be retrieved using MySQL tooling or by checking the value of binary hex offset 0x33.
+			</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			<p>MySQL version 5.7 or earlier and a matching version of the software that created the file.
+			</p>
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			<p>None. There is no built-in mechanism for encryption, compression, or intellectual property protection.
+			</p>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:normalDataset>
+				<p>
+MySQL Table Definition Format files are used in MySQL 5.7 and earlier databases during production. This file stores information about a table and one is created for each table in the database. There can be many FRM files in each database as there is <a href="https://dev.mysql.com/doc/refman/5.7/en/database-count-limit.html">no limitation</a> for the number of tables per database. 
+				</p>
+			</fdd:normalDataset>
+			<fdd:accessSoftware>
+				<p>
+This file is limited to MySQL versions 5.7 and earlier. Editing can be done using the MySQL system via command line, desktop-based software such as <a href="https://web.archive.org/web/20221007195420/http:/dev.mysql.com/doc/internals/en/frm-file-format.html">MySQL Workbench</a>, or web-based technology such as <a href="https://www.phpmyadmin.net/">phpMyAdmin</a>.
+				</p>
+			</fdd:accessSoftware>
+			<fdd:dataDocumentation>Files store the MySQL version and storage engine used to create the file. More details can be found in <a href="https://web.archive.org/web/20221007195420/http:/dev.mysql.com/doc/internals/en/frm-file-format.html">the specification</a>.
+			</fdd:dataDocumentation>
+			<fdd:beyondDataset>None. 
+			</fdd:beyondDataset>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>frm</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>This extension is generated by MySQL 5.7 and earlier.
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/x-mysql-db
+					</fdd:sigValue>
+					<fdd:sigValue>application/x-mysql-table-definition
+					</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>These identifiers are not registered with IANA. Values from the <a href="https://github.com/digipres/digipres.github.io/blob/master/_sources/registries/tika/tika-mimetypes.xml#L3551">Apache Tika registry</a>. 
+					<a href="../contact_format.shtml">Comments welcome</a>.
+				</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>FE01{3}00{21}02{13}000000000000</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/868">PRONOM</a>. See <a href="https://web.archive.org/web/20221007195420/http:/dev.mysql.com/doc/internals/en/frm-file-format.html">the specification</a> for full details of the expected hex characters and offsets. Please note that they may be different based on the structure of the file. 
+				</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/868</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/868">https://www.nationalarchives.gov.uk/PRONOM/fmt/868</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q59653966</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q59653966">https://www.wikidata.org/wiki/Q59653966</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00340</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.archives.gov/files/lod/dpframework/id/NF00340.ttl">NARA File Format Preservation Plan ID</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+                MySQL Table Definition files are stored in MySQL's data directory. This location will vary depending on the installation and machine. By default, the data directory can be found at the path <i>/usr/local/mysql/</i>
+				<a href="https://dev.mysql.com/doc/mysql-macos-excerpt/8.0/en/macos-installation-notes.html ">for Linux and Mac</a> machines.<a href="https://dev.mysql.com/doc/refman/8.0/en/windows-installation-layout.html">For Windows</a>, that default path is <i>C:\Program Files\MySQL</i>. 
+			</p>
+			<p>
+                A <a href="http://www.tocker.ca/2014/07/30/beyond-the-frm-ideas-for-a-native-mysql-data-dictionary.html">MySQL database can be restored</a> from backup with an FRM file and its matching .MYI and .MYD files (for databases using the MyISAM storage engine) or .IBD file (for the InnoDB storage engine).
+			</p>
+		</fdd:general>
+		<fdd:history>
+			<p>
+MySQL was <a href="https://dev.mysql.com/doc/refman/8.0/en/history.html">created in 1995</a> by Swedish company MySQL AB which was founded by David Axmark, Allan Larsson and Michael "Monty" Widenius. The first internal release of MySQL was on May 23, 1995. MySQL is named after co-founder Monty Widenius's daughter, My. 
+			</p>
+			<p>
+In 2008, the company was sold to Sun Microsystems. In 2010, Sun Microsystems was purchased by Oracle. Co-founder Widenius opposed the Oracle acquisition and left to <a href="https://www.youtube.com/watch?v=6Uv9vcb4SdA">found his own RDBMS, MariaDB</a>, based upon MySQL's open source codebase. Just as MySQL is named for Widenius' eldest daughter My, MariaDB is named for his second daughter Maria. This familiar relationship between MySQL and MariaDB is why both RDBMS are remarkably similar and both utilize the FRM format. 
+			</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20221007195420/http://dev.mysql.com/doc/internals/en/frm-file-format.html</link>
+					<tag>MySQL .frm File Format</tag>
+					<comment>Official documentation from MySQL, link via Internet Archive as MySQL has removed legacy information.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>fdd000627.shtml</link>
+					<tag>See also: MySQL View Definition Format</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.tocker.ca/2014/07/30/beyond-the-frm-ideas-for-a-native-mysql-data-dictionary.html</link>
+					<tag>Beyond the FRM.</tag>
+					<comment>July 30, 2014. Blog discussing the removal of FRM from MySQL.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://dev.mysql.com/doc/refman/8.0/en/history.html</link>
+					<tag>History of MySQL.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.percona.com/blog/obtain-mysql-version-frm-file/</link>
+					<tag>How to Obtain the MySQL Version from an FRM File.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://mariadb.com/kb/en/table-discovery/</link>
+					<tag>MariaDB Table Discovery.</tag>
+					<comment>Discusses the use of FRM files within MariaDB.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://dev.mysql.com/doc/mysql-macos-excerpt/8.0/en/macos-installation-notes.html</link>
+					<tag>MySQL Installation Location.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://dev.mysql.com/doc/refman/5.7/en/database-count-limit.html</link>
+					<tag>MySQL Limits on Number of Databases and Tables.</tag>
+					<comment>Discusses the limitations of how many tables may be present in each database.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://dev.mysql.com/doc/refman/8.0/en/windows-installation-layout.html</link>
+					<tag>MySQL Windows Installation Location.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.oracle.com/us/support/library/lifetime-support-technology-069183.pdf</link>
+					<tag>Oracle End of Life tool support.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.youtube.com/watch?v=6Uv9vcb4SdA</link>
+					<tag>Past, Present, and Future of MySQL and Variants.</tag>
+					<comment>January 21, 2014. Lecture by Stewart Smith given at the linus.conf.au conference in Perth, Australia.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://dev.mysql.com/doc/refman/8.0/en/data-dictionary-file-removal.html</link>
+					<tag>Removal of File-based Metadata Storage</tag>
+					<comment>Discusses the removal of FRM from MySQL.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.flamingspork.com/blog/2014/09/19/mysql-architecture/</link>
+					<tag>Some Current MySQL Architecture Writings.</tag>
+					<comment>September 19, 2014. Blog by Stewart Smith discussing MySQL architecture. Contains many useful links to MySQL discussions and documentation.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.percona.com/blog/understanding-the-maximum-number-of-columns-in-a-mysql-table/</link>
+					<tag>Understanding the maximum number of columns in a MySQL table.</tag>
+					<comment>April 8, 2013. Blog discussing FRM history.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://db-engines.com/en/ranking</link>
+					<tag>DB Engines Ranking.</tag>
+					<comment>Ranking of database management systems by popularity.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://db-engines.com/en/system/MySQL</link>
+					<tag>DB Engines MySQL System Properties.</tag>
+					<comment>Editorial information on MySQL.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.nationalarchives.gov.uk/PRONOM/fmt/868</link>
+					<tag>PRONOM entry for fmt/868.</tag>
+					<comment>Information in PRONOM from UK National Archives about MySQL Table Definition Format. PUID: fmt/868.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q59653966</link>
+					<tag>Wikidata entry for Q59653966.</tag>
+					<comment>Information in Wikidata about MySQL Table Definition Format. Wikidata Title ID: Q59653966</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
