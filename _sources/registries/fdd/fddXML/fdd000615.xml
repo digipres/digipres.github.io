@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000615" titleName="Apple Mail Email Format" shortName="EMLX" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>text</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>email</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2024-01-16</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Apple Mail Email Format</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>email formats</fdd:keyword>
+			<fdd:keyword>text formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>Apple Mail Email Format (EMLX) is a file format specific to Apple Mail, the default mail application on macOS also known as Mac Mail, used to store individual email messages as plain text files. These files are <a href="https://wiki.harvard.edu/confluence/display/LibraryStaffDoc/About%20Mac%20Mail">commonly located</a> in the ~/Library/Mail/Mailboxes/ directory within the <fddLink id="fdd000383">Mailbox (MBOX)</fddLink> folder structure.</p>
+			<p>Developed by Apple, EMLX is a proprietary variation of the open <fddLink id="fdd000388">standard Electronic Mail Format (EML)</fddLink>. There is no published formal standard. The Apple Mail application employs the EMLX format for exporting emails. While Apple Mail is the primary creator of EMLX files, <a href="https://docs.fileformat.com/email/emlx/">other applications</a> can open and convert these files into various formats.
+                <a href="../contact_format.shtml">Comments welcome</a>.
+            </p>
+			<p>The structure of an EMLX file is composed of <a href="https://pypi.org/project/emlx/">three main parts</a>:
+            </p>
+			<ul>
+				<li>Bytecount: The file begins with a line specifying the total number of bytes in the file.</li>
+				<li>Email Content in <a href="https://datatracker.ietf.org/doc/html/rfc2045">Multipurpose Internet Mail Extensions (MIME) Format</a>: Following the bytecount, the file contains the actual email content in MIME format. This includes headers, body, and any attachments associated with the email.</li>
+				<li>plist (Apple Property List): The third part consists of an Extensible Markup Language (XML)-based property list with metadata about the email. This includes key-value pairs such as "sender" and "subject."</li>
+			</ul>
+			<p>This structure allows for the encapsulation of an entire email message, with MIME format handling the email content and the plist providing additional metadata. The bytecount at the beginning indicates the size of the email content. Each message is stored as an individual EMLX file.</p>
+			<p>The plist blob within the EMLX file includes a "flags" field, represented by an integer. Decoding this integer provides valuable information about the email, such as its read status, whether it has been forwarded, if it's marked as junk, and more. For a detailed breakdown of the flag values and their meanings, refer to the information provided on <a href="https://www.jwz.org/blog/2005/07/emlx-flags/">jwz blog post "emlx flags?"</a>.                <a href="../contact_format.shtml">Comments welcome</a>.
+            </p>
+		</fdd:description>
+		<fdd:shortDescription>Apple Mail Email Format (EMLX) is a file format specific to Apple Mail or Mac Mail, the default mail application on macOS, used to store individual email messages as plain text files.</fdd:shortDescription>
+		<fdd:productionPhase>Used for content in initial (by message authors), middle (by archives) or final state (by message recipients/other end users).</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Modification of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000388</fdd:id>
+					<fdd:shortName>EML</fdd:shortName>
+					<fdd:titleName>Email (Electronic Mail Format)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Email (Electronic Mail Format). EMLX is very closely related, technically, to EML format.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000383</fdd:id>
+					<fdd:shortName>MBOX</fdd:shortName>
+					<fdd:titleName>MBOX Email Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Must have component</fdd:typeOfRelationship>
+				<fdd:comment>Plist. Apple Property List. See <a href="https://developer.apple.com/documentation/bundleresources/information_property_list">specification</a> and <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/979">PRONOM</a> for more.  Not separately documented at this resource at this time. </fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress includes EMLX files in its collections, especially in the Manuscripts and Music Divisions as well as other personal papers repositories.</fdd:experience>
+		<fdd:preference>See the Library of Congress Recommended Formats Statement for format preferences for <a href="https://www.loc.gov/preservation/resources/rfs/email.html">email</a>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>EMLX is proprietary and closed. There is little documentation.</fdd:disclosure>
+		<fdd:documentation>
+			<p>
+				<a href="https://wiki.harvard.edu/confluence/display/LibraryStaffDoc/About%20Mac%20Mail">About Mac Mail</a>, from the Harvard Library Technical Services website, is the most reliable source for EMLX information. </p>
+			<p>EMLX has no official documentation and very little unofficial documentation. <a href="../contact_format.shtml">Comments welcome</a>.
+            </p>
+		</fdd:documentation>
+		<fdd:adoption>Used by all Apple Mail installations. Apple Mail is the native mail application for macOS, both desktop and phone, <a href="https://wiki.harvard.edu/confluence/display/LibraryStaffDoc/About%20Mac%20Mail">since 2005</a>.
+        </fdd:adoption>
+		<fdd:licensingAndPatents>Proprietary to Apple. Apple licenses and certifies specific third party products and workflows. No known licensing or patents. <a href="../contact_format.shtml">Comments welcome</a>.
+        </fdd:licensingAndPatents>
+		<fdd:transparency>Very transparent. EMLX is a plain text file, readable with basic text tools. </fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>EMLX files include basic metadata in a file header as well as flags for specific content. <a href="../contact_format.shtml">Comments welcome</a>
+			</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>EMLX requires Apple Mail or a text editor to open. EMLX files are not <a href="https://fileinfo.com/extension/emlx">meant to be</a> manually opened, however, they are capable of being manually opened.</fdd:externalDependencies>
+		<fdd:techProtection>None.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>emlx</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>
+					<p>Although created for Apple Mail, there is no official citation or reference to the format from Apple.  The format is not mentioned in any press releases for Mac OS Tiger. There are many references to EMLX files in the Apple user support forums and elsewhere online.</p>
+					<p>
+						<a href="https://wiki.harvard.edu/confluence/display/LibraryStaffDoc/About%20Mac%20Mail">About Mac Mail</a>, from the Harvard Library Technical Services website, is the most reliable source for EMLX information.
+                    </p>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:other>
+				<fdd:tag>Uniform Type Identifier (Mac OS)</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>com.apple.mail.emlx</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See: <a href="https://www.wikidata.org/wiki/Q119582504">https://www.wikidata.org/wiki/Q119582504</a>.
+                    </fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>PRONOM has no corresponding entry as of January 2024.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q119582504</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See: <a href="https://www.wikidata.org/wiki/Q119582504">https://www.wikidata.org/wiki/Q119582504</a>.
+                    </fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>Although created for Apple Mail, there is no official citation or reference to the format from Apple.  The format is not mentioned in any press releases for Mac OS Tiger. There are many references to EMLX files in the Apple user support forums and elsewhere online. <a href="../contact_format.shtml">Comments welcome</a>.
+            </p>
+			<p>There are scripts available in <a href="https://github.com/imdatsolak/elmx2mbox/blob/main/emlx2mbox.rb">Ruby</a> and <a href="http://web.archive.org/web/20130905074537/http:/brownjava.org/2007/08/emlx2mboxpy.html">Python</a> for working with and converting EMLX to MBOX.</p>
+			<p>Each EMLX file created is <a href="https://wiki.harvard.edu/confluence/display/LibraryStaffDoc/About%20Mac%20Mail">named with</a> an incrementing number. Example:</p>
+			<p>~/Library/Mail/Mailboxes/inbox.mbox/Messages/</p>
+			<p>5521.emlx</p>
+			<p>5522.emlx</p>
+			<p>5523.emlx</p>
+			<p>Attachments <a href="https://wiki.harvard.edu/confluence/display/LibraryStaffDoc/About%20Mac%20Mail">are encoded</a> within the message of the EMLX file.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>This format was <a href="https://wiki.harvard.edu/confluence/display/LibraryStaffDoc/About%20Mac%20Mail">introduced</a> in 2005, in Mail version 2, with the Mac OS X Tiger (10.4) operating system.</p>
+			<p>
+				<a href="https://docs.fileformat.com/email/emlx">Fileformat.com</a> states that "Mac OS X operating system adopted the existing email program, NeXTMail, created by NeXT as part of the NeXTSTEP operating system. Apple after acquiring NeXT uplifted its features and it became the now Apple Mail email application to be used as default mail client. Emails exported via Apple Mail are directly saved as EMLX files. In addition, it is the default mail client for EMLX files when someone opens these by double-clicking on Mac OS." </p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+    </fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://wiki.harvard.edu/confluence/display/LibraryStaffDoc/About%20Mac%20Mail</link>
+					<tag>"About Mac Mail". Harvard University Library Technical Services. </tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://web.archive.org/web/20130905074537/http:/brownjava.org/2007/08/emlx2mboxpy.html</link>
+					<tag>"Convert Apple Mail .emlx to .mbox in Python". Brown Java.</tag>
+					<comment>Scripts for working with and converting EMLX to MBOX in Python. Accessed via the Internet Archive.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.loc.gov/preservation/digital/formats/fdd/fdd000388.shtml</link>
+					<tag>"EML". Library of Congress.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://datatracker.ietf.org/doc/html/rfc2045</link>
+					<tag>Multipurpose Internet Mail Extensions (MIME) Part One: Format of Internet Message Bodies</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://pypi.org/project/emlx/</link>
+					<tag>"emlx 0.1.0". PyPI.</tag>
+					<comment>Python package for parsing EMLX files.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://fileinfo.com/extension/emlx</link>
+					<tag>"EMLX File Extension". FileInfo.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://docs.fileformat.com/email/emlx/</link>
+					<tag>"EMLX File Format". FileFormat.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.jwz.org/blog/2005/07/emlx-flags/</link>
+					<tag>"emlx flags". Jamie Zawinski's Blog. August 4, 2005.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://docs.fileformat.com/email/emlx/</link>
+					<tag>Fileformat.com entry for EMLX</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/imdatsolak/elmx2mbox/blob/main/emlx2mbox.rb</link>
+					<tag>"emlx2mbox.rb". GitHub Repository.</tag>
+					<comment>Scripts for working with and converting EMLX to MBOX in Ruby.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://developer.apple.com/documentation/bundleresources/information_property_list</link>
+					<tag>"Information Property List Key Reference". Apple Developer Documentation. </tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://preservation.tylerthorsted.com/2023/10/27/apple-mail/</link>
+					<tag>“Apple Mail”. Trevor Thorton. October 27, 2023.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Apple_Mail</link>
+					<tag>“Apple Mail”. Wikipedia.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://stackoverflow.com/questions/884440/documentation-on-apple-mails-emlx-data-structures-for-conversion-purposes</link>
+					<tag>“Documentation on Apple Mail's .emlx data structure(s) (for conversion purposes)?”. Stack Overflow.</tag>
+					<comment>Useful discussion about EMLX and its lack of documentation.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://taoofmac.com/space/blog/2008/03/03/2211</link>
+					<tag>“Patching .emlx Files”. Rui Carmo. March 3, 2008.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q119582504</link>
+					<tag>Wikidata entry for Q119582504</tag>
+					<comment>Information in Wikidata about EMLX. Wikidata Title ID: Q119582504</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

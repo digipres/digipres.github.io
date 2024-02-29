@@ -28,24 +28,24 @@
 			<fdd:keyword>web capture</fdd:keyword>
 		</fdd:keywords>
 		<fdd:description>
-			<p>A CDX (also known as &apos;CDX Internet Archive Index&apos; because it was developed by the Internet Archive) is an ASCII text-based metadata or index file which summarizes a single web document and accompanies a <fddLink id="fdd000236">WARC</fddLink>
+			<p>A CDX (also known as &apos;CDX Internet Archive Index&apos; because it was developed by the <a href="https://archive.org/">Internet Archive</a>) is an ASCII text-based metadata or index file which summarizes a single web document and accompanies a <fddLink id="fdd000236">WARC</fddLink>
 or <fddLink id="fdd000235">ARC</fddLink> web archive file.</p>
 			<p>CDX files have at least two versions consisting of 9 or 11 defined fields. According to the <a href="https://github.com/iipc/warc-specifications/blob/master/specifications/cdx-format/cdx-2006/index.md">2006 version of the CDX specification</a>, &quot;the first line in the file is a legend for interpreting the data, and the following lines contain the data for referencing the corresponding pages within the host. The first character of the file is the field delimiter used in the rest of the file. This is followed by the literal &quot;CDX&quot; and then individual field markers&quot; which are defined in the specification. The default first line of CDX files is &quot;CDX A b e a m s c k r V v D d g M n.&quot; CDX files are created as the websites are crawled and are part of the process of providing access to archived websites using Wayback Machine software. </p>
 			<p>The <a href="https://iipc.github.io/warc-specifications/specifications/cdx-format/cdx-2015/">2015 version of the CDX specification</a> defines the 11 field version which includes</p>
 			<ul>
 				<li>urlkey (N): the URL of the captured web object, without the protocol (http://) or the leading www and in <a href="http://crawler.archive.org/articles/user_manual/glossary.html#surt">SURT format</a>.</li>
-				<li>timestamp (b): timestamp in the form YYYYMMDDhhmmss. The time represents the point at which the web object was captured, measured in GMT, as recorded in the CDX index file.</li>
+				<li>timestamp (b): timestamp in the form YYYYMMDDhhmmss. The time represents the point at which the web object was captured, measured in <a href="https://greenwichmeantime.com/what-is-gmt/">GMT</a>, as recorded in the CDX index file.</li>
 				<li>original (a): the URL of the captured web object, including the protocol (http://) and the leading www, if applicable, extracted from the CDX index file.</li>
 				<li>mimetype (m): the <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA media type</a> as recorded in the CDX.</li>
-				<li>statuscode (s): the HTTP response code received from the server at the time of capture, e.g., 200, 404. In this case, only codes that matched "200" were selected.</li>
+				<li>statuscode (s): the <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">HTTP response code</a> received from the server at the time of capture, e.g., 200, 404. In this case, only codes that matched "200" were selected.</li>
 				<li>digest (k): a unique, cryptographic hash of the web object&apos;s payload at the time of the crawl. This provides a distinct fingerprint for the object; it is a Base32 encoded SHA-1 hash, derived from the CDX index file.</li>
 				<li>redirect (r): likely blank or recorded with a "-"</li>
 				<li>metatags (M): likely blank or recorded with a "-"</li>
 				<li>file_size (S): the size of the web object, in bytes, derived from the CDX index file</li>
-				<li>offset (V): the location of the resource in the compressed Web Archive (WARC) file which stores the full archived object</li>
-				<li>WARC filename (g) - name of the compressed Web Archive (WARC) file which stores the full archived object	</li>
+				<li>offset (V): the location of the resource in the compressed Web Archive (<fddLink id="fdd000236">WARC</fddLink>) file which stores the full archived object</li>
+				<li>WARC filename (g) - name of the compressed Web Archive (<fddLink id="fdd000236">WARC</fddLink>) file which stores the full archived object	</li>
 			</ul>
-			<p>The <a href="https://github.com/iipc/warc-specifications/blob/master/specifications/cdx-format/cdx-2006/index.md">2006 version of the CDX specification</a> which defined the 9 field implementation (which is considered legacy as of this writing in 2024) includes the same fields as the 2015 version with the exception of the fields for metatags (M) and file_size (S). Although there are many other options for field definitions, there&apos;s a note in the 2015 version that &quot;most of the other fields are obsolete, and date back to an even older Alexa <a href="https://archive.org/web/researcher/dat_file_format.php">dat format</a>.&quot; See <a href="#notes">General</a> for more information about DAT files. </p>
+			<p>The <a href="https://github.com/iipc/warc-specifications/blob/master/specifications/cdx-format/cdx-2006/index.md">2006 version of the CDX specification</a> which defined the 9 field implementation (which is considered legacy as of this writing in 2024) includes the same fields as the 2015 version with the exception of the fields for metatags (M) and file_size (S). Although there are many other options for field definitions (these are listed out in the specifications with the field delineator), there&apos;s a note in the 2015 version that &quot;most of the other fields are obsolete, and date back to an even older Alexa <a href="https://archive.org/web/researcher/dat_file_format.php">dat format</a>.&quot; See <a href="#notes">General</a> for more information about DAT files. </p>
 			<p>CDX files can be "surt-ordered" or not. <a href="http://crawler.archive.org/apidocs/org/archive/util/SURT.html">SURT or Sort-friendly URI Reordering Transform</a> is a transformation applied to URIs which makes their left-to-right representation better match the natural hierarchy of domain names.</p>
 		</fdd:description>
 		<fdd:shortDescription>CDX (also known as &apos;CDX Internet Archive Index&apos; because it was developed by the Internet Archive) is an ASCII text-based metadata or index file which summarizes a single web document and accompanies a WARC or ARC web archive file, or contained in a WACZ file.</fdd:shortDescription>
@@ -100,7 +100,7 @@ or <fddLink id="fdd000235">ARC</fddLink> web archive file.</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>None.</fdd:licensingAndPatents>
 		<fdd:transparency>Good. Text-based ASCII format able to be rendered in simple text editors.</fdd:transparency>
-		<fdd:selfDocumentation>Fields are labeled according to a defined list of options. H</fdd:selfDocumentation>
+		<fdd:selfDocumentation>Fields are defined and labeled according to a defined list of options. </fdd:selfDocumentation>
 		<fdd:externalDependencies>None.</fdd:externalDependencies>
 		<fdd:techProtection>None.</fdd:techProtection>
 	</fdd:sustainabilityFactors>
@@ -191,7 +191,7 @@ or <fddLink id="fdd000235">ARC</fddLink> web archive file.</p>
 			<fdd:url>
 				<fdd:urlReference>
 					<link>https://archive.org/web/researcher/cdx_legend.php</link>
-					<tag>Interet Archive: CDX and DAT Legend</tag>
+					<tag>Internet Archive: CDX and DAT Legend</tag>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
@@ -216,6 +216,18 @@ or <fddLink id="fdd000235">ARC</fddLink> web archive file.</p>
 				<fdd:urlReference>
 					<link>https://nlevitt.github.io/warc-specifications/specifications/cdx-format/openwayback-cdxj/ </link>
 					<tag>OpenWayback CDXJ File Format 1.0</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/List_of_HTTP_status_codes</link>
+					<tag>Wikipedia List of HTTP status codes</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://greenwichmeantime.com/what-is-gmt/</link>
+					<tag>What is Greenwich Mean Time?</tag>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
@@ -252,7 +264,7 @@ Core Python Web Archiving Toolkit (pywb)</tag>
 			<fdd:url>
 				<fdd:urlReference>
 					<link>https://blogs.loc.gov/thesignal/2022/04/candidates-campaigns-and-cdx-files/ </link>
-					<tag>Candidates, Campaigns, and CDX Files: A New United States Elections Web Archive Dataset. Blog post by Chase Dooley and Tracee (Haupt) Fugate on April 13, 2022 </tag>
+					<tag>Candidates, Campaigns, and CDX Files: A New United States Elections Web Archive Dataset. Blog post by Chase Dooley and Tracee Haupt Fugate on April 13, 2022 </tag>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
