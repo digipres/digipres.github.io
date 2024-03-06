@@ -9,7 +9,11 @@ urlretrieve(url,"fddXML.zip")
 print("Downloaded %s" % url )
 print(os.system("ls -l fddXML.zip"))
 
-# Unpack them:
+# Remove the files that are there, in case FDDs get deleted:
+command = "rm fddXML/*.*"
+os.system(command)
+
+# Unpack the new set:
 command = "unzip -o fddXML.zip"
 os.system(command)
 
