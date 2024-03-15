@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000597" titleName="Desktop Services Store" shortName="DS_Store" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>other</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2024-01-30</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Desktop Services Store</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>system formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The Desktop Services Store (.DS_Store) file format, developed by <a href="https://www.wikidata.org/wiki/Q307271">Apple Inc.</a>, is a proprietary, <a href="https://www.archives.gov/files/lod/dpframework/id/NF00110.ttl">hidden</a> file created by the Macintosh OS X <a href="https://en.wikipedia.org/wiki/Finder_(software) ">Finder</a>.  DS_Store files are <a href="https://en.internetwache.org/scanning-the-alexa-top-1m-for-ds-store-files-12-03-2018/">not human-readable</a> and consist of binary data, store <a href="https://web.archive.org/web/20060929143255/http:/www.adobe.com/cfusion/knowledgebase/index.cfm?id=tn_16831">information and folder view options</a>, icon positions, and other visual details <a href="https://metacpan.org/dist/Mac-Finder-DSStore/view/DSStoreFormat.pod">related to directories</a>.</p>
+			<p>
+				<b>Notes on terms in this document</b>: Desktop Services Store files are often referred to as &quot;.DS_Store&quot; with a leading period (The leading period classifies the file as invisible according to UnixOS, and thus macOS, conventions.) However, for syntactic reasons in the text, this resource refers to them as &quot;DS_Store&quot; without the leading period. Also &quot;Macintosh OS X&quot; or &quot;Mac OS X&quot; is now known as "<a href="https://en.wikipedia.org/wiki/MacOS">macOS</a>").</p>
+			<p>Each directory accessed with the macOS Finder results in the creation of a corresponding DS_Store file in that directory. The file is permanently generated after viewing the directory with the Finder, and currently, there is <a href="https://web.archive.org/web/20060929143255/http:/www.adobe.com/cfusion/knowledgebase/index.cfm?id=tn_16831">no option</a> to disable its creation. The DS_Store file is essential for the Finder to maintain custom attributes of its containing folder, such as icon positions and background image choices. </p>
+			<p>While its internal structure is proprietary, it has been reverse-engineered. Any attempt to migrate the format, extract files from the binary container, or archive the files could render the code non-functional, as stated by the <a href="https://www.archives.gov/files/lod/dpframework/id/NF00110.ttl">National Archives and Records Administration (NARA)</a>. Overall, DS_Store files are scattered throughout the directory tree, appearing in almost every folder visited with the macOS Finder.</p>
+			<p>The DS_Store file is <a href="https://web.archive.org/web/20230328002409/https:/0day.work/parsing-the-ds_store-file-format/">prefixed with a dot</a> which hides the file macOS Finder, potentially leaving Mac users unaware of its existence. The file format is proprietary with limited documentation available online regarding its structure and functionalities.</p>
+			<p>
+				<b>File Structure</b>
+			</p>
+			<p>The DS_Store file is <a href="https://metacpan.org/dist/Mac-Finder-DSStore/view/DSStoreFormat.pod">structured</a> to hold records containing attributes of files within the directory or the directory itself. These records are organized in a B-tree. The B-tree pages, along with metadata, are managed by a "buddy allocator." The allocator introduces a level of indirection, allowing for the relocation of blocks as they grow or shrink.</p>
+			<p>The file is <a href="https://metacpan.org/dist/Mac-Finder-DSStore/view/DSStoreFormat.pod">predominantly big-endian</a>, and an "integer" within it typically refers to a four-byte (32-bit) big-endian number, likely unsigned. The <a href="https://web.archive.org/web/20230328002409/https:/0day.work/parsing-the-ds_store-file-format/">file begins</a> with a 36-byte header that sets the stage for the subsequent content.</p>
+			<p>The <a href="https://web.archive.org/web/20230328002409/https:/0day.work/parsing-the-ds_store-file-format/">root block section</a> follows the header, storing crucial metadata about the file names in a tree-like structure. This metadata can be categorized into three sections: Offsets, Tables of Content, and Free List. Within the Tables of Content section, there is usually at least one table named DSDB with the value 0x01.</p>
+			<p>
+				<a href="https://eclecticlight.co/2021/11/27/explainer-ds_store-files/">Of particular importance</a> to users are Finder or Spotlight Comments, displayed in the Comments section of the Get Info dialog for a file. These comments may also exist in the com.apple.metadata:kMDItemFinderComment extended attribute (xattr) of the file. However, this is a secondary copy that can fall out of sync with the DS_Store file, and the Finder disregards the xattr.</p>
+			<p>The structure of DS_Store files is relatively opaque due to the lack of documentation. Knowledge of the file structure is from community reverse engineering. <a href="../contact_format.shtml">Comments welcome</a>.
+            </p>
+			<p>
+				<b>Record Structure: Contents</b>
+			</p>
+			<p>Each DS_Store file contains one or more records with specific formatting which capture diverse metadata about directory components and utilize various data types to represent structured information. Wim Lewis’s article “<a href="https://metacpan.org/dist/Mac-Finder-DSStore/view/DSStoreFormat.pod">DS_Store Format</a>” and Mozilla Wiki’s “<a href="https://wiki.mozilla.org/DS_Store_File_Format">DS Store File Format</a>” article define the specific components as:</p>
+			<p>Format of a Record:</p>
+			<ul>
+				<li>Filename length (4 bytes), an integer.</li>
+				<li>Filename (2 * length bytes), in big-endian UTF-16, following HFS+ filesystem Unicode composition rules.</li>
+				<li>Structure id or type (4 bytes), a FourCharCode indicating the property of the file this entry describes.</li>
+				<li>Data type (4 bytes), indicating the kind of data field that follows.</li>
+			</ul>
+			<p>Structure Type:</p>
+			<ul>
+				<li>Records information about a directory's contents, including the directory itself, files, subdirectories, icon types, window size and layout, plists (preference/saved settings), and view style (e.g., icon view, column/browser view, list view, and coverflow view). This information is crucial metadata.</li>
+			</ul>
+			<p>Data Types:</p>
+			<ul>
+				<li>Data types encompass structured data such as integers, boolean types, text strings, or datestamps. These types define the content of the data field following the structure id or type in a record.</li>
+			</ul>
+			<p>
+				<b>Record Structure: B-tree</b>
+			</p>
+			<p>The records within DS_Store files are organized in a B-tree structure. This B-tree structure includes a small master block with statistics and a pointer to the root node, along with leaf (external) nodes and non-leaf (internal) nodes. The management of B-tree pages and related information is facilitated by a "buddy allocator."</p>
+			<p>
+				<b>Security</b>
+			</p>
+			<p>
+				<a href="https://web.archive.org/web/20060929143255/http:/www.adobe.com/cfusion/knowledgebase/index.cfm?id=tn_16831">Security concerns</a> can arise when DS_Store files are uploaded to web servers, as they contain crucial folder information that could be exploited to extract details about system configurations. These files hold the names of <a href="https://web.archive.org/web/20230328002409/https:/0day.work/parsing-the-ds_store-file-format/">all files and directories</a> within a folder. <a href="https://web.archive.org/web/20100106134914/http:/www.securityfocus.com/bid/3324/discuss">Since 2001</a>, security issues and potential vulnerabilities related to DS_Store files have been highlighted. Exploitation could lead to the disclosure of sensitive information, including system configuration and installed applications.</p>
+			<p>An example illustrating the severity of such vulnerabilities is the <a href="https://hackerone.com/reports/142549">HackerOne report on X</a>, formerly known as Twitter, where a DS_Store file revealed private information.</p>
+			<p>For further insights into security issues related to DS_Store files, the Internetwache.org article "<a href="https://en.internetwache.org/scanning-the-alexa-top-1m-for-ds-store-files-12-03-2018/">Scanning the Alexa Top 1M for DS_Store Files</a>" provides additional information. It emphasizes the importance of addressing potential risks associated with the presence of DS_Store files on web servers.</p>
+			<p>
+				<b>Versions</b>
+			</p>
+			<p>The DS_Store format does not have any official documentation or a specification. There is unofficial documentation created through reverse engineering. It is likely that the version changes with versions of macOS. <a href="../contact_format.shtml">Comments welcome</a>.
+            </p>
+			<p>
+				<b>Removal</b>
+			</p>
+			<p>According to <a href="https://osxdaily.com/2009/12/31/what-is-a-ds_store-file/">OSX Daily</a>, deleting DS_Store files from Mac folders can result in the loss of specific folder details, such as icons, window placement, and background pictures. While there is generally no significant harm, as these files primarily store folder metadata, it is advisable to retain them unless there is a specific reason for deletion. The macOS Finder relies on DS_Store files, and they are automatically regenerated by the system if deleted. Deleting them might be necessary in certain Windows+Mac shared networking environments.</p>
+			<p>Some digital preservation systems, such as Archivematica, automatically remove DS_Store files by default, as noted in the <a href="https://github.com/artefactual/archivematica/blob/stable/1.15.x/src/MCPClient/install/clientConfig.conf#L14">Archivematica GitHub codebase</a>.
+            </p>
+		</fdd:description>
+		<fdd:shortDescription>The Desktop Services Store (DS_Store) file format, developed by Apple Inc., is a proprietary, hidden file created by the macOS Finder. DS_Store files are not human-readable and consist of binary data, store information and folder view options, icon positions, and other visual details related to directories.</fdd:shortDescription>
+		<fdd:productionPhase>Used by all Mac desktop versions as part of production, automatically generated by Finder.</fdd:productionPhase>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress has a small amount of DS_Store files in its varied collections.</fdd:experience>
+		<fdd:preference>The Library of Congress has not yet expressed any format preference for system files. See the Recommended Formats Statement for format preferences for <a href="https://www.loc.gov/preservation/resources/rfs/software-videogames.html">software</a>
+		</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Undisclosed. Proprietary format developed by Apple, Inc.</fdd:disclosure>
+		<fdd:documentation>
+			<p>DS_Store has no official documentation.</p>
+			<p>Some sources direct users to <a href="https://wiki.mozilla.org/DS_Store_File_Format">Mark Mentovai’s reverse engineering work</a>, c. 2007, on the format, hosted on the Mozilla Wiki.</p>
+		</fdd:documentation>
+		<fdd:adoption>Used in macOS systems.</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>Unknown. <a href="../contact_format.shtml">Comments welcome</a>.
+            </p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>Opaque due to lack of documentation and limited reverse engineering. Binary format. No known way of creating DS_Store files outside of the automatically generated macOS files.</fdd:transparency>
+		<fdd:selfDocumentation>No official documentation. DS_Store files are tentatively identified with magic numbers which were identified via reverse engineering. <a href="../contact_format.shtml">Comments welcome</a>.
+        </fdd:selfDocumentation>
+		<fdd:externalDependencies>DS_Store files are created and ready by the macOS Finder application.  They retain context and meaning within the operating system only.</fdd:externalDependencies>
+		<fdd:techProtection>None.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+				<fdd:note>None. DS_Store files do not have a traditional file extension. Instead, their filenames begin with a period and are labeled ".DS_Store". The leading period classifies the file as invisible according to UnixOS, and thus macOS, conventions.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/octet-stream</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>
+					<p>See: Wikipedia: <a href="https://en.wikipedia.org/wiki/.DS_Store">https://en.wikipedia.org/wiki/.DS_Store</a>
+					</p>
+					<p>The National Records and Archives Administration (NARA) cites Wikidata for this value, however the Wikidata entry itself does not include the value.<a href="../contact_format.shtml">Comments welcome</a>.
+                    </p>
+				</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>00 00 00 01 42 75 64 31</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>
+					<p>Two sources, based on reverse engineering, cite these magic numbers:</p>
+					<ul>
+						<li>“                            <a href="https://web.archive.org/web/20230328002409/https:/0day.work/parsing-the-ds_store-file-format/">Parsing the .DS_Store File Format</a>,” by Sebastian Neef.</li>
+						<li>“                            <a href="https://ponderthebits.com/2017/01/mac-dumpster-diving-identifying-deleted-file-references-in-the-trash-ds_store-files-part-1/">Mac Dumpster Diving – Identifying Deleted File References in the Trash (.DS_Store) Files – Part 1</a>,” by Jonathon Polig.</li>
+					</ul>
+					<p>
+						<a href="../contact_format.shtml">Comments welcome</a>.
+                    </p>
+				</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/394</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See: <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/394">https://www.nationalarchives.gov.uk/PRONOM/fmt/394</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q307271</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See: <a href="https://www.wikidata.org/wiki/Q307271">https://www.wikidata.org/wiki/Q307271</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00110</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>NARA File Format Preservation Plan ID. See: <a href="https://www.archives.gov/files/lod/dpframework/id/NF00110.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00110.ttl</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:history>
+			<p>According to Arno Gourdol’s article “<a href="https://www.arno.org/on-the-origins-of-ds-store">On the Origins of .DS_Store</a>,” in 1999, Apple engineers rewrote the macOSX Finder application. This overhaul aimed to separate the user interface (Finder_FE) from the core functionality (Finder_BE), which handled tasks such as file enumeration, monitoring filesystem changes, and managing metadata, including icon locations and folder settings. .DS_Store emerged as a component integrated into Finder_BE, serving as a repository for private data crucial to the Finder's operations.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20141105160348/http:/support.apple.com/en-us/ht1629</link>
+					<tag>"macOS X v10.4 and later: How to prevent .DS_Store file creation over network connections." Apple, Inc.</tag>
+					<comment> Accessed via the Internet Archive.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.arno.org/on-the-origins-of-ds-store</link>
+					<tag>"On the origins of .DS_Store." Gourdol, Arno. October 1, 2006.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://metacpan.org/dist/Mac-Finder-DSStore/view/DSStoreFormat.pod</link>
+					<tag>"DS_Store Format." Lewis, Wim.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/vstinner/hachoir/blob/main/hachoir/parser/misc/dsstore.py</link>
+					<tag>dsstore.py</tag>
+					<comment>The assertions made in Lewis's DS_Store Format article have been mapped to a Python script, written by Robert Xiao written in September 2010.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://metacpan.org/dist/Mac-Finder-DSStore</link>
+					<tag>“.DS_Store parser written in Perl.” Lewis, Wim.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://wiki.mozilla.org/DS_Store_File_Format</link>
+					<tag>“DS Store File Format.” Mark Mentovai. 2007.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/gehaxelt/Python-dsstore</link>
+					<tag>“Python .DS_Store parser.” Sebastian Neef.</tag>
+					<comment>Software that parses DS_Store files, written in Python.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://eclecticlight.co/2021/11/27/explainer-ds_store-files/</link>
+					<tag>"Explainer: .DS_Store files" Howard Oakley. November 27, 2021.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://eclecticlight.co/2023/05/31/ghosts-in-the-machine-ds_store-files/</link>
+					<tag>"Ghosts in the machine: .DS_Store files." Howard Oakley. May 31, 2023.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://eclecticlight.co/2023/05/27/would-you-like-to-comment-or-finder-comment/</link>
+					<tag>"Would you like to Comment or Finder Comment?" Howard Oakley. May 27, 2023.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.internetwache.org/scanning-the-alexa-top-1m-for-ds-store-files-12-03-2018/</link>
+					<tag>"Scanning the Alexa Top 1M for .DS_Store files." Internetwatche.org.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://formats.kaitai.io/ds_store/index.html</link>
+					<tag>"macOS '.DS_Store' format: format specification." Kaitai Struct.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://osxdaily.com/2009/12/31/what-is-a-ds_store-file/</link>
+					<tag>"What is a .DS_Store file?" OSXDaily. Dec 31, 2009.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://ponderthebits.com/2017/01/mac-dumpster-diving-identifying-deleted-file-references-in-the-trash-ds_store-files-part-1/</link>
+					<tag>"Mac Dumpster Diving – Identifying Deleted File References in the Trash (.DS_Store) Files – Part 1." Jonathon Poling. January 26, 2017.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/.DS_Store</link>
+					<tag>“.DS_Store.” Wikipedia.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://hackerone.com/reports/142549</link>
+					<tag>HackerOne entry #142549. HackerOne. June 1, 2016.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20230328002409/https:/0day.work/parsing-the-ds_store-file-format/</link>
+					<tag>“Parsing the .DS_Store file format”. 0day.work.</tag>
+					<comment>Accessed via the Internet Archive.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20060929143255/http:/www.adobe.com/cfusion/knowledgebase/index.cfm?id=tn_16831</link>
+					<tag>“Removing .DS_Store files on Macintosh OS X?” Dreamweaver TechNote. September 29, 2006.</tag>
+					<comment>Accessed via the Internet Archive.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archives.gov/files/lod/dpframework/id/NF00110.ttl</link>
+					<tag>Information from the National Archives about .DS_Store. Format entry at the National Archives ID NF00110.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q307271</link>
+					<tag>Wikidata entry for Q307271</tag>
+					<comment>Information in Wikidata about .DS_Store. Wikidata Title ID: Q307271.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.nationalarchives.gov.uk/PRONOM/fmt/394</link>
+					<tag>.DS_Store Format entry at PRONOM.</tag>
+					<comment>Information in PRONOM from UK Archives about .DS_Store. PUID: fmt/394.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/artefactual/archivematica/blob/stable/1.15.x/src/MCPClient/install/clientConfig.conf#L14</link>
+					<tag>Archivematica GitHub codebase. Artefactual.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
