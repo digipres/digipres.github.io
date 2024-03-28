@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000115" titleName="IFF (EA Interchange File Format 1985)" shortName="IFF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000115" titleName="IFF (EA Interchange File Format 1985)" shortName="IFF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>any</fdd:gdfrGenre>
@@ -11,7 +11,7 @@
 		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
 		<fdd:updates>
-			<fdd:date>2010-06-28</fdd:date>
+			<fdd:date>2024-03-01</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -44,11 +44,20 @@
 				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
 				<fdd:comment>Wrappers for other applications, not documented here</fdd:comment>
 			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000119</fdd:id>
+					<fdd:shortName>SMF</fdd:shortName>
+				</fdd:relatedTo>
+				<fdd:comment>Standard MIDI File Format</fdd:comment>
+			</fdd:relationship>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
-		<fdd:experience>None</fdd:experience>
-		<fdd:preference>None</fdd:preference>
+		<fdd:experience>None.</fdd:experience>
+		<fdd:preference>See the Library of Congress Recommended Formats Statement for format preferences for <a href="https://www.loc.gov/preservation/resources/rfs/audio.html">Audio Works</a>.
+		</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>
@@ -58,7 +67,9 @@
 			EA IFF documentation is provided online by various <a href="https://www.martinreddy.net/gfx/2d/IFF.txt">third parties</a>.
 		</fdd:documentation>
 		<fdd:adoption>
-			Unknown to the compilers of this document; see also <fddLink id="fdd000005">AIFF</fddLink>.
+			<p>The <a href="https://wiki.amigaos.net/wiki/IFF_FORM_and_Chunk_Registry">IFF FORM and Chunk Registry</a> lists known chunks used by organizations and/or applications.</p>
+			<p>See also <fddLink id="fdd000005">AIFF</fddLink>.
+			</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>
 			None.
@@ -88,27 +99,62 @@
 	<fdd:fileTypeSignifiers>
 		<fdd:signifiersGroup>
 			<fdd:filenameExtension>
-				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+				<fdd:sigValues>
+					<fdd:sigValue>iff</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://www.wikidata.org/wiki/Q1569639">https://www.wikidata.org/wiki/Q1569639</a>.
+				</fdd:note>
 			</fdd:filenameExtension>
 			<fdd:internetMediaType>
-				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+				<fdd:sigValues>
+					<fdd:sigValue>application/x-iff</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://gitlab.freedesktop.org/xdg/shared-mime-info/-/blob/2.1/data/freedesktop.org.xml.in#L2447">freedesktop.org.xml.in repository</a>
+				</fdd:note>
 			</fdd:internetMediaType>
 			<fdd:magicNumbers>
-				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+				<fdd:sigValues>
+					<fdd:sigValue>46 4F 52 4D</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://www.garykessler.net/library/file_sigs.html">Gary Kessler's File Signatures</a>.
+				</fdd:note>
 			</fdd:magicNumbers>
 			<fdd:other>
 				<fdd:tag>IFF formname and/or chunkname</fdd:tag>
 				<fdd:values>
 					<fdd:sigValueNA>See note.</fdd:sigValueNA>
-					<fdd:note>See <a href="https://web.archive.org/web/20120618154548/http://www.ibm.com/developerworks/power/library/pa-spec16/?ca=dgr-lnxw07IFF">https://web.archive.org/web/20120618154548/http://www.ibm.com/developerworks/power/library/pa-spec16/?ca=dgr-lnxw07IFF</a>. (Available via Internet Archive capture from June 18, 2012. Chunk IDs are discussed in <a href="https://www.martinreddy.net/gfx/2d/IFF.txt">https://www.martinreddy.net/gfx/2d/IFF.txt</a>.</fdd:note>
+					<fdd:note>See <a href="https://web.archive.org/web/20120618154548/http://www.ibm.com/developerworks/power/library/pa-spec16/?ca=dgr-lnxw07IFF">https://web.archive.org/web/20120618154548/http://www.ibm.com/developerworks/power/library/pa-spec16/?ca=dgr-lnxw07IFF</a>. (Available via Internet Archive capture from June 18, 2012. Chunk IDs are discussed in <a href="https://www.martinreddy.net/gfx/2d/IFF.txt">https://www.martinreddy.net/gfx/2d/IFF.txt</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/157</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/157">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/157</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q1569639</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q1569639">https://www.wikidata.org/wiki/Q1569639</a>.
+					</fdd:note>
 				</fdd:values>
 			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
 		<fdd:history>
-			<p>The format was brought to completion in 1985 by the electronic gaming company <a href="https://www.ea.com/">Electronic Arts</a>; some of the information about IFF refers to the Commodore-Amiga computer company and three Commodore-Amiga staff members are listed as co-authors of a key piece of documentation.  An outline of the history of Electronic Arts is provided by <a href="https://en.wikipedia.org/wiki/Electronic_Arts">Wikipedia</a>.</p>
-			<p>The IFF format was influential and is cited as the source of ideas and approach by the creators of other tagged formats, e.g., <fddLink id="fdd000025">RIFF</fddLink> and <fddLink id="fdd000119">SMF</fddLink>.</p>
+			<p>The format was brought to completion in 1985 by the electronic gaming company <a href="https://www.ea.com/">Electronic Arts</a>; some of the information about IFF refers to the Commodore-Amiga computer company and three Commodore-Amiga staff members are listed as co-authors of a key piece of documentation.  An outline of the history of Electronic Arts is provided by <a href="https://en.wikipedia.org/wiki/Electronic_Arts">Wikipedia</a>.
+			</p>
+			<p>The IFF format was influential and is cited as the source of ideas and approach by the creators of other tagged formats, e.g., <fddLink id="fdd000025">RIFF</fddLink> and <fddLink id="fdd000119">SMF</fddLink>.
+			</p>
 		</fdd:history>
 	</fdd:notes>
 	<fdd:formatSpecifications>
@@ -145,8 +191,40 @@
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
+					<link>https://wiki.amigaos.net/wiki/IFF_FORM_and_Chunk_Registry</link>
+					<tag>IFF FORM and Chunk Registry</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.garykessler.net/library/file_sigs.html</link>
+					<tag>Gary Kessler's File Signatures Table</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
 					<link>https://www.fileformat.info/format/iff/index.dir</link>
 					<tag>IFF at FileFormat.Info</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://gitlab.freedesktop.org/xdg/shared-mime-info/-/blob/2.1/data/freedesktop.org.xml.in#L2447</link>
+					<tag>freedesktop.org.xml.in repository</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/pronom/x-fmt/157</link>
+					<tag>PRONOM entry for x-fmt/157</tag>
+					<comment>Information in PRONOM from UK National Archives about Interchange File. PUID: x-fmt/157.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q1569639</link>
+					<tag>Wikidata entry for Q1569639</tag>
+					<comment>Information in Wikidata about Interchange File Format. Wikidata Title ID: Q1569639.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
@@ -156,13 +234,13 @@
 						<fdd:urlReference>
 							<link>https://www.fileformat.info/format/iff/egff.htm</link>
 							<tag>EGFF: IFF File Format Summary
-</tag>
+							</tag>
 							<comment>From FileFormat.Info.  This presentation states that the work has been released under a Creative Commons Attribution license.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>https://web.archive.org/web/20071210094024/http://www.fileformat.info/format/iff/egff.htm</link>
 							<tag>EGFF: IFF File Format Summary
-</tag>
+							</tag>
 							<comment>From FileFormat.Info, via Internet Archive&apos;s Wayback Machine.  Included because FileFormat.info has not been updated recently (as of November 2012) and was not functioning for a period.</comment>
 						</fdd:urlReference>
 					</fdd:urlList>
@@ -172,7 +250,7 @@
 		<fdd:citations>
 			<fdd:citation>
 				<fdd:bookReference>
-					<bookRefDetail rel="au">Murray, James D.</bookRefDetail> and <bookRefDetail rel="au">William vanRyper</bookRefDetail>. <bookRefDetail rel="btitle">Encyclopedia of Graphics File Formats, 2nd Edition.</bookRefDetail> 
+					<bookRefDetail rel="au">Murray, James D.</bookRefDetail> and <bookRefDetail rel="au">William vanRyper</bookRefDetail>.					<bookRefDetail rel="btitle">Encyclopedia of Graphics File Formats, 2nd Edition.</bookRefDetail> 
 Sebastopol, CA. : O'Reilly &amp; Associates, <bookRefDetail rel="date">1996</bookRefDetail>. Includes CD-ROM with complete text of book, and copies of several file format specifications. </fdd:bookReference>
 			</fdd:citation>
 		</fdd:citations>

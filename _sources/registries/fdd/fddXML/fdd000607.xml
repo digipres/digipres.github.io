@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000607" titleName="Audio Definition Model" shortName="ADM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenres>
+				<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+				<fdd:gdfrGenre>text</fdd:gdfrGenre>
+			</fdd:gdfrGenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2024-03-15</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Audio Definition Model</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>audio formats</fdd:keyword>
+			<fdd:keyword>metadata formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The <a href="https://adm.ebu.io/">European Broadcasting Union (EBU) ADM Guidelines</a> summarizes the Audio Definition Model (ADM) as a standardized metadata model for describing the technical properties of audio. ADM is standardized by the International Telecommunication Union (ITU) Radiocommunication Sector and is also known by its specification number, "ITU-R BS.2076."</p>
+			<p>ADM's <a href="https://adm.ebu.io/background/what_is_the_adm.html">purpose</a> is to formalize descriptions of audio placement. EBU says that the goal of ADM is to provide a single defined model for audio metadata. As a conceptual metadata model, ADM <a href="https://www.thebroadcastbridge.com/content/entry/18540/baking-a-cake-with-the-audio-definition-model">provides</a> the metadata for authoring and rendering audio content; it does not hold any audio data. When used with <a href="https://www.itu.int/rec/R-REC-BS.2088-1-201910-I/en">Recommendation ITU-R BS.2088</a>, a recommendation that defines "wave-file based formats such as the BW64 format", ADM metadata can be embedded into an audio file.</p>
+			<p>An ADM element is <a href="https://adm.ebu.io/background/what_is_the_adm.html">typically</a> represented by an XML element, with its parameters specified either using attributes or sub-elements. The <a href="https://www.itu.int/dms_pubrec/itu-r/rec/bs/R-REC-BS.2076-2-201910-I!!PDF-E.pdf">specification</a> does not prohibit the use of JSON or other data standards to hold the descriptive information. See "2.2 Brief Overview" for further detail.</p>
+			<p>ADM descriptions <a href="https://adm.ebu.io/background/what_is_the_adm.html">can include</a> technical aspects, such as a location placement, or content description, such as the language of the dialogue on the track. This information is used by audio processors to make decisions about the audio, such as where to place each audio channel in a complex setup, choose which channels to use, or improve the quality of the audio signals. ADM is not prescriptive about how the rendering should happen; it only holds contextual metadata about the purpose of each channel.</p>
+			<p>ADM <a href="https://adm.ebu.io/background/audio_types.html">defines</a> audio in five categories: channel, scene, object, matrix, and binaural.</p>
+			<ul>
+				<li>Channel-based: This is where an audio signal is expected to be delivered eventually to a loudspeaker without any need for modification. For example, "mono" or "stereo" settings. In ADM terminology channel-based audio is called 'DirectSpeakers.'</li>
+				<li>Scene-based: This is when channels represent a speaker-independent representation of a soundfield. This includes Ambisonics and Higher Order Ambisonics (HOA).</li>
+				<li>Object-based: This is where each audio channel has positional metadata or other properties attached to it."</li>
+				<li>Matrix-based: This is when combinations of audio channels are combined via matrix equations to generate other channels.</li>
+				<li>Binaural-based: This is for spatial audio that is intended to be played over headphones.</li>
+			</ul>
+			<p>The <a href="https://www.itu.int/dms_pubrec/itu-r/rec/bs/R-REC-BS.2076-2-201910-I!!PDF-E.pdf">specification</a> outlines a few use cases:</p>
+			<ul>
+				<li>1) applications requiring a generic metadata model for, and a formalized description of, custom/proprietary audio formats and content (including codecs);</li>
+				<li>2) generating and parsing audio metadata with general-purpose tools, such as text editors; </li>
+				<li>3) an organizationʼs internal production developments, where multi-purpose metadata needs to be added;</li>
+				<li>4) a human-readable and hand-editable file for describing audio configurations (such as describing a mixing studio channel configuration) in a consistent and translatable format is needed.</li>
+			</ul>
+			<p>The initial publication of the standard was in 2016, with an updated edition published in 2019. The differences between editions are relatively sparse. They include more clarification on a number of elements, more flexibility in the usage of elements among each other and type of values, plus more explanatory text added in several sections. <a href="https://www.itu.int/dms_pubrec/itu-r/rec/bs/R-REC-BS.2076-2-201910-I!!PDF-E.pdf">Annex 1</a> of the standard outlines the full list.</p>
+			<p>The standard cites other sources to support the argument for the need for this format: <a href="https://www.itu.int/pub/R-REP-BS.2266">Report ITU-R BS.2266</a> and Recommendations <a href="https://www.itu.int/rec/R-REC-BS.1909/en">ITU-R BS.1909</a> and <a href="https://www.itu.int/rec/R-REC-BS.1909/en">ITU-R BS.2051</a>.
+            </p>
+			<p>ADM is designed to be a general model and can be embedded into several audio formats. It has a defined relationship with BW64 file format, specified in Recommendation <a href="https://www.itu.int/rec/R-REC-BS.2088/en">ITU-R BS.2088</a>.
+            </p>
+		</fdd:description>
+		<fdd:shortDescription>Audio Definition Model (ADM) is a standardized metadata model for describing the technical properties of audio. ADM's purpose is to formalize descriptions of audio placement. As a conceptual metadata model, ADM provides the metadata for authoring and rendering audio content, it does not hold any audio data. When used with ITU-R BS.2088, ADM metadata can be embedded into an audio file.</fdd:shortDescription>
+		<fdd:productionPhase>It is an open specification, codec-agnostic and <a href="https://www.thebroadcastbridge.com/content/entry/18540/baking-a-cake-with-the-audio-definition-model">does not define the delivery process</a>. It doesn't tie producers into any codec or a specific ecosystem during production.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Extension of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000075</fdd:id>
+					<fdd:shortName>XML</fdd:shortName>
+					<fdd:titleName>XML (Extensible Markup Language)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000001</fdd:id>
+					<fdd:shortName>WAVE</fdd:shortName>
+					<fdd:titleName>WAVE Audio File Format</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>ADM can be embedded into WAVE Audio File Format.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000013</fdd:id>
+					<fdd:shortName>MXF</fdd:shortName>
+					<fdd:titleName>Material Exchange Format (MXF)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>The ADM specification references MXF in 5.9.3 MXF Sub-elements and in the Appendices as capable of using ADM to allow for a comprehensive format description of the audio.. ADM includes an <a href="https://adm.ebu.io/reference/adm_elements/audio_track_uid.html#description">audioMXFLookUp</a> subelement.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:comment>BW64. Not described at this time. The EBU ADM Guidelines has a page dedicated to <a href="https://adm.ebu.io/reference/excursions/bw64_and_adm.html">BW64 and ADM</a>.
+                </fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None</fdd:experience>
+		<fdd:preference>See the Library of Congress Recommended Formats Statement for format preferences for <a href="https://www.loc.gov/preservation/resources/rfs/audio.html">audio works</a>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully disclosed by the International Telecommunication Union (ITU).</fdd:disclosure>
+		<fdd:documentation>
+			<p>
+				<a href="https://www.itu.int/dms_pubrec/itu-r/rec/bs/R-REC-BS.2076-2-201910-I!!PDF-E.pdf">BS.2076 : Audio Definition Model": Recommendation BS.2076-2 (10/2019)</a>. The scope is defined as: "This Recommendation describes the structure of a metadata model that allows the format and content of audio files to be reliably described. This model, called the Audio Definition Model (ADM), specifies how XML metadata can be generated to provide the definitions of tracks in an audio file."</p>
+			<p>EBU hosts an <a href="https://adm.ebu.io/reference/elements_intro.html">ADM Elements reference page</a> for all ADM elements and parameters and an <a href="https://adm.ebu.io/reference/excursion_intro.html">Excursion page</a> that covers other detailed information on other related aspects of the specification.</p>
+			<p>
+				<a href="https://tech.ebu.ch/docs/tech/tech3364.pdf">EBU Tech 3364 Audio Definition Model Metadata Specification</a>. Version 2 (final). June 2018. EBU Tech 3364 says "To avoid any confusion and duplication of standardization effort that will arise from there being two separate specifications of the Audio Definition Model, the EBU has decided that Recommendation ITU-R BS.2076 should exclusively be used." However, some older references may still cite this standard.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>Widely used across major audio systems, including <a href="https://steinberg.help/nuendo/v10/en/cubase_nuendo/topics/exchanging_files_with_other_applications/exchanging_files_with_other_applications_adm_files_c.html">Dolby products</a>. A group of audio industry companies have adopted ADM as an <a href="https://immersive-audio-live.github.io/ADM-OSC/">Open Sound Control dictionary specification</a>.
+            </p>
+			<p>
+				<a href="https://danishsoundcluster.dk/adm-nga-delivery/">The Audio Definition Model and Delivery of Next Generation Audio panel</a> (February 2022) acknowledges that ADM is being used for the BBC by their R&amp;D team to handle some of their emerging content. A <a href="https://www.aes.org/e-lib/browse.cfm?elib=21729">talk</a> held at the Audio Engineering Society conference in May 2022 by the BBC, University of Southampton, and Sonos, Inc. also promotes the use and adoption of ADM.</p>
+			<p>David Marston of the BCC submitted a W3C proposal in 2013 entitled "<a href="https://www.w3.org/2013/10/tv-workshop/papers/webtv4_submission_4.pdf">The Audio Definition Model: Position paper for the Fourth W3C Web and TV Workshop</a>" promoting the significance of the format.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>No special issues. Comments welcome.</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>The specification and reference website both give several examples of use and what that looks like, which is helpful for understanding what the spec looks like in practice and how one might write something to implement it.</p>
+			<p>Structure is text-based metadata and both human- and machine-readable. The specification and reference website give examples of usage and how the specification can be implemented. Tooling is available from the BBC. The <a href="https://www.bbc.co.uk/rd/publications/audio-definition-model-software">BBC Audio Toolbox</a> is a suite of C++ libraries for manipulating object-based audio and ADM based BWF files.</p>
+			<p>See also: <fddLink id="fdd000075">XML</fddLink>.
+            </p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>ADM is a metadata format. The format self-defines in its XML namespaces. See also: <fddLink id="fdd000075">XML</fddLink>.
+        </fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			<p>Listening to audio that has ADM metadata requires a renderer.</p>
+			<p>EBU <a href="https://adm.ebu.io/background/rendering.html">has developed</a> the <a href="https://github.com/ebu/ebu_adm_renderer">EAR</a> (EBU ADM Renderer), which is an open-source renderer written in Python. It has been designed to be a baseline reference for rendering from ADM metadata.</p>
+			<p>Other renderers have been developed for MPEG-H, Dolby, and DTS, as documented by the EBU ADM Guidelines page on <a href="https://adm.ebu.io/background/rendering.html">rendering</a>.
+            </p>
+		</fdd:externalDependencies>
+		<fdd:techProtection>None.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:soundQF>
+			<fdd:normalSound>This format does not render sound.</fdd:normalSound>
+			<fdd:fidelity>This format was created to support structuring high fidelity in complex audio systems.
+            </fdd:fidelity>
+			<fdd:channels>This format was created to support structuring multiple sound channels.</fdd:channels>
+			<fdd:beyondSound>Does not render sound.
+            </fdd:beyondSound>
+		</fdd:soundQF>
+		<fdd:textQF>
+			<fdd:normalText>This is a text-based metadata structure, usually stored as XML. It is both human-readable and machine-readable.</fdd:normalText>
+			<fdd:structure>The structure is typically XML, but may be another data format such as JSON. Nested values represent the different categories of elements. There are 11 elements: audioTrackFormat, audioStreamFormat, audioChannelFormat, audioBlockFormat, audioPackFormat, audioObject, audioContent, audioProgramme, audioTrackUID, audioFormatExtended, and Time parameters format.</fdd:structure>
+			<fdd:layout>Represents layout semantics that are important to the display of scores, such as: whether directions should go above or below a staff; spacing for staves; and scaling of features relative to a single measure that can be adjusted to fit a particular pagesize.</fdd:layout>
+			<fdd:mathDiag>None.</fdd:mathDiag>
+		</fdd:textQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000075">XML</fddLink>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:other>
+				<fdd:tag>XML DOCTYPE declaration</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000075">XML</fddLink>.
+                    </fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>PRONOM has no corresponding entry as of April 2024.
+                    </fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q99529230</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q99529230">https://www.wikidata.org/wiki/Q99529230</a>.
+                    </fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:history>
+            On the intent behind development, the <a href="https://www.itu.int/dms_pubrec/itu-r/rec/bs/R-REC-BS.2076-2-201910-I!!PDF-E.pdf">specification</a> says: "Audio for broadcasting and cinema is evolving towards an immersive and interactive experience, which requires the use of more flexible audio formats. A fixed channel-based approach is not sufficient to encompass these developments and so combinations of channel, object and scene-based formats are being developed." According to <a href="https://www.wikidata.org/wiki/Q99529230">Wikidata</a>, the standard was initially released on June 17, 2015. Version 2 of the release <a href="https://www.itu.int/rec/R-REC-BS.2076/">was published</a> October 2019.
+        </fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.itu.int/rec/R-REC-BS.2076/</link>
+					<tag>"BS.2076 : Audio Definition Model". International Telecommunication Union.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://adm.ebu.io/reference/elements_intro.html</link>
+					<tag>ADM elements reference. European Broadcasting Union.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Related specifications</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://tech.ebu.ch/docs/tech/tech3364.pdf</link>
+							<tag>"TECH 3364: Audio Definition Model Metadata Specification" European Broadcast Union. June 2018.</tag>
+							<comment>Note: "To avoid any confusion and duplication of standardization effort that will arise from there being two separate specifications of the Audio Definition Model, the EBU has decided that Recommendation ITU-R BS.2076 should exclusively be used."</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.itu.int/pub/R-REP-BS.2266</link>
+							<tag>"ITU-R BS.2266": # Framework of future audio representation systems.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.itu.int/rec/R-REC-BS.1909/en</link>
+							<tag>"Recommendation BS.1909. "Performance requirements for an advanced multichannel stereophonic sound system for use with or without accompanying picture" Approved in January 2012.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.itu.int/rec/R-REC-BS.2051/en</link>
+							<tag>Recommendation BS.2051. Approved in 2022-05 (three previous editions, first in 02/2014). Advanced sound system for programme production.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.itu.int/rec/R-REC-BS.2088/en</link>
+							<tag>Recommendation ITU-R BS.2088 – Long-form file format for the international exchange of audio programme materials with metadata</tag>
+							<comment>This recommendation defines "wave-file based formats such as the BW64 format", which ADM is compatible with.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.itu.int/rec/R-REC-BS.1352/en </link>
+							<tag>Recommendation ITU-R BS.1352 – File format for the exchange of audio programme materials with metadata on information technology media.</tag>
+							<comment>This recommendation defines BWF, which ADM is compatible with.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://adm.ebu.io/</link>
+					<tag>"EBU ADM Guidelines: Introduction". European Broadcasting Union.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://adm.ebu.io/background/what_is_the_adm.html</link>
+					<tag>"EBU ADM Guidelines : What is the ADM?" European Broadcasting Union. </tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.thebroadcastbridge.com/content/entry/18540/baking-a-cake-with-the-audio-definition-model</link>
+					<tag>"Baking A Cake With The Audio Definition Model". Kevin Emmott. June 10, 2022.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://adm.ebu.io/background/audio_types.html</link>
+					<tag>"EBU ADM Guidelines: Types of Audio". European Broadcasting Union.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://adm.ebu.io/reference/adm_elements/audio_track_uid.html#description</link>
+					<tag>"EBU ADM Guidelines: audioTrackUID". European Broadcasting Union.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://adm.ebu.io/reference/excursions/bw64_and_adm.html</link>
+					<tag>"EBU ADM Guidelines: BW64 and ADM". European Broadcasting Union.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://adm.ebu.io/reference/elements_intro.html</link>
+					<tag>"EBU ADM Guidelines: ADM Elements". European Broadcasting Union.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://adm.ebu.io/reference/excursion_intro.html</link>
+					<tag>"EBU ADM Guidelines: Excursions". European Broadcasting Union.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://steinberg.help/nuendo/v10/en/cubase_nuendo/topics/exchanging_files_with_other_applications/exchanging_files_with_other_applications_adm_files_c.html</link>
+					<tag>"Nuendo 10.3.0 Operating Manual: ADM Files" Steinberg Media Technologies GmbH. 2024.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://danishsoundcluster.dk/adm-nga-delivery/</link>
+					<tag>"The Audio Definition Model and Delivery of Next Generation Audio". Danish Sound Cluster. February 8, 2022.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.w3.org/2013/10/tv-workshop/papers/webtv4_submission_4.pdf</link>
+					<tag>"The Audio Definition Model: Position paper for the Fourth W3C Web and TV Workshop". David Marston. 2013.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.aes.org/e-lib/browse.cfm?elib=21729</link>
+					<tag>"Developing a Binaural Renderer for Audio Definition Model Content"  Nixon, Thomas; Franck, Andreas; Pike, Chris; Reich, Galen  May 2, 2022.</tag>
+					<comment>Presentation at the 152nd Audio Engineering Society Convention.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://immersive-audio-live.github.io/ADM-OSC/</link>
+					<tag>ADM-OSC Specification.</tag>
+					<comment>An OSC dictionary that implements the Audio Definition Model (ADM).</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.bbc.co.uk/rd/publications/audio-definition-model-software</link>
+					<tag>"Audio Definition Model Software". David Marston. November 2015.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://adm.ebu.io/background/rendering.html</link>
+					<tag>"EBU ADM Guidelines: Rendering". European Broadcasting Union.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/ebu/ebu_adm_renderer</link>
+					<tag>"EBU ADM Renderer (EAR)". European Broadcasting Union.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q99529230</link>
+					<tag>Wikidata entry for Q99529230</tag>
+					<comment>Information in Wikidata about Audio Definition Model. Wikidata Title ID: Q99529230.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
