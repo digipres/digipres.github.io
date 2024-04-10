@@ -17,7 +17,7 @@
 			</fdd:gdfrDomain>
 		</fdd:gdfrDomains>
 		<fdd:updates>
-			<fdd:date>2023-07-11</fdd:date>
+			<fdd:date>2024-04-15</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Partial</fdd:draftStatus>
 	</fdd:properties>
@@ -30,6 +30,12 @@
 		<fdd:description>
 			<p>Variant of the TIFF format that uses 64-bit offsets thereby supporting files up to 18,000 petabytes in size, vastly transcending TIFF&apos;s normal 4 GB limit.  Since the format also supports all of the normal features and header tags of TIFF_6 and the extended metadata offered by GeoTIFF, it provides good service in the GIS domain, medical imaging, and other applications that employ large scanners or cameras.</p>
 			<p>One limiting factor for <fddLink id="fdd000022">TIFF</fddLink> is file size. As described in <a href="https://www.microimages.com/documentation/TechGuides/74bigTIFF.pdf">Use and Export BigTIFF Files</a>, "in the standard TIFF format, [the] offset is specified by a 32-bit integer (4 bytes). The largest offset that can be specified is thus 232 bytes, or 4 GB." The post <a href="https://www.artwork.com/raster/bigtiff.htm">BigTIFF - Exceeding the 4 GB Limit</a> from 2018 adds that "most desktop computers had about 2-4 MBytes of RAM at that time so a 4 GB limit seemed to have plenty of head room." But this 4 GB maximum file size limit is a hindrance when dealing with detailed, complex or large images. In 2004, BigTIFF was founded which changed the offset value as a 64-bit integer (8 bytes) which extends the theoretical maximum file size to 18,000 PB (petabytes).</p>
+			<p>As explained in <a href="http://bigtiff.org/#FILE_FORMAT">Welcome to the BigTIFF version of the libtiff library</a> and <a href="https://www.awaresystems.be/imaging/tiff/bigtiff.html">The BigTIFF File Format</a>, there are several significant differences between the the format of a BigTIFF file and a standard TIFF file:</p>
+			<ul>
+				<li>In the file header, BigTIFF is declared as 0x002B (43) at offset 2 bytes as compared with the TIFF version of 0x002A (42) </li>
+				<li>Bytesize of offsets is always 8 in BigTIFF (not present in TIFF)</li>
+				<li>IFD (Image File Directory) takes up 20 bytes in BigTIFF as opposed to 12 in TIFF</li>
+			</ul>
 		</fdd:description>
 		<fdd:shortDescription>A variant TIFF format, BigTIFF  transcends TIFF&apos;s 4 GB TIFF limit using 64-bit offsets thereby supporting files up to 18,000 petabytes in size.</fdd:shortDescription>
 		<fdd:productionPhase/>
@@ -132,9 +138,15 @@
 			</fdd:internetMediaType>
 			<fdd:magicNumbers>
 				<fdd:sigValues>
-					<fdd:sigValue>Hex: 4d 4d 00 2b</fdd:sigValue>
+					<fdd:sigValue>4d 4d 00 2b</fdd:sigValue>
 				</fdd:sigValues>
 				<fdd:note>Big-endian signature.  From <a href="http://fileformats.archiveteam.org/wiki/TIFF">http://fileformats.archiveteam.org/wiki/TIFF</a>.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>49492B0008000000</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Big-endian signature.  From <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/1917">http://www.nationalarchives.gov.uk/PRONOM/fmt/1917</a>.</fdd:note>
 			</fdd:magicNumbers>
 			<fdd:magicNumbers>
 				<fdd:sigValues>
@@ -142,11 +154,19 @@
 				</fdd:sigValues>
 				<fdd:note>Little-endian signature.  From <a href="http://fileformats.archiveteam.org/wiki/TIFF">http://fileformats.archiveteam.org/wiki/TIFF</a>.</fdd:note>
 			</fdd:magicNumbers>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>4D4D002B00080000</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Little-endian signature.  From <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/1917">http://www.nationalarchives.gov.uk/PRONOM/fmt/1917</a>.</fdd:note>
+			</fdd:magicNumbers>
 			<fdd:other>
 				<fdd:tag>Pronom PUID</fdd:tag>
 				<fdd:values>
-					<fdd:sigValueNA>See note.</fdd:sigValueNA>
-					<fdd:note>No PRONOM PUID as of July 2023</fdd:note>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/1917</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/1917">http://www.nationalarchives.gov.uk/PRONOM/fmt/1917</a>.</fdd:note>
 				</fdd:values>
 			</fdd:other>
 			<fdd:other>
@@ -155,7 +175,8 @@
 					<fdd:sigValues>
 						<fdd:sigValue>Q28205771</fdd:sigValue>
 					</fdd:sigValues>
-					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q28205771">https://www.wikidata.org/wiki/Q28205771</a>.</fdd:note>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q28205771"/>.
+					</fdd:note>
 				</fdd:values>
 			</fdd:other>
 		</fdd:signifiersGroup>
@@ -298,6 +319,13 @@ When built with internal libtiff or with libtiff &gt;= 4.0, GDAL also supports r
 				<fdd:urlReference>
 					<link>https://www.microimages.com/documentation/TechGuides/74bigTIFF.pdf</link>
 					<tag>Use and Export BigTIFF Files</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/pronom/fmt/1917</link>
+					<tag>PRONOM entry for fmt/1917</tag>
+					<comment>Information in PRONOM from UK National Archives about BigTIFF. PUID: fmt/1917.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
