@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000199" titleName="Shorten Lossless Audio Compression Format (SHN), Version 3.5.1" shortName="SHN_3_5_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000199" titleName="Shorten Lossless Audio Compression Format (SHN), Version 3.5.1" shortName="SHN_3_5_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>sound</fdd:gdfrGenre>
@@ -12,7 +12,7 @@
 		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2011-02-25</fdd:date>
+			<fdd:date>2024-04-16</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Partial (low priority for LC)</fdd:draftStatus>
 	</fdd:properties>
@@ -21,7 +21,7 @@
 		<fdd:keywords>
 			<fdd:keyword>audio formats</fdd:keyword>
 		</fdd:keywords>
-		<fdd:description>Format used to losslessly compress LPCM audio files.  According to the <a href="http://en.wikipedia.org/wiki/Shorten">Wikipedia article on Shorten</a> (consulted February 25, 2011), this capability is limited to CD-quality (44.1 kHz 16-bit stereo) source material.  The article also reports that since few players or media writers decompress Shorten files, a standalone decompression program is usually required to transcode Shorten data for playback; see Notes below.</fdd:description>
+		<fdd:description>Format used to losslessly compress LPCM audio files.  According to the <a href="https://en.wikipedia.org/wiki/Shorten_(codec)">Wikipedia article on Shorten</a> (consulted February 25, 2011), this capability is limited to CD-quality (44.1 kHz 16-bit stereo) source material.  The article also reports that since few players or media writers decompress Shorten files, a standalone decompression program is usually required to transcode Shorten data for playback; see Notes below.</fdd:description>
 		<fdd:shortDescription>Format used to losslessly compress LPCM audio files.</fdd:shortDescription>
 		<fdd:relationships>
 			<fdd:relationship>
@@ -77,20 +77,40 @@
 				</fdd:sigValues>
 			</fdd:filenameExtension>
 			<fdd:internetMediaType>
-				<fdd:sigValueNA>Not found.</fdd:sigValueNA>
+				<fdd:sigValues>
+					<fdd:sigValue>application/x-shorten</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://en.wikipedia.org/wiki/Shorten_(codec)">Wikipedia Shorten article</a>. </fdd:note>
 			</fdd:internetMediaType>
 			<fdd:magicNumbers>
 				<fdd:sigValues>
 					<fdd:sigValue>Hex: 61 6A 6B 67 02 FB</fdd:sigValue>
 					<fdd:sigValue>ASCII: ajkg</fdd:sigValue>
 				</fdd:sigValues>
-				<fdd:note>From <a href="http://filext.com/">File Extension Source</a>.</fdd:note>
+				<fdd:note>From <a href="https://filext.com/">File Extension Source</a>.</fdd:note>
 			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>No PRONOM PUID as of April 2024.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>https://www.wikidata.org/wiki/Q597450</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q597450">https://www.wikidata.org/wiki/Q597450</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
-		<fdd:general>Regarding decompression tools, the <a href="http://en.wikipedia.org/wiki/Shorten">Wikipedia Shorten article</a> (consulted on February 25, 2011) reports, &quot;Some Rockbox applications can play Shorten files without decompression, and a third-party Shorten plug-in exists for Nero Burning ROM, but these are the only known players to be able to do so. All libavcodec based players and converters support the Shorten codec.&quot;</fdd:general>
-		<fdd:history>According to the <a href="http://en.wikipedia.org/wiki/Shorten">Wikipedia Shorten article</a> (consulted August 25, 2006; details deleted prior to February 25, 2011), &#34;the Shorten algorithm and the reference code that implement it were developed by Tony Robinson of Cambridge University in 1992/1993 and later assigned to SoftSound, Ltd. The code was made available under a generous non-commercial license and has since been extended by Wayne Stielau to include seek tables so that one may seek within individual tracks when playing the files on one's computer.&#34;</fdd:history>
+		<fdd:general>Regarding decompression tools, the <a href="https://en.wikipedia.org/wiki/Shorten_(codec)">Wikipedia Shorten article</a> (consulted on February 25, 2011) reports, &quot;Some Rockbox applications can play Shorten files without decompression, and a third-party Shorten plug-in exists for Nero Burning ROM, but these are the only known players to be able to do so. All libavcodec based players and converters support the Shorten codec.&quot;</fdd:general>
+		<fdd:history>According to the <a href="https://en.wikipedia.org/wiki/Shorten_(codec)">Wikipedia Shorten article</a> (consulted August 25, 2006; details deleted prior to February 25, 2011), &#34;the Shorten algorithm and the reference code that implement it were developed by Tony Robinson of Cambridge University in 1992/1993 and later assigned to SoftSound, Ltd. The code was made available under a generous non-commercial license and has since been extended by Wayne Stielau to include seek tables so that one may seek within individual tracks when playing the files on one's computer.&#34;</fdd:history>
 	</fdd:notes>
 	<fdd:formatSpecifications>
 		<fdd:urls>
@@ -109,6 +129,25 @@
 				<fdd:urlReference>
 					<link>http://en.wikipedia.org/wiki/Shorten</link>
 					<tag>Wikipedia entry for Shorten</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q597450</link>
+					<tag>Wikidata entry for Q597450</tag>
+					<comment>Information in Wikidata about Shorten. Wikidata Title ID: Q597450.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://preservation.tylerthorsted.com/2024/04/05/shorten/</link>
+					<tag>SHORTENm blog post by Tyler Thorsted on Obsolete Thor: Ramblings of a File Format researcher. April 5. 2024</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://userpages.umbc.edu/~hamilton/shnfaq.html</link>
+					<tag>A Small SHN and MD5 FAQ. Last updated 01/28/03</tag>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
