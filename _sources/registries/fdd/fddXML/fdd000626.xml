@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000626" titleName="ArcGIS Layer File" shortName="Lyrx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>any</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2024-04-15</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ArcGIS Layer File</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>system formats</fdd:keyword>
+			<fdd:keyword>metadata formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>ArcGIS Layer Files are proprietary GIS metadata storage files used in Esri products. These files store all settings for Layer file properties. According to Esri, this includes <a href="https://support.esri.com/en-us/knowledge-base/faq-what-information-is-stored-in-a-layer-lyr-file-000004904">anything that a Layer file can store</a>, including symbology, symbology classifications, labeling properties, scale ranges, feature templates, and definitions. This includes color shading, naming, and label properties. According to Esri, Layer files <a href="https://support.esri.com/en-us/knowledge-base/faq-what-information-is-stored-in-a-layer-lyr-file-000004904">do not contain</a> geographic data, but rather act as a pointer to a dataset's physical location. Layer Files <a href="https://gisgeography.com/gis-formats/">ensure</a> the same symbology will be displayed on another map. As outlined in the ArcGIS documentation, there are <a href="https://pro.arcgis.com/en/pro-app/latest/arcpy/mapping/layer-class.htm">numerous types of layers</a>, and not all of them support the same set of properties.</p>
+			<p>ArcGIS Layer Files are <a href="https://www.lib.ncsu.edu/gis/formats">directly readable</a> only by ArcGIS software. ArcGIS Pro offers a Python SDK, <a href="https://pro.arcgis.com/en/pro-app/latest/arcpy/mapping/layer-class.htm">arcpy.mp</a>, which can access information about the layers. The <a href="https://pro.arcgis.com/en/pro-app/latest/arcpy/mapping/layer-class.htm">ArcGIS documentation</a> outlines, in detail, what Layer files can store. To use an ArcGIS Layer File, the user <a href="https://www.lib.ncsu.edu/gis/formats">must also have</a> an associated data file with the same prefix name saved in the same part of the filesystem.</p>
+			<p>ArcGIS Layer Files are defined as having LYRX or LYR as a file extension. While LYR and LYRX files are intended for the same purpose, they are technically distinct from each other. LYRX files are in a JSON-based text format and LYR files are an OLE2-based binary format. ArcGIS Pro <a href="https://pro.arcgis.com/en/pro-app/latest/arcpy/mapping/layerfile.htm">can read</a> legacy LYR files but can only save as LYRX files.</p>
+			<p>LYRX files are the extension <a href="https://gisgeography.com/gis-formats/">used in</a> Esri's ArcGIS Pro. LYRX files <a href="https://pro.arcgis.com/en/pro-app/latest/arcpy/mapping/layerfile.htm">can store</a> multiple layers and/or multiple group layers at the root level.</p>
+			<p>LYR files are the extension used in Esri's <a href="https://gisgeography.com/gis-formats/">ArcGIS versions 10.X</a> and <a href="https://pro.arcgis.com/en/pro-app/latest/arcpy/mapping/layerfile.htm">ArcGIS Desktop</a>. LYR files can only store a single layer or a single group layer at the root level. A group layer can have multiple layers or group layers within it.</p>
+			<p>ArcGIS Layer Files are often found alongside Esri<a href="https://en.wikipedia.org/wiki/Shapefile">Shapefiles</a>. According to North Carolina State University, the Shapefile is <a href="https://www.lib.ncsu.edu/gis/formats">considered an industry standard</a> geospatial data format, and widely compatible with other GIS software. Shapefiles comprise of at least three files that must all be saved in the same workspace.</p>
+			<p>In ArcMap, Layer files are created by right-clicking a feature class. In ArcGIS Pro, creating Layer Files depends on if the user is creating individual or group Layer Files. Layers <a href="https://pro.arcgis.com/en/pro-app/latest/arcpy/mapping/layer-class.htm">can be referenced</a> from within a project using the listLayers method in the Map or LayerFile class. More information about a layer <a href="https://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#//000v0000002t000000">can be retrieved</a> by inspecting the Describe Object returned by the layer property.</p>
+		</fdd:description>
+		<fdd:shortDescription>ArcGIS Layer Files are proprietary GIS metadata storage files used in Esri products. These files store all settings for Layer file properties. This includes anything that a Layer file can store, including symbology, symbology classifications, labeling properties, scale ranges, feature templates, definitions, and more. This includes color shading, naming, and label properties. Layer files do not contain geographic data, but rather act as a pointer to a dataset's physical location. Layer Files ensure the same symbology will be displayed on another map. There are numerous types of layers, and not all of them support the same set of properties.</fdd:shortDescription>
+		<fdd:productionPhase>Designed primarily as a middle-state format and used during production to save and share the state of maps and their properties.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has earlier version</fdd:typeOfRelationship>
+				<fdd:comment>LYR. LYR files are <a href="http://fileformats.archiveteam.org/wiki/ArcGIS_Layer">derived from</a> the "<a href="https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-oleds/fdc5e702-d09e-4344-a77f-eb079d41f23f">OLE2</a>" document container format" family, as seen in North Road's SLYR software <a href="https://github.com/north-road/slyr/tree/master/slyr_community/test/lyr">LYR sample files</a>. Not described separately on this site at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has extension</fdd:typeOfRelationship>
+				<fdd:comment>Layer Package File (LPK). A layer can also be saved with its data as <a href="https://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#//00s500000013000000.htm">a layer package</a>. This format is a ZIP package fdd000354). Not described separately on this site at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000381</fdd:id>
+					<fdd:shortName>JSON</fdd:shortName>
+					<fdd:titleName>JSON (JavaScript Object Notation)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>LYRX files are JSON-based.
+                </fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library has many ArcGIS Layer File files in its digital collections especially in the Geography and Map Division - over 160,000 in 2024 - across numerous collections.</fdd:experience>
+		<fdd:preference>See the Library of Congress Recommended Formats Statement for format preferences for <a href="https://www.loc.gov/preservation/resources/rfs/geo-carto.html">GIS, Geospatial and Non-GIS Cartographic</a> content.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Little documentation. Developed and owned by <a href="https://www.esri.com/en-us/about/about-esri/overview">Esri</a>.
+        </fdd:disclosure>
+		<fdd:documentation>
+			<p>Limited documentation around the file format itself, with some documentation featuring how to use the format within the context of the applications.</p>
+			<p>Esri publishes a <a href="https://github.com/Esri/cim-spec">Cartographic Information Model</a> specification on GitHub including the <a href="https://github.com/Esri/cim-spec/blob/main/docs/v3/CIMDocument.md#cimlayerdocument">CIMLayerDocument definition</a> used for saving LYRX files.</p>
+		</fdd:documentation>
+		<fdd:adoption>For use in ArcMap, ArcGIS, and ArcGIS Pro.</fdd:adoption>
+		<fdd:licensingAndPatents>Software is made by <a href="https://www.esri.com/en-us/about/about-esri/overview">Esri</a>, with no specific licensing or patents for the file format. <a href="../contact_format.shtml">Comments welcome</a>.
+        </fdd:licensingAndPatents>
+		<fdd:transparency>Used exclusively with Esri software, which requires <a href="https://www.esri.com/en-us/store/overview">purchase of a license</a>. This proprietary, commercial software <a href="https://www.esri.com/en-us/arcgis/about-arcgis/overview">supports</a> Windows, Linux, and cloud-based applications. There is no native macOS support documented by Esri.</fdd:transparency>
+		<fdd:selfDocumentation>LYRX files self-identify within JSON with type, version, and build key:value pairs. The value of "type" will equal "CIMLayerDocument", as seen in <a href="https://github.com/arc2qgis/lyrxtoqml/tree/master/lyrx%20samples">sample files</a> shared by the arc2qgis software. LYRX files <a href="https://pro.arcgis.com/en/pro-app/latest/arcpy/geoprocessing_and_python/setting-output-symbology-in-scripts.htm#ESRI_SECTION1_31435DDD201E40F3BB421F62230B42EB">can be opened and viewed</a> with a text editor.</fdd:selfDocumentation>
+		<fdd:externalDependencies>These files work exclusively with ArcMap, ArcGIS, and ArcGIS Pro. File conversion will be required to use with other software platforms, including those not yet built. Layer files saved from ArcGIS Pro <a href="https://www.esri.com/about/newsroom/arcuser/creating-and-using-layer-files-in-arcgis-pro/)">cannot be used</a> in ArcMap, according to Esri. There are ways to map files to another format, for example North Road's <a href="https://north-road.com/slyr/">SLYR</a> tool converts LYR or LYRX files to other formats.</fdd:externalDependencies>
+		<fdd:techProtection>
+            None. <a href="../contact_format.shtml">Comments welcome</a>.
+        </fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:accessSoftware>
+                ArcGIS Pro offers a Python SDK, arcpy.mp, which can be used to access information about the layers.
+            </fdd:accessSoftware>
+			<fdd:dataDocumentation>This format holds metadata for use in ArcGIS products.</fdd:dataDocumentation>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>lyrx</fdd:sigValue>
+					<fdd:sigValue>lyr</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>ArcGIS Layer Files have an LYR or LYRX extension, as per the <a href="https://pro.arcgis.com/en/pro-app/latest/arcpy/mapping/layerfile.htm">documentation</a>. While the extensions are used interchangeably in the documentation, the file formats are distinct.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>PRONOM has no corresponding entry as of March 2024.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>Wikidata has no corresponding entry as of March 2024.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:history>
+            ArcGIS was <a href="https://en.wikipedia.org/wiki/ArcGIS">first released</a> in 1999 as ARC/INFO, a command line-based GIS tool. This tool was then merged into ArcGIS Desktop, which eventually became ArcGIS Pro.
+        </fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications/>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.youtube.com/watch?v=ZGXblWDFknw</link>
+					<tag>"Using Layer Files in ArcMap and ArcGIS Pro", eGis Associates. May 21, 2020.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://support.esri.com/en-us/knowledge-base/faq-what-information-is-stored-in-a-layer-lyr-file-000004904</link>
+					<tag>"What information is stored in a layer (.lyr) file?", Esri.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://pro.arcgis.com/en/pro-app/latest/arcpy/mapping/layer-class.htm</link>
+					<tag>"Layer - ArcGIS Pro - Documentation". Esri.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://pro.arcgis.com/en/pro-app/latest/arcpy/mapping/layerfile.htm</link>
+					<tag>"LayerFile - ArcGIS Pro - Documentation". Esri.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://gisgeography.com/gis-formats/</link>
+					<tag>"The Ultimate List of GIS Formats and Geospatial File Extensions", GIS Geography, December 7, 2023.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Shapefile</link>
+					<tag>Wikipedia entry for Shapefile.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.lib.ncsu.edu/gis/formats</link>
+					<tag>"Geospatial Data Formats". NC State University Libraries.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#//000v0000002t000000</link>
+					<tag>ArcGIS Resource Center - Desktop 10 - Layer properties. Esri. October 28, 2011.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#//00s500000013000000.htm</link>
+					<tag>ArcGIS Resource Center - Desktop 10 - Saving layers and layer packages. Esri. August 2, 2012.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/Esri/cim-spec</link>
+					<tag>"Cartographic Information Model". Esri.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/Esri/cim-spec/blob/main/docs/v3/CIMDocument.md#cimlayerdocument</link>
+					<tag>"Cartographic Information Model: CIMLayerDocument". Esri.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.esri.com/en-us/about/about-esri/overview</link>
+					<tag>"About Esri". Esri.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.esri.com/en-us/store/overview</link>
+					<tag>"Esri Store". Esri.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/arc2qgis/lyrxtoqml/tree/master/lyrx%20samples</link>
+					<tag>"lyrxtoqml / lyrx samples". arc2qgis.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://pro.arcgis.com/en/pro-app/latest/arcpy/geoprocessing_and_python/setting-output-symbology-in-scripts.htm#ESRI_SECTION1_31435DDD201E40F3BB421F62230B42EB</link>
+					<tag>"Output symbology in scripts - CIM schema symbology". Esri.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.esri.com/about/newsroom/arcuser/creating-and-using-layer-files-in-arcgis-pro/</link>
+					<tag>"Creating and Using Layer Files in ArcGIS Pro". Esri. Fall 2019.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://north-road.com/slyr/</link>
+					<tag>"SLYR: the ESRI to QGIS Compatibility Suite". North Road.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/ArcGIS</link>
+					<tag>"ArcGIS". Wikipedia.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://gisdata.mn.gov/content/?q=help/preparing_layer_files</link>
+					<tag>Minnesota Geospatial Commons. "Preparing Layer Files for Publication" </tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://fileformats.archiveteam.org/wiki/ArcGIS_Layer</link>
+					<tag>"ArcGIS Layer". ArchiveTeam. January 19, 2023.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/north-road/slyr/tree/master/slyr_community/test/lyr</link>
+					<tag>LYR test files provided by North Road's SLYR software.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/arc2qgis/lyrxtoqml/tree/master/lyrx%20samples</link>
+					<tag>LYRX test files provided by arc2qgis software.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://resources.oreilly.com/examples/9781783559503</link>
+					<tag>ArcGIS for Desktop Cookbook. Daniela Docan. June 28, 2017.</tag>
+					<comment>Set of sample .LYR files.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/arc2qgis/qlyrx</link>
+					<tag>"qlyrx: This project enables using ArcGIS Pro symbology files (.lyrx) directly in QGIS.", arc2qgis.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
