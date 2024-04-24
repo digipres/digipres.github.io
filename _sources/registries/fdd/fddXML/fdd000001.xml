@@ -11,7 +11,7 @@
 		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
 		<fdd:updates>
-			<fdd:date>2022-04-19</fdd:date>
+			<fdd:date>2024-04-23</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -118,7 +118,7 @@
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
-		<fdd:experience>As of March 2021, The Library of Congress has over 150 TBs of files with the .wav extension in digital storage although the version of WAVE is not specified. For the Library&apos;s archival master format for reformatted mono and stereo analog sound recordings,  see <fddLink id="fdd000356">WAVE_BWF_1</fddLink>.</fdd:experience>
+		<fdd:experience>As of April 2024, The Library of Congress has over 176 TBs of files with the .wav extension in digital storage although the version of WAVE is not specified. For the Library&apos;s archival master format for reformatted mono and stereo analog sound recordings,  see <fddLink id="fdd000356">WAVE_BWF_1</fddLink>.</fdd:experience>
 		<fdd:preference>
 			<p>The Library of Congress Recommended Formats Statement (RFS) lists WAVE as a <a href="http://www.loc.gov/preservation/resources/rfs/audio.html">Preferred format</a> for Audio - Media-independent (digital). The RFS does not specify a version of WAVE. See also <fddLink id="fdd000356">WAVE_BWF_1</fddLink>.</p>
 		</fdd:preference>
@@ -127,16 +127,23 @@
 		<fdd:disclosure>Fully documented.  Proprietary format developed by Microsoft and IBM as part of the Resource Interchange File Format (RIFF) for Windows 3.1, with documentation freely available.</fdd:disclosure>
 		<fdd:documentation>Multimedia Programming Interface and Data Specifications 1.0. IBM Corporation and Microsoft Corporation, August 1991. Available online, e.g., at <a href="http://www.tactilemedia.com/info/MCI_Control_Info.html">http://www.tactilemedia.com/info/MCI_Control_Info.html</a>
 			<br/>
-			<br/>Multimedia Data Standards Update April 15, 1994 at <a href="http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/Docs/RIFFNEW.pdf">http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/Docs/RIFFNEW.pdf</a>
+			<br/>Multimedia Data Standards Update April 15, 1994 at <a href="https://www.mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/Docs/RIFFNEW.pdf">https://www.mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/Docs/RIFFNEW.pdf</a>
 		</fdd:documentation>
 		<fdd:adoption>
-			<p>Widely adopted. With LPCM encoding, a preferred or recommended format for sound in many long-term archives. Examples include <a href="https://library.stanford.edu/research/digitization-services/labs/stanford-media-preservation-lab/preservation-and-streaming-file">Stanford Library</a> (under preservation and streaming file formats), <a href="https://web.archive.org/web/20130620075307/http://www.collectionscanada.gc.ca/obj/012018/f2/012018-2200-e.pdf">Libraries and Archives Canada</a> (link via Internet Archive).</p>
+			<p>Widely adopted. With LPCM encoding, a preferred or recommended format for sound in many long-term archives. Examples include <a href="https://www.archives.gov/records-mgmt/policy/transfer-guidance-tables.html#digitalaudio">NARA's Transfer Guidance</a>, <a href="https://library-archives.canada.ca/eng/services/government-canada/information-disposition/managing-government-records/guidelines-information-management/pages/guidelines-file-formats-enduring-value.aspx">Libraries and Archives Canada</a>, and <a href="https://facile.cines.fr/">France's National Computer Center for Higher Education (CINES)</a>.</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>No licensing required.
 		</fdd:licensingAndPatents>
 		<fdd:transparency>Depends on audio codec employed for bitstream encoding (which may incorporate compression); see <fddLink id="fdd000011">LPCM</fddLink>, <fddLink id="fdd000039">&#181;-Law</fddLink>, <fddLink id="fdd000038">A-Law</fddLink>, <fddLink id="fdd000040">DPCM</fddLink>, and <fddLink id="fdd000041">ADPCM</fddLink>.
 		</fdd:transparency>
-		<fdd:selfDocumentation>Metadata can be placed in the INFO chunk (aka "LIST" chunk with a list type of "INFO") associated with all <fddLink id="fdd000025">RIFF</fddLink> files.  Additional metadata is a feature of the <i>bext</i> (Broadcast Audio Extension) associated with <fddLink id="fdd000003">WAVE_LPCM_BWF</fddLink> (Broadcast WAVE Audio File Format). Additional metadata chunks have been defined: aXML, iXML, and the CART/Audio Delivery Extension to BWF, from the Audio Engineering Society in AES46-2002.</fdd:selfDocumentation>
+		<fdd:selfDocumentation>
+			<p>Metadata can be placed in the INFO chunk (aka "LIST" chunk with a list type of "INFO") associated with all <fddLink id="fdd000025">RIFF</fddLink> files.  Additional metadata is a feature of the <i>bext</i> (Broadcast Audio Extension) associated with <fddLink id="fdd000003">WAVE_LPCM_BWF</fddLink> (Broadcast WAVE Audio File Format). Additional metadata chunks have been defined: aXML, iXML, and the CART/Audio Delivery Extension to BWF, from the Audio Engineering Society in AES46-2002.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>WAVE files have good support for accessibility features. Closed captions and transcriptions can be embedded within the Labeled Text chunk (ltxt) and identified as such with the 'Purpose' label. The <a href="http://www.tactilemedia.com/info/MCI_Control_Info.html">specification</a> includes the suggested Purpose value of 'capt' for closed-caption text and FADGI defines, in <a href="https://www.digitizationguidelines.gov/audio-visual/documents/BWF_Embed_Guideline_v3_2021.pdf">Guidelines for Embedding Metadata in Broadcast WAVE Files</a>, the Purpose value of 'tran' for transcription.</p>
+			<p>In common practice, typically WAVE and other audio file content is supported by external caption and subtitle formats such as <fddLink id="fdd000567">WebVTT</fddLink>. See <a href="https://www.w3.org/WAI/media/av/">W3C's Making Audio and Video Media Accessible</a> for more general information about accessibile sound and moving image media.</p>
+		</fdd:selfDocumentation>
 		<fdd:externalDependencies>None
 		</fdd:externalDependencies>
 		<fdd:techProtection>None
@@ -247,12 +254,11 @@
 				<fdd:urlReference>
 					<link>http://msdn.microsoft.com/en-us/library/ms713498.aspx</link>
 					<tag>WAVEFORMAT (structure)</tag>
-					<comment> </comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/Docs/RIFFNEW.pdf</link>
+					<link>https://www.mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/Docs/RIFFNEW.pdf</link>
 					<tag>Multimedia Data Standards Update</tag>
 					<comment>April 15, 1994. </comment>
 				</fdd:urlReference>
@@ -270,7 +276,7 @@
 		<fdd:urls>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html</link>
+					<link>https://www.mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html</link>
 					<tag>Audio File Format Specifications: WAVE or RIFF WAVE sound file</tag>
 					<comment>Site includes pointers to and local copies of significant documents.</comment>
 				</fdd:urlReference>
@@ -298,7 +304,7 @@ exchange of audio programme materials with metadata</tag>
 				<fdd:urlReference>
 					<link>https://web.archive.org/web/20061017071620/http://www.grammy.com/PDFs/Recording_Academy/Producers_And_Engineers/DeliveryRecs.pdf</link>
 					<tag>Recommendation for Delivery of Recorded Music Projects</tag>
-					<comment>As of March 2012, the version online was completed in November 2007 by the Producers and Engineers Wing of the Recording Academy. Link via Internet ARchive</comment>
+					<comment>As of March 2012, the version online was completed in November 2007 by the Producers and Engineers Wing of the Recording Academy. Link via Internet Archive</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
@@ -325,8 +331,8 @@ exchange of audio programme materials with metadata</tag>
 			<fdd:url>
 				<fdd:urlReference>
 					<link>https://www.wikidata.org/wiki/Q217570</link>
-					<tag>WikiData entry for Q217570</tag>
-					<comment>Information in WikiData about Waveform Audio File Format. WikiData Title ID: Q217570.</comment>
+					<tag>Wikidata entry for Q217570</tag>
+					<comment>Information in Wikidata about Waveform Audio File Format. Wikidata Title ID: Q217570.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
