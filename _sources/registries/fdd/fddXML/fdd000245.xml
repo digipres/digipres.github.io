@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000245" titleName="DSDIFF, Direct Stream Digital Interchange File Format, Version 1.5" shortName="DSDIFF_1_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000245" titleName="DSDIFF, Direct Stream Digital Interchange File Format, Version 1.5" shortName="DSDIFF_1_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>sound</fdd:gdfrGenre>
@@ -51,8 +51,8 @@
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
-		<fdd:experience>None, although the collections of the Motion Picture, Broadcasting, and Recorded Sound Division include SACDs.</fdd:experience>
-		<fdd:preference>None.  For preservation reformatting, the Library prefers Broadcast WAVE (<fddLink id="fdd000356">WAVE_BWF_1</fddLink> and <fddLink id="fdd000357">WAVE_BWF_2</fddLink>).</fdd:preference>
+		<fdd:experience>The Library of Congress includes a small number of Direct Stream Digital files, especially in the Motion Picture, Broadcasting, and Recorded Sound Division. </fdd:experience>
+		<fdd:preference>The Library of Congress Recommended Formats Statement (RFS) includes DSD as a preferred format for <a href="https://www.loc.gov/preservation/resources/rfs/audio.html">audio on tangible media</a>. The RFS does not specify a version of DSD.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>Developed by Royal Philips Electronics of the Netherlands, now overseen by Sonic Studio LLC.</fdd:disclosure>
@@ -62,7 +62,11 @@
 		<fdd:adoption>Adoption of file version unknown.</fdd:adoption>
 		<fdd:licensingAndPatents>Not investigated.</fdd:licensingAndPatents>
 		<fdd:transparency>Transparent wrapper. DSD bitstream is relatively transparent; DST is likely to be less so.</fdd:transparency>
-		<fdd:selfDocumentation>See <fddLink id="fdd000115">IFF</fddLink>.
+		<fdd:selfDocumentation>See <fddLink id="fdd000115">IFF</fddLink>. <p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>There are no specific attributes to support accessibility but the Comments chunk could potentially store transcription or caption data, assigned along a timeline through timestamps, in the Reserved section. But this may not be practical in reality. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
+			<p>In common practice, typically sound content is supported by external caption and subtitle formats such as <fddLink id="fdd000567">WebVTT</fddLink>. See <a href="https://www.w3.org/WAI/media/av/">W3C's Making Audio and Video Media Accessible</a> for more general information about accessible sound and moving image media.</p>
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>Not investigated.
 		</fdd:externalDependencies>
@@ -111,8 +115,28 @@
 				<fdd:sigValueNA>Not found.</fdd:sigValueNA>
 			</fdd:internetMediaType>
 			<fdd:magicNumbers>
-				<fdd:sigValueNA>Not found.</fdd:sigValueNA>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 46524D38{8}4453442046564552</fdd:sigValue>
+					<fdd:sigValue>ASCII: FRM8{8}DSD FVER</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/1818">http://www.nationalarchives.gov.uk/PRONOM/fmt/1818</a>.</fdd:note>
 			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/1818</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/1818">http://www.nationalarchives.gov.uk/PRONOM/fmt/1818</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>Wikidata has no corresponding entry as of April 2024.</fdd:note>
+				</fdd:values>
+			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:formatSpecifications>
@@ -150,6 +174,13 @@
 				<fdd:urlReference>
 					<link>https://www.sa-cd.net/faq</link>
 					<tag>FAQ on SACD technology</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/pronom/fmt/1818</link>
+					<tag>PRONOM entry for fmt/1818</tag>
+					<comment>Information in PRONOM from UK National Archives about Direct Stream Digital Interchange File Format. PUID: fmt/1818.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
