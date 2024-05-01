@@ -11,7 +11,7 @@
 		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
 		<fdd:updates>
-			<fdd:date>2021-01-07</fdd:date>
+			<fdd:date>2024-04-30</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -101,7 +101,13 @@
 			</p>
 		</fdd:licensingAndPatents>
 		<fdd:transparency>Traditional tar files are uncompressed so individual items can easily be extracted. Transparency of compressed tar files are dependent upon algorithms and tools used to read the file. Easily compatible with UNIX and Windows systems as all file header information is represented in ASCII. </fdd:transparency>
-		<fdd:selfDocumentation>The tar format provides no metadata support beyond what is needed to support unpacking the archive and extracting the component items into a file system.</fdd:selfDocumentation>
+		<fdd:selfDocumentation>
+			<p>The tar format provides no metadata support beyond what is needed to support unpacking the archive and extracting the component items into a file system.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>No specific features in the file format. Features to support accessibility would be found in the bundled and compressed files (such as embedded captions and subtitles in audiovisual content, tagged and structured text in textual documents, and alt text for images). Aggregate files can also contain separate files for transcripts, timed text or captions as part of the bundled package. See <a href="#identification">Relationships to other formats</a> for details.</p>
+		</fdd:selfDocumentation>
 		<fdd:externalDependencies>None. Creating tar files can be done via command line in both UNIX or Linux systems as well as a graphic interface in software such as 7z. No external dependencies beyond available software to extract and decompress a compressed tar file. </fdd:externalDependencies>
 		<fdd:techProtection>Tar files do not natively support encryption but its possible to encrypt compressed tar files with external software programs. </fdd:techProtection>
 	</fdd:sustainabilityFactors>
@@ -125,42 +131,6 @@
 				<fdd:note>There is no registration at IANA for an Internet Media Type for the tar format. The application/x-tar value can be found at <a href="https://www.file-extensions.org/tar-file-extension">File-Extensions.org</a>
 				</fdd:note>
 			</fdd:internetMediaType>
-			<fdd:magicNumbers>
-				<fdd:sigValues>
-					<fdd:sigValue>Hex: 75 73 74 61 72</fdd:sigValue>
-					<fdd:sigValue>ASCII: ustar</fdd:sigValue>
-				</fdd:sigValues>
-				<fdd:note>Magic numbers for an uncompressed POSIX ustar file [257 (0x101) byte offset] from the 2001 IEEE standard. From <a href="https://web.archive.org/web/20221112073316/https://www.garykessler.net/library/file_sigs.html">garykessler.net</a>.</fdd:note>
-			</fdd:magicNumbers>
-			<fdd:other>
-				<fdd:tag>Uniform Type Identifier (Mac OS)</fdd:tag>
-				<fdd:values>
-					<fdd:sigValues>
-						<fdd:sigValue>public.tar-archive</fdd:sigValue>
-					</fdd:sigValues>
-					<fdd:note>Apple Uniform Type Identifier. See <a href="https://www.nationalarchives.gov.uk/pronom/x-fmt/265">https://www.nationalarchives.gov.uk/pronom/x-fmt/265</a>. Outline record only. </fdd:note>
-				</fdd:values>
-			</fdd:other>
-			<fdd:other>
-				<fdd:tag>Pronom PUID</fdd:tag>
-				<fdd:values>
-					<fdd:sigValues>
-						<fdd:sigValue>x-fmt/265</fdd:sigValue>
-					</fdd:sigValues>
-					<fdd:note>For tar file format. See <a href="https://www.nationalarchives.gov.uk/pronom/x-fmt/265">https://www.nationalarchives.gov.uk/pronom/x-fmt/265</a>. Outline record only. </fdd:note>
-				</fdd:values>
-			</fdd:other>
-			<fdd:other>
-				<fdd:tag>Wikidata Title ID</fdd:tag>
-				<fdd:values>
-					<fdd:sigValues>
-						<fdd:sigValue>Q283579</fdd:sigValue>
-					</fdd:sigValues>
-					<fdd:note>For tar file format. See <a href="https://www.wikidata.org/wiki/Q283579">https://www.wikidata.org/wiki/Q283579</a>.</fdd:note>
-				</fdd:values>
-			</fdd:other>
-		</fdd:signifiersGroup>
-		<fdd:signifiersGroup>
 			<fdd:internetMediaType>
 				<fdd:sigValues>
 					<fdd:sigValue>application/x-gtar</fdd:sigValue>
@@ -171,6 +141,13 @@
 				<fdd:note>Several different Internet Media Types are in use for compressed tar files such as .tar.gz, .tar.bz2, and .tar.z. See <a href="https://www.file-extensions.org/tar-file-extension">File-Extensions.org</a> and <a href="https://en.wikipedia.org/wiki/List_of_archive_formats">Wikipedia entry for list of archive formats.</a>
 				</fdd:note>
 			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 75 73 74 61 72</fdd:sigValue>
+					<fdd:sigValue>ASCII: ustar</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Magic numbers for an uncompressed POSIX ustar file [257 (0x101) byte offset] from the 2001 IEEE standard. From <a href="https://web.archive.org/web/20221112073316/https://www.garykessler.net/library/file_sigs.html">garykessler.net</a>.</fdd:note>
+			</fdd:magicNumbers>
 			<fdd:magicNumbers>
 				<fdd:sigValues>
 					<fdd:sigValue>Hex: 42 5A 68</fdd:sigValue>
@@ -206,12 +183,49 @@
 				<fdd:note>Magic numbers for any file format compressed with the XZ compression utility including tar.xz files. <a href="https://en.wikipedia.org/wiki/List_of_file_signatures">See Wikipedia entry for list of file signatures</a> and <a href="http://fileformats.archiveteam.org/wiki/XZ">XZ at fileformats.archiveteam.org</a>.
 				</fdd:note>
 			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Uniform Type Identifier (Mac OS)</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>public.tar-archive</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Apple Uniform Type Identifier. See <a href="https://www.nationalarchives.gov.uk/pronom/x-fmt/265">https://www.nationalarchives.gov.uk/pronom/x-fmt/265</a>. Outline record only. </fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00423</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.archives.gov/files/lod/dpframework/id/NF00423.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00423.ttl</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/265</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/265">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/265</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q283579</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q283579">https://www.wikidata.org/wiki/Q283579</a>.
+</fdd:note>
+				</fdd:values>
+			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
 		<fdd:general>
 			<p>Tar can reference both the UNIX command to great the archive file format as well as the file itself, both with a lowercase spelling. The POSIX 2001.1 standard references the file format as the extended tar or "tar.h" file format while the <a href="https://ieeexplore.ieee.org/document/182902">IEEE 1988 Standard Interpretation</a> defines the file format as "tar" in lowercase as well. For clarification purposes, when referencing the file format, this format description document will use "tar files" or the "tar file format."</p>
-			<p>The term UNIX generally refers to the licensed operating systems developed in 1996 and trademarked by the <a href="http://www.unix.org/what_is_unix.html">Open Group</a>. The     
+			<p>The term UNIX generally refers to the licensed operating systems developed in 1996 and trademarked by the <a href="https://web.archive.org/web/20231210122612/https://unix.org/what_is_unix.html">Open Group</a> (link via Internet Archive). The     
 				<a href="http://www.linfo.org/index.html">Linux Information Project</a> helps to provide comprehensive information about Linux and other free software but specifically explains how UNIX is defined and appropriate capitalizations of the term. Throughout this document, upper case UNIX refers to the trademarked operating systems. As described in the <a href="http://www.linfo.org/unix_upper.html">Linux Information Project's description</a>, "Unix-like" or "UNIX-like" &quot;is commonly used as a generic term referring to all operating systems that incorporate the major features of the early versions of UNIX, whether or not they officially call themselves UNIX or use the UNIX trademark. It is a broader term than Unix in the sense that the addition of the word -like eliminates any claim or implication that any system is UNIX (regardless of how UNIX might be defined, or spelled), and instead merely indicates that a system resembles the original UNIX systems. Thus, it is better at avoiding the controversial issues regarding what is, or can legally be called, UNIX, or Unix.&quot;</p>
 			<p>
 				<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
@@ -255,7 +269,7 @@
 			</ul>
 			<p>The POSIX.1 2001 standard introduced the "extended tar", tar.h, or pax format which added vendor-tagged or vendor-specific functionality. This is the most flexible format with the richest features of other tar archive specifications. A thorough explanation of the POSIX.1 2001 standard and the tar.h format can be found in the <a href="#identification">Identification and Description</a> section above.</p>
 			<p>
-				<a href="https://www.gnu.org/">GNU</a>, a series of open-source software programs has it's own implementation of the tar utility (from versions 1.13.25) to create tar files dating to pre-POSIX tar formats, adding improvements such as incremental archives. According to <a href="https://www.gnu.org/software/tar/manual/html_section/tar_67.html">GNU's comparison of tar iterations</a> these features that were implemented make this tar format incompatible with other archive formats. GNU tar has the ability to read POSIX.1 2001 standard tar files.</p>
+				<a href="https://www.gnu.org/">GNU</a>, a series of open-source software programs has it's own implementation of the tar utility (from versions 1.13.25) to create tar files dating to pre-POSIX tar formats, adding improvements such as incremental archives. According to <a href="https://web.archive.org/web/20201127102115/https://www.gnu.org/software/tar/manual/html_section/tar_67.html">GNU's comparison of tar iterations</a> (link via Internet Archive) these features that were implemented make this tar format incompatible with other archive formats. GNU tar has the ability to read POSIX.1 2001 standard tar files.</p>
 			<p>For more robust definitions of POSIX fields, see <a href="#identification">Identification and Description</a>.</p>
 		</fdd:history>
 	</fdd:notes>
@@ -319,17 +333,17 @@ IEEE Std 1003.1-2017</tag>
 					<fdd:intro>Compression of tar files.</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
-							<link>https://www.gnu.org/software/tar/manual/html_section/tar_68.html#SEC134</link>
-							<tag>Using Less Space through Compression</tag>
+							<link>https://web.archive.org/web/20201205032913/https://www.gnu.org/software/tar/manual/html_section/tar_68.html</link>
+							<tag>Using Less Space through Compression (link via Internet Archive</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>https://www.howtogeek.com/248780/how-to-compress-and-extract-files-using-the-tar-command-on-linux/</link>
 							<tag>How to Compress and Extract Files Using the tar Command on Linux</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://www.gnu.org/software/gzip/manual/gzip.html</link>
+							<link>https://web.archive.org/web/20201112042947/https://www.gnu.org/software/gzip/manual/gzip.html</link>
 							<tag>GNU Gzip</tag>
-							<comment>GNU gzip manual which covers the compression of tar files.</comment>
+							<comment>GNU gzip manual which covers the compression of tar files. (Link via Internet Archive</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>http://fileformats.archiveteam.org/wiki/XZ</link>
@@ -462,6 +476,13 @@ IEEE Std 1003.1-2017</tag>
 						</fdd:urlReference>
 					</fdd:urlList>
 				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archives.gov/files/lod/dpframework/id/NF00423.ttl</link>
+					<tag>NARA File Format Preservation Plan ID entry for NF00423</tag>
+					<comment>Information in NARA File Format Preservation Plan ID about tar.</comment>
+				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>

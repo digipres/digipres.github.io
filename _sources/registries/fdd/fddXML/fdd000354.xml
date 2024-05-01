@@ -177,7 +177,13 @@
 		</fdd:licensingAndPatents>
 		<fdd:transparency>Depends upon algorithms and tools to read. Would require sophistication to build tools from scratch. </fdd:transparency>
 		<fdd:selfDocumentation>Since the format provides a mechanism to bundle files together, a component file that provides rich metadata in a standard or application-specific format can be included in a ZIP file.  This practice has been incorporated into the package specifications for EPUB, OOXML, ODF, etc.  The ZIP_PK specification includes a central directory, which contains the metadata required to extract the contents of the ZIP file, i.e., file names and directory structure.  The inclusion of comments for each file is supported within the format, but not (or only partially) by some utilities or software libraries.</fdd:selfDocumentation>
-		<fdd:externalDependencies>None, beyond the availability of software to extract and decompress the files contained in a ZIP file.  The ZIP_PK format itself includes a mechanism for defining within a ZIP file the minimum version that must be supported to extract, decompress, and decrypt (if needed) the contents.  Minimum versions for particular extensions and methods for compression and encryption are documented in APPNOTE.TXT.  Note: Use of strong encryption may rely on keys conveyed externally or external authentication procedures.</fdd:externalDependencies>
+		<fdd:externalDependencies>
+			<p>None, beyond the availability of software to extract and decompress the files contained in a ZIP file.  The ZIP_PK format itself includes a mechanism for defining within a ZIP file the minimum version that must be supported to extract, decompress, and decrypt (if needed) the contents.  Minimum versions for particular extensions and methods for compression and encryption are documented in APPNOTE.TXT.  Note: Use of strong encryption may rely on keys conveyed externally or external authentication procedures.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>No specific features in the file format. Features to support accessibility would be found in the bundled and compressed files (such as embedded captions and subtitles in audiovisual content, tagged and structured text in textual documents, and alt text for images). Aggregate files can also contain separate files for transcripts, timed text or captions as part of the bundled package. See <a href="#identification">Relationships to other formats</a> for details.</p>
+		</fdd:externalDependencies>
 		<fdd:techProtection>An important feature of the ZIP_PK format is the ability to encrypt the contained files individually.  Over the years, support for increasingly strong forms of encryption, and for encryption of the ZIP central directory has been added.  Certain applications that employ the ZIP format to bundle files together, such as OOXML (ISO/IEC 29500-2:2012), explicitly prohibit encryption within the ZIP-based package.  Others, such as SCORM and EPUB, employ their own application-specific approaches to encryption.</fdd:techProtection>
 	</fdd:sustainabilityFactors>
 	<fdd:qualityAndFunctionalityFactors>
@@ -251,6 +257,15 @@
 						<fdd:sigValue>ASCII: P K bel bs</fdd:sigValue>
 					</fdd:sigValues>
 					<fdd:note>At beginning of first file of a split or spanned ZIP archive. From <a href="https://web.archive.org/web/20221112073316/https://www.garykessler.net/library/file_sigs.html">https://web.archive.org/web/20221112073316/https://www.garykessler.net/library/file_sigs.html</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00458</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.archives.gov/files/lod/dpframework/id/NF00458.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00458.ttl</a>.</fdd:note>
 				</fdd:values>
 			</fdd:other>
 			<fdd:other>
@@ -483,6 +498,13 @@ Info-ZIP tools and libraries support Unix, Mac OS, Windows, and many other opera
 					<link>https://support.winzip.com/hc/en-us/articles/115011349147-Is-WinZip-compatible-with-older-versions-of-WinZip-and-other-Zip-file-utilities-</link>
 					<tag>Is WinZip compatible with older versions of WinZip and other Zip file utilities?</tag>
 					<comment>Explains WinZip options for creating .zip or .zipx files.  The .zip files created by WinZip are intended for greatest compatibility with other Zip file utilities.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archives.gov/files/lod/dpframework/id/NF00458.ttl</link>
+					<tag>NARA File Format Preservation Plan ID entry for NF00458</tag>
+					<comment>Information in NARA File Format Preservation Plan ID about ZIP archive.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
