@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000512" titleName="Microsoft Excel Binary (XLSB) Format (option in Excel 2007 and later)" shortName="MS-XLSB" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000512" titleName="Microsoft Excel Binary (XLSB) Format (option in Excel 2007 and later)" shortName="MS-XLSB" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenreAndSubgenres>
@@ -22,7 +22,7 @@
 			</fdd:gdfrDomain>
 		</fdd:gdfrDomains>
 		<fdd:updates>
-			<fdd:date>2019-11-17</fdd:date>
+			<fdd:date>2024-05-09</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -87,6 +87,10 @@
 		<fdd:selfDocumentation>
 			<p>The <i>File Properties</i> features of XLSB build on the features supported for <fddLink id="fdd000398">XLSX/OOXML</fddLink>. Limited capabilities for descriptive metadata for XLSB and XLSX files as a whole are supported as Core Properties as specified in <fddLink id="fdd000363">OPC/OOXML</fddLink>.</p>
 			<p>Beyond the Core Properties, the XLSB formats use the Custom File Properties and Extended File Properties features of Part 1 of the <fddLink id="fdd000395">OOXML family</fddLink> of specifications (ISO/IEC 29500 and ECMA-376) to store names for component worksheets and for named ranges in worksheets.]  See <a href="#useful">Useful References</a> below for links to the relevant normative references for the XLSB specification.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>See <fddLink id="fdd000395">OOXML Format Family</fddLink> for web accessibility information.</p>
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>An XLSB workbook may pull in data from external data sources, such as databases.</fdd:externalDependencies>
 		<fdd:techProtection>An XLSB workbook can contain sensitive information that needs to be protected. A file can be protected by encrypting it using a password. Once a file is encrypted, the data can only be accessed by decrypting the file using a password.</fdd:techProtection>
@@ -124,6 +128,16 @@
 						<fdd:sigValue>Target=&quot;xl/workbook.bin&quot;</fdd:sigValue>
 					</fdd:sigValues>
 					<fdd:note>This signifier assumes the usual name of the main part of an XLSB file. The target declaration will occur in the top-level Relationships part (<i>\_rels\.rels</i> part in an OPC package of a XLSB file, as an attribute of a &lt;Relationship&gt; element within the &lt;Relationships&gt; element.  In an XLSB file, it will be a relationship of type <i>http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument</i>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00311</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See NARA File Format Preservation Plan ID <a href="https://www.archives.gov/files/lod/dpframework/id/NF00311.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00311.ttl</a> for Microsoft Word for Windows 2007-onwards (OOXML). Note that NARA does not specify versions.
+					</fdd:note>
 				</fdd:values>
 			</fdd:other>
 			<fdd:other>
@@ -306,7 +320,14 @@ Information technology — Document description and processing languages — Off
 				<fdd:urlReference>
 					<link>https://www.wikidata.org/wiki/Q66759528</link>
 					<tag>Wikidata entry for Q66759528</tag>
-					<comment>Information in Wikidata on Excel Binary Workbook.  WikiData Title ID: Q66759528</comment>
+					<comment>Information in Wikidata on Excel Binary Workbook.  Wikidata Title ID: Q66759528</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archives.gov/files/lod/dpframework/id/NF00311.ttl</link>
+					<tag>NARA File Format Preservation Plan ID entry for NF00311</tag>
+					<comment>Information in NARA File Format Preservation Plan ID about Microsoft Word for Windows 2007-onwards (OOXML).</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>

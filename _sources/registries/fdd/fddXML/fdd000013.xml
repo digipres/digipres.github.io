@@ -15,7 +15,7 @@
 		<fdd:gdfrComposition>container-wrapper</fdd:gdfrComposition>
 		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:updates>
-			<fdd:date>2022-11-22</fdd:date>
+			<fdd:date>2024-05-09</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -118,7 +118,7 @@ Document, not described here at this time.</fdd:comment>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
-		<fdd:experience>The Library of Congress National Audio-Visual Conservation Center, Packard Campus, at Culpeper, Virginia, produces <fddLink id="fdd000206">MXF_OP1a_JP2_LL</fddLink> files as archival masters as they reformat their older videotapes.</fdd:experience>
+		<fdd:experience>The Library of Congress National Audio-Visual Conservation Center, Packard Campus, at Culpeper, Virginia, produces <fddLink id="fdd000206">MXF_OP1a_JP2_LL</fddLink> files as archival masters as they reformat their older videotapes. As of May 2024, the Library has over 635 TBs of MXF files in its collections.</fdd:experience>
 		<fdd:preference>The Library of Congress Recommended Formats Statement (RFS) lists MXF as a <a href="http://www.loc.gov/preservation/resources/rfs/moving.html">Preferred</a> format for Video - File-Based and Physical Media. The RFS does not specify a version or profile or MXF.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
@@ -133,8 +133,12 @@ Document, not described here at this time.</fdd:comment>
 		<fdd:selfDocumentation>
 			<p>Extensive metadata is required by or may optionally be placed in MXF files. <i>System</i> or <i>structural metadata</i> is about the structure of the file, e.g., the relationship of parts, whether the essence is stored as little or big endian, index tables that provide information on the essence (display size, compression algorithm, the time line of a media clip, etc.), size of a sector, where a new partition starts, etc.  <i>User</i> or <i>descriptive metadata</i> provides details on production, such as the title and responsible organization, location of the shot or shots, participants, and other annotating information.  A "framework" of descriptive metadata schemes is defined in SMPTE ST 380, <i>Material Exchange Format (MXF) &#8212; Descriptive Metadata Scheme-1</i>, commonly called <i>DMS-1</i> and sometimes referred to as a "dialect" for descriptive metadata.  SMPTE committee leader Mike Cox reports that DMS-1 is "intended for archive use as an interchange layer between archives" (private communication).</p>
 			<p>A SONY technical paper (no longer available on the Web in August 2007) stated that "MXF follows the AAF concept by distinguishing between 'material', i.e. metadata from the production stage and 'file' data, i.e. metadata on the final product. Within these material and file packages, all data are stored in 'tracks'. The system metadata are kept in tracks of the timeline picture and sound tracks, whereas the user metadata are retained in shot, scene or production tracks. Not all of the metadata, however, need to be included. Most of them are optional, and producers can choose to create 'simple' MXF files first, and add additional information later."</p>
-			<p>MXF metadata is encoded using <i>KLV</i> (Key-Length-Value), as specified by SMPTE 336M-2001, and employs other data elements also specified by SMPTE, e.g., SMPTE Universal Labels (ANSI/SMPTE ST 298) and the SMPTE Metadata Dictionary (RP 210 in various versions available from <a href="https://web.archive.org/web/20120626022726/http://www.smpte-ra.org/mdd/">SMPTE Metadata Registries
-And Related Items (link available through Internet Archive)</a>). Applications may be developed to input and output metadata from and to XML; SMPTE EG 42 includes a sample XML schema as Annex C. See also European Broadcasting Union (EBU) <a href="https://tech.ebu.ch/docs/r/r121.pdf">Recommendation R121-2007</a>, <i>Material Exchange Format - Basic User Metadata Implementation</i>.   Meanwhile &quot;text-stream&quot; metadata (generally to support user-specific needs) can be placed in Generic Stream Partitions (SMPTE ST 410:2008).</p>
+			<p>MXF metadata is encoded using <i>KLV</i> (Key-Length-Value), as specified by SMPTE 336M-2001, and employs other data elements also specified by SMPTE, e.g., SMPTE Universal Labels (ANSI/SMPTE ST 298) and the SMPTE Metadata Dictionary (RP 210 in various versions available from <a href="https://web.archive.org/web/20120626022726/http://www.smpte-ra.org/mdd/">SMPTE Metadata Registries And Related Items (link available through Internet Archive)</a>). Applications may be developed to input and output metadata from and to XML; SMPTE EG 42 includes a sample XML schema as Annex C. See also European Broadcasting Union (EBU) <a href="https://tech.ebu.ch/docs/r/r121.pdf">Recommendation R121-2007</a>, <i>Material Exchange Format - Basic User Metadata Implementation</i>.   Meanwhile &quot;text-stream&quot; metadata (generally to support user-specific needs) can be placed in Generic Stream Partitions (SMPTE ST 410:2008).</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>The MXF container format provides good accessibility support. According to the <a href="https://pub.smpte.org/latest/eg43/eg0043-2009.pdf">System Implementation of CEA-708 and CEA-608 Closed Captioning and Program-Related Data</a>, "the MXF and GXF file formats standardized by SMPTE specify the carriage of closed captions, both  CEA-608 and CEA-708, within the file structure. See SMPTE 377M for MXF and SMPTE 360 and SMPTE  RDD 14 for GXF. Other file formats that are not standardized might or might not carry closed captions" (SMPTE EG 43:2009, p.18). See also <fddLink id="fdd000335">MPEG-2 Family</fddLink> for web accessibility information.</p>
+			<p>See <a href="https://www.w3.org/WAI/media/av/">W3C's Making Audio and Video Media Accessible</a> for more general information about accessible sound and moving image media.</p>
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>None</fdd:externalDependencies>
 		<fdd:techProtection>Technical protection is required within the <i>D-Cinema</i> format, which employs MXF among other elements.  The compiler of this description has not investigated the degree to which such protections are implemented &quot;within&quot; the MXF structure or to what degree they are implemented in associated elements. <a href="../contact_format.shtml">Comments welcome</a>
@@ -181,6 +185,16 @@ And Related Items (link available through Internet Archive)</a>). Applications m
 						<fdd:sigValue>Hex: 06 0E 2B 34 02 05 01 01 0D 01 02</fdd:sigValue>
 					</fdd:sigValues>
 					<fdd:note>"MXF files start with an optional run-in followed by the SMPTE header partition pack key.  The run-in is less than 64k bytes and the condition for finding the start of the file is to identify the first 11 bytes of the partition pack key . . . scan the initial 64 k bytes for these 11 bytes" to identify an MXF file. (From SMPTE EG 41, p. 45; document no longer available from SMPTE.)  The 11 bytes listed are provided in SMPTE ST 377-1.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00245</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See NARA File Format Preservation Plan ID <a href="https://www.archives.gov/files/lod/dpframework/id/NF00245.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00245.ttl</a> for Material Exchange Format.
+					</fdd:note>
 				</fdd:values>
 			</fdd:other>
 			<fdd:other>
@@ -389,8 +403,14 @@ And Related Items (link available through Internet Archive)</a>). Applications m
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
+					<link>https://www.archives.gov/files/lod/dpframework/id/NF00245.ttl</link>
+					<tag>NARA File Format Preservation Plan ID entry for NF00245</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
 					<link>https://www.wikidata.org/wiki/Q1893311</link>
-					<tag>WikiData entry for Q1893311</tag>
+					<tag>Wikidata entry for Q1893311</tag>
 					<comment>Information in WikiData about MXF. WikiData Title ID: Q1893311.</comment>
 				</fdd:urlReference>
 			</fdd:url>

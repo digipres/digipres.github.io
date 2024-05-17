@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000419" titleName="GeoPackage Encoding Standard (OGC), version 1.0" shortName="GeoPackage_1_0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000419" titleName="GeoPackage Encoding Standard (OGC), version 1.0" shortName="GeoPackage_1_0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
@@ -77,7 +77,8 @@ GeoPackage Encoding Standard, is referred to as an Extended GeoPackage.  Version
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
-		<fdd:experience>None</fdd:experience>
+		<fdd:experience>As of May 2024, the Library of Congress has a small number of GeoPackages in its collections but the specific version of GeoPackage is unknown.</fdd:experience>
+		<fdd:preference>See <fddLink id="fdd000420">GeoPackage Encoding Standard (OGC) Format Family</fddLink> in the Recommended Formats Statement for preferences for GIS Vector Data, GIS Vector and Raster Combined data, as well as GIS Raster and Georeferenced Images for <a href="https://www.loc.gov/preservation/resources/rfs/geo-carto.html">GIS, Geospatial and Non-GIS Cartographic</a> collection materials.  The RFS does not specify a version of GeoPackage.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>Open standard documented in freely available specifications.  Developed and maintained by the Open Geospatial Consortium (OGC).  GeoPackage versions 1.0 and 1.0.1, as described here, are now deprecated by OGC.</fdd:disclosure>
@@ -92,7 +93,7 @@ GeoPackage Encoding Standard, is referred to as an Extended GeoPackage.  Version
 				<li>GDAL, a driver library used by other GIS products, introduced support for feature data in geopackages in its version 1.11 (first available in a development version in February 2014). Raster support was added to the development version of GDAL 2.0 in December 2014.</li>
 				<li>SAFE software&apos;s FME 2015.0 <a href="https://www.safe.com/blog/2015/01/whats-great-fme-2015/#new-formats">introduced a Reader/Writer for GeoPackage</a>.</li>
 				<li>Support for GeoPackage was in LuciadLightspeed, LuciadMobile, LuciadFusion and a free GeoPackage viewer for Android from <a href="https://www.hexagongeospatial.com/products/luciad-portfolio">Luciad</a> (now part of <a href="https://www.hexagongeospatial.com/products/luciad-portfolio">Hexagon Geospatial</a>).  Luciad also provided a small C-library <a href="https://bitbucket.org/luciad/libgpkg/wiki/Home">libgpkg</a> as an open-source library for reading and writing GeoPackage compliant SQLite files.</li>
-				<li>ESRI ArcGIS <a href="https://www.esri.com/arcgis-blog/products/arcgis-desktop/analytics/support-for-ogc-geopackage-specification-in-arcgis/?rmedium=blogs_esri_com&amp;rsource=/esri/arcgis/2014/04/14/support-for-ogc-geopackages-in-arcgis/">introduced support for the standard GeoPackage vector features in version 10.2.2 (after support for the draft specification in 10.2.1).  Full support was expected in version 10.3.</a>
+				<li>ESRI ArcGIS <a href="https://www.esri.com/arcgis-blog/products/arcgis-desktop/analytics/support-for-ogc-geopackage-specification-in-arcgis/">introduced support for the standard GeoPackage vector features in version 10.2.2 (after support for the draft specification in 10.2.1).  Full support was expected in version 10.3.</a>
 				</li>
 				<li>
 					<a href="https://www.envitia.com/technologies/products/maplink-pro/">MapLink Pro</a> 8.0 from Envitia</li>
@@ -121,6 +122,10 @@ metadata in encodings for which MIME types exist (with a default of <i>text/xml<
 specification, such as ISO 19115, ISO 19115-2, ISO 19139, Dublin Core, CSDGM, DDMS, NMF/NMIS, etc. The GeoPackage interpretation of what constitutes <i>metadata</i> is broad. It also includes UML models encoded in XMI, GML Application Schemas, ISO 19110 feature catalogues, OWL and SKOS taxonomies, etc.  A GeoPackage that contains a <i>gpkg_metadata</i> table is required to have a <i>gpkg_metadata_reference</i> table to
 associate metadata in the <i>gpkg_metadata</i> table with data in the feature, and tiles tables.  The two tables are intended to provide the
 support necessary to implement the hierarchical metadata model defined in ISO 19115.  Metadata values can be associated with the entire geopackage or to a table, column, row, or table cell (row/col).</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>Accessibility features for GIS data can be a complex combination of factors to support still images, 3D formats, and datasets. In general, this means data to alt text for images, content for screen readers to enable user interactivity events such as object selection, rotation and zoom, alt text for image forms, color contrast definition as well as caption and subtitle support as well as structured data to identify regions and grids on pages and defined relationships in tables. Depending on implementation, GeoPackage files have the potential for good accessibility support with its defined structures and focus on interoperability but this will also depend on the subtypes. <a href="../contact_format.shtml">Comments welcome</a>.</p>
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>None beyond software to unpack the data structures.</fdd:externalDependencies>
 		<fdd:techProtection>The SQLite application does have an extension that supports encryption.  However, the GeoPackage 1.0 specification does not provide for any encryption within the package.</fdd:techProtection>
@@ -184,21 +189,35 @@ references a projected CRS and the min/max x/y values are in the units specified
 						<fdd:sigValue>ASCII:  GP10</fdd:sigValue>
 					</fdd:sigValues>
 					<fdd:note>In the application
-id field (byte offset 68) of the SQLite database header.  Indicates version 1.0 of GeoPackage.  Defined in standard and <a href="https://www.sqlite.org/src/artifact?ci=trunk&amp;filename=magic.txt">SQLite magic.txt file</a>.</fdd:note>
+id field (byte offset 68) of the SQLite database header.  Indicates version 1.0 of GeoPackage.  Defined in standard.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00795</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.archives.gov/files/lod/dpframework/id/NF00795.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00795.ttl</a>. NARA does not identify versions as of May 2024.</fdd:note>
 				</fdd:values>
 			</fdd:other>
 			<fdd:other>
 				<fdd:tag>Pronom PUID</fdd:tag>
 				<fdd:values>
-					<fdd:sigValueNA>See note.</fdd:sigValueNA>
-					<fdd:note>No corresponding match as of June 2020.</fdd:note>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/1700</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>
+						<a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/1700">http://www.nationalarchives.gov.uk/PRONOM/fmt/1700</a> for OGC GeoPackage 1.0-1.31</fdd:note>
 				</fdd:values>
 			</fdd:other>
 			<fdd:other>
 				<fdd:tag>Wikidata Title ID</fdd:tag>
 				<fdd:values>
-					<fdd:sigValueNA>See note.</fdd:sigValueNA>
-					<fdd:note>No corresponding match as of June 2020.</fdd:note>
+					<fdd:sigValues>
+						<fdd:sigValue>Q22908624</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="">https://www.wikidata.org/wiki/Q22908624</a>. Wikidata does not distinguish versions as of May 2024.</fdd:note>
 				</fdd:values>
 			</fdd:other>
 		</fdd:signifiersGroup>
@@ -339,7 +358,7 @@ ISO/IEC 13249 SQL/MM</tag>
 					<fdd:intro>ESRI Blog posts on support in ESRI products</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
-							<link>https://www.esri.com/arcgis-blog/products/arcgis-desktop/analytics/support-for-ogc-geopackage-specification-in-arcgis/?rmedium=blogs_esri_com&amp;rsource=/esri/arcgis/2014/04/14/support-for-ogc-geopackages-in-arcgis/</link>
+							<link>https://www.esri.com/arcgis-blog/products/arcgis-desktop/analytics/support-for-ogc-geopackage-specification-in-arcgis/</link>
 							<tag>Support for OGC GeoPackage specification in ArcGIS. (April 14, 2014)</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
@@ -384,15 +403,29 @@ ISO/IEC 13249 SQL/MM</tag>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://www.sqlite.org/src/artifact?ci=trunk&amp;filename=magic.txt</link>
-					<tag>SQLite magic.txt file</tag>
-					<comment>Lists registered values for SQLite application ID, including &quot;gp10&quot; for GeoPackage 1.0.</comment>
+					<link>https://sqlite.org/copyright.html</link>
+					<tag>SQLite Copyright</tag>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://sqlite.org/copyright.html</link>
-					<tag>SQLite Copyright</tag>
+					<link>https://www.archives.gov/files/lod/dpframework/id/NF00795.ttl</link>
+					<tag>NARA File Format Preservation Plan ID entry for NF00795</tag>
+					<comment>Information in NARA File Format Preservation Plan ID about GeoPackage (GPKG).</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/1700</link>
+					<tag>PRONOM entry for fmt/1700</tag>
+					<comment>Information in PRONOM from UK National Archives about OGC GeoPackage 1.0-1.31. PUID: fmt/1700.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q22908624</link>
+					<tag>Wikidata entry for Q22908624</tag>
+					<comment>Information in Wikidata about GeoPackage. Wikidata Title ID: Q22908624.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>

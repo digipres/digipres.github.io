@@ -13,7 +13,7 @@
 		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
 		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2022-05-05</fdd:date>
+			<fdd:date>2024-05-05</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Partial</fdd:draftStatus>
 	</fdd:properties>
@@ -75,7 +75,7 @@ the Book Part Wrapper element (<a href="https://jats.nlm.nih.gov/extensions/bits
 			<p>The Library of Congress is not aware of any electronic books in JATS format that have been added to the collections to date.  Note that for books, the preference is for hard-bound editions on archival paper, when available.</p>
 		</fdd:experience>
 		<fdd:preference>
-			<p>The Library of Congress Recommended Formats Statement (RFS) lists the BITS format as a preferred format for <a href="http://www.loc.gov/preservation/resources/rfs/text.html">Textual Works - Digital</a>.</p>
+			<p>The Library of Congress Recommended Formats Statement (RFS) lists the BITS format as a Preferred format for <a href="http://www.loc.gov/preservation/resources/rfs/text.html">Textual Works - Digital</a>.</p>
 		</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
@@ -89,12 +89,29 @@ the Book Part Wrapper element (<a href="https://jats.nlm.nih.gov/extensions/bits
 			<p>
 				<a href="https://www.portico.org/our-work/preservation-approach/">Portico</a> accepts books formatted in BITS and the earlier series of NLM Book DTD specifications into its preservation service.  In 2016, Portico received 322 files in BITS 1.0 format from two publishers.  In the same period, ten publishers submitted over 360,000 files in three chronological versions of the NLM Book DTD.</p>
 			<p>The Publications Office for the EU has <a href="https://op.europa.eu/en/web/eu-vocabularies/bits">selected BITS</a> (Book Interchange Tag Suite) as the basis for an XML mark-up model suitable for the production of its general publications.</p>
-			<p>Many national archives and institutional repositories include XML as a preferred format or in a list of formats for which there is a high confidence in ability to preserve and provide access when a schema is available, the character encoding is explicitly stated and an XSLT stylesheet for conversion to HTML exists.  BITS satisfies these requirements.  Examples: <a href="https://deepblue.lib.umich.edu/static/about/deepbluepreservation.html">Deep Blue Preservation and Format Support Policy</a> from the University of Michigan; <a href="https://web.archive.org/web/20161107185755/http://www.arkivverket.no/eng/Public-Sector/Regulations/Transfer-of-electronic-records">National Archives of Norway</a>; and the <a href="https://libraries.flvc.org/documents/181844/502298/Recommended+Data+Formats/">Florida Digital Archive</a>.</p>
+			<p>Many national archives and institutional repositories include XML as a preferred format or in a list of formats for which there is a high confidence in ability to preserve and provide access when a schema is available, the character encoding is explicitly stated and an XSLT stylesheet for conversion to HTML exists.  BITS satisfies these requirements.  Examples: <a href="https://deepblue.lib.umich.edu/static/about/deepbluepreservation.html">Deep Blue Preservation and Format Support Policy</a> from the University of Michigan; <a href="https://web.archive.org/web/20161107185755/http://www.arkivverket.no/eng/Public-Sector/Regulations/Transfer-of-electronic-records">National Archives of Norway</a>; and the <a href="https://web.archive.org/web/20230604194534/https://libraries.flvc.org/documents/181844/502298/Recommended+Data+Formats/">Florida Digital Archive</a> (link via Internet Archive).</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>No licensing or patent issues. The tag sets are in the public domain.</fdd:licensingAndPatents>
 		<fdd:transparency>Rates highly for transparency. Text content for articles is in XML, and hence viewable in basic editors, web browsers, etc.
 		Elements have understandable tag-names, and document instances are in natural reading order.</fdd:transparency>
-		<fdd:selfDocumentation>The DTD includes a rich set of elements for metadata at the article and journal level.  The &lt;article&gt; element is expected to include the article content and full descriptive metadata.</fdd:selfDocumentation>
+		<fdd:selfDocumentation>
+			<p>The DTD includes a rich set of elements for metadata at the article and journal level.  The &lt;article&gt; element is expected to include the article content and full descriptive metadata.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>According to the <a href="https://jats.nlm.nih.gov/extensions/bits/tag-library/2.1/chapter/accessibility.html">BITS Book Interchange Tag Suite, version 2.1 documentation</a>, the BITS format has moderate support for accessibility features.</p>
+			<p>The BITS tag set, like JATS, provides two elements that can be applied to graphics, images, tables, and figures to provide content descriptions: </p>
+			<ul>
+				<li>&lt;alt-text&gt; to briefly describe the content of the graphic/image in instances where the graphic content cannot be processed by the user or device</li>
+				<li>&lt;long-desc&gt; to provide a longer description of the graphic/image</li>
+			</ul>
+			<p>BITS also includes the following accessibility options:</p>
+			<ul>
+				<li>The @alt attribute can be used to define pronunciation, for example of an abbreviation, for a screen reader.</li>
+				<li>The &lt;alternatives&gt; element can be used to provide additional versions of a graphic or object. For example, this element will be used to provide text alternatives to an emoji or to provide a text alternative for time based media.</li>
+				<li>The @headers attribute for tables, which specifies the cells that are designated as the header for the current cell. And the @scope attribute is also used for tables, to specify the cells for which the current cell acts as a header.</li>
+			</ul>
+		</fdd:selfDocumentation>
 		<fdd:externalDependencies>
 			None.
 		</fdd:externalDependencies>

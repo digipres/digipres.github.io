@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000139" titleName="JPEG 2000 Part 1, Core Coding, Lossless Compression" shortName="J2K_C_LL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+<fdd:FDD id="fdd000139" titleName="JPEG 2000 Part 1, Core Coding, Lossless Compression" shortName="J2K_C_LL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenreAndSubgenres>
@@ -15,7 +15,7 @@
 		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2022-04-28</fdd:date>
+			<fdd:date>2024-05-08</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -73,7 +73,14 @@
 		</fdd:licensingAndPatents>
 		<fdd:transparency>See <fddLink id="fdd000138">J2K_C</fddLink>
 		</fdd:transparency>
-		<fdd:selfDocumentation>See <fddLink id="fdd000143">JP2_FF</fddLink>
+		<fdd:selfDocumentation>
+			<p>See <fddLink id="fdd000143">JP2_FF</fddLink>
+			</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>See <fddLink id="fdd000143">JP2_FF</fddLink>
+			</p>
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>None.
 		</fdd:externalDependencies>
@@ -152,7 +159,7 @@
 		<fdd:general>
 			<p>Robert Buckley, for many years a research fellow in the Xerox Innovation Group, and chair of the committee that developed the JPEG2000/Part 6 standard, offers the following insights: "The multiple component transforms in Annex G of Part 1 refer to the 'component decorrelating transforms' and describe the reversible and irreversible versions of the component or 'color' transform. The wavelet transform is applied independently to each component that results from the 'color' transform, and these may also be reversible and irreversible.  The reversible transforms are necessary but not sufficient for lossless. You must also remember to not quantize the transformed coefficients; in other words, just pass them through."  (Private communication, December 15, 2004)</p>
 			<p>From <a href="https://ieeexplore.ieee.org/document/953547">"Wavelet Transforms in the JPEG-2000 Standard"</a>: The JPEG-2000 codec is transform-based. It employs multicomponent transforms, wavelet transforms, and bit-plane coding techniques, in order to provide a framework for both lossy and lossless compression. Both reversible integer-to-integer and nonreversible real-to-real transforms are employed, the latter being referred to as 'irreversible' in the terminology of the standard. . . .  The input to the encoding process is an image consisting of one or more components. Before any further processing takes place, each component has its sample values adjusted by an additive bias, in a process called DC level shifting. The bias is chosen such that the resulting sample values have a nominal dynamic range (approximately) centered about zero. Then, a multicomponent transform (MCT) may be applied collectively to a number of the components. Next, a wavelet transform (WT) may be applied to each component individually. Finally, the resulting transform coefficients are quantized and then encoded. In the case of lossless coding, reversible transforms must be employed and all quantizer step sizes are forced to be one. In the lossy case, either reversible or nonreversible transforms can be used, but the two types of transforms cannot be intermixed.</p>
-			<p>David S. Taubman and Michael Marcellin's book <a href="https://last.hit.bme.hu/download/firtha/video/JPEG2000/David%20S.%20Taubman,%20%20Michael%20W.%20Marcellin%20%20(auth.)%20JPEG2000%20Image%20Compression%20Fundamentals,%20Standards%20and%20Practice%20%202002.pdf">JPEG 2000: Image Compression Fundamentals, Standards and Practices</a> (Boston: Kluwer Academic Publishers, 2002) notes that the color transform is optional and "may be used only when three or more color components are available . . . . the transform converts the RGB data into . . . a luminance (or intensity) channel and two color difference channels."  Color transforms may themselves be reversible (RCT, with integer approximation to YUV color space) or irreversible (ICT, with floating point YUV).  The discrete wavelet transforms (DWTs), which are not optional, may also be reversible (using the "integer 5-3 filter" specified in the standard) or irreversible (using the "floating point 9-7 filter").</p>
+			<p>David S. Taubman and Michael Marcellin's book <a href="https://www.hlevkin.com/hlevkin/04imageprocDoc/David%20S.%20Taubman,%20%20Michael%20W.%20Marcellin%20%20(auth.)%20JPEG2000%20Image%20Compression%20Fundamentals,%20Standards%20and%20Practice%20%202002.pdf">JPEG 2000: Image Compression Fundamentals, Standards and Practices</a> (Boston: Kluwer Academic Publishers, 2002) notes that the color transform is optional and "may be used only when three or more color components are available . . . . the transform converts the RGB data into . . . a luminance (or intensity) channel and two color difference channels."  Color transforms may themselves be reversible (RCT, with integer approximation to YUV color space) or irreversible (ICT, with floating point YUV).  The discrete wavelet transforms (DWTs), which are not optional, may also be reversible (using the "integer 5-3 filter" specified in the standard) or irreversible (using the "floating point 9-7 filter").</p>
 		</fdd:general>
 	</fdd:notes>
 	<fdd:formatSpecifications>
@@ -189,7 +196,7 @@ Information technology — JPEG 2000 image coding system — Part 1: Core coding
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://last.hit.bme.hu/download/firtha/video/JPEG2000/David%20S.%20Taubman,%20%20Michael%20W.%20Marcellin%20%20(auth.)%20JPEG2000%20Image%20Compression%20Fundamentals,%20Standards%20and%20Practice%20%202002.pdf</link>
+					<link>https://www.hlevkin.com/hlevkin/04imageprocDoc/David%20S.%20Taubman,%20%20Michael%20W.%20Marcellin%20%20(auth.)%20JPEG2000%20Image%20Compression%20Fundamentals,%20Standards%20and%20Practice%20%202002.pdf</link>
 					<tag>JPEG2000
 Image Compression Fundamentals,
 Standards and Practice by David S. Taubman, Michael W. Marcellin</tag>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<ContainerSignatureMapping schemaVersion="1.0" signatureVersion="36">
+<ContainerSignatureMapping schemaVersion="1.0" signatureVersion="37">
   <ContainerSignatures>
     <ContainerSignature Id="1000" ContainerType="OLE2">
       <Description>Microsoft Word 6.0/95 OLE2</Description>
@@ -5970,6 +5970,26 @@
     </ContainerSignature>
 
     <ContainerSignature Id="52100" ContainerType="OLE2">
+      <Description>GST Art 1</Description>
+      <Files>
+        <File>
+          <Path>CONTENTS</Path>
+          <BinarySignatures>
+            <InternalSignatureCollection>
+              <InternalSignature ID="52000">
+                <ByteSequence Reference="BOFoffset">
+                  <SubSequence Position="1" SubSeqMinOffset="16" SubSeqMaxOffset="0">
+                    <Sequence>47 53 54 3A 41 52 54 00</Sequence>
+                  </SubSequence>
+                </ByteSequence>
+              </InternalSignature>
+            </InternalSignatureCollection>
+          </BinarySignatures>
+        </File>
+      </Files>
+    </ContainerSignature>
+	
+	<ContainerSignature Id="52150" ContainerType="OLE2">
       <Description>GST Art 2</Description>
       <Files>
         <File>
@@ -5978,7 +5998,7 @@
             <InternalSignatureCollection>
               <InternalSignature ID="52000">
                 <ByteSequence Reference="BOFoffset">
-                  <SubSequence Position="1" SubSeqMinOffset="16" SubSeqMaxOffset="16">
+                  <SubSequence Position="1" SubSeqMinOffset="16" SubSeqMaxOffset="0">
                     <Sequence>47 53 54 3A 41 52 54 00</Sequence>
                   </SubSequence>
                 </ByteSequence>
@@ -6625,28 +6645,26 @@
         </File>
       </Files>
     </ContainerSignature>
-
-    <ContainerSignature Id="80000" ContainerType="ZIP">
-      <Description>Web Archive Collection Zipped</Description>
-      <Files>
-        <File>
-          <Path>datapackage.json</Path>
-          <BinarySignatures>
-            <InternalSignatureCollection>
-              <InternalSignature ID="80000">
-                <ByteSequence Reference="BOFoffset">
-                  <SubSequence Position="1" SubSeqMinOffset="0" SubSeqMaxOffset="4096">
-                    <Sequence>'wacz_version'</Sequence>
-                  </SubSequence>
-                </ByteSequence>
-              </InternalSignature>
-            </InternalSignatureCollection>
-          </BinarySignatures>
-        </File>
-      </Files>
-    </ContainerSignature>
-
-    <ContainerSignature Id="90000" ContainerType="OLE2">
+<ContainerSignature Id="80000" ContainerType="ZIP">
+<Description>Web Archive Collection Zipped</Description>
+<Files>
+<File>
+<Path>datapackage.json</Path>
+<BinarySignatures>
+<InternalSignatureCollection>
+<InternalSignature ID="80000">
+<ByteSequence Reference="Variable">
+<SubSequence Position="1">
+<Sequence>'wacz_version'</Sequence>
+</SubSequence>
+</ByteSequence>
+</InternalSignature>
+</InternalSignatureCollection>
+</BinarySignatures>
+</File>
+</Files>
+</ContainerSignature>
+<ContainerSignature Id="90000" ContainerType="OLE2">
       <Description>Camtasia Recording File</Description>
       <Files>
         <File>
@@ -6943,7 +6961,6 @@
         </File>
       </Files>
     </ContainerSignature>
-
     <ContainerSignature Id="101100" ContainerType="ZIP">
       <Description>CorelDRAW Drawing 2022</Description>
       <Files>
@@ -6995,6 +7012,70 @@
         </File>
       </Files>
     </ContainerSignature>
+	<ContainerSignature Id="110000" ContainerType="ZIP">
+            <Description>Finale Notation file</Description>
+            <Files>
+                <File>
+                    <Path>NotationMetadata.xml</Path>
+                </File>
+					 <File>
+                    <Path>mimetype</Path>
+                    <BinarySignatures>
+                        <InternalSignatureCollection>                    
+	                        <InternalSignature ID="300">
+	                            <ByteSequence Reference="BOFoffset">
+	                                <SubSequence Position="1" SubSeqMinOffset="0" SubSeqMaxOffset="0">
+	                                    <Sequence>'application/vnd.makemusic.notation'</Sequence>
+	                                </SubSequence>
+	                            </ByteSequence>
+	                        </InternalSignature>
+	                    </InternalSignatureCollection>
+                    </BinarySignatures>
+                </File>             
+            </Files>
+        </ContainerSignature>
+        
+        <ContainerSignature Id="111000" ContainerType="ZIP">
+            <Description>Compressed MusicXML file</Description>
+            <Files>
+					 <File>
+                    <Path>mimetype</Path>
+                    <BinarySignatures>
+                        <InternalSignatureCollection>                    
+	                        <InternalSignature ID="300">
+	                            <ByteSequence Reference="BOFoffset">
+	                                <SubSequence Position="1" SubSeqMinOffset="0" SubSeqMaxOffset="0">
+	                                    <Sequence>'application/vnd.recordare.musicxml'</Sequence>
+	                                </SubSequence>
+	                            </ByteSequence>
+	                        </InternalSignature>
+	                    </InternalSignatureCollection>
+                    </BinarySignatures>
+                </File>             
+            </Files>
+        </ContainerSignature>
+	
+<ContainerSignature Id="112000" ContainerType="OLE2">
+            <Description>Melco Project File</Description>
+            <Files>
+				<File>
+                    <Path>EdsIV Object</Path>
+                    <BinarySignatures>
+                        <InternalSignatureCollection>                    
+	                        <InternalSignature ID="300">
+	                            <ByteSequence Reference="BOFoffset">
+	                                <SubSequence Position="1" SubSeqMinOffset="16" SubSeqMaxOffset="48">
+	                                    <Sequence>43 50 72 6A 44 65 66 61 75 6C 74 73</Sequence>
+	                                </SubSequence>
+	                            </ByteSequence>
+	                        </InternalSignature>
+	                    </InternalSignatureCollection>
+                    </BinarySignatures>
+                </File>               
+            </Files>
+        </ContainerSignature>
+	
+	
   </ContainerSignatures>
 
   <FileFormatMappings>
@@ -7559,6 +7640,7 @@
 
     <!-- GST Art 2 (OLE2)-->
     <FileFormatMapping signatureId="52100" Puid="fmt/1878"/>
+	<FileFormatMapping signatureId="52150" Puid="fmt/1878"/>
 
     <!-- Corel Print House 1 (OLE2)-->
     <FileFormatMapping signatureId="53000" Puid="fmt/1417"/>
@@ -7641,28 +7723,49 @@
 
     <!-- CorelDraw X4 -->
     <FileFormatMapping signatureId="101000" Puid="fmt/429"/>
+	
     <!-- CorelDraw X5 -->
     <FileFormatMapping signatureId="101010" Puid="fmt/430"/>
+	
     <!-- CorelDraw X6 -->
     <FileFormatMapping signatureId="101020" Puid="fmt/1925"/>
+	
     <!-- CorelDraw X7 -->
     <FileFormatMapping signatureId="101030" Puid="fmt/1926"/>
+	
     <!-- CorelDraw X8 -->
     <FileFormatMapping signatureId="101040" Puid="fmt/1927"/>
+	
     <!-- CorelDraw 2017 -->
     <FileFormatMapping signatureId="101050" Puid="fmt/1928"/>
+	
     <!-- CorelDraw 2018 -->
     <FileFormatMapping signatureId="101060" Puid="fmt/1929"/>
+	
     <!-- CorelDraw 2019 -->
     <FileFormatMapping signatureId="101070" Puid="fmt/1930"/>
+	
     <!-- CorelDraw 2020 -->
     <FileFormatMapping signatureId="101080" Puid="fmt/1931"/>
+	
     <!-- CorelDraw 2021 -->
     <FileFormatMapping signatureId="101090" Puid="fmt/1932"/>
+	
     <!-- CorelDraw 2022 -->
     <FileFormatMapping signatureId="101100" Puid="fmt/1933"/>
+	
     <!-- CorelDraw 2023 -->
     <FileFormatMapping signatureId="101110" Puid="fmt/1934"/>
+	
+	<!--   Melco OFM Project pre v.11 -->
+	<FileFormatMapping signatureId="112000" Puid="fmt/1959"/>
+	
+	<!--   Finale Notation File -->
+	<FileFormatMapping signatureId="110000" Puid="fmt/1974"/>
+	
+	<!--   Compressed Music XML -->
+	<FileFormatMapping signatureId="111000" Puid="fmt/2005"/>
+
 
   </FileFormatMappings>
 

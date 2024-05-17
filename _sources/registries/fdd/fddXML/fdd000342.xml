@@ -17,7 +17,7 @@
 		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
 		<fdd:updates>
-			<fdd:date>2022-10-11</fdd:date>
+			<fdd:date>2024-05-09</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Partial</fdd:draftStatus>
 	</fdd:properties>
@@ -154,6 +154,11 @@
 		<fdd:selfDocumentation>
 			<p>Built on well-structured EBML, Matroska has multiple options within the file structure to provide technical and descriptive metadata. Technical details about the audio and video payloads are defined in the Tracks element such as CodecId, CodecName for any Track type with FieldOrder, StereoMode, DisplayWidth, DisplayHeight, AspectRatioType and color for video tracks and SamplingFrequency, Channels and BitDepth for audio tracks.  The "Info" Element includes information about its parent Segment including durations, unique identifiers and title for the Segment. The "Tags" Element "contains metadata describing Tracks, Editions, Chapters, Attachments, or the Segment as a whole.</p>
 			<p>Matroska has a robust <a href="https://datatracker.ietf.org/doc/draft-ietf-cellar-tags/">tagging</a> infrastructure which enables structured descriptive labels. The official set of tags covers Organization Information, Titles, Nesting Information, Organization Information, Titles, Nested Information, Entities, Search and Classification, Temporal Information, Spacial Information, Personal, Technical Information, Identifiers, Commercial, Legal, and Notes. Tags can be bested for more granularity so that "when a Tag is nested within another Tag, the nested Tag becomes an attribute of the base tag."  </p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>The Matroska container format offers moderate accessibility support. The format supports storage of text data for subtitles, including WebVTT. See the <a href="https://www.matroska.org/technical/subtitles.html">technical documentation</a> for more details on subtitles. As of May 2024, <a href="https://github.com/ietf-wg-cellar/matroska-specification/pull/823/commits/8eeee1b9b5934d2db2a468c5d5cd2ddbd6f9fb48">development</a> was underway to enable CEA-608/708 track support to enable support and preservation of line 21 and other standardized caption data.</p>
+			<p>See <a href="https://www.w3.org/WAI/media/av/">W3C's Making Audio and Video Media Accessible</a> for more general information about accessible sound and moving image media.</p>
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>
 			<p>The specification points out that Matroska inherits security considerations from EBML which can include the vulnerability of an "easter egg" within the Attachment element which could contain arbitrary and potentially executable data. To combat this, "Matroska Readers that extract or use data from Matroska Attachments SHOULD check that the data adheres to expectations." In addition a Matroska Attachment may have an inaccurate <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">IANA media type or mime type</a>. </p>

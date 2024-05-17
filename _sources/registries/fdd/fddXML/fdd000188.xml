@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000188" titleName="Adobe Digital Negative (DNG), Version 1.1" shortName="DNG_1_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+<fdd:FDD id="fdd000188" titleName="Adobe Digital Negative (DNG), Version 1.1" shortName="DNG_1_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
@@ -11,7 +11,7 @@
 		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2022-05-02</fdd:date>
+			<fdd:date>2024-05-06</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -131,11 +131,19 @@
 		</fdd:disclosure>
 		<fdd:documentation>
 			<a href="https://web.archive.org/web/20051108165239/http://www.adobe.com/products/dng/pdfs/dng_spec.pdf">Digital Negative (DNG) Specification</a>, version 1.1.0.0 (February 2005).  Note that this version is from the Internet Archive; when consulted in May 2022, Adobe&apos;s own site offered access to <a href="https://helpx.adobe.com/content/dam/help/en/photoshop/pdf/dng_spec_1_6_0_0.pdf">version 1.6.0.0</a>.</fdd:documentation>
-		<fdd:adoption>The breadth and depth of support is outlined in the <a href="https://en.wikipedia.org/wiki/Digital_Negative">Wikipedia Digital Negative</a> article.  Adobe's DNG converter applications add support for proprietary camera formats on a regular basis. Barry Pearson's <a href="http://www.barrypearson.co.uk/articles/dng/products_y1.htm">DNG products</a> Web page ("frozen" as of the end-of-2005 update) lists 77 non-Adobe products that support DNG.</fdd:adoption>
+		<fdd:adoption>The breadth and depth of support is outlined in the <a href="https://en.wikipedia.org/wiki/Digital_Negative">Wikipedia Digital Negative</a> article.  Adobe's DNG converter applications add support for proprietary camera formats on a regular basis. Barry Pearson's <a href="https://web.archive.org/web/20230407225710/www.barrypearson.co.uk/articles/dng/products_y1.htm">DNG products</a> Web page ("frozen" as of the end-of-2005 update) lists 77 non-Adobe products that support DNG.</fdd:adoption>
 		<fdd:licensingAndPatents>Adobe <a href="https://helpx.adobe.com/photoshop/digital-negative.html">statement</a> consulted in February 2012: "Adobe provides the DNG Specification to the public for the purpose of encouraging implementation of this file format in a compliant manner. This [Web page] is a patent license granted by Adobe to individuals and organizations that desire to develop, market and/or distribute hardware and software that reads and/or writes image files compliant with the DNG Specification."</fdd:licensingAndPatents>
 		<fdd:transparency>Wrapper is transparent; encoded image bitstream may require tools to render.</fdd:transparency>
-		<fdd:selfDocumentation>See <a href="../content/tiff_tags.shtml">Tags for TIFF and Related Specifications</a>.  Metadata may be embedded in a DNG file using tags from (1) <fddLink id="fdd000022">TIFF_6</fddLink>,  (2) <fddLink id="fdd000073">TIFF/EP</fddLink> or <fddLink id="fdd000146">EXIF_2_2</fddLink> (see also <fddLink id="fdd000145">TIFF_UNC_EXIF</fddLink>), (3) IPTC (TIFF tag 33723), and (4) XMP (TIFF tag 700).<br/>
-			<br/>Regarding TIFF/EP and EXIF, the DNG specification states that TIFF/EP stores the tags in IFD 0 (IFD stands for Image File Directories, in effect segments of a TIFF file), while TIFF_UNC_EXIF stores them in a separate IFD. Either location is allowed but the EXIF location is preferred. Proprietary metadata that may be used by camera manufacturer's raw converters is placed under private tags, in private IFDs, and/or a private MakerNote. (pp. 12-13)</fdd:selfDocumentation>
+		<fdd:selfDocumentation>
+			<p>See <a href="../content/tiff_tags.shtml">Tags for TIFF and Related Specifications</a>.  Metadata may be embedded in a DNG file using tags from (1) <fddLink id="fdd000022">TIFF_6</fddLink>,  (2) <fddLink id="fdd000073">TIFF/EP</fddLink> or <fddLink id="fdd000146">EXIF_2_2</fddLink> (see also <fddLink id="fdd000145">TIFF_UNC_EXIF</fddLink>), (3) IPTC (TIFF tag 33723), and (4) XMP (TIFF tag 700).<br/>
+			</p>
+			<p>
+				<br/>Regarding TIFF/EP and EXIF, the DNG specification states that TIFF/EP stores the tags in IFD 0 (IFD stands for Image File Directories, in effect segments of a TIFF file), while TIFF_UNC_EXIF stores them in a separate IFD. Either location is allowed but the EXIF location is preferred. Proprietary metadata that may be used by camera manufacturer's raw converters is placed under private tags, in private IFDs, and/or a private MakerNote. (pp. 12-13)</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>DNG files may have moderate support for accessibility as they are considered a subtype of TIFF file. TIFF files have moderate support for accessibility features through the use of embedded metadata in <a href="../content/tiff_tags.shtml">TIFF tags</a>. For example, ImageDescription tag (code 270) describes the content of the image but this may not be accessible to screen readers. See <fddLink id="fdd000022">TIFF_6</fddLink>.</p>
+		</fdd:selfDocumentation>
 		<fdd:externalDependencies>None
 		</fdd:externalDependencies>
 		<fdd:techProtection>None
@@ -259,15 +267,23 @@
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.barrypearson.co.uk/articles/dng/</link>
+					<link>https://web.archive.org/web/20230408064222/http://www.barrypearson.co.uk/articles/dng/</link>
 					<tag>DNG articles and links</tag>
-					<comment>Barry Pearson&apos;s DNG Web site.</comment>
+					<comment>Barry Pearson&apos;s DNG Web site. Link via web archive. </comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://www.barrypearson.co.uk/articles/dng/linear.htm</link>
+					<link>https://web.archive.org/web/20230514072324/http://www.barrypearson.co.uk/articles/dng/linear.htm</link>
 					<tag>Barry Pearson on Linear DNG.</tag>
+					<comment>Barry Pearson&apos;s DNG Web site. Link via web archive. </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20230407225710/www.barrypearson.co.uk/articles/dng/products_y1.htm</link>
+					<tag>Barry Peason&apos;s list of products using DNG. </tag>
+					<comment>Barry Pearson&apos;s DNG Web site. Link via web archive. </comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>

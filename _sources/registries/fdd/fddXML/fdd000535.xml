@@ -11,7 +11,7 @@
 		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2024-01-02</fdd:date>
+			<fdd:date>2024-05-10</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Preliminary</fdd:draftStatus>
 	</fdd:properties>
@@ -167,7 +167,14 @@ Application #2E. Although there is an entry reserved for this format, it is not 
 implementation of this Engineering Document. However, attention is drawn to the possibility that some of the
 elements of this document may be the subject of patent rights.&quot; <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.	</fdd:licensingAndPatents>
 		<fdd:transparency>The Packing List will be transparent and describe the general file but the essence tracks themselves may not be. Like a ZIP file, the IMF exists to support the movement of data. The encryption method for non-interleaved MXF frame-wrapped tracks is defined in SMPTE 429-6:2006. The algorithm and mode for the KLV encrypted triplets is defined in the Cipher Algorithm metadata item within the Cryptographic Context Set. The default is Advanced Encryption Standard (AES) cipher as defined by NIST SP 800-38a. </fdd:transparency>
-		<fdd:selfDocumentation>The Packing List identifies each file, includes file-integrity checks ("hash") for each file, as well as a public key and digital signature that is part of the overall security system. Optional "MIC" (media content integrity) hash values can be created at the KLV triplet level using a structure which parallels that for encryption defined in SMPTE 429-6:2006. The MIC value within the KLV triplet is calculated only on the V portion of triplet - not the K and L.  The hash algorithm type is defined in the "MIC Algorithm" metadata item within the Cryptographic Context Set. The default algorithm is SHA-1. The actual hash value is stored on the "MIC" metadata item within the Encrypted Triplet Variable Length Pack.    </fdd:selfDocumentation>
+		<fdd:selfDocumentation>
+			<p>The Packing List identifies each file, includes file-integrity checks ("hash") for each file, as well as a public key and digital signature that is part of the overall security system. Optional "MIC" (media content integrity) hash values can be created at the KLV triplet level using a structure which parallels that for encryption defined in SMPTE 429-6:2006. The MIC value within the KLV triplet is calculated only on the V portion of triplet - not the K and L.  The hash algorithm type is defined in the "MIC Algorithm" metadata item within the Cryptographic Context Set. The default algorithm is SHA-1. The actual hash value is stored on the "MIC" metadata item within the Encrypted Triplet Variable Length Pack.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>The IMF/IMP (Interoperable Master Format / Package) offers good accessibility support, enabling alternate audiovisual description across a number of track options specifically for use by assistive technology, including: Timed text track file (SMPTE ST 2067-2:2020, 5.4), Caption Description Packet (CDP) Track File (SMPTE ST 2067-2:2020, 5.6), Timed Text Virtual Tracks (Caption Description Packet (CDP) Track File, 6.3). See the <a href="https://ieeexplore.ieee.org/document/9097478"> specification</a> for more technical information related to these features.</p>
+			<p>See <a href="https://www.w3.org/WAI/media/av/">W3C's Making Audio and Video Media Accessible</a> for more general information about accessible sound and moving image media.</p>
+		</fdd:selfDocumentation>
 		<fdd:externalDependencies>See <fddLink id="fdd000013">MXF</fddLink>. </fdd:externalDependencies>
 		<fdd:techProtection>
 			<p>SMPTE 2067-2 states that assets can be encrypted with or without authentication required and that &quot;such mechanisms are outside the scope of this specification.&quot;

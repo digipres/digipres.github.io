@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000601" titleName="3D Model File Format Family" shortName="3DM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>model</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>family</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2024-05-01</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>3D Model File Format Family</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>3D model formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The Rhino 3D Model (3DM) is a 3D graphics format family used to exchange mathematical representations of 3D geometry, <a href="https://docs.fileformat.com/3d/3dm/">used</a> in the Rhino 3D software application and other 3D model software. Rhino 3D is a <a href="https://www.spatial.com/resources/glossary/what-is-surface-modeling">surface modeling</a> software. This format is known as the openNURBS 3D model.</p>
+			<p>These files <a href="https://help.solidworks.com/2019/english/SolidWorks/sldworks/c_rhino_files.htm">provide</a> NURBS and analytic surfaces for free-form shapes. NURBS, an acronym for <a href="https://www.rhino3d.com/features/nurbs/">Non-Uniform Rational B-Splines</a>, are "mathematical representations of 3D geometry that can accurately describe any shape from a simple 2D line, circle, arc, or curve to the most complex 3D organic free-form surface or solid. Because of their flexibility and accuracy, NURBS models can be used in any process, from illustration and animation to manufacturing."</p>
+			<p>
+				<a href="https://www.spatial.com/resources/glossary/3dm-file">Spatial</a> says "3DM files are inherently classified as computer-aided design (CAD) files as they can be processed by several CAD applications."</p>
+			<p>The 3DM family has different formats, changing with the versions of the Rhino software, at Version 8 at the time of writing. The current version of Rhino <a href="https://docs.mcneel.com/rhino/8/help/en-us/index.htm#fileio/rhino_3dm_import_export.htm">will save</a> to any previous Rhino version files except V1.x. The Rhino <a href="https://docs.mcneel.com/rhino/8/help/en-us/index.htm#fileio/rhino_3dm_import_export.htm">import/export page</a> details differences between the formats. <a href="https://github.com/mcneel/opennurbs/tree/8.x/example_files">Sample files</a> of versions 1-8 are available, hosted on GitHub by the openNURBS initiative.</p>
+			<p>This format is also referred to as Rhino 3DM and openNURBS 3DM. <a href="../contact_format.shtml">Comments welcome</a>.
+            </p>
+		</fdd:description>
+		<fdd:shortDescription>The Rhino 3D Model (3DM) is a 3D graphics format family used to exchange mathematical representations of 3D geometry, used in the Rhino 3D software application and other 3D model software. Rhino 3D is a surface modeling software. This format is known as the openNURBS 3D model.</fdd:shortDescription>
+		<fdd:productionPhase>Most often an initial-state or middle-state format; may serve as a final-state format.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:comment>Rhino backup files (.3dm.bak and .3dmbak): Mentioned in the <a href="https://docs.mcneel.com/rhino/8/help/en-us/index.htm#fileio/rhino_3dm_import_export.htm">Rhino documentation</a> and <a href="https://www.spatial.com/resources/glossary/rhino-file-format">by Spatial</a>. Not described separately at this time.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress has a small number of 3DM files in its collections as of May 2024.</fdd:experience>
+		<fdd:preference>See the Library of Congress Recommended Formats Statement for format preferences for <a href="https://www.loc.gov/preservation/resources/rfs/design3D.html">Design and 3D formats</a>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Partially disclosed.</fdd:disclosure>
+		<fdd:documentation>The openNURBS toolkit source code is <a href="https://github.com/mcneel/opennurbs">available</a>, but the 3DM file format lacks an outline or documentation. The file parsing ability, written in C++, is available <a href="https://github.com/mcneel/opennurbs/blob/7.x/opennurbs_file_utilities.cpp#L1893C17-L1893C17">in these lines of opennurbs_file_utilities.cpp</a> in the source code. <a href="https://www.rhino3d.com/download/openNURBS/7/release/">openNURBS 7</a> is behind a login wall. A community member <a href="https://discourse.mcneel.com/t/i-am-looking-for-a-3dm-file-format-description/158947">has sought out</a> the file format documentation, to no avail.
+        </fdd:documentation>
+		<fdd:adoption>According to <a href="https://developer.rhino3d.com/guides/opennurbs/what-is-opennurbs/">Rhino</a>, "More than 400 software development teams and applications, including Rhinoceros, exchange 3D models using the openNURBS file format." It is <a href="https://www.spatial.com/resources/glossary/rhino-file-format">used</a> across a wide range of industries, including <a href="https://info.spatial.com/what-is-building-information-modeling">architecture</a>, prototyping, engineering, and graphic design.</fdd:adoption>
+		<fdd:licensingAndPatents>The openNURBS initiative <a href="https://developer.rhino3d.com/guides/opennurbs/what-is-opennurbs/">states</a> that "Neither copyright nor copyleft restrictions apply." <a href="https://www.rhino3d.com/features/developer/opennurbs/">Furthermore</a>, "Permission is hereby granted, free of charge, to any person obtaining a copy of the openNURBS SDKs and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software."</fdd:licensingAndPatents>
+		<fdd:transparency>A binary format with different versions that requires advanced tools, notably the openNURBS toolkit, although other programs are able to import and export the files as well.</fdd:transparency>
+		<fdd:selfDocumentation>3DM files store name and version number as part of the magic numbers string. The openNURBS code that <a href="https://github.com/mcneel/opennurbs/blob/7.x/opennurbs_file_utilities.cpp#L1893C17-L1893C17">parses</a> 3DM files seeks for and stores file_size, file_metadata_last_modified_time, and file_contents_last_modified_time. <a href="../contact_format.shtml">Comments welcome</a>.
+        </fdd:selfDocumentation>
+		<fdd:externalDependencies>None.</fdd:externalDependencies>
+		<fdd:techProtection>None.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:otherQF>
+			<fdd:factor>
+				<fdd:tag>3D Model Geometry</fdd:tag>
+				<fdd:note>3DM files <a href="https://docs.fileformat.com/3d/3dm/">contain</a> 3D models along with their dependent elements such as surface, points, and curve information. Contingent on the 3DM version.
+                </fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>3D Model Appearance</fdd:tag>
+				<fdd:note>3DM supports surface or solid forms. Mesh and texture is supported. Contingent on the 3DM version. <a href="../contact_format.shtml">Comments welcome</a>.
+                </fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>3D Model Scene</fdd:tag>
+				<fdd:note>Storage of scene information is limited. Contingent on the 3DM version. <a href="../contact_format.shtml">Comments welcome</a>.
+                </fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>3D Model Animation</fdd:tag>
+				<fdd:note>3DM is not intended for use in animation. Contingent on the 3DM version. <a href="../contact_format.shtml">Comments welcome</a>.
+                </fdd:note>
+			</fdd:factor>
+		</fdd:otherQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>3dm</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://www.rhino3d.com/features/file-formats/">Rhinoceros</a>.
+                </fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>model/vnd.3dm</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>As of May 2024, there is no official IANA media type. In <a href="https://discourse.mcneel.com/t/correct-content-type-aka-mime-type-media-type-for-3dm-files/109558/7">Rhino message board discussions</a>, the proposed media type value is "model/vnd.3dm". <a href="../contact_format.shtml">Comments welcome</a>.
+                </fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 33442047656F6D657472792046696C6520466F726D617420</fdd:sigValue>
+					<fdd:sigValue>ASCII: 3D Geometry File Format </fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Defined in the <a href="https://github.com/mcneel/opennurbs/blob/7.x/opennurbs_file_utilities.cpp#L1893C17-L1893C17">openNURBS file utility source code</a>. Note the magic number string (in ASCII) includes a trailing space. Version numbers follow this string. The PRONOM entries (see below) document the specific version numbers.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/433</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>3DM 1. See <a href="https://www.nationalarchives.gov.uk/PRONOM/x-fmt/433">https://www.nationalarchives.gov.uk/PRONOM/x-fmt/433</a>.
+                    </fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/434</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>3DM 2. See <a href="https://www.nationalarchives.gov.uk/PRONOM/x-fmt/434">https://www.nationalarchives.gov.uk/PRONOM/x-fmt/434</a>.
+                    </fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>/x-fmt/435</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>3DM 3. See <a href="https://www.nationalarchives.gov.uk/PRONOM//x-fmt/435">https://www.nationalarchives.gov.uk/PRONOM//x-fmt/435</a>.
+                    </fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/432</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>3DM 4. See <a href="https://www.nationalarchives.gov.uk/PRONOM/x-fmt/432">https://www.nationalarchives.gov.uk/PRONOM/x-fmt/432</a>.
+                    </fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/864</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>3DM 5. See <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/864">https://www.nationalarchives.gov.uk/PRONOM/fmt/864</a>.
+                    </fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q28919152</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>3D Model File Format Family. See <a href="https://www.wikidata.org/wiki/Q28919152">https://www.wikidata.org/wiki/Q28919152</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q29945404</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Rhino 3D Model, version 1. See <a href="https://www.wikidata.org/wiki/Q29945404">https://www.wikidata.org/wiki/Q29945404</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q29945408</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Rhino 3D Model, version 2. See <a href="https://www.wikidata.org/wiki/Q29945408">https://www.wikidata.org/wiki/Q29945408</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q29945412</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Rhino 3D Model, version 3. See <a href="https://www.wikidata.org/wiki/Q29945412">https://www.wikidata.org/wiki/Q29945412</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q29945415</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Rhino 3D Model, version 4. See <a href="https://www.wikidata.org/wiki/Q29945415">https://www.wikidata.org/wiki/Q29945415</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q29945416</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Rhino 3D Model, version 5. See <a href="https://www.wikidata.org/wiki/Q29945416">https://www.wikidata.org/wiki/Q29945416</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>openNURBS is an initiative, a toolkit, and also the name of a file format. According to Rhino, the openNURBS initiative <a href="https://developer.rhino3d.com/guides/opennurbs/what-is-opennurbs/">provides</a> "CAD, CAM, CAE, and computer graphics software developers the tools to accurately transfer 3-D geometry between applications." This initiative and toolkit allows anyone to read and write the 3DM file format without the need to use Rhino. According to FileFormat.com's <a href="https://docs.fileformat.com/3d/3dm">3DM summary page</a>, Rhino provides C++ source code for a library that will read and write 3D models using the openNURBS file format. Fileformat.com continues, "This toolkit also provides NURBS evaluation tools and elementary geometric and 3D view manipulation tools as well as including source code for several example programs." The openNURBS Initiative is <a href="https://developer.rhino3d.com/guides/opennurbs/what-is-opennurbs/">funded by</a> Robert McNeel &amp; Associates as an effort to improve 3D file interoperability.</p>
+		</fdd:general>
+	</fdd:notes>
+	<fdd:formatSpecifications/>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://docs.fileformat.com/3d/3dm/</link>
+					<tag>"What is a 3DM file?" FileFormat.com.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.spatial.com/resources/glossary/what-is-surface-modeling</link>
+					<tag>"Glossary - Surface Modeling". Spatial.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://help.solidworks.com/2019/english/SolidWorks/sldworks/c_rhino_files.htm</link>
+					<tag>"Rhino files". Dassault Systèmes. </tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.rhino3d.com/features/nurbs/</link>
+					<tag>"What are NURBS?" Robert McNeel &amp; Associates.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.spatial.com/resources/glossary/3dm-file</link>
+					<tag>"Glossary - 3DM File". Spatial.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://docs.mcneel.com/rhino/8/help/en-us/index.htm#fileio/rhino_3dm_import_export.htm</link>
+					<tag>"Rhino (.3dm) Import/Export". Robert McNeel &amp; Associates.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/mcneel/opennurbs/tree/8.x/example_files</link>
+					<tag>"opennurbs - example files". Robert McNeel &amp; Associates.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.spatial.com/resources/glossary/rhino-file-format</link>
+					<tag>"Glossary - Rhino file format". Spatial.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/mcneel/opennurbs</link>
+					<tag>"opennurbs". Robert McNeel &amp; Associates.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://discourse.mcneel.com/t/correct-content-type-aka-mime-type-media-type-for-3dm-files/109558/7</link>
+					<tag>"Correct Content-Type (aka MIME type, media type) for 3dm files". Alexander Schiftner, et al. Rhinoceros Forums.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/mcneel/opennurbs/blob/7.x/opennurbs_file_utilities.cpp#L1893C17-L1893C17</link>
+					<tag>"opennurbs_file_utilities". Robert McNeel &amp; Associates.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.rhino3d.com/download/openNURBS/7/release/</link>
+					<tag>"Download openNURBS 7". Robert McNeel &amp; Associates. November 13, 2019.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://discourse.mcneel.com/t/i-am-looking-for-a-3dm-file-format-description/158947</link>
+					<tag>"I am looking for a 3dm file format description". LXY. April 2023.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://developer.rhino3d.com/guides/opennurbs/what-is-opennurbs/</link>
+					<tag>"What is openNURBS?" Dale Lear, RhinoDeveloper. Last updated: September 19, 2023.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://info.spatial.com/what-is-building-information-modeling</link>
+					<tag>"Building Information Modeling (BIM)". Spatial.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.rhino3d.com/features/developer/opennurbs/</link>
+					<tag>"The openNURBS Initiative". Robert McNeel &amp; Associates.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.rhino3d.com/features/file-formats/</link>
+					<tag>"Supported File Formats". Robert McNeel &amp; Associates.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://help.graphisoft.com/AC/20/INT/AC20Help/07_Interoperability/07_Interoperability-67.htm#XREF_73903_Working_With_Rhino</link>
+					<tag>"Working With Rhino 3D Models" ARCHICAD.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/AutoCAD-Opening-files-from-Rhino-3dm-in-AutoCAD.html</link>
+					<tag>"Opening files from Rhino .3dm in AutoCAD". AutoCAD.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://blenderartists.org/t/export-3dm-addon-for-blender-rhinoceros-moi3d/1462134</link>
+					<tag>Export3DM Addon for Blender.</tag>
+					<comment>"A convenient way to transfer data from Blender to a 3DM v7 file. The resulting 3DM file can be opened in Rhino 3D or other CAD packages that supports 3DM v7 file."</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://fileformats.archiveteam.org/wiki/3DM</link>
+					<tag>"3DM". ArchiveTeam.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/mcneel/rhino3dm</link>
+					<tag>"rhino3dm". Robert McNeel &amp; Associates.</tag>
+					<comment>"rhino3dm is a set of libraries based on the OpenNURBS geometry library with a "RhinoCommon" style. This provides the ability to access and manipulate geometry through .NET, Python or JavaScript applications independent of Rhino."</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/pronom/x-fmt/433</link>
+					<tag>PRONOM entry for x-fmt/433</tag>
+					<comment>Information in PRONOM from UK National Archives about 3DM 1. PUID: x-fmt/433.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/pronom/x-fmt/434</link>
+					<tag>PRONOM entry for x-fmt/434</tag>
+					<comment>Information in PRONOM from UK National Archives about 3DM 2. PUID: x-fmt/434.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/pronom/x-fmt/435</link>
+					<tag>PRONOM entry for x-fmt/435</tag>
+					<comment>Information in PRONOM from UK National Archives about 3DM 3. PUID: x-fmt/435.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/pronom/x-fmt/432</link>
+					<tag>PRONOM entry for x-fmt/432</tag>
+					<comment>Information in PRONOM from UK National Archives about 3DM 4. PUID: x-fmt/432.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/pronom//fmt/864</link>
+					<tag>PRONOM entry for /fmt/864</tag>
+					<comment>Information in PRONOM from UK National Archives about 3DM 5. PUID: /fmt/864.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q28919152</link>
+					<tag>Wikidata entry for Q28919152</tag>
+					<comment>Information in Wikidata about 3D Model File Format Family. Wikidata Title ID: Q28919152.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q29945404</link>
+					<tag>Wikidata entry for Q29945404</tag>
+					<comment>Information in Wikidata about Rhino 3D Model, version 1. Wikidata Title ID: Q29945404.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q29945408</link>
+					<tag>Wikidata entry for Q29945408</tag>
+					<comment>Information in Wikidata about Rhino 3D Model, version 2. Wikidata Title ID: Q29945408.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q29945412</link>
+					<tag>Wikidata entry for Q29945412</tag>
+					<comment>Information in Wikidata about Rhino 3D Model, version 3. Wikidata Title ID: Q29945412.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q29945415</link>
+					<tag>Wikidata entry for Q29945415</tag>
+					<comment>Information in Wikidata about Rhino 3D Model, version 4. Wikidata Title ID: Q29945415.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q29945416</link>
+					<tag>Wikidata entry for Q29945416</tag>
+					<comment>Information in Wikidata about Rhino 3D Model, version 5. Wikidata Title ID: Q29945416.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

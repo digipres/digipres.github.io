@@ -11,7 +11,7 @@
 		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2022-04-11</fdd:date>
+			<fdd:date>2024-05-09</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -80,7 +80,14 @@
 		<fdd:licensingAndPatents>None identified.  The specification includes a disclaimer: "Compliance with this document may require use of one or more features covered by proprietary rights . . . no position is taken by DCI with respect to the validity of any patent of other proprietary right." (p. vii)
 		</fdd:licensingAndPatents>
 		<fdd:transparency>The Packing List will be transparent. The package itself will be compressed and encrypted and not transparent; like a ZIP file, the DCP exists to support the movement of data. The encryption method for non-interleaved MXF frame-wrapped tracks is defined in SMPTE 429-6:2006. The algorithm and mode for the KLV encrypted triplets is defined in the Cipher Algorithm metadata item within the Cryptographic Context Set. The default is Advanced Encryption Standard (AES) cipher as defined by NIST SP 800-38a. </fdd:transparency>
-		<fdd:selfDocumentation>The Packing List identifies each file, includes file-integrity checks ("hash") for each file, as well as a public key and digital signature that is part of the overall security system. Optional "MIC" (media content integrity) hash values can be created at the KLV triplet level using a structure which parallels that for encryption defined in SMPTE 429-6:2006. The MIC value within the KLV triplet is calculated only on the V portion of triplet - not the K and L.  The hash algorithm type is defined in the "MIC Algorithm" metadata item within the Cryptographic Context Set. The default algorithm is SHA-1. The actual hash value is stored on the "MIC" metadata item within the Encrypted Triplet Variable Length Pack.    </fdd:selfDocumentation>
+		<fdd:selfDocumentation>
+			<p>The Packing List identifies each file, includes file-integrity checks ("hash") for each file, as well as a public key and digital signature that is part of the overall security system. Optional "MIC" (media content integrity) hash values can be created at the KLV triplet level using a structure which parallels that for encryption defined in SMPTE 429-6:2006. The MIC value within the KLV triplet is calculated only on the V portion of triplet - not the K and L.  The hash algorithm type is defined in the "MIC Algorithm" metadata item within the Cryptographic Context Set. The default algorithm is SHA-1. The actual hash value is stored on the "MIC" metadata item within the Encrypted Triplet Variable Length Pack.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>The DCDM_1_0 Digital Cinema format offers good accessibility support. This format supports subtitling, titling and captioning. Sections 3.4.2.and 3.4.3 of the <a href="https://documents.dcimovies.com/DCSS/42cfeb997ae72dd484f7b027547e6e0bfad43ecf/#sec-3-4"> DCI specification</a> define the text rendering requirements and parameters for subpicture (typically for subtitles) and timed text (for subtitles or captions, or both), respectively. In all cases, subpicture and timed text data are required to be encoded as a standardized XML-based document.</p>
+			<p>See <a href="https://www.w3.org/WAI/media/av/">W3C's Making Audio and Video Media Accessible</a> for more general information about accessible sound and moving image media.</p>
+		</fdd:selfDocumentation>
 		<fdd:externalDependencies>
 			See <fddLink id="fdd000177">DCDM_1_0</fddLink>
 		</fdd:externalDependencies>
@@ -118,6 +125,16 @@
 			<fdd:magicNumbers>
 				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
 			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00462</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See NARA File Format Preservation Plan ID <a href="https://www.archives.gov/files/lod/dpframework/id/NF00462.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00462.ttl</a> for DCP_1_0.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
 			<fdd:other>
 				<fdd:tag>Pronom PUID</fdd:tag>
 				<fdd:values>
@@ -215,17 +232,14 @@
 			<fdd:url>
 				<fdd:urlReference>
 					<link>http://csrc.nist.gov/publications/nistpubs/800-38a/sp800-38a.pdf</link>
-					<tag>NIST Recommendation for Block
-2001 Edition
-Cipher Modes of Operation </tag>
+					<tag>NIST Recommendation for Block 2001 Edition Cipher Modes of Operation </tag>
 					<comment>Defines the Advanced Encryption Standard (AES) cipher </comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
 					<link>https://cinepedia.com/faqs/technology-faqs/</link>
-					<tag>Cinepedia Technology
-Frequently Asked Questions (FAQs)</tag>
+					<tag>Cinepedia Technology Frequently Asked Questions (FAQs)</tag>
 					<comment>Useful discussions about Interop and SMPTE DCP.  Formerly MKPE Digital Cinema Technology FAQs.</comment>
 				</fdd:urlReference>
 			</fdd:url>
@@ -247,6 +261,12 @@ Frequently Asked Questions (FAQs)</tag>
 					<link>https://www.wikidata.org/wiki/Q2581328</link>
 					<tag>Wikidata entry for Q2581328</tag>
 					<comment>Information in Wikidata about Digital Cinema Package. Wikidata Title ID: Q2581328.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archives.gov/files/lod/dpframework/id/NF00462.ttl</link>
+					<tag>NARA Preservation Plan ID entry for NF00462</tag>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>

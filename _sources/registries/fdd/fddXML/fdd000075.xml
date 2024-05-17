@@ -131,8 +131,8 @@
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
-		<fdd:experience>Used by LC to represent metadata records (including MARC bibliographic and authority records, MODS, METS) for web-compatible interchange, in particular using the <a href="http://memory.loc.gov/ammem/oamh/">Open Archives Initiative Protocol for Metadata Harvesting</a> and <a href="https://www.loc.gov/standards/sru/">SRU (Search/Retrieval via URL)</a>.</fdd:experience>
-		<fdd:preference>According to the Recommended Formats Statement, may be a preferred format for <a href="https://www.loc.gov/preservation/resources/rfs/text.html">textual works in digital form</a>, metadata records, or as a wrapper format for complex digital objects if conformant to an appropriate standard or agreed DTD or schema that can be used for technical validation.  LC will express preferences based on specific DTDs, W3C XML Schema instances, or instance documents in other schema languages for defining XML-based formats. LC will prefer XML that represents the structure of documents rather than layout. The RFS also lists the XML format as an acceptable format for <a href="https://www.loc.gov/preservation/resources/rfs/text.html">textual works in digital form</a> for XML-based document formats with presentation stylesheets. In addition to textual works in digital form, the Recommended Formats Statement lists XML as a preferred format schema for <a href="http://www.loc.gov/preservation/resources/rfs/data.html">dataset</a> metadata and for packaging data for <a href="http://www.loc.gov/preservation/resources/rfs/moving.html">Video - File-Based and Physical Media</a> and <a href="http://www.loc.gov/preservation/resources/rfs/audio.html">audio</a> as well as an acceptable format for metadata for  <a href="http://www.loc.gov/preservation/resources/rfs/stillimg.html">digital photographs</a>, <a href="http://www.loc.gov/preservation/resources/rfs/stillimg.html">other graphic images in digital form</a> and <a href="http://www.loc.gov/preservation/resources/rfs/design3D.html">2D and 3D Computer Aided Design vector images and scanned 3D objects (output from photogrammetry scanning)</a>. </fdd:preference>
+		<fdd:experience>Used by LC to represent metadata records (including MARC bibliographic and authority records, MODS, METS) for web-compatible interchange, in particular using the <a href="https://www.openarchives.org/pmh/">Open Archives Initiative Protocol for Metadata Harvesting</a> and <a href="https://www.loc.gov/standards/sru/">SRU (Search/Retrieval via URL)</a>.</fdd:experience>
+		<fdd:preference>The Library of Congress Recommended Formats Statement (RFS) lists XML as a Preferred format for <a href="https://www.loc.gov/preservation/resources/rfs/text.html#digital">Textual Works - Digital</a>, with included or accessible DTD/schema, XSD/XSL presentation stylesheet(s), and explicitly stated character encoding. LC will express preferences based on specific DTDs, W3C XML Schema instances, or instance documents in other schema languages for defining XML-based formats. LC will prefer XML that represents the structure of documents rather than layout. The RFS also lists the XML format as an Acceptable format for <a href="https://www.loc.gov/preservation/resources/rfs/text.html">Textual Works - Digital</a> for XML-based document formats with presentation stylesheets. In addition to textual works in digital form, the Recommended Formats Statement lists XML as a Preferred format schema for <a href="http://www.loc.gov/preservation/resources/rfs/data.html">Dataset</a> metadata, for packaging data for <a href="http://www.loc.gov/preservation/resources/rfs/moving.html">Video - File-Based and Physical Media</a> and for metadata for <a href="http://www.loc.gov/preservation/resources/rfs/audio.html">Audio Works - Media Independent (digital)</a>. The RFS also lists XML as an Acceptable format for metadata for <a href="http://www.loc.gov/preservation/resources/rfs/stillimg.html">photographs in digital form</a>, <a href="http://www.loc.gov/preservation/resources/rfs/stillimg.html">other graphic images in digital form</a>, and <a href="http://www.loc.gov/preservation/resources/rfs/design3D.html">2D and 3D Computer Aided Design vector images and scanned 3D objects (output from photogrammetry scanning)</a>. </fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>Open standard. Developed by W3C (World Wide Web Consortium).  To be useful for interoperability or long-term content preservation, an XML document must be associated with a schema specification for the elements and tags it contains.  Such schema specifications (see <fddLink id="fdd000076">XML_DTD</fddLink> and <fddLink id="fdd000077">XML_XSD</fddLink>) must also be disclosed.  
@@ -149,7 +149,20 @@
 			XML is human-readable and designed for straightforward automatic parsing.  For the contents to be understood, a well-documented DTD, XML Schema, or other specification is needed.  Human-comprehensible element tags are advantageous for transparency.
 		</fdd:transparency>
 		<fdd:selfDocumentation>
-			XML is widely used as a syntax for metadata, and metadata for all purposes can be embedded in XML documents with appropriate schema specifications.
+			<p>XML is widely used as a syntax for metadata, and metadata for all purposes can be embedded in XML documents with appropriate schema specifications.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>XML-based formats have good support for accessibility features. According to W3C's <a href="https://www.w3.org/TR/xag/">XML Accessibility Guidelines</a>, XML-based formats can include features that promote accessibility depending on implementation. This document outlines some techniques to achieve this, including the following:</p>
+			<ul>
+				<li>Ensure that authors can associate multiple media objects as alternatives for any content (including images, movies, songs, etc.). (1.1)</li>
+				<li>Ensure all semantics are captured in markup in a repurposable form, so that they are presented in a device independent way. (2.1)</li>
+				<li>Separate presentation properties using stylesheet technology/styling mechanisms, which allows content to adapt to presentational needs for the user such as larger font or more contrast. (2.2)</li>
+				<li>Use the standard XML linking and pointing mechanisms (XLink and XPointer). (2.3)</li>
+				<li>Define element types that allow classification and grouping (header, section, list, etc.). (2.4)</li>
+				<li>Provide a mechanism for identifying summary/abstract/title. (2.7)</li>
+				<li>Define navigable structures that allow discrete, sequential, structured, and search navigation functionalities. (3.2)</li>
+			</ul>
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>
 			None
@@ -207,6 +220,16 @@ FF 00 3C 00 3F 00 78 00 6D 00 6C or FF FE 3C 00 3F 00 78 00 6D
 						<fdd:sigValue>Q2115</fdd:sigValue>
 					</fdd:sigValues>
 					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q2115">https://www.wikidata.org/wiki/Q2115</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00654</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.archives.gov/files/lod/dpframework/id/NF00654.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00654.ttl</a>.
 					</fdd:note>
 				</fdd:values>
 			</fdd:other>
@@ -286,6 +309,13 @@ FF 00 3C 00 3F 00 78 00 6D 00 6C or FF FE 3C 00 3F 00 78 00 6D
 					<link>https://www.wikidata.org/wiki/Q2115</link>
 					<tag>Wikidata entry for Q2115</tag>
 					<comment>Information in Wikidata about Extensible Markup Language. Wikidata Title ID: Q2115</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archives.gov/files/lod/dpframework/id/NF00654.ttl</link>
+					<tag>NARA File Format Preservation Plan ID entry for NF00654</tag>
+					<comment>Information in NARA File Format Preservation Plan ID about Extensible Markup Language (XML).</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>

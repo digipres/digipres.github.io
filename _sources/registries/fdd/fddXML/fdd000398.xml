@@ -16,7 +16,7 @@
 			</fdd:gdfrDomain>
 		</fdd:gdfrDomains>
 		<fdd:updates>
-			<fdd:date>2022-05-02</fdd:date>
+			<fdd:date>2024-05-09</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -159,6 +159,10 @@ reported by CNN Money</a> in Nov 2013.</p>
 			<p>The property file /docProps/core.xml is usually present for OPC packages, although all elements in this Core Properties part are optional.  For more on self-documentation of the package containing the constituent parts of the XLSX file, see <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>.</p>
 			<p>A single optional part with a pre-defined set of extended properties for the package is permitted.  Microsoft uses the part name /docProps/app.xml for this and it is always present in XLSX files created by Microsoft.  The extended properties (each optional and non-repeatable) are primarily administrative and, apart from <i>Company</i> are not related to the intellectual nature of the document or the context for its creation or use.  Elements include: name of creating application; version of creating application; document security level; and information about embedded hyperlinks.   LibreOffice uses the same part names for the core and extended properties parts, but the extended properties part typically records fewer properties.  LibreOffice does identify itself as the creating application for non-empty documents. In November 2014, a newly created XLSX file downloaded from GoogleSheets did not contain any properties parts.</p>
 			<p>The nature of the OPC package would permit the addition of a part that included rich XML-based metadata, preferably in a well-known schema, and that was listed in the relationships file associated with the Core Properties part with an appropriate relationship type.  However, no part of ISO/IEC 29500 predefines such a relationship.  Embedding such a part in an OPC package could be done without affecting the primary document content.  An example of embedding an ONIX metadata record in an OOXML file is given in <a href="http://www.iso.org/iso/catalogue_detail.htm?csnumber=62481">ISO/IEC TR 30114-1:2016  Information technology — Extensions of Office Open XML file formats — Part 1: Guidelines</a>, in Clause 5.4 <i>Embedding foreign Open Packaging Convention (OPC) parts</i>.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>See <fddLink id="fdd000395">OOXML Format Family</fddLink> for web accessibility information.</p>
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>
 			<p>See <fddLink id="fdd000363">OPC/OOXML_2012</fddLink>.</p>
@@ -226,6 +230,16 @@ The display of stored numbers as integers or currency is through display format 
 						<fdd:sigValue>Target=&quot;xl/workbook.xml&quot;</fdd:sigValue>
 					</fdd:sigValues>
 					<fdd:note>This signifier assumes the usual name of the main part of an XLSX file. The target declaration will occur in the top-level Relationships part (<i>\_rels\.rels</i> part in an OPC package of a Transitional XLSX file, as an attribute of a &lt;Relationship&gt; element within the Relationships element.  It will be the target of a relationship of type <i>http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument</i>.  See root namespace and source relationship for Main Document Part in ISO/IEC 29500-4:2012, §10.1.23, which refers to ISO/IEC 29500-1:2012, §12.3.23. </fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00311</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See NARA File Format Preservation Plan ID <a href="https://www.archives.gov/files/lod/dpframework/id/NF00311.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00311.ttl</a> for Microsoft Word for Windows 2007-onwards (OOXML). Note that NARA does not specify versions.
+					</fdd:note>
 				</fdd:values>
 			</fdd:other>
 			<fdd:other>
@@ -507,8 +521,7 @@ languages -- Office Open XML File Formats -- Part 4: Transitional Migration Feat
 						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>https://www.joelonsoftware.com/2006/06/16/my-first-billg-review/</link>
-							<tag>My First BillG Review
-by Joel Spolsky</tag>
+							<tag>My First BillG Review by Joel Spolsky</tag>
 							<comment>One of the topics of the 1992 meeting with Bill Gates described by this former software developer for Microsoft was date issues that is reported as resulting from a characteristic of the date system in Lotus 1-2-3</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
@@ -710,6 +723,13 @@ by Joel Spolsky</tag>
 				<fdd:urlGroup>
 					<fdd:intro>For historical background for Microsoft commitments to interoperability, see Useful References for <fddLink id="fdd000395">OOXML Format Family</fddLink>.</fdd:intro>
 				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archives.gov/files/lod/dpframework/id/NF00311.ttl</link>
+					<tag>NARA File Format Preservation Plan ID</tag>
+					<comment>Information in NARA File Format Preservation Plan ID about Microsoft Word for Windows 2007-onwards (OOXML).</comment>
+				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
 	</fdd:usefulReferences>

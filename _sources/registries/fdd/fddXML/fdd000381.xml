@@ -12,7 +12,7 @@
 		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
 		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2022-08-11</fdd:date>
+			<fdd:date>2024-05-07</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Preliminary</fdd:draftStatus>
 	</fdd:properties>
@@ -27,7 +27,7 @@
 JavaScript/ECMAScript programming language, but is programming language independent.   JSON is considered as a lightweight alternative to XML, as in <a href="http://www.json.org/fatfree.html">JSON: The Fat-Free Alternative to XML</a>, a 2006 presentation by JSON&apos;s developer, Douglas Crockford.  JSON defines a small set of structuring rules for the portable representation of structured data.  JSON provides simple notation for expressing  <i>objects</i>, collections of name/value pairs, and for <i>arrays</i>, ordered lists of values.  By nesting these two basic structures, trees and other complex data structures can be represented.</p>
 			<p>JSON syntax uses braces (curly brackets: {} ), square brackets ( [] ), colons, and commas to arrange values that are strings (sequences of characters in double quotes) or numbers (expressed as sequences of digits) into the two basic structures.</p>
 			<p>An object is an unordered set of name/value pairs. An object begins with { (left brace) and ends with } (right brace). Each name is followed by : (colon) and the name/value pairs are separated by , (comma).  An array is an ordered collection of values. An array begins with [ (left bracket) and ends with ] (right bracket). Values are separated by , (comma).  A value can be a string in double quotes, or a number, or true or false or null, or an object or an array. These structures can be nested.</p>
-			<p>Although the developer of JSON declared in 2006 that JSON is not a markup language, it is now often treated as such.  The generic JSON is used as the basis for specific formats, which specify names and for more specific syntax for values.  Examples include GeoJSON and its extension TopoJSON.  A schema language has been documented at <a href="http://json-schema.org/documentation.html">json-schema-org</a> to support specification and validation of JSON applications.</p>
+			<p>Although the developer of JSON declared in 2006 that JSON is not a markup language, it is now often treated as such.  The generic JSON is used as the basis for specific formats, which specify names and for more specific syntax for values.  Examples include GeoJSON and its extension TopoJSON.  A schema language has been documented at <a href="https://json-schema.org/documentation.html">json-schema-org</a> to support specification and validation of JSON applications.</p>
 		</fdd:description>
 		<fdd:shortDescription>JSON is a lightweight, text-based, language-independent data interchange format. It was derived from the JavaScript/ECMAScript programming language, but is programming language independent. JSON defines a small set of structuring rules for the portable representation of structured data. </fdd:shortDescription>
 		<fdd:productionPhase>An interchange format, typically used during data collection or to transmit selected structured data to a system that will further manipulate the data and/or present it to end users.</fdd:productionPhase>
@@ -96,6 +96,10 @@ for JavaScript(tm), Flex(tm), Silverlight(R), iOS(R), and Android(tm).&quot;  No
 		</fdd:transparency>
 		<fdd:selfDocumentation>
 			<p>Since JSON objects consist of name/value pairs, the names of fields or variables are expressed explicitly.  JSON has no particular mechanism for further explaining the names used in a particular stream or file containing name/value pairs.</p>
+			<p>
+				<b>Accessibilty Features</b>
+			</p>
+			<p>According to results posted on <a href="https://github.com/w3c/vc-json-schema/issues/163">Accessibility Self-Review for VC JSON Schema</a>, "JSON Schemas, by design, are not intended to be internationalizable, since they are used for strict static validation of data. An implementer may choose to translate a JSON Schema, or make it available in a variety of languages; however, these would be considered distinct JSON Schemas. When packaging VC JSON Schemas as verifiable credentials, implementers are encouraged to follow the guidance listed in the VC Data Model. We believe that these specifications, in general, do not create accessibility concerns, but are curious to know if we have overlooked some aspect of how these technologies will be used that will create accessibility issues." In addition, a  <a href="https://github.com/w3c/a11y-request/issues/64#issuecomment-1652012427">comment</a> adds that "APA has no accessibility concerns. We also appreciate the inclusion of the Accessibility Considerations section in the spec." In practical terms, this means that JSON has no special natice support for accessibility features but it doesn't hinder them either. JSON has the potential to support accessibility depending on implementation. <a href="../contact_format.shtml">Comments welcome</a>.</p>
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>None</fdd:externalDependencies>
 		<fdd:techProtection>None</fdd:techProtection>
@@ -136,8 +140,18 @@ binary data.  Boolean values <i>true</i> and <i>false</i> are allowed as values.
 					<fdd:sigValue>text/json</fdd:sigValue>
 					<fdd:sigValue>text/javascript</fdd:sigValue>
 				</fdd:sigValues>
-				<fdd:note>These values are found on occasion according to <a href="http://en.wikipedia.org/wiki/JSON#MIME_type">http://en.wikipedia.org/wiki/JSON#MIME_type</a>. </fdd:note>
+				<fdd:note>These values are found on occasion according to <a href="https://en.wikipedia.org/wiki/JSON#MIME_type">https://en.wikipedia.org/wiki/JSON#MIME_type</a>. </fdd:note>
 			</fdd:internetMediaType>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00218</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.archives.gov/files/lod/dpframework/id/NF00218.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00218.ttl</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
 			<fdd:other>
 				<fdd:tag>Pronom PUID</fdd:tag>
 				<fdd:values>
@@ -202,13 +216,13 @@ adopted as ECMA-404 in October 2013 and version 2 was published in December 2017
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://en.wikipedia.org/wiki/JSON</link>
+					<link>https://en.wikipedia.org/wiki/JSON</link>
 					<tag>Wikipedia entry for JSON</tag>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://json-schema.org/documentation.html</link>
+					<link>https://json-schema.org/documentation.html</link>
 					<tag>Documentation for JSON Schema</tag>
 				</fdd:urlReference>
 			</fdd:url>
@@ -228,9 +242,9 @@ adopted as ECMA-404 in October 2013 and version 2 was published in December 2017
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://blogs.oracle.com/xmlorb/entry/analysis_of_json_use_cases</link>
+					<link>https://web.archive.org/web/20160410074350/https://blogs.oracle.com/xmlorb/entry/analysis_of_json_use_cases</link>
 					<tag>Analysis of JSON use cases compared to XML.  </tag>
-					<comment>April 2013 blog post from Oracle.com.  Extensive comparison of pros and cons.</comment>
+					<comment>April 2013 blog post from Oracle.com.  Extensive comparison of pros and cons. Link via Internet Archive</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
@@ -264,6 +278,13 @@ adopted as ECMA-404 in October 2013 and version 2 was published in December 2017
 					<link>https://www.infoworld.com/article/3222851/what-is-json-a-better-format-for-data-exchange.html</link>
 					<tag>What is JSON? A better format for data exchange</tag>
 					<comment>InfoWorld article by Jonathan Freeman, published October 25, 2019.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archives.gov/files/lod/dpframework/id/	NF00218.ttl</link>
+					<tag>NARA File Format Preservation Plan ID entry for	NF00218</tag>
+					<comment>Information in NARA File Format Preservation Plan ID about JavaScript Object Notation (JSON)</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
