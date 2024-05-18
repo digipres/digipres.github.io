@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000451" titleName="JATS, Journal Article Tag Suite, NISO Z39.96, Versions 1.x" shortName="JATS_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000451" titleName="JATS, Journal Article Tag Suite, NISO Z39.96, Versions 1.x" shortName="JATS_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>text</fdd:gdfrGenre>
@@ -13,7 +13,7 @@
 		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
 		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2017-03-08</fdd:date>
+			<fdd:date>2024-05-17</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Partial</fdd:draftStatus>
 	</fdd:properties>
@@ -68,6 +68,15 @@
 				</fdd:relatedTo>
 			</fdd:relationship>
 			<fdd:relationship>
+				<fdd:typeOfRelationship>Has later version</fdd:typeOfRelationship>
+				<fdd:comment>JATS 1.2. Not described separately at this time. See <a href="https://jats.nlm.nih.gov/publishing/1.2/dtd.html">https://jats.nlm.nih.gov/publishing/1.2/dtd.html</a> for details.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has later version</fdd:typeOfRelationship>
+				<fdd:comment>JATS 1.3. Not described separately at this time. See <a href="https://jats.nlm.nih.gov/publishing/1.3/">https://jats.nlm.nih.gov/publishing/1.3/</a>
+				</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
 				<fdd:typeOfRelationship>Has modified version</fdd:typeOfRelationship>
 				<fdd:relatedTo>
 					<fdd:id>fdd000453</fdd:id>
@@ -110,7 +119,24 @@ Online</a> was published in the Federal Register.  eDeposit for eSerials began i
 		<fdd:licensingAndPatents>No licensing or patent issues. The tag sets are in the public domain.</fdd:licensingAndPatents>
 		<fdd:transparency>Rates highly for transparency. Text content for articles is in XML, and hence viewable in basic editors, web browsers, etc.
 		Elements have understandable tag-names, and document instances are in natural reading order.</fdd:transparency>
-		<fdd:selfDocumentation>The DTD includes a rich set of elements for metadata at the article and journal level.  The &lt;article&gt; element is expected to include the article content and full descriptive metadata.</fdd:selfDocumentation>
+		<fdd:selfDocumentation>
+			<p>The DTD includes a rich set of elements for metadata at the article and journal level.  The &lt;article&gt; element is expected to include the article content and full descriptive metadata.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>According to the <a href="https://jats.nlm.nih.gov/extensions/bits/tag-library/2.1/chapter/accessibility.html">BITS Book Interchange Tag Suite, version 2.1 documentation</a>, the JATS format has moderate support for accessibility features.</p>
+			<p>The JATS tag set, like BITS, provides two elements that can be applied to graphics, images, tables, and figures to provide content descriptions: </p>
+			<ul>
+				<li>&lt;alt-text&gt; to briefly describe the content of the graphic/image in instances where the graphic content cannot be processed by the user or device</li>
+				<li>&lt;long-desc&gt; to provide a longer description of the graphic/image</li>
+			</ul>
+			<p>JATS also includes the following accessibility options:</p>
+			<ul>
+				<li>The @alt attribute can be used to define pronunciation, for example of an abbreviation, for a screen reader.</li>
+				<li>The &lt;alternatives&gt; element can be used to provide additional versions of a graphic or object. For example, this element will be used to provide text alternatives to an emoji or to provide a text alternative for time based media.</li>
+				<li>The @headers attribute for tables, which specifies the cells that are designated as the header for the current cell. And the @scope attribute is also used for tables, to specify the cells for which the current cell acts as a header.</li>
+			</ul>
+		</fdd:selfDocumentation>
 		<fdd:externalDependencies>
 			None.
 		</fdd:externalDependencies>
@@ -139,6 +165,23 @@ Online</a> was published in the Federal Register.  eDeposit for eSerials began i
 				<fdd:sigValueNA>See note.</fdd:sigValueNA>
 				<fdd:note>As for many XML-based formats, there is no guaranteed magic number or other internal signature to identify the format automatically.  See discussion in <a href="#notes">Notes</a> below.</fdd:note>
 			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>No PRONOM PUID as of May 2024</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q17060731</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q17060731">https://www.wikidata.org/wiki/Q17060731</a>.
+</fdd:note>
+				</fdd:values>
+			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
@@ -369,6 +412,13 @@ Copyrighted Works for the
 Collections of the Library
 of Congress</tag>
 					<comment>As of February 2017, the latest edition is marked as reviewed in September 2012.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q17060731</link>
+					<tag>Wikidata entry for Q17060731</tag>
+					<comment>Information in Wikidata about JATS. Wikidata Title ID: Q17060731.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
