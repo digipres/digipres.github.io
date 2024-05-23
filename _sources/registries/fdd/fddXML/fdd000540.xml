@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000540" titleName="AV1 Image File Format (AVIF)" shortName="AVIF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2024-05-13</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>AV1 Image File Format (AVIF)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>raster image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>AVIF (AV1 Image File Format) is an open, non-proprietary format that supports the storage of a subset of the syntax and semantics of the <fddLink id="fdd000541">AV1</fddLink> bitstream in a High Efficiency Image File Format (<fddLink id="fdd000525">HEIF</fddLink>) file. HEIF itself is based on <fddLink id="fdd000079">ISO Base Media File Format</fddLink>, also known as ISO BMFF.  AVIF is a set of further constraints on the HEIF format which are based on constraints defined in the <a href="https://nokiatech.github.io/heif/technical.html">Multi-Image Application Format (MIAF)</a> and the AVIF profiles are inspired by the profiles defined in MIAF. More details below.</p>
+			<p>According to various recordings including <a href="https://www.youtube.com/watch?v=9E3Vp-LXfag">one featuring Google&apos;s Frank Galligan</a>,  AVIF is pronounced by spelling out the letters &quot;A-V-I-F&quot;. <a href="https://imageengine.io/what-is-avif/">Image Engine's What is AVIF?</a> page states the format name is pronounced [əˈ vif]. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a> if one or both pronunciation are in common use.</p>
+			<p>Like <fddLink id="fdd000541">AV1</fddLink>, AVIF is developed and maintained by the <a href="https://aomedia.org/">Alliance for Open Media</a> (AOMedia or AOM), a non-profit industry consortium that develops open, royalty-free technology for multimedia delivery. (See <fddLink id="fdd000541">AV1</fddLink> for more information about the history of AOMedia.) The AVIF specification, (this document is using <a href="https://aomediacodec.github.io/av1-avif/">version 1.1.0, dated 15 April 2022)</a> for research conducted in early 2024, is open and available at no cost. The <a href="https://aomediacodec.github.io/av1-avif/#change-list">change list</a> between version 1.0.0 and version 1.1.0 is detailed in the specification.</p>
+			<p>The specification summarizes some of the key features of AVIF: &quot;AV1 Image File Format supports High Dynamic Range (HDR) and Wide Color Gamut (WCG) images as well as Standard Dynamic Range (SDR). It supports monochrome images as well as multi-channel images with all the bit depths and color spaces specified in <fddLink id="fdd000541">AV1</fddLink>. AV1 Image File Format also supports multi-layer images as specified in AV1 to be stored both in image items and image." It's this HDR support that drew the interest of the <a href="https://pdfa.org/pdf-moves-ahead-with-hdr/">PDF Association</a> which announced in 2023 that the <a href="https://pdfa.org/community/imaging-model-twg/">Imaging Model Technical Working Group (TWG)</a> is considering adding AVIF (along with JPEG XL) as a new supported image format for the PDF Imaging Model.  </p>
+			<p>The format was first released in 2019 by AOMedia which states in a <a href="https://aomedia.org/blog%20posts/avif-meet-the-next-level-image-file-format/">2023 blog post</a> that "AVIF was designed to improve compression methods and deliver better quality per byte while delivering superior visual appeal." Some of its technical AVIF offers a maximum color depth of 12 bits in three color space channels and supports transparency. AVIF supports multiple color subsampling formats, including YUV 444 and YUV 420. While YUV 420 is a great fit for most images, YUV 444 subsampling helps avoid color bleeding with certain types of image content, for example. Nevertheless, most modern AVIF encoding tools support the sharp YUV feature (similar to sharp YUV in WebP) and YUV 420 sub-sampling with sharp YUV enabled mitigates most of the color bleeding."</p>
+			<p>Structurally, as summarized by Cloudinary&apos;s <a href="https://cloudinary.com/guides/image-formats/avif-format-a-next-gen-image-format-to-rule-them-all">AVIF Format: A Next-Gen Image Format to Rule them All?</a>, AVIF "is organized into a hierarchical structure of boxes, which are nested containers that store different types of data and metadata. The top-level box in an AVIF file is the File Type Box (ftyp), which identifies the file as an AVIF file and specifies the version of the format being used. Inside the ftyp box, there are several other boxes that contain the actual image data and various metadata, such as the Media Data Box (mdat), the Item Location Box (iloc), and the Item Properties Box (iprp)." In addition, "the image data in an AVIF file is stored as a sequence of compressed frames that are encoded using the AV1 codec. Each frame is stored in its own box, called the Compressed Image Item Box (ispe), and is accompanied by a decoder configuration record, which provides information about the encoding parameters used for that specific frame. This modular structure allows AVIF files to store multiple images, such as a series of thumbnails or different resolutions of the same image, within a single file."</p>
+			<p>AVIF supports <a href="https://aomediacodec.github.io/av1-avif/#profiles">profiles</a> which "impose a set of specific restrictions and is signaled by brands." (The presence of a <a href="https://aomediacodec.github.io/av1-avif/#brands-overview">brand</a> is "interpreted as the permission for those AV1 Image File Format readers/parsers and AV1 Image File Format renderers that only implement the features required by the brand, to process the corresponding file and only the parts (e.g. items or sequences) that comply with the brand.") AVIF's defined profiles are</p>
+			<ul>
+				<li>
+					<a href="https://aomediacodec.github.io/av1-avif/#baseline-profile">AVIF Baseline Profile</a> is defined by the brand MA1B and uses the Main Profile with the Level set to 5.1 or lower "to ensure that no single coded image exceeds 4K resolution, as some decoder may not be able to handle larger images. More precisely, following [AV1] level definitions, coded image items compliant to the AVIF Baseline profile may not have a number of pixels greater than 8912896, a width greater than 8192 or a height greater than 4352. It is still possible to use the Baseline profile to create larger images using grid derivation."</li>
+				<li>
+					<a href="https://aomediacodec.github.io/av1-avif/#advanced-profile">AVIF Advanced Profile</a> is defined by the brand MA1A and uses the High Profile with the Level set to 6.0 or lower. The spec explains that "coded image items compliant to the AVIF Advanced profile may not have a number of pixels greater than 35651584, a width greater than 16384 or a height greater than 8704. It is still possible to use the Advanced profile to create larger images using grid derivation." AVIF files that use <a href="https://aomediacodec.github.io/av1-avif/#av1-image-sequence">Image Sequences</a> have additional constraints.</li>
+			</ul>
+			<p>One of the major advantages of AVIF is its capacity for compression with impacting image quality. According to Cloudinary&apos;s <a href="https://cloudinary.com/guides/image-formats/avif-format-a-next-gen-image-format-to-rule-them-all">AVIF Format: A Next-Gen Image Format to Rule them All?</a>, &quot;in many cases, AVIF files can be up to 50% smaller than equivalent JPEG files while maintaining the same level of visual fidelity.&quot;</p>
+		</fdd:description>
+		<fdd:shortDescription>AVIF (AV1 Image File Format) is an open, non-proprietary format from the Alliance for Open Media that supports the storage of a subset of the syntax and semantics of the AV1 bitstream in a High Efficiency Image File Format (HEIF) file.</fdd:shortDescription>
+		<fdd:productionPhase>May be applied in initial-state picture creation in cameras or used for middle- and final-state archiving or end-user delivery.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000541</fdd:id>
+					<fdd:shortName>AV1</fdd:shortName>
+					<fdd:titleName>AV1 Image Encoding</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000525</fdd:id>
+					<fdd:shortName>HEIF</fdd:shortName>
+					<fdd:titleName>High Efficiency Image File (HEIF) Format, MPEG-H Part 12</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>AVIF supports the storage of a subset of the syntax and semantics of the AV1 bitstream in a High Efficiency Image File Format (HEIF) file.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Defined via</fdd:typeOfRelationship>
+				<fdd:comment>MIAF (Multi-Image Application Format), defined in ISO/IEC 23000-22. Not described separately on this website. See <a href="https://nokiatech.github.io/heif/technical.html">https://nokiatech.github.io/heif/technical.html</a>.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None</fdd:experience>
+		<fdd:preference>See the Library of Congress Recommended Formats Statement (RFS) <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html#photodigital">still image works</a> for format preferences.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully disclosed and open format specification published by AOMedia. </fdd:disclosure>
+		<fdd:documentation>The AVIF specification is published on <a href="https://github.com/AOMediaCodec/av1-avif">GitHub</a> and through the AOMedia&apos;s website: <a href="https://aomediacodec.github.io/av1-avif/">https://aomediacodec.github.io/av1-avif/</a>.</fdd:documentation>
+		<fdd:adoption>
+			<p>
+				<a href="https://aomedia.org/">AOMedia</a> maintains a list of applications that provide full, partial and no support on its website. AVIF is supported by most major browsers including Chrome, Edge, Safari and Firefox. <a href="https://caniuse.com/?search=AVIF">CanIuse.com</a> indicates that it is not supported in Internet Explorer but since that is now <a href="https://blogs.windows.com/windowsexperience/2022/06/15/internet-explorer-11-has-retired-and-is-officially-out-of-support-what-you-need-to-know/">retired</a>, it is not impactful to overall use. It is also widely supported in image viewers include IrfanView and ImageMagik. </p>
+			<p>The <a href="https://pdfa.org/pdf-moves-ahead-with-hdr/">PDF Association</a> announced in 2023 that the <a href="https://pdfa.org/community/imaging-model-twg/">Imaging Model Technical Working Group (TWG)</a> is considering adding AVIF (along with JPEG XL) as a new supported image format for the PDF Imaging Model.  </p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>AVIF is royalty free and licensed under <a href="https://github.com/AOMediaCodec/av1-avif/blob/master/LICENSE">BSD 2-Clause &quot;Simplified&quot; License</a>.</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>Depends upon complex algorithms and tools to read; will require sophistication to build tools.</fdd:transparency>
+		<fdd:selfDocumentation>AVIF has a defined structure and can store various types of metadata, such as Exif, XMP, and ICC profiles, which provide additional information about the image and its creation process. See also <fddLink id="fdd000525">HEIF</fddLink> and <fddLink id="fdd000541">AV1</fddLink>.</fdd:selfDocumentation>
+		<fdd:externalDependencies>As described in Cloudflare&apos;s <a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing">Introducing support for the AVIF image format</a>, &quot;decoding AVIF images for display takes relatively more CPU power than other codecs, but it should be fast enough in practice... However, encoding of AVIF images is much slower. It may take even a few seconds to create a single image.&quot; In addition, &quot;browsers that support the AVIF format announce it by adding image/avif to their Accept request header.&quot;</fdd:externalDependencies>
+		<fdd:techProtection>None.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>The primary use case for the AVIF format is as a more efficient alternative to traditional image formats, such as JPEG and PNG, for web and application development. By leveraging the advanced compression techniques provided by the AV1 codec, AVIF files can deliver comparable or superior image quality at significantly reduced file sizes, which translates to faster load times and reduced bandwidth consumption for websites and applications.</fdd:normalImage>
+			<fdd:clarity>Coded image items compliant to the AVIF Baseline profile may not have a number of pixels greater than 8912896, a width greater than 8192 or a height greater than 4352.</fdd:clarity>
+			<fdd:colorMaint>AVIF supports twelve bits of color depth enabling high dynamic range (HDR) and wide color gamut (WCG) images with a better span of bright and dark tones and a broader range of luminosity.
+It includes support for monochrome images and multichannel images, including transparent images that use the alpha channel.</fdd:colorMaint>
+			<fdd:graphics>According to <a href="https://www.smashingmagazine.com/2021/09/modern-image-formats-avif-webp/">Using Modern Image Formats: AVIF And WebP</a>, AVIF &quot;supports animations, live photos, and more through multilayer images stored in image sequences.
+It offers better support for graphical elements, logos, and infographics.&quot;</fdd:graphics>
+			<fdd:beyondImage>In a 2023 <a href="https://aomedia.org/blog%20posts/avif-meet-the-next-level-image-file-format/">compression test</a> sponsored by AOMedia, &quot;animated AVIF files were an average of 78% smaller than the original GIF files.&quot; <a href="https://netflixtechblog.com/avif-for-next-generation-image-coding-b1d75675fe4">Netflix</a> details the results of its compression tests with AVIF and JPEG with up to significant compression rates, saying that &quot;the AVIF encode looks “cleaner” even though it is one-third the size of the JPEG encode. It is not a perfect rendition of the original, but with a compression factor of 282x, this is commendable.&quot;</fdd:beyondImage>
+		</fdd:stillImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>avif</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Defined in AOM  <a href="https://aomediacodec.github.io/av1-avif/">AV1 Image File Format (AVIF) specification</a>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>avifs</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="https://en.wikipedia.org/wiki/AVIF">Wikipedia AVIF entry</a> but not included in the specification. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>image/avif</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://www.iana.org/assignments/media-types/image/avif">IANA registration</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+					<fdd:note>No PUID as of January 2024</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q59913607</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q59913607">https://www.wikidata.org/wiki/Q59913607</a>.
+</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:history>According to <a href="https://cloudinary.com/guides/image-formats/avif-format-a-next-gen-image-format-to-rule-them-all">AVIF Format: A Next-Gen Image Format to Rule them All?</a>, &quot;the <fddLink id="fdd000541">AV1</fddLink> codec was officially released in March 2018, and its success in the video domain quickly led to interest in its potential application for still images. In September 2018, the first version of the AVIF specification was published, and further refinements were made over the next couple of years. The AVIF format was officially standardized as a part of the ISO/IEC 23000-22 specification in July 2020.&quot; See <fddLink id="fdd000541">AV1</fddLink> for more details about the formation of AOMedia and development of the AV1 codec.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>AVIF Format Specifications from AOM</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://aomediacodec.github.io/av1-avif/</link>
+							<tag>AV1 Image File Format (AVIF) specification from the Alliance for Open Media</tag>
+							<comment>As of February 2022, AOM Working Group Approved Draft, 30 April 2021
+ </comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://aomediacodec.github.io/av1-avif/v1.0.0.html</link>
+							<tag>AV1 Image File Format (AVIF) specification from the Alliance for Open Media </tag>
+							<comment>v1.0.0, 19 February 2019</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/AOMediaCodec/av1-avif</link>
+							<tag>AV1 Image File Format Specification - ISO-BMFF/HEIF derivative</tag>
+							<comment>AOM GitHub repo</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>For format specifications for High Efficiency Image Format (HEIF), see format description for <fddLink id="fdd000525">HEIF</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>For format specifications for AV1, see format description for <fddLink id="fdd000541">AV1</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://aomedia.org/blog%20posts/avif-meet-the-next-level-image-file-format</link>
+					<tag>AVIF: Meet the Next Level Image File Format. Blog post from AOMedia. Updated: November 8, 2023</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://nokiatech.github.io/heif/technical.html</link>
+					<tag>HEIF Image Format: Technical Information</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.youtube.com/watch?v=9E3Vp-LXfag</link>
+					<tag>Faster loading times with AVIF images | Workshop</tag>
+					<comment>YouTube Video from Chrome Dev Summit 2021</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://imageengine.io/what-is-avif/</link>
+					<tag>Image Engine: What is AVIF?</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://aomedia.org</link>
+					<tag>Alliance for Open Media homepage</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://pdfa.org/pdf-moves-ahead-with-hdr/</link>
+					<tag>PDF moves ahead with HDR from PDF Association, December 10, 2023</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://pdfa.org/community/imaging-model-twg/</link>
+					<tag>Imaging Model TWG from PDF Association</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://cloudinary.com/guides/image-formats/avif-format-a-next-gen-image-format-to-rule-them-all</link>
+					<tag>Cloudinary: AVIF Format: A Next-Gen Image Format to Rule them All?</tag>
+					<comment>Last updated: Apr 11, 2024</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/AOMediaCodec/av1-avif/blob/master/LICENSE</link>
+					<tag>AVIF License information: BSD 2-Clause &quot;Simplified&quot; License</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.smashingmagazine.com/2021/09/modern-image-formats-avif-webp/</link>
+					<tag>Smashing Magazine: Using Modern Image Formats: AVIF And WebP. Addy Osmani, Sept 29, 2021</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://netflixtechblog.com/avif-for-next-generation-image-coding-b1d75675fe4</link>
+					<tag>Netflix Technology Blog: AVIF for Next-Generation Image Coding. Feb 13, 2020</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q59913607</link>
+					<tag>Wikidata entry for Q59913607</tag>
+					<comment>Information in Wikidata about AV1 Image File Format. Wikidata Title ID: Q59913607.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

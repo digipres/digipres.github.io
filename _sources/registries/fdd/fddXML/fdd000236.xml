@@ -53,6 +53,15 @@
 				</fdd:relatedTo>
 				<fdd:comment>      </fdd:comment>
 			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000599</fdd:id>
+					<fdd:shortName>gzip</fdd:shortName>
+					<fdd:titleName>GZIP</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>According to <a href="http://fileformats.archiveteam.org/wiki/WARC">Archiveteam.org</a>, WARC files are often compressed using gzip, resulting in a .warc.gz extension. In cases where the warc.gz file needs to randomly accessed (namely, as part of web archives accessible page-by-page), this will consist of one gzip stream for each WARC record, concatenated together (which makes for a valid gzip file). This allows any single record to be accessed by an offset, and (when the entire file is decompressed) also preserves the original WARC.</fdd:comment>
+			</fdd:relationship>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
@@ -63,12 +72,11 @@
 		</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
-		<fdd:disclosure>
-			Open standard, publicly documented, developed under the auspices of the International Internet Preservation Consortium.  Submitted in May 2005 as a work item through ISO TC46/SC4, it was approved as an International Standard in May 2009. ISO TC46/SC4/WG12, convened by the
+		<fdd:disclosure>Open standard, publicly documented, developed under the auspices of the International Internet Preservation Consortium.  Submitted in May 2005 as a work item through ISO TC46/SC4, it was approved as an International Standard in May 2009. ISO TC46/SC4/WG12, convened by the
 Bibliothèque nationale de France, is the working group responsible for maintenance.</fdd:disclosure>
 		<fdd:documentation>
 			<a href="https://www.iso.org/standard/44717.html">ISO 28500:2009, Information and documentation -- WARC file
-format</a> is available from ISO for purchase. The draft standard that was the basis for approval, ISO/DIS 28500, is at <a href="http://bibnum.bnf.fr/WARC/WARC_ISO_28500_version1_latestdraft.pdf">http://bibnum.bnf.fr/WARC/WARC_ISO_28500_version1_latestdraft.pdf</a>. 		</fdd:documentation>
+format</a> is available from ISO for purchase. The draft standard that was the basis for approval, ISO/DIS 28500, is at <a href="http://bibnum.bnf.fr/WARC/WARC_ISO_28500_version1_latestdraft.pdf">http://bibnum.bnf.fr/WARC/WARC_ISO_28500_version1_latestdraft.pdf</a>. IIPC publishes specifications on GitHub: <a href="https://iipc.github.io/warc-specifications/specifications/warc-format/warc-1.0/">The WARC Format 1.0</a> and <a href="https://iipc.github.io/warc-specifications/specifications/warc-format/warc-1.1/">The WARC Format 1.1</a>.		</fdd:documentation>
 		<fdd:adoption>
 			The file format was designed to support the requirements of members of the <a href="https://netpreserve.org/about-us">International Internet Preservation Consortium</a>.
 		</fdd:adoption>
@@ -180,8 +188,13 @@ format</a> is available from ISO for purchase. The draft standard that was the b
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
-		<fdd:general>The WARC file format is a revision and generalization of the ARC format used by the Internet Archive to store information blocks harvested by web crawlers.</fdd:general>
-		<fdd:history>An HTML version of WARC File Format (Version 0.9) is at <a href="https://web.archive.org/web/20231126133358/https://archive-access.sourceforge.net/warc/warc_file_format-0.9.html">https://web.archive.org/web/20231126133358/https://archive-access.sourceforge.net/warc/warc_file_format-0.9.html</a> (link via Internet Archive).  Subsequent drafts are also available at <a href="https://web.archive.org/web/20231126133358/http://archive-access.sourceforge.net/warc/">https://web.archive.org/web/20231126133358/http://archive-access.sourceforge.net/warc/</a> (link via Internet Archives) in various formats.</fdd:history>
+		<fdd:general>
+			<p>The WARC file format is a revision and generalization of the ARC format used by the Internet Archive to store information blocks harvested by web crawlers.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>An HTML version of WARC File Format (Version 0.9) is at <a href="https://web.archive.org/web/20231126133358/https://archive-access.sourceforge.net/warc/warc_file_format-0.9.html">https://web.archive.org/web/20231126133358/https://archive-access.sourceforge.net/warc/warc_file_format-0.9.html</a> (link via Internet Archive).  Subsequent drafts are also available at <a href="https://web.archive.org/web/20231126133358/http://archive-access.sourceforge.net/warc/">https://web.archive.org/web/20231126133358/http://archive-access.sourceforge.net/warc/</a> (link via Internet Archives) in various formats.</p>
+			<p>There are two versions of the WARC format, version 1.0 and version 1.1. According to <a href="http://fileformats.archiveteam.org/wiki/WARC">ArchivesTeam.org</a>, &quot;Version 1.0 formally specified that URLs in the WARC-Target-URI field should be surrounded in angle brackets, but erroneously did not show this in examples. Implementations largely followed the examples, with the notable exception of Wget, a popular WARC-producing program, which, since February 2016, has used the angle brackets, with the result of breaking much of the software that reads its output. The angle brackets were eliminated altogether in WARC 1.1.&quot; </p>
+		</fdd:history>
 	</fdd:notes>
 	<fdd:formatSpecifications>
 		<fdd:urls>
