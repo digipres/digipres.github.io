@@ -6,7 +6,7 @@ import re
 # Set up the query:
 url = 'https://query.wikidata.org/sparql'
 query = '''
-# Return all file format and famlily records from Wikidata.
+# Return all file format and family records from Wikidata.
 #
 select distinct ?uri ?uriLabel ?puid ?extension ?mimetype ?encodingLabel ?referenceLabel ?date ?relativityLabel ?offset ?sig
 where
