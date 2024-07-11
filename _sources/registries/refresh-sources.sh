@@ -9,6 +9,10 @@ cd pronom
 python download-pronom-data.py
 cd -
 
+cd nara
+python download-nara-data.py
+cd -
+
 cd tika
 python download-tika-data.py
 cd -
