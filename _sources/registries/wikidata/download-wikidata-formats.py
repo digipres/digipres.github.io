@@ -5,6 +5,9 @@ import re
 
 # Set up the query:
 url = 'https://query.wikidata.org/sparql'
+# Note that the original version of this query came from the Siegfried Wiki:
+# https://github.com/richardlehane/siegfried/wiki/Wikidata-identifier#harvesting
+# The original query was developed by Ross Spencer (https://exponentialdecay.co.uk/blog/about/).
 query = '''
 # Return all file format and family records from Wikidata.
 #
