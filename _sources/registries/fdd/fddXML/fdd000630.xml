@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000630" titleName="Disc Description Protocol" shortName="DDP" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenreAndSubgenres>
+				<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+				<fdd:gdfrSubgenres>
+					<fdd:gdfrSubgenre>aggregate</fdd:gdfrSubgenre>
+				</fdd:gdfrSubgenres>
+			</fdd:gdfrGenreAndSubgenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-group</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-bundle</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2024-07-26</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Disc Description Protocol</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>audio formats</fdd:keyword>
+			<fdd:keyword>bundling formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>DDP, short for Disc Description Protocol (also sometimes called <i>DDPi</i> for DDP Image) is a proprietary method that identifies, organizes and describes a specific set of data recorded onto a DVD or CD optical disc. Although there is no publicly available specification (see <a href="#sustainability">Documentation</a> below), it is considered the standard delivery format for CD and DVD replication, according to many sources including <a href="https://mediaguide.sonymusic.com/audio/glossary/">Sony Music</a>. DDP was invented by Doug Carson of <a href="https://www.dcainc.com/products/ddplicense/index.html">DCA</a> and was trademarked by Doug Carson &amp; Associates, Inc. in March 2004. See <a href="#notes">History</a> for information about versions. Note that DDP is not a file format per se in that it&apos;s not defined by a single file extension or Media Type but rather, DDP is more of a disc image of the CD (or DVD) content. Its inclusion, starting in 2024, as an acceptable format for <a href="https://www.loc.gov/preservation/resources/rfs/audio.html">Audio - Media-independent (digital)</a> in the Library&apos;s Recommended Formats Statement brings it to this resource.</p>
+			<p>Structurally, a DDP is a set of required and optional files and their exact composition within the set is variable. It can be as few as three or four components or as many as eight or more. The DDP set is packaged typically as a <fddLink id="fdd000354">ZIP</fddLink> file or another aggregate format such as <fddLink id="fdd000450">RAR</fddLink> or <fddLink id="fdd000539">7z</fddLink>. According to Francis Rumsey in <i>Desktop Audio Technology: Digital Audio and MIDI Principles</i> (excerpts are available online through <a href="https://books.google.com/">Google Books</a> - see p. 185-186), DDPs are comprised of "a number of streams of data, each of which carries different information to describe the contents of the disc. These streams may be either a series of packets or data transferred over a network, files on a disc or tape, or raw blocks of data independent of any filing system. The DDP protocol simply maps it data into whatever blocks or packets size used by the media concerned, provided that the block or packet size is at least 128 bytes." The typical components or streams in a DDP are:</p>
+			<ul>
+				<li>DDPID: the identifier of the disc which is 128 bytes long, "depending on the type and level of DDP information, various 'vital statistics' about the other DDP files and their location on the medium, ... and a user text field (not transferred to the CD)"</li>
+				<li>DDPMS or DDP Map Stream (also referred to the <a href="https://en.wikipedia.org/wiki/Disc_Description_Protocol">DDP Stream Descriptor</a>) which, according to Rumsey, "is a stream of 128-byte data packets which together give a map of the CD contents, showing what types of CD data are to be recorded in each part of the CD, how long the streams are, what types of subcode are included, and so forth. Pointers are included to the relevant text, subcode and main streams (or files) for each part of the CD."</li>
+				<li>Text stream: &quot;optional stream containing text to describe the titling information for volumes, tracks or index points or for other text comments. If stored as a file [usually with the .txt extension], its name is indicated in the appropriate map pocket.&quot;  </li>
+				<li>DDPPQ or <a href="https://www.audiomaster.co.uk/ddp-mastering-format-explained/">PQDESCR</a>: optional subcode descriptor which "contains information about the subcode data to be included within part of the disc, particularly for CD-DA. If stored as a file, its name is indicated in the appropriate map pocket." its name is indicated in the appropriate map pocket."     </li>
+				<li>Main stream or track file: Contains the actual audio data for the DDP, &quot;treated simply as a stream of bytes.&quot; </li>
+				<li>
+					<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</li>
+			</ul>
+			<p>For a sample DDP template, see <a href="https://www.musicguymastering.com/DDPTEMPLATEMUSICGUYMASTERINGTEXTFILE.txt">Music Guy Mastering DDP Template</a>.</p>
+			<p>As <a href="https://bluepromastering.com/faq/ddp-image-need-one/">BluePro Mastering</a> states, DDP have advantages including data integrity ("DDP files are not subject to manipulation and end up exactly as the artist intended. An audio CDR, for example, can influence the sound of a recording when used as a master due to errors and other effects of different dyes used in the disc itself"), increased delivery speed ("DDP can be transferred using any medium including over the internet which speeds up the production process"), and lack of replication errors (due to inclusion of MD5 fixity value).</p>
+		</fdd:description>
+		<fdd:shortDescription>DDP is a propriety protocol that identifies and describes a specific set of data recorded onto a DVD or CD optical disc and is considered the standard delivery format for CD and DVD replication.</fdd:shortDescription>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:shortName>DVD_CMF</fdd:shortName>
+					<fdd:titleName>DVD Cutting Master Format</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>&quot;DVD_CMF has been jointly developed by DCA and DVD Forum WG1/CMF voluntary members primary based on DCA DDP as a derivative work in consideration of CSS related.
+
+DVD_CMF is technically equivalent to DCA DDP2.10 subset concerning DVD, however the occurrences of &quot;DDP&quot; are changed and renamed to &quot;DDV&quot; for DVD_CMF.&quot; See <a href="http://www.dvdforum.org/tech-dvd_cutting_master_format_spec.htm">DVD Cutting Master Format Specification</a> for more information. <a href="https://www.dcainc.com/products/ddplicense/index.html">DCA</a> also states that "the DVD Forum also sanctions CMF (Cutting Master Format), which is a derivative of DDP. This remains the case for HD-DVD ROM: CMF 2.0 is a subset of DDP 3.0. CMF for Blu-Ray (BD CMF) is not related to DDP, though it is DCA's hope that it also eventually will resolve under the existing industry standard DDP." Not described separately at this resource.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>
+			<p>The Library of Congress has a small number of DDP files, especially in NAVCC collections.</p>
+		</fdd:experience>
+		<fdd:preference>
+			<p>The Library of Congress Recommended Formats Statement (RFS) lists DDP as an acceptable format for <a href="https://www.loc.gov/preservation/resources/rfs/audio.html">Audio - Media-independent (digital)</a>.</p>
+		</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Format specification is documented by DCA but not publicly available without license. Directions within the license agreements for  <a href="https://www.dcainc.com/support/documentation/docs/DDP-License-20111005.pdf">DDP 1.x, DDP 2.x, and DDP 2.10 for CD and DVD</a> and for <a href="https://www.dcainc.com/support/documentation/docs/DDPLA3x.pdf">DDP 3.0 for HD DVD and China HD</a> state that the DDP specification "will be emailed (to the requester) as soon as a completed copy of the license is received by DCA Sales."</fdd:disclosure>
+		<fdd:documentation>Specification only available with approved license from DCA Sales.  </fdd:documentation>
+		<fdd:adoption>DDP is the industry standard for CD and DVD duplication and is widely adopted in both software and workflows. <a href="https://en.wikipedia.org/wiki/Disc_Description_Protocol">Wikipedia&apos;s DDP entry</a> has a list of software implementations (including Adobe Encore, Steinberg WaveLab and DDP Mastering Tools [command line]).</fdd:adoption>
+		<fdd:licensingAndPatents>A free license is required to access the specification but according to DCA&apos;s <a href="https://www.dcainc.com/support/documentation/docs/DDP-License-20111005.pdf">How to Obtain a DDP License</a>, &quot;there is no application fee or royalty charged for the use of the DDP Specification.&quot;</fdd:licensingAndPatents>
+		<fdd:transparency>Not transparent because the specification is limited to license holders.</fdd:transparency>
+		<fdd:selfDocumentation>Limited.</fdd:selfDocumentation>
+		<fdd:externalDependencies>None.</fdd:externalDependencies>
+		<fdd:techProtection>None.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:soundQF>
+			<fdd:normalSound>Not applicable</fdd:normalSound>
+			<fdd:fidelity>Not applicable</fdd:fidelity>
+			<fdd:channels>Not applicable</fdd:channels>
+			<fdd:samples>Not applicable</fdd:samples>
+		</fdd:soundQF>
+		<fdd:aggregateQF>
+			<fdd:compress>Not applicable</fdd:compress>
+			<fdd:error>DDPs can contain fixity values to assist in error detection.</fdd:error>
+			<fdd:beyondAGG>Not applicable</fdd:beyondAGG>
+		</fdd:aggregateQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
+				<fdd:note>DDP is a bundling mechanism but not a specific file format.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>PRONOM has no corresponding entry as of July 2024 (but this is not unexpected as this is more of a protocol and not really a file format).</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q105852027</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q105852027">https://www.wikidata.org/wiki/Q105852027</a> for DDP Image Stream Descriptor or DDPMS, one of the required DDP elements</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q105857799</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q105857799">https://www.wikidata.org/wiki/Q105857799</a> for DDP Image Identifier or DDPID, one of the required DDP elements</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:history>According to <a href="https://www.dcainc.com/products/ddplicense/index.html">DCA&apos;s Disc Description Protocol</a>, there are three versions of DDP: DDP 2.0 for CDs, DDP 2.1 for DVDs and DDP 3.1 for HD DVD-ROMs. A fourth for Blu-ray was planned but is not available. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.  </fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.dcainc.com/products/ddplicense/index.html</link>
+					<tag>Specification only available with approved license</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>DCA resources</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.dcainc.com/support/documentation/docs/DDP-License-20111005.pdf</link>
+							<tag>DDP License agreement</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.dcainc.com/support/documentation/docs/DDPLA3x.pdf</link>
+							<tag>DDP 3.0 License agreement for HD-DVD</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Disc_Description_Protocol</link>
+					<tag>Wikipedia entry on DDP</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.audiomaster.co.uk/ddp-mastering-format-explained/</link>
+					<tag>What is the DDP Mastering Format and Why Do You Need it? Audiomaster.uk.co</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.musicguymastering.com/DDPTEMPLATEMUSICGUYMASTERINGTEXTFILE.txt</link>
+					<tag>Music Guy Mastering DDP sample template</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://bluepromastering.com/faq/ddp-image-need-one/</link>
+					<tag>What is a DDP Image and do I need one?</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.dvdforum.org/tech-dvd_cutting_master_format_spec.htm</link>
+					<tag>DVD Cutting Master Format Specification</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://mediaguide.sonymusic.com/audio/glossary/</link>
+					<tag>Sony Music Glossary: 1.1 DDP (Disc Description Protocol)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url/>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q105852027</link>
+					<tag>Wikidata entry for Q105852027</tag>
+					<comment>DDP Image Stream Descriptor</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q105857799</link>
+					<tag>Wikidata entry for Q105857799</tag>
+					<comment>DDP Image Identifier</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+		<fdd:citations>
+			<fdd:citation>
+				<fdd:bookReference>Desktop Audio Technology: Digital Audio and MIDI Principles by Francis Rumsey. Taylor &amp; Francis, 2004. ISBN: 0240519191</fdd:bookReference>
+			</fdd:citation>
+		</fdd:citations>
+	</fdd:usefulReferences>
+</fdd:FDD>
