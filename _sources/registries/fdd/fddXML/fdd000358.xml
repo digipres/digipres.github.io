@@ -2,7 +2,12 @@
 <fdd:FDD id="fdd000358" titleName="MusicXML File Format Family" shortName="MusicXML_family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
-			<fdd:gdfrGenre>other</fdd:gdfrGenre>
+			<fdd:gdfrGenreAndSubgenres>
+				<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+				<fdd:gdfrSubgenres>
+					<fdd:gdfrSubgenre>other</fdd:gdfrSubgenre>
+				</fdd:gdfrSubgenres>
+			</fdd:gdfrGenreAndSubgenres>
 		</fdd:gdfrGenreSelection>
 		<fdd:formatCategories>
 			<fdd:category>file-format</fdd:category>
@@ -89,8 +94,45 @@ within measures).  XSLT stylesheets that transform a partwise score to a timewis
 				</fdd:relatedTo>
 			</fdd:relationship>
 			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:shortName>MusicXML_4</fdd:shortName>
+					<fdd:titleName>MusicXML, Version 4</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Not separately described at this time. See W3C <a href="https://www.w3.org/2021/06/musicxml40/">Version 4.0
+Final Community Group Report 1 June 2021</a> for more information.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:shortName>MusicXML_4_1</fdd:shortName>
+					<fdd:titleName>MusicXML, Version 4_1</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Not separately described at this time. See W3C <a href="https://w3c.github.io/musicxml/">MusicXML
+Version 4.1
+Draft Community Group Specification 15 May 2024</a> for more information.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
 				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
 				<fdd:comment>In addition to the straightforward XML version, a compressed form of MusicXML has been defined, based on the ZIP format, and using the .mxl file extension.  Compressed MusicXML is not currently described separately on this website.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000631</fdd:id>
+					<fdd:shortName>MUSX</fdd:shortName>
+					<fdd:titleName>Finale Music Notation File (2014+)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>MUSX files can be exported to MusicXML files for improved interoperability.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000632</fdd:id>
+					<fdd:shortName>MUS</fdd:shortName>
+					<fdd:titleName>Finale Legacy Music Notation File</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>MUS files can be exported to MusicXML files for improved interoperability.</fdd:comment>
 			</fdd:relationship>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
@@ -131,6 +173,10 @@ Final Community Group Report (07 December 2017).</p>
 		<fdd:techProtection>The MusicXML specification includes no internal support for encryption or other technical protection.</fdd:techProtection>
 	</fdd:sustainabilityFactors>
 	<fdd:qualityAndFunctionalityFactors>
+		<fdd:soundQF>
+			<fdd:normalSound>This format does not render sound.</fdd:normalSound>
+			<fdd:beyondSound>Does not render sound or audio bitstreams but instead stores the visual representation of a musical score. </fdd:beyondSound>
+		</fdd:soundQF>
 		<fdd:textQF>
 			<fdd:normalText>Although not strictly a format for text, formats for notated music share distinctions in functionality that are common with text.  A MusicXML instance can be used to display a score that can be viewed and printed.  Words (such as lyrics and credits) can be searched by text-indexing software.</fdd:normalText>
 			<fdd:structure>MusicXML represents the semantic structure of a score: key; measures (bars); notes with pitch and duration; musical parts for different instruments; lyrics/words, etc.</fdd:structure>
@@ -138,6 +184,24 @@ Final Community Group Report (07 December 2017).</p>
 			<fdd:mathDiag>Musical scores do not include mathematical or chemical formulae.  Hence this functionality factor is not relevant for music notation formats.</fdd:mathDiag>
 			<fdd:beyondText>MusicXML is designed to represent the semantics of music notation and characteristics for its display and performance.</fdd:beyondText>
 		</fdd:textQF>
+		<fdd:otherQF>
+			<fdd:factor>
+				<fdd:tag>Music Notation Components: Attributes (Staves, Clef, Time)</fdd:tag>
+				<fdd:note>All supported. See <a href="https://www.w3.org/2021/06/musicxml40/tutorial/notation-basics/">Notation Basics in MusicXML</a> in W3C MusicXML 4.0 community resources.</fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>Music Notation Components: Musical Directions</fdd:tag>
+				<fdd:note>All supported. </fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>Music Notation Components: Note Appearance (Tuplet, Stems, Beams, Accidentals, Notations)</fdd:tag>
+				<fdd:note>All supported.</fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>Music Notation Components: Multi-Part Music</fdd:tag>
+				<fdd:note>All supported. </fdd:note>
+			</fdd:factor>
+		</fdd:otherQF>
 	</fdd:qualityAndFunctionalityFactors>
 	<fdd:fileTypeSignifiers>
 		<fdd:signifiersGroup>
@@ -170,6 +234,13 @@ Final Community Group Report (07 December 2017).</p>
 				<fdd:values>
 					<fdd:sigValueNA>See note.</fdd:sigValueNA>
 					<fdd:note>For MusicXML the DOCTYPE declaration for a document should include the string <i>PUBLIC &quot;-//Recordare//DTD MusicXML </i> followed by the version number.  The exact form of the declaration depends on whether the root element is &lt;score-partwise&gt;, &lt;score-timewise&gt;, or &lt;opus&gt;.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>NARA File Format Preservation Plan ID has no corresponding entry as of September 2024.</fdd:note>
 				</fdd:values>
 			</fdd:other>
 			<fdd:other>
@@ -315,8 +386,8 @@ for music notation, MuseData and Humdrum, and has deliberate commonalities with 
 			<fdd:url>
 				<fdd:urlReference>
 					<link>https://www.wikidata.org/wiki/Q653301</link>
-					<tag>WikiData entry for Q653301</tag>
-					<comment>Information in WikiData about MusicXML. Applies to all versions of MusicXML.  WikiData Title ID: Q653301</comment>
+					<tag>Wikidata entry for Q653301</tag>
+					<comment>Information in Wikidata about MusicXML. Applies to all versions of MusicXML.  Wikidata Title ID: Q653301</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>

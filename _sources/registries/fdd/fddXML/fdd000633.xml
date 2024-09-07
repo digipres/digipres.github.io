@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000633" titleName="Finale Enigma Transportable File" shortName="ETF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenreAndSubgenres>
+				<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+				<fdd:gdfrSubgenres>
+					<fdd:gdfrSubgenre>other</fdd:gdfrSubgenre>
+				</fdd:gdfrSubgenres>
+			</fdd:gdfrGenreAndSubgenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>other</fdd:value>
+				<fdd:comment>music notation</fdd:comment>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:updates>
+			<fdd:date>2024-09-05</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Finale Enigma Transportable File</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>music notation formats</fdd:keyword>
+			<fdd:keyword>metadata formats</fdd:keyword>
+			<fdd:keyword>dataset formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>According to <a href="https://web.archive.org/web/20240610171306/https://usermanuals.finalemusic.com/FinaleMac/Content/Finale/def-finale-file-extensions.htm">Finale file extensions and icons</a> (link via Internet Archive), ETF or Enigma Transportable Files, now obsolete, are "an early version of Finale notation files in plain text format. They were used to transfer Finale music notation documents between Windows and Mac...The ability to create ETF files was discontinued in 2007. It has been replaced by the MUS, MUSX, and MusicXML formats...ETF files are automatically converted to MUSX when opened." See <a href="#notes">History</a> for more information about the evolution of ETF files and the sunsetting of the Finale software application in August 2024.</p>
+			<p>As described in <a href="https://hanwen.home.xs4all.nl/lily-devel/etfspec.pdf">Enigma Transportable File Specification, Version 98c.0</a> (for Finale 97 for Mac and Windows), the main building component of ETF files is an "entry" which can be "a note, a chord, or a rest. Entries are streamed together in a doubly linked list that roughly corresponds to a voice on a staff...Each entry can have up to twelve notes." On the page, "each entry is signified by the tag ^eE with the entry number in parentheses.  The line containing the ^eE contains information that pertains to the entry as a whole. Information about individual notes within the entry follows on zero or more subsequent lines." ETF defines a list of "entry flags" to describe the notation options available in the Finale software such as "floating rest", "tuplet" and the existence of a "note detail record" (controls note reduction, notehead displacement, accidental displacement, alternate note head). Each entry is identified by a 32 bit hexadecimal value consisting of the bit flags and specific flag name. These flags can be extended: "The extended entry flag is a 16 bit value. Although it is a bit flag like the entry flag, it is represented in the ETF as a decimal rather than hex value. There is no particular reason for this, and it does make the decoding somewhat trickier, but it has been retained to avoid conversion issues." Additional components called "Others, Details, Entry Details" are identified by a "tag (letters after ^ in each line)" and a description of the data. Examples include measure, key, time, tempo, performance data and instrument used. ETF allows for complex textual entries for context such as  caret commands to specify style info (font,size,effects), tracking, and special macros like composer, date and page number.</p>
+		</fdd:description>
+		<fdd:shortDescription>ETF or Enigma Transportable File, now obsolete, are an early version of Finale notation files in plain text format. They were used to transfer Finale music notation documents between Windows and Mac.</fdd:shortDescription>
+		<fdd:productionPhase>Used during the creation process and as a middle state for sharing music among collaborators and colleagues that also use this software.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000632</fdd:id>
+					<fdd:shortName>MUS</fdd:shortName>
+					<fdd:titleName>Finale Legacy Music Notation File</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000358</fdd:id>
+					<fdd:shortName>MusicXML_family</fdd:shortName>
+					<fdd:titleName>MusicXML File Format Family</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>MusicXML files replaced the functionality of ETF files as a transfer format for notation data in later versions of Finale. </fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>As of August 2024, the Library of Congress has a very small number of ETF files (less than 100) in its collections, primarily in the Music Division.</fdd:experience>
+		<fdd:preference>See the Library of Congress Recommended Formats Statement for format preferences for <a href="https://www.loc.gov/preservation/resources/rfs/musical-scores.html">musical scores and musical notation</a>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Limited. Some technical information is available but it is incomplete. <a href="../contact_format.shtml">Comments welcome</a>.
+        </fdd:disclosure>
+		<fdd:documentation>
+			<p>
+				<a href="https://hanwen.home.xs4all.nl/lily-devel/etfspec.pdf">Enigma Transportable File Specification, Version 98c.0</a> is available but this is incomplete documentation. According to <a href="http://www.music-notation.info/en/formats/ETF.html">Enigma Transportable Format (ETF)</a> on MusicNotation.info, "you can download the official ETF documentation if you have registered at least one product from MakeMusic (Coda)" but this is unconfirmed. <a href="../contact_format.shtml">Comments welcome</a>. </p>
+		</fdd:documentation>
+		<fdd:adoption>Obsolete format. ETF is a closed proprietary format which mainly relied on Finale to read and write.  According to <a href="https://web.archive.org/web/20240610171306/https://usermanuals.finalemusic.com/FinaleMac/Content/Finale/def-finale-file-extensions.htm">Finale file extensions and icons</a> (link via Internet Archive), &quot;the ability to create ETF files was discontinued in 2007. It has been replaced by the MUS, MUSX, and MusicXML formats...ETF files are automatically converted to MUSX when opened. <a href="http://www.music-notation.info/en/formats/FinaleFormat.html">www.music-notation.info</a> includes a list of applications that import and export ETF files including Finale as well as <a href="https://lilypond.org/">etf2ly</a>, an ETF to Lilypond converter but it's unclear if this functionality is still valid. <a href="../contact_format.shtml">Comments welcome</a>.</fdd:adoption>
+		<fdd:licensingAndPatents>This is a proprietary format specifically for Finale software which is owned by MakeMusic, formerly owned by Net4Music and first created by Coda Music Software. Patent information is unknown. <a href="../contact_format.shtml">Comments welcome</a>.
+		</fdd:licensingAndPatents>
+		<fdd:transparency>Requires Finale software to read and write.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>ETF files have no specific attributes to support accessibility. <a href="../contact_format.shtml">Comments welcome</a>. </p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>ETF files can only be accessed, viewed or printed by Finale software. <a href="../contact_format.shtml">Comments welcome</a>.  </fdd:externalDependencies>
+		<fdd:techProtection>Unknown or unable to confirm due to limited documentation. <a href="../contact_format.shtml">Comments welcome</a>.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:soundQF>
+			<fdd:normalSound>This format does not render sound.</fdd:normalSound>
+			<fdd:beyondSound>Does not render sound or audio bitstreams but instead stores the visual representation of a musical score. </fdd:beyondSound>
+		</fdd:soundQF>
+		<fdd:textQF>
+			<fdd:normalText>Although not strictly a format for textual content, formats for notated music can be text-based documents and share some functionality that are common with text.</fdd:normalText>
+			<fdd:structure>ETF represents the semantic structure of a score: key; measures (bars); notes with pitch and duration; lyrics/words, etc.</fdd:structure>
+			<fdd:layout>ETF can represent layout semantics that are important to the display of scores, such as: whether directions should go above or below a staff; spacing for staves; and scaling of features relative to a single measure that can be adjusted to fit a particular pagesize.</fdd:layout>
+		</fdd:textQF>
+		<fdd:otherQF>
+			<fdd:factor>
+				<fdd:tag>Music Notation Components: Attributes (Staves, Clef, Time)</fdd:tag>
+				<fdd:note>All supported. </fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>Music Notation Components: Musical Directions</fdd:tag>
+				<fdd:note>Unclear if supported. <a href="../contact_format.shtml">Comments welcome</a>.</fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>Music Notation Components: Note Appearance (Tuplet, Stems, Beams, Accidentals, Notations)</fdd:tag>
+				<fdd:note>All supported.</fdd:note>
+			</fdd:factor>
+			<fdd:factor>
+				<fdd:tag>Music Notation Components: Multi-Part Music</fdd:tag>
+				<fdd:note>Unclear if supported. <a href="../contact_format.shtml">Comments welcome</a>.</fdd:note>
+			</fdd:factor>
+		</fdd:otherQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>etf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>
+					<a href="https://web.archive.org/web/20240610171306/https://usermanuals.finalemusic.com/FinaleMac/Content/Finale/def-finale-file-extensions.htm">Finale user guide</a> (link via Internet Archive) as well as <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/398">PRONOM fmt/398 for Enigma Transportable File (Finale).</a>.
+                </fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 454E49474D4120(5452414E53504F525441424C452046494C45|7472616E73706F727461626C652066696C65)</fdd:sigValue>
+					<fdd:sigValue>ASCII: ‘ENIGMA&apos; followed either by &apos;TRANSPORTABLE FILE’ or &apos;transportable file&apos; and later proceeded by version</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/398">https://www.nationalarchives.gov.uk/PRONOM/fmt/398</a> for Enigma Transportable File (Finale). </fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>NARA File Format Preservation Plan ID has no corresponding entry as of September 2024.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/398</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/398">https://www.nationalarchives.gov.uk/PRONOM/fmt/398</a> for Enigma Transportable File (Finale). </fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q58526743</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q58526743">https://www.wikidata.org/wiki/Q58526743</a> for Enigma Transportable File (Finale).                  </fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>The Macintosh Repository has many legacy Finale versions for Mac available for download, including <a href="https://www.macintoshrepository.org/47316-finale-1-x">Finale 1.0</a> from 1987. </fdd:general>
+		<fdd:history>
+			<p>Finale was originally written by Coda Music Technology, owned for a time by Net4Music, and later owned by MakeMusic. In the blog post <a href="https://web.archive.org/web/20240826134958/https://www.finalemusic.com/blog/end-of-finale-new-journey-dorico-letter-from-president/">The end of Finale</a> (link via Internet Archive) posted on August 26th, 2024, MakeMusic announced that it was ending development for Finale software and ending technical support in 2025. Greg Dell'Era states that "four decades is a very long time in the software industry. Technology stacks change, Mac and Windows operating systems evolve, and Finale’s millions of lines of code add up. This has made the delivery of incremental value for our customers exponentially harder over time. Today, Finale is no longer the future of the notation industry—a reality after 35 years, and I want to be candid about this. Instead of releasing new versions of Finale that would offer only marginal value to our users, we’ve made the decision to end its development."</p>
+			<p>Margaret Cahill&apos;s thesis <a href="https://web.archive.org/web/20031213041400/http://www.csis.ul.ie/staff/margaretcahill/Research/MSc/MSc.pdf">The Translation of Finale’s Enigma File Format for CPNView</a> (link via Internet Archive) documents the history of the ETF format starting with the 1994 formation of a group to form the NIFF (Notation Interchange File Format): "commercial companies felt that it did not meet their needs and so a group of companies involved in p n producing music software decided to come together to devise a standard for music representation that would be specifically designed around their requirements." (p. 2). The participant list included Coda Music Technology who left the group: "At the start of 1995, NIFF 5 was released and at about the same time Coda Music Technology decided to withdraw from the group to concentrate on devising a file format of their own - the ENIGMA transportable file format." (p. 3). On February 8, 1996, Coda Music Technology released very limited documentation on ETF which focuses mainly on the Entry Pool. Cahill reports: "When Coda Music Technology released this documentation they invited questions and input from Finale users about the contents and layout of the file format, so they could gauge the need for data about the file and release further documentation as required. However on requesting information from the technical support at Coda Music Technology they reported that no further documentation would be released. The reason stated is because: 'This is due in large part to the fact that no such a document currently exists: its creation requires that our engineers take time away from their coding duties to document information that is buried in the code itself'." (p. 11). </p>
+			<p>HandWiki's entry on <a href="https://handwiki.org/wiki/Software:Finale">Software: Finale</a> explains "the lead programmer for Finale version 1.0 in 1988 was Phil Farrand, better known in some circles as an author of Nitpicker's Guides for Star Trek and The X-Files. He wrote the original version software for Coda Music Software, which was later sold to Net4Music and then became MakeMusic. After Finale version 3.7, Finale's marketers made the switch to years as identifiers for each new release, starting with Finale 97. Those early versions of Finale used a file format called Enigma Transportable File with extension ETF." A post in the Finale Forum about <a href="https://www.finaleforum.com/viewtopic.php?t=7538">ETF files</a> from Peter Thomsen (Thu Jan 20, 2011 9:42 pm) states "The last Finale version that could save as ETF, was Finale 2006. Finale 2007 and later versions can open ETF files, but they can't save as ETF." </p>
+			<p>The Finale blog entry <a href="https://web.archive.org/web/20240529031837/https://www.finalemusic.com/blog/welcome-to-the-finale-blog/">Welcome to the Finale Blog</a> (link via Internet Archive) by Tom Johnson from August 17, 2009 explains a bit more about ETF and its relationship to ENIGMA: "ENIGMA. Many Finale users around the world have seen this term bantered around the Finale universe, but not many people know what it means. “ENIGMA Transportable File” (ETF) was the original term for a Finale file that could be shared across computer platforms (before this just “worked” as it does today). But wait, there’s more…ready?  ENIGMA is an acronym for… the “Environment for the Notation of Intelligent Graphical Musical Algorithms.” Whew, what a mouthful! ENIGMA, as I understand it, was the name originally given to the code used to make Finale. I assume it was homage to the minds that created – and broke – the ENIGMA-encrypted messages in WWII. It was also the earliest name of the Finale software. What a blessing it was changed to Finale upon its release in September 1988. Can you imagine if it hadn’t been?"</p>
+			<p>Tyler Thorsted in his <a href="https://preservation.tylerthorsted.com/2024/02/09/finale/">Obsolete Thor blog entry on Finale formats</a> also mentions ENIGMA: "The first version of Finale was developed for the Macintosh and didn’t have an extension. But by version 3.5 there was a comparable Windows version and the use of the extension .MUS. In order to share the files between the different platforms Finale also created an ETF file, which instead of the binary MUS, the ETF is a plain text “transportable” file. Both formats are based on the Enigma or “Environment for Notation Intuitive Graphic Music Algorithms” format." The Obsolete Thor entry also includes a screenshot of the Finale 1.0 HyperCard HelpStack Glossary stack with a definition of the term ENGIMA.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Documentation about ETF (Enigma Transportable File) Format</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/19990203113959/http://www.codamusic.com:80/down/finale/eeppd.txt</link>
+							<tag>Enigma Entry Pool. Preliminary documentation
+2/8/96 to support Finale for Mac and Windows 3.5.</tag>
+							<comment>Link via Internet Archive</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://hanwen.home.xs4all.nl/lily-devel/etfspec.pdf</link>
+							<tag>Enigma Transportable File Specification. Version 98c.0</tag>
+							<comment>Supports Finale 97 for Mac and Windows</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20090604165048/http://www.lilypond.org/web/devel/misc/etfformat</link>
+							<tag>An incomplete description of the Enigma Transport Format. LilyPond.org. 2009.</tag>
+							<comment>Link via Internet Archive</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20031213041400/http://www.csis.ul.ie/staff/margaretcahill/Research/MSc/MSc.pdf</link>
+							<tag>The Translation of Finale’s Enigma File Format for
+CPNView. Margaret Cahill. Thesis submitted for the award of M.Sc. in Music Technology
+University of Limerick. August, 1998</tag>
+							<comment>Link via Internet Archive. Includes a discussion of the ETF structure and format and sample ETF file.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20240826134958/https://www.finalemusic.com/blog/end-of-finale-new-journey-dorico-letter-from-president/</link>
+					<tag>The End of Finale.
+August 26, 2024 Greg Dell&apos;Era</tag>
+					<comment>Link via Internet Archive</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.macintoshrepository.org/47316-finale-1-x</link>
+					<tag>Macintosh Repository: Finale 1.x</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://preservation.tylerthorsted.com/2024/02/09/finale/</link>
+					<tag>Finale entry on Obsolete Thor blog. Tyler Thorsted. February 9, 2024</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.finaleforum.com/viewtopic.php?t=7538</link>
+					<tag>Finale Forum: ETF files</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://handwiki.org/wiki/Software:Finale</link>
+					<tag>HandWiki: Software:Finale</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://lilypond.org/</link>
+					<tag>LilyPond Music Notation software</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.music-notation.info/en/formats/ETF.html</link>
+					<tag>Enigma Transportable Format (ETF). </tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20240610171306/https://usermanuals.finalemusic.com/FinaleMac/Content/Finale/def-finale-file-extensions.htm</link>
+					<tag>Finale file extensions and icons</tag>
+					<comment>Link via Internet Archive</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20240529031837/https://www.finalemusic.com/blog/welcome-to-the-finale-blog/</link>
+					<tag>Welcome to the Finale Blog. August 17, 2009 Tom Johnson</tag>
+					<comment>Link via Internet Archive</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/pronom/fmt/398</link>
+					<tag>PRONOM entry for fmt/398</tag>
+					<comment>Information in PRONOM from UK National Archives about Enigma Transportable File (Finale). PUID: fmt/398.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q58526743</link>
+					<tag>Wikidata entry for Q58526743</tag>
+					<comment>Information in Wikidata about Enigma Transportable File. Wikidata Title ID: Q58526743..</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
