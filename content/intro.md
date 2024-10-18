@@ -9,12 +9,10 @@ Welcome to [digipres.org](https://digipres.org/), a community-owned portal For d
 :text-align: center
 
 This carefully curated list of digital preservation resources is the main thing that the community maintains. Please take a look!
-
 ```
 
-## Other Ways To Find Your Way
+## How to...
 
-````
 
 ::::{grid}
 :gutter: 3
