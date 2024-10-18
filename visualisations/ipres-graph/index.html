@@ -1,0 +1,47 @@
+<head>
+  <style> body { margin: 0; } </style>
+
+  <script src="//unpkg.com/3d-force-graph"></script>
+<!--  <script src="../../dist/3d-force-graph.js"></script>-->
+</head>
+
+<body>
+  <div id="3d-graph"></div>
+
+  <script type="importmap">{ "imports": { "three": "//unpkg.com/three/build/three.module.js" }}</script>
+  <script type="module">
+    import { UnrealBloomPass } from '//unpkg.com/three/examples/jsm/postprocessing/UnrealBloomPass.js';
+
+    const highlight = 'klaus';
+
+    const TRON_BLUE = 0x7DFDFE;
+    // Or TRON Legacy https://color.adobe.com/-Legacy-Film-Poster-color-theme-13490595/
+    const TRON_LEGACY_ORANGE = 0xf3a007;
+    const TRON_LEGACY_YELLOW = 0xf2cb05;
+    const TRON_LEGACY_BLUE = 0x04fbfb;
+    const TRON_LEGACY_DARK_BLUE = 0x026873;
+    const TRON_LEGACY_DARK = 0x011f26;
+    const TRON_LEGACY_RED = 0xff410d;
+     
+
+    const Graph = ForceGraph3D()
+      (document.getElementById('3d-graph'))
+        .backgroundColor('#000003')
+        .jsonUrl('ipres-graph.json')
+        .nodeLabel( node => `${node.name}<br>(${node.count} publications)` )
+        .nodeVal( node => Math.pow(node.count, 2.0) )
+        .nodeOpacity(1.0)
+        //.nodeAutoColorBy('group')
+        .nodeColor( node => node.name.toLowerCase().includes(highlight) ? 
+          TRON_LEGACY_BLUE : TRON_LEGACY_ORANGE )
+        .linkColor( TRON_LEGACY_ORANGE )
+        .linkLabel( link => `${link.source.name}<br>${link.target.name}<br>(${link.value} co-publications)` )
+        .linkWidth( link => link.value );
+
+    const bloomPass = new UnrealBloomPass();
+    bloomPass.strength = 3;
+    bloomPass.radius = 1;
+    bloomPass.threshold = 0;
+    Graph.postProcessingComposer().addPass(bloomPass);
+  </script>
+</body>
