@@ -1,27 +1,7 @@
----
-title: New Collaborative Resources for Digital Preservation
-permalink: /about/
----
-The Digital POWRR Project, in collaboration with the COPTR Consortium*, is pleased to announce version 2 of the Digital POWRR Tools Grid. The Grid helps practitioners find software tools to solve their digital preservation challenges.
+# About this site
 
-[http://www.digipres.org/tools/](http://www.digipres.org/tools/)
+The goal is to help the members of the international digital preservation community to find each other, to grow, and to find ways to support each other. Crucially, we want to help pool our knowledge and resources so we can do more and better preservation, and try to avoid anyone re-inventing the wheel. Of course, this ethos also extends to this gateway site, so please <a href="https://github.com/digipres/digipres.github.io/issues">raise any issues (e.g. what have we missed?)</a>, <a href="https://github.com/digipres/digipres.github.io">contribute to this web site</a>, or <a href="https://github.com/orgs/digipres/discussions">discuss your ideas with us</a>.
 
-The new Tools Grid provides information about almost 400 digital preservation tools by combining the graphical style of the first POWRR Grid with live data from the COPTR registry.
+<em>All images sourced from the</em> <em><span class="nobr"><a href="http://thenounproject.com/" class="external-link">Noun Project</a></span></em><em>, including: Question image by Henry Ryder, Swiss Army Knife image by Olivier Guin, Add folder image by Sergio Calcara, People image by T. Weber,&nbsp;Cross hairs image by __Lo._ and chain image by Adam Whitcroft.</em>
 
-The Tools Grid can be found on a new domain for community owned digital preservation resources: Digipres Commons.
-
-[http://www.digipres.org/](http://www.digipres.org/)
-
-Digipres highlights useful collaborative preservation resources from around the web as well as hosting these other collaborative services:
-
-* The COPTR tools registry
-* The Digital Preservation Question and Answer site
-* The File Formats aggregation service
-
-Digipres Commons is community owned and run, so it needs your contributions to make it better. We will be organising various community events to continue to build all the resources highlighted by Digipres, but you can get involved and contribute now. Here's how:
-
-[http://www.digipres.org/how_to_contribute_main.html](http://www.digipres.org/how_to_contribute_main.html)
-
-\* _The COPTR Consortium is: Aligning National Approaches to Digital Preservation (ANADP), The Open Preservation Foundation (OPF), The National Digital Stewardship Alliance (NDSA), The Digital Curation Centre (DCC), The Digital Curation Exchange (DCE) and the Digital POWRR Project._
-
-Digipres Commons is kindly hosted by the Open Preservation Foundation. Development of the POWRR Tool Grid was made possible by the Digital POWRR Project and the Northern Illinois University.
+This site is built using [Jupyter Book](https://jupyterbook.org).
