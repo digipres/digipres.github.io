@@ -1,0 +1,89 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+  body { margin: 0; } 
+  .scene-tooltip {
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+  }
+  </style>
+
+  <script src="//unpkg.com/3d-force-graph"></script>
+<!--  <script src="../../dist/3d-force-graph.js"></script>-->
+</head>
+
+<body>
+
+  <div id="3d-graph"></div>
+
+  <div style="position: absolute; top: 5px; right: 5px; background-color: #ffffff88; padding: 6px 8px; border-radius: 6px; font-family: sans-serif;">
+    <input id="searchInput" type="search" placeholder="Search for a name..." style="border:1px solid black; border-radius: 4px; height: 20px;">
+    <button id="searchButton" style="border: 1px solid black; border-radius: 4px; height: 20px"><i class="fa fa-search"></i></button>
+  </div>
+  
+  <script type="importmap">{ "imports": { "three": "//unpkg.com/three/build/three.module.js" }}</script>
+  <script type="module">
+    import { UnrealBloomPass } from '//unpkg.com/three/examples/jsm/postprocessing/UnrealBloomPass.js';
+
+    var highlight = null;
+
+    const TRON_BLUE = 0x7DFDFE;
+    // Or TRON Legacy https://color.adobe.com/-Legacy-Film-Poster-color-theme-13490595/
+    const TRON_LEGACY_ORANGE = 0xf3a007;
+    const TRON_LEGACY_YELLOW = 0xf2cb05;
+    const TRON_LEGACY_BLUE = 0x04fbfb;
+    const TRON_LEGACY_DARK_BLUE = 0x026873;
+    const TRON_LEGACY_DARK = 0x011f26;
+    const TRON_LEGACY_RED = 0xff410d;
+     
+
+    const Graph = ForceGraph3D()
+      (document.getElementById('3d-graph'))
+        .backgroundColor('#000003')
+        .jsonUrl('ipres-graph.json')
+        .nodeLabel( node => `${node.name}<br>(${node.count} publications)` )
+        .nodeVal( node => Math.pow(node.count, 2.0) )
+        .nodeOpacity(1.0)
+        //.nodeAutoColorBy('group')
+        .nodeColor( node => node.name.toLowerCase().includes(highlight) ? 
+          TRON_LEGACY_BLUE : TRON_LEGACY_ORANGE )
+        .linkColor( TRON_LEGACY_ORANGE )
+        .linkLabel( link => `${link.source.name}<br>${link.target.name}<br>(${link.value} co-publications)` )
+        .linkWidth( link => link.value );
+
+    const bloomPass = new UnrealBloomPass();
+    bloomPass.strength = 3;
+    bloomPass.radius = 1;
+    bloomPass.threshold = 0;
+    Graph.postProcessingComposer().addPass(bloomPass);
+
+
+    // UI Controls
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+
+    searchButton.addEventListener('click', event => {
+      highlight = searchInput.value;
+      if (highlight) {
+        highlight = highlight.toLowerCase();
+      } else {
+        highlight = null;
+      }
+      updateHighlight();
+    });
+
+    searchInput.addEventListener('change', event => {
+      searchButton.click();
+    });
+
+    function updateHighlight() {
+      // trigger update of highlighted objects in scene
+      Graph
+        .nodeColor(Graph.nodeColor());
+    }
+  </script>
+</body>
