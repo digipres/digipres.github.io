@@ -1,6 +1,19 @@
 # Welcome
 
-Welcome to [digipres.org](https://digipres.org/), a community-owned portal For digital preservation. Our goal is to help you find, and contribute to, all of the wonderful community-owned and community-oriented resources out there.
+```{figure} spruce_dp_digibox.svg
+---
+scale: 100%
+align: right
+alt: A box of digital things, from the SPRUCE DP Illustrations collection.
+target: ./about.html#about-credits
+---
+```
+
+_Welcome to [digipres.org](https://digipres.org/), a community-owned portal for digital preservation._
+
+Our goal is to help you find (and contribute to!) all of the wonderful community-owned and community-oriented resources out there.
+
+If you can't find what you need, please get in touch via [our GitHub discussion forum](https://github.com/orgs/digipres/discussions) or [our Google Group mailing list](https://groups.google.com/g/digipres).
 
 ## The Awesome List
 
