@@ -6,13 +6,19 @@
 </head>
 
 <body>
+
   <div id="3d-graph"></div>
 
+  <div style="position: absolute; top: 5px; right: 5px; background-color: #ffffff88; padding: 6px 8px; border-radius: 6px; font-family: sans-serif;">
+    <label for="searchInput">Search</label>
+    <input id="searchInput" type="search">
+  </div>
+  
   <script type="importmap">{ "imports": { "three": "//unpkg.com/three/build/three.module.js" }}</script>
   <script type="module">
     import { UnrealBloomPass } from '//unpkg.com/three/examples/jsm/postprocessing/UnrealBloomPass.js';
 
-    const highlight = 'klaus';
+    var highlight = null;
 
     const TRON_BLUE = 0x7DFDFE;
     // Or TRON Legacy https://color.adobe.com/-Legacy-Film-Poster-color-theme-13490595/
@@ -43,5 +49,22 @@
     bloomPass.radius = 1;
     bloomPass.threshold = 0;
     Graph.postProcessingComposer().addPass(bloomPass);
+
+
+    document.getElementById('searchInput').addEventListener('change', event => {
+      highlight = event.target.value;
+      if (highlight) {
+        highlight = highlight.toLowerCase();
+      } else {
+        highlight = null;
+      }
+      updateHighlight();
+    });
+
+    function updateHighlight() {
+      // trigger update of highlighted objects in scene
+      Graph
+        .nodeColor(Graph.nodeColor());
+    }
   </script>
 </body>
