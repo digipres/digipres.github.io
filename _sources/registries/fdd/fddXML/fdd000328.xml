@@ -37,8 +37,8 @@
 				<li>IFD (Image File Directory) takes up 20 bytes in BigTIFF as opposed to 12 in TIFF</li>
 			</ul>
 		</fdd:description>
-		<fdd:shortDescription>A variant TIFF format, BigTIFF  transcends TIFF&apos;s 4 GB TIFF limit using 64-bit offsets thereby supporting files up to 18,000 petabytes in size.</fdd:shortDescription>
-		<fdd:productionPhase/>
+		<fdd:shortDescription>A variant TIFF format, BigTIFF transcends TIFF&apos;s 4 GB TIFF limit using 64-bit offsets thereby supporting files up to 18,000 petabytes in size.</fdd:shortDescription>
+		<fdd:productionPhase>Most often an initial-state or middle-state format; may serve as final-state format.</fdd:productionPhase>
 		<fdd:relationships>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Extension of</fdd:typeOfRelationship>
@@ -60,6 +60,10 @@
 			</fdd:relationship>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>BigTIFF is strongly recommended as the primary format for images captured in the FADGI-authored <a href="https://www.digitizationguidelines.gov/guidelines/imaged_audio.html">Guidelines for IRENE System Products for Long Term Retention: Deliverable Packages for Imaged Audio Systems</a>.</fdd:experience>
+		<fdd:preference>See the Library of Congress Recommended Formats Statement for format preferences for <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html">still image works</a>.</fdd:preference>
+	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>Openly published.</fdd:disclosure>
 		<fdd:documentation>The <a href="https://www.awaresystems.be/imaging/tiff/bigtiff.html">BigTIFF File Format</a> specification is provided online by AWare Systems.</fdd:documentation>
@@ -87,10 +91,16 @@
 				<li>A variety of other imaging systems for pathology and histology.  Most software designed to render or manipulate geospatial raster images.</li>
 			</ul>
 		</fdd:adoption>
-		<fdd:licensingAndPatents>The BigTIFF enhancements in Aperio’s libtiff  were made by Ole Eichhorn (formerly of Aperio Technologies, acquired by Leica Biosystems in 2012) and (in the words of the <a href="http://bigtiff.org/">bigtiff.org web page</a>) "are donated to the public domain, in gratitude to Sam Leffler, Silicon Graphics, Joris Van Damme, AWare Systems, Frank Warmerdam, Andrey Kisley, Mike Welles, and all who have worked on libtiff over the years to provide such a great tool.  The aperio libtiff changes were published on an 'as is' basis and neither Ole Eichhorn nor Aperio Technologies make any warranty as to their fitness for any intended use."  See also <fddLink id="fdd000022">TIFF_6</fddLink>. </fdd:licensingAndPatents>
+		<fdd:licensingAndPatents>The BigTIFF enhancements in Aperio’s libtiff were made by Ole Eichhorn (formerly of Aperio Technologies, acquired by Leica Biosystems in 2012) and (in the words of the <a href="http://bigtiff.org/">bigtiff.org web page</a>) "are donated to the public domain, in gratitude to Sam Leffler, Silicon Graphics, Joris Van Damme, AWare Systems, Frank Warmerdam, Andrey Kisley, Mike Welles, and all who have worked on libtiff over the years to provide such a great tool.  The aperio libtiff changes were published on an 'as is' basis and neither Ole Eichhorn nor Aperio Technologies make any warranty as to their fitness for any intended use."  See also <fddLink id="fdd000022">TIFF_6</fddLink>. </fdd:licensingAndPatents>
 		<fdd:transparency>Wrapper is as transparent as <fddLink id="fdd000022">TIFF_6</fddLink>
 		</fdd:transparency>
-		<fdd:selfDocumentation>Header provides some metadata.</fdd:selfDocumentation>
+		<fdd:selfDocumentation>
+			<p>Header provides some metadata.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>Accessibility for still image content is often supported by the use of alt text when displayed on the web. The carriage of this data is typically not embedded in the file itself but rather in the HTML code. TIFF files have moderate support for accessibility features through the use of embedded metadata in <a href="https://www.loc.gov/preservation/digital/formats/content/tiff_tags.shtml">TIFF tags</a>. For example, <a href="https://www.awaresystems.be/imaging/tiff/tifftags/imagedescription.html">ImageDescription tag</a> (code 270) describes the content of the image but this may not be accessible to screen readers.</p>
+		</fdd:selfDocumentation>
 		<fdd:externalDependencies>None for the wrapper.</fdd:externalDependencies>
 		<fdd:techProtection>Not applicable.</fdd:techProtection>
 	</fdd:sustainabilityFactors>
@@ -161,6 +171,13 @@
 				<fdd:note>Little-endian signature.  From <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/1917">http://www.nationalarchives.gov.uk/PRONOM/fmt/1917</a>.</fdd:note>
 			</fdd:magicNumbers>
 			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>NARA File Format Preservation Plan ID has no corresponding entry as of November 2024.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
 				<fdd:tag>Pronom PUID</fdd:tag>
 				<fdd:values>
 					<fdd:sigValues>
@@ -175,7 +192,7 @@
 					<fdd:sigValues>
 						<fdd:sigValue>Q28205771</fdd:sigValue>
 					</fdd:sigValues>
-					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q28205771"/>.
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q28205771">https://www.wikidata.org/wiki/Q28205771</a>.
 					</fdd:note>
 				</fdd:values>
 			</fdd:other>
