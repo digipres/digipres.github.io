@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000538" titleName="JPEG XL File Format" shortName="JXL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000538" titleName="JPEG XL File Format" shortName="JXL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
@@ -11,7 +11,7 @@
 		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2022-04-01</fdd:date>
+			<fdd:date>2024-11-06</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Preliminary</fdd:draftStatus>
 	</fdd:properties>
@@ -34,7 +34,7 @@
 				<li>XMP</li>
 				<li>JUMBF</li>
 			</ul>
-			<p>This metadata can include a host of information such as camera settings or GPS coordinates. Any image rendering-impacting information such as Exif orientation is ignored with information in the codestream taking precedence. The file format container allows this type of metadata to be stored either uncompressed or by Brotli-compression. This metadata can also be essential for JPEG XL to losslessly recompress existing JPEG files. The "jbrd" box, the JPEG Bitstream Reconstruction Data, contains the information needed to reconstruct the bit-identical file. The JPEG bistream reconstruction data uses the image data along with any other metadata present sch as Exif, XMP, or JUMBF, the original JPEG file can be reconstructed. This inherent compatibility allows for an efficient transition from JPEG formats to JPEG XL without the need to store two files.</p>
+			<p>This metadata can include a host of information such as camera settings or GPS coordinates. Any image rendering-impacting information such as Exif orientation is ignored with information in the codestream taking precedence. The file format container allows this type of metadata to be stored either uncompressed or by Brotli-compression. This metadata can also be essential for JPEG XL to losslessly recompress existing JPEG files. The "jbrd" box, the JPEG Bitstream Reconstruction Data, contains the information needed to reconstruct the bit-identical file. The JPEG bitstream reconstruction data uses the image data along with any other metadata present sch as Exif, XMP, or JUMBF, the original JPEG file can be reconstructed. This inherent compatibility allows for an efficient transition from JPEG formats to JPEG XL without the need to store two files.</p>
 			<p>The &quot;X&quot; of the JPEG XL file name is based in part on the JPEG group's naming convention for many of its new standards since 2000 including, JPEG XT, JPEG XR, and JPEG XS. The <a href="https://gitlab.gnome.org/GNOME/gimp/-/issues/4681">authors used the &quot;L&quot;</a> as an indication of the hopeful longevity of the file format as it will replace the legacy JPEG. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
 			<p>See <a href="https://jpeg.org/jpegxl/index.html">JPEG XL pages</a> on the JPEG website and <fddLink id="fdd000536">JPEG_XL</fddLink> for information on the JPEG XL Image Encoding.</p>
 		</fdd:description>
@@ -76,8 +76,8 @@
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
-		<fdd:experience>The Library of Congress does not have any JXL files inventoried in its collections as of October 2021.</fdd:experience>
-		<fdd:preference>Neither JXL or the associated JPEG XL encoding is listed in the Library of Congress Recommended Formats Statement (RFS) for <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html">Still Image</a> in its collections.</fdd:preference>
+		<fdd:experience>The Library of Congress does not have any JXL files inventoried in its collections as of October 2024.</fdd:experience>
+		<fdd:preference>See the Library of Congress Recommended Formats Statement (RFS) for preferences for <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html">Still Image</a> content.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>Fully disclosed. This is an ISO published standard specified in the <a href="https://www.iso.org/standard/80617.html">ISO/IEC 18181-2:2021 Information technology — JPEG XL Image Coding System — Part 2: File Format standard</a>.</fdd:disclosure>
@@ -86,15 +86,16 @@
 			<p>
 				<a href="https://www.iso.org/standard/77977.html">Part 1</a> carries the running title Part 1: Core coding system. As stated on the <a href="https://jpeg.org/jpegxl/">JPEG group&apos;s own description of the standards</a>, Part 1: "Defines the JPEG XL codestream and decoder, which can be used for lossy encoding, lossless encoding, and lossless re-compression of existing JPEG images."</p>
 			<p>
-				<a href="https://www.iso.org/standard/80617.html">Part 2</a> carries the running title Part 2: File Format. Part 2, "specifies an extensible box-based file format which adds support for metadata (e.g. Exif and JUMBF) and legacy JPEG bistream reconstruction data."</p>
+				<a href="https://www.iso.org/standard/80617.html">Part 2</a> carries the running title Part 2: File Format. Part 2, "specifies an extensible box-based file format which adds support for metadata (e.g. Exif and JUMBF) and legacy JPEG bitstream reconstruction data."</p>
 			<p>
 				<a href="https://www.iso.org/standard/80618.html">Part 3</a> carries the running title: Conformance testing. As stated by the <a href="https://jpeg.org/jpegxl/">JPEG group</a>, this part, &quot;provides test material and procedures to validate proprietary solutions against the standard specification.&quot;</p>
 			<p>
 				<a href="https://www.iso.org/standard/80619.html">Part 4</a> carries the running title Part 4: Reference software. Part 4 &quot;provides a free and open source, royalty-free JPEG XL reference implementation.&quot;</p>
 		</fdd:documentation>
 		<fdd:adoption>
-			<p>Adoption of the JPEG XL encoding and file format appears limited at this time. Few active web browsers support JPEG XL file display with a currently monitored list found on <a href="https://github.com/libjxl/libjxl/blob/main/doc/software_support.md">Github</a>. This list includes various types of JPEG XL Software Support and its stated purpose is to, "point end-users to software that can read/write jxl and keep track of the adoption status of jxl."</p>
-			<p>An unofficial list of image viewers and image libraries that can open and render JPEG XL files are:</p>
+			<p>Adoption of the JPEG XL encoding and file format appears limited at this time. Few active web browsers support JPEG XL file display with a currently monitored list found on <a href="https://github.com/libjxl/libjxl/blob/main/doc/software_support.md">GitHub</a>. This list includes various types of JPEG XL Software Support and its stated purpose is to, "point end-users to software that can read/write jxl and keep track of the adoption status of jxl."</p>
+			<p>
+				<a href="https://jpegxl.info/resources/supported-software.html">JPEGXL.info</a> maintains a list of supported software and browsers including </p>
 			<ul>
 				<li>ImageMagick</li>
 				<li>
@@ -111,7 +112,7 @@
 				<li>VookiImageViewer</li>
 				<li>For additional software, see <a href="https://docs.google.com/presentation/d/1LlmUR0Uoh4dgT3DjanLjhlXrk_5W2nJBDqDAMbhe8v8/edit#slide=id.gcefdb4f156_0_0">this JPEG XL overview slide deck</a>.</li>
 			</ul>
-			<p>Sample JPEG XL files and conformance testing can be found <a href="https://github.com/libjxl/conformance">here</a>.</p>
+			<p>Sample JPEG XL files and conformance testing can be found at <a href="https://github.com/libjxl/conformance">https://github.com/libjxl/conformance</a>.</p>
 			<p>
 				<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
 		</fdd:adoption>
@@ -119,7 +120,11 @@
 		<fdd:transparency>See <fddLink id="fdd000536">JPEG_XL</fddLink>.</fdd:transparency>
 		<fdd:selfDocumentation>
 			<p>JPEG XL files can contain three types of metadata including Exif, XMP, and JUMBF. See <a href="#identification">Identification and Description</a>. The JPEG XL container allows the listed metadata to be stored via <a href="https://en.wikipedia.org/wiki/Brotli">Brotli-compression</a> or uncompressed. If using Brotli-compression, the box type is defined as &quot;brob&quot; and the first four bytes of the box contents define the actual box type that it represents.</p>
-			<p>Per Jon Sneyer's JPEG XL documentation on <a href="https://gitlab.com/wg1/jpeg-xl/-/blob/f88745497118727f861cb00887cadcb395d10f1c/doc/format_overview.md">GitLab</a>, there is a clear separation between metadata and image data. Whatever is needed to correctly display the image is considered to be image data including elements such as ICC profiles and Exif orientation. The developers goal is to reduce the ambiguity and potential for incorrect implementations by different applications. Remaining metadata such as Exif or XMP, can be stored in the container format but has no impact on image rendering. Exif orientation for example, is a field ignored by applications since the orientation defined in the codestream takes precedence. This metadata can be done without affecting the image display.</p>
+			<p>Per Jon Sneyers' JPEG XL documentation on <a href="https://gitlab.com/wg1/jpeg-xl/-/blob/f88745497118727f861cb00887cadcb395d10f1c/doc/format_overview.md">GitLab</a>, there is a clear separation between metadata and image data. Whatever is needed to correctly display the image is considered to be image data including elements such as ICC profiles and Exif orientation. The developers goal is to reduce the ambiguity and potential for incorrect implementations by different applications. Remaining metadata such as Exif or XMP, can be stored in the container format but has no impact on image rendering. Exif orientation for example, is a field ignored by applications since the orientation defined in the codestream takes precedence. This metadata can be done without affecting the image display.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>JPEG XL has some support for enhanced accessibility with progressive decoding which allows users to see an image before it's fully downloaded, which is especially useful when bandwidth is low. Its metadata options also provide options for image description.</p>
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>None.
 		</fdd:externalDependencies>
@@ -142,12 +147,13 @@
 				<fdd:sigValues>
 					<fdd:sigValue>jxl</fdd:sigValue>
 				</fdd:sigValues>
+				<fdd:note>See <a href="https://www.iana.org/assignments/media-types/image/jxlhttps://www.iana.org/assignments/media-types/image/jxl">IANA</a>.</fdd:note>
 			</fdd:filenameExtension>
 			<fdd:internetMediaType>
 				<fdd:sigValues>
 					<fdd:sigValue>image/jxl</fdd:sigValue>
 				</fdd:sigValues>
-				<fdd:note>See provisional media type registry from <a href="https://www.iana.org/assignments/provisional-standard-media-types/provisional-standard-media-types.xhtml">IANA</a>.</fdd:note>
+				<fdd:note>See <a href="https://www.iana.org/assignments/media-types/image/jxlhttps://www.iana.org/assignments/media-types/image/jxl">IANA</a>.</fdd:note>
 			</fdd:internetMediaType>
 			<fdd:magicNumbers>
 				<fdd:sigValues>
@@ -161,6 +167,25 @@
 				</fdd:sigValues>
 				<fdd:note>The &quot;naked&quot; codestream form of the JPEG XL file format starts with these bytes which is the JPEG marker for &quot;start of JPEG XL codestream.&quot; See <a href="https://gitlab.com/wg1/jpeg-xl/-/blob/f88745497118727f861cb00887cadcb395d10f1c/doc/format_overview.md">JPEG XL Reference Software GitLab</a>.</fdd:note>
 			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF0080</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.archives.gov/files/lod/dpframework/id/NF00802.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00802.ttl</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/1485</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.nationalarchives.gov.uk/pronom/fmt/1485">https://www.nationalarchives.gov.uk/pronom/fmt/1485</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
 			<fdd:other>
 				<fdd:tag>Wikidata Title ID</fdd:tag>
 				<fdd:values>
@@ -177,15 +202,6 @@
 						<fdd:sigValue>Q99738405</fdd:sigValue>
 					</fdd:sigValues>
 					<fdd:note>Wikidata entry for libjxl, the JPEG XL reference implementation. See <a href="https://www.wikidata.org/wiki/Q99738405">https://www.wikidata.org/wiki/Q99738405</a>.</fdd:note>
-				</fdd:values>
-			</fdd:other>
-			<fdd:other>
-				<fdd:tag>Pronom PUID</fdd:tag>
-				<fdd:values>
-					<fdd:sigValues>
-						<fdd:sigValue>fmt/1485</fdd:sigValue>
-					</fdd:sigValues>
-					<fdd:note>See <a href="https://www.nationalarchives.gov.uk/pronom/fmt/1485">https://www.nationalarchives.gov.uk/pronom/fmt/1485</a>.</fdd:note>
 				</fdd:values>
 			</fdd:other>
 		</fdd:signifiersGroup>
@@ -230,7 +246,7 @@
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlGroup>
-					<fdd:intro>Github and GitLab</fdd:intro>
+					<fdd:intro>GitHub and GitLab</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
 							<link>https://github.com/FLIF-hub/FLIF/commit/973a6a564fbdffc2aff38ff474dd35aa5bb95aa7</link>
@@ -269,7 +285,7 @@
 						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>https://en.wikipedia.org/wiki/Free_Lossless_Image_Format</link>
-							<tag>Wikpedia entry for Free Lossless Image Format.</tag>
+							<tag>Wikipedia entry for Free Lossless Image Format.</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>https://en.wikipedia.org/wiki/Apache_License</link>
@@ -303,8 +319,13 @@
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlGroup>
-					<fdd:intro>PRONOM and Wikidata IDs</fdd:intro>
+					<fdd:intro>NARA, PRONOM and Wikidata IDs</fdd:intro>
 					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.archives.gov/files/lod/dpframework/id/NF00802.ttl</link>
+							<tag>NARA File Format Preservation Plan ID entry for NF00802</tag>
+							<comment>Information in NARA File Format Preservation Plan ID about JPEG XL.</comment>
+						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>https://www.nationalarchives.gov.uk/pronom/fmt/1485</link>
 							<tag>PRONOM entry for fmt/1485</tag>
@@ -312,13 +333,13 @@
 						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>https://www.wikidata.org/wiki/Q72885392</link>
-							<tag>WikiData entry for Q72885392</tag>
-							<comment>Information in Wikidata entry for JPEG XL. WikiData Title ID: Q72885392</comment>
+							<tag>Wikidata entry for Q72885392</tag>
+							<comment>Information in Wikidata entry for JPEG XL. Wikidata Title ID: Q72885392</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
 							<link>https://www.wikidata.org/wiki/Q99738405</link>
-							<tag>WikiData entry for Q99738405</tag>
-							<comment>Information in Wikidata entry for libjxl, the JPEG XL reference implementation. WikiData Title ID: Q99738405.</comment>
+							<tag>Wikidata entry for Q99738405</tag>
+							<comment>Information in Wikidata entry for libjxl, the JPEG XL reference implementation. Wikidata Title ID: Q99738405.</comment>
 						</fdd:urlReference>
 					</fdd:urlList>
 				</fdd:urlGroup>
