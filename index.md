@@ -55,7 +55,7 @@ items:
 <main class="container-fluid">
   <div class="row" data-masonry='{"percentPosition": true }'>
 {% for item in page.items %}
-    <div class="col-sm-6 col-md-4 col-lg-3 p-1">
+    <div class="col-6 col-sm-4 col-md-3 col-xl-2 p-1">
       <div class="card">
         {% if item.image %}<img src="{{ item.image }}" class="card-img" alt="...">{% endif %}
         <div class="card-body">
