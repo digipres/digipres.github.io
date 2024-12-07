@@ -1,5 +1,5 @@
 ---
-title: DigiPres Commons
+title: DigiPres.org
 subtitle: Community-owned digital preservation resources
 layout: base
 items:
@@ -29,7 +29,7 @@ items:
    link: /formats/
    description: "Search across multiple format registries at once, to help you understand the contents of your digital collections."
  - title: Track Down Tools
-   image: icons/dpo-workbench.png
+   image: icons/dpo-tools.png
    link: https://coptr.digipres.org/
    description: "Use the COPTR wiki to find tools to help you do digital preservation."
  - title: Find Publications
@@ -45,7 +45,7 @@ items:
    link: https://coptr.digipres.org/index.php/Workflow:Community_Owned_Workflows
    description: "Share your digital workflows, and explore how other peoples systems solve our shared challenges."
  - title: Download Test Files
-   image: icons/dpo-workbench.png
+   image: icons/dpo-test-files.png
    link: https://github.com/digipres/awesome-digital-preservation?tab=readme-ov-file#find-test-files
    description: "Explore all the sets of openly-available files you download and use to test tools, tactics and workflows."
  - title: Experiment with the Workbench
@@ -66,6 +66,7 @@ items:
     </button>
     <div class="collapse navbar-collapse" id="navbarToggler">
       <a class="navbar-brand fw-bolder" href="/">{{page.title}}</a>
+        <span class="navbar-text">{{ page.subtitle }}</span>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link" href="https://github.com/digipres/digipres.github.io">GitHub</a>
@@ -109,7 +110,6 @@ items:
     // Wait for images to load before using the masonry layout, as per https://masonry.desandro.com/layout#imagesloaded
     imagesLoaded( document.getElementsByClassName("masonry"),
       function( instance ) {
-        console.log('all images are loaded');
         // init Masonry after all images have loaded
         var masonry = new Masonry( '.masonry', {});
       }
