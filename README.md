@@ -16,7 +16,8 @@ Contributing to this site
 -------------------------
 
 * Fork it.
-* Install Jekyll and required dependencies: `bundle init`
+* Install Ruby > 3 and the bundle gem.
+* Install Jekyll and required dependencies: `bundle install`
 * Run Jekyll in development mode: `bundle exec jekyll serve --incremental --watch --livereload`
 * Commit changes to your fork.
 * Submit a pull request, describing the change.
