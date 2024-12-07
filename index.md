@@ -92,8 +92,8 @@ items:
 
 <script>
 // Wait for images to load before using the masonry layout, as per https://masonry.desandro.com/layout#imagesloaded
-var $grid = $('.masonry').imagesLoaded( function() {
+var cards = document.getElementsByClassName("masonry").imagesLoaded( function() {
   // init Masonry after all images have loaded
-  $grid.masonry();
+  cards.masonry();
 });
 </script>
