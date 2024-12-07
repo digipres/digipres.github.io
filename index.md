@@ -83,7 +83,7 @@ items:
 </nav>
 
 
-<main class="container-fluid ">
+<main class="container-fluid mt-1">
   <div class="row masonry" data-masonry='{"percentPosition": true }'>
 {% for item in page.items %}
     <div class="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 p-1">
