@@ -3,15 +3,28 @@ title: DigiPres Commons
 subtitle: Community-owned digital preservation resources
 layout: base
 items:
- - title: The DigiPres Awesome List
+ - title: Use The DigiPres Awesome List
    image: icons/dpo-signpost.png
    link: https://github.com/digipres/awesome-digital-preservation#readme
    description: This carefully curated list of digital preservation tools and resources is the main thing that the community maintains. Please take a look! 
  - description: 'The goal of this gateway website to help the members of the international digital preservation community to find each other, to grow, and to find ways to support each other. Crucially, we want to help pool our knowledge and resources so we can do more and better preservation, and try to avoid anyone re-inventing the wheel. Of course, this ethos also extends to this site, so please <a href="https://github.com/digipres/digipres.github.io/issues">raise any issues (e.g. what have we missed?)</a>, <a href="https://github.com/digipres/digipres.github.io">contribute to this web site</a>, or <a href="https://github.com/orgs/digipres/discussions">discuss your ideas with us</a>.'
+ - title: Get Started
+   image: icons/dpo-floppy-plain.png
+   link: https://github.com/digipres/awesome-digital-preservation?tab=readme-ov-file#get-started
+   description: "Find out how to start preserving your digital stuff." 
+ - description: "With thanks to the <a href='https://openpreservation.org/'>Open Preservation Foundation</a> and <a href='https://www.dpconline.org/'>Digital Preservation Coalition</a> for hosting and supporting many of these resources."
+ - title: Talk It Through
+   image: icons/dpo-digipres-club.png
+   link: https://github.com/digipres/awesome-digital-preservation?tab=readme-ov-file#become-part-of-the-digital-preservation-community
+   description: "Find like-minded souls on digipres.club, mailings lists, forums and conferences." 
  - title: Find Formats
    image: icons/dpo-formats.png
    link: /formats/
    description: "Search across multiple format registries at once, to help you understand the contents of your digital collections."
+ - title: Track Down Tools
+   image: icons/dpo-workbench.png
+   link: https://coptr.digipres.org/
+   description: "Use the COPTR wiki to find tools to help you do digital preservation."
  - title: Find Publications
    image: icons/dpo-publications.png
    link: /publications/
@@ -20,11 +33,14 @@ items:
    image: icons/dpo-policies.png
    link: /policies/
    description: "Learn from others via this list of digital preservation policies from across the world."
- - description: "With thanks to the <a href='https://openpreservation.org/'>Open Preservation Foundation</a> and <a href='https://www.dpconline.org/'>Digital Preservation Coalition</a> for hosting and supporting many of these resources."
  - title: Explore Workflows
    image: icons/dpo-workflows.png
    link: https://coptr.digipres.org/index.php/Workflow:Community_Owned_Workflows
    description: "Share your digital workflows, and explore how other peoples systems solve our shared challenges."
+ - title: Download Test Files
+   image: icons/dpo-workbench.png
+   link: https://github.com/digipres/awesome-digital-preservation?tab=readme-ov-file#find-test-files
+   description: "Explore all the sets of openly-available files you download and use to test tools, tactics and workflows."
  - title: Experiment with the Workbench
    image: icons/dpo-workbench.png
    link: /workbench/
@@ -52,11 +68,11 @@ items:
 </nav>
 
 
-<main class="container-fluid">
+<main class="container-fluid masonry">
   <div class="row" data-masonry='{"percentPosition": true }'>
 {% for item in page.items %}
-    <div class="col-6 col-sm-4 col-md-3 col-xl-2 p-1">
-      <div class="card">
+    <div class="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 p-1">
+      <div class="card{% if item.title == nil %} text-bg-light{% endif %}">
         {% if item.image %}<img src="{{ item.image }}" class="card-img" alt="...">{% endif %}
         <div class="card-body">
           {% if item.title %}<h5 class="card-title">{{ item.title }}</h5>{% endif %}
@@ -71,4 +87,13 @@ items:
 
 </main>
 
-<script sync src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"></script>
+
+<script>
+// Wait for images to load before using the masonry layout, as per https://masonry.desandro.com/layout#imagesloaded
+var $grid = $('.masonry').imagesLoaded( function() {
+  // init Masonry after all images have loaded
+  $grid.masonry();
+});
+</script>
