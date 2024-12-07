@@ -3,21 +3,27 @@ title: DigiPres Commons
 subtitle: Community-owned digital preservation resources
 layout: base
 items:
- - description: "The digital preservation community is small and under resourced. This means we have to work together if we want to make a real impact. This site aims to provide a gateway to all of the wonderful community-owned and community-oriented resources out there that are dedicated to digital preservation."
+ - title: "Welcome!"
+   description: "Welcome to digipres.org, a gateway to all of the wonderful community-owned and community-oriented resources dedicated to digital preservation!"
  - title: Use The DigiPres Awesome List
    image: icons/dpo-signpost.png
    link: https://github.com/digipres/awesome-digital-preservation#readme
-   description: This carefully curated list of digital preservation tools and resources is the main thing that the community maintains. Please take a look! 
- - description: 'The goal of this gateway website to help the members of the international digital preservation community to find each other, to grow, and to find ways to support each other. Crucially, we want to help pool our knowledge and resources so we can do more and better preservation, and try to avoid anyone re-inventing the wheel. Of course, this ethos also extends to this site, so please <a href="https://github.com/digipres/digipres.github.io/issues">raise any issues (e.g. what have we missed?)</a>, <a href="https://github.com/digipres/digipres.github.io">contribute to this web site</a>, or <a href="https://github.com/orgs/digipres/discussions">discuss your ideas with us</a>.'
+   description: This carefully curated list of digital preservation tools and resources is the main thing that the community maintains. Please take a look!
+   action: "Be Awesome"
  - title: Get Started
    image: icons/dpo-floppy-plain.png
    link: https://github.com/digipres/awesome-digital-preservation?tab=readme-ov-file#get-started
-   description: "Find out how to start preserving your digital stuff." 
- - description: "With thanks to the <a href='https://openpreservation.org/'>Open Preservation Foundation</a> and <a href='https://www.dpconline.org/'>Digital Preservation Coalition</a> for hosting and supporting many of these resources."
+   description: "Find out how to start preserving your digital stuff."
+   action: "Start Here"
+ - title: Something Wrong?
+   description: 'Broken or missing link? Website problems? Feature requests? Please raise them here.'
+   link: https://github.com/digipres/digipres.github.io/issue
+   action: "Raise an Issue"
  - title: Talk It Through
    image: icons/dpo-digipres-club.png
    link: https://github.com/digipres/awesome-digital-preservation?tab=readme-ov-file#become-part-of-the-digital-preservation-community
-   description: "Find like-minded souls on digipres.club, mailings lists, forums and conferences." 
+   description: "Find like-minded souls on digipres.club, mailings lists, forums and conferences."
+   action: "Let's Talk"
  - title: Find Formats
    image: icons/dpo-formats.png
    link: /formats/
@@ -46,6 +52,10 @@ items:
    image: icons/dpo-workbench.png
    link: /workbench/
    description: "Try out the experimental DigiPres Workbench. Explore your formats. Compare your collections. Play with DigiPres tools, without installing a thing!"
+   action: "For Science!"
+ - title: Want to talk about digipres.org?
+   description: "Please use our discussion forum if you want to talk to us about digipres.org."
+   link: https://github.com/orgs/digipres/discussions
  - description: 'The images used on this website were derived from the <a href="https://wiki.dpconline.org/index.php?title=SPRUCE_Digital_Preservation_Illustrations">SPRUCE Digital Preservation Illustrations</a>, created by <a href="http://www.tomwoolley.com/">Tom Woolley</a> and released under a <a href="https://creativecommons.org/licenses/by-nc/3.0/deed.en">CC-BY-NC</a> license thanks to funding from <a href="http://jisc.ac.uk/">Jisc</a>.'
 ---
 
@@ -58,10 +68,13 @@ items:
       <a class="navbar-brand fw-bolder" href="/">{{page.title}}</a>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link" href="https://github.com/digipres/digipres.github.io">GitHub</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="https://github.com/digipres/digipres.github.io/issues">Issues</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/orgs/digipres/discussions">Discussion</a>
         </li>
       </ul>
     </div>
@@ -73,13 +86,13 @@ items:
   <div class="row" data-masonry='{"percentPosition": true }'>
 {% for item in page.items %}
     <div class="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 p-1">
-      <div class="card{% if item.title == nil %} text-bg-light{% endif %}">
-        {% if item.image %}<img src="{{ item.image }}" class="card-img" alt="...">{% endif %}
+      <div class="card{% if item.image == nil %} text-bg-light{% endif %}">
+        {% if item.image %}<img src="{{ item.image }}" class="card-img" alt="{{ item.title | default: 'a decorative image' }}">{% endif %}
         <div class="card-body">
           {% if item.title %}<h5 class="card-title">{{ item.title }}</h5>{% endif %}
           {% if item.description %}<p class="card-text">{{ item.description }}</p>{% endif %}
-          {% if item.link %}<a href="{{ item.link }}" target="_new" class="btn btn-primary float-end stretched-link">Go</a>{% endif %}
           {% if item.subtext %}<p class="card-text"><small class="text-muted">{{ item.subtext }}</small></p>{% endif %}
+          {% if item.link %}<a href="{{ item.link }}" target="_new" class="btn btn-primary float-end stretched-link">{{ item.action | default: 'Go' }}</a>{% endif %}
         </div>
       </div>
     </div>
