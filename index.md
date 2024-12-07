@@ -3,6 +3,7 @@ title: DigiPres Commons
 subtitle: Community-owned digital preservation resources
 layout: base
 items:
+ - description: "The digital preservation community is small and under resourced. This means we have to work together if we want to make a real impact. This site aims to provide a gateway to all of the wonderful community-owned and community-oriented resources out there that are dedicated to digital preservation."
  - title: Use The DigiPres Awesome List
    image: icons/dpo-signpost.png
    link: https://github.com/digipres/awesome-digital-preservation#readme
@@ -87,13 +88,15 @@ items:
 
 </main>
 
-<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"></script>
+<script sync src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+<script sync src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"></script>
 
 <script>
-// Wait for images to load before using the masonry layout, as per https://masonry.desandro.com/layout#imagesloaded
-var cards = document.getElementsByClassName("masonry").imagesLoaded( function() {
-  // init Masonry after all images have loaded
-  cards.masonry();
-});
+  window.addEventListener('load', function () {
+    // Wait for images to load before using the masonry layout, as per https://masonry.desandro.com/layout#imagesloaded
+    var cards = document.getElementsByClassName("masonry").imagesLoaded( function() {
+      // init Masonry after all images have loaded
+      cards.masonry();
+    });
+  });
 </script>
