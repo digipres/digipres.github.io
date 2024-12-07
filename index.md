@@ -82,8 +82,8 @@ items:
 </nav>
 
 
-<main class="container-fluid masonry">
-  <div class="row" data-masonry='{"percentPosition": true }'>
+<main class="container-fluid ">
+  <div class="row masonry" data-masonry='{"percentPosition": true }'>
 {% for item in page.items %}
     <div class="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 p-1">
       <div class="card{% if item.image == nil %} text-bg-light{% endif %}">
@@ -107,9 +107,12 @@ items:
 <script>
   window.addEventListener('load', function () {
     // Wait for images to load before using the masonry layout, as per https://masonry.desandro.com/layout#imagesloaded
-    var cards = document.getElementsByClassName("masonry").imagesLoaded( function() {
-      // init Masonry after all images have loaded
-      cards.masonry();
-    });
+    imagesLoaded( document.getElementsByClassName("masonry"),
+      function( instance ) {
+        console.log('all images are loaded');
+        // init Masonry after all images have loaded
+        var masonry = new Masonry( '.masonry', {});
+      }
+    );
   });
 </script>
