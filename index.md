@@ -10,6 +10,7 @@ items:
    link: https://github.com/digipres/awesome-digital-preservation#readme
    description: This carefully curated list of digital preservation tools and resources is the main thing that the community maintains. Please take a look!
    action: "Be Awesome"
+   subtext: Hosted on GitHub
  - title: Get Started
    image: icons/dpo-floppy-plain.png
    link: https://github.com/digipres/awesome-digital-preservation?tab=readme-ov-file#get-started
@@ -92,8 +93,17 @@ items:
         <div class="card-body">
           {% if item.title %}<h5 class="card-title">{{ item.title }}</h5>{% endif %}
           {% if item.description %}<p class="card-text">{{ item.description }}</p>{% endif %}
+<<<<<<< Updated upstream
           {% if item.subtext %}<p class="card-text"><small class="text-muted">{{ item.subtext }}</small></p>{% endif %}
           {% if item.link %}<a href="{{ item.link }}" target="_new" class="btn btn-primary float-end stretched-link">{{ item.action | default: 'Go' }}</a>{% endif %}
+=======
+          {% if item.link %}
+          <div class="d-flex justify-content-between align-items-center">
+          <p class="card-text mb-0"><small class="text-muted">{{ item.subtext | default: ''}}</small></p>
+          <a href="{{ item.link }}" target="_new" class="btn btn-primary stretched-link">Go</a>
+          </div>
+          {% endif %}
+>>>>>>> Stashed changes
         </div>
       </div>
     </div>
