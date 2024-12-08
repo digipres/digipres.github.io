@@ -93,17 +93,12 @@ items:
         <div class="card-body">
           {% if item.title %}<h5 class="card-title">{{ item.title }}</h5>{% endif %}
           {% if item.description %}<p class="card-text">{{ item.description }}</p>{% endif %}
-<<<<<<< Updated upstream
-          {% if item.subtext %}<p class="card-text"><small class="text-muted">{{ item.subtext }}</small></p>{% endif %}
-          {% if item.link %}<a href="{{ item.link }}" target="_new" class="btn btn-primary float-end stretched-link">{{ item.action | default: 'Go' }}</a>{% endif %}
-=======
           {% if item.link %}
           <div class="d-flex justify-content-between align-items-center">
           <p class="card-text mb-0"><small class="text-muted">{{ item.subtext | default: ''}}</small></p>
-          <a href="{{ item.link }}" target="_new" class="btn btn-primary stretched-link">Go</a>
+          <a href="{{ item.link }}" target="_new" class="btn btn-primary stretched-link">{{ item.action | default: 'Go' }}</a>
           </div>
           {% endif %}
->>>>>>> Stashed changes
         </div>
       </div>
     </div>
