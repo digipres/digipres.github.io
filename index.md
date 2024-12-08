@@ -1,6 +1,6 @@
 ---
 title: DigiPres.org
-subtitle: Community-owned digital preservation resources
+subtitle: Digital preservation community portal
 layout: base
 items:
  - title: "Welcome!"
@@ -71,14 +71,14 @@ items:
  - title: Want to talk about digipres.org?
    description: "Please use our discussion forum if you want to talk to us about digipres.org."
    link: https://github.com/orgs/digipres/discussions
-   
+
  - description: 'The images used on this website were derived from the <a href="https://wiki.dpconline.org/index.php?title=SPRUCE_Digital_Preservation_Illustrations" class="link-body-emphasis">SPRUCE Digital Preservation Illustrations</a>, created by <a href="http://www.tomwoolley.com/" class="link-body-emphasis">Tom Woolley</a> and released under a <a href="https://creativecommons.org/licenses/by-nc/3.0/deed.en" class="link-body-emphasis">CC-BY-NC</a> license thanks to funding from <a href="http://jisc.ac.uk/" class="link-body-emphasis">Jisc</a>.'
    card-class: text-bg-light border-dark
 ---
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
+<nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler border-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarToggler">
@@ -100,7 +100,7 @@ items:
 </nav>
 
 
-<main class="container-fluid mt-1">
+<main class="container-fluid mt-0">
   <div class="row masonry" data-masonry='{"percentPosition": true }'>
 {% for item in page.items %}
     <div class="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 p-1">
