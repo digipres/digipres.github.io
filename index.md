@@ -93,10 +93,10 @@ items:
 </nav>
 
 
-<main class="container-fluid mt-0">
+<main class="container mt-0">
   <div class="row">
 {% for item in page.items %}
-    <div class="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2 p-1">
+    <div class="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-3 p-1">
       <div class="card h-100 {{ item.card-class | default: ''}}">
         {% if item.image %}<img src="{{ item.image }}" class="card-img" alt="{{ item.title | default: 'a decorative image' }}">{% endif %}
         <div class="card-body h-100 d-flex flex-column">
