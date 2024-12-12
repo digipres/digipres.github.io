@@ -3,9 +3,11 @@ import json
 import requests
 import re
 
-# Set up the query:
+# Set up the queries:
 url = 'https://query.wikidata.org/sparql'
+
 # Queries to find software entries that read or write formats, based on advice from Kat Thornton.
+# https://w.wiki/CPe6
 query_r = '''
 # Items in Wikidata and the formats they are connected to via P1072 'readable file format'
 SELECT DISTINCT ?item ?itemLabel ?officialWebsite ?license ?licenseLabel ?format ?formatLabel
@@ -20,7 +22,7 @@ WHERE
 }
 ORDER BY ?item
 '''
-
+# https://w.wiki/CPe3
 query_w = '''
 # Items in Wikidata and the formats they are connected to via P1073 'writable file format'
 SELECT DISTINCT ?item ?itemLabel ?officialWebsite ?license ?licenseLabel ?format ?formatLabel
@@ -46,12 +48,13 @@ def process_query(item_data, query):
         if len(item_data) == 0:
             print("Printing one record to show the general form:")
             print(r)
-        #
+        # Get the item ID info:
         item = {
             'id': re.findall(r"Q\d+", r['item']['value'])[0],
             'source': r['item']['value'],
             'name': r['itemLabel']['value'],
         }
+        # Patch in other fields:
         for x in ['officialWebsite', 'license', 'licenseLabel', 'format', 'formatLabel']:
             if x in r:
                 item[x] = r[x]['value']
