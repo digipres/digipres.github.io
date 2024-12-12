@@ -18,6 +18,7 @@ WHERE
   # Helps get the label in your language, if not, then default for all languages, then en language
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
 }
+ORDER BY ?item
 '''
 
 query_w = '''
@@ -32,6 +33,7 @@ WHERE
   # Helps get the label in your language, if not, then default for all languages, then en language
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
 }
+ORDER BY ?item
 '''
 
 def process_query(item_data, query):
