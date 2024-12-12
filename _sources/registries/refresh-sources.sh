@@ -27,6 +27,7 @@ cd -
 
 cd wikidata
 python download-wikidata-formats.py
+python download-wikidata-software.py
 cd -
 
 cd ../../..
