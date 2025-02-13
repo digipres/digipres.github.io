@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000642" titleName="WOZ Disk Image" shortName="WOZ" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>any</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2025-02-12</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>WOZ Disk Image</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>container formats</fdd:keyword>
+			<fdd:keyword>disk image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>WOZ is a chunk-based binary disk image format designed for use with <a href="https://applesaucefdc.com/what-is-applesauce/">Applesauce</a>, the Macintosh floppy drive controller, with the goal &quot;to be able to contain every possible Apple II disk structure and layout.&quot; WOZ files are a simple disk image format that accurately stores data as it is encoded in an Apple II 5.25 or 3.5 inch floppy disk. According to <a href="https://fileinfo.com/extension/woz">FileInfo.com</a>, &quot;WOZ files are typically used for Apple II games, utilities, and educational programs&quot; and &quot;WOZ files can be opened by emulators, such as MAME and OpenEmulator.&quot; <a href="https://nerdlypleasures.blogspot.com/2021/02/the-woz-format-accurate-preservation-of.html">The .woz Format - Accurate Preservation of Apple II Floppy Disks</a> blog describes "The .woz format is one method to turn the raw data into something an emulator can use.  .woz files represent the nibblized bit stream of a floppy disk, in other words the .woz file reflects what was written to the disk."</p>
+			<p>In the <a href="https://applesaucefdc.com/woz/reference1/">specification</a> (version 1 but this language is consistent in all versions), creator John K. Morris lists several advantages of the WOZ format: "The big benefit is being able to successfully run copy protected software if you follow the emulation guidelines presented in this document. The second benefit is that the WOZ format is actually much simpler to implement than many of the other disk image formats. WOZ files also contain metadata about the disk image - such as disk name, product name, publisher, system requirements and language - that you can use to display additional information in your emulator."  He also states the rationale for developing WOZ: "It basically comes down to the simple fact that none of the currently existing formats accurately represent the way data is encoded on an Apple II floppy disk. There is a place for a format that is an accurate representation of a bitstream that is also the exact length of a track so that it can be looped correctly. And since we are creating a format, it is also a great time to ensure that we organize the data in the image file in a way that allows for easy unpacking with as little memory and processing overhead as possible – this provides more performant usage in hardware and software emulators."</p>
+			<p>WOZ shares a similar file header structure with <fddLink id="fdd000612">MOOF</fddLink> (also developed by John K. Morris). In both, the header is 12 bytes with the first 8 bytes containing the file signature/magic number (WOZ1 or WOZ2 depending on the version). This is followed with an intentionally blank space to ensure there is no data corruption and that the magic numbers values are valid. The last 4 bytes of the header contain a CRC32 checksum of all remaining data in the file.</p>
+			<p>The header is followed by the INFO chunk, as it is in all Applesauce files. The INFO chunk contains "fundamental information about the contained image. The data of the ‘INFO’ chunk begins at byte 20 of the file and is 60 bytes long (pad &quot;chunk with zeros to full length)." INFO chunk data includes Disk Type (5.25 or 3.5), if the floppy disk is write protected, and the "creator" field documents the name of software that created the WOZ file among other details.</p>
+			<p>The key component of the WOZ file is the TMAP Chunk which follows the INFO chunk. The TMAP chunk contains a map for all the tracks as well as associated data which are contained in the TRKS chunk. "Each map entry contains an index number for the track data contained within the ‘TRKS’ chunk. If the map entry is 0, then the correct track data to be using is the first entry in the ‘TRKS’ chunk." This unique mapping facilitates cross track synchronization which circumvents copy protection checks that were usually limited to physical disks. Physical disks used a sync sensor which "involved a light source on one side of the disk with a sensor on the other. This sensor would allow the drive to know when it made a full revolution, as the disk media itself had a hole that would let the light pass though as it passed the sensor. When it came to businesses designing copy protection schemes, this was something that they could use to their advantage. The professional disk copiers could easily write out all tracks synchronized with each other, something that your average Apple II floppy drive couldn’t do. Then, the software would read a known sector on a specific track and, when it jumped to a neighboring track, it could make sure that the first sector it encountered there was the one it expected. Later protection schemes even made track widths which were almost 2 standard tracks wide and were accurate to within 1 bit." The mapping protocol in the TMAP circumvented this because it provides the data about the structure and location about the tracks. </p>
+			<p>The optional ‘META’ chunk contains metadata for the disk image including name/title of the product, publisher, version, copyright date, language and more. There are also options for documenting the disk imaging process with contributor (Name of the person who imaged the disk) and image_date (ISO8601 date of the imaging).</p>
+			<p>
+				<a href="https://web.archive.org/web/20200924005747/https://applesaucefdc.com/woz/reference2/">Version 2.0</a> of the specification adds a new WRIT Chunk Addition. "A new WRIT chunk has been added to the WOZ specification in order to provide detailed instructions for programs wanting to write WOZ files back to a real floppy disk. Inclusion of this chunk in a WOZ file is optional."</p>
+			<p>
+				<a href="https://applesaucefdc.com/woz/reference2/">Version 2.1</a> of the specification adds a new "FLUX" chunk to support support flux streams or flux transition timings with an accuracy of 125 nanoseconds.</p>
+			<p>For many examples of WOZ, see Applesauce&apos;s <a href="http://evolutioninteractive.com/applesauce/woz_images.zip">test disk images</a> (downloadable ZIP file), Internet Archives&apos; <a href="https://archive.org/details/softwarelibrary_apple_woz">Software Library: Apple (WOZ Format)</a> and <a href="https://archive.org/details/wozaday">A Woz A Day: A collection of .WOZ disk images for the 8-bit Apple II and 16-bit Apple IIGS</a>.</p>
+		</fdd:description>
+		<fdd:shortDescription>WOZ files are a simple chunk-based disk image format that accurately stores data as it is encoded in an Apple II 5.25 or 3.5 inch floppy disk.</fdd:shortDescription>
+		<fdd:productionPhase>Middle-state.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000612</fdd:id>
+					<fdd:shortName>MOOF</fdd:shortName>
+					<fdd:titleName>MOOF Disk Image</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Like WOZ, MOOF is a Macintosh floppy disk image format designed for use with Applesauce, the Macintosh floppy drive controller. The MOOF and WOZ formats encode different metadata.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:comment>
+					<a href="https://applesaucefdc.com/a2r/">A2R format</a>. Also an offshoot of the Applesauce project. A container format for raw disk image files. Not described separately on this resource.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None</fdd:experience>
+		<fdd:preference>The Library of Congress has not yet expressed any format preference for disk image files.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Full and open specification in several versions. <a href="../contact_format.shtml">Comments welcome</a>.
+        </fdd:disclosure>
+		<fdd:documentation>
+			<p>There are two main versions of the WOZ specification (versions 1 and 2) and several documented beta and minor releases:</p>
+			<ul>
+				<li>Version 0.9 -
+January 14, 2018. See <a href="https://web.archive.org/web/20180115110331/http://evolutioninteractive.com/applesauce/woz_reference.pdf">https://web.archive.org/web/20180115110331/http://evolutioninteractive.com/applesauce/woz_reference.pdf</a> (link via Internet Archive)</li>
+				<li>Version 0.91
+- January 15, 2018. See <a href="https://wiki.reactivemicro.com/images/2/2e/2018-01-15_-_WOZ_Disk_Image_Reference_v0.91.pdf">https://wiki.reactivemicro.com/images/2/2e/2018-01-15_-_WOZ_Disk_Image_Reference_v0.91.pdf</a>.</li>
+				<li>Version 1.0
+- January 17, 2018. See <a href="https://ia802207.us.archive.org/15/items/Woz_Reference_Specification_2018_01/Woz_Reference_Specification_2018_01.pdf">https://ia802207.us.archive.org/15/items/Woz_Reference_Specification_2018_01/Woz_Reference_Specification_2018_01.pdf</a> (link via Internet Archive)</li>
+				<li>Version 1.0.1 - May 20, 2018. See <a href="https://applesaucefdc.com/woz/reference1/">https://applesaucefdc.com/woz/reference1/</a>
+				</li>
+				<li>Version 2.0 - December 16, 2018. See <a href="https://web.archive.org/web/20200924005747/https://applesaucefdc.com/woz/reference2/">https://web.archive.org/web/20200924005747/https://applesaucefdc.com/woz/reference2/</a> (link via Internet Archive)</li>
+				<li>Version 2.1 - June 16, 2021. See <a href="https://applesaucefdc.com/woz/reference2/">https://applesaucefdc.com/woz/reference2/</a>.</li>
+			</ul>
+			<p>
+				<a href="../contact_format.shtml">Comments welcome</a> especially about additional version documentation.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>Created and supported by Applesauce.</p>
+			<p>A number of sample libraries exist as well as many <a href="https://applesaucefdc.com/woz/">hardware and software emulators</a>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>None. Specification documents state &quot;This document is hereby placed into the public domain and
+dedicated to the Apple II community.&quot; <a href="../contact_format.shtml">Comments welcome</a>.
+        </fdd:licensingAndPatents>
+		<fdd:transparency>Dependent upon algorithms and tools to read.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>According to the published specifications, the format utilizes a chunk-based, binary format designed for future-proof expandability. Technical and descriptive metadata are stored in the INFO chunk. The chunk is versioned to allow for adding additional metadata in the future. </p>
+			<p>
+				<b>Accessibility Support</b>
+			</p>
+			<p>Support for accessibility features for is unknown and undocumented. However, the structured and consistent chunk based format including some provenance and descriptive embedded data in the META chunk could potentially be helpful. </p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>Requires emulator software for use.</fdd:externalDependencies>
+		<fdd:techProtection>None.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>woz</fdd:sigValue>
+				</fdd:sigValues>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>ASCII: WOZ1</fdd:sigValue>
+					<fdd:sigValue>Hex: 57 4F 5A 31</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For <a href="https://applesaucefdc.com/woz/reference1/">version 1</a> of the specification. Note that the beta releases (version 0.9 and 0.91) and minor release (version 1.0.1) also use this magic number value.  </fdd:note>
+			</fdd:magicNumbers>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>ASCII: WOZ2</fdd:sigValue>
+					<fdd:sigValue>Hex: 57 4F 5A 32</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For <a href="https://applesaucefdc.com/woz/reference2/">version 2</a> of specification. Note that the minor release version 2.1 also uses this magic number value.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>No NARA File Format Preservation Plan ID entry as of February 2025.
+</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>PRONOM has no corresponding entry as of February 2025.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q105858083</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q105858083">https://www.wikidata.org/wiki/Q105858083</a> for WOZ disk image (v1).</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q105857565</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q105857565">https://www.wikidata.org/wiki/Q105857565</a> for WOZ disk image (v2).</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<a href="https://fileinfo.com/extension/woz">FileInfo.com</a> states that the format is named after Apple co-founder Steve Wozniak but this is not stated outright in the various specification documents. <a href="../contact_format.shtml">Comments welcome</a>.
+</fdd:general>
+		<fdd:history>
+			<p>There are two main versions of the WOZ specification and several documented minor releases. See <a href="#sustainability">Documentation</a> and <a href="#specs">Format Specifications</a> for links.</p>
+			<ul>
+				<li>Version 0.9 -
+January 14, 2018. </li>
+				<li>Version 0.91
+- January 15, 2018.</li>
+				<li>Version 1.0
+- January 17, 2018. </li>
+				<li>Version 1.0.1 - May 20, 2018. </li>
+				<li>Version 2.0 - December 16, 2018. </li>
+				<li>Version 2.1 - June 16, 2021.</li>
+			</ul>
+			<p>Specification version 2 includes a high level change log from version 1 such as changes in the file identifier (from WOZ1 to WOZ2), new and updated INFO chunk fields related to timing and identifying boot sectors, and updates to the TMAP and TRKS chunks.  One interesting thing to note is that <a href="https://web.archive.org/web/20180115110331/http://evolutioninteractive.com/applesauce/woz_reference.pdf">version .9</a> and <a href="https://wiki.reactivemicro.com/images/2/2e/2018-01-15_-_WOZ_Disk_Image_Reference_v0.91.pdf">version .91</a> state the data is big endian but subsequent versions starting at <a href="https://ia802207.us.archive.org/15/items/Woz_Reference_Specification_2018_01/Woz_Reference_Specification_2018_01.pdf">version 1</a> state the data is little endian. <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20180115110331/http://evolutioninteractive.com/applesauce/woz_reference.pdf</link>
+					<tag>WOZ Disk Image Reference Version 0.9 -
+January 14, 2018</tag>
+					<comment>Link via Internet Archive</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://wiki.reactivemicro.com/images/2/2e/2018-01-15_-_WOZ_Disk_Image_Reference_v0.91.pdf</link>
+					<tag>WOZ Disk Image Reference Version 0.91 -
+January 15, 2018</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://ia802207.us.archive.org/15/items/Woz_Reference_Specification_2018_01/Woz_Reference_Specification_2018_01.pdf</link>
+					<tag>WOZ Disk Image Reference Version 1.0 -
+January 17, 2018</tag>
+					<comment>Link via Internet Archive</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://applesaucefdc.com/woz/reference1/</link>
+					<tag>WOZ Disk Image Reference Version 1.0.1 - May 20, 2018.</tag>
+					<comment>Note that the title states &quot;WOZ Disk Image Reference 1.0&quot; with &quot;Version 1.0.1&quot;</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20200924005747/https://applesaucefdc.com/woz/reference2/</link>
+					<tag>WOZ Disk Image Reference Version 2.0 - December 16, 2018.</tag>
+					<comment>Link via Internet Archive</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://applesaucefdc.com/woz/reference2/</link>
+					<tag>WOZ Disk Image Reference Version 2.1 - June 16, 2021.</tag>
+					<comment>Note that the title states &quot;WOZ Disk Image Reference 2.0&quot; with &quot;Version 2.1&quot;</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://applesaucefdc.com/what-is-applesauce/</link>
+					<tag>Applesauce Floppy Drive Controller.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://applesaucefdc.com/woz/</link>
+					<tag>WOZ format.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://preservation.tylerthorsted.com/2024/08/16/a2r-moof-woz/</link>
+					<tag>A2R / MOOF / WOZ blog post by Tyler Thorsted. August 16, 2024.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://evolutioninteractive.com/applesauce/woz_images.zip</link>
+					<tag>Downlaodable zip file with sample WOZ disk images</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://archive.org/details/softwarelibrary_apple_woz</link>
+					<tag>Internet Archive: Software Library: Apple (WOZ Format)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://archive.org/details/wozaday</link>
+					<tag>Internet Archive: A Woz A Day</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://nerdlypleasures.blogspot.com/2021/02/the-woz-format-accurate-preservation-of.html</link>
+					<tag>The .woz Format - Accurate Preservation of Apple II Floppy Disks. February 15, 2021</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://justsolve.archiveteam.org/wiki/WOZ_disk_image</link>
+					<tag>ArchivesTeam.org: WOZ disk image</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.folklore.org/Nybbles.html</link>
+					<tag>Folklore: Nybbles. Andy Hertzfeld: My first job on the Macintosh project. February 1981.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q105858083</link>
+					<tag>Wikidata entry for Q105858083</tag>
+					<comment>Information in Wikidata about WOZ disk image (v1). Wikidata Title ID: Q105858083</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q105857565
+</link>
+					<tag>Wikidata entry for Q105857565
+</tag>
+					<comment>Information in Wikidata about WOZ disk image (v2). Wikidata Title ID:
+Q105857565
+3</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

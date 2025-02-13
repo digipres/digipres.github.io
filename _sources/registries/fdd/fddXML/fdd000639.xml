@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000639" titleName="Pro Tools Session Files" shortName="PTX_PTF_PTS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-group</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-wrapper</fdd:gdfrComposition>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2025-01-14</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Pro Tools Session Files</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>Pro Tools</fdd:keyword>
+			<fdd:keyword>audio formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>Pro Tools session files, identified in later versions by the file extensions PTX, PTF and PTS, are essentially metadata manifests of all elements and assets associated with a specific session in the <a href="https://www.avid.com/pro-tools">Pro Tools</a> proprietary music production software, developed and maintained by <a href="https://www.avid.com/">Avid Technology, Inc.</a>. (Avid also supports the <fddLink id="fdd000609">Sibelius</fddLink> music notation application.) Session files importantly do not contain audio data itself but instead include maps or references to audio files, MIDI data, track configurations, as well as edit and mix information used to create the specific session, as described in <a href="https://resources.avid.com/SupportFiles/PT/Pro_Tools_Reference_Guide_2024.6.pdf">Pro Tools Reference Guide Version 2024.6</a> (p. 8). Note that Pro Tools <a href="https://avidtech.my.salesforce-sites.com/pkb/articles/en_US/Knowledge/What-is-the-difference-between-a-Pro-Tools-session-and-a-Project">distinguishes</a> between &quot;sessions&quot; which are used for individual recording and mixing workflows and stored on a local hard drive or other media and &quot;projects&quot; which are designed for collaboration and stored online in Avid cloud space and cached locally. Interestingly, <a href="https://avidtech.my.salesforce-sites.com/pkb/articles/en_US/Knowledge/What-is-the-difference-between-a-Pro-Tools-session-and-a-Project">Avid</a> notes that &quot;we designed and architected this new Project format to not only simplify collaboration, but to lay the groundwork for new workflows we have planned for the future—both locally and in the cloud. Sessions aren&apos;t going away, but we see a big opportunity to offer new and extensible workflows in the future with Projects.&quot; ProToolsProduction in <a href="https://www.protoolsproduction.com/sessionfilestructure/">Understanding The Session File Structure</a> says that "this [session] file should be regarded as the brain behind the session. Despite being deceptively small in size, this single file has a lot of work on its hands, every region placement, automation breakpoint, track height, track name… You get the idea, is stored within this file." Pro Tools can only open one session file at a time but more than one session files is permitted in a project to <a href="https://resources.avid.com/SupportFiles/PT/Pro_Tools_Reference_Guide_2024.6.pdf">&quot;create multiple versions of a session or back up your editing and mixing work&quot;</a>. </p>
+			<p>According to <a href="https://avidtech.my.salesforce-sites.com/pkb/articles/en_US/compatibility/en353093">Avid Knowledge Base: Pro Tools Session Compatibility and Interchange</a> (dated November 19, 2024), the file extension for session files changed over time with specific versions: Pro Tools 10+ released in 2011 (.ptx); Pro Tools 7 released in 2005 (.ptf); and, Pro Tools 6 released in 2003 and earlier versions (.pts). Tyler Thorsted goes into more detail in his <a href="https://preservation.tylerthorsted.com/2025/01/10/pro-tools-sessions/">Pro Tools Sessions</a> post about earlier file extensions and versions: "For versions 1 and 2 of Pro Tools, there was no official extension for the session files, but starting with version 3, you might often find the extension PT3, then PT4, and PT5. With version 4, there was also a version P24 extension used when Pro Tools version 4 made the leap to 24bit."</p>
+			<p>FYI that Pro Tools Session Template files use the extension ptxt but these are distinct from session files. Session template files contain session settings that the user wants to replicate for other sessions. <a href="https://fileinfo.com/extension/ptxt">FileInfo.com</a> notes that "the PTXT format was introduced in version 10 of Pro Tools when it replaced the old .PTT Template format."</p>
+			<p>No information about the structure of proprietary Pro Tools session files is publicly available. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>. Examples of PTX files are available as part of sample session packages from <a href="https://voyage.audio/session-downloads/">Voyage Audio</a> among others. Examples of 2003 PTS files are available from <a href="https://web.archive.org/web/20060515215925/http://www.digidesign.com/disk/diskotech/templates.cfm">DiSKotech | Pro Tools Templates and MIDI files</a> (link via Internet Archive).</p>
+			<p>The Pro Tools application supports a variety of file formats that can be included as mapped assets in session files, as listed in <a href="https://avidtech.my.salesforce-sites.com/pkb/articles/Knowledge/Pro-Tools-Audio-File-Type-and-Session-Support">Avid Knowledge Base: Pro Tools Audio File Type and Session Support</a> (dated March 24, 2023). Files with native import and export support include: <fddLink id="fdd000002">WAVE Audio File Format with LPCM audio</fddLink>, WAVE RF64 (not separately described but see summary in <fddLink id="fdd000001">WAVE Audio File Format</fddLink>), Dolby Atmos, <fddLink id="fdd000116">AIFF File Format with LPCM Audio</fddLink>, <fddLink id="fdd000265">MXF Operational Pattern Atom (OP-Atom)</fddLink> and <fddLink id="fdd000013">MXF</fddLink> with LPCM audio. Other files types can be imported but will be converted to the current session or project file format on import while a few others can only be exported. </p>
+		</fdd:description>
+		<fdd:shortDescription>Pro Tools session files (with extensions ptx, ptf and pts depending on version support) do not contain audio data but rather provide a mapping of all elements associated with a project, including audio files, MIDI data, as well as edit and mix information. These files are limited in use to only the Avid Pro Tools proprietary digital audio workstation software.</fdd:shortDescription>
+		<fdd:productionPhase>Used for content in initial (by content creators) and middle (by archives) state. </fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May have component</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000002</fdd:id>
+					<fdd:shortName>WAVE_LPCM</fdd:shortName>
+					<fdd:titleName>WAVE Audio File Format with LPCM audio</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Pro Tools natively supports import and export of WAVE Audio File Format with LPCM audio data and this format may be included as a mapped asset in session files. </fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May have component</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000116</fdd:id>
+					<fdd:shortName>AIFF_LPCM</fdd:shortName>
+					<fdd:titleName>AIFF File Format with LPCM Audio</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Pro Tools natively supports import and export of AIFF File Format with LPCM audio data and this format may be included as a mapped asset in session files. </fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May have component</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000265</fdd:id>
+					<fdd:shortName>MXF_OP-Atom</fdd:shortName>
+					<fdd:titleName>MXF Operational Pattern Atom (OP-Atom)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Pro Tools natively supports import and export of MXF_OP-Atom audio data and this format may be included as a mapped asset in session files. </fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May have component</fdd:typeOfRelationship>
+				<fdd:comment>WAVE RF64 (not separately described but see summary in <fddLink id="fdd000001">WAVE Audio File Format</fddLink>. Pro Tools natively supports import and export of WAVE RF64 audio data and this format may be included as a mapped asset in session files. </fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May have component</fdd:typeOfRelationship>
+				<fdd:comment>Pro Tools natively supports import and export of Dolby Atmos (not separately described) audio data and this format may be included as a mapped asset in session files. </fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May have component</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000119</fdd:id>
+					<fdd:shortName>SMF</fdd:shortName>
+					<fdd:titleName>Standard MIDI File Format</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Pro Tools session files may map to MIDI data if it is included in the session. </fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May have component</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000119</fdd:id>
+					<fdd:shortName>SMF</fdd:shortName>
+					<fdd:titleName>Standard MIDI File Format</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Pro Tools session files may map to MIDI data if it is included in the session. </fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May have component</fdd:typeOfRelationship>
+				<fdd:comment>Other file types not separately described can be included as mapped assets in the session file.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Other</fdd:typeOfRelationship>
+				<fdd:comment>PTXT - Pro Tools Session Template files not separately described. Introduced in version 10. Session template files contain session settings that the user wants to replicate for other sessions. <a href="https://fileinfo.com/extension/ptxt">FileInfo.com</a> notes that "the PTXT format was introduced in version 10 of Pro Tools when it replaced the old .PTT Template format."
+				</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Other</fdd:typeOfRelationship>
+				<fdd:comment>PTT - Pro Tools Template files not separately described. Used in versions 9 and earlier. Session template files contain session settings that the user wants to replicate for other sessions. <a href="https://fileinfo.com/extension/ptxt">FileInfo.com</a> notes that "the PTXT format was introduced in version 10 of Pro Tools when it replaced the old .PTT Template format."
+				</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress has Pro Tools session files in its collections, especially in the Music Division, including approximately 2000 PTX files, 5400 PTF files and 300 PTS files as of December 2024.</fdd:experience>
+		<fdd:preference>See the Library of Congress Recommended Formats Statement (RFS) for preferences for <a href="https://www.loc.gov/preservation/resources/rfs/audio.html">audio</a> content.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Poor. Propriety format from Avid. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</fdd:disclosure>
+		<fdd:documentation>No practical file format information is available in Avid documentation including <a href="https://resources.avid.com/SupportFiles/PT/Pro_Tools_Reference_Guide_2024.6.pdf">Pro Tools Reference Guide Version 2024.6</a>.  <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</fdd:documentation>
+		<fdd:adoption>
+			<p>Pro Tools is an industry standard and highly adopted digital audio workstation with both Mac OS and Windows platforms (although note some <a href="https://avidtech.my.salesforce-sites.com/pkb/articles/compatibility/Pro-Tools-support-with-macOS-14-x-Sonoma-and-macOS-15-x-Sequoia-Known-Issues">known issues</a> from December 2024 with macOS Sonoma and Sequoia). Access is via tiered subscription options with expanded features at higher levels. According to <a href="https://www.avid.com/resource-center/the-best-music-creation-software">Why Pro Tools Music Creators Go Further</a> (Avid 2022), &quot;Artists, producers, and engineers such as Pharrell, Alicia Keys, Jack Antonoff (Taylor Swift, Lana Del Rey), Benny Blanco (Justin Bieber, Kanye West), Andrew Scheps (Adele, Metallica), and countless others have crafted a whole generation of hits—all from within Pro Tools.&quot; The website <a href="https://www.production-expert.com/production-expert-1/avid-exceeded-500000-paid-cloud-enabled-software-subscriptions-last-year">Production Expert</a> reports that "as of December 31, 2022, Avid, the maker of Pro Tools, had more than 500,000 paid cloud-enabled software subscriptions...In an earnings call to investors, the software and hardware company reported that paid Cloud-enabled software subscriptions increased by approximately 23,100 during the quarter to approximately 506,000 as of December 31, 2022, an increase of 23.2% year-over-year."</p>
+			<p>Avid Technology, Inc. hosts an active <a href="https://duc.avid.com/index.php">Avid Pro Audio Community</a> forum. It also offers <a href="https://www.avid.com/certifications/pro-tools-user">Pro Tools certifications</a> via coursework.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>This is a proprietary format owned by Avid Technologies, Inc.</fdd:licensingAndPatents>
+		<fdd:transparency>Requires Pro Tools software to read and write.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>Unknown since no public documentation about format structure. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>. </p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>Session files have no specific features to support accessibility. At a high level, because they provide metadata in the form of mapping to assets and documenting changes, they provide information about the contents of the session but these are not translated for screen readers. See also supported file types in <a href="#relationships">Relationships</a>. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>Pro Tools session files files are viable only within Pro Tools software.</fdd:externalDependencies>
+		<fdd:techProtection>None. Pro Tools has no native capacity for file encryption in session files or other components.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:soundQF>
+			<fdd:normalSound>Does not render sound</fdd:normalSound>
+			<fdd:beyondSound>Does not render sound but instead provides metadata about sound-related assets used to create a specific recording session.</fdd:beyondSound>
+		</fdd:soundQF>
+		<fdd:textQF>
+			<fdd:normalText>Although not strictly a format for text, session files provide text-based metadata about assets used to create a specific audio recording session.</fdd:normalText>
+			<fdd:structure>Header contains metadata (magic number) about supported Pro Tools version.</fdd:structure>
+			<fdd:layout>Session files contain pointers or mapping to information about track configurations, mixes and other details that comprise the structure of the audio file. </fdd:layout>
+		</fdd:textQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>ptx</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Used for Pro Tools versions 10 and up. See <a href="https://avidtech.my.salesforce-sites.com/pkb/articles/en_US/compatibility/en353093">Avid Knowledge Base: Pro Tools Session Compatibility and Interchange</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>ptf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Used for Pro Tools versions 7-9. See <a href="https://avidtech.my.salesforce-sites.com/pkb/articles/en_US/compatibility/en353093">Avid Knowledge Base: Pro Tools Session Compatibility and Interchange</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>pts</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note><a href="https://avidtech.my.salesforce-sites.com/pkb/articles/en_US/compatibility/en353093">Avid Knowledge Base: Pro Tools Session Compatibility and Interchange</a> states that this extension is used for Pro Tools versions 6 and earlier but Tyler Thorsted&apos;s <a href="https://preservation.tylerthorsted.com/2025/01/10/pro-tools-sessions/">Pro Tools Sessions</a> post specifies Pro Tools more precisely that its use is limited to versions 5.1-6.9. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>PT3</fdd:sigValue>
+					<fdd:sigValue>PT4</fdd:sigValue>
+					<fdd:sigValue>PT24</fdd:sigValue>
+					<fdd:sigValue>PT5</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See Tyler Thorsted&apos;s <a href="https://preservation.tylerthorsted.com/2025/01/10/pro-tools-sessions/">Pro Tools Sessions</a>: &quot;<p>For versions 1 and 2 of Pro Tools, there was no official extension for the session files, but starting with version 3, you might often find the extension PT3, then PT4, and PT5. With version 4, there was also a version P24 extension used when Pro Tools version 4 made the leap to 24bit.</p>&quot;.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 03 30 30 31 30 31 31 31 31 30 30 31 30 31 30 31 31 {3}5A 01 00 04</fdd:sigValue>
+					<fdd:sigValue>ASCII: .0 01 01 11 10 01 01 01 1{3}Z…</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Absolute BOF for PTX (Pro Tools versions 10+). See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/1727">http://www.nationalarchives.gov.uk/PRONOM/fmt/1727</a>. Note the update: Version number changed from 10 onwards to 10+ and signature name updated to include version number 10+.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 03 30 30 31 30 31 31 31 31 30 30 31 30 31 30 31 31 01 01</fdd:sigValue>
+					<fdd:sigValue>ASCII: .0 01 01 11 10 01 01 01 1..</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Absolute BOF for PTF and PTS. See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/1951">http://www.nationalarchives.gov.uk/PRONOM/fmt/1951</a>.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00817</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.archives.gov/files/lod/dpframework/id/NF00817.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00817.ttl</a> for Avid Pro Tools Session 5.1-6.9.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/1951</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/1951">http://www.nationalarchives.gov.uk/PRONOM/fmt/1951</a> for PTS and PTF.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/1727</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/1727">http://www.nationalarchives.gov.uk/PRONOM/fmt/1727</a> for PTX.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q125869754</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q125869754">https://www.wikidata.org/wiki/Q125869754</a> for Pro Tools versions 5-9</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q113534356</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q113534356">https://www.wikidata.org/wiki/Q113534356</a> for Pro Tools versions 10+</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>The three versions of the Pro Tools session files (PTX, PTF and PTS) are not compatible outside the supported versions of the software. The article <a href="https://www.soundonsound.com/reviews/digidesign-pro-tools-v7">Digidesign Pro Tools v7</a> (January 2006) from Sound on Sound states that &quot;the first important point to note is that Digidesign have introduced a new &apos;.ptf&apos; file format for version 7 Pro Tools Sessions which isn&apos;t backwardly compatible with the previous format. One advantage of this new version 7 format is that it consolidates Mac and Window compatibility into one consistent format, so the PC/Mac compatibility tick box is no longer there. PT7 will still open older Sessions, and there&apos;s an option to save Sessions in a &apos;version 5.1-6.9&apos;-compatible format if you need to.&quot; The <a href="https://duc.avid.com/showthread.php?t=310172">Avid Pro Audio Community: Will PTX work in earlier versions of Pro Tools?</a> thread from October 2011 details some frustration about this from users who have not upgraded to more recent versions and can't access their session file data.</fdd:general>
+		<fdd:history>Pro Tools was originated by <a href="https://web.archive.org/web/19970516061405/http://www.digidesign.com/Newdigiweb/Digiprod/pt_software/index.html">Digidesign, Inc.</a> (link via Internet Archive). See <a href="https://en.wikipedia.org/wiki/Pro_Tools">Wikipedia Pro Tools</a> for an incomplete version history.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications/>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Resources from Avid Technology, Inc</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.avid.com/</link>
+							<tag>Avid homepage</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.avid.com/pro-tools</link>
+							<tag>Pro Tools homepage</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://resources.avid.com/SupportFiles/PT/Pro_Tools_Reference_Guide_2024.6.pdf</link>
+							<tag>Avid Pro Tools Reference Guide
+Version 2024.6</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://avidtech.my.salesforce-sites.com/pkb/articles/en_US/Knowledge/What-is-the-difference-between-a-Pro-Tools-session-and-a-Project</link>
+							<tag>Avid Knowledge Base
+Pro Tools Cloud: What is the difference between a Pro Tools session and a Project. Last updated : July 24, 2017</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://avidtech.my.salesforce-sites.com/pkb/articles/en_US/compatibility/en353093</link>
+							<tag>Avid Knowledge Base
+Pro Tools Session Compatibility and Interchange. Last updated : November 19, 2024</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://avidtech.my.salesforce-sites.com/pkb/articles/Knowledge/Pro-Tools-Audio-File-Type-and-Session-Support</link>
+							<tag>Avid Knowledge Base
+Pro Tools Audio File Type and Session Support. Last updated : March 24, 2023 </tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://avidtech.my.salesforce-sites.com/pkb/articles/compatibility/Pro-Tools-support-with-macOS-14-x-Sonoma-and-macOS-15-x-Sequoia-Known-Issues</link>
+							<tag>Avid Knowledge Base
+Pro Tools support with macOS Sonoma and Sequoia (Known Issues). Last updated : December 18, 2024</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.avid.com/resource-center/the-best-music-creation-software</link>
+							<tag>Why Pro Tools Music Creators Go Further. April 29, 2022</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://duc.avid.com/index.php</link>
+							<tag>Avid Pro Audio Community forum</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.avid.com/certifications/pro-tools-user</link>
+							<tag>Avid Certified User: Pro Tools</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.protoolsproduction.com/sessionfilestructure/</link>
+					<tag>ProToolsProduction: Understanding The Session File Structure. May 14, 2016</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20060515215925/http://www.digidesign.com/disk/diskotech/templates.cfm</link>
+					<tag>DiSKotech | Pro Tools Templates and MIDI files</tag>
+					<comment>Link via Internet Archives</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.production-expert.com/production-expert-1/avid-exceeded-500000-paid-cloud-enabled-software-subscriptions-last-year</link>
+					<tag>Production Expert: Avid Exceeded 500,000 Paid Cloud-Enabled Software Subscriptions Last Year. March 2, 2023</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.soundonsound.com/reviews/digidesign-pro-tools-v7</link>
+					<tag>Sound on Sound: Digidesign Pro Tools v7. January 2006.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/19970516061405/http://www.digidesign.com/Newdigiweb/Digiprod/pt_software/index.html</link>
+					<tag>Digidesign Pro Tool Software</tag>
+					<comment>Link via Internet Archive</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://fileinfo.com/extension/ptxt</link>
+					<tag>FileInfo.com: Pro Tools Session Template</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://voyage.audio/session-downloads/</link>
+					<tag>Voyage Audio: Session Downloads (no cost sample Pro Tools packages including session files)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://preservation.tylerthorsted.com/2025/01/10/pro-tools-sessions/</link>
+					<tag>Pro Tools Sessions entry on Obsolete Thor blog. Tyler Thorsted. January 10, 2025</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Pro_Tools</link>
+					<tag>Wikipedia entry for Pro Tools</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archives.gov/files/lod/dpframework/id/NF00817.ttl</link>
+					<tag>NARA File Format Preservation Plan ID entry for NF00817</tag>
+					<comment>Information in NARA File Format Preservation Plan ID for Avid Pro Tools Session versions 5.1-6.9.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/pronom/fmt/1951</link>
+					<tag>PRONOM entry for fmt/1951</tag>
+					<comment>Information in PRONOM from UK National Archives about Pro Tools Session Files versions 5-9. PUID: fmt/1951.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/pronom/fmt/1727</link>
+					<tag>PRONOM entry for fmt/1727</tag>
+					<comment>Information in PRONOM from UK National Archives about Pro Tools Session Files versions 10+. PUID: fmt/1727.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q125869754</link>
+					<tag>Wikidata entry for Q125869754</tag>
+					<comment>Information in Wikidata about Pro Tools Session Files versions 5-9. Wikidata Title ID: Q125869754.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q113534356</link>
+					<tag>Wikidata entry for Q113534356</tag>
+					<comment>Information in Wikidata about Pro Tools Session Files versions 10+. Wikidata Title ID: Q113534356.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

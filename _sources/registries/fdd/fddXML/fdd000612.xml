@@ -23,15 +23,19 @@
 		</fdd:keywords>
 		<fdd:description>
 			<p>MOOF is a Macintosh floppy disk image format designed for use with <a href="https://applesaucefdc.com/what-is-applesauce/">Applesauce</a>, the Macintosh floppy drive controller. Applesauce was developed for retro-computing enthusiasts and digital archivists who need to work with floppy disks.  The MOOF format is able to preserve copy-protected disk images by emulating protected software.  According to <a href="https://applesaucefdc.com/moof-reference/">John Morris' MOOF Disk Image Reference 1.0</a>, it is one of the most simple image formats and it accurately emulates the Integrated Woz Machine (IWM) or Sander-Wozniak Integrated Machine (SWIM) chip.  MOOF also encodes metadata about the disk image, such as disk name, product name, publisher, system requirements, and language. These are stored in the optional META Chunk as key-value pairs. Multiple values are pipe-separated.</p>
-			<p>The name MOOF is <a href="http://fileformats.archiveteam.org/wiki/MOOF">not an acronym</a>. It is a reference to <a href="https://web.archive.org/web/20040202021201/http://developer.apple.com/products/techsupport/dogcow/tn31.html">Dogcow</a>, a part of Mactintosh lore.</p>
+			<p>The name MOOF is <a href="http://fileformats.archiveteam.org/wiki/MOOF">not an acronym</a>. It is a reference to <a href="https://web.archive.org/web/20040202021201/http://developer.apple.com/products/techsupport/dogcow/tn31.html">Dogcow</a>, a part of Macintosh lore.</p>
 		</fdd:description>
 		<fdd:shortDescription>MOOF, a Macintosh floppy disk image format designed for Applesauce, caters to retro-computing enthusiasts and digital archivists MOOF encodes essential metadata, including disk details, product information, publisher, system requirements, and language.</fdd:shortDescription>
 		<fdd:productionPhase>Middle-state.</fdd:productionPhase>
 		<fdd:relationships>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
-				<fdd:comment>
-					<a href="https://applesaucefdc.com/woz/">WOZ format</a>. A format for the Apple II disk image. Both WOZ and MOOF are offshoots of the Applesauce emulation project.  The MOOF and WOZ formats encode different metadata. Not described separately on this resource.</fdd:comment>
+				<fdd:relatedTo>
+					<fdd:id>fdd000642</fdd:id>
+					<fdd:shortName>WOZ</fdd:shortName>
+					<fdd:titleName>WOZ Disk Image</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>WOZ is format for the Apple II disk image. Both WOZ and MOOF are offshoots of the Applesauce emulation project.  The MOOF and WOZ formats encode different metadata. </fdd:comment>
 			</fdd:relationship>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
@@ -62,6 +66,10 @@
 		<fdd:transparency>Dependent upon algorithms and tools to read.</fdd:transparency>
 		<fdd:selfDocumentation>
 			<p>According to <a href="https://applesaucefdc.com/moof-reference/">MOOF Disk Image Reference 1.0</a>, the format utilizes a chunk-based, binary format designed for future-proof expandability.  All data is stored in little-endian. Technical and descriptive metadata are stored in the INFO chunk. The chunk is versioned to allow for adding additional metadata in the future. </p>
+			<p>
+				<b>Accessibility Support</b>
+			</p>
+			<p>Support for accessibility features for is unknown and undocumented. However, the structured and consistent chunk based format including some provenance and descriptive embedded data in the META chunk could potentially be helpful. </p>
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>Requires emulator software for use.</fdd:externalDependencies>
 		<fdd:techProtection>None.</fdd:techProtection>
@@ -85,6 +93,14 @@ The first 8 bytes contain the file signature.
 Following the magic number string of “MOOF” is (hex)FF, an intentionally blank space.   This blank space exists to ensure there is no data corruption and that the magic numbers values are valid.  However this practice is not required. 
 The last 4 bytes of the header contain a CRC32 checksum of all remaining data in the file.  See the <a href="https://applesaucefdc.com/moof-reference/">specification</a> for more details. </fdd:note>
 			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>No NARA File Format Preservation Plan ID entry as of February 2025.
+</fdd:note>
+				</fdd:values>
+			</fdd:other>
 			<fdd:other>
 				<fdd:tag>Pronom PUID</fdd:tag>
 				<fdd:values>
@@ -165,12 +181,6 @@ The last 4 bytes of the header contain a CRC32 checksum of all remaining data in
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://www.wikidata.org/wiki/Q116870058</link>
-					<tag>MOOF Disk Image Wikidata.</tag>
-				</fdd:urlReference>
-			</fdd:url>
-			<fdd:url>
-				<fdd:urlReference>
 					<link>https://archive.org/details/moofaday?sort=-date&amp;tab=collection</link>
 					<tag>Moof-A-Day: Early Macintosh Software</tag>
 					<comment>A collection of .MOOF floppy disk images from the early Macintosh era.</comment>
@@ -180,6 +190,12 @@ The last 4 bytes of the header contain a CRC32 checksum of all remaining data in
 				<fdd:urlReference>
 					<link>https://web.archive.org/web/20040202021201/http://developer.apple.com/products/techsupport/dogcow/tn31.html</link>
 					<tag>"The Dogcow". Mark "The Red" Harlan. April 1989. Accessed via the Internet Archive.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q116870058</link>
+					<tag>MOOF Disk Image Wikidata.</tag>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>

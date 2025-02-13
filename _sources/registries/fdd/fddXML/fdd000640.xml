@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000640" titleName="Logic Pro Project Format" shortName="LOGICX" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-group</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-bundle</fdd:gdfrComposition>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2025-02-04</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Logic Pro Project Format</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>Logic Pro</fdd:keyword>
+			<fdd:keyword>audio formats</fdd:keyword>
+			<fdd:keyword>audio workflow formats</fdd:keyword>
+			<fdd:keyword>bundle formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>According to <a href="https://support.apple.com/en-us/101624">Apple Inc.</a>, the creator and maintainer of the proprietary <a href="https://www.apple.com/logic-pro/">Logic Pro</a> digital audio workstations application, &quot;a Logic Pro project package format saves all the project’s assets, including the project’s audio files, within a single file, and has a .logicx file extension.&quot; Project assets can include audio and video files (including MIDI data), samples for the Sampler or Ultrabeat, and Space Designer reverb impulse response files, edits and loops, plugin settings and other assets. <a href="https://support.apple.com/en-md/guide/logicpro/lgcpce0d70e7/11.1/mac/14.6">Manage project assets in Logic Pro for Mac</a>  from Logic Pro User Guide for Mac 11.1 notes that "saving projects without assets can save disk space, but as a result, the project can’t access the referenced files when moved, unless the assets are also moved...MIDI data from software instrument recordings, added loops or MIDI files, and parameter settings for the channel strips and plug-ins are always saved as part of a project." <a href="https://fileinfo.com/extension/logicx">FileInfo.com</a> states that "when Logic Pro X was released in 2013, the LOGICX file replaced the .LOGIC file, which was used by Logic Pro 9 and earlier. Logic Pro X can open LOGIC files that were created by Logic Pro 5, 6, 7, 8, and 9." The LOGICX package is required to round trip Logic Pro projects between Mac and iPad. Projects created in Logic Pro for iPad are automatically saved as LOGICX packages.</p>
+			<p>Logic Pro software offers two ways to save projects: as a project package or project folder. <a href="https://help.apple.com/pdf/logicpromac/en_US/logic-pro-mac-user-guide.pdf">Logic Pro
+User Guide for Mac v. 11.1</a> (p. 142) describes the difference: &quot;<b>Project package</b>: Project assets are copied to the project package, or are referenced from another location, depending on which asset types are selected in the Save dialog. By default, the converted project is saved inside the existing project folder, if one exists. <b>Project folder</b>: Project assets are copied to the appropriate subfolders of the project
+folder, or are referenced from another location, depending on which asset types are
+selected in the Save dialog. By default, the existing project folder and subfolders are
+used, if present, and any additional subfolders needed for project assets are created.&quot; The <a href="https://discussions.apple.com/thread/7966242">simple answer re package vs folder discussion</a> on the Apple Community Forum (2017) summarizes it as "use a package if you plan to exchange a lot of projects with a collaborator; use a folder if you mainly keep things on your own computer... A package is a folder, with the only difference that the Finder &quot;sees&quot; a package as one file; you can access the files within a package only via a contextual menu (control- or rightclick on it). But were you to save a project both as package and as a folder, they would contain the same files and be of the exact same size." LOGICX are package files (not project folders) used to bring all the assets together into one entity for sharing between collaborators and systems. The <a href="http://fileformats.archiveteam.org/wiki/Logic_Pro_project_file">Logic Pro project file</a> entry on archiveteam.org explains that "LOGICX files are actually folders in the <a href="http://fileformats.archiveteam.org/wiki/Bundle_file_(OS_X)">Apple Bundle/Package format</a>" (which is formally described in the Apple Developer <a href="https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFBundles/DocumentPackages/DocumentPackages.html">Bundle Programming Guide</a>.  <a href="https://eclecticlight.co/2018/03/07/common-packages-documents-which-are-folders-in-drag/">Common packages: documents which are folders in drag</a> states that "packages are one of the Finder’s grand illusions. They’re actually folders containing more folders and files, which are presented to the user as if they were actually a single item, just like a file." Despite Apple's own language which describes this format class as a "file," it isn't really a file in the traditional sense because there is no discrete method to identify them as such other than that extension is simply registered with the MacOS to know they should appear as a file. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>. Tyler Thorsted's 2023 blog post <a href="https://preservation.tylerthorsted.com/2023/09/01/apple-package-format/">Apple Package Format</a> describes some of the evolution of this format class, including the <a href="http://fileformats.archiveteam.org/wiki/GarageBand_project">GarageBand project</a> package which can also be opened in Logic Pro software. For more information about packages and bundles in Mac systems, see <a href="https://eclecticlight.co/2017/03/14/bundle-package-library-or-folder/">Bundle, package, library, or folder?</a>. </p>
+			<p>On <a href="https://www.reddit.com/r/Logic_Studio/comments/ijjap8/package_or_folder/">Reddit's Package or Folder?</a> thread (started in 2021) some users report that while LOGICX packages are preferable when "<a href="https://support.apple.com/en-my/guide/logicpro/lgcp785a41c3/mac">bouncing</a>" or rendering a project to single audio file or to multiple audio files, they can also be problematic "When working in folders, Logic defaults to bouncing a song in that project’s ‘bounces’, where as when working with packages Logic will bounce to the last location in which a song was bounced" which can be challenging to locate. </p>
+			<p>The structure of a LOGICX file is detailed in <a href="https://logicprogem.com/Logic-Pro-X-Tutorials/Entries/2015/11/6_How_to_Open_a_Corrupted_Logic_Project.html">How to Open a Corrupted Logic Project</a>. &quot;Starting with Logic Pro X, a Project File is now a Package File type (sometimes also referred to as a Bundle). It looks like a regular file, but it is basically a folder in disguise. ... Logic organizes those files in a specific way and relies on that structure.&quot; The top level is the project file with the .logicx extension and within that file are three subfolders:</p>
+			<ul>
+				<li>
+					<b>Alternatives</b>: alternative versions of a project, each with a unique name and different settings. Project alternatives let you save “snapshots” of a project in different states, including different cuts or mixes. They’re saved as part of the project and share the same assets. For more information about alternatives, see <a href="https://support.apple.com/en-my/guide/logicpro/lgcpa158ef77/mac">Use project alternatives and backups in Logic Pro for Mac</a>. Within the Alternatives folder are subfolders which represent each Alternative in its own separate folders, named sequentially "000" (the default Project), "001", 002" and on as needed. </li>
+				<li>
+					<b>Media</b>: includes subfolders of video and audio data such as WAV files and other media data. This folder may be absent if the media is not stored with the project.</li>
+				<li>
+					<b>Resources</b>: includes content such as playlists (.plst), music notation, accompanying images (.jpeg) and more.</li>
+			</ul>
+			<p>For sample LOGICX packages, see <a href="https://github.com/PacktPublishing/Jumpstart-Logic-Pro-10.6">https://github.com/PacktPublishing/Jumpstart-Logic-Pro-10.6</a>.</p>
+		</fdd:description>
+		<fdd:shortDescription>Logic Pro project file saves all the project’s assets, including recorded audio data and edits such as transitions and effects, within a single file. </fdd:shortDescription>
+		<fdd:productionPhase>Used for content in initial (by content creators) and middle (by archives) state. </fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May have component</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000001</fdd:id>
+					<fdd:shortName>WAVE</fdd:shortName>
+					<fdd:titleName>WAVE Audio File Format</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>As of 2025, Logic Pro natively supports import of WAVE Audio File Format audio data and this format may be included in the Log Pro Session Package. See <a href="https://support.apple.com/guide/logicpro-ipad/supported-media-and-file-formats-lpip0ea69b55/ipados">Supported file formats in Logic Pro for iPad</a>. Note that the title of this page specifies iPad but the text does not seem to indicate the information is limited only to Logic Pro for iPad. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May have component</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000005</fdd:id>
+					<fdd:shortName>AIFF</fdd:shortName>
+					<fdd:titleName>AIFF (Audio Interchange File Format)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Logic Pro natively supports import of AIFF File Format audio data and this format may be included in the Log Pro Session Package. See <a href="https://support.apple.com/guide/logicpro-ipad/supported-media-and-file-formats-lpip0ea69b55/ipados">Supported file formats in Logic Pro for iPad</a>. Note that the title of this page specifies iPad but the text does not seem to indicate the information is limited only to Logic Pro for iPad. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May have component</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000591</fdd:id>
+					<fdd:shortName>CAF</fdd:shortName>
+					<fdd:titleName>Apple Core Audio Format</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Logic Pro natively supports import of CAF audio data and this format may be included in the Log Pro Session Package. See <a href="https://support.apple.com/guide/logicpro-ipad/supported-media-and-file-formats-lpip0ea69b55/ipados">Supported file formats in Logic Pro for iPad</a>. Note that the title of this page specifies iPad but the text does not seem to indicate the information is limited only to Logic Pro for iPad. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May have component</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000012</fdd:id>
+					<fdd:shortName>MP3_ENC</fdd:shortName>
+					<fdd:titleName>MP3 (MPEG Layer III Audio Encoding)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Logic Pro natively supports import of MP3 audio data and this format may be included in the Log Pro Session Package. See <a href="https://support.apple.com/guide/logicpro-ipad/supported-media-and-file-formats-lpip0ea69b55/ipados">Supported file formats in Logic Pro for iPad</a>. Note that the title of this page specifies iPad but the text does not seem to indicate the information is limited only to Logic Pro for iPad. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May have component</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000119</fdd:id>
+					<fdd:shortName>SMF</fdd:shortName>
+					<fdd:titleName>Standard MIDI File Format</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Logic Pro natively supports import of MIDI data and this format may be included in the Log Pro Session Package. See <a href="https://support.apple.com/guide/logicpro-ipad/supported-media-and-file-formats-lpip0ea69b55/ipados">Supported file formats in Logic Pro for iPad</a>. Note that the title of this page specifies iPad but the text does not seem to indicate the information is limited only to Logic Pro for iPad. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May have component</fdd:typeOfRelationship>
+				<fdd:comment>Other file types not separately described can be included within the Logic Pro Project.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress has a small number of Logic Pro project files in its collections, especially in the Music Division.</fdd:experience>
+		<fdd:preference>See the Library of Congress Recommended Formats Statement (RFS) for preferences for <a href="https://www.loc.gov/preservation/resources/rfs/audio.html">audio</a> content.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Poor. Propriety format from Apple. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</fdd:disclosure>
+		<fdd:documentation>No practical file format information is available from Apple or elsewhere. A 2020 forum discussion thread on Logic Pro Help titled <a href="https://www.logicprohelp.com/forums/topic/132829-internal-logic-pro-x-file-format-docs/">Internal Logic Pro X file format docs?</a> laments the lack of official documentation and includes summaries of attempts at reversed engineered explorations.  <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</fdd:documentation>
+		<fdd:adoption>The Production Experts <a href="https://www.production-expert.com/production-expert-1/2024-daw-user-survey-the-results">2024 DAW User Survey - The Results</a> (Aug 13, 2024) reports that the Logic Pro application (and thereby users of Logic Pro project files) shows a slight increase in popularity among music users, placing it as one of the most widely used Digital Audio Workstations (DAWs) with approximately 13.35%	of the DAW market share in 2023 and 13.39% in 2024 (behind Avid <fddLink id="fdd000639">Pro Tools</fddLink>). <a href="https://logicxx.com/blogs/news/who-uses-logic-daw">Who uses Logic Pro DAW?</a> (2021) states that many well-known artists including Calvin Harris, Ed Sheeran, David Guetta as well as Billie Eilish and Finneas O'Connell are Logic Pro users.</fdd:adoption>
+		<fdd:licensingAndPatents>Unknown for the file format but this is a proprietary format owned by Apple Inc. and there is a <a href="https://www.apple.com/legal/sla/docs/LogicPro.pdf">license agreement</a> for the Logic Pro application as well as several <a href="https://www.patentlyapple.com/2019/07/apple-was-issued-four-registered-trademarks-today-covering-logic-pro-x-and-machine-learning.html">patents</a> as of 2019.</fdd:licensingAndPatents>
+		<fdd:transparency>Requires Logic Pro software to read and write.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>Unknown since no public documentation about format structure. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>. </p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>Logic Pro project files have no identified specific features to support accessibility. The Logic Pro application does have <a href="https://support.apple.com/guide/logicpro/accessibility-settings-lgcpefb6766e/mac">Accessibility settings in Logic Pro for Mac</a> that can be enabled and there is a <a href="https://www.applevis.com/forum/macos-mac-apps/logic-pro-x-accessibility">forum discussion</a> from 2017 about these features and their implementation and, in some cases, shortcomings. The <a href="https://www.tc.columbia.edu/digitalfuturesinstitute/learning--technology/individual-tool-pages/logic-pro-x/">Columbia University Teachers College Digital Futures Institute: Logic Pro X</a> entry states that "Logic Pro X meets most of Teacher College’s accessibility criteria. It allows for navigation via assistive technology and customization of visual appearance and layout." See also supported file types in <a href="#relationships">Relationships</a>. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>LOGICX files files are viable only within Logic Pro software.</fdd:externalDependencies>
+		<fdd:techProtection>None. Pro Tools has no native capacity for file encryption in session files or other components. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:soundQF>
+			<fdd:normalSound>This format does not render sound.</fdd:normalSound>
+			<fdd:beyondSound>This format does not render sound but instead encapsulates project files, including audio data, together for collaboration and transport. </fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>logicx</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Used for Logic Pro X and later editions. See <a href="https://support.apple.com/en-us/101624">Apple Support: Work on a Logic Pro project on your iPad and your Mac</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>logic</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Used by Logic Pro 9 and earlier. See <a href="https://fileinfo.com/extension/logicx">FileInfo.com: .LOGICX File Extension</a>. </fdd:note>
+			</fdd:filenameExtension>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>NARA File Format Preservation Plan ID has no corresponding entry as of January 2025.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>PRONOM has no corresponding entry as of January 2025.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q105861649</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q105861649">https://www.wikidata.org/wiki/Q105861649</a> for Logic Pro X project (file format)</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>While lower case for file extensions is typical, a <a href="https://support.apple.com/en-us/101628">support update for Logic Pro for iPad 2.0.1</a> notes that &quot;Song files with an uppercase .LOGICX file extension now load as expected&quot; which hints that uppercase file names were problematic before this fix. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:general>
+		<fdd:history>See <a href="https://macprovideo.com/article/audio-software/a-brief-history-of-logic-from-emagic-to-apple">A Brief History Of Logic, From Emagic To Apple</a> for history of Logic Pro application but does not contain information about Logic Pro file formats.  <a href="https://en.wikipedia.org/wiki/Logic_Pro">Wikipedia Logic Pro</a> also has a summary of the application.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications/>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Apple Inc Resources</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://help.apple.com/pdf/logicpromac/en_US/logic-pro-mac-user-guide.pdf</link>
+							<tag>Logic Pro
+User Guide
+for Mac (no date or version)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.apple.com/logic-pro/</link>
+							<tag>Apple main site for Logic Pro</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.apple.com/legal/sla/docs/LogicPro.pdf</link>
+							<tag>APPLE INC.
+LOGIC PRO X Software License Agreement</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://discussions.apple.com/thread/7966242</link>
+							<tag>Community: simple answer re package vs folder</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Apple Support Official Resources</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://support.apple.com/en-us/101624</link>
+							<tag>Work on a Logic Pro project on your iPad and your Mac</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://support.apple.com/en-md/guide/logicpro/lgcpce0d70e7/11.1/mac/14.6</link>
+							<tag>Manage project assets in Logic Pro for Mac. Logic Pro User Guide for Mac 11.1</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://support.apple.com/en-my/guide/logicpro/lgcp785a41c3/mac</link>
+							<tag>Bounce a project to an audio file in Logic Pro for Mac. Logic Pro User Guide for Mac 11.1</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://support.apple.com/guide/logicpro-ipad/supported-media-and-file-formats-lpip0ea69b55/ipados</link>
+							<tag>Supported file formats in Logic Pro for iPad. Logic Pro User Guide for iPad 2.1.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://support.apple.com/guide/logicpro/accessibility-settings-lgcpefb6766e/mac</link>
+							<tag>Accessibility settings in Logic Pro for Mac. Logic Pro User Guide for Mac 11.1</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://support.apple.com/en-us/101628</link>
+							<tag>Logic Pro for iPad release notes</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://fileinfo.com/extension/logicx</link>
+					<tag>FileInfo.com: Logic Pro Project</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://fileformats.archiveteam.org/wiki/Logic_Pro_project_file</link>
+					<tag>Just Solve the File Format Problem: Logic Pro project file</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://preservation.tylerthorsted.com/2023/09/01/apple-package-format/</link>
+					<tag>Tyler Thorsted blog post: Apple Package Format. September 1, 2023</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFBundles/DocumentPackages/DocumentPackages.html</link>
+					<tag>Apple Developer Bundle Programming Guide</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.reddit.com/r/Logic_Studio/comments/ijjap8/package_or_folder/</link>
+					<tag>Reddit: Package or Folder?</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.logicprohelp.com/forums/topic/132829-internal-logic-pro-x-file-format-docs/</link>
+					<tag>Logic Pro Help: Internal Logic Pro X file format docs?</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.production-expert.com/production-expert-1/2024-daw-user-survey-the-results</link>
+					<tag>Production Experts: 2024 DAW User Survey - The Results</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://logicxx.com/blogs/news/who-uses-logic-daw</link>
+					<tag>Logicxx: Who uses Logic Pro DAW?</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.patentlyapple.com/2019/07/apple-was-issued-four-registered-trademarks-today-covering-logic-pro-x-and-machine-learning.html</link>
+					<tag>Patently Apple: Apple was Issued Four Registered Trademarks today covering Logic Pro X and Machine Learning</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.applevis.com/forum/macos-mac-apps/logic-pro-x-accessibility</link>
+					<tag>AppleVis: Logic Pro X and accessibility</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.tc.columbia.edu/digitalfuturesinstitute/learning--technology/individual-tool-pages/logic-pro-x/</link>
+					<tag>Digital Futures Institute: Teachers College Columbia University: Logic Pro X</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://macprovideo.com/article/audio-software/a-brief-history-of-logic-from-emagic-to-apple</link>
+					<tag>MacProVideo: A Brief History Of Logic, From Emagic To Apple</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://logicprogem.com/Logic-Pro-X-Tutorials/Entries/2015/11/6_How_to_Open_a_Corrupted_Logic_Project.html</link>
+					<tag>How to Open a Corrupted Logic Project. LogicProGem.com. November 6, 2015</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://eclecticlight.co/2018/03/07/common-packages-documents-which-are-folders-in-drag/</link>
+					<tag>Common packages: documents which are folders in drag</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://eclecticlight.co/2017/03/14/bundle-package-library-or-folder/</link>
+					<tag>Bundle, package, library, or folder?</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/PacktPublishing/Jumpstart-Logic-Pro-10.6</link>
+					<tag>PacktPublishing
+/
+Jumpstart-Logic-Pro-10.6
+GitHub repositiry for sample files</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://doi.org/10.1353/not.2023.a897455</link>
+					<tag>Preferred Preservation Formats for Digital Music Scores: A Survey of University Music Faculty.&quot; Notes 79, no. 4 (2023): 495-523. Akau, Stephanie, Janet McKinney, and Rachel McNellis. </tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Logic_Pro</link>
+					<tag>Wikipedia entry for Logic Pro</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q105861649</link>
+					<tag>Wikidata entry for Q105861649</tag>
+					<comment>Information in Wikidata about Logic Pro X project  (file format). Wikidata Title ID: Q105861649.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

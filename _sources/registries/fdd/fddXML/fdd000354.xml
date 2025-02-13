@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?altova_sps U:\edit_2013\fddCreation_20220126.sps?>
 <fdd:FDD id="fdd000354" titleName="ZIP File Format (PKWARE)" shortName="ZIP_PK" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
@@ -177,13 +176,15 @@
 			</p>
 		</fdd:licensingAndPatents>
 		<fdd:transparency>Depends upon algorithms and tools to read. Would require sophistication to build tools from scratch. </fdd:transparency>
-		<fdd:selfDocumentation>Since the format provides a mechanism to bundle files together, a component file that provides rich metadata in a standard or application-specific format can be included in a ZIP file.  This practice has been incorporated into the package specifications for EPUB, OOXML, ODF, etc.  The ZIP_PK specification includes a central directory, which contains the metadata required to extract the contents of the ZIP file, i.e., file names and directory structure.  The inclusion of comments for each file is supported within the format, but not (or only partially) by some utilities or software libraries.</fdd:selfDocumentation>
-		<fdd:externalDependencies>
-			<p>None, beyond the availability of software to extract and decompress the files contained in a ZIP file.  The ZIP_PK format itself includes a mechanism for defining within a ZIP file the minimum version that must be supported to extract, decompress, and decrypt (if needed) the contents.  Minimum versions for particular extensions and methods for compression and encryption are documented in APPNOTE.TXT.  Note: Use of strong encryption may rely on keys conveyed externally or external authentication procedures.</p>
+		<fdd:selfDocumentation>
+			<p>Since the format provides a mechanism to bundle files together, a component file that provides rich metadata in a standard or application-specific format can be included in a ZIP file.  This practice has been incorporated into the package specifications for EPUB, OOXML, ODF, etc.  The ZIP_PK specification includes a central directory, which contains the metadata required to extract the contents of the ZIP file, i.e., file names and directory structure.  The inclusion of comments for each file is supported within the format, but not (or only partially) by some utilities or software libraries.</p>
 			<p>
 				<b>Accessibility Features</b>
 			</p>
 			<p>No specific features in the file format. Features to support accessibility would be found in the bundled and compressed files (such as embedded captions and subtitles in audiovisual content, tagged and structured text in textual documents, and alt text for images). Aggregate files can also contain separate files for transcripts, timed text or captions as part of the bundled package. See <a href="#identification">Relationships to other formats</a> for details.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			<p>None, beyond the availability of software to extract and decompress the files contained in a ZIP file.  The ZIP_PK format itself includes a mechanism for defining within a ZIP file the minimum version that must be supported to extract, decompress, and decrypt (if needed) the contents.  Minimum versions for particular extensions and methods for compression and encryption are documented in APPNOTE.TXT.  Note: Use of strong encryption may rely on keys conveyed externally or external authentication procedures.</p>
 		</fdd:externalDependencies>
 		<fdd:techProtection>An important feature of the ZIP_PK format is the ability to encrypt the contained files individually.  Over the years, support for increasingly strong forms of encryption, and for encryption of the ZIP central directory has been added.  Certain applications that employ the ZIP format to bundle files together, such as OOXML (ISO/IEC 29500-2:2012), explicitly prohibit encryption within the ZIP-based package.  Others, such as SCORM and EPUB, employ their own application-specific approaches to encryption.</fdd:techProtection>
 	</fdd:sustainabilityFactors>

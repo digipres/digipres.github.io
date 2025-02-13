@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000636" titleName="MPEG-2 Transport Stream for Blu-ray Discs (BDAV) and AVCHD" shortName="M2TS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenreAndSubgenres>
+				<fdd:gdfrGenre>moving-image</fdd:gdfrGenre>
+				<fdd:gdfrSubgenres>
+					<fdd:gdfrSubgenre>sound</fdd:gdfrSubgenre>
+				</fdd:gdfrSubgenres>
+			</fdd:gdfrGenreAndSubgenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2024-12-17</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>MPEG-2 Transport Stream for Blu-ray Discs (BDAV) and AVCHD</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>MPEG-2</fdd:keyword>
+			<fdd:keyword>MPEG-2 Transport Stream</fdd:keyword>
+			<fdd:keyword>Blu-ray Disc</fdd:keyword>
+			<fdd:keyword>BDAV</fdd:keyword>
+			<fdd:keyword>AVCHD</fdd:keyword>
+			<fdd:keyword>M2TS</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>Known by its file extension M2TS, this format stores multiplexed audio, video, and other streams in BDAV (Blu-ray Disc Audio/Visual) and AVCHD (Advanced Video Coding High Definition) using a modification of <fddLink id="fdd000635">MPEG-2 Transport Stream</fddLink>.</p>
+			<p>
+				<b>Summary of BDAV (Blu-ray Disc Audio/Visual)</b>
+			</p>
+			<p>The <a href="https://web.archive.org/web/20090612042130/http://www.blu-raydisc.com/Assets/Downloadablefile/general_bluraydiscformat-15263.pdf">Blu-ray Disc</a> (link via Internet Archive) format, first released in 2006, is detailed in a series of specifications from the <a href="https://us.blu-raydisc.com/">Blu-ray Disc Association (BDA)</a>. FYI, BDA&apos;s <a href="http://www.blu-raydisc.com/assets/downloadablefile/general_bluraydiscformat-12834.pdf">White paper Blu-ray Disc Format - General (Aug 2004)</a> notes that "the spelling of 'Blu-ray' is not a mistake. The character 'e' is intentionally omitted because a daily-used term cannot be registered as a trademark" (p. 5). Extensions to the format specifications and capacities have continued including recent updates for <a href="https://us.blu-raydisc.com/ultrahd-benefits/">Ultra HD Blu-ray Disc</a>. In brief, according to <a href="https://www.blu-ray.com/faq/#bluray">Blu-ray.com</a>, Blu-ray is an "optical disc format that ... was developed to enable recording, rewriting and playback of high-definition video (HD), as well as storing large amounts of data. The format offers more than five times the storage capacity of traditional DVDs and can hold up to 25GB on a single-layer disc and 50GB on a dual-layer disc." Blu-ray uses the <a href="http://www.osta.org/specs/index.htm">Universal Disk Format (UDF)</a> specification developed and maintained by the Optical Storage Technology Association (OSTA), standardized as <a href="https://www.iso.org/standard/26783.html">ISO/IEC 13346</a> (1995) and <a href="http://www.ecma-international.org/publications/standards/Ecma-167.htm">ECMA-167</a> (1997). UDF is used for computer data storage for a broad range of media, including DVDs and Blu-ray disks, supplanting ISO 9660. Blu-ray specifies the use of <a href="http://www.osta.org/specs/pdf/udf250.pdf">UDF 2.5</a> released in 2003 because it offers better support for larger capacities and is compatible with more devices.</p>
+			<p>The file structure for BDAV is defined in BDA&apos;s <a href="https://web.archive.org/web/20090326224610/http://www.blu-raydisc.com/Assets/Downloadablefile/2b_bdrom_audiovisualapplication_0305-12955-15269.pdf">White paper:
+Blu-ray Disc Format, 2.B Audio Visual Application Format Specifications for BD-ROM (March 2005)</a>  (link via Internet Archive) and declares the supported video streams shall be MPEG-2 video format (ISO/IEC 13818-2) compliant, MPEG-4 AVC video format (ISO/IEC 14496-10) compliant or SMPTE VC-1 video format compliant. The BDAV MPEG 2 Transport Stream is "constructed from one or more “Aligned units”, where:
+1) The size of an Aligned unit is 6144 bytes (2048*3 bytes); 2) An Aligned unit starts from the first byte of the source packets; 3) The length of a source packet is 192 bytes. One source packet consists of one TP_extra_header structure and one MPEG2 transport packet structure. The length of the TP_extra_header structure is 4 bytes and the length of the transport packet structure is 188 bytes; 
+4) One Aligned unit consists of 32 source packets.... In addition, aligned units are recorded in three consecutive logical sectors on the BD-ROM disc. The size of one logical sector is 2048 bytes. The maximum multiplex rate of the BDAV MPEG-2 Transport Stream is 48Mbps."</p>
+			<p>
+				<b>Overview of AVCHD (Advanced Video Coding High Definition)</b>
+			</p>
+			<p>AVCHD is a simpler form of the Blu-ray disc standard with just one video encoding algorithm and two audio encodings. As described in a press release by <a href="https://www.avchd-info.org/press/20060511.html">Panasonic and Sony in 2006</a> in 2006 announcing the format, AVCHD &quot;is an HD digital video camera format for recording 1080i*1 and 720p*2 signals onto 8cm DVD media by using highly efficient codec technologies. The format employs MPEG-4 AVC/H.264 codec for video compression, and Dolby Digital (AC-3) or Linear PCM for audio codec. This makes it possible to develop HD video camera recorders which achieve compact size as well as high-quality video and audio.AVCHD Compared to Blu-ray disc format, AVCHD can use various storage media, such as DVD media, memory cards or hard disk drives.&quot; The BDAV container contains videos recorded using AVCHD camcorders, such as Sony's HDR-SR(xx) series models. Panasonic, Canon and other brands of AVCHD camcorders also store recorded video in the BDAV container format.</p>
+			<p>
+				<b>Overview of M2TS Implementation</b>
+			</p>
+			<p>For both BDAV and AVCHD, all application files are stored within the the directory as defined in <a href="https://web.archive.org/web/20090326224610/http://www.blu-raydisc.com/Assets/Downloadablefile/2b_bdrom_audiovisualapplication_0305-12955-15269.pdf">White paper:
+Blu-ray Disc Format, 2.B Audio Visual Application Format Specifications for BD-ROM</a> (link via Internet Archive). Section 2.3 describes the structure including the M2TS file (where the zzzzz is a generic placemarker for the file name): "The “zzzzz.m2ts” files contains a BDAV MPEG-2 transport stream. The names of these files are in the form “zzzzz.m2ts”, where “zzzzz” is a 5-digit number corresponding to the Clip. The same 5-digit number “zzzzz” is used for an AV stream file and its associated Clip information file." </p>
+			<p>In addition, whereas <fddLink id="fdd000635">MPEG-2 Transport Stream</fddLink> allows for both <a href="https://en.wikipedia.org/wiki/Constant_bitrate">CBR (Constant Bit Rate)</a> and <a href="https://en.wikipedia.org/wiki/Variable_bitrate">(VBR) Variable Bit Rate</a>, M2TS files uses VBR in order to optimize the storage size.</p>
+		</fdd:description>
+		<fdd:shortDescription>Informally known by its file extension M2TS, this format stores multiplexed audio, video, and other streams on Blu-ray discs and AVCHD using a modification of MPEG-2 Transport Stream</fdd:shortDescription>
+		<fdd:productionPhase>Generally a final-state (end-user delivery) format.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Modification of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000635</fdd:id>
+					<fdd:shortName>MPEG-TS</fdd:shortName>
+					<fdd:titleName>MPEG-2 Transport Stream</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:titleName>Subtype of Blu-ray Disc format, not separately described but some information is included in this document </fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:comment>Subtype of AVCHD (Advanced Video Coding High Definition), not separately described but some information is included in this document</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress has many Blu-ray Discs in its varied collections which contain M2TS files. </fdd:experience>
+		<fdd:preference>The Library of Congress Recommended Formats Statement (RFS) lists Blu-ray discs (with presumably M2TS files within) as an acceptable format for <a href="https://www.loc.gov/preservation/resources/rfs/moving.html">Motion Pictures - Digital And Physical Media</a>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Open standard for M2TS. Developed by Blu-ray Disc Association (BDA). See also <fddLink id="fdd000635">MPEG-2 Transport Stream</fddLink> and <fddLink id="fdd000028">MPEG-2 Video Encoding (H.262)</fddLink>
+		</fdd:disclosure>
+		<fdd:documentation>Technical specifications for Blu-ray and the BDAV with M2TS implementation are available from the <a href="https://web.archive.org/web/20050206012500/http://blu-raydisc.com/Section-13628/Index.html">Blu-ray Disc Association (BDA)</a> (link via Internet Archive). <a href="https://web.archive.org/web/20051031023039/http://www.blu-raydisc.com/assets/downloadablefile/2b_bdrom_audiovisualapplication-12841.pdf">White paper: Blu-ray Disc Format 2.B Audio Visual Application Format Specifications for BD-ROM (August 2004)</a> (link via Internet Archive) includes details about the BDAV MPEG-2 Transport Stream (M2TS) structure and <a href="https://web.archive.org/web/20060511041829/http://www.blu-raydisc.com/assets/downloadablefile/3_filesystem-12836.pdf">White paper: Blu-ray Disc Format 3. File System Specifications for BD-RE, R, ROM (August 2004)</a> (link via Internet Archive) describes requirements on BDAV application use.</fdd:documentation>
+		<fdd:adoption>
+			<p>M2TS is widely adopted in Blu-ray and AVCHD implementations and many software tools and applications exist for encoding and decoding. <a href="https://en.wikipedia.org/wiki/.m2ts">Wikipedia</a> mentions that &quot;M2TS files can also be played on Sony PlayStation 3s, Sony Bravia TVs, Western Digital WDTVs, Xtreamer media player, Amkette FlashTV HD Media Player and Panasonic Viera TVs supporting playback of AVCHD.&quot;</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>Depending on the need, a license may be required to produce a Blu-ray disc. See <a href="https://blu-raydisc.info/index.php">https://blu-raydisc.info/index.php</a> for details. A license is required for AVCHD from <a href="https://www.avchd-info.org/license/index.html">https://www.avchd-info.org/license/index.html</a>. </p>
+			<p>Licenses for MPEG-2 is managed by <a href="https://www.via-la.com/licensing-2/mpeg-2/">Via LA (Licensing Alliance)</a> (https://www.via-la.com/licensing-2/mpeg-2/).  Licenses pertain to tools and not to streams or files per se.</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>Depends upon algorithms and tools to read; will require sophistication to build tools.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>See <fddLink id="fdd000635">MPEG-2 Transport Stream</fddLink>.</p>
+			<p>
+				<b>Accessibility Features</b>MPEG-2 TS and more specifically M2TS do not have specific features that enhance or support accessibility but the MPEG-2 family overall provides moderate accessibility support. According to the <a href="https://pub.smpte.org/latest/eg43/eg0043-2009.pdf">System Implementation of CEA-708 and CEA-608 Closed Captioning and Program-Related Data</a>, "files that use MPEG-2 video compression encoding may carry closed caption data in the video user data, as per ATSC A/53 Part 4". Typically, accessibility features such as captions and subtitles are carried in containers and wrappers, not in encoded video data.See W3C's <a href="https://www.w3.org/WAI/media/av/">Making Audio and Video Media Accessible</a> for more general information about accessible sound and moving image media.</p>
+			<p>The lack of metadata of the type called <i>bibliographic</i> by librarians motivated the MPEG group to develop MPEG-7, a separately standardized structure for metadata to support discovery and other purposes.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>Limited to platforms and applications that can create, edit or render content on Blu-ray Disc or AVCHD.</fdd:externalDependencies>
+		<fdd:techProtection>While M2TS itself does not support encryption, Blu-ray Disc are often encrypted through the "<a href="https://aacsla.com/what-is-aacs/">Advanced Access Content System</a>, a specification for managing content stored on the next generation of prerecorded and recorded optical media for consumer use with PCs and CE devices."  Details for Blu-ray are available <a href="https://aacsla.com/aacs-specifications/">https://aacsla.com/aacs-specifications/</a>. According to <a href="https://en.wikipedia.org/wiki/.m2ts">Wikipedia</a>, "video content created using AVCHD equipment is commonly unencrypted." <a href="../contact_format.shtml">Comments welcome</a>. See also <fddLink id="fdd000635">MPEG-2 Transport Stream</fddLink>.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:movingImageQF>
+			<fdd:normalVideo>Good support.</fdd:normalVideo>
+			<fdd:clarity>Moderate to very good, given that this is a format for lossy compression. Outcome will depend on the type and extent of compression, and the encoder used. </fdd:clarity>
+			<fdd:beyondVideo>The MPEG-2 transport stream permits the multiplexing of multiple programs.</fdd:beyondVideo>
+		</fdd:movingImageQF>
+		<fdd:soundQF>
+			<fdd:normalSound>Good support.</fdd:normalSound>
+			<fdd:fidelity>
+				<p>Moderate to very good, given that the options for audio employ lossy compression. </p>
+				<p>For all types of compressed audio, the quality of the outcome will depend on the type and extent of compression, and the encoder used.</p>
+			</fdd:fidelity>
+			<fdd:channels>
+				<p>Multi-channel sound is supported in both the backwardly compatible (BC) audio structures shared with <fddLink id="fdd000035">MPEG-1</fddLink>, which includes layer 3 audio (<fddLink id="fdd000012">MP3_ENC</fddLink>), and in the non-backwardly compatible <fddLink id="fdd000036">AAC</fddLink> audio structure.  MPEG-2 BC can deliver five main channels and an optional LFE (Low Frequency Encoding or Effects) channel, i.e., 5.1 surround sound.  AAC provides a capability of up to 48 main audio channels, 16 LFE channels, 16 overdub/multilingual channels, and 16 data streams.</p>
+				<p>The use of <fddLink id="fdd000209">AC-3</fddLink> compressed audio (aka Dolby Digital), described above in connection with <fddLink id="fdd000208">AES3_SMPTE</fddLink> data, provides another means for presenting surround sound.</p>
+			</fdd:channels>
+			<fdd:beyondSound>None</fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>m2ts</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Defined in <a href="https://web.archive.org/web/20090326224610/http://www.blu-raydisc.com/Assets/Downloadablefile/2b_bdrom_audiovisualapplication_0305-12955-15269.pdf">White paper: Blu-ray Disc Format, 2.B Audio Visual Application Format Specifications for BD-ROM</a> (link via Internet Archive)
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>mts</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Source such as <a href="https://www.sony.com/electronics/support/articles/00051703">Sony Support: Is there any difference between MTS and M2TS files?</a> state that &quot;There is really no functional difference between MTS and M2TS files. Both are High Definition files associated with the AVCHD video format. An M2TS file extension can be renamed to an MTS file extension and vice versa.&quot; <a href="../contact_format.shtml">Comments welcome</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>Not specific to M2TS but <fddLink id="fdd000635">MPEG-2 Transport Stream</fddLink> in general uses video/mp2t</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000635">MPEG-2 Transport Stream</fddLink>
+				</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>NARA File Format Preservation Plan ID has no corresponding entry as of December 2024.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/1055</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/1055">http://www.nationalarchives.gov.uk/PRONOM/fmt/1055</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q2609791</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q2609791">https://www.wikidata.org/wiki/Q2609791</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>See <fddLink id="fdd000028">MPEG-2 Video Encoding (H.262)</fddLink> and <fddLink id="fdd000335">MPEG-2 Encoding Family</fddLink>.</fdd:general>
+		<fdd:history>According to <a href="https://ssleec.ucsb.edu/news/nobel/professor-shuji-nakamura-was-key-invention-blu-ray-technology">A Timeline of the Invention and Development of Blu-Ray Technology</a>, &quot;the Blu-Ray Disc Association (BDA) was formed to develop a new disc format that would have a much larger storage capacity than CDs and DVDs. The BDA was a consortium of 11 companies, including Sony, Philips, Panasonic, and Pioneer... In 2006, the BDA released the first version of the Blu-Ray Disc format. This format was adopted as the official standard for high-definition video and audio discs. In 2008, the first Blu-Ray players and discs went on sale in the United States.&quot; <a href="https://www.cnet.com/culture/panasonics-first-avchd-camcorders/">CNET</a> notes that the &quot;AVCHD format, developed jointly by Sony and Panasonic, was announced earlier this year [2006] and was included in Sony&apos;s HDR-SR1 and HDR-UX1 camcorders. The codec is based on MPEG-4 Advanced Video Coding (a.k.a. H.264), though the companies claim that it can produce high-quality video playback.&quot;</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000635">MPEG-2 Transport Stream</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20090326224610/http://www.blu-raydisc.com/Assets/Downloadablefile/2b_bdrom_audiovisualapplication_0305-12955-15269.pdf </link>
+					<tag>White paper: Blu-ray Disc Format 2.B Audio Visual Application Format Specifications for BD-ROM (August 2004)</tag>
+					<comment>Includes details about the BDAV MPEG-2 Transport Stream (M2TS) structure</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20060511041829/http://www.blu-raydisc.com/assets/downloadablefile/3_filesystem-12836.pdf</link>
+					<tag>White paper: Blu-ray Disc Format 3. File System Specifications for BD-RE, R, ROM (August 2004)</tag>
+					<comment>Describes requirements on BDAV application use.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000635">MPEG-2 Transport Stream</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Blu-ray Disc Association</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20050206012500/http://blu-raydisc.com/Section-13628/Index.html</link>
+							<tag>Blu-ray Disc Association</tag>
+							<comment>Includes links to all Technical White Papers</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20090612042130/http://www.blu-raydisc.com/Assets/Downloadablefile/general_bluraydiscformat-15263.pdf</link>
+							<tag>BDA: White paper
+Blu-ray Disc Format
+General</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://us.blu-raydisc.com/</link>
+							<tag>Blu-ray Disc Association</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://us.blu-raydisc.com/ultrahd-benefits/</link>
+							<tag>Blu-ray Disc Association Ultra HD Benefits</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://us.blu-raydisc.com/faqs/</link>
+							<tag>Blu-ray Disc Association FAQs</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.osta.org/specs/index.htm</link>
+					<tag>Optical Storage Technology Association (OSTA): Universal Disk Format specifications</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.osta.org/specs/pdf/udf250.pdf</link>
+					<tag>Optical Storage Technology Association (OSTA): Universal Disk Format specification. Revision 2.5. April 30, 2003</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.iso.org/standard/26783.html</link>
+					<tag>ISO/IEC 13346-1:1995
+Information technology — Volume and file structure of write-once and rewritable media using non-sequential recording for information interchange</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.ecma-international.org/publications/standards/Ecma-167.htm</link>
+					<tag>ECMA-167. Volume and File Structure for Write-Once and Rewritable Media using Non-Sequential Recording for Information Interchange, 3rd edition (June 1997).</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.avchd-info.org/press/20060511.html</link>
+					<tag>Press release: Panasonic and Sony Jointly Developed
+New HD Digital Video Camera Recorder Format for Recording on Disc. May 11, 2006
+</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.avchd-info.org/license/index.html</link>
+					<tag>How to obtain the AVCHD Format and Logo License</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Wikipedia references</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Constant_bitrate</link>
+							<tag>Wikipedia Constant Bitrate entry</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Variable_bitrate</link>
+							<tag>Wikipedia Variable Bitrate entry</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/.m2ts</link>
+							<tag>Wikipedia .m2ts entry</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://pub.smpte.org/latest/eg43/eg0043-2009.pdf</link>
+					<tag>SMPTE EG 43:2009: System Implementation of
+CEA-708 and CEA-608
+Closed Captioning and
+Program-Related Data</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.w3.org/WAI/media/av/</link>
+					<tag>W3C Making Audio and Video Media Accessible</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.via-la.com/licensing-2/mpeg-2/</link>
+					<tag>Via LA: MPEG-2 Patent Portfolio License</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://aacsla.com/what-is-aacs/</link>
+					<tag>Advanced Access Content System: What Is AACS?</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://aacsla.com/aacs-specifications/</link>
+					<tag>Advanced Access Content System Specifications, including for Blu-ray</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.sony.com/electronics/support/articles/00051703</link>
+					<tag>Sony Support: Is there any difference between MTS and M2TS files?</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.cnet.com/culture/panasonics-first-avchd-camcorders/</link>
+					<tag>CNET: Panasonic&apos;s first AVCHD camcorders. November 6, 2006</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://ssleec.ucsb.edu/news/nobel/professor-shuji-nakamura-was-key-invention-blu-ray-technology</link>
+					<tag>A Timeline of the Invention and Development of Blu-Ray Technology. Professor Shuji Nakamura was key to the Invention of Blu-Ray Technology. January 11, 2023</tag>
+					<comment>From UC Santa Barbara&apos;s Solid State Lighting &amp; Energy Electronics Center</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/pronom/fmt/1055</link>
+					<tag>PRONOM entry for fmt/1055</tag>
+					<comment>Information in PRONOM from UK National Archives about	M2TS. PUID: fmt/1055.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q2609791</link>
+					<tag>Wikidata entry for Q2609791</tag>
+					<comment>Information in Wikidata about Blu-ray Disc Audio-Video MPEG-2 Transport Stream container file format. Wikidata Title ID: Q2609791.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

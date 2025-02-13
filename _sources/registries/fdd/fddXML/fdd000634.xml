@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000634" titleName="Parity Volume Set File Format Family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd" shortName="PAR_Family">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>other</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>family</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:updates>
+			<fdd:date>2025-01-17</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Parity Volume Set File Format Family</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>par</fdd:keyword>
+			<fdd:keyword>parchive</fdd:keyword>
+			<fdd:keyword>other</fdd:keyword>
+			<fdd:keyword>archive file formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The Parity Volume Set file format, as it&apos;s called in the <a href="https://parchive.github.io/#doc">file format specifications</a> is also known as <a href="https://parchive.sourceforge.net/">Parity Archive Volume Set</a>, <a href="https://en.wikipedia.org/wiki/Parchive">Parchive</a>, or simply PAR. According to the file format specifications, it is an open-source recovery file format designed to accompany a set of files intended for transfer or storage, verify the data integrity of those files, and if needed, repair corrupted files or reconstruct missing files. PAR was originally developed in 2001 by a group known as the <a href="https://parchive.sourceforge.net/">Parchive Project</a> to solve a common problem among those who shared files on <a href="https://en.wikipedia.org/wiki/Usenet">Usenet</a> newsgroups, where uploaded files could become corrupted, or some files could be missing after download. See <a href="#notes">History</a> for more information.</p>
+			<p>Although PAR was specifically designed with Usenet in mind, its usage isn&apos;t limited to Usenet. According to the <a href="https://parchive.github.io/">Parchive website</a> and <a href="https://parchive.github.io/#doc">specifications</a>, PAR files can be created to backup a set of files and then used to verify the integrity of the set and restore corrupted or missing data. PAR files provide parity (i.e., redundant data) for a group of input files, called the &quot;recovery set.&quot; Parity is calculated using <a href="https://en.wikipedia.org/wiki/Reed%E2%80%93Solomon_error_correction">Reed-Solomon codes</a>. To generate and make use of PAR files, a program that can read and write PAR files (called a "PAR client") is needed.</p>
+			<p>There are two versions of PAR. PAR v2.0 is still in use as of this writing in 2025. Development of PAR v3.0 has been attempted twice but never released. See <a href="#sustainability">Adoption</a> and <a href="#notes">History</a> for more information.</p>
+			<p>According to the <a href="https://parchive.github.io/#doc">file format specifications</a>, a parity volume set consists of two parts. The first part is an index file. The index file contains the filenames of the files in the recovery set, their <a href="https://en.wikipedia.org/wiki/MD5">MD5</a> checksums, and their size. In PAR v2.0, the index file contains all main packets, file description packets, and input file checksum packets, as described in the file specification. A PAR client verifies that all files in a set are present and uncorrupted by calculating MD5 checksums for the files (or for slices of files in PAR v2.0) and comparing them to the MD5 checksums in the index file. If all files are present and valid, it isn’t necessary to utilize the parity volume files.</p>
+			<p>Parity volume files are the second part of the parity volume set. The parity volumes contain the redundant data that can be used to repair and reconstruct input files, as well as the same information contained in the index file. The redundant data are called &quot;recovery slices&quot; in PAR v2.0. Because the parity volume files contain the same information contained in the index file, it is not necessary to have the index file to recover data.</p>
+			<p>It is important to note that parity volume files on their own, without any of the input files in the recovery set, cannot recover the entire recovery set. A PAR client uses the available parity data and the uncorrupted parts of the recovery set to repair/reconstruct corrupted or missing parts of the recovery set. From the <a href="https://parchive.sourceforge.net/docs/specifications/parity-volume-spec/article-spec.html">PAR v2.0 specification</a>: &quot;Reed-Solomon codes can do this recovery as long as the number of missing data blocks does not [outnumber] the recovery blocks.&quot;</p>
+			<p>The v2.0 specification addressed several limitations that existed with v1.0. Peter B. Clements, one of the authors of the v2.0 specification and the developer of the PAR client QuickPar, explained the differences between v1.0 and v2.0 on the <a href="http://www.quickpar.org.uk/AboutPAR2.htm">QuickPar website</a>: In v1.0, damaged files had to be completely reconstructed; all parity volume files were of equal size and contained enough recovery data to reconstruct the largest source file; damaged parity volume files could not be used to reconstruct input files and were, therefore, useless; creating PAR files for a small number of input files was inefficient and required the input files to be split into many pieces; and finally, v1.0 could not process more than 255 files.</p>
+			<p>In v2.0, damaged files can be repaired, instead of having to be completely reconstructed; there is no relationship between the size the input files and the size of the parity volume files; the undamaged parts of damaged parity volumes files can be used to repair input files; PAR files can be generated for a small number, or even one, input file without needing to split the input files; and v2.0 can handle up to 32,768 files. All of these improvements are possible because PAR v2.0 virtually splits the input files into smaller slices, or blocks, of data, and then processes the slices in the same way that PAR v1.0 would process whole files. One disadvantage of using v2.0 versus v1.0, pointed out on the <a href="https://github.com/Parchive/par2cmdline">par2cmdline GitHub page</a>, is that it takes longer for PAR clients to create PAR v2.0 recovery files, compared to a PAR v1.0 client.</p>
+		</fdd:description>
+		<fdd:shortDescription>PAR is an open-source file format designed to accompany a set of files intended for transfer or storage. Using a PAR client, the PAR files can verify the data integrity of the set of files and, if needed, repair corrupted files or reconstruct missing files.</fdd:shortDescription>
+		<fdd:productionPhase>May be used at any lifecycle phase to be distributed or stored with the recovery set.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo/>
+				<fdd:comment>Parity Volume Set File Format, Version 1.0, not described separately at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo/>
+				<fdd:comment>Parity Volume Set File Format, Version 2.0, not described separately at this time.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo/>
+				<fdd:comment>Parity Volume Set File Format, Version 3.0, not described separately at this time. Though draft specifications have been written for PAR v3.0 on two occasions, mostly recently in 2022, the Parchive Project has never released PAR v3.0.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000450</fdd:id>
+					<fdd:shortName>RAR_Family</fdd:shortName>
+					<fdd:titleName>RAR Archive File Format Family</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>According to multiple Usenet/PAR guides, such as those from <a href="https://www.binaries4all.com/beginners/downloading.php">Binaries4all</a>, <a href="https://www.newsgroupreviews.com/par-files.html">Newsgroup Reviews</a>, and <a href="https://www.harley.com/usenet/file-sharing/08-uploading-step-1-rar-files.html">Harley Hahn’s Usenet Center</a>, among others, a common workflow for file sharing on Usenet was to split/compress file(s) using a RAR client and then to use a PAR client to create PAR files for the RAR file(s). It is uncertain how widely this workflow continues to be used as of this writing in 2025. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+				</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress has a small amount of PAR files in its collections.</fdd:experience>
+		<fdd:preference>See the Library of Congress Recommended Formats Statement for format preferences for aggregation and/or transfer of <a href="https://www.loc.gov/preservation/resources/rfs/data.html">datasets</a>, <a href="https://www.loc.gov/preservation/resources/rfs/software-videogames.html">software and video games</a>, <a href="https://www.loc.gov/preservation/resources/rfs/webarchives.html">web archives</a>, and <a href="https://www.loc.gov/preservation/resources/rfs/email.html">email</a>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Open standard, fully documented. As stated by the authors in <a href="https://parchive.github.io/doc/Parity%20Volume%20Set%20Specification%20v1.0.html">v1.0 of the file format specification</a>: &quot;…the file format [specification] and [its] details can be used free by everyone for any type of software.&quot;</fdd:disclosure>
+		<fdd:documentation>The full file format specification is publicly available on the <a href="https://parchive.github.io/#doc">Parchive: Parity Archive Volume Set website</a>, including <a href="https://parchive.github.io/doc/Parity%20Volume%20Set%20Specification%20v1.0.html">v1.0</a>, <a href="https://parchive.github.io/doc/Parity%20Volume%20Set%20Specification%20v2.0.html">v2.0</a>, and an alpha draft of <a href="https://parchive.github.io/doc/Parity_Volume_Set_Specification_v3.0.html">v3.0</a>.</fdd:documentation>
+		<fdd:adoption>
+			<p>A variety of clients for PAR v1.0 and PAR v2.0 have been developed for Windows, Mac OS X, and Linux, including Parchive command line tools, MacPAR, and MultiPar, among <a href="https://parchive.github.io/#install">others</a>. Additionally, some Usenet newsreaders have built-in PAR capabilities and will automatically verify and attempt to repair corrupted files after download; for a list, see <a href="https://en.wikipedia.org/wiki/Comparison_of_Usenet_newsreaders">Wikipedia’s Comparison of Usenet newsreaders</a>.</p>
+			<p>PAR v2.0 continues to be used within the Usenet community. According to the <a href="https://parchive.github.io/">Parchive website</a>: &quot;Has been around for 20 years and there have been millions of &apos;par2&apos; clients downloaded. &apos;par2&apos; is the de facto standard for safely sending large files on Usenet (a.k.a., &apos;network news&apos;) and is built into many newsreaders. It is also used for backups, where people fear a CD/DVD/tape will get damaged or, when using multiple media, a few will fail entirely.&quot;</p>
+			<p>It is not clear how widely PAR is used outside of the Usenet community. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+			</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>Licensing information has varied between versions of the file format specification, though all versions have been open.</p>
+			<p>In <a href="https://parchive.github.io/doc/Parity%20Volume%20Set%20Specification%20v1.0.html">v1.0 of the specification</a>, the authors stated that the specification can be used freely. Their only stipulation was anyone wanting to making changes to the format must first discuss proposed changes with the original specification authors in order to maintain compatibility.</p>
+			<p>A GNU Free Documentation License was applied to <a href="https://parchive.github.io/doc/Parity%20Volume%20Set%20Specification%20v2.0.html">v2.0 of the specification</a>. The <a href="https://www.gnu.org/licenses/fdl-1.3.html">GNU Free Documentation License</a> allows users to copy, redistribute, and modify the specification, provided all copies and derivatives are also made available under the GNU Free Documentation License.</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>The ability to use PAR files to repair and/or reconstruct original data files depends upon tools to read and make use of the PAR files. Because the format is fully open, several open-source PAR clients have been built for different operating systems and are freely available. This functionality is also built into many Usenet newsgroup readers.</p>
+			<p>According to <a href="https://parchive.github.io/doc/Parity%20Volume%20Set%20Specification%20v2.0.html">v2.0 of the specification</a>: &quot;All strings in the &apos;core&apos; spec are ASCII. This was chosen because Unicode is not sufficiently supported by tools. There exist optional portions of the spec that do support Unicode strings.&quot;</p>
+			<p>The Reed-Solomon algorithm that is used to produce the redundant data in the parity volumes is documented within the file format specifications. It is based on the article <a href="https://web.eecs.utk.edu/~jplank/plank/papers/SPE-9-97.html">A Tutorial on Reed-Solomon Coding for Fault-Tolerance in RAID-like Systems</a> by James S. Plank.</p>
+			<p>
+				<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+			</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>Every PAR file contains information about the PAR client that created it. In <a href="https://parchive.github.io/doc/Parity%20Volume%20Set%20Specification%20v1.0.html">v1.0</a>, it contains the client name and version. In <a href="https://parchive.github.io/doc/Parity%20Volume%20Set%20Specification%20v2.0.html">v2.0</a>, the creator packet should contain the client name and a way to contact the client developer. This information is shown to the user if a PAR client is unable to process a recovery set, with the goal that any incompatibilities between PAR clients can be identified and resolved.</p>
+			<p>Parity index files contain information about the files that are part of the recovery set, including their filenames, MD5 checksums, and size. This information is repeated in each of the parity volume files.</p>
+			<p>
+				<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+			</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>No specific features in the file format. Features to support accessibility would be found in the bundled and compressed files (such as embedded captions and subtitles in audiovisual content, tagged and structured text in textual documents, and alt text for images). Aggregate files can also contain separate files for transcripts, timed text or captions as part of the bundled package. See <a href="#identification">Relationships to other formats</a> for details.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			<p>None, beyond the availability of software to create parity volume sets and to use parity volume sets to repair/reconstruct files from the recovery set. <a href="https://parchive.github.io/#install">Clients</a> exist for Windows, OS X, and Linux. Many Usenet newsreaders have the capability to verify and repair/reconstruct files with parity volume sets. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+			</p>
+		</fdd:externalDependencies>
+		<fdd:techProtection>
+			<p>No specific features in the file format. Any features that protect intellectual (or other) property, such as encryption, would be inherent in the input files of the recovery set. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+			</p>
+		</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:aggregateQF>
+			<fdd:compress>
+				<p>PAR files are not natively compressed. If it is desirable files in the recovery set to be compressed before distribution and/or storage, there is a variety of aggregate formats that can be used, including <a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000450.shtml">RAR</a>, <a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000599.shtml"> GZIP</a>, <a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000600.shtml">bzip2</a>, and others. PAR files could then be created for the compressed files. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+				</p>
+			</fdd:compress>
+			<fdd:error>
+				<p>PAR files use MD5 hashes to verify if any files in the recovery set have been corrupted and Reed-Solomon codes to produce redundant data in the parity volume files and to repair corrupted data. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+				</p>
+			</fdd:error>
+			<fdd:beyondAGG>
+				<p>None. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+				</p>
+			</fdd:beyondAGG>
+		</fdd:aggregateQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>par</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Extension for the index file for <a href="https://parchive.github.io/doc/Parity%20Volume%20Set%20Specification%20v1.0.html">PAR v1.0</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>pxx</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Extension for the parity volume files for <a href="https://parchive.github.io/doc/Parity%20Volume%20Set%20Specification%20v1.0.html">PAR v1.0</a> (i.e., .p01, .p02, .p03, and so on, depending on the number of parity volume files).</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>par2</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Extension for index and parity volume files for <a href="https://parchive.github.io/doc/Parity%20Volume%20Set%20Specification%20v2.0.html">PAR v2.0</a>. If the file is a parity volume file, then &quot;.par2&quot; should be preceded by &quot;.volXX-YY,&quot; where XX to YY is the range of exponents for the recovery slices.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>pa3</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>
+					<p>Extension for <a href="https://web.archive.org/web/20100911002706/http:/hp.vector.co.jp/authors/VA021385/par3_spec_prop.htm">PAR v3.0, proposed in 2010</a>, which was tested but never officially released. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+					</p>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>par3</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>
+					<p>Extension for <a href="https://parchive.github.io/doc/Parity_Volume_Set_Specification_v3.0.html">PAR v3.0, proposed in 2022</a>. Still in development. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+					</p>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/x-par</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Not listed in IANA. From <a href="https://mark0.net/soft-tridscan-e.html">TriD</a> via <a href="https://www.wikidata.org/wiki/Q105866299">Wikidata</a>. Used in the <a href="https://github.com/Parchive/gpar2/blob/master/gpar2.desktop">gpar2 client</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/x-par2</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Not listed in IANA. From <a href="https://mark0.net/soft-tridscan-e.html">TriD</a> via <a href="https://www.wikidata.org/wiki/Q28791553">Wikidata</a>. Used in the <a href="https://github.com/Parchive/gpar2/blob/master/gpar2.desktop">gpar2 client</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/x-par3</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Not listed in IANA. From <a href="https://mark0.net/soft-tridscan-e.html">TriD</a> via <a href="https://www.wikidata.org/wiki/Q105865405">Wikidata</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 50 41 52 00 00 00 00 00</fdd:sigValue>
+					<fdd:sigValue>ASCII: PAR</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The <a href="https://parchive.github.io/doc/Parity%20Volume%20Set%20Specification%20v1.0.html">PAR v1.0 specification</a> states: "Offset: 0x0000, Type (Size): 8 Bytes, Data: The string &apos;PAR&apos; followed by 5 null bytes.&quot; The <a href="http://fileformats.archiveteam.org/wiki/Parity_Volume_Set">File Formats Wiki</a> references the equivalent to the ASCII characters written as hex values.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 50 41 52 32 00 50 4B 54</fdd:sigValue>
+					<fdd:sigValue>ASCII: PAR20PKT</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The <a href="https://parchive.github.io/doc/Parity%20Volume%20Set%20Specification%20v2.0.html ">PAR v2.0 specification</a> states: &quot;Length (bytes): 8, Type: byte[8], Description: Magic sequence. Used to quickly identify location of packets. Value = {&apos;P&apos;, &apos;A&apos;, &apos;R&apos;, &apos;2&apos;, &apos;\0&apos;, &apos;P&apos;, &apos;K&apos;, &apos;T&apos;} (ASCII).&quot; The <a href="http://fileformats.archiveteam.org/wiki/Parity_Volume_Set">File Formats Wiki</a> references the equivalent to the ASCII characters written as hex values.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 50 41 33 00</fdd:sigValue>
+					<fdd:sigValue>ASCII: PA3</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The <a href="https://web.archive.org/web/20100911002706/http:/hp.vector.co.jp/authors/VA021385/par3_spec_prop.htm">specification proposal for PAR v3.0 (2010)</a> states: &quot;Length (bytes): 4, Type: byte[4], Description: Magic sequence. Used to quickly identify location of packets. Value = {&apos;P&apos;, &apos;A&apos;, &apos;3&apos;, &apos;\0&apos;} (ASCII).&quot; The <a href="http://fileformats.archiveteam.org/wiki/Parity_Volume_Set">File Formats Wiki</a> references the equivalent to the ASCII characters written as hex values.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 50 41 52 33 00 50 4B 54</fdd:sigValue>
+					<fdd:sigValue>ASCII: PAR30PKT</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The <a href="https://parchive.github.io/doc/Parity_Volume_Set_Specification_v3.0.html">alpha draft specification for PAR v3.0 (2022)</a> states: &quot;Length (bytes): 8, Type: byte[8], Description: Magic sequence. Used to quickly identify location of packets. Value = {&apos;P&apos;, &apos;A&apos;, &apos;R&apos;, &apos;3&apos;, &apos;\0&apos;, &apos;P&apos;, &apos;K&apos;, &apos;T&apos;} (ASCII).&quot; The hex value was inferred from the ASCII.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>NARA File Format Preservation Plan ID has no corresponding entry as of January 2025.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>PRONOM has no corresponding entry as of January 2025.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q497118</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q497118">https://www.wikidata.org/wiki/Q497118</a> (Parchive). Note that this is the general Wikidata entry for PAR.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q28791524</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q28791524">https://www.wikidata.org/wiki/Q28791524</a> (Parchive, version 1). Note that the Wikidata entry does not cite any sources. Refers to the same format and version as Q105866299.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q105866299</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q105866299">https://www.wikidata.org/wiki/Q105866299</a> (Parity Archive Volume Set (Par1)). Refers to the same format and version as Q28791524.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q28791553</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q28791553">https://www.wikidata.org/wiki/Q28791553</a> (Parchive, version 2).</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q105865405</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q105865405">https://www.wikidata.org/wiki/Q105865405</a> (Parity Archive Volume Set (Par3)). Note that the Wikidata entry mostly refers to the 2022 proposal for PAR v3.0, except for the file extension, .pa3, which was only used in the 2010 PAR v3.0 proposal and never released.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>For a helpful explanation on the many file formats that use .par, or variations of .par, as a file extension, see <a href="https://preservation.tylerthorsted.com/2024/11/08/par/">Tyler Thorsted&apos;s blog post</a> on the topic. His post discusses Apache Parquet (.parquet), Solid Edge 3D models (.par), DVD Studio Pro parse files (.par), and Reflexw data-format (.par), in addition to the PAR files described in this FDD.</fdd:general>
+		<fdd:history>
+			<p>The idea for the PAR file format was born out of a need to be able to reliably post large files to Usenet newsgroups, where users often shared an archive in the form of several RAR files. <a href="https://www.binaries4all.com/beginners/downloading.php">RAR was used in order to split and compress files</a> that were too large to be shared in their original form. According to <a href="https://web.archive.org/web/20200225130755/http://www.slyck.com/Newsgroups_Guide_PAR_PAR2_Files">Slyck&apos;s Guide To The Usenet Newsgroups</a>: &quot;During an archive&apos;s propagation throughout Usenet, it&apos;s not uncommon for an [archive] to suffer damage to a few files (or parts). Before there were PAR files, if an archive was damaged or a part was missing, the only recourse for the user was to request a repost. This approach had its problems. It could take a while for a repost to appear, or perhaps never happen. This was another contributing reason why the newsgroups remained an elusive method of information for a majority of users.&quot; Thus, there was a need to be able to verify the integrity of shared files and a way to repair damaged files and reconstruct missing files. </p>
+			<p>The original goal of the Parchive Project was to provide both a file format specification and a client to generate and make use of PAR files. On the first iteration of the <a href="https://web.archive.org/web/20011015090348/https:/parchive.sourceforge.net/">developers&apos; SourceForge website in 2001</a>, Tobias Rieper was credited with coming up with the idea. The <a href="https://web.archive.org/web/20021004084145/http:/sourceforge.net/docman/display_doc.php?docid=5374%26group_id=30568">initial file specification</a> was drafted by Stefan Wehlus (a.k.a. Beaker) with input from Roger Harrison (a.k.a. Kilroy Balore).</p>
+			<p>The <a href="https://parchive.sourceforge.net/docs/specifications/parity-volume-spec-1.0/article-spec.html">Parity Volume Set Specification</a> was first published on July 12, 2001, and was further refined as PAR clients began to be developed. Suggestions for improvements to the specification were shared on the <a href="https://sourceforge.net/p/parchive/discussion/96282/">Parchive Project’s File Format Specification discussion board</a> and incorporated into the spec, such as <a href="https://sourceforge.net/p/parchive/discussion/96282/thread/d7bf64dc/">Karl Vogel’s suggestion to use Reed-Solomon coding to calculate parity over normal parity recovery</a>, with additional contributions from Willem Monsuwe and Ryan Gallagher, the project&apos;s webmaster. The specification was stable with revision 1.0 on October 14, 2001, with further suggestions considered for v2.0.
+</p>
+			<p>In parallel to refining the file specification, developers also worked on releasing PAR clients. Weyhlus developed the <a href="http://www.wehlus.de/mirror/">Mirror</a> client as a Win32 test implementation of the file format specification. <a href="https://web.archive.org/web/20021010111537/http:/sourceforge.net/project/showfiles.php?group_id=30568">Command-line clients</a> were also developed for MS-DOS, Unix, and Mac OS X and hosted on the Parchive Project’s website. By the end of the year, <a href="https://web.archive.org/web/20020118191039/http://parchive.sourceforge.net:80/">additional clients were announced</a>.</p>
+			<p>In 2002, work on v2.0 of the file format specification began immediately following the release and widespread adoption of 1.0 on Usenet, evidenced by <a href="https://sourceforge.net/p/parchive/discussion/96282/thread/4a792514/">conversations on the project discussion board</a>. A first draft of Parity Volume Set Specification 2.0 was published on July 24 by Michael Nahas. <a href="https://web.archive.org/web/20020927225634/http:/sourceforge.net/docman/?group_id=30568">Several revisions</a> followed with additional contributions from Peter B. Clements, Paul Nettle (developer of the PAR client FSRaid), and Gallagher. A <a href="https://web.archive.org/web/20021121061902/http://parchive.sourceforge.net:80/">draft specification</a> was announced in September for client developers to test. Several months later, on <a href="https://web.archive.org/web/20030804014326/http://parchive.sourceforge.net:80/">May 11, 2003</a>, the final specification was released, along with two PAR2 clients developed by Clements, QuickPar and par2cmdline. Usenet users seemingly embraced v2.0, with reports on the <a href="https://sourceforge.net/p/parchive/mailman/parchive-devel/?viewmonth=200305">developer mailing list</a> of sightings of PAR2 files across various newsgroups and the Parchive Project reaching the top of SourceForge’s projects of the month, making it to their front page by the end of May.</p>
+			<p>In 2010, Yutaka Sawada, developer of the MultiPar client, and others wrote a <a href="https://web.archive.org/web/20100801030305/http://hp.vector.co.jp:80/authors/VA021385/par3_spec_prop.htm">proposal for v3.0</a> of the specification. Sawada created a test client for his PAR v3.0 specification in MultiPar v1.1.7.1, as announced on the <a href="https://web.archive.org/web/20151009025307/https://www.livebusinesschat.com/smf/index.php?topic=2118.0">MultiPar discussion board</a>. His proposal never moved beyond testing, and the specification is not recommended for practical usage, which Sawada made clear on the <a href="https://web.archive.org/web/20151011201606/https://www.livebusinesschat.com/smf/index.php?topic=5244.0">MultiPar discussion board</a>. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+			</p>
+			<p>In 2019, Nahas restarted conversation on developing a new version of PAR, also called v3.0, in an issue on the <a href="https://github.com/Parchive/par2cmdline/issues/130">par2cmdline GitHub repository</a>. In January 2022, a specification draft was made available in the <a href="https://parchive.github.io/doc/Parity_Volume_Set_Specification_v3.0.html">Parchive GitHub</a>. Sawada was working on developing a reference implementation in the <a href="https://github.com/Parchive/par3cmdline">par3cmdline GitHub repository</a>, but no commits have been made since 2023. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+			</p>
+			<p>With the rise of other methods of file sharing and venues for discussion on the internet, Usenet has declined in popularity since the initial development of PAR in the early 2000s. <a href="https://www.pcmag.com/news/end-of-an-era-google-groups-to-drop-usenet-support">PCMag reported</a> that in 2024 Google Groups ended its support to post, subscribe, or view Usenet newsgroups. PAR2 seemingly remains in use for those who continue to share files via Usenet, as evidenced by the continued maintenance of PAR clients, such as MultiPar, and recent interest in the development of PAR v3.0. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+			</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://parchive.sourceforge.net/docs/specifications/parity-volume-spec-1.0/article-spec.html</link>
+					<tag>Parity Volume Set Specification v1.0</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://parchive.sourceforge.net/docs/specifications/parity-volume-spec/article-spec.html</link>
+					<tag>Parity Volume Set Specification 2.0</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Proposed specifications</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20100911002706/http:/hp.vector.co.jp/authors/VA021385/par3_spec_prop.htm</link>
+							<tag>Proposal for Parchive Specification 3.0</tag>
+							<comment>Available via Internet Archive.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://parchive.github.io/doc/Parity_Volume_Set_Specification_v3.0.html</link>
+							<tag>Parity Volume Set Specification 3.0 [2022-01-28 ALPHA DRAFT]</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Developer websites</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://parchive.github.io/</link>
+							<tag>Parchive: Parity Archive Volume Set </tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/Parchive</link>
+							<tag>Parchive GitHub repositories</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://parchive.sourceforge.net/</link>
+							<tag>Parchive: Parity Archive Tool</tag>
+							<comment>Original website for the Parchive Project. No longer updated.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20011001000000*/https://parchive.sourceforge.net/</link>
+							<tag>Archived versions of the Parchive Project's original website are available as far back as 2001 via the Internet Archive.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://sourceforge.net/projects/parchive/</link>
+							<tag>Parchive project on SourceForge </tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://sourceforge.net/p/parchive/discussion/96282/</link>
+							<tag>Parchive Discussion Forum on File Format Specification</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://sourceforge.net/p/parchive/mailman/parchive-devel/</link>
+							<tag>Parchive-devel Mailing List</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.quickpar.org.uk/AboutPAR2.htm</link>
+					<tag>About PAR2, QuickPar, Peter B. Clements</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://frank-ruan.com/2023/07/25/getting-started-with-parchive/</link>
+					<tag>Getting Started With Parchive, Frank Ruan’s Blog</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.gnu.org/licenses/fdl-1.3.html</link>
+					<tag>GNU Free Documentation License</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/Parchive/gpar2</link>
+					<tag>gpar2, Parchive GitHub</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.betaarchive.com/forum/viewtopic.php?t=7748</link>
+					<tag>[HOWTO] How PAR2 files work (&amp; how to recover data using it), BetaArchive Forum</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.wehlus.de/mirror/</link>
+					<tag>Mirror, Stefan Wehlus</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20151019183032/https://www.livebusinesschat.com/smf/index.php?board=396.0</link>
+					<tag>MultiPar discussion board</tag>
+					<comment>Available via Internet Archive.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.newsgroupreviews.com/par-files.html</link>
+					<tag>PAR / PAR2 Files Guide, NewsgroupReviews</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://preservation.tylerthorsted.com/2024/11/08/par/</link>
+					<tag>PAR, Obsolete Thor: Ramblings of a File Format Researcher blog, Tyler Thorsted</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.techsono.com/files/par2</link>
+					<tag>Par2 Files Explained in Plain English, TechSono Engineering</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Parchive</link>
+					<tag>Parchive, Wikipedia</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://wiki.archlinux.org/title/Parchive</link>
+					<tag>Parchive, ArchWiki, Arch Linux</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://blog.georgovassilis.com/2018/12/12/parchive-protecting-backups-against-data-corruption/</link>
+					<tag>parchive: protecting backups against data corruption, George&apos;s Techblog, George Georgovassilis</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://fileformats.archiveteam.org/wiki/Parity_Volume_Set</link>
+					<tag>Parity Volume Set, File Formats Wiki</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.eecs.utk.edu/~jplank/plank/papers/SPE-9-97.html</link>
+					<tag>A Tutorial on Reed-Solomon Coding for Fault-Tolerance in RAID-like Systems, James S. Plank</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Background information on Usenet and PAR</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.binaries4all.com/index.php</link>
+							<tag>Binaries4all Usenet Tutorials</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Comparison_of_Usenet_newsreader</link>
+							<tag>Comparison of Usenet newsreaders</tag>
+							<comment>Includes a column on PAR compatibility.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.pcmag.com/news/end-of-an-era-google-groups-to-drop-usenet-support</link>
+							<tag>End of an Era: Google Groups to Drop Usenet Support, PCMag</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.harley.com/usenet/</link>
+							<tag>Harley Hahn’s Usenet Center</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20200225130755/http://www.slyck.com/Newsgroups_Guide_PAR_PAR2_Files</link>
+							<tag>Slyck&apos;s Guide To The Usenet Newsgroups</tag>
+							<comment>Available via Internet Archive.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Wikidata</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.wikidata.org/wiki/Q497118</link>
+							<tag>Wikidata entry for Q497118</tag>
+							<comment>Information in Wikidata about Parchive. General Wikidata entry for PAR. Wikidata Title ID: Q497118.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.wikidata.org/wiki/Q28791524</link>
+							<tag>Wikidata entry for Q28791524</tag>
+							<comment>Information in Wikidata about Parchive, version 1. Note that the Wikidata entry does not cite any sources. Refers to the same format and version as Q105866299. Wikidata Title ID: Q28791524.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.wikidata.org/wiki/Q105866299</link>
+							<tag>Wikidata entry for Q105866299</tag>
+							<comment>Information in Wikipedia about Parity Archive Volume Set (Par1). Refers to the same format and version as Q28791524. Wikidata Title ID: Q105866299.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.wikidata.org/wiki/Q28791553</link>
+							<tag>Wikidata entry for Q28791553</tag>
+							<comment>Information in Wikidata about Parchive, version 2. Wikidata Title ID: Q28791553.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.wikidata.org/wiki/Q105865405</link>
+							<tag>Wikidata entry for Q105865405</tag>
+							<comment>Information in Wikidata about Parity Archive Volume Set (Par3). Note that the Wikidata entry mostly refers to the 2022 proposal for PAR v3.0, except for the file extension, .pa3, which was only used in the 2010 PAR v3.0 proposal. Wikidata Title ID: Q105865405.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

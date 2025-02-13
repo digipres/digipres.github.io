@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000637" titleName="MPEG-2 Program Stream" shortName="MPEG-PS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenreAndSubgenres>
+				<fdd:gdfrGenre>moving-image</fdd:gdfrGenre>
+				<fdd:gdfrSubgenres>
+					<fdd:gdfrSubgenre>sound</fdd:gdfrSubgenre>
+				</fdd:gdfrSubgenres>
+			</fdd:gdfrGenreAndSubgenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2024-12-17</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>MPEG-2 Program Stream</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>MPEG-2</fdd:keyword>
+			<fdd:keyword>MPEG-2 Program Stream</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>According to <a href="https://www.iso.org/standard/87619.html">ISO/IEC 13818-1</a>, MPEG-2 Program Stream (MPEG-2 PS or PS) is one of the two (the other being <fddLink id="fdd000635">MPEG-2 Transport Stream (MPEG-2 TS)</fddLink>) system coding options for <fddLink id="fdd000028">MPEG-2 Video Encoding (H.262)</fddLink> video and audio data. Transport streams and program streams are each logically constructed from <a href="https://en.wikipedia.org/wiki/Packetized_elementary_stream">packetized elementary streams (PES)</a> but differ in their intended use and how they handle multiple programs. Charles Poynton's <a href="https://archive.org/details/digital-video-and-hd-algorithms-and-interfaces-2nd-ed.-poynton-2012-02-07">Digital Video and HD Algorithms And Interfaces (2nd Ed.)</a> (link via Internet Archive) explains more about PES: &quot;An elementary stream is packetized into packets of 188 bytes, the first byte being MPEG’s sync byte valued 47h. Some systems construct 204 byte packets, expecting the channel coder to overwrite the final 16 bytes of each packet; in this case the sync byte will be B8h&quot; (p. 556). <a href="https://www.iso.org/standard/87619.html">ISO/IEC 13818-1</a> explains that "Both the transport stream and program stream ... provide coding syntax which is necessary and sufficient to synchronize the decoding and presentation of the video and audio information, while ensuring that data buffers in the decoders do not overflow or underflow. Information is coded in the syntax using time stamps concerning the decoding and presentation of coded audio and visual data and time stamps concerning the delivery of the data stream itself. Poynton summaries a program stream as "a relatively simple mechanism to multiplex video and audio of a single program for storage or transmission on relatively error free media such as computer disks or digital optical media&quot; (p. 556). The <a href="https://www.itu.int/rec/T-REC-H.222.0-201808-S/en">2018 edition of the specification published as Recommendation ITU-T H.222</a> section 2.5.1 goes on to say that the "program stream coding layer allows one program of one or more elementary
+streams to be combined into a single stream. Data from each elementary stream are multiplexed together with information
+that allows synchronized presentation of the elementary streams within the program." In addition, in a program stream, &quot;PES packets are organized in packs. A pack commences with a pack header and is followed by zero
+or more PES packets. The pack header begins with a 32-bit start-code. The pack header is used to store timing and bitrate
+information.&quot;
+</p>
+			<p>
+				<a href="https://www.itu.int/rec/T-REC-H.222.0-201808-S/en">ITU-T H.222</a> section 2.5 states that &quot;the program stream begins with a system header that optionally may be repeated. The system header carries a summary
+of the system parameters defined in the stream.&quot;  The header value starts with the value 0x000001BA. Other key header fields include the 1-bit fixed_flag which indicates <a href="https://en.wikipedia.org/wiki/Constant_bitrate">CBR (Constant Bit Rate)</a> (value = 1) or <a href="https://en.wikipedia.org/wiki/Variable_bitrate">(VBR) Variable Bit Rate</a> (value = 0). In addition the stream_id indicates the coding and elementary stream number. </p>
+		</fdd:description>
+		<fdd:shortDescription>MPEG-2 Program Stream (MPEG-2 PS or PS) is one of the two (the other being MPEG-2 Transport Stream (MPEG-2 TS or MTS) system coding options for MPEG-2/H.262 video and audio data. Program streams are a relatively simple mechanism to multiplex video and audio of a single program for storage or transmission on relatively error free media such as computer disks or digital optical media.</fdd:shortDescription>
+		<fdd:productionPhase>Generally a final-state (end-user delivery) format</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000028</fdd:id>
+					<fdd:shortName>MPEG-2</fdd:shortName>
+					<fdd:titleName>MPEG-2 Video Encoding (H.262) </fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000335</fdd:id>
+					<fdd:shortName>MPEG-2_family</fdd:shortName>
+					<fdd:titleName>MPEG-2 Encoding Family</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>MPEG-2 TS supports both video and audio data</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000635</fdd:id>
+					<fdd:shortName>MPEG-2 TS</fdd:shortName>
+					<fdd:titleName>MPEG-2 Transport Stream</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>See <fddLink id="fdd000335">MPEG-2_family</fddLink>
+		</fdd:experience>
+		<fdd:preference>See <fddLink id="fdd000335">MPEG-2_family</fddLink>
+		</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>See 	<fddLink id="fdd000028">MPEG-2 Video Encoding (H.262)</fddLink>
+		</fdd:disclosure>
+		<fdd:documentation>ISO/IEC 13818; first approvals in 1994.  Ten parts have been published; parts 1, 2, 3, and 7 are central.  Part 2 concerns the coding and specifies profiles and levels.  See list of ISO documents in <a href="#specs">Format specifications</a> below.</fdd:documentation>
+		<fdd:adoption>
+			<p>DVDs and SVCDs use program streams, carrying the DVD- and SVCD-specific data in private data streams interleaved with the video and audio streamsMany software tools exist for encoding and decoding.</p>
+			<p>Wide adoption may not extend to all profiles, levels, or parts of the standard.  [Evidence in various documents suggests that the Simple, Main, and 4:2:2 profiles are the most widely adopted. <a href="../contact_format.shtml">Comments welcome</a>]
+</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>Managed by <a href="https://www.via-la.com/licensing-2/mpeg-2/">Via LA (Licensing Alliance)</a> (https://www.via-la.com/licensing-2/mpeg-2/).  Licenses pertain to tools and not to streams or files per se.</fdd:licensingAndPatents>
+		<fdd:transparency>Depends upon algorithms and tools to read; will require sophistication to build tools.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>Technical (coding) information is contained in the MPEG-2 bitstream in macroblock headers, slice headers, picture headers, Group of Picture (GOP) headers, and sequence headers.  The sequence header provides data needed before decoding can begin, such as the size of the picture and the frame rate. Because it is so important, the sequence header is usually repeated as often as twice a second.</p>
+			<p>The lack of metadata of the type called <i>bibliographic</i> by librarians motivated the MPEG group to develop MPEG-7, a separately standardized structure for metadata to support discovery and other purposes.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>MPEG-2 PS does not have specific features that enhance or support accessibility but the MPEG-2 family overall provides moderate accessibility support. According to the <a href="https://pub.smpte.org/latest/eg43/eg0043-2009.pdf">System Implementation of CEA-708 and CEA-608 Closed Captioning and Program-Related Data</a>, "files that use MPEG-2 video compression encoding may carry closed caption data in the video user data, as per ATSC A/53 Part 4". Typically, accessibility features such as captions and subtitles are carried in containers and wrappers, not in encoded video data.</p>
+			<p>See W3C's <a href="https://www.w3.org/WAI/media/av/">Making Audio and Video Media Accessible</a> for more general information about accessible sound and moving image media.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>MPEG-2 shares with MPEG-4 elements of a standardized Intellectual Property Management and Protection (IPMP) scheme; see <a href="https://datatracker.ietf.org/documents/LIAISON/file944.htm">Intellectual Property Management and Protection
+in MPEG Standards</a>.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:movingImageQF>
+			<fdd:normalVideo>Good support.</fdd:normalVideo>
+			<fdd:clarity>Moderate to very good, given that this is a format for lossy compression. Outcome will depend on the type and extent of compression, and the encoder used. </fdd:clarity>
+			<fdd:beyondVideo>None.</fdd:beyondVideo>
+		</fdd:movingImageQF>
+		<fdd:soundQF>
+			<fdd:normalSound>Good support.</fdd:normalSound>
+			<fdd:fidelity>
+				<p>Moderate to very good, given that the options for audio employ lossy compression.</p>
+				<p>The Society of Motion Picture and Television Engineers (SMPTE) provides specifications for incorporating <fddLink id="fdd000208">AES3_SMPTE</fddLink> data into the MPEG-2 transport stream.  Among other things, this permits the use of <fddLink id="fdd000209">AC-3</fddLink> compressed audio (aka Dolby Digital).</p>
+				<p>For all types of compressed audio, the quality of the outcome will depend on the type and extent of compression, and the encoder used.</p>
+			</fdd:fidelity>
+			<fdd:channels>
+				<p>Multi-channel sound is supported in both the backwardly compatible (BC) audio structures shared with <fddLink id="fdd000035">MPEG-1</fddLink>, which includes layer 3 audio (<fddLink id="fdd000012">MP3_ENC</fddLink>), and in the non-backwardly compatible <fddLink id="fdd000036">AAC</fddLink> audio structure.  MPEG-2 BC can deliver five main channels and an optional LFE (Low Frequency Encoding or Effects) channel, i.e., 5.1 surround sound.  AAC provides a capability of up to 48 main audio channels, 16 LFE channels, 16 overdub/multilingual channels, and 16 data streams.</p>
+				<p>The use of <fddLink id="fdd000209">AC-3</fddLink> compressed audio (aka Dolby Digital), described above in connection with <fddLink id="fdd000208">AES3_SMPTE</fddLink> data, provides another means for presenting surround sound.</p>
+			</fdd:channels>
+			<fdd:beyondSound>None</fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See also <fddLink id="fdd000028">MPEG-2 Video Encoding (H.262)</fddLink>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>video/MP2P</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Registered with IANA [see <a href="">http://www.iana.org/assignments/media-types/video</a>] through <a href="https://www.ietf.org/rfc/rfc3555.txt">RFC 3555</a>; the four subtypes are glossed as "MPEG-1 or -2 Elementary Streams," "MPEG-2 Transport Streams," "MPEG-1 Systems Streams," and "MPEG-2 Program Streams" from <a href="https://www.ietf.org/">IETF</a> (Internet Engineering Task Force).</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000028">MPEG-2 Video Encoding (H.262)</fddLink>
+				</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Uniform Type Identifier (Mac OS)</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+					<fdd:note>Some resources including Wikipedia and PRONOM list UTI types for MPEG-PS such as public.mpeg and public.mpeg-2-video but this is more general and not specific to MPEG-PS. See <fddLink id="fdd000028">MPEG-2 Video Encoding (H.262)</fddLink>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00778</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.archives.gov/files/lod/dpframework/id/NF00778.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00778.ttl</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>x-fmt/386</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/x-fmt/386">http://www.nationalarchives.gov.uk/PRONOM/x-fmt/386</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q922109</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q922109">https://www.wikidata.org/wiki/Q922109</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>See <fddLink id="fdd000028">MPEG-2 Video Encoding (H.262)</fddLink> and <fddLink id="fdd000335">MPEG-2 Encoding Family</fddLink>.</fdd:general>
+		<fdd:history>See <fddLink id="fdd000028">MPEG-2 Video Encoding (H.262)</fddLink> and <fddLink id="fdd000335">MPEG-2 Encoding Family</fddLink>.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000028">MPEG-2 Video Encoding (H.262)</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000335">MPEG-2 Encoding Family</fddLink>
+					</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.itu.int/rec/T-REC-H.222.0-202308-I/en</link>
+					<tag>ITU-T H.222.0: Information technology – Generic coding of
+moving pictures and associated audio
+information: Systems (2023)</tag>
+					<comment>Equivalent to ISO/IEC 13818-1. 2023 version is paywalled</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.itu.int/rec/T-REC-H.222.0-201808-S/en</link>
+					<tag>ITU-T H.222.0: Information technology – Generic coding of
+moving pictures and associated audio
+information: Systems (08/2018)</tag>
+					<comment>Equivalent to ISO/IEC 13818-1. 2018 version available at no cost.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.iso.org/obp/ui/en/#iso:std:iso-iec:13818:-1:ed-9:v1:ens</link>
+					<tag>ISO/IEC 13818-1:2023(en)
+Information technology — Generic coding of moving pictures and associated audio information — Part 1: Systems</tag>
+					<comment>Equivalent to ITU-T H.222.0. 2023 version is paywalled.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000028">MPEG-2 Video Encoding (H.262)</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000335">MPEG-2 Encoding Family</fddLink>
+					</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.ietf.org/rfc/rfc3555.txt</link>
+					<tag>RFC 3555: MIME Type Registration of RTP Payload Formats</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://archive.org/details/digital-video-and-hd-algorithms-and-interfaces-2nd-ed.-poynton-2012-02-07</link>
+					<tag>Digital Video and HD
+Algorithms and Interfaces. 2nd Ed, 2012. Charles Poynton</tag>
+					<comment>Link via Internet Archive</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.via-la.com/licensing-2/mpeg-2/</link>
+					<tag>Via LA: MPEG-2 Patent Portfolio License</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://pub.smpte.org/latest/eg43/eg0043-2009.pdf</link>
+					<tag>SMPTE EG 43:2009: System Implementation of
+CEA-708 and CEA-608
+Closed Captioning and
+Program-Related Data</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.w3.org/WAI/media/av/</link>
+					<tag>W3C Making Audio and Video Media Accessible</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Packetized_elementary_stream</link>
+					<tag>Wikipedia article on Packetized Elementary Stream (PES)</tag>
+					<comment>Consulted November 25, 2024.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/MPEG_program_stream</link>
+					<tag>Wikipedia article on MPEG Program Stream</tag>
+					<comment>Consulted December 5, 2024.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archives.gov/files/lod/dpframework/id/NF00778.ttl</link>
+					<tag>NARA File Format Preservation Plan ID entry for NF00778</tag>
+					<comment>Information in NARA File Format Preservation Plan ID about MPEG-2 Program Stream.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/pronom/x-fmt/386</link>
+					<tag>PRONOM entry for x-fmt/386</tag>
+					<comment>Information in PRONOM from UK National Archives about MPEG-2 Program Stream. PUID: x-fmt/386.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q922109</link>
+					<tag>Wikidata entry for Q922109</tag>
+					<comment>Information in Wikidata about H.262/MPEG-2 Part 2 . Wikidata Title ID: Q922109.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
