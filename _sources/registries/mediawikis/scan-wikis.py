@@ -92,6 +92,8 @@ def month_diff(d1, d2):
 # Process the arguments:
 pywikibot.handleArgs()
 
+FIRST_TEXT_SIZE = 256
+
 def enumerate_ff_formats(site):
     template = pywikibot.Page(site,"Template:FormatInfo")
     source = {}
@@ -117,47 +119,74 @@ def enumerate_ff_formats(site):
         # Pick out the useful data:
         fmt = {}
         fmt['name'] = page.title()
-        fmt['source'] = page.title(asUrl=True)
-        fmt["extensions"] = []
-        fmt["mimetypes"] = []
-        fmt["pronom"] = []
-        fmt["fdd"] = []
-        fmt["egff"] = []
-        fmt["uti"] = []
+        fmt['source'] = page.title(as_url=True)
+        fmt['pageStartText'] = page.text
+        # String Macros:
+        fmt['pageStartText'] = re.sub('\{\{.*\}\}', '', fmt['pageStartText'], flags=re.DOTALL)
+        fmt['pageStartText'] = re.sub('\s+', ' ', fmt['pageStartText'], flags=re.MULTILINE).strip()
+        # Trim:
+        if len(fmt['pageStartText']) > FIRST_TEXT_SIZE:
+            fmt['pageStartText'] = fmt['pageStartText'][:FIRST_TEXT_SIZE] + '...'
+
+        def add_ar(fmt, key, values):
+            for param in values:
+                fmt[key] = fmt.get(key, [])
+                fmt[key].append(param)
+
         for t in page.templatesWithParams():
             if t[0].title() == "Template:Ext":
-                for param in t[1]:
-                    fmt["extensions"].append(param)
+                add_ar(fmt, 'extensions', t[1])
                 total_w_extension += 1
+
             elif t[0].title() == "Template:Mimetype":
-                for param in t[1]:
-                    fmt["mimetypes"].append(param)
+                add_ar(fmt, 'mimetypes', t[1])
                 total_w_mimetype += 1
+
             elif t[0].title() == "Template:PRONOM":
-                for param in t[1]:
-                    fmt["pronom"].append(param)
+                add_ar(fmt, 'pronom', t[1])
                 total_w_pronom += 1
+
             elif t[0].title() == "Template:LoCFDD":
-                for param in t[1]:
-                    fmt["fdd"].append(param)
+                add_ar(fmt, 'fdd', t[1])
                 total_w_fdd += 1
+
             elif t[0].title() == "Template:EGFF":
-                for param in t[1]:
-                    fmt["egff"].append(param)
+                add_ar(fmt, 'egff', t[1])
                 total_w_egff += 1
+
             elif t[0].title() == "Template:UTI":
-                for param in t[1]:
-                    fmt["uti"].append(param)
+                add_ar(fmt, 'uti', t[1])
                 total_w_uti += 1
+            
             elif t[0].title() == "Template:FormatInfo":
                 for param in t[1]:
                     if param.startswith('released='):
                         fmt["released"] = param.replace('released=','').strip()
+
+            elif t[0].title() == "Template:Magic":
+                fmt['hasMagic'] = True
+                add_ar(fmt, 'magic', t[1])
+            
+            elif t[0].title() == "Template:Type Code":
+                add_ar(fmt, 'TypeCode', t[1])
+            
+            elif t[0].title() == "Template:DexvertSamples":
+                add_ar(fmt, 'DexvertSamples', t[1])
+            
+            elif t[0].title() == "Template:CdTextfiles":
+                add_ar(fmt, 'CdTextfiles', t[1])
+            
+            elif t[0].title() == "Template:Wikidata":
+                add_ar(fmt, 'wikidata', t[1])
+            
+            elif t[0].title() == "Template:SACFTPURL":
+                add_ar(fmt, 'SACFTPURL', t[1])
             else:
                 print("Unrecognised template: "+str(t))
         total_formats += 1
         if total_formats % 20 == 0:
             print("Processed %s format pages..." % total_formats)
+            # For debugging:
             #break
         formats.append(fmt)
 
