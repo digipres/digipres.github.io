@@ -133,6 +133,11 @@ def enumerate_ff_formats(site):
                 fmt[key] = fmt.get(key, [])
                 fmt[key].append(param)
 
+        # Store the categories:
+        for cat in page.categories():
+            add_ar(fmt, 'categories', [cat.title().replace('Category:','')])
+
+        # Loop through templates:
         for t in page.templatesWithParams():
             if t[0].title() == "Template:Ext":
                 add_ar(fmt, 'extensions', t[1])
