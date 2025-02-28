@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000505" titleName="STL (STereoLithography) File Format, Binary" shortName="STL_binary" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000505" titleName="STL (STereoLithography) File Format, Binary" shortName="STL_binary" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>model</fdd:gdfrGenre>
@@ -13,7 +13,7 @@
 		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
 		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2019-09-17</fdd:date>
+			<fdd:date>2025-02-25</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Preliminary</fdd:draftStatus>
 	</fdd:properties>
@@ -29,7 +29,7 @@
 			<p>The original specification for STL had no support for color; however, attempts have been made to extend the binary variant of STL to specify colors for triangles.  The Wikipedia entry for the STL file format has a section with heading <a href="https://en.wikipedia.org/wiki/STL_(file_format)#Color_in_binary_STL">Color in binary STL</a>.  It describes two conventions that employ the two <i>attribute byte count</i> bytes at the end of every triangle to encode the color for the triangle.  Unfortunately, the convention reported as in use in VisCAM and SolidView software uses a different order for the red, blue, and green color components than the convention reported as used by the <a href="">Materialise Magics</a> 3D printing products and services.  There is no way to determine automatically which convention has been used.  Judging from questions asked on online forums related to 3D printing, color in STL files is a source of frustration.  Responses usually recommend using a format that has a standardized method for encoding colors.  See <a href="#useful">Useful References</a> below for a selection of other resources that mention the two options for color support in STL_binary.</p>
 			<p>Compared with more recent formats for 3D models, STL has limited functionality.   See <fddLink id="fdd000504">STL_family</fddLink> for information on shortcomings of the STL format that apply to both variants of the STL file format.</p>
 		</fdd:description>
-		<fdd:shortDescription>an openly documented binary format for describing an object as a triangular mesh, i.e., as a representation of a 3-dimensional surface geometry in triangular facets.  Each facet is described by a perpendicular (normal) direction and three points representing the vertices (corners) of the , triangle.  The STL format was developed for stereolithography, a form of 3D printing, in the late 1980s.  In 2019, it is still widely used for 3D printing and rapid prototyping.</fdd:shortDescription>
+		<fdd:shortDescription>STL_binary an openly documented binary format for describing an object as a triangular mesh, i.e., as a representation of a 3-dimensional surface geometry in triangular facets.  Each facet is described by a perpendicular (normal) direction and three points representing the vertices (corners) of the , triangle.  The STL format was developed for stereolithography, a form of 3D printing, in the late 1980s.  In 2019, it is still widely used for 3D printing and rapid prototyping.</fdd:shortDescription>
 		<fdd:productionPhase>See <fddLink id="fdd000504">STL_family</fddLink>.</fdd:productionPhase>
 		<fdd:relationships>
 			<fdd:relationship>
@@ -71,7 +71,11 @@
 			<p>Files in the STL_binary format cannot be usefully studied or manipulated with a text editor.  However, software to read and write its very simple structure would be straightforward to develop, for example, by taking advantage of the formal <a href="http://formats.kaitai.io/stl/index.html">specification of the .stl file format</a> in the Kaitai Struct language, which can be used to generate a parsing libary in a variety of programming languages.</p>
 			<p>Unfortunately, as shown in <a href="https://doi.org/10.1016/S0895-7177(03)90079-3">Analysis of STL files</a> by M. Szilvśi-Nagy and Gy. Mátyási in 2003, the surface tessellation performed in CAD modelling software &quot;frequently ends with errors in the [STL] data structure as gaps and holes leading to open loops in the cross-sections that cannot be manufactured as layers.&quot;  Although an STL_binary file may be easy to read or manipulate as a sequence of numbers, that does not mean that it can be used for 3D printing without using a more sophisticated software tool to check the file and repair it if needed. There are many tools that offer to repair STL files; see <a href="https://all3dp.com/1/stl-repair-stl-file-online-checker-fix-3d-model/">18 Best STL Repair Software Tools in 2019</a>.</p>
 		</fdd:transparency>
-		<fdd:selfDocumentation>The format provides no standard support for descriptive metadata. The format begins with an 80 character line that is sometimes used for a textual description of the model and its context.</fdd:selfDocumentation>
+		<fdd:selfDocumentation><p>The format provides no standard support for descriptive metadata. The format begins with an 80 character line that is sometimes used for a textual description of the model and its context.</p> <p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>Accessibility features for 3D model formats include audio descriptions for screen readers to enable user interactivity events such as object selection, rotation and zoom, alt text for image forms, color contrast definition as well as caption and subtitle support. STL_binary has no known direct support for accessibility or assistive technology although it may depend on implementation and software features. <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:selfDocumentation>
 		<fdd:externalDependencies>None</fdd:externalDependencies>
 		<fdd:techProtection>None</fdd:techProtection>
 	</fdd:sustainabilityFactors>
@@ -110,6 +114,13 @@
 				</fdd:sigValues>
 				<fdd:note>model/stl was registered as an Internet media type in March 2018 with IANA on behalf of the <a href="https://www.dicomstandard.org/current/">Digital Imaging and Communications in Medicine (DICOM) Standards Committee</a> in preparation of <a href="https://www.dicomstandard.org/News/ftsup/docs/sups/sup205.pdf">Supplement 205: DICOM Encapsulation of STL Models for 3D Manufacturing</a>.  See <a href="https://www.iana.org/assignments/media-types/model/stl">https://www.iana.org/assignments/media-types/model/stl</a>. Prior to that, application/sla had been used by <a href="https://reference.wolfram.com/language/ref/format/STL.html">Wolfram</a> for Mathematica and other products.  Both media types apply to both ASCII and binary versions of STL.</fdd:note>
 			</fdd:internetMediaType>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>NARA File Format Preservation Plan ID has no corresponding entry as of February 2025.</fdd:note>
+				</fdd:values>
+			</fdd:other>
 			<fdd:other>
 				<fdd:tag>Pronom PUID</fdd:tag>
 				<fdd:values>

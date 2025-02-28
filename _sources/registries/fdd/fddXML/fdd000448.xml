@@ -2,7 +2,12 @@
 <fdd:FDD id="fdd000448" titleName="STEP-file,  ISO 10303-21" shortName="STEP-file" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
-			<fdd:gdfrGenre>text</fdd:gdfrGenre>
+			<fdd:gdfrGenreAndSubgenres>
+				<fdd:gdfrGenre>model</fdd:gdfrGenre>
+				<fdd:gdfrSubgenres>
+					<fdd:gdfrSubgenre>text</fdd:gdfrSubgenre>
+				</fdd:gdfrSubgenres>
+			</fdd:gdfrGenreAndSubgenres>
 		</fdd:gdfrGenreSelection>
 		<fdd:formatCategories>
 			<fdd:category>file-format</fdd:category>
@@ -16,7 +21,7 @@
 			</fdd:gdfrDomain>
 		</fdd:gdfrDomains>
 		<fdd:updates>
-			<fdd:date>2023-03-29</fdd:date>
+			<fdd:date>2025-02-25</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Preliminary</fdd:draftStatus>
 	</fdd:properties>
@@ -105,7 +110,13 @@ Questions about STEP application protocols</a> and <a href="https://en.wikipedia
 		<fdd:transparency>
 			<p>STEP-file is a plain text format.  Document files are easily viewed with basic text editing tools.  However, entity names in the file consist of digits (preceded by &quot;#&quot;) rather than using human-readable tags and parent-child relationships between entities are not obvious.  To understand the content, a viewer that can relate the STEP-file to its schema(s) is more effective.</p>
 		</fdd:transparency>
-		<fdd:selfDocumentation>This format is designed to represent models specified in the EXPRESS language defined in ISO 10303-11 and a file will include the technical and structural metadata required to ingest the instance into a system that supports such models in general or instances of a specific model.  Such models may incorporate elements and structures for descriptive and contextual metadata.</fdd:selfDocumentation>
+		<fdd:selfDocumentation>
+			<p>This format is designed to represent models specified in the EXPRESS language defined in ISO 10303-11 and a file will include the technical and structural metadata required to ingest the instance into a system that supports such models in general or instances of a specific model.  Such models may incorporate elements and structures for descriptive and contextual metadata</p>.
+<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>Accessibility features for 3D model formats include audio descriptions for screen readers to enable user interactivity events such as object selection, rotation and zoom, alt text for image forms, color contrast definition as well as caption and subtitle support. Depending on implementation, STEP has the capacity for good accessibility support. The data is stored as plain text which makes it more available to translate for screen readers. STEP files can incorporate metadata like annotations and product specifications, allowing designers to include important information about the design that can be accessed by users with assistive technologies. In addition, STEP's focus on interoperability is a benefit because the information is shared among different software applications which may have increased accessibility features. One example of this is NIST's <a href="https://www.nist.gov/services-resources/software/step-file-analyzer-and-viewer">STEP File Analyzer and Viewer</a> which includes the functionality to export STEP data to a spreadsheet.  "A spreadsheet simplifies analyzing information from the STEP file at an entity and attribute level. In a spreadsheet, each entity type is a worksheet and each row is an entity instance where the columns are the entity attributes." </p>
+		</fdd:selfDocumentation>
 		<fdd:externalDependencies>Software that can relate a STEP-file instance to its EXPRESS schema is essential for full validation and interpretation.</fdd:externalDependencies>
 		<fdd:techProtection>This format does not support encryption or digital rights management. Digital signatures can be included to verify content and validate the credentials of the signer.</fdd:techProtection>
 	</fdd:sustainabilityFactors>
@@ -145,6 +156,15 @@ Questions about STEP application protocols</a> and <a href="https://en.wikipedia
 				</fdd:sigValues>
 				<fdd:note>From PRONOM  [<a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/698">http://www.nationalarchives.gov.uk/PRONOM/fmt/698</a>]. </fdd:note>
 			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00409</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.archives.gov/files/lod/dpframework/id/NF00409.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00409.ttl</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
 			<fdd:other>
 				<fdd:tag>Pronom PUID</fdd:tag>
 				<fdd:values>
@@ -424,6 +444,19 @@ Electronics Product Design and Life Cycle Support</tag>
 					<link>http://xml.coverpages.org/stepExpressXML.html</link>
 					<tag>STEP/EXPRESS and XML</tag>
 					<comment>2002 progress report on standardization leading to STEP-XML specification.  Most links are now bad.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.nist.gov/services-resources/software/step-file-analyzer-and-viewer</link>
+					<tag>NIST: STEP File Analyzer and Viewer</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archives.gov/files/lod/dpframework/id/NF00409.ttl</link>
+					<tag>NARA File Format Preservation Plan ID entry for NF00409</tag>
+					<comment>Information in NARA File Format Preservation Plan ID about Standard for the Exchange of Product Model Data (STEP).</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
