@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000247" titleName="OpenDocument Format (ODF) Family, OASIS and ISO/IEC 26300" shortName="ODF_family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000247" titleName="OpenDocument Format (ODF) Family, OASIS and ISO/IEC 26300" shortName="ODF_family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenres>
@@ -23,7 +23,7 @@
 			</fdd:gdfrDomain>
 		</fdd:gdfrDomains>
 		<fdd:updates>
-			<fdd:date>2020-12-09</fdd:date>
+			<fdd:date>2025-03-31</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -212,7 +212,6 @@ and <a href="https://www.softmaker.com/en/softmaker-office">SoftMaker Office</a>
 			<p>A sampling of support and categorization by archival institutions follows:</p>
 			<ul>
 				<li>U.S. National Archives <a href="http://www.archives.gov/records-mgmt/policy/transfer-guidance-tables.html#textualdata">lists</a> ODF 1.0 as Recommended.</li>
-				<li>Neither the <a href="http://deepblue.lib.umich.edu/static/about/deepbluepreservation.html">University of Michigan: Deep Blue Preservation and Format Support Policy</a> nor <a href="http://libguides.mit.edu/c.php?g=176372&amp;p=1158986">DSpace@MIT: Format Support</a> list ODF specifically, but files in XML with accompanying schema are supported in both repositories.</li>
 				<li>
 					<a href="https://web.archive.org/web/20161107185755/http://www.arkivverket.no/eng/Public-Sector/Regulations/Transfer-of-electronic-records">Provisions concerning transfer of electronic records to the National Archives of Norway</a> in 2007 also treated ODF in the same way as other XML-based documents and required the transmission of the associated schema.</li>
 				<li>
@@ -238,6 +237,10 @@ and <a href="https://www.softmaker.com/en/softmaker-office">SoftMaker Office</a>
 			</ul>
 			<p>The pre-defined elements are all optional and repeatable.  However, applications are not required to update multiple occurrences in a specific way to reflect modifications to a document.</p>
 			<p>In addition to pre-defined elements, ODF 1.0/1.1 specified markup to allow addition user-defined elements to be expressed by name and value. ODF 1.0/1.1 also provided a mechanism for custom metadata, by indicating that all content in an <i>office:meta</i> element should be preserved.  In ODF 1.2, the earlier mechanism for custom metadata was deprecated in favor of using new markup specified for incorporating RDF-based metadata.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>Depending on implementation, ODF formats have good capacity for accessibility support. <a href="https://docs.oasis-open.org/office/office-accessibility/v1.0/cs01/ODF_Accessibility_Guidelines-v1.0.pdf">Open Document Format v1.1: Accessibility Guidelines Version 1.0</a> describes the specifics including two types of access: direct (in which a user can interact directly with the content) and mediated (in which a user might use assistive technology such as a screen reader or some other tool). The goal of this document is to "describe the things that an ODF 1.1 implementation must do in order to gain, persist, and present all of the information that ODF 1.1 is capable of persisting, so that users with disabilities are equally able to read, create, and edit documents – with full access to all of the meaning and intent..." It goes on to describe "The ODF v1.1 specification includes many optional elements that are critical for document content accessibility. For example; Optional image text and descriptions, Headings for tables, and Logical navigation order for objects in a draw layer."</p>
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>Depends on files contained in the package.</fdd:externalDependencies>
 		<fdd:techProtection>Encryption is supported for files within an ODF package.  In addition, an ODF package file may be encrypted during interchange or as part of DRM controlling distribution.</fdd:techProtection>
@@ -258,7 +261,7 @@ and <a href="https://www.softmaker.com/en/softmaker-office">SoftMaker Office</a>
 			</fdd:filenameExtension>
 			<fdd:internetMediaType>
 				<fdd:sigValueNA>See note.</fdd:sigValueNA>
-				<fdd:note>ODF package files use MIME types appropriate to the type of document packaged, using the pattern <i>application/vnd.oasis.opendocument.</i>xxxxx.  The registered MIME types are listed in <a href="https://docs.oasis-open.org/office/OpenDocument/v1.3/cs02/part3-schema/OpenDocument-v1.3-cs02-part3-schema.html#__RefHeading__1420388_253892949">Annex C</a> of the ODF 1.3 specification. For example, the MIME type for an ODF text document is <i>application/vnd.oasis.opendocument.text</i>.  See <fddLink id="fdd000428">ODF_text_1_2</fddLink>.  The MIME type for a Flat ODF file is found in an attribute for the top-level <i>&lt;office:document&gt;</i> element.</fdd:note>
+				<fdd:note>ODF package files use MIME types appropriate to the type of document packaged, using the pattern <i>application/vnd.oasis.opendocument</i>.xxxxx.  The registered MIME types are listed in <a href="https://docs.oasis-open.org/office/OpenDocument/v1.3/cs02/part3-schema/OpenDocument-v1.3-cs02-part3-schema.html#__RefHeading__1420388_253892949">Annex C</a> of the ODF 1.3 specification. For example, the MIME type for an ODF text document is <i>application/vnd.oasis.opendocument.text</i>.  See <fddLink id="fdd000428">ODF_text_1_2</fddLink>.  The MIME type for a Flat ODF file is found in an attribute for the top-level <i>&lt;office:document&gt;</i> element.</fdd:note>
 			</fdd:internetMediaType>
 			<fdd:magicNumbers>
 				<fdd:sigValueNA>See related format.</fdd:sigValueNA>

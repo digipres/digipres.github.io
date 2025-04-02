@@ -17,7 +17,7 @@
 			</fdd:gdfrDomain>
 		</fdd:gdfrDomains>
 		<fdd:updates>
-			<fdd:date>2014-08-29</fdd:date>
+			<fdd:date>2025-03-31</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -173,7 +173,7 @@ Conventions.</i>  Latest version (2012 as of February 2017) is available from <a
 			<p>OPC/OOXML_2012 was originally developed by Microsoft as a container format for documents produced by its Office products.  Since Office 2007, the default formats for word-processing, presentations, and spreadsheets (.docx, .pptx, .xslx, respectively) have been OPC packages.  In addition OPC is the basis from some other Microsoft package formats, including <fddLink id="fdd000514">MS-XPS</fddLink>, Microsoft&apos;s XML Paper Specification (.xps), later modified and standardized as <fddLink id="fdd000513">OpenXPS</fddLink>, ECMA-388, Open XML Paper Specification (using .oxps as extension) and the Visio <fddLink id="fdd000021">VSDX</fddLink> format (using .vsdx as an extension). The current .dwfx format for AutoCAD Design Web Format files designed for distributing fixed versions of design drawings and supplemental materials for review is based on OPC and compatible with XPS.  Another use of OPC is as the package format for SMPTE&apos;s <i>Media Package for Storage Distribution and Playback of Multimedia File Sets and Internet Resources</i> (<a href="https://ieeexplore.ieee.org/document/7290858">ST 2053:2011</a>). The compilers of this resource have been unable to determine how the SMPTE package is being used.  <a href="../contact_format.shtml">Comments welcome</a>. See <a href="https://en.wikipedia.org/wiki/Open_Packaging_Conventions">Open Packaging Conventions page on Wikipedia</a> for a fuller list of formats based on OPC.</p>
 			<p>Windows includes two different libraries for handling OPC containers: a COM-based API and a managed .NET-based API.  In addition, most ZIP tools will unpack an OPC container if the file extension is changed to <i>.zip</i>.</p>
 			<p>An open source platform-independent library, <a href="http://www.ericwhite.com/blog/libopc-open-packaging-convention/">libopc</a>, using the C programming language, was <a href="https://docs.microsoft.com/en-us/archive/blogs/dmahugh/libopc-version-0-0-1-released">released in 2011</a>.  Libopc comes with command line tools <i>opc_dump</i> and <i>opc_extract</i> which will, respectively,
-dump the structure of an OPC container and extract parts from an OPC container.  Libopc also handles MCE (Markup Compatibility and Extensibility), another part of the OOXML standard that may be employed to support extensions to XML-based formats using the OPC container as a basis.  Source code for libopc is available at <a href="https://github.com/freuter/libopc">Github</a>.  See <a href="#useful">Useful References</a> below for more information about libopc.</p>
+dump the structure of an OPC container and extract parts from an OPC container.  Libopc also handles MCE (Markup Compatibility and Extensibility), another part of the OOXML standard that may be employed to support extensions to XML-based formats using the OPC container as a basis.  Source code for libopc is available at <a href="https://github.com/freuter/libopc">GitHub</a>.  See <a href="#useful">Useful References</a> below for more information about libopc.</p>
 			<p>In June 2014, Microsoft released the <a href="https://github.com/OfficeDev/Open-XML-SDK">Open XML SDK as open source</a>.  Among other capabilities, this SDK provides the ability to open OPC packages, extract parts, and construct new OPC packages.</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>The specification originated from Microsoft Corporation.  OPC/OOXML_2012 and future versions of ISO/IEC 29500-2 and ECMA-376 are covered by Microsoft&apos;s <a href="https://docs.microsoft.com/en-us/openspecs/dev_center/ms-devcentlp/1c24c7c8-28b0-4ce1-a47d-95fe1ff504bc">Open Specification Promise</a>, whereby Microsoft &quot;irrevocably promises&quot; not to assert any claims against those making, using, and selling conforming implementations of any specification covered by the promise (so long as those accepting the promise refrain from suing Microsoft for patent infringement in relation to Microsoft&apos;s implementation of the covered specification).</fdd:licensingAndPatents>
@@ -183,6 +183,10 @@ dump the structure of an OPC container and extract parts from an OPC container. 
 		<fdd:selfDocumentation>
 			<p>The built-in support for metadata is limited.  OPC has an optional part with the name Core Properties.  This part has fifteen elements, all optional and all non-repeatable.  Six are selected from the main Dublin Core Metadata Initiative (<a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/">DCMI</a>) set (title; creator; description; subject; identifier; language) and two from the supplementary dcterms vocabulary (created; modified).</p>
 			<p>Specifications that build on OPC to define more specific package formats can permit or require the inclusion of a richer metadata appropriate for a particular context.  For example, any XML-based metadata representation can easily be included as an OPC part to describe the package as a whole and given a relationship from the Core Properties part (as indicated in ISO/IEC 29500-2:2012, §11.3).  Some package specifications might define mechanisms for attaching descriptive or structural metadata to subsidiary content parts.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>There are no specific features to support accessibility but this may depend on subtype and implementation. <a href="https://support.microsoft.com/en-us/office/open-xml-formats-and-file-name-extensions-5200d93c-3449-4380-8e11-31ef14555b18">Open XML Formats and file name extensions</a> on Microsoft's Support states that "Many of the advanced features of Microsoft 365 require the document to be stored in the Open XML format. Things like AutoSave and the <a href="https://support.microsoft.com/en-us/office/improve-accessibility-with-the-accessibility-checker-a16f6de0-2f39-4a2b-8bd8-5ad801426c7f">Accessibility Checker</a>, for two examples, can only work on files that are stored in the modern Open XML format." As explained in <a href="https://support.microsoft.com/en-us/office/rules-for-the-accessibility-checker-651e08f2-0fc3-4e10-aaca-74b4a67101c1">Rules for the Accessibility Checker</a>, "the Accessibility Checker verifies your file against a set of rules that identify possible issues for people who have disabilities. Depending on how severe the issue is, the Accessibility Checker classifies each issue as an error, warning, or tip." This implies that the structure of OPC files supports screen readers and other assistive technologies. <a href="../contact_format.shtml">Comments welcome</a>. </p>
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>Depends on files/parts contained in the OPC package.</fdd:externalDependencies>
 		<fdd:techProtection>Encryption is not permitted within the OPC package.  However, an OPC container may be encrypted and some applications using this container format as the basis for a more specific format, may use encryption during interchange or DRM for distribution.</fdd:techProtection>
@@ -211,6 +215,23 @@ dump the structure of an OPC container and extract parts from an OPC container. 
 				<fdd:values>
 					<fdd:sigValueNA>See note.</fdd:sigValueNA>
 					<fdd:note>A file called <i>[Content_Types.xml]</i> and a folder called <i>_rels</i> are mandatory in the ZIP-based OPC container.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>NARA File Format Preservation Plan ID has no corresponding entry as of March 2025.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/189</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/189">http://www.nationalarchives.gov.uk/PRONOM/fmt/189</a>
+					</fdd:note>
 				</fdd:values>
 			</fdd:other>
 			<fdd:other>
@@ -417,6 +438,13 @@ Media Package for Storage, Distribution and Playback of Multimedia File Sets and
 					<link>http://knowledge.autodesk.com/sites/default/files/file_downloads/dwfx.readme.html</link>
 					<tag>AutoCAD DWFx Driver </tag>
 					<comment>The DWFx files can be viewed with the XPS viewer distributed with recent versions of Microsoft Windows</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/189</link>
+					<tag>PRONOM entry for fmt/189</tag>
+					<comment>Information in PRONOM from UK National Archives about Microsoft Office Open XML. PUID: fmt/189.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
