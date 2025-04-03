@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000644" titleName="PyTorch Serialized File Format" shortName="PyTorch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>other</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-bundle</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:updates>
+			<fdd:date>2025-04-02</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>PyTorch Serialized File Format</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>PyTorch, AI, artificial intelligence, ML, machine learning, software, Python, bundling formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>The PyTorch Serialized File Format is an uncompressed ZIP64 archive (as of PyTorch version 1.6.0) that is used to save the weights and biases of a trained PyTorch model to disk, along with other data. It is common convention to save PyTorch models using either .pt or .pth as the file extension, but not mandatory. The file within the archive that contains the model's weights and biases will have the file extension .pkl, having been <a href="https://docs.python.org/3/library/pickle.html">pickled/serialized</a> upon save.</p>
+			<p>PyTorch is an open-source, Python-based <a href="https://en.wikipedia.org/wiki/Deep_learning">deep learning</a> library based on the <a href="http://torch.ch/">Torch</a> library. According to Datacamp's <a href="https://www.datacamp.com/cheat-sheet/deep-learning-with-py-torch">Deep Learning with PyTorch Cheat Sheet</a>, PyTorch models are used for <a href="https://en.wikipedia.org/wiki/Neural_network_(machine_learning)">neural network development</a>, <a href="https://en.wikipedia.org/wiki/Natural_language_processing">natural language processing</a>, <a href="https://en.wikipedia.org/wiki/Computer_vision">computer vision</a>, and <a href="https://en.wikipedia.org/wiki/Reinforcement_learning">reinforcement learning</a>.</p>
+			<p>The PyTorch Serialized File Format is documented within the <a href="https://pytorch.org/docs/stable/index.html">PyTorch documentation</a>. A PyTorch model is saved to disk using the <a href="https://pytorch.org/tutorials/beginner/saving_loading_models.html">torch.save</a> function. This function uses Python's pickle utility to serialize the object that is passed to it. When saving a PyTorch model for inference, PyTorch recommends only saving the trained model's learned parameters (i.e., its weights and biases), which are found in its <i>state_dict</i>. <a href="https://pytorch.org/tutorials/beginner/saving_loading_models.html#what-is-a-state-dict">According to PyTorch</a>, a <i>state_dict</i> is &quot;a Python dictionary object that maps each layer to its parameter tensor. Note that only layers with learnable parameters (convolutional layers, linear layers, etc.) and registered buffers (batchnorm's running_mean) have entries in the model's <i>state_dict</i>.&quot;</p>
+			<p>Inside the archive, as described in PyTorch's <a href="https://pytorch.org/docs/stable/notes/serialization.html#serialized-file-format-for-torch-save">serialization semantics</a> documentation, is:</p>
+			<ul>
+				<li>A pickled/serialized version of the object that was passed to torch.save, such as a <i>state_dict</i> (excluding its storage objects, which are stored in the data directory)</li>
+				<li>A string with the sys.byteorder ("little" or "big") </li>
+				<li>A data directory containing a file for each storage in the object</li>
+				<li>Version number at save time</li>
+			</ul>
+			<p>
+				<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+			</p>
+		</fdd:description>
+		<fdd:shortDescription>The PyTorch Serialized File Format is an uncompressed ZIP64 archive (as of PyTorch version 1.6.0) that contains the weights and biases of the trained model in a serialized Python dictionary, along with other data. It is common convention to save PyTorch models using .pt or .pth as the file extension.</fdd:shortDescription>
+		<fdd:productionPhase> May be used at any lifecycle phase for saving PyTorch models.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:relatedTo/>
+				<fdd:comment>Serialized Python object, not described separately at this time.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>As of this writing in April 2025, the Library of Congress does not have PyTorch serialized files in its collections.</fdd:experience>
+		<fdd:preference>The Library of Congress has not yet expressed any format preference for preserving machine learning models.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>PyTorch is an open-source library with <a href="https://pytorch.org/docs/stable/index.html">documentation</a> available on the PyTorch website and code available on the <a href="https://github.com/pytorch/pytorch">PyTorch GitHub repository</a>.</fdd:disclosure>
+		<fdd:documentation>PyTorch documents its serialized file format for torch.save on the <a href="https://pytorch.org/docs/stable/notes/serialization.html">serialization semantics</a> page.</fdd:documentation>
+		<fdd:adoption>The <a href="https://pytorch.org/blog/PyTorchfoundation/">PyTorch blog</a> described PyTorch in 2022 as &quot;one of the primary platforms for AI research, as well as commercial production use.&quot; Also in 2022, <a href="https://www.theregister.com/2022/09/12/pytorch_meta_linux_foundation/">The Register</a> called PyTorch &quot;one of the major deep learning frameworks at the moment, the other being TensorFlow, developed by Google.&quot; A <a href="https://www.oreilly.com/content/when-two-trends-fuse-pytorch-and-recommender-systems/">2017 article from O'Reilly Media</a> credits the adoption of PyTorch &quot;to native Python-style imperative programming already familiar to researchers, data scientists, and developers of popular Python libraries such as NumPy and SciPy.&quot; <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>From the PyTorch <a href="https://github.com/pytorch/pytorch">GitHub repository</a>: &quot;PyTorch has a <a href="https://en.wikipedia.org/wiki/BSD_licenses">BSD-style license</a>, as found in the <a href="https://github.com/pytorch/pytorch/blob/main/LICENSE">LICENSE</a> file.&quot;</fdd:licensingAndPatents>
+		<fdd:transparency>The PyTorch Serialized File Format is not intended to be manually opened, but to be imported into a PyTorch module according to <a href="https://fileinfo.com/extension/pt">FileInfo.com</a>. See <a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000354.shtml">ZIP_PK</a> for more general information. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>PyTorch ZIP archives contain some metadata: a string with the sys.byteorder ("little" or "big") and a version number at save time that can be used at load time. See <a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000354.shtml">ZIP_PK</a> for more general information. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+			</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>The PyTorch Serialized File Format has no specific attributes to support accessibility. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+			</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>
+			<p>PyTorch can be installed on Windows, Mac, or Linux OS. Prerequisites for installation are outlined on the PyTorch <a href="https://pytorch.org/get-started/locally/">Get Started</a> page.</p>
+			<p>The PyTorch documentation on <a href="https://pytorch.org/tutorials/beginner/saving_loading_models.html">saving and loading models</a> recommends saving only the model's learnable parameters, which are stored in the <i>state_dict</i> object of the model's module, over saving complete model architecture and parameters. Saving the entire model is not recommended because it creates dependencies on the class definitions and directory structure used save time.</p>
+			<p>
+				<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+			</p>
+		</fdd:externalDependencies>
+		<fdd:techProtection>TBD</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:aggregateQF>
+			<fdd:compress>See <a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000354.shtml">ZIP_PK</a>.</fdd:compress>
+			<fdd:error>See <a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000354.shtml">ZIP_PK</a>.</fdd:error>
+			<fdd:beyondAGG>See <a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000354.shtml">ZIP_PK</a>.</fdd:beyondAGG>
+		</fdd:aggregateQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>pt</fdd:sigValue>
+					<fdd:sigValue>pth</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From PyTorch's <a href="https://pytorch.org/tutorials/beginner/saving_loading_models.html">Saving and Loading Models</a>: Use of these extensions is common convention when saving PyTorch models.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>NARA File Format Preservation Plan ID has no corresponding entry as of April 2025.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>PRONOM has no corresponding entry as of April 2025.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q47509047</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q47509047">https://www.wikidata.org/wiki/Q47509047</a> for PyTorch library.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>The two defining features of PyTorch, according to the PyTorch <a href="https://github.com/pytorch/pytorch">README</a> on GitHub, are &quot;tensor computation with strong GPU acceleration&quot; and &quot;deep neural networks built on a tape-based <a href="https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html">autograd</a> system.&quot;</p>
+			<p>From the PyTorch <a href="https://pytorch.org/tutorials/beginner/basics/tensorqs_tutorial.html">tutorial on tensors:</a> &quot;Tensors are a specialized data structure that are very similar to arrays and matrices. In PyTorch, we use tensors to encode the inputs and outputs of a model, as well as the model's parameters.&quot;</p>
+			<p>Tensors are passed through a neural network, which the PyTorch <a href="https://pytorch.org/tutorials/beginner/basics/buildmodel_tutorial.html">tutorial on building models</a> describes as a module that contains other modules nested within it. These layers of modules perform operations on the tensor data. Modules can have parameters, &quot;weights and biases that are optimized during training,&quot; which are also encoded as tensors.</p>
+		</fdd:general>
+		<fdd:history>PyTorch was originally developed by the Facebook AI Research (FAIR) team at Meta and first launched in 2017 according to the <a href="https://ai.meta.com/blog/fair-turns-five-what-weve-accomplished-and-where-were-headed/">FAIR blog</a>. Since September 2022, it has been governed, developed, and maintained by the <a href="https://pytorch.org/">PyTorch Foundation</a>, part of the Linux Foundation, per an announcement on the <a href="https://pytorch.org/blog/PyTorchfoundation/">PyTorch blog</a>. As of this writing in April 2025, PyTorch's latest stable release is <a href="https://pytorch.org/blog/unlocking-pt-2-6-intel/">version 2.6</a>.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://pytorch.org/docs/stable/index.html</link>
+					<tag>PyTorch documentation</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://pytorch.org/docs/stable/notes/serialization.html#serialized-file-format-for-torch-save</link>
+					<tag>Serialized file format for torch.save</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>PyTorch</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://pytorch.org/</link>
+							<tag>PyTorch Foundation</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://pytorch.org/tutorials/beginner/basics/buildmodel_tutorial.html</link>
+							<tag>Build the Neural Network, PyTorch tutorials</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html</link>
+							<tag>A Gentle Introduction to torch.autograd, PyTorch tutorials</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://pytorch.org/get-started/locally/</link>
+							<tag>Get Started</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/pytorch/pytorch</link>
+							<tag>pytorch GitHub</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://github.com/pytorch/pytorch/blob/main/LICENSE</link>
+							<tag>pytorch/LICENSE, GitHub</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://pytorch.org/blog/PyTorchfoundation/</link>
+							<tag>PyTorch strengthens its governance by joining the Linux Foundation, PyTorch blog</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://pytorch.org/tutorials/beginner/saving_loading_models.html</link>
+							<tag>Saving and Loading Models, PyTorch tutorials</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://pytorch.org/docs/stable/notes/serialization.html</link>
+							<tag>Serialization semantics, PyTorch documentation</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://pytorch.org/tutorials/beginner/basics/tensorqs_tutorial.html</link>
+							<tag>Tensors, PyTorch tutorials</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://pytorch.org/blog/unlocking-pt-2-6-intel/</link>
+							<tag>Unlocking the Latest Features in PyTorch 2.6 for Intel Platforms, PyTorch blog</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://filext.com/file-extension/PKL</link>
+					<tag>All about PKL Files, FILExt</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://medium.com/@manasnandmohan/comprehending-pth-files-the-backbone-of-pytorch-models-ef9b232e092a</link>
+					<tag>Comprehending .pth Files: The Backbone of PyTorch Models, Medium</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.datacamp.com/cheat-sheet/deep-learning-with-py-torch</link>
+					<tag>Deep Learning with PyTorch Cheat Sheet, DataCamp</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20170119223337/https:/www.infoworld.com/article/3159120/artificial-intelligence/facebook-brings-gpu-powered-machine-learning-to-python.html</link>
+					<tag>Facebook brings GPU-powered machine learning to Python, InfoWorld, </tag>
+					<comment>Available via Internet Archive.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://ai.meta.com/blog/fair-turns-five-what-weve-accomplished-and-where-were-headed/</link>
+					<tag>FAIR turns five: What we&apos;ve accomplished and where we&apos;re headed, Meta</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://wandb.ai/wandb/common-ml-errors/reports/How-to-save-and-load-models-in-PyTorch--VmlldzozMjg0MTE</link>
+					<tag>How to save and load models in PyTorch, Weights %26 Biases</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/trailofbits/ml-file-formats</link>
+					<tag>List of ML File Formats</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.datacamp.com/tutorial/nlp-with-pytorch-a-comprehensive-guide</link>
+					<tag>NLP with PyTorch: A Comprehensive Guide, DataCamp</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://filext.com/file-extension/PTH</link>
+					<tag>Opening PTH Files, FILExt</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://docs.python.org/3/library/pickle.html</link>
+					<tag>pickle — Python object serialization, Python</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://fileinfo.com/extension/pt</link>
+					<tag>.PT File Extension, FileInfo.com</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://fileinfo.com/extension/pth</link>
+					<tag>.PTH File Extension, FileInfo.com</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.theregister.com/2022/09/12/pytorch_meta_linux_foundation/</link>
+					<tag>PyTorch gets lit under The Linux Foundation, The Register</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://torch.ch/</link>
+					<tag>Torch</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.geeksforgeeks.org/understanding-file-extensions-in-pytorch-pt-pth-and-pwf/</link>
+					<tag>Understanding File Extensions in PyTorch: .pt, .pth, and .pwf, GeeksforGeeks</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://medium.com/@yulin_li/what-exactly-is-the-pth-file-9a487044a36b</link>
+					<tag>What exactly is the .pth file? Medium</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.oreilly.com/content/when-two-trends-fuse-pytorch-and-recommender-systems/</link>
+					<tag>When two trends fuse: PyTorch and recommender systems, O'Reilly Media</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.oreilly.com/radar/podcast/why-ai-and-machine-learning-researchers-are-beginning-to-embrace-pytorch/</link>
+					<tag>Why AI and machine learning researchers are beginning to embrace PyTorch, O'Reilly Media</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Wikipedia articles</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/PyTorch</link>
+							<tag>PyTorch</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/BSD_licenses</link>
+							<tag>BSD licenses</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Computer_vision</link>
+							<tag>Computer vision</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Deep_learning</link>
+							<tag>Deep learning</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Large_language_model</link>
+							<tag>Large language model</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Natural_language_processing</link>
+							<tag>Natural language processing</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Neural_network_(machine_learning)</link>
+							<tag>Neural network (machine learning)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Reinforcement_learning</link>
+							<tag>Reinforcement learning</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Serialization</link>
+							<tag>Serialization</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Tensor_(machine_learning)</link>
+							<tag>Tensor (machine learning)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Torch_(machine_learning)</link>
+							<tag>Torch (machine learning)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/ZIP_(file_format)</link>
+							<tag>ZIP (file format)</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q47509047</link>
+					<tag>Wikidata entry for Q47509047</tag>
+					<comment>Information in Wikidata about PyTorch. Wikidata Title ID: Q281876.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
