@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000246" titleName="Encapsulated PostScript (EPS) File Format, Version 3.x" shortName="EPS_3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000246" titleName="Encapsulated PostScript (EPS) File Format, Version 3.x" shortName="EPS_3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
@@ -12,7 +12,7 @@
 		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
 		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2022-05-10</fdd:date>
+			<fdd:date>2025-04-03</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Preliminary</fdd:draftStatus>
 	</fdd:properties>
@@ -63,7 +63,7 @@ must be present in the interpreter used for printing.</p>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
-		<fdd:experience>The Library of Congress has over 300,000 EPS files in its collections, many of which were previously acquired by the Prints and Photographs division in association with other content.  When permission has been given for online public access, EPS files have been converted to image formats compatible with the usual Library of Congress practices for delivering images on the web, namely <fddLink id="fdd000022">TIFF_6</fddLink> and <fddLink id="fdd000018">JPEG/JFIF</fddLink>.</fdd:experience>
+		<fdd:experience>As of 2025, the Library of Congress has over 1,000,000 EPS files in its collections, many of which were previously acquired by the Prints and Photographs division in association with other content.  When permission has been given for online public access, EPS files have been converted to image formats compatible with the usual Library of Congress practices for delivering images on the web, namely <fddLink id="fdd000022">TIFF_6</fddLink> and <fddLink id="fdd000018">JPEG/JFIF</fddLink>.</fdd:experience>
 		<fdd:preference>The Library of Congress Recommended Formats Statement (RFS) includes EPS as an acceptable format for <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html">vector and raster graphic images</a> and <a href="https://www.loc.gov/preservation/resources/rfs/design3D.html">2D and 3D Computer Aided Design raster and vector images</a>. The RFS does not specify a particular version of EPS.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
@@ -87,6 +87,11 @@ In a 2011 post in InDesignSecrets (now CreativePro.com), <a href="https://creati
 		<fdd:selfDocumentation>
 			<p>Certain pre-defined metadata elements can be supplied as PostScript comments, as specified in <a href="https://web.archive.org/web/20190126043023/https://www.adobe.com/content/dam/acom/en/devnet/actionscript/articles/5001.DSC_Spec.pdf">DSC (PostScript Language Document Structuring Conventions Specifications)</a>.  These are intended primarily for use by PostScript printing applications to manage workflow.  Three of the elements provide contextual metadata of broader use: %%Creator, to identify the creating application; %%Title, for a text title for the document; %%CreationDate, for a text date (in no particular form).  These comments are strongly recommended in the EPS specification.</p>
 			<p>The EPS specification provides no standard mechanism for incorporating rich descriptive or contextual metadata in an externally specified format.  However, some EPS files do contain XMP metadata.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>Accessibility for still image content is often supported by the use of alt text when displayed on the web. The carriage of this data is typically not embedded in the file itself but rather in the HTML code.  See W3C's <a href="https://www.w3.org/WAI/fundamentals/accessibility-principles/#alternatives">Text alternatives for non-text content</a> for more information.</p>
+			<p>Being a legacy format, EPS has no direct support for accessibility features. A common path is conversion to PDF or other formats with greater support options.</p>
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>None.</fdd:externalDependencies>
 		<fdd:techProtection>The EPS specification provides no support for encryption or other form of technical protection.</fdd:techProtection>
@@ -136,12 +141,30 @@ with each line of profile data beginning with a single percent sign followed by 
 				</fdd:values>
 			</fdd:other>
 			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00485</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.archives.gov/files/lod/dpframework/id/NF00485.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00485.ttl</a>. Note that NARA does not specify versions.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
 				<fdd:tag>Pronom PUID</fdd:tag>
 				<fdd:values>
 					<fdd:sigValues>
 						<fdd:sigValue>fmt/124</fdd:sigValue>
 					</fdd:sigValues>
 					<fdd:note>See <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/124">https://www.nationalarchives.gov.uk/PRONOM/fmt/124</a>. PRONOM has assigned PUIDs fmt/123 and fmt 122 for earlier versions of EPS.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q1047541</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q1047541">https://www.wikidata.org/wiki/Q1047541</a>. Note that Wikidata does not specify versions.</fdd:note>
 				</fdd:values>
 			</fdd:other>
 		</fdd:signifiersGroup>
@@ -436,6 +459,13 @@ the last one via (automatic) conversion to PDF when pdflatex or lualatex are use
 						</fdd:urlReference>
 					</fdd:urlList>
 				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archives.gov/files/lod/dpframework/id/NF00485.ttl</link>
+					<tag>NARA File Format Preservation Plan ID entry for NF00485</tag>
+					<comment>Information in NARA File Format Preservation Plan ID about Encapsulated PostScript (EPS).</comment>
+				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlGroup>

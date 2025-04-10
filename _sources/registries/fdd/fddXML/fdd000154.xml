@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fdd:FDD id="fdd000154" titleName="JPEG 2000 Part 2 (Extensions) jpf (jpx) File Format" shortName="JPX_FF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-1.xsd">
+<fdd:FDD id="fdd000154" titleName="JPEG 2000 Part 2 (Extensions) jpf (jpx) File Format" shortName="JPX_FF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
@@ -36,6 +36,14 @@
 		<fdd:shortDescription>Wrapper developed by the Joint Photographic Experts Group (JPEG) for still images using JPEG 2000 extended encoding for digital still images, as well as other encodings.  JPX_FF images may be compatible with the JP2 reader specification (backwards compatible), thereby maximizing interoperability, or they may 'completely defined' by the extensions in Part 2 of the standard and thus not compatible with JP2 readers.</fdd:shortDescription>
 		<fdd:productionPhase>May be used for content in initial, middle, and final states.</fdd:productionPhase>
 		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Extension of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000143</fdd:id>
+					<fdd:shortName>JP2_FF</fdd:shortName>
+					<fdd:titleName>JPEG 2000 Part 1 (Core) jp2 File Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
 				<fdd:relatedTo>
@@ -116,7 +124,7 @@
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
-		<fdd:experience>None</fdd:experience>
+		<fdd:experience>The Library of Congress has as small number of JPEG2000 Part 2 files in its varied collections.</fdd:experience>
 		<fdd:preference> The Library of Congress Recommended Formats Statement (RFS) includes JPEG2000 Part 2 as an acceptable format for <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html">photographs in digital form</a>, <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html">other graphic images in digital form</a> and <a href="https://www.loc.gov/preservation/resources/rfs/design3D.html">2D and 3D Computer Aided Design raster images</a>.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
@@ -128,8 +136,15 @@
 		</fdd:licensingAndPatents>
 		<fdd:transparency>See <fddLink id="fdd000141">J2K_EXT</fddLink>
 		</fdd:transparency>
-		<fdd:selfDocumentation>All JPEG 2000 files are made up of "boxes," as described in the <a href="#notes">Notes</a> below, including an XML box typically used for metadata.  Regarding JPX_FF, Annex N of Part 2 of the specification provides detail about metadata and offers but does not require a specification based on <a href="http://xml.coverpages.org/dig35.html">DIG35</a> elements. This metadata specification includes four broad metadata categories: (1) image creation ("how," e.g., about the camera), (2) content description ("who," "what," "when," and "where"), (3) history ("how the image got to its present state," i.e., <i>provenance</i> metadata in the digital library lexicon), and (4) intellectual property rights (IPR) metadata (which may be used in conjunction with technological protection systems).  Additional boxes inherited from <a href="fdd000143.shtml">JP2_FF</a> include one for a unique identifier for the image or identifier-references to other digital objects, e.g., a UUID, and another for IPR metadata, possibly redundant with that included in the XML box.
-Support for georeferencing is provided via the GML in JPEG 2000 for Geographic Imagery (<fddLink id="fdd000303">GMLJP2</fddLink>) specification from the Open Geospatial Consortium (OGC).</fdd:selfDocumentation>
+		<fdd:selfDocumentation>
+			<p>All JPEG 2000 files are made up of "boxes," as described in the <a href="#notes">Notes</a> below, including an XML box typically used for metadata.  Regarding JPX_FF, Annex N of Part 2 of the specification provides detail about metadata and offers but does not require a specification based on <a href="http://xml.coverpages.org/dig35.html">DIG35</a> elements. This metadata specification includes four broad metadata categories: (1) image creation ("how," e.g., about the camera), (2) content description ("who," "what," "when," and "where"), (3) history ("how the image got to its present state," i.e., <i>provenance</i> metadata in the digital library lexicon), and (4) intellectual property rights (IPR) metadata (which may be used in conjunction with technological protection systems).  Additional boxes inherited from <a href="fdd000143.shtml">JP2_FF</a> include one for a unique identifier for the image or identifier-references to other digital objects, e.g., a UUID, and another for IPR metadata, possibly redundant with that included in the XML box.
+Support for georeferencing is provided via the GML in JPEG 2000 for Geographic Imagery (<fddLink id="fdd000303">GMLJP2</fddLink>) specification from the Open Geospatial Consortium (OGC).</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>Accessibility for still image content is often supported by the use of alt text when displayed on the web. The carriage of this data is typically not embedded in the file itself but rather in the HTML code. See W3C's <a href="https://www.w3.org/WAI/tutorials/images/">Images Tutorial</a> for the Web Accessibility Initiative.</p>
+			<p>Like all JPEG 2000 file formats does not have specific features for accessibility support but its embedded metadata may be helpful. As stated in Adobe's<a href="https://www.adobe.com/creativecloud/file-types/image/raster/jpeg-2000-file.html">JPEG 2000 files</a>, many web browsers and photo-sharing websites don’t support the JPEG 2000 format so the format is often migrated to another more HTML-friendly format for online access. </p>
+		</fdd:selfDocumentation>
 		<fdd:externalDependencies>None</fdd:externalDependencies>
 		<fdd:techProtection>Like all JPEG 2000 file formats, JPX_FF provides an IPR box for rights management information that may be used as inputs to access management systems. The IPR metadata expressed in the XML box may be redundant.</fdd:techProtection>
 	</fdd:sustainabilityFactors>
@@ -204,6 +219,15 @@ Support for georeferencing is provided via the GML in JPEG 2000 for Geographic I
 				</fdd:values>
 			</fdd:other>
 			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00219</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.archives.gov/files/lod/dpframework/id/NF00219.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00219.ttl</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
 				<fdd:tag>Pronom PUID</fdd:tag>
 				<fdd:values>
 					<fdd:sigValues>
@@ -237,6 +261,8 @@ Support for georeferencing is provided via the GML in JPEG 2000 for Geographic I
 			<p>The family is descended from <fddLink id="fdd000052">QuickTime</fddLink>.  This lineage is shared with <fddLink id="fdd000079">ISO_BMFF</fddLink> and its offshoots, which include <fddLink id="fdd000155">MP4_FF_2</fddLink>, <fddLink id="fdd000137">MP4_FF_AVCE</fddLink>, and <fddLink id="fdd000127">MJ2_FF</fddLink>, itself a wrapper for JPEG 2000 core-encoded images that represent sets of film or video frames.</p>
 			<p>From <i>Guide to the Practical Implementation of JPEG 2000</i>, cited in <a href="#useful">Useful references</a> below: "JP2 was designed to be inherently extensible. The extended file formats that are defined in later parts of the standard all incorporate a degree of backwards-compatibility with JP2: for each extended format it is possible to construct extended files that also conform to JP2. (A JP2 reader would ignore any extensions that it did not understand.) Thus, the definition of JP2 in Part 1 can also be considered an implicit definition of an architecture known informally as the &apos;JP family&apos; . . . .  A JP family file is a sequence of &apos;boxes&apos;. [These are called <i>atoms</i> in the QuickTime specification. -- <i>ed</i>]  A box consists of a 4-byte length field followed by a 4-byte type field followed by the content of the box. The content is defined for each box type and may include boxes. A box whose content consists only of boxes is called a superbox. There are two special values of the length field. A value of zero means that the box extends to the end of the file. A value of 1 means that the true length of the box follows the type field (before the content) in an 8-byte extended length field; this permits boxes up to (2<sup>64</sup> - 1) bytes in length. The length includes the whole box from the start of the length field to the end of the content."</p>
 		</fdd:general>
+		<fdd:history> The specification has had several revisions since this original research reflected in this description. 
+			<a href="https://www.iso.org/standard/33160.html">ISO/IEC 15444-2:2004</a> with withdrawn and replaced by <a href="https://www.iso.org/standard/81547.html">ISO/IEC 15444-2:2021</a> which was itself withdrawn and replaced by <a href="https://www.iso.org/standard/84573.html">ISO/IEC 15444-2:2024</a>.  </fdd:history>
 	</fdd:notes>
 	<fdd:formatSpecifications>
 		<fdd:citations>
@@ -262,6 +288,13 @@ Support for georeferencing is provided via the GML in JPEG 2000 for Geographic I
 				<fdd:urlReference>
 					<link>http://xml.coverpages.org/dig35.html</link>
 					<tag>DIG35 metadata information</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archives.gov/files/lod/dpframework/id/NF00219.ttl</link>
+					<tag>NARA File Format Preservation Plan ID entry for NF00219</tag>
+					<comment>Information in NARA File Format Preservation Plan ID about JPEG 2000 File Format (jp2/jpx).</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
