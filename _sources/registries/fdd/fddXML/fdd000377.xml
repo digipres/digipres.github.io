@@ -17,7 +17,7 @@
 			</fdd:gdfrDomain>
 		</fdd:gdfrDomains>
 		<fdd:updates>
-			<fdd:date>2023-03-01</fdd:date>
+			<fdd:date>2025-04-09</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -65,7 +65,7 @@
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
 		<fdd:experience>The Library of Congress includes PST Unicode and PST ANSI files in its collections, especially in the Manuscripts and Music Divisions as well as other personal papers repositories.</fdd:experience>
-		<fdd:preference>The Library of Congress Recommended Formats Statement (RFS) lists PST as an acceptable format for <a href="https://www.loc.gov/preservation/resources/rfs/email.html">Email: For aggregated groups of messages</a>. The RFS does not specify a version of PST.</fdd:preference>
+		<fdd:preference>The Library of Congress Recommended Formats Statement (RFS) lists PST as an acceptable format for <a href="https://www.loc.gov/preservation/resources/rfs/email.html">Email</a>. The RFS does not specify a version of PST.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>Fully documented. Proprietary file format developed by Microsoft.</fdd:disclosure>
@@ -73,18 +73,23 @@
 		<fdd:adoption>
 			<p>The Outlook .pst files are used for POP3, IMAP, and HTTP accounts and are supported by several Microsoft client applications, including Microsoft Exchange Client, Windows Messaging, and Microsoft Office Outlook. </p>
 			<p>PST_ANSI was implemented in Office Outlook versions 97-2002. Outlook 2003, Outlook 2007, and Outlook 2010 can read, write, and create both ANSI and Unicode PST files.  By 2010 (when the specification was made public by Microsoft), PST_ANSI was considered a legacy format with a recommendation that it not be used to create new PST files. The default format was declared to be <fddLink id="fdd000378">PST_Unicode</fddLink>.</p>
-			<p>At least two open-source software libraries have been developed to examine and manipulate PST files: <a href="https://github.com/libyal/libpff">libpff</a>, a library (in C, with python bindings partially implemented as of late 2013) to access PST and related formats; <a href="http://pstsdk.codeplex.com/">PST File Format SDK</a>, a cross-platform C++ library for reading PST files, developed under Microsoft auspices through a 2009-2010 project.</p>
+			<p>At least two open-source software libraries have been developed to examine and manipulate PST files: <a href="https://github.com/libyal/libpff">libpff</a>, a library (in C, with python bindings partially implemented as of late 2013) to access PST and related formats; <a href="https://web.archive.org/web/20180523175338/https://archive.codeplex.com/?p=pstsdk">PST File Format SDK</a> (link via Internet Archive), a cross-platform C++ library for reading PST files, developed under Microsoft auspices through a 2009-2010 project.</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>
-			<p>Covered by the <a href="https://msdn.microsoft.com/en-us/openspecifications/dn646764#Principles">Microsoft Open Specification Promise</a>, whereby Microsoft "irrevocably promises" not to assert any claims against those making, using, and selling implementations of any specification covered by the promise (so long as those accepting the promise refrain from suing Microsoft for patent infringement in relation to Microsoft's implementation of the covered specification).</p>
+			<p>Covered by the <a href="https://learn.microsoft.com/en-us/openspecs/dev_center/ms-devcentlp/1c24c7c8-28b0-4ce1-a47d-95fe1ff504bc">Microsoft Open Specification Promise</a>, whereby Microsoft "irrevocably promises" not to assert any claims against those making, using, and selling implementations of any specification covered by the promise (so long as those accepting the promise refrain from suing Microsoft for patent infringement in relation to Microsoft's implementation of the covered specification).</p>
 		</fdd:licensingAndPatents>
 		<fdd:transparency>
-			<p>Depends upon algorithms and tools to read; will require sophistication to build tools. Text in messages may be encrypted and even when not encrypted cannot be rendered by a simple text viewer.  Even Microsoft in its <a href="http://msdn.microsoft.com/en-us/library/gg615595.aspx">Understanding the Outlook MS-PST Binary File Format</a> admits that "understanding and working with binary file formats in general, and the MS-PST file format in particular, can be a challenge. Fortunately, the <a href="http://pstsdk.codeplex.com/">PST File Format SDK</a> exists to make this easier."</p>
+			<p>Depends upon algorithms and tools to read; will require sophistication to build tools. Text in messages may be encrypted and even when not encrypted cannot be rendered by a simple text viewer.  Even Microsoft in its <a href="http://msdn.microsoft.com/en-us/library/gg615595.aspx">Understanding the Outlook MS-PST Binary File Format</a> admits that "understanding and working with binary file formats in general, and the MS-PST file format in particular, can be a challenge. Fortunately, the <a href="https://web.archive.org/web/20180523175338/https://archive.codeplex.com/?p=pstsdk">PST File Format SDK</a> (link via Internet Archive) exists to make this easier."</p>
 			<p>Joachim Metz in <a href="https://github.com/libyal/documentation/blob/master/PFF%20Forensics%20-%20analyzing%20the%20horrible%20reference%20file%20format.pdf">Personal Folder File (PFF) Forensics:
 Analyzing the Horrible Reference File Format</a> says &quot;the actual data of an item within a PFF is scattered over different data structures...the bad news for forensic analysis is that PFF obfuscates the information in the data structures which makes a basic text string search impossible.&quot;</p>
 		</fdd:transparency>
 		<fdd:selfDocumentation>
 			<p>The PST format version is declared in the file header. According to the specification, the <i>wVer</i> field for a PST_ANSI file must have a value of 14 or 15.  Folder objects, message objects, and attachment objects all have properties which include the header fields users typically see in an email application as well as many properties relating to the status, management, and history of the object in an Outlook application.  A message object also has a recipients table that identifies each recipient and may have an attachments table that lists and identifies attachments.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>PST has no specific attributes to support accessibility. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+			</p>
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>None</fdd:externalDependencies>
 		<fdd:techProtection>
@@ -156,6 +161,16 @@ Analyzing the Horrible Reference File Format</a> says &quot;the actual data of a
 					</fdd:note>
 				</fdd:values>
 			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00282</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.archives.gov/files/lod/dpframework/id/NF00282.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00282.ttl</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
@@ -219,7 +234,7 @@ Analyzing the Horrible Reference File Format</a> says &quot;the actual data of a
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://msdn.microsoft.com/en-us/openspecifications/dn646764#Principles</link>
+					<link>https://learn.microsoft.com/en-us/openspecs/dev_center/ms-devcentlp/1c24c7c8-28b0-4ce1-a47d-95fe1ff504bc</link>
 					<tag>Microsoft&apos;s Open Specification Promise</tag>
 				</fdd:urlReference>
 			</fdd:url>
@@ -325,6 +340,13 @@ Analyzing the horrible reference file format. Author: Joachim Metz
 					<link>https://www.wikidata.org/wiki/Q1480633</link>
 					<tag>Wikidata entry for Q1480633</tag>
 					<comment>Information in Wikidata about PST. Wikidata does not distinguish between versions of PST. Wikidata Title ID: Q1480633.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archives.gov/files/lod/dpframework/id/NF00282.ttl</link>
+					<tag>NARA File Format Preservation Plan ID entry for NF00282</tag>
+					<comment>Information in NARA File Format Preservation Plan ID about PST Unicode.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>

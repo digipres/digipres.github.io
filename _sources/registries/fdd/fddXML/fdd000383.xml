@@ -17,7 +17,7 @@
 			</fdd:gdfrDomain>
 		</fdd:gdfrDomains>
 		<fdd:updates>
-			<fdd:date>2023-03-01</fdd:date>
+			<fdd:date>2025-04-09</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
@@ -27,7 +27,7 @@
 			<fdd:keyword>email formats</fdd:keyword>
 		</fdd:keywords>
 		<fdd:description>
-			<p>MBOX (sometimes known as Berkeley format) is a generic term for a family of related file formats used for storing collections of electronic mail messages. MBOX formats store all of the messages of an entire folder (not an entire mailbox) in a single database file and new messages are appended to the end of the file. Each message is immediately prefaced by a separation line and terminated by an empty line. Only the the first message in an MBOX database file will only be prefaced by a separator line, while every other message will begin with two end-of-line sequences (one at the end of the message itself, and another to mark the end of the message within the MBOX database file stream) and a separator line (marking the new message).  The end of the database file is implicitly reached when no more message data or separator lines are found.</p>
+			<p>MBOX (sometimes known as Berkeley format) is a generic term for a family of related file formats used for storing collections of electronic mail messages. MBOX formats store all of the messages of an entire folder (not an entire mailbox) in a single database file and new messages are appended to the end of the file. Each message is immediately prefaced by a separation line and terminated by an empty line. Only the first message in an MBOX database file will be prefaced by a separator line, while every other message will begin with two end-of-line sequences (one at the end of the message itself, and another to mark the end of the message within the MBOX database file stream) and a separator line (marking the new message).  The end of the database file is implicitly reached when no more message data or separator lines are found.</p>
 			<p>A message encoded in MBOX format begins with a &quot;From &quot; line, continues with a series of non-&quot;From &quot; lines, and ends with a blank line.  A &quot;From &quot; line means any line in the message or header that  begins with the five characters 'F', 'r', 'o', 'm', and ' ' (space). The "From " line structure is <i>From sender date moreinfo:</i>
 			</p>
 			<ul>
@@ -98,11 +98,11 @@
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
 		<fdd:experience>The Library of Congress includes MBOX files in its collections, especially in the Manuscripts and Music Divisions as well as other personal papers repositories.</fdd:experience>
-		<fdd:preference>The Library of Congress Recommended Formats Statement (RFS) lists MBOX as an acceptable format for <a href="https://www.loc.gov/preservation/resources/rfs/email.html">Email: For aggregated groups of messages</a>. The RFS does not specify a variant of MBOX.</fdd:preference>
+		<fdd:preference>The Library of Congress Recommended Formats Statement (RFS) lists MBOX as an acceptable format for <a href="https://www.loc.gov/preservation/resources/rfs/email.html">Email</a>. The RFS does not specify a variant of MBOX.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>There is no authoritative specification aside from <a href="http://tools.ietf.org/rfc/rfc4155.txt">RFC 4155</a>. Its subtypes are partially documented and there is variation within the subtypes. </fdd:disclosure>
-		<fdd:documentation>Information available from a number of sources including <a href="http://tools.ietf.org/rfc/rfc4155.txt">RFC 4155</a>, and <a href="https://web.archive.org/web/20160303175227/http://qmail.org/qmail-manual-html/man5/mbox.html">Qmail.org's mbox - file containing mail messages</a> (link through Internet Archive). In addition, <a href="https://web.archive.org/web/20161023162432/jdebp.eu/FGA/mail-mbox-formats.html">Jonathan de Boyne Pollard</a> (link available through Internet Archive) informally describes the many incompatibilities among the MBOX variants.</fdd:documentation>
+		<fdd:documentation>Information available from a number of sources including <a href="http://tools.ietf.org/rfc/rfc4155.txt">RFC 4155</a>, and <a href="https://web.archive.org/web/20160303175227/http://qmail.org/qmail-manual-html/man5/mbox.html">Qmail.org's mbox - file containing mail messages</a> (link via Internet Archive). In addition, <a href="https://web.archive.org/web/20161023162432/jdebp.eu/FGA/mail-mbox-formats.html">Jonathan de Boyne Pollard</a> (link via Internet Archive) informally describes the many incompatibilities among the MBOX variants.</fdd:documentation>
 		<fdd:adoption>
 			<p>
 				<a href="http://dx.doi.org/10.7207/twr11-01">Prom reports</a> that, while not a native format for many proprietary clients, MBOX (and <fddLink id="fdd000388">EML</fddLink>) has &quot;achieved a certain status as de facto
@@ -110,12 +110,17 @@ standards because most modern email clients and servers can import and export on
 the formats&quot; including Thunderbird, Apple Mail, Outlook and Eudora. In addition, external programs such as Aid4Mail,  Emailchemy and Xena can convert between
 the two formats and numerous proprietary formats. Once in an MBOX or <fddLink id="fdd000388">EML</fddLink> format, the data can be parsed into XML using standardized schemas such as the Email Account Schema defined in the <a href="https://siarchives.si.edu/oldsite/cerp/index.htm">CERP project.</a>
 			</p>
-			<p>The <a href="http://siarchives.si.edu/">Smithsonian Institution Archives</a> uses the CERP-developed toolset to normalize messages to MBOX before converting to XML. The <a href="https://library.stanford.edu/spc/more-about-us/projects-and-initiatives/epadd-project">ePADD</a> project developed at Stanford University Libraries <a href="https://library.stanford.edu/blogs/special-collections-unbound/2023/01/epadd-version-10-now-available">ingests and exports MBOX</a> alongside other formats as of 2023 with version 10.0. Native or normalized MBOX files also can be used as access copies because they can be imported into a variety of email clients.</p>
+			<p>The <a href="http://siarchives.si.edu/">Smithsonian Institution Archives</a> uses the CERP-developed toolset to normalize messages to MBOX before converting to XML. The <a href="https://www.epaddproject.org/home">ePADD</a> project developed at Stanford University Libraries <a href="https://web.archive.org/web/20230720182858/https://library.stanford.edu/blogs/special-collections-unbound/2023/01/epadd-version-10-now-available">ingests and exports MBOX</a> (link via Internet Archive) alongside other formats as of 2023 with version 10.0. Native or normalized MBOX files also can be used as access copies because they can be imported into a variety of email clients.</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>[Unknown, probably none].</fdd:licensingAndPatents>
 		<fdd:transparency>Text processing tools can be readily used on the plain text files used to store the email messages.</fdd:transparency>
 		<fdd:selfDocumentation>
 			<p>The message structure helps declare the subtype but there’s a lot of variation even within the established patterns.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>MBOX has no specific attributes to support accessibility. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+			</p>
 		</fdd:selfDocumentation>
 		<fdd:externalDependencies>None</fdd:externalDependencies>
 		<fdd:techProtection>Encryption is possible through external applications but no encryption options are natively built into the format. See, for example, <a href="http://kb.mozillazine.org/Protecting_the_contents_of_the_profile_-_mail">Protecting the contents of the profile - mail</a>.</fdd:techProtection>
@@ -161,12 +166,22 @@ the two formats and numerous proprietary formats. Once in an MBOX or <fddLink id
 					</fdd:note>
 				</fdd:values>
 			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00247</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.archives.gov/files/lod/dpframework/id/NF00247.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00247.ttl</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
 		<fdd:general>
 			<p>
-				<a href="https://web.archive.org/web/20161023162432/jdebp.eu/FGA/mail-mbox-formats.html">Jonathan de Boyne Pollard</a> (link available through Internet Archive) describes the many incompatibilities among the MBOX formats: </p>
+				<a href="https://web.archive.org/web/20161023162432/jdebp.eu/FGA/mail-mbox-formats.html">Jonathan de Boyne Pollard</a> (link via Internet Archive) describes the many incompatibilities among the MBOX formats: </p>
 			<ul>
 				<li>Messages cannot be reliably read from <fddLink id="fdd000384">MBOXO</fddLink> and <fddLink id="fdd000385">MBOXRD</fddLink> format mailboxes by <fddLink id="fdd000386">MBOXCL</fddLink> and <fddLink id="fdd000387">MBOXCL2</fddLink> readers.</li>
 				<li>There is no guarantee that any &quot;Content-Length:&quot; headers in the original message are correct and appropriate, which are preserved exactly as they are by <fddLink id="fdd000384">MBOXO</fddLink> and <fddLink id="fdd000385">MBOXRD</fddLink>.</li>
@@ -255,14 +270,14 @@ the two formats and numerous proprietary formats. Once in an MBOX or <fddLink id
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://dx.doi.org/10.7207/twr11-01</link>
+					<link>https://www.dpconline.org/docs/dpc-technology-watch-publications/technology-watch-reports-1/739-dpctw11-01-pdf/file</link>
 					<tag>Preserving Email by Christopher J. Prom. DPC Technology Watch Report 11-01</tag>
 					<comment>Very helpful discussion of the challenges in preserving email collections, especially in describing workflows and tools. </comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://doi.org/10.7207 /twr19-01 </link>
+					<link>http://doi.org/10.7207/twr19-01 </link>
 					<tag>Preserving Email Second Edition 2019 by Christopher J. Prom. DPC Technology Watch Report 19-01</tag>
 				</fdd:urlReference>
 			</fdd:url>
@@ -292,7 +307,7 @@ the two formats and numerous proprietary formats. Once in an MBOX or <fddLink id
 					<fdd:intro>Tool sets for MBOX</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
-							<link>http://xena.sourceforge.net/</link>
+							<link>https://sourceforge.net/projects/xena/</link>
 							<tag>XENA</tag>
 							<comment>Email migration and conversion tool developed by the National Archives of Australia</comment>
 						</fdd:urlReference>
@@ -307,7 +322,7 @@ the two formats and numerous proprietary formats. Once in an MBOX or <fddLink id
 							<comment>Desktop email migration and conversion tool</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>http://www.mailstore.com/en/mailstore-home.aspx</link>
+							<link>https://www.mailstore.com/en/products/mailstore-home/</link>
 							<tag>MailStore</tag>
 							<comment>Conversion tool, proprietary but free for personal use</comment>
 						</fdd:urlReference>
@@ -332,6 +347,13 @@ the two formats and numerous proprietary formats. Once in an MBOX or <fddLink id
 					<link>https://www.wikidata.org/wiki/Q285972</link>
 					<tag>WikiData entry for Q285972</tag>
 					<comment>Information in WikiData about MBOX family. WikiData Title ID: Q285972.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archives.gov/files/lod/dpframework/id/NF00247.ttl</link>
+					<tag>NARA File Format Preservation Plan ID entry for NF00247</tag>
+					<comment>Information in NARA File Format Preservation Plan ID about PST Unicode.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
