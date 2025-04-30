@@ -30,7 +30,7 @@ items:
 
  - title: Find Formats
    image: icons/dpo-formats.png
-   link: https://digipres.org/formats/
+   link: /formats/
    description: "Search across multiple format registries at once, to help you understand the contents of your digital collections."
 
  - title: Track Down Tools
@@ -40,12 +40,12 @@ items:
 
  - title: Find Publications
    image: icons/dpo-publications.png
-   link: https://digipres.org/publications/
+   link: /publications/
    description: "Find publications on digital preservation issues via this dedicated search service and database."
 
  - title: Review Policies
    image: icons/dpo-policies.png
-   link: https://digipres.org/policies/
+   link: /policies/
    description: "Learn from others via this list of digital preservation policies from across the world."
 
  - title: Explore Workflows
@@ -60,7 +60,7 @@ items:
 
  - title: Experiment with the Workbench
    image: icons/dpo-workbench.png
-   link: https://digipres.org/workbench/
+   link: /workbench/
    description: "Try out the experimental DigiPres Workbench. Explore your formats. Compare your collections. Play with DigiPres tools, without installing a thing!"
    action: "For Science!"
 
@@ -115,3 +115,4 @@ items:
   </div>
 
 </main>
+
