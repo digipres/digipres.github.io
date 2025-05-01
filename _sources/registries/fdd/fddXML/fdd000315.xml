@@ -19,7 +19,7 @@
 			</fdd:gdfrDomain>
 		</fdd:gdfrDomains>
 		<fdd:updates>
-			<fdd:date>2020-05-26</fdd:date>
+			<fdd:date>2025-04-17</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Partial</fdd:draftStatus>
 	</fdd:properties>
@@ -72,13 +72,20 @@
 	<fdd:sustainabilityFactors>
 		<fdd:disclosure>Part of published extension by Adobe Systems Incorporated to international standard, ISO 32000-1:2008.</fdd:disclosure>
 		<fdd:documentation>
-			<p>In Adobe Supplement to the ISO 32000, BaseVersion:1.7, ExtensionLevel:3, available at <a href="https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/adobe_supplement_iso32000.pdf">https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/adobe_supplement_iso32000.pdf</a>
+			<p>In Adobe Supplement to the ISO 32000, BaseVersion:1.7, ExtensionLevel:3, available at <a href="https://web.archive.org/web/20191221125453if_/https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/adobe_supplement_iso32000_1.pdf">https://web.archive.org/web/20191221125453if_/https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/adobe_supplement_iso32000_1.pdf</a> (Link via Internet Archive).
 			</p>
 		</fdd:documentation>
 		<fdd:adoption>TBD</fdd:adoption>
 		<fdd:licensingAndPatents>See <fddLink id="fdd000277">PDF_1_7</fddLink>.  Since Adobe plans to submit the features in ExtensionLevel 3 for incorporation into the next ISO version of the PDF specification, it seems reasonable to assume that there will be no licensing problems for this particular extension.</fdd:licensingAndPatents>
 		<fdd:transparency>In practice, most PDFs with geospatial data have compression filters applied to most of the file content.  This is because the purpose for creating these documents is to distribute them to end users, including to mobile devices.  Even the <i>measure dictionary</i>, which specifies the coordinate reference system is often compressed. Note that such compression is forbidden in <fddLink id="fdd000125">PDF/A-1</fddLink> documents.</fdd:transparency>
-		<fdd:selfDocumentation>The <i>measure dictionary</i> supplies geospatial metadata for maps or other georegistered illustrations in a PDF file.  See also <fddLink id="fdd000030">PDF_family</fddLink>.  </fdd:selfDocumentation>
+		<fdd:selfDocumentation>
+			<p>The <i>measure dictionary</i> supplies geospatial metadata for maps or other georegistered illustrations in a PDF file.  See also <fddLink id="fdd000030">PDF_family</fddLink>.</p>
+			<p>
+				<b> Accessibility Features </b>
+			</p>
+			<p>Accessibility features for GIS data can be a complex combination of factors to support still images, 3D formats, and datasets. In general, this means data to alt text for images, content for screen readers to enable user interactivity events such as object selection, rotation and zoom, alt text for image forms, color contrast definition as well as caption and subtitle support as well as structured data to identify regions and grids on pages and defined relationships in tables. Depending on implementation, PDFs with geospacial encoding have the potential for good accessibility support with its defined structures and focus on interoperability but this will also depend on the subtypes. See <fddLink id="fdd000030">PDF Family</fddLink> for information on embedding metadata in PDF documents in general.
+			</p>
+		</fdd:selfDocumentation>
 		<fdd:externalDependencies>See <fddLink id="fdd000277">PDF_1_7</fddLink>.</fdd:externalDependencies>
 		<fdd:techProtection>The encoding itself has no means of protection.  Encryption or other forms of technical protection may be applied to the file in which the georegistration information is embedded.</fdd:techProtection>
 	</fdd:sustainabilityFactors>
@@ -97,20 +104,45 @@
 				<fdd:sigValueNA>Not applicable.</fdd:sigValueNA>
 				<fdd:note>Adobe&apos;s geospatial encoding does not define a file format, but an encoding for georegistration information and geospatial data that may be associated with an image.  In practice, it will be embedded in a file in some version of the PDF format, and that file will likely have the extension <i>pdf</i>.</fdd:note>
 			</fdd:filenameExtension>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>NARA File Format Preservation Plan ID has no corresponding entry as of April 17, 2025. See related format <a href="https://www.archives.gov/files/lod/dpframework/id/NF00425.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00425.ttl</a>. Note that NARA does not specify versions.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>No PUID as of April 17, 2025. See <fddLink id="fdd000030">PDF (Portable Document Format) Family</fddLink>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q5533911</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q5533911">https://www.wikidata.org/wiki/Q5533911</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
 		<fdd:general>
 			<p>For encoding geographic coordinate systems in the measure dictionary, either of two mechanisms may be used.  In either case, the objective is to specify unambiguously the geodetic datum, geoid/ellipsoid/spheroid, coordinate system, and any map projection in use for the image or data. </p>
 			<ul>
-				<li>EPSG (European Petroleum Survey Group) codes.  These are assigned by the Surveying and Positioning Committee of the International Association of Oil &amp; Gas producers (<a href="https://www.iogp.org/">IOGP</a>), formerly known as the European Petroleum Survey Group, and made available as the EPSG Geodetic Parameter Dataset at <a href="http://www.epsg-registry.org/">http://www.epsg-registry.org/</a>. From <a href="http://www.epsg.org/Portals/0/373-07-1.pdf">Using the EPSG Geodetic Parameter Dataset</a>: "The EPSG Dataset is a repository of parameters required to: define a <i>coordinate reference system</i> (CRS), which ensures that coordinates describe position unambiguously; and define transformations and conversions that allow coordinates to be changed from one CRS to another CRS.&quot;  As an example, 4269 is the EPSG code for the coordinate reference system usually referred to as &quot;NAD83&quot;.</li>
+				<li>EPSG (European Petroleum Survey Group) codes.  These are assigned by the Surveying and Positioning Committee of the International Association of Oil &amp; Gas producers (<a href="https://www.iogp.org/">IOGP</a>), formerly known as the European Petroleum Survey Group, and made available as the EPSG Geodetic Parameter Dataset at <a href="https://epsg.org/home.html">https://epsg.org/home.html</a>. From <a href="https://web.archive.org/web/20171101112457/http://www.epsg.org/Portals/0/373-07-1.pdf">Using the EPSG Geodetic Parameter Dataset</a> (Link via Internet Archive): "The EPSG Dataset is a repository of parameters required to: define a <i>coordinate reference system</i> (CRS), which ensures that coordinates describe position unambiguously; and define transformations and conversions that allow coordinates to be changed from one CRS to another CRS.&quot;  As an example, 4269 is the EPSG code for the coordinate reference system usually referred to as &quot;NAD83&quot;.</li>
 				<li>
 					<fddLink id="fdd000548">WKT (Well-known Text)</fddLink> has been specified by the Open Geospatial Consortium (OGC) in Clause 7 of the <a href="https://www.ogc.org/standards/ct">OpenGIS Coordinate Transformation (CT) Service Standard (2001)</a>.  WKT values are structured, human-readable, textual strings, that describe the elements of a coordinate reference system.  WKT has also been documented in an appendix to <a href="http://portal.opengeospatial.org/files/?artifact_id=25355">OGC 06-103r4</a>: OpenGIS Implementation Specification for Geographic Information - Simple feature access - Part 1: Common Architecture.  Essentially the same document was published as <a href="https://www.iso.org/standard/40114.html">ISO 19125-1:2004</a>.  WKT is employed in many GIS systems.  The WKT equivalent of EPSG code 4269 is:<p>GEOGCS["GCS_North_American_1983",<br/>
  DATUM["D_North_American_1983",<br/>
   SPHEROID["GRS_1980",6378137.0,298.257222101]],<br/>
 PRIMEM["Greenwich",0.0],<br/>
   UNIT["Degree",0.0174532925199433]]</p>
-					<p>Later versions of the WKT specification have been published in 2015 and 2019 at <a href="https://www.ogc.org/standards/wkt-crs">OGC | Well-known text representation of coordinate reference systems</a> and as ISO 19162 Geographic information – Well Known Text Representation of Coordinate Reference Systems: <a href="https://www.iso.org/standard/63094.html">ISO 19162:2015</a> and <a href="https://www.iso.org/standard/76496.html">ISO 19162:2019</a>.  These updates deprecate some terms in the specification as referenced in the <a href="https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/adobe_supplement_iso32000.pdf">Adobe supplement</a> that specifies geospatial features as Adobe implemented in version 9 of Acrobat and Adobe Reader. PDF viewers conforming to the ISO 32000-2 (PDF 2.0) specification are expected to recognize both generations of WKT.</p>
+					<p>Later versions of the WKT specification have been published in 2015 and 2019 at <a href="https://www.ogc.org/standards/wkt-crs/">OGC | Well-known text representation of coordinate reference systems</a> and as ISO 19162 Geographic information – Well Known Text Representation of Coordinate Reference Systems: <a href="https://www.iso.org/standard/63094.html">ISO 19162:2015</a> and <a href="https://www.iso.org/standard/76496.html">ISO 19162:2019</a>.  These updates deprecate some terms in the specification as referenced in the <a href="https://web.archive.org/web/20191221125453if_/https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/adobe_supplement_iso32000_1.pdf">Adobe supplement</a> that specifies geospatial features as Adobe implemented in version 9 of Acrobat and Adobe Reader. PDF viewers conforming to the ISO 32000-2 (PDF 2.0) specification are expected to recognize both generations of WKT.</p>
 				</li>
 			</ul>
 		</fdd:general>
@@ -120,7 +152,7 @@ PRIMEM["Greenwich",0.0],<br/>
 		<fdd:urls>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/adobe_supplement_iso32000.pdf</link>
+					<link>https://web.archive.org/web/20191221125453if_/https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/adobe_supplement_iso32000_1.pdf</link>
 					<tag>Adobe Supplement to the ISO 32000, BaseVersion:1.7, ExtensionLevel:3.  June 2008</tag>
 					<comment>Adobe Systems Incorporated.</comment>
 				</fdd:urlReference>
@@ -130,22 +162,22 @@ PRIMEM["Greenwich",0.0],<br/>
 					<fdd:intro>Adobe Systems Incorporated provides access both to its original PDF Reference 1.7 and the variant document that was approved as ISO 32000-1:2008.  The latter was re-organized and re-formatted in line with ISO guidelines.  The number of functional differences are assumed to be small, since Adobe describes the specifications as &quot;matching.&quot;</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
-							<link>https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/PDF32000_2008.pdf</link>
+							<link>https://archive.org/details/pdf320002008</link>
 							<tag>Document management — Portable document format — Part 1: PDF 1.7</tag>
-							<comment>As distributed by Adobe after adoption as ISO 32000-1:2008, with permission of ISO.</comment>
+							<comment>As distributed by Adobe after adoption as ISO 32000-1:2008, with permission of ISO (Link via Internet Archive).</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/pdf_reference_1-7.pdf</link>
+							<link>https://archive.org/details/pdfy-LbakZXpRDswUzRwe</link>
 							<tag>PDF Reference, Sixth Edition, Version 1.7. November 2006</tag>
-							<comment>Published by Adobe Systems Incorporated before ISO standardization.</comment>
+							<comment>Published by Adobe Systems Incorporated before ISO standardization (link via Internet Archive).</comment>
 						</fdd:urlReference>
 					</fdd:urlList>
 				</fdd:urlGroup>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://www.adobe.com/devnet/pdf/pdf_reference_archive.html</link>
-					<tag>Adobe PDF Reference Archive of specifications prior to ISO 32000-2 (PDF 2.0).</tag>
+					<link>https://web.archive.org/web/20250114232949/https://opensource.adobe.com/dc-acrobat-sdk-docs/</link>
+					<tag>Open source collection of Adobe Acrobat Developer Resources (link via Internet Archive).</tag>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
@@ -175,12 +207,12 @@ PRIMEM["Greenwich",0.0],<br/>
 					<fdd:intro>Resources related to the EPSG (European Petroleum Survey Group) geodetic Parameter Dataset of codes that define coordinate reference systems.</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
-							<link>http://www.epsg.org/EPSGhome.aspx</link>
+							<link>https://epsg.org/home.html</link>
 							<tag>EPSG Geodetic Parameter Dataset</tag>
 							<comment>Includes codes that specify coordinate reference systems.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>http://www.epsg.org/Portals/0/373-07-1.pdf</link>
+							<link>https://web.archive.org/web/20171101112457/http://www.epsg.org/Portals/0/373-07-1.pdf</link>
 							<tag>Using the EPSG Geodetic Parameter Dataset</tag>
 						</fdd:urlReference>
 					</fdd:urlList>
@@ -191,7 +223,7 @@ PRIMEM["Greenwich",0.0],<br/>
 					<fdd:intro>Resources related to WKT (well-known text) from the Open Geospatial Consortium (OGC):</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
-							<link>https://www.ogc.org/standards/sfa</link>
+							<link>https://www.ogc.org/standards/sfa/</link>
 							<tag>OGC | Simple Feature Access - Part 1: Common Architecture</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
@@ -204,11 +236,11 @@ PRIMEM["Greenwich",0.0],<br/>
 							<tag>OGC | Well-known text representation of coordinate reference systems</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>http://docs.opengeospatial.org/is/12-063r5/12-063r5.html</link>
+							<link>https://docs.ogc.org/is/12-063r5/12-063r5.html</link>
 							<tag>OGC | Geographic information - Well-known text representation of coordinate reference systems</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://www.ogc.org/standards/ct</link>
+							<link>https://www.ogc.org/standards/ct/</link>
 							<tag> OpenGIS Coordinate Transformation Service Standard (CT)</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000643" titleName="A2R Apple II Flux Disk Image" shortName="A2R" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>any</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2025-04-18</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>A2R Apple II Flux Disk Image</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>container formats</fdd:keyword>
+			<fdd:keyword>disk image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>A2R is a chunk-based file binary format for storing flux data created by John K. Morris as part of the <a href="https://applesaucefdc.com/">Applesauce</a> project.  <a href="https://applesaucefdc.com/a2r/">Specification version 3.x</a> (in use as of 2025) states: &quot;The A2R format began life as the container format for raw flux images as recorded by the Applesauce hardware and software. The A2R format has evolved a few times since I [John K. Morris] originally started work on Applesauce, and is now more of a generic flux format that is compatible with disk imagers and tools other than Applesauce. It is a simple format, but contains many advantages over other flux formats such as being extensible, content-independent, allows a variable number of captures per-track, supports hard sectored disks, and is able to contain complex metadata.&quot; As Tyler Thorsted writes in his article <a href="https://preservation.tylerthorsted.com/2024/08/16/a2r-moof-woz/">A2R / MOOF / WOZ</a>, A2R can "contain all the small nuances of the original floppy, this includes recording any copy protection or other creative methods used by software vendors throughout the years...Once the full raw flux data has been captured that data can be interpreted as a disk image" using the Applesauce software.</p>
+			<p>A2R&apos;s file header structure starts with first 8 bytes containing the ASCII file signature/magic number (A2R2 or A2R3 depending on the version). This is followed with an intentionally blank space and LF CR LF (line breaks - that file translators sometimes unnecessarily try to convert). After the header comes a sequence of chunks which each contain information about the disk image. Using chunks allows for the A2R disk format to provide forward compatibility as chunks can be added to the specification. Chunks each have a Chunk ID, Chunk Size and then Chunk Data.</p>
+			<p>The header is followed by the required INFO chunk, as it is in all Applesauce files. The INFO chunk contains "fundamental information about the contained image. The data of the ‘INFO’ chunk begins at byte 20 of the file and is 60 bytes long (pad &quot;chunk with zeros to full length)." INFO chunk data includes Disk Type (5.25 or 3.5), if the floppy disk is write protected, and the "creator" field documents the name of software that created the WOZ file among other details.</p>
+			<p>The INFO chunk is followed by one or more Raw Capture/RWCP chunk(s) which contains raw data streams as captured during the imaging process. </p>
+			<p>Optional chunks include one ore more  Solved Flux Streams/SLVD chunk(s) which &quot;contains flux stream that have been solved, which means that there are no extra flux transitions and that the data is a perfect loop (single rotation) of the track contents. This track data is also appropriate for use with emulators.&quot;</p>
+			<p>Also optional is the ‘META’ chunk which contains metadata for the disk image including name/title of the product, publisher, version, copyright date, language and more. There are also options for documenting the disk imaging process with contributor (Name of the person who imaged the disk) and image_date (ISO8601 date of the imaging).</p>
+			<p>Samples of A2R files can be found via the <a href='https://archive.org/search?query=subject:"a2r" '>Internet Archive</a>.</p>
+		</fdd:description>
+		<fdd:shortDescription>A2R files are simple and flexible chunk-based format created for the Applesauce project that allow a variable number of captures per-track, supports hard sectored disks, and is able to contain complex metadata.</fdd:shortDescription>
+		<fdd:productionPhase>Middle-state.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000612</fdd:id>
+					<fdd:shortName>MOOF</fdd:shortName>
+					<fdd:titleName>MOOF Disk Image</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Like WOZ, MOOF is a Macintosh floppy disk image format designed for use with Applesauce, the Macintosh floppy drive controller. The MOOF and WOZ formats encode different metadata.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000642</fdd:id>
+					<fdd:shortName>WOZ</fdd:shortName>
+					<fdd:titleName>WOZ Disk Image</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>WOZ is a chunk-based binary Macintosh floppy disk image format designed for use with Applesauce, the Macintosh floppy drive controller. The MOOF and WOZ formats encode different metadata.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None</fdd:experience>
+		<fdd:preference>The Library of Congress has not yet expressed any format preference for disk image files in its <a href="https://www.loc.gov/preservation/resources/rfs/index.html">Recommended Formats Statement</a>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Full and open specification. <a href="../contact_format.shtml">Comments welcome</a>.
+        </fdd:disclosure>
+		<fdd:documentation>
+			<p>There are three main versions and one known minor release of the A2R specification but the compilers of this resource were not able to locate documentation for version 1x. See <a href="#notes">History</a> for information about the different releases.</p>
+			<ul>
+				<li>Version 2.0 -
+August 12, 2018. See <a href="https://web.archive.org/web/20180814002709/https://applesaucefdc.com/a2r/">https://web.archive.org/web/20180814002709/https://applesaucefdc.com/a2r/</a> (link via Internet Archive)</li>
+				<li>Version 2.0.1
+- December 2, 2018. See <a href="https://applesaucefdc.com/a2r2-reference/">https://applesaucefdc.com/a2r2-reference/</a>.</li>
+				<li>Version 3.0
+- September 16, 2021. See <a href="https://applesaucefdc.com/a2r/">https://applesaucefdc.com/a2r/</a>. Version 3 is not backwards compatible with earlier version. </li>
+			</ul>
+			<p>
+				<a href="../contact_format.shtml">Comments welcome</a>, especially about additional version documentation.</p>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>Created and supported by Applesauce.</p>
+			<p>A number of sample libraries exist as well as many <a href="https://applesaucefdc.com/woz/">hardware and software emulators</a>. Several open source options are available including <a href="https://github.com/adafruit/a2woz">a2woz</a> to process A2R files to <fddLink id="fdd000642">WOZ</fddLink> files (active as of 2025) and <a href="https://github.com/a2-4am/a2rchery">a2rchery</a> (seems to be inactive since 2018).</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>Unknown. Related formats for the Applesauce project <fddLink id="fdd000612">MOOF</fddLink> and <fddLink id="fdd000642">WOZ</fddLink>, also authored by John K. Morris, are in the public domain so this might also follow that pattern but it is not specified for A2R. <a href="../contact_format.shtml">Comments welcome</a>.
+        </fdd:licensingAndPatents>
+		<fdd:transparency>Dependent upon algorithms and tools to read.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>According to the published specifications, the format utilizes a chunk-based, binary format designed for future-proof expandability. Technical and descriptive metadata are stored in the INFO chunk. The chunk is versioned to allow for adding additional metadata in the future. </p>
+			<p>
+				<b>Accessibility Support</b>
+			</p>
+			<p>Support for accessibility features for is unknown and undocumented. However, the structured and consistent chunk based format including some provenance and descriptive embedded data in the META chunk could potentially be helpful. </p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>Requires emulator software for use.</fdd:externalDependencies>
+		<fdd:techProtection>None.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>a2r</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Not defined in specification but in common use and listed in ArchivesTeam <a href="http://justsolve.archiveteam.org/wiki/A2R_disk_image">A2R disk image</a>. <a href="../contact_format.shtml">Comments welcome</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>ASCII: A2R2</fdd:sigValue>
+					<fdd:sigValue>Hex: 41 32 52 32</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For <a href="https://applesaucefdc.com/a2r2-reference/">version 2</a> of the specification. The ASCII string ‘A2R2’ (0x32523241). The final character in this string is the major version number of the A2R specification which this file conforms.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>ASCII: A2R3</fdd:sigValue>
+					<fdd:sigValue>Hex: 41 32 52 33</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>For <a href="https://applesaucefdc.com/a2r/">version 3</a> of the specification. The ASCII string ‘A2R3’ (0x33523241). The final character in this string is the major version number of the A2R specification which this file conforms.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>No NARA File Format Preservation Plan ID entry as of February 2025.
+</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>PRONOM has no corresponding entry as of February 2025.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q105857558</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q105857558">https://www.wikidata.org/wiki/Q105857558</a> for A2R disk image (v1).</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q105857518</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q105857518">https://www.wikidata.org/wiki/Q105857518</a> for A2R disk image (v2).</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q128123326</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q128123326">https://www.wikidata.org/wiki/Q128123326</a> for A2R disk image (v3).</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>Specification <a href="https://applesaucefdc.com/a2r/">version 3</a> says that &quot;the A2R format began life as the container format for raw flux images as recorded by the Applesauce hardware and software. The A2R format has evolved a few times since I [author John K. Morris] originally started work on Applesauce, and is now more of a generic flux format that is compatible with disk imagers and tools other than Applesauce.&quot;</fdd:general>
+		<fdd:history>
+			<p>There are two main versions of the A2R specification and one documented minor release. See <a href="#sustainability">Documentation</a> and <a href="#specs">Format Specifications</a> for links.</p>
+			<ul>
+				<li>Version 2.0 -
+August 12, 2018. </li>
+				<li>Version 2.0.1
+- December 2, 2018.</li>
+				<li>Version 3.0
+- September 16 , 2021. </li>
+			</ul>
+			<p>The compilers of this resource were unable to find documentation for version 1. <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>Specification version 3 is not backwards compatible earlier versions. Specification version 2.0.1 states that &quot;if you need to convert earlier A2R files to the current version, it can be done with the Applesauce software.&quot;</p>
+			<p>Changes for version 3 are significant and include the removal of the STRM chunk and introduction of the RWCP chunk which contains raw data streams as captured during the imaging process as well as the optional SLVD Chunk – Solved Flux Streams which &quot;contains flux stream that have been solved, which means that there are no extra flux transitions and that the data is a perfect loop (single rotation) of the track contents. This track data is also appropriate for use with emulators. This chunk is completely optional and can also exist in A2R files that contain RWCP chunks. The format of the flux data is the same packed data format that is used for timing and xtiming in RWCP chunks.&quot; Specification version 2.0.1 includes a high level change log from version 2.0. These &quot;some cleanup for 3.5 disks and Macintosh support&quot; including in the STRM and META chunks.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20180814002709/https://applesaucefdc.com/a2r/</link>
+					<tag>A2R Disk Image Reference. Version 2.0. August 12, 2018. Supported by release 1.0.3 of the Applesauce software</tag>
+					<comment>Link via Internet Archive</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://applesaucefdc.com/a2r2-reference/</link>
+					<tag>A2R Disk Image Reference. Version 2.0.1. December 2, 2018. </tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://applesaucefdc.com/a2r/</link>
+					<tag>A2R Disk Image Reference. Version 3.0. September 16 , 2021. </tag>
+					<comment>The 3.x specification was created in September of 2021 and is not backwards compatible with the 2.x specification.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://applesaucefdc.com/what-is-applesauce/</link>
+					<tag>Applesauce Floppy Drive Controller.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://preservation.tylerthorsted.com/2024/08/16/a2r-moof-woz/</link>
+					<tag>A2R / MOOF / WOZ blog post by Tyler Thorsted. August 16, 2024.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/adafruit/a2woz</link>
+					<tag>a2woz: GitHub repo to &quot;minimally process a2r files into woz files&quot;</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/a2-4am/a2rchery</link>
+					<tag>a2rchery: GitHub repo for &quot;a multi-purpose tool for manipulating .a2r disk images&quot;</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://justsolve.archiveteam.org/wiki/A2R_disk_image</link>
+					<tag>ArchivesTeam.org: A2R disk image</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q105857558</link>
+					<tag>Wikidata entry for Q105857558</tag>
+					<comment>Information in Wikidata about A2R disk image (v1). Wikidata Title ID: Q105857558</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q105857518</link>
+					<tag>Wikidata entry for Q105857518</tag>
+					<comment>Information in Wikidata about A2R disk image (v2). Wikidata Title ID: Q105857518</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q128123326</link>
+					<tag>Wikidata entry for Q128123326</tag>
+					<comment>Information in Wikidata about A2R disk image (v3). Wikidata Title ID:
+Q128123326</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

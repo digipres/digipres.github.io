@@ -16,9 +16,9 @@
 			</fdd:gdfrDomain>
 		</fdd:gdfrDomains>
 		<fdd:updates>
-			<fdd:date>2022-04-20</fdd:date>
+			<fdd:date>2025-04-17</fdd:date>
 		</fdd:updates>
-		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
 	<fdd:identificationAndDescription>
 		<fdd:fullName>GML in JPEG 2000 for Geographic Imagery (GMLJP2)</fdd:fullName>
@@ -74,16 +74,23 @@ within JPEG 2000 data files.</li>
 		<fdd:disclosure>An openly documented standard maintained by the Open Geospatial Consortium (OGC). </fdd:disclosure>
 		<fdd:documentation>
 			<p>The primary specification is for version 1.0 is OGC 05-047r3: <a href="http://portal.opengeospatial.org/files/?artifact_id=13252">GML in JPEG 2000 for Geographic Imagery (GMLJP2) Encoding Specification</a>, January 20, 2006.  In addition, <a href="https://web.archive.org/web/20101126225854/https://jpeg.org/public/wg1n2887.doc">Including GML data based on the OpenGIS standard in JPEG 2000 family files</a> from the JPEG standardization working group provides important interoperability recommendations from the JPEG perspective.</p>
-			<p>The specification is for version 2.0 is OGC 08-085r4: <a href="https://docs.opengeospatial.org/is/08-085r4/08-085r4.html">OGC® GML in JPEG 2000 (GMLJP2) Encoding Standard Part 1: Core</a>,</p>
+			<p>The specification is for version 2.0 is OGC 08-085r4: <a href="https://docs.ogc.org/is/08-085r4/08-085r4.html">OGC® GML in JPEG 2000 (GMLJP2) Encoding Standard Part 1: Core</a>,</p>
 		</fdd:documentation>
 		<fdd:adoption>
 			<p>Adoption of the GMLJP2 metadata markup specification depends on adoption of the JPEG 2000 format (<fddLink id="fdd000143">JP2_FF</fddLink>) for geospatial images.  An August 2010 technical report, <a href="https://portal.dgiwg.org/files/?artifact_id=5654">DGIWG JPEG 2000 (JP2K) Scoping Study Report</a>, commissioned by the international Defense Geospatial Information Working Group (DGIWG) recommended the use of JPEG 2000, using Part 1 of the JPEG 2000 standard, together with embedded georeferencing metadata. Given that GMLJP2 had not yet been updated to be consistent with GML 3.2.1, the recommendation for georeferencing was to embed both GMLJP2 and an earlier form of metadata markup (GeoJP2), with a caveat that GeoJP2 was likely to be deprecated in the future.</p>
-			<p>Support for reading and creating JPEG 2000 files with metadata following the GMLJP2 standard is provided in several tools for manipulating geospatial raster images.  These include <a href="https://gdal.org/">GDAL</a> (Geospatial Data Abstraction Library) and Extensis, formerly Lizardtech, <a href="https://www.extensis.com/geoexpress">GeoExpress</a>. Imagery servers from PCI Geomatics and Exelis (formerly ITT) Visual Information Solutions also handle JPEG 2000 imagery with GMLJP2 markup.  A free stand-alone metadata editor for JP2 files was made available by J2K-Codec in July 2011.</p>
+			<p>Support for reading and creating JPEG 2000 files with metadata following the GMLJP2 standard is provided in several tools for manipulating geospatial raster images.  These include <a href="https://gdal.org/en/stable/">GDAL</a> (Geospatial Data Abstraction Library) and Extensis, formerly Lizardtech, <a href="https://www.extensis.com/geoexpress">GeoExpress</a>. Imagery servers from PCI Geomatics and Exelis (formerly ITT) Visual Information Solutions also handle JPEG 2000 imagery with GMLJP2 markup.  A free stand-alone metadata editor for JP2 files was made available by J2K-Codec in July 2011.</p>
 			<p>A <a href="https://essi-lab.eu/earthserver.eu/long_news.html">news posting</a> in August 2012 from Earthserver.eu indicates that GMLJP2 is widely adopted and relies on the GMLCOV specification for coverages.</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>No rights claimed in the XML-based markup per se.  See Licensing and Patents entry for <fddLink id="fdd000138">J2K_C</fddLink>, for information about licensing (and waiving of rights by patent holders) for the basic JPEG 2000 image encoding.</fdd:licensingAndPatents>
 		<fdd:transparency>The XML-based markup prescribed in the GMLJP2 specification, once extracted,  is readable with text editors and XML-aware software.</fdd:transparency>
-		<fdd:selfDocumentation>The markup specification provides guidance on the inclusion of metadata and annotations intended to describe the source, context, and characteristics of the underlying imagery. Metadata properties may come from metadata schemas defined outside the GMLJP2 standard.</fdd:selfDocumentation>
+		<fdd:selfDocumentation>
+			<p>The markup specification provides guidance on the inclusion of metadata and annotations intended to describe the source, context, and characteristics of the underlying imagery. Metadata properties may come from metadata schemas defined outside the GMLJP2 standard.</p>
+			<p>
+				<b> Accessibility Features </b>
+			</p>
+			<p>Accessibility features for GIS data can be a complex combination of factors to support still images, 3D formats, and datasets. In general, this means data to alt text for images, content for screen readers to enable user interactivity events such as object selection, rotation and zoom, alt text for image forms, color contrast definition as well as caption and subtitle support as well as structured data to identify regions and grids on pages and defined relationships in tables. Depending on implementation, accessibility for GeoJPEG2000 and other georeferenced still image content is often supported by the use of alt text when displayed on the web. The carriage of this data is typically not embedded in the file itself but rather in the HTML code. See <a href="https://www.w3.org/WAI/tutorials/images">W3C's Images Tutorial</a> for the Web Accessibility Initiative.
+			</p>
+		</fdd:selfDocumentation>
 		<fdd:externalDependencies>None beyond the availability of appropriate software.</fdd:externalDependencies>
 		<fdd:techProtection>Not applicable to the metadata markup per se.</fdd:techProtection>
 	</fdd:sustainabilityFactors>
@@ -103,6 +110,21 @@ within JPEG 2000 data files.</li>
 						<fdd:sigValue>67</fdd:sigValue>
 					</fdd:sigValues>
 					<fdd:note>The GMLJP2 specification indicates that a Reader Requirements &quot;Box&quot; in the image file should have value 67, to indicate that the file contains GML data following the GMLJP2 standard.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>NARA File Format Preservation Plan ID has no corresponding entry as of April 17, 2025. See related format <a href="https://www.archives.gov/files/lod/dpframework/id/NF00219.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00219.ttl</a>. Note that NARA does not specify versions.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000154">JPEG 2000 Part 2 (Extensions) jpf (jpx) File Format</fddLink> and <fddLink id="fdd000296">Geography Markup Language (GML)</fddLink>
+					</fdd:note>
 				</fdd:values>
 			</fdd:other>
 			<fdd:other>
@@ -142,21 +164,21 @@ within JPEG 2000 data files.</li>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://docs.opengeospatial.org/is/08-085r4/08-085r4.html</link>
+					<link>https://docs.ogc.org/is/08-085r4/08-085r4.html</link>
 					<tag>OGC® GML in JPEG 2000 (GMLJP2) Encoding Standard Part 1: Core (version 2.0)</tag>
 					<comment>OGC Document 08-085r4.  September 23, 2014.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://docs.opengeospatial.org/is/08-085r5/08-085r5.html</link>
+					<link>https://docs.ogc.org/is/08-085r5/08-085r5.html</link>
 					<tag>OGC® GML in JPEG 2000 (GMLJP2) Encoding Standard Part 1: Core - with Corrigendum (version 2.0.1)</tag>
 					<comment>OGC Document 08-085r5.  April 7, 2016.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://docs.opengeospatial.org/is/08-085r8/08-085r8.html</link>
+					<link>https://docs.ogc.org/is/08-085r8/08-085r8.html</link>
 					<tag>OGC® GML in JPEG 2000 (GMLJP2) Encoding Standard Part 1: Core (version 2.1)</tag>
 					<comment>OGC Document 08-085r8.  August 27, 2018.</comment>
 				</fdd:urlReference>
@@ -167,9 +189,16 @@ within JPEG 2000 data files.</li>
 		<fdd:urls>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://www.ogc.org/standards/gmljp2</link>
+					<link>https://www.ogc.org/standards/gmljp2/</link>
 					<tag>OGC: GML in JPEG 2000 for Geographic Imagery Encoding</tag>
 					<comment> OGC page for GMLJP2, with links to specifications and schemas</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.ogc.org/announcement/the-ogc-adopts-gml-in-jpeg-2000-gmljp2-encoding-standard-version-2/</link>
+					<tag>OGC: GML in JPEG 2000 for Geographic Imagery Encoding</tag>
+					<comment>Press release: &quot;The OGC adopts GML in JPEG 2000 (“GMLJP2”) Encoding Standard Version 2&quot; (November 19, 2014)</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
@@ -185,21 +214,21 @@ within JPEG 2000 data files.</li>
 					</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
-							<link>https://gdal.org/frmt_jp2kak.html</link>
+							<link>https://gdal.org/en/stable/drivers/raster/jp2kak.html</link>
 							<tag>GDAL Raster Formats</tag>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://gdal.org/frmt_jp2ecw.html</link>
+							<link>https://gdal.org/en/stable/drivers/raster/ecw.html</link>
 							<tag>JP2ECW -- ERDAS JPEG2000</tag>
 							<comment>Mentions support for &quot;the new GML-in-JPEG2000 specification developed at OGC.&quot;  Provides GMLJP2 option for file creation.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://www.gdal.org/frmt_jp2kak.html</link>
+							<link>https://gdal.org/en/stable/drivers/raster/jp2kak.html</link>
 							<tag>JP2KAK -- JPEG2000 (based on Kakadu)</tag>
 							<comment>Provides GMLJP2 option for file creation.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>https://gdal.org/frmt_jp2openjpeg.html</link>
+							<link>https://gdal.org/en/stable/drivers/raster/jp2openjpeg.html</link>
 							<tag>JP2OpenJPEG (based on OpenJPEG library)</tag>
 							<comment>Provides GMLJP2 option for file creation.</comment>
 						</fdd:urlReference>
@@ -215,8 +244,8 @@ within JPEG 2000 data files.</li>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://www.l3harrisgeospatial.com/portals/0/pdfs/ias/Brochure_IAS.pdf</link>
-					<tag>Image Access Solutions brochure</tag>
+					<link>http://web.archive.org/web/20220123220944/https://www.l3harrisgeospatial.com/portals/0/pdfs/ias/Brochure_IAS.pdf</link>
+					<tag>Image Access Solutions brochure (via Internet Archive)</tag>
 					<comment>In some ways, this is an update of the paper from ITT listed above.  However, no specific mention is made of GMLJP2.</comment>
 				</fdd:urlReference>
 			</fdd:url>

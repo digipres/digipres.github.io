@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000646" titleName="Dolby Atmos Master File" shortName="DAMF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-group</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-bundle</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2025-04-18</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Dolby Atmos Master File</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>audio formats</fdd:keyword>
+			<fdd:keyword>sound formats</fdd:keyword>
+			<fdd:keyword>surround sound</fdd:keyword>
+			<fdd:keyword>wrapper formats</fdd:keyword>
+			<fdd:keyword>immersive media formats</fdd:keyword>
+			<fdd:keyword>metadata formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>DAMF, or <a href="https://professionalsupport.dolby.com/s/article/What-is-the-input-audio-format-for-Dolby-Digital-Plus-with-Dolby-Atmos-encoders?language=en_US">Dolby Atmos Master File</a>, is a closed and proprietary output package format that supports the surround sound spatial audio system <a href="https://professional.dolby.com/what-is-dolby-atmos-music/#gref">Dolby Atmos</a>, "an immersive audio experience that empowers creators to place discrete audio elements or objects in a three-dimensional sound field, which is not possible in stereo." <a href="https://www.stampedeimmersive.com.au/faq">Stampede Immersive</a> explains that "Dolby Atmos [also known as just Atmos] uses metadata in addition to traditional audio to create an immersive experience for listeners. What this means is that sound is no longer bound to a set amount of speakers in a monitoring environment and is panned using coordinates in 3D space rather than by channel. It also adds the dimension of height to the existing surround plane so that the project really can exist in a 3-dimensional way." While this has many advantages for both the recording industry and consumers, there are also some detractors as explained in an interview on <a href="https://www.pbs.org/newshour/show/how-dolby-atmos-promises-to-change-how-people-experience-music-and-movies">PBS News Hour: How Dolby Atmos promises to change how people experience music and movies</a> (September 11, 2023) between special correspondent for arts and culture, Mike Cerre, and John Couling of Dolby Laboratories: "according to some critics, hearing sounds from different directions can be distracting. Neuroscientist and musician <a href="https://www.daniellevitin.com/">Dr. Daniel Levitin</a> believes it depends more on the nature of the sound and how the technology is used...If there was something outside of our field of vision, a sudden loud noise that's called the startle response, depending on the noise, we might jump. We might turn around. But if they have been there all along as part of the musical piece, just like a humming refrigerator coming from the other room, you habituate to them and they're not alarming." </p>
+			<p>DAMF is a package composed of three files (as described in Hybrik&apos;s <a href="https://tutorials.hybrik.com/dolby_atmos/#damf-dolby-atmos-master-file">Dolby Atmos Tutorial</a>):</p>
+			<ul>
+				<li>&quot;filename.atmos: The .atmos file is an <fddLink id="fdd000075">XML</fddLink> file describing the name of the other two files, how many beds and objects are utilized, the start time (offset), the FFoA (first frame of action, often the same as the starttime), the framerate, and other information.</li>
+				<li>filename.atmos.metadata:
+The .atmos.metadata is an <fddLink id="fdd000075">XML</fddLink> file with position (X, Y, and Z coordinates [X-coordinate is measured along the east–west axis, the Y-coordinate is measured along the north–south axis, and the Z-coordinate measures height or elevation]), volume, speaker configuration, and size coordinates for objects over time.</li>
+				<li>filename.atmos.audio:
+The .atmos.audio is a <fddLink id="fdd000591">Core Audio File (CAF)</fddLink> of up to 128 tracks. These files are the largest [files in the package].&quot;</li>
+			</ul>
+			<p>As explained  <a href="https://nyweekly.com/tech/exploring-dolby-atmos-and-why-metadata-matters/">Exploring Dolby Atmos and why Metadata Matters</a>, &quot;Dolby Atmos metadata consists of two primary components, Audio Objects and Bed Channels. Audio Objects are individual sound elements, such as an actor’s voice, rainfall, or a car on the highway. Each audio object is accompanied by metadata that specifies its position in the 3D space, its movement trajectory, and other attributes like size and sound characteristics. In addition to audio objects, bed channels are similar to the speakers in a conventional surround sound setup and provide a foundation upon which the audio objects can be placed and moved.&quot; Official <a href="https://professional.dolby.com/gaming/gaming-getting-started/dolby-atmos-documentation/#atmos">Dolby Atmos Documentation</a> expands on the implementation with &quot;object audio and their associated metadata are kept on separate buses from the Bed audio. In the end-user&apos;s device they are rendered in the correct position for the individual device’s speaker configuration and capability.&quot;</p>
+		</fdd:description>
+		<fdd:shortDescription>DAMF or Dolby Atmos Master File is a deliverable package of three files, one an index file, one a metadata file and the third, an audio file for the proprietary Dolby Atmos immersive, 3D sound system. </fdd:shortDescription>
+		<fdd:productionPhase/>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Must have component</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000075</fdd:id>
+					<fdd:shortName>XML</fdd:shortName>
+					<fdd:titleName>Extensible Markup Language (XML)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Both the .atmos and .atmos.metadata components of the DAMF package are in XML.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Must have component</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000591</fdd:id>
+					<fdd:shortName>CAF</fdd:shortName>
+					<fdd:titleName>Apple Core Audio Format</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>The CAF file is a core component of the DAMF package.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Other</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000607</fdd:id>
+					<fdd:shortName>ADM</fdd:shortName>
+					<fdd:titleName>Audio Definition Model</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>As described in <a href="https://tutorials.hybrik.com/dolby_atmos/#adm-bwf-audio-descriptive-model-broadcast-wav-format">Dolby Atmos Tutorial</a>, &quot;ADM BWF is an alternative to DAMF and is not proprietary to Dolby. It is a single file that is basically a broadcast WAV with an XML data chunk at the head containing the .atmos and .atmos.metadata information.&quot;</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Other</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000535</fdd:id>
+					<fdd:shortName>IMF_Package</fdd:shortName>
+					<fdd:titleName>Interoperable Master Format (IMF)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>IAB/IMF (Immersive Audio Bitstream for IMF) is a frame based representation of the DAMF in a single file, which is specified for IMF. </fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>As of this writing in April 2025, the Library of Congress does not have DAMF files in its collections.</fdd:experience>
+		<fdd:preference>See the Recommended Formats Statement for format preferences for <a href="https://www.loc.gov/preservation/resources/rfs/audio.html">audio works</a>.
+		</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Little documentation publicly available. There is no open specification for DAMF, including for the metadata requirements. <a href="../contact_format.shtml">Comments welcome</a>.</fdd:disclosure>
+		<fdd:documentation>Limited technical information about DAMF is publicly available overall but some details are available, notably from Hybrik's <a href="https://tutorials.hybrik.com/dolby_atmos/#damf-dolby-atmos-master-file">Dolby Atmos Tutorial</a>. <a href="../contact_format.shtml">Comments welcome</a>. </fdd:documentation>
+		<fdd:adoption>DAMF is highly adopted, especially in the broadcast, music and entertainment communities. See, for example, Disney's <a href="https://mediatechspecs.disney.com/mastering/audio/audio-specifications">Home Atmos DAMF Technical Specification</a>, <a href="https://docs.aws.amazon.com/mediaconvert/latest/ug/feature-restrictions-for-dolby-atmos-encoding.html">AWS Requirements for Dolby Atmos encoding</a> and <a href="https://support.apple.com/en-us/109354">About Spatial Audio with Dolby Atmos in Apple Music</a>. Interestingly, Netflix seems to have removed the requirement for DAMF in <a href="https://partnerhelp.netflixstudios.com/hc/en-us/articles/115001539991-Netflix-Dolby-Atmos-Home-Mix-Deliverable-Requirements-v2-3">Netflix Dolby Atmos Home Mix Deliverable Requirements v2.3</a> for Music and Effects - see change log v2.0 - and instead requests Dolby Atmos BWAV ADM File. Encoders and decoder support includes <a href="https://docs.telestream.dev/docs/dolby-atmos-filters">Telestream</a> and <a href="https://api.encoding.com/reference/dolby-atmos-master-files">Encoding.com</a> and <a href="https://tutorials.hybrik.com/dolby_atmos/#damf-dolby-atmos-master-file">Dolby Atmos Tutorial</a> reports that &quot;Atmos audio and panning metadata can be generated by DAW tools such as <a href="https://www.avid.com/resource-center/dolby-atmos-renderer">Avid Pro Tools</a> and <a href="https://www.steinberg.net/nuendo/dolby-atmos/">Steinberg Nuendo</a>.&quot; </fdd:adoption>
+		<fdd:licensingAndPatents>
+			<a href="https://professional.dolby.com/licensing/#gref">Dolby Professional Getting licensed</a> defines the process to receive a license to include Dolby technologies in products. <a href="https://professional.dolby.com/gaming/gaming-getting-started/dolby-atmos-documentation/#atmos">Dolby Atmos Documentation</a> states that &quot;There are no additional licensing costs to support Dolby Atmos in games.&quot;.Dolby does not recognize or participate in the <a href="https://professional.dolby.com/legal/aom-statement/#gref">Alliance for Open Media Patent License 1.0</a>, which is a non-sub-licensable, perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable (except as expressly stated in this License) patent license. Instead, Dolby states that "Dolby offers its valuable AV1 essential patent portfolio through collaborative, multi-party, patent pool license programs alongside the intellectual property of other innovators whose patents are essential to AV1. (For more details, see here.) In addition, Dolby is willing to negotiate bilateral licenses on mutually agreed terms that would be memorialized in duly executed written contracts."</fdd:licensingAndPatents>
+		<fdd:transparency>See <fddLink id="fdd000075">XML</fddLink> and <fddLink id="fdd000591">CAF</fddLink>.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>DAMF is a package of XML and CAF. <fddLink id="fdd000075">XML</fddLink>-based formats have good support for accessibility features. According to W3C&apos;s XML Accessibility Guidelines, XML-based formats can include features that promote accessibility depending on implementation.  <fddLink id="fdd000591">CAF</fddLink>&apos;s header includes self-identification and specification version number. There are other fields where descriptive metadata can be included, as well as the inclusion of unique identifiers. <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>See <fddLink id="fdd000075">XML</fddLink> and <fddLink id="fdd000591">CAF</fddLink>.</fdd:externalDependencies>
+		<fdd:techProtection>Dolby Atmos supports encryption and DRM, stating in <a href="https://webapi.streaming.dolby.com/v0_9/help_files/topics/playing_encrypted_media.html#fntarg_1">Playing encrypted media</a> &quot;The encrypted pipeline is tailored towards premium experiences and therefore has support for Dolby Atmos more often than not.&quot; The DAMF package itself may not be encrypted </fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:soundQF>
+			<fdd:normalSound>Good support</fdd:normalSound>
+			<fdd:fidelity>Atmos can creates a more immersive and detailed listening experience, particularly through the use of spatial audio and object-based mixing.</fdd:fidelity>
+			<fdd:channels>Dolby Atmos uses a combination of standard channels and additional overhead channels for an immersive audio experience. A typical Atmos setup includes seven standard channels (left, center, right, left surround, right surround, left rear surround, and right rear surround), one LFE (low-frequency effects) channel, and four overhead channels.</fdd:channels>
+			<fdd:beyondSound>Dolby Atmos has the unique capacity for immersive audio on three planes (X, Y and Z in which Z is height) which is recorded in the atmos.metadata</fdd:beyondSound>
+		</fdd:soundQF>
+		<fdd:textQF>
+			<fdd:normalText>
+				<fddLink id="fdd000075">XML</fddLink>
+			</fdd:normalText>
+			<fdd:structure>
+				<fddLink id="fdd000075">XML</fddLink>
+			</fdd:structure>
+			<fdd:layout>
+				<fddLink id="fdd000075">XML</fddLink>
+			</fdd:layout>
+			<fdd:mathDiag>
+				<fddLink id="fdd000075">XML</fddLink>
+			</fdd:mathDiag>
+			<fdd:beyondText>
+				<fddLink id="fdd000075">XML</fddLink>
+			</fdd:beyondText>
+		</fdd:textQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>damf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://professional.dolby.com/siteassets/content-creation/dolby-atmos/dolby_atmos_renderer_guide.pdf">Dolby Atmos Renderer Guide</a> (Software version 3.0
+2 August 2018). It&apos;s unclear if this is still in use. <a href="../contact_format.shtml">Comments welcome</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>atmos</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The .atmos file is an XML index file for the DAMF package.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>atmos.metadata</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The .atmos.metadata is an XML file with location and size coordinates for objects over time. </fdd:note>
+			</fdd:filenameExtension>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>atmos.audio</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The .atmos.audio is a Core Audio File (CAF).</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>NARA File Format Preservation Plan ID has no corresponding entry as of April 2025.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>PRONOM has no corresponding entry as of April 2025.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>Wikidata has no corresponding entry as of April 2025.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:history>According to Dolby&apos;s <a href="https://professional.dolby.com/siteassets/cinema/cie-innovation-tech/cie-innovation-tech-dolby.pdf">A Century of Innovation: An Abridged Timeline of The Last 100 Years of Cinema Presentation</a> (Winter 2020), in 2012 &quot;Dolby launches Dolby Atmos,
+a new audio technology that
+changes the experience of
+sound in entertainment, with
+the debut of Disney/Pixar’s
+Brave. This new platform
+introduces two important
+concepts to cinema sound:
+audio objects and overhead
+speakers.&quot; In 2015, &quot;Dolby launches Dolby
+Cinema, a premium
+moviegoing offering
+combining Dolby Vision
+with Dolby Atmos... and <a href="https://www.imdb.com/title/tt1964418/">Tomorrowland</a> is the first
+film to use both Dolby
+Vision and Dolby Atmos.&quot;</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>No public specification available. <a href="../contact_format.shtml">Comments welcome</a>. </fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000075">XML</fddLink> and <fddLink id="fdd000591">CAF</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Dolby resources</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://professionalsupport.dolby.com/s/article/What-is-the-input-audio-format-for-Dolby-Digital-Plus-with-Dolby-Atmos-encoders?language=en_US</link>
+							<tag>What are the input audio formats for file-based Dolby Atmos encoders? June 6, 2023</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://professional.dolby.com/what-is-dolby-atmos-music/#gref</link>
+							<tag>What is Dolby Atmos Music?</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://professional.dolby.com/gaming/gaming-getting-started/dolby-atmos-documentation/</link>
+							<tag>Dolby Atmos Documentation</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://professional.dolby.com/licensing/#gref</link>
+							<tag>Getting licensed</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://professional.dolby.com/legal/aom-statement/#gref</link>
+							<tag>Dolby Statement
+Dolby Laboratories, Inc. Statement Regarding the Alliance for Open Media Patent License 1.0</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://professional.dolby.com/siteassets/content-creation/dolby-atmos/dolby_atmos_renderer_guide.pdf</link>
+							<tag>Dolby Atmos Renderer
+Guide, Software version 3.0
+2 August 2018</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://webapi.streaming.dolby.com/v0_9/help_files/topics/playing_encrypted_media.html#fntarg_1</link>
+							<tag>Playing encrypted media</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://customer.dolby.com/content-creation-and-delivery/dolby-media-encoder-with-dolby-ac-4-v340</link>
+							<tag>Dolby Media Encoder with Dolby AC-4 v3.4.0</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://customer.dolby.com/content-creation-and-delivery/dolby-encoding-engine-with-dolby-ac-4-v540</link>
+							<tag>Dolby Encoding Engine with Dolby AC-4 v5.4.0</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://professional.dolby.com/siteassets/cinema/cie-innovation-tech/cie-innovation-tech-dolby.pdf</link>
+							<tag>A Century of Innovation: An Abridged Timeline of The Last 100 Years of Cinema Presentation. Dolby. Winter 2020</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://tutorials.hybrik.com/dolby_atmos/#damf-dolby-atmos-master-file</link>
+					<tag>Hibrik&apos;s Dolby Atmos Tutorial</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.stampedeimmersive.com.au/faq</link>
+					<tag>Stampede Dolby Atmos FAQ</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://nyweekly.com/tech/exploring-dolby-atmos-and-why-metadata-matters/</link>
+					<tag>New York Weekly: Exploring Dolby Atmos and why Metadata Matters, November 28, 2023</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.pbs.org/newshour/show/how-dolby-atmos-promises-to-change-how-people-experience-music-and-movies</link>
+					<tag>PBS New Hour: How Dolby Atmos promises to change how people experience music and movies,
+September 11, 2023 </tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.daniellevitin.com/</link>
+					<tag>Daniel J. Levitin website</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://mediatechspecs.disney.com/mastering/audio/audio-specifications</link>
+					<tag>Disney Home Atmos DAMF Technical Specification
+</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://docs.aws.amazon.com/mediaconvert/latest/ug/feature-restrictions-for-dolby-atmos-encoding.html</link>
+					<tag>AWS Requirements for Dolby Atmos encoding</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://partnerhelp.netflixstudios.com/hc/en-us/articles/115001539991-Netflix-Dolby-Atmos-Home-Mix-Deliverable-Requirements-v2-3</link>
+					<tag>Netflix Dolby Atmos Home Mix Deliverable Requirements v2.3</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://api.encoding.com/reference/dolby-atmos-master-files </link>
+					<tag>Encoding.com: Dolby Atmos Master Files: DAMF or ADM BWF</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.avid.com/resource-center/dolby-atmos-renderer</link>
+					<tag>AVID: Pro Tools Dolby Atmos Renderer, December 12, 2023</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.steinberg.net/nuendo/dolby-atmos/ </link>
+					<tag>Steinberg Nuendo Dolby Atmos
+
+</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://docs.telestream.dev/docs/dolby-atmos-filters</link>
+					<tag>Telestream Advanced Dolby Atmos Topics</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://support.apple.com/en-us/109354</link>
+					<tag>About Spatial Audio with Dolby Atmos in Apple Music</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
