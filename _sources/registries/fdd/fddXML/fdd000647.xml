@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000647" titleName="Concise Binary Object Representation (CBOR)" shortName="CBOR" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2025-05-16</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Concise Binary Object Representation (CBOR); RFC 8949</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>generic digital formats</fdd:keyword>
+			<fdd:keyword>markup languages</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>According to <a href="https://cbor.io/">cbor.io</a>, CBOR or Concise Binary Object Representation is a &quot;data format whose design goals include the possibility of extremely small code size, fairly small message size, and extensibility without the need for version negotiation.&quot; It is fully disclosed and open, standardized through the Internet Engineering Task Force (IETF) as <a href="https://www.rfc-editor.org/rfc/rfc8949.txt">RFC 8949</a>, first published in 2020.</p>
+			<p>CBOR is based on the <fddLink id="fdd000381">JSON</fddLink> data model but is binary rather than text-based encoding. According to <a href="https://medium.com/@sainitesh/json-vs-cbor-selection-for-api-payloads-8d30ac000cc4">JSON vs CBOR: Selection for API Payloads</a>, which also includes snapshots of formatted data, JSON's advantages include that it's "readable and straightforward to debug, universally supported across systems and languages with a simple, familiar syntax" but it's cons are that it's "verbose with larger datasets, leading to increased payload sizes and slower to parse compared to binary formats." CBOR's advantages include that it's "compact, reducing bandwidth and transmission time, fast to parse, as binary encoding bypasses text processing and that it supports extra data types like dates and binary blobs" while it's drawbacks include that it's "not human-readable, making debugging tricky and that it requires specialized libraries, as it’s less widely supported." The overall takeaway is that CBOR has the edge for efficiency where fast performance is optimized in applications such as performance-sensitive APIs but JSON's readability and compatibility can have the upper hand for web and mobile applications.  <a href="https://en.wikipedia.org/wiki/CBOR">Wikipedia</a> asserts that "like JSON it allows the transmission of data objects that contain name–value pairs, but in a more concise manner. This increases processing and transfer speeds at the cost of human readability." </p>
+			<p>According to <a href="https://www.rfc-editor.org/rfc/rfc8949.txt">RFC 8949</a>, a <i>data item</i> is the key building block of CBOR data. <a href="https://en.wikipedia.org/wiki/CBOR">Wikipedia's CBOR entry</a> explains: "The structure of a data item may contain zero, one, or more nested data items.  The term is used both for the data item in representation format and for the abstract idea that can be derived from that by a decoder; the former can be addressed specifically by using the term "encoded data item". Each data item consists of a header byte containing a 3-bit type and 5-bit short count. This is followed by an optional extended count (if the short count is in the range 24–27), and an optional payload. <a href="https://dev.to/mnelsonwhite/deserialising-cbor-encoded-data-in-net-5cgo">Understanding CBOR Encoded Data</a> summarizes the CBOR structure: "CBOR encoding data is structured as a sequence of CBOR header and CBOR data pairs. The header part determines the format and the length of the data segment.&quot; <a href="https://www.rfc-editor.org/rfc/rfc8949.txt">RFC 8949</a> details the seven major data types: Unsigned Integer, Negative Integer, Byte String, Text String, Array,	Map, Tag
+and	Simple/Float. In addition, a data item can be enclosed by a tag to give it some additional semantics, as uniquely identified by a tag number.</p>
+			<p>
+				<a href="https://www.rfc-editor.org/rfc/rfc8949.txt">RFC 8949</a> provides some guidance about converting between CBOR and JSON, declaring that most but not all of the types in CBOR have direct analogs in JSON and explains options for the process. For converting between JSON and CBOR, "all JSON values, once decoded, directly map into one or more CBOR values" but "there are still decisions to be made with respect to number representation."</p>
+			<p>The 2024 <a href="https://www.reddit.com/r/cpp/comments/1drz3eg/benchmarking_eight_serialization_formats_in_c_and/">Benchmarking Eight Serialization Formats in C and C++ (JSON, BSON, CBOR, flexbuffers, msgpack, TOML, XML, YAML)</a> post on Reddit includes CBOR as a comparison option in tests on speed of serialization formats with several responders commenting on the results showing CBOR in the middle to slower group (although the selection of library may have had an impact on results). Full results are posted on the <a href="https://github.com/getml/reflect-cpp/tree/main/benchmarks">reflect-cpp/benchmarks on GitHub</a>. The paper <a href="https://lobste.rs/t/pdf">CBOR is Greener than JSON</a> (PDF download) from the <a href="https://datatracker.ietf.org/doc/draft-iab-ws-environmental-impacts-report/03/">IETF IAB Workshop on Environmental Impact of Internet Applications and Systems, 2022</a> discusses &quot;systemic energy savings through the use of binary encodings and, thus, the
+ecological impact of encodings, JSON energy consumption is compared to CBOR energy
+consumption across a range of examples. This comparison is based on the assumption that, in
+energy-constrained environments, processing requirements are dominated by the energy
+expenditure for transmission and reception.&quot; The paper concludes that &quot;A generic approach of establishing binary message transfer supported with tooling for human
+readability will provide resource savings and therefore constitutes a paramount near term goal.
+Future evaluation and large scale measurements are required to underpin and establish this as a
+principal approach.&quot; However, as noted in a discussion forum with the topic heading<a href="https://lobste.rs/s/38bn85/cbor_is_greener_than_json">CBOR is Greener than JSON</a>, Carsten Bormann is a author of the paper as well as the CBOR specification so there may be conflict of interest. <a href="../contact_format.shtml">Comments welcome</a>. </p>
+		</fdd:description>
+		<fdd:shortDescription> CBOR or Concise Binary Object Representation is a binary data format designed to support extremely small code sizes, small message sizes, and extensibility without version negotiation. It is standardized in IETF RFC 8949.</fdd:shortDescription>
+		<fdd:productionPhase>An interchange format, typically used during data collection or to transmit binary data to a system that will further manipulate the data and/or present it to end users.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Extension of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000381</fdd:id>
+					<fdd:shortName>JSON</fdd:shortName>
+					<fdd:titleName>JSON (JavaScript Object Notation) Data Interchange Format; also ECMA-404, JSON Data Interchange Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>None</fdd:experience>
+		<fdd:preference>See the Library of Congress Recommended Formats Statement (RFS) for format preferences for <a href="http://www.loc.gov/preservation/resources/rfs/data.html">datasets</a> and <a href="https://www.loc.gov/preservation/resources/rfs/software-videogames.html">software and video games</a>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Openly and fully documented through the Internet Engineering Task Force (IETF) as <a href="https://www.rfc-editor.org/rfc/rfc8949.txt">RFC 8949</a>.</fdd:disclosure>
+		<fdd:documentation>
+			<a href="https://www.rfc-editor.org/rfc/rfc8949.txt">RFC 8949</a>, December 2020, with <a href="https://www.rfc-editor.org/errata/rfc8949">Errata</a>. Originally published as  <a href="https://www.rfc-editor.org/rfc/rfc7049.txt">RFC 7049</a>, October 2013. </fdd:documentation>
+		<fdd:adoption>cbor.io includes many <a href="https://cbor.io/impls.html">implementations</a> and <a href="https://cbor.io/tools.html">tools</a>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>None associated with the basic format.</fdd:licensingAndPatents>
+		<fdd:transparency>Bring a binary data format, it is not inherently designed to be transparent in the same way as a human-readable format like JSON. However, CBOR does have well-defined header structure and the ability to incorporate tags for additional information. </fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>CBOR supports tags, which are numerical identifiers that provide additional information about the data item. For example, a tag might indicate that a byte string contains a JSON object or some other specific type of data.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>CBOR does not have built-in features for screen readers or other assistive technologies but the data can be migrated to other formats to support accessibility needs. <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>As described in <a href="https://www.rfc-editor.org/rfc/rfc9052.txt">RFC 9052: CBOR Object Signing and Encryption (COSE): Structures and Process</a> and <a href="https://www.rfc-editor.org/rfc/rfc9053.txt">RFC 9053: CBOR Object Signing and Encryption (COSE): Initial Algorithms</a>,  CBOR supports signatures, message authentication codes, and encryption specifically through the use of cryptographic keys.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:datasetQF>
+			<fdd:accessSoftware>
+				<a href="https://cbor.io/impls.html">https://cbor.io/impls.html</a> states &quot;CBOR is simple enough to implement from scratch for a specific application.
+For applications where that is not desirable, generic implementations are available for a variety of platforms. Many of these implementations stay private, but some are published with liberal open-source licenses such as the Apache 2.0 or the MIT license.
+Many implementations use a simple API of the form: encoded = CBOR.encode(data) ➔ data = CBOR.decode(encoded)&quot;</fdd:accessSoftware>
+			<fdd:dataDocumentation>There is no support in CBOR per se for representing provenance metadata, but quantitative or qualitative assessments of quality or indications of provenance can be transmitted with data for applications that require such assessments.</fdd:dataDocumentation>
+			<fdd:beyondDataset>While compactness is a design goal, the primary focus of CBOR is on extremely small code size and implementation simplicity.  </fdd:beyondDataset>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>cbor</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://www.rfc-editor.org/rfc/rfc8949.txt">https://www.rfc-editor.org/rfc/rfc8949.txt</a> and <a href="https://www.iana.org/assignments/media-types/application/cbor">https://www.iana.org/assignments/media-types/application/cbor</a>. </fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/cbor</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://www.iana.org/assignments/media-types/application/cbor">https://www.iana.org/assignments/media-types/application/cbor</a>. </fdd:note>
+			</fdd:internetMediaType>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>NARA File Format Preservation Plan ID has no corresponding entry as of April 2025.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>PRONOM has no corresponding entry as of April 2025.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q28455556</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q28455556">https://www.wikidata.org/wiki/Q28455556</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q132427122</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q132427122">https://www.wikidata.org/wiki/Q132427122</a>.
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>The 2013 <a href="https://www.ietf.org/proceedings/87/slides/slides-87-appsawg-2.pdf">CBOR
+Design and Overview</a> slide presentation by Paul Hoffman
+and Carsten Bormann for the <a href="https://www.ietf.org/proceedings/87/">IETF 87 Proceedings</a> details several interesting background facts. CBOR is pronounce &quot;Sea Boar&quot; and the acronym is not a shortening of Carsten Bormann&apos;s name: &quot;Paul,	trying	for	a	pronounceable	acronym,	came	up	with	this	name	without	consciously	realizing	the	obvious	link	to
+Carsten’s	name.&quot;</p>
+			<p>The paper  <a href="https://raw.githubusercontent.com/intarchboard/e-impact-workshop-public/main/papers/Moran-Birkholz-Bormann_Sustainability-considerations-for-networking-equipment.pdf.pdf">CBOR is Greener than JSON</a> (PDF download) from the <a href="https://datatracker.ietf.org/doc/draft-iab-ws-environmental-impacts-report/03/">IETF IAB Workshop on Environmental Impact of Internet Applications and Systems, 2022</a> discusses &quot;systemic energy savings through the use of binary encodings and, thus, the
+ecological impact of encodings, JSON energy consumption is compared to CBOR energy
+consumption across a range of examples. This comparison is based on the assumption that, in
+energy-constrained environments, processing requirements are dominated by the energy
+expenditure for transmission and reception.&quot; The paper concludes that &quot;A generic approach of establishing binary message transfer supported with tooling for human
+readability will provide resource savings and therefore constitutes a paramount near term goal.
+Future evaluation and large scale measurements are required to underpin and establish this as a
+principal approach.&quot; However, as noted in a discussion forum with the topic heading <a href="https://lobste.rs/s/38bn85/cbor_is_greener_than_json">CBOR is Greener than JSON</a>, Carsten Bormann is a author of the paper as well as the CBOR specification so there may be conflict of interest. <a href="../contact_format.shtml">Comments welcome</a>. </p>
+		</fdd:general>
+		<fdd:history>
+			<p>CBOR has its roots in <a href="https://msgpack.org/index.html">MessagePack</a>, which describes itself as "an efficient binary serialization format. It lets you exchange data among multiple languages like JSON. But it's faster and smaller. Small integers are encoded into a single byte, and typical short strings require only one extra byte in addition to the strings themselves." The history of the CBOR and MessagePack relationship is described in a post on  <a href="https://github.com/msgpack/msgpack/issues/258">MessagePack's GitHub Issue Tracker</a>. In 2018, Carsten Bormann, one of the authors of RFC 8949 and creator of CBOR explains "CBOR was created so we were able to use a standard binary serialization for JSON-like data models in IoT [Internet of Things] standards and beyond, including support for binary data and a concept for extensibility. ...In 2013, when we gave up trying to drag msgpack into a standardization process, we used the opportunity to clean up the msgpack format, so CBOR is not byte-for-byte compatible to msgpack. (It is close enough that some early CBOR implementations were derived from msgpack implementations.)"</p>
+			<p>IETF <a href="https://www.rfc-editor.org/rfc/rfc7049.txt">RFC 7049</a> was published in October 2013 and was made obsolete by <a href="https://www.rfc-editor.org/rfc/rfc8949.txt">RFC 8949</a> in December 2020. RFC 8949 is also known as <a href="https://www.rfc-editor.org/info/std94">STD 94</a>. As of April 2025, RFC Errata ID 8255 is posted against RFC 8949 in regards to a map key. Additional erratas may be posted in time. RFC Errata IDs are available via a search from <a href="https://www.rfc-editor.org/errata.php">RFC Errata</a>. A change list from obsolete RFC 7049 is available in RFC 8949 Appendix G.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.rfc-editor.org/rfc/rfc8949.txt</link>
+					<tag>IETF RFC 8949: Concise Binary Object Representation (CBOR), December 2020</tag>
+					<comment>Includes the full specification for CBOR</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.rfc-editor.org/info/std94</link>
+					<tag>STD 94
+RFC 8949</tag>
+					<comment>Equivalent to RFC 8949</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000381">JSON</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>cbor.io Resources</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://cbor.io/</link>
+							<tag>Homepage of cbor.io project</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://cbor.io/impls.html</link>
+							<tag>List of implementations on cbor.io</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://cbor.io/tools.html</link>
+							<tag>List of tools on cbor.io</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://raw.githubusercontent.com/intarchboard/e-impact-workshop-public/main/papers/Moran-Birkholz-Bormann_Sustainability-considerations-for-networking-equipment.pdf.pdf</link>
+					<tag>CBOR is Greener than JSON paper - PDF download</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://lobste.rs/s/38bn85/cbor_is_greener_than_json </link>
+					<tag>Blog post about CBOR is Greener than JSON paper</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://datatracker.ietf.org/doc/draft-iab-ws-environmental-impacts-report/03/</link>
+					<tag>Report from the IAB Workshop on Environmental Impact of Internet Applications and Systems, 2022
+draft-iab-ws-environmental-impacts-report-03</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.ietf.org/proceedings/87/</link>
+					<tag>IETF 87 Proceedings, Berlin, July 28, 2013</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.ietf.org/proceedings/87/slides/slides-87-appsawg-2.pdf</link>
+					<tag>CBOR
+Design and Overview slide presentation from IETF 87</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://medium.com/@sainitesh/json-vs-cbor-selection-for-api-payloads-8d30ac000cc4</link>
+					<tag>JSON vs CBOR: Selection for API Payloads post by Sai Nitesh Palamakula, Nov 2, 2024</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://dev.to/mnelsonwhite/deserialising-cbor-encoded-data-in-net-5cgo</link>
+					<tag>Understanding CBOR Encoded Data by Matt Nelson-White, Posted on Jan 24, 2023, Edited on Jan 29, 2023</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.reddit.com/r/cpp/comments/1drz3eg/benchmarking_eight_serialization_formats_in_c_and/</link>
+					<tag>Benchmarking Eight Serialization Formats in C and C++ (JSON, BSON, CBOR, flexbuffers, msgpack, TOML, XML, YAML)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/getml/reflect-cpp/tree/main/benchmarks</link>
+					<tag>Code17 GmbH reflect-cpp
+/benchmarks/ - GitHub repo </tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.iana.org/assignments/media-types/application/cbor</link>
+					<tag>IANA application for application/cbor media type </tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://msgpack.org/index.html</link>
+					<tag>MessagePack homepage</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/msgpack/msgpack/issues/258</link>
+					<tag>MessagePack GitHub issue tracker: CBOR relationship with msgpack #258
+</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/CBOR</link>
+					<tag>Wikipedia entry for CBOR</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q28455556</link>
+					<tag>Wikidata entry for CBOR</tag>
+					<comment>Information in Wikidata about CBOR. Wikidata Title ID: Q28455556.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q132427122</link>
+					<tag>Wikidata entry for CBOR Concise Binary Object Representation</tag>
+					<comment>Information in Wikidata about CBOR Concise Binary Object Representation. Wikidata Title ID: Q132427122.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
