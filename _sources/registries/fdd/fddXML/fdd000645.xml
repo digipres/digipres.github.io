@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000645" titleName="YAML Ain&apos;t Markup Language (YAML)" shortName="YAML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenres>
+				<fdd:gdfrGenre>text</fdd:gdfrGenre>
+				<fdd:gdfrGenre>dataset</fdd:gdfrGenre>
+			</fdd:gdfrGenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2025-06-02</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>YAML Ain&apos;t Markup Language (YAML)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>serialization formats, markup languages, generic digital formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>YAML is a human-readable data serialization language that is compatible with most programming languages. The <a href="https://yaml.org/spec/1.2.2/#chapter-1-introduction-to-yaml">specification</a> calls it "both a text format and a method for presenting any native data structure in this format." YAML was developed in the early 2000s as an alternative to, and a simpler version of, <fddLink id="fdd000075">XML</fddLink>. Common use cases for YAML mentioned in the specification include "configuration files, log files, interprocess messaging, cross-language data sharing, object persistence and debugging of complex data structures."</p>
+			<p>YAML syntax borrows features from other programming and markup languages, such as C, <fddLink id="fdd000475">HTML</fddLink>, Perl, Python, <fddLink id="fdd000075">XML</fddLink>, among others. But unlike other markup languages that use symbols to structure a document, YAML minimizes structural characters by instead using Python-style indentation. A YAML document begins with 3 hyphens (---) and ends with 3 periods (...), and a YAML <a href="https://yaml.org/spec/1.2.2/#streams">stream</a> (i.e., file) can contain multiple documents. YAML streams use printable Unicode characters.</p>
+			<p>YAML represents any native data structure using <a href="https://yaml.org/spec/1.2.2/#nodes">nodes</a> with one of three kinds of content: <a href="https://yaml.org/spec/1.2.2/#mapping">mappings</a> (hashes/dictionaries), <a href="https://yaml.org/spec/1.2.2/#sequence">sequences</a> (arrays/lists), and <a href="https://yaml.org/spec/1.2.2/#scalars">scalars</a> (strings/numbers). For key/value pairs, the key is separated from its value with a colon and a space (: ). Entries in a sequence begin with a hyphen and space (- ). YAML tags indicate data types, using a single exclamation mark (!) for local/user-defined data types and two exclamation marks (!!) for universal data types. Comments begin with a pound/hash sign (#) and can appear after a document value or on their own line.</p>
+			<p>As of version 1.2, YAML is a strict superset of <fddLink id="fdd000381">JSON</fddLink>, meaning that valid JSON is also valid YAML. </p>
+			<p>Although YAML's design goals include that it should be easily readable by humans, portable between programming languages, and easy to implement and use, <a href="https://en.wikipedia.org/wiki/YAML#Criticism">Wikipedia</a> lists some criticisms of YAML that are counter to these goals. Section 4 of <a href="https://datatracker.ietf.org/doc/html/rfc9512#name-security-considerations">RFC 9512</a> lists security considerations for the format. Such complaints and concerns have led to the development of YAML alternatives, such as YAML parsers that only validate a restricted subset of the YAML specification.</p>
+		</fdd:description>
+		<fdd:shortDescription>YAML is a human-readable data serialization language that is compatible with most programming languages.</fdd:shortDescription>
+		<fdd:productionPhase>Can be used as initial, middle, or final-state format.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000381</fdd:id>
+					<fdd:shortName>JSON</fdd:shortName>
+					<fdd:titleName>JSON (JavaScript Object Notation)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>As of YAML 1.2, YAML is a strict superset of JSON.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>
+			<p>YAML is one of the output formats provided by the loc.gov API, which provides structured data about Library of Congress collections. The following parameter can be added to an endpoint to view the YAML: ?fo=yaml (example: <a href="https://www.loc.gov/item/2012592226/?fo=yaml">https://www.loc.gov/item/2012592226/?fo=yaml</a>). Refer to the API documentation for more information: <a href="https://www.loc.gov/apis/json-and-yaml/">https://www.loc.gov/apis/json-and-yaml/</a>.</p>
+			<p>The Library of Congress has a small amount of YAML files in its collections.</p>
+		</fdd:experience>
+		<fdd:preference>See the Library of Congress Recommended Formats Statement for format preferences for <a href="https://www.loc.gov/preservation/resources/rfs/text.html">textual works</a> and <a href="https://www.loc.gov/preservation/resources/rfs/data.html">datasets</a>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Open standard. Since 2020, it has been maintained by the <a href="https://yaml.org/spec/1.2.2/ext/team/">YAML Language Development Team</a>.</fdd:disclosure>
+		<fdd:documentation>YAML specifications are available on <a href="https://yaml.org/">https://yaml.org/</a>. The most recent specification is <a href="https://yaml.org/spec/1.2.2/">YAML 1.2, Revision 1.2.2</a>, released October 1, 2021. Development of the YAML language takes place in the public repository <a href="https://github.com/yaml/yaml-spec">https://github.com/yaml/yaml-spec</a>.  </fdd:documentation>
+		<fdd:adoption>
+			<p>YAML has been widely adopted for configuration files and data exchange between systems. The <a href="https://yaml.org/">YAML website</a> has an extensive list of frameworks and tools that have been developed to integrate YAML into other languages, including Python, C/C++, Perl, Ruby, Java, <fddLink id="fdd000443">JavaScript</fddLink>, and more.</p>
+			<p>According to an <a href="https://www.ibm.com/think/topics/yaml">IBM article from 2023</a>, YAML is used in DevOps to define infrastructure as code (IaC), create deployment files, and define continuous integration and continuous delivery (CI/CD) pipelines, and some popular DevOps tools that use YAML include Ansible, Kubernetes, GitHub, and Docker Compose, among others.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>None.</fdd:licensingAndPatents>
+		<fdd:transparency>YAML files are human readable in a text editor and use Unicode printable characters.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>Like other programming or markup languages, YAML files can be documented through comments. YAML tags are used to indicate data type metadata. The <a href="https://yaml.org/spec/1.2.2/#3212-tags">specification</a> notes that tags "may provide additional information such as the set of allowed content values for validation, a mechanism for tag resolution or any other data that is applicable to all of the tag's nodes."</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>Other than being a structured text file, YAML has no specific attributes to support accessibility. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+			</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None.</fdd:externalDependencies>
+		<fdd:techProtection>None.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:textQF>
+			<fdd:normalText>YAML was developed to be both human- and machine-readable. YAML files can be viewed, edited, and printed using plain text editors. YAML streams are presented as a series of Unicode characters.</fdd:normalText>
+			<fdd:structure>YAML streams are structured using indentation and <a href="https://yaml.org/spec/1.2.2/#53-indicator-characters">indicator characters</a>, such as hyphens, colons, question marks, exclamation points, etc.</fdd:structure>
+			<fdd:layout>
+				<p>Per the format's name, YAML is not markup language and isn't designed to mark up the elements of a textual document. Plain text editors can render YAML streams on screen with data structure evident from the use of indentation and indicator characters. Because of YAML's use of indentation to indicate structure, it can be difficult for humans to navigate large YAML streams.</p>
+				<p>According to the specification, when a YAML stream is created by an application (i.e., <a href="https://yaml.org/spec/1.2.2/#dump">dumped</a>), the application's YAML processor introduces presentation details, "such as the choice of node styles, how to format scalar content, the amount of indentation, which tag handles to use, the node tags to leave unspecified, the set of directives to provide and possibly even what comments to add."</p>
+			</fdd:layout>
+			<fdd:beyondText>Supports comments.</fdd:beyondText>
+		</fdd:textQF>
+		<fdd:datasetQF>
+			<fdd:normalDataset>
+				<p>From the specification:</p>
+				<p>"YAML represents any native data structure using three node kinds: sequence - an ordered series of entries; mapping - an unordered association of unique keys to values; and scalar - any datum with opaque structure presentable as a series of Unicode characters."</p>
+				<p>"Each YAML node requires, in addition to its kind and content, a tag specifying its data type. Type specifiers are either global URIs or are local in scope to a single application."</p>
+			</fdd:normalDataset>
+			<fdd:accessSoftware>YAML is widely used to store and transmit data. The <a href="https://yaml.org/">YAML website</a> has an extensive list of frameworks and tools that have been developed to integrate YAML into other languages, including Python, C/C++, Perl, Ruby, Java, JavaScript, and more. </fdd:accessSoftware>
+			<fdd:dataDocumentation>See <a href="#sustainability">Self-documentation</a> above.</fdd:dataDocumentation>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>yaml</fdd:sigValue>
+					<fdd:sigValue>yml</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://www.iana.org/assignments/media-types/application/yaml">registration at IANA</a>. The extension .yaml is preferred, though .yml is still used.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/yaml</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://www.iana.org/assignments/media-types/application/yaml">registration at IANA</a>. The following alias names are deprecated: application/x-yaml, text/yaml, and text/x-yaml. These names are used but are not registered.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See note.</fdd:sigValueNA>
+				<fdd:note>
+					<a href="https://datatracker.ietf.org/doc/html/rfc9512">RFC 9512</a> indicates that there is no magic number to identify YAML files.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Uniform Type Identifier (Mac OS)</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>public.yaml</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See Apple&apos;s <a href="https://developer.apple.com/documentation/uniformtypeidentifiers/uttype-swift.struct/yaml">Uniform Type Identifiers</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>NARA File Format Preservation Plan ID has no corresponding entry for YAML as of May 2025.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/818</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/818">https://www.nationalarchives.gov.uk/PRONOM/fmt/818</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q281876</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q281876">https://www.wikidata.org/wiki/Q281876</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>YAML (rhymes with "camel") originally stood for "Yet Another Markup Language" (see <a href="https://yaml.org/spec/">YAML 1.0 working drafts from 2001</a>), but by the time the <a href="https://yaml.org/spec/1.0/index.html">YAML 1.0 Final Draft</a> was published, the developers changed it to the recursive acronym "YAML Ain't Markup Language." Developer Ingy döt Net replied to a <a href="https://stackoverflow.com/questions/6968366/if-yaml-aint-markup-language-what-is-it">Stack Overflow post</a> in 2013 explaining the reason for the name change soon after he joined the development team: "After a few months of us working together, I pointed out that YAML (which most definitely stood for Yet Another Markup Language at that time) was not really a markup language (marking up various elements of a text document) but a serialization language (textual representation of typed/cyclical data graphs). We all liked the name YAML, so we backronymed it to mean YAML Ain&apos;t Markup Language."</p>
+			<p>YAML's official website (<a href="https://yaml.org/">https://yaml.org/</a>) is formatted like a YAML document.</p>
+		</fdd:general>
+		<fdd:history>The history of YAML's development is documented in revision 1.2.2 of the format's specification (see <a href="https://yaml.org/spec/1.2.2/#12-yaml-history">section 1.2 YAML History</a>) and on the <a href="https://yaml.com/blog/2020-12/in-the-beginning/">YAML blog</a>. <fddLink id="fdd000075">XML</fddLink> was being used for data serialization, but it was not designed for that purpose, which "was the big problem to be solved," according to of YAML's original developers Clark Evans in a <a href="https://stackoverflow.com/questions/6968366/if-yaml-aint-markup-language-what-is-it">Stack Overflow post</a>. Three versions of the specification have been published by developers Clark Evans, Oren Ben-Kiki, and Ingy döt Net: 1.0 in early 2004, 1.1 in 2005, and 1.2 in 2009. Version 1.2 has undergone several revisions, the most recent being 1.2.2, published in October 2021. As of revision 1.2.2, the specification is developed by the <a href="https://yaml.org/spec/1.2.2/ext/team/">YAML Language Development Team</a> in order "to better meet the needs and expectations of its users and use cases," as stated in the YAML History section of the specification.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://yaml.org/spec/1.2.2/</link>
+					<tag>YAML Ain't Markup Language (YAML™) version 1.2, Revision 1.2.2 (2021-10-01)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://yaml.org/spec/1.2.1/</link>
+					<tag>YAML Ain't Markup Language (YAML™) Version 1.2,
+Revision 1.2.1 (2009-10-01)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://yaml.org/spec/1.2.0/</link>
+					<tag>YAML Ain't Markup Language (YAML™) Version 1.2,
+Revision 1.2.0 (2009-07-21)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://yaml.org/spec/1.1/</link>
+					<tag>YAML Ain't Markup Language (YAML™) Version 1.1,
+Final Draft -- 2005-01-18</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://yaml.org/spec/1.0/</link>
+					<tag>YAML Ain&apos;t Markup Language (YAML™) 1.0,
+Final Draft 2004-JAN-29</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://yaml.org/</link>
+					<tag>The Official YAML Web Site</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://yaml.com/blog/</link>
+					<tag>YAML Blog</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://yaml.org/spec/1.2.2/ext/team/</link>
+					<tag>YAML Language Development Team</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/yaml</link>
+					<tag>The YAML Project on GitHub</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://yaml.org/spec/</link>
+					<tag>YAML™ Specification Index</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Comparison_of_data-serialization_formats</link>
+					<tag>Comparison of data-serialization formats, Wikipedia</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://metacpan.org/dist/Data-Denter/view/Denter.pod</link>
+					<tag>Data::Denter</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://stackoverflow.com/questions/6968366/if-yaml-aint-markup-language-what-is-it</link>
+					<tag>If YAML ain&apos;t markup language, what is it? Stack Overflow</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.iana.org/assignments/media-types/application/yaml</link>
+					<tag>Registration of internet media type for YAML at IANA</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://datatracker.ietf.org/doc/html/rfc9512</link>
+					<tag>RFC 9512, YAML Media Type</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.surfsidemedia.in/post/what-is-the-history-of-yaml</link>
+					<tag>What is the history of YAML, Surfside Media</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.ibm.com/think/topics/yaml</link>
+					<tag>What is YAML? IBM</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.redhat.com/en/topics/automation/what-is-yaml</link>
+					<tag>What is YAML? RedHat</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/YAML</link>
+					<tag>YAML, Wikipedia</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started</link>
+					<tag>YAML Tutorial: A Complete Guide to Language, Format, and Syntax, CloudBees</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://developer.apple.com/documentation/uniformtypeidentifiers/uttype-swift.struct/yaml</link>
+					<tag>yaml, Uniform Type Identifiers, Apple Developer Documentation</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.nationalarchives.gov.uk/PRONOM/fmt/818</link>
+					<tag>PRONOM entry for fmt/818</tag>
+					<comment>Information in PRONOM from UK National Archives about YAML. PUID: fmt/818.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q281876</link>
+					<tag>Wikidata entry for Q281876</tag>
+					<comment>Information in Wikidata about YAML.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

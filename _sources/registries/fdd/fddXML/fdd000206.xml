@@ -16,17 +16,29 @@
 		<fdd:gdfrComposition>container-wrapper</fdd:gdfrComposition>
 		<fdd:gdfrForm>binary</fdd:gdfrForm>
 		<fdd:updates>
-			<fdd:date>2008-03-18</fdd:date>
+			<fdd:date>2025-05-22</fdd:date>
 		</fdd:updates>
 		<fdd:draftStatus>Partial</fdd:draftStatus>
 	</fdd:properties>
 	<fdd:identificationAndDescription>
-		<fdd:fullName>MXF Operational Pattern 1a (OP1a), with Lossless JPEG 2000 in Generic Container</fdd:fullName>
+		<fdd:fullName>MXF Operational Pattern 1a (OP1a), with Lossless JPEG 2000 in Generic Container.</fdd:fullName>
 		<fdd:keywords>
 			<fdd:keyword>video formats</fdd:keyword>
 		</fdd:keywords>
 		<fdd:description>
 			<p>MXF OP1a file with a video essence encoded as a series of frame images, each encoded using <fddLink id="fdd000138">JPEG 2000 core coding</fddLink>.  One expert stated that the frame images could be either fully realized <fddLink id="fdd000143">JPEG 2000 files</fddLink> (jp2 extension), or simple JPEG 2000 codestreams.</p>
+			<p> As noted in <a href="https://www.digitizationguidelines.gov/guidelines/MXF_app_spec.html">SMPTE MXF Archive and Preservation Format Registered Disclosure Document (RDD 48)</a>, see also <fddLink id="fdd000543">MXF_RDD48</fddLink>, "this encoding, especially in the lossless or reversible mode, is typically selected by an archive that is formatting or reformatting content as a part of its own pre-ingest or ingest activity, e.g., transferring content from a videotape carrier, or scanning film, and also prefers to store a reduced-data file as compared to an uncompressed file." 
+</p>
+			<p>The specifics about the carriage of this encoding is detailed in <a href="https://www.smpte.org/.">SMPTE ST 422, Material Exchange Format — Mapping JPEG 2000 Codestreams into the MXF Generic Container</a> (available from SMPTE for purchase).</p>
+			<p>ST 422 details six use cases for the carriage of lossy and lossless JPEG 2000 in the Generic Container:</p>
+			<ul>
+				<li>Frame-based wrapping – “FU” Undefined</li>
+				<li>Frame-based wrapping – “P1” Progressive</li>
+				<li>“I1” Interlaced Frame Wrapping, 1 field per KLV Element</li>
+				<li>“I2” Interlaced Frame Wrapping, 2 fields per KLV Element</li>
+				<li>“F1” Field Wrapping, 1 field per KLV Element</li>
+				<li>“Cn” Clip-based wrapping</li>
+			</ul>
 		</fdd:description>
 		<fdd:shortDescription>MXF OP1a file with a video essence encoded as a series of frame images, each encoded using JPEG 2000 core coding.  One expert stated that the frame images could be either fully realized JPEG 2000 files (jp2 extension), or simple JPEG 2000 codestreams.</fdd:shortDescription>
 		<fdd:productionPhase>Middle state</fdd:productionPhase>
@@ -48,11 +60,11 @@
 				</fdd:relatedTo>
 			</fdd:relationship>
 			<fdd:relationship>
-				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
 				<fdd:relatedTo>
-					<fdd:id>fdd000139</fdd:id>
-					<fdd:shortName>J2K_C_LL</fdd:shortName>
-					<fdd:titleName>JPEG 2000 Part 1, Core Coding, Lossless Compression</fdd:titleName>
+					<fdd:id>fdd000543</fdd:id>
+					<fdd:shortName>MXF_RDD48</fdd:shortName>
+					<fdd:titleName>MXF Archive and Preservation Format Registered Disclosure Document (SMPTE RDD 48)</fdd:titleName>
 				</fdd:relatedTo>
 			</fdd:relationship>
 			<fdd:relationship>
@@ -64,11 +76,11 @@
 				</fdd:relatedTo>
 			</fdd:relationship>
 			<fdd:relationship>
-				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:typeOfRelationship>Contains</fdd:typeOfRelationship>
 				<fdd:relatedTo>
-					<fdd:id>fdd000543</fdd:id>
-					<fdd:shortName>MXF_RDD48</fdd:shortName>
-					<fdd:titleName>MXF Archive and Preservation Format Registered Disclosure Document (SMPTE RDD 48)</fdd:titleName>
+					<fdd:id>fdd000139</fdd:id>
+					<fdd:shortName>J2K_C_LL</fdd:shortName>
+					<fdd:titleName>JPEG 2000 Part 1, Core Coding, Lossless Compression</fdd:titleName>
 				</fdd:relatedTo>
 			</fdd:relationship>
 			<fdd:relationship>
@@ -88,7 +100,7 @@
 		<fdd:disclosure>Open standard. MXF developed by the Society of Motion Picture and Television Engineers (SMPTE), a member of the American National Standards Institute (ANSI).  JPEG 2000 developed by Joint Technical Committee ISOAEC JTC 1, Information technology, Subcommittee SC 29, in collaboration with ITU-T.</fdd:disclosure>
 		<fdd:documentation>MXF: SMPTE 378M-2004, Material Exchange Format (MXF) -- Operational pattern 1A (Single Item, Single Package) (and other specifications); JPEG 2000: ISO/IEC 15444-1:2000. Information technology -- JPEG 2000 image coding system -- Part 1: Core coding system.</fdd:documentation>
 		<fdd:adoption>
-			<p>MXF OP1a is supported in a number of systems; see <fddLink id="fdd000013">MXF</fddLink>. JPEG 2000 is seeing increasing adoption in 2005 and later; see <fddLink id="fdd000143">JP2_FF</fddLink> .</p>
+			<p>MXF OP1a is supported in a number of systems; see <fddLink id="fdd000013">MXF</fddLink>. While popular in the broadcast community, some in the archival sector are moving away towards FFV1/MKV. See <a href="https://meemoo.be/en/news/from-mxfjpeg2000-to-mkvffv1-why-were-switching-to-a-new-file-format">From MXF/JPEG2000 to MKV/FFV1: why we’re switching to a new file format</a> see <fddLink id="fdd000143">JP2_FF</fddLink> for a discussion about this decision at meemoo, Flemish Institute for Archives in Belgium.</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>See <fddLink id="fdd000013">MXF</fddLink> and <fddLink id="fdd000138">J2K_C</fddLink>
 		</fdd:licensingAndPatents>
@@ -101,6 +113,19 @@
 		<fdd:techProtection>See <fddLink id="fdd000013">MXF</fddLink> and <fddLink id="fdd000138">J2K_C</fddLink>
 		</fdd:techProtection>
 	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:movingImageQF>
+			<fdd:normalVideo>Supported</fdd:normalVideo>
+			<fdd:clarity>
+				<fddLink id="fdd000138">JPEG 2000 core coding</fddLink>
+			</fdd:clarity>
+			<fdd:beyondVideo>See <fddLink id="fdd000013">MXF</fddLink>.</fdd:beyondVideo>
+		</fdd:movingImageQF>
+		<fdd:soundQF>
+			<fdd:normalSound>See <fddLink id="fdd000013">MXF</fddLink>.</fdd:normalSound>
+			<fdd:channels>See <fddLink id="fdd000013">MXF</fddLink>.</fdd:channels>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
 	<fdd:fileTypeSignifiers>
 		<fdd:signifiersGroup>
 			<fdd:filenameExtension>
@@ -118,9 +143,44 @@
 				<fdd:note>See <fddLink id="fdd000013">MXF</fddLink>
 				</fdd:note>
 			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Header partition pack key (MXF)</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000266">MXF_OP1a</fddLink>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000266">MXF_OP1a</fddLink> for NARA File Format Preservation Plan ID.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000266">MXF_OP1a</fddLink>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000266">MXF_OP1a</fddLink>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000013">MXF</fddLink>, <fddLink id="fdd000266">MXF_OP1a</fddLink> and <fddLink id="fdd000138">J2K_C</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
 		<fdd:citations>
 			<fdd:citation>
 				<fdd:specReference>SMPTE 378M-2004. Television &#8212; Material Exchange Format (MXF) &#8212; Operational Pattern 1a (Single Item, Single Package)</fdd:specReference>
@@ -134,8 +194,22 @@
 		<fdd:urls>
 			<fdd:url>
 				<fdd:urlGroup>
-					<fdd:intro>See <fddLink id="fdd000013">MXF</fddLink> and <fddLink id="fdd000138">J2K_C</fddLink>.</fdd:intro>
+					<fdd:intro>See <fddLink id="fdd000013">MXF</fddLink>, <fddLink id="fdd000266">MXF_OP1a</fddLink> and <fddLink id="fdd000138">J2K_C</fddLink>.</fdd:intro>
 				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.digitizationguidelines.gov/guidelines/rdd48-2018_published.pdf</link>
+					<tag>SMPTE RDD 48:2018 MXF Archive and Preservation
+Format Registered Disclosure
+Document</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://meemoo.be/en/news/from-mxfjpeg2000-to-mkvffv1-why-were-switching-to-a-new-file-format</link>
+					<tag>From MXF/JPEG2000 to MKV/FFV1: why we’re switching to a new file format from meemoo, Sept 2, 2020</tag>
+				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
 	</fdd:usefulReferences>
