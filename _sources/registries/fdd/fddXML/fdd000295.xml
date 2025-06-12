@@ -98,15 +98,15 @@
 		<fdd:documentation>
 			<p>The XML Schema for Geodatabase XML is distributed to ArcGIS customers.  It is found in the file GdbExchange.xsd at the path ArcGIS\XmlSchema\GdbExchange.xsd
 after product installation.</p>
-			<p>The latest version of the schema description is available from <a href="https://support.esri.com/en/white-paper/695">ESRI Support, White Papers/ArcInfo Desktop.</a>  As of August 2020, the latest version of the document, <a href="http://downloads.esri.com/support/whitepapers/ao_/XML_Schema_of_Geodatabase.pdf">XML Schema of the Geodatabase</a> was dated June 2008.</p>
+			<p>The latest version of the schema description is available from <a href="https://support.esri.com/en-us/technical-paper/xml-schema-of-the-geodatabase-695">ESRI Support, White Papers/ArcInfo Desktop.</a>  As of August 2020, the latest version of the document, <a href="http://downloads.esri.com/support/whitepapers/ao_/XML_Schema_of_Geodatabase.pdf">XML Schema of the Geodatabase</a> was dated June 2008.</p>
 		</fdd:documentation>
 		<fdd:adoption>TBD </fdd:adoption>
 		<fdd:licensingAndPatents>ESRI Licensing agreements detail the terms of use and compliance for ESRI GIS software per <a href="https://www.esri.com/en-us/legal/terms/full-master-agreement">https://www.esri.com/en-us/legal/terms/full-master-agreement</a>.</fdd:licensingAndPatents>
 		<fdd:transparency>The XML Workspace version of a Geodatabase instance is the most transparent of forms an ESRI Geodatabase can take, since the XML can be parsed and interpreted using general XML tools when the XML Schema is accessible.</fdd:transparency>
 		<fdd:selfDocumentation>TBD</fdd:selfDocumentation>
 		<fdd:externalDependencies>
-			<p>A geodatabase in the GeoDB_XML format is viewable using ArcGIS products, such as ArcGIS Desktop.  The ArcGIS Engine Developer Kit has tools (see <a href="https://desktop.arcgis.com/en/arcobjects/latest/net/webframe.htm#welcome.htm">ArcObjects</a>) to use for building a viewer.  Safe Software has an ESRI Geodatabase (XML) Reader / Writer, for which ArcGIS Desktop must be installed.  See <a href="https://docs.safe.com/fme/html/FME_Desktop_Documentation/FME_ReadersWriters/geodatabase/geodatabase.htm">ESRI Geodatabase (XML) Reader/Writer</a> and <a href="https://community.safe.com/s/article/geodatabase-xml-workspace-document-schema-reader">Geodatabase XML Workspace Document Schema Reader</a> for more information on the Safe Software FME product.</p>
-			<p>The <a href="http://docs.safe.com/fme/html/FME_Desktop_Documentation/FME_ReadersWriters/filegdb/filegdb.htm?Highlight=geodatabase">Esri Geodatabase (File Geodb Open API) Reader/Writer</a> allows FME to store data in and retrieve data from Esri’s File Geodatabase, based on the File Geodatabase API.  However, the API does not support all features that might be stored in a Geodatabase.</p>
+			<p>A geodatabase in the GeoDB_XML format is viewable using ArcGIS products, such as ArcGIS Desktop.  The ArcGIS Engine Developer Kit has tools (see <a href="https://desktop.arcgis.com/en/arcobjects/latest/net/webframe.htm#welcome.htm">ArcObjects</a>) to use for building a viewer.  Safe Software has an ESRI Geodatabase (XML) Reader / Writer, for which ArcGIS Desktop must be installed.  See <a href="https://docs.safe.com/fme/html/FME-Form-Documentation/FME-ReadersWriters/geodatabase/geodatabase.htm">ESRI Geodatabase (XML) Reader/Writer</a> and <a href="https://support.safe.com/hc/en-us/articles/25407704563597-Export-Domains-and-Subtypes-Using-the-Geodatabase-XML-Workspace-Document-Schema-Reader">Geodatabase XML Workspace Document Schema Reader</a> for more information on the Safe Software FME product.</p>
+			<p>The <a href="https://docs.safe.com/fme/html/FME-Form-Documentation/FME-ReadersWriters/filegdb/filegdb.htm">Esri Geodatabase (File Geodb Open API) Reader/Writer</a> allows FME to store data in and retrieve data from Esri’s File Geodatabase, based on the File Geodatabase API.  However, the API does not support all features that might be stored in a Geodatabase.</p>
 		</fdd:externalDependencies>
 		<fdd:techProtection>TBD</fdd:techProtection>
 	</fdd:sustainabilityFactors>
@@ -114,7 +114,7 @@ after product installation.</p>
 		<fdd:gisQF>
 			<fdd:normalGIS>
 				<p>Any products of spatial analysis as reflected in topologies, tables of attributes, network analysis, etc.  should be transferable as part of an XML workspace document using the GeoDB_XML format.  If the data structure alone of a given geodatabase is desired,  the GeoDB_XML format can be used to transfer  the geodatabase schema without the data.  In addition, simple changes to a database can be transferred between geodatabase versions using the GeoDB_XML format by using the portion of the GeoDB_XML schema that documents the changes in the geodatabase (Data Changes Document).</p>
-				<p>There is some indication that limitations in the ArcGIS tools also limit what can be transferred using the GeoDB_XML format.  For instance, in cases when the user is interested in saving and restoring a geometric network within a geodatabase, ArcCatalog forces the user to drop any existing geometric network data when new data is to be included from another version of a geodatabase or an associated geodatabase.  Other tool sets have been created to work around this problem, namely Geodatabase Designer 2.  For discussion of this problem, see <a href="https://wiki.wildsong.biz/index.php/Geodatabases">Geodatabases from Wildsong Wiki.</a>
+				<p>There is some indication that limitations in the ArcGIS tools also limit what can be transferred using the GeoDB_XML format.  For instance, in cases when the user is interested in saving and restoring a geometric network within a geodatabase, ArcCatalog forces the user to drop any existing geometric network data when new data is to be included from another version of a geodatabase or an associated geodatabase.  Other tool sets have been created to work around this problem, namely Geodatabase Designer 2.  For discussion of this problem, see <a href="https://web.archive.org/web/20211019133417/https://wiki.wildsong.biz/index.php/Geodatabases">Geodatabases from Wildsong Wiki</a> (link via Internet Archive).
 				</p>
 			</fdd:normalGIS>
 		</fdd:gisQF>
@@ -153,7 +153,7 @@ after product installation.</p>
 			<p>The ArcGIS disconnected editing framework allows you to check data out of a database into a separate geodatabase, then edit the data without having a live connection to the parent database. Once the editing is done, it is possible to export only the changes (not all the data) to an XML file. This file can be used to subsequently check in the changes to the parent database.  For more information about the disconnected editing framework, see <a href="https://desktop.arcgis.com/en/arcmap/latest/manage-data/geodatabases/replication-types.htm">Replication types.</a> This is also a key part of geodatabase replication.  For more information about geodatabase replication, see <a href="https://desktop.arcgis.com/en/arcmap/latest/manage-data/geodatabases/working-with-geodatabase-replication.htm">Working with geodatabase replication.</a>
 			</p>
 			<p>A set of tools that has been recommended in the past to use in conjunction with GeoDB_XML or other geodatabase schemas is Geodatabase Designer 2 (GD2).  GD2 is a public domain toolset that is designed to document and exchange geodatabase schemas, particularly when geometric networks are included in the geodatabase.  GD2 included an editor for geometric network connectivity rules.  See <a href="https://web.archive.org/web/20160228110908/http://arcscripts.esri.com/details.asp?dbid=13484">ArcScripts for Geodatabase Designer v2 (9.2)</a> (link now via Internet Archive) for more information about this set of tools, which has not been updated for versions of ArcGIS beyond 9.3.  The compilers of this resource have not determined whether tools with equivalent functionality are available as of 2020.  <a href="../contact_format.shtml">Comments welcome</a>.</p>
-			<p>Exports of geodatabases from other forms to GeoDB_XML can be made using ArcGIS products. At the Esri International Users Conference in 2011, a presentation from the GeoMAPP (Geospatial Multistate Archive and Preservation Partnership) project entitled &quot;<a href="http://geomapp.com/docs/Esri_IUC_2011_Archive_Opts_Geodatabases_20110713.pdf">Safe to Save? Archive Options for Geodatabases</a>&quot; was based on a limited set of experiments with exports and conversion of various geodatabase formats and import into later versions of ArcGIS. Limitations included the exclusion of any geodatabase incorporating raster images.  An export of a personal geodatabase in the legacy Microsoft Access variant to GeoDB_XML from ArcGIS 9.1, was not successfully imported into any later version of ArcGIS. An export to the GeoDB_XML format from a geodatabase in the file-based format (GeoDB_file) was successfully imported into the most recent version of ArcGIS at the time, but the resulting file was five times larger than the source database.  These test results are also reported in <a href="http://geomapp.com/docs/Geodatabase_Report_v1.0_final_20111206.pdf">Archival Challenges Associated with the Esri Personal Geodatabase and File Geodatabase Formats (December 2011)</a> by the GeoMAPP project.</p>
+			<p>Exports of geodatabases from other forms to GeoDB_XML can be made using ArcGIS products. At the Esri International Users Conference in 2011, a presentation from the GeoMAPP (Geospatial Multistate Archive and Preservation Partnership) project entitled &quot;<a href="https://web.archive.org/web/20220423040620/http://geomapp.com/docs/Esri_IUC_2011_Archive_Opts_Geodatabases_20110713.pdf">Safe to Save? Archive Options for Geodatabases</a>&quot; (link via Internet Archive) was based on a limited set of experiments with exports and conversion of various geodatabase formats and import into later versions of ArcGIS. Limitations included the exclusion of any geodatabase incorporating raster images.  An export of a personal geodatabase in the legacy Microsoft Access variant to GeoDB_XML from ArcGIS 9.1, was not successfully imported into any later version of ArcGIS. An export to the GeoDB_XML format from a geodatabase in the file-based format (GeoDB_file) was successfully imported into the most recent version of ArcGIS at the time, but the resulting file was five times larger than the source database.  These test results are also reported in <a href="https://web.archive.org/web/20230306215740/http://geomapp.com/docs/Geodatabase_Report_v1.0_final_20111206.pdf">Archival Challenges Associated with the Esri Personal Geodatabase and File Geodatabase Formats (December 2011)</a> (link via Internet Archive) by the GeoMAPP project.</p>
 		</fdd:general>
 		<fdd:history>The XML schema was made available in 2004 with version 9.0+ of ArcGIS, and updated in 2006.  Changes to the schema were documented in the 2008 version of the informal format specification document, &quot;<a href="http://downloads.esri.com/support/whitepapers/ao_/XML_Schema_of_Geodatabase.pdf">XML Schema of the Geodatabase</a>.&quot;</fdd:history>
 	</fdd:notes>
@@ -163,7 +163,7 @@ after product installation.</p>
 				<fdd:urlReference>
 					<link>http://downloads.esri.com/support/whitepapers/ao_/XML_Schema_of_Geodatabase.pdf</link>
 					<tag>XML Schema of the Geodatabase</tag>
-					<comment>An ESRI Technical Paper, June 2008.  This is an incomplete, informal specification.  The XML schema itself can be found in the Program Files\ArcGIS\XMLSchema directory of the file system upon which the ArcGIS software is installed.   </comment>
+					<comment>An ESRI Technical Paper, June 2008.  This is an incomplete, informal specification.  The XML schema itself can be found in the Program Files\ArcGIS\XMLSchema directory of the file system upon which the ArcGIS software is installed.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
@@ -172,20 +172,20 @@ after product installation.</p>
 		<fdd:urls>
 			<fdd:url>
 				<fdd:urlGroup>
-					<fdd:intro>XML Schema of the Geodatabase.  ESRI ® Technical Paper • June 2008</fdd:intro>
+					<fdd:intro>XML Schema of the Geodatabase. ESRI® Technical Paper, June 2008.</fdd:intro>
 					<fdd:urlList>
 						<fdd:urlReference>
 							<link>http://downloads.esri.com/support/whitepapers/ao_/XML_Schema_of_Geodatabase.pdf</link>
 							<tag>XML Schema of the Geodatabase</tag>
-							<comment>An ESRI Technical Paper, June 2008.  Published as PDF.</comment>
+							<comment>An ESRI Technical Paper, June 2008. Published as PDF.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>http://support.esri.com/en/knowledgebase/whitepapers/view/productid/43/metaid/695/</link>
+							<link>https://support.esri.com/en-us/technical-paper/xml-schema-of-the-geodatabase-695</link>
 							<tag>XML Schema of the Geodatabase</tag>
 							<comment>New location for same document.</comment>
 						</fdd:urlReference>
 						<fdd:urlReference>
-							<link>http://help.arcgis.com/en/sdk/10.0/java_ao_adf/conceptualhelp/engine/index.html#//00010000031r000000</link>
+							<link>https://help.arcgis.com/en/sdk/10.0/java_ao_adf/conceptualhelp/engine/index.html#//00010000031r000000</link>
 							<tag>XML Schema of the Geodatabase, ArcObjects SDK</tag>
 							<comment>Same document in HTML.</comment>
 						</fdd:urlReference>
@@ -196,35 +196,35 @@ after product installation.</p>
 				<fdd:urlReference>
 					<link>https://www.esri.com/news/arcnews/winter0809articles/the-geodatabase.html</link>
 					<tag>The Geodatabase: Modeling and Managing Spatial Data</tag>
-					<comment>Published in ArcNews, Winter 2008/2009 </comment>
+					<comment>Published in ArcNews, Winter 2008/2009.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
 					<link>http://webhelp.esri.com/arcgisserver/9.3/java/geodatabases/replication_types.htm</link>
 					<tag>Replication types (ArcInfo and ArcEditor only)</tag>
-					<comment>ArcGIS Server 9.3 Help</comment>
+					<comment>ArcGIS Server 9.3 Help.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
 					<link>http://webhelp.esri.com/arcgisserver/9.3/java/geodatabases/workin-1279855558.htm</link>
 					<tag>Working with geodatabase replication (ArcInfo and ArcEditor only)</tag>
-					<comment>ArcGIS Server 9.3 Help</comment>
+					<comment>ArcGIS Server 9.3 Help.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
 					<link>http://webhelp.esri.com/arcgisserver/9.3/java/geodatabases/method-1755117318.htm</link>
 					<tag>Methods for copying geodatabases</tag>
-					<comment>ArcGIS Server 9.3 Help</comment>
+					<comment>ArcGIS Server 9.3 Help.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
 					<link>https://web.archive.org/web/20160228110908/http://arcscripts.esri.com/details.asp?dbid=13484</link>
 					<tag>ArcScripts for Geodatabase Designer v2 (9.2)</tag>
-					<comment>Public domain script by Richie Carmichael using Visual Basic.  Link via Internet Archive</comment>
+					<comment>Public domain script by Richie Carmichael using Visual Basic.  Link via Internet Archive.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
@@ -236,21 +236,21 @@ after product installation.</p>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://community.safe.com/s/article/geodatabase-xml-workspace-document-schema-reader</link>
+					<link>https://support.safe.com/hc/en-us/articles/25407704563597-Export-Domains-and-Subtypes-Using-the-Geodatabase-XML-Workspace-Document-Schema-Reader</link>
 					<tag>Geodatabase XML Workspace Document Schema Reader</tag>
-					<comment>Documentation associated with FME Desktop product from Safe.com</comment>
+					<comment>Documentation associated with FME Desktop product from Safe.com.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://docs.safe.com/fme/html/FME_Desktop_Documentation/FME_ReadersWriters/geodatabase/geodatabase.htm</link>
+					<link>https://docs.safe.com/fme/html/FME-Form-Documentation/FME-ReadersWriters/geodatabase/geodatabase.htm</link>
 					<tag>Esri Geodatabase Reader/Writer</tag>
 					<comment>From Safe Software Inc.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://docs.safe.com/fme/html/FME_Desktop_Documentation/FME_ReadersWriters/geodatabase_xml/quick_facts_geodatabase_xml.htm</link>
+					<link>https://docs.safe.com/fme/html/FME-Form-Documentation/FME-ReadersWriters/geodatabase_xml/quick_facts_geodatabase_xml.htm</link>
 					<tag>Esri Geodatabase (XML Workspace Document) Quick Facts</tag>
 				</fdd:urlReference>
 			</fdd:url>
@@ -262,16 +262,16 @@ after product installation.</p>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://geomapp.com/docs/Esri_IUC_2011_Archive_Opts_Geodatabases_20110713.pdf</link>
+					<link>https://web.archive.org/web/20220423040620/http://geomapp.com/docs/Esri_IUC_2011_Archive_Opts_Geodatabases_20110713.pdf</link>
 					<tag>Safe to Save? Archive Options for Geodatabases | presentation at 2011 ESRI International Users Conference</tag>
-					<comment>From GeoMAPP (Geospatial Multistate Archive and Preservation Partnership) project</comment>
+					<comment>From GeoMAPP (Geospatial Multistate Archive and Preservation Partnership) project. Available via Internet Archive.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://geomapp.com/docs/Geodatabase_Report_v1.0_final_20111206.pdf</link>
+					<link>https://web.archive.org/web/20230306215740/http://geomapp.com/docs/Geodatabase_Report_v1.0_final_20111206.pdf</link>
 					<tag>Archival Challenges Associated with the Esri Personal Geodatabase and File Geodatabase Formats (December 2011)</tag>
-					<comment>From GeoMAPP (Geospatial Multistate Archive and Preservation Partnership) project</comment>
+					<comment>From GeoMAPP (Geospatial Multistate Archive and Preservation Partnership) project. Available via Internet Archive.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
