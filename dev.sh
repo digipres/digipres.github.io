@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "* \n* Running with 'minimal' config (excluding formats and tools sections) for faster updates...\n*"
+echo "*** Running with 'minimal' config (excluding formats and tools sections) for faster updates... ***"
 export JEKYLL_CONFIG="_config.yml,_config-minimal.yml"
 
 # Build for search:

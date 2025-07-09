@@ -4,7 +4,7 @@ title: Local & Regional Groups
 
 This page lists local and regional groups dedicated to digital preservation. They don't necessarily meet face to face, but the members are close enough that it's possible some of them could meet in person from time to time.
 
-{% assign locals = site.pages | where_exp: "item", "item.path contains 'groups/local/'" %}
+{% assign locals = site.pages | where_exp: "item", "item.dir contains page.dir" %}
 
 <!-- Leaflet support -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -20,17 +20,17 @@ This page lists local and regional groups dedicated to digital preservation. The
     #map { height: 500px; }
 </style>
 <script type="module">
-    var map = L.map('map').setView([19, 15], 13);
+    var map = L.map('map').setView([19, 15], 2);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 2,
+        maxZoom: 7,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-{% for page in locals %}
-{% if page.path != 'groups/local/index.md' %}
-{% if page.location != nil %}
-    L.geoJSON(JSON.parse({{ page.location | jsonify }})).bindPopup(
-        "<div class='text-center'><b>{{ page.title }}</b><br>{{ page.region }}<br><a class='btn btn-primary btn-sm text-white' role='button' href='{{ page.url }}'>Find out more...</a></div>"
+{% for item in locals %}
+{% if item.dir != page.dir %}
+{% if item.location != nil %}
+    L.geoJSON(JSON.parse({{ item.location | jsonify }})).bindPopup(
+        "<div class='text-center'><b>{{ item.title }}</b><br>{{ item.region }}<br><a class='btn btn-primary btn-sm text-white' role='button' href='{{ item.url }}'>Find out more...</a></div>"
     ).addTo(map);
 {% endif %}
 {% endif %}
@@ -38,10 +38,14 @@ This page lists local and regional groups dedicated to digital preservation. The
 
 </script>
 
+<p class="text-center">
+<a href="/admin/#/collections/local-groups/new" class="btn btn-primary mx-2">Add A Group To This Map</a>
+<a href="../start/" class="btn btn-primary mx-2">Start Your Own Group</a>
+</p>
 
 <div class="row mx-0">
 {% for item in locals %}
-{% if item.path != 'groups/local/index.md' %}
+{% if item.dir != page.dir %}
 <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-1">
     <div class="card h-100 {{ item.card-class | default: ''}}">
     <div class="card-body h-100 d-flex flex-column">
