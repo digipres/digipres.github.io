@@ -69,34 +69,10 @@ items:
    card-class: text-bg-light
 ---
 
-<nav class="navbar navbar-expand-md navbar-light">
-  <div class="container-fluid">
-    <button class="navbar-toggler border-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarToggler">
-      <a class="navbar-brand fw-bolder" href="/">{{page.title}}</a>
-        <span class="navbar-text">{{ page.subtitle }}</span>
-      <ul class="navbar-nav ms-auto mb-0 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/digipres/digipres.github.io">GitHub</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/digipres/digipres.github.io/issues">Issues</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/orgs/digipres/discussions">Discussion</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-
 <main class="container mt-0">
   <div class="row">
 {% for item in page.items %}
-    <div class="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-3 p-1">
+    <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-1">
       <div class="card h-100 {{ item.card-class | default: ''}}">
         {% if item.image %}<img src="{{ item.image }}" class="card-img" alt="{{ item.title | default: 'a decorative image' }}">{% endif %}
         <div class="card-body h-100 d-flex flex-column">
