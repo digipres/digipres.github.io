@@ -39,23 +39,23 @@ This page lists local and regional groups dedicated to digital preservation. The
 </script>
 
 <p class="text-center">
-<a href="/admin/#/collections/local-groups/new" class="btn btn-primary mx-2">Add A Group To This Map</a>
-<a href="../start/" class="btn btn-primary mx-2">Start Your Own Group</a>
+<a href="/admin/#/collections/local-groups/new" class="btn btn-primary m-2">Add A Group To This Map</a>
+<a href="../start/" class="btn btn-primary m-2">Start Your Own Group</a>
 </p>
 
 <div class="row mx-0">
 {% for item in locals %}
 {% if item.dir != page.dir %}
-<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-1">
+<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-1 py-0">
     <div class="card h-100 {{ item.card-class | default: ''}}">
     <div class="card-body h-100 d-flex flex-column">
         {% if item.title %}<h5 class="card-title">{{ item.title }}</h5>{% endif %}
         {% if item.region %}<p class="card-text">{{ item.region }}</p>{% endif %}
         {% if item.url %}
         <div class="d-flex justify-content-between align-items-center mt-auto">
-        <p class="card-text mb-0"><small class="text-muted">{{ item.subtext | default: ''}}</small></p>
-        <a href="{{ item.url }}" class="btn {{ item.button-class | default: 'btn-primary stretched-link'}}">{{ item.action | default: 'Find out more...' }}</a>
+        <p class="card-text m-0"><small class="text-muted">{{ item.subtext | default: ''}}</small></p>
         </div>
+        <a href="{{ item.url }}" class="btn {{ item.button-class | default: 'btn-primary stretched-link'}}">{{ item.action | default: 'Find out more...' }}</a>
         {% endif %}
     </div>
     </div>

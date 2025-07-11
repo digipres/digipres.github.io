@@ -24,7 +24,7 @@ items:
 
  - title: Talk It Through
    image: icons/dpo-digipres-club.png
-   link: https://github.com/digipres/awesome-digital-preservation?tab=readme-ov-file#become-part-of-the-digital-preservation-community
+   link: /communities/
    description: "Find like-minded souls on digipres.club, mailings lists, forums and conferences."
    action: "Let's Talk"
 
