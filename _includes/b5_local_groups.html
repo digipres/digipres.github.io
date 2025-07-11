@@ -1,10 +1,6 @@
----
-title: Local & Regional Groups
----
+This section lists local and regional groups dedicated to digital preservation. They don't necessarily meet face to face, but the members are close enough that it's possible some of them could meet in person from time to time.
 
-This page lists local and regional groups dedicated to digital preservation. They don't necessarily meet face to face, but the members are close enough that it's possible some of them could meet in person from time to time.
-
-{% assign locals = site.pages | where_exp: "item", "item.dir contains page.dir" %}
+{% assign locals = site.pages | where_exp: "item", "item.location != nil" %}
 
 <!-- Leaflet support -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -39,14 +35,14 @@ This page lists local and regional groups dedicated to digital preservation. The
 </script>
 
 <p class="text-center">
-<a href="/admin/#/collections/local-groups/new" class="btn btn-primary m-2">Add A Group To This Map</a>
-<a href="../start/" class="btn btn-primary m-2">Start Your Own Group</a>
+<a href="/admin/#/collections/local-groups/new" class="btn btn-primary mt-2">Add A Group To This Map</a>
+<a href="../start/" class="btn btn-primary mt-2">Start Your Own Group</a>
 </p>
 
 <div class="row mx-0">
 {% for item in locals %}
 {% if item.dir != page.dir %}
-<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-1 py-0">
+<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-1">
     <div class="card h-100 {{ item.card-class | default: ''}}">
     <div class="card-body h-100 d-flex flex-column">
         {% if item.title %}<h5 class="card-title">{{ item.title }}</h5>{% endif %}
