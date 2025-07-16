@@ -9,6 +9,10 @@ cd pronom
 python download-pronom-data.py
 cd -
 
+cd mediainfo
+python download-mediainfo-formats.py
+cd -
+
 cd nara
 python download-nara-data.py
 cd -
