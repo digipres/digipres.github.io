@@ -22,15 +22,22 @@ This section lists local and regional groups dedicated to digital preservation. 
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
+    var markerArray = [];
+    
 {% for item in locals %}
 {% if item.dir != page.dir %}
 {% if item.location != nil %}
-    L.geoJSON(JSON.parse({{ item.location | jsonify }})).bindPopup(
-        "<div class='text-center'><b>{{ item.title }}</b><br>{{ item.region }}<br><a class='btn btn-primary btn-sm text-white' role='button' href='{{ item.url }}'>Find out more...</a></div>"
-    ).addTo(map);
+    markerArray.push(
+        L.geoJSON(JSON.parse({{ item.location | jsonify }})).bindPopup(
+            "<div class='text-center'><b>{{ item.title }}</b><br>{{ item.region }}<br><a class='btn btn-primary btn-sm text-white' role='button' href='{{ item.url }}'>Find out more...</a></div>"
+        )
+    );
 {% endif %}
 {% endif %}
 {% endfor %}
+
+var group = L.featureGroup(markerArray).addTo(map);
+map.fitBounds(group.getBounds());
 
 </script>
 
