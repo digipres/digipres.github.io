@@ -14,9 +14,9 @@ redirect_from:
   This is an experimental addition to the site, and to keep things manageable, the current work has been scoped to the United Kingdom and Ireland. You can read <a href="https://github.com/digipres/digipres.github.io/pull/58" class="alert-link">this GitHub issue</a> to find out more about the status of this experiment.
 </div>
 
-This section lists local and regional communities of practice dedicated to digital preservation. The idea is to help people find and start groups that are:
+This section lists local and regional [communities of practice](https://www.wenger-trayner.com/introduction-to-communities-of-practice/) dedicated to digital preservation. The idea is to help people find and start groups that are:
 
 - Run by and for practitioners working in digital preservation and related fields.
-- Local enough that in-person meetings might be possible for institutions and individuals that do not have the funding to regularly attend national and international conferences.
+- Local, in the sense that in-person meetings are possible for members that do not have access to funding to attend national and international conferences.
 
 {% include b5_local_groups.html %}
