@@ -19,4 +19,6 @@ This section lists local and regional [communities of practice](https://www.weng
 - Run by and for practitioners working in digital preservation and related fields.
 - Local, in the sense that in-person meetings are possible for members that do not have access to funding to attend national and international conferences.
 
+For more information, please read [this page about starting a digital preservation community group](./start/).
+
 {% include b5_local_groups.html %}
