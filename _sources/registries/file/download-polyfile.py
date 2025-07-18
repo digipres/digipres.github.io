@@ -1,3 +1,4 @@
+import json
 #import pathlib
 from polyfile.magic import MagicMatcher, MagicTest
 
@@ -53,5 +54,5 @@ def scan_magic(magic_tests):
 last_mt = None
 for mt in scan_magic(magic_matcher):
     if last_mt != mt:
-        print(mt)
+        print(json.dumps(mt))
     last_mt = mt
