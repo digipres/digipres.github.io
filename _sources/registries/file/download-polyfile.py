@@ -31,6 +31,11 @@ def to_fmt(mt: MagicTest):
         'name': get_full_name(mt)
     }
 
+    # Add source, if any:
+    si = mt.source_info
+    if si:
+        fmt['source'] = f"{si.path.name}#L{si.line}"
+    
     # Add content types, if any:
     content_types = list(mt.mimetypes())
     if len(content_types) > 0:
