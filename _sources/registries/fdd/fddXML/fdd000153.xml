@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?altova_sps C:\Users\mnap\edit_2013\fddCreation_20220126.sps?>
-<fdd:FDD id="fdd000153" titleName="PNG, Portable Network Graphics" shortName="PNG" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+<fdd:FDD id="fdd000153" titleName="Portable Network Graphics" shortName="PNG" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
 	<fdd:properties>
 		<fdd:gdfrGenreSelection>
 			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
@@ -14,19 +13,36 @@
 		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
 		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
 		<fdd:updates>
-			<fdd:date>2024-05-07</fdd:date>
+			<fdd:date>2025-07-14</fdd:date>
 		</fdd:updates>
-		<fdd:draftStatus>Partial</fdd:draftStatus>
+		<fdd:draftStatus>Full</fdd:draftStatus>
 	</fdd:properties>
 	<fdd:identificationAndDescription>
 		<fdd:fullName>PNG (Portable Network Graphics)</fdd:fullName>
 		<fdd:keywords>
 			<fdd:keyword>raster image formats</fdd:keyword>
 		</fdd:keywords>
-		<fdd:description>The PNG specification defines both a datastream and an associated file format for a lossless, portable, compressed, raster (bit-mapped) image. PNG is fully streamable with a progressive display option.  Indexed color, grayscale, and RGB color (referred to as <i>truecolor</i> in the specification) are supported, with optional transparency (alpha channel).  PNG can store gamma and chromaticity data as well as a full ICC color profile for accurate color matching on heterogenous platforms.  The PNG format was originally designed as an open standard to replace <fddLink id="fdd000133">GIF_89a</fddLink> for use on the Internet, but is not limited to that use.</fdd:description>
+		<fdd:description>
+			<p>The PNG or Portable Network Graphics <a href="https://www.w3.org/TR/png-3/">specification</a> describes PNG as an "extensible file format for the lossless, portable, well-compressed storage of static and animated raster images. PNG provides a patent-free replacement for GIF and can also replace many common uses of TIFF. Indexed-color, grayscale, and truecolor images are supported, plus an optional alpha channel. Sample depths range from 1 to 16 bits." The specification is maintained and developed by the W3C <a href="https://www.w3.org/groups/wg/png/">Portable Network Graphics (PNG) Working Group</a>.</p>
+			<p>PNG is <a href="https://www.w3.org/TR/png-3/#1Scope">pronounced "ping"</a> and, according to <a href="https://www.popularmechanics.com/technology/a21457/the-gif-is-dead-long-live-the-gif/">The GIF Is Dead. Long Live the GIF</a>, the acronym is a shortened version of PING for “PING Is Not GIF”.</p>
+			<p>The specification defines both a datastream and an associated file format for a lossless, portable, compressed, raster (bit-mapped) image. PNG is fully streamable with a progressive display option designed for "compressed individual computer graphics image or frame-based animation, transmitted across the Internet."  Indexed color, grayscale, and RGB color (referred to as <i>truecolor</i> in the specification) are supported, with optional transparency (alpha channel).  PNG can store gamma and chromaticity data as well as a full ICC color profile for accurate color matching on heterogeneous platforms.  The PNG format was originally designed as an open standard to replace <fddLink id="fdd000133">GIF_89a</fddLink> for use on the Internet, but is not limited to that use. It is often used for logos with transparent backgrounds. In addition, <fddLink id="fdd000649">APNG, Animated Portal Network Graphics</fddLink> extends PNG to support support frame-based animated images through the addition of three more chunks. </p>
+			<p>Structurally, the PNG datastream is comprised of the PNG magic number followed by a sequence of chunks with each chunk having a chunk type which specifies its function. There are four <i>critical chunk types</i>: IHDR: image header, which is the first chunk in a PNG datastream; PLTE: palette table associated with indexed PNG images; IDAT: image data chunks; IEND: image trailer, which is the last chunk in a PNG datastream. These can be followed by a number of optional <i>ancillary chunk types</i>, which encoders may generate and decoders may interpret.In addition to the chunk type, each chunk consists of two or three fields: length (four-byte unsigned integer giving the number of bytes in the chunk's data field), chunk data (optional - may be empty) and chunk <a href="https://csrc.nist.gov/glossary/term/cyclic_redundancy_check">CRC/cyclic redundancy check</a> (four-byte 32-bit CRC calculated on the preceding bytes in the chunk, including the chunk type field and chunk data fields, but not including the length field). </p>
+			<p>All compression in PNG is lossless. The standard defines only compression level 0:  "DEFLATE compression with a sliding window (which is an upper bound on the distances appearing in the deflate stream) of at most 32768 bytes." See <a href="#notes">General</a> for more information about DEFLATE. </p>
+			<p>
+				<fddLink id="fdd000649">APNG, Animated Portal Network Graphics</fddLink> extends PNG to support support frame-based animated images through the addition of three more chunks.</p>
+			<p>Adobe's <a href="https://www.adobe.com/creativecloud/file-types/image/raster/png-file.html">PNG files</a> lists several advantages of PNG files over other image formats (such as JPEG) including its use of lossless compression and its support for 16 million colors as well as its disadvantages such as larger file sizes and lack of "support for CMYK color modes so transferring them to print can prove difficult."</p>
+		</fdd:description>
 		<fdd:shortDescription>Defines both a datastream and an associated file format for a lossless, portable, compressed, raster (bit-mapped) image.  Non-proprietary, open standard from W3C.</fdd:shortDescription>
 		<fdd:productionPhase>May be an initial-state or middle-state format; more often used as final-state format.</fdd:productionPhase>
 		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has extension</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000649</fdd:id>
+					<fdd:shortName>APNG</fdd:shortName>
+					<fdd:titleName>Animated Portable Network Graphics</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
 			<fdd:relationship>
 				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
 				<fdd:relatedTo>
@@ -35,34 +51,40 @@
 					<fdd:titleName>iOS App Store Package</fdd:titleName>
 				</fdd:relatedTo>
 			</fdd:relationship>
-			<fdd:relationship>
-				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
-				<fdd:comment>Has versions not separately described.</fdd:comment>
-			</fdd:relationship>
 		</fdd:relationships>
 	</fdd:identificationAndDescription>
 	<fdd:localUse>
-		<fdd:experience>As of August 2023, the Library of Congress has approximately 10 TB (over 31 million) PNG files in its collections across many divisions. </fdd:experience>
+		<fdd:experience>As of July 2025, the Library of Congress has over 16 TB (over 52 million) PNG files in its collections across many divisions. </fdd:experience>
 		<fdd:preference> The Library of Congress Recommended Formats Statement (RFS) includes PNG as a preferred format for <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html">photographs in digital form</a>, <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html">other graphic images in digital form</a> and <a href="https://www.loc.gov/preservation/resources/rfs/design3D.html">2D and 3D Computer Aided Design raster images</a>. The RFS does not specify a version of PNG.</fdd:preference>
 	</fdd:localUse>
 	<fdd:sustainabilityFactors>
-		<fdd:disclosure>Open standard.</fdd:disclosure>
+		<fdd:disclosure>Open standard and fully documented.</fdd:disclosure>
 		<fdd:documentation>
+			<p>
+				<a href="https://www.w3.org/TR/REC-png-961001">PNG (Portable Network Graphics) Specification Version 1.0, W3C Recommendation 01-October-1996</a>
+			</p>
+			<p>
+				<a href="http://www.libpng.org/pub/png/spec/1.1/png-1.1-pdg.html">PNG (Portable Network Graphics) Specification, Version 1.1</a> (no date listed)</p>
 			<p>
 				<a href="http://www.libpng.org/pub/png/spec/1.2/PNG-Contents.html">PNG (Portable Network Graphics) Specification, Version 1.2</a> (at http://www.libpng.org/pub/png/spec/1.2/PNG-Contents.html)</p>
 			<p>ISO/IEC 15948:2004 Information technology -- Computer graphics and image processing -- Portable Network Graphics (PNG): Functional specification.</p>
 			<p>W3C Portable Network Graphics (PNG) Specification (Second Edition), same text as ISO/IEC 15948:2004, at <a href="https://www.w3.org/TR/PNG/">https://www.w3.org/TR/PNG/</a>
 			</p>
+			<p>
+				<a href="https://www.w3.org/TR/png-3">Portable Network Graphics (PNG) Specification (Third Edition - 24 June, 2025) - Recommendation</a>
+			</p>
 		</fdd:documentation>
 		<fdd:adoption>
-			<p>As of 2005, PNG was supported by most browsers.  However, Internet Explorer 6.x for Windows did not support the transparency feature.  Slow deployment of full browser support delayed, or even prevented widespread adoption.  With the expiration of the LZW patent, the original objective, a patent-free standard to replace GIF, is no longer significant.</p>
-			<p>According to a webpage from May 2020 now available via Internet Archive, the <a href="https://web.archive.org/web/20200503075355/https://www.naa.gov.au/information-management/storing-and-preserving-information/preserving-information/preserving-digital-information/long-term-file-formats">National Archives of Australia preferred PNG</a> as a &quot;preservation format&quot; for bit-mapped images and normalized at-risk image formats to PNG.  The National Archives of Australia currently lists PNG as an <a href="https://www.naa.gov.au/information-management/storing-and-preserving-information/preserving-information/born-digital-file-format-standards">acceptable preservation format for born-digital files</a> and recommends lossless PNG as a <a href="https://www.naa.gov.au/information-management/capturing-information/digitisation-specifications-paper-records-agencies">minimum specification for business-as-usual digitization processes at government agencies</a>.  Library and Archives Canada has adopted PNG as a <a href="https://www.bac-lac.gc.ca/eng/services/government-information-resources/guidelines/Documents/file-formats-irev.pdf">recommended format</a> for still images.
-</p>
+			<p>As of 2005, PNG was supported by most browsers.  However, Internet Explorer 6.x for Windows did not support the transparency feature.  Slow deployment of full browser support delayed, or even prevented widespread adoption. In 2025, <a href="https://caniuse.com/?search=PNG">CanIUse</a> reports widespread support of PNG across all major browsers (with the continued exception of IE 6). With the expiration of the LZW patent, the original objective, a patent-free standard to replace GIF, is no longer significant.</p>
+			<p>The Open Preservation Foundation's <a href="https://openpreservation.org/resources/member-groups/international-comparison-of-recommended-file-formats/">International Comparison of Recommended File Formats</a> (updated last in 2025) lists PNG version 1.2 as a preferred or acceptable format for a wide range of international national and federal archives (Norway, Netherlands, Finland, Sweden, Australia, Bibliothèque et Archives Nationales du Québec, Archives New Zealand) and scientific libraries and repositories (Digital Repository of Ireland, Switzerland) just to name a few.</p>
+			<p>PNG is widely supported in image software systems including <a href="https://www.adobe.com/creativecloud/file-types/image/raster/png-file.html">Photoshop</a>, <a href="https://www.irfanview.com/main_formats.htm">IrfanView</a>, and <a href="https://www.canva.com/features/png-maker/">Canva</a>. The site titled <a href="http://www.libpng.org/pub/png/png-sitemap.html#apps">PNG</a> includes a long list of PNG supporting applications, programming resources, images and animations.</p>
 		</fdd:adoption>
 		<fdd:licensingAndPatents>None.</fdd:licensingAndPatents>
-		<fdd:transparency>Depends upon algorithms and tools for decompression to read; requires sophistication to build tools based on documentation.</fdd:transparency>
+		<fdd:transparency>
+			<p>The <a href="https://www.iana.org/assignments/media-types/image/png">IANA media type</a> filing (and the <a href="https://www.w3.org/TR/png-3/#image-apng">specification</a> note the potential for security risks from the chunk-based format: "The gIFx chunk type is used to encapsulate Application Extension data, and some use of that data might present security risks, though no risks are known. Likewise, the security risks associated with future chunk types cannot be evaluated, particularly unregistered chunks. However, it is the intention of the PNG Working Group to disallow chunks containing "executable" data to become registered chunks. The text chunks, tEXt, iTXT and zTXt, contain data that can be displayed in the form of comments, etc. Some operating systems or terminals might allow the display of textual data with embedded control characters to perform operations such as re-mapping of keys, creation of files, etc. For this reason, the specification recommends that the text chunks be filtered for control characters before direct display."</p>
+		</fdd:transparency>
 		<fdd:selfDocumentation>
-			<p>The PNG specification allows labeled text (ASCII or UTF-8) elements to be embedded in text <i>chunks</i> and predefines a few standard keywords (element labels): Title, Author, Description, Copyright, Creation Time, Software, Disclaimer, Warning, Source, Comment.  The compilers of this resource are not able to assess the degree to which such metadata is found in practice or whether other keywords are in common use. An attempt in 2000 to develop open source tools to convert EXIF images (including EXIF metadata) to PNG seems to have been abandoned.  See <a href="https://pmt.sourceforge.io/exif/drafts/d020.html">https://pmt.sourceforge.io/exif/drafts/d020.html</a>.  Without such tools and agreed practices, PNG can not rank highly for self-documentation.
+			<p>The PNG specification allows labeled text (ASCII or UTF-8) elements to be embedded in text <i>chunks</i> and predefines a few standard keywords (element labels): Title, Author, Description, Copyright, Creation Time, Software, Disclaimer, Warning, Source, Comment.
 </p>
 			<p>It is possible to embed XMP metadata in PNG files, according to the XMP specification.  However, the <a href="https://exiftool.org/TagNames/PNG.html#TextualData">documentation for ExifTool for PNG tags</a> suggests that practices for storing XMP or EXIF metadata in PNG images have not been consistent.</p>
 			<p>
@@ -117,6 +139,42 @@
 				</fdd:values>
 			</fdd:other>
 			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00381</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.archives.gov/files/lod/dpframework/id/NF00381.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00381.ttl</a> for Portable Network Graphics 1.0.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00382</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.archives.gov/files/lod/dpframework/id/NF00382.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00382.ttl</a> for Portable Network Graphics 1.1.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00383</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.archives.gov/files/lod/dpframework/id/NF00383.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00383.ttl</a> for Portable Network Graphics 1.2.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00647</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.archives.gov/files/lod/dpframework/id/NF00647.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00647.ttl</a> for Portable Network Graphics Unspecified Version.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
 				<fdd:tag>Pronom PUID</fdd:tag>
 				<fdd:values>
 					<fdd:sigValues>
@@ -156,13 +214,43 @@
 		</fdd:signifiersGroup>
 	</fdd:fileTypeSignifiers>
 	<fdd:notes>
+		<fdd:general>
+			<p>As described in <fddLink id="fdd000599">GZIP</fddLink>, the "<a href="https://en.wikipedia.org/wiki/Deflate">DEFLATE</a> algorithm is a combination of <a href="https://en.wikipedia.org/wiki/LZ77_and_LZ78">LZ77</a> and <a href="https://en.wikipedia.org/wiki/Huffman_coding">Huffman coding</a> lossless compression algorithms. DEFLATE was developed as a replacement for <a href="https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Welch">Lempel-Ziv-Welch (LZW)</a> lossless compression algorithm and other patented compression algorithms that limited the usability of other popular archivers. <a href="https://stackoverflow.com/questions/20762094/how-are-zlib-gzip-and-zip-related-what-do-they-have-in-common-and-how-are-they/20765054#20765054">This choice</a> aimed to overcome patent restrictions and enhance compression efficiency.</p>
+			<p>The DEFLATE compressed data format used by GZIP offers <a href="https://stackoverflow.com/questions/20762094/how-are-zlib-gzip-and-zip-related-what-do-they-have-in-common-and-how-are-they/20765054#20765054">improved compression</a> compared to Unix compress, along with fast decompression. Additionally, it includes a CRC-32 as an integrity check for data. The header format in GZIP allows for the storage of more information than the compress format, such as the original file name and file modification time.</p>
+			<p>
+				<a href="https://stackoverflow.com/questions/20762094/how-are-zlib-gzip-and-zip-related-what-do-they-have-in-common-and-how-are-they/20765054#20765054">The zlib library supports DEFLATE</a> compression and decompression, offering three types of wrapping around deflate streams: raw deflate, zlib wrapping (used in portable network graphic (PNG) format data blocks), and GZIP wrapping. Zlib wrapping is more compact (six bytes) compared to GZIP (a minimum of 18 bytes), and its integrity check (Adler-32) is faster than the CRC-32 used by GZIP. Raw deflate is utilized by programs handling the .zip format, another format that wraps around deflate compressed data.</p>
+		</fdd:general>
 		<fdd:history>
 			<p>The original specification for PNG, version 1.0, was developed by the independent PNG development group and released under the auspices of the World Wide Web Consortium (W3C) on 1 October 1996 as its first Recommendation.  On 15 January 1997 it was released by the IETF as <a href="https://www.ietf.org/rfc/rfc2083.txt">RFC 2083</a>.  The PNG specification was updated to version 1.1 on 31 December 1998. It included new chunks for cross-platform color correction (sRGB and iCCP), a revised and much more sensible description of gamma correction, and a number of other minor improvements and clarifications (all fully backward compatible, of course!). A second, more minor update (version 1.2) was released in August 1999; its only change was the addition of the iTXt chunk (international text).</p>
-			<p>Version 1.2 was submitted to ISO/IEC as a proposed standard in 1999.  The ISO/IEC standard was published in March 2004 as ISO/IEC 15948:2004.  W3C published equivalent text as <i>Portable Network Graphics (PNG) Specification (Second Edition)</i> at <a href="https://www.w3.org/TR/PNG/">https://www.w3.org/TR/PNG/</a> in November 2003.</p>
+			<p>Version 1.2 was submitted to ISO/IEC as a proposed standard in 1999.  The ISO/IEC standard was published in March 2004 as ISO/IEC 15948:2004.  W3C published equivalent text as <i>Portable Network Graphics (PNG) Specification (Second Edition)</i> at <a href="https://www.w3.org/TR/PNG/">https://www.w3.org/TR/PNG/</a> in November 2003. </p>
+			<p>
+				<a href="https://www.w3.org/TR/2003/REC-PNG-20031110/">Version 2</a> was released on 10 November 2003.</p>
+			<p>The W3C recommendation for <a href="https://www.w3.org/TR/png-3/">Version 3</a> was released on 24 June, 2025. Prior to this recommendation, there were several drafts and candidate recommendations documented on <a href="https://www.w3.org/standards/history/png-3/">Portable Network Graphics (PNG) Specification (Third Edition) publication history</a>. The specification notes that &quot;this specification is intended to become an International Standard, but is not yet one. It is inappropriate to refer to this specification as an International Standard.&quot;</p>
+			<p>For a list of publication dates and changes between Version 2 and Version 3, see the <a href="https://www.w3.org/TR/png-3/#F-ChangeList">Third Edition Change List</a>. For changes between Version 1 and Version 2, see the <a href="https://www.w3.org/TR/2003/REC-PNG-20031110/#F-ChangeList">Second Edition Change List</a>. W3C also makes available the pre-release drafts for the <a href="https://www.w3.org/standards/history/png-2/">Second Edition</a> and the <a href="https://www.w3.org/standards/history/png-1/">First Edition</a>.</p>
+			<p>The <a href="https://www.w3.org/Graphics/PNG/png-2023.html#png4e">PNG Working Group Charter</a> mentions a forthcoming Fourth Edition, potentially in 2025 but this is all to be confirmed as work progresses.</p>
 		</fdd:history>
 	</fdd:notes>
 	<fdd:formatSpecifications>
 		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.w3.org/TR/REC-png-961001</link>
+					<tag>PNG (Portable Network Graphics) Specification
+Version 1.0, W3C Recommendation 01-October-1996</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://datatracker.ietf.org/doc/html/rfc2083</link>
+					<tag>RFC 2083: PNG (Portable Network Graphics) Specification Version 1.0, March 1997</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.libpng.org/pub/png/spec/1.1/png-1.1-pdg.html</link>
+					<tag>PNG (Portable Network Graphics) Specification, Version 1.1</tag>
+				</fdd:urlReference>
+			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
 					<link>http://www.libpng.org/pub/png/spec/1.2/PNG-Contents.html</link>
@@ -172,19 +260,27 @@
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://www.w3.org/TR/PNG/</link>
-					<tag>Portable Network Graphics (PNG) Specification (Second Edition)</tag>
+					<link>https://www.w3.org/TR/2003/REC-PNG-20031110/</link>
+					<tag>Portable Network Graphics (PNG) Specification (Second Edition - 10 November 2003)</tag>
+					<comment>Equivalent to ISO/IEC 15948:2004</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.iso.org/standard/29581.html</link>
+					<tag>ISO/IEC 15948:2004
+Information technology — Computer graphics and image processing — Portable Network Graphics (PNG): Functional specification</tag>
+					<comment>Equivalent to PNG version 2.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.w3.org/TR/png-3/</link>
+					<tag>Portable Network Graphics (PNG) Specification (Third Edition - 24 June, 2025) - Recommendation</tag>
 					<comment>From W3C.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
-		<fdd:citations>
-			<fdd:citation>
-				<fdd:specReference>
-					<specRefDetail rel="snum">ISO/IEC 15948:2004</specRefDetail>.  <specRefDetail rel="stitle">Information technology -- Computer graphics and image processing -- Portable Network Graphics (PNG): Functional specification</specRefDetail>
-				</fdd:specReference>
-			</fdd:citation>
-		</fdd:citations>
 	</fdd:formatSpecifications>
 	<fdd:usefulReferences>
 		<fdd:urls>
@@ -203,17 +299,6 @@
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://www.ietf.org/rfc/rfc2083.txt</link>
-					<tag/>
-				</fdd:urlReference>
-			</fdd:url>
-			<fdd:url>
-				<fdd:urlReference>
-					<link>https://www.w3.org/Graphics/PNG/</link>
-				</fdd:urlReference>
-			</fdd:url>
-			<fdd:url>
-				<fdd:urlReference>
 					<link>https://www.w3.org/WAI/tutorials/images/</link>
 					<tag>Images Tutorial.</tag>
 					<comment>W3C documentation apart of their Web Accessibility Initiative.</comment>
@@ -228,40 +313,115 @@
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>http://pin.association-aristote.fr/lib/exe/fetch.php/public/presentations/2003/pin20030904format_png.pdf</link>
-					<tag>Le Format PNG</tag>
-					<comment>2003 presentation (in French) by Nicolas Lormant.  Covers history and objectives.</comment>
-				</fdd:urlReference>
-			</fdd:url>
-			<fdd:url>
-				<fdd:urlGroup>
-					<fdd:intro>The Encyclopedia of Graphic File Formats, 2nd Edition, 1996 (EGFF) has information on this format.  See print citation below.  Online access is available at:</fdd:intro>
-					<fdd:urlList>
-						<fdd:urlReference>
-							<link>https://www.fileformat.info/format/png/egff.htm</link>
-							<tag>EGFF: PNG File Format Summary
-</tag>
-							<comment>From FileFormat.Info.  This presentation states that the work has been released under a Creative Commons Attribution license.</comment>
-						</fdd:urlReference>
-						<fdd:urlReference>
-							<link>https://web.archive.org/web/20180419133433/http://netghost.narod.ru/gff/graphics/summary/png.htm</link>
-							<tag>EGFF: PNG</tag>
-							<comment>Copy made available from a site in Russia. Available via Internet Archive capture from April 19, 2018.</comment>
-						</fdd:urlReference>
-					</fdd:urlList>
-				</fdd:urlGroup>
-			</fdd:url>
-			<fdd:url>
-				<fdd:urlReference>
-					<link>https://www.bac-lac.gc.ca/eng/services/government-information-resources/guidelines/Documents/file-formats-irev.pdf</link>
-					<tag>Library and Archives Canada recommended formats</tag>
+					<link>https://www.fileformat.info/format/png/egff.htm</link>
+					<tag>FileFormatInfo: PNG File Format Summary</tag>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
 				<fdd:urlReference>
-					<link>https://www.naa.gov.au/information-management/storing-and-preserving-information/preserving-information/born-digital-file-format-standards</link>
-					<tag>Born-digital file format standards</tag>
-					<comment>From National Archives of Australia.  PNG is listed as a preservation format under &quot;Digital still image.&quot;</comment>
+					<link>https://caniuse.com/?search=PNG</link>
+					<tag>CanIUse: PNG</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.w3.org/groups/wg/png/</link>
+					<tag>W3C Portable Network Graphics (PNG) Working Group</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.popularmechanics.com/technology/a21457/the-gif-is-dead-long-live-the-gif/</link>
+					<tag>Popular Mechanics: The GIF Is Dead. Long Live the GIF. Eric Limer. Mar 24, 2022</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://csrc.nist.gov/glossary/term/cyclic_redundancy_check</link>
+					<tag>NIST Computer Security Resource Center Glossary Entry: cyclic redundancy check</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.adobe.com/creativecloud/file-types/image/raster/png-file.html</link>
+					<tag>Adobe: PNG files</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://openpreservation.org/resources/member-groups/international-comparison-of-recommended-file-formats/</link>
+					<tag>OPF International Comparison of Recommended File Formats</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.irfanview.com/main_formats.htm</link>
+					<tag>Supported file formats in IrfanView</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.canva.com/features/png-maker</link>
+					<tag>Canva Online PNG Maker</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.iana.org/assignments/media-types/image/png</link>
+					<tag>IANA media type registration for image/png</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://stackoverflow.com/questions/20762094/how-are-zlib-gzip-and-zip-related-what-do-they-have-in-common-and-how-are-they/20765054#20765054</link>
+					<tag>How are zlib, gzip and zip related? What do they have in common and how are they different? Stack Overflow.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Deflate</link>
+					<tag>DEFLATE. Wikipedia.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Huffman_coding</link>
+					<tag>Huffman coding. Wikipedia.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://zlib.net/</link>
+					<tag>zlib</tag>
+					<comment>zlib is a free software library written in C which you can use to read and write GZIP files and memory streams.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archives.gov/files/lod/dpframework/id/NF00381.ttl</link>
+					<tag>NARA File Format Preservation Plan ID entry for NF00381</tag>
+					<comment>Information in NARA File Format Preservation Plan ID about Portable Network Graphics 1.0.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archives.gov/files/lod/dpframework/id/NF00382.ttl</link>
+					<tag>NARA File Format Preservation Plan ID entry for NF00382</tag>
+					<comment>Information in NARA File Format Preservation Plan ID about Portable Network Graphics 1.1.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archives.gov/files/lod/dpframework/id/NF00383.ttl</link>
+					<tag>NARA File Format Preservation Plan ID entry for NF00383</tag>
+					<comment>Information in NARA File Format Preservation Plan ID about Portable Network Graphics 1.2.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archives.gov/files/lod/dpframework/id/NF00647.ttl</link>
+					<tag>NARA File Format Preservation Plan ID entry for NF00647</tag>
+					<comment>Information in NARA File Format Preservation Plan ID about Portable Network Graphics Unspecified Version.</comment>
 				</fdd:urlReference>
 			</fdd:url>
 			<fdd:url>
@@ -293,12 +453,5 @@
 				</fdd:urlReference>
 			</fdd:url>
 		</fdd:urls>
-		<fdd:citations>
-			<fdd:citation>
-				<fdd:bookReference>
-					<bookRefDetail rel="au">Murray, James D.</bookRefDetail> and <bookRefDetail rel="au">William vanRyper</bookRefDetail>. <bookRefDetail rel="btitle">Encyclopedia of Graphics File Formats, 2nd Edition.</bookRefDetail> 
-Sebastopol, CA. : O'Reilly &amp; Associates, <bookRefDetail rel="date">1996</bookRefDetail>. Includes CD-ROM with complete text of book, and copies of several file format specifications. </fdd:bookReference>
-			</fdd:citation>
-		</fdd:citations>
 	</fdd:usefulReferences>
 </fdd:FDD>

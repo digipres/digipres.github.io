@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000649" titleName="Animated Portable Network Graphics" shortName="APNG" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>unstructured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2025-07-17</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>APNG (Animated Portable Network Graphics)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>raster image formats</fdd:keyword>
+			<fdd:keyword>animation formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>APNG or Animated Portable Network Graphics is an extension of the <fddLink id="fdd000153">PNG, Portable Network Graphics</fddLink> raster image format but extends beyond static images to support frame-based animated images. Documented together in the same W3C <a href="https://www.w3.org/TR/png-3/">specification</a>, APNG shares much of the same structure but adds three additional chunk types describing the animation and providing additional frame data:</p>
+			<ul>
+				<li>acTL: Animation Control Chunk which declares that this is an animated PNG image, gives the number of frames, and the number of times to loop. acTL must must appear before the first IDAT chunk within a valid PNG stream.</li>
+				<li>fcTL: Frame Control Chunk defines the dimensions, position, delay and disposal of an individual frame. Exactly one fcTL chunk chunk is required for each frame.</li>
+				<li>fdAT: Frame Data Chunk contains the image data for all frames (or, for animations which include the static image as first frame, for all frames after the first one). At least one fdAT chunk is required for each frame, except for the first frame, if that frame is represented by an IDAT chunk.</li>
+			</ul>
+			<p>See <fddLink id="fdd000153">PNG, Portable Network Graphics</fddLink> for general description as well as other chunk definitions.</p>
+			<p>The <a href="https://www.w3.org/TR/png-3/#introduction-0">specification</a> notes that APNG is backwards-compatible with earlier versions of PNG; a non-animated PNG decoder will ignore the ancillary APNG-specific chunks and display the static image.</p>
+		</fdd:description>
+		<fdd:shortDescription>Extension of PNG format to include support for frame-based animated images. </fdd:shortDescription>
+		<fdd:productionPhase>May be an initial-state or middle-state format; more often used as final-state format.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Extension of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000153</fdd:id>
+					<fdd:shortName>PNG</fdd:shortName>
+					<fdd:titleName>Portable Network Graphics</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>See <fddLink id="fdd000153">PNG, Portable Network Graphics</fddLink>.</fdd:experience>
+		<fdd:preference>See <fddLink id="fdd000153">PNG, Portable Network Graphics</fddLink>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>See <fddLink id="fdd000153">PNG, Portable Network Graphics</fddLink>.</fdd:disclosure>
+		<fdd:documentation>See <fddLink id="fdd000153">PNG, Portable Network Graphics</fddLink>.</fdd:documentation>
+		<fdd:adoption>
+			<p>See also <fddLink id="fdd000153">PNG, Portable Network Graphics</fddLink>.</p>
+			<p>In 2025, <a href="https://caniuse.com/?search=APNG">CanIUse</a> reports strong support of APNG across many major browsers with the notable exception of IE.</p>
+			<p>The 2016 article <a href="https://medium.com/usebeautiful/imessage-stickers-and-the-misterious-apng-file-everything-we-learned-so-far-fd7010032b4b">iMessage stickers and the “misterious” APNG file. Everything we learned so far</a> mentions that APNG is an accepted formats for animated stickers in iOS10 iMessage apps with many other applications following suit including <a href="https://support.signal.org/hc/en-us/articles/360031836512-Stickers#sticker_reqs">Signal</a> added support in 2021 as well as <a href="https://www.reddit.com/answers/2ac0e720-959b-4f7a-a642-473af7036f75/">Discord</a>. </p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>See <fddLink id="fdd000153">PNG, Portable Network Graphics</fddLink>.</fdd:licensingAndPatents>
+		<fdd:transparency>See <fddLink id="fdd000153">PNG, Portable Network Graphics</fddLink>.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>See <fddLink id="fdd000153">PNG, Portable Network Graphics</fddLink>.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>See <fddLink id="fdd000153">PNG, Portable Network Graphics</fddLink>.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>See <fddLink id="fdd000153">PNG, Portable Network Graphics</fddLink>.</fdd:externalDependencies>
+		<fdd:techProtection>See <fddLink id="fdd000153">PNG, Portable Network Graphics</fddLink>.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>See <fddLink id="fdd000153">PNG, Portable Network Graphics</fddLink>.</fdd:normalImage>
+			<fdd:clarity>See <fddLink id="fdd000153">PNG, Portable Network Graphics</fddLink>.</fdd:clarity>
+			<fdd:colorMaint>See <fddLink id="fdd000153">PNG, Portable Network Graphics</fddLink>.</fdd:colorMaint>
+			<fdd:graphics>See <fddLink id="fdd000153">PNG, Portable Network Graphics</fddLink>.</fdd:graphics>
+			<fdd:beyondImage>APNG supports animation.</fdd:beyondImage>
+		</fdd:stillImageQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>apng</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The PNG standard recommends the use of apng as extension.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>image/apng</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://www.iana.org/assignments/media-types/image/apng">registration at IANA</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>image/vnd.mozilla.apng</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Deprecated media type listed in <a href="https://www.iana.org/assignments/media-types/image/apng">registration at IANA</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 89 50 4e 47 0d 0a 1a 0a</fdd:sigValue>
+					<fdd:sigValue>ASCII: \211 P N G \r \n \032 \n</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Documented in PNG standard. Same as <fddLink id="fdd000153">PNG, Portable Network Graphics</fddLink>.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000153">PNG, Portable Network Graphics</fddLink>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/935</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.nationalarchives.gov.uk/PRONOM/fmt/935">https://www.nationalarchives.gov.uk/PRONOM/fmt/935</a> for Animated Portable Network Graphics.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q433224</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q433224">https://www.wikidata.org/wiki/Q433224</a>.					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:history>
+			<p>APNG was added to the PNG specification in 2022. See <fddLink id="fdd000153">PNG, Portable Network Graphics</fddLink> for overall format history.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000153">PNG, Portable Network Graphics</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000153">PNG, Portable Network Graphics</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://caniuse.com/?search=APNG</link>
+					<tag>CanIUse: APNG</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.iana.org/assignments/media-types/image/apng</link>
+					<tag>IANA mediatype registration for image/apng</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/APNG</link>
+					<tag>Wikipedia entry for APNG</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://medium.com/usebeautiful/imessage-stickers-and-the-misterious-apng-file-everything-we-learned-so-far-fd7010032b4b</link>
+					<tag>iMessage stickers and the “misterious” APNG file. Everything we learned so far. Medium. Morris Leoni. Nov 21, 2016</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://support.signal.org/hc/en-us/articles/360031836512-Stickers#sticker_reqs</link>
+					<tag>Signal support: Stickers</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.reddit.com/answers/2ac0e720-959b-4f7a-a642-473af7036f75/?q=Discord%20support%20for%20APNG%20stickers&amp;source=PDP</link>
+					<tag>Discord support of APNG stickers</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.nationalarchives.gov.uk/pronom/fmt/935</link>
+					<tag>PRONOM entry for fmt/935</tag>
+					<comment>Information in PRONOM from UK National Archives about Animated Portable Network Graphics. PUID: fmt/935.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q433224</link>
+					<tag>Wikidata entry for Q433224</tag>
+					<comment>Information in Wikidata about APNG. Wikidata Title ID: Q433224.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

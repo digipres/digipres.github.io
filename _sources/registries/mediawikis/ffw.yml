@@ -831,8 +831,8 @@ formats:
   hasMagic: true
   magic:
   - '''P'' ''K'' 0x07 0x08'
-  - '''P'' ''K'' 0x30 0x30'
   - '''P'' ''K'' 0x05 0x06'
+  - '''P'' ''K'' 0x30 0x30'
   mimetypes:
   - application/zip
   name: ZIP
@@ -1116,7 +1116,9 @@ formats:
     DSF Format] *[http://snesmusic.org/hoot/kingshriek/ssf/ kingshriek's SSF / DSF
     page] kingshri...
   source: DSF
-- categories:
+- DexvertSamples:
+  - music/ultra64SoundFormat
+  categories:
   - Audio and Music
   - Electronic File Formats
   - File Formats
@@ -1129,10 +1131,7 @@ formats:
   - miniusf
   - usflib
   name: USF
-  pageStartText: ==Description== USF is a variant of the [[Portable Sound Format]]
-    for Nintendo 64 music. ==Information== [http://www.hcs64.com/usf/usf.txt USF specification
-    v1.2] (.txt file) ==Playback== === Plugins === * [http://www.hcs64.com/usf/ 64th
-    Note] - Winamp * [...
+  pageStartText: ''
   source: USF
 - categories:
   - Audio and Music
@@ -4103,6 +4102,7 @@ formats:
   source: Adobe_Standard_Encoding
 - DexvertSamples:
   - document/djvu
+  - image/djvuBitmap
   categories:
   - Document
   - Electronic File Formats
@@ -9262,7 +9262,9 @@ formats:
   pageStartText: '* [http://web.archive.org/web/20090427051241/http://www.rjamorim.com/rrw/split2000.html
     Really Rare Wares page, including mirror of original homepage]'
   source: Split2000
-- categories:
+- DexvertSamples:
+  - audio/optimFROG
+  categories:
   - Audio and Music
   - Electronic File Formats
   - File Formats
@@ -9273,10 +9275,8 @@ formats:
   - ofr
   - ofs
   name: OptimFROG
-  pageStartText: == Description == OptimFROG is a proprietary audio file format developed
-    by Florin Ghido which offers losslessa audio compression. It produces files with
-    the extension '''.ofr'''. '''.ofs''' (OptimFROG Small) files are produced by the
-    OptimFROG DualStream ...
+  pageStartText: == Links == * [http://members.home.nl/w.speek/comparison.htm Performance
+    comparison of lossless audio compressors]
   source: OptimFROG
 - categories:
   - Electronic File Formats
@@ -18169,25 +18169,42 @@ formats:
   source: MacBinary
   wikidata:
   - Q1882400
-- DexvertSamples:
+- CdTextfiles:
+  - pcblueii/PCBLUE/VOL583.ZIP
+  - VOL583.ZIP
+  - pcblueii/PCBLUE/VOL584.ZIP
+  - VOL584.ZIP
+  DexvertSamples:
   - archive/dosBackupFile
   categories:
   - Archiving
   - Backup
   - Electronic File Formats
   - File Formats
+  - File formats with extension .001
+  - File formats with extension .@01
   - File formats with extension .@@@
   - File formats with too many extensions
   - FormatInfo without formattype
   - FormatInfo without mimetypes
   - MS-DOS
   - Microsoft
+  - Multi-file formats
   extensions:
   - '@@@'
+  - '@01'
+  - '001'
+  hasMagic: true
+  magic:
+  - '0xff'
+  - '0x00'
+  - ff 01 00
+  - '0x8b'
+  - BACKUP&nbsp;&nbsp;
   name: BACKUP (MS-DOS)
-  pageStartText: == Links == * [http://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/dos/restore/brtecdoc.htm
-    Tech docs from FreeDOS] * [http://www.computerhope.com/backup.htm Backup command
-    help] [[Category:Archiving]] [[Category:Microsoft]] [[Category:MS-DOS]] [[Categ...
+  pageStartText: "] \u2192 *.imz \u2192 ... == Links == * [http://www.computerhope.com/backup.htm\
+    \ Backup command help] [[Category:Archiving]] [[Category:Microsoft]] [[Category:MS-DOS]]\
+    \ [[Category:Multi-file formats]] [[Category:File formats with too many extensions]]"
   source: BACKUP_%28MS-DOS%29
 - DexvertSamples:
   - archive/wim
@@ -37565,7 +37582,9 @@ formats:
   pronom:
   - fmt/1732
   source: Prism_Paint
-- categories:
+- DexvertSamples:
+  - image/winMiPS
+  categories:
   - Electronic File Formats
   - File Formats
   - File formats with extension .pic
@@ -37575,10 +37594,9 @@ formats:
   extensions:
   - pic
   name: WinMiPS
-  pageStartText: '''''''WinMiPS .PIC'''''' is a raster image format associated with
-    the ''''WinMiPS'''' astronomical image processing software, and its successor,
-    ''''Iris''''. WinMiPS is variously capitalized as ''''''WinMiPS'''''', ''''''WinMIPS'''''',
-    or ''''''Winmips''''''. It is not related to the Wi...'
+  pageStartText: == Links == * [http://www.astrosurf.com/buil/us/iris/iris.htm IRIS]
+    * [http://www.umanitoba.ca/science/astronomy/cbrown/imaging/wmipsovw.htm Iris
+    and WinMiPS overview] [[Category:Scientific Data formats]]
   source: WinMiPS
 - categories:
   - Electronic File Formats
@@ -48226,9 +48244,9 @@ formats:
   - FormatInfo without subcat
   name: Diagramming and flowcharting
   pageStartText: Formats for making charts and diagrams. * [[ABC FlowCharter]] (later
-    iGrafx FlowCharter) * [[Corel Flow]] * [[DataDiagrammingML]] * [[Dia]] * [[Diagram
-    Designer]] * [[DOT (graph description language)]] * [[Flow Charting]] * [[GEXF]]
-    (Graph Exchange XML For...
+    iGrafx FlowCharter) * [[Chartist (Novagraph)]] * [[ConceptDraw]] ** [[ConceptDraw
+    Document]] ** [[ConceptDraw XML]] ** [[ConceptDraw Mindmap]] * [[Corel Flow]]
+    * [[DataDiagrammingML]] * [...
   source: Diagramming_and_flowcharting
 - categories:
   - Diagramming and flowcharting
@@ -52724,8 +52742,7 @@ formats:
   name: Squashfs
   pageStartText: '== Links == * [[Wikipedia: SquashFS]] * [http://squashfs.sourceforge.net/
     Squashfs website] * [https://sourceforge.net/projects/squashfs/ SourceForge project
-    page] * [https://elixir.bootlin.com/linux/latest/source/Documentation/filesystems/squashfs.txt
-    squ...'
+    page] * [https://github.com/plougher/squashfs-tools GitHub project page] * [https://elixir.bootlin...'
   released: '2002'
   source: Squashfs
 - DexvertSamples:
@@ -52941,6 +52958,7 @@ formats:
   released: ~1988
   source: DeskMate_Draw
 - categories:
+  - Configuration files
   - Electronic File Formats
   - File Formats
   - File formats with extension .smi
@@ -52953,11 +52971,11 @@ formats:
   magic:
   - IC
   - 0x34 0x03 0x00
-  name: Lotus Smart Icon
+  name: Lotus SmartIcons
   pageStartText: ". At offset 5 is an ASCII name. == Sample files == * [https://archive.org/details/LotusSmartSuiteMillennium\
     \ Lotus SmartSuite Millennium Edition] (CD image from archive.org) \u2192 .../*.SMI\
-    \ [[Category:Lotus]]"
-  source: Lotus_Smart_Icon
+    \ [[Category:Configuration files]] [[Category:Lotus]]"
+  source: Lotus_SmartIcons
 - DexvertSamples:
   - image/amiDrawSDW
   categories:
@@ -53161,10 +53179,10 @@ formats:
   magic:
   - MEDIA DESCRIPTOR
   name: MDF and MDS
-  pageStartText: '==Software== * [https://packages.debian.org/sid/mdf2iso Software
-    to convert MDF to ISO] * [https://crystalidea.com/anytoiso AnytoISO] == Links
-    == * [[Wikipedia: Media Descriptor File]] * [http://www.alcohol-soft.com/ Alcohol
-    Soft website] * [http://www.cry...'
+  pageStartText: ==Software== * [https://packages.debian.org/sid/mdf2iso Software
+    to convert MDF to ISO] * [https://crystalidea.com/anytoiso AnytoISO] * [https://cdemu.sourceforge.io
+    CDEmu] via [https://cdemu.sourceforge.io/about/libmirage libMirage] == Links ==
+    * [[Wikipe...
   pronom:
   - fmt/1758
   - fmt/1759
@@ -53233,8 +53251,8 @@ formats:
   - NER5
   name: NRG
   pageStartText: 'test.nrg == Software == * [https://github.com/saur0n/nrg2iso NRG
-    to ISO] == Links == * [[Wikipedia: NRG (file format)]] * [https://www.nero.com/enu/products/nero-burning-rom/
-    Nero Burning ROM website] [[Category:Nero]]'
+    to ISO] * [https://cdemu.sourceforge.io CDEmu] via [https://cdemu.sourceforge.io/about/libmirage
+    libMirage] == Links == * [[Wikipedia: NRG (file format)]] * [https://www.nero.com/enu/products...'
   pronom:
   - fmt/1743
   source: NRG
@@ -58697,9 +58715,9 @@ formats:
   - RSFX
   - 06 0e 1f 8b 0e 0c 00 8b f1 4e 89 f7 8c db 03 1e 0a 00 8e c3
   name: LZEXE
-  pageStartText: '== Links == * [https://bellard.org/lzexe.html LZEXE home page] *
-    [https://www.lodsb.com/reversing-lz91-from-commander-keen Reversing LZ91 from
-    Commander Keen] * [https://cosmodoc.org/topics/lzexe/ Cosmodoc: LZEXE]'
+  pageStartText: '== Links == * [https://bellard.org/lzexe/ LZEXE home page] * [https://www.lodsb.com/reversing-lz91-from-commander-keen
+    Reversing LZ91 from Commander Keen] * [https://cosmodoc.org/topics/lzexe/ Cosmodoc:
+    LZEXE]'
   released: '1989'
   source: LZEXE
 - categories:
@@ -73944,8 +73962,12 @@ formats:
   - FormatInfo without extensions
   - FormatInfo without mimetypes
   name: DwarFS
-  pageStartText: '''''''DwarFS'''''' is a compressed read-only filesystem, developed
-    by Marcus Holland-Moritz. == Links == * https://github.com/mhx/dwarfs'
+  pageStartText: '''''''D''''''eduplicating ''''''W''''''arp-speed ''''''A''''''dvanced
+    ''''''R''''''ead-only ''''''F''''''ile ''''''S''''''ystem (DWARFS) is a compressed
+    read-only filesystem, developed by Marcus Holland-Moritz. Compared to Squashfs,
+    DwarFS also offers a choice of hashing algorithms,<ref>[htt...'
+  released: 2020 <ref>[https://github.com/mhx/dwarfs/releases/tag/release-0.1.0 Release
+    0.1.0 - GitHub]</ref>
   source: DwarFS
 - categories:
   - Electronic File Formats
@@ -96104,11 +96126,289 @@ formats:
     change their properties and flags,...'
   released: '1994-06-19'
   source: DeHackEd_patch
+- CdTextfiles:
+  - cream09/program/vbxgalor.zip
+  - vbxgalor.zip
+  categories:
+  - Backup
+  - Electronic File Formats
+  - File Formats
+  - File formats with extension .001
+  - FormatInfo without mimetypes
+  - MS-DOS
+  extensions:
+  - '001'
+  hasMagic: true
+  magic:
+  - '0x00'
+  - NORTON&nbsp;Ver
+  name: Norton Backup
+  pageStartText: "\u2192 CC50719A.001 [[Category:MS-DOS]]"
+  released: ~1990
+  source: Norton_Backup
+- categories:
+  - File formats with extension .cp2
+  - Disk Image Formats
+  - Electronic File Formats
+  - File Formats
+  - FormatInfo without mimetypes
+  extensions:
+  - cp2
+  name: CP2
+  pageStartText: '''''''CP2'''''' is a disk image format created by the commercial
+    disk copier Copy-II-PC in conjunction with a separate program, Snatch-It. == Identification
+    == The first 24 bytes of the file are ASCII ''SOFTWARE PIRATESRelease ''. == File
+    structure == Files begin ...'
+  source: CP2
+- CdTextfiles:
+  - simtel/simtel/DISK1/DISC2/EXECOMP/CHK4C360.ZIP
+  - CHK4COMP
+  - svruby/CDR34/ARCH202.ZIP
+  - ARCH202.ZIP
+  - psl/pslv3nv01/GAMES/DOS/BETTING/CLTW5.ZIP
+  - CLTW5.ZIP
+  DexvertSamples:
+  - archive/executrixCompressorPacked
+  categories:
+  - Compression
+  - Electronic File Formats
+  - Executable compression
+  - File Formats
+  - FormatInfo without extensions
+  - FormatInfo without mimetypes
+  name: Executrix
+  pageStartText: "\u2192 LANA.EXE, LBET.EXE == Links == * Executrix is briefly mentioned\
+    \ in this [https://archive.org/details/pcworld93unse/page/258/mode/2up article\
+    \ in PC World Magazine, 1991-03, p. 259]."
+  released: "\u22641989"
+  source: Executrix
+- CdTextfiles:
+  - psl/psl9311/DOS/GRAPHICS/GREEKM.ZIP
+  - GREEKM.ZIP
+  DexvertSamples:
+  - archive/cebeCompressExpandPacked
+  categories:
+  - Compression
+  - Electronic File Formats
+  - Executable compression
+  - File Formats
+  - FormatInfo without extensions
+  - FormatInfo without mimetypes
+  name: CEBE
+  pageStartText: "\u2192 *.EXE"
+  released: 1991?
+  source: CEBE
+- categories:
+  - Compression
+  - Electronic File Formats
+  - File Formats
+  - File formats with extension .001
+  - FormatInfo without mimetypes
+  - MS-DOS
+  extensions:
+  - '001'
+  name: DoubleSpace and DriveSpace
+  pageStartText: '''''''DoubleSpace'''''', later named ''''''DriveSpace'''''', is
+    a disk compression utility for DOS and Windows. It was included with [[MS-DOS]]
+    v6.0-6.2 as DoubleSpace, dropped from v6.21, then added back (with some changes)
+    to v6.22 as DriveSpace. It is also integrat...'
+  released: '1993'
+  source: DoubleSpace_and_DriveSpace
+- DexvertSamples:
+  - archive/stackerCompressedVolume
+  categories:
+  - Compression
+  - Electronic File Formats
+  - File Formats
+  - File formats with extension .dsk
+  - FormatInfo without mimetypes
+  extensions:
+  - dsk
+  hasMagic: true
+  magic:
+  - STACKER
+  name: Stacker
+  pageStartText: '== Links == * [[Wikipedia: Stac Electronics]]'
+  released: '1990'
+  source: Stacker
+- categories:
+  - Compression
+  - Electronic File Formats
+  - File Formats
+  - FormatInfo without extensions
+  - FormatInfo without mimetypes
+  name: SuperStor
+  pageStartText: '''''''SuperStor'''''' is a family of disk compression software products
+    for DOS and Windows, developed by AddStor. == Software == * [https://winworldpc.com/product/superstor/pro2x
+    SuperStor, at WinWorld] * [https://vetusware.com/manufacturer/AddStor/ AddStor
+    pro...'
+  released: "\u22641991"
+  source: SuperStor
+- categories:
+  - Compression
+  - Electronic File Formats
+  - File Formats
+  - FormatInfo without extensions
+  - FormatInfo without mimetypes
+  name: DoubleDisk
+  pageStartText: :''Not to be confused with [[DiskDoubler]].'' '''DoubleDisk''' is
+    a disk compression software product for DOS, developed by Vertisoft Systems. It
+    was licensed to Microsoft. [[MS-DOS]]'s [[DoubleSpace and DriveSpace]] are derived
+    from it. == Software == * [...
+  released: 1989?
+  source: DoubleDisk
+- categories:
+  - Diagramming and flowcharting
+  - Electronic File Formats
+  - File Formats
+  - File formats with extension .cht
+  - FormatInfo without mimetypes
+  - Novagraph
+  extensions:
+  - cht
+  name: Chartist (Novagraph)
+  pageStartText: '''''''Chartist from Novagraph'''''', this is a simple program to
+    create/edit flowcharts.<!-- Version 1.02d from 1992 is documented in the link
+    below. --> == Links == [[Category:Novagraph]]'
+  source: Chartist_%28Novagraph%29
+- DexvertSamples:
+  - archive/sfpackPacked
+  categories:
+  - Audio and Music
+  - Compression
+  - Electronic File Formats
+  - File Formats
+  - File formats with extension .sfpack
+  - FormatInfo without formattype
+  - FormatInfo without mimetypes
+  - Recompression
+  extensions:
+  - sfpack
+  hasMagic: true
+  magic:
+  - SFPK
+  name: SFPack
+  pageStartText: == Links == * [https://web.archive.org/web/20010406074308/http://www.megota.com/download.htm
+    2001 archive of website] [[Category:Audio and Music]] [[Category:Recompression]]
+  released: '1999'
+  source: SFPack
+- categories:
+  - File Formats
+  - Languages
+  - Written Languages
+  name: Izografia
+  pageStartText: "'''Izografia''' is a writing system devised by the Polish logician\
+    \ Tadeusz W\xF3jcik (1917-1975). Its principles were outlined in his article \"\
+    Wsp\xF3lne pismo dla ludzi i maszyn\" (\"A common writing system for humans and\
+    \ machines\"), published in the December 197..."
+  released: '1971'
+  source: Izografia
+- categories:
+  - Archiving
+  - Electronic File Formats
+  - File Formats
+  - File formats with extension .tpk
+  - FormatInfo without mimetypes
+  extensions:
+  - tpk
+  hasMagic: true
+  magic:
+  - -TK1-
+  - -TK0-
+  name: TPK (compressed archive)
+  pageStartText: "] \u2192 { NRGXTME*.ZIP \u2192 XTMENG.A* (multi-part [[ARJ]] archive)\
+    \ } \u2192 *.TPK"
+  released: "\u22641994"
+  source: TPK_%28compressed_archive%29
+- CdTextfiles:
+  - cream04/windows/logimw62.zip
+  - logimw62.zip
+  - cream20/windows/logi71.zip
+  - logi71.zip
+  categories:
+  - Compression
+  - Electronic File Formats
+  - File Formats
+  - File formats with extension .??%
+  - File formats with extension .??~
+  - FormatInfo without mimetypes
+  extensions:
+  - ??%
+  - ??~
+  hasMagic: true
+  magic:
+  - da fa
+  - 00 06
+  name: Logitech Compress
+  pageStartText: DiscMaster search for LGEXPAND.EXE v2.0] == Sample files == * In
+    most cases, the LGEXPAND.EXE utility is found alongside examples of compressed
+    files. Refer to the Software section above.
+  released: ~1991 (v1), ~1996 (v2)
+  source: Logitech_Compress
+- categories:
+  - Electronic File Formats
+  - File Formats
+  - File formats with extension .nfo
+  - FormatInfo without mimetypes
+  - System files
+  extensions:
+  - nfo
+  name: Windows System Information file
+  pageStartText: The System Information application in Windows (also known as <code>msinfo32.exe</code>)
+    displays detailed technical information about the system. It allows users to export
+    this data to a '''System Information file''', which by default uses the <code>.nfo</...
+  source: Windows_System_Information_file
+- categories:
+  - Electronic File Formats
+  - File Formats
+  - Filesystem
+  - FormatInfo without extensions
+  - FormatInfo without mimetypes
+  name: EROFS
+  pageStartText: '''''''EROFS'''''' is a compressed read-only filesystem for Linux.
+    Typically used as a "live image" for booting Linux off a removable storage (e.g.
+    USB, CD/DVD), minus components like the bootloader, kernel and initramfs.<ref>[https://fedoraproject.org/wiki/Chang...'
+  released: '2019'
+  source: EROFS
+- categories:
+  - File formats with extension .chd
+  - Disk Image Formats
+  - Electronic File Formats
+  - File Formats
+  - FormatInfo without mimetypes
+  extensions:
+  - chd
+  name: Compressed Hunks of Data
+  pageStartText: '''''''CHD'''''' (Compressed Hunks of Data) is a lossless compression
+    format originally developed for [https://www.mamedev.org MAME (which in turn originally
+    stood for Multiple Arcade Machine Emulator)], for the hard-drive contents of certain
+    arcade machines. It ...'
+  released: 2007<ref>[https://github.com/mamedev/mame/commit/7b77f1218624ea26dbb2efd85a19f795f5d4e02e
+    Initial checkin of MAME 0.121. - GitHub]</ref>
+  source: Compressed_Hunks_of_Data
+- categories:
+  - Electronic File Formats
+  - File Formats
+  - File formats with extension .par
+  - File formats with extension .par2
+  - FormatInfo without mimetypes
+  - Miscellaneous File Formats
+  extensions:
+  - par
+  - par2
+  name: Parchive
+  pageStartText: '''''''Parchive'''''' (or Parity archive) is redundant file format,
+    which provides a way to apply data-recovery capability concepts of RAID-like systems,
+    via Reed-Solomon code to the posting and recovery of files. Historically, these
+    were multi-part archives that...'
+  released: 2001<ref>[https://sourceforge.net/projects/parchive/files/OldFiles/ parchive
+    Files - SourceForge.net]</ref>
+  source: Parchive
 source_prefix: http://fileformats.archiveteam.org/wiki/
 stats:
-  total_formats: 5623
+  total_formats: 5640
   total_w_egff: 100
-  total_w_extension: 5407
+  total_w_extension: 5422
   total_w_fdd: 244
   total_w_mimetype: 550
   total_w_pronom: 1641

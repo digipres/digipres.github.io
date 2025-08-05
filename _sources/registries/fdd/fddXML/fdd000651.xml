@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000651" titleName="PDF/A-4e: PDF/A for Engineering, Use of ISO 32000-2 (PDF/A-4): ISO 19005-4, Annex B" shortName="PDF/A-4e" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenreAndSubgenres>
+				<fdd:gdfrGenre>text</fdd:gdfrGenre>
+				<fdd:gdfrSubgenres>
+					<fdd:gdfrSubgenre>model</fdd:gdfrSubgenre>
+				</fdd:gdfrSubgenres>
+			</fdd:gdfrGenreAndSubgenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2025-07-23</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>PDF/A-4e for Engineering: ISO 19005-4:
+Document management — Electronic document file format for long-term preservation — Part 4: Use of ISO 32000-2 (PDF/A-4), Annex B</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>Portable Document Format (PDF)</fdd:keyword>
+			<fdd:keyword>PDF/A</fdd:keyword>
+			<fdd:keyword>document formats</fdd:keyword>
+			<fdd:keyword>PDF</fdd:keyword>
+			<fdd:keyword>engineering formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>PDF/A-4e is defined in <a href="https://www.iso.org/standard/71832.html">ISO 19005-4: Document management — Electronic document file format for long-term preservation Part 4: Use of ISO 32000-2 (PDF/A-4)</a> Annex B: Requirements for PDF/A for Engineering. Note that the <a href="https://pdf-issues.pdfa.org/19005-4-2020/index.html">PDF Association</a> states that "a formal dated revision of PDF/A-4 is currently being prepared by ISO TC 171 SC 2 WG 5" in 2025 and errata are listed on the PDF Association's <a href="https://github.com/pdf-association/pdf-issues/issues?q=is%3Aissue+label%3APDF%2FA-4">GitHub repository</a>. PDF/A-4e is a subtype of <fddLink id="fdd000532">PDF/A-4</fddLink> and the specification states that &quot;PDF/A-4e [is] a synonym for ISO 19005-4 Level E conformance.&quot; In fact, PDF/A-4e is the <a href="https://pdfa.org/pdf-standards-explained-with-a-focus-on-the-newest/">successor</a> to <fddLink id="fdd000495">PDF/E</fddLink>. See <fddLink id="fdd000532">PDF/A-4</fddLink> for general file and structure information and <fddLink id="fdd000318">PDF/A_family</fddLink> for more details on the PDF/A family of standards. </p>
+			<p>PDF/A-4e supports RichMedia and 3D Annotations as well as embedded files. In PDF/A-4, 3D artwork can be represented in either of these annotation types, but use of the RichMedia annotation type is recommended.  Note that the RichMedia annotation Subtype entry can only have the value of 3D to ensure &quot;only 3D and not audio or video information is included in a PDF/A-4e.&quot; In the 3D annotation type, the 3D model must be in <fddLink id="fdd000491">U3D</fddLink> or <fddLink id="fdd000496">PRC</fddLink> format. However, &quot;embedded data streams containing 3D data and referenced from a RichMedia assets tree can use other 3D formats&quot; including <fddLink id="fdd000448">STEP</fddLink> and <fddLink id="fdd000498">glTF (GL Transmission Format) Family</fddLink> provided that "all file specification dictionaries present in either the Assets name tree of a RichMediaContent Dictionary or the Asset entry in RichMediaInstance dictionary shall contain a Subtype key whose value is a valid IANA Media Type, as well as the F and UF keys" (see <a href="https://pdfa.org/wp-content/uploads/2024/06/Understanding-private-data-in-PDFA.pdf">Understanding private data in PDF/A</a> section 5.2.5).   In addition, the RichMedia annotation type includes support for textures and additional scripting events not supported by the older 3D annotation type. An interactive conforming processor able to render 3D content should also be able to process JavaScript actions -- but only when invoked explicitly by a user. An interactive conforming processor that cannot process such actions shall inform the user of this situation. As noted in <a href="https://pdfa.org/wp-content/uploads/2024/06/Understanding-private-data-in-PDFA.pdf">Understanding private data in PDF/A</a>, "PDF/A-4e allows JavaScript to be in a PDF/A file but requires that “... they are invoked explicitly by
+a user (such as via outlines or buttons). A conforming processor, that is non-interactive, shall not
+execute them at all." See also <a href="https://www.iso.org/standard/71559.html">ISO 21757-1:2020 Document management — ECMAScript for PDF — Part 1: Use of ISO 32000-2 (PDF 2.0)</a> (December 2020) which relates to scripting actions, including some specific to 3D and RichMedia annotations. The goal of ISO 21757-1 is to enable the implementation of ECMAScript/Javascript processors to provide interoperable scripting and automation of PDF documents.</p>
+			<p>PDF/A-4e files can also contain embedded files and therefore may contain an <i>EmbeddedFiles</i> key in the document catalog dictionary. In such cases, the file specification dictionaries present in the value of the EmbeddedFiles key must also conform to the requirements of <fddLink id="fdd000652">PDF/A-4f</fddLink>. In addition, "although embedded files that do not comply with any part of this document should not be rendered by a conforming PDF/A-4e processor, a conforming interactive PDF/A-4e processor should enable the extraction
+of any embedded file. The conforming interactive PDF/A-4e processor should also require an explicit user action to initiate the process."</p>
+		</fdd:description>
+		<fdd:shortDescription>PDF/A-4e is a subset of PDF/A that supports RichMedia and 3D Annotations as well as embedded files. </fdd:shortDescription>
+		<fdd:productionPhase>A final-state format for delivery to end users and long-term preservation of the document as disseminated to users.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000532</fdd:id>
+					<fdd:shortName>PDF/A-4</fdd:shortName>
+					<fdd:titleName>PDF/A-4, PDF for Long-term Preservation, Use of ISO 32000-2</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Other</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000495</fdd:id>
+					<fdd:shortName>PDF/E-1</fdd:shortName>
+					<fdd:titleName>PDF/E-1, Engineering Document Format, ISO 24517-1:2008</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>PDF/A-4e is the successor to PDF/E</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>LC was represented on the working group for the original PDF/A standard and continues to participate in the development of new versions through <a href="https://www.iso.org/committee/53674.html">ISO TC 171/SC2/WG5</a>. As of 2025, there are no known PDF/A-4e files in Library of Congress collections.</fdd:experience>
+		<fdd:preference>The Library of Congress Recommended Formats Statement (RFS) lists PDF/A-4e as a acceptable format for <a href="https://www.loc.gov/preservation/resources/rfs/design3D.html">2D and 3D Computer Aided Design - vector</a> formats. <p>See also  <fddLink id="fdd000318">PDF/A_family</fddLink>.  </p>
+		</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>See <fddLink id="fdd000532">PDF/A-4</fddLink>.</fdd:disclosure>
+		<fdd:documentation>See <fddLink id="fdd000532">PDF/A-4</fddLink>.</fdd:documentation>
+		<fdd:adoption>
+			<p>Overall adoption of PDF 2.0-based formats such as PDF/A-4f and PDF/A-4e is still emerging in the marketplace. Several platforms note support for PDF/A-4e such as <a href="https://github.com/itext/itext-dotnet/releases">iText Core/Community 9.2.0</a>, <a href="https://help.scanshare.com/home/getting-started/release-notes/">Scanshare</a> v5.23.10 (October 16, 2023), <a href="https://docshield.tungstenautomation.com/PowerPDF/en_US/5.1.1-x2ki7a3ycc/help/PowerPDF_help/c_aboutpdfversions.html">Power PDF</a> and <a href="https://www.cib.de/en/pdftoolbox/">
+CIB pdf toolbox</a>. Docusign in their PDF/A Conversion and Compliance (see link from navigation tree on <a href="https://support.docusign.com/">https://support.docusign.com/</a>) specifically states that as of July 2025, it does not support PDF/A-4e (or PDF/A-4f). See also <fddLink id="fdd000532">PDF/A-4</fddLink>. <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>See <fddLink id="fdd000532">PDF/A-4</fddLink>.</fdd:licensingAndPatents>
+		<fdd:transparency>See <fddLink id="fdd000532">PDF/A-4</fddLink>.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>See also <fddLink id="fdd000318">PDF/A_family</fddLink> and <fddLink id="fdd000532">PDF/A-4</fddLink>.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>PDF/A-4e has no specific support for digital accessibility. See <fddLink id="fdd000532">PDF/A-4</fddLink> which recommends following the <fddLink id="fdd000350">PDF/UA</fddLink> standard, which provides detailed guidelines and technical specifications for creating accessible tagged PDFs.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>See <fddLink id="fdd000318">PDF/A_family</fddLink>.</fdd:externalDependencies>
+		<fdd:techProtection>See <fddLink id="fdd000318">PDF/A_family</fddLink>.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:textQF>
+			<fdd:normalText>See <fddLink id="fdd000318">PDF/A_family</fddLink>.</fdd:normalText>
+			<fdd:structure>See <fddLink id="fdd000532">PDF/A-4</fddLink>.</fdd:structure>
+			<fdd:layout>See <fddLink id="fdd000318">PDF/A_family</fddLink>.</fdd:layout>
+			<fdd:mathDiag>See <fddLink id="fdd000532">PDF/A-4</fddLink>.</fdd:mathDiag>
+			<fdd:beyondText>
+				PDF/A-4e includes support for RichMedia and 3D Annotations as well as embedded files.
+			 See also <fddLink id="fdd000532">PDF/A-4</fddLink>.
+			</fdd:beyondText>
+		</fdd:textQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000532">PDF/A-4</fddLink>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000318">PDF/A_family</fddLink>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000532">PDF/A-4</fddLink>.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Indicator for profile, level, version, etc.</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>The standard specifies that the PDF/A version and conformance level of a file shall be specified using the PDF/A Identification extension schema defined in the standard.  This schema has two mandatory elements: pdfaid:part (integer), pdfaid:rev (4-character integer of the date of publication or revision). A PDF/A-4 file should have the integer value 4 for pdfaid:part. Claim to conformance with one of the profiles defined in Annexes A and B is made in the optional pdfaid:conformance by the following single characters: E for PDF/A-4e and F for PDF/A-4f.  E and F are the only valid values for pdfaid:conformance in a PDF/A-4 file. Note that pdfaid:conformance is not mandatory for PDF/A-4 as it is for previous versions of PDF/A.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>NARA File Format Preservation Plan ID has no corresponding entry for PDF/A-4e as of July 2025.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/1911</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/1911">http://www.nationalarchives.gov.uk/PRONOM/fmt/1911</a> for Acrobat PDF/A - Portable Document Format 4e.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q123594858</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q123594858">https://www.wikidata.org/wiki/Q123594858</a> for Portable Document Format/Archive, version 4e.
+</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>See <fddLink id="fdd000532">PDF/A-4</fddLink>.</fdd:general>
+		<fdd:history>See <fddLink id="fdd000532">PDF/A-4</fddLink>.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See <fddLink id="fdd000532">PDF/A-4</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000532">PDF/A-4</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://pdf-issues.pdfa.org/19005-4-2020/index.html</link>
+					<tag>PDF Association: PDF/A-4 Corrections</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/pdf-association/pdf-issues/issues?q=is%3Aissue+label%3APDF%2FA-4</link>
+					<tag>PDF Association PDF Issues GitHub Repository with PDF/A-4 tag</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://pdfa.org/pdf-standards-explained-with-a-focus-on-the-newest/</link>
+					<tag>PDF standards explained: with a focus on the newest. PDF Association. September 15, 2021</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://pdfa.org/resource/iso-19005-4-pdf-a-4/</link>
+					<tag>19005-4</tag>
+					<comment>PDF/A-4 is based on ISO 32000-2:2020 (PDF 2.0). It introduces the new PDF/A-4e conformance level that supports interactive 3D models for engineering workflows.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://pdfa.org/wp-content/uploads/2024/06/Understanding-private-data-in-PDFA.pdf</link>
+					<tag>Understanding private data in PDF/A</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/itext/itext-dotnet/releases</link>
+					<tag>iText Core/Community version 9.2.0 GitHub Repository</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://help.scanshare.com/home/getting-started/release-notes</link>
+					<tag>Scanshare Release Notes</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://docshield.tungstenautomation.com/PowerPDF/en_US/5.1.1-x2ki7a3ycc/help/PowerPDF_help/c_welcome.html</link>
+					<tag>Power PDF Help</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.cib.de/en/pdftoolbox/ </link>
+					<tag>CIB pdf toolbox</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://support.docusign.com</link>
+					<tag>Document Support: PDF/A Conversion and Compliance</tag>
+					<comment>Navigate to page through navigation tree</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/PDF/A</link>
+					<tag>Wikipedia entry for PDF/A</tag>
+					<comment>With information about PDF/A-4e</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/pronom/fmt/1911</link>
+					<tag>PRONOM entry for fmt/1911</tag>
+					<comment>Information in PRONOM from UK National Archives about Acrobat PDF/A - Portable Document Format 4e. PUID: fmt/1911.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q123594858</link>
+					<tag>Wikidata entry for Q123594858</tag>
+					<comment>Information in Wikidata about Portable Document Format/Archive, version 4e. Wikidata Title ID: Q123594858.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
