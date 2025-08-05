@@ -1,5 +1,5 @@
 ---
 title: Redirect for the floppy guide
-redirect_to: https://www.digipres.org/guide-to-imaging-obscure-floppies/ 
+redirect_to: https://github.com/digipres/the-floppy-guide
 ---
 
