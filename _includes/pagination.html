@@ -1,0 +1,25 @@
+{% if paginator.total_pages > 1 %}
+  <div class="pagination justify-content-center">
+    {% if paginator.page == 2 %}
+      <span class="page-item"><a href="{{ "/" | relative_url }}" class="page-link"><i class="fas fa-angle-left"></i></a></span>
+    {% elsif paginator.previous_page %}
+      <span class="page-item"><a href="{{ site.paginate_path | replace: ":num", paginator.previous_page | relative_url }}" class="page-link"><i class="fas fa-angle-left"></i></a></span>
+    {% else %}
+      <span class="page-item disabled"><a href="#" class="page-link"><i class="fas fa-angle-left"></i></a></span>
+    {% endif %}
+    {% for page in (1..paginator.total_pages) %}
+      {% if page == paginator.page %}
+        <span class="page-item active"><a href="#" class="page-link">{{ page }}</a></span>
+      {% elsif page == 1 %}
+        <span class="page-item"><a href="{{ "/" | relative_url }}" class="page-link">{{ page }}</a></span>
+      {% else %}
+        <span class="page-item"><a href="{{ site.paginate_path | replace: ":num", page | relative_url }}" class="page-link">{{ page }}</a></span>
+      {% endif %}
+    {% endfor %}
+    {% if paginator.next_page %}
+      <span class="page-item"><a href="{{ site.paginate_path | replace: ":num", paginator.next_page | relative_url }}" class="page-link"><i class="fas fa-angle-right"></i></a></span>
+    {% else %}
+      <span class="page-item disabled"><a href="#" class="page-link"><i class="fas fa-angle-right"></i></a></span>
+    {% endif %}
+  </div>
+{% endif %}
