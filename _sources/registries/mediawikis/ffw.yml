@@ -9242,9 +9242,9 @@ formats:
   - FormatInfo without subcat
   name: Error detection and correction
   pageStartText: == Error detection only == * [[Adler-32]] * [[Checksum]] * [[CRC]]
-    (Cyclic Redundancy Check) ** [[CRC-16]] ** [[CRC-32]] * [[MurmurHash]] * [[Parity
-    bit]] * [[xxHash]] For cryptographic hash functions, see [[Encryption]]. == Error
-    detection and correction ...
+    (Cyclic Redundancy Check) ** [[CRC-16]] ** [[CRC-32]] *** [[Brik]] - Uses CRC32
+    * [[MurmurHash]] * [[Parity bit]] * [[xxHash]] For cryptographic hash functions,
+    see [[Encryption]]. == Error...
   source: Error_detection_and_correction
 - categories:
   - Audio and Music
@@ -9294,7 +9294,7 @@ formats:
   name: Reed-Solomon error correction
   pageStartText: '''''''Reed-Solomon error correction'''''' is an algorithm used to
     correct errors through the use of "check symbols" added to the data being encoded.
-    It is used in many things from [[DVD]]s to [[QR code]]s. == References == * [http://en.wikipedia.org/wiki/Reed%E2...'
+    It is used in many things from [[CD]]s to [[barcode]]s.<ref>[https://web.archive.org/web/20130702200704/http://ww...'
   source: Reed-Solomon_error_correction
 - CdTextfiles:
   - nopv11/050A/SNRC21.ZIP
@@ -45806,11 +45806,18 @@ formats:
   - pxx
   - par2
   - pa3
+  hasMagic: true
+  magic:
+  - 50 41 52 00 00 00 00 00
+  - 50 41 52 32 00 50 4B 54
+  - 50 41 33 00
   name: Parity Volume Set
-  pageStartText: '''''''Parity Volume Set'''''' (also known as ''''''parity archive''''''
-    or ''''''parchive'''''') is a file format for storing redundant data for one or
-    more input files. These data can be used to repair the input files if they get
-    damaged. The error correction is based on t...'
+  pageStartText: This corresponds to the text string <code>PA3</code>, followed by
+    a null byte. == Specifications == {| |'''Specification version''' |'''SourceForge/Internet
+    Archive link''' |'''GitHub link''' |- | Parity Volume Set Specification v1.0 |
+    [http://parchive.sou...
+  released: 2001<ref>[https://sourceforge.net/projects/parchive/files/OldFiles/ parchive
+    Files - SourceForge.net]</ref>
   source: Parity_Volume_Set
 - categories:
   - File Formats
@@ -71986,7 +71993,7 @@ formats:
   - cle
   name: Centauri Logo Editor
   pageStartText: == Links == * [https://csdb.dk/release/?id=87045 Centauri Logo Editor
-    v3.1 ]
+    v3.1+]
   source: Centauri_Logo_Editor
 - DexvertSamples:
   - image/mapletownNetwork
@@ -96406,24 +96413,6 @@ formats:
     Initial checkin of MAME 0.121. - GitHub]</ref>
   source: Compressed_Hunks_of_Data
 - categories:
-  - Electronic File Formats
-  - File Formats
-  - File formats with extension .par2
-  - FormatInfo without mimetypes
-  - Miscellaneous File Formats
-  extensions:
-  - par2
-  hasMagic: true
-  magic:
-  - 50 41 52 32 00 50 4b 54
-  name: Parchive
-  pageStartText: == Examples == Create uniformed recovery file sizes with 100% redundancy
-    for example.dwarfs par2 create -u -r100 example.dwarfs == Sample files == See
-    [https://discmaster.textfiles.com/search?mode=deep&extension=par2&format=parityArchiveVolumeSet&format=un...
-  released: 2001<ref>[https://sourceforge.net/projects/parchive/files/OldFiles/ parchive
-    Files - SourceForge.net]</ref>
-  source: Parchive
-- categories:
   - File formats with extension .ebz
   - Compression
   - Electronic File Formats
@@ -96461,11 +96450,35 @@ formats:
     * [[VGM]] * [[YM]] == Links == * [https://vgmrips.net/wiki/S98_File_Format S98
     File Format on vgmrips]
   source: S98
+- CdTextfiles:
+  - nightowl/pdsi005/031A/EVAFONT.ZIP
+  - EVAFONT.ZIP
+  - simtel/simtel/DISK1/DISC2/EDITOR/PCTAMIL1.ZIP
+  - PCTAMIL1.ZIP
+  categories:
+  - Electronic File Formats
+  - Executable envelopes
+  - File Formats
+  - Fonts
+  - FormatInfo without extensions
+  - FormatInfo without mimetypes
+  hasMagic: true
+  magic:
+  - '0xe9'
+  - text font loader
+  - font driver
+  - v2.01A
+  - v3.04a
+  - v3.05c
+  name: EVAfont driver
+  pageStartText: "\u2192 NORMAL.COM, TAMIL.COM [[Category:Executable envelopes]]"
+  released: "\u22641988"
+  source: EVAfont_driver
 source_prefix: http://fileformats.archiveteam.org/wiki/
 stats:
   total_formats: 5642
   total_w_egff: 100
-  total_w_extension: 5423
+  total_w_extension: 5422
   total_w_fdd: 244
   total_w_mimetype: 551
   total_w_pronom: 1641
