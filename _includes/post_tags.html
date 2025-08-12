@@ -1,0 +1,7 @@
+{% if include.post.tags %}
+  <span itemprop="keywords">
+    {% for tag in include.post.tags %}
+      <a href="{{ tag | tag_url }}">#{{ tag }}</a>
+    {% endfor %}
+  </span>
+{% endif %}

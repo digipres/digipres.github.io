@@ -1,12 +1,30 @@
 markdown: kramdown
 baseurl: ""
+title: DigiPres.org
+subtitle: "Digital preservation community portal"
 
 defaults:
   - scope:
       path: "" # an empty string here means all files in the project
     values:
+      layout: "simple_page"
+  - scope:
+      path: "communities/local/*/*"
+    values:
+      layout: "local_group_page"
+  - scope:
+      path: "formats"
+    values:
+      layout: "default"
+  - scope:
+      path: "tools"
+    values:
       layout: "default"
 
+#paginate: 10
+#paginate_path: /news/pages/:num/
+#permalink: /news/:year/:month/:day/:title/
+  
 exclude:
   - _sources
 
@@ -16,3 +34,4 @@ include:
 
 plugins:
   - jekyll-redirect-from
+#  - jekyll-paginate
