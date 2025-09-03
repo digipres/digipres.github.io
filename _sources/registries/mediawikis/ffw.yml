@@ -88902,13 +88902,18 @@ formats:
   - File formats with extension .imp
   extensions:
   - imp
+  hasMagic: true
+  magic:
+  - 0100424F4F4B444F5547
+  - '"1" 0x00 "BOOKDOUG"'
+  - 0200424F4F4B444F5547
+  - '"2" 0x00 "BOOKDOUG"'
   mimetypes:
   - application/x-softbook
   name: IMP (Electronic publishing)
-  pageStartText: '''''''IMP'''''' is a device-specific format of [[OEB]] for various
-    successors of the [[Rocket eBook]]. It supports 2 different layouts: Color Full
-    VGA & Grayscale Half-VGA == IMP Compatible Devices == * Color Full VGA - ETI-1,
-    REB 1200, GEB 2150 * Grayscale Half...'
+  pageStartText: ) - created by eBook Publisher v2+ / Softbook Publisher 1.5 (current)
+    == References and format == * https://wiki.mobileread.com/wiki/IMP * [http://www.chromakinetics.com/REB1200/imp_format.htm
+    IMP format specification] * [http://www.chromakinetics.com/REB1...
   source: IMP_%28Electronic_publishing%29
   wikidata:
   - Q105857840
@@ -88973,11 +88978,15 @@ formats:
   - tr
   - tr3
   - pdb
+  hasMagic: true
+  magic:
+  - 370000106D000010D2160010DCF4DDFCD1
+  - '5452334454523343'
+  - TR3DTR3C
   name: TomeRaider
-  pageStartText: '''''''TomeRaider'''''' was one of the first formats to support large
-    reference works (like Wikipedia) on handheld devices. It had readers for PC, PocketPC,
-    Palm, Nokia, Epoc, and Sony Ericsson P800/P900. Capabilities of the TomeRaider3
-    e-book reader vary conside...'
+  pageStartText: ) at offset 60 * PDB - identified as ToRa files using the application
+    TRPW == References and format == * [https://web.archive.org/web/20081217024356/http://www.tomeraider.com/
+    Old homepage] * https://wiki.mobileread.com/wiki/Tome_Raider * https://wiki.mobi...
   source: TomeRaider
   wikidata:
   - Q74690581
@@ -94490,14 +94499,17 @@ formats:
   magic:
   - RGMH
   - 4D 00 69 00 6E 00 65 00 73 00 77 00 65 00 65 00 70 00 65 00 72
+  - Minesweeper
   - 4D 00 69 00 6E 00 65 00 73 00 77 00 65 00 65 00 70 00 65 00 72 00 2E 00 4D 00
     69 00 6E 00 65 00 53 00 77 00 65 00 65 00 70 00 65 00 72 00 53 00 61 00 76 00
     65 00 2D 00 6D 00 73
+  - Minesweeper.MineSweeperSave-ms
   - <Board>
   - <SaveVersion>3</SaveVersion>
+  - '3'
   name: Minesweeper saved game
-  pageStartText: which is the version used to save the game. ==Software== * Minesweeper
-    on Windows 7/Vista [[Category:XML based file formats]]
+  pageStartText: ), then the number of mines, width, height, difficulty, etc... ==Software==
+    * Minesweeper on Windows 7/Vista [[Category:XML based file formats]]
   released: 2009?
   source: Minesweeper_saved_game
 - categories:
@@ -96493,15 +96505,13 @@ formats:
   magic:
   - 45 42 5a 69 70 15 00 00 00 00 00 00 10 00 8b e8
   name: EBZip
-  pageStartText: ". == Examples == '''These must be executed in the top level of (book)\
-    \ directory that contains <code>CATALOGS</code> file, otherwise it will default\
-    \ to your current directory <code>$(pwd)</code>.''' See [[Wikipedia:ja:EPWING#\u30D5\
-    \u30A1\u30A4\u30EB\u69CB\u9020]] for the directory struc..."
+  pageStartText: . == Examples == '''These must be executed in the top level of (book)
+    directory that contains <code>CATALOGS</code> file, otherwise it will default
+    to your current directory <code>$(pwd)</code>.''' See [[EPWING#Content structure]]
+    for the directory structu...
   released: 1999<ref>[https://web.archive.org/web/20010619200710/http://www.sra.co.jp/people/m-kasahr/eb/ChangeLog-ja.html
     ChangeLog - SRA website mirrored on Internet Archive]</ref>
   source: EBZip
-  wikidata:
-  - Q11197749
 - DexvertSamples:
   - music/s98
   categories:
@@ -96879,11 +96889,70 @@ formats:
     "<code>A.H.</code>", and a game that uses it may include a file called <code>FXDRIVER.EXE</code>.
     === Pla...
   source: SoundFX_Macs_Opera
+- categories:
+  - Electronic File Formats
+  - Electronic Publishing formats
+  - File Formats
+  - File formats of extensionless files
+  - FormatInfo without mimetypes
+  name: EPWING
+  pageStartText: '''''''E''''''lectronic ''''''P''''''ublishing-WING or EPWING, is
+    a standardized format for electronic reference materials, typically dictionaries
+    that were distributed on CD-ROM for PCs. [[wikipedia:electronic dictionaries|Electronic
+    dictionaries]] in general were als...'
+  released: "1987<ref>[https://web.archive.org/web/19980214200328/http://www.epwing.or.jp/epwing/admission/index.html#history\
+    \ EP_\u5165\u4F1A\u306B\u3064\u3044\u3066 - \u7565\u6B74 - EP_About admission\
+    \ - brief history - Internet Archive]</ref>"
+  source: EPWING
+  wikidata:
+  - Q11197749
+- categories:
+  - Electronic File Formats
+  - File Formats
+  - File formats with extension .SolitaireSave-ms
+  - FormatInfo without mimetypes
+  - Saved Games
+  - XML based file formats
+  extensions:
+  - SolitaireSave-ms
+  hasMagic: true
+  magic:
+  - 53 00 6F 00 6C 00 69 00 74 00 61 00 69 00 72 00 65
+  - Solitaire
+  - 53 00 6F 00 6C 00 69 00 74 00 61 00 69 00 72 00 65 00 2E 00 53 00 6F 00 6C 00
+    69 00 74 00 61 00 69 00 72 00 65 00 53 00 61 00 76 00 65 00 2D 00 6D 00 73
+  - Solitaire.SolitaireSave-ms
+  - <Root>
+  - <GameState>
+  - <Version>7</Version>
+  - '7'
+  name: Solitaire saved game
+  pageStartText: ). Then the score, time, card state (position on the decks, suite,
+    digit), etc... ==Software== * Solitaire on Windows 7/Vista [[Category:XML based
+    file formats]]
+  released: 2009?
+  source: Solitaire_saved_game
+- categories:
+  - Electronic File Formats
+  - File Formats
+  - File formats with extension .nmw
+  - FormatInfo without mimetypes
+  - Graphics
+  extensions:
+  - nmw
+  hasMagic: true
+  magic:
+  - Microsoft NetMeeting Whiteboard
+  name: NetMeeting Whiteboard
+  pageStartText: == Software == * Microsoft NetMeeting 3.01 (on XP, based on the EXE's
+    metadata)
+  released: Likely 2001
+  source: NetMeeting_Whiteboard
 source_prefix: http://fileformats.archiveteam.org/wiki/
 stats:
-  total_formats: 5662
+  total_formats: 5665
   total_w_egff: 100
-  total_w_extension: 5451
+  total_w_extension: 5453
   total_w_fdd: 246
   total_w_mimetype: 551
   total_w_pronom: 1642
