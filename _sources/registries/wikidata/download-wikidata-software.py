@@ -1,7 +1,16 @@
 # 
+import re
 import json
 import requests
-import re
+
+from requests.adapters import HTTPAdapter, Retry
+# Set up fetch with retries
+s = requests.Session()
+retries = Retry(total=5,
+                backoff_factor=0.1,
+                status_forcelist=[ 500, 502, 503, 504 ])
+s.mount('http://', HTTPAdapter(max_retries=retries))
+
 
 # Set up the queries:
 url = 'https://query.wikidata.org/sparql'
@@ -40,7 +49,11 @@ ORDER BY ?item
 
 def process_query(item_data, query):
 
-  r = requests.get(url, params = {'format': 'json', 'query': query})
+  r = s.get(url, params = {'format': 'json', 'query': query})
+  
+  if r.status_code != 200:
+      raise Exception("Download failed")
+  
   data = r.json()
 
   for r in data['results']['bindings']:
