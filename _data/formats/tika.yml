@@ -428,9 +428,9 @@ formats:
     supertype: null
   application/fits:
     extensions:
+    - '*.fts'
     - '*.fit'
     - '*.fits'
-    - '*.fts'
     hasMagic: true
     id: application/fits
     mimetypes:
@@ -450,19 +450,19 @@ formats:
   application/gzip:
     extensions:
     - '*.gz'
-    - '*-gz'
     - '*.emz'
+    - '*-gz'
     - '*.tgz'
     hasMagic: true
     id: application/gzip
     mimetypes:
-    - gzip/document
-    - application/x-gunzip
-    - application/gzip
     - application/gzipped
-    - application/x-gzip
+    - gzip/document
+    - application/gzip
     - application/x-gzip-compressed
+    - application/x-gzip
     - application/gzip-compressed
+    - application/x-gunzip
     name: Gzip Compressed Archive
     source: tika-mimetypes.xml#L3246
     supertype: null
@@ -586,8 +586,8 @@ formats:
     hasMagic: true
     id: application/inf
     mimetypes:
-    - application/x-setupscript
     - application/inf
+    - application/x-setupscript
     - application/x-wine-extension-inf
     name: Windows setup INFormation
     source: tika-mimetypes.xml#L231
@@ -642,8 +642,8 @@ formats:
     id: application/java-vm
     mimetypes:
     - application/x-java-vm
-    - application/x-java
     - application/java-vm
+    - application/x-java
     name: Java Class File
     source: tika-mimetypes.xml#L287
     supertype: null
@@ -653,9 +653,9 @@ formats:
     hasMagic: false
     id: application/javascript
     mimetypes:
-    - application/javascript
     - text/javascript
     - application/x-javascript
+    - application/javascript
     name: JavaScript Source Code
     source: tika-mimetypes.xml#L274
     supertype: text/plain
@@ -708,8 +708,8 @@ formats:
     id: application/mac-binhex40
     mimetypes:
     - application/mac-binhex40
-    - application/mac-binhex
     - application/binhex
+    - application/mac-binhex
     source: tika-mimetypes.xml#L316
     supertype: null
   application/mac-compactpro:
@@ -939,8 +939,8 @@ formats:
     supertype: null
   application/msword:
     extensions:
-    - '*.dot'
     - '*.doc'
+    - '*.dot'
     hasMagic: true
     id: application/msword
     mimetypes:
@@ -1034,19 +1034,19 @@ formats:
     supertype: null
   application/octet-stream:
     extensions:
-    - '*.pkg'
-    - '*.so'
-    - '*.dump'
-    - '*.elc'
-    - '*.bpk'
-    - '*.dist'
-    - '*.dms'
-    - '*.distz'
     - '*.lrf'
-    - '*.lzh'
-    - '*.bin'
+    - '*.bpk'
+    - '*.distz'
     - '*.deploy'
+    - '*.bin'
+    - '*.dist'
+    - '*.lzh'
+    - '*.dms'
+    - '*.dump'
+    - '*.so'
+    - '*.elc'
     - '*.lha'
+    - '*.pkg'
     hasMagic: true
     id: application/octet-stream
     mimetypes:
@@ -1083,10 +1083,10 @@ formats:
     supertype: null
   application/onenote:
     extensions:
-    - '*.onetmp'
-    - '*.onepkg'
     - '*.onetoc2'
     - '*.onetoc'
+    - '*.onetmp'
+    - '*.onepkg'
     hasMagic: false
     id: application/onenote
     mimetypes:
@@ -1116,8 +1116,8 @@ formats:
     hasMagic: true
     id: application/pdf
     mimetypes:
-    - application/x-pdf
     - application/pdf
+    - application/x-pdf
     name: Portable Document Format
     source: tika-mimetypes.xml#L476
     supertype: null
@@ -1127,8 +1127,8 @@ formats:
     hasMagic: false
     id: application/pgp-encrypted
     mimetypes:
-    - application/pgp
     - application/pgp-encrypted
+    - application/pgp
     source: tika-mimetypes.xml#L498
     supertype: null
   application/pgp-keys:
@@ -1141,8 +1141,8 @@ formats:
     supertype: null
   application/pgp-signature:
     extensions:
-    - '*.asc'
     - '*.sig'
+    - '*.asc'
     hasMagic: false
     id: application/pgp-signature
     mimetypes:
@@ -1257,10 +1257,10 @@ formats:
     supertype: null
   application/postscript:
     extensions:
-    - '*.eps'
-    - '*.epsf'
-    - '*.epsi'
     - '*.ps'
+    - '*.epsi'
+    - '*.epsf'
+    - '*.eps'
     hasMagic: true
     id: application/postscript
     mimetypes:
@@ -1311,11 +1311,11 @@ formats:
     supertype: null
   application/rdf+xml:
     extensions:
-    - '*.owl'
-    - '*.rdf'
+    - ^rdf$
     - '*.xmp'
     - ^owl$
-    - ^rdf$
+    - '*.owl'
+    - '*.rdf'
     hasMagic: false
     id: application/rdf+xml
     mimetypes:
@@ -1417,8 +1417,8 @@ formats:
     hasMagic: true
     id: application/rtf
     mimetypes:
-    - application/rtf
     - text/rtf
+    - application/rtf
     name: Rich Text Format File
     source: tika-mimetypes.xml#L635
     supertype: text/plain
@@ -1635,9 +1635,9 @@ formats:
     supertype: null
   application/sldworks:
     extensions:
-    - '*.slddrw'
     - '*.sldasm'
     - '*.sldprt'
+    - '*.slddrw'
     hasMagic: false
     id: application/sldworks
     mimetypes:
@@ -1647,9 +1647,9 @@ formats:
     supertype: application/x-tika-msoffice
   application/smil+xml:
     extensions:
+    - '*.smil'
     - '*.sml'
     - '*.smi'
-    - '*.smil'
     hasMagic: false
     id: application/smil+xml
     mimetypes:
@@ -2213,11 +2213,11 @@ formats:
     supertype: null
   application/vnd.clonk.c4group:
     extensions:
-    - '*.c4g'
     - '*.c4f'
-    - '*.c4d'
-    - '*.c4u'
     - '*.c4p'
+    - '*.c4d'
+    - '*.c4g'
+    - '*.c4u'
     hasMagic: false
     id: application/vnd.clonk.c4group
     mimetypes:
@@ -2956,10 +2956,10 @@ formats:
     supertype: null
   application/vnd.framemaker:
     extensions:
-    - '*.fm'
-    - '*.book'
-    - '*.frame'
     - '*.maker'
+    - '*.frame'
+    - '*.book'
+    - '*.fm'
     hasMagic: false
     id: application/vnd.framemaker
     mimetypes:
@@ -3394,9 +3394,9 @@ formats:
     supertype: null
   application/vnd.ibm.modcap:
     extensions:
-    - '*.list3820'
-    - '*.listafp'
     - '*.afp'
+    - '*.listafp'
+    - '*.list3820'
     hasMagic: false
     id: application/vnd.ibm.modcap
     mimetypes:
@@ -3702,8 +3702,8 @@ formats:
     hasMagic: false
     id: application/vnd.kde.kchart
     mimetypes:
-    - application/vnd.kde.kchart
     - application/x-kchart
+    - application/vnd.kde.kchart
     name: KChart File
     source: tika-mimetypes.xml#L1311
     supertype: null
@@ -3736,13 +3736,13 @@ formats:
     supertype: null
   application/vnd.kde.kpresenter:
     extensions:
-    - '*.kpr'
     - '*.kpt'
+    - '*.kpr'
     hasMagic: false
     id: application/vnd.kde.kpresenter
     mimetypes:
-    - application/vnd.kde.kpresenter
     - application/x-kpresenter
+    - application/vnd.kde.kpresenter
     name: KPresenter File
     source: tika-mimetypes.xml#L1329
     supertype: null
@@ -3764,8 +3764,8 @@ formats:
     hasMagic: false
     id: application/vnd.kde.kword
     mimetypes:
-    - application/x-kword
     - application/vnd.kde.kword
+    - application/x-kword
     name: KWord File
     source: tika-mimetypes.xml#L1342
     supertype: null
@@ -3800,8 +3800,8 @@ formats:
   application/vnd.koan:
     extensions:
     - '*.skd'
-    - '*.skp'
     - '*.skt'
+    - '*.skp'
     - '*.skm'
     hasMagic: false
     id: application/vnd.koan
@@ -4034,12 +4034,12 @@ formats:
     supertype: null
   application/vnd.mindjet.mindmanager:
     extensions:
-    - '*.mmas'
-    - '*.mmat'
-    - '*.mmap'
     - '*.mmmp'
-    - '*.mmp'
+    - '*.mmap'
     - '*.mmpt'
+    - '*.mmat'
+    - '*.mmas'
+    - '*.mmp'
     hasMagic: false
     id: application/vnd.mindjet.mindmanager
     mimetypes:
@@ -4245,19 +4245,19 @@ formats:
     supertype: null
   application/vnd.ms-excel:
     extensions:
-    - '*.xlc'
     - '*.xll'
-    - '*.xla'
-    - '*.xlt'
     - '*.xld'
     - '*.xlm'
+    - '*.xla'
+    - '*.xlc'
     - '*.xls'
     - '*.xlw'
+    - '*.xlt'
     hasMagic: true
     id: application/vnd.ms-excel
     mimetypes:
-    - application/vnd.ms-excel
     - application/msexcel
+    - application/vnd.ms-excel
     name: Microsoft Excel Spreadsheet
     source: tika-mimetypes.xml#L1512
     supertype: application/x-tika-msoffice
@@ -4431,16 +4431,16 @@ formats:
     supertype: null
   application/vnd.ms-powerpoint:
     extensions:
-    - '*.ppt'
-    - '*.pps'
-    - '*.ppz'
-    - '*.pot'
     - '*.ppa'
+    - '*.ppz'
+    - '*.pps'
+    - '*.ppt'
+    - '*.pot'
     hasMagic: true
     id: application/vnd.ms-powerpoint
     mimetypes:
-    - application/mspowerpoint
     - application/vnd.ms-powerpoint
+    - application/mspowerpoint
     name: Microsoft Powerpoint Presentation
     source: tika-mimetypes.xml#L1648
     supertype: application/x-tika-msoffice
@@ -4494,8 +4494,8 @@ formats:
     supertype: application/x-tika-ooxml
   application/vnd.ms-project:
     extensions:
-    - '*.mpp'
     - '*.mpt'
+    - '*.mpp'
     hasMagic: false
     id: application/vnd.ms-project
     mimetypes:
@@ -4625,9 +4625,9 @@ formats:
     supertype: application/x-tika-ooxml
   application/vnd.ms-works:
     extensions:
+    - '*.wdb'
     - '*.wcm'
     - '*.wps'
-    - '*.wdb'
     - '*.wks'
     hasMagic: true
     id: application/vnd.ms-works
@@ -4948,8 +4948,8 @@ formats:
     hasMagic: true
     id: application/vnd.oasis.opendocument.chart
     mimetypes:
-    - application/x-vnd.oasis.opendocument.chart
     - application/vnd.oasis.opendocument.chart
+    - application/x-vnd.oasis.opendocument.chart
     name: 'OpenDocument v1.0: Chart document'
     source: tika-mimetypes.xml#L1822
     supertype: null
@@ -4959,8 +4959,8 @@ formats:
     hasMagic: true
     id: application/vnd.oasis.opendocument.chart-template
     mimetypes:
-    - application/x-vnd.oasis.opendocument.chart-template
     - application/vnd.oasis.opendocument.chart-template
+    - application/x-vnd.oasis.opendocument.chart-template
     name: 'OpenDocument v1.0: Chart document used as template'
     source: tika-mimetypes.xml#L1834
     supertype: null
@@ -4990,8 +4990,8 @@ formats:
     hasMagic: true
     id: application/vnd.oasis.opendocument.formula-template
     mimetypes:
-    - application/vnd.oasis.opendocument.formula-template
     - application/x-vnd.oasis.opendocument.formula-template
+    - application/vnd.oasis.opendocument.formula-template
     name: 'OpenDocument v1.0: Formula document used as template'
     source: tika-mimetypes.xml#L1863
     supertype: null
@@ -5001,8 +5001,8 @@ formats:
     hasMagic: true
     id: application/vnd.oasis.opendocument.graphics
     mimetypes:
-    - application/x-vnd.oasis.opendocument.graphics
     - application/vnd.oasis.opendocument.graphics
+    - application/x-vnd.oasis.opendocument.graphics
     name: 'OpenDocument v1.0: Graphics document (Drawing)'
     source: tika-mimetypes.xml#L1875
     supertype: null
@@ -5012,8 +5012,8 @@ formats:
     hasMagic: true
     id: application/vnd.oasis.opendocument.graphics-template
     mimetypes:
-    - application/x-vnd.oasis.opendocument.graphics-template
     - application/vnd.oasis.opendocument.graphics-template
+    - application/x-vnd.oasis.opendocument.graphics-template
     name: 'OpenDocument v1.0: Graphics document used as template'
     source: tika-mimetypes.xml#L1887
     supertype: null
@@ -5034,8 +5034,8 @@ formats:
     hasMagic: true
     id: application/vnd.oasis.opendocument.image-template
     mimetypes:
-    - application/vnd.oasis.opendocument.image-template
     - application/x-vnd.oasis.opendocument.image-template
+    - application/vnd.oasis.opendocument.image-template
     name: 'OpenDocument v1.0: Image document used as template'
     source: tika-mimetypes.xml#L1911
     supertype: null
@@ -5067,8 +5067,8 @@ formats:
     hasMagic: true
     id: application/vnd.oasis.opendocument.spreadsheet
     mimetypes:
-    - application/x-vnd.oasis.opendocument.spreadsheet
     - application/vnd.oasis.opendocument.spreadsheet
+    - application/x-vnd.oasis.opendocument.spreadsheet
     name: 'OpenDocument v1.0: Spreadsheet document'
     source: tika-mimetypes.xml#L1947
     supertype: null
@@ -5111,8 +5111,8 @@ formats:
     hasMagic: true
     id: application/vnd.oasis.opendocument.text-template
     mimetypes:
-    - application/x-vnd.oasis.opendocument.text-template
     - application/vnd.oasis.opendocument.text-template
+    - application/x-vnd.oasis.opendocument.text-template
     name: 'OpenDocument v1.0: Text document used as template'
     source: tika-mimetypes.xml#L1995
     supertype: null
@@ -5122,8 +5122,8 @@ formats:
     hasMagic: true
     id: application/vnd.oasis.opendocument.text-web
     mimetypes:
-    - application/vnd.oasis.opendocument.text-web
     - application/x-vnd.oasis.opendocument.text-web
+    - application/vnd.oasis.opendocument.text-web
     name: 'OpenDocument v1.0: Text document used as template for HTML documents'
     source: tika-mimetypes.xml#L2007
     supertype: null
@@ -5404,8 +5404,8 @@ formats:
     supertype: null
   application/vnd.openxmlformats-officedocument.presentationml.presentation:
     extensions:
-    - '*.pptx'
     - '*.thmx'
+    - '*.pptx'
     hasMagic: false
     id: application/vnd.openxmlformats-officedocument.presentationml.presentation
     mimetypes:
@@ -5517,8 +5517,8 @@ formats:
     supertype: null
   application/vnd.palm:
     extensions:
-    - '*.oprc'
     - '*.pqa'
+    - '*.oprc'
     hasMagic: false
     id: application/vnd.palm
     mimetypes:
@@ -5706,10 +5706,10 @@ formats:
     extensions:
     - '*.qxl'
     - '*.qxb'
-    - '*.qxd'
-    - '*.qwt'
-    - '*.qwd'
     - '*.qxt'
+    - '*.qxd'
+    - '*.qwd'
+    - '*.qwt'
     hasMagic: false
     id: application/vnd.quark.quarkxpress
     mimetypes:
@@ -6264,8 +6264,8 @@ formats:
     supertype: null
   application/vnd.symbian.install:
     extensions:
-    - '*.sis'
     - '*.sisx'
+    - '*.sis'
     hasMagic: true
     id: application/vnd.symbian.install
     mimetypes:
@@ -6326,8 +6326,8 @@ formats:
     supertype: null
   application/vnd.tcpdump.pcap:
     extensions:
-    - '*.cap'
     - '*.pcap'
+    - '*.cap'
     - '*.dmp'
     hasMagic: true
     id: application/vnd.tcpdump.pcap
@@ -6382,8 +6382,8 @@ formats:
     supertype: null
   application/vnd.ufdl:
     extensions:
-    - '*.ufd'
     - '*.ufdl'
+    - '*.ufd'
     hasMagic: false
     id: application/vnd.ufdl
     mimetypes:
@@ -6565,10 +6565,10 @@ formats:
     supertype: null
   application/vnd.visio:
     extensions:
-    - '*.vst'
-    - '*.vss'
     - '*.vsw'
     - '*.vsd'
+    - '*.vss'
+    - '*.vst'
     hasMagic: false
     id: application/vnd.visio
     mimetypes:
@@ -7073,15 +7073,15 @@ formats:
     hasMagic: true
     id: application/x-arj
     mimetypes:
-    - application/x-arj-compressed
     - application/x-arj
+    - application/x-arj-compressed
     source: tika-mimetypes.xml#L2656
     supertype: null
   application/x-authorware-bin:
     extensions:
     - '*.aab'
-    - '*.vox'
     - '*.x32'
+    - '*.vox'
     - '*.u32'
     hasMagic: false
     id: application/x-authorware-bin
@@ -7274,9 +7274,9 @@ formats:
     supertype: null
   application/x-bzip2:
     extensions:
-    - '*.boz'
-    - '*.tbz2'
     - '*.bz2'
+    - '*.tbz2'
+    - '*.boz'
     hasMagic: true
     id: application/x-bzip2
     mimetypes:
@@ -7370,13 +7370,13 @@ formats:
     supertype: null
   application/x-debian-package:
     extensions:
-    - '*.deb'
     - '*.udeb'
+    - '*.deb'
     hasMagic: true
     id: application/x-debian-package
     mimetypes:
-    - application/vnd.debian.binary-package
     - application/x-debian-package
+    - application/vnd.debian.binary-package
     source: tika-mimetypes.xml#L2964
     supertype: application/x-archive
   application/x-dex:
@@ -7391,15 +7391,15 @@ formats:
     supertype: null
   application/x-director:
     extensions:
-    - '*.fgd'
-    - '*.dcr'
-    - '*.cxt'
     - '*.cst'
-    - '*.swa'
-    - '*.dir'
-    - '*.dxr'
-    - '*.w3d'
     - '*.cct'
+    - '*.cxt'
+    - '*.fgd'
+    - '*.w3d'
+    - '*.dxr'
+    - '*.dcr'
+    - '*.dir'
+    - '*.swa'
     hasMagic: false
     id: application/x-director
     mimetypes:
@@ -7521,9 +7521,9 @@ formats:
     supertype: null
   application/x-font-adobe-metric:
     extensions:
-    - '*.amfm'
-    - '*.afm'
     - '*.acfm'
+    - '*.afm'
+    - '*.amfm'
     hasMagic: true
     id: application/x-font-adobe-metric
     mimetypes:
@@ -7649,8 +7649,8 @@ formats:
     supertype: null
   application/x-font-type1:
     extensions:
-    - '*.pfb'
     - '*.pfa'
+    - '*.pfb'
     hasMagic: true
     id: application/x-font-type1
     mimetypes:
@@ -7699,15 +7699,15 @@ formats:
     hasMagic: true
     id: application/x-gnumeric
     mimetypes:
-    - application/x-Gnumeric-spreadsheet
     - application/x-gnumeric
+    - application/x-Gnumeric-spreadsheet
     source: tika-mimetypes.xml#L3216
     supertype: null
   application/x-grib:
     extensions:
-    - '*.grb'
     - '*.grb1'
     - '*.grb2'
+    - '*.grb'
     hasMagic: true
     id: application/x-grib
     mimetypes:
@@ -7727,9 +7727,9 @@ formats:
     supertype: application/x-tar
   application/x-hdf:
     extensions:
-    - '*.he5'
-    - '*.hdf'
     - '*.h5'
+    - '*.hdf'
+    - '*.he5'
     hasMagic: true
     id: application/x-hdf
     mimetypes:
@@ -7927,9 +7927,9 @@ formats:
     supertype: null
   application/x-ms-installer:
     extensions:
-    - '*.msp'
-    - '*.msi'
     - '*.mst'
+    - '*.msi'
+    - '*.msp'
     hasMagic: false
     id: application/x-ms-installer
     mimetypes:
@@ -8005,8 +8005,8 @@ formats:
   application/x-msdownload:
     extensions:
     - '*.bat'
-    - '*.com'
     - '*.dll'
+    - '*.com'
     hasMagic: true
     id: application/x-msdownload
     mimetypes:
@@ -8064,8 +8064,8 @@ formats:
   application/x-msmediaview:
     extensions:
     - '*.m13'
-    - '*.mvb'
     - '*.m14'
+    - '*.mvb'
     hasMagic: false
     id: application/x-msmediaview
     mimetypes:
@@ -8176,8 +8176,8 @@ formats:
     supertype: application/x-mysql-db
   application/x-netcdf:
     extensions:
-    - '*.nc'
     - '*.cdf'
+    - '*.nc'
     hasMagic: false
     id: application/x-netcdf
     mimetypes:
@@ -8204,8 +8204,8 @@ formats:
     supertype: null
   application/x-pkcs7-certificates:
     extensions:
-    - '*.p7b'
     - '*.spc'
+    - '*.p7b'
     hasMagic: false
     id: application/x-pkcs7-certificates
     mimetypes:
@@ -8241,10 +8241,10 @@ formats:
     supertype: null
   application/x-quattro-pro:
     extensions:
-    - '*.wb3'
-    - '*.wb1'
     - '*.qpw'
+    - '*.wb3'
     - '*.wb2'
+    - '*.wb1'
     hasMagic: false
     id: application/x-quattro-pro
     mimetypes:
@@ -8358,8 +8358,8 @@ formats:
     supertype: null
   application/x-sas-dmdb:
     extensions:
-    - '*.s7m'
     - '*.sas7bdmd'
+    - '*.s7m'
     hasMagic: false
     id: application/x-sas-dmdb
     mimetypes:
@@ -8391,8 +8391,8 @@ formats:
     supertype: null
   application/x-sas-mddb:
     extensions:
-    - '*.sm7'
     - '*.sas7bmdb'
+    - '*.sm7'
     hasMagic: false
     id: application/x-sas-mddb
     mimetypes:
@@ -8434,8 +8434,8 @@ formats:
     supertype: null
   application/x-sas-utility:
     extensions:
-    - '*.su7'
     - '*.sas7butl'
+    - '*.su7'
     hasMagic: false
     id: application/x-sas-utility
     mimetypes:
@@ -8445,8 +8445,8 @@ formats:
     supertype: null
   application/x-sas-view:
     extensions:
-    - '*.sas7bvew'
     - '*.sv7'
+    - '*.sas7bvew'
     hasMagic: false
     id: application/x-sas-view
     mimetypes:
@@ -8587,8 +8587,8 @@ formats:
     hasMagic: true
     id: application/x-tex
     mimetypes:
-    - text/x-tex
     - application/x-tex
+    - text/x-tex
     name: TeX Source
     source: tika-mimetypes.xml#L3809
     supertype: text/plain
@@ -8603,13 +8603,13 @@ formats:
     supertype: null
   application/x-texinfo:
     extensions:
-    - '*.texinfo'
     - '*.texi'
+    - '*.texinfo'
     hasMagic: true
     id: application/x-texinfo
     mimetypes:
-    - text/x-texinfo
     - application/x-texinfo
+    - text/x-texinfo
     source: tika-mimetypes.xml#L3830
     supertype: null
   application/x-tika-iworks-protected:
@@ -8937,15 +8937,15 @@ formats:
     supertype: null
   application/xml:
     extensions:
-    - '*.xml'
     - '*.xsl'
     - '*.xsd'
+    - '*.xml'
     hasMagic: true
     id: application/xml
     mimetypes:
-    - application/xml
-    - application/x-xml
     - text/xml
+    - application/x-xml
+    - application/xml
     name: Extensible Markup Language
     source: tika-mimetypes.xml#L3998
     supertype: text/plain
@@ -8965,8 +8965,8 @@ formats:
     hasMagic: false
     id: application/xml-external-parsed-entity
     mimetypes:
-    - application/xml-external-parsed-entity
     - text/xml-external-parsed-entity
+    - application/xml-external-parsed-entity
     source: tika-mimetypes.xml#L4034
     supertype: null
   application/xmpp+xml:
@@ -8988,8 +8988,8 @@ formats:
     supertype: null
   application/xquery:
     extensions:
-    - '*.xquery'
     - '*.xq'
+    - '*.xquery'
     hasMagic: false
     id: application/xquery
     mimetypes:
@@ -8999,8 +8999,8 @@ formats:
     supertype: text/plain
   application/xslfo+xml:
     extensions:
-    - '*.fo'
     - '*.xslfo'
+    - '*.fo'
     hasMagic: false
     id: application/xslfo+xml
     mimetypes:
@@ -9015,8 +9015,8 @@ formats:
     hasMagic: false
     id: application/xslt+xml
     mimetypes:
-    - application/xslt+xml
     - text/xsl
+    - application/xslt+xml
     name: XSL Transformations
     source: tika-mimetypes.xml#L4053
     supertype: null
@@ -9032,10 +9032,10 @@ formats:
     supertype: null
   application/xv+xml:
     extensions:
-    - '*.xhvml'
     - '*.xvm'
-    - '*.mxml'
+    - '*.xhvml'
     - '*.xvml'
+    - '*.mxml'
     hasMagic: false
     id: application/xv+xml
     mimetypes:
@@ -9502,10 +9502,10 @@ formats:
     supertype: null
   audio/midi:
     extensions:
-    - '*.mid'
-    - '*.midi'
-    - '*.rmi'
     - '*.kar'
+    - '*.rmi'
+    - '*.midi'
+    - '*.mid'
     hasMagic: true
     id: audio/midi
     mimetypes:
@@ -9524,14 +9524,14 @@ formats:
   audio/mp4:
     extensions:
     - '*.m4a'
-    - '*.m4b'
     - '*.mp4a'
+    - '*.m4b'
     hasMagic: true
     id: audio/mp4
     mimetypes:
+    - audio/x-mp4a
     - audio/mp4
     - audio/x-m4a
-    - audio/x-mp4a
     source: tika-mimetypes.xml#L4224
     supertype: null
   audio/mp4a-latm:
@@ -9560,17 +9560,17 @@ formats:
     supertype: null
   audio/mpeg:
     extensions:
-    - '*.m3a'
-    - '*.mp2a'
     - '*.mp3'
     - '*.m2a'
     - '*.mpga'
+    - '*.m3a'
+    - '*.mp2a'
     - '*.mp2'
     hasMagic: true
     id: audio/mpeg
     mimetypes:
-    - audio/mpeg
     - audio/x-mpeg
+    - audio/mpeg
     name: MPEG-1 Audio Layer 3
     source: tika-mimetypes.xml#L4241
     supertype: null
@@ -10076,8 +10076,8 @@ formats:
     hasMagic: true
     id: audio/vorbis
     mimetypes:
-    - audio/vorbis
     - application/x-ogg
+    - audio/vorbis
     name: Ogg Vorbis Codec Compressed WAV File
     source: tika-mimetypes.xml#L4282
     supertype: audio/ogg
@@ -10108,9 +10108,9 @@ formats:
     supertype: null
   audio/x-aiff:
     extensions:
+    - '*.aif'
     - '*.aiff'
     - '*.aifc'
-    - '*.aif'
     hasMagic: true
     id: audio/x-aiff
     mimetypes:
@@ -10196,8 +10196,8 @@ formats:
     hasMagic: true
     id: audio/x-oggflac
     mimetypes:
-    - audio/x-ogg-flac
     - audio/x-oggflac
+    - audio/x-ogg-flac
     name: Ogg Packaged Free Lossless Audio Codec
     source: tika-mimetypes.xml#L4295
     supertype: audio/ogg
@@ -10206,8 +10206,8 @@ formats:
     hasMagic: true
     id: audio/x-oggpcm
     mimetypes:
-    - audio/x-oggpcm
     - audio/x-ogg-pcm
+    - audio/x-oggpcm
     name: Ogg Packaged Unompressed WAV File
     source: tika-mimetypes.xml#L4307
     supertype: audio/ogg
@@ -10372,12 +10372,12 @@ formats:
     supertype: image/x-jp2-container
   image/jpeg:
     extensions:
-    - '*.jfif'
-    - '*.jfi'
     - '*.jpe'
-    - '*.jif'
-    - '*.jpeg'
     - '*.jpg'
+    - '*.jif'
+    - '*.jfif'
+    - '*.jpeg'
+    - '*.jfi'
     hasMagic: true
     id: image/jpeg
     mimetypes:
@@ -10392,8 +10392,8 @@ formats:
     hasMagic: true
     id: image/jpm
     mimetypes:
-    - video/jpm
     - image/jpm
+    - video/jpm
     name: JPEG 2000 Part 6 (JPM)
     source: tika-mimetypes.xml#L4684
     supertype: image/x-jp2-container
@@ -10417,13 +10417,13 @@ formats:
     supertype: null
   image/nitf:
     extensions:
-    - '*.ntf'
     - '*.nitf'
+    - '*.ntf'
     hasMagic: true
     id: image/nitf
     mimetypes:
-    - image/ntf
     - image/nitf
+    - image/ntf
     source: tika-mimetypes.xml#L4712
     supertype: null
   image/png:
@@ -10497,9 +10497,9 @@ formats:
     hasMagic: true
     id: image/vnd.adobe.photoshop
     mimetypes:
-    - image/x-psd
-    - application/photoshop
     - image/vnd.adobe.photoshop
+    - application/photoshop
+    - image/x-psd
     name: Photoshop Image
     source: tika-mimetypes.xml#L4763
     supertype: null
@@ -10522,8 +10522,8 @@ formats:
     supertype: null
   image/vnd.djvu:
     extensions:
-    - '*.djv'
     - '*.djvu'
+    - '*.djv'
     hasMagic: false
     id: image/vnd.djvu
     mimetypes:
@@ -10536,15 +10536,15 @@ formats:
     hasMagic: true
     id: image/vnd.dwg
     mimetypes:
-    - application/x-dwg
-    - application/autocad_dwg
-    - drawing/dwg
-    - application/x-autocad
-    - application/x-acad
-    - image/vnd.dwg
     - application/acad
-    - application/dwg
     - image/x-dwg
+    - application/dwg
+    - image/vnd.dwg
+    - application/autocad_dwg
+    - application/x-acad
+    - application/x-dwg
+    - application/x-autocad
+    - drawing/dwg
     name: AutoCad Drawing
     source: tika-mimetypes.xml#L4789
     supertype: null
@@ -10774,24 +10774,24 @@ formats:
     supertype: null
   image/x-freehand:
     extensions:
-    - '*.ft11'
-    - '*.ft9'
-    - '*.fh8'
-    - '*.fhc'
-    - '*.ft8'
-    - '*.ft10'
-    - '*.fh40'
-    - '*.fh4'
-    - '*.fh10'
+    - '*.fh50'
     - '*.fh12'
     - '*.fh9'
+    - '*.fh8'
     - '*.fh'
+    - '*.fh10'
     - '*.fh7'
-    - '*.fh11'
     - '*.ft7'
-    - '*.fh50'
-    - '*.fh5'
+    - '*.fh11'
+    - '*.ft9'
+    - '*.ft10'
+    - '*.ft11'
     - '*.ft12'
+    - '*.fhc'
+    - '*.fh5'
+    - '*.ft8'
+    - '*.fh40'
+    - '*.fh4'
     hasMagic: true
     id: image/x-freehand
     mimetypes:
@@ -10825,8 +10825,8 @@ formats:
     hasMagic: true
     id: image/x-ms-bmp
     mimetypes:
-    - image/bmp
     - image/x-ms-bmp
+    - image/bmp
     name: Windows bitmap
     source: tika-mimetypes.xml#L4580
     supertype: null
@@ -10851,8 +10851,8 @@ formats:
   image/x-pict:
     extensions:
     - '*.pct'
-    - '*.pict'
     - '*.pic'
+    - '*.pict'
     hasMagic: true
     id: image/x-pict
     mimetypes:
@@ -10912,8 +10912,8 @@ formats:
     supertype: null
   image/x-raw-canon:
     extensions:
-    - '*.cr2'
     - '*.crw'
+    - '*.cr2'
     hasMagic: false
     id: image/x-raw-canon
     mimetypes:
@@ -10973,10 +10973,10 @@ formats:
     supertype: null
   image/x-raw-kodak:
     extensions:
+    - '*.kdc'
+    - '*.dcs'
     - '*.drf'
     - '*.k25'
-    - '*.dcs'
-    - '*.kdc'
     hasMagic: false
     id: image/x-raw-kodak
     mimetypes:
@@ -11058,8 +11058,8 @@ formats:
     supertype: null
   image/x-raw-pentax:
     extensions:
-    - '*.pef'
     - '*.ptx'
+    - '*.pef'
     hasMagic: false
     id: image/x-raw-pentax
     mimetypes:
@@ -11109,9 +11109,9 @@ formats:
     supertype: null
   image/x-raw-sony:
     extensions:
+    - '*.srf'
     - '*.sr2'
     - '*.arw'
-    - '*.srf'
     hasMagic: false
     id: image/x-raw-sony
     mimetypes:
@@ -11144,8 +11144,8 @@ formats:
     hasMagic: true
     id: image/x-xcf
     mimetypes:
-    - image/xcf
     - image/x-xcf
+    - image/xcf
     name: GIMP Image File
     source: tika-mimetypes.xml#L5163
     supertype: null
@@ -11274,8 +11274,8 @@ formats:
     supertype: null
   message/rfc822:
     extensions:
-    - '*.mhtml'
     - '*.mime'
+    - '*.mhtml'
     - '*.eml'
     - '*.mht'
     hasMagic: true
@@ -11343,8 +11343,8 @@ formats:
     supertype: null
   model/iges:
     extensions:
-    - '*.iges'
     - '*.igs'
+    - '*.iges'
     hasMagic: false
     id: model/iges
     mimetypes:
@@ -11354,9 +11354,9 @@ formats:
     supertype: null
   model/mesh:
     extensions:
-    - '*.msh'
-    - '*.silo'
     - '*.mesh'
+    - '*.silo'
+    - '*.msh'
     hasMagic: false
     id: model/mesh
     mimetypes:
@@ -11468,8 +11468,8 @@ formats:
     supertype: null
   model/vrml:
     extensions:
-    - '*.vrml'
     - '*.wrl'
+    - '*.vrml'
     hasMagic: false
     id: model/vrml
     mimetypes:
@@ -11610,8 +11610,8 @@ formats:
     supertype: text/plain
   text/calendar:
     extensions:
-    - '*.ics'
     - '*.ifb'
+    - '*.ics'
     hasMagic: false
     id: text/calendar
     mimetypes:
@@ -11679,8 +11679,8 @@ formats:
     supertype: null
   text/html:
     extensions:
-    - '*.htm'
     - '*.html'
+    - '*.htm'
     hasMagic: true
     id: text/html
     mimetypes:
@@ -11707,71 +11707,71 @@ formats:
     supertype: null
   text/plain:
     extensions:
-    - '*.xargs'
-    - '*.def'
-    - '*.rng'
-    - '*.roles'
-    - '*.pom'
-    - '*.cwiki'
-    - abs-linkmap
-    - '*.jx'
-    - '*.vm'
-    - '*.config'
-    - '*.txt'
-    - '*.jmx'
-    - '*.pen'
-    - '*.rnx'
-    - '*.data'
-    - '*.cfg'
-    - '*.xcat'
-    - '*.g'
-    - '*.wsdd'
-    - '*.xroles'
-    - '*.xsamples'
-    - '*.types'
-    - '*.xconf'
-    - '*.conf'
-    - '*.ft'
-    - '*.project'
-    - README
-    - '*.mf'
-    - '*.n3'
-    - '*.ent'
-    - .htaccess
-    - '*.xgrm'
-    - '*.xsp'
-    - abs-menulinks
-    - '*.meta'
-    - Makefile
-    - '*.xwelcome'
-    - '*.text'
-    - '*.in'
-    - '*.classpath'
-    - '*.ihtml'
-    - '*.pod'
-    - '*.vsl'
-    - '*.dcl'
-    - '*.xlog'
-    - '*.list'
-    - '*.cmd'
-    - INSTALL
-    - '*.xegrm'
-    - '*.xlex'
-    - KEYS
-    - '*.fv'
-    - '*.MF'
-    - '*.grm'
-    - '*.junit'
-    - '*.manifest'
-    - '*.xmap'
-    - '*.xweb'
-    - '*.ac'
-    - '*.am'
-    - '*.egrm'
-    - '*.fn'
-    - '*.tld'
     - '*.m4'
+    - .htaccess
+    - abs-menulinks
+    - '*.am'
+    - '*.jx'
+    - '*.vsl'
+    - '*.rnx'
+    - '*.cfg'
+    - '*.text'
+    - '*.junit'
+    - '*.xconf'
+    - '*.classpath'
+    - '*.pen'
+    - '*.txt'
+    - KEYS
+    - '*.meta'
+    - '*.xgrm'
+    - '*.manifest'
+    - '*.data'
+    - '*.fn'
+    - '*.xlex'
+    - '*.xlog'
+    - '*.xroles'
+    - '*.MF'
+    - '*.dcl'
+    - '*.ent'
+    - '*.list'
+    - '*.vm'
+    - '*.xcat'
+    - '*.ac'
+    - '*.xmap'
+    - '*.ihtml'
+    - '*.config'
+    - '*.wsdd'
+    - '*.xsp'
+    - '*.grm'
+    - '*.n3'
+    - README
+    - '*.ft'
+    - '*.pom'
+    - '*.rng'
+    - '*.pod'
+    - '*.roles'
+    - '*.tld'
+    - '*.project'
+    - '*.jmx'
+    - '*.types'
     - '*.aart'
+    - '*.fv'
+    - '*.egrm'
+    - '*.xweb'
+    - '*.in'
+    - '*.xwelcome'
+    - '*.g'
+    - '*.xargs'
+    - '*.cwiki'
+    - Makefile
+    - '*.xsamples'
+    - '*.xegrm'
+    - '*.cmd'
+    - '*.mf'
+    - '*.conf'
+    - abs-linkmap
+    - INSTALL
+    - '*.def'
     hasMagic: true
     id: text/plain
     mimetypes:
@@ -11838,8 +11838,8 @@ formats:
     supertype: null
   text/sgml:
     extensions:
-    - '*.sgm'
     - '*.sgml'
+    - '*.sgm'
     hasMagic: false
     id: text/sgml
     mimetypes:
@@ -11865,20 +11865,20 @@ formats:
     supertype: null
   text/troff:
     extensions:
-    - '*.roff'
-    - '*.tr'
-    - '*.ms'
     - '*.me'
-    - '*.t'
+    - '*.roff'
     - '*.man'
+    - '*.ms'
+    - '*.tr'
+    - '*.t'
     hasMagic: true
     id: text/troff
     mimetypes:
-    - application/x-troff
     - text/troff
+    - application/x-troff
+    - application/x-troff-ms
     - application/x-troff-me
     - application/x-troff-man
-    - application/x-troff-ms
     name: Roff/nroff/troff/groff Unformatted Manual Page (UNIX)
     source: tika-mimetypes.xml#L5534
     supertype: null
@@ -11892,9 +11892,9 @@ formats:
     supertype: null
   text/uri-list:
     extensions:
-    - '*.uri'
-    - '*.urls'
     - '*.uris'
+    - '*.urls'
+    - '*.uri'
     hasMagic: false
     id: text/uri-list
     mimetypes:
@@ -12146,8 +12146,8 @@ formats:
     supertype: text/plain
   text/x-ada:
     extensions:
-    - '*.ads'
     - '*.ada'
+    - '*.ads'
     - '*.adb'
     hasMagic: false
     id: text/x-ada
@@ -12168,11 +12168,11 @@ formats:
     supertype: text/plain
   text/x-asciidoc:
     extensions:
-    - '*.asciidoc'
-    - '*.ad'
-    - '*.ad.txt'
-    - '*.adoc'
     - '*.adoc.txt'
+    - '*.ad.txt'
+    - '*.asciidoc'
+    - '*.adoc'
+    - '*.ad'
     hasMagic: false
     id: text/x-asciidoc
     mimetypes:
@@ -12192,9 +12192,9 @@ formats:
     supertype: text/plain
   text/x-assembly:
     extensions:
+    - '*.s'
     - '*.asm'
     - '*.S'
-    - '*.s'
     hasMagic: false
     id: text/x-assembly
     mimetypes:
@@ -12216,8 +12216,8 @@ formats:
   text/x-basic:
     extensions:
     - '*.BAS'
-    - '*.Bas'
     - '*.bas'
+    - '*.Bas'
     hasMagic: false
     id: text/x-basic
     mimetypes:
@@ -12228,11 +12228,11 @@ formats:
   text/x-c++hdr:
     extensions:
     - '*.h++'
-    - '*.hp'
-    - '*.HPP'
-    - '*.hpp'
     - '*.hxx'
     - '*.H'
+    - '*.hp'
+    - '*.hpp'
+    - '*.HPP'
     - '*.hh'
     hasMagic: false
     id: text/x-c++hdr
@@ -12243,12 +12243,12 @@ formats:
     supertype: text/plain
   text/x-c++src:
     extensions:
-    - '*.C'
     - '*.c++'
     - '*.cxx'
-    - '*.cpp'
     - '*.CPP'
+    - '*.C'
     - '*.cc'
+    - '*.cpp'
     hasMagic: false
     id: text/x-c++src
     mimetypes:
@@ -12288,12 +12288,12 @@ formats:
     supertype: text/plain
   text/x-cobol:
     extensions:
-    - '*.CBL'
-    - '*.Cob'
-    - '*.cbl'
     - '*.cob'
     - '*.COB'
     - '*.Cbl'
+    - '*.Cob'
+    - '*.cbl'
+    - '*.CBL'
     hasMagic: false
     id: text/x-cobol
     mimetypes:
@@ -12313,8 +12313,8 @@ formats:
     supertype: text/plain
   text/x-coldfusion:
     extensions:
-    - '*.cfm'
     - '*.cfc'
+    - '*.cfm'
     - '*.cfml'
     hasMagic: false
     id: text/x-coldfusion
@@ -12325,10 +12325,10 @@ formats:
     supertype: text/plain
   text/x-common-lisp:
     extensions:
-    - '*.lsp'
+    - '*.cl'
     - '*.jl'
     - '*.lisp'
-    - '*.cl'
+    - '*.lsp'
     hasMagic: false
     id: text/x-common-lisp
     mimetypes:
@@ -12429,9 +12429,9 @@ formats:
     supertype: text/plain
   text/x-fortran:
     extensions:
-    - '*.f'
-    - '*.f77'
     - '*.F'
+    - '*.f77'
+    - '*.f'
     - '*.f90'
     - '*.for'
     hasMagic: false
@@ -12518,9 +12518,9 @@ formats:
     hasMagic: false
     id: text/x-java-properties
     mimetypes:
+    - text/x-java-properties
     - text/properties
     - text/x-properties
-    - text/x-java-properties
     name: Java Properties
     source: tika-mimetypes.xml#L5843
     supertype: text/plain
@@ -12530,8 +12530,8 @@ formats:
     hasMagic: false
     id: text/x-java-source
     mimetypes:
-    - text/x-java-source
     - text/x-java
+    - text/x-java-source
     name: Java source code
     source: tika-mimetypes.xml#L5836
     supertype: text/plain
@@ -12607,10 +12607,10 @@ formats:
     supertype: text/plain
   text/x-modula:
     extensions:
-    - '*.mg'
     - '*.ig'
-    - '*.i3'
     - '*.m3'
+    - '*.i3'
+    - '*.mg'
     hasMagic: false
     id: text/x-modula
     mimetypes:
@@ -12641,11 +12641,11 @@ formats:
     supertype: text/plain
   text/x-pascal:
     extensions:
+    - '*.dpr'
+    - '*.PAS'
+    - '*.pas'
     - '*.pp'
     - '*.p'
-    - '*.dpr'
-    - '*.pas'
-    - '*.PAS'
     hasMagic: false
     id: text/x-pascal
     mimetypes:
@@ -12655,9 +12655,9 @@ formats:
     supertype: text/plain
   text/x-perl:
     extensions:
-    - '*.pm'
-    - '*.perl'
     - '*.al'
+    - '*.perl'
+    - '*.pm'
     - '*.pl'
     hasMagic: true
     id: text/x-perl
@@ -12668,9 +12668,9 @@ formats:
     supertype: text/plain
   text/x-php:
     extensions:
-    - '*.php4'
-    - '*.php3'
     - '*.php'
+    - '*.php3'
+    - '*.php4'
     hasMagic: true
     id: text/x-php
     mimetypes:
@@ -12720,9 +12720,9 @@ formats:
     supertype: text/plain
   text/x-rst:
     extensions:
+    - '*.rst'
     - '*.rest'
     - '*.restx'
-    - '*.rst'
     hasMagic: false
     id: text/x-rst
     mimetypes:
@@ -12801,14 +12801,14 @@ formats:
     supertype: text/plain
   text/x-tcl:
     extensions:
-    - '*.tk'
-    - '*.tcl'
     - '*.itk'
+    - '*.tcl'
+    - '*.tk'
     hasMagic: false
     id: text/x-tcl
     mimetypes:
-    - text/x-tcl
     - application/x-tcl
+    - text/x-tcl
     name: Tcl script
     source: tika-mimetypes.xml#L6065
     supertype: text/plain
@@ -12832,12 +12832,12 @@ formats:
     supertype: null
   text/x-vbasic:
     extensions:
+    - '*.cls'
+    - '*.Frm'
+    - '*.Cls'
     - '*.CLS'
     - '*.frm'
     - '*.FRM'
-    - '*.Frm'
-    - '*.Cls'
-    - '*.cls'
     hasMagic: false
     id: text/x-vbasic
     mimetypes:
@@ -12895,8 +12895,8 @@ formats:
     supertype: text/plain
   text/x-vhdl:
     extensions:
-    - '*.vhdl'
     - '*.vhd'
+    - '*.vhdl'
     hasMagic: false
     id: text/x-vhdl
     mimetypes:
@@ -12906,10 +12906,10 @@ formats:
     supertype: text/plain
   text/x-web-markdown:
     extensions:
-    - '*.mkd'
+    - '*.md'
     - '*.markdown'
     - '*.mdtext'
-    - '*.md'
+    - '*.mkd'
     hasMagic: false
     id: text/x-web-markdown
     mimetypes:
@@ -12992,8 +12992,8 @@ formats:
     hasMagic: true
     id: video/daala
     mimetypes:
-    - video/x-daala
     - video/daala
+    - video/x-daala
     name: Ogg Daala Video
     source: tika-mimetypes.xml#L6249
     supertype: video/ogg
@@ -13110,9 +13110,9 @@ formats:
     supertype: null
   video/mp4:
     extensions:
-    - '*.mp4'
     - '*.mp4v'
     - '*.mpg4'
+    - '*.mp4'
     hasMagic: true
     id: video/mp4
     mimetypes:
@@ -13129,10 +13129,10 @@ formats:
     supertype: null
   video/mpeg:
     extensions:
-    - '*.m1v'
-    - '*.mpe'
     - '*.mpg'
+    - '*.mpe'
     - '*.m2v'
+    - '*.m1v'
     - '*.mpeg'
     hasMagic: true
     id: video/mpeg
@@ -13193,8 +13193,8 @@ formats:
     supertype: null
   video/quicktime:
     extensions:
-    - '*.qt'
     - '*.mov'
+    - '*.qt'
     hasMagic: true
     id: video/quicktime
     mimetypes:
@@ -13238,8 +13238,8 @@ formats:
     hasMagic: true
     id: video/theora
     mimetypes:
-    - video/theora
     - video/x-theora
+    - video/theora
     name: Ogg Theora Video
     source: tika-mimetypes.xml#L6261
     supertype: video/ogg
@@ -13533,8 +13533,8 @@ formats:
     supertype: null
   video/x-ms-asf:
     extensions:
-    - '*.asf'
     - '*.asx'
+    - '*.asf'
     hasMagic: true
     id: video/x-ms-asf
     mimetypes:
@@ -13583,9 +13583,9 @@ formats:
     hasMagic: true
     id: video/x-msvideo
     mimetypes:
-    - video/msvideo
     - video/avi
     - video/x-msvideo
+    - video/msvideo
     name: Audio Video Interleave File
     source: tika-mimetypes.xml#L6448
     supertype: null
@@ -13604,8 +13604,8 @@ formats:
     hasMagic: true
     id: video/x-ogguvs
     mimetypes:
-    - video/x-ogg-uvs
     - video/x-ogguvs
+    - video/x-ogg-uvs
     name: Ogg Packaged Raw UVS Video
     source: tika-mimetypes.xml#L6296
     supertype: video/ogg
