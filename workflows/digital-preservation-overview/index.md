@@ -1,5 +1,6 @@
 ---
 title: NLS Digital Preservation Overview
+type: workflow
 id: wf-vA1ToTXkaj
 description: National Library of Scotland workflow overview from pre-ingest to
   access. This overview covers various datatypes and is general in nature.

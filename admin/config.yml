@@ -164,12 +164,14 @@ collections:
   public_folder: ''
   i18n: false
   summary: '{{title}}'
+  filter: {field: "type", value: "workflow"}
   fields:
   - label: Title
     name: title
     widget: string
     required: true
     hint: "The name of the group, nice and short and stable."
+  - {label: "Type", name: "type", widget: "hidden", default: "workflow"}
   - name: id
     label: ID
     widget: id
@@ -271,8 +273,10 @@ collections:
   public_folder: '.'
   i18n: false
   summary: '{{title}} : {{start}} - {{end}}'
+  filter: {field: "type", value: "workflow-webinar"}
   fields:
   - {label: Title, name: title, widget: string, default: ""}
+  - {label: "Type", name: "type", widget: "hidden", default: "workflow-webinar"}
   - label: Description
     name: body
     widget: markdown

@@ -1,5 +1,6 @@
 ---
-title: DPC Digital Preservation Workflow Webinars 2025
+title: 2025 DPC Workflow Webinars
+type: workflow-webinar
 link: https://www.dpconline.org/events/eventdetail/434/-/digital-preservation-workflow-webinars-2025
 date: 2025-02-03
 start: 2025-02-03
