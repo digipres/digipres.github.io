@@ -27,11 +27,12 @@ webinars:
         slides:
           - panos-papageorgiou_preserving-virtual-archaeology.pdf
         recording_url: https://youtu.be/Ns4n4c_SpBc
-    start: 2025-02-03T14:00:00.000Z
-    end: 2025-02-03T15:30:00.000Z
+    start: 14-00
+    end: 15-30
+    date: 2025-02-03
   - title: Episode 2
-    start: 2025-02-03T19:00:00.000Z
-    end: 2025-02-03T20:30:00.000Z
+    start: 19-00
+    end: 20-30
     presentations:
       - title: Preserving born digital content in the Gray Digital Preservation
           Repository
@@ -44,5 +45,6 @@ webinars:
       - title: Developing and implementing an ingest workflow at the LDF
         organisation: Legal Defense Fund
         presenter: Ashton Wingate, Shelby Wong
+    date: 2025-02-03
 ---
 Free to attend and open to all, the Digital Preservation Workflow Webinar series will showcase just some of the digital preservation workflow processes developed and implemented by the digital preservation community. Each speaker will present their workflow, which represents a part of the digital preservation process or a particular digital media or content type, before we open the floor for discussion and a chance to ask questions.
