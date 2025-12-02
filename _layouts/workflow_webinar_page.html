@@ -1,0 +1,69 @@
+---
+layout: simple_page
+---
+
+{{ content }}
+
+<table class="table table-striped table-bordered">
+  <tbody>
+    <tr>
+      <th scope="row">Date</th>
+      <td>
+        {{ page.date }}
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Homepage</th>
+      <td><a href="{{ page.link }}">Go</a></td>
+    </tr>
+  </tbody>
+</table>
+
+{% for w in page.webinars %}
+
+<h2>{{ w.title }}</h2>
+
+{{ w.start }} to {{ w.end }}
+
+
+<div class="row">
+
+{% for p in w.presentations %}
+
+
+<div class="col-md-6 col-lg-4 mb-3">
+<div class="card h-100">
+  <div class="card-body">
+
+  {% if p.recording_url %}
+      <iframe width="100%" height="240" src="https://www.youtube.com/embed/{{ p.recording_url | split: '/' | last }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  {% endif %}
+
+    <h5 class="card-title">{{ p.title }}</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">{{p.presenter}} - {{ p.organisation }}</h6>
+    <p class="card-text">
+    </p>
+      
+</div>
+<div class="card-footer text-end">
+  {% for slide_url in p.slides %}
+<a href="{{ slide_url }}" class="btn btn-primary">Download Slides</a>
+  {% endfor %}
+</div>
+</div>
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endfor %}
+
+
+
+<p class="text-end">
+<a href="/admin/#/collections/workflow_webinars/entries/{{ page.dir | split: '/' | last }}/index" class="btn btn-primary">Click here to update this entry</a>
+</p>
+
+</main>
