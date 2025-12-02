@@ -109,7 +109,7 @@ collections:
 - name: organisations
   label: Organisations
   label_singular: Organisation
-  folder: organisations
+  folder: _organisations
   create: true
   delete: false
   hide: false
@@ -139,6 +139,11 @@ collections:
     widget: string
     required: false
     hint: "The country this organisation is in."
+  - label: "Approximate Geographic Location"
+    name: "location"
+    widget: "map"
+    hint: "Please indicate the approximate location of this organisation."
+    required: false
   - label: Policy URL
     name: policy_url
     widget: string
@@ -331,8 +336,17 @@ collections:
         collapsed: true
         fields:
         - {label: Title, name: title, widget: string, default: ""}
-        - {label: Organisation, name: organisation, widget: string, default: ""}
         - {label: Presenter, name: presenter, widget: string, default: ""}
+        - label: Organisation
+          name: organisation
+          widget: relation
+          required: false
+          collection: organisations
+          search_fields: ['title']
+          value_field: '{{slug}}'
+          display_fields: ['title']
+          hint: "The organisation this workflow belongs to. If there's no match, you'll need to create an Organisation record first."
+        - {label: Description, name: description, widget: text, default: "", required: false }
         - label: "Slides"
           name: "slides"
           widget: "file"
@@ -351,4 +365,9 @@ collections:
           search_fields: ['title']
           value_field: '{{slug}}'
           display_fields: ['title']
+        - label: Link
+          name: link
+          widget: string
+          required: false
+          hint: "A URL to any web page with further information."
       

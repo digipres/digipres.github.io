@@ -10,19 +10,19 @@ webinars:
     presentations:
       - title: A pre-ingest workflow for fixity, metadata extraction, backup and
           registration on the Digital Asset Register
-        organisation: University College Cork
+        organisation: university-college-cork/index
         presenter: Raelene Casey
         slides:
           - rcaseyuccfirststepspreservation.pdf
         recording_url: https://youtu.be/Y2GjhpCGfqI
       - title: CUL’s ingest workflow into AWS Cloud
-        organisation: Cambridge University Library
+        organisation: cambridge-university-library/index
         presenter: John Gostick
         slides:
           - 20250203-dpc-workflow-webinar-cul-dps-ingest-workflows-v2.pptx.pdf
         recording_url: https://youtu.be/MSDxlHv8uu0
       - title: The effective preservation of archaeological virtual reconstructions
-        organisation: International College Portsmouth
+        organisation: international-college-portsmouth/index
         presenter: Panos Papageorgiou
         slides:
           - panos-papageorgiou_preserving-virtual-archaeology.pdf
