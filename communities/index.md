@@ -11,7 +11,7 @@ redirect_from:
 ## Local & Regional Groups
 
 <div class="alert alert-warning" role="alert">
-  This is an experimental addition to the site, and to keep things manageable, the current work has been scoped to the United Kingdom and Ireland. You can read <a href="https://github.com/digipres/digipres.github.io/pull/58" class="alert-link">this GitHub issue</a> to find out more about the status of this experiment.
+  This is an experimental addition to the site, and to keep things manageable, the initial work has been scoped to the United Kingdom and Ireland. You can read <a href="https://github.com/orgs/digipres/discussions/62" class="alert-link">this GitHub discussion</a> to find out more about the status of this experiment.
 </div>
 
 This section lists local and regional [communities of practice](https://www.wenger-trayner.com/introduction-to-communities-of-practice/) dedicated to digital preservation. The idea is to help people find groups:

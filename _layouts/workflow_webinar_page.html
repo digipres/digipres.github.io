@@ -14,7 +14,7 @@ layout: simple_page
 
 {% for webinars in webinars_by_dates %}
 
-<h3>{{ webinars.name | date: '%B %d, %Y' }}</h3>
+<h3>{{ webinars.name | date: ' %-d %B %Y' }}</h3>
 
 {% for w in webinars.items %}
 
@@ -34,7 +34,7 @@ layout: simple_page
 <h4>{{ w.title }}</h4>
 
 <p>
-   ({{w.start | replace: "-",":" }}-{{w.end | replace: "-",":" }} UTC) <a href="{{ td_link }}" target="_blank">click for local time</a>
+Recordings from {{w.start | replace: "-",":" }}-{{w.end | replace: "-",":" }} UTC on {{ w.date | date: "%A, %-d %B %Y"}}.
 </p>
 
 <div class="row">
@@ -78,7 +78,7 @@ layout: simple_page
 
 
 <p class="text-end">
-<a href="/admin/#/collections/workflow_webinars/entries/{{ page.dir | split: '/' | last }}/index" class="btn btn-primary">Click here to update this entry</a>
+<a href="/admin/#/collections/workflow_webinars/entries/{{ page.dir | split: '/' | last }}/index" class="btn btn-secondary">Click here to update this entry</a>
 </p>
 
 </main>
