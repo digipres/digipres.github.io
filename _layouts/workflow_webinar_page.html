@@ -31,7 +31,11 @@ layout: simple_page
 {% assign rem_m = diff_m | minus: diff_hm %}
 {% capture td_link %}https://www.timeanddate.com/worldclock/fixedtime.html?msg={{ page.title | url_encode  }}+-+{{ w.title | url_encode }}&iso={{ start_dt | date: '%Y%m%dT%H%M' }}&ah={{diff_h}}&am={{rem_m}}{% endcapture %}
 
-<h4>{{ w.title }} ({{w.start | replace: "-",":" }}-{{w.end | replace: "-",":" }} UTC) <a href="{{ td_link }}" target="_blank">click for local time</a></h4>
+<h4>{{ w.title }}</h4>
+
+<p>
+   ({{w.start | replace: "-",":" }}-{{w.end | replace: "-",":" }} UTC) <a href="{{ td_link }}" target="_blank">click for local time</a>
+</p>
 
 <div class="row">
 
@@ -56,10 +60,10 @@ layout: simple_page
       {{ p.description }}
     </p>
 
-  {% if p.slides.first %}
-<a href="{{ p.slides.first }}" class="btn btn-primary mt-auto align-self-end">Download Slides</a>
+  {% if p.slides %}
+<a href="{{ p.slides }}" class="btn btn-primary mt-auto align-self-end">Download Slides</a>
   {% endif %}
-       
+      
     </div>
 </div>
 </div>

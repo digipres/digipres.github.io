@@ -2,17 +2,18 @@
 title: 2024 DPC Workflow Webinars
 type: workflow-webinar
 link: https://www.dpconline.org/events/eventdetail/254/-/digital-preservation-workflow-webinars-2024
+date: 2024-02-05
 start: 2024-02-05
 end: 2024-02-08
 webinars:
   - title: Episode 1
     presentations:
       - title: Mailboxes Archiving Workflow
-        presenter: Emeline Levasseur and André Falut
+        presenter: Emeline Levasseur and André Falut"
         description: ""
         organisation: national-archives-france/index
       - title: Data Preparation Workflow
-        presenter: Emeline Levasseur and André Falut
+        presenter: "Emeline Levasseur and André Falut"
         description: ""
         organisation: national-archives-france/index
       - title: French ELIPSS Panel Data Collection and Preservation Workflow

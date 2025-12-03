@@ -12,20 +12,17 @@ webinars:
           registration on the Digital Asset Register
         organisation: university-college-cork/index
         presenter: Raelene Casey
-        slides:
-          - rcaseyuccfirststepspreservation.pdf
+        slides: rcaseyuccfirststepspreservation.pdf
         recording_url: https://youtu.be/Y2GjhpCGfqI
       - title: CUL’s ingest workflow into AWS Cloud
         organisation: cambridge-university-library/index
         presenter: John Gostick
-        slides:
-          - 20250203-dpc-workflow-webinar-cul-dps-ingest-workflows-v2.pptx.pdf
+        slides: 20250203-dpc-workflow-webinar-cul-dps-ingest-workflows-v2.pptx.pdf
         recording_url: https://youtu.be/MSDxlHv8uu0
       - title: The effective preservation of archaeological virtual reconstructions
         organisation: international-college-portsmouth/index
         presenter: Panos Papageorgiou
-        slides:
-          - panos-papageorgiou_preserving-virtual-archaeology.pdf
+        slides: panos-papageorgiou_preserving-virtual-archaeology.pdf
         recording_url: https://youtu.be/Ns4n4c_SpBc
     start: 14-00
     end: 15-30
