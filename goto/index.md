@@ -7,10 +7,8 @@ This is a folder for managing short alias links to other resources. This is so r
 
 ## List of redirects
 
-{% assign items = site.pages | where_exp: "item", "item.redirect_to != nil" %}
-
 <ul>
-{% for item in items %}
+{% for item in site.goto %}
 <li><a href="{{ item.url }}">{{ item.title }}</a><br><i>{{ item.url }} --> {{ item.redirect_to }}</i></li>
 {% endfor %}
 </ul>

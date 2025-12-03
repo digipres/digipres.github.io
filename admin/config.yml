@@ -52,10 +52,9 @@ collections:
   public_folder: '/images/'
   i18n: true
   fields:
-    - { label: 'Title', name: 'title', widget: 'string', default: 'Welcome' }
+    - { label: 'Title', name: 'title', widget: 'string' }
     - { label: 'Layout', name: 'layout', widget: 'select', options: ['single', 'single-toc', 'search'], required: false, i18n: duplicate }
     - { label: 'Body', name: 'body', widget: 'markdown' }
-
 
 - name: local-groups
   label: Local Groups
@@ -397,3 +396,16 @@ collections:
           required: false
           hint: "A URL to any web page with further information."
       
+- name: gotos
+  label: 'GOTOs'
+  label_singular: 'GOTO'
+  description: 'Short links/redirects for resources that might change location over time. Please use sparingly!'
+  folder: '_goto'
+  create: true
+  delete: false
+  hide: false
+  path: '{{slug}}'
+  fields:
+    - { label: 'Title', name: 'title', widget: 'string' }
+    - { label: 'Redirects To', name: 'redirect_to', widget: 'string', hint: 'URL to redirect to' }
+
