@@ -1,0 +1,9 @@
+<ul>
+{%- assign wfs = site.pages | where: 'type', 'workflow' -%}
+{%- for wf in wfs -%}
+{%- capture o_path %}_organisations/{{ wf.organisation }}{% endcapture -%}
+{%- if include.org.path contains o_path %}
+<li><a href="{{ wf.url }}">{{ wf.title }}</a></li>
+{% endif -%}
+{%- endfor -%}
+</ul>

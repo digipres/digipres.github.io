@@ -1,0 +1,13 @@
+<ul>
+{%- assign wws = site.pages | where: 'type', 'workflow-webinar' -%}
+{%- for ww in wws -%}
+{%- for w in ww.webinars -%}
+{%- for p in w.presentations -%}
+{%- capture o_path %}_organisations/{{ p.organisation }}{% endcapture -%}
+{%- if include.org.path contains o_path %}
+<li><a href="{{ ww.url }}">{{ ww.title }} - {{ w.title }}: {{ p.title }}</a></li>
+{% endif -%}
+{%- endfor -%}
+{%- endfor -%}
+{%- endfor -%}
+</ul>
