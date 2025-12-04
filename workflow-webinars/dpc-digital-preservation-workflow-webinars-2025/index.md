@@ -14,6 +14,9 @@ webinars:
         presenter: Raelene Casey
         slides: rcaseyuccfirststepspreservation.pdf
         recording_url: https://youtu.be/Y2GjhpCGfqI
+        workflows:
+          - digital-preservation-overview/index
+        description: NOTE Linking to NLS workflow as a test only.
       - title: CUL’s ingest workflow into AWS Cloud
         organisation: cambridge-university-library/index
         presenter: John Gostick

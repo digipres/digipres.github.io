@@ -7,11 +7,16 @@ redirect_from: /workflow-webinars/
 
 Digital preservation needs great tools and systems, but nothing gets done without the support of the people and processes that knit those components into the day-to-day workflows that meet your goals. Great workflows with clear goals also help us cope over the long term, even as the tools and systems we rely on come and go.  That's why it's important to share workflows and learn from each other.
 
+<div class="alert alert-warning" role="alert">
+  This is an experimental addition to the site, and feedback is very welcome. You can read <a href="https://github.com/orgs/digipres/discussions/63" class="alert-link">this GitHub discussion</a> to find out more about the status of this experiment.
+</div>
+
+
 ## Workflows
 
 You can add details of your own workflows to the [Community-Owned Workflows](https://coptr.digipres.org/index.php/Workflow:Community_Owned_Workflows) part of the [COPTR wiki](https://coptr.digipres.org/).
 
-As well as supporting that site, as part of the [Registries of Good Practice project](https://www.dpconline.org/digipres/collaborative-projects/registries-of-good-practice), we are also experimenting with a new way of documenting workflows. Here are the examples we've copied over from the COPTR wiki:
+As part of the [Registries of Good Practice project](https://www.dpconline.org/digipres/collaborative-projects/registries-of-good-practice), we are also experimenting with a different way of documenting workflows. Here are the examples we've added or copied over from the COPTR wiki:
 
 {% assign wfs = site.pages | where_exp: "item", "item.path contains 'workflows/'" %}
 
@@ -23,6 +28,7 @@ As well as supporting that site, as part of the [Registries of Good Practice pro
 {% endfor %}
 </ul>
 
+Please note there are currently no plans to change the Community-owned Workflows part of the COPTR wiki.
 
 ## Workflow Webinars
 

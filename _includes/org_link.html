@@ -1,0 +1,3 @@
+{%- capture org_path %}_organisations/{{ include.org }}.md{% endcapture -%}
+{%- assign org = site.organisations | where_exp: 'item', 'item.path contains org_path' | first -%}
+<a href="{{org.url | replace: 'index.html', '' }}">{{ org.title }}</a>

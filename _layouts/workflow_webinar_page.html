@@ -41,7 +41,6 @@ Recordings from {{w.start | replace: "-",":" }}-{{w.end | replace: "-",":" }} UT
 
 {% for p in w.presentations %}
 
-{%- assign org = site.organisations | where_exp: 'item', 'item.path contains p.organisation' | first -%}
 
 <div class="col-md-4 col-lg-4 mb-3">
 <div class="card h-100">
@@ -55,14 +54,20 @@ Recordings from {{w.start | replace: "-",":" }}-{{w.end | replace: "-",":" }} UT
 
     <div class="card-body d-flex flex-column h-100">
     <h5 class="card-title">{{ p.title }}</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">{{p.presenter}} - {{ org.title }}</h6>
+    <h6 class="card-subtitle mb-2 text-body-secondary">{{p.presenter}} - {% include org_link.html org=p.organisation %}</h6>
     <p class="card-text">
       {{ p.description }}
-    </p>
 
-  {% if p.slides %}
-<a href="{{ p.slides }}" class="btn btn-primary mt-auto align-self-end">Download Slides</a>
-  {% endif %}
+      {% if p.workflows -%}
+      See 
+      {% for wf in p.workflows -%}
+      {%- if forloop.index > 1 %}, {% endif %}{% include workflow_link.html wf_slug=wf -%}
+      {%- endfor -%}.
+      {%- endif -%}
+    </p>
+    {% if p.slides -%}
+    <a href="{{ p.slides }}" class="btn btn-primary mt-auto align-self-end">Download Slides</a>
+    {%- endif %}
       
     </div>
 </div>
