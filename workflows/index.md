@@ -7,28 +7,9 @@ redirect_from: /workflow-webinars/
 
 Digital preservation needs great tools and systems, but nothing gets done without the support of the people and processes that knit those components into the day-to-day workflows that meet your goals. Great workflows with clear goals also help us cope over the long term, even as the tools and systems we rely on come and go.  That's why it's important to share workflows and learn from each other.
 
-<div class="alert alert-warning" role="alert">
-  This is an experimental addition to the site, and feedback is very welcome. You can read <a href="https://github.com/orgs/digipres/discussions/63" class="alert-link">this GitHub discussion</a> to find out more about the status of this experiment.
-</div>
-
-
 ## Workflows
 
 You can add details of your own workflows to the [Community-Owned Workflows](https://coptr.digipres.org/index.php/Workflow:Community_Owned_Workflows) part of the [COPTR wiki](https://coptr.digipres.org/).
-
-As part of the [Registries of Good Practice project](https://www.dpconline.org/digipres/collaborative-projects/registries-of-good-practice), we are also experimenting with a different way of documenting workflows. Here are the examples we've added or copied over from the COPTR wiki:
-
-{% assign wfs = site.pages | where_exp: "item", "item.path contains 'workflows/'" %}
-
-<ul>
-{% for item in wfs %}
-{% if item.path != 'workflows/index.md' %}
-<li><a href="{{ item.url }}">{{ item.title }}</a></li>
-{% endif %}
-{% endfor %}
-</ul>
-
-Please note there are currently no plans to change the Community-owned Workflows part of the COPTR wiki.
 
 ## Workflow Webinars
 
@@ -40,11 +21,29 @@ on the DPC Website...
 - 2025: [Digital Preservation Workflow Webinars 2025 - Digital Preservation Coalition](https://www.dpconline.org/events/eventdetail/434/-/digital-preservation-workflow-webinars-2025)
 - 2024: [Digital Preservation Workflow Webinars 2024 - Digital Preservation Coalition](https://www.dpconline.org/events/eventdetail/254/-/digital-preservation-workflow-webinars-2024)
 - 2023: [Digital Preservation Workflow Webinars 2023 - Digital Preservation Coalition](https://www.dpconline.org/events/eventdetail/114/-/digital-preservation-workflow-webinars-2023)
-    - Links to [Workflow:Abrdn Digital Preservation Workflow - COPTR Staging](https://coptr.openpreservation.org/index.php/Workflow:Abrdn_Digital_Preservation_Workflow)
+    - See also [Workflow:Abrdn Digital Preservation Workflow - COPTR Staging](https://coptr.openpreservation.org/index.php/Workflow:Abrdn_Digital_Preservation_Workflow)
 - 2022: [Digital Preservation Workflow Webinars and COW-a-thon - Digital Preservation Coalition](https://www.dpconline.org/events/past-events/webinars/dp-workflows-cowathon-2022)
 - 2021: [Digital Preservation Workflows Webinar Series and COW-a-thon event - Digital Preservation Coalition](https://www.dpconline.org/events/past-events/webinars/workflow-webinars-and-cow)
 
-Like the workflows, as part of the Registries of Good Practice project, we are experimenting with re-hosting the webinars as more structured data (incomplete at this time):
+## Workflows & Webinars as Structured Data
+
+<div class="alert alert-warning" role="alert">
+  This is an experimental addition to the site, and feedback is very welcome. You can read <a href="https://github.com/orgs/digipres/discussions/63" class="alert-link">this GitHub discussion</a> to find out more about the status of this experiment.
+</div>
+
+As part of the [Registries of Good Practice project](https://www.dpconline.org/digipres/collaborative-projects/registries-of-good-practice), we are also experimenting with a different ways of documenting workflows. Here are the example(s) we've added or copied over from the COPTR wiki:
+
+{% assign wfs = site.pages | where_exp: "item", "item.path contains 'workflows/'" %}
+
+<ul>
+{% for item in wfs %}
+{% if item.path != 'workflows/index.md' %}
+<li><a href="{{ item.url }}">{{ item.title }}</a></li>
+{% endif %}
+{% endfor %}
+</ul>
+
+We are also experimenting with re-hosting the workflow webinars as more structured data:
 
 {% assign wfs = site.pages | where_exp: "item", "item.path contains 'workflow-webinars/'" %}
 
@@ -56,3 +55,4 @@ Like the workflows, as part of the Registries of Good Practice project, we are e
 {% endfor %}
 </ul>
 
+_Please note there are no plans to change the Community-owned Workflows part COPTR wiki._ This is just a proof of concept implementation, to explore what might be done in the future. Please see the GitHub discussion linked above for more details.
