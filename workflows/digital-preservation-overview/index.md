@@ -6,7 +6,6 @@ description: National Library of Scotland workflow overview from pre-ingest to
   access. This overview covers various datatypes and is general in nature.
   Workflows for individual datatypes and specific tools and processes will be
   added at a later date.
-webinar: Episode 1
 image: digitalpreservationworkflows_nls.png
 status: production
 tools:
