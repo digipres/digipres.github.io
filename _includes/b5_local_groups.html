@@ -51,8 +51,9 @@ map.fitBounds(group.getBounds());
 <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-1">
     <div class="card h-100 {{ item.card-class | default: ''}}">
     <div class="card-body h-100 d-flex flex-column">
-        {% if item.title %}<h5 class="card-title">{{ item.title }}</h5>{% endif %}
-        {% if item.region %}<p class="card-text">{{ item.region }}</p>{% endif %}
+        <h5 class="card-title">{{ item.title }}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{ item.region }}, in {{ item.lang }}.</h6>
+        {% if item.summary %}<p class="card-text">{{ item.summary }}</p>{% endif %}
         {% if item.url %}
         <div class="d-flex justify-content-between align-items-center mt-auto">
         <p class="card-text m-0"><small class="text-muted">{{ item.subtext | default: ''}}</small></p>

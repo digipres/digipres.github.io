@@ -59,6 +59,21 @@ collections:
     widget: string
     required: true
     hint: "The name of the group, nice and short and stable."
+  - label: "Geographic Region"
+    name: region
+    widget: string
+    required: true
+    hint: "Please describe the overall geographic region this group covers."
+  - label: "Approximate Geographic Location"
+    name: "location"
+    widget: "map"
+    hint: "Please indicate the rough centre of the region covered."
+    required: true
+  - label: "Language(s)"
+    name: lang
+    widget: string
+    required: true
+    hint: "Please list the spoken languages this group uses, e.g. 'English, Français'."
   - label: "URL of homepage or primary contact"
     name: homepage_url
     widget: string
@@ -74,16 +89,14 @@ collections:
     widget: string
     required: false
     hint: "A contact email address. __WARNING! This will be made public along with the rest of the information on this page!__"
-  - label: "Geographic Region"
-    name: region
-    widget: string
-    required: true
-    hint: "Please describe the overall geographic region this group covers."
-  - label: "Approximate Geographic Location"
-    name: "location"
-    widget: "map"
-    hint: "Please indicate the rough centre of the region covered."
-    required: true
+  - label: "Also Online?"
+    name: "online"
+    widget: "select"
+    required: false
+    options:
+      - { label: "Most/all meetings are in-person only", value: "false" }
+      - { label: "Some meetings are hybrid and/or online", value: "true" }
+    hint: "Is some form or remote attendance possible for those who can't make a meeting?"
   - label: Further Details
     name: body
     widget: markdown

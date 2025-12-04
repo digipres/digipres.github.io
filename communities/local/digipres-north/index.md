@@ -1,10 +1,11 @@
 ---
-forum_url: ""
 title: DigiPres North
 homepage_url: ""
+forum_url: ""
 email: digitalpreservation@sheffield.ac.uk
 region: Northern England
 location: '{"type":"Point","coordinates":[-1.5438271,53.7701837]}'
+lang: English
 ---
 You can find an introduction to DigiPres North in [this slide deck](./DigiPresNorth_Start2Preserve_iPRES2024.pptx) from the [Start2Preserve: Building a Local Community of Practice workshop at iPRES 2024](https://ipres2024.pubpub.org/pub/ybql64o8/release/6).
 
