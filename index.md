@@ -22,7 +22,7 @@ items:
    description: This carefully curated list of digital preservation tools and resources is the main thing that the community maintains. Please take a look!
    subtext: "Be Awesome"
 
- - title: Talk It Through
+ - title: Find Your Crowd
    image: icons/dpo-digipres-club.png
    link: /communities/
    description: "Find like-minded souls on digipres.club, mailings lists, forums and conferences."
@@ -50,7 +50,7 @@ items:
 
  - title: Explore Workflows
    image: icons/dpo-workflows.png
-   link: https://coptr.digipres.org/index.php/Workflow:Community_Owned_Workflows
+   link: /workflows/
    description: "Share your digital workflows, and explore how other peoples systems solve our shared challenges."
 
  - title: Download Test Files
