@@ -18,12 +18,13 @@ The [Digital Preservation Coalition](https://dpconline.org/) has been running a 
 The webinars from previous years are available 
 on the DPC Website...
 
-- 2025: [Digital Preservation Workflow Webinars 2025 - Digital Preservation Coalition](https://www.dpconline.org/events/eventdetail/434/-/digital-preservation-workflow-webinars-2025)
-- 2024: [Digital Preservation Workflow Webinars 2024 - Digital Preservation Coalition](https://www.dpconline.org/events/eventdetail/254/-/digital-preservation-workflow-webinars-2024)
-- 2023: [Digital Preservation Workflow Webinars 2023 - Digital Preservation Coalition](https://www.dpconline.org/events/eventdetail/114/-/digital-preservation-workflow-webinars-2023)
+- __2026:__ _[Call for Volunteers: Share Your Digital Preservation Workflow at the DPC 2026 Workflow Webinar Series](https://www.dpconline.org/news/share-your-digipres-workflow)_
+- __2025:__ [Digital Preservation Workflow Webinars 2025 - Digital Preservation Coalition](https://www.dpconline.org/events/eventdetail/434/-/digital-preservation-workflow-webinars-2025)
+- __2024:__ [Digital Preservation Workflow Webinars 2024 - Digital Preservation Coalition](https://www.dpconline.org/events/eventdetail/254/-/digital-preservation-workflow-webinars-2024)
+- __2023:__ [Digital Preservation Workflow Webinars 2023 - Digital Preservation Coalition](https://www.dpconline.org/events/eventdetail/114/-/digital-preservation-workflow-webinars-2023)
     - See also [Workflow:Abrdn Digital Preservation Workflow - COPTR Staging](https://coptr.openpreservation.org/index.php/Workflow:Abrdn_Digital_Preservation_Workflow)
-- 2022: [Digital Preservation Workflow Webinars and COW-a-thon - Digital Preservation Coalition](https://www.dpconline.org/events/past-events/webinars/dp-workflows-cowathon-2022)
-- 2021: [Digital Preservation Workflows Webinar Series and COW-a-thon event - Digital Preservation Coalition](https://www.dpconline.org/events/past-events/webinars/workflow-webinars-and-cow)
+- __2022:__ [Digital Preservation Workflow Webinars and COW-a-thon - Digital Preservation Coalition](https://www.dpconline.org/events/past-events/webinars/dp-workflows-cowathon-2022)
+- __2021:__ [Digital Preservation Workflows Webinar Series and COW-a-thon event - Digital Preservation Coalition](https://www.dpconline.org/events/past-events/webinars/workflow-webinars-and-cow)
 
 ## Workflows & Webinars as Structured Data
 
