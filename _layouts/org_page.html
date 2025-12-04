@@ -7,8 +7,32 @@ layout: simple_page
 <table class="table table-striped table-bordered">
   <tbody>
     <tr>
-      <th scope="row">Context</th>
-      <td>{{ page.title }}</td>
+      <th scope="row">Homepage</th>
+      <td><a href="{{ page.homepage }}" target="_blank">Visit</a></td>
+    </tr>
+    <tr>
+      <th scope="row">Image</th>
+      <td>{{ page.image }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Contact for digital preservation matters</th>
+      <td>{{ page.contact }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Country</th>
+      <td>{{ page.country }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Location</th>
+      <td>{{ page.location }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Digital Preservation Policy</th>
+      <td>{% if page.policy_url %}<a href="{{ page.policy_url }}" target="_blank">View</a>{% endif %}</td>
+    </tr>
+    <tr>
+      <th scope="row">Digital Preservation Strategy</th>
+      <td>{% if page.strategy_url %}<a href="{{ page.strategy_url }}" target="_blank">View</a>{% endif %}</td>
     </tr>
     <tr>
       <th scope="row">Workflow Webinars</th>
@@ -22,7 +46,7 @@ layout: simple_page
 </table>
 
 <p class="text-end">
-<a href="/admin/#/collections/workflows/entries/{{ page.dir | split: '/' | last }}/index" class="btn btn-secondary">Click here to update this entry</a>
+<a href="/admin/#/collections/organisations/entries/{{ page.path | replace: '/index.md','' | split: '/' | last }}/index" class="btn btn-secondary">Click here to update this entry</a>
 </p>
 
 </main>
