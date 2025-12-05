@@ -4,11 +4,17 @@ subtitle: Digital preservation community portal
 layout: base
 items:
  - title: "Welcome!"
-   description: "<p>Welcome to DigiPres.org, a gateway to all of the wonderful community-owned and community-oriented resources dedicated to digital preservation! </p><p>Something wrong? Broken or missing link? Website problems? Feature requests? Please <a href='https://github.com/digipres/digipres.github.io/issue'>raise an issue</a> or <a href='https://github.com/orgs/digipres/discussions'>join our discussion forum</a>.</p>"
+   description: "<p>Welcome to DigiPres.org, a gateway to all of the wonderful community-owned and community-oriented resources dedicated to digital preservation! </p><p>Any questions or comments? Please join our <a href='https://www.dpconline.org/digipres/pr-sig'>online meet-ups</a> (lurkers welcome!) or use <a href='https://github.com/orgs/digipres/discussions'>our forums</a>.</p><p>Something wrong? Broken or missing link? Website problems? Please <a href='https://github.com/digipres/digipres.github.io/issue'>raise an issue</a>!</p>"
    link: https://github.com/digipres/digipres.github.io
    action: "Go"
    subtext: Hosted by GitHub
    button-class: btn-primary
+
+ - title: Find Your Crowd
+   image: icons/dpo-digipres-club.png
+   link: /communities/
+   description: "Find like-minded souls on digipres.club, mailings lists, forums and conferences."
+   action: "Let's Talk"
 
  - title: Get Started
    image: icons/dpo-floppy-plain.png
@@ -21,12 +27,6 @@ items:
    link: https://github.com/digipres/awesome-digital-preservation#readme
    description: This carefully curated list of digital preservation tools and resources is the main thing that the community maintains. Please take a look!
    subtext: "Be Awesome"
-
- - title: Find Your Crowd
-   image: icons/dpo-digipres-club.png
-   link: /communities/
-   description: "Find like-minded souls on digipres.club, mailings lists, forums and conferences."
-   action: "Let's Talk"
 
  - title: Find Formats
    image: icons/dpo-formats.png
