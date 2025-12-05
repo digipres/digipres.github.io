@@ -1,0 +1,3 @@
+{%- capture wf_path %}workflows/{{ include.wf_slug }}.md{% endcapture -%}
+{%- assign wfp = site.pages | where: 'type', 'workflow' | where_exp: 'p', 'p.path contains wf_path' | first -%}
+<a href="{{wfp.url | replace: 'index.html', '' }}">{{ wfp.title }}</a>

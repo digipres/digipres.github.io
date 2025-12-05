@@ -1,0 +1,71 @@
+---
+layout: simple_page
+---
+
+{{ page.description }}
+
+{% if page.image %}
+<a href="{{page.image}}"><img src="{{page.image}}" class="img-fluid mx-auto d-block" alt="Illustration for {{ page.title }}"></a>
+{% endif %}
+
+
+<table class="table table-striped table-bordered">
+  <tbody>
+    <tr>
+      <th scope="row">Context</th>
+      <td>{{ page.context }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Evaluation</th>
+      <td>{{ page.review }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Status</th>
+      <td>{{ page.status }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Inputs</th>
+      <td>{{ page.input }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Outputs</th>
+      <td>{{ page.output }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Tools</th>
+      <td>
+        {% for tool in page.tools %}
+        {% if forloop.index != 1 %}, {% endif %}<a href="{{tool.url}}">{{tool.name}}</a>
+        {% endfor %}
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Workflow Webinars</th>
+      <td>{% include webinars_by_workflow.html wf=page %}</td>
+    </tr>
+    <tr>
+      <th scope="row">Published On</th>
+      <td>{{ page.published | date: "%-d %B %Y" }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Organisation</th>
+      <td>{% include org_link.html org=page.organisation %}</td>
+    </tr>
+  </tbody>
+
+
+
+  
+</table>
+
+{% if content %}
+<h2>Further information </h2>
+{{ content }}
+{% endif %}
+
+
+<p class="text-end">
+<a href="/admin/#/collections/workflows/entries/{{ page.dir | split: '/' | last }}/index" class="btn btn-secondary">Click here to update this entry</a>
+</p>
+
+</main>

@@ -1,0 +1,68 @@
+
+{% assign locals = site.pages | where_exp: "item", "item.location != nil" %}
+
+<!-- Leaflet support -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+<div id="map" class="my-3"></div>
+<style>
+    #map { height: 500px; }
+</style>
+<script type="module">
+    var map = L.map('map').setView([19, 15], 2);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 7,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    var markerArray = [];
+    
+{% for item in locals %}
+{% if item.dir != page.dir %}
+{% if item.location != nil %}
+    markerArray.push(
+        L.geoJSON(JSON.parse({{ item.location | jsonify }})).bindPopup(
+            "<div class='text-center'><b>{{ item.title }}</b><br>{{ item.region }}<br><a class='btn btn-primary btn-sm text-white' role='button' href='{{ item.url }}'>Find out more...</a></div>"
+        )
+    );
+{% endif %}
+{% endif %}
+{% endfor %}
+
+var group = L.featureGroup(markerArray).addTo(map);
+map.fitBounds(group.getBounds());
+
+</script>
+
+<p class="text-center">
+<a href="/admin/#/collections/local-groups/new" class="btn btn-primary mt-2">Add Your Group To This Map</a>
+<a href="/communities/start/" class="btn btn-primary mt-2">Start Your Own Group</a>
+</p>
+
+<div class="row mx-0">
+{% for item in locals %}
+{% if item.dir != page.dir %}
+<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-1">
+    <div class="card h-100 {{ item.card-class | default: ''}}">
+    <div class="card-body h-100 d-flex flex-column">
+        <h5 class="card-title">{{ item.title }}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{ item.region }}, in {{ item.lang }}.</h6>
+        {% if item.summary %}<p class="card-text">{{ item.summary }}</p>{% endif %}
+        {% if item.url %}
+        <div class="d-flex justify-content-between align-items-center mt-auto">
+        <p class="card-text m-0"><small class="text-muted">{{ item.subtext | default: ''}}</small></p>
+        </div>
+        <a href="{{ item.url }}" class="btn {{ item.button-class | default: 'btn-primary stretched-link'}}">{{ item.action | default: 'Find out more...' }}</a>
+        {% endif %}
+    </div>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+</div>

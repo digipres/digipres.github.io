@@ -1,0 +1,40 @@
+---
+layout: simple_page
+---
+
+{{ content }}
+
+<table class="table table-striped table-bordered">
+  <tbody>
+    <tr>
+      <th scope="row">Region</th>
+      <td>{{ page.region }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Langage(s)</th>
+      <td>{{ page.lang }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Online/Remote Possible?</th>
+      <td>{{ page.online }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Homepage</th>
+      <td><a href="{{ page.homepage_url }}">Visit</a></td>
+    </tr>
+    <tr>
+      <th scope="row">Forum</th>
+      <td><a href="{{ page.forum_url }}">Visit</a></td>
+    </tr>
+    <tr>
+      <th scope="row">Contact Email Address</th>
+      <td>{{ page.email }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="text-end">
+<a href="/admin/#/collections/local-groups/entries/{{ page.dir | split: '/' | last }}/index" class="btn btn-primary">Click here to update this entry</a>
+</p>
+
+</main>

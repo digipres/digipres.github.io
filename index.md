@@ -4,11 +4,17 @@ subtitle: Digital preservation community portal
 layout: base
 items:
  - title: "Welcome!"
-   description: "<p>Welcome to digipres.org, a gateway to all of the wonderful community-owned and community-oriented resources dedicated to digital preservation! </p><p>Something wrong? Broken or missing link? Website problems? Feature requests? Please <a href='https://github.com/digipres/digipres.github.io/issue'>raise an issue</a> or <a href='https://github.com/orgs/digipres/discussions'>join our discussion forum</a>.</p>"
+   description: "<p>Welcome to DigiPres.org, a gateway to all of the wonderful community-owned and community-oriented resources dedicated to digital preservation! </p><p>Any questions or comments? Please join our <a href='https://www.dpconline.org/digipres/pr-sig'>online meet-ups</a> (lurkers welcome!) or use <a href='https://github.com/orgs/digipres/discussions'>our forums</a>.</p><p>Something wrong? Broken or missing link? Website problems? Please <a href='https://github.com/digipres/digipres.github.io/issue'>raise an issue</a>!</p>"
    link: https://github.com/digipres/digipres.github.io
    action: "Go"
    subtext: Hosted by GitHub
    button-class: btn-primary
+
+ - title: Find Your Crowd
+   image: icons/dpo-digipres-club.png
+   link: /communities/
+   description: "Find like-minded souls on digipres.club, mailings lists, forums and conferences."
+   action: "Let's Talk"
 
  - title: Get Started
    image: icons/dpo-floppy-plain.png
@@ -21,12 +27,6 @@ items:
    link: https://github.com/digipres/awesome-digital-preservation#readme
    description: This carefully curated list of digital preservation tools and resources is the main thing that the community maintains. Please take a look!
    subtext: "Be Awesome"
-
- - title: Talk It Through
-   image: icons/dpo-digipres-club.png
-   link: https://github.com/digipres/awesome-digital-preservation?tab=readme-ov-file#become-part-of-the-digital-preservation-community
-   description: "Find like-minded souls on digipres.club, mailings lists, forums and conferences."
-   action: "Let's Talk"
 
  - title: Find Formats
    image: icons/dpo-formats.png
@@ -50,7 +50,7 @@ items:
 
  - title: Explore Workflows
    image: icons/dpo-workflows.png
-   link: https://coptr.digipres.org/index.php/Workflow:Community_Owned_Workflows
+   link: /workflows/
    description: "Share your digital workflows, and explore how other peoples systems solve our shared challenges."
 
  - title: Download Test Files
@@ -69,34 +69,10 @@ items:
    card-class: text-bg-light
 ---
 
-<nav class="navbar navbar-expand-md navbar-light">
-  <div class="container-fluid">
-    <button class="navbar-toggler border-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarToggler">
-      <a class="navbar-brand fw-bolder" href="/">{{page.title}}</a>
-        <span class="navbar-text">{{ page.subtitle }}</span>
-      <ul class="navbar-nav ms-auto mb-0 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/digipres/digipres.github.io">GitHub</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/digipres/digipres.github.io/issues">Issues</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/orgs/digipres/discussions">Discussion</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-
 <main class="container mt-0">
   <div class="row">
 {% for item in page.items %}
-    <div class="col-6 col-sm-4 col-md-4 col-lg-3 col-xl-3 p-1">
+    <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 p-1">
       <div class="card h-100 {{ item.card-class | default: ''}}">
         {% if item.image %}<img src="{{ item.image }}" class="card-img" alt="{{ item.title | default: 'a decorative image' }}">{% endif %}
         <div class="card-body h-100 d-flex flex-column">
