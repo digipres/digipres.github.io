@@ -1,11 +1,9 @@
 ---
-title: How to Contribute to Digipres Commons
+title: How To Contribute To DigiPres.org
 permalink: /how_to_contribute_main.html
+layout: simple_page
 ---
-We need you to help us build Digipres Commons. All of the resources hosted or linked to from Digipres can be edited by you. Simply navigate to the resource you're interested in, sign up for an account and start making your contributions. A great place to start is the [DP Question and Answer Site](http://qanda.digipres.org/).
 
-Digipres Commons itself can be edited by you, so please contribute links to other community resources if there is something important that we've missed. The Commons is built on [Github, so it's easy to edit](https://github.com/digipres/digipres.github.io)...
+Any questions or comments? Just want to get in touch? Please join our [online meet-ups](https://www.dpconline.org/digipres/pr-sig) (lurkers welcome!) or use <a href='https://github.com/orgs/digipres/discussions'>our discussion forums</a>. 
 
-If you have any questions, you can discuss them with the Digipres Commons community [here](https://groups.google.com/forum/#!forum/digipres).
-
-We will be organising various community events which will be about continuing to build these digital preservation resources, so watch this space.
+Something wrong? Broken or missing link? Website problems? Feature requests? Please <a href='https://github.com/digipres/digipres.github.io/issue'>raise an issue</a> or get in touch via the forums mentioned above.
