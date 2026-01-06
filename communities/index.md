@@ -31,7 +31,7 @@ This is a list of local and regional [communities of practice](https://www.wenge
 - That are local, so that in-person meetings are possible for members that do not have access to funding to attend conferences.
 - That speak a natural/native language they understand.
 
-If your group isn't listed, please [open an issue to tell us about it](https://github.com/digipres/digipres.github.io/issues/new?template=local-group-template.md), or [add it directly youself (required a GitHub account)](/admin/#/collections/local-groups/new).
+If your group isn't listed, please [open an issue to tell us about it](https://github.com/digipres/digipres.github.io/issues/new?template=local-group-template.md), or [add it directly youself (required a GitHub account)](https://digipres.net/admin/#/collections/local-groups/new).
 
 If there isn't already a group near you, you could consider [starting your own digital preservation community group](./start/).
 
