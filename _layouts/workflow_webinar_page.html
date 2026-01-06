@@ -1,0 +1,89 @@
+---
+layout: simple_page
+---
+
+{{ content }}
+
+{% if page.link %}
+<p><a href="{{ page.link }}">Click here</a> for more information about this series of webinars.</p>
+{% endif %}
+
+<h2>Webinar Series Programme</h2>
+
+{% assign webinars_by_dates = page.webinars | sort: "date" | group_by: "date" %}
+
+{% for webinars in webinars_by_dates %}
+
+<h3>{{ webinars.name | date: ' %-d %B %Y' }}</h3>
+
+{% for w in webinars.items %}
+
+{% capture start_dt %}{{w.date}}T{{w.start | replace: "-",":"}}:00.000Z{% endcapture %}
+{% capture end_dt %}{{w.date}}T{{w.end | replace: "-",":"}}:00.000Z{% endcapture %}
+
+{% comment %} This rather ugly logic computes the difference between the start and end times, outputting the hours and minutes form needed to create the timezone conversion service link.{% endcomment %}
+{% assign end_s = end_dt | date: '%s' %}
+{% assign start_s = start_dt | date: '%s' %}
+{% assign diff_s = end_s | minus: start_s %}
+{% assign diff_m = diff_s | divided_by: 60 %}
+{% assign diff_h = diff_m | divided_by: 60 %}
+{% assign diff_hm = diff_h | times: 60 %}
+{% assign rem_m = diff_m | minus: diff_hm %}
+{% capture td_link %}https://www.timeanddate.com/worldclock/fixedtime.html?msg={{ page.title | url_encode  }}+-+{{ w.title | url_encode }}&iso={{ start_dt | date: '%Y%m%dT%H%M' }}&ah={{diff_h}}&am={{rem_m}}{% endcapture %}
+
+<h4>{{ w.title }}</h4>
+
+<p>
+Recordings from {{w.start | replace: "-",":" }}-{{w.end | replace: "-",":" }} UTC on {{ w.date | date: "%A, %-d %B %Y"}}.
+</p>
+
+<div class="row">
+
+{% for p in w.presentations %}
+
+
+<div class="col-md-4 col-lg-4 mb-3">
+<div class="card h-100">
+
+  {% if p.recording_url %}
+    <div class="ratio ratio-16x9">
+      <iframe width="712" height="326" src="https://www.youtube.com/embed/{{ p.recording_url | split: '/' | last }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  {% endif %}
+
+    <div class="card-body d-flex flex-column h-100">
+    <h5 class="card-title">{{ p.title }}</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">{{p.presenter}} - {% include org_link.html org=p.organisation %}</h6>
+    <p class="card-text">
+      {{ p.description }}
+
+      {% if p.workflows -%}
+      See 
+      {% for wf in p.workflows -%}
+      {%- if forloop.index > 1 %}, {% endif %}{% include workflow_link.html wf_slug=wf -%}
+      {%- endfor -%}.
+      {%- endif -%}
+    </p>
+    {% if p.slides -%}
+    <a href="{{ p.slides }}" class="btn btn-primary mt-auto align-self-end">Download Slides</a>
+    {%- endif %}
+      
+    </div>
+</div>
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endfor %}
+
+{% endfor %}
+
+
+<p class="text-end">
+<a href="/admin/#/collections/workflow_webinars/entries/{{ page.dir | split: '/' | last }}/index" class="btn btn-secondary">Click here to update this entry</a>
+</p>
+
+</main>

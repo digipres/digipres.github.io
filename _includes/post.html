@@ -1,0 +1,13 @@
+<article itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline"><a class="link-dark link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a></h1>
+  <p itemprop="description">{% if include.post.author %}By <span itemprop="author">{{ include.post.author }}</span> on {% endif %}<time itemprop="datePublished" datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%B %-d, %Y" }}</time>{% if include.post.updated %}. Last updated on <time itemprop="dateModified" datetime="{{ include.post.updated | date_to_xmlschema }}">{{ include.post.updated | date: "%B %-d, %Y" }}</time>{% endif %}{% if include.post.comments %}. <a href="{{ include.post.url | relative_url }}#disqus_thread" data-disqus-identifier="{{ include.post.url | relative_url }}"></a>{% endif %}</p>
+  <div itemprop="articleBody">
+    {% if page.type == "home" and site.excerpts %}
+      {{ include.post.excerpt | markdownify }}
+      <p><a href="{{ include.post.url | relative_url }}">Read more&hellip;</a></p>
+    {% else %}
+      {{ include.post.content | markdownify }}
+    {% endif %}
+  </div>
+  <p>{% include post_tags.html post=include.post %}</p>
+</article>

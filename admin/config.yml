@@ -1,0 +1,403 @@
+# config.yml
+# ----------
+# See here for documentation:
+#   https://decapcms.org/docs/configuration-options/
+#
+#
+
+# https://decapcms.org/docs/working-with-a-local-git-repository/
+# If working locally, use the default proxy server port
+local_backend: true
+
+# A handy link back to the homepage:
+site_url: "/"
+logo_url: "../icons/dpo-formats.png"
+
+# How to talk to the Git datafile store:
+backend:
+  name: github
+  repo: digipres/digipres.github.io
+  branch: master
+  # Use something like this to allow edits on a fork/PR:
+  #repo: anjackson/digipres.github.io
+  #branch: add-more-practices
+  squash_merges: true
+  # This enables contribution from non-repo-owners, but only works on GitHub:
+  # https://decapcms.org/docs/open-authoring/
+  open_authoring: true
+
+# Where in the repository to store uploaded files (may be overridden for specific collection/fields below):
+media_folder: "assets/uploads"
+
+# Use the PR-based editorial workflow (where available - see docs):
+# https://decapcms.org/docs/editorial-workflows/
+publish_mode: editorial_workflow
+
+# Multi-language support
+i18n:
+  structure: multiple_files
+  locales: [en]
+  default_locale: en
+
+# Defining the different collections of items:
+collections:
+
+- name: local-groups
+  label: Local Groups
+  label_singular: Local Group
+  folder: communities/local
+  create: true
+  delete: false
+  hide: false
+  path: '{{slug}}/index'
+  media_folder: ''
+  public_folder: ''
+  i18n: false
+  summary: '{{title}}'
+  fields:
+  - label: Title
+    name: title
+    widget: string
+    required: true
+    hint: "The name of the group, nice and short and stable."
+  - label: "Geographic Region"
+    name: region
+    widget: string
+    required: true
+    hint: "Please describe the overall geographic region this group covers."
+  - label: "Approximate Geographic Location"
+    name: "location"
+    widget: "map"
+    hint: "Please indicate the rough centre of the region covered."
+    required: true
+  - label: "Language(s)"
+    name: lang
+    widget: string
+    required: true
+    hint: "Please list the spoken languages this group uses, e.g. 'English, Français'."
+  - label: "URL of homepage or primary contact"
+    name: homepage_url
+    widget: string
+    required: false
+    hint: "Link to a public web page that describes the group."
+  - label: "URL of mailing list or forum"
+    name: forum_url
+    widget: string
+    required: false
+    hint: "Link to a web page that provides access to the associated mailing list or forum."
+  - label: "Email Address To Contact"
+    name: email
+    widget: string
+    required: false
+    hint: "A contact email address. __WARNING! This will be made public along with the rest of the information on this page!__"
+  - label: "Also Online?"
+    name: "online"
+    widget: "select"
+    required: false
+    options:
+      - { label: "Most/all meetings are in-person only", value: "false" }
+      - { label: "Some meetings are hybrid and/or online", value: "true" }
+    hint: "Is some form or remote attendance possible for those who can't make a meeting?"
+  - label: Further Details
+    name: body
+    widget: markdown
+    required: false
+    hint: "Any more to information you need to add?"
+
+- name: organisations
+  label: Organisations
+  label_singular: Organisation
+  folder: _organisations
+  create: true
+  delete: false
+  hide: false
+  path: '{{slug}}/index'
+  media_folder: '.'
+  public_folder: '.'
+  fields:
+  - label: Title
+    name: title
+    widget: string
+    required: true
+  - label: Homepage URL
+    name: homepage
+    widget: string
+    required: true
+  - label: 'Image'
+    name: 'image'
+    widget: 'image'
+    required: false
+  - label: Contact for Digital Preservation Matters
+    name: contact
+    widget: string
+    required: false
+    hint: "Public contact for digital preservation at this organisation. Can be a URL or an email address (which can be in an obfuscated form, like: name [AT] place [DOT] com)."
+  - label: Country
+    name: country
+    widget: string
+    required: false
+    hint: "The country this organisation is in."
+  - label: "Approximate Geographic Location"
+    name: "location"
+    widget: "map"
+    hint: "Please indicate the approximate location of this organisation."
+    required: false
+  - label: Policy URL
+    name: policy_url
+    widget: string
+    required: false
+    hint: "The URL of a published policy that covers digital preservation at this organisation."
+  - label: Strategy URL
+    name: strategy_url
+    widget: string
+    required: false
+    hint: "The URL of a published strategy that covers digital preservation at this organisation."
+  - label: Description
+    name: body
+    widget: markdown
+    required: false
+    hint: "A more detailed description of this organisation."
+
+
+
+- name: workflows
+  label: Workflows
+  label_singular: Workflow
+  folder: workflows
+  create: true
+  delete: false
+  hide: false
+  path: '{{slug}}/index'
+  media_folder: ''
+  public_folder: ''
+  i18n: false
+  summary: '{{title}}'
+  filter: {field: "type", value: "workflow"}
+  fields:
+  - label: Title
+    name: title
+    widget: string
+    required: true
+    hint: "The name of the group, nice and short and stable."
+  - {label: "Type", name: "type", widget: "hidden", default: "workflow"}
+  - name: id
+    label: ID
+    widget: id
+    regenerate: false
+    prefix: wf
+    hint: "An automatically-generated unique identifier for this workflow."
+  - label: Description
+    name: description
+    widget: text
+    required: false
+  - label: 'Primary Image'
+    name: 'image'
+    widget: 'image'
+    required: false
+    hint: "If there is an image that summarises the workflow, please add it here."
+  - label: "Status"
+    name: status
+    widget: "select"
+    options:
+      - { label: "Draft", value: draft }
+      - { label: "Experimental", value: experimental }
+      - { label: "Testing", value: testing }
+      - { label: "Production", value: production }
+      - { label: "Decommissioned", value: decommissioned }
+    hint: "What stage of development is this workflow at right now?"
+    required: false
+  - label: Tools
+    label_singular: Tool
+    name: tools
+    widget: list
+    minimize_collapsed: false
+    collapsed: false
+    add_to_top: true
+    summary: '{{name}}'
+    fields: 
+      - { name: name, label: Tool Name, widget: string }
+      - { name: url, label: Tool Homepage URL, widget: string }
+    allow_add: true
+    required: false
+    hint: "The main digital preservation tools used in your workflow. Any names or URLs that match COPTR entries will be linked."
+  - label: Input
+    name: input
+    widget: string
+    required: false
+    hint: "A single sentence describing what data or content will provide an input to the workflow."
+  - label: Output
+    name: output
+    widget: string
+    required: false
+    hint: "A single sentence describing the resulting data or content that the workflow creates as an output."
+  - label: Organisation
+    name: organisation
+    widget: relation
+    required: false
+    collection: organisations
+    search_fields: ['title']
+    value_field: '{{slug}}'
+    display_fields: ['title']
+    hint: "The organisation this workflow belongs to. If there's no match, you'll need to create an Organisation record first."
+  - label: "First Published On"
+    name: "published"
+    widget: "datetime"
+    date_format: "YYYY-MM-DD"
+    hint: "Date this workflow was first published."
+    default: '{{now}}'
+  - label: Purpose, Context and Content
+    name: context
+    widget: markdown
+    required: false
+    hint: "Describe what your workflow is for - i.e. what it is designed to achieve, what the organisational context of the workflow is, and what content it is designed to work with."
+  - label: Evaluation/Review
+    name: review
+    widget: markdown
+    required: false
+    hint: "How effective was the workflow? Was it replaced with a better workflow? Did it work well with some content but not others? What is the current status of the workflow? Does it relate to another workflow already described on the wiki? Link, explain and elaborate."
+  - label: Further Information
+    name: body
+    widget: markdown
+    required: false
+    hint: "Provide any further information or links to additional documentation here."
+
+
+- name: workflow_webinars
+  label: Workflow Webinar Series
+  label_singular: Workflow Webinar Series
+  folder: workflow-webinars
+  create: true
+  delete: false
+  hide: false
+  path: '{{slug}}/index'
+  media_folder: '.'
+  public_folder: '.'
+  i18n: false
+  summary: '{{title}} : {{start}} - {{end}}'
+  filter: {field: "type", value: "workflow-webinar"}
+  fields:
+  - {label: Title, name: title, widget: string, default: ""}
+  - {label: "Type", name: "type", widget: "hidden", default: "workflow-webinar"}
+  - label: Description
+    name: body
+    widget: markdown
+    required: true
+    hint: "About this webinar series."
+  - label: Link
+    name: link
+    widget: string
+    required: false
+    hint: "A URL to any web page with further information."
+  - label: "Start Date"
+    name: "start"
+    widget: "datetime"
+    date_format: "YYYY-MM-DD"
+    hint: "Date this series begins."
+    picker_utc: true
+  - label: "End Date"
+    name: "end"
+    widget: "datetime"
+    date_format: "YYYY-MM-DD"
+    hint: "Date this series begins."
+    picker_utc: true
+  - label: "Webinars"
+    label_singular: Webinar
+    name: webinars
+    widget: "list"
+    collapsed: false
+    required: false
+    default: []
+    fields:
+      - {label: Title, name: title, widget: string, default: ""}
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        date_format: "YYYY-MM-DD"
+        picker_utc: true
+        hint: "The date of event (UTC)."
+      - label: "Starting At"
+        name: "start"
+        widget: "datetime"
+        time_format: "HH-mm"
+        picker_utc: true
+        hint: "The time this event starts (UTC)."
+      - label: "Ending At"
+        name: "end"
+        widget: "datetime"
+        time_format: "HH-mm"
+        picker_utc: true
+        hint: "The time this event ends (UTC)."
+      - label: Presentations
+        label_singular: Presentation
+        name: presentations
+        widget: list
+        collapsed: true
+        required: false
+        default: []
+        fields:
+        - {label: Title, name: title, widget: string, default: ""}
+        - {label: Presenter, name: presenter, widget: string, default: ""}
+        - label: Organisation
+          name: organisation
+          widget: relation
+          required: false
+          collection: organisations
+          search_fields: ['title']
+          value_field: '{{slug}}'
+          display_fields: ['title']
+          hint: "The organisation this workflow belongs to. If there's no match, you'll need to create an Organisation record first."
+        - {label: Description, name: description, widget: text, default: "", required: false }
+        - label: "Slides"
+          name: "slides"
+          widget: "file"
+          required: false
+          allow_multiple: false
+          media_library:
+            config:
+              multiple: false
+        - label: "Additional files"
+          label_singular: "Additional files"
+          name: additional_files
+          widget: list
+          collapsed: true
+          required: false
+          default: []
+          fields:
+          - {label: "File name", name: filename, widget: string, required: true}
+          - label: "File"
+            name: "additional_file"
+            widget: "file"
+            required: true
+            allow_multiple: false
+            media_library:
+              config:
+                multiple: false
+        - {label: Recording URL, name: recording_url, widget: string, required: false}
+        - label: Workflows
+          name: workflows
+          widget: relation
+          multiple: true
+          required: false
+          collection: workflows
+          search_fields: ['title']
+          value_field: '{{slug}}'
+          display_fields: ['title']
+        - label: Link
+          name: link
+          widget: string
+          required: false
+          hint: "A URL to any web page with further information."
+      
+- name: gotos
+  label: 'GOTOs'
+  label_singular: 'GOTO'
+  description: 'Short links/redirects for resources that might change location over time. Please use sparingly!'
+  folder: '_goto'
+  create: true
+  delete: false
+  hide: false
+  path: '{{slug}}'
+  fields:
+    - { label: 'Title', name: 'title', widget: 'string' }
+    - { label: 'Redirects To', name: 'redirect_to', widget: 'string', hint: 'URL to redirect to' }
+
