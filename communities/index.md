@@ -22,7 +22,7 @@ As digital preservation is a shared concern across a lot of different fields and
 ## Local & Regional Groups
 
 <div class="alert alert-warning" role="alert">
-  This is an experimental addition to the site, and to keep things manageable, the initial work has been scoped to a small set of groups. Other groups are welcome to add themselves (or [ask to be added](https://github.com/digipres/digipres.github.io/issues/new?template=local-group-template.md)) if they wish. You can read <a href="https://github.com/orgs/digipres/discussions/62" class="alert-link">this GitHub discussion</a> to find out more about the status of this experiment.
+  This is an experimental addition to the site, and to keep things manageable, the initial work has been scoped to a small set of groups. Other groups are welcome to add themselves (or <a href="https://github.com/digipres/digipres.github.io/issues/new?template=local-group-template.md" class="alert-link">ask to be added</a>) if they wish. You can read <a href="https://github.com/orgs/digipres/discussions/62" class="alert-link">this GitHub discussion</a> to find out more about the status of this experiment.
 </div>
 
 This is a list of local and regional [communities of practice](https://www.wenger-trayner.com/introduction-to-communities-of-practice/) dedicated to digital preservation can set up a simple public web page. The idea is to help people find groups:
