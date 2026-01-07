@@ -16,6 +16,8 @@ The code that performs these updates is called [Sentinel](https://github.com/dig
 
 The same site is also deployed to <https://digipres.net/> using [Netlify](https://www.netlify.com/) (account owned by [@anjackson](https://github.com/anjackson/)). This allows [DecapCMS](https://decapcms.org/) to be used to support editing the site (see below). n.b. this is because Netlify helps with the [authentication process](https://decapcms.org/docs/github-backend/).
 
+Using Netlify also has the advantage that any changes proposed to the site on GitHub are [automatically deployed on a test service so they can be reviewed](https://docs.netlify.com/deploy/deploy-types/deploy-previews/).
+
 Contributing to this site
 -------------------------
 
