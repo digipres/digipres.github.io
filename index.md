@@ -4,7 +4,7 @@ subtitle: Digital preservation community portal
 layout: base
 items:
  - title: "Welcome!"
-   description: "<p>Welcome to DigiPres.org, a gateway to all of the wonderful community-owned and community-oriented resources dedicated to digital preservation! </p><p>Any questions or comments? Please join our <a href='https://www.dpconline.org/digipres/pr-sig'>online meet-ups</a> (lurkers welcome!) or use <a href='https://github.com/orgs/digipres/discussions'>our forums</a>.</p><p>Something wrong? Broken or missing link? Website problems? Please <a href='https://github.com/digipres/digipres.github.io/issue'>raise an issue</a>!</p>"
+   description: "<p>Welcome to DigiPres.org, a gateway to all of the wonderful community-owned and community-oriented resources dedicated to digital preservation! </p><p>Any questions or comments? Please join our <a href='https://www.dpconline.org/digipres/pr-sig'>online meet-ups</a> (lurkers welcome!) or use <a href='https://github.com/orgs/digipres/discussions'>our forums</a>.</p><p>Something wrong? Broken or missing link? Please <a href='https://github.com/digipres/digipres.github.io/issues'>raise an issue</a>! Website or sevice down or broken? <a href='https://github.com/orgs/digipres/discussions/categories/incidents-outages'>Check for/report outages or incidents!</a></p>"
    link: https://github.com/digipres/digipres.github.io
    action: "Go"
    subtext: Hosted by GitHub
