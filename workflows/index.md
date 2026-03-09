@@ -18,7 +18,7 @@ The [Digital Preservation Coalition](https://dpconline.org/) has been running a 
 The webinars from previous years are available 
 on the DPC Website...
 
-- __2026:__ _[Call for Volunteers: Share Your Digital Preservation Workflow at the DPC 2026 Workflow Webinar Series](https://www.dpconline.org/news/share-your-digipres-workflow)_
+- __2026:__ [Digital Preservation Workflow Webinars 2026](https://www.dpconline.org/events/eventdetail/661/-/digital-preservation-workflow-webinars-2026)
 - __2025:__ [Digital Preservation Workflow Webinars 2025](https://www.dpconline.org/events/eventdetail/434/-/digital-preservation-workflow-webinars-2025)
 - __2024:__ [Digital Preservation Workflow Webinars 2024](https://www.dpconline.org/events/eventdetail/254/-/digital-preservation-workflow-webinars-2024)
 - __2023:__ [Digital Preservation Workflow Webinars 2023](https://www.dpconline.org/events/eventdetail/114/-/digital-preservation-workflow-webinars-2023)
