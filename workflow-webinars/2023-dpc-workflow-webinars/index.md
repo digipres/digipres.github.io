@@ -66,6 +66,7 @@ webinars:
       organisation: Churchill Archives Centre
       presenter: Chris Knowles
       recording_url: https://youtu.be/Dj3zl0VzMTk
+      link: https://www.dpconline.org/blog/knowles-powershell-cli
     - title: MediaConch workflow
       organisation: BFI
       presenter: Stephen McConnachie
