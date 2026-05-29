@@ -6,6 +6,7 @@ import requests
 from requests.adapters import HTTPAdapter, Retry
 # Set up fetch with retries
 s = requests.Session()
+s.headers.update({'User-Agent': 'Sentinel/1.0 (https://github.com/digipres/sentinel; anj@anjackson.net)'})
 retries = Retry(total=5,
                 backoff_factor=0.1,
                 status_forcelist=[ 500, 502, 503, 504 ])

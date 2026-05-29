@@ -2,6 +2,8 @@
 import json
 import requests
 import re
+import sys
+from requests.adapters import HTTPAdapter, Retry
 
 # Set up the query:
 url = 'https://query.wikidata.org/sparql'
@@ -43,7 +45,19 @@ WHERE
 ORDER BY ?uri
 '''
 
-r = requests.get(url, params = {'format': 'json', 'query': query})
+s = requests.Session()
+s.headers.update({'User-Agent': 'Sentinel/1.0 (https://github.com/digipres/sentinel; anj@anjackson.net)'})
+retries = Retry(total=5,
+                backoff_factor=0.1,
+                status_forcelist=[ 500, 502, 503, 504 ])
+s.mount('http://', HTTPAdapter(max_retries=retries))
+
+
+r = s.get(url, params = {'format': 'json', 'query': query})
+if r.status_code != 200:
+    print("Failed to download! "+ r.text)
+    sys.exit(1)
+
 data = r.json()
 
 format_data = []
