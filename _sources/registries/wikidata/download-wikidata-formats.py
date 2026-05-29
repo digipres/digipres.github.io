@@ -48,15 +48,14 @@ ORDER BY ?uri
 s = requests.Session()
 s.headers.update({'User-Agent': 'Sentinel/1.0 (https://github.com/digipres/sentinel; anj@anjackson.net)'})
 retries = Retry(total=5,
-                backoff_factor=0.1,
-                status_forcelist=[ 500, 502, 503, 504 ])
+                backoff_factor=6,
+                status_forcelist=[ 500, 502, 503, 504, 429 ])
 s.mount('http://', HTTPAdapter(max_retries=retries))
 
 
 r = s.get(url, params = {'format': 'json', 'query': query})
 if r.status_code != 200:
-    print("Failed to download! "+ r.text)
-    sys.exit(1)
+    raise Exception(f"WikiData download failed! ({r.status_code}) '{r.text}'")
 
 data = r.json()
 

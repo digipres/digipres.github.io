@@ -8,9 +8,10 @@ from requests.adapters import HTTPAdapter, Retry
 s = requests.Session()
 s.headers.update({'User-Agent': 'Sentinel/1.0 (https://github.com/digipres/sentinel; anj@anjackson.net)'})
 retries = Retry(total=5,
-                backoff_factor=0.1,
-                status_forcelist=[ 500, 502, 503, 504 ])
+                backoff_factor=6,
+                status_forcelist=[ 500, 502, 503, 504, 429 ])
 s.mount('http://', HTTPAdapter(max_retries=retries))
+
 
 
 # Set up the queries:
@@ -53,7 +54,7 @@ def process_query(item_data, query):
   r = s.get(url, params = {'format': 'json', 'query': query})
   
   if r.status_code != 200:
-      raise Exception("Download failed")
+      raise Exception(f"WikiData failed to download! ({r.status_code}) '{r.text}'")
   
   data = r.json()
 
