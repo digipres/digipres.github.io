@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000648" titleName="Enhanced Compression Wavelet (ECW)" shortName="ECW" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:gdfrDomains>
+			<fdd:gdfrDomain>
+				<fdd:value>gis</fdd:value>
+			</fdd:gdfrDomain>
+		</fdd:gdfrDomains>
+		<fdd:gdfrTransform>compression</fdd:gdfrTransform>
+		<fdd:updates>
+			<fdd:date>2025-12-09</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Enhanced Compression Wavelet (ECW)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>raster image formats</fdd:keyword>
+			<fdd:keyword>compression formats</fdd:keyword>
+			<fdd:keyword>georeferenced image formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>Enhanced Compression Wavelet (ECW) is a proprietary, wavelet-compressed raster file format that is widely used for moving, storing, and viewing large geospatial image files. By using <a href="https://mathworld.wolfram.com/Wavelet.html">wavelets</a>, specifically the <a href="https://en.wikipedia.org/wiki/Discrete_wavelet_transform">discrete wavelet transform</a> (DWT) technique, for compression, ECW can significantly reduce the size of image files with minimal deterioration in quality. Compressing an image from another format to ECW can result in "15:1 compression ratios (94% reduction) at <a href="https://www.digitizationguidelines.gov/term.php?term=compressionvisuallylossless">visually lossless</a> quality rates," as stated by the developer, Hexagon, in their <a href="https://bynder.hexagon.com/m/4da0bee97bb27e4e/original/Hexagon_GSP_ECW_Compression_Format_brochure.pdf">Compression Brochure</a>. While other compression formats, such as <fddLink id="fdd000143">JPEG 2000</fddLink>, can also achieve high compression ratios with visually loseless results, per Hexagon's ERDAS ECW JP2 Software Development Kit (SDK) <a href="https://supportsi.hexagon.com/s/contentdocument/069Tc00000DE0qHIAT?language=en_US">User Guide</a>, "the primary advantage of the ECW technique is its superior speed" because the ECW technique "does not require intermediate tiles to be stored to disk and then recalled during the DWT transformation" and "takes advantage of CPU, L1 and L2 cache for its linear and unidirectional data flow through the DWT process." The SDK User Guide goes on to say that this makes ECW compression "at least 50% faster at compressing images than other compression techniques, when measured on the same file, on the same computer."</p>
+			<p>The original developer, Earth Resource Mapping (ERM), released <a href="https://web.archive.org/web/19990125095124/http://ermapper.com/">ECW Version 1 in late 1998</a> (link via Internet Archive) and soon replaced it with <a href="https://web.archive.org/web/19991001111409/http://ermapper.com/">Version 2 in 1999</a> (link via Internet Archive), according to archived versions of their website, ERMapper.com. Improvements to the format in Version 2 described in ERM's <a href="https://community.esri.com/ccqpr47374/attachments/ccqpr47374/geoprocessing-questions/18451/1/ecw-v2.pdf">Using and distributing ECW V2.0 wavelet compressed imagery</a> white paper, available via Esri Community, included increased compression ability while maintaining the quality of Version 1 images; faster compression, decompression, and viewing rates; and more. ECW Version 3 was released by then-developer Intergraph in 2013, according to their <a href="https://web.archive.org/web/20131013120527/http://geospatial.intergraph.com/products/other/ecw/erdasecwJPEG2000sdk/news/13-09-05/Intergraph%C2%AE_Increases_the_Power_of_Image_Compression.aspx">press release</a> (link via Internet Archive). The <a href="https://supportsi.hexagon.com/s/contentdocument/069Tc00000DE0qHIAT?language=en_US">SDK User Guide</a> describes the functionality of both Versions 2 and 3: ECW Version 2 supports grayscale, RGB, and multiband color spaces, 8 bits per channel unsigned, opacity channels, an unlimited number of bands, single threaded scan-line based compression, and tile compression. EWC Version 3 has all of the features of ECW Version 2 and additionally supports 16 bits per channel unsigned, custom metadata boxes, statistics stored for each band of data, Rapid Positioning Capability (RPC) information storage, <fddLink id="fdd000279">GeoTIFF</fddLink> tags, and NULL blocks.</p>
+			<p>From the Hexagon <a href="https://hexagongeospatial.fluidtopics.net/r/ScrqoOQ6f2HGeDQ2pHhz5g/iiOSSaRmwSSzE9vdxmjY~Q">ER Mapper User Guide</a> in 2018: "ECW v2 and ECW v3 file formats has [sic] become a de facto geospacial [sic] industry standard for high-end imagery. ...[I]t is a mature, stable technology with a strong user-base worldwide." Both ECW Versions 2 and 3 remain widely in use.</p>
+		</fdd:description>
+		<fdd:shortDescription>Enhanced Compression Wavelet (ECW) is a proprietary wavelet-compressed raster file format widely used to move, store, and view large geospatial imagery.</fdd:shortDescription>
+		<fdd:productionPhase>Middle-state and final-state format.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May have component</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:shortName>ERS</fdd:shortName>
+					<fdd:titleName>ER Mapper Raster</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Header file containing georeference information and metadata. In ECW Versions 2 and 3, georeference information is also included in the ECW file, making the ERS file optional. Not described separately on this website.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress has a small amount of ECW files in its collections.</fdd:experience>
+		<fdd:preference>See the Library of Congress Recommended Formats Statement for format preferences for <a href="https://www.loc.gov/preservation/resources/rfs/stillimg.html">Still Image Works</a> and <a href="https://stage.loc.gov/preservation/resources/rfs/geo-carto.html">GIS, Geospatial and Non-GIS Cartographic</a>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Proprietary, partially documented. Previously developed by Earth Resource Mapping, Leica Geosystems, ERDAS, and Intergraph. Since 2013, ECW has been developed by Hexagon.</fdd:disclosure>
+		<fdd:documentation>No public specification. Partial documentation available:<ul>
+				<li>The <a href="https://supportsi.hexagon.com/s/contentdocument/069Tc00000DE0qHIAT?language=en_US">ERDAS ECW JP2 Software Development Kit 5.5 User Guide, Version 5.5.0 Update 6, 10 September 2024</a> describes ECW Version 2 and Version 3.</li>
+				<li>U.S. Patents <a href="https://worldwide.espacenet.com/patent/search/family/022694721/publication/US6201897B1?q=pn%3DUS6201897">6,201,897 B1</a>, <a href="https://worldwide.espacenet.com/patent/search/family/022694721/publication/US6442298B1?q=pn%3DUS6442298B1">6,442,298 B1</a>, and <a href="https://worldwide.espacenet.com/patent/search/family/028792293/publication/US6633688B1?q=pn%3DUS6633688">6,633,688 B1</a> provide information about ECW compression and transmission protocol.</li>
+				<li>The <a href="https://hexagongeospatial.fluidtopics.net/search/all?query=ecw">Hexagon Documentation Center</a> contains additional documentation related to the ECW format.</li>
+			</ul>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>Although the format is proprietary, it was quickly adopted and integrated into many popular GIS platforms. Its wide adoption was likely helped by Earth Resource Mapping releasing <a href="https://web.archive.org/web/20041105092956/http://www.ermapper.com/downloads/">downloads</a> (link via Internet Archive), such as free software to view and compress ECW files, free plug-ins for many GIS and imagery applications, and software development kits (SDKs) so that third-party developers could add ECW support to their applications.</p>
+			<p>As of 2025, ECW Versions 2 and 3 remain in wide use, and Hexagon continues to support the ERDAS ECW JP2 SDK. The <a href="https://supportsi.hexagon.com/s/contentdocument/069Tc00000DE0qHIAT?language=en_US">SDK User Guide</a> says that the SDK supports reading and writing of ECW Version 2, ECW Version 3, and <fddLink id="fdd000143">JPEG 2000</fddLink> file formats and reading Enhanced Compressed Wavelet Protocol (ECWP) streams. Supported environments include Windows, Linux, Android, iOS and MacOS.</p>
+			<p>Hexagon states in its <a href="https://bynder.hexagon.com/m/4da0bee97bb27e4e/original/Hexagon_GSP_ECW_Compression_Format_brochure.pdf">Compression Brochure</a> that "ECW is supported across Hexagon software solutions as well as third-party solutions. It generally works everywhere." According to the same brochure, Hexagon applications with support to read and/or create ECW are GeoCompressor, ERDAS IMAGINE, ERDAS APOLLO, GeoMedia, ImageStation, LuciadLightspeed, and LuciadFusion, and Hexagon also provides a plug-in for ArcGIS. Many other GIS, CAD, remote sensing applications, and image viewers support ECW, either natively or via plug-ins. <a href="https://www.gstarcad.uk/what-are-ecw-files/">GstarCAD</a> lists the following software that supports ECW files: AutoCAD, ArcGIS, QGIS, and Global Mapper. Additionally, <a href="https://www.adobe.com/creativecloud/file-types/image/raster/ecw-file.html">Adobe</a> lists the following programs that can open ECW files: Canvas X, Falcon View, Irfan View, TatukGIS Viewer, and XnView.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>The DWT compression technique used by ECW, as well as the ECWP transmission protocol, were patented by Earth Resource Mapping. Ownership of the patents transferred to Leica Geosystems, ERDAS, and Intergraph.</p>
+			<p>To use the SDK library, third-party developers must have a license. Per the <a href="https://supportsi.hexagon.com/s/contentdocument/069Tc00000DE0qHIAT?language=en_US">ERDAS ECW JP2 SDK User Guide</a>, licensing is determined based on application type (desktop, server, or mobile), capability (read-only or read-write), and redistribution rights (end-user or redistributable), and the price will vary according to these characteristics. There is no license fee for desktop or mobile read-only redistributable licenses.</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>ECW is a proprietary compression format. The <a href="https://supportsi.hexagon.com/s/contentdocument/069Tc00000DE0qHIAT?language=en_US">ERDAS ECW JP2 SDK User Guide</a> provides third-party developers with the information and binary libraries needed to add functionality to read and create ECW files to their software.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>According to the <a href="https://supportsi.hexagon.com/s/contentdocument/069Tc00000DE0qHIAT?language=en_US">ERDAS ECW JP2 SDK User Guide</a>, ECW Version 3 supports embedded metadata including Rapid Positioning Capability (RPC), statistical data (e.g., average, mode, median, min, max, histograms), and general file metadata (e.g., sensor name, acquisition date, contact details, etc.). It also supports custom, user-created metadata boxes. Georeferencing is supported using <fddLink id="fdd000279">GeoTIFF</fddLink> tags stored in a metadata box.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>Accessibility features for GIS data can be a complex combination of factors to support still images, 3D formats, and datasets. In general, this means data to alt text for images, content for screen readers to enable user interactivity events such as object selection, rotation and zoom, alt text for image forms, color contrast definition as well as caption and subtitle support as well as structured data to identify regions and grids on pages and defined relationships in tables. For ECW, there is the potential for some accessibility support using embedded metadata. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+			</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None beyond the need for specialized software.</fdd:externalDependencies>
+		<fdd:techProtection>None.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:normalImage>Excellent support. Many common image viewer applications support viewing with the ability to zoom, pan, and print ECW files.</fdd:normalImage>
+			<fdd:clarity>Excellent support. Although ECW uses lossy compression, the proprietary DWT algorithm is able to achieve 15:1 compression ratios at a visually lossless quality level. </fdd:clarity>
+			<fdd:colorMaint>ECW supports opacity channels, an unlimited number of bands, and RGB, grayscale, and multiband images. Versions 2 and 3 supports 8 bits per channel, and Version 3 additionally supports 16 bits per channel.</fdd:colorMaint>
+			<fdd:graphics>No support for vector graphics.</fdd:graphics>
+			<fdd:multispectral>Multi-band hyperspectral imagery can be compressed to ECW. ECW supports storage of up to 65,535 bands.</fdd:multispectral>
+			<fdd:beyondImage>ECW Version 3 metadata can include Rapid Positioning Capability (RPC), statistical data (e.g., average, mode, median, min, max, histograms), and general file metadata (e.g., sensor name, acquisition date, contact details). It also supports custom, user-created metadata boxes, similar to <fddLink id="fdd000143">JPEG 2000</fddLink>. Georeferencing is supported using <fddLink id="fdd000279">GeoTIFF</fddLink> tags stored in a metadata box.
+ECW Version 3 supports NULL blocks, a feature which makes decompression faster and storage more efficient because data is not stored for areas of the image that contain no data.</fdd:beyondImage>
+		</fdd:stillImageQF>
+		<fdd:gisQF>
+			<fdd:normalGIS>ECW Versions 1 and 2 use Geodetic Transform Database (GDT) to store georeferencing information. Version 3 uses <fddLink id="fdd000279">GeoTIFF</fddLink> tags; all standard GeoTIFF tags are supported.</fdd:normalGIS>
+			<fdd:metadataGIS>ECW compressed image files contain embedded geocoding metadata that can be retrieved when the image is decompressed. The geocoding metadata consists of datum, projection, units, registration point, and cell size.
+For ECW Versions 1 and 2, datum/projection pairs in GDT format need to be converted to an <a href="https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset">EPSG</a> code for processing via other applications.</fdd:metadataGIS>
+			<fdd:grids>As a raster format, data in the ECW encoding is inherently adaptable to grid-based analysis, so long as accompanying information is provided to document the scale, coordinate reference system, and projection so that the image can be registered against a grid chosen for analysis. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+			</fdd:grids>
+		</fdd:gisQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>ecw</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/371">PRONOM fmt/371</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/x-ecw</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Not listed in IANA. From <a href="https://publications.europa.eu/resource/authority/file-type/ECW">Europa File Type Named Authority List, File Type ECW</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 65 02 01 02 {1} 04 00 (00|01|02|06) {2} 00 (00|02|03|04|06) {2} 00 03 00 01</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/371">PRONOM fmt/371</a>.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>NARA File Format Preservation Plan ID has no corresponding entry as of December 2025.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/371</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/371">http://www.nationalarchives.gov.uk/PRONOM/fmt/371</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q1343033</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q1343033">https://www.wikidata.org/wiki/Q1343033</a> (no version).</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q27939009</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q27939009">https://www.wikidata.org/wiki/Q27939009</a> (Version 2).</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q27939181</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q27939181">https://www.wikidata.org/wiki/Q27939181</a> (Version 3).</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>At the time that ECW was developed in the late 1990s and early 2000s, there was an increasing need to efficiently compress massive geospatial images to make them easier to distribute and store without sacrificing image quality. Joe Triglay described the challenge of working with large digital raster images in his 2000 <a href="https://community.esri.com/ccqpr47374/attachments/ccqpr47374/geoprocessing-questions/18451/2/ECW-v1.pdf">review of ECW</a> in GeoInformatics magazine, available via Esri Community. He said that images could be "so huge that they exceed your available physical computing resources at least in terms of disc storage, processing capability and image generation or manipulation time" and were also very challenging to distribute to partners or customers. Both issues made file compression a necessity, but available compression formats did not meet the compression needs of the geospatial industry. In the paper <a href="https://phowo.ifp.uni-stuttgart.de/publications/phowo01/Ueffing.pdf">Wavelet based ECW image compression</a> presented at Photogrammetric Week 2001, Christoph Ueffing explained: "Techniques used by common compression program [sic] such as <fddLink id="fdd000354">ZIP</fddLink>, or by older compression formats such as <fddLink id="fdd000017">JPEG</fddLink> or <fddLink id="fdd000022">TIFF</fddLink>, suffer from sever disadvantages when trying to compress large digital images," such as "limited compression rates," "all or nothing decompression," "artefacts and visible errors in the data," "no geographic coordinates," and "slow speed."</p>
+			<p>Discrete wavelet transformation (DWT) compression had the potential to solve the problems Ueffing mentioned associated with existing compression formats, but as stated by the ERDAS ECW JP2 SDK <a href="https://supportsi.hexagon.com/s/contentdocument/069Tc00000DE0qHIAT?language=en_US">User Guide</a>, DWT compression was not widely used prior to ECW "because the DWT operation consumes heavy processing power, and because most implementations perform DWT operations in memory, or by storing intermediate results on a hard disk," thus limiting compression speed or the size of compressed images. ECW's original developer, Earth Resource Mapping (ERM), worked out how to perform DWT compression without requiring a lot of computer memory. In a <a href="https://web.archive.org/web/20010713075133/http://ermapper.com/products/ecw/ECW2vsMrSID.PDF">report</a> (link via Internet Archive) authored by ERM comparing ECW Version 2 to competitor LizardTech's MrSID Version 1 (not described on this site) format, ERM describes how ECW performs DWT compression differently: "[ECW's] multi-level DWT is computed recursively and generated on a line by line basis, directly from the original imagery, which is read on a line by line basis. Because of the recursive DWT generation (which is the crux of the ECW invention), the ECW DWT can process images of any size, without needing to resort to tiling or disk caching of intermediate DWT operations. Thus, an entire multi-level DWT or iDWT operation can be performed on very large images, with a very low memory 'footprint' during the process."</p>
+			<p>Shortly after the release of ECW Version 2 in 1999, <a href="https://web.archive.org/web/20000126205815/http://www.directionsmag.com/features.asp?FeatureID=27">Directions Magazine</a> (link via Internet Archive) performed their own independent testing comparing ECW to MrSID. They found that "[ECW-]compressed images appear more faithful to the original without excessive noise" and took "less system resources required to run." The aforementioned ERM report stated this was because the MrSID DWT process breaks an image into tiles before performing the DWT process, which requires that the intermediate tiles be stored during compression.</p>
+			<p>Also in 1999, LizardTech sued ERM, claiming that ECW compression infringed on their patent for a tile method of compressing large images used in their MrSID format, according to <a href="https://web.archive.org/web/20000902203810/http://www.ermapper.com/marktng/prsrel/lizardtech_short.htm">ERM's press release</a> (link via Internet Archive). The following year the court ruled that ECW compression technology <a href="https://web.archive.org/web/20010401045629/http://www.ermapper.com/marktng/prsrel/sjruling.htm">does not infringe on LizardTech's patent</a> (link via Internet Archive).</p>
+			<p> In addition to ECW and MrSID, <fddLink id="fdd000143">JPEG 2000</fddLink> is another file format that uses DWT compression (see <a href="https://faculty.gvsu.edu/aboufade/web/wavelets/student_work/EF/how-works.html">How does JPEG 2000 work?</a>). According to Hexagon's <a href="https://bynder.hexagon.com/m/4da0bee97bb27e4e/original/Hexagon_GSP_ECW_Compression_Format_brochure.pdf">Compression Brochure</a>, "JPEG 2000 offers equivalent image quality at equivalent file size, but suffers from slow encoding and substantially slower decoding speed." One advantage of JPEG 2000 is that it has the capability for lossy or loseless compression.</p>
+			<p>
+				<a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+			</p>
+		</fdd:general>
+		<fdd:history>
+			<p>ECW was developed by the Australian company Earth Resource Mapping (ERM) and released with their integrated mapping software ER Mapper 6.0 in December 1998, as per <a href="https://web.archive.org/web/19990125095124/http://ermapper.com/">ERMapper.com</a> (link via Internet Archive). The ECW file format, associated patents, and the ER Mapper software changed hands many times over the years as its various developers were acquired by other companies and/or rebranded. Leica Geosystems Geospatial Imaging, owned by the Hexagon Group, acquired all assets of ERM in May 2007 according to <a href="https://web.archive.org/web/20080721021043/http://www.ermapper.com/docViewer.aspx?d=173">this press release</a> (link via Internet Archive) and changed its name to <a href="https://web.archive.org/web/20080721011546/http://www.ermapper.com/NewsView.aspx?t=11%26n=191">ERDAS</a> (link via Internet Archive) the following year. In October 2010, <a href="https://web.archive.org/web/20100804093836/http://www.intergraph.com/assets/pressreleases/2010/07-07-2010.aspx">Hexagon acquired Intergraph</a> (link via Internet Archive), a provider of engineering and geospatial software, and in 2011, <a href="https://web.archive.org/web/20111020200701/http://www.erdas.com/Company/News/NewsReleases/11-08-22/Intergraph_and_ERDAS_Announce_Product_Synergies_Webinar_Series.aspx">ERDAS announced</a> (link via Internet Archive) that it had been incorporated into Intergraph's Security, Government and Infrastructure division. Finally in 2013, Intergraph's geospatial technology portfolio <a href="https://web.archive.org/web/20140726143748/http://hexagongeospatial.com/company/news/newsreleases/13-12-02/Hexagon_Announces_Changes_within_Technology_Division_and_New_Appointments_to_Group_Management.aspx">became part of Hexagon Geospatial</a> (link via Internet Archive), the developer of ECW today. For a timeline of Hexagon's history up to 2014, including acquisitions, see the company's <a href="https://web.archive.org/web/20151007023943/http://www.hexagon.com:80/en/Our-History.htm">Our History</a> (link via Internet Archive) page.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://supportsi.hexagon.com/s/contentdocument/069Tc00000DE0qHIAT?language=en_US</link>
+					<tag>ERDAS ECW JP2 SDK 5.5 User Guide, Version 5.5.0 Update 6, 10 September 2024</tag>
+					<comment>The SDK User Guide describes ECW Version 2 and Version 3.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Patents</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://worldwide.espacenet.com/patent/search/family/022694721/publication/US6201897B1?q=US6201897B1</link>
+							<tag>Nixon, Stuart William. Transformation and selective inverse transformation of large digital images. US Patent 6,201,897 B1, filed November 9, 1998, and issued March 13, 2001.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://worldwide.espacenet.com/patent/search/family/022694721/publication/US6442298B1?q=pn%3DUS6442298B1</link>
+							<tag>Nixon, Stuart William. Transformation and selective inverse transformation of large digital images. US Patent 6,442,298 B1, filed October 26, 2000, and issued August 27, 2002.</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://worldwide.espacenet.com/patent/search/family/028792293/publication/US6633688B1?q=pn%3DUS6633688</link>
+							<tag>Nixon, Stuart William, Simon John Cope, and Mark John Sheridan. Method system and apparatus for providing image data in client/server systems. US Patent 6,633,688 B1, filed April 28, 2000, and issued October 14, 2003.</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Past developers</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/19981212024735/http://www.ermapper.com/</link>
+							<tag>Earth Resource Mapping</tag>
+							<comment>Original developer of ECW from 1998 to 2007. Link via Internet Archive.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20010713075133/http://ermapper.com/products/ecw/ECW2vsMrSID.PDF</link>
+							<tag>Image compression: ER Mapper 6.0 ECW v2.0 versus MrSID 1.3</tag>
+							<comment>Report authored by Earth Resource Mapping comparing ECW Version 2 to MrSID Version 1. Link via Internet Archive.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://community.esri.com/ccqpr47374/attachments/ccqpr47374/geoprocessing-questions/18451/1/ecw-v2.pdf</link>
+							<tag>Using and distributing ECW V2.0 wavelet compressed imagery</tag>
+							<comment>White paper authored by Earth Resource Mapping on ECW Version 2. Link via Esri Community.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20060303082849/http://gi.leica-geosystems.com:80/default.aspx</link>
+							<tag>Leica Geosystems Geospatial Imaging</tag>
+							<comment>Developer of ECW from 2007 to 2008. Link via Internet Archive.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20111008010915/http://erdas.com/Homepage.aspx</link>
+							<tag>ERDAS</tag>
+							<comment>Developer of ECW from 2008 to 2011. Link via Internet Archive.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20100807204625/http://www.intergraph.com/</link>
+							<tag>Intergraph</tag>
+							<comment>Developer of ECW from 2011 to 2013. Link via Internet Archive.</comment>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Current developer, Hexagon</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://bynder.hexagon.com/m/4da0bee97bb27e4e/original/Hexagon_GSP_ECW_Compression_Format_brochure.pdf</link>
+							<tag>Compression Brochure</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://hexagon.com/products/ecw-compression?accordId=D093E5A584464B29AE885DE189254E41</link>
+							<tag>ECW Compression</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://web.archive.org/web/20151007023943/http://www.hexagon.com:80/en/Our-History.htm</link>
+							<tag>Our History</tag>
+							<comment>Link via Internet Archive.</comment>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://hexagongeospatial.fluidtopics.net/r/uOKHREQkd_XR9iPo9Y_Ijw/xj8dZnCPa3gLJ1oBxdyDEA</link>
+							<tag>ECW Compression, Producer Field Guide, Hexagon Documentation Portal</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://hexagongeospatial.fluidtopics.net/r/fH0o7KrMKUViXGUeoilQuA/tpK3KjGpihc2PMkVxzyF0g</link>
+							<tag>ECW, ERDAS IMAGINE Help, Hexagon Documentation Portal</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://hexagongeospatial.fluidtopics.net/r/ScrqoOQ6f2HGeDQ2pHhz5g/iiOSSaRmwSSzE9vdxmjY~Q</link>
+							<tag>Understanding Compressed Images, ER Mapper User Guide, Hexagon Documentation Portal</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://hexagongeospatial.fluidtopics.net/search/all?query=ecw</link>
+							<tag>Other documentation related to ECW in the Hexagon Documentation Portal</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.adobe.com/creativecloud/file-types/image/raster/ecw-file.html</link>
+					<tag>ECW File, Adobe</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20000126205815/http://www.directionsmag.com/features.asp?FeatureID=27</link>
+					<tag>Directions reviews MrSID and ECW, Directions Magazine, December 1, 1999</tag>
+					<comment>Link via Internet Archive.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://publications.europa.eu/resource/authority/file-type/ECW</link>
+					<tag>ECW, Europa File Type</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.digitizationguidelines.gov/term.php?term=compressionvisuallylossless</link>
+					<tag>Compression, visually lossless, Federal Agencies Digital Guidelines Initiative (FADGI) Glossary</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://fileformats.archiveteam.org/wiki/ECW</link>
+					<tag>ECW, File Formats Wiki</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://community.esri.com/ccqpr47374/attachments/ccqpr47374/geoprocessing-questions/18451/2/ECW-v1.pdf</link>
+					<tag>ECW: Wavelet Compression Beyond Limits? GeoInformatics, January/February 2000</tag>
+					<comment>Link via Esri Community.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20040629134938/http://www.geoinformatics.com/images/Nixon%20interview.pdf</link>
+					<tag>Interview: 'Unlocking Data to Expanded Potentials' Stuart Nixon, CEO and founder of Earth Resource Mapping, GeoInformatics</tag>
+					<comment>Link via Internet Archive.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://fileformats.archiveteam.org/wiki/ER_Mapper_Raster</link>
+					<tag>ER Mapper Raster, File Formats Wiki</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://faculty.gvsu.edu/aboufade/web/wavelets/student_work/EF/index.html</link>
+					<tag>JPEG 2000: The Next Compression Standard using wavelet technology, Grand Valley State University</tag>
+					<comment>See section 4 &quot;How does JPEG 2000 work?&quot;</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.gstarcad.uk/what-are-ecw-files/</link>
+					<tag>What Are ECW Files? GstarCAD</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://manifold.net/doc/mfd9/ecw.htm</link>
+					<tag>ECW, Manifold User Manual</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://manifold.net/doc/mfd9/sid,_mrsid.htm</link>
+					<tag>SID, MrSID, Manifold User Manual</tag>
+					<comment>See section "MrSID vs ECW."</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://phowo.ifp.uni-stuttgart.de/publications/phowo01/Ueffing.pdf</link>
+					<tag>Wavelet based ECW image compression, Photogrammetric Week</tag>
+					<comment>Paper presented by Christoph Ueffing at Photogrammetric Week 2001.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://mathworld.wolfram.com/Wavelet.html</link>
+					<tag>Wavelet, Wolfram MathWorld</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Wikipedia articles</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/Discrete_wavelet_transform</link>
+							<tag>Discrete wavelet transform</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/ECW_(file_format)</link>
+							<tag>ECW (file format)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/EPSG_Geodetic_Parameter_Dataset</link>
+							<tag>EPSG Geodetic Parameter Dataset</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://en.wikipedia.org/wiki/LizardTech,_Inc._v._Earth_Resource_Mapping,_Inc.</link>
+							<tag>LizardTech, Inc. v. Earth Resource Mapping, Inc.</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/371</link>
+					<tag>PRONOM entry for fmt/371</tag>
+					<comment>Information in PRONOM from UK National Archives about ECW. PUID: fmt/371.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q1343033</link>
+					<tag>Wikidata entry for Q1343033</tag>
+					<comment>Information in Wikidata about ECW (no version specified). Wikidata Title ID: Q1343033.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q27939009</link>
+					<tag>Wikidata entry for Q27939009</tag>
+					<comment>Information in Wikidata about ECW, Version 2. Wikidata Title ID: Q27939009.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q27939181</link>
+					<tag>Wikidata entry for Q27939181</tag>
+					<comment>Information in Wikidata about ECW, Version 3. Wikidata Title ID: Q27939181.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

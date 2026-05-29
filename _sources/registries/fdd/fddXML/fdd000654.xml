@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000654" titleName="Tom&apos;s Obvious, Minimal Language" shortName="TOML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>any</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2026-03-20</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Tom&apos;s Obvious, Minimal Language</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>configuration format</fdd:keyword>
+			<fdd:keyword>config file format</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>TOML (Tom's Obvious, Minimal Language) is a purposefully minimal configuration file format with obvious semantics designed for unambiguous human understanding. It's an open source format and originally created by <a href="https://tom.preston-werner.com/">Tom Preston-Werner</a>, co-founder of GitHub. The TOML specification is hosted at <a href="https://toml.io/en/">https://toml.io/en/</a>. See <a href="#sustainability">Documentation</a> and <a href="#notes">History</a> for more details about versions.</p>
+			<p>As described on the <a href="https://toml.io/en/">TOML Project homepage</a>, TOML's specific features to support human interaction include a collection of useful native types (Key/Value Pairs, Arrays, Inline tables, Arrays of tables, Integers and Floats, Booleans, Dates and Times, with optional offsets) and the fact that TOML is designed to map unambiguously to a hash table. TOML files are case sensitive and have the option to make generous use of comments, identified with a hash symbol, to communicate between the human readers of a file.</p>
+			<p>Key Value pairs are the building block of TOML structured with keys are on the left of the equals sign and values are on the right, i.e. key = "value".  Values must be from a controlled vocabulary list of options and non-recognized values are ignored. Each value option (String; Integer; Float; Boolean; Offset Date-Time; Local Date-Time; Local Date; Local Time; Array; Inline Table) has additional specific parameters. A few highlights include that String must be UNICODE, Date options must comply with <a href="https://datatracker.ietf.org/doc/html/rfc3339">RFC 3339:  Date and Time on the Internet: Timestamps</a> and Tables are defined by headers which, in addition to other goals, assist with accessibility support. In general, TOML files must be UTF-8 encoded Unicode, whitespace is ignored and TOML is case-sensitive. Also TOML files can make liberal use of comments to explain specific parts of the context to other human readers. Structurally, "a hash symbol marks the rest of the line as a comment, except when inside a string."</p>
+		</fdd:description>
+		<fdd:shortDescription>TOML (Tom's Obvious, Minimal Language) is a purposefully minimal open source configuration file format with obvious semantics designed for unambiguous human understanding.</fdd:shortDescription>
+		<fdd:productionPhase>Initial and middle state</fdd:productionPhase>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress has a small number of TOML files in its digital collections.</fdd:experience>
+		<fdd:preference>The Library of Congress has not yet expressed any format preference for configuration files.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully documented and open. Current version in 2026 is v.1.1.0 and documentation for all versions is available. There&apos;s also an active open <a href="https://github.com/toml-lang/toml/wiki">Wiki</a> for the community to catalog various TOML-related projects.
+		</fdd:disclosure>
+		<fdd:documentation>
+			<a href="https://toml.io/en/v1.1.0">TOML</a>, version 1.1.0, Dec 18, 2025. All previous specification versions fully available via <a href="https://toml.io/en/">toml.io</a> as HTML and TEXT and the <a href="https://github.com/toml-lang/toml/blob/1.1.0/toml.abnf">https://github.com/toml-lang/toml</a> GitHub repository includes information on TOML's syntax using the <a href="https://datatracker.ietf.org/doc/html/rfc5234">Augmented Backus–Naur Form (ABNF)</a> format.</fdd:documentation>
+		<fdd:adoption>
+			<p>Widely adopted. Implementations by supported version are listed in <a href="https://github.com/toml-lang/toml/wiki">GitHub</a> and include  most of the most popular programming languages such as C, C#, C++, Clojure, Dart, Elixir, Erlang, Go, Haskell, Java, JavaScript, Lua, Objective-C, Perl, PHP, Python, Ruby, Rust, Scala, SML, Swift, V and Zig among others. </p>
+			<p>One application is in the <a href="https://opensource.contentauthenticity.org/docs/rust-sdk/docs/usage">RUST Library</a>, part of the Content Authenticity Initiative (CAI) open-source SDK to implement <a href="https://c2pa.org/">Coalition for Content Provenance and Authenticity or C2PA</a>
+				<a href="https://spec.c2pa.org/specifications/specifications/2.3/specs/C2PA_Specification.html">Content Credentials</a> (v2.3 as of this writing in March 2026).</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>TOML is released under an <a href="https://github.com/toml-lang/toml/blob/main/LICENSE">MIT License</a>: a permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code. Copyright is held by Tom Preston-Werner.</fdd:licensingAndPatents>
+		<fdd:transparency>TOML must be a valid UTF-8 encoded Unicode document. Specifically this means that a file as a whole must form a well-formed code-unit sequence. Otherwise, it must be rejected (preferably) or have ill-formed byte sequences replaced with U+FFFD, as per the Unicode specification.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>The TOML format prioritizes human readability, simple syntax, and easy editing through clear key/value pairs. As plain text files, they work in any editor, avoid complex indentation issues, and map directly to dictionaries. </p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>TOML does support accessibility because, being text-based, files can be read by screen readers and complex structures can be explained with labeled comments. Also the unambiguous structure of the key-value pairs (key = value) and tables ([table]) can be easy to parse and interpret. Tables include headers which help organize information for adaptive technologies.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None</fdd:externalDependencies>
+		<fdd:techProtection>TOML does not natively support encryption or password protection although these can be enacted with external applications or tools.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>toml</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://toml.io/en/v1.1.0">specification</a>. TOML extension was first listed in <a href="https://toml.io/en/v0.5.0#filename-extension">v.0.5.0, published on 7/10/2018</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>application/toml</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>See <a href="https://www.iana.org/assignments/media-types/application/toml">IANA</a> registration dated October 21, 2024.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>TEXT</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Macintosh file type code. See <a href="https://www.iana.org/assignments/media-types/application/toml">IANA</a> registration dated October 21, 2024.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>NARA File Format Preservation Plan ID has no corresponding entry as of February 2026.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/2065</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/2065">http://www.nationalarchives.gov.uk/PRONOM/fmt/2065</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q28449455</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q28449455">https://www.wikidata.org/wiki/Q28449455</a>.
+</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>While <a href="https://www.wikidata.org/wiki/Q28449455">Wikidata</a> states that TOML is based on <a href="https://www.wikidata.org/wiki/Q1141412">INI configuration file format</a>, <a href="https://github.com/toml-lang/toml">TOML</a> declares that &quot;INI files are frequently compared to TOML for their similarities in syntax and use as configuration files. However, there is no standardized format for INI and they do not gracefully handle more than one or two levels of nesting.&quot; TOML goes on to say that there is more synergy with <fddLink id="fdd000645">YAML</fddLink> and <fddLink id="fdd000381">JSON</fddLink> but there&apos;s not a direct link. Instead, &quot;TOML shares traits with other file formats used for application configuration and data serialization, such as YAML and JSON. TOML and JSON both are simple and use ubiquitous data types, making them easy to code for or parse with machines. TOML and YAML both emphasize human readability features, like comments that make it easier to understand the purpose of a given line. TOML differs in combining these, allowing comments (unlike JSON) but preserving simplicity (unlike YAML).&quot;</p>
+		</fdd:general>
+		<fdd:history>
+			<p>
+				<a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/2065">PRONOM</a> notes the alternate name for the acronym TOML as "Tom's Own Markup Language." This is listed in the <a href="https://github.com/toml-lang/toml/commit/84db252ed19561ef6f966cb3e470f04b32800add">Initial commit</a> on GitHub from February 23, 2013 but by the publication of <a href="https://toml.io/en/v0.1.0">v.0.1.0</a> on March 17, 2023, the name had been updated to "Tom&apos;s Obvious, Minimal Language."</p>
+			<p>TOML's specification versions are all published on toml.io with a caution that "Be warned, this spec is still changing a lot. Until it's marked as 1.0, you should assume that it is unstable and act accordingly."</p>
+			<ul>
+				<li>
+					<a href="https://toml.io/en/v0.1.0">v0.1.0</a>, Feb 17, 2013</li>
+				<li>
+					<a href="https://toml.io/en/v0.2.0">v0.2.0</a>, Sept 24, 2013</li>
+				<li>
+					<a href="https://toml.io/en/v0.3.0">v0.3.0</a>, Nov 10, 2014</li>
+				<li>
+					<a href="https://toml.io/en/v0.3.1">v0.3.1</a>, Nov 11, 2014</li>
+				<li>
+					<a href="https://toml.io/en/v0.4.0">v0.4.0</a>, Feb 12, 2015</li>
+				<li>
+					<a href="https://toml.io/en/v0.5.0">v0.5.0</a>, July 10, 2018. Note: "As of version 0.5.0, TOML should be considered extremely stable. The goal is for version 1.0.0 to be backwards compatible (as much as humanly possible) with version 0.5.0. All implementations are strongly encouraged to become 0.5.0 compatible so that the transition to 1.0.0 will be simple when that happens."</li>
+				<li>
+					<a href="https://toml.io/en/v1.0.0-rc.1">v1.0.0-rc.1</a>, April 3, 2020</li>
+				<li>
+					<a href="https://toml.io/en/v1.0.0-rc.2">v1.0.0-rc.2</a>, Aug 8, 2020</li>
+				<li>
+					<a href="https://toml.io/en/v1.0.0-rc.3">v1.0.0-rc.3</a>, Oct 7, 2020</li>
+				<li>
+					<a href="https://toml.io/en/v1.0.0">v1.0.0</a>, Jan 11, 2021</li>
+				<li>
+					<a href="https://toml.io/en/v1.1.0">v1.1.0</a>, Dec 18, 2025</li>
+			</ul>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://toml.io/en/v1.1.0</link>
+					<tag>TOML specification version 1.1.0, Dec 18, 2025</tag>
+					<comment>Earlier versions also documented at https://toml.io/en/. Options for specification as both HTML and TXT</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/toml-lang/toml/wiki</link>
+					<tag>Official TOML wiki on GitHub</tag>
+					<comment>Actively maintained as of 2026.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://tom.preston-werner.com/</link>
+					<tag>Tom Preston-Werner homepage</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://datatracker.ietf.org/doc/html/rfc3339</link>
+					<tag>Date and Time on the Internet: Timestamps. IETF RFC 3339</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://datatracker.ietf.org/doc/html/rfc5234</link>
+					<tag>Augmented BNF for Syntax Specifications: ABNF. IETF RFC 5234</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://opensource.contentauthenticity.org/docs/rust-sdk/docs/usage</link>
+					<tag>CAI Using the RUST Library. Part of the Content Authenticity Initiative (CAI) open-source SDK.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://c2pa.org/</link>
+					<tag>Coalition for Content Provenance and Authenticity, or C2PA</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://spec.c2pa.org/specifications/specifications/2.3/specs/C2PA_Specification.html</link>
+					<tag>Content Credentials : C2PA Technical Specification. v2.3 (Jan 2026)</tag>
+					<comment>This specification is frequently updated as of this writing in March 2026.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.iana.org/assignments/media-types/application/toml</link>
+					<tag>IANA registration for TOML. Oct 21, 2024</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/PRONOM/fmt/2065</link>
+					<tag>PRONOM entry for fmt/2065</tag>
+					<comment>Information in PRONOM from UK National Archives about TOML. PUID: fmt/2065.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q28449455</link>
+					<tag>Wikidata entry for Q28449455</tag>
+					<comment>Information in Wikidata about TOML. Wikidata Title ID: Q28449455.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

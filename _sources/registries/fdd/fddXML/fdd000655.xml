@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000655" titleName="JPEG XT (JPEG eXTension)" shortName="JPEG XT" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>still-image</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:updates>
+			<fdd:date>2026-05-19</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Preliminary</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>JPEG XT - ISO/IEC 18477 Information technology — Scalable compression and coding of continuous-tone still images</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>High dynamic range</fdd:keyword>
+			<fdd:keyword>Image compression</fdd:keyword>
+			<fdd:keyword>Image quality assessment</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>JPEG XT (a contraction of &apos;JPEG eXTension&apos;) is a series of backward compatible extensions to the legacy <fddLink id="fdd000017">JPEG (ISO 10918)</fddLink> format and offers the ability to encode images of higher precision and higher dynamic range, and in lossy or lossless modes. JPEG XT is defined in nine parts of <a href="https://jpeg.org/jpegxt/workplan.html">ISO/IEC 18477</a> through the <a href="https://www.iso.org/committee/45316.html">ISO/IEC JTC 1/SC 29</a> working group in collaboration with Joint Photographic Experts Group (JPEG) (<a href="https://jpeg.org/about.html">jpeg.org</a>). See <a href="#sustainabilityFactors">Documentation</a> for details on the various parts that define the standard.</p>
+			<p>The unique features of JPEG XT, in addition to backwards compatibility with earlier forms of JPEG, are support for higher bit depths (9 to 16 bits), high-dynamic-range imaging, lossless compression, and representation of alpha channels.</p>
+			<p>Structurally, and in line with other forms of JPEG, JPEG XT is a subtype of the <fddLink id="fdd000079">ISO Base Media File Format or ISO BMFF</fddLink> (ISO/IEC 14496-12. Information technology -- Coding of audio-visual objects -- Part 12: ISO Base Media File Format. Part of MPEG-4) in which all data is encapsulated in boxes and the specifics for JPEG XT are defined in SO/IEC 18477I-3. The ISO_BMFF mechanism for distinguishing among file types is based on 4-character codes known as &apos;brands&apos;, either major or minor brands; brands are registered with the <a href="https://mp4ra.org/registered-types/brands">MP4 Registration Authority</a>. At or near the beginning of a file will be the mandatory file-type box, with type ftyp. This box can specify values for major-brand, minor-brand, and compatible-brands. The major brand usually implies the file extension, which in turn implies the MIME type for the file. However, as of May 2026, &apos;JPXT&apos; or JPEG XT is not registered as a brand. <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>There are three algorithms for reconstructing the HDR image (defined in ISO/IEC 18477-7) and further described in <a href="10.1109/MMUL.2016.49">JPEG XT: A New Family of JPEG Backward-Compatible Standards</a>:</p>
+			<ul>
+				<li>Profile A: Uses a simple, common logarithmic scale factor to reconstruct the HDR image from the base layer. The HDR image is described as the pixel-wise product of an inversely gammacorrected 8-bit tone-mapped image multiplied by a common scale factor, not quite unlike the RGBE format. The scale factor is encoded in logarithmic space—that is, it’s also an exponent as in the RGBE representation. In addition to the RGBE format, Profile A also includes an additive chroma residual that allows correction of color defects that might arise due to simple scaling.</li>
+				<li>Profile B: Uses a divisor image (an extension layer) scaled by a common exposure value for reconstruction. In this profile, the HDR image is described as the pixel-wise quotient of the inversely gamma-corrected tone-mapped image and a divisor image delivered by the extension layer. The output is
+additionally scaled by one common factor, the “exposure value.” </li>
+				<li>Profile C: Similar to Profile A, but employs per-component scaling factors, allowing for higher precision, often used for 12-bit extensions (8-bit legacy + 4-bit refinement). Profile C works almost like Profile A—that is, it decomposes the image into an 8-bit image and scale factors, except that here each component has its individual scale factor, whereas in Profile A, there’s only a single common scale factor. Profile C also performs the multiplication as an addition in logarithmic space. </li>
+				<li>Profile D: This profile is not for coding HDR images and does not assume the residual layer. The profile is provided only to simply extend the dynamic range of the traditional LDR image
+encoded by the L-JPEG. The choice of the profile is open to users. Each profile is differentiated by how it specifies a subset of the functional blocks for reconstructing the output HDR image.
+</li>
+			</ul>
+			<p>A fourth, Profile D, is not for coding HDR images. As <a href="https://en.wikipedia.org/wiki/JPEG_XT">Wikipedia JPEG XT</a> entry explains, "the enhancement layer is used to store extended precision of discrete cosine transform (DCT) transfer coefficients, and non-gamma transfer function is applied to increase dynamic range to 12 bits. Backward compatibility is limited because legacy decoders do not understand new EOTF curves and produce undersaturated colors. Profile D is not implemented in reference software."</p>
+			<p>As noted in <a href="10.1109/MMUL.2016.49">JPEG XT: A New Family of JPEG Backward-Compatible Standards</a>, "JPEG XT also allows mixing of profiles, so some elements from Profile C can be mixed into a Profile B configuration, or the Profile D extension of the precision of the DCT samples can improve the extension layer in Profile C. The resulting codestreams are then called "full profile"
+codestreams because their configuration exceed the constraints implied by a single profile, though
+such streams are fully covered by the JPEG XT standard." </p>
+		</fdd:description>
+		<fdd:shortDescription>JPEG XT (a contraction of JPEG eXTension) is a backwards compatible extension of JPEG with support for higher bit depths (9 to 16 bits), high-dynamic-range imaging, lossless compression, and representation of alpha channels.</fdd:shortDescription>
+		<fdd:productionPhase>May be used at any state in production (initial, middle, or final state). </fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000079</fdd:id>
+					<fdd:shortName>ISO Base Media File Format</fdd:shortName>
+					<fdd:titleName>	ISO/IEC 14496-12. Information technology -- Coding of audio-visual objects -- Part 12: ISO Base Media File Format (formal name). ISO base media file format (common name)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:shortName>JUMBF</fdd:shortName>
+					<fdd:titleName>JPEG Universal Metadata Box Format (JUMBF)</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>Not separately described at this time. The JPEG XT  file format can be used to embed JUMBF boxes in JPEG-1 images (ITU-T.81|ISO/IEC 10918-1)</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Affinity to</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000619</fdd:id>
+					<fdd:shortName>JPEG File Interchange Format Family (JFIF) </fdd:shortName>
+					<fdd:titleName>JPEG File Interchange Format Family (ISO/IEC 10918-5) </fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>JPEG XT Part 3 specifies an extensible boxed-based file format all following and future extensions of JPEG will be based on. The format specified in Part 3 is itself compatible to JFIF, ISO/IEC 10918-5, and thus can be read by all existing implementations.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>See <fddLink id="fdd000013">JPEG</fddLink>
+		</fdd:experience>
+		<fdd:preference>See <fddLink id="fdd000013">JPEG</fddLink>
+		</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully disclosed. Developed by the Joint Photographic Experts Group (JPEG) committee (ISO/IEC JTC 1/SC 29/WG 1). See <a href="https://jpeg.org/about.html">About JPEG</a>.</fdd:disclosure>
+		<fdd:documentation>JPEG XT is defined in nine parts through ISO/IEC 18477 Information technology — Scalable compression and coding of continuous-tone still images. These are updated regularly so a good place to track the most current versions is <a href="https://jpeg.org/jpegxt/workplan.html">Workplan &amp; Specs of JPEG XT</a> from jpeg.org. Links to the current ISO versions as of April 2026 are listed in <a href="#formatSpecifications">Format specifications</a>.<ul>
+				<li>ISO/IEC 18477-1:2024:
+Core coding system specification</li>
+				<li>ISO/IEC 18477-2:2016:
+Coding of high dynamic range images</li>
+				<li>ISO/IEC 18477-3:2023:
+Box file format</li>
+				<li>ISO/IEC 18477-4:2017:
+Conformance testing</li>
+				<li>ISO/IEC 18477-4:2017/Cor 1:2023:
+Conformance testing — Technical Corrigendum 1</li>
+				<li>ISO/IEC 18477-5:2018:
+Reference software</li>
+				<li>ISO/IEC 18477-6:2016:
+IDR Integer Coding</li>
+				<li>ISO/IEC 18477-7:2017:
+HDR Floating-Point Coding</li>
+				<li>ISO/IEC 18477-8:2020:
+Lossless and near-lossless coding</li>
+				<li>ISO/IEC 18477-9:2016:
+Alpha channel coding</li>
+			</ul>
+		</fdd:documentation>
+		<fdd:adoption>
+			<p>Reference software is available from both the ISO reference implementation and third party contributors on jpeg.org&apos;s <a href="https://jpeg.org/jpegxt/software.html">Software for JPEG XT</a> page.</p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>
+			<p>Starting in April 2019, <a href="https://www.sisvel.com/licensing-programmes/legacy-programs/jpeg-xt/">Sisvel</a> had licensed the JPEG-XT patents that were owned by Dolby International AB (affiliate of Dolby Laboratories, Inc.) and Trellis Europe S.r.l. but, as of 2026, this is no longer active.</p>
+		</fdd:licensingAndPatents>
+		<fdd:transparency>
+			<p>Depends upon algorithms and tools to read; will require sophistication to build tools.</p>
+			<p>JPEG XT supports encryption which is incompatible with transparency. As stated in <a href="https://jpeg.org/items/20150910_privacy_security_summary.html">JPEG Privacy and Security Abstract and Executive Summary</a>, "in a simple extension of JPEG XT, it would be only necessary to encrypt the extension layer. In the simplest possible realization, both base and extension layer would be 8 bits per component images, both encoded in JPEG — such an arrangement is already covered by JPEG XT part 6. Image regions could be pixelated or of lower quality in the base layer, while the (encrypted) extension layer would carry the differential signal between intended full-quality image and the degraded base image."</p>
+		</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>See <fddLink id="fdd000017">JPEG (ISO 10918)</fddLink> and <fddLink id="fdd000619">JFIF_Family</fddLink>
+			</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>JPEG XT has no specific attributes to support accessibility. JPEG XT allows for lossy and lossless alpha channels (transparency) in Part 9. While this is excellent for design elements like non-rectangular logos or overlapping visual elements, it does not provide semantic information for assistive technologies. <a href="../contact_format.shtml">Comments welcome</a>.</p>
+			<p>Accessibility for still image content is often supported by the use of alt text when displayed on the web. The carriage of this data is typically not embedded in the file itself but rather in the HTML code.  See W3C&apos;s <a href="https://www.w3.org/WAI/fundamentals/accessibility-principles/#alternatives">Text alternatives for non-text content</a> for more information.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None.</fdd:externalDependencies>
+		<fdd:techProtection>None.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:otherQF>
+			<fdd:factor>
+				<fdd:tag>Payload data</fdd:tag>
+				<fdd:note>Support for large payloads (sound, video, etc.) are possible but may require multiple APP11 segments (in JPEG XT) due to segment size limits, and would impact content rendering efficiency if recognized by a parser.</fdd:note>
+			</fdd:factor>
+		</fdd:otherQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See also <fddLink id="fdd000013">JPEG</fddLink>
+				</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:other>
+				<fdd:tag>Microsoft FOURCC</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>jpxt</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>
+						<a href="http://fileformats.archiveteam.org/wiki/JPEG_XT">Archive Team&apos;s JPEG XT</a> entry states that JPEG XT uses boxes/atoms format, with the brand &quot;jpxt&quot; but this brand is not registered with <a href="https://mp4ra.org/registered-types/brands">mp4ra.org</a> as of April 2026. <a href="../contact_format.shtml">Comments welcome</a>. XXXXXXXXXXXXXX - CONFIRM THIS IS CORRECT</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>NARA File Format Preservation Plan ID has no corresponding entry as of March 2026.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>PRONOM has no corresponding entry as of March 2026.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q17092932</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>Wikidata entry for JPEG XT, Q17092932</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>JPEG Universal Metadata Box Format (JUMBF) is Part 5 of the JPEG Systems standards group. JPEG Systems (ISO/IEC 19566) is &quot;a suite of standards developed by the JPEG Committee (ISO/IEC JTC1/SC29/WG1) that extend JPEG coding standards with system aspects and extensions&quot; (<a href="https://ds.jpeg.org/whitepapers/wg1n100596-100-COM-JPEG_Systems_White_Paper.pdf">JPEG White Paper, 2023</a>, p.3). As a key part of the JPEG Systems architecture, it is leveraged by several other parts to enable cross-functional and backward-compatible usage. It's box-based structure supports implementation within any other format that conforms to ISO base media file format<p/> (ISOBMFF) structure (e.g. Quicktime, MPEG, HEIC, etc). <a href="../contact_format.shtml">Comments welcome</a>. 
+		</fdd:general>
+		<fdd:history>
+			<p>The history of JPEG XT origin and development is summarized in <a href="10.1007/s11554-015-0547-x">Overview and evaluation of the JPEG XT HDR image
+compression standard</a>: "In 2012, the JPEG Committee, formally known as ISO/IEC JTC1/SC29/WG1, issued a
+‘‘call for proposals’’ to which 6 organizations responded, namely, Dolby, EPFL, University of Stuttgart, Trellis Management, VUB, and University of Warwick. As a result, JPEG XT was initiated as a new work item and a first set of requirements for its potential applications was identified. An important requirement was the possibility for any legacy JPEG decoder to be able to recover a low-dynamic-range (LDR) version of the coded HDR image, resulting in a two-layer design of a base LDR and an extension codestream. Another important requirement was to impose both base and extension codestreams to use legacy JPEG compression tools in order to facilitate implementations. Compression efficiency was also considered as a third objective." </p>
+			<p>The first edition of ISO/IEC 19566-5 was published in <a href="https://www.iso.org/standard/73604.html">July 2019</a>. In June 2023, the standard was revised and republished as ISO/IEC 19566-5:2023, incorporating updates and refinements based on feedback and technological advancements. The most recent amendment to the standard, ISO/IEC 19566-5:2023/Amd 1:2025, was published in 2025 and introduced support for compressed JUMBF boxes and standalone JUMBF files. <a href="../contact_format.shtml">Comments welcome</a>.</p>   </fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>JPEG XT Standards at ISO. These are updated regularly.</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://www.iso.org/standard/86515.html</link>
+							<tag>ISO/IEC 18477-1:2024 - Information technology — Scalable compression and coding of continuous-tone still images.
+Part 1: Core coding system specification</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.iso.org/standard/66070.html</link>
+							<tag>ISO/IEC 18477-2:2016
+Information technology — Scalable compression and coding of continuous-tone still images.
+Part 2: Coding of high dynamic range images</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.iso.org/standard/85637.html</link>
+							<tag>ISO/IEC 18477-3:2023
+Information technology — Scalable compression and coding of continuous-tone still images
+Part 3: Box file format</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.iso.org/standard/66072.html</link>
+							<tag>ISO/IEC 18477-4:2017
+Information technology — Scalable compression and coding of continuous-tone still images
+Part 4: Conformance testing</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.iso.org/standard/86313.html</link>
+							<tag>ISO/IEC 18477-4:2017/Cor 1:2023
+Information technology — Scalable compression and coding of continuous-tone still images — Part 4: Conformance testing
+Technical Corrigendum 1</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.iso.org/standard/66073.html</link>
+							<tag>ISO/IEC 18477-5:2018
+Information technology — Scalable compression and coding of continuous-tone still images
+Part 5: Reference software</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.iso.org/standard/67168.html</link>
+							<tag>ISO/IEC 18477-6:2016
+Information technology — Scalable compression and coding of continuous-tone still images
+Part 6: IDR Integer Coding</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.iso.org/standard/72478.html</link>
+							<tag>ISO/IEC 18477-7:2017
+Information technology — Scalable compression and coding of continuous-tone still images
+Part 7: HDR Floating-Point Coding</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.iso.org/standard/79104.html</link>
+							<tag>ISO/IEC 18477-8:2020
+Information technology — Scalable compression and coding of continuous-tone still images
+Part 8: Lossless and near-lossless coding</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://www.iso.org/standard/68664.html</link>
+							<tag>ISO/IEC 18477-9:2016
+Information technology — Scalable compression and coding of continuous-tone still images
+Part 9: Alpha channel coding</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <a href="https://jpeg.org/jpegxt/workplan.html">Workplan &amp; Specs of JPEG XT</a> from jpeg.org for current versions and ISO document status</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000013">JPEG</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.cl.cam.ac.uk/~rkm38/pdfs/mantiuk2016fine_tune_jpegxt.pdf</link>
+					<tag>Fine-Tuning JPEG-XT Compression Performance Using Large-Scale Objective Quality Testing
+</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>10.1007/s11554-015-0547-x</link>
+					<tag>Artusi, A., Mantiuk, R.K., Richter, T. et al. Overview and evaluation of the JPEG XT HDR image compression standard. J Real-Time Image Proc 16, 413–428 (2019).</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>10.1109/MMUL.2016.49</link>
+					<tag>T. Richter, A. Artusi and T. Ebrahimi, &quot;JPEG XT: A New Family of JPEG Backward-Compatible Standards,&quot; in IEEE MultiMedia, vol. 23, no. 3, pp. 80-88, July-Sept. 2016</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>10.1109/MSP.2015.2506199</link>
+					<tag>JPEG XT: A Compression Standard for HDR and WCG Images (Standards in a Nutshell). Alessandro Artusi, Rafal K. Mantiuk, Thomas Richter, Pavel Korshunov, Philippe Hanhart, Touradj Ebrahimi, Massimiliano Agostinelli. </tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.iaeng.org/publication/WCE2015/WCE2015_pp552-556.pdf</link>
+					<tag>Performance Evaluation of JPEG XT Standard
+for High Dynamic Range Image Coding. Seungcheol Choi, Oh-Jin Kwon, Dukhyun Jang, and Seokrim Choi. Proceedings of the World Congress on Engineering 2015 Vol I.
+WCE 2015, July 1 - 3, 2015, London, U.K.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>10.1109/ACCESS.2018.2793228
+</link>
+					<tag>Improvement of JPEG XT Floating-Point HDR
+Image Coding Using Region Adaptive Prediction. Oh-Jin Kwon, Seungcheol Choi, and Dongkyoo Shin. IEEE Access. VOLUME 6, 2018</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://fileformats.archiveteam.org/wiki/JPEG_XT</link>
+					<tag>Just Solve The File Format Problem: JPEG XT entry</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q17092932</link>
+					<tag>Wikidata entry for Q17092932</tag>
+					<comment>Information in Wikidata about JPEG-XT. Wikidata Title ID: Q17092932.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://mp4ra.org/registered-types/brands</link>
+					<tag>MP4
+Registration Authority - Brands</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.sisvel.com/licensing-programmes/legacy-programs/jpeg-xt/</link>
+					<tag>Sisvel Legacy programs: JPEG XT</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

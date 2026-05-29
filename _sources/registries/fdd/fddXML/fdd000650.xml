@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000650" titleName="EA-PDF: Archival Email Format
+Based on PDF/A" shortName="EA-PDF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd=".\fdd.xsd" xsi:schemaLocation=".\fdd.xsd fdd.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>text</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:gdfrBasis>symbolic</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2026-03-20</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>EA-PDF: Archival Email Format
+Based on PDF/A </fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>Portable Document Format (PDF)</fdd:keyword>
+			<fdd:keyword>PDF/A</fdd:keyword>
+			<fdd:keyword>email formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>EA-PDF, an acronym for "Email Archiving in PDF", is a profile of <fddLink id="fdd000318">PDF/A</fddLink> specifically designed to meet the complex needs of archiving email messages and mailboxes. Its goal is to define a mechanism for offline preservation of email source data together with a reliable static rendition of the email data. A note on terminology: The term 'EA-PDF' is used as an all-encompassing term and includes the file format, software, use cases/ scenarios, etc while the term 'PDF/mail' represents just the file format. The EA-PDF <a href="https://pdfa.org/download-area/specifications/EA-PDF-v1.pdf">specification</a> was developed under the auspices of the PDF Association&apos;s <a href="https://pdfa.org/community/ea-pdf-lwg/">EA-PDF LWG (Email Archiving in PDF Liaison Working Group)</a>.  All EA-PDF files must conform to PDF/A-3a, PDF/A-3u (described collectively in this resource on the <fddLink id="fdd000360">PDF/A-3</fddLink> page), <fddLink id="fdd000532">PDF/A-4</fddLink>, <fddLink id="fdd000652">PDF/A-4f</fddLink> or <fddLink id="fdd000651">PDF/A-4e</fddLink>. In addition, valid EA-PDF file is always a valid PDF according to ISO 32000.</p>
+			<p>A note on terminology: The term 'EA-PDF' is used as an all-encompassing term and includes the file format, software, use cases/scenarios, etc while the term 'PDF/mail' represents just the file format. See <a href="#sign">File type Signatures</a> for more information about this labeling and <a href="#notes">Notes</a> for an overview of the history of the specification.</p>
+			<p>The main advantage of EA-PDF is its ability to leverage the structure and widespread adoption of the <fddLink id="fdd000030">PDF</fddLink> format across many domains and sectors. Some of the <a href="https://pdfa.org/ea-pdf-archiving-email-using-pdf/">key features</a> of EA-PDF include</p>
+			<ul>
+				<li>Email source data can be included with each email associated with PDF renderings, allowing for easy visualization, programmatic search, and other research activities using existing PDF technology</li>
+				<li>A static rendering in a PDF file allows for downstream distribution, markup, or modification without compromising or sharing source data and without having to support numerous proprietary email formats</li>
+				<li>The ability to package and preserve hierarchical groups of messages, an entire account, or even multiple accounts into a single PDF via PDF’s unique <a href="https://pdfa.org/pdf-ux-collections/">Collections</a> feature (which are also known as &apos;<fddLink id="fdd000620">portfolios</fddLink>&apos;, &apos;binders&apos; and &apos;packages&apos;</li>
+				<li>Support for unsent and incomplete emails such as drafts</li>
+				<li>Control over which URL links in emails should be active to address security and tracking concerns&quot; among others.</li>
+			</ul>
+			<p>EA-PDF defines a set of profiles &quot;to meet the various requirements discussed in
+the LWG that reflected specific email archival scenarios and use-cases&quot; (as described in section 3.2). </p>
+			<ul>
+				<li>PDF/mail-1s: “Single” in which a single email message preserved as a single EA-PDF
+file without a folder, where pages in the PDF are a visual
+representation of only that email’s content or context.
+The original raw source email asset(s) are always
+embedded and other files, such as email attachments,
+are also embedded (if present).</li>
+				<li>PDF/mail-1si:
+“Single,
+isolated” in which a single email message preserved as a
+single EA-PDF file, where pages in the PDF are a visual
+representation of the email’s content or context, but the
+original raw source email asset(s) are not embedded (i.e.,
+are not faithfully preserved). Other files may be
+embedded (e.g. email attachments).</li>
+				<li>PDF/mail-1m: 
+“Multiple” in which multiple emails are preserved as a single EA-PDF
+file without folder structure, where pages in the PDF are
+a visual representation of the content or context of the
+emails. The original raw source email assets are always
+embedded (faithfully preserved).</li>
+				<li>PDF/mail-1mi:
+“Multiple,
+isolated” in which multiple emails are preserved as a single
+EA-PDF file without folder structure, where pages in the
+PDF are a visual representation of the content or context
+of the emails. The original raw source email assets are
+not embedded, however other files may be embedded
+(e.g. email attachments).</li>
+				<li>PDF/mail-1c:
+“Container” in which an EA-PDF “structured container” (also known as a <fddLink id="fdd000620">PDF Portfolio</fddLink>) for one or
+more embedded EA-PDF files, each of which may be any
+other PDF/mail-1 profile. PDF/mail-1c files can
+replicate complex folder hierarchies typically found in
+modern email clients, email formats, or file systems. The
+container that is the PDF/mail-1c file does not contain
+pages representing content of preserved emails – all PDF
+representations of email content are in the embedded
+EA-PDF files stored within the container PDF collection.
+Pages in the container PDF represent the context of the
+collection.</li>
+				<li>PDF/mail-1ci:
+“Container,
+isolated” in which an EA-PDF “structured container”
+for one or more embedded EA-PDF files, each of which
+may be any other PDF/mail-1 profile. PDF/mail-1ci
+files can replicate complex folder hierarchies typically
+found in modern email clients, email formats, or file
+systems. The container that is the PDF/mail-1ci file
+does not contain pages representing content of
+preserved emails – all email content is in the embedded
+EA-PDF files stored within the container PDF collection.
+Pages in the container PDF represent the context of the
+collection.</li>
+			</ul>
+			<p>Structurally, EA-PDF (like PDF) requires that the logical structure tree root structure element is
+always a single Document structure element, representing the entire EA-PDF file: &quot;For PDF/mail-1{s, si, m, mi} files, every email is represented by a nested Document
+structure element, directly nested below the top-level Document structure element that
+represents the PDF/mail-1 file itself. Again, each email may use the Mail_Message
+custom EA-PDF tag which is always role mapped to Document. In PDF/mail-1{c, ci} container files this top-level Document structure element represents
+the container PDF and its related Content Sets (not emails, as these are in the embedded
+files in the collection). Thus the Mail_Message custom EA-PDF tag will never occur in
+PDF/mail-1{c, ci} container files.&quot; (Specification p. 28).</p>
+			<p>EA-PDF also defines a set of common email metadata header fields and related attributes of each email labeled as <i>Core Fields</i> in Table 4. These include To, From, Sent, Subject, CC, BCC, and more. Core Fields names usually correspond to the matching email header field name, however EA-PDF Creation Software may add additional email header fields prefixed with “Raw-” to indicate a raw value from the email that would otherwise be an error when using a more rigid or structured XMP data type.</p>
+		</fdd:description>
+		<fdd:shortDescription>EA-PDF is a profile of PDF/A that supports email archiving needs including specific metadata elements, page and content sets, hyperlinks and attachments.</fdd:shortDescription>
+		<fdd:productionPhase>A final-state format for delivery to end users and long-term preservation.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000360</fdd:id>
+					<fdd:shortName>PDF/A-3</fdd:shortName>
+					<fdd:titleName>PDF/A-3, PDF for Long-term Preservation, Use of ISO 32000-1, With Embedded Files</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>As defined in the EA-PDF specification, all EA-PDF files must conform to either PDF/A-3a, PDF/A-3u, PDF/A-4, PDF/A-4f, or PDF/A-4e.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000532</fdd:id>
+					<fdd:shortName>PDF/A-4</fdd:shortName>
+					<fdd:titleName>PDF/A-4, PDF for Long-term Preservation, Use of ISO 32000-2</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>As defined in the EA-PDF specification, all EA-PDF files must conform to either PDF/A-3a, PDF/A-3u, PDF/A-4, PDF/A-4f, or PDF/A-4e.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000651</fdd:id>
+					<fdd:shortName>PDF/A-4e</fdd:shortName>
+					<fdd:titleName>PDF/A for Engineering, Use of ISO 32000-2 (PDF/A-4): ISO 19005-4, Annex B</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>As defined in the EA-PDF specification, all EA-PDF files must conform to either PDF/A-3a, PDF/A-3u, PDF/A-4, PDF/A-4f, or PDF/A-4e.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Subtype of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000652</fdd:id>
+					<fdd:shortName>PDF/A-4f</fdd:shortName>
+					<fdd:titleName>PDF/A for Embedded Files, Use of ISO 32000-2 (PDF/A-4): ISO 19005-4, Annex A</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>As defined in the EA-PDF specification, all EA-PDF files must conform to either PDF/A-3a, PDF/A-3u, PDF/A-4, PDF/A-4f, or PDF/A-4e.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000620</fdd:id>
+					<fdd:shortName>PDF_Portfolio</fdd:shortName>
+					<fdd:titleName>PDF Portfolio</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>EA-PDF can be supported in a “structured container” (also known as a &apos;PDF Portfolio&apos;) for one or
+more embedded EA-PDF files, each of which may be any
+other PDF/mail-1 profile. PDF/mail-1c files can
+replicate complex folder hierarchies typically found in
+modern email clients, email formats, or file systems. The
+container that is the PDF/mail-1c file does not contain
+pages representing content of preserved emails – all PDF
+representations of email content are in the embedded
+EA-PDF files stored within the container PDF collection.
+Pages in the container PDF represent the context of the
+collection.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress is represented on the working group for PDF/A (<a href="https://www.iso.org/committee/53674.html">ISO/TC 171/SC 2/WG 5</a>) as well as the PDF Association&apos;s <a href="https://pdfa.org/community/ea-pdf-lwg/">EA-PDF (Email Archiving in PDF) LWG</a>. As of December 2025, the Library does not have EA-PDF files in its collections.</fdd:experience>
+		<fdd:preference>See the Library of Congress Recommended Formats Statement (RFS) for format preferences related to <a href="https://www.loc.gov/preservation/resources/rfs/email.html">email</a>. The metadata section is influenced by compliance with EA-PDF metadata requirements.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>
+			<p>Fully documented. Specification version 1.0 was published by the PDF Association in February 2025.  Specification was developed under the auspices of the PDF Association&apos;s <a href="https://pdfa.org/community/ea-pdf-lwg/">EA-PDF (Email Archiving in PDF) LWG</a> which was part of a 24-month-long project led by the University of Illinois funded by a National Leadership Grant from the Institute of Museum and Library Services. Participation in the EA-PDF LWG is open to members of the PDF Association as well as to experts who wish to participate as either Invited or Liaison experts, subject to PDF Association’s <a href="https://pdfa.org/intellectual-property-rights-ipr-policy/">IPR Policy</a>. </p>
+		</fdd:disclosure>
+		<fdd:documentation>
+			<p>
+				<a href="https://pdfa.org/download-area/specifications/EA-PDF-v1.pdf">EA-PDF: An archival email format based on PDF/A</a>, version 1.0 February 2025.</p>
+		</fdd:documentation>
+		<fdd:adoption>Adoption is not wide-spread as of December 2025 in part because tools are still developing. One example is Big Faceless Organization&apos;s (BFO) support in <a href="https://bfo.com/blog/2025/08/18/email_archiving_with_ea_pdf_and_bfo_publisher/">BFO Publisher</a>. Another draft project is University of Illinois Urbana-Champaign&apos;s
+(UIUC) <a href="https://github.com/UIUCLibrary/ea-pdf">Email2Pdf</a> to transform "EML or MBOX into archival PDF files that conform to the EA-PDF specification as output."</fdd:adoption>
+		<fdd:licensingAndPatents>The EA-PDF specification is under a <a href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a> and also notes that &quot;vendors own their respective copyrights and trademarks wherever they are mentioned. Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. The PDF Association shall not be held responsible for identifying any or all such patent rights. Users of this document are responsible for independently verifying any and all information.&quot; </fdd:licensingAndPatents>
+		<fdd:transparency>See <fddLink id="fdd000318">PDF/A_family</fddLink>. For PDF/A-3 and PDF/A-4, transparency and characterization of non-PDF/A-4 embedded files are primary concerns for long-term preservation.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>EA-PDF defines a set of <i>core fields</i> in email headers (see table 4).</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>EA-PDF extends PDF’s Logical Structure and Tagged PDF features to provide enhanced semantics with improved accessibility and reuse of extracted content with an optional custom EA-PDF tag-set with specific role mapping back to the PDF 1.7 standard structure tag set. These custom tags (structure element types) semantically mark up PDF page content streams to identify Core Field information using a custom PDF 2.0 namespace.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>See <fddLink id="fdd000318">PDF/A_family</fddLink>.</fdd:externalDependencies>
+		<fdd:techProtection>See <fddLink id="fdd000318">PDF/A_family</fddLink>.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:textQF>
+			<fdd:normalText>See <fddLink id="fdd000318">PDF/A_family</fddLink>.</fdd:normalText>
+			<fdd:structure>See <fddLink id="fdd000318">PDF/A_family</fddLink>.</fdd:structure>
+			<fdd:layout>See <fddLink id="fdd000318">PDF/A_family</fddLink>.</fdd:layout>
+			<fdd:mathDiag>See <fddLink id="fdd000318">PDF/A_family</fddLink>.</fdd:mathDiag>
+			<fdd:beyondText>See <fddLink id="fdd000318">PDF/A_family</fddLink>.</fdd:beyondText>
+		</fdd:textQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>pdf</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>The specification does not indicate that a different extension should be used to identify EA-PDF.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000318">PDF/A_family</fddLink>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>ASCII: %PDF-1.7</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From the EA-PDF specification, section 9.1. &quot;The PDF header SHALL be either “%PDF-1.7” or “%PDF-2.0” and the declared PDF version number
+of an EA-PDF file SHALL be either <fddLink id="fdd000277">PDF 1.7</fddLink> or <fddLink id="fdd000474">PDF 2.0</fddLink>...PDF version requirement accounts for the Document catalog Version key (if present) and file header.&quot;</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>ASCII: %PDF-2.0</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>From the EA-PDF specification, section 9.1. &quot;The PDF header SHALL be either “%PDF-1.7” or “%PDF-2.0” and the declared PDF version number
+of an EA-PDF file SHALL be either <fddLink id="fdd000277">PDF 1.7</fddLink> or <fddLink id="fdd000474">PDF 2.0</fddLink>...PDF version requirement accounts for the Document catalog Version key (if present) and file header.&quot;</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>PDF/mail</fdd:sigValue>
+						<fdd:sigValue>PDF/mail-1</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>The specification notes that "the term “EA-PDF” is used as an all-encompassing term and includes the file format, software, use cases/ scenarios, etc. The moniker “PDF/mail” represents just the file format defined by this industry specification and any later editions. The term “PDF/mail-1” refers to this first edition of PDF/mail - future versions may use other versions (such as PDF/mail-2, PDF/mail-3, etc.) in a similar manner to the way that ISO subsets are versioned. If this industry specification is ever standardized by ISO, “PDF/M” would be the most likely equivalent ISO moniker following the current principles of PDF naming conventions (cf. “PDF/raster” and “PDF/R”)."</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Indicator for profile, level, version, etc.</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>The standard specifies that the PDF/A version and conformance level of a file shall be specified using the PDF/A Identification extension schema defined in the standard.  This schema has two mandatory elements: pdfaid:part (integer), pdfaid:rev (4-character integer of the date of publication or revision). A PDF/A-4 file should have the integer value 4 for pdfaid:part. Claim to conformance with one of the profiles defined in Annexes A and B is made in the optional pdfaid:conformance by the following single characters: E for PDF/A-4e and F for PDF/A-4f.  E and F are the only valid values for pdfaid:conformance in a PDF/A-4 file. Note that pdfaid:conformance is not mandatory for PDF/A-4 as it is for previous versions of PDF/A.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000532">PDF/A-3</fddLink> for NARA File Format Preservation Plan ID values for PDF/A-3a and PDF/A-3u. There is no separate entry for EA-PDF.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000532">PDF/A-4</fddLink> for NARA File Format Preservation Plan ID values for PDF/A-4. There is no separate entry for EA-PDF.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000532">PDF/A-4</fddLink>. There is no separate entry for EA-PDF.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000651">PDF/A-4e</fddLink>. There is no separate entry for EA-PDF.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000652">PDF/A-4f</fddLink>. There is no separate entry for EA-PDF.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000532">PDF/A-4</fddLink>. There is no separate entry for EA-PDF.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000651">PDF/A-4e</fddLink>. There is no separate entry for EA-PDF.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+					<fdd:note>See <fddLink id="fdd000652">PDF/A-4f</fddLink>. There is no separate entry for EA-PDF.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:history>
+			<p>As summarized in <a href="https://pdfa.org/wp-content/uploads/2021/10/EA-PDF-Narrative.pdf">Email Archiving in PDF (EA-PDF): From Initial Specification to Community of Practice</a>, &quot;This 24-month-long project builds upon the recently released recommendation from a planning project
+that was supported by the Andrew W. Mellon Foundation: <a href="https://www.ideals.illinois.edu/handle/2142/109251">A Specification for Using PDF to Package and Represent Email</a> (EA-PDF Working Group, 2021). That report provides summary recommendations from a multi-institution working group and was refined through community feedback. The project now
+proposed will fulfill those recommendations by providing tangible outcomes that can standardize
+preservation-oriented email archiving in the mainstream of archival practice.&quot;</p>
+			<p>The concepts about an email-specific profile of PDF was first surfaced in the Mellon Foundation and Digital Preservation Coalition sponsored project, <a href="https://web.archive.org/web/20161224153423/https://mellon.org/resources/news/articles/mellon-foundation-and-digital-preservation-coalition-sponsor-formation-task-force-email-archives/">Task Force on Technical Approaches for Email Archives</a> (link via Internet Archive). The project's final report published by CLIR in 2018 <a href="https://www.clir.org/pubs/reports/pub175/">The Future of Email Archives: A Report from the Task Force on Technical Approaches for Email Archives</a> (p, 82-83) states a goal to "Improve Options for PDF in Email-Archiving Workflows" as a High-Impact/Long-Term Activities:  "Options to output email messages to PDF are well integrated into many common email clients. However, important header fields and other key technical metadata are often lost or concealed in the format migration. In addition, message threading and connections to attachments are terminated. Improving the technical capability of PDF software, especially software embedded in email clients, to address issues relevant to email archiving would simplify workflows at a large scale.
+Activity: Work with the PDF Association, the international vendor-neutral organization focused on PDF software and tools, to identify software requirements for email-archiving features for the PDF format. Planned action: Task force members will contact the PDF Association to start the project in the fall of 2018."</p>
+			<p> See also <fddLink id="fdd000318">PDF/A_family</fddLink>, <fddLink id="fdd000360">PDF/A-3</fddLink>, <fddLink id="fdd000651">PDF/A-4e</fddLink> and <fddLink id="fdd000652">PDF/A-4f</fddLink>.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://pdfa.org/resource/ea-pdf/</link>
+					<tag>PDF Association EA-PDF Working Group: EA-PDF v1.0 Specification. Feb 2025</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000360">PDF/A-3</fddLink>, <fddLink id="fdd000532">PDF/A-4</fddLink>, <fddLink id="fdd000631">PDF/A-4e</fddLink> and <fddLink id="fdd000632">PDF/A-4f</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>See also <fddLink id="fdd000360">PDF/A-3</fddLink>, <fddLink id="fdd000532">PDF/A-4</fddLink>, <fddLink id="fdd000631">PDF/A-4e</fddLink> and <fddLink id="fdd000632">PDF/A-4f</fddLink>.</fdd:intro>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://hdl.handle.net/2142/109251</link>
+					<tag>A specification for using PDF to package and represent email. EA-PDF Working Group. Jan 2021</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url/>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/UIUCLibrary/ea-pdf</link>
+					<tag>Email2Pdf: Code for Creating Email Archives Conforming to the EA-PDF (PDF/mail) Specification</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.clir.org/pubs/reports/pub175/</link>
+					<tag>The Future of Email Archives: A Report from the Task Force on Technical Approaches for Email Archives</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://pdfa.org/archiving-email-into-pdf-containers-a-mellon-foundation-project</link>
+					<tag>Archiving email into PDF containers: A Mellon Foundation project. Duff Johnson. PDF Association. July 10, 2019</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://doi.org/10.7207/twgn21-08</link>
+					<tag>DPC Technology Watch
+Guidance Note
+July 2021: Preserving Email</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://councilofstatearchivists.app.box.com/s/h3c3c0vgpqhl0wro6ab4ffw6fehzud71</link>
+					<tag>Be Prepared
+Managing and Preserving Email in
+State and Territorial Governments
+Email Archives: Building Community and Capacity (EABCC) Grant, University of Illinois &amp; Mellon Foundation
+C. March 2023</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
