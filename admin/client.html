@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>PKCE Client</title>
+  </head>
+  <body>
+      Loading ...
+      <script>
+      
+          let client_config = {
+              github_client_id : 'Ov23li5dqv19qNMqvwlK',
+              apps_script_url : 'https://script.google.com/macros/s/AKfycbxRMITDomFWN8DwHDjJKQhHzP9itBeRo8AXuW7wl_IzH4I-kr_F3NklKOL4Ot7PNtwP/exec',
+              pkce_client_endpoint : 'https://digipres.org/admin/client.html'
+          }        
+      
+          const getParams = function (url) {
+            var params = {}
+            var parser = document.createElement('a')
+            parser.href = url
+            var query = parser.search.substring(1)
+            var vars = query.split('&')
+            for (var i = 0; i < vars.length; i++) {
+              var pair = vars[i].split('=')
+              params[pair[0]] = decodeURIComponent(pair[1])
+            }
+            return params
+          }
+          
+          const params = getParams(window.location.href) 
+          
+          if(params.code && params.state && params.state == localStorage.getItem("pkce_state")){    
+          
+                  const data = new URLSearchParams({
+                      grant_type: "authorization_code",
+                      code: params.code,
+                      client_id: client_config.github_client_id,
+                      redirect_uri: client_config.pkce_client_endpoint,
+                      code_verifier: localStorage.getItem("pkce_code_verifier")
+                  })                  
+
+                  localStorage.removeItem("pkce_state");
+                  localStorage.removeItem("pkce_code_verifier");
+
+                  fetch(client_config.apps_script_url, {
+                      body: data,
+                      headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                      },
+                      method: "post",
+                  })
+                  .then(function (response) {
+                        if (response.ok) {
+                          return response.text();
+                        } else {
+                          return Promise.reject(response);
+                        }
+                  }).then(function (data) {
+                        console.log(data);
+                        let authorization = ``
+                        let json = JSON.parse(data)
+                        if(json.access_token){
+                            authorization = `authorization:github:success:{"token":"${json.access_token}","provider":"github"}`
+                            console.log('authorization',authorization);
+                        }else{
+                            authorization = `authorization:github:error:${data}`
+                            console.log('authorization',authorization);
+                            alert(authorization)
+                        }		
+                        const receiveMessage = (message) => {
+                          window.opener.postMessage(authorization,message.origin);
+                          window.removeEventListener("message", receiveMessage, false);
+                        }
+                        window.addEventListener("message", receiveMessage, false);
+                        window.opener.postMessage("authorizing:github", "*");                        	
+                  }).catch(function (err) {
+                          console.warn('Something went wrong.', err);
+                  });
+          
+          } else if(params.provider == 'github'){
+                    
+            
+                function generateRandomString() {
+                  var array = new Uint32Array(28);
+                  window.crypto.getRandomValues(array);
+                  return Array.from(array, dec => ('0' + dec.toString(16)).substr(-2)).join('');
+                }
+
+                function sha256(plain) {
+                  const encoder = new TextEncoder();
+                  const data = encoder.encode(plain);
+                  return window.crypto.subtle.digest('SHA-256', data);
+                }
+
+                function base64urlencode(str) {
+                  return btoa(String.fromCharCode.apply(null, new Uint8Array(str)))
+                    .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+                }
+
+                async function pkceChallengeFromVerifier(v) {
+                  hashed = await sha256(v);
+                  return base64urlencode(hashed);
+                }
+                
+                (async () => {
+                
+                    var code_verifier = generateRandomString();
+                    var code_challenge = await pkceChallengeFromVerifier(code_verifier); 
+                    var state = generateRandomString();
+                    
+                    localStorage.setItem("pkce_code_verifier", code_verifier);
+                    localStorage.setItem("pkce_state", state);           
+                    
+                    
+                    var url = client_config.apps_script_url
+                        + '?response_type=code'
+                        + '&client_id='+encodeURIComponent(client_config.github_client_id)
+                        + '&scope='+encodeURIComponent('repo')
+                        + '&redirect_uri='+encodeURIComponent(client_config.pkce_client_endpoint)  
+                        + "&code_challenge="+encodeURIComponent(code_challenge)
+                        + "&code_challenge_method=S256"                
+                        + "&state="+encodeURIComponent(state)      
+                        
+                    window.location.href = url   
+                })()  
+            
+          }     
+      </script>
+  </body>
+</html>
