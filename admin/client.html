@@ -31,7 +31,8 @@
           
           const params = getParams(window.location.href) 
           
-          if(params.code && params.state && params.state == localStorage.getItem("pkce_state")){    
+          if(params.code && params.state && params.state == localStorage.getItem("pkce_state")){
+            console.log("auth check state")
           
                   const data = new URLSearchParams({
                       grant_type: "authorization_code",
@@ -53,8 +54,10 @@
                   })
                   .then(function (response) {
                         if (response.ok) {
+                            console.log("Got an OK");
                           return response.text();
                         } else {
+                            console.log(`Got a error! ${response.status}: ${response.text()}`)
                           return Promise.reject(response);
                         }
                   }).then(function (data) {
@@ -80,7 +83,7 @@
                   });
           
           } else if(params.provider == 'github'){
-                    
+            console.log("GitHub parameter state...")
             
                 function generateRandomString() {
                   var array = new Uint32Array(28);
@@ -126,7 +129,11 @@
                     window.location.href = url   
                 })()  
             
-          }     
+          } else {
+            console.log("Unexpected state!");
+            console.log(localStorage.getItem("pkce_state"));
+            console.log("END")
+          }
       </script>
   </body>
 </html>
