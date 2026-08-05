@@ -73,10 +73,12 @@
                             alert(authorization)
                         }		
                         const receiveMessage = (message) => {
+                            console.log(`Received ${message} and posting ${authorization} to ${window.opener}`);
                           window.opener.postMessage(authorization,message.origin);
                           window.removeEventListener("message", receiveMessage, false);
                         }
                         window.addEventListener("message", receiveMessage, false);
+                        console.log(`Posting authorizing:github message to ${window.opener}...`)
                         window.opener.postMessage("authorizing:github", "*");                        	
                   }).catch(function (err) {
                           console.warn('Something went wrong.', err);
