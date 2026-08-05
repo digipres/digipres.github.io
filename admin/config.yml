@@ -26,7 +26,7 @@ backend:
   # This enables contribution from non-repo-owners, but only works on GitHub:
   # https://decapcms.org/docs/open-authoring/
   open_authoring: true
-  # Authentication using https://github.com/nuzulul/decap-cms-google-apps-script
+  # Authentication assisted by https://github.com/nuzulul/decap-cms-google-apps-script
   base_url: https://www.digipres.org # PKCE client.html hostname (just the base domain, no path)
   auth_endpoint: /admin/client.html # PKCE client.html path
 
@@ -277,7 +277,7 @@ collections:
   media_folder: '.'
   public_folder: '.'
   i18n: false
-  summary: '{{title}} : {{start}} - {{end}}'
+  summary: '{{title}} ({{start}} - {{end}})'
   filter: {field: "type", value: "workflow-webinar"}
   fields:
   - {label: Title, name: title, widget: string, default: ""}
@@ -312,7 +312,7 @@ collections:
     required: false
     default: []
     fields:
-      - {label: Title, name: title, widget: string, default: ""}
+      - {label: Title, name: title, widget: string, required: true}
       - label: "Date"
         name: "date"
         widget: "datetime"
@@ -377,6 +377,11 @@ collections:
               config:
                 multiple: false
         - {label: Recording URL, name: recording_url, widget: string, required: false}
+        - label: Link
+          name: link
+          widget: string
+          required: false
+          hint: "A URL to any web page with further information."
 #        - label: Workflows
 #          name: workflows
 #          widget: relation
@@ -386,11 +391,6 @@ collections:
 #          search_fields: ['title']
 #          value_field: '{{slug}}'
 #          display_fields: ['title']
-        - label: Link
-          name: link
-          widget: string
-          required: false
-          hint: "A URL to any web page with further information."
       
 - name: gotos
   label: 'GOTOs'
