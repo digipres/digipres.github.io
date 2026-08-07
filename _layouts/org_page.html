@@ -27,26 +27,16 @@ layout: simple_page
       <td>{{ page.location }}</td>
     </tr>
     <tr>
-      <th scope="row">Digital Preservation Policy</th>
-      <td>{% if page.policy_url %}<a href="{{ page.policy_url }}" target="_blank">View</a>{% endif %}</td>
-    </tr>
-    <tr>
-      <th scope="row">Digital Preservation Strategy</th>
-      <td>{% if page.strategy_url %}<a href="{{ page.strategy_url }}" target="_blank">View</a>{% endif %}</td>
-    </tr>
-    <tr>
       <th scope="row">Workflow Webinars</th>
       <td>{% include webinars_by_org.html org=page %}</td>
     </tr>
     <tr>
-      <th scope="row">Workflows</th>
-      <td>{% include workflows_by_org.html org=page %}</td>
+      <th scope="row">Links</th>
+      <td>{% include links_by_org.html org=page %}</td>
     </tr>
   </tbody>
 </table>
 
 <p class="text-end">
-<a href="https://digipres.net/admin/#/collections/organisations/entries/{{ page.path | replace: '/index.md','' | split: '/' | last }}/index" class="btn btn-secondary">Click here to update this entry</a>
+<a href="/admin/#/collections/organisations/entries/{{ page.path | replace: '/index.md','' | split: '/' | last }}/index" class="btn btn-secondary">Click here to update this entry</a>
 </p>
-
-</main>

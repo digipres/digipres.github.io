@@ -14,4 +14,4 @@ links:
     type:
       - policy
 ---
-See [Digital Preservation | Cambridge University Library](https://www.lib.cam.ac.uk/digitalpreservation) for more information
+See [here](https://www.lib.cam.ac.uk/digitalpreservation) for more information
