@@ -156,6 +156,38 @@ collections:
     widget: string
     required: false
     hint: "The URL of a published strategy that covers digital preservation at this organisation."
+  - label: Links
+    label_singular: Link
+    name: links
+    widget: list
+    minimize_collapsed: false
+    collapsed: false
+    add_to_top: true
+    summary: '{{title}}'
+    fields: 
+      - name: title
+        label: Title
+        widget: string
+        required: false
+        hint: "The title of this link."
+      - name: url
+        label: URL
+        widget: string
+        required: true
+        hint: "The URL of this link."
+      - label: "Type"
+        name: type
+        widget: "select"
+        multiple: true
+        required: false
+        options:
+          - { label: "Policy", value: policy }
+          - { label: "Strategy", value: strategy }
+          - { label: "Certification", value: certification }
+    allow_add: true
+    required: false
+    hint: "The type of link, for indicating that this document defines digital preservation policies or strategies, or relates for formal certification."
+
   - label: Description
     name: body
     widget: markdown
@@ -170,7 +202,7 @@ collections:
   folder: workflows
   create: true
   delete: false
-  hide: false
+  hide: true # HIDDEN AS NOT IN USE
   path: '{{slug}}/index'
   media_folder: ''
   public_folder: ''
