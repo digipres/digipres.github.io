@@ -1,11 +1,19 @@
 from __future__ import with_statement
 from __future__ import print_function
-from urllib.request import urlretrieve
+import urllib.request
+import shutil
 import os
 
 # Download TRiD XML sigs:
 url = "https://www.loc.gov/preservation/digital/formats/fddXML.zip"
-urlretrieve(url,"fddXML.zip")
+file_name = "fddXML.zip"
+
+# Do the download:
+opener = urllib.request.build_opener()
+opener.addheaders = [('User-agent', 'Sentinel/1.0 (+https://www.digipres.org/)')]
+with opener.open(url) as response, open(file_name, 'wb') as out_file:
+    shutil.copyfileobj(response, out_file)
+
 print("Downloaded %s" % url )
 print(os.system("ls -l fddXML.zip"))
 

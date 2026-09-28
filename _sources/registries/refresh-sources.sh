@@ -2,7 +2,7 @@
 set -e
 
 cd fdd
-python download-fdd-data.py
+#python download-fdd-data.py
 cd -
 
 cd pronom
