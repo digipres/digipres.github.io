@@ -8,9 +8,12 @@ import os
 url = "https://www.loc.gov/preservation/digital/formats/fddXML.zip"
 file_name = "fddXML.zip"
 
+# Set a suitable user agent:
+UA = os.environ.get('LOC_UA', 'Sentinel/1.0 (+https://www.digipres.org/)')
+
 # Do the download:
 opener = urllib.request.build_opener()
-opener.addheaders = [('User-agent', 'Sentinel/1.0 (+https://www.digipres.org/)')]
+opener.addheaders = [('User-agent', UA)]
 with opener.open(url) as response, open(file_name, 'wb') as out_file:
     shutil.copyfileobj(response, out_file)
 

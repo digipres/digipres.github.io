@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000656" titleName="Inside-Outside-Beginning (IOB) Tag Set" shortName="IOB" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenreAndSubgenres>
+				<fdd:gdfrGenre>text</fdd:gdfrGenre>
+				<fdd:gdfrSubgenres>
+					<fdd:gdfrSubgenre>dataset</fdd:gdfrSubgenre>
+				</fdd:gdfrSubgenres>
+			</fdd:gdfrGenreAndSubgenres>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrForm>text</fdd:gdfrForm>
+		<fdd:gdfrConstraint>structured</fdd:gdfrConstraint>
+		<fdd:updates>
+			<fdd:date>2026-07-29</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>Inside-Outside-Beginning (IOB) Tag Set</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>AI</fdd:keyword>
+			<fdd:keyword>artificial intelligence</fdd:keyword>
+			<fdd:keyword>markup languages</fdd:keyword>
+			<fdd:keyword>natural language processing</fdd:keyword>
+			<fdd:keyword>named entity recognition</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>Inside-Outside-Beginning (IOB, or sometimes BIO) is a tagging format used to represent the structure of non-overlapping phrases, also called chunks or spans, in a large body of text, or corpus. It is commonly used in natural language processing tasks, such as named entity recognition (NER), to structure data for further analysis. According to the 2019 book <a href="https://www.nltk.org/book/ch07.html#iob_tags_index_term">Natural Language Processing with Python</a>, "IOB tags have become the standard way to represent chunk structures in files."</p>
+			<p>IOB tags are applied to each word in a corpus: B if the word is the beginning of a phrase, I if inside a phrase, or O if outside a phrase. IOB tags can be used on their own or together with other tags, such as <a href="https://www.nltk.org/book/ch05.html#part_of_speech_tagging_index_term">part-of-speech tags</a> or <a href="https://www.nltk.org/book/ch07.html#named_entity_recognition_index_term">named entity types</a> (e.g., person, organization, location, date, etc.).</p>
+			<p>
+				<b>Variations of IOB</b>
+			</p>
+			<p>There is no formal specification for IOB tags. They were proposed by Lance A. Ramshaw and Mitchell P. Marcus to encode base noun phrase (baseNP) chunks and documented in their 1995 paper <a href="https://aclanthology.org/W95-0107/">Text Chunking using Transformation-Based Learning</a>: "[W]e use the chunk tag set {I, O, B}, where words marked I are inside some baseNP, those marked O are outside, and the B tag is used to mark the left most item of a baseNP which immediately follows another baseNP."</p>
+			<p>Ramshaw and Marcus’ method was dubbed "IOB1" by Erik Tjong Kim Sang and Jorn Veenstra in their 1999 paper <a href="https://aclanthology.org/E99-1023/">Representing Text Chunks</a>, wherein they also propose IOB2. In IOB2, the first word of <b>all</b> noun phrase chunks receives a B tag, not just those that immediately follow another noun phrase. IOB2 is the more common variant, and according to AI expert <a href="https://mbrenndoerfer.com/writing/chunking-shallow-parsing-nlp#iob-tagging-for-chunks">Michael Brenndoerfer</a>, "All modern benchmarks use IOB2." See <a href="#notes">Notes</a> below for discussion of additional IOB variants.</p>
+			<p>
+				<b>IOB Representation</b>
+			</p>
+			<p>IOB is typically represented in a text file, separate from the corpus, using a column-based format. According to <a href="https://ifarm.nl/erikt/research/np-chunking.html">Tjong Kim Sang</a>, Ramshaw and Marcus formatted their IOB data with each line of the file containing a word from the corpus, its part-of-speech tag, its IOB tag, and three other undescribed fields. In the early 2000s, the Conference on Computational Natural Language Learning (CoNLL) had a series of shared tasks that used IOB tagging (proceedings available in the <a href="https://aclanthology.org/venues/conll/">ACL Anthology</a>), which necessitated having a common representation for IOB that would "allow for multiple annotations over the same data" and "be easily machine-processable by diverse teams and software," per the <a href="https://doi.org/10.1007/978-94-024-0881-2_3">Handbook of Linguistic Annotation</a>.</p>
+			<p>According to <a href="https://mbrenndoerfer.com/writing/bio-tagging-sequence-labeling-ner">Brenndoerfer</a>, "The CoNLL-2003 dataset... set the template that most NER datasets have followed since." The CoNLL-2003 format, as described in <a href="https://aclanthology.org/W03-0419/">Introduction to the CoNLL-2003 Shared Task: Language-Independent Named Entity Recognition</a>, contains one line for each word in the corpus with four columns, each separated by a space: the word, its part-of-speech tag, its syntactic chunk tag, and its named entity tag. Chunk and named entity tags have the format I- or B-TYPE, or O. Empty lines represent sentence boundaries.
+			</p>
+			<p>Because of their column-based representation, IOB tags can only represent non-overlapping chunks; they cannot represent nested or discontiguous chunks. Per the <a href="https://doi.org/10.1007/978-94-024-0881-2_3">Handbook of Linguistic Annotation</a>, "[The column-based format] does not readily handle hierarchical annotations (e.g., syntax trees) or annotation of discontiguous tokens. As with inline XML, co-indexing is required to specify hierarchical relations or relate discontiguous items, and such co-indexing substantially complicates the processing of documents in this format."</p>
+		</fdd:description>
+		<fdd:shortDescription>Inside-Outside-Beginning (IOB, or BIO) is the standard tagging format used to represent chunk structures from a corpus for natural language processing tasks.</fdd:shortDescription>
+		<fdd:productionPhase>May be used at any state in production (initial, middle, or final state) depending on whether the tags are applied to a corpus solely to be used for further analysis or if the tagged data is intended to be distributed and used by others.</fdd:productionPhase>
+		<fdd:relationships>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>As of this writing in July 2026, the Library of Congress is not aware of any files containing IOB tags in its collections.</fdd:experience>
+		<fdd:preference>See the Library of Congress Recommended Formats Statement (RFS) for <a href="https://www.loc.gov/preservation/resources/rfs/data.html">Datasets</a>. Text corpora annotated with IOB tags may fit these criteria depending on how the tags are represented.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Non-proprietary and not formally documented.</fdd:disclosure>
+		<fdd:documentation>See Ramshaw and Marcus&apos; <a href="https://aclanthology.org/W95-0107/">Text Chunking using Transformation-Based Learning</a> and Tjong Kim Sang and Veenstra&apos;s <a href="https://aclanthology.org/E99-1023/">Representing Text Chunks</a> papers for descriptions of IOB1 and IOB2. For documentation on CoNLL-2003 representation of IOB, consult <a href="https://aclanthology.org/W03-0419/">Introduction to the CoNLL-2003 Shared Task: Language-Independent Named Entity Recognition</a>.</fdd:documentation>
+		<fdd:adoption>According to the book <a href="https://www.nltk.org/book/ch07.html#iob_tags_index_term">Natural Language Processing with Python</a>, &quot;The most widespread file representation [of chunk structures] uses IOB tags.&quot; The authors of this book also developed the Natural Language Toolkit (NLTK), a free open-source platform for using Python to perform natural language processing tasks on corpora. The toolkit includes some existing IOB-tagged corpora, like CoNLL 2000 and 2002, and functions for working with the IOB format. According to the <a href="https://doi.org/10.1007/978-94-024-0881-2_3">Handbook of Linguistic Annotation</a>, &quot;The [CoNLL IOB] format’s simplicity, ease of processing, and human readability have made CoNLL a popular format despite the awkwardness of representing certain types of information (e.g., syntactic hierarchies). At the same time, due to its popularity, transducers to and from CoNLL format for some general-purpose formats exist.&quot; In addition to the NLTK, some natural language processing tools that can work with IOB include <a href="https://spacy.io/api/cli#convert">spaCy</a>, <a href="https://pages.nist.gov/nestor/examples/named-entities/01-BIO-format/">Nestor</a>, <a href="https://inception-project.github.io/releases/41.0/docs/user-guide.html#sect_formats">INCEpTION</a>, and <a href="https://aclanthology.org/2020.nlposs-1.16/">iobes</a>, among others.
+		</fdd:adoption>
+		<fdd:licensingAndPatents>None.</fdd:licensingAndPatents>
+		<fdd:transparency>IOB tags are human readable in a text editor.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>
+				<a href="https://en.wikipedia.org/wiki/Inside%E2%80%93outside%E2%80%93beginning_(tagging)">Wikipedia&apos;s IOB article</a> says, &quot;IOB files have no place to put commonly-needed [metadata], such as the character encoding being used, the data source, internal location-markers, and so on.&quot; The <a href="https://doi.org/10.1007/978-94-024-0881-2_3">Handbook of Linguistic Annotation</a> also points out that one disadvantage of representing IOB in a column-based format is &quot;that the columns need to be interpreted: their role is not made explicit in the representation as it is, for example, in the element names and attributes of an XML format, and users of the format need to agree on what information goes where.&quot; Supporting documentation for an annotated corpus may contain such information.</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>Other than being represented in a structured, column-based text file, IOB tags have no specific attributes to support accessibility. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+			</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None.</fdd:externalDependencies>
+		<fdd:techProtection>None.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:textQF>
+			<fdd:normalText>Text files containing IOB tags can be viewed, edited, and printed using plain text editors.</fdd:normalText>
+			<fdd:structure>IOB tags using the CoNLL-2003 format have a column-based structure with one word of the corpus per line. Columns are separated by a space. Empty lines represent sentence boundaries.</fdd:structure>
+		</fdd:textQF>
+		<fdd:datasetQF>
+			<fdd:normalDataset>All data is represented as text. The data is structured by columns as described above.</fdd:normalDataset>
+			<fdd:accessSoftware>Good support. The format&apos;s simplicity allows programming for parsing and using the data. See <a href="#sustainability">Adoption</a> for some examples of libraries that support the IOB format.</fdd:accessSoftware>
+			<fdd:dataDocumentation>Data documentation is not supported in IOB tags themselves but may be provided elsewhere in the package of an annotated corpus.</fdd:dataDocumentation>
+		</fdd:datasetQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>txt</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>No particular extension is specified or required, but .txt is often used.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>NARA File Format Preservation Plan ID has no corresponding entry as of July 2026.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>PRONOM has no corresponding entry as of July 2026.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q16963246</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q16963246">https://www.wikidata.org/wiki/Q16963246</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q134731139</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>CoNLL 2000 format. See <a href="https://www.wikidata.org/wiki/Q134731139">https://www.wikidata.org/wiki/Q134731139</a>.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>A non-exhaustive list of additional IOB variants include:<ul>
+				<li>
+					<b>IOE1</b>, where instead of tagging the first word of a noun phrase chunk B, the final word of a noun phrase chunk is tagged E only if it is immediately followed by another noun phrase chunk; and <b>IOE2</b>, where all final words of a noun phrase chunk are tagged E (proposed by Tjong Kim Sang and Veenstra in <a href="https://aclanthology.org/E99-1023/">Representing Text Chunks</a>).</li>
+				<li>
+					<b>IO</b>, where words are only tagged I or O. It is not often used since it does not allow for distinguishing between consecutive phrases.</li>
+				<li>
+					<b>IOBES</b> (or <b>BIOES</b> or <b>Start/End</b>), where any chunk containing two or more words begins and ends with B and E tags, and a chunk with a single word is tagged S; also called <b>BMEWO</b>, where M (middle) is used instead of I, and W (whole) is used instead of S; or <b>BILOU</b>, where L (last) is used instead of E, and U (unit) is used instead of S (according to Brenndoerfer in <a href="https://mbrenndoerfer.com/writing/bio-tagging-sequence-labeling-ner">BIO Tagging: Encoding Entity Boundaries for Sequence Labeling</a>).</li>
+				<li>
+					<b>BIL2</b>, where the first word of a multi-word chunk is tagged B, the last word is L, and any words in between are tagged I; additionally, one-word chunks are tagged L. This scheme was proposed by Muhammad Kamran Malik and Syed Mansoor Sarwar in <a href="https://doi.org/10.14569/IJACSA.2016.071019">Named Entity Recognition System for Postpositional Languages: Urdu as a Case Study</a> for use on postpositional languages, including Urdu, Japanese, and Hindi.</li>
+				<li>
+					<b>BMEWO+</b>, where words are also tagged with a chunk type and words outside of a phrase are tagged with the previous word's type (for more information, see the <a href="https://web.archive.org/web/20171025133835/http://alias-i.com/lingpipe/docs/api/com/aliasi/chunk/HmmChunker.html">API documentation for LingPipe</a>, link via Internet Archive).</li>
+			</ul>
+		</fdd:general>
+		<fdd:history>For a history and comparison of annotation schemes, see the chapter <a href="https://doi.org/10.1007/978-94-024-0881-2_3">Designing Annotation Schemes: From Model to Representation</a> from the Handbook of Linguistic Annotation.</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications/>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlGroup>
+					<fdd:intro>Early applications of IOB tagging</fdd:intro>
+					<fdd:urlList>
+						<fdd:urlReference>
+							<link>https://aclanthology.org/W95-0107/</link>
+							<tag>Lance Ramshaw and Mitch Marcus. 1995. "Text Chunking using Transformation-Based Learning." In Third Workshop on Very Large Corpora</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://aclanthology.org/E99-1023/</link>
+							<tag>Erik F. Tjong Kim Sang and Jorn Veenstra. 1999. "Representing Text Chunks." In Ninth Conference of the European Chapter of the Association for Computational Linguistics, pages 173–179, Bergen, Norway. Association for Computational Linguistics</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://aclanthology.org/W00-0726/</link>
+							<tag>Erik F. Tjong Kim Sang and Sabine Buchholz. 2000. "Introduction to the CoNLL-2000 Shared Task Chunking." In Fourth Conference on Computational Natural Language Learning and the Second Learning Language in Logic Workshop</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://aclanthology.org/W02-2024/</link>
+							<tag>Erik F. Tjong Kim Sang. 2002. "Introduction to the CoNLL-2002 Shared Task: Language-Independent Named Entity Recognition." In COLING-02: The 6th Conference on Natural Language Learning 2002 (CoNLL-2002)</tag>
+						</fdd:urlReference>
+						<fdd:urlReference>
+							<link>https://aclanthology.org/W03-0419/</link>
+							<tag>Erik F. Tjong Kim Sang and Fien De Meulder. 2003. "Introduction to the CoNLL-2003 Shared Task: Language-Independent Named Entity Recognition." In Proceedings of the Seventh Conference on Natural Language Learning at HLT-NAACL 2003, pages 142-147</tag>
+						</fdd:urlReference>
+					</fdd:urlList>
+				</fdd:urlGroup>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.nltk.org/book/</link>
+					<tag>Steven Bird, Edward Loper and Ewan Klein. 2019. Natural Language Processing with Python: Analyzing Text with the Natural Language Toolkit</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://mbrenndoerfer.com/writing/bio-tagging-sequence-labeling-ner</link>
+					<tag>Michael Brenndoerfer. BIO Tagging: Encoding Entity Boundaries for Sequence Labeling</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://mbrenndoerfer.com/writing/chunking-shallow-parsing-nlp</link>
+					<tag>Michael Brenndoerfer. Chunking: Shallow Parsing for Phrase Identification in NLP</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://doi.org/10.1007/978-94-024-0881-2_3</link>
+					<tag>Nancy Ide, Christian Chiarcos, Manfred Stede, and Steve Cassidy. 2017. "Designing Annotation Schemes: From Model to Representation." In Handbook of Linguistic Annotation. Springer, Dordrecht</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://inception-project.github.io/releases/41.0/docs/user-guide.html#sect_formats</link>
+					<tag>INCEpTION User Guide, Appendix C: Formats</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.stanford.edu/~jurafsky/slp3</link>
+					<tag>Daniel Jurafsky and James H. Martin. 2026. Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics, and Speech Recognition with Language Models, 3rd edition. Online manuscript released January 6, 2026</tag>
+					<comment>See Chapter 10, Sections 10.5.2 BIO Tagging and 10.5.3 Sequence Labeling.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://doi.org/10.14569/IJACSA.2016.071019</link>
+					<tag>Muhammad Kamran Malik and Syed Mansoor Sarwar. "Named Entity Recognition System for Postpositional Languages: Urdu as a Case Study." International Journal of Advanced Computer Science and Applications (IJACSA), Vol. 7, No. 10, 2016</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://cs229.stanford.edu/proj2005/KrishnanGanapathy-NamedEntityRecognition.pdf</link>
+					<tag>Vijay Krishnan and Vignesh Ganapathy. 2005. Named Entity Recognition</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://aclanthology.org/2020.nlposs-1.16/</link>
+					<tag>Brian Lester. 2020. "iobes: Library for Span Level Processing." In Proceedings of Second Workshop for NLP Open Source Software (NLP-OSS), pages 115–119, Online. Association for Computational Linguistics</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20171025133835/http://alias-i.com/lingpipe/docs/api/com/aliasi/chunk/HmmChunker.html</link>
+					<tag>LingPipe 4.1.2 API documentation, Class HmmChunker</tag>
+					<comment>Link via Internet Archive.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20170805150451/https://lingpipe-blog.com/2009/10/14/coding-chunkers-as-taggers-io-bio-bmewo-and-bmewo/</link>
+					<tag>LingPipe blog post "Coding Chunkers as Taggers: IO, BIO, BMEWO, and BMEWO+"</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://pages.nist.gov/nestor/examples/named-entities/01-BIO-format/</link>
+					<tag>Nestor output tags in IOB format for NER analysis</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://spacy.io/api/cli</link>
+					<tag>spaCy API command line interface documentation</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://ifarm.nl/erikt/research/np-chunking.html</link>
+					<tag>Erik F. Tjong Kim Sang. NP Chunking</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/Inside%E2%80%93outside%E2%80%93beginning_(tagging)</link>
+					<tag>Inside–outside–beginning (tagging), Wikipedia</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q16963246</link>
+					<tag>Wikidata entry for Q16963246</tag>
+					<comment>Information in Wikidata about Inside Outside Beginning. Wikidata Title ID: Q16963246.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q134731139</link>
+					<tag>Wikidata entry for Q134731139</tag>
+					<comment>Information in Wikidata about CoNLL 2000 format. Wikidata Title ID: Q134731139.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

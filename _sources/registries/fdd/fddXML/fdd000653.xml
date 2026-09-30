@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000653" titleName="JPEG Universal Metadata Box Format (JUMBF)" shortName="JUMBF" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd"> 
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>other</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>file-format</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>container-wrapper</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:updates>
+			<fdd:date>2026-06-22</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Partial</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>ISO/IEC 19566-5:2023. Information technologies - JPEG systems - Part 5: JPEG universal metadata box format (JUMBF)</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>container formats</fdd:keyword>
+			<fdd:keyword>wrapper formats</fdd:keyword>
+			<fdd:keyword>generic digital formats</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>JPEG universal metadata box format (JUMBF) is an <a href="https://www.iso.org/standard/84635.html">ISO/IEC standardized format</a> designed for embedding and referencing arbitrary metadata and auxiliary data in JPEG image files.  It uses a box-based hierarchical structure to store metadata, binary data, JSON, XML, UUIDs, embedded files, or other data, and supports both embedding metadata directly inside the JPEG (via <fddLink id="fdd000655">JPEG XT&apos;s</fddLink> APP11 mechanism for JPEG-1) and referencing or requesting metadata internally or externally. This structure mirrors the box-based model defined by 14496-12 ISO base media format (ISOBMFF), enabling compatibility with the JPEG family and other box-based formats.</p>
+			<p>As stated in ISO/ICE 19566-5:2023, "The annexes of this document focus on the definition of boxes. The details for embedding boxes in specific file formats are defined in the particular documents, for example ISO/IEC 15444-1 for JPEG 2000, ISO/IEC 18477-3 for JPEG-1 / <fddLink id="fdd000655">JPEG XT</fddLink> or the more generic ISO/IEC 14496-12 ISO base media format (<fddLink id="fdd000079">ISO_BMFF</fddLink>)" (ISO/ICE 19566-5:2023, page 3. Section 4.3 Boxes and superboxes). Paraphrasing the standard document, Annex A of the <a href="https://www.iso.org/standard/84635.html">2nd edition of the standard</a>, provides an informative overview of the JUMBF box file format and technical structure. Annex B describes JUMBF Content Types; Annex C describes the mechanism for referencing and requesting the embedded data, internally or externally to the image; and Annex D describes backwards compatibility and methods for embedding JUMBF Boxes using the JPEG XT Box Format (ISO/ICE 19566-5:2023, page 4). The following is a summary of the structural information defined in Annex A, as presented in the openly available sample of <a href="https://cdn.standards.iteh.ai/samples/84635/398cb1ade93f4a11a0b55ed243811ee0/ISO-IEC-19566-5-2023.pdf">ISO/ICE 19566-5:2023</a> as of June 22, 2026:</p>
+			<ul>
+				<li>A JUMBF file is organized as a hierarchy of boxes in a binary format where each box encapsulates metadata objects; JUMBF defines a specific superbox type (jumb) that contains other boxes according to the standard. See Figure A1 in the specification for a structure diagram (publicly visible in the <a href="https://cdn.standards.iteh.ai/samples/73604/1cd56426224440d1b853d42c028bfefa/ISO-IEC-19566-5-2019.pdf">2019 edition</a> sample of the standard).</li>
+				<li>Inside a jumb superbox, there is exactly one JUMBF Description Box, followed by one or more JUMBF Content Boxes that carry the metadata payload, plus an optional padding box.</li>
+				<li>This nested structure is self-describing and extensible. When embedded inside a JPEG-1 file, a JUMBF Super Box utilizes the JPEG XT Box File Format, which is identified by marker segment APP11, and is self-describing via the structural elements Description Box, content type UUID, labels, IDs etc. (See <a href="https://upcommons.upc.edu/server/api/core/bitstreams/1f5803c3-6014-4ffd-b200-8bb09ae15b4c/content">Diaz, Carlos Valverde. "JPEG Universal Metadata Box Format and JPEG Linked Media Format: a Reference Software Implementation"</a>, 2022, p. 20).</li>
+			</ul>
+		</fdd:description>
+		<fdd:shortDescription>JPEG Universal Metadata Box Format (JUMBF) is a standardized format to embed metadata and auxiliary data within or outside of JPEG image files and other box-based formats.  </fdd:shortDescription>
+		<fdd:productionPhase>May be used at any state in production (initial, middle, or final state). </fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Extension of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000079</fdd:id>
+					<fdd:shortName>ISO_BMFF</fdd:shortName>
+					<fdd:titleName>ISO Base Media File Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Extension of</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000017</fdd:id>
+					<fdd:shortName>JPEG</fdd:shortName>
+					<fdd:titleName>JPEG Image Encoding Family</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000655</fdd:id>
+					<fdd:shortName>JPEG XT</fdd:shortName>
+					<fdd:titleName>JPEG XT (JPEG eXTension)</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000143</fdd:id>
+					<fdd:shortName>JP2_FF</fdd:shortName>
+					<fdd:titleName>JPEG 2000 Part 1 (Core) jp2 File Format</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:comment>JPEG 360, not described separately at this time.</fdd:comment>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>See <fddLink id="fdd000013">JPEG</fddLink>
+		</fdd:experience>
+		<fdd:preference>See <fddLink id="fdd000013">JPEG</fddLink>
+		</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>International standard, fully disclosed.</fdd:disclosure>
+		<fdd:documentation>
+			<p>Published as <a href="https://www.iso.org/standard/84635.html">ISO/IEC 19566-5:2023 - Information technologies — JPEG systems Part 5: JPEG universal metadata box format (JUMBF)</a>, with an amendment published as of March 2025, and a further draft under development as of June 2026:</p>
+			<ul>
+				<li>
+					<a href="https://www.iso.org/standard/84635.html">ISO/IEC 19566-5:2023 - Information technologies — JPEG systems Part 5: JPEG universal metadata box format (JUMBF)</a>. </li>
+				<li>
+					<a href="https://www.iso.org/standard/88913.html">ISO/IEC 19566-5:2023/Amd 1:2025 - JUMBF box compression and standalone JUMBF files</a>
+				</li>
+				<li>
+					<a href="https://www.iso.org/standard/91384.html">ISO/IEC CD 19566-5 - Information technology — JPEG Systems Part 5: JPEG universal metadata box format (JUMBF)</a>
+				</li>
+			</ul>
+		</fdd:documentation>
+		<fdd:adoption>As of 2026, notable implementations of JUMBF include its adoption as a primary container format for implementation of the <a href="https://c2pa.org">Content Authenticity and Provenance (C2PA)</a> Content Credentials specification for embedding provenance information, and within the JPEG 360 standard for omni-directional images (see <a href="https://www.iso.org/obp/ui/en/#iso:std:iso-iec:19566:-6:ed-2:v1:en">ISO/IEC 19566-6:2026 - JPEG systems - Part 6: JPEG 360</a>). 
+	<p>In the context of C2PA, JUMBF is leveraged to store manifests or other sidecar data specific to various content types which detail creation, modification, and other authenticity information (see <a href="https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html#_use_of_jumbf">C2PA Technical Specification, 10.1 - Use of JUMBF</a> for a general overview on the C2PA Manifest Store structure as it pertains to JUMBF).</p>
+			<p>Within JPEG 360, JUMBF is similarly used as a mechanism for storing manifests, in this case 360-degree image metadata (see Kim, Yoonjoung; Choi, Yongjun; Nam, Younga; Kim, Sanghoon; <a href="https://www.mdpi.com/2076-3417/11/22/11019">Generation of a Panorama Compatible with the JPEG 360 International Standard Using a Single PTZ Camera</a>, Section 3.3). Some academic and software implementation projects have also explored or begun implementing JUMBF, such as integration of JUMBF with JLINK (see <a href="https://upcommons.upc.edu/server/api/core/bitstreams/1f5803c3-6014-4ffd-b200-8bb09ae15b4c/content">Valverde Diaz, 2022</a>). Some reference software and <a href="https://github.com/Doublebench-software/dbench_jumbf">libraries</a> also exist.
+		 <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>
+			</p>
+			<fddLink id="fdd000013"/>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>None.
+		</fdd:licensingAndPatents>
+		<fdd:transparency>Depends upon usage. Renderability of embedded or sidecar data depends on tool support; data contained within a JUMBF metadata box will be ignored if the rendering tool cannot recognize the data.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>When embedded inside a JPEG file, a JUMBF Super Box utilizes the JPEG XT Box File Format, which is identified by marker segment APP11, and is self-describing via the structural elements Description Box, content type UUID, labels, IDs etc. (See <a href="https://upcommons.upc.edu/server/api/core/bitstreams/1f5803c3-6014-4ffd-b200-8bb09ae15b4c/content">Diaz, Carlos Valverde. "JPEG Universal Metadata Box Format and JPEG Linked Media Format: a Reference Software Implementation"</a>, 2022, p. 20).</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>JUMBF has no specific attributes to support accessibility at this time. There may be applications for enhancing accessibility through the use of JUMBF to store data that supports use of accessibility tools, but documentation is limited at this time. Features to support accessibility would be found in associated files (such as embedded captions and subtitles in audiovisual content, tagged and structured text in textual documents, and alt text for images). Aggregate files can also contain separate files for transcripts, timed text or captions as part of the bundled package. See Relationships to other formats for details. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+			</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>There are no proprietary dependencies for implementation, but renderability of any stored data is dependent on the capability of applicable rendering or reporting software.</fdd:externalDependencies>
+		<fdd:techProtection>None.</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:stillImageQF>
+			<fdd:beyondImage>Good support for implementation in still image formats, depending on parser. Embedding metadata does not alter image content.</fdd:beyondImage>
+		</fdd:stillImageQF>
+		<fdd:otherQF>
+			<fdd:factor>
+				<fdd:tag>Payload data</fdd:tag>
+				<fdd:note>Support for large payloads (sound, video, etc.) are possible but may require multiple APP11 segments (in JPEG XT) due to segment size limits, and would impact content rendering efficiency if recognized by a parser.</fdd:note>
+			</fdd:factor>
+		</fdd:otherQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValueNA>See related format.</fdd:sigValueNA>
+				<fdd:note>See <fddLink id="fdd000013">JPEG</fddLink>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:note>Within a JPEG, a JUMBF box / Superbox is identified by the APP11 marker segments.
+Box types (TBoxes) like &quot;jumb&quot; (superbox), &quot;jumd&quot; (description box) etc., appear in the TBox fields.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>NARA File Format Preservation Plan ID has no corresponding entry as of  June 2026.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValueNA>See note.</fdd:sigValueNA>
+					<fdd:note>PRONOM has no corresponding entry as of  June 2026.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q139915980</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q139915980">https://www.wikidata.org/wiki/Q139915980</a>
+					</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>JPEG Universal Metadata Box Format (JUMBF) is Part 5 of the JPEG Systems standards group. JPEG Systems (ISO/IEC 19566) is &quot;a suite of standards developed by the JPEG Committee (ISO/IEC JTC1 
+SC29/WG1) that extend JPEG coding standards with system aspects and extensions&quot; (<a href="https://ds.jpeg.org/whitepapers/wg1n100596-100-COM-JPEG_Systems_White_Paper.pdf">JPEG White Paper, 2023</a>, p.3). As a key part of the JPEG Systems architecture, it is leveraged by several other parts to enable cross-functional and backward-compatible usage. It's box-based structure supports implementation within any other format that conforms to ISO base media file format (ISOBMFF) structure (e.g. Quicktime, MPEG, HEIC, etc). <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome.</a>
+		</fdd:general>
+		<fdd:history>The first edition of ISO/IEC 19566-5 was published in <a href="https://www.iso.org/standard/73604.html">July 2019</a>. In June 2023, the standard was revised and republished as ISO/IEC 19566-5:2023, incorporating updates and refinements based on feedback and technological advancements. The most recent amendment to the standard, ISO/IEC 19566-5:2023/Amd 1:2025, was published in 2025 and introduced support for compressed JUMBF boxes and standalone JUMBF files. A <a href="https://www.iso.org/standard/91384.html#lifecycle">further revision</a> is currently under development as of June 22, 2026 which will replace ISO/IEC 19566-5:2023/Amd 1:2025. <a href="https://www.loc.gov/preservation/digital/formats/contact_format.shtml">Comments welcome</a>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.iso.org/standard/84635.html</link>
+					<tag>ISO/IEC 19566-5:2023 - Information technologies — JPEG systems Part 5: JPEG universal metadata box format (JUMBF) </tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.iso.org/standard/88913.html</link>
+					<tag>ISO/IEC 19566-5:2023/Amd 1:2025 - Information technologies — JPEG systems — Part 5: JPEG universal metadata box format (JUMBF) - Amendment 1: JUMBF box compression and standalone JUMBF files</tag>
+					<comment>Amendments to ISO/IEC 19566-5:2023.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://cdn.standards.iteh.ai/samples/73604/1cd56426224440d1b853d42c028bfefa/ISO-IEC-19566-5-2019.pdf</link>
+					<tag>ISO/IEC 19566-5:2023/Amd 1:2019 - Information technologies — JPEG systems — Part 5: JPEG universal metadata box format (JUMBF)</tag>
+					<comment>Sample of the 2019 edition specification (now withdrawn), includes Figure A1, box structure.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://jpeg.org/jpegsystems/documentation.html</link>
+					<tag>jpeg.org/jpegsystems</tag>
+					<comment>The Joint Photographic Experts Group Web site, documentation on JPEG Systems</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://ds.jpeg.org/whitepapers/wg1n100596-100-COM-JPEG_Systems_White_Paper.pdf</link>
+					<tag>Overview of JPEG Systems</tag>
+					<comment>JPEG Systems White Paper - ISO/IEC 19566 (JPEG Systems)</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://justsolve.archiveteam.org/wiki/JUMBF</link>
+					<tag>Just Solve The File Format Problem, Wiki site entry</tag>
+					<comment>Thorough description; consulted June, 2026.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://exiftool.sourceforge.net/TagNames/Jpeg2000.html</link>
+					<tag>Exiftool Jpeg2000 Tags</tag>
+					<comment>List of found in JPEG 2000 images and the C2PA CAI JUMBF metadata in various file types</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://upcommons.upc.edu/server/api/core/bitstreams/1f5803c3-6014-4ffd-b200-8bb09ae15b4c/content</link>
+					<tag>JPEG Universal Metadata Box Format and JPEG Linked Media Format: a Reference Software Implementation</tag>
+					<comment>Consulted June, 2026. A Degree Thesis Submitted to the Faculty of the Escola Tècnica d&apos;Enginyeria de Telecomunicació de Barcelona Universitat Politècnica de Catalunya by Carlos Valverde Díaz </comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://spec.c2pa.org/specifications/specifications/2.4/specs/C2PA_Specification.html#_use_of_jumbf</link>
+					<tag>C2PA Specifications, Content Credentials: Use of JUMBF</tag>
+					<comment>C2PA Content Credentials specification section on utilization of JUMBF.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://doi.org/10.1117/12.2597651</link>
+					<tag>Adopting the JPEG universal metadata box format for media authenticity annotations. Frederik Temmermans, Leonard Rosenthol. Proceedings Volume 11842, Applications of Digital Image Processing XLIV; 118420M (2021)</tag>
+					<comment>Paper and presentation on the adoption of JUMBF within the C2PA specification, delivered at the 2021 Society of Photographic Instrumentation Engineers (SPIE) Conference, San Diego, CA.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.w3.org/WAI/tutorials/images/</link>
+					<tag>Images Tutorial.</tag>
+					<comment>W3C documentation related to their Web Accessibility Initiative.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/Doublebench-software/dbench_jumbf</link>
+					<tag>Dbench-JUMBF (GitHub)</tag>
+					<comment>JUMBF library aiming to "provide the means to support the generation and manipulation of JUMBF data".</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/scouten-adobe/jumbf-rs</link>
+					<tag>JUMBF Parser (GitHub)</tag>
+					<comment>A JUMBF parser and builder written in Rust.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.researchgate.net/publication/356428507_Generation_of_a_Panorama_Compatible_with_the_JPEG_360_International_Standard_Using_a_Single_PTZ_Camera</link>
+					<tag>Generation of a Panorama Compatible with the JPEG 360 International Standard...</tag>
+					<comment>A paper describing a tool for embedding metadata for 360-degree images in JPEG image files using JUMBF.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q17092932</link>
+					<tag>Wikidata entry for Q17092932</tag>
+					<comment>Information in Wikidata about related compression standard, JPEG-XT. Wikidata Title ID: Q17092932.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>

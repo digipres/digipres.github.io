@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fdd:FDD id="fdd000657" titleName="FLAC (Free Lossless Audio Codec) Family" shortName="FLAC_Family" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fdd="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1" xsi:schemaLocation="http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1 http://www.loc.gov/preservation/digital/formats/schemas/fdd/v1/fdd-v1-2.xsd">
+	<fdd:properties>
+		<fdd:gdfrGenreSelection>
+			<fdd:gdfrGenre>sound</fdd:gdfrGenre>
+		</fdd:gdfrGenreSelection>
+		<fdd:formatCategories>
+			<fdd:category>encoding</fdd:category>
+		</fdd:formatCategories>
+		<fdd:gdfrComposition>unitary</fdd:gdfrComposition>
+		<fdd:gdfrForm>binary</fdd:gdfrForm>
+		<fdd:gdfrBasis>sampled</fdd:gdfrBasis>
+		<fdd:updates>
+			<fdd:date>2026-07-20</fdd:date>
+		</fdd:updates>
+		<fdd:draftStatus>Full</fdd:draftStatus>
+	</fdd:properties>
+	<fdd:identificationAndDescription>
+		<fdd:fullName>FLAC (Free Lossless Audio Codec) Family</fdd:fullName>
+		<fdd:keywords>
+			<fdd:keyword>audio formats</fdd:keyword>
+			<fdd:keyword>lossless audio</fdd:keyword>
+			<fdd:keyword>compressed audio</fdd:keyword>
+		</fdd:keywords>
+		<fdd:description>
+			<p>FLAC (Free Lossless Audio Codec) is a bitstream encoding format designed for lossless compression of <fddLink id="fdd000016">PCM</fddLink> audio data. The FLAC specification is open and fully documented specification published through IETF <a href="https://www.rfc-editor.org/rfc/rfc9639.txt">RFC 9639</a>. According to <a href="https://xiph.org/flac/features.html">xiph.org</a>, FLAC lists a number of high level features including support for lossless compression and content authenticity: &quot;The encoding of audio (PCM) data incurs no loss of information, and the decoded audio is bit-for-bit identical to what went into the encoder. Each frame contains a 16-bit CRC of the frame data for detecting transmission errors. The integrity of the audio data is further insured by storing an MD5 signature of the original unencoded audio data in the file header, which can be compared against later during decoding or testing.&quot; Other attributes include faster processing speed (&quot;FLAC is asymmetric in favor of decode speed. Decoding requires only integer arithmetic, and is much less compute-intensive than for most perceptual codecs&quot;) and flexible metadata including support for cue sheets (see <a href="#sustainability">Self Documentation</a>) with many of its default parameters tuned to CD-quality music data. The data structure is described in <a href="#notes">Notes</a>, below.  The format also includes &quot;transport system&quot; elements that provide a <i>file format</i> for the encoded data. The <a href="https://xiph.org/flac/">FLAC xiph.org</a> indicates that in some applications there may be advantages to using <fddLink id="fdd000227">Ogg</fddLink> (or <fddLink id="fdd000342">Matroska</fddLink>) as a wrapper. <a href="../contact_format.shtml">Comments welcome</a>.</p>
+		</fdd:description>
+		<fdd:shortDescription>Open source bitstream encoding format designed for lossless compression of LPCM audio data, with many of its default parameters tuned to CD-quality music data.</fdd:shortDescription>
+		<fdd:productionPhase>Generally used for final-state, end-user delivery.</fdd:productionPhase>
+		<fdd:relationships>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000342</fdd:id>
+					<fdd:shortName>Matroska</fdd:shortName>
+					<fdd:titleName>Matroska</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>FLAC is often used with the Matroska container.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Used by</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000591</fdd:id>
+					<fdd:shortName>CAF</fdd:shortName>
+					<fdd:titleName>Apple Core Audio Format</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>
+					<a href="https://en.wikipedia.org/wiki/FLAC">Wikipedia</a> states that FLAC is supported in CAF containers. <a href="../contact_format.shtml">Comments welcome</a>.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>May contain</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000016</fdd:id>
+					<fdd:shortName>PCM</fdd:shortName>
+					<fdd:titleName>PCM, Pulse Code Modulated Audio</fdd:titleName>
+				</fdd:relatedTo>
+				<fdd:comment>FLAC files and streams can code for pulse-code modulated (PCM) audio.</fdd:comment>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000227</fdd:id>
+					<fdd:shortName>Ogg_FLAC_1_0</fdd:shortName>
+					<fdd:titleName>Ogg FLAC Audio Format, Version 1.0</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+			<fdd:relationship>
+				<fdd:typeOfRelationship>Has subtype</fdd:typeOfRelationship>
+				<fdd:relatedTo>
+					<fdd:id>fdd000198</fdd:id>
+					<fdd:shortName>FLAC_1_1_2</fdd:shortName>
+					<fdd:titleName>FLAC (Free Lossless Audio Codec), Version 1.1.2</fdd:titleName>
+				</fdd:relatedTo>
+			</fdd:relationship>
+		</fdd:relationships>
+	</fdd:identificationAndDescription>
+	<fdd:localUse>
+		<fdd:experience>The Library of Congress has a small number of FLAC files as of June 2026 but it&apos;s not possible to determine their version.</fdd:experience>
+		<fdd:preference>See the Library of Congress Recommended Formats Statement for format preferences for <a href="https://www.loc.gov/preservation/resources/rfs/audio.html">audio works</a>.</fdd:preference>
+	</fdd:localUse>
+	<fdd:sustainabilityFactors>
+		<fdd:disclosure>Fully documented and open. See <a href="#notes">History</a>, below.</fdd:disclosure>
+		<fdd:documentation>IETF Drafts, starting with 2017 as well as the final RFC 9639, are available on the IETF Data Tracker: <a href="https://datatracker.ietf.org/doc/rfc9639/">Free Lossless Audio Codec (FLAC)</a>. Earlier documentation is available through <a href="https://xiph.org/flac/download.html">xiph downloads</a> and <a href="https://sourceforge.net/projects/flac/files/flac-src/">SourceForge</a>. See <a href="#notes">Notes</a> for full version history.</fdd:documentation>
+		<fdd:adoption>
+			<p>
+				<a href="https://xiph.org/flac/links.html">xiph.org</a> includes a list of diverse FLAC resources but this may not be current. On the commercial side, <a href="https://developer.amazon.com/docs/music/audio-formats.html">Amazon Music</a> supports FLAC "to deliver HD and UHD audio." FLAC is widely supported across major web browsers. The IETF Cellar Working Group also provides a set of <a href="https://github.com/ietf-wg-cellar/flac-test-files">FLAC test files</a>.</p>
+			<p>The DPC Technology Watch Guidance Note <a href="http://doi.org/10.7207/twgn21-11">Preserving Audio</a> (July 2021) states that "FLAC is not as widely used as <fddLink id="fdd000001">WAV</fddLink> due to the fact that it is a newer format, is less established in a preservation context, and has less explicit tool support. However, it is considered an acceptable preservation format." Overall, FLAC is gaining adoption in the audio digital preservation communities. For example, the US National Archives and Records Administration includes FLAC v.1.2.1 on its <a href="https://www.archives.gov/records-mgmt/policy/transfer-guidance-tables.html#digitalaudio">preferred formats for digital audio</a> for Transfer Guidance (as of June 2026) and the Smithsonian Institution Archives includes it as an acceptable format on its list of <a href="https://siarchives.si.edu/what-we-do/digital-curation/recommended-preservation-formats-electronic-records">Recommended Preservation Formats for Electronic Records</a>. It&apos;s also mentioned in the <a href="https://www.clir.org/pubs/reports/pub164/">ARSC Guide to Audio Preservation</a> (2015). See also <fddLink id="fdd000657">FLAC Family</fddLink>. </p>
+		</fdd:adoption>
+		<fdd:licensingAndPatents>Documentation and tools are freely distributed under Xiph&apos;s <a href="https://www.xiph.org/licenses/bsd/">variant</a> of the BSD open-source license. No known patents.</fdd:licensingAndPatents>
+		<fdd:transparency>Depends upon algorithms and tools to read; requires sophistication to build tools.</fdd:transparency>
+		<fdd:selfDocumentation>
+			<p>
+				<a href="https://www.rfc-editor.org/rfc/rfc9639.txt">RFC 9639</a> states: &#34;A FLAC bitstream consists of the fLaC (i.e., 0x664C6143) marker at the beginning of the stream, followed by a mandatory metadata block (called the streaminfo metadata block), any number of other metadata blocks, and then the audio frames. FLAC supports 127 kinds of metadata blocks; ... [The STREAMINFO block] The streaminfo metadata block has information about the whole stream, such as sample rate, number of channels, total number of samples, etc. It MUST be present as the first metadata block in the stream. Other metadata blocks MAY follow. There MUST be no more than one streaminfo metadata block per FLAC stream.&#34;  Also included in the STREAMINFO block is the MD5 signature of the unencoded audio data.</p>
+			<p>From <a href="https://www.rfc-editor.org/rfc/rfc9639.html#name-cuesheet">https://www.rfc-editor.org/rfc/rfc9639.html#name-cuesheet</a>: A cuesheet metadata block can be used either to store the track and index point structure of a Compact Disc Digital Audio (CD-DA) along with its audio or to provide a mechanism to store locations of interest within a FLAC file. Certain aspects of this metadata block come directly from the CD-DA specification (called Red Book), which is standardized as [<a href="https://webstore.iec.ch/en/publication/3885">IEC.60908.1999</a>].</p>
+			<p>
+				<b>Accessibility Features</b>
+			</p>
+			<p>FLAC's metadata support allows for comprehensive tagging of album info, lyrics, and track titles that may be accessible to screen readers. In common practice, typically audio content is supported by external caption and subtitle formats such as <fddLink id="fdd000567">WebVTT.</fddLink> See W3C&apos;s <a href="https://www.w3.org/WAI/media/av/">Making Audio and Video Media Accessible</a> for more general information about accessible sound and moving image media.</p>
+		</fdd:selfDocumentation>
+		<fdd:externalDependencies>None.</fdd:externalDependencies>
+		<fdd:techProtection>None. <a href="https://xiph.org/flac/features.html">xiph.org</a> states: &quot;There is no intention to add any copy prevention methods. Of course, we can&apos;t stop someone from encrypting a FLAC stream in another container (e.g. the way Apple encrypts AAC in MP4 with FairPlay), that is the choice of the user.&quot;</fdd:techProtection>
+	</fdd:sustainabilityFactors>
+	<fdd:qualityAndFunctionalityFactors>
+		<fdd:soundQF>
+			<fdd:normalSound>Good support.</fdd:normalSound>
+			<fdd:fidelity>Potentially excellent. From <a href="https://www.rfc-editor.org/rfc/rfc9639.txt">RFC 9639</a>: FLAC supports linear PCM samples at rates from 1
+to 1048575 hertz and bit depth resolution between 4 and 32 bits per sample.</fdd:fidelity>
+			<fdd:channels>From <a href="https://xiph.org/flac/faq.html#general__channels">https://xiph.org/flac/faq.html#general__channels</a>
+				<a href="https://www.rfc-editor.org/rfc/rfc9639.txt">RFC 9639</a>: &quot;FLAC supports from 1 to 8 channels per stream. Channels are only grouped in FLAC to take advantage of interchannel correlation and to define common channel assignments (like stereo L/R, 5.1 surround, et cetera). When encoding a large number of independent channels it is expected that they are coded separately and if required, multiplexed together in a suitable container like Ogg or Matroska.&quot;</fdd:channels>
+			<fdd:samples>Not applicable.</fdd:samples>
+			<fdd:beyondSound>One specialist in the field reports two fixity elements in FLAC: <a href="http://dericed.com/papers/reconsidering-the-checksum-for-audiovisual-preservation/">first</a>,"the header of a FLAC file contains an MD5 checksum or signature that represents the original audio data that is encoded,&quot; and <a href="http://dericed.com/2013/flac-in-the-archives/">second</a> that &quot;deeper within the FLAC file, audio samples are grouped into audio frames which themselves are checksummed with a crc value.&quot;  In addition,  <a href="https://www.rfc-editor.org/rfc/rfc9639.txt">RFC 9639</a> reports that FLAC is streamable in a computer network if some constraints are applied.</fdd:beyondSound>
+		</fdd:soundQF>
+	</fdd:qualityAndFunctionalityFactors>
+	<fdd:fileTypeSignifiers>
+		<fdd:signifiersGroup>
+			<fdd:filenameExtension>
+				<fdd:sigValues>
+					<fdd:sigValue>flac</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Documented in <a href="https://www.rfc-editor.org/rfc/rfc9639.txt">RFC 9639</a>.</fdd:note>
+			</fdd:filenameExtension>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>audio/flac</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Registered with <a href="https://www.iana.org/assignments/media-types/audio/flac">IANA via RFC 9639</a>.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:internetMediaType>
+				<fdd:sigValues>
+					<fdd:sigValue>audio/x-flac</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Depreciated but may still in use.</fdd:note>
+			</fdd:internetMediaType>
+			<fdd:magicNumbers>
+				<fdd:sigValues>
+					<fdd:sigValue>Hex: 66 4C 61 43 00 00 00 22</fdd:sigValue>
+					<fdd:sigValue>ASCII: fLaC</fdd:sigValue>
+				</fdd:sigValues>
+				<fdd:note>Documented in <a href="https://www.rfc-editor.org/rfc/rfc9639.txt">RFC 9639</a>: The first 4 bytes of the file contain the fLaC file signature (0x664C6143) meaning byte 0 of the stream is 0x66, followed by 0x4C 0x61 0x43.</fdd:note>
+			</fdd:magicNumbers>
+			<fdd:other>
+				<fdd:tag>Other</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>NF00198</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.archives.gov/files/lod/dpframework/id/NF00198.ttl">https://www.archives.gov/files/lod/dpframework/id/NF00198.ttl</a>. No versions specified.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Pronom PUID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>fmt/279</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="http://www.nationalarchives.gov.uk/PRONOM/fmt/279">http://www.nationalarchives.gov.uk/PRONOM/fmt/279</a> for version 1.2.1 only.</fdd:note>
+				</fdd:values>
+			</fdd:other>
+			<fdd:other>
+				<fdd:tag>Wikidata Title ID</fdd:tag>
+				<fdd:values>
+					<fdd:sigValues>
+						<fdd:sigValue>Q131481410</fdd:sigValue>
+					</fdd:sigValues>
+					<fdd:note>See <a href="https://www.wikidata.org/wiki/Q131481410">https://www.wikidata.org/wiki/Q131481410</a> for Free Lossless Audio Codec. No versions specified.
+</fdd:note>
+				</fdd:values>
+			</fdd:other>
+		</fdd:signifiersGroup>
+	</fdd:fileTypeSignifiers>
+	<fdd:notes>
+		<fdd:general>
+			<p>
+				<b>Transport system, native file format.</b> (from <a href="https://xiph.org/flac/ogg_mapping.html">https://xiph.org/flac/ogg_mapping.html</a>):<br/>
+The original FLAC format includes a very thin transport system. This system of compressed FLAC audio data mixed with a thin transport has come to be known as &apos;native FLAC&apos;. The transport consists of audio frame headers and footers which contain synchronization patterns, timecodes, and checksums (but notably not frame lengths), and a metadata system. It is very lightweight and does not support more elaborate transport mechanisms such as multiple logical streams, but it has served its purpose well. The native FLAC transport is not a transport &quot;layer&quot; in the way of standard codec design because it cannot be entirely separated from the payload. Though the metadata system can be separated, the frame header includes both data that belongs in the transport (sync pattern, timecode, checksum) and data that belongs in the compressed packets (audio parameters like channel assignments, sample rate, etc).</p>
+			<p>
+				<b>Coding.</b> (from <a href="https://xiph.org/flac/format.html">https://xiph.org/flac/format.html</a>):<br/>
+Encoding stages include:</p>
+			<ul>
+				<li>Blocking. The input is broken up into many contiguous blocks. With FLAC, the blocks may vary in size. The optimal size of the block is usually affected by many factors, including the sample rate, spectral characteristics over time, etc. Though FLAC allows the block size to vary within a stream, the reference encoder uses a fixed block size.</li>
+				<li>Interchannel Decorrelation. In the case of stereo streams, the encoder will create mid and side signals based on the average and difference (respectively) of the left and right channels. The encoder will then pass the best form of the signal to the next stage.</li>
+				<li>Prediction. The block is passed through a prediction stage where the encoder tries to find a mathematical description (usually an approximate one) of the signal. This description is typically much smaller than the raw signal itself. Since the methods of prediction are known to both the encoder and decoder, only the parameters of the predictor need be included in the compressed stream. FLAC currently uses four different classes of predictors . . . , but the format has reserved space for additional methods. FLAC allows the class of predictor to change from block to block, or even within the channels of a block.</li>
+				<li>Residual coding. If the predictor does not describe the signal exactly, the difference between the original signal and the predicted signal (called the error or residual signal) must be coded losslessly. If the predictor is effective, the residual signal will require fewer bits per sample than the original signal. FLAC currently uses only one method for encoding the residual (see the Residual coding section), but the format has reserved space for additional methods.</li>
+			</ul>
+			<p>
+				<b>Versions.</b>  Information about FLAC versions is provided on the FLAC <a href="https://xiph.org/flac/changelog.html">changelog</a> page.</p>
+		</fdd:general>
+		<fdd:history>
+			<p>The <a href="https://xiph.org/flac/">FLAC Web site</a> site (no longer as actively maintained with the move to IETF) includes a <a href="https://xiph.org/flac/changelog.html">change log</a> for versions FLAC 0.4 (23-Dec-2000) - FLAC 1.5.0 (11-Feb-2025) as well as includes a pointer to the active <a href="https://github.com/xiph/flac/commits">GitHub repo</a> for Commit changes.</p>
+			<p>FLAC was first hosted on <a href="https://sourceforge.net/projects/flac/files/flac-src/">SourceForge</a> (versions FLAC 0.3 [18-Dec-2000] - FLAC 1.2.1 [16-Sept-2007].  </p>
+			<p>FLAC was <a href="https://conference.audio.dev/speakers/josh-coalson/">invented by Josh Coalson in 2000</a> and remained the lead developer through 2013.  The <a href="https://en.wikipedia.org/wiki/FLAC">Wikipedia FLAC</a> entry (consulted on July 1, 2026) states that on &quot;On 29 January 2003, the Xiph.Org Foundation and the FLAC project announced the incorporation of FLAC under the Xiph.org banner. Xiph.org is home to other free compression formats such as Vorbis, Theora, Speex and Opus.&quot;</p>
+			<p>An offshoot of the European-based <a href="https://web.archive.org/web/20191229184105/http://www.preforma-project.eu/project.html">PREFORMA</a> project (link through Internet Archive), which aimed &quot;to address the challenge of implementing good quality standardised file formats for preserving data content in the long term,&quot; <a href="https://datatracker.ietf.org/wg/cellar/charter/">Codec Encoding for LossLess Archiving and Realtime transmission (cellar)</a> is an IETF-approved project to standardize FLAC, <fddLink id="fdd000342">Matroska</fddLink>, <fddLink id="fdd000341">FFV1</fddLink> and <fddLink id="fdd000516">EBML</fddLink>. See also <a href="https://blogs.loc.gov/thesignal/2015/09/improving-technical-options-for-audiovisual-collections-through-the-preforma-project/">Improving Technical Options for Audiovisual Collections Through the PREFORMA Project</a>, blog post from September 23, 2015 on The Signal.</p>
+		</fdd:history>
+	</fdd:notes>
+	<fdd:formatSpecifications>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://datatracker.ietf.org/doc/rfc9639/</link>
+					<tag>Free Lossless Audio Codec (FLAC): IETF RFC 9639</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.rfc-editor.org/rfc/rfc9639.txt</link>
+					<tag>Text version of RFC 9639 (which may be updated over time)</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://datatracker.ietf.org/doc/draft-ietf-cellar-flac/14/</link>
+					<tag>Draft versions of the FLAC specification starting with draft-xiph-cellar-flac-00 from 2017</tag>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:formatSpecifications>
+	<fdd:usefulReferences>
+		<fdd:urls>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/xiph/flac/commits</link>
+					<tag>xiph FLAC commits on GitHub repository</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://github.com/ietf-wg-cellar/flac-test-files</link>
+					<tag>IETF CELLAR Working Group FLAC test files on GitHub</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://xiph.org/flac/format.html</link>
+					<tag>FLAC format documentation with canonical information about the format moved to RFC 9639</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://xiph.org/flac/documentation.html</link>
+					<tag>FLAC general documentation and background info</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://xiph.org/flac/ogg_mapping.html</link>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://dericed.com/papers/reconsidering-the-checksum-for-audiovisual-preservation/</link>
+					<tag>Reconsidering the Checksum for Audiovisual Preservation</tag>
+					<comment>Online article by Dave Rice, CUNY.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://dericed.com/2013/flac-in-the-archives/</link>
+					<tag>FLAC in the Archives</tag>
+					<comment>Online article by Dave Rice, CUNY, discussing preservation qualities of FLAC and BWF as well as FLAC's fixity capabilities.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://fileformats.archiveteam.org/wiki/FLAC</link>
+					<tag>Archives Team FLAC entry</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://web.archive.org/web/20191229184105/http://www.preforma-project.eu/project.html</link>
+					<tag>PREFORMA, PREservation FORMAts for culture information/e-archives (link via Internet Archives)</tag>
+					<comment>Collaborative EU-funded project with goal of "implementing good quality standardised file formats" including Matroska, FLAC and FFV1. Link through Internet Archive</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://en.wikipedia.org/wiki/FLAC</link>
+					<tag>Wikipedia entry for FLAC</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://sourceforge.net/projects/flac/files/flac-src/</link>
+					<tag>Sourceforge repo for earlier versions of FLAC. Not maintained after move to IETF.</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://datatracker.ietf.org/wg/cellar/charter/</link>
+					<tag>IETF Charter for CELLAR Project (Codec Encoding for LossLess Archiving and Realtime transmission)</tag>
+					<comment>IETF Working Group page, including specifications for FFV1, Matroska, FLAC and EBML</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://doi.org/10.7207/twgn21-11</link>
+					<tag>DPC Technology Watch
+Guidance Note: Preserving Audio,
+July 2021</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archives.gov/records-mgmt/policy/transfer-guidance-tables.html#digitalaudio</link>
+					<tag>US National Archives Transfer Guidance: Digital Audio</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://siarchives.si.edu/what-we-do/digital-curation/recommended-preservation-formats-electronic-records</link>
+					<tag>Smithsonian Institution Archives: Recommended Preservation Formats for Electronic Records</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.clir.org/pubs/reports/pub164/</link>
+					<tag>ARSC Guide to Audio Preservation, 2015</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archives.gov/files/lod/dpframework/id/NF00198.ttl</link>
+					<tag>NARA File Format Preservation Plan ID entry for NF001989</tag>
+					<comment>Information in NARA File Format Preservation Plan ID about Free Lossless Audio Codec (FLAC).</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://conference.audio.dev/speakers/josh-coalson/</link>
+					<tag>ADC Conference: Josh Coalson bio</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://blogs.loc.gov/thesignal/2015/09/improving-technical-options-for-audiovisual-collections-through-the-preforma-project/</link>
+					<tag>Improving Technical Options for Audiovisual Collections Through the PREFORMA Project, September 23, 2015</tag>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.archives.gov/files/lod/dpframework/id/NF00198.ttl</link>
+					<tag>NARA File Format Preservation Plan ID entry for NF00198</tag>
+					<comment>Information in NARA File Format Preservation Plan ID about FLAC, no version specif.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>http://www.nationalarchives.gov.uk/pronom/fmt/279</link>
+					<tag>PRONOM entry for fmt/279</tag>
+					<comment>Information in PRONOM from UK National Archives about FLAC version 1.2.1. PUID: fmt/279.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+			<fdd:url>
+				<fdd:urlReference>
+					<link>https://www.wikidata.org/wiki/Q131481410</link>
+					<tag>Wikidata entry for Q131481410</tag>
+					<comment>Information in Wikidata about FLAC. Wikidata Title ID: Q131481410.</comment>
+				</fdd:urlReference>
+			</fdd:url>
+		</fdd:urls>
+	</fdd:usefulReferences>
+</fdd:FDD>
